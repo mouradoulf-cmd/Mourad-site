@@ -332,14 +332,16 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
 @media (prefers-reduced-motion: reduce) {
   .hero__bg { animation: none; }
 }
-.hero__texture {
+.hero__texture, .texture-dots {
   position: absolute; inset: 0;
   opacity: .14;
   background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.6) 1px, transparent 0);
   background-size: 26px 26px;
-  z-index: -1;
+  z-index: 0;
+  pointer-events: none;
   animation: drift 26s linear infinite;
 }
+.hero__texture { z-index: -1; }
 @keyframes drift {
   from { background-position: 0 0; }
   to { background-position: 260px 130px; }
@@ -449,8 +451,46 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   color: rgba(248,243,234,.7);
 }
 
+/* ---------- Marquee ---------- */
+.marquee {
+  overflow: hidden;
+  background: var(--bg);
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 24px 0;
+}
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  animation: marqueeScroll 26s linear infinite;
+}
+.marquee__track span {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+.marquee__dot {
+  font-style: normal !important;
+  color: var(--gold);
+  font-size: 1rem !important;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+}
+
 /* ---------- Story ---------- */
-.story { padding: 130px 0 100px; }
+.story { position: relative; padding: 130px 0 100px; overflow: hidden; }
+.story > .container { position: relative; z-index: 1; }
 .story__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -540,7 +580,7 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
 
 /* ---------- Menu ---------- */
 .menu { position: relative; padding: 100px 0; background: var(--ink); overflow: hidden; }
-.menu > * { position: relative; z-index: 1; }
+.menu > .container { position: relative; z-index: 1; }
 .menu__lead-cta { text-align: center; margin-top: 24px; }
 
 /* ---------- Menu modal ---------- */
@@ -805,7 +845,8 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
 .menu__cta { text-align: center; margin-top: 56px; }
 
 /* ---------- Gallery ---------- */
-.gallery { position: relative; padding: 100px 0 150px; }
+.gallery { position: relative; padding: 100px 0 150px; overflow: hidden; }
+.gallery > .container { position: relative; z-index: 1; }
 .gallery__grid {
   margin-top: 56px;
   display: grid;
@@ -943,7 +984,7 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
     radial-gradient(60% 50% at 85% 20%, rgba(217,163,95,.12), transparent 65%),
     radial-gradient(50% 40% at 10% 90%, rgba(217,102,47,.1), transparent 60%);
 }
-.contact > * { position: relative; z-index: 1; }
+.contact > .container { position: relative; z-index: 1; }
 .reservation {
   display: grid;
   grid-template-columns: .9fr 1.1fr;

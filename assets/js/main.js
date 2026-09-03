@@ -325,6 +325,21 @@
     });
   }
 
+  /* ---------- Magnetic primary buttons ---------- */
+  if (canHover && !prefersReducedMotion) {
+    document.querySelectorAll(".btn--primary").forEach(function (btn) {
+      btn.addEventListener("mousemove", function (e) {
+        var rect = btn.getBoundingClientRect();
+        var x = (e.clientX - rect.left - rect.width / 2) * 0.35;
+        var y = (e.clientY - rect.top - rect.height / 2) * 0.45;
+        btn.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px)";
+      });
+      btn.addEventListener("mouseleave", function () {
+        btn.style.transform = "";
+      });
+    });
+  }
+
   /* ---------- GSAP hero entrance ---------- */
   if (hasGsap) {
     var heroEls = document.querySelectorAll("[data-hero-el]");
