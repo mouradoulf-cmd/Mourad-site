@@ -483,6 +483,14 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   border-radius: 50%;
   background: var(--olive);
 }
+.story__signature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2rem;
+  color: var(--ink-soft);
+  opacity: .8;
+  margin: 30px 0 0;
+}
 
 /* ---------- Motto ---------- */
 .motto { padding: 10px 0 80px; }
@@ -512,6 +520,80 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
 
 /* ---------- Menu ---------- */
 .menu { padding: 100px 0; background: var(--cream-soft); }
+.menu__lead-cta { text-align: center; margin-top: 24px; }
+
+/* ---------- Menu modal ---------- */
+.menu-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s var(--ease), visibility 0s linear .4s;
+}
+.menu-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .4s var(--ease);
+}
+.menu-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12,9,6,.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.menu-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(880px, 100%);
+  max-height: 84vh;
+  overflow-y: auto;
+  border-radius: 26px;
+  padding: 48px 40px;
+  background: rgba(28,20,15,.88);
+  color: var(--cream);
+  box-shadow: 0 40px 90px rgba(0,0,0,.5);
+  transform: translateY(20px) scale(.98);
+  transition: transform .4s var(--ease);
+}
+.menu-modal.is-open .menu-modal__panel { transform: translateY(0) scale(1); }
+.menu-modal__panel .eyebrow { color: var(--gold); }
+.menu-modal__panel h3 { color: var(--cream); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: .6em; }
+.menu-modal__close {
+  position: absolute;
+  top: 24px; right: 24px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.06);
+  color: var(--cream);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.menu-modal__close:hover { background: rgba(255,255,255,.16); transform: rotate(90deg); }
+.menu-modal__cat { margin-bottom: 34px; }
+.menu-modal__cat:last-child { margin-bottom: 0; }
+.menu-modal__cat h4 {
+  font-family: var(--font-body);
+  font-size: .85rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.menu-modal__cat .menu-list__note { color: rgba(248,243,234,.6); }
+.menu-modal__cat .menu-list__row { border-bottom-color: rgba(255,255,255,.12); }
+.menu-modal__cat .menu-list__name span { color: var(--cream); }
+.menu-modal__cat .menu-list__name small { color: rgba(248,243,234,.6); }
+.menu-modal__cat .menu-panel__grid { max-width: none; margin: 0; }
 .menu__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -781,6 +863,52 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
     radial-gradient(60% 50% at 85% 20%, rgba(199,154,75,.1), transparent 65%),
     radial-gradient(50% 40% at 10% 90%, rgba(193,85,47,.08), transparent 60%);
 }
+.reservation {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 48px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.5);
+  box-shadow: var(--shadow), 0 0 60px rgba(199,154,75,.14);
+  margin-bottom: 70px;
+}
+.reservation__text h2 { font-size: clamp(1.8rem, 3vw, 2.3rem); margin-bottom: .4em; }
+.reservation__text p { color: var(--ink-soft); margin: 0; }
+.reservation__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.reservation__row { display: flex; gap: 16px; }
+.reservation__row label { flex: 1; }
+.reservation__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: .82rem;
+  color: var(--ink-soft);
+  letter-spacing: .02em;
+}
+.reservation__form input,
+.reservation__form textarea {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 14px;
+  resize: vertical;
+}
+.reservation__form input:focus,
+.reservation__form textarea:focus {
+  outline: none;
+  border-color: var(--terracotta);
+}
+.reservation__form .btn { align-self: flex-start; margin-top: 4px; }
+
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -857,6 +985,9 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   .hero__rating { justify-content: center; }
   .hero__card { width: min(280px, 60vw); margin: 0 auto; }
   .experience__content h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+
+  .reservation { grid-template-columns: 1fr; padding: 32px; gap: 30px; }
+  .menu-modal__panel { padding: 36px 26px; }
 }
 
 @media (max-width: 760px) {
@@ -891,4 +1022,6 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   .menu-tabs-wrap { justify-content: flex-start; margin-left: -24px; margin-right: -24px; padding: 0 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .menu-tabs { flex-wrap: nowrap; }
   .menu-tab { padding: 10px 16px; font-size: .85rem; }
+
+  .reservation__row { flex-direction: column; }
 }

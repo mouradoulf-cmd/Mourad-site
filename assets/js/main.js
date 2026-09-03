@@ -343,4 +343,87 @@
       }, 4500);
     }
   }
+
+  /* ---------- Full menu modal ---------- */
+  var menuModal = document.getElementById("menuModal");
+  var openMenuModalBtn = document.getElementById("openMenuModal");
+  if (menuModal && openMenuModalBtn) {
+    var modalBody = document.getElementById("menuModalBody");
+    var modalClose = document.getElementById("menuModalClose");
+    var panelsSource = document.getElementById("menuPanels");
+    var lastFocused = null;
+
+    function buildModalContent() {
+      modalBody.innerHTML = "";
+      panelsSource.querySelectorAll(".menu-panel").forEach(function (panel) {
+        var cat = document.createElement("div");
+        cat.className = "menu-modal__cat";
+
+        var h4 = document.createElement("h4");
+        h4.textContent = panel.dataset.label || "";
+        cat.appendChild(h4);
+
+        var note = panel.querySelector(".menu-list__note");
+        if (note) cat.appendChild(note.cloneNode(true));
+
+        var grid = panel.querySelector(".menu-panel__grid");
+        if (grid) cat.appendChild(grid.cloneNode(true));
+
+        modalBody.appendChild(cat);
+      });
+    }
+
+    function openModal() {
+      lastFocused = document.activeElement;
+      buildModalContent();
+      menuModal.classList.add("is-open");
+      menuModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      modalClose.focus();
+    }
+    function closeModal() {
+      menuModal.classList.remove("is-open");
+      menuModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    }
+
+    openMenuModalBtn.addEventListener("click", openModal);
+    modalClose.addEventListener("click", closeModal);
+    menuModal.querySelectorAll("[data-modal-close]").forEach(function (el) {
+      el.addEventListener("click", closeModal);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menuModal.classList.contains("is-open")) closeModal();
+    });
+  }
+
+  /* ---------- Reservation form -> WhatsApp ---------- */
+  var reservationForm = document.getElementById("reservationForm");
+  if (reservationForm) {
+    reservationForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var data = reservationForm.elements.data.value;
+      var ora = reservationForm.elements.ora.value;
+      var persone = reservationForm.elements.persone.value;
+      var note = reservationForm.elements.note.value.trim();
+
+      var dataFormatted = data;
+      if (data) {
+        var parts = data.split("-");
+        if (parts.length === 3) dataFormatted = parts[2] + "/" + parts[1] + "/" + parts[0];
+      }
+
+      var lines = [
+        "Ciao! Vorrei prenotare un tavolo da Giulivo.",
+        "Data: " + (dataFormatted || "-"),
+        "Ora: " + (ora || "-"),
+        "Persone: " + (persone || "-")
+      ];
+      if (note) lines.push("Note: " + note);
+
+      var message = encodeURIComponent(lines.join("\n"));
+      window.open("https://wa.me/393888566367?text=" + message, "_blank", "noopener");
+    });
+  }
 })();

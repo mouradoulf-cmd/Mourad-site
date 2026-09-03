@@ -131,6 +131,7 @@
           <li>Dolci fatti in casa</li>
           <li>Atmosfera semplice, calorosa e conviviale</li>
         </ul>
+        <p class="story__signature reveal" style="--d:5">Guidino</p>
       </div>
     </div>
   </section>
@@ -161,6 +162,9 @@
         Il menu cambia con le stagioni e con il mercato. Ecco lo spirito della
         carta, con un assaggio dei piatti che la compongono.
       </p>
+      <div class="menu__lead-cta reveal" style="--d:2">
+        <button type="button" class="btn btn--outline" id="openMenuModal">Vedi il menu completo</button>
+      </div>
 
       <div class="menu__grid">
         <div class="menu-card reveal">
@@ -218,7 +222,7 @@
       </div>
 
       <div class="menu-panels" id="menuPanels">
-        <div class="menu-panel is-active" id="panel-antipasti" role="tabpanel">
+        <div class="menu-panel is-active" id="panel-antipasti" role="tabpanel" data-label="Antipasti">
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0">
               <div class="menu-list__name"><span>Polpo alla griglia</span><small>Con crema di patate e olio alla paprika dolce</small></div>
@@ -235,7 +239,7 @@
           </div>
         </div>
 
-        <div class="menu-panel" id="panel-primi" role="tabpanel">
+        <div class="menu-panel" id="panel-primi" role="tabpanel" data-label="Primi piatti">
           <p class="menu-list__note">La pasta fresca è fatta a mano, prodotta dal pastificio artigianale "La Castellana".</p>
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0">
@@ -273,7 +277,7 @@
           </div>
         </div>
 
-        <div class="menu-panel" id="panel-secondi" role="tabpanel">
+        <div class="menu-panel" id="panel-secondi" role="tabpanel" data-label="Secondi piatti">
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0">
               <div class="menu-list__name"><span>Baccalà con porri</span><small>Su crema di ceci</small></div>
@@ -302,7 +306,7 @@
           </div>
         </div>
 
-        <div class="menu-panel" id="panel-contorni" role="tabpanel">
+        <div class="menu-panel" id="panel-contorni" role="tabpanel" data-label="Contorni">
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Patate fritte</span></div><span class="menu-list__price">4,50&nbsp;€</span></div>
             <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Patate arrosto</span></div><span class="menu-list__price">4,50&nbsp;€</span></div>
@@ -311,7 +315,7 @@
           </div>
         </div>
 
-        <div class="menu-panel" id="panel-dessert" role="tabpanel">
+        <div class="menu-panel" id="panel-dessert" role="tabpanel" data-label="Dessert">
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Tiramisù</span></div><span class="menu-list__price">5&nbsp;€</span></div>
             <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Cheesecake</span><small>Frutti di bosco o cioccolata</small></div><span class="menu-list__price">5&nbsp;€</span></div>
@@ -322,7 +326,7 @@
           </div>
         </div>
 
-        <div class="menu-panel" id="panel-bevande" role="tabpanel">
+        <div class="menu-panel" id="panel-bevande" role="tabpanel" data-label="Bevande & Caffè">
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Caffè</span></div><span class="menu-list__price">1,50&nbsp;€</span></div>
             <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Caffè corretto / macchiato</span></div><span class="menu-list__price">2&nbsp;€</span></div>
@@ -443,6 +447,35 @@
 
   <!-- CONTATTI / LOCALIZZAZIONE -->
   <section class="contact" id="contatti">
+    <div class="container">
+      <div class="reservation reveal glass">
+        <div class="reservation__text">
+          <p class="eyebrow">Prenota</p>
+          <h2>Richiedi un tavolo</h2>
+          <p>Compila i dettagli: si apre WhatsApp con il messaggio già pronto da inviarci. La prenotazione è confermata solo dopo la nostra risposta.</p>
+        </div>
+        <form class="reservation__form" id="reservationForm">
+          <div class="reservation__row">
+            <label>Data
+              <input type="date" name="data" required>
+            </label>
+            <label>Ora
+              <input type="time" name="ora" value="20:00" required>
+            </label>
+          </div>
+          <div class="reservation__row">
+            <label>Persone
+              <input type="number" name="persone" min="1" max="20" value="2" required>
+            </label>
+          </div>
+          <label>Note (opzionale)
+            <textarea name="note" rows="2" placeholder="Es. allergie, seggiolone, tavolo esterno…"></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary">Richiedi su WhatsApp</button>
+        </form>
+      </div>
+    </div>
+
     <div class="container contact__grid">
       <div class="contact__info reveal">
         <p class="eyebrow">Dove siamo</p>
@@ -502,6 +535,17 @@
     <p class="footer__copy">© <span id="year"></span> Giulivo Cucina e Buonumore — Vicopisano, Italia</p>
   </div>
 </footer>
+
+<!-- MENU MODAL -->
+<div class="menu-modal" id="menuModal" aria-hidden="true">
+  <div class="menu-modal__backdrop" data-modal-close></div>
+  <div class="menu-modal__panel glass" role="dialog" aria-modal="true" aria-label="Il menu completo">
+    <button type="button" class="menu-modal__close" id="menuModalClose" aria-label="Chiudi il menu">✕</button>
+    <p class="eyebrow">Il menu</p>
+    <h3>La carta completa</h3>
+    <div class="menu-modal__body" id="menuModalBody"></div>
+  </div>
+</div>
 
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
