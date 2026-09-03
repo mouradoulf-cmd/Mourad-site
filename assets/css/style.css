@@ -252,6 +252,27 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
 .nav-link.is-current { color: var(--cream); }
 .nav-link.is-current::after { width: 100%; background: var(--gold); }
 
+.navbar__lang {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 100px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+}
+.lang-link {
+  padding: 5px 10px;
+  border-radius: 100px;
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .03em;
+  color: rgba(248,243,234,.6);
+  transition: color .3s, background .3s;
+}
+.lang-link:hover { color: var(--cream); }
+.lang-link.is-active { background: var(--terracotta); color: #fff; }
+
 .navbar__cta { color: var(--cream); border-color: rgba(248,243,234,.4); }
 
 .navbar__burger {
@@ -328,8 +349,6 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   padding-top: 90px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 50px;
 }
 .hero__text-col { max-width: 640px; }
 .hero__title { margin-bottom: .4em; color: var(--cream); }
@@ -369,37 +388,6 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
 }
 .stars { color: var(--gold); letter-spacing: 2px; }
 .stars--lg { font-size: 1.6rem; }
-
-.hero__visual { flex: 0 0 auto; }
-.hero__card {
-  position: relative;
-  width: min(360px, 32vw);
-  aspect-ratio: 4/5;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 55px rgba(217,163,95,.18);
-  animation: heroCardFloat 4.5s ease-in-out infinite alternate;
-  transition: transform .4s var(--ease);
-}
-.hero__card img { width: 100%; height: 100%; object-fit: cover; }
-.hero__card-tag {
-  position: absolute;
-  left: 14px; bottom: 14px; right: 14px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  color: var(--cream);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: .92rem;
-  text-align: center;
-}
-@keyframes heroCardFloat {
-  from { transform: translateY(0) rotate(-1deg); }
-  to { transform: translateY(-26px) rotate(1deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__card { animation: none; }
-}
 
 .hero__scroll {
   position: absolute;
@@ -1097,7 +1085,6 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   .hero__text-col { max-width: 100%; }
   .hero__actions { justify-content: center; }
   .hero__rating { justify-content: center; }
-  .hero__card { width: min(280px, 60vw); margin: 0 auto; }
   .experience__content h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
 
   .reservation { grid-template-columns: 1fr; padding: 32px; gap: 30px; }

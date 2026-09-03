@@ -463,6 +463,14 @@
   /* ---------- Reservation form -> WhatsApp ---------- */
   var reservationForm = document.getElementById("reservationForm");
   if (reservationForm) {
+    var pageLang = (document.documentElement.lang || "it").slice(0, 2);
+    var reservationStrings = {
+      it: { greeting: "Ciao! Vorrei prenotare un tavolo da Giulivo.", date: "Data", time: "Ora", guests: "Persone", notes: "Note", dateSep: "/" },
+      en: { greeting: "Hi! I'd like to book a table at Giulivo.", date: "Date", time: "Time", guests: "Guests", notes: "Notes", dateSep: "/" },
+      de: { greeting: "Hallo! Ich möchte einen Tisch bei Giulivo reservieren.", date: "Datum", time: "Uhrzeit", guests: "Personen", notes: "Anmerkungen", dateSep: "." }
+    };
+    var rt = reservationStrings[pageLang] || reservationStrings.it;
+
     reservationForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var data = reservationForm.elements.data.value;
@@ -473,16 +481,16 @@
       var dataFormatted = data;
       if (data) {
         var parts = data.split("-");
-        if (parts.length === 3) dataFormatted = parts[2] + "/" + parts[1] + "/" + parts[0];
+        if (parts.length === 3) dataFormatted = parts[2] + rt.dateSep + parts[1] + rt.dateSep + parts[0];
       }
 
       var lines = [
-        "Ciao! Vorrei prenotare un tavolo da Giulivo.",
-        "Data: " + (dataFormatted || "-"),
-        "Ora: " + (ora || "-"),
-        "Persone: " + (persone || "-")
+        rt.greeting,
+        rt.date + ": " + (dataFormatted || "-"),
+        rt.time + ": " + (ora || "-"),
+        rt.guests + ": " + (persone || "-")
       ];
-      if (note) lines.push("Note: " + note);
+      if (note) lines.push(rt.notes + ": " + note);
 
       var message = encodeURIComponent(lines.join("\n"));
       window.open("https://wa.me/393888566367?text=" + message, "_blank", "noopener");
