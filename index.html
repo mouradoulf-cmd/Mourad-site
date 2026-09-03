@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giulivo — Cucina e Buonumore | Vicopisano</title>
-<meta name="description" content="Giulivo Cucina e Buonumore — cuisine toscane authentique et faite maison au cœur de Vicopisano. Pâtes fraîches, viandes, poissons et desserts maison, dans une ambiance chaleureuse et conviviale.">
+<meta name="description" content="Giulivo Cucina e Buonumore — cucina toscana autentica e fatta in casa nel cuore di Vicopisano. Pasta fresca, carne, pesce e dolci fatti in casa, in un'atmosfera calorosa e conviviale.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,17 +17,17 @@
 
 <header class="navbar" id="navbar">
   <div class="container navbar__inner">
-    <a href="#accueil" class="navbar__logo">Giulivo<span>.</span></a>
+    <a href="#home" class="navbar__logo">Giulivo<span>.</span></a>
     <nav class="navbar__links" id="navLinks">
-      <a href="#accueil" class="nav-link">Accueil</a>
-      <a href="#histoire" class="nav-link">Notre histoire</a>
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#storia" class="nav-link">La nostra storia</a>
       <a href="#menu" class="nav-link">Menu</a>
-      <a href="#galerie" class="nav-link">Galerie</a>
-      <a href="#avis" class="nav-link">Avis</a>
-      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#galleria" class="nav-link">Galleria</a>
+      <a href="#recensioni" class="nav-link">Recensioni</a>
+      <a href="#contatti" class="nav-link">Contatti</a>
     </nav>
-    <a href="tel:+393888566367" class="btn btn--small btn--outline navbar__cta">Réserver</a>
-    <button class="navbar__burger" id="burger" aria-label="Ouvrir le menu">
+    <a href="tel:+393888566367" class="btn btn--small btn--outline navbar__cta">Prenota</a>
+    <button class="navbar__burger" id="burger" aria-label="Apri il menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -36,7 +36,7 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero" id="accueil">
+  <section class="hero" id="home">
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="hero__texture" aria-hidden="true"></div>
     <div class="container hero__content">
@@ -46,20 +46,20 @@
         <span class="hero__title-sub reveal" style="--d:1">Cucina e Buonumore</span>
       </h1>
       <p class="hero__text reveal" style="--d:2">
-        Une cuisine toscane authentique, généreuse et faite maison — pâtes fraîches,
-        viandes et poissons de saison, servis dans une ambiance simple, chaleureuse
-        et joyeuse, comme à la maison.
+        Una cucina toscana autentica, genuina e fatta in casa — pasta fresca,
+        carne e pesce di stagione, serviti in un'atmosfera semplice, calorosa
+        e gioiosa, proprio come a casa.
       </p>
       <div class="hero__actions reveal" style="--d:3">
-        <a href="tel:+393888566367" class="btn btn--primary">Réserver une table</a>
-        <a href="#menu" class="btn btn--ghost">Découvrir le menu</a>
+        <a href="tel:+393888566367" class="btn btn--primary">Prenota un tavolo</a>
+        <a href="#menu" class="btn btn--ghost">Scopri il menu</a>
       </div>
       <div class="hero__rating reveal" style="--d:4">
         <span class="stars" aria-hidden="true">★★★★★</span>
-        <strong>4,7</strong> sur Google · <span>91 avis</span>
+        <strong>4,7</strong> su Google · <span>91 recensioni</span>
       </div>
     </div>
-    <a href="#histoire" class="hero__scroll" aria-label="Défiler vers le bas">
+    <a href="#storia" class="hero__scroll" aria-label="Scorri verso il basso">
       <span></span>
     </a>
   </section>
@@ -69,207 +69,243 @@
     <div class="container stats__grid">
       <div class="stat reveal">
         <span class="stat__num" data-count="4.7" data-decimal="1">0</span>
-        <span class="stat__label">Note Google</span>
+        <span class="stat__label">Voto Google</span>
       </div>
       <div class="stat reveal" style="--d:1">
         <span class="stat__num" data-count="91">0</span>
-        <span class="stat__label">Avis clients</span>
+        <span class="stat__label">Recensioni clienti</span>
       </div>
       <div class="stat reveal" style="--d:2">
         <span class="stat__num" data-count="100" data-suffix="%">0</span>
-        <span class="stat__label">Fait maison</span>
+        <span class="stat__label">Fatto in casa</span>
       </div>
       <div class="stat reveal" style="--d:3">
         <span class="stat__num" data-count="23" data-prefix="" data-suffix="h">0</span>
-        <span class="stat__label">Ouvert jusqu'à</span>
+        <span class="stat__label">Aperto fino alle</span>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--cream" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
+    </div>
+  </section>
+
+  <!-- STORIA -->
+  <section class="story" id="storia">
+    <div class="container story__grid">
+      <div class="story__media reveal">
+        <div class="story__frame">
+          <img src="assets/img/tartare.jpg" alt="Tartare rivisitato, presentazione curata su ardesia da Giulivo" loading="lazy">
+        </div>
+        <div class="story__badge">
+          <span>Fatto in casa</span>
+          <small>ogni giorno</small>
+        </div>
+      </div>
+      <div class="story__text">
+        <p class="eyebrow reveal">La nostra storia</p>
+        <h2 class="reveal" style="--d:1">Una nuova vita, la stessa passione&nbsp;: accogliere bene</h2>
+        <p class="reveal" style="--d:2">
+          Giulivo nasce dal desiderio di Guidino di puntare tutto sulla sua vera
+          passione&nbsp;: la cucina toscana, generosa e sincera. Dopo un percorso
+          di vita intenso, ha scelto di ripartire da zero e aprire la sua tavola
+          a Vicopisano, nel rispetto delle ricette tradizionali e dei prodotti
+          di stagione.
+        </p>
+        <p class="reveal" style="--d:3">
+          Qui tutto è fatto in casa&nbsp;: la pasta è lavorata a mano, la carne
+          e il pesce cucinati con cura, i dolci preparati sul posto. Si viene
+          per mangiare bene, ma anche per il <em>buonumore</em> — che dà il
+          nome alla casa.
+        </p>
+        <ul class="story__points reveal" style="--d:4">
+          <li>Pasta fresca fatta a mano</li>
+          <li>Carne &amp; pesce di stagione</li>
+          <li>Dolci fatti in casa</li>
+          <li>Atmosfera semplice, calorosa e conviviale</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- HISTOIRE -->
-  <section class="story" id="histoire">
-    <div class="container story__grid">
-      <div class="story__media reveal">
-        <div class="story__frame">
-          <img src="assets/img/tartare.jpg" alt="Tartare revisité, dressage soigné servi sur ardoise chez Giulivo" loading="lazy">
-        </div>
-        <div class="story__badge">
-          <span>Fait maison</span>
-          <small>chaque jour</small>
-        </div>
-      </div>
-      <div class="story__text">
-        <p class="eyebrow reveal">Notre histoire</p>
-        <h2 class="reveal" style="--d:1">Une nouvelle vie, une même passion&nbsp;: bien recevoir</h2>
-        <p class="reveal" style="--d:2">
-          Giulivo est né de l'envie de Guidino de tout miser sur sa vraie passion&nbsp;:
-          la cuisine toscane, généreuse et sincère. Après un parcours de vie bien rempli,
-          il a choisi de repartir de zéro et d'ouvrir sa table à Vicopisano, dans le
-          respect des recettes traditionnelles et des produits de saison.
-        </p>
-        <p class="reveal" style="--d:3">
-          Ici, tout est fait maison&nbsp;: les pâtes sont travaillées à la main, les viandes
-          et les poissons cuisinés avec soin, et les desserts préparés sur place. On y vient
-          pour bien manger, mais aussi pour la bonne humeur — <em>buonumore</em> — qui donne
-          son nom à la maison.
-        </p>
-        <ul class="story__points reveal" style="--d:4">
-          <li>Pâtes fraîches faites à la main</li>
-          <li>Viandes &amp; poissons de saison</li>
-          <li>Desserts maison</li>
-          <li>Ambiance simple, chaleureuse et conviviale</li>
-        </ul>
-      </div>
+  <!-- MOTTO -->
+  <section class="motto">
+    <div class="container motto__inner">
+      <span class="motto__leaf" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 8 12 8 26C8 36 15 44 24 44C33 44 40 36 40 26C40 12 24 4 24 4Z" stroke="currentColor" stroke-width="1.4"/><path d="M24 8V40" stroke="currentColor" stroke-width="1.4"/></svg>
+      </span>
+      <p class="motto__text">In cucina, ogni piatto racconta<br>un pezzo di Toscana.</p>
     </div>
   </section>
 
   <!-- MENU -->
   <section class="menu" id="menu">
     <div class="container">
-      <p class="eyebrow eyebrow--center reveal">Le menu</p>
-      <h2 class="section-title reveal" style="--d:1">Une cuisine toscane, généreuse et de saison</h2>
+      <p class="eyebrow eyebrow--center reveal">Il menu</p>
+      <h2 class="section-title reveal" style="--d:1">Una cucina toscana, generosa e di stagione</h2>
       <p class="section-lead reveal" style="--d:2">
-        Le menu évolue au fil des saisons et du marché. Voici l'esprit de la carte —
-        pour le détail et les prix du jour, notre équipe se fera un plaisir de vous
-        renseigner par téléphone.
+        Il menu cambia con le stagioni e con il mercato. Ecco lo spirito della
+        carta — per i dettagli e i prezzi del giorno, il nostro staff sarà
+        felice di darvi tutte le informazioni al telefono.
       </p>
 
       <div class="menu__grid">
         <div class="menu-card reveal">
           <div class="menu-card__media">
-            <img src="assets/img/tartare.jpg" alt="Tartare de viande dressé sur ardoise, antipasto de Giulivo" loading="lazy">
+            <img src="assets/img/tartare.jpg" alt="Tartare di carne su ardesia, antipasto di Giulivo" loading="lazy">
           </div>
           <h3>Antipasti</h3>
-          <p>Mises en bouche et antipasti toscans, produits frais et de saison, dressage soigné.</p>
+          <p>Antipasti toscani con prodotti freschi e di stagione, presentati con cura.</p>
         </div>
         <div class="menu-card reveal" style="--d:1">
           <div class="menu-card__media">
-            <img src="assets/img/linguine-frutti-di-mare.jpg" alt="Linguine aux fruits de mer, crevettes et moules" loading="lazy">
+            <img src="assets/img/linguine-frutti-di-mare.jpg" alt="Linguine ai frutti di mare, gamberi e cozze" loading="lazy">
           </div>
           <h3>Pasta fatta a mano</h3>
-          <p>Pâtes fraîches travaillées à la main chaque jour, selon la tradition toscane.</p>
+          <p>Pasta fresca lavorata a mano ogni giorno, secondo la tradizione toscana.</p>
         </div>
         <div class="menu-card reveal" style="--d:2">
           <div class="menu-card__media">
-            <img src="assets/img/tonno-pistacchio.jpg" alt="Thon en croûte de pistache tranché, servi avec salade" loading="lazy">
+            <img src="assets/img/tonno-pistacchio.jpg" alt="Tonno in crosta di pistacchio affettato, servito con insalata" loading="lazy">
           </div>
           <h3>Carne &amp; Pesce</h3>
-          <p>Viandes et poissons cuisinés avec passion, sélectionnés selon l'arrivage.</p>
+          <p>Carne e pesce cucinati con passione, selezionati in base alla disponibilità del giorno.</p>
         </div>
         <div class="menu-card reveal" style="--d:3">
           <div class="menu-card__media">
-            <img src="assets/img/panna-cotta.jpg" alt="Panna cotta aux fruits rouges, dessert maison" loading="lazy">
+            <img src="assets/img/panna-cotta.jpg" alt="Panna cotta ai frutti di bosco, dolce fatto in casa" loading="lazy">
           </div>
           <h3>Dolci fatti in casa</h3>
-          <p>Desserts maison, pour finir le repas en douceur, dans le respect des classiques italiens.</p>
+          <p>Dolci fatti in casa, per chiudere il pasto in dolcezza, nel rispetto dei classici italiani.</p>
         </div>
       </div>
 
       <div class="menu__cta reveal">
-        <a href="tel:+393888566367" class="btn btn--primary">Demander le menu du jour</a>
+        <a href="tel:+393888566367" class="btn btn--primary">Chiedi il menu del giorno</a>
       </div>
     </div>
   </section>
 
-  <!-- GALERIE -->
-  <section class="gallery" id="galerie">
+  <!-- GALLERIA -->
+  <section class="gallery" id="galleria">
     <div class="container">
-      <p class="eyebrow eyebrow--center reveal">Galerie</p>
-      <h2 class="section-title reveal" style="--d:1">Un aperçu de la table</h2>
+      <p class="eyebrow eyebrow--center reveal">Galleria</p>
+      <h2 class="section-title reveal" style="--d:1">Uno sguardo sulla tavola</h2>
       <p class="section-lead reveal" style="--d:2">
-        Un aperçu de la table, des assiettes et de l'ambiance chez Giulivo.
+        Un assaggio dei piatti e dell'atmosfera da Giulivo.
       </p>
 
       <div class="gallery__grid">
         <figure class="gallery__item gallery__item--big reveal">
-          <img src="assets/img/table-partage.jpg" alt="Un moment partagé à table, assiettes de dégustation chez Giulivo" loading="lazy">
+          <img src="assets/img/table-partage.jpg" alt="Un momento condiviso a tavola, assaggi da Giulivo" loading="lazy">
+          <figcaption>Un momento da condividere</figcaption>
         </figure>
         <figure class="gallery__item reveal" style="--d:1">
-          <img src="assets/img/tartare.jpg" alt="Tartare dressé sur ardoise, cuisine de Giulivo" loading="lazy">
+          <img src="assets/img/tartare.jpg" alt="Tartare su ardesia, cucina di Giulivo" loading="lazy">
+          <figcaption>Tartare della casa</figcaption>
         </figure>
         <figure class="gallery__item reveal" style="--d:2">
-          <img src="assets/img/linguine-frutti-di-mare.jpg" alt="Linguine aux fruits de mer" loading="lazy">
+          <img src="assets/img/linguine-frutti-di-mare.jpg" alt="Linguine ai frutti di mare" loading="lazy">
+          <figcaption>Linguine ai frutti di mare</figcaption>
         </figure>
         <figure class="gallery__item reveal" style="--d:3">
-          <img src="assets/img/tonno-pistacchio.jpg" alt="Thon en croûte de pistache" loading="lazy">
+          <img src="assets/img/tonno-pistacchio.jpg" alt="Tonno in crosta di pistacchio" loading="lazy">
+          <figcaption>Tonno in crosta di pistacchio</figcaption>
         </figure>
         <figure class="gallery__item reveal" style="--d:4">
-          <img src="assets/img/panna-cotta.jpg" alt="Panna cotta aux fruits rouges" loading="lazy">
+          <img src="assets/img/panna-cotta.jpg" alt="Panna cotta ai frutti di bosco" loading="lazy">
+          <figcaption>Panna cotta ai frutti di bosco</figcaption>
         </figure>
         <figure class="gallery__item reveal">
-          <img src="assets/img/antipasto-misto.jpg" alt="Antipasto misto, tartare de thon et poisson pané" loading="lazy">
+          <img src="assets/img/antipasto-misto.jpg" alt="Antipasto misto, tartare di tonno e pesce impanato" loading="lazy">
+          <figcaption>Antipasto misto</figcaption>
         </figure>
         <figure class="gallery__item reveal" style="--d:1">
-          <img src="assets/img/tortellini-panna-speck.jpg" alt="Tortellini maison, crème et speck croustillant" loading="lazy">
+          <img src="assets/img/tortellini-panna-speck.jpg" alt="Tortellini fatti in casa, panna e speck croccante" loading="lazy">
+          <figcaption>Tortellini, panna e speck</figcaption>
         </figure>
         <figure class="gallery__item reveal" style="--d:2">
-          <img src="assets/img/piatto-signature.jpg" alt="Plat signature dressé, présentation nature" loading="lazy">
+          <img src="assets/img/piatto-signature.jpg" alt="Piatto signature, presentazione naturale" loading="lazy">
+          <figcaption>Un piatto firmato Giulivo</figcaption>
         </figure>
         <figure class="gallery__item reveal" style="--d:3">
-          <img src="assets/img/panna-cotta-verre.jpg" alt="Panna cotta et verre de vin blanc en terrasse" loading="lazy">
+          <img src="assets/img/panna-cotta-verre.jpg" alt="Panna cotta e calice di vino bianco in terrazza" loading="lazy">
+          <figcaption>Dolce e un calice in terrazza</figcaption>
         </figure>
       </div>
     </div>
+    <div class="wave-divider wave-divider--ink" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
+    </div>
   </section>
 
-  <!-- AVIS -->
-  <section class="reviews" id="avis">
+  <!-- RECENSIONI -->
+  <section class="reviews" id="recensioni">
     <div class="container reviews__grid">
       <div class="reviews__score reveal">
         <span class="reviews__number">4,7</span>
         <span class="stars stars--lg" aria-hidden="true">★★★★★</span>
-        <p>91 avis vérifiés sur Google</p>
-        <a href="https://www.google.com/maps/place/?q=place_id:Giulivo+Cucina+e+Buonumore+Vicopisano" target="_blank" rel="noopener" class="btn btn--outline btn--small">Voir les avis sur Google</a>
+        <p>91 recensioni verificate su Google</p>
+        <a href="https://www.google.com/maps/place/?q=place_id:Giulivo+Cucina+e+Buonumore+Vicopisano" target="_blank" rel="noopener" class="btn btn--outline btn--small">Leggi le recensioni su Google</a>
       </div>
       <div class="reviews__highlight reveal" style="--d:1">
         <blockquote>
-          « On y vient pour bien manger, et on repart avec le sourire. »
+          « Si viene per mangiare bene, e si torna a casa con il sorriso. »
         </blockquote>
-        <p class="reviews__note">L'esprit Giulivo, résumé par ses habitués — cuisine toscane sincère et accueil chaleureux.</p>
+        <p class="reviews__note">Lo spirito di Giulivo, in poche parole — cucina toscana sincera e accoglienza calorosa.</p>
+        <ul class="reviews__chips">
+          <li>Genuino</li>
+          <li>Accogliente</li>
+          <li>Fatto in casa</li>
+          <li>Come a casa</li>
+          <li>Buonumore garantito</li>
+        </ul>
       </div>
+    </div>
+    <div class="wave-divider wave-divider--cream" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
     </div>
   </section>
 
-  <!-- CONTACT / LOCALISATION -->
-  <section class="contact" id="contact">
+  <!-- CONTATTI / LOCALIZZAZIONE -->
+  <section class="contact" id="contatti">
     <div class="container contact__grid">
       <div class="contact__info reveal">
-        <p class="eyebrow">Nous trouver</p>
-        <h2>Venez partager un bon moment</h2>
+        <p class="eyebrow">Dove siamo</p>
+        <h2>Vieni a condividere un buon momento</h2>
 
         <div class="contact__item">
           <span class="contact__icon">📍</span>
           <div>
-            <strong>Adresse</strong>
-            <p>Località Luchetta, 7<br>56010 Vicopisano PI, Italie</p>
+            <strong>Indirizzo</strong>
+            <p>Località Luchetta, 7<br>56010 Vicopisano PI, Italia</p>
           </div>
         </div>
 
         <div class="contact__item">
           <span class="contact__icon">🕗</span>
           <div>
-            <strong>Horaires</strong>
-            <p>Service en soirée, jusqu'à 23h00<br><small>Merci d'appeler pour confirmer les jours d'ouverture et réserver.</small></p>
+            <strong>Orari</strong>
+            <p>Servizio serale, fino alle 23:00<br><small>Vi invitiamo a chiamare per confermare i giorni di apertura e prenotare.</small></p>
           </div>
         </div>
 
         <div class="contact__item">
           <span class="contact__icon">📞</span>
           <div>
-            <strong>Téléphone</strong>
+            <strong>Telefono</strong>
             <p><a href="tel:+393888566367">+39 388 856 6367</a></p>
           </div>
         </div>
 
         <div class="contact__actions">
-          <a href="tel:+393888566367" class="btn btn--primary">Appeler pour réserver</a>
+          <a href="tel:+393888566367" class="btn btn--primary">Chiama per prenotare</a>
           <a href="https://wa.me/393888566367" target="_blank" rel="noopener" class="btn btn--ghost">WhatsApp</a>
         </div>
       </div>
 
       <div class="contact__map reveal" style="--d:1">
         <iframe
-          title="Localisation de Giulivo Cucina e Buonumore"
+          title="Posizione di Giulivo Cucina e Buonumore"
           src="https://maps.google.com/maps?q=Localit%C3%A0%20Luchetta%2C%207%2C%2056010%20Vicopisano%20PI%2C%20Italia&t=&z=15&ie=UTF8&iwloc=&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
@@ -286,7 +322,7 @@
     <div class="footer__links">
       <a href="https://www.instagram.com/giulivo_ristorante/" target="_blank" rel="noopener">Instagram</a>
       <a href="tel:+393888566367">+39 388 856 6367</a>
-      <a href="#accueil">Retour en haut ↑</a>
+      <a href="#home">Torna su ↑</a>
     </div>
     <p class="footer__copy">© <span id="year"></span> Giulivo Cucina e Buonumore — Vicopisano, Italia</p>
   </div>
