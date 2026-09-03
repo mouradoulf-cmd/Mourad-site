@@ -244,8 +244,8 @@
     });
 
     (function cursorLoop() {
-      curX += (mouseX - curX) * 0.2;
-      curY += (mouseY - curY) * 0.2;
+      curX += (mouseX - curX) * 0.28;
+      curY += (mouseY - curY) * 0.28;
       cursorDot.style.transform = "translate(" + curX + "px," + curY + "px)";
       requestAnimationFrame(cursorLoop);
     })();
@@ -263,20 +263,44 @@
     });
   }
 
+  /* ---------- 3D tilt on cards and gallery photos ---------- */
+  if (canHover && !prefersReducedMotion) {
+    var tiltSelector = ".menu-card, .gallery__item";
+    document.querySelectorAll(tiltSelector).forEach(function (card) {
+      card.style.transformStyle = "preserve-3d";
+      card.style.willChange = "transform";
+
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        var rotateX = (-py * 10).toFixed(2);
+        var rotateY = (px * 12).toFixed(2);
+        card.style.transition = "transform .08s linear";
+        card.style.transform =
+          "perspective(900px) translateY(-8px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale3d(1.04,1.04,1.04)";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.style.transition = "transform .5s cubic-bezier(0.34, 1.56, 0.64, 1)";
+        card.style.transform = "perspective(900px) translateY(0) rotateX(0) rotateY(0) scale3d(1,1,1)";
+      });
+    });
+  }
+
   /* ---------- GSAP hero entrance ---------- */
   if (hasGsap) {
     var heroEls = document.querySelectorAll("[data-hero-el]");
     if (prefersReducedMotion) {
       gsap.set(heroEls, { opacity: 1, y: 0 });
     } else {
-      gsap.set(heroEls, { opacity: 0, y: 34 });
+      gsap.set(heroEls, { opacity: 0, y: 60 });
       gsap.to(heroEls, {
         opacity: 1,
         y: 0,
-        duration: 1.1,
+        duration: 1,
         ease: "power4.out",
-        stagger: 0.13,
-        delay: 0.2
+        stagger: 0.1,
+        delay: 0.15
       });
     }
   }
