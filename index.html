@@ -40,23 +40,31 @@
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="hero__texture" aria-hidden="true"></div>
     <div class="container hero__content">
-      <p class="eyebrow reveal">Località Luchetta · Vicopisano · Toscana</p>
-      <h1 class="hero__title">
-        <span class="reveal" style="--d:0">Giulivo</span>
-        <span class="hero__title-sub reveal" style="--d:1">Cucina e Buonumore</span>
-      </h1>
-      <p class="hero__text reveal" style="--d:2">
-        Una cucina toscana autentica, genuina e fatta in casa — pasta fresca,
-        carne e pesce di stagione, serviti in un'atmosfera semplice, calorosa
-        e gioiosa, proprio come a casa.
-      </p>
-      <div class="hero__actions reveal" style="--d:3">
-        <a href="tel:+393888566367" class="btn btn--primary">Prenota un tavolo</a>
-        <a href="#menu" class="btn btn--ghost">Scopri il menu</a>
+      <div class="hero__text-col">
+        <p class="eyebrow reveal" data-hero-el>Località Luchetta · Vicopisano · Toscana</p>
+        <h1 class="hero__title">
+          <span class="reveal" data-hero-el style="--d:0">Giulivo</span>
+          <span class="hero__title-sub reveal" data-hero-el style="--d:1">Cucina e Buonumore</span>
+        </h1>
+        <p class="hero__text reveal" data-hero-el style="--d:2">
+          Una cucina toscana autentica, genuina e fatta in casa — pasta fresca,
+          carne e pesce di stagione, serviti in un'atmosfera semplice, calorosa
+          e gioiosa, proprio come a casa.
+        </p>
+        <div class="hero__actions reveal" data-hero-el style="--d:3">
+          <a href="tel:+393888566367" class="btn btn--primary">Prenota un tavolo</a>
+          <a href="#menu" class="btn btn--ghost">Scopri il menu</a>
+        </div>
+        <div class="hero__rating reveal" data-hero-el style="--d:4">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <strong>4,7</strong> su Google · <span>91 recensioni</span>
+        </div>
       </div>
-      <div class="hero__rating reveal" style="--d:4">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <strong>4,7</strong> su Google · <span>91 recensioni</span>
+      <div class="hero__visual reveal" data-hero-el style="--d:5">
+        <div class="hero__card glass" id="heroCard">
+          <img src="assets/img/piatto-signature.jpg" alt="Un piatto firmato Giulivo" loading="eager">
+          <span class="hero__card-tag glass">✦ Piatto della casa</span>
+        </div>
       </div>
     </div>
     <a href="#storia" class="hero__scroll" aria-label="Scorri verso il basso">
@@ -388,6 +396,21 @@
     </div>
   </section>
 
+  <!-- ESPERIENZA (parallax) -->
+  <section class="experience" id="esperienza">
+    <div class="experience__bg" id="experienceBg" aria-hidden="true"></div>
+    <div class="experience__overlay" aria-hidden="true"></div>
+    <div class="container experience__content">
+      <p class="eyebrow reveal">L'atmosfera</p>
+      <h2 class="reveal" style="--d:1">Un'esperienza da vivere, non solo un pasto</h2>
+      <p class="reveal" style="--d:2">
+        Tra le colline di Vicopisano, in un ambiente semplice e curato, ogni
+        cena da Giulivo è un momento da condividere — buona tavola, buona
+        compagnia, buonumore.
+      </p>
+    </div>
+  </section>
+
   <!-- RECENSIONI -->
   <section class="reviews" id="recensioni">
     <div class="container reviews__grid">
@@ -398,9 +421,11 @@
         <a href="https://www.google.com/maps/place/?q=place_id:Giulivo+Cucina+e+Buonumore+Vicopisano" target="_blank" rel="noopener" class="btn btn--outline btn--small">Leggi le recensioni su Google</a>
       </div>
       <div class="reviews__highlight reveal" style="--d:1">
-        <blockquote>
-          « Si viene per mangiare bene, e si torna a casa con il sorriso. »
-        </blockquote>
+        <div class="reviews__carousel" id="reviewsCarousel">
+          <blockquote class="reviews__slide is-active">« Si viene per mangiare bene, e si torna a casa con il sorriso. »</blockquote>
+          <blockquote class="reviews__slide">« Cucina toscana sincera, in un'atmosfera che sa di casa. »</blockquote>
+          <blockquote class="reviews__slide">« Buonumore garantito, ad ogni tavolo. »</blockquote>
+        </div>
         <p class="reviews__note">Lo spirito di Giulivo, in poche parole — cucina toscana sincera e accoglienza calorosa.</p>
         <ul class="reviews__chips">
           <li>Genuino</li>
@@ -478,6 +503,11 @@
   </div>
 </footer>
 
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

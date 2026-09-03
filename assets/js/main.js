@@ -1,6 +1,9 @@
 (function () {
   "use strict";
 
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGsap = !!window.gsap;
+
   document.getElementById("year").textContent = new Date().getFullYear();
 
   /* ---------- Navbar scroll state + progress bar ---------- */
@@ -37,7 +40,11 @@
   });
 
   /* ---------- Scroll reveal ---------- */
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  /* Hero elements are handled by the GSAP entrance timeline below when GSAP
+     is available, so they're excluded here to avoid a double animation. */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal")).filter(function (el) {
+    return !(hasGsap && el.hasAttribute("data-hero-el"));
+  });
 
   function revealInView() {
     var vh = window.innerHeight;
@@ -212,5 +219,128 @@
       { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
     );
     sections.forEach(function (s) { spyIO.observe(s); });
+  }
+
+  /* ---------- Custom cursor ---------- */
+  var cursorDot = document.getElementById("cursorDot");
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (cursorDot && canHover) {
+    document.body.classList.add("has-custom-cursor");
+    var mouseX = -100, mouseY = -100, curX = -100, curY = -100;
+    var cursorSeen = false;
+
+    window.addEventListener("mousemove", function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!cursorSeen) {
+        cursorSeen = true;
+        curX = mouseX;
+        curY = mouseY;
+        cursorDot.classList.add("is-visible");
+      }
+    });
+    document.addEventListener("mouseleave", function () {
+      cursorDot.classList.remove("is-visible");
+    });
+
+    (function cursorLoop() {
+      curX += (mouseX - curX) * 0.2;
+      curY += (mouseY - curY) * 0.2;
+      cursorDot.style.transform = "translate(" + curX + "px," + curY + "px)";
+      requestAnimationFrame(cursorLoop);
+    })();
+
+    var hoverSelector = "a, button, .menu-tab, .gallery__item, .menu-card";
+    document.addEventListener("mouseover", function (e) {
+      if (e.target.closest && e.target.closest(hoverSelector)) {
+        cursorDot.classList.add("is-hovering");
+      }
+    });
+    document.addEventListener("mouseout", function (e) {
+      if (e.target.closest && e.target.closest(hoverSelector)) {
+        cursorDot.classList.remove("is-hovering");
+      }
+    });
+  }
+
+  /* ---------- GSAP hero entrance ---------- */
+  if (hasGsap) {
+    var heroEls = document.querySelectorAll("[data-hero-el]");
+    if (prefersReducedMotion) {
+      gsap.set(heroEls, { opacity: 1, y: 0 });
+    } else {
+      gsap.set(heroEls, { opacity: 0, y: 34 });
+      gsap.to(heroEls, {
+        opacity: 1,
+        y: 0,
+        duration: 1.1,
+        ease: "power4.out",
+        stagger: 0.13,
+        delay: 0.2
+      });
+    }
+  }
+
+  /* ---------- GSAP scroll-driven parallax on the experience section ---------- */
+  if (hasGsap && window.ScrollTrigger && !prefersReducedMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+    var expBg = document.getElementById("experienceBg");
+    if (expBg) {
+      gsap.to(expBg, {
+        yPercent: 14,
+        ease: "none",
+        scrollTrigger: {
+          trigger: expBg.parentElement,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    }
+  }
+
+  /* ---------- Lenis smooth scroll ---------- */
+  if (window.Lenis && !prefersReducedMotion) {
+    var lenis = new Lenis({ duration: 1.05 });
+
+    if (hasGsap) {
+      gsap.ticker.add(function (time) {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      requestAnimationFrame(function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      });
+    }
+    if (window.ScrollTrigger) {
+      lenis.on("scroll", ScrollTrigger.update);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        var href = link.getAttribute("href");
+        if (href.length < 2) return;
+        var target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        lenis.scrollTo(target, { duration: 1.2 });
+      });
+    });
+  }
+
+  /* ---------- Reviews carousel ---------- */
+  var reviewsCarousel = document.getElementById("reviewsCarousel");
+  if (reviewsCarousel && !prefersReducedMotion) {
+    var slides = Array.prototype.slice.call(reviewsCarousel.querySelectorAll(".reviews__slide"));
+    var slideIndex = 0;
+    if (slides.length > 1) {
+      setInterval(function () {
+        slides[slideIndex].classList.remove("is-active");
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add("is-active");
+      }, 4500);
+    }
   }
 })();
