@@ -201,7 +201,7 @@
       <div class="menu-tabs-wrap reveal">
         <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Categorie del menu">
           <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-antipasti" data-panel="antipasti">
-            <span class="menu-tab__icon">🍇</span>Antipasti
+            <span class="menu-tab__icon">🐙</span>Antipasti
           </button>
           <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-primi" data-panel="primi">
             <span class="menu-tab__icon">🍝</span>Primi
@@ -216,13 +216,15 @@
             <span class="menu-tab__icon">🍮</span>Dessert
           </button>
           <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-bevande" data-panel="bevande">
-            <span class="menu-tab__icon">🍷</span>Bevande
+            <span class="menu-tab__icon">🍹</span>Bevande
           </button>
           <span class="menu-tabs__indicator" aria-hidden="true"></span>
         </div>
       </div>
 
-      <div class="menu-panels" id="menuPanels">
+      <div class="menu-book">
+        <button type="button" class="menu-book__nav menu-book__nav--prev" id="menuPrev" aria-label="Categoria precedente">‹</button>
+        <div class="menu-panels" id="menuPanels">
         <div class="menu-panel is-active" id="panel-antipasti" role="tabpanel" data-label="Antipasti">
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0">
@@ -338,7 +340,10 @@
             <div class="menu-list__row" style="--i:6"><div class="menu-list__name"><span>Rum</span></div><span class="menu-list__price">8&nbsp;€</span></div>
           </div>
         </div>
+        </div>
+        <button type="button" class="menu-book__nav menu-book__nav--next" id="menuNext" aria-label="Categoria successiva">›</button>
       </div>
+      <p class="menu-book__hint reveal">Sfoglia il menu come un libro — usa le frecce o le schede qui sopra</p>
 
       <p class="menu-list__footnote reveal">Coperto 2,50&nbsp;€ a persona · Carta soggetta a variazioni stagionali · Allergeni disponibili su richiesta.</p>
 

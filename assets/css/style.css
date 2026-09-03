@@ -294,14 +294,22 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
 .hero__bg {
   position: absolute; inset: -20px;
   background:
-    radial-gradient(120% 90% at 15% 15%, rgba(217,102,47,.55), transparent 60%),
-    radial-gradient(100% 80% at 85% 90%, rgba(124,143,87,.4), transparent 55%),
-    linear-gradient(160deg, rgba(28,20,14,.88) 0%, rgba(20,15,10,.9) 55%, rgba(11,8,5,.94) 100%),
+    radial-gradient(120% 90% at 15% 15%, rgba(217,102,47,.4), transparent 60%),
+    radial-gradient(100% 80% at 85% 90%, rgba(124,143,87,.28), transparent 55%),
+    linear-gradient(100deg, rgba(11,8,5,.92) 0%, rgba(11,8,5,.6) 42%, rgba(11,8,5,.22) 100%),
     url('../img/table-partage.jpg');
-  background-size: cover, cover, cover, cover;
-  background-position: center, center, center, 50% 35%;
+  background-size: cover, cover, cover, 112%;
+  background-position: center, center, center, 60% 38%;
   background-repeat: no-repeat;
   z-index: -2;
+  animation: heroBgZoom 22s ease-in-out infinite alternate;
+}
+@keyframes heroBgZoom {
+  from { background-size: cover, cover, cover, 112%; }
+  to { background-size: cover, cover, cover, 128%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__bg { animation: none; }
 }
 .hero__texture {
   position: absolute; inset: 0;
@@ -695,9 +703,25 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   transition: transform .5s var(--ease-bounce), width .5s var(--ease-bounce);
 }
 
-.menu-panels { position: relative; margin-top: 48px; }
-.menu-panel { display: none; }
+.menu-book {
+  position: relative;
+  margin-top: 48px;
+  padding: 0 64px;
+}
+.menu-panels {
+  position: relative;
+  perspective: 1800px;
+}
+.menu-panel {
+  display: none;
+  transform-style: preserve-3d;
+  transition: transform .45s cubic-bezier(.61,.09,.36,.98), opacity .45s ease;
+}
 .menu-panel.is-active { display: block; }
+.menu-panel.flip-out-next { transform-origin: left center; transform: rotateY(-100deg); opacity: 0; }
+.menu-panel.flip-out-prev { transform-origin: right center; transform: rotateY(100deg); opacity: 0; }
+.menu-panel.flip-in-start-next { transition: none; transform-origin: left center; transform: rotateY(100deg); opacity: 0; }
+.menu-panel.flip-in-start-prev { transition: none; transform-origin: right center; transform: rotateY(-100deg); opacity: 0; }
 .menu-panel.is-entering .menu-list__row {
   animation: menuRowIn .55s var(--ease-bounce) both;
   animation-delay: calc(var(--i, 0) * 55ms);
@@ -708,6 +732,44 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
 }
 @media (prefers-reduced-motion: reduce) {
   .menu-panel.is-entering .menu-list__row { animation: none; }
+  .menu-panel { transition: opacity .3s ease; }
+  .menu-panel.flip-out-next, .menu-panel.flip-out-prev,
+  .menu-panel.flip-in-start-next, .menu-panel.flip-in-start-prev {
+    transform: none;
+  }
+}
+
+.menu-book__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(10px);
+  color: var(--cream);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  transition: transform .3s var(--ease-bounce), background .3s, border-color .3s, box-shadow .3s;
+}
+.menu-book__nav:hover {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  box-shadow: 0 0 26px rgba(217,102,47,.5);
+  transform: translateY(-50%) scale(1.12);
+}
+.menu-book__nav--prev { left: 0; }
+.menu-book__nav--next { right: 0; }
+.menu-book__hint {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: .82rem;
+  font-style: italic;
+  margin: 22px 0 0;
 }
 
 .menu-panel__grid {
@@ -1074,6 +1136,18 @@ body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button 
   .menu-tabs-wrap { justify-content: flex-start; margin-left: -24px; margin-right: -24px; padding: 0 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .menu-tabs { flex-wrap: nowrap; }
   .menu-tab { padding: 10px 16px; font-size: .85rem; }
+
+  .menu-book { padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 0; }
+  .menu-panels { order: 1; width: 100%; }
+  .menu-book__nav {
+    position: static;
+    order: 2;
+    transform: none;
+    width: 44px; height: 44px;
+    font-size: 1.25rem;
+  }
+  .menu-book__nav:hover { transform: scale(1.08); }
+  .menu-book__nav--next { margin-left: auto; }
 
   .reservation__row { flex-direction: column; }
 }

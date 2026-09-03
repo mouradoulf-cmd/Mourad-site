@@ -145,61 +145,99 @@
     );
   }
 
-  /* ---------- Animated menu tabs ---------- */
+  /* ---------- Animated menu "book" (page-flip) ---------- */
   var menuTabs = document.getElementById("menuTabs");
   if (menuTabs) {
     var tabs = Array.prototype.slice.call(menuTabs.querySelectorAll(".menu-tab"));
     var indicator = menuTabs.querySelector(".menu-tabs__indicator");
     var panels = document.getElementById("menuPanels");
+    var categoryOrder = tabs.map(function (t) { return t.dataset.panel; });
+    var currentCatIndex = 0;
+    var isFlipping = false;
+    var FLIP_MS = 450;
+    var flipReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function moveIndicator(tab) {
       indicator.style.width = tab.offsetWidth + "px";
       indicator.style.transform = "translateX(" + tab.offsetLeft + "px)";
     }
 
-    function activateTab(tab) {
-      if (tab.classList.contains("is-active")) return;
-
+    function syncTabUI(index) {
+      var key = categoryOrder[index];
       tabs.forEach(function (t) {
-        t.classList.remove("is-active");
-        t.setAttribute("aria-selected", "false");
+        var active = t.dataset.panel === key;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", active ? "true" : "false");
+        if (active) moveIndicator(t);
       });
-      tab.classList.add("is-active");
-      tab.setAttribute("aria-selected", "true");
-      moveIndicator(tab);
-
-      var nextPanel = document.getElementById("panel-" + tab.dataset.panel);
-      var currentPanel = panels.querySelector(".menu-panel.is-active");
-      if (!nextPanel || nextPanel === currentPanel) return;
-
-      if (currentPanel) {
-        currentPanel.classList.remove("is-active", "is-entering");
-      }
-      nextPanel.classList.add("is-active");
-      // restart the row entrance animation
-      nextPanel.classList.remove("is-entering");
-      void nextPanel.offsetWidth;
-      nextPanel.classList.add("is-entering");
     }
 
-    tabs.forEach(function (tab) {
+    function goToIndex(targetIndex) {
+      var total = categoryOrder.length;
+      targetIndex = ((targetIndex % total) + total) % total;
+      if (targetIndex === currentCatIndex || isFlipping) return;
+
+      var direction = targetIndex > currentCatIndex ? "next" : "prev";
+      // shortest-path direction when wrapping around the ends
+      if (currentCatIndex === 0 && targetIndex === total - 1) direction = "prev";
+      if (currentCatIndex === total - 1 && targetIndex === 0) direction = "next";
+
+      var fromPanel = document.getElementById("panel-" + categoryOrder[currentCatIndex]);
+      var toPanel = document.getElementById("panel-" + categoryOrder[targetIndex]);
+      if (!fromPanel || !toPanel) return;
+
+      syncTabUI(targetIndex);
+
+      if (flipReduced) {
+        fromPanel.classList.remove("is-active", "is-entering");
+        toPanel.classList.add("is-active");
+        void toPanel.offsetWidth;
+        toPanel.classList.add("is-entering");
+        currentCatIndex = targetIndex;
+        return;
+      }
+
+      isFlipping = true;
+      var outClass = direction === "next" ? "flip-out-next" : "flip-out-prev";
+      var inStartClass = direction === "next" ? "flip-in-start-next" : "flip-in-start-prev";
+
+      fromPanel.classList.add(outClass);
+
+      setTimeout(function () {
+        fromPanel.classList.remove("is-active", "is-entering", outClass);
+
+        toPanel.classList.add("is-active", inStartClass);
+        void toPanel.offsetWidth;
+        toPanel.classList.remove(inStartClass);
+        toPanel.classList.remove("is-entering");
+        void toPanel.offsetWidth;
+        toPanel.classList.add("is-entering");
+
+        currentCatIndex = targetIndex;
+        setTimeout(function () { isFlipping = false; }, FLIP_MS);
+      }, FLIP_MS);
+    }
+
+    tabs.forEach(function (tab, index) {
       tab.addEventListener("click", function () {
-        activateTab(tab);
+        goToIndex(index);
       });
     });
 
-    var activeTab = tabs.filter(function (t) { return t.classList.contains("is-active"); })[0] || tabs[0];
-    if (activeTab) {
-      requestAnimationFrame(function () {
-        moveIndicator(activeTab);
-        var firstPanel = panels.querySelector(".menu-panel.is-active");
-        if (firstPanel) firstPanel.classList.add("is-entering");
-      });
-      window.addEventListener("resize", function () {
-        var current = tabs.filter(function (t) { return t.classList.contains("is-active"); })[0];
-        if (current) moveIndicator(current);
-      });
-    }
+    var prevBtn = document.getElementById("menuPrev");
+    var nextBtn = document.getElementById("menuNext");
+    if (prevBtn) prevBtn.addEventListener("click", function () { goToIndex(currentCatIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { goToIndex(currentCatIndex + 1); });
+
+    requestAnimationFrame(function () {
+      syncTabUI(currentCatIndex);
+      var firstPanel = panels.querySelector(".menu-panel.is-active");
+      if (firstPanel) firstPanel.classList.add("is-entering");
+    });
+    window.addEventListener("resize", function () {
+      var active = tabs.filter(function (t) { return t.classList.contains("is-active"); })[0];
+      if (active) moveIndicator(active);
+    });
   }
 
   /* ---------- Scroll-spy navigation ---------- */
