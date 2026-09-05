@@ -1,12 +1,13 @@
 import atelierStock from '../assets/atelier-stock.jpg';
 import { useLanguage } from '../context/LanguageContext';
+import Reveal from './Reveal';
 
 export default function About() {
   const { t } = useLanguage();
 
   return (
     <section id="apropos" className="relative z-10 py-24 px-5 sm:px-8">
-      <div className="max-w-6xl mx-auto glass-panel rounded-3xl p-6 sm:p-10 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <Reveal className="max-w-6xl mx-auto glass-panel rounded-3xl p-6 sm:p-10 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <img
           src={atelierStock}
           alt={t.about.alt}
@@ -28,7 +29,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

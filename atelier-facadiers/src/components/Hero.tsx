@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden" style={{ height: '100dvh' }}>
       <video
-        className="absolute inset-0 w-full h-full object-cover"
+        className="hero-video absolute inset-0 w-full h-full object-cover"
         src={heroVideo}
         poster={heroPoster}
         autoPlay

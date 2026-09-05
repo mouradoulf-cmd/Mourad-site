@@ -48,12 +48,23 @@ html, body, #root {
 .hero-fade { animation-name: heroFadeUp; animation-duration: 1s; }
 .glow-pulse { animation: glowPulse 3.2s ease-in-out infinite; }
 
+@keyframes heroKenBurns {
+  0% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.hero-video {
+  animation: heroKenBurns 20s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-anim {
     animation: none;
     opacity: 1;
   }
   .glow-pulse {
+    animation: none;
+  }
+  .hero-video {
     animation: none;
   }
 }
