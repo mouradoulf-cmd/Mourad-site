@@ -21,9 +21,9 @@ html, body, #root {
 }
 
 .glass-panel {
-  background: rgba(13, 21, 32, 0.55);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(8, 13, 20, 0.86);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 

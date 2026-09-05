@@ -4,7 +4,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative w-full h-screen" style={{ height: '100dvh' }}>
+    <section id="hero-3d" className="relative w-full h-screen" style={{ height: '100dvh' }}>
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(5,8,13,0.75) 100%)' }}

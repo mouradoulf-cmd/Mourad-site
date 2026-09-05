@@ -10,6 +10,7 @@ import equitone from '../assets/equitone-swatches.jpg';
 const IMAGES = [heroChantier, projetBatiment, atelierStock, equitone];
 
 export default function Scene3D() {
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sceneRef = useRef<Scene3DHandle | null>(null);
 
@@ -25,7 +26,19 @@ export default function Scene3D() {
     const onMotionChange = (e: MediaQueryListEvent) => scene.setReducedMotion(e.matches);
     media.addEventListener('change', onMotionChange);
 
-    const killScroll = media.matches ? () => {} : initScrollAnimations(scene);
+    const heroEl = document.getElementById('hero-3d') ?? document.documentElement;
+
+    const killScroll = media.matches
+      ? () => {}
+      : initScrollAnimations(scene, {
+          trigger: heroEl,
+          onProgress: (progress) => {
+            if (wrapperRef.current) {
+              const opacity = Math.max(0, 1 - progress * 1.15);
+              wrapperRef.current.style.opacity = String(opacity);
+            }
+          },
+        });
 
     const resizeObserver = new ResizeObserver(() => scene.resize());
     resizeObserver.observe(canvas);
@@ -39,10 +52,8 @@ export default function Scene3D() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full z-0 pointer-events-none"
-      aria-hidden="true"
-    />
+    <div ref={wrapperRef} className="fixed inset-0 z-0 pointer-events-none" style={{ transition: 'opacity 0.1s linear' }}>
+      <canvas ref={canvasRef} className="w-full h-full" aria-hidden="true" />
+    </div>
   );
 }
