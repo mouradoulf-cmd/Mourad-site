@@ -1,13 +1,22 @@
+import { useState } from 'react';
 import { Boxes, ClipboardCheck, Truck, Ruler, LifeBuoy } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from './Reveal';
-import TiltCard from './TiltCard';
+
+import stockImg from '../assets/atelier-stock.jpg';
+import preconisationImg from '../assets/pillars/preconisation.jpg';
+import logistiqueImg from '../assets/pillars/logistique.jpg';
+import usinageImg from '../assets/pillars/usinage.jpg';
+import serviceImg from '../assets/pillars/service-technique.jpg';
 
 const ICONS = [Boxes, ClipboardCheck, Truck, Ruler, LifeBuoy];
 const COLORS = ['#4fae8c', '#f5b90f', '#e41959', '#4c96d1', '#7d2a72'];
+const IMAGES = [stockImg, preconisationImg, logistiqueImg, usinageImg, serviceImg];
 
 export default function Pillars() {
   const { t } = useLanguage();
+  const [active, setActive] = useState(0);
+  const activeColor = COLORS[active];
 
   return (
     <section id="services" className="relative z-10 py-24 px-5 sm:px-8">
@@ -20,45 +29,72 @@ export default function Pillars() {
         </h2>
       </Reveal>
 
-      <div className="max-w-6xl mx-auto relative">
-        <div
-          className="line-sweep hidden md:block absolute top-6 left-[10%] right-[10%] h-px overflow-hidden"
-          style={{ background: 'rgba(255,255,255,0.08)' }}
-          aria-hidden="true"
-        />
-
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 sm:gap-5" style={{ perspective: '900px' }}>
-          {t.pillars.items.map(({ title, text }, i) => {
+      <Reveal className="max-w-5xl mx-auto">
+        <div className="h-1 rounded-full overflow-hidden flex mb-8" aria-hidden="true">
+          {COLORS.map((c) => (
+            <span key={c} style={{ backgroundColor: c, flex: 1 }} />
+          ))}
+        </div>
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-5 sm:gap-x-10 mb-2">
+          {t.pillars.items.map(({ title }, i) => {
             const Icon = ICONS[i];
-            const color = COLORS[i];
+            const isActive = i === active;
             return (
-              <Reveal key={title} delay={i * 90}>
-                <TiltCard
-                  className="group glass-panel rounded-2xl p-6 flex flex-col gap-4 relative"
-                  style={{ borderTop: `2px solid ${color}` }}
+              <button
+                key={title}
+                type="button"
+                onClick={() => setActive(i)}
+                className="flex flex-col items-center gap-2 group"
+              >
+                <span
+                  className="flex items-center gap-1.5 text-sm sm:text-base font-display uppercase tracking-wide transition-colors"
+                  style={{ color: COLORS[i], textDecoration: isActive ? 'underline' : 'none', textUnderlineOffset: '4px' }}
                 >
-                  <span className="absolute top-4 right-5 font-display text-xs text-white/25 tracking-widest">
-                    0{i + 1}
-                  </span>
-                  <span className="relative inline-flex items-center justify-center w-11 h-11 mt-1 mb-2" style={{ color }} aria-hidden="true">
-                    <span className="icon-ring--reverse" />
-                    <span className="icon-ring" />
-                    <span className="icon-ping" style={{ border: `1.5px solid ${color}`, animationDelay: `${i * 0.4}s` }} />
-                    <span
-                      className="relative inline-flex items-center justify-center w-11 h-11 rounded-full transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
-                      style={{ backgroundColor: `${color}26`, color, boxShadow: `0 0 18px ${color}40` }}
-                    >
-                      <Icon size={20} strokeWidth={1.75} />
-                    </span>
-                  </span>
-                  <h3 className="text-base font-semibold text-white font-display tracking-wide uppercase">{title}</h3>
-                  <p className="text-sm leading-relaxed text-white/60">{text}</p>
-                </TiltCard>
-              </Reveal>
+                  <Icon size={16} strokeWidth={2} />
+                  {title}
+                </span>
+                <svg
+                  width="18"
+                  height="14"
+                  viewBox="0 0 18 14"
+                  style={{
+                    fill: COLORS[i],
+                    transform: isActive ? 'rotate(90deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1)',
+                  }}
+                >
+                  <polygon points="0,0 18,7 0,14" />
+                </svg>
+              </button>
             );
           })}
         </div>
-      </div>
+
+        <div
+          key={active}
+          className="rounded-3xl p-6 sm:p-10 grid md:grid-cols-[1.2fr_1fr] gap-8 items-center overflow-hidden"
+          style={{ backgroundColor: activeColor, animation: 'panelFade 0.5s cubic-bezier(0.16,1,0.3,1)' }}
+        >
+          <div>
+            <h3 className="font-display uppercase text-xl sm:text-2xl text-white mb-4 leading-tight" style={{ textWrap: 'balance' }}>
+              {t.pillars.items[active].heading}
+            </h3>
+            <p className="text-sm sm:text-base text-white/90 leading-relaxed">{t.pillars.items[active].text}</p>
+          </div>
+          <img
+            src={IMAGES[active]}
+            alt={t.pillars.items[active].title}
+            className="w-full h-56 sm:h-64 object-cover rounded-2xl"
+          />
+        </div>
+      </Reveal>
+
+      <style>{`
+        @keyframes panelFade {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 }

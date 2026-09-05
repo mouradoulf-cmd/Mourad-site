@@ -53,11 +53,31 @@ export const translations = {
       heading1: 'Cinq métiers, les cinq couleurs de notre',
       heading2: 'enseigne',
       items: [
-        { title: 'Stock', text: 'Un stock permanent des principales gammes de bardage pour livrer vos chantiers sans attendre.' },
-        { title: 'Préconisation', text: 'Un accompagnement technique pour choisir le bon matériau, la bonne pose, la bonne finition.' },
-        { title: 'Logistique', text: 'Une organisation pensée pour livrer au bon endroit, au bon moment, sans casse ni retard.' },
-        { title: 'Usinage', text: 'Découpe et façonnage sur-mesure des panneaux selon les plans de votre chantier.' },
-        { title: 'Service technique', text: 'Un support réactif avant, pendant et après le chantier pour sécuriser votre mise en œuvre.' },
+        {
+          title: 'Stock',
+          heading: 'Avec notre stock, démarrez vos chantiers dans les starting-blocks !',
+          text: "Notre stock comprend une vaste gamme de panneaux et de systèmes de bardage adaptés à la réalisation rapide de chantiers. Grâce à notre stock bien fourni, nous offrons une grande flexibilité pour le démarrage et la clôture de vos projets. Que vous ayez besoin de matériaux pour un projet urgent ou d'une solution adaptable à vos exigences spécifiques, notre stock est conçu pour répondre à vos besoins avec efficacité et souplesse. Contactez-nous !",
+        },
+        {
+          title: 'Préconisation',
+          heading: 'Grâce à notre expertise, jamais de mauvaises surprises !',
+          text: "Préconisation du bardage chez les architectes et maîtres d'ouvrage nous permet de valoriser la façade ventilée et les nombreux avantages qu'elle apporte en performance énergétique et en esthétisme afin que cette filière se développe. Nos équipes d'experts sont à votre écoute pour faire avancer vos projets. N'hésitez pas à nous appeler pour avoir des renseignements.",
+        },
+        {
+          title: 'Logistique',
+          heading: 'Besoin d’une livraison, notre équipe logistique est sur le pont !',
+          text: 'Nous livrons sur chantier pour minimiser le nombre de kilomètres parcourus par nos clients et nos produits. Nos camions sont auto-déchargeables.',
+        },
+        {
+          title: 'Usinage',
+          heading: 'Un usinage de qualité pour des chantiers maîtrisés !',
+          text: "Notre atelier permet l'usinage des panneaux fibres-ciment, compact HPL, aluminium composite et laine de roche comprimée : coupe, perçage, fraisage, rainurage, lettrage des matériaux de nos partenaires.",
+        },
+        {
+          title: 'Service technique',
+          heading: 'Un besoin spécifique ? Pas de panique, il y a le service technique !',
+          text: "Notre service technique permet un échange sur les optimisations et les différentes possibilités d'usinage pour gagner du temps de pose, baisser les taux de chute ou proposer des solutions décoratives intégrées. Nous sommes certifiés en tant que transformateur pour la transformation des panneaux Equitone, Fundermax, Trespa, Stacbond et Alpolic, fournisseurs qui bénéficient du droit d'usage à la marque QB. Transmettez-nous vos plans DWG tramés ou le fichier complété.",
+        },
       ],
     },
     about: {
@@ -150,11 +170,31 @@ export const translations = {
       heading1: 'Five trades, the five colours of our',
       heading2: 'brand',
       items: [
-        { title: 'Stock', text: 'A permanent stock of the main cladding ranges, so your job sites never wait.' },
-        { title: 'Guidance', text: 'Technical support to choose the right material, the right install, the right finish.' },
-        { title: 'Logistics', text: 'Deliveries organised to arrive at the right place, on time, without damage or delay.' },
-        { title: 'Machining', text: 'Custom cutting and shaping of panels to your job site plans.' },
-        { title: 'Technical support', text: 'Responsive support before, during and after the job to secure your installation.' },
+        {
+          title: 'Stock',
+          heading: 'With our stock, get your job sites off the starting blocks!',
+          text: 'Our stock includes a wide range of cladding panels and systems suited to fast-moving job sites. With a well-stocked inventory, we offer great flexibility for starting and closing out your projects. Whether you need materials for an urgent job or a solution tailored to specific requirements, our stock is built to meet your needs efficiently and flexibly. Get in touch!',
+        },
+        {
+          title: 'Guidance',
+          heading: 'Thanks to our expertise, no bad surprises!',
+          text: 'Advising architects and project owners on cladding lets us highlight the benefits of ventilated facades — energy performance and aesthetics — so the industry keeps growing. Our expert teams are on hand to move your projects forward. Feel free to call us for information.',
+        },
+        {
+          title: 'Logistics',
+          heading: 'Need a delivery? Our logistics team is on it!',
+          text: 'We deliver directly to the job site to minimise the distance travelled by our clients and our products. Our trucks are self-unloading.',
+        },
+        {
+          title: 'Machining',
+          heading: 'Quality machining for well-controlled job sites!',
+          text: "Our workshop handles machining of fibre-cement, compact HPL, aluminium composite and compressed rock wool panels: cutting, drilling, milling, grooving, and engraving of our partners' materials.",
+        },
+        {
+          title: 'Technical support',
+          heading: 'A specific need? No panic, our technical team is here!',
+          text: 'Our technical team can discuss optimisations and machining options to reduce install time, cut waste rates or add integrated decorative solutions. We are certified transformers for Equitone, Fundermax, Trespa, Stacbond and Alpolic panels, suppliers who benefit from usage rights to the QB brand. Send us your gridded DWG plans or the completed form.',
+        },
       ],
     },
     about: {
