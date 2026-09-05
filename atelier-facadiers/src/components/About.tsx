@@ -1,6 +1,7 @@
 import atelierStock from '../assets/atelier-stock.jpg';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from './Reveal';
+import CountUp from './CountUp';
 
 export default function About() {
   const { t } = useLanguage();
@@ -20,11 +21,15 @@ export default function About() {
           <p className="text-white/65 leading-relaxed mb-8">{t.about.text}</p>
           <div className="flex gap-10">
             <div>
-              <div className="text-3xl font-semibold text-crimson font-display">5</div>
+              <div className="text-3xl font-semibold text-crimson font-display">
+                <CountUp to={5} />
+              </div>
               <div className="text-sm text-white/50">{t.about.stat1}</div>
             </div>
             <div>
-              <div className="text-3xl font-semibold text-crimson font-display">9</div>
+              <div className="text-3xl font-semibold text-crimson font-display">
+                <CountUp to={9} />
+              </div>
               <div className="text-sm text-white/50">{t.about.stat2}</div>
             </div>
           </div>

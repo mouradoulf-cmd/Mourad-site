@@ -25,6 +25,30 @@ export const translations = {
       heading: "Nos marques d'ossature, conçues par nos soins",
       items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Ossature sur mesure'],
     },
+    study: {
+      heading: "Étude ossature et demande d'optimisation",
+      card1: {
+        title: 'Note de calcul',
+        text: "Pour vous accompagner au mieux dans vos projets de bardage et dans l'exécution de ceux-ci, téléchargez la fiche de renseignement et renvoyez-la avec un plan et coupe de vos façades au format DWG.",
+        cta: 'Demander une étude ossature',
+      },
+      card2: {
+        title: 'Demande optimisation',
+        text: 'Nous sommes certifiés pour la transformation des panneaux Equitone, Fundermax, Trespa, Stacbond et Alpolic. Nos partenaires fournisseurs bénéficient du droit d’usage à la marque QB.',
+        cta: 'Demander une optimisation',
+      },
+    },
+    news: {
+      heading: 'Actualités',
+      viewAll: 'Voir toutes les actualités',
+      readMore: 'Lire la suite',
+      items: [
+        { title: 'Fermeture estivale', date: null as string | null },
+        { title: 'Nouvelle gamme EQUITONE [inspira]', date: null as string | null },
+        { title: "Nouveau bâtiment pour l'ossature !", date: '03 Juin 2026' },
+        { title: 'Nouveau catalogue 2026', date: '02 Mars 2026' },
+      ],
+    },
     pillars: {
       heading1: 'Cinq métiers, les cinq couleurs de notre',
       heading2: 'enseigne',
@@ -97,6 +121,30 @@ export const translations = {
     ossature: {
       heading: 'Our own framework product lines',
       items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Custom framework'],
+    },
+    study: {
+      heading: 'Framework study and optimisation request',
+      card1: {
+        title: 'Calculation report',
+        text: 'To support your cladding projects and their execution, download the information sheet and return it with a plan and cross-section of your facades in DWG format.',
+        cta: 'Request a framework study',
+      },
+      card2: {
+        title: 'Optimisation request',
+        text: 'We are certified to transform Equitone, Fundermax, Trespa, Stacbond and Alpolic panels. Our supplier partners benefit from usage rights to the QB brand.',
+        cta: 'Request an optimisation',
+      },
+    },
+    news: {
+      heading: 'News',
+      viewAll: 'View all news',
+      readMore: 'Read more',
+      items: [
+        { title: 'Summer closure', date: null as string | null },
+        { title: 'New EQUITONE [inspira] range', date: null as string | null },
+        { title: 'New building for the steel frame!', date: 'June 3, 2026' },
+        { title: '2026 catalogue', date: 'March 2, 2026' },
+      ],
     },
     pillars: {
       heading1: 'Five trades, the five colours of our',
