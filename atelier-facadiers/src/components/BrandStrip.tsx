@@ -2,28 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from './Reveal';
 import TiltCard from './TiltCard';
-
-import fundermax from '../assets/brands/fundermax.png';
-import trespa from '../assets/brands/trespa.png';
-import pura from '../assets/brands/pura.png';
-import equitone from '../assets/brands/equitone.png';
-import cedral from '../assets/brands/cedral.png';
-import rockpanel from '../assets/brands/rockpanel.png';
-import stacbond from '../assets/brands/stacbond.png';
-import alpolic from '../assets/brands/alpolic.png';
-import fiberdeck from '../assets/brands/fiberdeck.png';
-
-const LOGOS: Record<string, string> = {
-  Fundermax: fundermax,
-  Trespa: trespa,
-  PURA: pura,
-  EQUITONE: equitone,
-  Cedral: cedral,
-  Rockpanel: rockpanel,
-  Stacbond: stacbond,
-  Alpolic: alpolic,
-  Fiberdeck: fiberdeck,
-};
+import { BRAND_LOGOS as LOGOS } from '../assets/brandLogos';
 
 const BRAND_LINKS: Record<string, string> = {
   EQUITONE: '/bardage/equitone',

@@ -24,6 +24,11 @@ html, body, #root {
   scroll-margin-top: 96px;
 }
 
+@keyframes menuGlow {
+  0% { background-position: 0% 0; }
+  100% { background-position: -200% 0; }
+}
+
 .glass-panel {
   background: rgba(8, 13, 20, 0.86);
   backdrop-filter: blur(22px);
