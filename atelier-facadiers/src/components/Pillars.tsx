@@ -40,7 +40,9 @@ export default function Pillars() {
                   <span className="absolute top-4 right-5 font-display text-xs text-white/25 tracking-widest">
                     0{i + 1}
                   </span>
-                  <span className="relative inline-flex items-center justify-center w-11 h-11" aria-hidden="true">
+                  <span className="relative inline-flex items-center justify-center w-11 h-11 mt-1 mb-2" style={{ color }} aria-hidden="true">
+                    <span className="icon-ring--reverse" />
+                    <span className="icon-ring" />
                     <span className="icon-ping" style={{ border: `1.5px solid ${color}`, animationDelay: `${i * 0.4}s` }} />
                     <span
                       className="relative inline-flex items-center justify-center w-11 h-11 rounded-full transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"

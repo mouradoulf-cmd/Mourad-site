@@ -73,6 +73,27 @@ html, body, #root {
   animation: iconPing 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.icon-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 1.5px dashed currentColor;
+  opacity: 0.6;
+  animation: spinRing 7s linear infinite;
+}
+.icon-ring--reverse {
+  inset: -12px;
+  border-style: solid;
+  border-width: 1px;
+  opacity: 0.25;
+  animation-duration: 11s;
+  animation-direction: reverse;
+}
+
 @keyframes lineSweep {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
@@ -110,6 +131,10 @@ html, body, #root {
   .icon-ping {
     animation: none;
     display: none;
+  }
+  .icon-ring,
+  .icon-ring--reverse {
+    animation: none;
   }
   .line-sweep::after {
     animation: none;
