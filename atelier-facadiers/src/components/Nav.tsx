@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logo from '../assets/logo.png';
 import { useLanguage } from '../context/LanguageContext';
@@ -34,18 +35,20 @@ function LangSwitch({ compact = false }: { compact?: boolean }) {
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation();
+  const onHome = location.pathname === '/';
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between p-4 sm:p-5">
-      <a href="#top" className="bg-white rounded-xl px-3 py-1.5 shadow-sm">
+      <Link to="/" className="bg-white rounded-xl px-3 py-1.5 shadow-sm">
         <img src={logo} alt="Atelier des Façadiers" className="h-7 sm:h-8 w-auto" />
-      </a>
+      </Link>
 
       <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-2 py-2 items-center gap-1">
         {t.nav.links.map((link) => (
           <a
             key={link.label}
-            href={link.href}
+            href={onHome ? link.href : `/${link.href}`}
             className="text-white/85 hover:bg-white/20 hover:text-white transition-colors px-4 py-1.5 rounded-full text-sm font-medium"
           >
             {link.label}
@@ -56,7 +59,7 @@ export default function Nav() {
       <div className="flex items-center gap-3">
         <LangSwitch />
         <a
-          href="#contact"
+          href={onHome ? '#contact' : '/#contact'}
           className="hidden md:block bg-white text-navy text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-gray-100 transition-colors"
         >
           {t.nav.cta}
@@ -78,7 +81,7 @@ export default function Nav() {
           {t.nav.links.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={onHome ? link.href : `/${link.href}`}
               className="text-white text-2xl font-medium"
               onClick={() => setOpen(false)}
             >
@@ -86,7 +89,7 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={onHome ? '#contact' : '/#contact'}
             className="mt-4 bg-crimson text-white text-base font-semibold px-8 py-3 rounded-full"
             onClick={() => setOpen(false)}
           >

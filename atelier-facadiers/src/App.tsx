@@ -1,15 +1,9 @@
+import { Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Nav from './components/Nav';
-import Hero from './components/Hero';
-import BrandStrip from './components/BrandStrip';
-import Pillars from './components/Pillars';
-import OssatureBrands from './components/OssatureBrands';
-import OssatureStudy from './components/OssatureStudy';
-import About from './components/About';
-import Projects from './components/Projects';
-import News from './components/News';
-import CtaBand from './components/CtaBand';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import Equitone from './pages/Equitone';
 
 export default function App() {
   return (
@@ -20,15 +14,10 @@ export default function App() {
         <div className="ambient-orb" style={{ bottom: '-10%', left: '20%', width: '34vw', height: '34vw', background: '#7d2a72', animationDelay: '-16s' }} />
 
         <Nav />
-        <Hero />
-        <BrandStrip />
-        <Pillars />
-        <OssatureBrands />
-        <OssatureStudy />
-        <About />
-        <Projects />
-        <News />
-        <CtaBand />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/bardage/equitone" element={<Equitone />} />
+        </Routes>
         <Footer />
       </div>
     </LanguageProvider>

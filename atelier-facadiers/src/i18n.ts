@@ -25,6 +25,17 @@ export const translations = {
       heading: "Nos marques d'ossature, conçues par nos soins",
       items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Ossature sur mesure'],
     },
+    equitone: {
+      tagline: 'Fibre cement facade materials',
+      caption: "Villeneuve d'Ascq, EQUITONE [tectiva] te90",
+      paragraphs: [
+        "Découvrez les panneaux de façade EQUITONE. Le fibre-ciment est un matériau composite minéral hautes performances, authentique et durable. Du ciment, de la cellulose, des charges minérales, de l'eau et de l'air.",
+        "La gamme EQUITONE est faite dans un matériau naturel à la personnalité pure et authentique. EQUITONE, de par sa conception incombustible et avec l'appui du test Lepir II, permet de supprimer les bavettes dans de nombreuses configurations.",
+      ],
+      gammesHeading: 'Gammes',
+      backCta: 'Retour au bardage',
+      quoteCta: 'Demander un devis EQUITONE',
+    },
     study: {
       heading: "Étude ossature et demande d'optimisation",
       card1: {
@@ -155,6 +166,17 @@ export const translations = {
     ossature: {
       heading: 'Our own framework product lines',
       items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Custom framework'],
+    },
+    equitone: {
+      tagline: 'Fibre cement facade materials',
+      caption: "Villeneuve d'Ascq, EQUITONE [tectiva] te90",
+      paragraphs: [
+        'Discover EQUITONE facade panels. Fibre cement is a high-performance mineral composite material, authentic and durable — made of cement, cellulose, mineral fillers, water and air.',
+        "The EQUITONE range is made from a natural material with a pure, authentic character. Thanks to its non-combustible design and the Lepir II test, EQUITONE removes the need for flashing in many configurations.",
+      ],
+      gammesHeading: 'Ranges',
+      backCta: 'Back to cladding',
+      quoteCta: 'Request an EQUITONE quote',
     },
     study: {
       heading: 'Framework study and optimisation request',
