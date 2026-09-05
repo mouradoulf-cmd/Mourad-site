@@ -20,7 +20,11 @@ export const translations = {
       text: 'Façonnier et distributeur de solutions de bardage nouvelle génération : stock, préconisation technique, usinage sur-mesure et logistique pilotés pour vos chantiers.',
       cta: 'Demander un devis',
     },
-    brands: ['Trespa', 'EQUITONE', 'Fundermax', 'Stacbond', 'Rockpanel'],
+    brands: ['Fundermax', 'Trespa', 'PURA', 'EQUITONE', 'Cedral', 'Rockpanel', 'Stacbond', 'Alpolic', 'Fiberdeck'],
+    ossature: {
+      heading: "Nos marques d'ossature, conçues par nos soins",
+      items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Ossature sur mesure'],
+    },
     pillars: {
       heading1: 'Cinq métiers, les cinq couleurs de notre',
       heading2: 'enseigne',
@@ -47,6 +51,9 @@ export const translations = {
       heading2: 'menés du gros œuvre à la finition',
       caption1: "Nouveau bâtiment pour l'ossature",
       caption2: 'Bardage métallique — finition posée',
+      caption3: 'Hangar prêt à équiper',
+      caption4: 'Bardage bicolore — bois et anthracite',
+      catalogueCta: 'Catalogue 2026 — demander un exemplaire',
     },
     cta: {
       heading: 'Un projet de bardage ?',
@@ -86,7 +93,11 @@ export const translations = {
       text: 'Next-generation cladding fabricator and distributor: stock, technical guidance, custom machining and logistics run to keep your job sites on schedule.',
       cta: 'Get a quote',
     },
-    brands: ['Trespa', 'EQUITONE', 'Fundermax', 'Stacbond', 'Rockpanel'],
+    brands: ['Fundermax', 'Trespa', 'PURA', 'EQUITONE', 'Cedral', 'Rockpanel', 'Stacbond', 'Alpolic', 'Fiberdeck'],
+    ossature: {
+      heading: 'Our own framework product lines',
+      items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Custom framework'],
+    },
     pillars: {
       heading1: 'Five trades, the five colours of our',
       heading2: 'brand',
@@ -113,6 +124,9 @@ export const translations = {
       heading2: 'from shell to finish',
       caption1: 'New building for the steel frame',
       caption2: 'Metal cladding — finish installed',
+      caption3: 'Warehouse ready for fit-out',
+      caption4: 'Two-tone cladding — timber and anthracite',
+      catalogueCta: '2026 catalogue — request a copy',
     },
     cta: {
       heading: 'A cladding project?',

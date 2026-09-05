@@ -22,7 +22,7 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer id="documentation" className="relative z-10 bg-void/90 border-t border-white/10 text-white/80 pt-16 pb-6 px-5 sm:px-8">
+    <footer className="relative z-10 bg-void/90 border-t border-white/10 text-white/80 pt-16 pb-6 px-5 sm:px-8">
       <div className="max-w-6xl mx-auto flex flex-wrap gap-10 justify-between pb-8 border-b border-white/10">
         <div>
           <img src={logo} alt="Atelier des Façadiers" className="h-9 bg-white rounded-lg px-3 py-1.5 mb-4" />

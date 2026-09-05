@@ -23,7 +23,7 @@ export default function About() {
               <div className="text-sm text-white/50">{t.about.stat1}</div>
             </div>
             <div>
-              <div className="text-3xl font-semibold text-crimson font-display">5</div>
+              <div className="text-3xl font-semibold text-crimson font-display">9</div>
               <div className="text-sm text-white/50">{t.about.stat2}</div>
             </div>
           </div>
