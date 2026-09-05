@@ -35,7 +35,7 @@ export default function BrandStrip() {
   const { t } = useLanguage();
 
   return (
-    <div className="relative z-10 py-14 px-5 sm:px-8 border-y border-white/10">
+    <div id="marques" className="relative z-10 py-14 px-5 sm:px-8 border-y border-white/10">
       <div className="max-w-4xl mx-auto grid grid-cols-3 gap-3 sm:gap-4" style={{ perspective: '900px' }}>
         {t.brands.map((brand, i) => {
           const color = COLORS[i % COLORS.length];

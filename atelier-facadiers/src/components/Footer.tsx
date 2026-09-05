@@ -1,3 +1,4 @@
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -20,6 +21,8 @@ function InstagramIcon() {
 
 export default function Footer() {
   const { t } = useLanguage();
+  const location = useLocation();
+  const onHome = location.pathname === '/';
 
   return (
     <footer className="relative z-10 bg-void/90 border-t border-white/10 text-white/80 pt-16 pb-6 px-5 sm:px-8">
@@ -32,9 +35,13 @@ export default function Footer() {
         </div>
         <nav className="flex flex-col gap-2.5 text-sm">
           {t.footer.links.map((link) => (
-            <a key={link.label} href={link.href} className="hover:text-gold transition-colors">
+            <Link
+              key={link.label}
+              to={onHome ? link.href : `/${link.href}`}
+              className="hover:text-gold transition-colors"
+            >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="flex gap-3 items-start">

@@ -20,6 +20,10 @@ html, body, #root {
   background: #05080d;
 }
 
+#apropos, #marques, #ossature, #services, #projets, #documentation, #contact {
+  scroll-margin-top: 96px;
+}
+
 .glass-panel {
   background: rgba(8, 13, 20, 0.86);
   backdrop-filter: blur(22px);

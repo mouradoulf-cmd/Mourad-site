@@ -5,8 +5,8 @@ export const translations = {
     nav: {
       links: [
         { label: 'Qui sommes-nous', href: '#apropos' },
-        { label: 'Bardage', href: '#services' },
-        { label: 'Ossature', href: '#services' },
+        { label: 'Bardage', href: '#marques' },
+        { label: 'Ossature', href: '#ossature' },
         { label: 'Projets', href: '#projets' },
         { label: 'Documentation', href: '#documentation' },
       ],
@@ -135,8 +135,8 @@ export const translations = {
       hours: 'Lun–Jeu 7h30–17h00 · Ven 7h30–16h00',
       links: [
         { label: 'Qui sommes-nous ?', href: '#apropos' },
-        { label: 'Bardage', href: '#services' },
-        { label: 'Ossature', href: '#services' },
+        { label: 'Bardage', href: '#marques' },
+        { label: 'Ossature', href: '#ossature' },
         { label: 'Projets', href: '#projets' },
         { label: 'Contact / Devis', href: '#contact' },
       ],
@@ -147,8 +147,8 @@ export const translations = {
     nav: {
       links: [
         { label: 'About us', href: '#apropos' },
-        { label: 'Cladding', href: '#services' },
-        { label: 'Framework', href: '#services' },
+        { label: 'Cladding', href: '#marques' },
+        { label: 'Framework', href: '#ossature' },
         { label: 'Projects', href: '#projets' },
         { label: 'Documentation', href: '#documentation' },
       ],
@@ -277,8 +277,8 @@ export const translations = {
       hours: 'Mon–Thu 7:30am–5pm · Fri 7:30am–4pm',
       links: [
         { label: 'About us', href: '#apropos' },
-        { label: 'Cladding', href: '#services' },
-        { label: 'Framework', href: '#services' },
+        { label: 'Cladding', href: '#marques' },
+        { label: 'Framework', href: '#ossature' },
         { label: 'Projects', href: '#projets' },
         { label: 'Contact / Quote', href: '#contact' },
       ],
