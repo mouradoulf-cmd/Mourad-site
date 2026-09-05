@@ -49,7 +49,7 @@ export default function Nav() {
       </button>
 
       {open && (
-        <div className="md:hidden fixed inset-0 top-[64px] bg-navy z-[99] flex flex-col items-center justify-center gap-6">
+        <div className="md:hidden fixed inset-0 top-[64px] bg-void z-[99] flex flex-col items-center justify-center gap-6">
           {LINKS.map((link) => (
             <a
               key={link.label}

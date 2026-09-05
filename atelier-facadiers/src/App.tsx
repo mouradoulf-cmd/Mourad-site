@@ -1,4 +1,5 @@
 import Nav from './components/Nav';
+import Scene3D from './components/Scene3D';
 import Hero from './components/Hero';
 import BrandStrip from './components/BrandStrip';
 import Pillars from './components/Pillars';
@@ -9,7 +10,8 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div id="top" className="min-h-screen bg-cream tracking-[-0.01em]" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div id="top" className="min-h-screen bg-void tracking-[-0.01em]" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <Scene3D />
       <Nav />
       <Hero />
       <BrandStrip />

@@ -12,10 +12,13 @@ export default {
         sky: '#4c96d1',
         plum: '#7d2a72',
         cream: '#faf9f6',
+        void: '#05080d',
+        panel: '#0d1520',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Rajdhani"', 'system-ui', 'sans-serif'],
       },
     },
   },
