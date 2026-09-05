@@ -10,6 +10,38 @@ export const translations = {
         { label: 'Projets', href: '#projets' },
         { label: 'Documentation', href: '#documentation' },
       ],
+      bardageMenu: [
+        {
+          category: 'Fibre ciment',
+          color: '#e41959',
+          items: [
+            { label: 'EQUITONE', to: '/bardage/equitone' },
+            { label: 'Cedral', to: '/#marques' },
+          ],
+        },
+        {
+          category: 'Aluminium composite',
+          color: '#4c96d1',
+          items: [
+            { label: 'Stacbond', to: '/#marques' },
+            { label: 'Alpolic', to: '/#marques' },
+          ],
+        },
+        {
+          category: 'Laine de roche comprimée',
+          color: '#f5b90f',
+          items: [{ label: 'Rockpanel', to: '/#marques' }],
+        },
+        {
+          category: 'Stratifié HPL',
+          color: '#4fae8c',
+          items: [
+            { label: 'Fundermax', to: '/#marques' },
+            { label: 'Trespa', to: '/#marques' },
+            { label: 'PURA', to: '/#marques' },
+          ],
+        },
+      ],
       cta: 'Devis',
       openMenu: 'Ouvrir le menu',
       closeMenu: 'Fermer le menu',
@@ -151,6 +183,38 @@ export const translations = {
         { label: 'Framework', href: '#ossature' },
         { label: 'Projects', href: '#projets' },
         { label: 'Documentation', href: '#documentation' },
+      ],
+      bardageMenu: [
+        {
+          category: 'Fibre cement',
+          color: '#e41959',
+          items: [
+            { label: 'EQUITONE', to: '/bardage/equitone' },
+            { label: 'Cedral', to: '/#marques' },
+          ],
+        },
+        {
+          category: 'Aluminium composite',
+          color: '#4c96d1',
+          items: [
+            { label: 'Stacbond', to: '/#marques' },
+            { label: 'Alpolic', to: '/#marques' },
+          ],
+        },
+        {
+          category: 'Compressed mineral wool',
+          color: '#f5b90f',
+          items: [{ label: 'Rockpanel', to: '/#marques' }],
+        },
+        {
+          category: 'HPL laminate',
+          color: '#4fae8c',
+          items: [
+            { label: 'Fundermax', to: '/#marques' },
+            { label: 'Trespa', to: '/#marques' },
+            { label: 'PURA', to: '/#marques' },
+          ],
+        },
       ],
       cta: 'Get a quote',
       openMenu: 'Open menu',
