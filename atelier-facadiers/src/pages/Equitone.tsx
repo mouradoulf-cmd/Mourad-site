@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowLeft, ShieldCheck, FileText } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from '../components/Reveal';
 import TiltCard from '../components/TiltCard';
@@ -13,6 +13,7 @@ import natura from '../assets/equitone/natura.jpg';
 import pictura from '../assets/equitone/pictura.jpg';
 import textura from '../assets/equitone/textura.jpg';
 import inspira from '../assets/equitone/inspira.jpg';
+import tergoDiagram from '../assets/equitone/tergo-diagram.png';
 
 const COLORS = ['#4fae8c', '#f5b90f', '#e41959', '#4c96d1', '#7d2a72'];
 
@@ -126,6 +127,138 @@ export default function Equitone() {
                 </Reveal>
               );
             })}
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="relative z-10 pb-24 px-5 sm:px-8">
+        <Reveal className="max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">{t.equitone.dimensionsHeading}</h2>
+          <div className="glass-panel rounded-2xl overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-white/80 border-collapse min-w-[720px]">
+                <thead>
+                  <tr>
+                    <th className="text-left px-5 py-4 sticky left-0 bg-[#0a0f17]">&nbsp;</th>
+                    {t.equitone.dimensionsGroups.map((g, i) => (
+                      <th
+                        key={g}
+                        className="px-5 py-4 text-center font-display uppercase text-xs tracking-wide whitespace-nowrap"
+                        style={{ color: COLORS[i % COLORS.length] }}
+                      >
+                        {g}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {t.equitone.dimensionsRows.map((row) => (
+                    <tr key={row.label} className="border-t border-white/10">
+                      <td className="px-5 py-3 text-white/60 sticky left-0 bg-[#0a0f17] whitespace-nowrap">{row.label}</td>
+                      {row.values.map((v, i) => (
+                        <td key={i} className="px-5 py-3 text-center whitespace-nowrap">
+                          {v}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                  <tr>
+                    <td
+                      colSpan={6}
+                      className="px-5 pt-7 pb-2 text-xs uppercase tracking-widest font-semibold sticky left-0 bg-[#0a0f17]"
+                      style={{ color: '#f5b90f' }}
+                    >
+                      {t.equitone.formatBrutHeading}
+                    </td>
+                  </tr>
+                  {t.equitone.formatBrutRows.map((row) => (
+                    <tr key={row.label} className="border-t border-white/10">
+                      <td className="px-5 py-3 text-white/60 sticky left-0 bg-[#0a0f17] whitespace-nowrap">{row.label}</td>
+                      {row.values.map((v, i) => (
+                        <td key={i} className="px-5 py-3 text-center whitespace-nowrap">
+                          {v}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                  <tr>
+                    <td
+                      colSpan={6}
+                      className="px-5 pt-7 pb-2 text-xs uppercase tracking-widest font-semibold sticky left-0 bg-[#0a0f17]"
+                      style={{ color: '#4c96d1' }}
+                    >
+                      {t.equitone.formatEquerreHeading}
+                    </td>
+                  </tr>
+                  {t.equitone.formatEquerreRows.map((row) => (
+                    <tr key={row.label} className="border-t border-white/10">
+                      <td className="px-5 py-3 text-white/60 sticky left-0 bg-[#0a0f17] whitespace-nowrap">{row.label}</td>
+                      {row.values.map((v, i) => (
+                        <td key={i} className="px-5 py-3 text-center whitespace-nowrap">
+                          {v}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="relative z-10 pb-24 px-5 sm:px-8">
+        <Reveal className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-light text-white mb-1">{t.equitone.systemsHeading}</h2>
+            <div className="w-16 h-[2px] mb-6" style={{ background: '#e41959' }} />
+            <span className="block text-xs uppercase tracking-widest mb-1" style={{ color: '#e41959' }}>
+              {t.equitone.fixationLabel}
+            </span>
+            <h3 className="font-display uppercase text-xl text-white mb-4">{t.equitone.tergoLabel}</h3>
+            {t.equitone.systemsParagraphs.map((p) => (
+              <p key={p.slice(0, 20)} className="text-white/70 text-sm leading-relaxed mb-4 last:mb-0">
+                {p}
+              </p>
+            ))}
+            <div className="flex flex-wrap gap-2 mt-5">
+              {t.equitone.systemsBadges.map((b) => (
+                <span
+                  key={b}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-white/80 bg-white/10 border border-white/15 rounded-full px-3 py-1.5"
+                >
+                  <ShieldCheck size={13} style={{ color: '#4fae8c' }} /> {b}
+                </span>
+              ))}
+            </div>
+          </div>
+          <TiltCard className="bg-white rounded-2xl p-4 sm:p-6" style={{ borderTop: '3px solid #e41959' }}>
+            <img src={tergoDiagram} alt={t.equitone.tergoLabel} className="w-full h-auto rounded-lg" draggable={false} />
+          </TiltCard>
+        </Reveal>
+      </section>
+
+      <section className="relative z-10 pb-24 px-5 sm:px-8">
+        <Reveal className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">{t.equitone.documentationHeading}</h2>
+          <div
+            className="glass-panel rounded-2xl px-6 py-5 flex items-center justify-between gap-4 flex-wrap"
+            style={{ borderTop: '2px solid #4c96d1' }}
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                <FileText size={20} className="text-white/70" />
+              </div>
+              <span className="font-display uppercase text-sm sm:text-base text-white tracking-wide">
+                {t.equitone.brochureLabel}
+              </span>
+            </div>
+            <Link
+              to="/#contact"
+              className="inline-flex items-center gap-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-full px-5 py-2.5 transition-colors"
+            >
+              {t.equitone.brochureCta} <ChevronRight size={15} />
+            </Link>
           </div>
         </Reveal>
       </section>
