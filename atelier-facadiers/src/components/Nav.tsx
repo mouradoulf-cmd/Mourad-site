@@ -46,24 +46,24 @@ export default function Nav() {
 
       <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-2 py-2 items-center gap-1">
         {t.nav.links.map((link) => (
-          <a
+          <Link
             key={link.label}
-            href={onHome ? link.href : `/${link.href}`}
+            to={onHome ? link.href : `/${link.href}`}
             className="text-white/85 hover:bg-white/20 hover:text-white transition-colors px-4 py-1.5 rounded-full text-sm font-medium"
           >
             {link.label}
-          </a>
+          </Link>
         ))}
       </div>
 
       <div className="flex items-center gap-3">
         <LangSwitch />
-        <a
-          href={onHome ? '#contact' : '/#contact'}
+        <Link
+          to={onHome ? '#contact' : '/#contact'}
           className="hidden md:block bg-white text-navy text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-gray-100 transition-colors"
         >
           {t.nav.cta}
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -79,22 +79,22 @@ export default function Nav() {
       {open && (
         <div className="md:hidden fixed inset-0 top-[64px] bg-void z-[99] flex flex-col items-center justify-center gap-6">
           {t.nav.links.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={onHome ? link.href : `/${link.href}`}
+              to={onHome ? link.href : `/${link.href}`}
               className="text-white text-2xl font-medium"
               onClick={() => setOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href={onHome ? '#contact' : '/#contact'}
+          <Link
+            to={onHome ? '#contact' : '/#contact'}
             className="mt-4 bg-crimson text-white text-base font-semibold px-8 py-3 rounded-full"
             onClick={() => setOpen(false)}
           >
             {t.hero.cta}
-          </a>
+          </Link>
         </div>
       )}
     </nav>

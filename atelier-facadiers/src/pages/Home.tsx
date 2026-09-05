@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Hero from '../components/Hero';
 import BrandStrip from '../components/BrandStrip';
 import Pillars from '../components/Pillars';
@@ -9,6 +11,14 @@ import News from '../components/News';
 import CtaBand from '../components/CtaBand';
 
 export default function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const el = document.querySelector(location.hash);
+    if (el) requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }, [location.hash, location.key]);
+
   return (
     <>
       <Hero />
