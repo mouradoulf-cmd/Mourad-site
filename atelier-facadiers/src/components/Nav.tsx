@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Menu, X, ChevronDown, ChevronRight, Layers, Box, Waves, Grid3x3 } from 'lucide-react';
 import logo from '../assets/logo.png';
 import { useLanguage } from '../context/LanguageContext';
@@ -55,6 +55,24 @@ export default function Nav() {
   const location = useLocation();
   const onHome = location.pathname === '/';
 
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const springX = useSpring(tiltX, { stiffness: 200, damping: 20 });
+  const springY = useSpring(tiltY, { stiffness: 200, damping: 20 });
+  const rotateX = useTransform(springY, [-0.5, 0.5], [7, -7]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-7, 7]);
+
+  function handlePanelMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    tiltX.set((e.clientX - rect.left) / rect.width - 0.5);
+    tiltY.set((e.clientY - rect.top) / rect.height - 0.5);
+  }
+
+  function handlePanelLeave() {
+    tiltX.set(0);
+    tiltY.set(0);
+  }
+
   useEffect(() => {
     if (!menuOpen) return;
     function handleClick(e: MouseEvent) {
@@ -108,8 +126,17 @@ export default function Nav() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -12, scale: 0.96 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    onMouseMove={handlePanelMove}
+                    onMouseLeave={handlePanelLeave}
                     className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+14px)] rounded-2xl shadow-2xl overflow-hidden"
-                    style={{ minWidth: 620, background: 'rgba(10,15,23,0.97)', border: '1px solid rgba(255,255,255,0.12)' }}
+                    style={{
+                      minWidth: 620,
+                      background: 'rgba(10,15,23,0.97)',
+                      border: '1px solid rgba(255,255,255,0.12)',
+                      rotateX,
+                      rotateY,
+                      transformPerspective: 1200,
+                    }}
                   >
                     <div
                       className="h-[3px] w-full"
