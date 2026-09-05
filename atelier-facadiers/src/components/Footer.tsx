@@ -1,4 +1,5 @@
 import logo from '../assets/logo.png';
+import { useLanguage } from '../context/LanguageContext';
 
 function LinkedinIcon() {
   return (
@@ -18,21 +19,23 @@ function InstagramIcon() {
 }
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer id="documentation" className="relative z-10 bg-void/90 border-t border-white/10 text-white/80 pt-16 pb-6 px-5 sm:px-8">
       <div className="max-w-6xl mx-auto flex flex-wrap gap-10 justify-between pb-8 border-b border-white/10">
         <div>
           <img src={logo} alt="Atelier des Façadiers" className="h-9 bg-white rounded-lg px-3 py-1.5 mb-4" />
-          <p className="text-sm">7 rue des Garennes, 01600 Reyrieux</p>
-          <p className="text-sm">04 74 17 33 33</p>
-          <p className="text-sm">Lun–Jeu 7h30–17h00 · Ven 7h30–16h00</p>
+          <p className="text-sm">{t.footer.address}</p>
+          <p className="text-sm">{t.footer.phone}</p>
+          <p className="text-sm">{t.footer.hours}</p>
         </div>
         <nav className="flex flex-col gap-2.5 text-sm">
-          <a href="#apropos" className="hover:text-gold transition-colors">Qui sommes-nous ?</a>
-          <a href="#services" className="hover:text-gold transition-colors">Bardage</a>
-          <a href="#services" className="hover:text-gold transition-colors">Ossature</a>
-          <a href="#projets" className="hover:text-gold transition-colors">Projets</a>
-          <a href="#contact" className="hover:text-gold transition-colors">Contact / Devis</a>
+          {t.footer.links.map((link) => (
+            <a key={link.label} href={link.href} className="hover:text-gold transition-colors">
+              {link.label}
+            </a>
+          ))}
         </nav>
         <div className="flex gap-3 items-start">
           <a href="#" aria-label="LinkedIn" className="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center hover:border-white/60 transition-colors">
@@ -43,9 +46,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <p className="max-w-6xl mx-auto text-xs text-white/45 pt-6">
-        © 2026 Atelier des Façadiers — Tous droits réservés
-      </p>
+      <p className="max-w-6xl mx-auto text-xs text-white/45 pt-6">{t.footer.rights}</p>
     </footer>
   );
 }

@@ -1,7 +1,8 @@
-const BRANDS = ['Trespa', 'EQUITONE', 'Fundermax', 'Stacbond', 'Rockpanel'];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function BrandStrip() {
-  const track = [...BRANDS, ...BRANDS];
+  const { t } = useLanguage();
+  const track = [...t.brands, ...t.brands];
   return (
     <div className="relative z-10 py-8 border-y border-white/10 overflow-hidden">
       <div

@@ -1,4 +1,8 @@
+import { useLanguage } from '../context/LanguageContext';
+
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative w-full h-screen" style={{ height: '100dvh' }}>
       <div
@@ -12,13 +16,13 @@ export default function Hero() {
             className="hero-anim hero-reveal block font-serif italic font-normal text-5xl sm:text-7xl md:text-8xl"
             style={{ letterSpacing: '-0.02em', animationDelay: '0.25s' }}
           >
-            De l'ossature
+            {t.hero.line1}
           </span>
           <span
             className="hero-anim hero-reveal block font-display font-semibold uppercase text-4xl sm:text-6xl md:text-7xl mt-2"
             style={{ letterSpacing: '0.08em', animationDelay: '0.45s', color: '#f5b90f' }}
           >
-            à la façade
+            {t.hero.line2}
           </span>
         </h1>
 
@@ -35,8 +39,7 @@ export default function Hero() {
           className="hero-anim hero-fade mt-8 max-w-md text-sm sm:text-base text-white/75 leading-relaxed"
           style={{ animationDelay: '0.9s' }}
         >
-          Façonnier et distributeur de solutions de bardage nouvelle génération : stock, préconisation
-          technique, usinage sur-mesure et logistique pilotés pour vos chantiers.
+          {t.hero.text}
         </p>
 
         <a
@@ -44,12 +47,8 @@ export default function Hero() {
           className="hero-anim hero-fade pointer-events-auto mt-9 bg-crimson hover:bg-[#c81450] text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all hover:scale-[1.04] active:scale-95 hover:shadow-lg hover:shadow-crimson/40"
           style={{ animationDelay: '1.05s' }}
         >
-          Demander un devis
+          {t.hero.cta}
         </a>
-      </div>
-
-      <div className="hero-anim hero-fade absolute bottom-8 left-0 right-0 flex justify-center z-10" style={{ animationDelay: '1.3s' }}>
-        <span className="text-[11px] tracking-[0.3em] uppercase text-white/40 font-display">Scroll</span>
       </div>
     </section>
   );

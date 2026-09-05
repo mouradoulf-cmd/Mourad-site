@@ -11,9 +11,9 @@ export interface Scene3DHandle {
 
 export function initThreeScene(canvas: HTMLCanvasElement, images: string[]): Scene3DHandle {
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x0a1420, 0.045);
+  scene.fog = new THREE.FogExp2(0x0a1420, 0.032);
 
-  const camera = new THREE.PerspectiveCamera(55, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+  const camera = new THREE.PerspectiveCamera(55, canvas.clientWidth / canvas.clientHeight, 0.1, 120);
   camera.position.set(0, 0, 6);
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
@@ -26,18 +26,29 @@ export function initThreeScene(canvas: HTMLCanvasElement, images: string[]): Sce
   const loader = new THREE.TextureLoader();
   const geometry = new THREE.PlaneGeometry(2.6, 3.4);
   const frameGeometry = new THREE.PlaneGeometry(2.8, 3.6);
+  const colorObjs = BRAND_COLORS.map((c) => new THREE.Color(c));
 
-  const PANEL_COUNT = 22;
-  const panels: { mesh: THREE.Mesh; baseY: number; speed: number; offset: number }[] = [];
+  const PANEL_COUNT = 34;
+  const DEPTH = 46;
+  const panels: {
+    mesh: THREE.Mesh;
+    frameMat: THREE.MeshBasicMaterial;
+    baseY: number;
+    speed: number;
+    offset: number;
+    colorA: THREE.Color;
+    colorB: THREE.Color;
+  }[] = [];
 
   for (let i = 0; i < PANEL_COUNT; i++) {
     const img = images[i % images.length];
-    const color = BRAND_COLORS[i % BRAND_COLORS.length];
+    const colorA = colorObjs[i % colorObjs.length];
+    const colorB = colorObjs[(i + 2) % colorObjs.length];
 
     const frameMat = new THREE.MeshBasicMaterial({
-      color,
+      color: colorA,
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.55,
       side: THREE.DoubleSide,
     });
     const frame = new THREE.Mesh(frameGeometry, frameMat);
@@ -49,26 +60,33 @@ export function initThreeScene(canvas: HTMLCanvasElement, images: string[]): Sce
     panel.position.z = 0.02;
     frame.add(panel);
 
-    const x = (Math.random() - 0.5) * 20;
-    const y = (Math.random() - 0.5) * 12;
-    const z = -Math.random() * 30 - 1;
+    const x = (Math.random() - 0.5) * 24;
+    const y = (Math.random() - 0.5) * 14;
+    const z = -Math.random() * DEPTH - 1;
     frame.position.set(x, y, z);
-    frame.rotation.y = (Math.random() - 0.5) * 0.6;
-    frame.rotation.x = (Math.random() - 0.5) * 0.15;
+    frame.rotation.y = (Math.random() - 0.5) * 0.7;
+    frame.rotation.x = (Math.random() - 0.5) * 0.18;
 
     panelGroup.add(frame);
-    panels.push({ mesh: frame, baseY: y, speed: 0.2 + Math.random() * 0.4, offset: Math.random() * Math.PI * 2 });
+    panels.push({
+      mesh: frame,
+      frameMat,
+      baseY: y,
+      speed: 0.2 + Math.random() * 0.4,
+      offset: Math.random() * Math.PI * 2,
+      colorA,
+      colorB,
+    });
   }
 
   // Particle field
-  const PARTICLE_COUNT = 500;
+  const PARTICLE_COUNT = 900;
   const positions = new Float32Array(PARTICLE_COUNT * 3);
   const colors = new Float32Array(PARTICLE_COUNT * 3);
-  const colorObjs = BRAND_COLORS.map((c) => new THREE.Color(c));
   for (let i = 0; i < PARTICLE_COUNT; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 30;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-    positions[i * 3 + 2] = -Math.random() * 35;
+    positions[i * 3] = (Math.random() - 0.5) * 36;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 24;
+    positions[i * 3 + 2] = -Math.random() * (DEPTH + 10);
     const c = colorObjs[i % colorObjs.length];
     colors[i * 3] = c.r;
     colors[i * 3 + 1] = c.g;
@@ -78,35 +96,60 @@ export function initThreeScene(canvas: HTMLCanvasElement, images: string[]): Sce
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
   const particleMat = new THREE.PointsMaterial({
-    size: 0.05,
+    size: 0.055,
     vertexColors: true,
     transparent: true,
-    opacity: 0.75,
+    opacity: 0.8,
     blending: THREE.AdditiveBlending,
     depthWrite: false,
   });
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
+  // Horizon grid for sci-fi depth cue
+  const grid = new THREE.GridHelper(80, 40, 0x4c96d1, 0x1c3a52);
+  grid.position.y = -9;
+  grid.position.z = -20;
+  (grid.material as THREE.Material).transparent = true;
+  (grid.material as THREE.Material).opacity = 0.18;
+  scene.add(grid);
+
   let reducedMotion = false;
   let rafId = 0;
   const clock = new THREE.Clock();
   let scrollProgress = 0;
 
+  const pointer = { x: 0, y: 0 };
+  const pointerSmooth = { x: 0, y: 0 };
+  function onPointerMove(e: PointerEvent) {
+    pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+    pointer.y = (e.clientY / window.innerHeight) * 2 - 1;
+  }
+  window.addEventListener('pointermove', onPointerMove);
+
+  const tmpColor = new THREE.Color();
+
   function renderFrame() {
     const t = clock.getElapsedTime();
 
     if (!reducedMotion) {
-      panelGroup.rotation.y = scrollProgress * Math.PI * 0.5;
+      panelGroup.rotation.y = scrollProgress * Math.PI * 0.6;
       panels.forEach((p) => {
         p.mesh.position.y = p.baseY + Math.sin(t * p.speed + p.offset) * 0.35;
         p.mesh.rotation.z = Math.sin(t * 0.15 + p.offset) * 0.03;
+        const mix = (Math.sin(t * 0.4 + p.offset) + 1) / 2;
+        tmpColor.copy(p.colorA).lerp(p.colorB, mix);
+        p.frameMat.color.copy(tmpColor);
       });
-      particles.rotation.y = t * 0.01;
+      particles.rotation.y = t * 0.012;
+
+      pointerSmooth.x += (pointer.x - pointerSmooth.x) * 0.04;
+      pointerSmooth.y += (pointer.y - pointerSmooth.y) * 0.04;
     }
 
-    camera.position.z = 6 - scrollProgress * 34;
-    camera.position.y = Math.sin(scrollProgress * Math.PI) * 1.2;
+    camera.position.z = 6 - scrollProgress * 44;
+    camera.position.y = Math.sin(scrollProgress * Math.PI) * 1.2 - pointerSmooth.y * 0.8;
+    camera.position.x = pointerSmooth.x * 1.4;
     camera.lookAt(0, 0, camera.position.z - 10);
 
     renderer.render(scene, camera);
@@ -130,6 +173,7 @@ export function initThreeScene(canvas: HTMLCanvasElement, images: string[]): Sce
     },
     dispose() {
       cancelAnimationFrame(rafId);
+      window.removeEventListener('pointermove', onPointerMove);
       panels.forEach((p) => {
         const frame = p.mesh as THREE.Mesh;
         const panelChild = frame.children[0] as THREE.Mesh | undefined;
@@ -145,6 +189,8 @@ export function initThreeScene(canvas: HTMLCanvasElement, images: string[]): Sce
       frameGeometry.dispose();
       particleGeo.dispose();
       particleMat.dispose();
+      grid.geometry.dispose();
+      (grid.material as THREE.Material).dispose();
       renderer.dispose();
     },
   };
