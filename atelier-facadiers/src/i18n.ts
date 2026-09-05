@@ -15,8 +15,8 @@ export const translations = {
       closeMenu: 'Fermer le menu',
     },
     hero: {
-      line1: "De l'ossature",
-      line2: 'à la façade',
+      line1: 'Atelier des Façadiers',
+      line2: 'Ça va barder !',
       text: 'Façonnier et distributeur de solutions de bardage nouvelle génération : stock, préconisation technique, usinage sur-mesure et logistique pilotés pour vos chantiers.',
       cta: 'Demander un devis',
     },
@@ -112,8 +112,8 @@ export const translations = {
       closeMenu: 'Close menu',
     },
     hero: {
-      line1: 'From the frame',
-      line2: 'to the facade',
+      line1: 'Atelier des Façadiers',
+      line2: 'Ça va barder !',
       text: 'Next-generation cladding fabricator and distributor: stock, technical guidance, custom machining and logistics run to keep your job sites on schedule.',
       cta: 'Get a quote',
     },
