@@ -8,7 +8,7 @@ export default function OssatureStudy() {
   const colors = ['#4fae8c', '#4c96d1'];
 
   return (
-    <section className="relative z-10 py-16 px-5 sm:px-8">
+    <section id="ossature" className="relative z-10 py-16 px-5 sm:px-8">
       <Reveal className="max-w-3xl mx-auto text-center mb-12">
         <h2 className="text-2xl sm:text-3xl font-light text-white" style={{ textWrap: 'balance' }}>
           {t.study.heading}
