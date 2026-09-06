@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import tectiva from '../assets/equitone/tectiva.jpg';
 import linea from '../assets/equitone/linea.jpg';
-import lunara from '../assets/equitone/lunara.jpg';
-import natura from '../assets/equitone/natura.jpg';
-import pictura from '../assets/equitone/pictura.jpg';
 import textura from '../assets/equitone/textura.jpg';
-import inspira from '../assets/equitone/inspira.jpg';
+import realSample1 from '../assets/equitone/real-sample-1.jpg';
+import realSample2 from '../assets/equitone/real-sample-2.jpg';
+import realFacade1 from '../assets/equitone/real-facade-1.jpg';
+import realFacade2 from '../assets/equitone/real-facade-2.jpg';
 
-const SWATCHES = [tectiva, linea, lunara, natura, pictura, textura, inspira];
+const SWATCHES = [realFacade1, realSample1, realFacade2, realSample2, linea, textura];
 const CELL_COUNT = 12;
 const TICK_MS = 180;
 const COLORS = ['#4fae8c', '#f5b90f', '#e41959', '#4c96d1', '#7d2a72'];
