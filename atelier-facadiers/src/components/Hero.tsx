@@ -28,7 +28,7 @@ export default function Hero() {
         style={{ background: 'radial-gradient(ellipse at bottom right, rgba(5,8,13,1) 0%, rgba(5,8,13,1) 40%, rgba(5,8,13,0) 100%)' }}
       />
 
-      <div className="relative h-full flex flex-col items-center text-center px-5 pt-[26%] sm:pt-[22%] z-10">
+      <div className="relative h-full flex flex-col items-center justify-center text-center px-5 py-20 z-10">
         <h1 className="text-white leading-[0.95]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}>
           <span
             className="hero-anim hero-reveal block font-serif italic font-normal text-5xl sm:text-7xl md:text-8xl"
