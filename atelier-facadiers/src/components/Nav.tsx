@@ -51,6 +51,7 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileBardageOpen, setMobileBardageOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
   const location = useLocation();
   const onHome = location.pathname === '/';
@@ -76,7 +77,10 @@ export default function Nav() {
   useEffect(() => {
     if (!menuOpen) return;
     function handleClick(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
+      const target = e.target as Node;
+      const insideTrigger = menuRef.current?.contains(target);
+      const insidePanel = panelRef.current?.contains(target);
+      if (!insideTrigger && !insidePanel) setMenuOpen(false);
     }
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
@@ -119,84 +123,6 @@ export default function Nav() {
                 {link.label}
                 <ChevronDown size={14} className={`transition-transform duration-300 ${menuOpen ? 'rotate-180' : ''}`} />
               </button>
-              <AnimatePresence>
-                {menuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -12, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -12, scale: 0.96 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    onMouseMove={handlePanelMove}
-                    onMouseLeave={handlePanelLeave}
-                    className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+14px)] rounded-2xl shadow-2xl overflow-hidden"
-                    style={{
-                      minWidth: 620,
-                      background: 'rgba(10,15,23,0.97)',
-                      border: '1px solid rgba(255,255,255,0.12)',
-                      rotateX,
-                      rotateY,
-                      transformPerspective: 1200,
-                    }}
-                  >
-                    <div
-                      className="h-[3px] w-full"
-                      style={{
-                        background: 'linear-gradient(90deg, #4fae8c, #f5b90f, #e41959, #4c96d1, #7d2a72, #4fae8c)',
-                        backgroundSize: '200% 100%',
-                        animation: 'menuGlow 4s linear infinite',
-                      }}
-                    />
-                    <div className="flex gap-8 p-6">
-                      {t.nav.bardageMenu.map((cat, ci) => {
-                        const Icon = CATEGORY_ICONS[ci % CATEGORY_ICONS.length];
-                        return (
-                          <motion.div
-                            key={cat.category}
-                            className="min-w-[140px]"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: ci * 0.06 }}
-                          >
-                            <div className="flex items-center gap-1.5 mb-3">
-                              <span
-                                className="w-5 h-5 rounded-md flex items-center justify-center shrink-0"
-                                style={{ background: `${cat.color}22`, color: cat.color }}
-                              >
-                                <Icon size={12} />
-                              </span>
-                              <span
-                                className="text-xs uppercase tracking-wide font-semibold whitespace-nowrap"
-                                style={{ color: cat.color }}
-                              >
-                                {cat.category}
-                              </span>
-                            </div>
-                            <div className="flex flex-col gap-1">
-                              {cat.items.map((item, ii) => (
-                                <motion.div
-                                  key={item.label}
-                                  initial={{ opacity: 0, x: -8 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ duration: 0.25, delay: ci * 0.06 + ii * 0.04 + 0.05 }}
-                                >
-                                  <Link
-                                    to={item.to}
-                                    onClick={() => setMenuOpen(false)}
-                                    className="group flex items-center gap-2 text-white/80 hover:text-white text-sm transition-all py-1.5 px-2 -mx-2 rounded-lg hover:bg-white/5 hover:translate-x-0.5 whitespace-nowrap"
-                                  >
-                                    <BrandLogoChip label={item.label} />
-                                    {item.label}
-                                  </Link>
-                                </motion.div>
-                              ))}
-                            </div>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
           ) : (
             <Link
@@ -209,6 +135,87 @@ export default function Nav() {
           ),
         )}
       </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            ref={panelRef}
+            initial={{ opacity: 0, y: -12, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.96 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            onMouseMove={handlePanelMove}
+            onMouseLeave={handlePanelLeave}
+            className="hidden md:block absolute left-1/2 -translate-x-1/2 top-full mt-3.5 rounded-2xl shadow-2xl overflow-hidden z-50"
+            style={{
+              width: 620,
+              maxWidth: 'calc(100vw - 2rem)',
+              background: 'rgba(10,15,23,0.97)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              rotateX,
+              rotateY,
+              transformPerspective: 1200,
+            }}
+          >
+            <div
+              className="h-[3px] w-full"
+              style={{
+                background: 'linear-gradient(90deg, #4fae8c, #f5b90f, #e41959, #4c96d1, #7d2a72, #4fae8c)',
+                backgroundSize: '200% 100%',
+                animation: 'menuGlow 4s linear infinite',
+              }}
+            />
+            <div className="flex flex-wrap gap-8 p-6">
+              {t.nav.bardageMenu.map((cat, ci) => {
+                const Icon = CATEGORY_ICONS[ci % CATEGORY_ICONS.length];
+                return (
+                  <motion.div
+                    key={cat.category}
+                    className="min-w-[140px]"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: ci * 0.06 }}
+                  >
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span
+                        className="w-5 h-5 rounded-md flex items-center justify-center shrink-0"
+                        style={{ background: `${cat.color}22`, color: cat.color }}
+                      >
+                        <Icon size={12} />
+                      </span>
+                      <span
+                        className="text-xs uppercase tracking-wide font-semibold whitespace-nowrap"
+                        style={{ color: cat.color }}
+                      >
+                        {cat.category}
+                      </span>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      {cat.items.map((item, ii) => (
+                        <motion.div
+                          key={item.label}
+                          initial={{ opacity: 0, x: -8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.25, delay: ci * 0.06 + ii * 0.04 + 0.05 }}
+                        >
+                          <Link
+                            to={item.to}
+                            onClick={() => setMenuOpen(false)}
+                            className="group flex items-center gap-2 text-white/80 hover:text-white text-sm transition-all py-1.5 px-2 -mx-2 rounded-lg hover:bg-white/5 hover:translate-x-0.5 whitespace-nowrap"
+                          >
+                            <BrandLogoChip label={item.label} />
+                            {item.label}
+                          </Link>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="flex items-center gap-3 z-50">
         <LangSwitch />
