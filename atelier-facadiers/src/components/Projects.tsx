@@ -39,7 +39,7 @@ export default function Projects() {
           </Reveal>
         ))}
       </div>
-      <Reveal className="max-w-xs mx-auto mt-5">
+      <Reveal className="max-w-2xl mx-auto mt-5">
         <a
           id="documentation"
           href="#contact"
