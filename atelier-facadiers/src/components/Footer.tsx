@@ -25,32 +25,60 @@ export default function Footer() {
   const onHome = location.pathname === '/';
 
   return (
-    <footer className="relative z-10 bg-void/90 border-t border-white/10 text-white/80 pt-16 pb-6 px-5 sm:px-8">
-      <div className="max-w-6xl mx-auto flex flex-wrap gap-10 justify-between pb-8 border-b border-white/10">
-        <div>
-          <img src={logo} alt="Atelier des Façadiers" className="h-9 bg-white rounded-lg px-3 py-1.5 mb-4" />
-          <p className="text-sm">{t.footer.address}</p>
-          <p className="text-sm">{t.footer.phone}</p>
-          <p className="text-sm">{t.footer.hours}</p>
+    <footer className="relative z-10 bg-void text-white/80 pt-16 pb-6 px-5 sm:px-8">
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, #4fae8c, #f5b90f, #e41959, #4c96d1, #7d2a72, transparent)', opacity: 0.5 }}
+      />
+
+      <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div className="md:col-span-2">
+          <img src={logo} alt="Atelier des Façadiers" className="h-9 bg-white rounded-lg px-3 py-1.5 mb-5" />
+          <p className="text-sm max-w-xs">{t.footer.address}</p>
+          <p className="text-sm mt-1">{t.footer.hours}</p>
         </div>
+
         <nav className="flex flex-col gap-2.5 text-sm">
           {t.footer.links.map((link) => (
             <Link
               key={link.label}
               to={onHome ? link.href : `/${link.href}`}
-              className="hover:text-gold transition-colors"
+              className="w-fit hover:text-gold transition-colors"
             >
               {link.label}
             </Link>
           ))}
         </nav>
-        <div className="flex gap-3 items-start">
-          <a href="#" aria-label="LinkedIn" className="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center hover:border-white/60 transition-colors">
-            <LinkedinIcon />
+
+        <div className="flex flex-col gap-4 sm:items-end">
+          <a
+            href={`tel:${t.footer.phone.replace(/\s/g, '')}`}
+            className="text-lg font-display font-semibold text-white hover:text-gold transition-colors"
+          >
+            {t.footer.phone}
           </a>
-          <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center hover:border-white/60 transition-colors">
-            <InstagramIcon />
-          </a>
+          <div className="flex gap-3">
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center transition-all hover:border-transparent hover:text-white hover:scale-110"
+              style={{ transition: 'all 0.25s ease' }}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 16px rgba(76,150,209,0.55)')}
+              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
+            >
+              <LinkedinIcon />
+            </a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center transition-all hover:border-transparent hover:scale-110"
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 16px rgba(228,25,89,0.55)')}
+              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
+            >
+              <InstagramIcon />
+            </a>
+          </div>
         </div>
       </div>
       <p className="max-w-6xl mx-auto text-xs text-white/45 pt-6">{t.footer.rights}</p>

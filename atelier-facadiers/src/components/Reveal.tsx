@@ -20,8 +20,9 @@ export default function Reveal({
       className={className}
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(24px)',
-        transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+        transform: inView ? 'translateY(0)' : 'translateY(28px)',
+        filter: inView ? 'blur(0)' : 'blur(6px)',
+        transition: `opacity 0.85s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.85s cubic-bezier(0.16,1,0.3,1) ${delay}ms, filter 0.85s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
         ...style,
       }}
     >

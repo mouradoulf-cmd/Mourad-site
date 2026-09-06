@@ -1,5 +1,6 @@
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from './Reveal';
+import MagneticButton from './MagneticButton';
 
 export default function CtaBand() {
   const { t } = useLanguage();
@@ -11,12 +12,12 @@ export default function CtaBand() {
           {t.cta.heading} <span className="font-serif italic">{t.cta.headingAccent}</span>
         </h2>
         <p className="text-white/60 mb-8">{t.cta.text}</p>
-        <a
+        <MagneticButton
           href="tel:0474173333"
-          className="inline-flex bg-crimson hover:bg-[#c81450] text-white text-base font-medium px-9 py-4 rounded-full transition-all hover:scale-[1.03] active:scale-95 hover:shadow-lg hover:shadow-crimson/40"
+          className="inline-flex bg-crimson hover:bg-[#c81450] text-white text-base font-medium px-9 py-4 rounded-full transition-colors active:scale-95 hover:shadow-lg hover:shadow-crimson/40"
         >
           04 74 17 33 33
-        </a>
+        </MagneticButton>
       </Reveal>
     </section>
   );

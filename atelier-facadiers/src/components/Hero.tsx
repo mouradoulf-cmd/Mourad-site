@@ -1,9 +1,21 @@
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import heroVideo from '../assets/hero-video.mp4';
 import heroPoster from '../assets/hero-poster.jpg';
+import MagneticButton from './MagneticButton';
+import HeroAccent3D from './HeroAccent3D';
 
 export default function Hero() {
   const { t } = useLanguage();
+  const [showAccent, setShowAccent] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    setShowAccent(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setShowAccent(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   return (
     <section className="relative w-full h-screen overflow-hidden" style={{ height: '100dvh' }}>
@@ -26,6 +38,11 @@ export default function Hero() {
         className="absolute bottom-0 right-0 w-3/5 h-[20%] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at bottom right, rgba(5,8,13,1) 0%, rgba(5,8,13,1) 40%, rgba(5,8,13,0) 100%)' }}
       />
+      {showAccent && (
+        <div className="absolute bottom-2 right-2 w-64 h-64 pointer-events-none opacity-90">
+          <HeroAccent3D />
+        </div>
+      )}
 
       <div className="relative h-full flex flex-col items-center text-center px-5 pt-[26%] sm:pt-[22%] z-10">
         <h1 className="text-white leading-[0.95]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}>
@@ -59,13 +76,14 @@ export default function Hero() {
           {t.hero.text}
         </p>
 
-        <a
-          href="#contact"
-          className="hero-anim hero-fade mt-9 bg-crimson hover:bg-[#c81450] text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all hover:scale-[1.04] active:scale-95 hover:shadow-lg hover:shadow-crimson/40"
-          style={{ animationDelay: '1.05s' }}
-        >
-          {t.hero.cta}
-        </a>
+        <div className="hero-anim hero-fade mt-9" style={{ animationDelay: '1.05s' }}>
+          <MagneticButton
+            href="#contact"
+            className="bg-crimson hover:bg-[#c81450] text-white text-sm font-medium px-8 py-3.5 rounded-full transition-colors active:scale-95 hover:shadow-lg hover:shadow-crimson/40"
+          >
+            {t.hero.cta}
+          </MagneticButton>
+        </div>
       </div>
     </section>
   );
