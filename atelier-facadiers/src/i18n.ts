@@ -114,11 +114,13 @@ export const translations = {
     },
     news: {
       heading: 'Actualités',
+      title1: 'Ça',
+      titleAccent: 'bouge',
+      title2: 'en ce moment',
       viewAll: 'Voir toutes les actualités',
       readMore: 'Lire la suite',
       items: [
         { title: 'Fermeture estivale', date: null as string | null },
-        { title: 'Nouvelle gamme EQUITONE [inspira]', date: null as string | null },
         { title: "Nouveau bâtiment pour l'ossature !", date: '03 Juin 2026' },
         { title: 'Nouveau catalogue 2026', date: '02 Mars 2026' },
       ],
@@ -319,11 +321,13 @@ export const translations = {
     },
     news: {
       heading: 'News',
+      title1: 'Things are',
+      titleAccent: 'moving',
+      title2: 'right now',
       viewAll: 'View all news',
       readMore: 'Read more',
       items: [
         { title: 'Summer closure', date: null as string | null },
-        { title: 'New EQUITONE [inspira] range', date: null as string | null },
         { title: 'New building for the steel frame!', date: 'June 3, 2026' },
         { title: '2026 catalogue', date: 'March 2, 2026' },
       ],
