@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Boxes, ClipboardCheck, Truck, Ruler, LifeBuoy } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from './Reveal';
+import TiltCard from './TiltCard';
 
 import stockImg from '../assets/atelier-stock.jpg';
 import preconisationImg from '../assets/pillars/preconisation.jpg';
@@ -30,71 +32,69 @@ export default function Pillars() {
       </Reveal>
 
       <Reveal className="max-w-5xl mx-auto">
-        <div className="h-1 rounded-full overflow-hidden flex mb-8" aria-hidden="true">
-          {COLORS.map((c) => (
-            <span key={c} style={{ backgroundColor: c, flex: 1 }} />
-          ))}
-        </div>
-        <div className="flex flex-wrap justify-center gap-x-6 gap-y-5 sm:gap-x-10 mb-2">
+        <div className="relative flex justify-between items-start mb-14 px-2 sm:px-6">
+          <div className="absolute left-0 right-0 top-7 sm:top-8 h-px bg-white/10" aria-hidden="true" />
           {t.pillars.items.map(({ title }, i) => {
             const Icon = ICONS[i];
             const isActive = i === active;
+            const color = COLORS[i];
             return (
               <button
                 key={title}
                 type="button"
                 onClick={() => setActive(i)}
-                className="flex flex-col items-center gap-2 group"
+                className="relative z-10 flex flex-col items-center gap-2.5 group flex-1"
               >
-                <span
-                  className="flex items-center gap-1.5 text-sm sm:text-base font-display uppercase tracking-wide transition-colors"
-                  style={{ color: COLORS[i], textDecoration: isActive ? 'underline' : 'none', textUnderlineOffset: '4px' }}
+                <motion.span
+                  className="flex items-center justify-center rounded-full"
+                  animate={{
+                    width: isActive ? 60 : 44,
+                    height: isActive ? 60 : 44,
+                    backgroundColor: isActive ? color : 'rgba(255,255,255,0.06)',
+                    boxShadow: isActive ? `0 0 0 4px ${color}33, 0 8px 24px ${color}66` : '0 0 0 1px rgba(255,255,255,0.12)',
+                  }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <Icon size={16} strokeWidth={2} />
+                  <Icon size={isActive ? 24 : 18} strokeWidth={2} color={isActive ? '#fff' : color} />
+                </motion.span>
+                <span
+                  className="hidden sm:block text-xs sm:text-sm font-display uppercase tracking-wide text-center transition-colors"
+                  style={{ color: isActive ? color : 'rgba(255,255,255,0.5)' }}
+                >
                   {title}
                 </span>
-                <svg
-                  width="18"
-                  height="14"
-                  viewBox="0 0 18 14"
-                  style={{
-                    fill: COLORS[i],
-                    transform: isActive ? 'rotate(90deg)' : 'rotate(0deg)',
-                    transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1)',
-                  }}
-                >
-                  <polygon points="0,0 18,7 0,14" />
-                </svg>
               </button>
             );
           })}
         </div>
 
-        <div
-          key={active}
-          className="rounded-3xl p-6 sm:p-10 grid md:grid-cols-[1.2fr_1fr] gap-8 items-center overflow-hidden"
-          style={{ backgroundColor: activeColor, animation: 'panelFade 0.5s cubic-bezier(0.16,1,0.3,1)' }}
-        >
-          <div>
-            <h3 className="font-display uppercase text-xl sm:text-2xl text-white mb-4 leading-tight" style={{ textWrap: 'balance' }}>
-              {t.pillars.items[active].heading}
-            </h3>
-            <p className="text-sm sm:text-base text-white/90 leading-relaxed">{t.pillars.items[active].text}</p>
-          </div>
-          <img
-            src={IMAGES[active]}
-            alt={t.pillars.items[active].title}
-            className="w-full h-56 sm:h-64 object-cover rounded-2xl"
-          />
+        <div style={{ perspective: 1200 }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, rotateX: -6, y: 24, scale: 0.97 }}
+              animate={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+              exit={{ opacity: 0, rotateX: 6, y: -24, scale: 0.97 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="rounded-3xl p-6 sm:p-10 grid md:grid-cols-[1.2fr_1fr] gap-8 items-center overflow-hidden"
+              style={{ backgroundColor: activeColor, transformStyle: 'preserve-3d' }}
+            >
+              <div>
+                <span className="sm:hidden block text-xs font-display uppercase tracking-widest text-white/70 mb-2">
+                  {t.pillars.items[active].title}
+                </span>
+                <h3 className="font-display uppercase text-xl sm:text-2xl text-white mb-4 leading-tight" style={{ textWrap: 'balance' }}>
+                  {t.pillars.items[active].heading}
+                </h3>
+                <p className="text-sm sm:text-base text-white/90 leading-relaxed">{t.pillars.items[active].text}</p>
+              </div>
+              <TiltCard className="rounded-2xl overflow-hidden">
+                <img src={IMAGES[active]} alt={t.pillars.items[active].title} className="w-full h-56 sm:h-64 object-cover" />
+              </TiltCard>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </Reveal>
-
-      <style>{`
-        @keyframes panelFade {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </section>
   );
 }
