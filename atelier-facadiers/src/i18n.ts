@@ -54,6 +54,10 @@ export const translations = {
     },
     brands: ['Fundermax', 'Trespa', 'PURA', 'EQUITONE', 'Cedral', 'Rockpanel', 'Stacbond', 'Alpolic', 'Fiberdeck'],
     brandsHeading: 'Nos marques partenaires',
+    brandsTitle1: 'Les plus grandes marques,',
+    brandsAccent: 'réunies',
+    brandsTitle2: 'pour vos façades',
+    brandsHint: 'Glissez pour découvrir nos 9 marques',
     ossature: {
       heading: "Nos marques d'ossature, conçues par nos soins",
       items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Ossature sur mesure'],
@@ -262,6 +266,10 @@ export const translations = {
     },
     brands: ['Fundermax', 'Trespa', 'PURA', 'EQUITONE', 'Cedral', 'Rockpanel', 'Stacbond', 'Alpolic', 'Fiberdeck'],
     brandsHeading: 'Our partner brands',
+    brandsTitle1: 'The biggest brands,',
+    brandsAccent: 'brought together',
+    brandsTitle2: 'for your facades',
+    brandsHint: 'Drag to explore our 9 brands',
     ossature: {
       heading: 'Our own framework product lines',
       items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Custom framework'],

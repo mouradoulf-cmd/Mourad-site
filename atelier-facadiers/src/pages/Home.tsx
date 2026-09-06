@@ -22,13 +22,13 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <BrandStrip />
       <Pillars />
       <OssatureBrands />
       <OssatureStudy />
       <About />
       <Projects />
       <News />
+      <BrandStrip />
       <CtaBand />
     </>
   );
