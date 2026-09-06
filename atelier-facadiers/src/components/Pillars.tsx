@@ -4,6 +4,7 @@ import { Boxes, ClipboardCheck, Truck, Ruler, LifeBuoy } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from './Reveal';
 import TiltCard from './TiltCard';
+import AnimatedWords from './AnimatedWords';
 
 import stockImg from '../assets/atelier-stock.jpg';
 import preconisationImg from '../assets/pillars/preconisation.jpg';
@@ -24,9 +25,9 @@ export default function Pillars() {
     <section id="services" className="relative z-10 py-24 px-5 sm:px-8">
       <Reveal className="max-w-3xl mx-auto text-center mb-14">
         <h2 className="text-3xl sm:text-5xl font-light text-white" style={{ textWrap: 'balance' }}>
-          {t.pillars.heading1}{' '}
+          <AnimatedWords text={t.pillars.heading1} />{' '}
           <span className="font-display uppercase" style={{ letterSpacing: '0.04em' }}>
-            {t.pillars.heading2}
+            <AnimatedWords text={t.pillars.heading2} delayOffset={t.pillars.heading1.split(' ').length * 0.07} />
           </span>
         </h2>
       </Reveal>
