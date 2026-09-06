@@ -5,7 +5,6 @@ import batimentBicolore from '../assets/batiment-bicolore.jpg';
 import catalogue from '../assets/catalogue-2026.jpg';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from './Reveal';
-import EquitoneSwatchWall from './EquitoneSwatchWall';
 
 export default function Projects() {
   const { t } = useLanguage();
@@ -40,10 +39,7 @@ export default function Projects() {
           </Reveal>
         ))}
       </div>
-      <Reveal className="max-w-6xl mx-auto mt-5 grid sm:grid-cols-[2fr_1fr] gap-5">
-        <figure className="rounded-2xl overflow-hidden glass-panel aspect-video sm:aspect-auto sm:h-full">
-          <EquitoneSwatchWall />
-        </figure>
+      <Reveal className="max-w-xs mx-auto mt-5">
         <a
           id="documentation"
           href="#contact"
