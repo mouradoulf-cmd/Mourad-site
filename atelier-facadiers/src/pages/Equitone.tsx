@@ -1,39 +1,17 @@
-import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ArrowLeft, ShieldCheck, FileText } from 'lucide-react';
+import { ArrowLeft, ChevronRight, ShieldCheck, FileText } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from '../components/Reveal';
 import TiltCard from '../components/TiltCard';
+import EquitoneGammesGallery from '../components/EquitoneGammesGallery';
 
 import heroImg from '../assets/equitone/hero.jpg';
-import tectiva from '../assets/equitone/tectiva.jpg';
-import linea from '../assets/equitone/linea.jpg';
-import lunara from '../assets/equitone/lunara.jpg';
-import natura from '../assets/equitone/natura.jpg';
-import pictura from '../assets/equitone/pictura.jpg';
-import textura from '../assets/equitone/textura.jpg';
-import inspira from '../assets/equitone/inspira.jpg';
 import tergoDiagram from '../assets/equitone/tergo-diagram.png';
 
 const COLORS = ['#4fae8c', '#f5b90f', '#e41959', '#4c96d1', '#7d2a72'];
 
-const RANGES = [
-  { name: 'Tectiva', img: tectiva },
-  { name: 'Linea', img: linea },
-  { name: 'Lunara', img: lunara },
-  { name: 'Natura', img: natura },
-  { name: 'Pictura', img: pictura },
-  { name: 'Textura', img: textura },
-  { name: 'Inspira', img: inspira },
-];
-
 export default function Equitone() {
   const { t } = useLanguage();
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  function scroll(dir: number) {
-    trackRef.current?.scrollBy({ left: dir * 260, behavior: 'smooth' });
-  }
 
   return (
     <>
@@ -82,52 +60,13 @@ export default function Equitone() {
         </Reveal>
       </section>
 
-      <section className="relative z-10 pb-24 px-5 sm:px-8">
-        <Reveal className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl sm:text-3xl font-light text-white">{t.equitone.gammesHeading}</h2>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => scroll(-1)}
-                aria-label="Précédent"
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                type="button"
-                onClick={() => scroll(1)}
-                aria-label="Suivant"
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
-
-          <div
-            ref={trackRef}
-            className="flex gap-4 overflow-x-auto pb-4"
-            style={{ scrollSnapType: 'x mandatory', perspective: '900px', scrollbarWidth: 'none' }}
-          >
-            {RANGES.map(({ name, img }, i) => {
-              const color = COLORS[i % COLORS.length];
-              return (
-                <Reveal key={name} delay={i * 80} className="shrink-0">
-                  <TiltCard
-                    className="glass-panel rounded-2xl overflow-hidden shrink-0"
-                    style={{ width: 180, scrollSnapAlign: 'start', borderTop: `2px solid ${color}` }}
-                  >
-                    <img src={img} alt={name} className="w-full h-32 object-cover" draggable={false} />
-                    <div className="px-4 py-3 text-center">
-                      <span className="font-display uppercase text-sm text-white tracking-wide">{name}</span>
-                    </div>
-                  </TiltCard>
-                </Reveal>
-              );
-            })}
-          </div>
+      <section className="relative z-10 pb-24">
+        <Reveal className="max-w-6xl mx-auto px-5 sm:px-8 mb-4">
+          <h2 className="text-2xl sm:text-3xl font-light text-white">{t.equitone.gammesHeading}</h2>
+          <p className="text-white/40 text-xs mt-1">{t.equitone.gammesHint}</p>
+        </Reveal>
+        <Reveal className="w-full">
+          <EquitoneGammesGallery />
         </Reveal>
       </section>
 
