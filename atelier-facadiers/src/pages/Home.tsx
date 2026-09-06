@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import Hero from '../components/Hero';
 import BrandStrip from '../components/BrandStrip';
 import Pillars from '../components/Pillars';
-import MaterialsShowcase from '../components/MaterialsShowcase';
 import OssatureStudy from '../components/OssatureStudy';
 import About from '../components/About';
 import Projects from '../components/Projects';
@@ -23,7 +22,6 @@ export default function Home() {
     <>
       <Hero />
       <Pillars />
-      <MaterialsShowcase />
       <About />
       <Projects />
       <News />
