@@ -1,13 +1,13 @@
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from './Reveal';
+import EquitoneNewsThumb from './EquitoneNewsThumb';
 import team from '../assets/team.jpg';
-import equitone from '../assets/equitone-swatches.jpg';
 import heroChantier from '../assets/hero-chantier.jpg';
 import catalogue from '../assets/catalogue-2026.jpg';
 
 export default function News() {
   const { t } = useLanguage();
-  const images = [team, equitone, heroChantier, catalogue];
+  const images = [team, null, heroChantier, catalogue];
 
   return (
     <section id="actualites" className="relative z-10 py-24 px-5 sm:px-8">
@@ -24,11 +24,15 @@ export default function News() {
         {t.news.items.map((item, i) => (
           <Reveal key={item.title} delay={i * 90}>
             <a href="#contact" className="glass-panel rounded-2xl overflow-hidden flex flex-col sm:flex-row group h-full">
-              <img
-                src={images[i]}
-                alt={item.title}
-                className="w-full sm:w-40 h-40 sm:h-auto object-cover flex-shrink-0 transition-transform duration-700 group-hover:scale-105"
-              />
+              {images[i] ? (
+                <img
+                  src={images[i]}
+                  alt={item.title}
+                  className="w-full sm:w-40 h-40 sm:h-auto object-cover flex-shrink-0 transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <EquitoneNewsThumb className="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 self-stretch" />
+              )}
               <div className="p-5 flex flex-col">
                 {item.date && (
                   <span className="text-xs text-crimson underline underline-offset-2 mb-2">{item.date}</span>
