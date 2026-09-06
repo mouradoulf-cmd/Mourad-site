@@ -113,7 +113,9 @@ class Media {
     bend,
     textColor,
     borderRadius = 0,
-    font
+    font,
+    planeWidth = 700,
+    planeHeight = 900
   }) {
     this.extra = 0;
     this.geometry = geometry;
@@ -130,6 +132,8 @@ class Media {
     this.textColor = textColor;
     this.borderRadius = borderRadius;
     this.font = font;
+    this.planeWidth = planeWidth;
+    this.planeHeight = planeHeight;
     this.createShader();
     this.createMesh();
     this.createTitle();
@@ -275,8 +279,8 @@ class Media {
       }
     }
     this.scale = this.screen.height / 1500;
-    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
-    this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
+    this.plane.scale.y = (this.viewport.height * (this.planeHeight * this.scale)) / this.screen.height;
+    this.plane.scale.x = (this.viewport.width * (this.planeWidth * this.scale)) / this.screen.width;
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
     this.padding = 2;
     this.width = this.plane.scale.x + this.padding;
@@ -295,7 +299,9 @@ class App {
       borderRadius = 0,
       font = 'bold 30px Figtree',
       scrollSpeed = 2,
-      scrollEase = 0.05
+      scrollEase = 0.05,
+      planeWidth = 700,
+      planeHeight = 900
     } = {}
   ) {
     document.documentElement.classList.remove('no-js');
@@ -308,7 +314,7 @@ class App {
     this.createScene();
     this.onResize();
     this.createGeometry();
-    this.createMedias(items, bend, textColor, borderRadius, font);
+    this.createMedias(items, bend, textColor, borderRadius, font, planeWidth, planeHeight);
     this.update();
     this.addEventListeners();
   }
@@ -336,7 +342,7 @@ class App {
       widthSegments: 100
     });
   }
-  createMedias(items, bend = 1, textColor, borderRadius, font) {
+  createMedias(items, bend = 1, textColor, borderRadius, font, planeWidth = 700, planeHeight = 900) {
     const galleryItems = items && items.length ? items : [];
     this.mediasImages = galleryItems.concat(galleryItems);
     this.medias = this.mediasImages.map((data, index) => {
@@ -354,7 +360,9 @@ class App {
         bend,
         textColor,
         borderRadius,
-        font
+        font,
+        planeWidth,
+        planeHeight
       });
     });
   }
@@ -452,7 +460,9 @@ export default function CircularGallery({
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
   scrollSpeed = 2,
-  scrollEase = 0.05
+  scrollEase = 0.05,
+  planeWidth = 700,
+  planeHeight = 900
 }) {
   const containerRef = useRef(null);
   useEffect(() => {
@@ -472,13 +482,15 @@ export default function CircularGallery({
         borderRadius,
         font,
         scrollSpeed,
-        scrollEase
+        scrollEase,
+        planeWidth,
+        planeHeight
       });
     });
     return () => {
       cancelled = true;
       if (app) app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, planeWidth, planeHeight]);
   return <div className="circular-gallery" ref={containerRef} />;
 }

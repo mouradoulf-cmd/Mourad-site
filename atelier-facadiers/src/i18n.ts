@@ -53,6 +53,7 @@ export const translations = {
       cta: 'Demander un devis',
     },
     brands: ['Fundermax', 'Trespa', 'PURA', 'EQUITONE', 'Cedral', 'Rockpanel', 'Stacbond', 'Alpolic', 'Fiberdeck'],
+    brandsHeading: 'Nos marques partenaires',
     ossature: {
       heading: "Nos marques d'ossature, conçues par nos soins",
       items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Ossature sur mesure'],
@@ -260,6 +261,7 @@ export const translations = {
       cta: 'Get a quote',
     },
     brands: ['Fundermax', 'Trespa', 'PURA', 'EQUITONE', 'Cedral', 'Rockpanel', 'Stacbond', 'Alpolic', 'Fiberdeck'],
+    brandsHeading: 'Our partner brands',
     ossature: {
       heading: 'Our own framework product lines',
       items: ['InnoCLAD', 'InnoCLAD+', 'TradiCLAD', 'TradiCLAD+', 'Custom framework'],
