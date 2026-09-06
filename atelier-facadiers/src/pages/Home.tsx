@@ -23,12 +23,12 @@ export default function Home() {
     <>
       <Hero />
       <Pillars />
-      <OssatureBrands />
       <OssatureStudy />
       <About />
       <Projects />
       <News />
       <BrandStrip />
+      <OssatureBrands />
       <CtaBand />
     </>
   );
