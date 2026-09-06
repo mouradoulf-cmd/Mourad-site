@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Hero from '../components/Hero';
+import ArchitectureScene from '../components/ArchitectureScene';
 import BrandStrip from '../components/BrandStrip';
 import Pillars from '../components/Pillars';
 import OssatureBrands from '../components/OssatureBrands';
@@ -22,6 +23,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ArchitectureScene />
       <Pillars />
       <OssatureStudy />
       <About />
