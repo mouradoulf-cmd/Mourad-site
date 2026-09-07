@@ -2,9 +2,59 @@
   "use strict";
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   var hasGsap = !!window.gsap;
 
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- Preloader ---------- */
+  var preloader = document.getElementById("preloader");
+  if (preloader) {
+    var introSeen = false;
+    try { introSeen = sessionStorage.getItem("giulivoIntroSeen") === "1"; } catch (err) { introSeen = false; }
+    if (introSeen || prefersReducedMotion) {
+      preloader.remove();
+    } else {
+      try { sessionStorage.setItem("giulivoIntroSeen", "1"); } catch (err) { /* noop */ }
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          preloader.classList.add("is-done");
+          setTimeout(function () { preloader.remove(); }, 900);
+        }, 550);
+      });
+    }
+  }
+
+  /* ---------- Split a heading's text into animatable word spans ---------- */
+  function splitWords(el) {
+    if (!el || el.dataset.split === "done") return;
+    el.dataset.split = "done";
+    var text = el.textContent;
+    var tokens = text.split(/(\s+)/);
+    el.innerHTML = "";
+    el.classList.add("split-parent");
+    var wordIndex = 0;
+    tokens.forEach(function (token) {
+      if (/^\s+$/.test(token) || token.length === 0) {
+        el.appendChild(document.createTextNode(token));
+        return;
+      }
+      var span = document.createElement("span");
+      span.className = "split-word";
+      span.style.setProperty("--wi", wordIndex);
+      span.textContent = token;
+      el.appendChild(span);
+      wordIndex++;
+    });
+  }
+
+  /* ---------- Auto-tag media for the curtain reveal effect ---------- */
+  document.querySelectorAll(".story__frame").forEach(function (el) {
+    el.classList.add("reveal", "reveal-media");
+  });
+  document.querySelectorAll(".gallery__item.reveal").forEach(function (el) {
+    el.classList.add("reveal-media");
+  });
 
   /* ---------- Navbar scroll state + progress bar ---------- */
   var navbar = document.getElementById("navbar");
@@ -88,6 +138,31 @@
     revealEls = [];
   }, 6000);
 
+  /* ---------- 3D word reveal on section headings ---------- */
+  var splitTargets = Array.prototype.slice.call(document.querySelectorAll("main h2"));
+  splitTargets.forEach(function (el) { splitWords(el); });
+
+  if (!prefersReducedMotion && "IntersectionObserver" in window) {
+    var splitIO = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll(".split-word").forEach(function (w) {
+              w.classList.add("is-visible");
+            });
+            splitIO.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    splitTargets.forEach(function (el) { splitIO.observe(el); });
+  } else {
+    splitTargets.forEach(function (el) {
+      el.querySelectorAll(".split-word").forEach(function (w) { w.classList.add("is-visible"); });
+    });
+  }
+
   /* ---------- Animated counters ---------- */
   var counters = document.querySelectorAll(".stat__num");
   function animateCounter(el) {
@@ -130,19 +205,50 @@
     counters.forEach(animateCounter);
   }
 
-  /* ---------- Subtle hero parallax ---------- */
+  /* ---------- Hero parallax depth (scroll drift + mouse-driven 3D tilt) ---------- */
   var heroBg = document.querySelector(".hero__bg");
+  var heroSection = document.querySelector(".hero");
+  var heroContentEl = heroSection ? heroSection.querySelector(".hero__content") : null;
+  var heroScrollY = 0, heroMouseX = 0, heroMouseY = 0;
+
+  function updateHeroBgTransform() {
+    if (!heroBg) return;
+    heroBg.style.transform = "translate(" + heroMouseX.toFixed(1) + "px," + (heroScrollY * 0.15 + heroMouseY).toFixed(1) + "px)";
+  }
+
   if (heroBg && window.matchMedia("(min-width: 760px)").matches) {
     window.addEventListener(
       "scroll",
       function () {
         var y = window.scrollY || window.pageYOffset;
         if (y < window.innerHeight) {
-          heroBg.style.transform = "translateY(" + y * 0.15 + "px)";
+          heroScrollY = y;
+          updateHeroBgTransform();
         }
       },
       { passive: true }
     );
+  }
+
+  if (heroSection && canHover && !prefersReducedMotion) {
+    heroSection.addEventListener("mousemove", function (e) {
+      var rect = heroSection.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width - 0.5;
+      var py = (e.clientY - rect.top) / rect.height - 0.5;
+      heroMouseX = px * 18;
+      heroMouseY = py * 12;
+      updateHeroBgTransform();
+      if (heroContentEl) {
+        heroContentEl.style.transform =
+          "perspective(1400px) rotateY(" + (px * 2.6).toFixed(2) + "deg) rotateX(" + (-py * 2).toFixed(2) + "deg)";
+      }
+    });
+    heroSection.addEventListener("mouseleave", function () {
+      heroMouseX = 0;
+      heroMouseY = 0;
+      updateHeroBgTransform();
+      if (heroContentEl) heroContentEl.style.transform = "";
+    });
   }
 
   /* ---------- Animated menu "book" (page-flip) ---------- */
@@ -261,7 +367,6 @@
 
   /* ---------- Custom cursor ---------- */
   var cursorDot = document.getElementById("cursorDot");
-  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (cursorDot && canHover) {
     document.body.classList.add("has-custom-cursor");
     var mouseX = -100, mouseY = -100, curX = -100, curY = -100;
@@ -284,17 +389,44 @@
     (function cursorLoop() {
       curX += (mouseX - curX) * 0.28;
       curY += (mouseY - curY) * 0.28;
-      cursorDot.style.transform = "translate(" + curX + "px," + curY + "px)";
+      cursorDot.style.transform = "translate(" + curX + "px," + curY + "px) translate(-50%,-50%)";
       requestAnimationFrame(cursorLoop);
     })();
 
+    /* Auto-derive a cursor label from each element's own text, so the
+       dot can morph into a small pill announcing what a click will do. */
+    document.querySelectorAll(".btn--primary, .menu-card").forEach(function (el) {
+      if (el.hasAttribute("data-cursor")) return;
+      var source = el.classList.contains("menu-card") ? el.querySelector("h3") : el;
+      var label = source ? source.textContent.trim() : "";
+      if (label) el.setAttribute("data-cursor", label.length > 20 ? label.slice(0, 18) + "…" : label);
+    });
+    document.querySelectorAll(".gallery__item").forEach(function (el) {
+      if (el.hasAttribute("data-cursor")) return;
+      var caption = el.querySelector("figcaption");
+      if (caption) el.setAttribute("data-cursor", caption.textContent.trim());
+    });
+
+    var cursorLabel = cursorDot.querySelector(".cursor-dot__label");
     var hoverSelector = "a, button, .menu-tab, .gallery__item, .menu-card";
     document.addEventListener("mouseover", function (e) {
+      var labeled = e.target.closest && e.target.closest("[data-cursor]");
+      if (labeled && cursorLabel) {
+        cursorLabel.textContent = labeled.getAttribute("data-cursor");
+        cursorDot.classList.add("is-labeled");
+        cursorDot.classList.remove("is-hovering");
+        return;
+      }
       if (e.target.closest && e.target.closest(hoverSelector)) {
         cursorDot.classList.add("is-hovering");
       }
     });
     document.addEventListener("mouseout", function (e) {
+      var labeled = e.target.closest && e.target.closest("[data-cursor]");
+      if (labeled) {
+        cursorDot.classList.remove("is-labeled");
+        if (cursorLabel) cursorLabel.textContent = "";
+      }
       if (e.target.closest && e.target.closest(hoverSelector)) {
         cursorDot.classList.remove("is-hovering");
       }
