@@ -26,11 +26,13 @@ assets/img/              → images du site
 
 ## Photos
 
-Le site utilise 5 photos réelles des plats du restaurant, dans `assets/img/` :
-`tartare.jpg`, `linguine-frutti-di-mare.jpg`, `tonno-pistacchio.jpg`,
-`panna-cotta.jpg` et `table-partage.jpg` (fond du hero et grande vignette de
-la galerie). Elles sont utilisées dans le hero, la section "Notre histoire",
-les cartes du menu et la galerie.
+Le site utilise des photos réelles du restaurant, dans `assets/img/` :
+les plats (`tartare.jpg`, `linguine-frutti-di-mare.jpg`, `tonno-pistacchio.jpg`,
+`panna-cotta.jpg`, `table-partage.jpg`…) utilisés dans le hero, "Notre histoire",
+les cartes du menu et la galerie, ainsi que la terrasse (`terrazza-vista.jpg`,
+`terrazza-pergola.jpg`, `terrazza-tavoli.jpg`, `terrazza-veranda.jpg`,
+`terrazza-ulivo.jpg`) utilisée pour le fond du hero, la section "L'atmosfera"
+et plusieurs vignettes de la galerie.
 
 Pour ajouter ou remplacer une photo :
 
