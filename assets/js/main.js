@@ -346,6 +346,42 @@
     });
   }
 
+  /* ---------- Terra / Mare menu filter ---------- */
+  var originToggle = document.querySelector(".menu-origin");
+  if (originToggle) {
+    var originBtns = Array.prototype.slice.call(originToggle.querySelectorAll(".origin-btn"));
+    var originIndicator = originToggle.querySelector(".menu-origin__indicator");
+
+    function moveOriginIndicator(btn) {
+      originIndicator.style.width = btn.offsetWidth + "px";
+      originIndicator.style.transform = "translateX(" + btn.offsetLeft + "px)";
+    }
+
+    function applyOriginFilter(origin) {
+      document.querySelectorAll(".menu-list__row").forEach(function (row) {
+        var rowOrigin = row.getAttribute("data-origin");
+        var visible = origin === "all" || !rowOrigin || rowOrigin === origin;
+        row.classList.toggle("is-filtered-out", !visible);
+      });
+    }
+
+    originBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        originBtns.forEach(function (b) { b.classList.remove("is-active"); });
+        btn.classList.add("is-active");
+        originToggle.setAttribute("data-active", btn.dataset.origin);
+        moveOriginIndicator(btn);
+        applyOriginFilter(btn.dataset.origin);
+      });
+    });
+
+    requestAnimationFrame(function () { moveOriginIndicator(originBtns[0]); });
+    window.addEventListener("resize", function () {
+      var active = originBtns.filter(function (b) { return b.classList.contains("is-active"); })[0];
+      if (active) moveOriginIndicator(active);
+    });
+  }
+
   /* ---------- Scroll-spy navigation ---------- */
   var sections = Array.prototype.slice.call(document.querySelectorAll("main > section[id]"));
   var navAnchors = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));

@@ -786,7 +786,56 @@ a { color: inherit; text-decoration: none; }
 .menu-card p { color: var(--text-soft); font-size: .92rem; margin: 0 26px 26px; }
 
 /* ---------- Animated menu tabs ---------- */
-.menu-tabs-wrap { margin-top: 70px; display: flex; justify-content: center; }
+/* ---------- Terra / Mare filter ---------- */
+.menu-origin-wrap { display: flex; justify-content: center; margin-top: 32px; }
+.menu-origin {
+  position: relative;
+  display: inline-flex;
+  gap: 4px;
+  padding: 5px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 100px;
+}
+.origin-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  border-radius: 100px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .35s var(--ease);
+}
+.origin-btn.is-active { color: #fff; }
+.menu-origin__indicator {
+  position: absolute;
+  z-index: 1;
+  top: 5px; left: 5px;
+  height: calc(100% - 10px);
+  border-radius: 100px;
+  background: linear-gradient(120deg, var(--terracotta), var(--gold));
+  box-shadow: 0 10px 24px rgba(217,102,47,.4);
+  transition: transform .5s var(--ease-bounce), width .5s var(--ease-bounce), background .45s var(--ease), box-shadow .45s var(--ease);
+}
+.menu-origin[data-active="terra"] .menu-origin__indicator {
+  background: linear-gradient(120deg, var(--olive), #5c6f3d);
+  box-shadow: 0 10px 24px rgba(124,143,87,.4);
+}
+.menu-origin[data-active="mare"] .menu-origin__indicator {
+  background: linear-gradient(120deg, #2f7f9e, #6bb8d6);
+  box-shadow: 0 10px 24px rgba(47,127,158,.4);
+}
+
+.menu-tabs-wrap { margin-top: 24px; display: flex; justify-content: center; }
 .menu-tabs {
   position: relative;
   display: inline-flex;
@@ -919,10 +968,34 @@ a { color: inherit; text-decoration: none; }
   gap: 18px;
   padding: 12px 0;
   border-bottom: 1px dotted var(--line);
-  transition: transform .3s var(--ease);
+  max-height: 200px;
+  overflow: hidden;
+  transition: transform .3s var(--ease), max-height .4s var(--ease), opacity .3s var(--ease), padding .3s var(--ease), margin .3s var(--ease), border-color .3s var(--ease);
 }
 .menu-list__row:hover { transform: translateX(6px); }
+.menu-list__row.is-filtered-out {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  border-color: transparent;
+  pointer-events: none;
+}
+.menu-panel.is-entering .menu-list__row.is-filtered-out { animation: none; }
 .menu-list__name { display: flex; flex-direction: column; gap: 3px; }
+.menu-list__row[data-origin] .menu-list__name span { position: relative; padding-left: 16px; }
+.menu-list__row[data-origin] .menu-list__name span::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  width: 7px; height: 7px;
+  margin-top: -3.5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.menu-list__row[data-origin="terra"] .menu-list__name span::before { background: var(--olive); }
+.menu-list__row[data-origin="mare"] .menu-list__name span::before { background: #4a9dbf; }
 .menu-list__name span { font-family: var(--font-display); font-size: 1.02rem; color: var(--cream); }
 .menu-list__name small { color: var(--text-soft); font-size: .85rem; }
 .menu-list__price {

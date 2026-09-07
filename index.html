@@ -216,6 +216,15 @@
         </div>
       </div>
 
+      <div class="menu-origin-wrap reveal">
+        <div class="menu-origin" role="group" aria-label="Filtra il menu per Terra o Mare" data-active="all">
+          <button type="button" class="origin-btn is-active" data-origin="all">Tutto</button>
+          <button type="button" class="origin-btn" data-origin="terra"><span aria-hidden="true">🌿</span> Terra</button>
+          <button type="button" class="origin-btn" data-origin="mare"><span aria-hidden="true">🌊</span> Mare</button>
+          <span class="menu-origin__indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+
       <div class="menu-tabs-wrap reveal">
         <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Categorie del menu">
           <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-antipasti" data-panel="antipasti">
@@ -245,16 +254,32 @@
         <div class="menu-panels" id="menuPanels">
         <div class="menu-panel is-active" id="panel-antipasti" role="tabpanel" data-label="Antipasti">
           <div class="menu-panel__grid">
-            <div class="menu-list__row" style="--i:0">
-              <div class="menu-list__name"><span>Polpo alla griglia</span><small>Con crema di patate e olio alla paprika dolce</small></div>
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
+              <div class="menu-list__name"><span>Burratina</span><small>Su crema di pomodori gialli, melanzana fumè e olive disidratate</small></div>
+              <span class="menu-list__price">9&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
+              <div class="menu-list__name"><span>Uovo pochè</span><small>Con asparagi, crema di pecorino semistagionato e crumble di mais</small></div>
+              <span class="menu-list__price">9&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
+              <div class="menu-list__name"><span>Rustico toscano</span><small>Affettati, formaggi, polentina e crostino ai fegatini</small></div>
+              <span class="menu-list__price">14&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
+              <div class="menu-list__name"><span>Tartare di fassona piemontese</span><small>Cipolle in agrodolce, tuorlo marinato, crema di burrata e senape in grani</small></div>
               <span class="menu-list__price">15&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:1">
+            <div class="menu-list__row" data-origin="terra" style="--i:4">
+              <div class="menu-list__name"><span>Prosciutto Patanegra</span></div>
+              <span class="menu-list__price">19&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
               <div class="menu-list__name"><span>Impepata di cozze</span></div>
               <span class="menu-list__price">11&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:2">
-              <div class="menu-list__name"><span>Tris Giulivo</span><small>Seppie alla griglia con finocchio croccante, tonno marinato alla curcuma, alici dorate con maionese d'aglio</small></div>
+            <div class="menu-list__row" data-origin="mare" style="--i:6">
+              <div class="menu-list__name"><span>Tris Giulivo</span><small>Seppie alla griglia con finocchio croccante e pomodorini, tonno marinato alla curcuma, alici dorate con maionese d'aglio</small></div>
               <span class="menu-list__price">16&nbsp;€</span>
             </div>
           </div>
@@ -263,66 +288,58 @@
         <div class="menu-panel" id="panel-primi" role="tabpanel" data-label="Primi piatti">
           <p class="menu-list__note">La pasta fresca è fatta a mano, prodotta dal pastificio artigianale "La Castellana".</p>
           <div class="menu-panel__grid">
-            <div class="menu-list__row" style="--i:0">
-              <div class="menu-list__name"><span>Tagliolini con bisque di gamberi e limone</span></div>
-              <span class="menu-list__price">14&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:1">
-              <div class="menu-list__name"><span>Rigatoncini alla tarantina</span></div>
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
+              <div class="menu-list__name"><span>Risotto alle erbe aromatiche</span><small>Con caprino fresco, granella di nocciole tostate e polvere di speck</small></div>
               <span class="menu-list__price">12&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:2">
-              <div class="menu-list__name"><span>Chitarrini allo scoglio</span></div>
-              <span class="menu-list__price">15&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:3">
-              <div class="menu-list__name"><span>Risotto cacio e pepe</span><small>Con salsiccia croccante</small></div>
-              <span class="menu-list__price">12&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:4">
-              <div class="menu-list__name"><span>Pici al vino rosso</span><small>Al ragù d'anatra</small></div>
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
+              <div class="menu-list__name"><span>Rigatoncini al pomodoro fresco</span><small>Con stracciatella e pesto</small></div>
               <span class="menu-list__price">13&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:5">
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
               <div class="menu-list__name"><span>Gigli alla Giulivo</span><small>Ragù di ossobuco, olive taggiasche e zafferano</small></div>
               <span class="menu-list__price">14&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:6">
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
               <div class="menu-list__name"><span>Cappellacci di patate</span><small>Su crema di porcini, fonduta di pecorino e guanciale croccante</small></div>
               <span class="menu-list__price">14&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:7">
-              <div class="menu-list__name"><span>Tagliolini al tartufo marzuolo</span></div>
-              <span class="menu-list__price">18&nbsp;€</span>
+            <div class="menu-list__row" data-origin="mare" style="--i:4">
+              <div class="menu-list__name"><span>Rigatoncini alla tarantina</span></div>
+              <span class="menu-list__price">12&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
+              <div class="menu-list__name"><span>Chitarrini allo scoglio</span></div>
+              <span class="menu-list__price">15&nbsp;€</span>
             </div>
           </div>
         </div>
 
         <div class="menu-panel" id="panel-secondi" role="tabpanel" data-label="Secondi piatti">
           <div class="menu-panel__grid">
-            <div class="menu-list__row" style="--i:0">
-              <div class="menu-list__name"><span>Baccalà con porri</span><small>Su crema di ceci</small></div>
-              <span class="menu-list__price">16&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:1">
-              <div class="menu-list__name"><span>Frittura di totani e gamberoni</span></div>
-              <span class="menu-list__price">16&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:2">
-              <div class="menu-list__name"><span>Tonno in crosta di pistacchio</span><small>Con riduzione di aceto balsamico</small></div>
-              <span class="menu-list__price">18&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:3">
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
               <div class="menu-list__name"><span>Filetto di maiale</span><small>Cipolle al vino rosso, soia e fonduta di pecorino semistagionato</small></div>
               <span class="menu-list__price">14&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:4">
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
               <div class="menu-list__name"><span>Petto d'anatra al Chianti classico</span></div>
               <span class="menu-list__price">15&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:5">
-              <div class="menu-list__name"><span>Filetto di manzo al pepe verde</span></div>
-              <span class="menu-list__price">20&nbsp;€</span>
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
+              <div class="menu-list__name"><span>Peposo della tradizione</span></div>
+              <span class="menu-list__price">16&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
+              <div class="menu-list__name"><span>Fracosta di manzo</span><small>Con crudaiola di pomodori e rucola</small></div>
+              <span class="menu-list__price">17&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:4">
+              <div class="menu-list__name"><span>Frittura di totani e gamberoni</span></div>
+              <span class="menu-list__price">16&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
+              <div class="menu-list__name"><span>Tonno in crosta di pistacchio</span><small>Con riduzione di aceto balsamico</small></div>
+              <span class="menu-list__price">18&nbsp;€</span>
             </div>
           </div>
         </div>
@@ -331,8 +348,8 @@
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Patate fritte</span></div><span class="menu-list__price">4,50&nbsp;€</span></div>
             <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Patate arrosto</span></div><span class="menu-list__price">4,50&nbsp;€</span></div>
-            <div class="menu-list__row" style="--i:2"><div class="menu-list__name"><span>Fagioli cannellini</span></div><span class="menu-list__price">4,50&nbsp;€</span></div>
-            <div class="menu-list__row" style="--i:3"><div class="menu-list__name"><span>Verdure saltate</span><small>Secondo stagione</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name"><span>Verdure saltate</span><small>Secondo stagione</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name"><span>Fagioli cannellini</span></div><span class="menu-list__price">4,50&nbsp;€</span></div>
           </div>
         </div>
 

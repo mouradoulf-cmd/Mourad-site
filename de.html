@@ -220,6 +220,15 @@
         </div>
       </div>
 
+      <div class="menu-origin-wrap reveal">
+        <div class="menu-origin" role="group" aria-label="Speisekarte nach Land oder Meer filtern" data-active="all">
+          <button type="button" class="origin-btn is-active" data-origin="all">Alle</button>
+          <button type="button" class="origin-btn" data-origin="terra"><span aria-hidden="true">🌿</span> Land</button>
+          <button type="button" class="origin-btn" data-origin="mare"><span aria-hidden="true">🌊</span> Meer</button>
+          <span class="menu-origin__indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+
       <div class="menu-tabs-wrap reveal">
         <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Menükategorien">
           <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-antipasti" data-panel="antipasti">
@@ -249,16 +258,32 @@
         <div class="menu-panels" id="menuPanels">
         <div class="menu-panel is-active" id="panel-antipasti" role="tabpanel" data-label="Vorspeisen">
           <div class="menu-panel__grid">
-            <div class="menu-list__row" style="--i:0">
-              <div class="menu-list__name"><span>Polpo alla griglia</span><small>Gegrillter Oktopus, mit Kartoffelcreme und süßem Paprikaöl</small></div>
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
+              <div class="menu-list__name"><span>Burratina</span><small>Auf Creme von gelben Tomaten, geräucherter Aubergine und getrockneten Oliven</small></div>
+              <span class="menu-list__price">9&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
+              <div class="menu-list__name"><span>Uovo pochè</span><small>Pochiertes Ei mit Spargel, Creme von mittelaltem Pecorino und Maiscrumble</small></div>
+              <span class="menu-list__price">9&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
+              <div class="menu-list__name"><span>Rustico toscano</span><small>Aufschnitt, Käse, Polenta und Crostino mit Hühnerleber</small></div>
+              <span class="menu-list__price">14&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
+              <div class="menu-list__name"><span>Tartare di fassona piemontese</span><small>Piemonteser Rindertatar, süß-saure Zwiebeln, mariniertes Eigelb, Burratacreme und Senfkörner</small></div>
               <span class="menu-list__price">15&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:1">
+            <div class="menu-list__row" data-origin="terra" style="--i:4">
+              <div class="menu-list__name"><span>Prosciutto Patanegra</span><small>Iberischer Patanegra-Schinken</small></div>
+              <span class="menu-list__price">19&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
               <div class="menu-list__name"><span>Impepata di cozze</span><small>Gepfefferte Miesmuscheln</small></div>
               <span class="menu-list__price">11&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:2">
-              <div class="menu-list__name"><span>Tris Giulivo</span><small>Gegrillter Tintenfisch mit knackigem Fenchel, in Kurkuma marinierter Thunfisch, goldene Sardellen mit Knoblauchmayonnaise</small></div>
+            <div class="menu-list__row" data-origin="mare" style="--i:6">
+              <div class="menu-list__name"><span>Tris Giulivo</span><small>Gegrillter Tintenfisch mit knackigem Fenchel und Kirschtomaten, in Kurkuma marinierter Thunfisch, goldene Sardellen mit Knoblauchmayonnaise</small></div>
               <span class="menu-list__price">16&nbsp;€</span>
             </div>
           </div>
@@ -267,66 +292,58 @@
         <div class="menu-panel" id="panel-primi" role="tabpanel" data-label="Erste Gänge">
           <p class="menu-list__note">Unsere frische Pasta wird von Hand hergestellt, produziert von der handwerklichen Pastamanufaktur „La Castellana".</p>
           <div class="menu-panel__grid">
-            <div class="menu-list__row" style="--i:0">
-              <div class="menu-list__name"><span>Tagliolini con bisque di gamberi e limone</span><small>Tagliolini mit Garnelen-Bisque und Zitrone</small></div>
-              <span class="menu-list__price">14&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:1">
-              <div class="menu-list__name"><span>Rigatoncini alla tarantina</span><small>Rigatoncini nach Art von Taranto</small></div>
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
+              <div class="menu-list__name"><span>Risotto alle erbe aromatiche</span><small>Kräuterrisotto mit frischem Ziegenkäse, gerösteten Haselnüssen und Speckpulver</small></div>
               <span class="menu-list__price">12&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:2">
-              <div class="menu-list__name"><span>Chitarrini allo scoglio</span><small>Chitarrini mit gemischten Meeresfrüchten</small></div>
-              <span class="menu-list__price">15&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:3">
-              <div class="menu-list__name"><span>Risotto cacio e pepe</span><small>Mit knuspriger Salsiccia</small></div>
-              <span class="menu-list__price">12&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:4">
-              <div class="menu-list__name"><span>Pici al vino rosso</span><small>Mit Entenragù</small></div>
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
+              <div class="menu-list__name"><span>Rigatoncini al pomodoro fresco</span><small>Rigatoncini mit frischer Tomate, Stracciatella und Pesto</small></div>
               <span class="menu-list__price">13&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:5">
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
               <div class="menu-list__name"><span>Gigli alla Giulivo</span><small>Ossobuco-Ragù mit Taggiasca-Oliven und Safran</small></div>
               <span class="menu-list__price">14&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:6">
-              <div class="menu-list__name"><span>Cappellacci di patate</span><small>Auf Steinpilzcreme, mit Pecorino-Fonduta und knusprigem Guanciale</small></div>
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
+              <div class="menu-list__name"><span>Cappellacci di patate</span><small>Kartoffel-Cappellacci, Steinpilzcreme, Pecorino-Fonduta und knuspriger Guanciale</small></div>
               <span class="menu-list__price">14&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:7">
-              <div class="menu-list__name"><span>Tagliolini al tartufo marzuolo</span><small>Mit Frühlingstrüffel</small></div>
-              <span class="menu-list__price">18&nbsp;€</span>
+            <div class="menu-list__row" data-origin="mare" style="--i:4">
+              <div class="menu-list__name"><span>Rigatoncini alla tarantina</span><small>Rigatoncini nach Art von Taranto</small></div>
+              <span class="menu-list__price">12&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
+              <div class="menu-list__name"><span>Chitarrini allo scoglio</span><small>Chitarrini mit gemischten Meeresfrüchten</small></div>
+              <span class="menu-list__price">15&nbsp;€</span>
             </div>
           </div>
         </div>
 
         <div class="menu-panel" id="panel-secondi" role="tabpanel" data-label="Hauptgänge">
           <div class="menu-panel__grid">
-            <div class="menu-list__row" style="--i:0">
-              <div class="menu-list__name"><span>Baccalà con porri</span><small>Stockfisch mit Lauch, auf Kichererbsencreme</small></div>
-              <span class="menu-list__price">16&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:1">
-              <div class="menu-list__name"><span>Frittura di totani e gamberoni</span><small>Frittierter Tintenfisch und Riesengarnelen</small></div>
-              <span class="menu-list__price">16&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:2">
-              <div class="menu-list__name"><span>Tonno in crosta di pistacchio</span><small>Mit Balsamico-Reduktion</small></div>
-              <span class="menu-list__price">18&nbsp;€</span>
-            </div>
-            <div class="menu-list__row" style="--i:3">
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
               <div class="menu-list__name"><span>Filetto di maiale</span><small>Schweinefilet, Zwiebeln in Rotwein, Sojasauce und Fonduta aus mittelaltem Pecorino</small></div>
               <span class="menu-list__price">14&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:4">
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
               <div class="menu-list__name"><span>Petto d'anatra al Chianti classico</span><small>Entenbrust in Chianti Classico</small></div>
               <span class="menu-list__price">15&nbsp;€</span>
             </div>
-            <div class="menu-list__row" style="--i:5">
-              <div class="menu-list__name"><span>Filetto di manzo al pepe verde</span><small>Rinderfilet mit grünem Pfeffer</small></div>
-              <span class="menu-list__price">20&nbsp;€</span>
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
+              <div class="menu-list__name"><span>Peposo della tradizione</span><small>Traditioneller toskanischer Pfeffer-Rindereintopf</small></div>
+              <span class="menu-list__price">16&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
+              <div class="menu-list__name"><span>Fracosta di manzo</span><small>Rinderhochrippe mit Tomaten-Rucola-Salsa</small></div>
+              <span class="menu-list__price">17&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:4">
+              <div class="menu-list__name"><span>Frittura di totani e gamberoni</span><small>Frittierter Tintenfisch und Riesengarnelen</small></div>
+              <span class="menu-list__price">16&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
+              <div class="menu-list__name"><span>Tonno in crosta di pistacchio</span><small>Thunfisch in Pistazienkruste, Balsamico-Reduktion</small></div>
+              <span class="menu-list__price">18&nbsp;€</span>
             </div>
           </div>
         </div>
@@ -335,8 +352,8 @@
           <div class="menu-panel__grid">
             <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Patate fritte</span><small>Pommes frites</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
             <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Patate arrosto</span><small>Bratkartoffeln</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
-            <div class="menu-list__row" style="--i:2"><div class="menu-list__name"><span>Fagioli cannellini</span><small>Weiße Bohnen</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
-            <div class="menu-list__row" style="--i:3"><div class="menu-list__name"><span>Verdure saltate</span><small>Gebratenes Gemüse, je nach Saison</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name"><span>Verdure saltate</span><small>Gebratenes Gemüse, je nach Saison</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name"><span>Fagioli cannellini</span><small>Weiße Bohnen</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
           </div>
         </div>
 
