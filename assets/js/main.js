@@ -430,18 +430,21 @@
     })();
 
     /* Auto-derive a cursor label from each element's own text, so the
-       dot can morph into a small pill announcing what a click will do. */
-    document.querySelectorAll(".btn--primary, .menu-card").forEach(function (el) {
-      if (el.hasAttribute("data-cursor")) return;
-      var source = el.classList.contains("menu-card") ? el.querySelector("h3") : el;
-      var label = source ? source.textContent.trim() : "";
-      if (label) el.setAttribute("data-cursor", label.length > 20 ? label.slice(0, 18) + "…" : label);
-    });
-    document.querySelectorAll(".gallery__item").forEach(function (el) {
-      if (el.hasAttribute("data-cursor")) return;
-      var caption = el.querySelector("figcaption");
-      if (caption) el.setAttribute("data-cursor", caption.textContent.trim());
-    });
+       dot can morph into a small pill announcing what a click will do.
+       Re-run after a language switch so labels stay in sync. */
+    function deriveCursorLabels() {
+      document.querySelectorAll(".btn--primary, .menu-card").forEach(function (el) {
+        var source = el.classList.contains("menu-card") ? el.querySelector("h3") : el;
+        var label = source ? source.textContent.trim() : "";
+        if (label) el.setAttribute("data-cursor", label.length > 20 ? label.slice(0, 18) + "…" : label);
+      });
+      document.querySelectorAll(".gallery__item").forEach(function (el) {
+        var caption = el.querySelector("figcaption");
+        if (caption) el.setAttribute("data-cursor", caption.textContent.trim());
+      });
+    }
+    deriveCursorLabels();
+    window.GiulivoRefreshCursor = deriveCursorLabels;
 
     var cursorLabel = cursorDot.querySelector(".cursor-dot__label");
     var hoverSelector = "a, button, .menu-tab, .gallery__item, .menu-card";
