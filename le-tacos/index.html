@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Tacos — Kebab · Tacos · Burger depuis 2004</title>
+<meta name="description" content="Le Tacos — spécialiste du tacos, kebab et burger depuis 2004. Viande grillée minute, pain gratiné au fromage, sauces maison. Commande par téléphone ou WhatsApp.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <span class="preloader__letter">T</span>
+    <div class="preloader__line"></div>
+  </div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="#home" class="navbar__logo">Le Tacos<span>.</span></a>
+    <nav class="navbar__links" id="navLinks">
+      <a href="#home" class="nav-link">Accueil</a>
+      <a href="#histoire" class="nav-link">Notre histoire</a>
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#galerie" class="nav-link">Galerie</a>
+      <a href="#avis" class="nav-link">Avis</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <a href="tel:+33437554332" target="_blank" rel="noopener" class="btn btn--small btn--outline navbar__cta">Commander</a>
+    <button class="navbar__burger" id="burger" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__texture" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <div class="hero__text-col">
+        <p class="eyebrow reveal" data-hero-el style="--d:0">Kebab · Tacos · Burger · Depuis 2004</p>
+        <h1 class="hero__title">
+          <span class="reveal" data-hero-el style="--d:0">Le Tacos</span>
+          <span class="hero__title-sub reveal" data-hero-el style="--d:1">La spécialité du tacos</span>
+        </h1>
+        <p class="hero__text reveal" data-hero-el style="--d:2">
+          Viande grillée minute, pain toasté et gratiné au fromage, sauces
+          100% maison — le goût généreux du vrai tacos, préparé devant vous
+          depuis 2004.
+        </p>
+        <div class="hero__actions reveal" data-hero-el style="--d:3">
+          <a href="tel:+33437554332" target="_blank" rel="noopener" class="btn btn--primary">Appeler pour commander</a>
+          <a href="#menu" class="btn btn--ghost">Découvrir le menu</a>
+        </div>
+        <div class="hero__rating reveal" data-hero-el style="--d:4">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span><strong>Depuis 2004</strong> · <span>Kebab · Tacos · Burger</span></span>
+        </div>
+      </div>
+    </div>
+    <a href="#histoire" class="hero__scroll" aria-label="Défiler vers le bas">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container stats__grid">
+      <div class="stat reveal">
+        <span class="stat__icon" aria-hidden="true">🌵</span>
+        <span class="stat__num" data-count="20" data-suffix="+">0</span>
+        <span class="stat__label">Ans d'expérience</span>
+      </div>
+      <div class="stat reveal" style="--d:1">
+        <span class="stat__icon" aria-hidden="true">🫓</span>
+        <span class="stat__num" data-count="3">0</span>
+        <span class="stat__label">Recettes signature : Kebab, Tacos, Burger</span>
+      </div>
+      <div class="stat reveal" style="--d:2">
+        <span class="stat__icon" aria-hidden="true">🔥</span>
+        <span class="stat__num" data-count="100" data-suffix="%">0</span>
+        <span class="stat__label">Viande grillée &amp; fromage gratiné minute</span>
+      </div>
+      <div class="stat reveal" style="--d:3">
+        <span class="stat__icon" aria-hidden="true">🌶️</span>
+        <span class="stat__num" data-count="8" data-suffix="+">0</span>
+        <span class="stat__label">Sauces maison au choix</span>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--cream" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Kebab</span><span class="marquee__dot">&#10022;</span><span>Tacos</span><span class="marquee__dot">&#10022;</span><span>Burger</span><span class="marquee__dot">&#10022;</span><span>Fait maison</span><span class="marquee__dot">&#10022;</span><span>Grillé minute</span><span class="marquee__dot">&#10022;</span><span>Kebab</span><span class="marquee__dot">&#10022;</span><span>Tacos</span><span class="marquee__dot">&#10022;</span><span>Burger</span><span class="marquee__dot">&#10022;</span><span>Fait maison</span><span class="marquee__dot">&#10022;</span>
+    </div>
+  </div>
+
+  <!-- HISTOIRE -->
+  <section class="story" id="histoire">
+    <div class="texture-dots" aria-hidden="true"></div>
+    <div class="container story__grid">
+      <div class="story__media reveal">
+        <div class="story__frame">
+          <img src="assets/img/salle.jpg" alt="Salle du restaurant Le Tacos, ambiance chaleureuse" loading="lazy">
+        </div>
+        <div class="story__badge">
+          <span>Fait maison</span>
+          <small>chaque jour</small>
+        </div>
+      </div>
+      <div class="story__text">
+        <p class="eyebrow reveal">Notre histoire</p>
+        <h2 class="reveal" style="--d:1">Une même passion depuis 2004&nbsp;: le goût du vrai tacos</h2>
+        <p class="reveal" style="--d:2">
+          Le Tacos, c'est l'histoire de Jassan et de sa passion pour une
+          cuisine généreuse et sans détour&nbsp;: kebab, tacos et burger,
+          préparés dans le respect d'une même exigence depuis 2004. Ici, pas
+          de raccourci — la viande est grillée à la commande et chaque
+          galette est gratinée devant vous.
+        </p>
+        <p class="reveal" style="--d:3">
+          On vient chercher un repas copieux et bien fait, préparé avec
+          soin — et on repart avec le sourire, la boîte encore chaude entre
+          les mains.
+        </p>
+        <ul class="story__points reveal" style="--d:4">
+          <li>Viande grillée minute</li>
+          <li>Pain toasté &amp; gratiné au fromage</li>
+          <li>Sauces 100% maison</li>
+          <li>Frites fraîches et croustillantes</li>
+        </ul>
+        <p class="story__signature reveal" style="--d:5">Jassan</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOTTO -->
+  <section class="motto">
+    <div class="container motto__inner">
+      <span class="motto__leaf" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M24 44V20M24 24c0-4 4-4 4-8M24 28c0-4-5-4-5-9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <p class="motto__text">
+        « C'est notre passion pour le bon produit, la générosité de
+        l'assiette et le plaisir de bien recevoir qui nous anime depuis 2004.
+        Une philosophie simple&nbsp;: griller, gratiner et partager — parce
+        que le meilleur tacos est toujours celui qu'on prépare avec cœur. »
+      </p>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="ambient-glow" aria-hidden="true"><span></span><span></span></div>
+    <div class="container">
+      <p class="eyebrow eyebrow--center reveal">Le menu</p>
+      <h2 class="section-title reveal" style="--d:1">Kebab, tacos et burger — généreux et grillés minute</h2>
+      <p class="section-lead reveal" style="--d:2">
+        Un aperçu de notre carte, préparée avec des produits frais, de la
+        viande grillée minute et nos sauces 100% maison.
+      </p>
+      <div class="menu__lead-cta reveal" style="--d:2">
+        <button type="button" class="btn btn--outline" id="openMenuModal">Voir le menu complet</button>
+      </div>
+
+      <div class="menu__grid">
+        <div class="menu-card reveal">
+          <div class="menu-card__media">
+            <img src="assets/img/tacos-coupe.jpg" alt="Tacos coupé, viande grillée et fromage fondu" loading="lazy">
+          </div>
+          <h3>Tacos</h3>
+          <p>Viande au choix, fromage fondu et sauce maison, roulés dans une galette toastée et gratinée.</p>
+        </div>
+        <div class="menu-card reveal" style="--d:1">
+          <div class="menu-card__media">
+            <img src="assets/img/tacos-frites.jpg" alt="Tacos gratinés servis avec des frites maison" loading="lazy">
+          </div>
+          <h3>Kebab</h3>
+          <p>Viande grillée à la broche, crudités fraîches et sauces au choix, en galette, pain pita ou assiette.</p>
+        </div>
+        <div class="menu-card reveal" style="--d:2">
+          <div class="menu-card__media">
+            <img src="assets/img/tacos-frites.jpg" alt="Plateau de tacos et burger avec frites et boisson" loading="lazy">
+          </div>
+          <h3>Burger</h3>
+          <p>Steak grillé, cheddar fondu et sauce maison dans un pain moelleux, servi avec ses frites.</p>
+        </div>
+        <div class="menu-card reveal" style="--d:3">
+          <div class="menu-card__media">
+            <img src="assets/img/tacos-coupe.jpg" alt="Tacos généreux garni de plusieurs viandes et fromage" loading="lazy">
+          </div>
+          <h3>Formules XXL</h3>
+          <p>Pour les grosses faims&nbsp;: triple viande, triple fromage et sauce au choix.</p>
+        </div>
+      </div>
+
+      <div class="menu-origin-wrap reveal">
+        <div class="menu-origin" role="group" aria-label="Filtrer le menu par viande" data-active="all">
+          <button type="button" class="origin-btn is-active" data-origin="all">Tout</button>
+          <button type="button" class="origin-btn" data-origin="terra"><span aria-hidden="true">🍗</span> <span>Poulet</span></button>
+          <button type="button" class="origin-btn" data-origin="mare"><span aria-hidden="true">🥩</span> <span>Viande</span></button>
+          <span class="menu-origin__indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="menu-tabs-wrap reveal">
+        <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Catégories du menu">
+          <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-tacos" data-panel="tacos">
+            <span class="menu-tab__icon">🌮</span><span>Tacos</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-kebab" data-panel="kebab">
+            <span class="menu-tab__icon">🥙</span><span>Kebab</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-burger" data-panel="burger">
+            <span class="menu-tab__icon">🍔</span><span>Burger</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-accompagnements" data-panel="accompagnements">
+            <span class="menu-tab__icon">🍟</span><span>Accompagnements</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-boissons" data-panel="boissons">
+            <span class="menu-tab__icon">🥤</span><span>Boissons</span>
+          </button>
+          <span class="menu-tabs__indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="menu-book">
+        <button type="button" class="menu-book__nav menu-book__nav--prev" id="menuPrev" aria-label="Catégorie précédente">‹</button>
+        <div class="menu-panels" id="menuPanels">
+        <div class="menu-panel is-active" id="panel-tacos" role="tabpanel" data-label="Tacos">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
+              <div class="menu-list__name"><span>Tacos Poulet</span><small>Poulet mariné grillé, cheddar fondu, sauce fromagère</small></div>
+              <span class="menu-list__price">8&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:1">
+              <div class="menu-list__name"><span>Tacos Viande Hachée</span><small>Viande hachée grillée, oignons, cheddar, sauce algérienne</small></div>
+              <span class="menu-list__price">8&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:2">
+              <div class="menu-list__name"><span>Tacos Mixte</span><small>Poulet &amp; viande hachée, double fromage gratiné</small></div>
+              <span class="menu-list__price">9&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:3">
+              <div class="menu-list__name"><span>Tacos Merguez</span><small>Merguez grillée, oignons confits, sauce harissa</small></div>
+              <span class="menu-list__price">9&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:4">
+              <div class="menu-list__name"><span>Tacos Cordon Bleu</span><small>Cordon bleu de poulet, cheddar, sauce blanche</small></div>
+              <span class="menu-list__price">8,50&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
+              <div class="menu-list__name"><span>Tacos XXL Le Tacos</span><small>Triple viande, triple fromage, sauce au choix</small></div>
+              <span class="menu-list__price">12&nbsp;€</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-kebab" role="tabpanel" data-label="Kebab">
+          <p class="menu-list__note">Viande grillée à la broche, préparée à la commande.</p>
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Kebab galette</span></div><span class="menu-list__price">7&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Kebab pain pita</span></div><span class="menu-list__price">6,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name"><span>Kebab assiette</span><small>Frites, salade, sauce au choix</small></div><span class="menu-list__price">9&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name"><span>Assiette mixte poulet / viande</span></div><span class="menu-list__price">10&nbsp;€</span></div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-burger" role="tabpanel" data-label="Burger">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Cheeseburger</span></div><span class="menu-list__price">6,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Chicken Burger</span><small>Filet de poulet pané, cheddar, sauce burger</small></div><span class="menu-list__price">7&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name"><span>Le Tacos Burger</span><small>Double steak, bacon, cheddar fondu</small></div><span class="menu-list__price">9,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name"><span>Burger Végé</span></div><span class="menu-list__price">7&nbsp;€</span></div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-accompagnements" role="tabpanel" data-label="Accompagnements">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Frites</span></div><span class="menu-list__price">3,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Frites cheddar</span></div><span class="menu-list__price">5&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name"><span>Tenders (x5)</span></div><span class="menu-list__price">5,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name"><span>Nuggets (x6)</span></div><span class="menu-list__price">5&nbsp;€</span></div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-boissons" role="tabpanel" data-label="Boissons">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" style="--i:0"><div class="menu-list__name"><span>Canette 33cl</span></div><span class="menu-list__price">2&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:1"><div class="menu-list__name"><span>Bouteille 50cl</span></div><span class="menu-list__price">2,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name"><span>Eau</span></div><span class="menu-list__price">1,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name"><span>Milkshake</span></div><span class="menu-list__price">4&nbsp;€</span></div>
+          </div>
+        </div>
+        </div>
+        <button type="button" class="menu-book__nav menu-book__nav--next" id="menuNext" aria-label="Catégorie suivante">›</button>
+      </div>
+      <p class="menu-book__hint reveal">Parcourez le menu comme un livre — utilisez les flèches ou les onglets ci-dessus</p>
+
+      <p class="menu-list__footnote reveal">Sauces maison offertes (blanche, algérienne, harissa, curry, biggy…) · Prix indicatifs, à confirmer avant mise en ligne définitive · Allergènes disponibles sur demande.</p>
+
+      <div class="menu__cta reveal">
+        <a href="tel:+33437554332" target="_blank" rel="noopener" class="btn btn--primary">Appeler pour commander</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="gallery" id="galerie">
+    <div class="texture-dots" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow eyebrow--center reveal">Galerie</p>
+      <h2 class="section-title reveal" style="--d:1">Un aperçu de nos assiettes</h2>
+      <p class="section-lead reveal" style="--d:2">
+        Un avant-goût de nos tacos, kebabs et burgers, préparés minute.
+      </p>
+
+      <div class="gallery__grid">
+        <figure class="gallery__item gallery__item--big reveal">
+          <img src="assets/img/tacos-frites.jpg" alt="Tacos gratinés servis avec frites et boisson" loading="lazy">
+          <figcaption>Nos tacos gratinés</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:1">
+          <img src="assets/img/tacos-coupe.jpg" alt="Tacos coupé en deux, viande et fromage fondu" loading="lazy">
+          <figcaption>Généreux et gratiné</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:2">
+          <img src="assets/img/salle.jpg" alt="Salle du restaurant Le Tacos" loading="lazy">
+          <figcaption>Notre salle</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:3">
+          <img src="assets/img/tacos-coupe.jpg" alt="Tacos garni de plusieurs viandes et sauces" loading="lazy">
+          <figcaption>Sauce curry, blanche ou harissa</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:4">
+          <img src="assets/img/tacos-frites.jpg" alt="Plateau repas tacos et frites maison" loading="lazy">
+          <figcaption>Frites maison croustillantes</figcaption>
+        </figure>
+        <figure class="gallery__item reveal">
+          <img src="assets/img/salle.jpg" alt="Tables et ambiance du restaurant Le Tacos" loading="lazy">
+          <figcaption>Un cadre chaleureux</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--ink" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE (parallax) -->
+  <section class="experience" id="experience">
+    <div class="experience__bg" id="experienceBg" aria-hidden="true"></div>
+    <div class="experience__overlay" aria-hidden="true"></div>
+    <div class="container experience__content">
+      <p class="eyebrow reveal">L'ambiance</p>
+      <h2 class="reveal" style="--d:1">Un tacos généreux, préparé devant vous</h2>
+      <p class="reveal" style="--d:2">
+        Chez Le Tacos, chaque commande est grillée et gratinée minute — pour
+        un repas copieux, chaud et fait avec soin, sur place ou à emporter.
+      </p>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section class="reviews" id="avis">
+    <div class="container reviews__grid">
+      <div class="reviews__score reveal">
+        <span class="reviews__number">🌵</span>
+        <span class="stars stars--lg" aria-hidden="true">★★★★★</span>
+        <p>Ils nous font confiance depuis 2004</p>
+        <a href="https://maps.google.com/?cid=13677091065852427879" target="_blank" rel="noopener" class="btn btn--outline btn--small">Voir nos avis sur Google</a>
+      </div>
+      <div class="reviews__highlight reveal" style="--d:1">
+        <div class="reviews__carousel" id="reviewsCarousel">
+          <blockquote class="reviews__slide is-active">« Des tacos généreux, bien garnis et toujours chauds. »</blockquote>
+          <blockquote class="reviews__slide">« Le gratiné au fromage fait toute la différence. »</blockquote>
+          <blockquote class="reviews__slide">« Un accueil sympa et un service rapide. »</blockquote>
+        </div>
+        <p class="reviews__note">L'esprit Le Tacos, en quelques mots — générosité et fraîcheur, minute après minute.</p>
+        <ul class="reviews__chips">
+          <li>Généreux</li>
+          <li>Grillé minute</li>
+          <li>Fait maison</li>
+          <li>Rapide</li>
+          <li>Sauces maison</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--cream" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
+    </div>
+  </section>
+
+  <!-- CONTACT / LOCALISATION -->
+  <section class="contact" id="contact">
+    <div class="texture-dots" aria-hidden="true"></div>
+    <div class="ambient-glow" aria-hidden="true"><span></span><span></span></div>
+    <div class="container">
+      <div class="reservation reveal glass">
+        <div class="reservation__text">
+          <p class="eyebrow">Commander</p>
+          <h2>Passez votre commande à emporter</h2>
+          <p>Remplissez les détails&nbsp;: WhatsApp s'ouvre avec le message déjà prêt à nous envoyer. La commande est confirmée seulement après notre réponse.</p>
+        </div>
+        <form class="reservation__form" id="reservationForm">
+          <div class="reservation__row">
+            <label><span>Date de retrait</span>
+              <input type="date" name="date" required>
+            </label>
+            <label><span>Heure</span>
+              <input type="time" name="heure" value="19:30" required>
+            </label>
+          </div>
+          <div class="reservation__row">
+            <label><span>Nombre de menus</span>
+              <input type="number" name="personnes" min="1" max="20" value="2" required>
+            </label>
+          </div>
+          <label><span>Note (facultatif)</span>
+            <textarea name="note" rows="2" placeholder="Ex. sauce préférée, allergies, sur place ou à emporter…"></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary">Commander sur WhatsApp</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container contact__grid">
+      <div class="contact__info reveal">
+        <p class="eyebrow">Où nous trouver</p>
+        <h2>Venez déguster un bon tacos</h2>
+
+        <div class="contact__item">
+          <span class="contact__icon">📍</span>
+          <div>
+            <strong>Adresse</strong>
+            <p>Retrouvez-nous sur Google Maps pour l'adresse complète et l'itinéraire.<br><a href="https://maps.google.com/?cid=13677091065852427879" target="_blank" rel="noopener">Voir sur Google Maps →</a></p>
+          </div>
+        </div>
+
+        <div class="contact__item">
+          <span class="contact__icon">🕗</span>
+          <div>
+            <strong>Horaires</strong>
+            <p>Merci de nous appeler pour connaître nos horaires d'ouverture actuels.</p>
+          </div>
+        </div>
+
+        <div class="contact__item">
+          <span class="contact__icon">📞</span>
+          <div>
+            <strong>Téléphone</strong>
+            <p><a href="tel:+33437554332" target="_blank" rel="noopener">04 37 55 43 32</a></p>
+          </div>
+        </div>
+
+        <div class="contact__actions">
+          <a href="tel:+33437554332" target="_blank" rel="noopener" class="btn btn--primary">Appeler pour commander</a>
+          <a href="https://wa.me/33437554332" target="_blank" rel="noopener" class="btn btn--ghost">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="contact__map reveal" style="--d:1">
+        <iframe
+          title="Localisation de Le Tacos"
+          src="https://www.google.com/maps?cid=13677091065852427879&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">Le Tacos<span>.</span> <small>Kebab · Tacos · Burger</small></div>
+    <div class="footer__links">
+      <a href="tel:+33437554332" target="_blank" rel="noopener">04 37 55 43 32</a>
+      <a href="https://maps.google.com/?cid=13677091065852427879" target="_blank" rel="noopener">Google Maps</a>
+      <a href="#home">Retour en haut ↑</a>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> Le Tacos — depuis 2004</p>
+  </div>
+</footer>
+
+<!-- MENU MODAL -->
+<div class="menu-modal" id="menuModal" aria-hidden="true">
+  <div class="menu-modal__backdrop" data-modal-close></div>
+  <div class="menu-modal__panel glass" role="dialog" aria-modal="true" aria-label="Le menu complet">
+    <button type="button" class="menu-modal__close" id="menuModalClose" aria-label="Fermer le menu">✕</button>
+    <p class="eyebrow">Le menu</p>
+    <h3>La carte complète</h3>
+    <div class="menu-modal__body" id="menuModalBody"></div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"><span class="cursor-dot__label"></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
