@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Substitution note: the spec calls for zero custom CSS/keyframes, styling via
+   Tailwind utilities only. The one exception below is a fallback backdrop for
+   when /labs-video.mp4 (blocked CDN download, see App.tsx) is absent, so the
+   hero isn't a flat black screen. Drop the real video into public/ and this
+   fallback is simply covered — no code change needed. */
+@keyframes labsFallbackDrift {
+  0% { transform: translate3d(-6%, -4%, 0) scale(1.1); }
+  50% { transform: translate3d(6%, 4%, 0) scale(1.25); }
+  100% { transform: translate3d(-6%, -4%, 0) scale(1.1); }
+}
