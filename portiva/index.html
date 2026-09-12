@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portiva — Creative Agency</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          inter: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          accent: '#c25e2e',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html, body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -20;
+    pointer-events: none;
+  }
+
+  .bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.32);
+    z-index: -10;
+    pointer-events: none;
+  }
+
+  /* Word-by-word reveal for the hero heading */
+  .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
+  }
+
+  .word-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Generic fade-up for header / label / stars / buttons */
+  .fade-in-el {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
+  }
+
+  .fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-heading {
+    font-size: 38px;
+    line-height: 1.18;
+  }
+
+  @media (min-width: 640px) {
+    .hero-heading {
+      font-size: 46px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-heading {
+      font-size: 62px;
+    }
+  }
+</style>
+</head>
+
+<body class="relative min-h-screen bg-black text-white font-inter antialiased">
+
+  <video class="bg-video" autoplay loop muted playsinline
+    src="https://cdn.sceneai.art/Hero%20section%20video%20file%20(2)/13c2a27f-30ac-44f1-866d-94fca9c614d7.mp4">
+  </video>
+  <div class="bg-overlay"></div>
+
+  <div class="relative z-10 flex min-h-screen flex-col">
+
+    <!-- Header -->
+    <header class="fade-in-el relative z-20 flex items-center justify-between px-6 py-6 sm:px-8 md:px-12 lg:px-16" data-delay="150">
+      <a href="#" class="text-2xl font-medium text-white">Portiva</a>
+
+      <nav class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-10 md:flex">
+        <a href="#about" class="text-sm font-medium text-white/90 transition hover:text-white">About</a>
+        <a href="#brands" class="text-sm font-medium text-white/90 transition hover:text-white">Brands</a>
+        <a href="#careers" class="text-sm font-medium text-white/90 transition hover:text-white">Careers</a>
+        <a href="#partners" class="text-sm font-medium text-white/90 transition hover:text-white">Partners</a>
+      </nav>
+
+      <button class="whitespace-nowrap rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-white/90">
+        Chat with us
+      </button>
+    </header>
+
+    <!-- Hero -->
+    <main class="relative z-10 flex flex-1 items-center">
+      <div class="w-full px-6 sm:px-8 md:px-12 lg:px-16">
+        <div class="max-w-2xl">
+
+          <p class="fade-in-el mb-4 text-sm text-white/90 sm:text-base" data-delay="250">| Creative Agency</p>
+
+          <h1 class="hero-heading mb-8 font-semibold text-white">
+            <span class="block"><span class="word">Less</span> <span class="word">complexity,</span></span>
+            <span class="block"><span class="word">more</span> <span class="word">impact</span> <span class="word">in</span></span>
+            <span class="block"><span class="word">every</span> <span class="word">project.</span></span>
+          </h1>
+
+          <div class="fade-in-el mb-9 flex items-center gap-3" data-delay="450">
+            <div class="flex items-center gap-1">
+              <svg viewBox="0 0 20 20" class="h-4 w-4 sm:h-5 sm:w-5" fill="#c25e2e"><path d="M10 1.5l2.59 5.25 5.79.84-4.19 4.08.99 5.77L10 14.9l-5.18 2.54.99-5.77L1.62 7.6l5.79-.84L10 1.5z"/></svg>
+              <svg viewBox="0 0 20 20" class="h-4 w-4 sm:h-5 sm:w-5" fill="#c25e2e"><path d="M10 1.5l2.59 5.25 5.79.84-4.19 4.08.99 5.77L10 14.9l-5.18 2.54.99-5.77L1.62 7.6l5.79-.84L10 1.5z"/></svg>
+              <svg viewBox="0 0 20 20" class="h-4 w-4 sm:h-5 sm:w-5" fill="#c25e2e"><path d="M10 1.5l2.59 5.25 5.79.84-4.19 4.08.99 5.77L10 14.9l-5.18 2.54.99-5.77L1.62 7.6l5.79-.84L10 1.5z"/></svg>
+              <svg viewBox="0 0 20 20" class="h-4 w-4 sm:h-5 sm:w-5" fill="#c25e2e"><path d="M10 1.5l2.59 5.25 5.79.84-4.19 4.08.99 5.77L10 14.9l-5.18 2.54.99-5.77L1.62 7.6l5.79-.84L10 1.5z"/></svg>
+              <svg viewBox="0 0 20 20" class="h-4 w-4 sm:h-5 sm:w-5" fill="#c25e2e"><path d="M10 1.5l2.59 5.25 5.79.84-4.19 4.08.99 5.77L10 14.9l-5.18 2.54.99-5.77L1.62 7.6l5.79-.84L10 1.5z"/></svg>
+            </div>
+            <span class="text-sm text-white sm:text-base">3000+ Customers</span>
+          </div>
+
+          <div class="fade-in-el flex flex-wrap items-center gap-4" data-delay="600">
+            <button class="group flex items-center gap-3 rounded-full bg-white py-1.5 pl-5 pr-1.5 text-sm font-medium text-black transition hover:bg-white/90">
+              <span>Chat With Us</span>
+              <span class="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition group-hover:translate-x-0.5">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </button>
+
+            <button class="rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Our Works
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var words = document.querySelectorAll('.hero-heading .word');
+      words.forEach(function (word, i) {
+        setTimeout(function () {
+          word.classList.add('word-visible');
+        }, i * 120);
+      });
+
+      var fadeEls = document.querySelectorAll('.fade-in-el');
+      fadeEls.forEach(function (el) {
+        var delay = parseInt(el.getAttribute('data-delay'), 10) || 0;
+        setTimeout(function () {
+          el.classList.add('fade-in-visible');
+        }, delay);
+      });
+    });
+  </script>
+
+</body>
+</html>
