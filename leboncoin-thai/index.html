@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalatThai — Petites annonces en Thaïlande</title>
+<meta name="description" content="TalatThai, la marketplace de petites annonces pour acheter et vendre partout en Thaïlande : véhicules, immobilier, électronique, mode et plus encore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg style="display:none">
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.5" y2="16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="icon-car" viewBox="0 0 24 24"><path d="M4 16V11l2-5h12l2 5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="2.5" y="16" width="19" height="4" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7" cy="19.5" r="1.4" fill="currentColor"/><circle cx="17" cy="19.5" r="1.4" fill="currentColor"/></symbol>
+  <symbol id="icon-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10v9.5h13V10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="10" y="13.5" width="4" height="6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="icon-device" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="10.5" y1="18.3" x2="13.5" y2="18.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="icon-shirt" viewBox="0 0 24 24"><path d="M8 3 4 6l2 3 2-1v11h8V8l2 1 2-3-4-3-2 2h-4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-sofa" viewBox="0 0 24 24"><path d="M5 13V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="18" height="5.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 18.5V21M19.5 18.5V21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="icon-briefcase" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="3" y1="12.5" x2="21" y2="12.5" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="icon-tool" viewBox="0 0 24 24"><path d="M14.5 3.5a4 4 0 0 0-5 5L3 15v3h3l6.5-6.5a4 4 0 0 0 5-5l-3 3-2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13" stroke="currentColor" stroke-width="1.2" opacity=".55"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6.5 3.5 9 4.7c.5 1.3 1 2.5 1.7 3.6l-1.7 1.9c1 2.1 2.8 3.9 4.9 4.9l1.9-1.7c1.1.7 2.3 1.2 3.6 1.7l1.2 2.5c-.4 1.2-1.5 2-2.8 2C10.4 20.6 3.4 13.6 3.4 6.3c0-1.3.8-2.4 2-2.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-line" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 18v3l3.5-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-camera" viewBox="0 0 24 24"><path d="M4 8.5h3l1.4-2h7.2l1.4 2H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M4 6.5h16M9 6.5V4.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6.5 6.5 7.3 19a1.5 1.5 0 0 0 1.5 1.4h6.4A1.5 1.5 0 0 0 16.7 19l.8-12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5.3l3.6 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="navbar" id="navbar">
+  <div class="navbar__inner container">
+    <a href="#home" class="navbar__logo">Talat<span>Thai</span></a>
+    <nav class="navbar__links" id="navLinks">
+      <a href="#categories">Catégories</a>
+      <a href="#listings">Annonces</a>
+      <a href="#how">Comment ça marche</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="navbar__actions">
+      <button class="btn btn--ghost btn--sm navbar__city" id="cityTrigger" type="button">
+        <svg class="icon" width="16" height="16"><use href="#icon-pin"/></svg>
+        <span id="cityTriggerLabel">Toute la Thaïlande</span>
+      </button>
+      <button class="btn btn--primary btn--sm" id="openPostBtn" type="button">
+        <svg class="icon" width="16" height="16"><use href="#icon-plus"/></svg>
+        Déposer une annonce
+      </button>
+      <button class="burger" id="burgerBtn" type="button" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO / SEARCH -->
+  <section class="hero" id="home">
+    <div class="hero__glow hero__glow--a"></div>
+    <div class="hero__glow hero__glow--b"></div>
+    <div class="container hero__inner">
+      <p class="eyebrow">ตลาดไทย · La marketplace de la Thaïlande</p>
+      <h1 class="hero__title">Achetez, vendez, louez.<br>Partout en <span>Thaïlande</span>.</h1>
+      <p class="hero__subtitle">Des milliers d'annonces à Bangkok, Chiang Mai, Phuket, Pattaya et dans tout le pays. Simple, rapide, gratuit.</p>
+
+      <form class="searchbar" id="searchForm">
+        <div class="searchbar__field searchbar__field--grow">
+          <svg class="icon" width="18" height="18"><use href="#icon-search"/></svg>
+          <input type="text" id="searchInput" placeholder="Que recherchez-vous ? (ex. Honda Wave, condo, iPhone…)" autocomplete="off">
+        </div>
+        <div class="searchbar__field">
+          <svg class="icon" width="18" height="18"><use href="#icon-pin"/></svg>
+          <select id="citySelect" aria-label="Ville">
+            <option value="">Toute la Thaïlande</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary searchbar__submit">Rechercher</button>
+      </form>
+
+      <div class="hero__stats">
+        <div class="stat"><strong data-count="128">0</strong><span>annonces actives</span></div>
+        <div class="stat"><strong data-count="9">0</strong><span>villes couvertes</span></div>
+        <div class="stat"><strong data-count="8">0</strong><span>catégories</span></div>
+        <div class="stat"><strong data-count="100">0</strong><span>% gratuit</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <h2 class="section__title">Parcourir par catégorie</h2>
+      <div class="categories__grid" id="categoriesGrid"></div>
+    </div>
+  </section>
+
+  <!-- LISTINGS -->
+  <section class="listings" id="listings">
+    <div class="container">
+      <div class="listings__head">
+        <h2 class="section__title">Annonces récentes</h2>
+        <div class="listings__controls">
+          <div class="chips" id="categoryChips"></div>
+          <select id="sortSelect" class="select--sort" aria-label="Trier">
+            <option value="recent">Plus récentes</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="listings__grid" id="listingsGrid"></div>
+      <p class="listings__empty" id="listingsEmpty" hidden>Aucune annonce ne correspond à votre recherche. Essayez d'autres filtres.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="container how__inner">
+      <h2 class="section__title">Comment ça marche</h2>
+      <div class="how__grid">
+        <div class="how__step">
+          <span class="how__num">1</span>
+          <h3>Déposez votre annonce</h3>
+          <p>Ajoutez photos, description et prix en quelques secondes, sans inscription.</p>
+        </div>
+        <div class="how__step">
+          <span class="how__num">2</span>
+          <h3>Discutez avec l'acheteur</h3>
+          <p>Contact direct par téléphone, LINE ou WhatsApp — vous restez maître de l'échange.</p>
+        </div>
+        <div class="how__step">
+          <span class="how__num">3</span>
+          <h3>Vendez en toute confiance</h3>
+          <p>Rencontrez-vous en personne et finalisez la transaction en toute sécurité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#home" class="navbar__logo">Talat<span>Thai</span></a>
+        <p>La marketplace de petites annonces pensée pour la Thaïlande.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Catégories</h4>
+        <ul id="footerCategories"></ul>
+      </div>
+      <div class="footer__col">
+        <h4>À propos</h4>
+        <ul>
+          <li><a href="#how">Comment ça marche</a></li>
+          <li><a href="#listings">Annonces</a></li>
+          <li><a href="#" id="footerPostLink">Déposer une annonce</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+66200000000" target="_blank" rel="noopener">+66 2 000 0000</a></li>
+          <li><a href="mailto:contact@talatthai.demo">contact@talatthai.demo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <p>© 2026 TalatThai — Démo de projet, données fictives.</p>
+    </div>
+  </footer>
+</main>
+
+<!-- LISTING DETAIL MODAL -->
+<div class="modal" id="detailModal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel modal__panel--detail" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <button class="modal__close" data-close aria-label="Fermer"><svg class="icon" width="18" height="18"><use href="#icon-close"/></svg></button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<!-- POST AD MODAL -->
+<div class="modal" id="postModal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="postTitle">
+    <button class="modal__close" data-close aria-label="Fermer"><svg class="icon" width="18" height="18"><use href="#icon-close"/></svg></button>
+    <h3 id="postTitle">Déposer une annonce</h3>
+    <p class="modal__hint">Démo : votre annonce est enregistrée dans votre navigateur (localStorage), elle n'est pas publiée en ligne.</p>
+    <form id="postForm" class="post-form">
+      <label class="field">
+        <span>Titre de l'annonce</span>
+        <input type="text" name="title" required maxlength="70" placeholder="ex. Scooter Honda Click 125i 2021">
+      </label>
+      <div class="field-row">
+        <label class="field">
+          <span>Catégorie</span>
+          <select name="category" id="postCategory" required></select>
+        </label>
+        <label class="field">
+          <span>Ville</span>
+          <select name="city" id="postCity" required></select>
+        </label>
+      </div>
+      <div class="field-row">
+        <label class="field">
+          <span>Prix (฿)</span>
+          <input type="number" name="price" min="0" step="1" required placeholder="ex. 45000">
+        </label>
+        <label class="field">
+          <span>Téléphone</span>
+          <input type="tel" name="phone" required placeholder="08x xxx xxxx">
+        </label>
+      </div>
+      <label class="field">
+        <span>Identifiant LINE (optionnel)</span>
+        <input type="text" name="line" placeholder="ex. @talatthai">
+      </label>
+      <label class="field">
+        <span>Description</span>
+        <textarea name="description" rows="4" required maxlength="600" placeholder="Décrivez l'état, les détails, la raison de la vente…"></textarea>
+      </label>
+      <label class="field photo-field">
+        <span>Photo (optionnelle)</span>
+        <div class="photo-drop" id="photoDrop">
+          <svg class="icon" width="22" height="22"><use href="#icon-camera"/></svg>
+          <span id="photoDropLabel">Cliquez pour ajouter une photo</span>
+          <input type="file" name="photo" id="photoInput" accept="image/*">
+        </div>
+      </label>
+      <button type="submit" class="btn btn--primary btn--block">Publier l'annonce</button>
+    </form>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
