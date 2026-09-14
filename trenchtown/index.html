@@ -86,8 +86,16 @@
   </section>
 
   <section class="drinks" id="drinks">
+    <div class="drinks__texture" aria-hidden="true"></div>
     <div class="container">
-      <h2 class="h2">What's on the bar</h2>
+      <div class="drinks__head">
+        <h2 class="h2">What's on the bar</h2>
+        <div class="hh-badge">
+          <span>Happy Hour</span>
+          <strong>฿69</strong>
+          <span>All beer · 5–8pm, ex. Corona</span>
+        </div>
+      </div>
       <div class="drinks__grid" id="drinksGrid"></div>
     </div>
   </section>
@@ -114,9 +122,9 @@
 window.TRENCH_DATA = {
   mosaic: ["Under the painted night sky", "Hand-painted wall murals", "The stage, live every night", "Neon at the door", "Packed most nights"],
   drinks: [
-    { cat: "Beer & wine — happy hour ฿69, 5–8pm (Corona excluded)", items: [["San Miguel", "89"], ["Heineken", "89"], ["Tiger", "89"], ["Leo", "89"], ["Chang", "89"], ["Singha / Singha Light", "89"], ["Corona / Corona Extra", "139"], ["Mont Claire red / white", "149"], ["Thatchers Gold cider", "169"]] },
-    { cat: "Non-alcoholic", items: [["Water / soda / tonic", "69"], ["Red Bull & Lipo", "79"], ["Coke, Zero, Light", "79"], ["Sprite, Schweppes", "79"], ["Orange, pineapple, apple juice", "89"]] },
-    { cat: "Staff drinks", items: [["Standard", "150"], ["Hostess", "160"], ["Non-standard", "180"]] }
+    { cat: "🍺 Beer & wine", items: [["San Miguel", "89"], ["Heineken", "89"], ["Tiger", "89"], ["Leo", "89"], ["Chang", "89"], ["Singha / Singha Light", "89"], ["Corona / Corona Extra", "139"], ["Mont Claire red / white", "149"], ["Thatchers Gold cider", "169"]] },
+    { cat: "🥤 Non-alcoholic", items: [["Water / soda / tonic", "69"], ["Red Bull & Lipo", "79"], ["Coke, Zero, Light", "79"], ["Sprite, Schweppes", "79"], ["Orange, pineapple, apple juice", "89"]] },
+    { cat: "🥃 Staff drinks", items: [["Standard", "150"], ["Hostess", "160"], ["Non-standard", "180"]] }
   ]
 };
 </script>
