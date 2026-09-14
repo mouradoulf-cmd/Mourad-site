@@ -1,19 +1,13 @@
-# Trench Town Rasta Bar — Demo site (EN + TH)
+# One Love Bar — Demo site (EN + TH)
 
-Site de démonstration pour Trench Town Rasta Bar (Soi LK Metro, Pattaya) —
-pensé pour être montré au patron du bar sur place. Contenu construit à
-partir d'informations publiques réelles (note Google, ambiance, musique
-live) ; **les prix des boissons sont des exemples**, à remplacer par la
-vraie carte avant tout usage réel.
+Site de démonstration d'un bar reggae/rasta fictif à Pattaya — un exemple
+réutilisable de ce style (dark rasta rouge/or/vert, ambiance nocturne,
+carte de boissons) pour pitcher des bars/pubs sur place, sans être lié à
+un établissement réel précis.
 
 Site statique en HTML / CSS / JS pur — aucune installation ni build
 nécessaire. Deux pages : `index.html` (anglais) et `th.html` (thaï), reliées
 par le sélecteur de langue dans la barre de navigation.
-
-⚠️ Ce site utilise le vrai nom d'un établissement existant. Ne le publie
-pas en ligne publiquement sans l'accord du propriétaire — c'est un support
-de démonstration à montrer en personne (ou en capture d'écran), pas un
-site à héberger sous leur nom sans autorisation.
 
 ## Voir le site en local
 
@@ -34,11 +28,9 @@ site reste beau sans vidéo.
 Aucun navigateur n'autorise une vidéo à jouer automatiquement **avec le
 son** — c'est bloqué partout par design. Le bouton "🔊 Tap for sound" en
 haut à droite du hero permet au visiteur d'activer le son lui-même une
-fois sur la page (ça coupe aussi le son de la vidéo si elle en a un). Il
-n'y a pas de musique intégrée : ni fichier audio séparé, ni morceau
-utilisé sans droits — utilise soit le son de la vraie vidéo filmée sur
-place (le plus simple, zéro souci de droits), soit une piste réellement
-libre de droits si tu veux un fond sonore séparé.
+fois sur la page. Il n'y a pas de musique intégrée : utilise soit le son
+de la vraie vidéo filmée sur place (le plus simple, zéro souci de droits),
+soit une piste réellement libre de droits si tu veux un fond sonore séparé.
 
 ## Structure du projet
 
@@ -46,16 +38,32 @@ libre de droits si tu veux un fond sonore séparé.
 index.html / th.html    → les deux langues (structure identique)
 assets/css/style.css     → identité visuelle (palette rasta rouge/or/vert)
 assets/js/main.js        → rendu des données (mosaïque, boissons), vidéo/son,
-                           menu mobile — lit window.TRENCH_DATA défini dans
+                           menu mobile — lit window.BAR_DATA défini dans
                            chaque page HTML
 assets/video/            → dépose hero.mp4 ici
 ```
+
+## Personnalisation pour un vrai client
+
+Pour adapter cette démo à un vrai bar (nom, adresse, note Google, vraie
+carte de boissons, vraies photos) :
+
+- Nom / titre / meta description en haut de `index.html` et `th.html`
+- `window.BAR_DATA` en bas de chaque page (programme, boissons)
+- Coordonnées (adresse, lien Google Maps, Facebook) dans le `<footer>` et
+  les boutons "Get directions"
+- Mosaïque de la galerie : remplace les blocs de couleur par de vraies
+  photos du lieu une fois disponibles (jamais de photos prises par
+  d'autres personnes sans leur accord — uniquement des photos prises sur
+  place avec l'accord du propriétaire)
+
+⚠️ Si tu personnalises cette démo avec le nom d'un vrai commerce existant,
+ne la publie pas en ligne publiquement sans l'accord du propriétaire —
+garde-la comme support de démonstration à montrer en personne.
 
 ## Personnalisation rapide
 
 - Couleurs : variables CSS en haut de `assets/css/style.css` (`--red`,
   `--gold`, `--green`, `--wood`)
-- Boissons / zones du lieu : `window.TRENCH_DATA` en bas de `index.html`
-  et `th.html` (à modifier dans les deux fichiers)
 - Traduction thaïe : rédigée avec soin mais à faire relire par une
-  personne native avant tout usage réel avec le client.
+  personne native avant tout usage réel avec un client.

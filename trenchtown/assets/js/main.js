@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var DATA = window.TRENCH_DATA || { mosaic: [], drinks: [] };
+  var DATA = window.BAR_DATA || { mosaic: [], drinks: [] };
 
   function renderMosaic() {
     var grid = document.getElementById("mosaicGrid");
