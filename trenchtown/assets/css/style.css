@@ -43,11 +43,15 @@ p { margin: 0; }
 .btn--ghost:hover { border-color: var(--sand); }
 .btn--block { width: 100%; }
 
+.flag-bar { height: 4px; background: linear-gradient(90deg, var(--green) 0 33%, var(--gold) 33% 66%, var(--red) 66% 100%); }
+
 /* ===== Nav ===== */
 .nav { position: sticky; top: 0; z-index: 60; background: rgba(21,17,12,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .nav__row { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 20px; }
-.nav__mark { font-family: var(--display); font-weight: 400; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.01em; }
+.nav__mark { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 400; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.01em; }
+.nav__mark-icon { font-size: 1.1rem; line-height: 1; flex-shrink: 0; }
 .nav__mark--footer { font-size: 1.5rem; }
+.nav__mark--footer .nav__mark-icon { font-size: 1.3rem; }
 .nav__links { display: flex; align-items: center; gap: 24px; font-size: 0.9rem; color: var(--mist); font-weight: 500; }
 .nav__links a:hover { color: var(--sand); }
 .nav__lang { display: flex; gap: 4px; font-weight: 700; }
