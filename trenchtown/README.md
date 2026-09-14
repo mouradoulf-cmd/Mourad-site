@@ -32,6 +32,26 @@ fois sur la page. Il n'y a pas de musique intégrée : utilise soit le son
 de la vraie vidéo filmée sur place (le plus simple, zéro souci de droits),
 soit une piste réellement libre de droits si tu veux un fond sonore séparé.
 
+## Démo 3D (Three.js)
+
+`gallery-3d-demo.html` est une variante de `index.html` où la section
+galerie devient une vraie scène 3D pilotée par le scroll : les 5
+illustrations flottent comme des photos suspendues dans l'espace, la
+caméra "vole" à travers en scrollant, avec un léger parallax à la souris
+et un anneau néon animé au centre. Technique : Three.js + GSAP
+ScrollTrigger, chargés par CDN (aucune installation).
+
+Si Three.js ne charge pas (pas de connexion, navigateur trop ancien) ou
+si le visiteur a activé "réduire les animations", la page retombe
+automatiquement sur la grille d'illustrations statique de `index.html` —
+jamais de page cassée.
+
+C'est une démo technique pour montrer la capacité, pas la version à
+utiliser pour un vrai client tant qu'il n'y a que des illustrations —
+l'effet sera bien plus impressionnant une fois de vraies photos du lieu
+utilisées comme textures (remplacer `window.TILE_ART` dans
+`assets/js/main.js`).
+
 ## Structure du projet
 
 ```

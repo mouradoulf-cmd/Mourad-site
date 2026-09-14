@@ -71,6 +71,8 @@
       '</svg>'
   };
 
+  window.TILE_ART = ART;
+
   function renderMosaic() {
     var grid = document.getElementById("mosaicGrid");
     if (!grid) return;
