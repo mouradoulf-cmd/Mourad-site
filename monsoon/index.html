@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monsoon — Rooftop Nightclub, Pattaya</title>
+<meta name="description" content="Monsoon, Walking Street's rooftop after the sun drops into the gulf. Tonight's lineup, drinks, and VIP tables.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<svg style="display:none">
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6.5 3.5 9 4.7c.5 1.3 1 2.5 1.7 3.6l-1.7 1.9c1 2.1 2.8 3.9 4.9 4.9l1.9-1.7c1.1.7 2.3 1.2 3.6 1.7l1.2 2.5c-.4 1.2-1.5 2-2.8 2C10.4 20.6 3.4 13.6 3.4 6.3c0-1.3.8-2.4 2-2.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-line" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6 18v3l3.5-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5.3l3.6 2.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="icon-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="7" r="1" fill="currentColor"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav__row container">
+    <a href="#top" class="nav__mark">Monsoon</a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#tonight">Tonight</a>
+      <a href="#ambiance">Ambiance</a>
+      <a href="#drinks">Drinks</a>
+      <a href="#vip">VIP tables</a>
+      <a href="#find-us">Find us</a>
+    </nav>
+    <a href="tel:+6638000000" target="_blank" rel="noopener" class="btn btn--line nav__cta">Reserve a table</a>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track" id="tickerTrack"></div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="hero__sweep"></div>
+    <div class="container hero__inner">
+      <h1 class="hero__mark" id="heroMark"><span>Monsoon</span></h1>
+      <p class="hero__line">Walking Street's rooftop, after the sun drops into the gulf.</p>
+      <p class="hero__fact">Open Wed–Sun · 9pm till late · house, hip-hop and Thai pop, one floor each</p>
+      <div class="hero__ctas">
+        <a href="tel:+6638000000" target="_blank" rel="noopener" class="btn btn--primary">Reserve a VIP table</a>
+        <a href="#tonight" class="btn btn--ghost">See tonight's lineup</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lineup" id="tonight">
+    <div class="container">
+      <h2 class="h2">This week on the roof</h2>
+      <table class="lineup__table">
+        <tbody id="lineupBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ambiance" id="ambiance">
+    <div class="container">
+      <div class="ambiance__head">
+        <h2 class="h2">Four floors, one roof</h2>
+        <p class="ambiance__lede">Ground floor bar to street level, mid-floor dancefloor, upper deck for the DJ booth, and the open roof for when the breeze comes in off the gulf.</p>
+      </div>
+      <div class="mosaic" id="mosaicGrid"></div>
+    </div>
+  </section>
+
+  <section class="drinks" id="drinks">
+    <div class="container">
+      <h2 class="h2">What's behind the bar</h2>
+      <div class="drinks__grid" id="drinksGrid"></div>
+    </div>
+  </section>
+
+  <section class="vip" id="vip">
+    <div class="container vip__inner">
+      <div class="vip__copy">
+        <h2 class="h2">Hold a table before the roof fills up</h2>
+        <p>Tables go first-come on weekends after 11pm. Message us your date and party size and we'll confirm within the hour.</p>
+        <ul class="vip__list">
+          <li>Minimum spend from ฿3,000, credited toward your bill</li>
+          <li>Bottle service includes mixers, ice, and a dedicated server</li>
+          <li>Best view of the DJ booth: tables 1 through 6 on the upper deck</li>
+        </ul>
+      </div>
+      <form class="vip__form" id="vipForm">
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" name="name" required placeholder="Name">
+        </label>
+        <div class="field-row">
+          <label class="field">
+            <span>Date</span>
+            <input type="date" name="date" required>
+          </label>
+          <label class="field">
+            <span>Party size</span>
+            <input type="number" name="party" min="1" max="30" required placeholder="e.g. 6">
+          </label>
+        </div>
+        <label class="field">
+          <span>Phone or LINE ID</span>
+          <input type="text" name="contact" required placeholder="For us to confirm with you">
+        </label>
+        <button type="submit" class="btn btn--primary btn--block">Send request on LINE</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer" id="find-us">
+    <div class="container footer__inner">
+      <div>
+        <a href="#top" class="nav__mark nav__mark--footer">Monsoon</a>
+        <p class="footer__addr">
+          <svg class="icon" width="14" height="14"><use href="#icon-pin"/></svg>
+          Walking Street Soi 8, Pattaya
+        </p>
+        <p class="footer__addr">
+          <svg class="icon" width="14" height="14"><use href="#icon-clock"/></svg>
+          Wed–Sun, 9pm–3am
+        </p>
+      </div>
+      <div class="footer__contact">
+        <a href="tel:+6638000000" target="_blank" rel="noopener"><svg class="icon" width="16" height="16"><use href="#icon-phone"/></svg>+66 38 000 000</a>
+        <a href="https://line.me/ti/p/~monsoonpattaya" target="_blank" rel="noopener"><svg class="icon" width="16" height="16"><use href="#icon-line"/></svg>@monsoonpattaya</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener"><svg class="icon" width="16" height="16"><use href="#icon-ig"/></svg>@monsoon.pattaya</a>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <p>© 2026 Monsoon — Demo site, fictional venue and menu.</p>
+    </div>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
