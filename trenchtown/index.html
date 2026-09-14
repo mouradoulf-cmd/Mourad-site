@@ -42,7 +42,23 @@
 
   <section class="hero" id="top">
     <div class="hero__media">
-      <div class="hero__fallback"></div>
+      <div class="hero__fallback">
+        <svg class="hero__art" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g fill="#f1e6c8" opacity=".55">
+            <circle cx="180" cy="120" r="2"/><circle cx="340" cy="90" r="1.6"/><circle cx="520" cy="140" r="2"/>
+            <circle cx="700" cy="80" r="1.8"/><circle cx="880" cy="130" r="1.6"/><circle cx="1030" cy="95" r="2"/>
+            <circle cx="240" cy="200" r="1.4"/><circle cx="960" cy="210" r="1.4"/>
+          </g>
+          <circle cx="940" cy="160" r="70" fill="#f1e6c8" opacity=".22"/>
+          <path d="M0,700 L0,520 Q300,460 600,510 T1200,500 L1200,700 Z" fill="#241608" opacity=".3"/>
+          <g stroke="#241608" stroke-width="9" fill="none" stroke-linecap="round" opacity=".55">
+            <path d="M120,650 L128,480"/><path d="M128,480 Q60,450 30,478"/><path d="M128,480 Q196,444 234,468"/>
+            <path d="M128,480 Q80,410 40,398"/><path d="M128,480 Q176,406 224,398"/><path d="M128,480 Q128,398 128,368"/>
+            <path d="M1080,650 L1072,500"/><path d="M1072,500 Q1140,472 1170,494"/><path d="M1072,500 Q1004,466 966,486"/>
+            <path d="M1072,500 Q1108,436 1148,424"/><path d="M1072,500 Q1036,432 996,424"/>
+          </g>
+        </svg>
+      </div>
       <video class="hero__video" id="heroVideo" autoplay muted loop playsinline poster="">
         <source src="assets/video/hero.mp4" type="video/mp4">
       </video>
@@ -120,7 +136,13 @@
 
 <script>
 window.BAR_DATA = {
-  mosaic: ["Under the painted night sky", "Hand-painted wall murals", "The stage, live every night", "Neon at the door", "Packed most nights"],
+  mosaic: [
+    { label: "Under the painted night sky", art: "nightsky" },
+    { label: "Hand-painted wall murals", art: "murals" },
+    { label: "The stage, live every night", art: "stage" },
+    { label: "Neon at the door", art: "neon" },
+    { label: "Packed most nights", art: "crowd" }
+  ],
   drinks: [
     { cat: "🍺 Beer & wine", items: [["San Miguel", "89"], ["Heineken", "89"], ["Tiger", "89"], ["Leo", "89"], ["Chang", "89"], ["Singha / Singha Light", "89"], ["Corona / Corona Extra", "139"], ["Mont Claire red / white", "149"], ["Thatchers Gold cider", "169"]] },
     { cat: "🥤 Non-alcoholic", items: [["Water / soda / tonic", "69"], ["Red Bull & Lipo", "79"], ["Coke, Zero, Light", "79"], ["Sprite, Schweppes", "79"], ["Orange, pineapple, apple juice", "89"]] },
