@@ -13,7 +13,7 @@ import usinageImg from '../assets/pillars/usinage.jpg';
 import serviceImg from '../assets/pillars/service-technique.jpg';
 
 const ICONS = [Boxes, ClipboardCheck, Truck, Ruler, LifeBuoy];
-const COLORS = ['#4fae8c', '#f5b90f', '#e41959', '#4c96d1', '#7d2a72'];
+const COLORS = ['#e41959', '#f5b90f', '#e41959', '#e41959', '#e41959'];
 const IMAGES = [stockImg, preconisationImg, logistiqueImg, usinageImg, serviceImg];
 
 export default function Pillars() {

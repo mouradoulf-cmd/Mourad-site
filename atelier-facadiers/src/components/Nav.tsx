@@ -160,7 +160,7 @@ export default function Nav() {
             <div
               className="h-[3px] w-full"
               style={{
-                background: 'linear-gradient(90deg, #4fae8c, #f5b90f, #e41959, #4c96d1, #7d2a72, #4fae8c)',
+                background: 'linear-gradient(90deg, #e41959, #f5b90f, #e41959)',
                 backgroundSize: '200% 100%',
                 animation: 'menuGlow 4s linear infinite',
               }}

@@ -6,7 +6,7 @@ import TiltCard from './TiltCard';
 import CountUp from './CountUp';
 
 const VALUE_ICONS = [Heart, HeartHandshake, Users, Lightbulb, Leaf];
-const VALUE_COLORS = ['#4fae8c', '#f5b90f', '#e41959', '#4c96d1', '#7d2a72'];
+const VALUE_COLORS = ['#e41959', '#f5b90f', '#e41959', '#e41959', '#e41959'];
 
 export default function About() {
   const { t } = useLanguage();

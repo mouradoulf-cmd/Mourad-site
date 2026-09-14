@@ -8,7 +8,7 @@ import EquitoneGammesGallery from '../components/EquitoneGammesGallery';
 import heroImg from '../assets/equitone/hero.jpg';
 import tergoDiagram from '../assets/equitone/tergo-diagram.png';
 
-const COLORS = ['#4fae8c', '#f5b90f', '#e41959', '#4c96d1', '#7d2a72'];
+const COLORS = ['#e41959', '#f5b90f', '#e41959', '#e41959', '#e41959'];
 
 export default function Equitone() {
   const { t } = useLanguage();
@@ -124,7 +124,7 @@ export default function Equitone() {
                     <td
                       colSpan={6}
                       className="px-5 pt-7 pb-2 text-xs uppercase tracking-widest font-semibold sticky left-0 bg-[#0a0f17]"
-                      style={{ color: '#4c96d1' }}
+                      style={{ color: '#e41959' }}
                     >
                       {t.equitone.formatEquerreHeading}
                     </td>
@@ -166,7 +166,7 @@ export default function Equitone() {
                   key={b}
                   className="inline-flex items-center gap-1.5 text-xs font-medium text-white/80 bg-white/10 border border-white/15 rounded-full px-3 py-1.5"
                 >
-                  <ShieldCheck size={13} style={{ color: '#4fae8c' }} /> {b}
+                  <ShieldCheck size={13} style={{ color: '#e41959' }} /> {b}
                 </span>
               ))}
             </div>
@@ -182,7 +182,7 @@ export default function Equitone() {
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">{t.equitone.documentationHeading}</h2>
           <div
             className="glass-panel rounded-2xl px-6 py-5 flex items-center justify-between gap-4 flex-wrap"
-            style={{ borderTop: '2px solid #4c96d1' }}
+            style={{ borderTop: '2px solid #e41959' }}
           >
             <div className="flex items-center gap-4">
               <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center shrink-0">

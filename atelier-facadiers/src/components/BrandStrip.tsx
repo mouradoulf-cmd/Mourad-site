@@ -8,7 +8,7 @@ const BRAND_LINKS: Record<string, string> = {
   EQUITONE: '/bardage/equitone',
 };
 
-const COLORS = ['#4fae8c', '#f5b90f', '#e41959', '#4c96d1', '#7d2a72'];
+const COLORS = ['#e41959', '#f5b90f', '#e41959', '#e41959', '#e41959'];
 
 export default function BrandStrip() {
   const { t } = useLanguage();

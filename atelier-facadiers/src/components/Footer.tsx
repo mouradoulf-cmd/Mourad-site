@@ -29,7 +29,7 @@ export default function Footer() {
       <div
         aria-hidden
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, #4fae8c, #f5b90f, #e41959, #4c96d1, #7d2a72, transparent)', opacity: 0.5 }}
+        style={{ background: 'linear-gradient(90deg, transparent, #e41959, transparent)', opacity: 0.5 }}
       />
 
       <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-10 pb-10 border-b border-white/10">

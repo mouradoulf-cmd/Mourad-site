@@ -21,7 +21,7 @@ export const translations = {
         },
         {
           category: 'Aluminium composite',
-          color: '#4c96d1',
+          color: '#e41959',
           items: [
             { label: 'Stacbond', to: '/#marques' },
             { label: 'Alpolic', to: '/#marques' },
@@ -34,7 +34,7 @@ export const translations = {
         },
         {
           category: 'Stratifié HPL',
-          color: '#4fae8c',
+          color: '#e41959',
           items: [
             { label: 'Fundermax', to: '/#marques' },
             { label: 'Trespa', to: '/#marques' },
@@ -233,7 +233,7 @@ export const translations = {
         },
         {
           category: 'Aluminium composite',
-          color: '#4c96d1',
+          color: '#e41959',
           items: [
             { label: 'Stacbond', to: '/#marques' },
             { label: 'Alpolic', to: '/#marques' },
@@ -246,7 +246,7 @@ export const translations = {
         },
         {
           category: 'HPL laminate',
-          color: '#4fae8c',
+          color: '#e41959',
           items: [
             { label: 'Fundermax', to: '/#marques' },
             { label: 'Trespa', to: '/#marques' },

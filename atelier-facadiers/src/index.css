@@ -37,8 +37,8 @@ html, body, #root {
 }
 
 @keyframes heroReveal {
-  0% { opacity: 0; transform: translateY(28px); filter: blur(12px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  0% { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 @keyframes heroFadeUp {
   0% { opacity: 0; transform: translateY(20px); }

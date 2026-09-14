@@ -48,7 +48,7 @@ export default function Hero() {
           className="hero-anim hero-fade mt-8 w-24 h-[2px] glow-pulse"
           style={{
             animationDelay: '0.75s',
-            background: 'linear-gradient(90deg, #4fae8c, #f5b90f, #e41959, #4c96d1, #7d2a72)',
+            background: 'linear-gradient(90deg, #e41959, #f5b90f, #e41959, #e41959, #e41959)',
             boxShadow: '0 0 16px rgba(245,185,15,0.6)',
           }}
         />

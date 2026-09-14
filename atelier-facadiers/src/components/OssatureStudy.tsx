@@ -5,7 +5,7 @@ import TiltCard from './TiltCard';
 export default function OssatureStudy() {
   const { t } = useLanguage();
   const cards = [t.study.card1, t.study.card2];
-  const colors = ['#4fae8c', '#4c96d1'];
+  const colors = ['#e41959', '#e41959'];
 
   return (
     <section id="ossature" className="relative z-10 py-16 px-5 sm:px-8">
