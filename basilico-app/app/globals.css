@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #070707;
+  --color-ink-soft: #121212;
+  --color-paper: #ffffff;
+  --color-gray: #bdbdbd;
+  --color-gold: #d9a35f;
+  --color-burnt: #c97a2b;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-paper: var(--color-paper);
+  --color-gray: var(--color-gray);
+  --color-gold: var(--color-gold);
+  --color-burnt: var(--color-burnt);
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink);
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (max-width: 900px), (hover: none) {
+  body { cursor: auto; }
+  .cursor-dot { display: none !important; }
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.gold-text {
+  background: linear-gradient(90deg, #f0c589, var(--color-gold), var(--color-burnt));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
