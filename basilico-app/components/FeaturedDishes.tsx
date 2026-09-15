@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Reveal from "./Reveal";
 import MenuModal from "./MenuModal";
+import { withBasePath } from "@/lib/basePath";
 
 const DISHES = [
   {
@@ -96,7 +97,7 @@ export default function FeaturedDishes() {
               <div className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
-                    src={d.img}
+                    src={withBasePath(d.img)}
                     alt={d.name}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -124,7 +125,7 @@ export default function FeaturedDishes() {
             <Reveal key={t.img} delay={(i % 5) * 0.08}>
               <div className="group relative aspect-square overflow-hidden rounded-xl border border-white/10">
                 <Image
-                  src={t.img}
+                  src={withBasePath(t.img)}
                   alt={t.alt}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"

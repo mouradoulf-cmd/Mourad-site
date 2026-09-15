@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 
 const WORDS = ["Crafting", "Exceptional", "Culinary", "Experiences"];
 
@@ -47,7 +48,7 @@ export default function Hero() {
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden pt-28">
       <div className="absolute inset-0 -z-20">
         <Image
-          src="https://strvid.nyc3.cdn.digitaloceanspaces.com/motionsite/restaurant_bg.png"
+          src={withBasePath("/images/giulivo/terrazza-vista.jpg")}
           alt=""
           fill
           priority

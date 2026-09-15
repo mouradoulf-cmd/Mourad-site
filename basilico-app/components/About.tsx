@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 export default function About() {
   return (
@@ -26,7 +27,7 @@ export default function About() {
           <div className="absolute -inset-4 rounded-full bg-gold/10 blur-2xl" />
           <div className="relative h-full w-full overflow-hidden rounded-full border border-white/10">
             <Image
-              src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop"
+              src={withBasePath("/images/giulivo/tartare.jpg")}
               alt="Chef Alexander Thorne"
               fill
               className="object-cover"

@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 const IMAGES = [
-  { src: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=800&auto=format&fit=crop", span: "row-span-2" },
-  { src: "https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=800&auto=format&fit=crop", span: "" },
-  { src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop", span: "" },
-  { src: "https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=800&auto=format&fit=crop", span: "row-span-2" },
-  { src: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=800&auto=format&fit=crop", span: "" },
-  { src: "https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=800&auto=format&fit=crop", span: "" },
+  { src: "/images/giulivo/terrazza-ulivo.jpg", span: "row-span-2" },
+  { src: "/images/giulivo/tortellini-panna-speck.jpg", span: "" },
+  { src: "/images/giulivo/antipasto-misto.jpg", span: "" },
+  { src: "/images/giulivo/piatto-signature.jpg", span: "row-span-2" },
+  { src: "/images/giulivo/terrazza-pergola.jpg", span: "" },
+  { src: "/images/giulivo/terrazza-veranda.jpg", span: "" },
 ];
 
 export default function Gallery() {
@@ -23,7 +24,7 @@ export default function Gallery() {
           {IMAGES.map((img, i) => (
             <Reveal key={i} delay={i * 0.06} className={img.span}>
               <div className="relative h-full min-h-[160px] w-full overflow-hidden rounded-2xl border border-white/10">
-                <Image src={img.src} alt="" fill className="object-cover transition-transform duration-700 hover:scale-110" />
+                <Image src={withBasePath(img.src)} alt="" fill className="object-cover transition-transform duration-700 hover:scale-110" />
               </div>
             </Reveal>
           ))}

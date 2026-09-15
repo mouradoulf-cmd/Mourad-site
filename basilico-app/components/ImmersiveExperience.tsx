@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Reveal from "./Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 export default function ImmersiveExperience() {
   const imgRef = useRef<HTMLDivElement>(null);
@@ -47,7 +48,7 @@ export default function ImmersiveExperience() {
         <div className="relative aspect-[16/9] overflow-hidden rounded-3xl border border-white/10">
           <div ref={imgRef} className="absolute inset-0 -top-[8%] h-[116%] w-full">
             <Image
-              src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=800&auto=format&fit=crop"
+              src={withBasePath("/images/giulivo/terrazza-tavoli.jpg")}
               alt="Basilico private dining room"
               fill
               className="object-cover"
