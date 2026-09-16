@@ -470,6 +470,161 @@
         closeLabel: "Speisekarte schließen",
         panelLabel: "Die vollständige Speisekarte"
       }
+    },
+
+    th: {
+      meta: {
+        description: "Giulivo Cucina e Buonumore — อาหารทัสคานีแท้ ทำสดใหม่แบบโฮมเมด ใจกลางเมืองวีโกปิซาโน พาสต้าสดทำมือ เนื้อและปลาตามฤดูกาล และของหวานโฮมเมด ในบรรยากาศอบอุ่นเป็นกันเอง"
+      },
+      nav: {
+        home: "หน้าแรก",
+        story: "เรื่องราวของเรา",
+        menu: "เมนู",
+        gallery: "แกลเลอรี",
+        reviews: "รีวิว",
+        contact: "ติดต่อ",
+        book: "จองโต๊ะ",
+        burgerLabel: "เปิดเมนู"
+      },
+      hero: {
+        eyebrow: "Località Luchetta · Vicopisano · ทัสคานี",
+        text: "อาหารทัสคานีแท้ ปรุงสดใหม่แบบโฮมเมด — พาสต้าสดทำมือ เนื้อและปลาตามฤดูกาล เสิร์ฟในบรรยากาศเรียบง่าย อบอุ่น และร่าเริง เหมือนอยู่บ้าน",
+        bookBtn: "จองโต๊ะ",
+        menuBtn: "ดูเมนู",
+        scrollLabel: "เลื่อนลง",
+        ratingHtml: "<strong>4.7</strong> บน Google · <span>91 รีวิว</span>"
+      },
+      stats: {
+        rating: "คะแนน Google",
+        reviews: "รีวิวจากลูกค้า",
+        homemade: "โฮมเมด",
+        openUntil: "เปิดถึง"
+      },
+      marquee: { cuisine: "อาหารทัสคานี", homemade: "โฮมเมด" },
+      story: {
+        badgeSub: "ทุกวัน",
+        imgAlt: "ทาร์ทาร์สไตล์ใหม่ จัดจานอย่างประณีตบนแผ่นหินชนวนที่ Giulivo",
+        eyebrow: "เรื่องราวของเรา",
+        titleHtml: "ชีวิตใหม่ หลงใหลเช่นเดิม&nbsp;: การต้อนรับที่อบอุ่น",
+        p1: "Giulivo เกิดจากความตั้งใจของ Guidino ที่จะทุ่มเททุกอย่างให้กับความหลงใหลที่แท้จริงของเขา นั่นคืออาหารทัสคานีที่เอื้อเฟื้อและจริงใจ หลังผ่านช่วงชีวิตที่เข้มข้น เขาเลือกเริ่มต้นใหม่และเปิดร้านอาหารของตัวเองที่วีโกปิซาโน โดยยึดมั่นในสูตรอาหารดั้งเดิมและวัตถุดิบตามฤดูกาล",
+        p2Html: "ที่นี่ทุกอย่างทำเองแบบโฮมเมด&nbsp;: พาสต้านวดด้วยมือ เนื้อและปลาปรุงด้วยความใส่ใจ ของหวานทำสดในร้าน ลูกค้ามาเพื่อกินอาหารอร่อย แต่ก็มาเพื่อ <em>buonumore</em> — อารมณ์ดี — ซึ่งเป็นที่มาของชื่อร้านด้วย",
+        point1: "พาสต้าสดทำมือ",
+        point2: "เนื้อและปลาตามฤดูกาล",
+        point3: "ของหวานโฮมเมด",
+        point4: "บรรยากาศเรียบง่าย อบอุ่น และเป็นกันเอง"
+      },
+      motto: {
+        text: "« ความหลงใหลในอาหารดี ไวน์ดี และเหนือสิ่งอื่นใดคือความเป็นกันเอง คือสิ่งที่ผลักดันให้เราก้าวเข้าสู่การผจญภัยครั้งนี้ ที่ซึ่งเรานำเสนอจานอาหารตามประเพณีทัสคานีพร้อมสัมผัสของ buonumore ปรัชญาที่เรียบง่าย เพราะสูตรแห่งความสุขนั้นเรียบง่าย นั่นคือ กิน ดื่ม อยู่ด้วยกัน แบ่งปันความสุขและอารมณ์ความรู้สึก »"
+      },
+      menu: {
+        eyebrow: "เมนู",
+        title: "อาหารทัสคานีที่เอื้อเฟื้อ ตามฤดูกาล",
+        lead: "เมนูเปลี่ยนไปตามฤดูกาลและวัตถุดิบในตลาด นี่คือแก่นของเมนู พร้อมตัวอย่างจานอาหารที่ประกอบขึ้นเป็นเมนูนี้",
+        fullBtn: "ดูเมนูฉบับเต็ม",
+        card1Title: "อาหารเรียกน้ำย่อย",
+        card1Text: "อาหารเรียกน้ำย่อยสไตล์ทัสคานี ด้วยวัตถุดิบสดใหม่ตามฤดูกาล จัดจานอย่างประณีต",
+        card1Alt: "ทาร์ทาร์เนื้อบนแผ่นหินชนวน อาหารเรียกน้ำย่อยของ Giulivo",
+        card2Title: "พาสต้าทำมือ",
+        card2Text: "พาสต้าสดนวดด้วยมือทุกวัน ตามแบบฉบับทัสคานี",
+        card2Alt: "ลิงกวินีอาหารทะเล กุ้งและหอยแมลงภู่",
+        card3Title: "เนื้อและปลา",
+        card3Text: "เนื้อและปลาปรุงด้วยความหลงใหล คัดสรรตามความสดใหม่ที่มีในแต่ละวัน",
+        card3Alt: "ทูน่าเคลือบพิสตาชิโอหั่นเสิร์ฟพร้อมสลัด",
+        card4Title: "ของหวานโฮมเมด",
+        card4Text: "ของหวานทำเองแบบโฮมเมด ปิดท้ายมื้ออาหารด้วยความหวาน ตามแบบฉบับคลาสสิกของอิตาลี",
+        card4Alt: "พานาคอตต้าเบอร์รีรวม ของหวานโฮมเมด",
+        originAria: "กรองเมนูตามบก หรือ ทะเล",
+        originAll: "ทั้งหมด",
+        originLand: "บก",
+        originSea: "ทะเล",
+        tabsAria: "หมวดหมู่เมนู",
+        tabAntipasti: "อาหารเรียกน้ำย่อย",
+        tabPrimi: "จานแรก",
+        tabSecondi: "จานหลัก",
+        tabContorni: "เครื่องเคียง",
+        tabDessert: "ของหวาน",
+        tabBevande: "เครื่องดื่ม",
+        prevLabel: "หมวดก่อนหน้า",
+        nextLabel: "หมวดถัดไป",
+        panelAntipasti: "อาหารเรียกน้ำย่อย",
+        panelPrimi: "จานแรก",
+        panelSecondi: "จานหลัก",
+        panelContorni: "เครื่องเคียง",
+        panelDessert: "ของหวาน",
+        panelBevande: "เครื่องดื่มและกาแฟ",
+        note: "พาสต้าสดของเราทำมือ ผลิตโดยโรงพาสต้าฝีมือดี \"La Castellana\"",
+        hint: "เปิดดูเมนูเหมือนพลิกหนังสือ — ใช้ลูกศรหรือแท็บด้านบน",
+        footnoteHtml: "ค่าคัฟเวอร์ 2.50&nbsp;€ ต่อคน · เมนูอาจเปลี่ยนแปลงตามฤดูกาล · แจ้งข้อมูลสารก่อภูมิแพ้ได้ตามคำขอ",
+        ctaBtn: "จองโต๊ะของคุณ"
+      },
+      gallery: {
+        eyebrow: "แกลเลอรี",
+        title: "มุมมองที่โต๊ะอาหาร",
+        lead: "รสชาติของอาหารและบรรยากาศที่ Giulivo",
+        items: [
+          { alt: "มุมหนึ่งใต้ต้นมะกอกเก่าแก่ ระเบียงของเรา", caption: "ใต้ต้นมะกอกเก่าแก่" },
+          { alt: "ทาร์ทาร์บนแผ่นหินชนวน อาหารของ Giulivo", caption: "ทาร์ทาร์ของร้าน" },
+          { alt: "ลิงกวินีอาหารทะเล", caption: "ลิงกวินีอาหารทะเล" },
+          { alt: "ทูน่าเคลือบพิสตาชิโอ", caption: "ทูน่าเคลือบพิสตาชิโอ" },
+          { alt: "พานาคอตต้าเบอร์รีรวม", caption: "พานาคอตต้าเบอร์รีรวม" },
+          { alt: "อาหารเรียกน้ำย่อยรวม ทาร์ทาร์ทูน่าและปลาชุบเกล็ดขนมปัง", caption: "อาหารเรียกน้ำย่อยรวม" },
+          { alt: "ตอร์เตลลินีโฮมเมด ครีมและสเป็คกรอบ", caption: "ตอร์เตลลินี ครีมและสเป็ค" },
+          { alt: "จานซิกเนเจอร์ จัดจานสไตล์ธรรมชาติ", caption: "จานซิกเนเจอร์ของ Giulivo" },
+          { alt: "พานาคอตต้าและไวน์ขาวหนึ่งแก้วบนระเบียง", caption: "ของหวานและไวน์หนึ่งแก้วบนระเบียง" },
+          { alt: "โต๊ะที่จัดไว้บนระเบียงใต้ซุ้มไม้เลื้อย", caption: "โต๊ะพร้อมเสิร์ฟบนระเบียง" },
+          { alt: "ระเบียงของ Giulivo ยามพระอาทิตย์ตก", caption: "ระเบียงของเรา" },
+          { alt: "ซุ้มไม้เลื้อยบนระเบียงของ Giulivo", caption: "ซุ้มไม้เลื้อยของเรา" }
+        ]
+      },
+      experience: {
+        eyebrow: "บรรยากาศ",
+        title: "ประสบการณ์ที่ควรค่าแก่การใช้ชีวิต ไม่ใช่แค่มื้ออาหาร",
+        text: "ท่ามกลางเนินเขาแห่งวีโกปิซาโน ในบรรยากาศเรียบง่ายแต่ใส่ใจทุกรายละเอียด มื้อค่ำทุกมื้อที่ Giulivo คือช่วงเวลาแห่งการแบ่งปัน — อาหารอร่อย มิตรภาพดี ๆ และ buonumore"
+      },
+      reviews: {
+        number: "4.7",
+        count: "91 รีวิวที่ยืนยันแล้วบน Google",
+        readBtn: "อ่านรีวิวบน Google",
+        slide1: "« มาเพื่อกินอาหารอร่อย แล้วกลับบ้านพร้อมรอยยิ้ม »",
+        slide2: "« อาหารทัสคานีแท้ ในบรรยากาศที่รู้สึกเหมือนอยู่บ้าน »",
+        slide3: "« การันตีความอารมณ์ดี ทุกโต๊ะ »",
+        note: "จิตวิญญาณของ Giulivo ในไม่กี่คำ — อาหารทัสคานีแท้และการต้อนรับอันอบอุ่น",
+        chip1: "แท้จริง",
+        chip2: "เป็นกันเอง",
+        chip3: "โฮมเมด",
+        chip4: "เหมือนอยู่บ้าน",
+        chip5: "การันตีความอารมณ์ดี"
+      },
+      contact: {
+        bookEyebrow: "จองโต๊ะ",
+        bookTitle: "ขอจองโต๊ะ",
+        bookText: "กรอกรายละเอียด: ระบบจะเปิด WhatsApp พร้อมข้อความที่พร้อมส่งถึงเราทันที การจองจะยืนยันก็ต่อเมื่อเราตอบกลับแล้วเท่านั้น",
+        labelDate: "วันที่",
+        labelTime: "เวลา",
+        labelGuests: "จำนวนคน",
+        labelNotes: "หมายเหตุ (ถ้ามี)",
+        notesPlaceholder: "เช่น อาการแพ้อาหาร เก้าอี้เด็ก โต๊ะกลางแจ้ง…",
+        submitBtn: "ขอจองผ่าน WhatsApp",
+        findEyebrow: "ที่ตั้งของเรา",
+        findTitle: "มาร่วมแบ่งปันช่วงเวลาดี ๆ ไปด้วยกัน",
+        addressLabel: "ที่อยู่",
+        addressHtml: "Località Luchetta, 7<br>56010 Vicopisano PI, ประเทศอิตาลี",
+        hoursLabel: "เวลาทำการ",
+        hoursHtml: "เปิดบริการช่วงเย็น จนถึง 23:00 น.<br><small>กรุณาโทรยืนยันวันเปิดทำการและจองโต๊ะล่วงหน้า</small>",
+        phoneLabel: "โทรศัพท์",
+        callBtn: "โทรเพื่อจองโต๊ะ",
+        whatsappBtn: "WhatsApp",
+        mapTitle: "ตำแหน่งที่ตั้งของ Giulivo Cucina e Buonumore"
+      },
+      footer: {
+        backTop: "กลับขึ้นด้านบน ↑",
+        country: "อิตาลี"
+      },
+      modal: {
+        title: "เมนูฉบับเต็ม",
+        closeLabel: "ปิดเมนู",
+        panelLabel: "เมนูฉบับเต็ม"
+      }
     }
   };
 
@@ -479,52 +634,52 @@
      an empty string means "no subtitle in this language". */
   var menuDescriptions = {
     antipasti: [
-      { it: "Su crema di pomodori gialli, melanzana fumè e olive disidratate", en: "On a cream of yellow tomatoes, smoked eggplant and dried olives", de: "Auf Creme von gelben Tomaten, geräucherter Aubergine und getrockneten Oliven" },
-      { it: "Con asparagi, crema di pecorino semistagionato e crumble di mais", en: "Poached egg with asparagus, semi-aged pecorino cream and corn crumble", de: "Pochiertes Ei mit Spargel, Creme von mittelaltem Pecorino und Maiscrumble" },
-      { it: "Affettati, formaggi, polentina e crostino ai fegatini", en: "Cured meats, cheeses, soft polenta and chicken liver crostino", de: "Aufschnitt, Käse, Polenta und Crostino mit Hühnerleber" },
-      { it: "Cipolle in agrodolce, tuorlo marinato, crema di burrata e senape in grani", en: "Piedmontese beef tartare, sweet-and-sour onions, marinated egg yolk, burrata cream and mustard seeds", de: "Piemonteser Rindertatar, süß-saure Zwiebeln, mariniertes Eigelb, Burratacreme und Senfkörner" },
-      { it: "", en: "Iberian Patanegra ham", de: "Iberischer Patanegra-Schinken" },
-      { it: "", en: "Peppered mussels", de: "Gepfefferte Miesmuscheln" },
-      { it: "Seppie alla griglia con finocchio croccante e pomodorini, tonno marinato alla curcuma, alici dorate con maionese d'aglio", en: "Grilled cuttlefish with crunchy fennel and cherry tomatoes, turmeric-marinated tuna, golden anchovies with garlic mayonnaise", de: "Gegrillter Tintenfisch mit knackigem Fenchel und Kirschtomaten, in Kurkuma marinierter Thunfisch, goldene Sardellen mit Knoblauchmayonnaise" }
+      { it: "Su crema di pomodori gialli, melanzana fumè e olive disidratate", en: "On a cream of yellow tomatoes, smoked eggplant and dried olives", de: "Auf Creme von gelben Tomaten, geräucherter Aubergine und getrockneten Oliven", th: "บนครีมมะเขือเทศเหลือง มะเขือม่วงรมควัน และมะกอกอบแห้ง" },
+      { it: "Con asparagi, crema di pecorino semistagionato e crumble di mais", en: "Poached egg with asparagus, semi-aged pecorino cream and corn crumble", de: "Pochiertes Ei mit Spargel, Creme von mittelaltem Pecorino und Maiscrumble", th: "ไข่ปูเช่กับหน่อไม้ฝรั่ง ครีมเปโครีโนหมักกึ่งบ่ม และครัมเบิลข้าวโพด" },
+      { it: "Affettati, formaggi, polentina e crostino ai fegatini", en: "Cured meats, cheeses, soft polenta and chicken liver crostino", de: "Aufschnitt, Käse, Polenta und Crostino mit Hühnerleber", th: "เนื้อเย็นรวม ชีส โพเลนต้านุ่ม และครอสตินีตับไก่" },
+      { it: "Cipolle in agrodolce, tuorlo marinato, crema di burrata e senape in grani", en: "Piedmontese beef tartare, sweet-and-sour onions, marinated egg yolk, burrata cream and mustard seeds", de: "Piemonteser Rindertatar, süß-saure Zwiebeln, mariniertes Eigelb, Burratacreme und Senfkörner", th: "เนื้อทาร์ทาร์พีดมอนต์ หัวหอมเปรี้ยวหวาน ไข่แดงหมัก ครีมบูราต้า และเมล็ดมัสตาร์ด" },
+      { it: "", en: "Iberian Patanegra ham", de: "Iberischer Patanegra-Schinken", th: "แฮมอิเบเรียนปาตาเนกรา" },
+      { it: "", en: "Peppered mussels", de: "Gepfefferte Miesmuscheln", th: "หอยแมลงภู่อบพริกไทย" },
+      { it: "Seppie alla griglia con finocchio croccante e pomodorini, tonno marinato alla curcuma, alici dorate con maionese d'aglio", en: "Grilled cuttlefish with crunchy fennel and cherry tomatoes, turmeric-marinated tuna, golden anchovies with garlic mayonnaise", de: "Gegrillter Tintenfisch mit knackigem Fenchel und Kirschtomaten, in Kurkuma marinierter Thunfisch, goldene Sardellen mit Knoblauchmayonnaise", th: "ปลาหมึกย่างกับผักกาดกรอบและมะเขือเทศเชอร์รี ทูน่าหมักขมิ้น และปลากะตักทอดราดมายองเนสกระเทียม" }
     ],
     primi: [
-      { it: "Con caprino fresco, granella di nocciole tostate e polvere di speck", en: "Aromatic herb risotto with fresh goat cheese, toasted hazelnuts and speck powder", de: "Kräuterrisotto mit frischem Ziegenkäse, gerösteten Haselnüssen und Speckpulver" },
-      { it: "Con stracciatella e pesto", en: "Fresh tomato rigatoncini with stracciatella and pesto", de: "Rigatoncini mit frischer Tomate, Stracciatella und Pesto" },
-      { it: "Ragù di ossobuco, olive taggiasche e zafferano", en: "Oxtail ragù with Taggiasca olives and saffron", de: "Ossobuco-Ragù mit Taggiasca-Oliven und Safran" },
-      { it: "Su crema di porcini, fonduta di pecorino e guanciale croccante", en: "Potato cappellacci, porcini cream, pecorino fonduta and crispy guanciale", de: "Kartoffel-Cappellacci, Steinpilzcreme, Pecorino-Fonduta und knuspriger Guanciale" },
-      { it: "", en: "Rigatoncini, Taranto style", de: "Rigatoncini nach Art von Taranto" },
-      { it: "", en: "Chitarrini with mixed seafood", de: "Chitarrini mit gemischten Meeresfrüchten" }
+      { it: "Con caprino fresco, granella di nocciole tostate e polvere di speck", en: "Aromatic herb risotto with fresh goat cheese, toasted hazelnuts and speck powder", de: "Kräuterrisotto mit frischem Ziegenkäse, gerösteten Haselnüssen und Speckpulver", th: "ริซอตโตสมุนไพรหอม กับแพะชีสสด เฮเซลนัทอบ และผงสเป็ค" },
+      { it: "Con stracciatella e pesto", en: "Fresh tomato rigatoncini with stracciatella and pesto", de: "Rigatoncini mit frischer Tomate, Stracciatella und Pesto", th: "ริกาตองชินีมะเขือเทศสด กับสตราชาเตลลาและเพสโต้" },
+      { it: "Ragù di ossobuco, olive taggiasche e zafferano", en: "Oxtail ragù with Taggiasca olives and saffron", de: "Ossobuco-Ragù mit Taggiasca-Oliven und Safran", th: "ราคูหางวัว มะกอกทัจจาสก้า และหญ้าฝรั่น" },
+      { it: "Su crema di porcini, fonduta di pecorino e guanciale croccante", en: "Potato cappellacci, porcini cream, pecorino fonduta and crispy guanciale", de: "Kartoffel-Cappellacci, Steinpilzcreme, Pecorino-Fonduta und knuspriger Guanciale", th: "กัปเปลลาชชีมันฝรั่ง ครีมเห็ดพอร์ชินี ฟอนดูเปโครีโน และกวนชาเล่กรอบ" },
+      { it: "", en: "Rigatoncini, Taranto style", de: "Rigatoncini nach Art von Taranto", th: "ริกาตองชินีสไตล์ทารันโต" },
+      { it: "", en: "Chitarrini with mixed seafood", de: "Chitarrini mit gemischten Meeresfrüchten", th: "คิตาร์รินีรวมอาหารทะเล" }
     ],
     secondi: [
-      { it: "Cipolle al vino rosso, soia e fonduta di pecorino semistagionato", en: "Pork fillet, red wine onions, soy and semi-aged pecorino fonduta", de: "Schweinefilet, Zwiebeln in Rotwein, Sojasauce und Fonduta aus mittelaltem Pecorino" },
-      { it: "", en: "Duck breast in Chianti Classico", de: "Entenbrust in Chianti Classico" },
-      { it: "", en: "Traditional Tuscan peppered beef stew", de: "Traditioneller toskanischer Pfeffer-Rindereintopf" },
-      { it: "Con crudaiola di pomodori e rucola", en: "Beef rib, raw tomato and rocket salsa", de: "Rinderhochrippe mit Tomaten-Rucola-Salsa" },
-      { it: "", en: "Fried squid and king prawns", de: "Frittierter Tintenfisch und Riesengarnelen" },
-      { it: "Con riduzione di aceto balsamico", en: "Pistachio-crusted tuna, balsamic vinegar reduction", de: "Thunfisch in Pistazienkruste, Balsamico-Reduktion" }
+      { it: "Cipolle al vino rosso, soia e fonduta di pecorino semistagionato", en: "Pork fillet, red wine onions, soy and semi-aged pecorino fonduta", de: "Schweinefilet, Zwiebeln in Rotwein, Sojasauce und Fonduta aus mittelaltem Pecorino", th: "เนื้อสันในหมู หัวหอมไวน์แดง ซอสถั่วเหลือง และฟอนดูเปโครีโนกึ่งบ่ม" },
+      { it: "", en: "Duck breast in Chianti Classico", de: "Entenbrust in Chianti Classico", th: "อกเป็ดเคี่ยวเคียนติคลาสสิโก" },
+      { it: "", en: "Traditional Tuscan peppered beef stew", de: "Traditioneller toskanischer Pfeffer-Rindereintopf", th: "สตูว์เนื้อพริกไทยสไตล์ทัสคานีดั้งเดิม" },
+      { it: "Con crudaiola di pomodori e rucola", en: "Beef rib, raw tomato and rocket salsa", de: "Rinderhochrippe mit Tomaten-Rucola-Salsa", th: "ซี่โครงเนื้อวัว ราดซัลซ่ามะเขือเทศสดและรูโคล่า" },
+      { it: "", en: "Fried squid and king prawns", de: "Frittierter Tintenfisch und Riesengarnelen", th: "ปลาหมึกและกุ้งตัวใหญ่ทอด" },
+      { it: "Con riduzione di aceto balsamico", en: "Pistachio-crusted tuna, balsamic vinegar reduction", de: "Thunfisch in Pistazienkruste, Balsamico-Reduktion", th: "ทูน่าเคลือบพิสตาชิโอ ราดซอสบัลซามิกเข้มข้น" }
     ],
     contorni: [
-      { it: "", en: "Fries", de: "Pommes frites" },
-      { it: "", en: "Roast potatoes", de: "Bratkartoffeln" },
-      { it: "Secondo stagione", en: "Sautéed vegetables, seasonal", de: "Gebratenes Gemüse, je nach Saison" },
-      { it: "", en: "Cannellini beans", de: "Weiße Bohnen" }
+      { it: "", en: "Fries", de: "Pommes frites", th: "เฟรนช์ฟราย" },
+      { it: "", en: "Roast potatoes", de: "Bratkartoffeln", th: "มันฝรั่งอบ" },
+      { it: "Secondo stagione", en: "Sautéed vegetables, seasonal", de: "Gebratenes Gemüse, je nach Saison", th: "ผักผัดตามฤดูกาล" },
+      { it: "", en: "Cannellini beans", de: "Weiße Bohnen", th: "ถั่วขาวคานเนลลินี" }
     ],
     dessert: [
-      { it: "", en: "", de: "" },
-      { it: "Frutti di bosco o cioccolata", en: "Mixed berries or chocolate", de: "Waldbeeren oder Schokolade" },
-      { it: "Con coulis di fragole", en: "With strawberry coulis", de: "Mit Erdbeer-Coulis" },
-      { it: "", en: "Almond biscuits with sweet wine", de: "Mandelkekse mit Süßwein" },
-      { it: "", en: "Strawberries and cream", de: "Erdbeeren mit Sahne" },
-      { it: "", en: "Ice cream", de: "Eis" }
+      { it: "", en: "", de: "", th: "" },
+      { it: "Frutti di bosco o cioccolata", en: "Mixed berries or chocolate", de: "Waldbeeren oder Schokolade", th: "เบอร์รีรวมหรือช็อกโกแลต" },
+      { it: "Con coulis di fragole", en: "With strawberry coulis", de: "Mit Erdbeer-Coulis", th: "ราดซอสสตรอว์เบอร์รี" },
+      { it: "", en: "Almond biscuits with sweet wine", de: "Mandelkekse mit Süßwein", th: "คุกกี้อัลมอนด์กับไวน์หวาน" },
+      { it: "", en: "Strawberries and cream", de: "Erdbeeren mit Sahne", th: "สตรอว์เบอร์รีกับครีม" },
+      { it: "", en: "Ice cream", de: "Eis", th: "ไอศกรีม" }
     ],
     bevande: [
-      { it: "", en: "Coffee", de: "Kaffee" },
-      { it: "", en: "Spiked or macchiato coffee", de: "Kaffee mit Schuss oder Macchiato" },
-      { it: "", en: "Canned soft drink", de: "Dose Softdrink" },
-      { it: "", en: "Tuscan spiced coffee liqueur", de: "Toskanischer Kaffeelikör" },
-      { it: "", en: "Amaro or grappa", de: "Amaro oder Grappa" },
-      { it: "", en: "", de: "" },
-      { it: "", en: "", de: "" }
+      { it: "", en: "Coffee", de: "Kaffee", th: "กาแฟ" },
+      { it: "", en: "Spiked or macchiato coffee", de: "Kaffee mit Schuss oder Macchiato", th: "กาแฟใส่เหล้าหรือมัคคิอาโต้" },
+      { it: "", en: "Canned soft drink", de: "Dose Softdrink", th: "น้ำอัดลมกระป๋อง" },
+      { it: "", en: "Tuscan spiced coffee liqueur", de: "Toskanischer Kaffeelikör", th: "เหล้ากาแฟทัสคานี" },
+      { it: "", en: "Amaro or grappa", de: "Amaro oder Grappa", th: "อามาโรหรือกรัปปา" },
+      { it: "", en: "", de: "", th: "" },
+      { it: "", en: "", de: "", th: "" }
     ]
   };
 

@@ -13,8 +13,8 @@
   --gold: #d9a35f;
   --line: rgba(255, 255, 255, .12);
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Jost', sans-serif;
+  --font-display: 'Fraunces', 'Noto Sans Thai', serif;
+  --font-body: 'Jost', 'Noto Sans Thai', sans-serif;
 
   --container: 1180px;
   --radius: 18px;
