@@ -154,8 +154,10 @@ main section { background: var(--color-ink); padding-block: 7rem; }
 @media (min-width: 1280px) { .hero__title { font-size: 62px; } }
 .hero__line { display: block; }
 .hero__word-wrap { display: inline-block; overflow: hidden; }
-.hero__title .word { display: inline-block; opacity: 0; transform: translateY(60px); }
-.hero__actions { margin-top: 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; opacity: 0; transform: translateY(30px); }
+.hero__title .word { display: inline-block; }
+.hero__title .word.pre-anim { opacity: 0; transform: translateY(60px); }
+.hero__actions { margin-top: 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.hero__actions.pre-anim { opacity: 0; transform: translateY(30px); }
 .hero__card { position: relative; margin-inline: auto; width: 100%; max-width: 450px; }
 @media (min-width: 1024px) { .hero__card { margin-inline: 0 0 0 auto; } }
 .hero__card-inner {
@@ -172,9 +174,10 @@ main section { background: var(--color-ink); padding-block: 7rem; }
 .hero__card-caption p:last-child { font-family: var(--font-serif); font-size: 1.125rem; }
 .hero__cue {
   position: absolute; inset-inline: 0; bottom: 2rem; display: none; flex-direction: column;
-  align-items: center; gap: .5rem; opacity: 0;
+  align-items: center; gap: .5rem;
 }
 @media (min-width: 640px) { .hero__cue { display: flex; } }
+.hero__cue.pre-anim { opacity: 0; }
 .hero__cue span:first-child { font-size: 11px; text-transform: uppercase; letter-spacing: .3em; color: var(--color-gray); }
 .hero__cue-track { height: 2.5rem; width: 1px; overflow: hidden; background: rgba(255, 255, 255, .15); }
 .hero__cue-line { display: block; height: 100%; width: 100%; background: var(--color-gold); animation: hero-cue 1.8s cubic-bezier(.65, 0, .35, 1) infinite; }
