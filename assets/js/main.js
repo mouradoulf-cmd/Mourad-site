@@ -25,6 +25,17 @@
     }
   }
 
+  /* ---------- Hero background slideshow ---------- */
+  var heroSlides = Array.prototype.slice.call(document.querySelectorAll(".hero__slide"));
+  if (heroSlides.length > 1 && !prefersReducedMotion) {
+    var heroSlideIndex = 0;
+    setInterval(function () {
+      heroSlides[heroSlideIndex].classList.remove("is-active");
+      heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+      heroSlides[heroSlideIndex].classList.add("is-active");
+    }, 6000);
+  }
+
   /* ---------- Split a heading's text into animatable word spans ---------- */
   function splitWords(el) {
     if (!el || el.dataset.split === "done") return;
