@@ -223,7 +223,7 @@
   </div>
 
   <div class="stage">
-    <video id="clip" muted playsinline preload="auto" disablepictureinpicture></video>
+    <video id="clip" muted playsinline loop autoplay preload="auto" disablepictureinpicture></video>
     <div class="veil"></div>
     <div class="grain"></div>
   </div>
@@ -270,9 +270,9 @@
   (function(){
     "use strict";
 
-    // Source clip: 1920x1080, 10.04s, 241 frames, ALL-INTRA (every frame is a
-    // keyframe) — that's what lets a scroll scrub land on an exact frame
-    // instantly instead of hunting back to the nearest GOP keyframe.
+    // Source clip: 1920x1080, 10.04s, 241 frames. Plays on its own, on a
+    // continuous loop, independent of scroll — scroll only drives the panel
+    // cross-fades below.
     var VIDEO_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/45567745-d826-44a2-a5ce-7ef670944e60.mp4";
 
     var clip = document.getElementById("clip");
@@ -300,18 +300,13 @@
       return smooth(clamp((p-a)/(b-a),0,1));
     }
 
-    var progress = 0;     // 0..1 down the page
-    var seekTo = 0;       // target video time
-    var seekAt = 0;       // actual, eased video time
-    var duration = 0;
-    var ready = false;
+    var progress = 0; // 0..1 down the page
     var started = false;
     var attached = false;
 
     function readScroll(){
       var max = document.documentElement.scrollHeight - window.innerHeight;
       progress = max > 0 ? clamp(window.pageYOffset / max, 0, 1) : 0;
-      if (duration) seekTo = progress * duration;
     }
 
     function paint(){
@@ -330,15 +325,6 @@
     }
 
     function frame(){
-      if (ready && duration){
-        var gap = seekTo - seekAt;
-        if (Math.abs(gap) > 0.0008){
-          seekAt += gap * 0.115; // easing factor — do not change
-          if (clip.readyState >= 2 && !clip.seeking){
-            try { clip.currentTime = seekAt; } catch (e) {}
-          }
-        }
-      }
       paint();
       requestAnimationFrame(frame);
     }
@@ -348,13 +334,17 @@
       bootPct.textContent = "LOADING " + Math.round(f * 100) + "%";
     }
 
+    function play(){
+      clip.loop = true;
+      var p = clip.play();
+      if (p && p.catch) p.catch(function(){ /* retried on first touch, see unlock() */ });
+    }
+
     function start(){
       if (started) return;
       started = true;
-      ready = true;
       boot.classList.add("done");
-      readScroll();
-      seekAt = seekTo;
+      play();
     }
 
     function attach(src){
@@ -363,13 +353,6 @@
 
       // Bind listeners before setting src so nothing can fire before we're
       // ready to hear it.
-      clip.addEventListener("loadedmetadata", function(){
-        duration = clip.duration || 0;
-        clip.pause();
-        readScroll();
-        seekAt = seekTo;
-        try { clip.currentTime = seekAt; } catch (e) {}
-      });
       clip.addEventListener("loadeddata", start);
       clip.addEventListener("canplaythrough", start);
       clip.addEventListener("error", start);
@@ -382,10 +365,10 @@
     }
 
     function preload(){
-      // Seeking inside a fully-buffered blob is near instant; seeking via
-      // range requests over the network is a slideshow. So fetch the whole
-      // clip as a blob first, and only fall back to streaming the URL
-      // directly if that fetch fails or takes too long.
+      // A short, looping background clip stutters badly if it's played
+      // straight off range requests, so fetch it fully as a blob first and
+      // only fall back to streaming the URL directly if that fetch fails or
+      // takes too long.
       var controller = (typeof AbortController !== "undefined") ? new AbortController() : null;
       var signal = controller ? controller.signal : undefined;
 
@@ -432,12 +415,11 @@
       });
     }
 
-    // iOS will not paint a frame from a video that has never been played, so
-    // nudge it once on the first interaction and pause immediately.
+    // Autoplay of a muted video is usually allowed, but iOS Safari can still
+    // block it depending on context — retry playback once on the first
+    // interaction as a fallback.
     function unlock(){
-      var p = clip.play();
-      if (p && p.then) p.then(function(){ clip.pause(); }).catch(function(){});
-      else clip.pause();
+      if (clip.paused) play();
     }
     ["touchstart","pointerdown","wheel","keydown"].forEach(function(ev){
       window.addEventListener(ev, unlock, { once:true, passive:true });
