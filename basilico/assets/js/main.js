@@ -64,30 +64,36 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  /* ---------- Hero entrance (GSAP) ---------- */
+  /* ---------- Hero entrance (GSAP, purely additive) ----------
+     The hero text is visible by default from CSS alone. Only once we're
+     sure GSAP is actually available do we mark it "pre-anim" (hidden,
+     offset) and immediately animate it back in — so a slow/blocked CDN,
+     or any error along the way, can never leave the hero permanently
+     invisible. */
   var heroWords = document.querySelectorAll(".hero__title .word");
   var heroActions = document.querySelector(".hero__actions");
   var heroCue = document.querySelector(".hero__cue");
   var heroCard = document.querySelector(".hero__card");
 
-  if (hasGsap) {
-    if (prefersReducedMotion) {
-      gsap.set(heroWords, { opacity: 1, y: 0 });
-      gsap.set([heroActions, heroCue], { opacity: 1, y: 0 });
-    } else {
+  if (hasGsap && !prefersReducedMotion) {
+    try {
+      heroWords.forEach(function (w) { w.classList.add("pre-anim"); });
+      if (heroActions) heroActions.classList.add("pre-anim");
+      if (heroCue) heroCue.classList.add("pre-anim");
+
       var tl = gsap.timeline({ delay: 0.2 });
       tl.to(heroWords, { y: 0, opacity: 1, duration: 1.4, ease: "power4.out", stagger: 0.14 })
-        .fromTo(heroActions, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.6")
-        .fromTo(heroCue, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.4");
+        .to(heroActions, { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.6")
+        .to(heroCue, { opacity: 1, duration: 1 }, "-=0.4");
 
       if (heroCard) {
         gsap.to(heroCard, { y: 18, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: -1 });
       }
+    } catch (err) {
+      heroWords.forEach(function (w) { w.classList.remove("pre-anim"); });
+      if (heroActions) heroActions.classList.remove("pre-anim");
+      if (heroCue) heroCue.classList.remove("pre-anim");
     }
-  } else {
-    heroWords.forEach(function (w) { w.style.opacity = 1; w.style.transform = "none"; });
-    if (heroActions) { heroActions.style.opacity = 1; heroActions.style.transform = "none"; }
-    if (heroCue) heroCue.style.opacity = 1;
   }
 
   /* ---------- GSAP scroll parallax on the experience photo ---------- */
