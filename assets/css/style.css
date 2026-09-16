@@ -442,6 +442,27 @@ a { color: inherit; text-decoration: none; }
   from { background-position: 0 0; }
   to { background-position: 260px 130px; }
 }
+/* Sparse, low-opacity embers drifting up through the hero — decorative only,
+   spawned away from the text column so they never compete with it. */
+.hero__embers { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.hero__ember {
+  position: absolute;
+  bottom: -16px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0;
+  box-shadow: 0 0 8px 2px rgba(217,163,95,.3);
+  animation: heroEmberFloat linear infinite;
+}
+@keyframes heroEmberFloat {
+  0%   { opacity: 0; transform: translateY(0) translateX(0); }
+  16%  { opacity: .32; }
+  84%  { opacity: .14; }
+  100% { opacity: 0; transform: translateY(-86vh) translateX(var(--drift, 18px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__ember { display: none; }
+}
 
 .hero__content {
   padding-top: 90px;

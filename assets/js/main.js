@@ -36,6 +36,27 @@
     }, 6000);
   }
 
+  /* ---------- Hero ambient embers ---------- */
+  var heroEmbersHost = document.getElementById("heroEmbers");
+  if (heroEmbersHost && !prefersReducedMotion) {
+    for (var e = 0; e < 8; e++) {
+      var ember = document.createElement("div");
+      ember.className = "hero__ember";
+      var left = 42 + Math.random() * 54;
+      var delay = Math.random() * 14;
+      var dur = 12 + Math.random() * 9;
+      var size = 2 + Math.random() * 3;
+      var drift = (Math.random() * 40 - 20) + "px";
+      ember.style.left = left + "%";
+      ember.style.width = size + "px";
+      ember.style.height = size + "px";
+      ember.style.setProperty("--drift", drift);
+      ember.style.animationDelay = delay + "s";
+      ember.style.animationDuration = dur + "s";
+      heroEmbersHost.appendChild(ember);
+    }
+  }
+
   /* ---------- Split a heading's text into animatable word spans ---------- */
   function splitWords(el) {
     if (!el || el.dataset.split === "done") return;
