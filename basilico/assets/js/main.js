@@ -75,6 +75,7 @@
   var heroWords = document.querySelectorAll(".hero__title .word");
   var heroActions = document.querySelector(".hero__actions");
   var heroCue = document.querySelector(".hero__cue");
+  var heroCard = document.querySelector(".hero__card");
 
   if (hasGsap && !prefersReducedMotion) {
     try {
@@ -82,10 +83,14 @@
       if (heroActions) heroActions.classList.add("pre-anim");
       if (heroCue) heroCue.classList.add("pre-anim");
 
-      var tl = gsap.timeline({ delay: 0.3 });
-      tl.to(heroWords, { y: 0, opacity: 1, rotate: 0, duration: 1.3, ease: "power4.out", stagger: 0.13 })
-        .to(heroActions, { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.55")
+      var tl = gsap.timeline({ delay: 0.2 });
+      tl.to(heroWords, { y: 0, opacity: 1, duration: 1.4, ease: "power4.out", stagger: 0.14 })
+        .to(heroActions, { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.6")
         .to(heroCue, { opacity: 1, duration: 1 }, "-=0.4");
+
+      if (heroCard) {
+        gsap.to(heroCard, { y: 18, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: -1 });
+      }
     } catch (err) {
       heroWords.forEach(function (w) { w.classList.remove("pre-anim"); });
       if (heroActions) heroActions.classList.remove("pre-anim");
