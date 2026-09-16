@@ -272,6 +272,28 @@
   }
   @media (min-width: 640px) { .footer { padding: 1.5rem 2.5rem; font-size: 0.8rem; } }
   .footer.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- story section ---------- */
+  .story {
+    position: relative;
+    background: var(--hero-base);
+    border-top: 1px solid var(--glass-border);
+    padding: 5rem 1.25rem;
+    display: flex;
+    justify-content: center;
+  }
+  @media (min-width: 640px) { .story { padding: 7rem 2.5rem; } }
+  .story__inner { max-width: 42rem; text-align: center; }
+  @media (min-width: 1024px) { .story__inner { max-width: 50rem; } }
+  .story__eyebrow {
+    font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--cyan, #22e8ff); margin: 0 0 1.25rem; font-weight: 500;
+  }
+  .story__text {
+    font-size: 1.15rem; line-height: 1.65; color: var(--heading); margin: 0;
+  }
+  @media (min-width: 640px) { .story__text { font-size: 1.35rem; } }
+  .story__text strong { font-weight: 600; }
 </style>
 </head>
 <body>
@@ -312,6 +334,20 @@
   </div>
 
   <footer class="footer">&copy; 2026 NM Studio &mdash; engineered for deep work.</footer>
+</section>
+
+<section class="story" id="how-it-works">
+  <div class="story__inner">
+    <p class="story__eyebrow">How it works</p>
+    <p class="story__text">
+      Most restaurant website projects die at the same step: someone has to
+      write the menu, translate it, take the photos, explain what makes the
+      place worth visiting. At <strong>NM Studio</strong>, that step doesn't
+      exist &mdash; send me what you have, even just phone photos, and I turn
+      it into a site and QR menu you're proud to show. Live in days, not
+      months, with a package to fit your budget.
+    </p>
+  </div>
 </section>
 
 <script type="module">
