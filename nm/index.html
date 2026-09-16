@@ -285,15 +285,42 @@
   @media (min-width: 640px) { .story { padding: 7rem 2.5rem; } }
   .story__inner { max-width: 42rem; text-align: center; }
   @media (min-width: 1024px) { .story__inner { max-width: 50rem; } }
+  .story__inner.pre-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 900ms cubic-bezier(0.2,0,0,1), transform 900ms cubic-bezier(0.2,0,0,1);
+  }
+  .story__inner.pre-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
   .story__eyebrow {
     font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--cyan, #22e8ff); margin: 0 0 1.25rem; font-weight: 500;
+    color: var(--cyan, #22e8ff); margin: 0 0 1rem; font-weight: 500;
+  }
+  .story__rule {
+    display: block; width: 3rem; height: 2px; margin: 0 auto 1.75rem;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #22e8ff, #a855f7, #ec4899);
   }
   .story__text {
     font-size: 1.15rem; line-height: 1.65; color: var(--heading); margin: 0;
   }
   @media (min-width: 640px) { .story__text { font-size: 1.35rem; } }
-  .story__text strong { font-weight: 600; }
+  .story__text strong {
+    font-weight: 600;
+    background: linear-gradient(90deg, #22e8ff, #4d7fff, #a855f7, #ec4899, #22e8ff);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: nmShimmer 7s linear infinite;
+  }
+  @keyframes nmShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .story__text strong { animation: none; }
+  }
 </style>
 </head>
 <body>
@@ -339,6 +366,7 @@
 <section class="story" id="how-it-works">
   <div class="story__inner">
     <p class="story__eyebrow">How it works</p>
+    <span class="story__rule" aria-hidden="true"></span>
     <p class="story__text">
       Most restaurant website projects die at the same step: someone has to
       write the menu, translate it, take the photos, explain what makes the
@@ -408,6 +436,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const canvas = document.querySelector(".hero__canvas");
   if (canvas) fluidSimulation(canvas);
+
+  /* Story section: fade up on scroll into view. Visible by default in CSS —
+     the "pre-reveal" class (which starts it at opacity:0) is only added here,
+     right before a confirmed-working IntersectionObserver starts watching it,
+     so a JS error or missing API can never leave the content stuck invisible. */
+  try {
+    const storyInner = document.querySelector(".story__inner");
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (storyInner && !reduceMotion && "IntersectionObserver" in window) {
+      storyInner.classList.add("pre-reveal");
+      const storyObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            storyInner.classList.add("is-visible");
+            storyObserver.unobserve(storyInner);
+          }
+        });
+      }, { threshold: 0.25 });
+      storyObserver.observe(storyInner);
+    }
+  } catch (e) {}
 });
 
 /* ---------- WebGL fluid ink simulation ---------- */
