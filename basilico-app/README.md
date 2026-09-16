@@ -1,14 +1,15 @@
-# Basilico — code source (Next.js)
+# Basilico — ancien code source (Next.js), archivé
+
+⚠️ **Ce dossier n'est plus utilisé.** Basilico a été converti en HTML/CSS/JS
+pur (comme Giulivo) directement dans `../basilico/`, qui est maintenant sa
+propre source — édite les fichiers là-bas, pas ici. Ce dossier Next.js est
+conservé uniquement comme référence historique ; ne relance pas
+`npm run build` ici et ne recopie pas `out/` par-dessus `../basilico/`, ça
+écraserait le code actuellement en ligne.
 
 Site de démonstration pour un restaurant gastronomique fictif "Basilico" —
 construit à partir d'un prompt movento.dev, avec Next.js, Tailwind v4,
 GSAP, Framer Motion et Lenis.
-
-⚠️ **Ce dossier est le code source.** Le site réellement en ligne (servi par
-GitHub Pages) se trouve dans `../basilico/` — c'est un export statique
-généré à partir de ce code, à régénérer après chaque modification (voir
-plus bas). Ne modifie jamais directement les fichiers dans `../basilico/`,
-ils seraient écrasés au prochain export.
 
 ## Développer en local
 
