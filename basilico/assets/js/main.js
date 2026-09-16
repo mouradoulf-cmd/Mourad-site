@@ -16,13 +16,15 @@
     });
   }
 
-  /* ---------- Scroll progress bar ---------- */
+  /* ---------- Scroll progress bar + navbar state ---------- */
   var progressBar = document.getElementById("progressBar");
+  var navbar = document.getElementById("navbar");
   function onScroll() {
     var scrollY = window.scrollY || window.pageYOffset;
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     var pct = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
     if (progressBar) progressBar.style.width = pct + "%";
+    if (navbar) navbar.classList.toggle("is-scrolled", scrollY > 40);
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
@@ -73,7 +75,6 @@
   var heroWords = document.querySelectorAll(".hero__title .word");
   var heroActions = document.querySelector(".hero__actions");
   var heroCue = document.querySelector(".hero__cue");
-  var heroCard = document.querySelector(".hero__card");
 
   if (hasGsap && !prefersReducedMotion) {
     try {
@@ -81,14 +82,10 @@
       if (heroActions) heroActions.classList.add("pre-anim");
       if (heroCue) heroCue.classList.add("pre-anim");
 
-      var tl = gsap.timeline({ delay: 0.2 });
-      tl.to(heroWords, { y: 0, opacity: 1, duration: 1.4, ease: "power4.out", stagger: 0.14 })
-        .to(heroActions, { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.6")
+      var tl = gsap.timeline({ delay: 0.3 });
+      tl.to(heroWords, { y: 0, opacity: 1, rotate: 0, duration: 1.3, ease: "power4.out", stagger: 0.13 })
+        .to(heroActions, { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.55")
         .to(heroCue, { opacity: 1, duration: 1 }, "-=0.4");
-
-      if (heroCard) {
-        gsap.to(heroCard, { y: 18, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: -1 });
-      }
     } catch (err) {
       heroWords.forEach(function (w) { w.classList.remove("pre-anim"); });
       if (heroActions) heroActions.classList.remove("pre-anim");
@@ -96,22 +93,45 @@
     }
   }
 
-  /* ---------- GSAP scroll parallax on the experience photo ---------- */
+  /* ---------- GSAP scroll parallax: hero video drift + cellar photo ---------- */
   if (hasGsap && window.ScrollTrigger && !prefersReducedMotion) {
     gsap.registerPlugin(ScrollTrigger);
-    var expImg = document.getElementById("experienceImg");
-    if (expImg) {
-      gsap.to(expImg, {
-        yPercent: 15,
+
+    var heroVideo = document.querySelector(".hero__bg video");
+    if (heroVideo) {
+      gsap.to(heroVideo, {
+        yPercent: 12,
+        ease: "none",
+        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
+      });
+    }
+
+    var cellarImg = document.getElementById("cellarImg");
+    if (cellarImg) {
+      gsap.to(cellarImg, {
+        yPercent: 12,
         ease: "none",
         scrollTrigger: {
-          trigger: expImg.closest(".experience__frame"),
+          trigger: cellarImg.closest(".cellar"),
           start: "top bottom",
           end: "bottom top",
           scrub: true
         }
       });
     }
+  }
+
+  /* ---------- Magnetic buttons ---------- */
+  if (canHover && !prefersReducedMotion) {
+    document.querySelectorAll("[data-magnetic]").forEach(function (btn) {
+      btn.addEventListener("mousemove", function (e) {
+        var rect = btn.getBoundingClientRect();
+        var x = (e.clientX - rect.left - rect.width / 2) * 0.35;
+        var y = (e.clientY - rect.top - rect.height / 2) * 0.5;
+        btn.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px)";
+      });
+      btn.addEventListener("mouseleave", function () { btn.style.transform = ""; });
+    });
   }
 
   /* ---------- Lenis smooth scroll ---------- */

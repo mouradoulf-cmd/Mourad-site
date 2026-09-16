@@ -53,32 +53,21 @@
     </div>
     <div class="hero__scrim"></div>
 
-    <div class="container hero__grid">
-      <div>
-        <p class="hero__eyebrow">Fine Dining · Est. Contemporary</p>
-        <h1 class="hero__title">
-          <span class="hero__line"><span class="hero__word-wrap"><span class="word">Crafting</span></span></span>
-          <span class="hero__line"><span class="hero__word-wrap"><span class="word gold-text">Exceptional</span></span></span>
-          <span class="hero__line">
-            <span class="hero__word-wrap"><span class="word">Culinary</span></span>
-            <span class="hero__word-wrap"><span class="word">Experiences</span></span>
-          </span>
-        </h1>
+    <div class="container hero__inner">
+      <div class="hero__badge"><span class="hero__badge-dot"></span>Fine Dining · Est. Contemporary</div>
+      <h1 class="hero__title">
+        <span class="hero__line"><span class="hero__word-wrap"><span class="word">Crafting</span></span></span>
+        <span class="hero__line"><span class="hero__word-wrap"><span class="word gold-text">Exceptional</span></span></span>
+        <span class="hero__line">
+          <span class="hero__word-wrap"><span class="word">Culinary</span></span>
+          <span class="hero__word-wrap"><span class="word">Experiences</span></span>
+        </span>
+      </h1>
+      <p class="hero__sub">A cinematic dining room built on classical technique, seasonal ingredients, and quiet confidence — led by Chef Alexander Thorne.</p>
 
-        <div class="hero__actions">
-          <a href="#reservations" class="btn btn--gold" data-cursor-hover>Reserve a Table</a>
-          <a href="#dishes" class="btn btn--ghost" data-cursor-hover>View Menu</a>
-        </div>
-      </div>
-
-      <div class="hero__card">
-        <div class="hero__card-inner">
-          <video autoplay loop muted playsinline src="https://strvid.nyc3.cdn.digitaloceanspaces.com/motionsite/hero_food_video.mp4"></video>
-          <div class="hero__card-caption">
-            <p>Chef's Special</p>
-            <p>Truffle Wagyu Ribeye</p>
-          </div>
-        </div>
+      <div class="hero__actions">
+        <a href="#reservations" class="btn btn--gold" data-cursor-hover data-magnetic>Reserve a Table</a>
+        <a href="#dishes" class="btn btn--ghost" data-cursor-hover data-magnetic>View Menu</a>
       </div>
     </div>
 
@@ -88,8 +77,18 @@
     </div>
   </section>
 
+  <!-- FACTS STRIP -->
+  <section class="facts-strip">
+    <div class="container facts-strip__row">
+      <div class="facts-strip__item"><span class="n">2019</span><span class="l">Est. by Chef Alexander Thorne</span></div>
+      <div class="facts-strip__item"><span class="n">7</span><span class="l">Course tasting menu</span></div>
+      <div class="facts-strip__item"><span class="n">400+</span><span class="l">Labels in the wine cellar</span></div>
+      <div class="facts-strip__item"><span class="n">12</span><span class="l">Seats, private dining room</span></div>
+    </div>
+  </section>
+
   <!-- FEATURED DISHES -->
-  <section id="dishes">
+  <section id="dishes" class="section-pad">
     <div class="container">
       <div class="dishes__head reveal">
         <div>
@@ -165,94 +164,91 @@
         </div>
       </div>
 
-      <div class="terrace__head reveal">
-        <p class="eyebrow">The Terrace</p>
-        <h3 class="section-title" style="font-size:1.875rem;">La Terrazza</h3>
-      </div>
-      <div class="terrace__grid">
-        <div class="terrace__item reveal"><img src="assets/img/terrazza-ulivo.jpg" alt="A corner under the century-old olive tree" loading="lazy"></div>
-        <div class="terrace__item reveal" data-delay="1"><img src="assets/img/terrazza-pergola.jpg" alt="The pergola over the terrace" loading="lazy"></div>
-        <div class="terrace__item reveal" data-delay="2"><img src="assets/img/terrazza-tavoli.jpg" alt="Tables set on the terrace" loading="lazy"></div>
-        <div class="terrace__item reveal" data-delay="3"><img src="assets/img/terrazza-veranda.jpg" alt="The veranda at sunset" loading="lazy"></div>
-        <div class="terrace__item reveal" data-delay="4"><img src="assets/img/terrazza-vista.jpg" alt="The view from the terrace" loading="lazy"></div>
+      <div class="terrace">
+        <div class="terrace__head reveal">
+          <h3>La Terrazza</h3>
+          <p class="eyebrow">The Terrace</p>
+        </div>
+        <div class="terrace__grid">
+          <div class="terrace__item reveal"><img src="assets/img/terrazza-ulivo.jpg" alt="A corner under the century-old olive tree" loading="lazy"></div>
+          <div class="terrace__item reveal" data-delay="1"><img src="assets/img/terrazza-pergola.jpg" alt="The pergola over the terrace" loading="lazy"></div>
+          <div class="terrace__item reveal" data-delay="2"><img src="assets/img/terrazza-tavoli.jpg" alt="Tables set on the terrace" loading="lazy"></div>
+          <div class="terrace__item reveal" data-delay="3"><img src="assets/img/terrazza-veranda.jpg" alt="The veranda at sunset" loading="lazy"></div>
+          <div class="terrace__item reveal" data-delay="4"><img src="assets/img/terrazza-vista.jpg" alt="The view from the terrace" loading="lazy"></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" class="section-pad" style="background:var(--ink-2);">
     <div class="container about__grid">
-      <div class="about__text reveal">
+      <div class="about__portrait reveal">
+        <img src="assets/img/tartare.jpg" alt="Chef Alexander Thorne" loading="lazy">
+      </div>
+      <div class="about__text reveal" data-delay="1">
         <p class="eyebrow">Our Story</p>
         <h2 class="section-title">A Vision Rooted in Craft</h2>
-        <p>Basilico was born from a simple belief: that a dish, like a story, should be told with patience and precision. Every plate is composed from ingredients sourced within a day's drive, shaped by classical technique and a quiet sense of place.</p>
-        <p>Chef Alexander Thorne leads a kitchen built on restraint — letting the ingredient, not the plate, take the final bow.</p>
-        <p class="about__signature">Alexander Thorne</p>
-        <p class="about__role">Executive Chef &amp; Founder</p>
-      </div>
-      <div class="about__portrait reveal" data-delay="1">
-        <div class="about__portrait-glow"></div>
-        <div class="about__portrait-frame"><img src="assets/img/tartare.jpg" alt="Chef Alexander Thorne" loading="lazy"></div>
+        <p class="about__quote">"Chef Alexander Thorne leads a kitchen built on restraint — letting the ingredient, not the plate, take the final bow."</p>
+        <p class="body">Basilico was born from a simple belief: that a dish, like a story, should be told with patience and precision. Every plate is composed from ingredients sourced within a day's drive, shaped by classical technique and a quiet sense of place.</p>
+        <div class="about__meta">
+          <span class="about__meta-line"></span>
+          <div>
+            <p class="about__signature">Alexander Thorne</p>
+            <p class="about__role">Executive Chef &amp; Founder</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- TASTING MENU -->
-  <section id="tasting">
+  <section id="tasting" class="section-pad">
     <div class="container">
-      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+      <div class="section-head section-head--center reveal">
         <p class="eyebrow">Chef's Selection</p>
         <h2 class="section-title">The Seven Course Tasting</h2>
       </div>
 
-      <div class="tasting__grid">
-        <div class="tasting__col reveal">
-          <div class="tasting__course"><span class="n">01</span><h3>Amuse-Bouche</h3><p>A single bite to open the evening.</p></div>
-          <div class="tasting__course"><span class="n">02</span><h3>Ocean</h3><p>Seared scallop, citrus, sea foam.</p></div>
-          <div class="tasting__course"><span class="n">03</span><h3>Garden</h3><p>Heirloom vegetables, herb emulsion.</p></div>
-        </div>
-        <div class="tasting__col reveal" data-delay="1">
-          <div class="tasting__course"><span class="n">04</span><h3>Land</h3><p>Duck breast, cherry, charred leek.</p></div>
-          <div class="tasting__course"><span class="n">05</span><h3>Interlude</h3><p>Basil sorbet, cucumber.</p></div>
-        </div>
-        <div class="tasting__col reveal" data-delay="2">
-          <div class="tasting__course"><span class="n">06</span><h3>Signature</h3><p>Truffle wagyu, bone marrow jus.</p></div>
-          <div class="tasting__course"><span class="n">07</span><h3>Finale</h3><p>Dark chocolate, gold leaf, espresso.</p></div>
-        </div>
+      <div class="tasting__list reveal">
+        <div class="tasting__course"><span class="n">01</span><h3>Amuse-Bouche</h3><p>A single bite to open the evening.</p></div>
+        <div class="tasting__course"><span class="n">02</span><h3>Ocean</h3><p>Seared scallop, citrus, sea foam.</p></div>
+        <div class="tasting__course"><span class="n">03</span><h3>Garden</h3><p>Heirloom vegetables, herb emulsion.</p></div>
+        <div class="tasting__course"><span class="n">04</span><h3>Land</h3><p>Duck breast, cherry, charred leek.</p></div>
+        <div class="tasting__course"><span class="n">05</span><h3>Interlude</h3><p>Basil sorbet, cucumber.</p></div>
+        <div class="tasting__course"><span class="n">06</span><h3>Signature</h3><p>Truffle wagyu, bone marrow jus.</p></div>
+        <div class="tasting__course"><span class="n">07</span><h3>Finale</h3><p>Dark chocolate, gold leaf, espresso.</p></div>
       </div>
 
-      <div class="tasting__price reveal" data-delay="3">
+      <div class="tasting__price reveal">
         <p class="amount">$185 per guest</p>
         <p class="note">Wine pairing available, +$95</p>
       </div>
     </div>
   </section>
 
-  <!-- IMMERSIVE EXPERIENCE -->
-  <section>
-    <div class="container">
-      <div class="experience__lede reveal">
-        <p class="eyebrow">The Experience</p>
-        <h2 class="section-title">Private Dining &amp; a Cellar Worth Lingering In</h2>
-        <p>From an intimate chef's table to a private room for twelve, every space at Basilico is designed to slow time down — candlelight, low music, and a wine cellar holding over 400 labels.</p>
-      </div>
-
-      <div class="experience__frame reveal">
-        <div class="experience__frame-img" id="experienceImg"><img src="assets/img/terrazza-tavoli.jpg" alt="Basilico private dining room" loading="lazy"></div>
-        <div class="experience__frame-fade"></div>
-      </div>
+  <!-- CELLAR (cinematic full-bleed) -->
+  <section class="cellar">
+    <div class="cellar__img" id="cellarImg"><img src="assets/img/terrazza-tavoli.jpg" alt="Basilico private dining room" loading="lazy"></div>
+    <div class="cellar__fade"></div>
+    <div class="cellar__fade cellar__fade--top"></div>
+    <div class="container cellar__content reveal">
+      <p class="eyebrow">The Experience</p>
+      <h2 class="section-title">Private Dining &amp; a Cellar Worth Lingering In</h2>
+      <p class="hero__sub">From an intimate chef's table to a private room for twelve, every space at Basilico is designed to slow time down — candlelight, low music, and a wine cellar holding over 400 labels.</p>
     </div>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section>
+  <section class="reviews section-pad">
     <div class="container">
-      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+      <div class="section-head section-head--center reveal">
         <p class="eyebrow">In the Press</p>
         <h2 class="section-title">What Critics Say</h2>
       </div>
 
       <div class="reviews__body reveal" id="reviewsBody">
+        <p class="reviews__mark" aria-hidden="true">&ldquo;</p>
         <p class="reviews__quote" id="reviewQuote"></p>
         <p class="reviews__author" id="reviewAuthor"></p>
         <p class="reviews__role" id="reviewRole"></p>
@@ -271,15 +267,15 @@
   </section>
 
   <!-- RESERVATIONS -->
-  <section id="reservations" class="reservations">
+  <section id="reservations" class="reservations section-pad">
     <div class="reservations__glow"></div>
     <div class="container reservations__inner">
-      <div class="reservations__head reveal">
+      <div class="section-head section-head--center reveal">
         <p class="eyebrow">Book a Table</p>
         <h2 class="section-title">Reservations</h2>
       </div>
 
-      <div class="reservations__card reveal" data-delay="1">
+      <div class="reservations__card reveal">
         <p class="note">Fill in the details below — it opens WhatsApp with your message ready to send. The reservation is confirmed only once we reply.</p>
         <form class="reservations__form" id="reservationForm">
           <label>Name<input type="text" name="name" required placeholder="Your name"></label>
@@ -308,9 +304,9 @@
               <option value="8">8 guests</option>
             </select>
           </label>
-          <label class="full">Special Requests<textarea name="notes" rows="3" placeholder="Allergies, occasion, seating preference..."></textarea></label>
+          <label class="full">Special Requests<textarea name="notes" rows="2" placeholder="Allergies, occasion, seating preference..."></textarea></label>
           <div class="full reservations__submit">
-            <button type="submit" class="btn btn--gold" data-cursor-hover>Request on WhatsApp</button>
+            <button type="submit" class="btn btn--gold" data-cursor-hover data-magnetic>Request on WhatsApp</button>
           </div>
         </form>
       </div>
@@ -318,9 +314,9 @@
   </section>
 
   <!-- GALLERY -->
-  <section id="gallery">
+  <section id="gallery" class="section-pad">
     <div class="container">
-      <div class="reveal" style="margin-bottom:3.5rem;">
+      <div class="section-head reveal">
         <p class="eyebrow">Visual Story</p>
         <h2 class="section-title">Gallery</h2>
       </div>
@@ -340,7 +336,7 @@
 
 <footer class="footer" id="contact">
   <div class="container">
-    <div class="footer__grid">
+    <div class="footer__top">
       <div class="footer__brand">
         <p>Basilico</p>
         <p>A contemporary fine-dining room built on classical technique, seasonal ingredients, and quiet confidence.</p>
@@ -357,11 +353,14 @@
         <h4>Newsletter</h4>
         <form class="footer__newsletter" id="newsletterForm">
           <input type="email" required placeholder="Email address">
-          <button type="submit">Join</button>
+          <button type="submit">Join →</button>
         </form>
       </div>
     </div>
-    <div class="footer__bottom">© 2026 Basilico — Demo site. Fictional restaurant, sample menu and content.</div>
+    <div class="footer__bottom">
+      <span>© 2026 Basilico — Demo site. Fictional restaurant, sample menu and content.</span>
+      <a href="#top" data-cursor-hover>Back to top ↑</a>
+    </div>
   </div>
 </footer>
 
