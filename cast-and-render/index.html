@@ -176,8 +176,125 @@
   }
   .cta .pill{ height:48px; padding:0 27px; font-size:15px; max-width:min(100%, 320px); }
 
-  /* ---------- Scroll track — the only thing giving the page height ---------- */
+  /* ---------- Scroll track — the fixed hero's scroll budget ---------- */
   .track{ position:relative; z-index:1; height:560vh; min-height:3200px; }
+
+  .foot{ transition:opacity .5s var(--ease); }
+  .foot.is-hidden{ opacity:0; }
+
+  /* ---------- Content — normal document flow, resumes after the hero ---------- */
+  .content{ position:relative; z-index:25; background:var(--shade); }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding-inline:clamp(20px,5vw,60px); }
+
+  .section-head{ max-width:56ch; padding-top:clamp(72px,11vw,132px); }
+  .section-head .eyebrow{ justify-content:flex-start; margin-bottom:12px; }
+  .section-head h2{
+    font-weight:400; font-size:clamp(30px,5vw,56px);
+    line-height:1.03; letter-spacing:-.032em; max-width:14ch;
+  }
+  .section-head .sub{ text-align:left; margin-top:16px; max-width:50ch; }
+
+  /* ---------- Works: order list ---------- */
+  #board{ padding-bottom:clamp(56px,9vw,100px); }
+  .orders{
+    position:relative;
+    margin-top:clamp(36px,5vw,56px);
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--rule);
+  }
+  .orders::before{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(320px 320px at var(--mx,50%) var(--my,50%), rgba(13,12,11,.05), transparent 72%);
+    opacity:0; transition:opacity .4s var(--ease);
+  }
+  .orders.is-active::before{ opacity:1; }
+  .order{
+    position:relative; z-index:2;
+    border-bottom:1px solid var(--rule); border-right:1px solid var(--rule);
+    padding:26px 22px 30px; display:flex; flex-direction:column; gap:18px;
+  }
+  .order:nth-child(3n){ border-right:none; }
+  .order .num{ font-size:12.5px; letter-spacing:.03em; color:var(--fg-faint); }
+  .order .swatch{
+    width:62%; aspect-ratio:1; align-self:flex-start;
+    transition:transform .5s var(--ease);
+  }
+  .order:hover .swatch{ transform:translateY(-3px) scale(1.05); }
+  .order .name{ font-size:16.5px; letter-spacing:-.01em; }
+  .order .spec{ font-size:13.5px; color:var(--fg-soft); }
+
+  .swatch--sphere{
+    border-radius:50%;
+    background:radial-gradient(circle at 32% 26%, #fff 0%, var(--shade) 16%, #cdc9c1 44%, #8b857a 76%, #55504a 100%);
+    box-shadow:inset -10px -14px 26px rgba(13,12,11,.3);
+  }
+  .swatch--torus{
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff 0%, var(--shade) 10%, #cdc9c1 22%, #83796c 34%, var(--shade) 44%, #9a948a 58%, #55504a 100%);
+    box-shadow:inset -8px -10px 20px rgba(13,12,11,.26);
+  }
+  .swatch--cube{
+    border-radius:6px;
+    background:linear-gradient(135deg, #fff 0%, var(--shade) 24%, #beb8ac 52%, #6b655a 100%);
+    box-shadow:inset -10px -12px 22px rgba(13,12,11,.3);
+  }
+  .swatch--shell{
+    border-radius:50% 50% 50% 4%;
+    background:radial-gradient(circle at 30% 70%, #fff 0%, var(--shade) 18%, #b9a077 46%, #6e5a3c 82%, #40331f 100%);
+    box-shadow:inset -10px -12px 22px rgba(13,12,11,.28);
+  }
+  .swatch--cluster{
+    border-radius:38% 62% 55% 45%/48% 42% 58% 52%;
+    background:radial-gradient(circle at 34% 28%, #fdfcfa 0%, var(--shade) 16%, #a39c8f 48%, #55504a 100%);
+    box-shadow:inset -10px -12px 22px rgba(13,12,11,.3);
+  }
+  .swatch--slab{
+    border-radius:4px;
+    background:linear-gradient(160deg, #6b4a2c 0%, #4a3018 46%, #2c1b0c 100%);
+    box-shadow:inset -10px -12px 22px rgba(0,0,0,.4);
+  }
+
+  /* ---------- About: facts list ---------- */
+  #visit{ padding-bottom:clamp(56px,9vw,100px); border-top:1px solid var(--rule); }
+  .facts{ margin-top:clamp(32px,5vw,48px); border-top:1px solid var(--rule); }
+  .facts div{
+    display:flex; justify-content:space-between; gap:24px;
+    padding:16px 0; border-bottom:1px solid var(--rule);
+    max-width:640px;
+  }
+  .facts dt{ color:var(--fg-soft); font-size:14.5px; }
+  .facts dd{ font-size:14.5px; letter-spacing:-.006em; text-align:right; }
+
+  /* ---------- Start a brief ---------- */
+  #order{ padding-bottom:clamp(64px,9vw,110px); border-top:1px solid var(--rule); }
+  .brief-cta{ margin-top:clamp(24px,3.4vw,36px); height:48px; padding:0 27px; font-size:15px; }
+
+  /* ---------- Real footer ---------- */
+  .site-foot{
+    border-top:1px solid var(--rule);
+    padding-block:clamp(28px,4vw,40px);
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:16px;
+    font-size:13px; color:var(--fg-soft);
+  }
+  .site-foot .mark2{ color:var(--fg); font-size:15px; letter-spacing:-.012em; margin-bottom:6px; }
+  .site-foot p{ line-height:1.5; }
+
+  @media (max-width:720px){
+    .orders{ grid-template-columns:repeat(2,1fr); }
+    .order:nth-child(3n){ border-right:1px solid var(--rule); }
+    .order:nth-child(2n){ border-right:none; }
+    .facts div{ max-width:none; }
+  }
+
+  @media (max-width:420px){
+    .orders{ grid-template-columns:1fr; }
+    .order{ border-right:none !important; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .order .swatch, .pill{ transition:none; }
+  }
 
   /* ---------- Responsive ---------- */
   @media (max-width:900px){
@@ -262,9 +379,97 @@
     </section>
   </main>
 
-  <footer class="foot">112 Render Lane &nbsp;&middot;&nbsp; Tue–Sun, 9am till sold out</footer>
+  <footer class="foot" id="foot">112 Render Lane &nbsp;&middot;&nbsp; Tue–Sun, 9am till sold out</footer>
 
-  <div class="track"></div>
+  <div class="track" id="track"></div>
+
+  <div class="content">
+    <section class="wrap section-head" id="board">
+      <p class="eyebrow">The reel</p>
+      <h2>Six pieces out this week.</h2>
+      <p class="sub">Plated to order, one at a time. Reference photos welcome — exact matches are not the goal.</p>
+
+      <div class="orders" id="orders">
+        <div class="order">
+          <span class="num">No. 014</span>
+          <div class="swatch swatch--sphere"></div>
+          <div>
+            <p class="name">Sphere</p>
+            <p class="spec">Frosted glass, 40cm</p>
+          </div>
+        </div>
+        <div class="order">
+          <span class="num">No. 021</span>
+          <div class="swatch swatch--torus"></div>
+          <div>
+            <p class="name">Torus</p>
+            <p class="spec">Brushed steel, 62cm</p>
+          </div>
+        </div>
+        <div class="order">
+          <span class="num">No. 033</span>
+          <div class="swatch swatch--cube"></div>
+          <div>
+            <p class="name">Cube</p>
+            <p class="spec">Matte ceramic, 28cm</p>
+          </div>
+        </div>
+        <div class="order">
+          <span class="num">No. 045</span>
+          <div class="swatch swatch--shell"></div>
+          <div>
+            <p class="name">Shell</p>
+            <p class="spec">Hammered brass, 51cm</p>
+          </div>
+        </div>
+        <div class="order">
+          <span class="num">No. 058</span>
+          <div class="swatch swatch--cluster"></div>
+          <div>
+            <p class="name">Cluster</p>
+            <p class="spec">Raw stone, 70cm</p>
+          </div>
+        </div>
+        <div class="order">
+          <span class="num">No. 067</span>
+          <div class="swatch swatch--slab"></div>
+          <div>
+            <p class="name">Slab</p>
+            <p class="spec">Black walnut veneer, 90cm</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section-head" id="visit">
+      <p class="eyebrow">Across the studio</p>
+      <h2>A render farm that keeps baker's hours.</h2>
+      <p class="sub">Six machines, warm before sunrise. Nothing goes out until it's been checked under three lights, by hand, the same way every time.</p>
+
+      <dl class="facts">
+        <div><dt>Render nodes</dt><dd>6, always warm</dd></div>
+        <div><dt>Turnaround</dt><dd>Same day, ordered by ten</dd></div>
+        <div><dt>Formats</dt><dd>OBJ, GLB, USDZ, straight off the pass</dd></div>
+        <div><dt>Founded</dt><dd>2019, out of a shared garage</dd></div>
+      </dl>
+    </section>
+
+    <section class="wrap section-head" id="order">
+      <p class="eyebrow">Start a brief</p>
+      <h2>Tell us what needs a surface.</h2>
+      <p class="sub">Send the reference, the deadline, and the material you have in mind. We quote by the next pour.</p>
+      <a class="pill brief-cta" href="mailto:brief@castandrender.studio">brief@castandrender.studio</a>
+    </section>
+
+    <footer class="site-foot wrap">
+      <div>
+        <p class="mark2">Cast &amp; Render</p>
+        <p>112 Render Lane, Unit 4</p>
+        <p>Tue–Sun, 9am till sold out</p>
+      </div>
+      <p>&copy; 2026 Cast &amp; Render</p>
+    </footer>
+  </div>
 
   <script>
   (function(){
@@ -282,6 +487,8 @@
     var bootBar = document.getElementById("bootBar");
     var bootPct = document.getElementById("bootPct");
     var meter = document.getElementById("meter");
+    var foot = document.getElementById("foot");
+    var track = document.getElementById("track");
     var panels = [].slice.call(document.querySelectorAll("[data-panel]"));
 
     // Each panel owns a slice of scroll as [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd]
@@ -302,20 +509,30 @@
       return smooth(clamp((p-a)/(b-a),0,1));
     }
 
-    var progress = 0;   // 0..1 down the page
-    var duration = 0;   // video duration, once known
-    var seekTo = 0;      // target video time while scrubbing
-    var seekAt = 0;      // actual, eased video time while scrubbing
+    var heroMax = 0;       // scrollY range that belongs to the fixed hero (the track)
+    var heroProgress = 0;  // 0..1 across just the hero, drives panels + video scrub
+    var pageProgress = 0;  // 0..1 across the whole document, drives the top hairline
+    var duration = 0;      // video duration, once known
+    var seekTo = 0;        // target video time while scrubbing
+    var seekAt = 0;        // actual, eased video time while scrubbing
     var scrubbing = false;
     var idleTimer = null;
     var IDLE_DELAY = 650; // ms of no scroll before playback resumes on its own
     var started = false;
     var attached = false;
 
+    // The hero's scroll budget is just the height of .track, independent of
+    // how much real content follows it.
+    function computeHeroMax(){
+      heroMax = track.offsetHeight - window.innerHeight;
+      if (heroMax < 0) heroMax = 0;
+    }
+
     function readScroll(){
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      progress = max > 0 ? clamp(window.pageYOffset / max, 0, 1) : 0;
-      if (duration) seekTo = progress * duration;
+      var docMax = document.documentElement.scrollHeight - window.innerHeight;
+      pageProgress = docMax > 0 ? clamp(window.pageYOffset / docMax, 0, 1) : 0;
+      heroProgress = heroMax > 0 ? clamp(window.pageYOffset / heroMax, 0, 1) : 0;
+      if (duration) seekTo = heroProgress * duration;
     }
 
     // While the page is actively scrolling, hand the video over to scroll
@@ -343,18 +560,19 @@
     }
 
     function paint(){
-      meter.style.transform = "scaleX(" + progress + ")";
+      meter.style.transform = "scaleX(" + pageProgress + ")";
       for (var i = 0; i < panels.length; i++){
         var c = CUES[i];
         var el = panels[i];
-        var enter = ramp(progress, c[0], c[1]);
-        var leave = ramp(progress, c[2], c[3]);
+        var enter = ramp(heroProgress, c[0], c[1]);
+        var leave = ramp(heroProgress, c[2], c[3]);
         var o = enter * (1 - leave);
         var y = (1 - enter) * DRIFT - leave * DRIFT;
         el.style.opacity = o;
         el.style.transform = "translate3d(0," + y + "px,0)";
         el.style.pointerEvents = o > 0.6 ? "auto" : "none";
       }
+      foot.classList.toggle("is-hidden", heroProgress > 0.995);
     }
 
     function frame(){
@@ -471,9 +689,41 @@
       window.addEventListener(ev, unlock, { once:true, passive:true });
     });
 
-    window.addEventListener("scroll", onScroll, { passive:true });
-    window.addEventListener("resize", readScroll);
+    // A soft spotlight that follows the pointer through the works grid —
+    // the one deliberately "alive" moment in an otherwise quiet page.
+    var orders = document.getElementById("orders");
+    if (window.matchMedia("(hover:hover)").matches){
+      orders.addEventListener("pointermove", function(e){
+        var r = orders.getBoundingClientRect();
+        orders.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        orders.style.setProperty("--my", (e.clientY - r.top) + "px");
+        orders.classList.add("is-active");
+      });
+      orders.addEventListener("pointerleave", function(){
+        orders.classList.remove("is-active");
+      });
 
+      // A small magnetic pull toward the cursor on every pill button.
+      [].slice.call(document.querySelectorAll(".pill")).forEach(function(el){
+        el.addEventListener("pointermove", function(e){
+          var r = el.getBoundingClientRect();
+          var dx = (e.clientX - r.left - r.width / 2) * 0.28;
+          var dy = (e.clientY - r.top - r.height / 2) * 0.28;
+          el.style.transform = "translate(" + dx + "px," + dy + "px)";
+        });
+        el.addEventListener("pointerleave", function(){
+          el.style.transform = "";
+        });
+      });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive:true });
+    window.addEventListener("resize", function(){
+      computeHeroMax();
+      readScroll();
+    });
+
+    computeHeroMax();
     readScroll();
     paint();
     preload();
