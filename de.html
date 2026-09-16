@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giulivo — Cucina e Buonumore | Vicopisano</title>
+<meta name="description" content="Giulivo Cucina e Buonumore — authentische, hausgemachte toskanische Küche im Herzen von Vicopisano. Frische Pasta, Fleisch und Fisch der Saison und hausgemachte Desserts in herzlicher, geselliger Atmosphäre.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <span class="preloader__letter">G</span>
+    <div class="preloader__line"></div>
+  </div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="#home" class="navbar__logo">Giulivo<span>.</span></a>
+    <nav class="navbar__links" id="navLinks">
+      <a href="#home" class="nav-link" data-i18n="nav.home">Home</a>
+      <a href="#storia" class="nav-link" data-i18n="nav.story">Unsere Geschichte</a>
+      <a href="#menu" class="nav-link" data-i18n="nav.menu">Speisekarte</a>
+      <a href="#galleria" class="nav-link" data-i18n="nav.gallery">Galerie</a>
+      <a href="#recensioni" class="nav-link" data-i18n="nav.reviews">Bewertungen</a>
+      <a href="#contatti" class="nav-link" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+    <div class="navbar__lang" role="group" aria-label="Lingua / Language / Sprache">
+      <a href="#" class="lang-link" data-lang="it">IT</a>
+      <a href="#" class="lang-link" data-lang="en">EN</a>
+      <a href="#" class="lang-link is-active" data-lang="de">DE</a>
+    </div>
+    <a href="tel:+393888566367" target="_blank" rel="noopener" class="btn btn--small btn--outline navbar__cta" data-i18n="nav.book">Reservieren</a>
+    <button class="navbar__burger" id="burger" data-i18n-aria-label="nav.burgerLabel" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__slides" id="heroSlides" aria-hidden="true">
+      <div class="hero__slide is-active" style="background-image:url('assets/img/table-partage.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('assets/img/terrazza-ulivo.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('assets/img/tartare.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('assets/img/terrazza-vista.jpg')"></div>
+    </div>
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__texture" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <div class="hero__text-col">
+        <p class="eyebrow reveal" data-hero-el data-i18n="hero.eyebrow">Località Luchetta · Vicopisano · Toskana</p>
+        <h1 class="hero__title">
+          <span class="reveal" data-hero-el style="--d:0">Giulivo</span>
+          <span class="hero__title-sub reveal" data-hero-el style="--d:1">Cucina e Buonumore</span>
+        </h1>
+        <p class="hero__text reveal" data-hero-el style="--d:2" data-i18n="hero.text">
+          Eine authentische, hausgemachte toskanische Küche — frische
+          Pasta, Fleisch und Fisch der Saison, serviert in einer
+          einfachen, herzlichen und fröhlichen Atmosphäre, ganz wie
+          zu Hause.
+        </p>
+        <div class="hero__actions reveal" data-hero-el style="--d:3">
+          <a href="tel:+393888566367" target="_blank" rel="noopener" class="btn btn--primary" data-i18n="hero.bookBtn">Tisch reservieren</a>
+          <a href="#menu" class="btn btn--ghost" data-i18n="hero.menuBtn">Speisekarte entdecken</a>
+        </div>
+        <div class="hero__rating reveal" data-hero-el style="--d:4">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span data-i18n-html="hero.ratingHtml"><strong>4,7</strong> auf Google · <span>91 Bewertungen</span></span>
+        </div>
+      </div>
+    </div>
+    <a href="#storia" class="hero__scroll" data-i18n-aria-label="hero.scrollLabel" aria-label="Nach unten scrollen">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container stats__grid">
+      <div class="stat reveal">
+        <span class="stat__icon" aria-hidden="true">⭐</span>
+        <span class="stat__num" data-count="4.7" data-decimal="1">0</span>
+        <span class="stat__label" data-i18n="stats.rating">Google-Bewertung</span>
+      </div>
+      <div class="stat reveal" style="--d:1">
+        <span class="stat__icon" aria-hidden="true">💬</span>
+        <span class="stat__num" data-count="91">0</span>
+        <span class="stat__label" data-i18n="stats.reviews">Kundenbewertungen</span>
+      </div>
+      <div class="stat reveal" style="--d:2">
+        <span class="stat__icon" aria-hidden="true">🍝</span>
+        <span class="stat__num" data-count="100" data-suffix="%">0</span>
+        <span class="stat__label" data-i18n="stats.homemade">Hausgemacht</span>
+      </div>
+      <div class="stat reveal" style="--d:3">
+        <span class="stat__icon" aria-hidden="true">🕗</span>
+        <span class="stat__num" data-count="23" data-prefix="" data-suffix="h">0</span>
+        <span class="stat__label" data-i18n="stats.openUntil">Geöffnet bis</span>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--cream" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span data-i18n="marquee.cuisine">Toskanische Küche</span><span class="marquee__dot">&#10022;</span><span data-i18n="marquee.homemade">Hausgemacht</span><span class="marquee__dot">&#10022;</span><span>Buonumore</span><span class="marquee__dot">&#10022;</span><span>Vicopisano</span><span class="marquee__dot">&#10022;</span><span data-i18n="marquee.cuisine">Toskanische Küche</span><span class="marquee__dot">&#10022;</span><span data-i18n="marquee.homemade">Hausgemacht</span><span class="marquee__dot">&#10022;</span><span>Buonumore</span><span class="marquee__dot">&#10022;</span><span>Vicopisano</span><span class="marquee__dot">&#10022;</span>
+    </div>
+  </div>
+
+  <!-- STORIA -->
+  <section class="story" id="storia">
+    <div class="texture-dots" aria-hidden="true"></div>
+    <div class="container story__grid">
+      <div class="story__media reveal">
+        <div class="story__frame">
+          <img src="assets/img/tartare.jpg" data-i18n-alt="story.imgAlt" alt="Neu interpretiertes Tatar, sorgfältig auf Schiefer angerichtet bei Giulivo" loading="lazy">
+        </div>
+        <div class="story__badge">
+          <span data-i18n="stats.homemade">Hausgemacht</span>
+          <small data-i18n="story.badgeSub">jeden Tag</small>
+        </div>
+      </div>
+      <div class="story__text">
+        <p class="eyebrow reveal" data-i18n="story.eyebrow">Unsere Geschichte</p>
+        <h2 class="reveal" style="--d:1" data-i18n-html="story.titleHtml">Ein neues Leben, dieselbe Leidenschaft&nbsp;: ein herzlicher Empfang</h2>
+        <p class="reveal" style="--d:2" data-i18n="story.p1">
+          Giulivo entstand aus Guidinos Wunsch, alles auf seine wahre
+          Leidenschaft zu setzen&nbsp;: die toskanische Küche, großzügig
+          und ehrlich. Nach einem bewegten Lebensweg entschied er sich,
+          von vorne anzufangen und seinen eigenen Tisch in Vicopisano
+          zu eröffnen, im Einklang mit traditionellen Rezepten und
+          saisonalen Produkten.
+        </p>
+        <p class="reveal" style="--d:3" data-i18n-html="story.p2Html">
+          Hier ist alles hausgemacht&nbsp;: die Pasta wird von Hand
+          verarbeitet, Fleisch und Fisch mit Sorgfalt zubereitet, die
+          Desserts vor Ort hergestellt. Man kommt, um gut zu essen,
+          aber auch für den <em>buonumore</em> — die gute Laune —, die
+          dem Haus seinen Namen gibt.
+        </p>
+        <ul class="story__points reveal" style="--d:4">
+          <li data-i18n="story.point1">Hausgemachte frische Pasta</li>
+          <li data-i18n="story.point2">Fleisch &amp; Fisch der Saison</li>
+          <li data-i18n="story.point3">Hausgemachte Desserts</li>
+          <li data-i18n="story.point4">Einfache, herzliche und gesellige Atmosphäre</li>
+        </ul>
+        <p class="story__signature reveal" style="--d:5">Guidino</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOTTO -->
+  <section class="motto">
+    <div class="container motto__inner">
+      <span class="motto__leaf" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 8 12 8 26C8 36 15 44 24 44C33 44 40 36 40 26C40 12 24 4 24 4Z" stroke="currentColor" stroke-width="1.4"/><path d="M24 8V40" stroke="currentColor" stroke-width="1.4"/></svg>
+      </span>
+      <p class="motto__text" data-i18n="motto.text">
+        « Es ist unsere Leidenschaft für gutes Essen, guten Wein und
+        vor allem Geselligkeit, die uns zu diesem Abenteuer bewegt hat,
+        bei dem wir die Gerichte der toskanischen Tradition mit einer
+        Prise buonumore veredeln. Eine einfache Philosophie, denn das
+        Rezept für Glück ist einfach: essen, trinken, zusammen sein,
+        Freude und Emotionen teilen. »
+      </p>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="ambient-glow" aria-hidden="true"><span></span><span></span></div>
+    <div class="container">
+      <p class="eyebrow eyebrow--center reveal" data-i18n="menu.eyebrow">Speisekarte</p>
+      <h2 class="section-title reveal" style="--d:1" data-i18n="menu.title">Eine großzügige, saisonale toskanische Küche</h2>
+      <p class="section-lead reveal" style="--d:2" data-i18n="menu.lead">
+        Die Speisekarte ändert sich mit den Jahreszeiten und dem Markt.
+        Hier der Geist der Karte, mit einem Vorgeschmack auf die
+        Gerichte, aus denen sie besteht.
+      </p>
+      <div class="menu__lead-cta reveal" style="--d:2">
+        <button type="button" class="btn btn--outline" id="openMenuModal" data-i18n="menu.fullBtn">Die ganze Speisekarte ansehen</button>
+      </div>
+
+      <div class="menu__grid">
+        <div class="menu-card reveal">
+          <div class="menu-card__media">
+            <img src="assets/img/tartare.jpg" data-i18n-alt="menu.card1Alt" alt="Fleischtatar auf Schiefer, eine Vorspeise von Giulivo" loading="lazy">
+          </div>
+          <h3 data-i18n="menu.card1Title">Vorspeisen</h3>
+          <p data-i18n="menu.card1Text">Toskanische Vorspeisen mit frischen, saisonalen Zutaten, sorgfältig präsentiert.</p>
+        </div>
+        <div class="menu-card reveal" style="--d:1">
+          <div class="menu-card__media">
+            <img src="assets/img/linguine-frutti-di-mare.jpg" data-i18n-alt="menu.card2Alt" alt="Meeresfrüchte-Linguine mit Garnelen und Muscheln" loading="lazy">
+          </div>
+          <h3 data-i18n="menu.card2Title">Hausgemachte Pasta</h3>
+          <p data-i18n="menu.card2Text">Frische Pasta, jeden Tag von Hand verarbeitet, nach toskanischer Tradition.</p>
+        </div>
+        <div class="menu-card reveal" style="--d:2">
+          <div class="menu-card__media">
+            <img src="assets/img/tonno-pistacchio.jpg" data-i18n-alt="menu.card3Alt" alt="Aufgeschnittener Thunfisch in Pistazienkruste, mit Salat serviert" loading="lazy">
+          </div>
+          <h3 data-i18n="menu.card3Title">Fleisch &amp; Fisch</h3>
+          <p data-i18n="menu.card3Text">Fleisch und Fisch mit Leidenschaft zubereitet, je nach Tagesverfügbarkeit ausgewählt.</p>
+        </div>
+        <div class="menu-card reveal" style="--d:3">
+          <div class="menu-card__media">
+            <img src="assets/img/panna-cotta.jpg" data-i18n-alt="menu.card4Alt" alt="Panna Cotta mit Waldbeeren, ein hausgemachtes Dessert" loading="lazy">
+          </div>
+          <h3 data-i18n="menu.card4Title">Hausgemachte Desserts</h3>
+          <p data-i18n="menu.card4Text">Hausgemachte Desserts, um die Mahlzeit süß ausklingen zu lassen, ganz im Sinne italienischer Klassiker.</p>
+        </div>
+      </div>
+
+      <div class="menu-origin-wrap reveal">
+        <div class="menu-origin" role="group" data-i18n-aria-label="menu.originAria" aria-label="Speisekarte nach Land oder Meer filtern" data-active="all">
+          <button type="button" class="origin-btn is-active" data-origin="all" data-i18n="menu.originAll">Alle</button>
+          <button type="button" class="origin-btn" data-origin="terra"><span aria-hidden="true">🌿</span> <span data-i18n="menu.originLand">Land</span></button>
+          <button type="button" class="origin-btn" data-origin="mare"><span aria-hidden="true">🌊</span> <span data-i18n="menu.originSea">Meer</span></button>
+          <span class="menu-origin__indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="menu-tabs-wrap reveal">
+        <div class="menu-tabs" id="menuTabs" role="tablist" data-i18n-aria-label="menu.tabsAria" aria-label="Menükategorien">
+          <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-antipasti" data-panel="antipasti">
+            <span class="menu-tab__icon">🐙</span><span data-i18n="menu.tabAntipasti">Vorspeisen</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-primi" data-panel="primi">
+            <span class="menu-tab__icon">🍝</span><span data-i18n="menu.tabPrimi">Erste Gänge</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-secondi" data-panel="secondi">
+            <span class="menu-tab__icon">🥩</span><span data-i18n="menu.tabSecondi">Hauptgänge</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-contorni" data-panel="contorni">
+            <span class="menu-tab__icon">🥔</span><span data-i18n="menu.tabContorni">Beilagen</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-dessert" data-panel="dessert">
+            <span class="menu-tab__icon">🍮</span><span data-i18n="menu.tabDessert">Dessert</span>
+          </button>
+          <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-bevande" data-panel="bevande">
+            <span class="menu-tab__icon">🍹</span><span data-i18n="menu.tabBevande">Getränke</span>
+          </button>
+          <span class="menu-tabs__indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="menu-book">
+        <button type="button" class="menu-book__nav menu-book__nav--prev" id="menuPrev" data-i18n-aria-label="menu.prevLabel" aria-label="Vorherige Kategorie">‹</button>
+        <div class="menu-panels" id="menuPanels">
+        <div class="menu-panel is-active" id="panel-antipasti" role="tabpanel" data-label="Vorspeisen" data-i18n-label="menu.panelAntipasti">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
+              <div class="menu-list__name" data-desc="antipasti.0"><span>Burratina</span><small>Auf Creme von gelben Tomaten, geräucherter Aubergine und getrockneten Oliven</small></div>
+              <span class="menu-list__price">9&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
+              <div class="menu-list__name" data-desc="antipasti.1"><span>Uovo pochè</span><small>Pochiertes Ei mit Spargel, Creme von mittelaltem Pecorino und Maiscrumble</small></div>
+              <span class="menu-list__price">9&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
+              <div class="menu-list__name" data-desc="antipasti.2"><span>Rustico toscano</span><small>Aufschnitt, Käse, Polenta und Crostino mit Hühnerleber</small></div>
+              <span class="menu-list__price">14&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
+              <div class="menu-list__name" data-desc="antipasti.3"><span>Tartare di fassona piemontese</span><small>Piemonteser Rindertatar, süß-saure Zwiebeln, mariniertes Eigelb, Burratacreme und Senfkörner</small></div>
+              <span class="menu-list__price">15&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:4">
+              <div class="menu-list__name" data-desc="antipasti.4"><span>Prosciutto Patanegra</span><small>Iberischer Patanegra-Schinken</small></div>
+              <span class="menu-list__price">19&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
+              <div class="menu-list__name" data-desc="antipasti.5"><span>Impepata di cozze</span><small>Gepfefferte Miesmuscheln</small></div>
+              <span class="menu-list__price">11&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:6">
+              <div class="menu-list__name" data-desc="antipasti.6"><span>Tris Giulivo</span><small>Gegrillter Tintenfisch mit knackigem Fenchel und Kirschtomaten, in Kurkuma marinierter Thunfisch, goldene Sardellen mit Knoblauchmayonnaise</small></div>
+              <span class="menu-list__price">16&nbsp;€</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-primi" role="tabpanel" data-label="Erste Gänge" data-i18n-label="menu.panelPrimi">
+          <p class="menu-list__note" data-i18n="menu.note">Unsere frische Pasta wird von Hand hergestellt, produziert von der handwerklichen Pastamanufaktur „La Castellana".</p>
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
+              <div class="menu-list__name" data-desc="primi.0"><span>Risotto alle erbe aromatiche</span><small>Kräuterrisotto mit frischem Ziegenkäse, gerösteten Haselnüssen und Speckpulver</small></div>
+              <span class="menu-list__price">12&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
+              <div class="menu-list__name" data-desc="primi.1"><span>Rigatoncini al pomodoro fresco</span><small>Rigatoncini mit frischer Tomate, Stracciatella und Pesto</small></div>
+              <span class="menu-list__price">13&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
+              <div class="menu-list__name" data-desc="primi.2"><span>Gigli alla Giulivo</span><small>Ossobuco-Ragù mit Taggiasca-Oliven und Safran</small></div>
+              <span class="menu-list__price">14&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
+              <div class="menu-list__name" data-desc="primi.3"><span>Cappellacci di patate</span><small>Kartoffel-Cappellacci, Steinpilzcreme, Pecorino-Fonduta und knuspriger Guanciale</small></div>
+              <span class="menu-list__price">14&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:4">
+              <div class="menu-list__name" data-desc="primi.4"><span>Rigatoncini alla tarantina</span><small>Rigatoncini nach Art von Taranto</small></div>
+              <span class="menu-list__price">12&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
+              <div class="menu-list__name" data-desc="primi.5"><span>Chitarrini allo scoglio</span><small>Chitarrini mit gemischten Meeresfrüchten</small></div>
+              <span class="menu-list__price">15&nbsp;€</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-secondi" role="tabpanel" data-label="Hauptgänge" data-i18n-label="menu.panelSecondi">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" data-origin="terra" style="--i:0">
+              <div class="menu-list__name" data-desc="secondi.0"><span>Filetto di maiale</span><small>Schweinefilet, Zwiebeln in Rotwein, Sojasauce und Fonduta aus mittelaltem Pecorino</small></div>
+              <span class="menu-list__price">14&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:1">
+              <div class="menu-list__name" data-desc="secondi.1"><span>Petto d'anatra al Chianti classico</span><small>Entenbrust in Chianti Classico</small></div>
+              <span class="menu-list__price">15&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:2">
+              <div class="menu-list__name" data-desc="secondi.2"><span>Peposo della tradizione</span><small>Traditioneller toskanischer Pfeffer-Rindereintopf</small></div>
+              <span class="menu-list__price">16&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="terra" style="--i:3">
+              <div class="menu-list__name" data-desc="secondi.3"><span>Fracosta di manzo</span><small>Rinderhochrippe mit Tomaten-Rucola-Salsa</small></div>
+              <span class="menu-list__price">17&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:4">
+              <div class="menu-list__name" data-desc="secondi.4"><span>Frittura di totani e gamberoni</span><small>Frittierter Tintenfisch und Riesengarnelen</small></div>
+              <span class="menu-list__price">16&nbsp;€</span>
+            </div>
+            <div class="menu-list__row" data-origin="mare" style="--i:5">
+              <div class="menu-list__name" data-desc="secondi.5"><span>Tonno in crosta di pistacchio</span><small>Thunfisch in Pistazienkruste, Balsamico-Reduktion</small></div>
+              <span class="menu-list__price">18&nbsp;€</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-contorni" role="tabpanel" data-label="Beilagen" data-i18n-label="menu.panelContorni">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" style="--i:0"><div class="menu-list__name" data-desc="contorni.0"><span>Patate fritte</span><small>Pommes frites</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:1"><div class="menu-list__name" data-desc="contorni.1"><span>Patate arrosto</span><small>Bratkartoffeln</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name" data-desc="contorni.2"><span>Verdure saltate</span><small>Gebratenes Gemüse, je nach Saison</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name" data-desc="contorni.3"><span>Fagioli cannellini</span><small>Weiße Bohnen</small></div><span class="menu-list__price">4,50&nbsp;€</span></div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-dessert" role="tabpanel" data-label="Dessert" data-i18n-label="menu.panelDessert">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" style="--i:0"><div class="menu-list__name" data-desc="dessert.0"><span>Tiramisù</span></div><span class="menu-list__price">5&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:1"><div class="menu-list__name" data-desc="dessert.1"><span>Cheesecake</span><small>Waldbeeren oder Schokolade</small></div><span class="menu-list__price">5&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name" data-desc="dessert.2"><span>Semifreddo al croccantino</span><small>Mit Erdbeer-Coulis</small></div><span class="menu-list__price">5&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name" data-desc="dessert.3"><span>Cantuccini e vin santo</span><small>Mandelkekse mit Süßwein</small></div><span class="menu-list__price">5&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:4"><div class="menu-list__name" data-desc="dessert.4"><span>Fragole con panna</span><small>Erdbeeren mit Sahne</small></div><span class="menu-list__price">5&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:5"><div class="menu-list__name" data-desc="dessert.5"><span>Gelato</span><small>Eis</small></div><span class="menu-list__price">5&nbsp;€</span></div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="panel-bevande" role="tabpanel" data-label="Getränke &amp; Kaffee" data-i18n-label="menu.panelBevande">
+          <div class="menu-panel__grid">
+            <div class="menu-list__row" style="--i:0"><div class="menu-list__name" data-desc="bevande.0"><span>Caffè</span><small>Kaffee</small></div><span class="menu-list__price">1,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:1"><div class="menu-list__name" data-desc="bevande.1"><span>Caffè corretto / macchiato</span><small>Kaffee mit Schuss oder Macchiato</small></div><span class="menu-list__price">2&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:2"><div class="menu-list__name" data-desc="bevande.2"><span>Lattina</span><small>Dose Softdrink</small></div><span class="menu-list__price">3&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:3"><div class="menu-list__name" data-desc="bevande.3"><span>Ponce</span><small>Toskanischer Kaffeelikör</small></div><span class="menu-list__price">3,50&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:4"><div class="menu-list__name" data-desc="bevande.4"><span>Amari e grappe</span><small>Amaro oder Grappa</small></div><span class="menu-list__price">3&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:5"><div class="menu-list__name" data-desc="bevande.5"><span>Cocktails</span></div><span class="menu-list__price">6&nbsp;€</span></div>
+            <div class="menu-list__row" style="--i:6"><div class="menu-list__name" data-desc="bevande.6"><span>Rum</span></div><span class="menu-list__price">8&nbsp;€</span></div>
+          </div>
+        </div>
+        </div>
+        <button type="button" class="menu-book__nav menu-book__nav--next" id="menuNext" data-i18n-aria-label="menu.nextLabel" aria-label="Nächste Kategorie">›</button>
+      </div>
+      <p class="menu-book__hint reveal" data-i18n="menu.hint">Blättern Sie durch die Speisekarte wie in einem Buch — nutzen Sie die Pfeile oder die Reiter oben</p>
+
+      <p class="menu-list__footnote reveal" data-i18n-html="menu.footnoteHtml">Gedeck 2,50 € pro Person · Speisekarte kann sich je nach Saison ändern · Allergeninformationen auf Anfrage.</p>
+
+      <div class="menu__cta reveal">
+        <a href="tel:+393888566367" target="_blank" rel="noopener" class="btn btn--primary" data-i18n="menu.ctaBtn">Tisch reservieren</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="gallery" id="galleria">
+    <div class="texture-dots" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow eyebrow--center reveal" data-i18n="gallery.eyebrow">Galerie</p>
+      <h2 class="section-title reveal" style="--d:1" data-i18n="gallery.title">Ein Blick auf den Tisch</h2>
+      <p class="section-lead reveal" style="--d:2" data-i18n="gallery.lead">
+        Ein Vorgeschmack auf die Gerichte und die Atmosphäre bei Giulivo.
+      </p>
+
+      <div class="gallery__grid">
+        <figure class="gallery__item gallery__item--big reveal">
+          <img src="assets/img/terrazza-ulivo.jpg" alt="Eine Ecke unter dem alten Olivenbaum, unsere Terrasse" loading="lazy">
+          <figcaption>Unter dem alten Olivenbaum</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:1">
+          <img src="assets/img/tartare.jpg" alt="Tatar auf Schiefer, die Küche von Giulivo" loading="lazy">
+          <figcaption>Hausgemachtes Tatar</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:2">
+          <img src="assets/img/linguine-frutti-di-mare.jpg" alt="Meeresfrüchte-Linguine" loading="lazy">
+          <figcaption>Meeresfrüchte-Linguine</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:3">
+          <img src="assets/img/tonno-pistacchio.jpg" alt="Thunfisch in Pistazienkruste" loading="lazy">
+          <figcaption>Thunfisch in Pistazienkruste</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:4">
+          <img src="assets/img/panna-cotta.jpg" alt="Panna Cotta mit Waldbeeren" loading="lazy">
+          <figcaption>Panna Cotta mit Waldbeeren</figcaption>
+        </figure>
+        <figure class="gallery__item reveal">
+          <img src="assets/img/antipasto-misto.jpg" alt="Gemischte Vorspeise, Thunfischtatar und paniertes Fisch" loading="lazy">
+          <figcaption>Gemischte Vorspeisen</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:1">
+          <img src="assets/img/tortellini-panna-speck.jpg" alt="Hausgemachte Tortellini, Sahne und knuspriger Speck" loading="lazy">
+          <figcaption>Tortellini mit Sahne und Speck</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:2">
+          <img src="assets/img/piatto-signature.jpg" alt="Signature-Gericht, natürliche Präsentation" loading="lazy">
+          <figcaption>Ein Signature-Gericht von Giulivo</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:3">
+          <img src="assets/img/panna-cotta-verre.jpg" alt="Panna Cotta und ein Glas Weißwein auf der Terrasse" loading="lazy">
+          <figcaption>Dessert und ein Glas auf der Terrasse</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:4">
+          <img src="assets/img/terrazza-tavoli.jpg" alt="Gedeckte Tische auf der Terrasse unter der Pergola" loading="lazy">
+          <figcaption>Tische bereit auf der Terrasse</figcaption>
+        </figure>
+        <figure class="gallery__item reveal">
+          <img src="assets/img/terrazza-veranda.jpg" alt="Die Veranda von Giulivo bei Sonnenuntergang" loading="lazy">
+          <figcaption>Unsere Veranda</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:1">
+          <img src="assets/img/terrazza-pergola.jpg" alt="Der Pergola-Bereich auf der Terrasse von Giulivo" loading="lazy">
+          <figcaption>Unser Pergola-Bereich</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--ink" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
+    </div>
+  </section>
+
+  <!-- ERLEBNIS (Parallax) -->
+  <section class="experience" id="esperienza">
+    <div class="experience__bg" id="experienceBg" aria-hidden="true"></div>
+    <div class="experience__overlay" aria-hidden="true"></div>
+    <div class="container experience__content">
+      <p class="eyebrow reveal" data-i18n="experience.eyebrow">Die Atmosphäre</p>
+      <h2 class="reveal" style="--d:1" data-i18n="experience.title">Ein Erlebnis zum Genießen, nicht nur ein Essen</h2>
+      <p class="reveal" style="--d:2" data-i18n="experience.text">
+        Zwischen den Hügeln von Vicopisano, in einer einfachen und
+        gepflegten Umgebung, ist jedes Abendessen bei Giulivo ein
+        Moment zum Teilen — gutes Essen, gute Gesellschaft, buonumore.
+      </p>
+    </div>
+  </section>
+
+  <!-- BEWERTUNGEN -->
+  <section class="reviews" id="recensioni">
+    <div class="container reviews__grid">
+      <div class="reviews__score reveal">
+        <span class="reviews__number" data-i18n="reviews.number">4,7</span>
+        <span class="stars stars--lg" aria-hidden="true">★★★★★</span>
+        <p data-i18n="reviews.count">91 verifizierte Bewertungen auf Google</p>
+        <a href="https://www.google.com/maps/place/?q=place_id:Giulivo+Cucina+e+Buonumore+Vicopisano" target="_blank" rel="noopener" class="btn btn--outline btn--small" data-i18n="reviews.readBtn">Bewertungen auf Google lesen</a>
+      </div>
+      <div class="reviews__highlight reveal" style="--d:1">
+        <div class="reviews__carousel" id="reviewsCarousel">
+          <blockquote class="reviews__slide is-active" data-i18n="reviews.slide1">« Man kommt, um gut zu essen, und geht mit einem Lächeln nach Hause. »</blockquote>
+          <blockquote class="reviews__slide" data-i18n="reviews.slide2">« Ehrliche toskanische Küche, in einer Atmosphäre, die sich wie zu Hause anfühlt. »</blockquote>
+          <blockquote class="reviews__slide" data-i18n="reviews.slide3">« Gute Laune garantiert, an jedem Tisch. »</blockquote>
+        </div>
+        <p class="reviews__note" data-i18n="reviews.note">Der Geist von Giulivo, in wenigen Worten — ehrliche toskanische Küche und herzlicher Empfang.</p>
+        <ul class="reviews__chips">
+          <li data-i18n="reviews.chip1">Echt</li>
+          <li data-i18n="reviews.chip2">Herzlich</li>
+          <li data-i18n="reviews.chip3">Hausgemacht</li>
+          <li data-i18n="reviews.chip4">Wie zu Hause</li>
+          <li data-i18n="reviews.chip5">Gute Laune garantiert</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--cream" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,24 C960,48 1200,88 1440,36 L1440,80 L0,80 Z"></path></svg>
+    </div>
+  </section>
+
+  <!-- KONTAKT / STANDORT -->
+  <section class="contact" id="contatti">
+    <div class="texture-dots" aria-hidden="true"></div>
+    <div class="ambient-glow" aria-hidden="true"><span></span><span></span></div>
+    <div class="container">
+      <div class="reservation reveal glass">
+        <div class="reservation__text">
+          <p class="eyebrow" data-i18n="contact.bookEyebrow">Reservieren</p>
+          <h2 data-i18n="contact.bookTitle">Tisch anfragen</h2>
+          <p data-i18n="contact.bookText">Füllen Sie die Details aus: WhatsApp öffnet sich mit der bereits fertigen Nachricht an uns. Die Reservierung ist erst nach unserer Antwort bestätigt.</p>
+        </div>
+        <form class="reservation__form" id="reservationForm">
+          <div class="reservation__row">
+            <label><span data-i18n="contact.labelDate">Datum</span>
+              <input type="date" name="data" required>
+            </label>
+            <label><span data-i18n="contact.labelTime">Uhrzeit</span>
+              <input type="time" name="ora" value="20:00" required>
+            </label>
+          </div>
+          <div class="reservation__row">
+            <label><span data-i18n="contact.labelGuests">Personen</span>
+              <input type="number" name="persone" min="1" max="20" value="2" required>
+            </label>
+          </div>
+          <label><span data-i18n="contact.labelNotes">Anmerkungen (optional)</span>
+            <textarea name="note" rows="2" data-i18n-placeholder="contact.notesPlaceholder" placeholder="Z. B. Allergien, Kindersitz, Tisch draußen…"></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary" data-i18n="contact.submitBtn">Über WhatsApp anfragen</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container contact__grid">
+      <div class="contact__info reveal">
+        <p class="eyebrow" data-i18n="contact.findEyebrow">So finden Sie uns</p>
+        <h2 data-i18n="contact.findTitle">Kommen Sie und teilen Sie einen schönen Moment</h2>
+
+        <div class="contact__item">
+          <span class="contact__icon">📍</span>
+          <div>
+            <strong data-i18n="contact.addressLabel">Adresse</strong>
+            <p data-i18n-html="contact.addressHtml">Località Luchetta, 7<br>56010 Vicopisano PI, Italien</p>
+          </div>
+        </div>
+
+        <div class="contact__item">
+          <span class="contact__icon">🕗</span>
+          <div>
+            <strong data-i18n="contact.hoursLabel">Öffnungszeiten</strong>
+            <p data-i18n-html="contact.hoursHtml">Abendservice, bis 23:00 Uhr<br><small>Bitte rufen Sie an, um die Öffnungstage zu bestätigen und zu reservieren.</small></p>
+          </div>
+        </div>
+
+        <div class="contact__item">
+          <span class="contact__icon">📞</span>
+          <div>
+            <strong data-i18n="contact.phoneLabel">Telefon</strong>
+            <p><a href="tel:+393888566367" target="_blank" rel="noopener">+39 388 856 6367</a></p>
+          </div>
+        </div>
+
+        <div class="contact__actions">
+          <a href="tel:+393888566367" target="_blank" rel="noopener" class="btn btn--primary" data-i18n="contact.callBtn">Anrufen zum Reservieren</a>
+          <a href="https://wa.me/393888566367" target="_blank" rel="noopener" class="btn btn--ghost" data-i18n="contact.whatsappBtn">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="contact__map reveal" style="--d:1">
+        <iframe
+          title="Standort von Giulivo Cucina e Buonumore"
+          data-i18n-title="contact.mapTitle"
+          src="https://maps.google.com/maps?q=Localit%C3%A0%20Luchetta%2C%207%2C%2056010%20Vicopisano%20PI%2C%20Italia&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">Giulivo<span>.</span> <small>Cucina e Buonumore</small></div>
+    <div class="footer__links">
+      <a href="https://www.instagram.com/giulivo_ristorante/" target="_blank" rel="noopener">Instagram</a>
+      <a href="tel:+393888566367" target="_blank" rel="noopener">+39 388 856 6367</a>
+      <a href="#home" data-i18n="footer.backTop">Zurück nach oben ↑</a>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> Giulivo Cucina e Buonumore — Vicopisano, <span data-i18n="footer.country">Italien</span></p>
+  </div>
+</footer>
+
+<!-- MENU MODAL -->
+<div class="menu-modal" id="menuModal" aria-hidden="true">
+  <div class="menu-modal__backdrop" data-modal-close></div>
+  <div class="menu-modal__panel glass" role="dialog" aria-modal="true" data-i18n-aria-label="modal.panelLabel" aria-label="Die vollständige Speisekarte">
+    <button type="button" class="menu-modal__close" id="menuModalClose" data-i18n-aria-label="modal.closeLabel" aria-label="Speisekarte schließen">✕</button>
+    <p class="eyebrow" data-i18n="menu.eyebrow">Speisekarte</p>
+    <h3 data-i18n="modal.title">Die vollständige Speisekarte</h3>
+    <div class="menu-modal__body" id="menuModalBody"></div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"><span class="cursor-dot__label"></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script>GiulivoI18n.init('de');</script>
+</body>
+</html>
