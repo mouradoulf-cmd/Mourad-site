@@ -270,9 +270,11 @@
   (function(){
     "use strict";
 
-    // Source clip: 1920x1080, 10.04s, 241 frames. Plays on its own, on a
-    // continuous loop, independent of scroll — scroll only drives the panel
-    // cross-fades below.
+    // Source clip: 1920x1080, 10.04s, 241 frames, ALL-INTRA (every frame is a
+    // keyframe), which is what lets a scroll scrub land on an exact frame
+    // instantly instead of hunting back to the nearest GOP keyframe. Idle,
+    // it just plays on a loop; the moment the page scrolls it hands control
+    // over to scroll position, then hands control back once scrolling stops.
     var VIDEO_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/45567745-d826-44a2-a5ce-7ef670944e60.mp4";
 
     var clip = document.getElementById("clip");
@@ -300,13 +302,44 @@
       return smooth(clamp((p-a)/(b-a),0,1));
     }
 
-    var progress = 0; // 0..1 down the page
+    var progress = 0;   // 0..1 down the page
+    var duration = 0;   // video duration, once known
+    var seekTo = 0;      // target video time while scrubbing
+    var seekAt = 0;      // actual, eased video time while scrubbing
+    var scrubbing = false;
+    var idleTimer = null;
+    var IDLE_DELAY = 650; // ms of no scroll before playback resumes on its own
     var started = false;
     var attached = false;
 
     function readScroll(){
       var max = document.documentElement.scrollHeight - window.innerHeight;
       progress = max > 0 ? clamp(window.pageYOffset / max, 0, 1) : 0;
+      if (duration) seekTo = progress * duration;
+    }
+
+    // While the page is actively scrolling, hand the video over to scroll
+    // position instead of letting it play on its own.
+    function beginScrub(){
+      if (!scrubbing){
+        scrubbing = true;
+        seekAt = clip.currentTime || 0;
+        clip.pause();
+      }
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(endScrub, IDLE_DELAY);
+    }
+
+    // Scrolling has stopped — hand control back and resume playing on a
+    // loop from wherever the scrub left it.
+    function endScrub(){
+      scrubbing = false;
+      play();
+    }
+
+    function onScroll(){
+      readScroll();
+      if (duration) beginScrub();
     }
 
     function paint(){
@@ -325,6 +358,15 @@
     }
 
     function frame(){
+      if (scrubbing && duration){
+        var gap = seekTo - seekAt;
+        if (Math.abs(gap) > 0.0008){
+          seekAt += gap * 0.115; // easing factor — do not change
+          if (clip.readyState >= 2 && !clip.seeking){
+            try { clip.currentTime = seekAt; } catch (e) {}
+          }
+        }
+      }
       paint();
       requestAnimationFrame(frame);
     }
@@ -353,6 +395,10 @@
 
       // Bind listeners before setting src so nothing can fire before we're
       // ready to hear it.
+      clip.addEventListener("loadedmetadata", function(){
+        duration = clip.duration || 0;
+        readScroll();
+      });
       clip.addEventListener("loadeddata", start);
       clip.addEventListener("canplaythrough", start);
       clip.addEventListener("error", start);
@@ -425,7 +471,7 @@
       window.addEventListener(ev, unlock, { once:true, passive:true });
     });
 
-    window.addEventListener("scroll", readScroll, { passive:true });
+    window.addEventListener("scroll", onScroll, { passive:true });
     window.addEventListener("resize", readScroll);
 
     readScroll();
