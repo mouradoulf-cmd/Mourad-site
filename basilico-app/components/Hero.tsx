@@ -2,15 +2,15 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import Image from "next/image";
-import { withBasePath } from "@/lib/basePath";
 
 const WORDS = ["Crafting", "Exceptional", "Culinary", "Experiences"];
+const HERO_VIDEO = "https://strvid.nyc3.cdn.digitaloceanspaces.com/motionsite/hero_food_video.mp4";
 
 export default function Hero() {
   const wordsRef = useRef<(HTMLSpanElement | null)[]>([]);
   const fadeRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const cueRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -18,6 +18,7 @@ export default function Hero() {
     if (reduced) {
       gsap.set(wordsRef.current, { opacity: 1, y: 0 });
       gsap.set(fadeRef.current, { opacity: 1, y: 0 });
+      gsap.set(cueRef.current, { opacity: 1 });
       return;
     }
 
@@ -31,6 +32,11 @@ export default function Hero() {
       { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
       "-=0.6"
+    ).fromTo(
+      cueRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1 },
+      "-=0.4"
     );
 
     if (cardRef.current) {
@@ -46,20 +52,21 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden pt-28">
-      <div className="absolute inset-0 -z-20">
-        <Image
-          src={withBasePath("/images/giulivo/terrazza-vista.jpg")}
-          alt=""
-          fill
-          priority
-          className="object-cover opacity-90"
+      <div className="absolute inset-0 -z-20 overflow-hidden">
+        <video
+          className="hero-bg-video h-full w-full object-cover opacity-80"
+          autoPlay
+          loop
+          muted
+          playsInline
+          src={HERO_VIDEO}
         />
       </div>
       <div
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 40%, #070707 100%), linear-gradient(90deg, rgba(7,7,7,0.6), transparent 55%)",
+            "radial-gradient(ellipse at center, transparent 30%, #070707 100%), linear-gradient(90deg, rgba(7,7,7,0.7), transparent 55%)",
         }}
       />
 
@@ -115,7 +122,7 @@ export default function Hero() {
               loop
               muted
               playsInline
-              src="https://strvid.nyc3.cdn.digitaloceanspaces.com/motionsite/hero_food_video.mp4"
+              src={HERO_VIDEO}
             />
             <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-[#070707]/50 px-4 py-3 backdrop-blur-md">
               <p className="text-xs uppercase tracking-wide text-gray">Chef&apos;s Special</p>
@@ -123,6 +130,16 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div
+        ref={cueRef}
+        className="absolute inset-x-0 bottom-8 hidden flex-col items-center gap-2 opacity-0 sm:flex"
+      >
+        <span className="text-[11px] uppercase tracking-[0.3em] text-gray">Scroll</span>
+        <span className="h-10 w-px overflow-hidden bg-white/15">
+          <span className="hero-cue-line block h-full w-full bg-gold" />
+        </span>
       </div>
     </section>
   );

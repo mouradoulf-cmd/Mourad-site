@@ -56,6 +56,26 @@ body {
   transform: translateY(60px);
 }
 
+@keyframes hero-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.09); }
+}
+
+.hero-bg-video {
+  animation: hero-zoom 24s ease-in-out infinite alternate;
+}
+
+@keyframes hero-cue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.hero-cue-line {
+  animation: hero-cue 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .hero-bg-video { animation: none; }
+  .hero-cue-line { animation: none; }
 }
