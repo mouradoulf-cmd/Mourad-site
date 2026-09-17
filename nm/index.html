@@ -306,24 +306,32 @@
      IntersectionObserver starts watching, so a script error or blocked API
      can never leave this text stuck invisible. */
   .story__inner.pre-reveal .story__eyebrow,
-  .story__inner.pre-reveal .story__rule,
-  .story__inner.pre-reveal .story__line {
+  .story__inner.pre-reveal .story__rule {
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 700ms cubic-bezier(0.2,0,0,1), transform 700ms cubic-bezier(0.2,0,0,1);
   }
   .story__inner.pre-reveal.is-visible .story__eyebrow,
-  .story__inner.pre-reveal.is-visible .story__rule,
-  .story__inner.pre-reveal.is-visible .story__line {
+  .story__inner.pre-reveal.is-visible .story__rule {
     opacity: 1;
     transform: translateY(0);
   }
-  .story__inner.pre-reveal.is-visible .story__eyebrow { transition-delay: 0ms; }
-  .story__inner.pre-reveal.is-visible .story__rule    { transition-delay: 120ms; }
-  .story__inner.pre-reveal.is-visible .story__line--1 { transition-delay: 260ms; }
-  .story__inner.pre-reveal.is-visible .story__line--2 { transition-delay: 440ms; }
-  .story__inner.pre-reveal.is-visible .story__line--3 { transition-delay: 620ms; }
-  .story__inner.pre-reveal.is-visible .story__line--4 { transition-delay: 800ms; }
+  .story__inner.pre-reveal.is-visible .story__rule { transition-delay: 120ms; }
+
+  /* Per-word reveal for the story lines (premium, matches the hero heading's
+     word-by-word treatment). Words are created fresh by JS with this class
+     already applied, so there's no flash risk here — a freshly-created
+     element has no prior rendered state for a transition to jump from. */
+  .story__word {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px);
+    transition: opacity 550ms cubic-bezier(0.2,0,0,1),
+                transform 550ms cubic-bezier(0.2,0,0,1),
+                filter 550ms cubic-bezier(0.2,0,0,1);
+  }
+  .story__word.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
 
   .story strong {
     font-weight: 600;
@@ -458,24 +466,68 @@ document.addEventListener("DOMContentLoaded", () => {
     const storyInner = document.querySelector(".story__inner");
     const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (storyInner && !reduceMotion && "IntersectionObserver" in window) {
-      const storyPieces = storyInner.querySelectorAll(".story__eyebrow, .story__rule, .story__line");
+      const storyChrome = storyInner.querySelectorAll(".story__eyebrow, .story__rule");
       // By the time this script runs, the browser has already computed a
       // visible (opacity:1) style for these elements from parsing the HTML.
       // Adding "pre-reveal" now would make that a same-tick style CHANGE, so
       // the CSS transition would animate it (a visible flash: fades OUT to
       // hidden instead of just starting hidden). Force that first jump to be
       // instant, then hand transitions back for the real reveal later.
-      storyPieces.forEach((el) => { el.style.transition = "none"; });
+      storyChrome.forEach((el) => { el.style.transition = "none"; });
       storyInner.classList.add("pre-reveal");
       void storyInner.offsetHeight; // flush the instant, transition-less state
       requestAnimationFrame(() => {
-        storyPieces.forEach((el) => { el.style.transition = ""; });
+        storyChrome.forEach((el) => { el.style.transition = ""; });
       });
+
+      // Split each line into per-word spans (premium touch, matches the
+      // hero heading's word-by-word reveal). Words are brand-new elements
+      // with .story__word's hidden state baked in from creation, so there's
+      // no earlier "visible" state for a transition to flash from.
+      function splitLineWords(line) {
+        const nodes = Array.from(line.childNodes);
+        line.textContent = "";
+        const words = [];
+        nodes.forEach((node) => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            node.textContent.split(/(\s+)/).forEach((chunk) => {
+              if (!chunk) return;
+              if (/^\s+$/.test(chunk)) {
+                line.appendChild(document.createTextNode(chunk));
+              } else {
+                const span = document.createElement("span");
+                span.className = "story__word";
+                span.textContent = chunk;
+                line.appendChild(span);
+                words.push(span);
+              }
+            });
+          } else {
+            // Element node (e.g. <strong>NM Studio</strong>): keep it whole
+            // as a single word-unit so its own styling (the gradient) stays intact.
+            const span = document.createElement("span");
+            span.className = "story__word";
+            span.appendChild(node.cloneNode(true));
+            line.appendChild(span);
+            words.push(span);
+          }
+        });
+        return words;
+      }
+
+      const lineWordGroups = Array.from(storyInner.querySelectorAll(".story__line")).map(splitLineWords);
 
       const storyObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             storyInner.classList.add("is-visible");
+            let delay = 260;
+            lineWordGroups.forEach((words) => {
+              words.forEach((w, i) => {
+                setTimeout(() => { w.classList.add("is-visible"); }, delay + i * 45);
+              });
+              delay += words.length * 45 + 220;
+            });
             storyObserver.unobserve(storyInner);
           }
         });
