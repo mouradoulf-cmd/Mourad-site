@@ -283,14 +283,8 @@
     justify-content: center;
   }
   @media (min-width: 640px) { .story { padding: 7rem 2.5rem; } }
-  .story__inner { max-width: 42rem; text-align: center; }
-  @media (min-width: 1024px) { .story__inner { max-width: 50rem; } }
-  .story__inner.pre-reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 900ms cubic-bezier(0.2,0,0,1), transform 900ms cubic-bezier(0.2,0,0,1);
-  }
-  .story__inner.pre-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .story__inner { max-width: 34rem; text-align: center; }
+  @media (min-width: 1024px) { .story__inner { max-width: 40rem; } }
 
   .story__eyebrow {
     font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
@@ -301,11 +295,36 @@
     border-radius: 2px;
     background: linear-gradient(90deg, #22e8ff, #a855f7, #ec4899);
   }
-  .story__text {
-    font-size: 1.15rem; line-height: 1.65; color: var(--heading); margin: 0;
+  .story__line {
+    font-size: 1.2rem; line-height: 1.55; color: var(--heading); margin: 0 0 .6rem;
   }
-  @media (min-width: 640px) { .story__text { font-size: 1.35rem; } }
-  .story__text strong {
+  .story__line:last-child { margin-bottom: 0; }
+  @media (min-width: 640px) { .story__line { font-size: 1.45rem; } }
+
+  /* Visible by default — no JS dependency. The reveal-hidden state below is
+     only switched on by JS right before a confirmed-working
+     IntersectionObserver starts watching, so a script error or blocked API
+     can never leave this text stuck invisible. */
+  .story__inner.pre-reveal .story__eyebrow,
+  .story__inner.pre-reveal .story__rule,
+  .story__inner.pre-reveal .story__line {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 700ms cubic-bezier(0.2,0,0,1), transform 700ms cubic-bezier(0.2,0,0,1);
+  }
+  .story__inner.pre-reveal.is-visible .story__eyebrow,
+  .story__inner.pre-reveal.is-visible .story__rule,
+  .story__inner.pre-reveal.is-visible .story__line {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .story__inner.pre-reveal.is-visible .story__eyebrow { transition-delay: 0ms; }
+  .story__inner.pre-reveal.is-visible .story__rule    { transition-delay: 120ms; }
+  .story__inner.pre-reveal.is-visible .story__line--1 { transition-delay: 260ms; }
+  .story__inner.pre-reveal.is-visible .story__line--2 { transition-delay: 440ms; }
+  .story__inner.pre-reveal.is-visible .story__line--3 { transition-delay: 620ms; }
+
+  .story strong {
     font-weight: 600;
     background: linear-gradient(90deg, #22e8ff, #4d7fff, #a855f7, #ec4899, #22e8ff);
     background-size: 300% 100%;
@@ -319,7 +338,7 @@
     100% { background-position: 300% 50%; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .story__text strong { animation: none; }
+    .story strong { animation: none; }
   }
 </style>
 </head>
@@ -367,17 +386,9 @@
   <div class="story__inner">
     <p class="story__eyebrow">How it works</p>
     <span class="story__rule" aria-hidden="true"></span>
-    <p class="story__text">
-      Most restaurant website projects die at the same step: someone has to
-      write the menu, translate it, take the photos, explain what makes the
-      place worth visiting. At <strong>NM Studio</strong>, that step doesn't
-      exist &mdash; send me what you have, even just phone photos, and I turn
-      it into a site and QR menu you're proud to show, live in days, not
-      months. And it's not just about looking good: today, customers decide
-      where to eat before they even walk in. A restaurant with no website is
-      invisible to them. One built with NM Studio gets found, gets chosen,
-      and turns that into more bookings, more orders, more revenue.
-    </p>
+    <p class="story__line story__line--1">No website means lost customers.</p>
+    <p class="story__line story__line--2">At <strong>NM Studio</strong>, I build yours fast &mdash; send your photos, I handle everything. Live in days.</p>
+    <p class="story__line story__line--3">More visibility. More bookings. More revenue.</p>
   </div>
 </section>
 
@@ -445,7 +456,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const storyInner = document.querySelector(".story__inner");
     const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (storyInner && !reduceMotion && "IntersectionObserver" in window) {
+      const storyPieces = storyInner.querySelectorAll(".story__eyebrow, .story__rule, .story__line");
+      // By the time this script runs, the browser has already computed a
+      // visible (opacity:1) style for these elements from parsing the HTML.
+      // Adding "pre-reveal" now would make that a same-tick style CHANGE, so
+      // the CSS transition would animate it (a visible flash: fades OUT to
+      // hidden instead of just starting hidden). Force that first jump to be
+      // instant, then hand transitions back for the real reveal later.
+      storyPieces.forEach((el) => { el.style.transition = "none"; });
       storyInner.classList.add("pre-reveal");
+      void storyInner.offsetHeight; // flush the instant, transition-less state
+      requestAnimationFrame(() => {
+        storyPieces.forEach((el) => { el.style.transition = ""; });
+      });
+
       const storyObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
