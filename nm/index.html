@@ -350,6 +350,137 @@
   @media (prefers-reduced-motion: reduce) {
     .story strong, .brand__name { animation: none; }
   }
+
+  /* ---------- pricing section ---------- */
+  .pricing {
+    position: relative;
+    background: var(--hero-base);
+    border-top: 1px solid var(--glass-border);
+    padding: 6rem 1.25rem 7rem;
+    overflow: hidden;
+  }
+  @media (min-width: 640px) { .pricing { padding: 8rem 2.5rem 9rem; } }
+
+  .pricing__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .35;
+    pointer-events: none;
+    animation: pricingDrift 18s ease-in-out infinite;
+  }
+  .pricing__orb--a { width: 26rem; height: 26rem; left: -8rem; top: 2rem; background: radial-gradient(circle, #22e8ff, transparent 70%); }
+  .pricing__orb--b { width: 30rem; height: 30rem; right: -10rem; bottom: -6rem; background: radial-gradient(circle, #a855f7, transparent 70%); animation-delay: -9s; }
+  @keyframes pricingDrift {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(2rem,-1.5rem) scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce) { .pricing__orb { animation: none; } }
+
+  .pricing__head { position: relative; z-index: 2; max-width: 40rem; margin: 0 auto 4rem; text-align: center; }
+  .pricing__eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #22e8ff; font-weight: 500; margin: 0 0 1rem; }
+  .pricing__title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0 0 1rem; line-height: 1.15; }
+  .pricing__lead { font-size: 1.05rem; line-height: 1.6; color: var(--body-muted); margin: 0; }
+
+  .pricing__grid {
+    position: relative; z-index: 2;
+    display: grid; gap: 1.75rem;
+    max-width: 76rem; margin: 0 auto;
+    grid-template-columns: 1fr;
+    perspective: 1400px;
+  }
+  @media (min-width: 900px) { .pricing__grid { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+
+  /* Outer card: handles scroll entrance only (opacity/translateY). Visible by
+     default — the pre-reveal/hidden state is switched on by JS right before a
+     confirmed-working IntersectionObserver starts watching, same safety
+     pattern as the story section, so a script error can't strand this hidden. */
+  .price-card { position: relative; }
+  .price-card.pre-reveal {
+    opacity: 0;
+    transform: translateY(28px) scale(.97);
+    transition: opacity 700ms cubic-bezier(0.2,0,0,1), transform 700ms cubic-bezier(0.2,0,0,1);
+  }
+  .price-card.pre-reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+  /* Inner tilt target: carries all visual styling + the pointer-driven 3D
+     rotation, kept separate from the outer element so the two transforms
+     (entrance vs. tilt) never fight each other. */
+  .price-card__tilt {
+    position: relative;
+    height: 100%;
+    border-radius: 1.75rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-fill);
+    backdrop-filter: blur(16px);
+    padding: 2.25rem 1.9rem;
+    transform-style: preserve-3d;
+    transition: transform .15s ease-out, box-shadow .3s ease;
+    will-change: transform;
+  }
+  @media (min-width: 900px) { .price-card--pro { margin-top: -1.25rem; } }
+  @media (min-width: 900px) { .price-card--pro .price-card__tilt { padding-bottom: 3rem; } }
+
+  .price-card__glow {
+    position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.10), transparent 60%);
+    opacity: 0; transition: opacity .25s ease;
+    pointer-events: none;
+  }
+  .price-card__tilt:hover .price-card__glow { opacity: 1; }
+
+  .price-card--pro .price-card__tilt {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--hero-base), var(--hero-base)) padding-box,
+      linear-gradient(135deg, #22e8ff, #a855f7, #ec4899) border-box;
+    box-shadow: 0 30px 60px -20px rgba(168,85,247,.35);
+  }
+  .price-card--pro .price-card__tilt::before {
+    content: '';
+    position: absolute; inset: 1px; border-radius: calc(1.75rem - 1px);
+    background: var(--glass-fill); z-index: 0;
+  }
+  .price-card--pro .price-card__tilt > * { position: relative; z-index: 1; }
+
+  .price-card__badge {
+    position: absolute; top: -.9rem; left: 50%; transform: translateX(-50%);
+    font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    padding: .4rem 1rem; border-radius: 999px; color: var(--hero-base);
+    background: linear-gradient(120deg, #22e8ff, #a855f7);
+    white-space: nowrap; z-index: 2;
+  }
+
+  .price-card__tilt h3 { font-size: 1.4rem; font-weight: 600; color: var(--heading); margin: 0 0 .4rem; }
+  .price-card__tagline { font-size: .92rem; color: var(--body-muted); margin: 0 0 1.6rem; line-height: 1.5; }
+
+  .price-card__price { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .35rem; }
+  .price-card__setup { font-size: 2.2rem; font-weight: 600; color: var(--heading); letter-spacing: -0.02em; }
+  .price-card__setup-label { font-size: .8rem; color: var(--body-muted); }
+  .price-card__monthly { font-size: .88rem; color: var(--body-muted); margin: 0 0 1.75rem; }
+  .price-card__monthly strong { color: var(--heading); font-weight: 600; }
+
+  .price-card__features { list-style: none; margin: 0 0 2rem; padding: 0; display: flex; flex-direction: column; gap: .7rem; }
+  .price-card__features li { display: flex; align-items: flex-start; gap: .6rem; font-size: .92rem; color: var(--heading); line-height: 1.4; }
+  .price-card__features li svg { flex-shrink: 0; width: 1.1rem; height: 1.1rem; margin-top: .1rem; color: #22e8ff; }
+
+  .price-card__actions { display: flex; flex-direction: column; gap: .6rem; }
+  .price-card__cta {
+    display: flex; align-items: center; justify-content: center;
+    height: 2.9rem; border-radius: 999px; font-size: .92rem; font-weight: 600;
+    background: var(--action-inverse); color: var(--action-inverse-fg);
+    transition: transform .2s ease, background .2s ease;
+  }
+  .price-card__cta:hover { transform: translateY(-2px); background: rgba(255,255,255,.85); }
+  .price-card__example {
+    display: flex; align-items: center; justify-content: center;
+    height: 2.6rem; border-radius: 999px; font-size: .85rem; font-weight: 500;
+    border: 1px solid var(--glass-border); color: var(--heading);
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .price-card__example:hover { border-color: #a855f7; color: #a855f7; }
+
+  .pricing__note { position: relative; z-index: 2; text-align: center; margin: 3rem auto 0; color: var(--body-muted); font-size: .88rem; max-width: 30rem; }
 </style>
 </head>
 <body>
@@ -372,7 +503,7 @@
       <a href="#products">Products</a>
       <a href="#blog">Blog</a>
     </nav>
-    <a href="#get-started" class="btn-pill">Get Started</a>
+    <a href="#pricing" class="btn-pill">Get Started</a>
   </header>
 
   <div class="hero__center">
@@ -401,6 +532,89 @@
     <p class="story__line story__line--3">More visibility, more bookings, up to 30% more revenue.</p>
     <p class="story__line story__line--4">50+ happy clients &mdash; cancel anytime, free.</p>
   </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="pricing__orb pricing__orb--a" aria-hidden="true"></div>
+  <div class="pricing__orb pricing__orb--b" aria-hidden="true"></div>
+
+  <div class="pricing__head">
+    <p class="pricing__eyebrow">Pricing</p>
+    <h2 class="pricing__title">Choose your plan. Go live in days.</h2>
+    <p class="pricing__lead">Every plan includes a QR menu that just works. Upgrade anytime as your business grows.</p>
+  </div>
+
+  <div class="pricing__grid">
+
+    <div class="price-card" data-tier="basic">
+      <div class="price-card__tilt">
+        <div class="price-card__glow" aria-hidden="true"></div>
+        <h3>Basic</h3>
+        <p class="price-card__tagline">Get scanned. Get ordered.</p>
+        <div class="price-card__price">
+          <span class="price-card__setup">1,000&nbsp;&#3647;</span>
+          <span class="price-card__setup-label">setup</span>
+        </div>
+        <p class="price-card__monthly"><strong>300&nbsp;&#3647;</strong> / month to stay online</p>
+        <ul class="price-card__features">
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>QR code menu, always up to date</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited menu edits</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Works on any phone, no app needed</li>
+        </ul>
+        <div class="price-card__actions">
+          <a href="https://mouradoulf-cmd.github.io/Mourad-site/#menu" target="_blank" rel="noopener" class="price-card__example">See an example</a>
+          <a href="#contact" class="price-card__cta">Choose Basic</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-card price-card--pro" data-tier="pro">
+      <div class="price-card__tilt">
+        <span class="price-card__badge">Most popular</span>
+        <div class="price-card__glow" aria-hidden="true"></div>
+        <h3>Pro</h3>
+        <p class="price-card__tagline">Your own website, done for you.</p>
+        <div class="price-card__price">
+          <span class="price-card__setup">3,000&nbsp;&#3647;</span>
+          <span class="price-card__setup-label">setup</span>
+        </div>
+        <p class="price-card__monthly"><strong>350&nbsp;&#3647;</strong> / month to stay online</p>
+        <ul class="price-card__features">
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Basic</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Full custom website, built from your photos</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in days, not months</li>
+        </ul>
+        <div class="price-card__actions">
+          <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="price-card__example">See an example</a>
+          <a href="#contact" class="price-card__cta">Choose Pro</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-card" data-tier="elite">
+      <div class="price-card__tilt">
+        <div class="price-card__glow" aria-hidden="true"></div>
+        <h3>Elite</h3>
+        <p class="price-card__tagline">The full package. Zero effort.</p>
+        <div class="price-card__price">
+          <span class="price-card__setup">Custom</span>
+        </div>
+        <p class="price-card__monthly">Priced around your needs</p>
+        <ul class="price-card__features">
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Pro</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Social media set up &amp; managed</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
+        </ul>
+        <div class="price-card__actions">
+          <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="price-card__example">See an example</a>
+          <a href="#contact" class="price-card__cta">Talk to us</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="pricing__note">Cancel anytime, free. No contracts, no surprise fees.</p>
 </section>
 
 <script type="module">
@@ -534,6 +748,58 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }, { threshold: 0.25 });
       storyObserver.observe(storyInner);
+    }
+  } catch (e) {}
+
+  /* Pricing cards: staggered scroll entrance + pointer-driven 3D tilt.
+     Same visible-by-default safety pattern as the story section — the
+     hidden "pre-reveal" state is only switched on right before a
+     confirmed-working IntersectionObserver starts watching. */
+  try {
+    const priceCards = Array.prototype.slice.call(document.querySelectorAll(".price-card"));
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (priceCards.length && !reduceMotion && "IntersectionObserver" in window) {
+      priceCards.forEach((card) => { card.style.transition = "none"; });
+      priceCards.forEach((card) => { card.classList.add("pre-reveal"); });
+      void priceCards[0].offsetHeight; // flush the instant, transition-less state
+      requestAnimationFrame(() => {
+        priceCards.forEach((card) => { card.style.transition = ""; });
+      });
+
+      const priceObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = priceCards.indexOf(entry.target);
+            setTimeout(() => { entry.target.classList.add("is-visible"); }, Math.max(idx, 0) * 140);
+            priceObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      priceCards.forEach((card) => { priceObserver.observe(card); });
+    }
+
+    // Pointer-driven 3D tilt — only on devices with a real mouse (skip touch,
+    // which has no hover, so there's nothing to fight with tap scrolling).
+    var canHoverFine = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!reduceMotion && canHoverFine) {
+      priceCards.forEach((card) => {
+        const tilt = card.querySelector(".price-card__tilt");
+        if (!tilt) return;
+        tilt.addEventListener("mousemove", (e) => {
+          const rect = tilt.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width;
+          const py = (e.clientY - rect.top) / rect.height;
+          const rx = (0.5 - py) * 10;
+          const ry = (px - 0.5) * 10;
+          tilt.style.transform = "perspective(900px) rotateX(" + rx + "deg) rotateY(" + ry + "deg)";
+          tilt.style.setProperty("--mx", (px * 100) + "%");
+          tilt.style.setProperty("--my", (py * 100) + "%");
+        });
+        tilt.addEventListener("mouseleave", () => {
+          tilt.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+        });
+      });
     }
   } catch (e) {}
 });
