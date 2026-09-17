@@ -333,7 +333,8 @@
   }
   .story__word.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-  .story strong {
+  .story strong,
+  .brand__name {
     font-weight: 600;
     background: linear-gradient(90deg, #22e8ff, #4d7fff, #a855f7, #ec4899, #22e8ff);
     background-size: 300% 100%;
@@ -347,7 +348,7 @@
     100% { background-position: 300% 50%; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .story strong { animation: none; }
+    .story strong, .brand__name { animation: none; }
   }
 </style>
 </head>
@@ -363,7 +364,7 @@
         <path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         <path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
       </svg>
-      NM Studio
+      <span class="brand__name">NM Studio</span>
     </a>
     <nav class="nav__pill">
       <a href="#how-it-works">How it works?</a>
