@@ -472,15 +472,59 @@
     transition: transform .2s ease, background .2s ease;
   }
   .price-card__cta:hover { transform: translateY(-2px); background: rgba(255,255,255,.85); }
-  .price-card__example {
-    display: flex; align-items: center; justify-content: center;
-    height: 2.6rem; border-radius: 999px; font-size: .85rem; font-weight: 500;
-    border: 1px solid var(--glass-border); color: var(--heading);
-    transition: border-color .2s ease, color .2s ease;
-  }
-  .price-card__example:hover { border-color: #a855f7; color: #a855f7; }
 
   .pricing__note { position: relative; z-index: 2; text-align: center; margin: 3rem auto 0; color: var(--body-muted); font-size: .88rem; max-width: 30rem; }
+
+  /* ---------- examples section ---------- */
+  .examples { padding: 6rem 1.25rem; border-top: 1px solid var(--glass-border); }
+  @media (min-width: 640px) { .examples { padding: 7rem 2.5rem; } }
+  .examples__head { max-width: 34rem; margin: 0 auto; text-align: center; }
+  .examples__eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #22e8ff; font-weight: 500; margin: 0 0 1rem; }
+  .examples__title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0 0 1rem; line-height: 1.15; }
+  .examples__lead { font-size: 1rem; line-height: 1.6; color: var(--body-muted); margin: 0 0 2rem; }
+
+  .examples__trigger {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .95rem 1.75rem; border-radius: 999px;
+    border: 1px solid var(--glass-border); background: var(--glass-fill);
+    color: var(--heading); font-size: .92rem; font-weight: 500; cursor: pointer;
+    transition: border-color .3s ease, background .3s ease;
+  }
+  .examples__trigger svg { width: 1rem; height: 1rem; transition: transform .35s cubic-bezier(0.2,0,0,1); }
+  .examples__trigger:hover { border-color: #a855f7; }
+  .examples__trigger.is-open svg { transform: rotate(180deg); }
+
+  .examples__tabs {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem;
+    max-width: 52rem; margin: 0 auto; margin-top: 0;
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height .5s cubic-bezier(0.2,0,0,1), opacity .4s ease, margin-top .5s cubic-bezier(0.2,0,0,1);
+  }
+  .examples__tabs.is-open { max-height: 20rem; opacity: 1; margin-top: 2.2rem; }
+
+  .example-tab {
+    display: flex; align-items: center; gap: .6rem;
+    padding: .9rem 1.5rem; border-radius: 999px;
+    border: 1px solid var(--glass-border); background: var(--glass-fill);
+    color: var(--heading); font-size: .9rem; font-weight: 500;
+    opacity: 0; transform: translateY(14px) scale(.9);
+    transition: transform .4s cubic-bezier(0.34,1.56,0.64,1), opacity .35s ease, border-color .3s ease, background .3s ease;
+  }
+  .examples__tabs.is-open .example-tab {
+    opacity: 1; transform: translateY(0) scale(1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  .example-tab:not(.example-tab--soon):hover { border-color: #22e8ff; background: rgba(34,232,255,.08); }
+  .example-tab__icon { font-size: 1.1rem; }
+  .example-tab--soon { cursor: default; }
+  .examples__tabs.is-open .example-tab--soon { opacity: .55; }
+  .example-tab__badge {
+    font-size: .62rem; letter-spacing: .06em; text-transform: uppercase;
+    padding: .2rem .5rem; border-radius: 999px; background: rgba(255,255,255,.1); color: var(--body-muted);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .examples__tabs, .example-tab, .examples__trigger svg { transition: none; }
+  }
 </style>
 </head>
 <body>
@@ -534,6 +578,43 @@
   </div>
 </section>
 
+<section class="examples" id="examples">
+  <div class="examples__head">
+    <p class="examples__eyebrow">Our Work</p>
+    <h2 class="examples__title">See it before you decide.</h2>
+    <p class="examples__lead">Real templates, ready to adapt for your business &mdash; pick a category to open a live example.</p>
+    <button type="button" class="examples__trigger" id="examplesTrigger">
+      <span>See Examples</span>
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="examples__tabs" id="examplesTabs">
+      <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="example-tab" style="--i:0">
+        <span class="example-tab__icon" aria-hidden="true">&#127837;</span>
+        <span class="example-tab__label">Restaurant</span>
+      </a>
+      <a href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" target="_blank" rel="noopener" class="example-tab" style="--i:1">
+        <span class="example-tab__icon" aria-hidden="true">&#128131;</span>
+        <span class="example-tab__label">Hair Salon</span>
+      </a>
+      <span class="example-tab example-tab--soon" style="--i:2">
+        <span class="example-tab__icon" aria-hidden="true">&#128173;</span>
+        <span class="example-tab__label">Massage</span>
+        <span class="example-tab__badge">Soon</span>
+      </span>
+      <span class="example-tab example-tab--soon" style="--i:3">
+        <span class="example-tab__icon" aria-hidden="true">&#127864;</span>
+        <span class="example-tab__label">Bar &amp; Nightlife</span>
+        <span class="example-tab__badge">Soon</span>
+      </span>
+      <span class="example-tab example-tab--soon" style="--i:4">
+        <span class="example-tab__icon" aria-hidden="true">&#127790;</span>
+        <span class="example-tab__label">Street Food</span>
+        <span class="example-tab__badge">Soon</span>
+      </span>
+    </div>
+  </div>
+</section>
+
 <section class="pricing" id="pricing">
   <div class="pricing__orb pricing__orb--a" aria-hidden="true"></div>
   <div class="pricing__orb pricing__orb--b" aria-hidden="true"></div>
@@ -562,7 +643,6 @@
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Works on any phone, no app needed</li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://mouradoulf-cmd.github.io/Mourad-site/#menu" target="_blank" rel="noopener" class="price-card__example">See an example</a>
           <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta">Choose Basic</a>
         </div>
       </div>
@@ -585,7 +665,6 @@
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in days, not months</li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="price-card__example">See an example</a>
           <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta">Choose Pro</a>
         </div>
       </div>
@@ -607,7 +686,6 @@
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="price-card__example">See an example</a>
           <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta">Talk to us</a>
         </div>
       </div>
@@ -673,6 +751,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const canvas = document.querySelector(".hero__canvas");
   if (canvas) fluidSimulation(canvas);
+
+  /* Examples: click to reveal the category tabs. Closed by default (no
+     load-time animation dependency, purely a user-triggered interaction),
+     so there's no "stuck invisible" risk to guard against here. */
+  try {
+    const examplesTrigger = document.getElementById("examplesTrigger");
+    const examplesTabs = document.getElementById("examplesTabs");
+    if (examplesTrigger && examplesTabs) {
+      examplesTrigger.addEventListener("click", () => {
+        const open = examplesTabs.classList.toggle("is-open");
+        examplesTrigger.classList.toggle("is-open", open);
+        examplesTrigger.querySelector("span").textContent = open ? "Hide Examples" : "See Examples";
+      });
+    }
+  } catch (e) {}
 
   /* Story section: fade up on scroll into view. Visible by default in CSS —
      the "pre-reveal" class (which starts it at opacity:0) is only added here,
