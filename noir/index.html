@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noir — Hair Studio</title>
+<meta name="description" content="Noir Hair Studio — modern cuts, color and styling. Book your appointment in seconds, walk out with confidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="#home" class="navbar__logo">Noir<span>.</span></a>
+    <nav class="navbar__links" id="navLinks">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#lookbook" class="nav-link">Lookbook</a>
+      <a href="#reviews" class="nav-link">Reviews</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <a href="#booking" class="btn btn--primary btn--small navbar__cta">Book Now</a>
+    <button class="navbar__burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#lookbook">Lookbook</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__texture" aria-hidden="true"></div>
+    <div class="hero__lines" aria-hidden="true">
+      <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
+        <path d="M700 -20 C 620 120, 780 260, 660 400 C 550 530, 760 620, 680 820" stroke="rgba(184,135,90,.35)" stroke-width="1.5" fill="none"/>
+        <path d="M760 -20 C 690 140, 830 280, 720 420 C 600 560, 810 660, 730 820" stroke="rgba(246,239,228,.14)" stroke-width="1" fill="none"/>
+        <path d="M640 -20 C 560 110, 700 240, 600 380 C 500 500, 690 600, 610 820" stroke="rgba(184,135,90,.18)" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <div class="container hero__content">
+      <p class="eyebrow">Bangkok &middot; Hair &amp; Beauty Studio</p>
+      <h1 class="hero__title">Where hair<br>becomes <em>art</em>.</h1>
+      <p class="hero__text">Precision cuts, honest color, and styling built around your face &mdash; not a trend. Walk in for a consultation, walk out with confidence.</p>
+      <div class="hero__actions">
+        <a href="#booking" class="btn btn--primary">Book an Appointment</a>
+        <a href="#services" class="btn btn--ghost">See Services</a>
+      </div>
+      <div class="hero__stats">
+        <div>
+          <span class="hero__stat-num" data-count="9">0</span>
+          <span class="hero__stat-label">Years of craft</span>
+        </div>
+        <div>
+          <span class="hero__stat-num" data-count="4.9" data-decimal="1">0</span>
+          <span class="hero__stat-label">Client rating</span>
+        </div>
+        <div>
+          <span class="hero__stat-num" data-count="2400" data-suffix="+">0</span>
+          <span class="hero__stat-label">Styles delivered</span>
+        </div>
+      </div>
+    </div>
+    <a href="#services" class="hero__scroll"><span></span>Scroll</a>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Haircut</span><span class="marquee__dot">&#10022;</span>
+      <span>Color</span><span class="marquee__dot">&#10022;</span>
+      <span>Balayage</span><span class="marquee__dot">&#10022;</span>
+      <span>Keratin</span><span class="marquee__dot">&#10022;</span>
+      <span>Styling</span><span class="marquee__dot">&#10022;</span>
+      <span>Bridal</span><span class="marquee__dot">&#10022;</span>
+      <span>Haircut</span><span class="marquee__dot">&#10022;</span>
+      <span>Color</span><span class="marquee__dot">&#10022;</span>
+      <span>Balayage</span><span class="marquee__dot">&#10022;</span>
+      <span>Keratin</span><span class="marquee__dot">&#10022;</span>
+      <span>Styling</span><span class="marquee__dot">&#10022;</span>
+      <span>Bridal</span><span class="marquee__dot">&#10022;</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services__head reveal">
+        <p class="eyebrow eyebrow--center">Services</p>
+        <h2 class="section-title">A cut for every <em>story</em>.</h2>
+        <p class="section-lead">Every service starts with a five-minute consultation &mdash; no guessing, no surprises at the till.</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card reveal">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="service-card__row"><h3>Signature Cut</h3><span class="service-card__price">450&nbsp;&#3647;</span></div>
+          <p>Precision cut &amp; finish, tailored to your face shape and hair type.</p>
+        </div>
+        <div class="service-card reveal" style="--d:1">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.2" opacity=".5"/></svg></div>
+          <div class="service-card__row"><h3>Color &amp; Balayage</h3><span class="service-card__price">from&nbsp;1,200&nbsp;&#3647;</span></div>
+          <p>Full color, root touch-up, or hand-painted balayage for natural depth.</p>
+        </div>
+        <div class="service-card reveal" style="--d:2">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12c2-4 6-6 8-6s6 2 8 6c-2 4-6 6-8 6s-6-2-8-6z" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="service-card__row"><h3>Keratin Treatment</h3><span class="service-card__price">1,800&nbsp;&#3647;</span></div>
+          <p>Smooth, frizz-free hair that lasts up to three months.</p>
+        </div>
+        <div class="service-card reveal" style="--d:3">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M5 9l7-7 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="service-card__row"><h3>Blowout &amp; Styling</h3><span class="service-card__price">350&nbsp;&#3647;</span></div>
+          <p>Event-ready styling, from soft waves to a sleek finish.</p>
+        </div>
+        <div class="service-card reveal" style="--d:4">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-7-10a7 7 0 0114 0c0 5.65-7 10-7 10z" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="service-card__row"><h3>Bridal &amp; Events</h3><span class="service-card__price">from&nbsp;2,500&nbsp;&#3647;</span></div>
+          <p>Trial included. Hair that holds through the whole night.</p>
+        </div>
+        <div class="service-card reveal" style="--d:5">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="service-card__row"><h3>Kids Cut</h3><span class="service-card__price">250&nbsp;&#3647;</span></div>
+          <p>Patient, quick, and gentle &mdash; for guests under 12.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container about__grid">
+      <div class="reveal">
+        <p class="eyebrow">Our Philosophy</p>
+        <p class="about__quote">Good hair isn&rsquo;t about <em>trends</em>. It&rsquo;s about knowing what actually suits you.</p>
+        <p class="about__text">Noir was built on a simple idea: every consultation starts with listening, not a portfolio of looks to copy. We work with your natural texture, your routine, and your budget &mdash; so what you leave with, you can actually maintain.</p>
+        <p class="about__signature">&mdash; The Noir Team</p>
+      </div>
+      <div class="about__stats reveal" style="--d:1">
+        <div class="about__stat">
+          <span class="about__stat-num" data-count="9">0</span>
+          <span class="about__stat-label">Years open</span>
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-num" data-count="6">0</span>
+          <span class="about__stat-label">Stylists</span>
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-num" data-count="2400" data-suffix="+">0</span>
+          <span class="about__stat-label">Styles done</span>
+        </div>
+        <div class="about__stat">
+          <span class="about__stat-num" data-count="98" data-suffix="%">0</span>
+          <span class="about__stat-label">Rebook rate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK -->
+  <section class="lookbook" id="lookbook">
+    <div class="container">
+      <div class="lookbook__head reveal">
+        <p class="eyebrow eyebrow--center">Lookbook</p>
+        <h2 class="section-title">Six <em>looks</em>, one studio.</h2>
+        <p class="section-lead">A glimpse of what walks out our door &mdash; your own photos would replace these on launch.</p>
+      </div>
+      <div class="lookbook__grid">
+        <div class="look-card reveal" data-num="01" style="background:linear-gradient(150deg,#c99a6b,#8a5a34);">
+          <p class="look-card__tag">Color</p>
+          <p class="look-card__name">Copper Balayage</p>
+        </div>
+        <div class="look-card reveal" data-num="02" style="background:linear-gradient(150deg,#e7d6bd,#b8875a);">
+          <p class="look-card__tag">Cut</p>
+          <p class="look-card__name">Soft Layers</p>
+        </div>
+        <div class="look-card reveal" data-num="03" style="background:linear-gradient(150deg,#d9b88f,#7a4f2b);">
+          <p class="look-card__tag">Style</p>
+          <p class="look-card__name">Sleek Blowout</p>
+        </div>
+        <div class="look-card reveal" data-num="04" style="background:linear-gradient(150deg,#efe3cf,#c9a06a);">
+          <p class="look-card__tag">Treatment</p>
+          <p class="look-card__name">Glass Hair</p>
+        </div>
+        <div class="look-card reveal" data-num="05" style="background:linear-gradient(150deg,#bc8e5c,#5c3c22);">
+          <p class="look-card__tag">Bridal</p>
+          <p class="look-card__name">Timeless Updo</p>
+        </div>
+        <div class="look-card reveal" data-num="06" style="background:linear-gradient(150deg,#f0e2c8,#9c7043);">
+          <p class="look-card__tag">Color</p>
+          <p class="look-card__name">Warm Bronde</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container reviews__grid">
+      <div class="reviews__score reveal">
+        <span class="reviews__number">4.9</span>
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>120+ verified reviews on Google</p>
+        <a href="#" class="btn btn--ghost btn--small">Read reviews</a>
+      </div>
+      <div class="reveal" style="--d:1">
+        <div class="reviews__carousel" id="reviewsCarousel">
+          <blockquote class="reviews__slide is-active">&ldquo;First time a stylist actually listened before picking up the scissors.&rdquo;</blockquote>
+          <blockquote class="reviews__slide">&ldquo;My balayage still looks this good four months later.&rdquo;</blockquote>
+          <blockquote class="reviews__slide">&ldquo;Booked same-day, no wait, left feeling like myself again.&rdquo;</blockquote>
+        </div>
+        <p class="reviews__note">Real talk, real listening, real results &mdash; every time.</p>
+        <ul class="reviews__chips">
+          <li>On time</li>
+          <li>Honest advice</li>
+          <li>Easy to book</li>
+          <li>Worth the price</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="booking__inner reveal">
+        <div class="booking__text">
+          <p class="eyebrow eyebrow--center">Book</p>
+          <h2 class="section-title">Reserve your <em>chair</em>.</h2>
+          <p class="section-lead">Fill in your details &mdash; WhatsApp opens with your request ready to send. We'll confirm within the day.</p>
+        </div>
+        <form class="booking__form" id="bookingForm">
+          <div class="booking__row">
+            <label>Date
+              <input type="date" name="date" required>
+            </label>
+            <label>Time
+              <input type="time" name="time" value="14:00" required>
+            </label>
+          </div>
+          <label>Service
+            <select name="service">
+              <option>Signature Cut</option>
+              <option>Color &amp; Balayage</option>
+              <option>Keratin Treatment</option>
+              <option>Blowout &amp; Styling</option>
+              <option>Bridal &amp; Events</option>
+              <option>Kids Cut</option>
+            </select>
+          </label>
+          <label>Notes (optional)
+            <textarea name="notes" rows="2" placeholder="e.g. first time here, allergy, reference photo to send"></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary">Request via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container contact__grid">
+      <div class="reveal">
+        <p class="eyebrow">Find Us</p>
+        <h2 class="section-title">Come sit with <em>us</em>.</h2>
+        <div class="contact__item" style="margin-top:2rem;">
+          <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <div>
+            <strong>Address</strong>
+            <p>42 Sukhumvit Soi 11<br>Klongtoey Nua, Watthana, Bangkok 10110</p>
+          </div>
+        </div>
+        <div class="contact__item">
+          <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <div>
+            <strong>Hours</strong>
+            <p>Tue&ndash;Sun, 10:00&ndash;20:00<br><small style="opacity:.7">Closed on Mondays</small></p>
+          </div>
+        </div>
+        <div class="contact__item">
+          <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h4l2 5-2.5 1.5a11 11 0 005 5L14 14l5 2v4a2 2 0 01-2 2C9.5 22 2 14.5 2 7a2 2 0 012-2z" stroke="currentColor" stroke-width="1.4"/></svg></span>
+          <div>
+            <strong>Phone</strong>
+            <p><a href="tel:+66812345678" target="_blank" rel="noopener">+66 81 234 5678</a></p>
+          </div>
+        </div>
+        <div class="contact__actions">
+          <a href="tel:+66812345678" target="_blank" rel="noopener" class="btn btn--primary">Call to Book</a>
+          <a href="https://wa.me/66812345678" target="_blank" rel="noopener" class="btn btn--ghost">WhatsApp</a>
+        </div>
+      </div>
+      <div class="contact__map reveal" style="--d:1">
+        <iframe
+          title="Noir Hair Studio location"
+          src="https://maps.google.com/maps?q=Sukhumvit%20Soi%2011%2C%20Bangkok&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">Noir<span style="color:var(--bronze);">.</span></div>
+    <div class="footer__links">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="tel:+66812345678" target="_blank" rel="noopener">+66 81 234 5678</a>
+      <a href="#home">Back to top &uarr;</a>
+    </div>
+    <p class="footer__copy">&copy; <span id="year"></span> Noir Hair Studio &mdash; Bangkok</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

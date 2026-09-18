@@ -59,3 +59,32 @@ as historical reference, not edited directly (same relationship as
 When starting a new company/B2B project, start from Façadiers' structure
 and adapt (new palette, new copy/photos, keep or drop sections as the
 client's business needs) rather than designing from scratch.
+
+## Noir — reference template for hair salon / beauty sites
+
+The user has asked to reuse **Noir** (`noir/index.html`, `noir/assets/`) as
+the base style/reference for any future hair salon, barbershop, or beauty
+site built in this repo (as opposed to Giulivo for restaurants and
+Façadiers for B2B). Built with no real photos supplied — the "lookbook"
+section uses editorial color-block cards instead of photography, honestly
+labeled as placeholder ("your own photos would replace these on launch").
+Swap those for real client photos once available; everything else
+(services, pricing, copy) adapts per client same as the other templates.
+
+- Design language: near-black warm palette (`--ink`, `--cream`, `--bronze`
+  in `assets/css/style.css`), `Bodoni Moda` italic display serif +
+  `Manrope` sans-serif body, thin gold hairline accents, editorial/
+  fashion-magazine feel rather than Giulivo's rustic warmth or Façadiers'
+  corporate brightness.
+- Sections: hero (with decorative animated SVG "hair strand" lines, no
+  photo), services marquee, services grid (price list), about/philosophy
+  with count-up stats, lookbook (color-block cards), reviews carousel,
+  booking (WhatsApp deep link), contact (address/hours/map), footer.
+- Interactions: vanilla JS only (no GSAP/Lenis) — IntersectionObserver
+  scroll reveals, count-up stats, testimonial carousel, mobile burger
+  menu. Same "visible by default, hidden state only switched on right
+  before a confirmed-working observer" safety pattern as the other
+  templates use for GSAP — keep it if you add reveals elsewhere.
+- Plain HTML/CSS/JS, no build step, same as the other templates.
+- Booking/phone CTAs use `tel:`/`wa.me` links — always add
+  `target="_blank" rel="noopener"` to them, same reason as above.
