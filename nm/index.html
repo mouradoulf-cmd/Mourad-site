@@ -574,15 +574,63 @@
   .examples__title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0 0 1rem; line-height: 1.15; }
   .examples__lead { font-size: 1rem; line-height: 1.6; color: var(--body-muted); margin: 0 0 2rem; }
 
+  /* A soft pulsing halo sits behind the button to draw the eye, and the
+     button itself gently floats + cycles a gradient border — both loops
+     pause once the visitor actually opens it (reward the click, stop
+     nagging) and are switched off entirely for reduced motion. */
+  .examples__trigger-wrap { position: relative; display: inline-flex; }
+  .examples__trigger-glow {
+    position: absolute; inset: -0.9rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(34,232,255,.4), rgba(168,85,247,.28) 45%, transparent 72%);
+    filter: blur(16px);
+    opacity: .55;
+    pointer-events: none;
+    z-index: 0;
+    animation: triggerPulse 2.8s ease-in-out infinite;
+  }
+  @keyframes triggerPulse {
+    0%, 100% { transform: scale(.9); opacity: .4; }
+    50% { transform: scale(1.1); opacity: .75; }
+  }
+
   .examples__trigger {
+    position: relative; z-index: 1;
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .95rem 1.75rem; border-radius: 999px;
-    border: 1px solid var(--glass-border); background: var(--glass-fill);
-    color: var(--heading); font-size: .92rem; font-weight: 500; cursor: pointer;
-    transition: border-color .3s ease, background .3s ease;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--hero-base), var(--hero-base)) padding-box,
+      linear-gradient(120deg, #22e8ff, #a855f7, #ec4899, #22e8ff) border-box;
+    background-size: 100% 100%, 300% 100%;
+    color: var(--heading); font-size: .92rem; font-weight: 600; cursor: pointer;
+    box-shadow: 0 14px 32px -16px rgba(168,85,247,.55);
+    animation: triggerBorderShift 6s linear infinite, triggerFloat 3.2s ease-in-out infinite;
+    transition: transform .3s cubic-bezier(0.2,0,0,1), box-shadow .3s ease;
+  }
+  @keyframes triggerBorderShift {
+    0% { background-position: 0 0, 0% 50%; }
+    100% { background-position: 0 0, 300% 50%; }
+  }
+  @keyframes triggerFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .examples__trigger:hover {
+    animation-play-state: running, paused;
+    transform: translateY(-6px) scale(1.045);
+    box-shadow: 0 20px 42px -16px rgba(168,85,247,.75);
+  }
+  .examples__trigger.is-open { animation: triggerBorderShift 6s linear infinite; }
+  .examples__trigger-spark {
+    display: inline-block; font-size: .85rem;
+    animation: triggerSparkSpin 3.2s ease-in-out infinite;
+  }
+  @keyframes triggerSparkSpin {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(18deg) scale(1.15); }
   }
   .examples__trigger svg { width: 1rem; height: 1rem; transition: transform .35s cubic-bezier(0.2,0,0,1); }
-  .examples__trigger:hover { border-color: #a855f7; }
   .examples__trigger.is-open svg { transform: rotate(180deg); }
 
   .examples__tabs {
@@ -644,6 +692,8 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .examples__tabs, .example-tab, .example-tab__tilt, .examples__trigger svg { transition: none; }
+    .examples__trigger, .examples__trigger-glow, .examples__trigger-spark { animation: none; }
+    .examples__trigger:hover { transform: none; }
   }
 </style>
 </head>
@@ -719,10 +769,14 @@
     <p class="examples__eyebrow" data-i18n="examples.eyebrow">Our Work</p>
     <h2 class="examples__title" data-i18n="examples.title">See it before you decide.</h2>
     <p class="examples__lead" data-i18n="examples.lead">Real templates, ready to adapt for your business &mdash; pick a category to open a live example.</p>
-    <button type="button" class="examples__trigger" id="examplesTrigger">
-      <span data-i18n="examples.seeBtn">See Examples</span>
-      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
+    <div class="examples__trigger-wrap">
+      <span class="examples__trigger-glow" aria-hidden="true"></span>
+      <button type="button" class="examples__trigger" id="examplesTrigger">
+        <span class="examples__trigger-spark" aria-hidden="true">&#10024;</span>
+        <span class="examples__trigger-label" data-i18n="examples.seeBtn">See Examples</span>
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
     <div class="examples__tabs" id="examplesTabs">
       <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="example-tab" style="--i:0">
         <div class="example-tab__tilt">
@@ -1222,7 +1276,7 @@ document.addEventListener("DOMContentLoaded", () => {
       examplesTrigger.addEventListener("click", () => {
         const open = examplesTabs.classList.toggle("is-open");
         examplesTrigger.classList.toggle("is-open", open);
-        examplesTrigger.querySelector("span").textContent = decodeEntities(tKey(currentLang, open ? "examples.hideBtn" : "examples.seeBtn"));
+        examplesTrigger.querySelector(".examples__trigger-label").textContent = decodeEntities(tKey(currentLang, open ? "examples.hideBtn" : "examples.seeBtn"));
       });
 
       // Pointer-driven 3D tilt on each example card, same technique as the
