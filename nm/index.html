@@ -918,6 +918,7 @@
         </ul>
         <div class="price-card__actions">
           <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta magnetic" data-i18n="pricing.pro.cta">Choose Pro</a>
+          <a href="#examples" class="price-card__demo-link price-card__examples-link"><span data-i18n="examples.seeBtn">See Our Website Examples</span> &rarr;</a>
         </div>
       </div>
     </div>
@@ -942,6 +943,7 @@
         </ul>
         <div class="price-card__actions">
           <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta magnetic" data-i18n="pricing.elite.cta">Talk to us</a>
+          <a href="#examples" class="price-card__demo-link price-card__examples-link"><span data-i18n="examples.seeBtn">See Our Website Examples</span> &rarr;</a>
         </div>
       </div>
     </div>
@@ -1366,10 +1368,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const examplesTrigger = document.getElementById("examplesTrigger");
     const examplesTabs = document.getElementById("examplesTabs");
     if (examplesTrigger && examplesTabs) {
+      function openExamples() {
+        examplesTabs.classList.add("is-open");
+        examplesTrigger.classList.add("is-open");
+        examplesTrigger.querySelector(".examples__trigger-label").textContent = decodeEntities(tKey(currentLang, "examples.hideBtn"));
+        document.getElementById("examples").scrollIntoView({ behavior: "smooth" });
+      }
+
       examplesTrigger.addEventListener("click", () => {
         const open = examplesTabs.classList.toggle("is-open");
         examplesTrigger.classList.toggle("is-open", open);
         examplesTrigger.querySelector(".examples__trigger-label").textContent = decodeEntities(tKey(currentLang, open ? "examples.hideBtn" : "examples.seeBtn"));
+      });
+
+      // "See our examples" links on the Pro/Elite pricing cards act exactly
+      // like clicking the main examples trigger: open the tabs and jump the
+      // visitor straight to them, instead of just anchor-jumping to a
+      // closed section they'd still have to click through themselves.
+      document.querySelectorAll(".price-card__examples-link").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          openExamples();
+        });
       });
 
       // Pointer-driven 3D tilt on each example card, same technique as the
