@@ -888,6 +888,11 @@
     font-size: .62rem; letter-spacing: .06em; text-transform: uppercase;
     padding: .2rem .5rem; border-radius: 999px; background: rgba(255,255,255,.1); color: var(--body-muted);
   }
+  /* Distinguishes a genuine working client from the template examples —
+     positive accent instead of the muted "soon" gray. */
+  .example-tab__badge--live {
+    background: rgba(34,232,255,.14); color: #22e8ff; border: 1px solid rgba(34,232,255,.3);
+  }
   @media (prefers-reduced-motion: reduce) {
     .examples__tabs, .example-tab, .example-tab__tilt, .examples__trigger svg { transition: none; }
     .examples__trigger, .examples__trigger-glow, .examples__trigger-spark { animation: none; }
@@ -1064,6 +1069,7 @@
     <div class="examples__tabs" id="examplesTabs">
       <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="example-tab" style="--i:0">
         <div class="example-tab__tilt">
+          <span class="example-tab__badge example-tab__badge--live" data-i18n="examples.realClientBadge">Real client</span>
           <span class="example-tab__icon" aria-hidden="true">&#127837;</span>
           <span class="example-tab__label" data-i18n="examples.tabs.restaurant">Restaurant</span>
           <span class="example-tab__cta" data-i18n="examples.viewCta">View example &rarr;</span>
@@ -1294,6 +1300,7 @@ var translations = {
       hideBtn: "Hide Examples",
       viewCta: "View example →",
       soonBadge: "Soon",
+      realClientBadge: "Real client",
       tabs: { restaurant: "Restaurant", hairSalon: "Hair Salon", massage: "Massage", bar: "Bar & Nightlife", streetFood: "Street Food" }
     },
     pricing: {
@@ -1355,6 +1362,7 @@ var translations = {
       hideBtn: "Masquer les exemples",
       viewCta: "Voir l'exemple →",
       soonBadge: "Bientôt",
+      realClientBadge: "Client réel",
       tabs: { restaurant: "Restaurant", hairSalon: "Salon de coiffure", massage: "Massage", bar: "Bar & Vie nocturne", streetFood: "Street Food" }
     },
     pricing: {
@@ -1416,6 +1424,7 @@ var translations = {
       hideBtn: "Nascondi esempi",
       viewCta: "Vedi l'esempio →",
       soonBadge: "Presto",
+      realClientBadge: "Cliente reale",
       tabs: { restaurant: "Ristorante", hairSalon: "Parrucchiere", massage: "Massaggi", bar: "Bar & Locali notturni", streetFood: "Street Food" }
     },
     pricing: {
@@ -1477,6 +1486,7 @@ var translations = {
       hideBtn: "ซ่อนตัวอย่าง",
       viewCta: "ดูตัวอย่าง →",
       soonBadge: "เร็วๆ นี้",
+      realClientBadge: "ลูกค้าจริง",
       tabs: { restaurant: "ร้านอาหาร", hairSalon: "ร้านทำผม", massage: "นวด", bar: "บาร์ & ไนท์ไลฟ์", streetFood: "สตรีทฟู้ด" }
     },
     pricing: {
@@ -1538,6 +1548,7 @@ var translations = {
       hideBtn: "إخفاء الأمثلة",
       viewCta: "شاهد المثال ←",
       soonBadge: "قريباً",
+      realClientBadge: "عميل حقيقي",
       tabs: { restaurant: "مطعم", hairSalon: "صالون حلاقة", massage: "تدليك", bar: "بار وحياة ليلية", streetFood: "أكل الشارع" }
     },
     pricing: {
