@@ -27,6 +27,25 @@
 
   * { margin: 0; box-sizing: border-box; }
 
+  /* ---------- scroll progress + grain (global, premium finishing touches) ---------- */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; right: 0; height: 3px;
+    z-index: 100; pointer-events: none;
+    background: rgba(255,255,255,.06);
+  }
+  .scroll-progress__bar {
+    height: 100%; width: 100%;
+    transform: scaleX(0); transform-origin: left;
+    background: linear-gradient(90deg, #22e8ff, #a855f7, #ec4899);
+    will-change: transform;
+  }
+  .grain-overlay {
+    position: fixed; inset: 0; z-index: 90; pointer-events: none;
+    opacity: .045; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+  }
+
   html { font-size: 16px; }
   @media (max-width: 1920px) { html { font-size: 0.833333vw; } }
   @media (max-width: 1440px) { html { font-size: 1.111111vw; } }
@@ -125,12 +144,22 @@
   }
   @media (min-width: 640px) { .nav__pill { display: flex; } }
   .nav__pill a {
+    position: relative;
     font-size: 0.95rem;
     color: var(--body-muted);
     white-space: nowrap;
     transition: color var(--duration-fast) var(--ease-entrance);
   }
   .nav__pill a:hover { color: var(--heading); }
+  .nav__pill a::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -0.5rem;
+    height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, #22e8ff, #a855f7);
+    transform: scaleX(0); transform-origin: center;
+    transition: transform .3s var(--ease-entrance);
+  }
+  .nav__pill a.is-active { color: var(--heading); }
+  .nav__pill a.is-active::after { transform: scaleX(1); }
 
   /* ---------- shared white pill button ---------- */
   .btn-pill {
@@ -151,6 +180,10 @@
   @media (min-width: 640px) { .btn-pill { height: 2.75rem; padding: 0 1.375rem; font-size: 0.95rem; } }
   .btn-pill:hover { background: rgba(255,255,255,0.85); }
   .btn-pill:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(255,255,255,.7); }
+  /* Magnetic pull (JS sets transform on mousemove/mouseleave) — this
+     transition is what makes both the tracking and the release-to-center
+     feel smooth, since the JS never toggles it on/off. */
+  .btn-pill.magnetic { transition: transform .2s ease-out, background .2s ease; }
 
   /* ---------- language switcher ---------- */
   .nav__right { display: flex; align-items: center; gap: .5rem; }
@@ -699,6 +732,9 @@
 </head>
 <body>
 
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollProgressBar"></div></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+
 <section class="hero">
   <canvas class="hero__canvas" aria-hidden="true"></canvas>
   <div class="hero__scrim" aria-hidden="true"></div>
@@ -732,7 +768,7 @@
           <button type="button" class="lang-switch__option" data-lang="ar" role="menuitem" style="--i:4"><span class="lang-flag" aria-hidden="true">🇸🇦</span>العربية</button>
         </div>
       </div>
-      <a href="#pricing" class="btn-pill" data-i18n="nav.cta">Get Started</a>
+      <a href="#pricing" class="btn-pill magnetic" data-i18n="nav.cta">Get Started</a>
     </div>
   </header>
 
@@ -744,7 +780,7 @@
       <form class="hero__form" id="waitlistForm">
         <div class="glass-bar">
           <input type="email" required placeholder="Enter your email" data-i18n-placeholder="hero.emailPlaceholder">
-          <button type="submit" class="btn-pill" data-i18n="hero.waitlistBtn">Join Waitlist</button>
+          <button type="submit" class="btn-pill magnetic" data-i18n="hero.waitlistBtn">Join Waitlist</button>
         </div>
       </form>
     </div>
@@ -835,17 +871,17 @@
         <h3 data-i18n="pricing.basic.title">Basic</h3>
         <p class="price-card__tagline" data-i18n="pricing.basic.tagline">Get scanned. Get ordered.</p>
         <div class="price-card__price">
-          <span class="price-card__setup">500&nbsp;&#3647;</span>
+          <span class="price-card__setup" data-count="500" data-suffix="&nbsp;&#3647;">500&nbsp;&#3647;</span>
           <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
-        <p class="price-card__monthly"><strong>300&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
+        <p class="price-card__monthly"><strong class="price-card__monthly-num" data-count="300" data-suffix="&nbsp;&#3647;">300&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
         <ul class="price-card__features">
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.basic.f1">QR code menu, always up to date</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.basic.f2">Unlimited menu edits</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.basic.f3">Works on any phone, no app needed</span></li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta" data-i18n="pricing.basic.cta">Choose Basic</a>
+          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta magnetic" data-i18n="pricing.basic.cta">Choose Basic</a>
         </div>
       </div>
     </div>
@@ -857,17 +893,17 @@
         <h3 data-i18n="pricing.pro.title">Pro</h3>
         <p class="price-card__tagline" data-i18n="pricing.pro.tagline">Your own website, done for you.</p>
         <div class="price-card__price">
-          <span class="price-card__setup">1,500&nbsp;&#3647;</span>
+          <span class="price-card__setup" data-count="1500" data-suffix="&nbsp;&#3647;">1,500&nbsp;&#3647;</span>
           <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
-        <p class="price-card__monthly"><strong>350&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
+        <p class="price-card__monthly"><strong class="price-card__monthly-num" data-count="350" data-suffix="&nbsp;&#3647;">350&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
         <ul class="price-card__features">
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pro.f1">Everything in Basic</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pro.f2">Full custom website, built from your photos</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pro.f3">Live in days, not months</span></li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta" data-i18n="pricing.pro.cta">Choose Pro</a>
+          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta magnetic" data-i18n="pricing.pro.cta">Choose Pro</a>
         </div>
       </div>
     </div>
@@ -878,7 +914,7 @@
         <h3 data-i18n="pricing.elite.title">Elite</h3>
         <p class="price-card__tagline" data-i18n="pricing.elite.tagline">The full package. Zero effort.</p>
         <div class="price-card__price">
-          <span class="price-card__setup">3,000&nbsp;&#3647;</span>
+          <span class="price-card__setup" data-count="3000" data-suffix="&nbsp;&#3647;">3,000&nbsp;&#3647;</span>
           <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
         <p class="price-card__monthly" data-i18n="pricing.elite.monthlyCustom">Monthly fee tailored to your needs</p>
@@ -888,7 +924,7 @@
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.elite.f3">Priority support</span></li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta" data-i18n="pricing.elite.cta">Talk to us</a>
+          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta magnetic" data-i18n="pricing.elite.cta">Talk to us</a>
         </div>
       </div>
     </div>
@@ -1428,6 +1464,102 @@ document.addEventListener("DOMContentLoaded", () => {
           tilt.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
         });
       });
+    }
+  } catch (e) {}
+
+  /* Scroll progress bar: a thin gradient line across the very top of the
+     page, filling as the visitor scrolls. Pure read of scroll position, no
+     dependency on anything else, so it's wrapped defensively but has
+     nothing meaningful to fail. */
+  try {
+    const progressBar = document.getElementById("scrollProgressBar");
+    if (progressBar) {
+      const updateProgress = () => {
+        const doc = document.documentElement;
+        const scrollable = (doc.scrollHeight || document.body.scrollHeight) - doc.clientHeight;
+        const pct = scrollable > 0 ? Math.min(Math.max(doc.scrollTop / scrollable, 0), 1) : 0;
+        progressBar.style.transform = "scaleX(" + pct + ")";
+      };
+      updateProgress();
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      window.addEventListener("resize", updateProgress);
+    }
+  } catch (e) {}
+
+  /* Magnetic buttons: on devices with a real mouse, the main CTAs drift a
+     few pixels toward the cursor while hovered, snapping back on leave.
+     A permanent (never toggled) CSS transition handles the smoothing, so
+     there's no "instant first jump" risk here — every frame is just a
+     small incremental change from the last. */
+  try {
+    const reduceMotionMagnetic = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const canHoverFineMagnetic = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!reduceMotionMagnetic && canHoverFineMagnetic) {
+      document.querySelectorAll(".magnetic").forEach((el) => {
+        const strength = el.classList.contains("price-card__cta") ? 0.2 : 0.3;
+        el.addEventListener("mousemove", (e) => {
+          const rect = el.getBoundingClientRect();
+          const relX = e.clientX - (rect.left + rect.width / 2);
+          const relY = e.clientY - (rect.top + rect.height / 2);
+          el.style.transform = "translate(" + (relX * strength) + "px, " + (relY * strength) + "px)";
+        });
+        el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+      });
+    }
+  } catch (e) {}
+
+  /* Pricing numbers count up from 0 when the pricing section scrolls into
+     view (same technique as Noir's stat counters). The static HTML already
+     shows the correct final price, so this only ever runs as enhancement —
+     a script error simply leaves the already-correct number in place,
+     never a wrong or missing one. */
+  try {
+    const countEls = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
+    const reduceMotionCount = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (countEls.length && !reduceMotionCount && "IntersectionObserver" in window) {
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = parseInt(el.getAttribute("data-count"), 10);
+          const suffix = el.getAttribute("data-suffix") || "";
+          const duration = 1100;
+          let startTime = null;
+          function step(ts) {
+            if (!startTime) startTime = ts;
+            const progress = Math.min((ts - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.round(target * eased);
+            el.textContent = value.toLocaleString("en-US") + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+          countObserver.unobserve(el);
+        });
+      }, { threshold: 0.4 });
+      countEls.forEach((el) => countObserver.observe(el));
+    }
+  } catch (e) {}
+
+  /* Nav active-section indicator: highlights whichever nav link's section
+     currently sits near the middle of the viewport. Only sections that
+     actually exist get observed (Products/Blog are placeholder links). */
+  try {
+    const navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav__pill a[href^='#']"));
+    const sectionMap = navLinks
+      .map((a) => ({ link: a, section: document.getElementById(a.getAttribute("href").slice(1)) }))
+      .filter((x) => x.section);
+    if (sectionMap.length && "IntersectionObserver" in window) {
+      const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const match = sectionMap.find((x) => x.section === entry.target);
+          if (!match) return;
+          navLinks.forEach((a) => a.classList.remove("is-active"));
+          match.link.classList.add("is-active");
+        });
+      }, { threshold: 0, rootMargin: "-45% 0px -45% 0px" });
+      sectionMap.forEach((x) => spyObserver.observe(x.section));
     }
   } catch (e) {}
 });
