@@ -150,6 +150,53 @@
   .btn-pill:hover { background: rgba(255,255,255,0.85); }
   .btn-pill:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(255,255,255,.7); }
 
+  /* ---------- language switcher ---------- */
+  .nav__right { display: flex; align-items: center; gap: .5rem; }
+  @media (min-width: 640px) { .nav__right { gap: .75rem; } }
+
+  .lang-switch { position: relative; }
+  .lang-switch__btn {
+    display: flex; align-items: center; gap: .3rem;
+    height: 2.5rem; border-radius: 9999px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-fill);
+    backdrop-filter: blur(12px);
+    padding: 0 .8rem;
+    font-size: .78rem; font-weight: 500; letter-spacing: .02em;
+    color: var(--body-muted);
+    transition: color var(--duration-fast) var(--ease-entrance), border-color var(--duration-fast) var(--ease-entrance);
+  }
+  @media (min-width: 640px) { .lang-switch__btn { height: 2.75rem; padding: 0 .95rem; font-size: .85rem; } }
+  .lang-switch__btn:hover { color: var(--heading); border-color: rgba(255,255,255,.3); }
+  .lang-switch__btn svg { width: .75rem; height: .75rem; transition: transform .3s var(--ease-entrance); }
+  .lang-switch.is-open .lang-switch__btn svg { transform: rotate(180deg); }
+
+  .lang-switch__menu {
+    position: absolute; top: calc(100% + .6rem); right: 0;
+    min-width: 8.5rem;
+    display: flex; flex-direction: column; gap: .15rem;
+    border-radius: 1rem;
+    border: 1px solid var(--glass-border);
+    background: rgba(10,11,20,0.92);
+    backdrop-filter: blur(16px);
+    padding: .4rem;
+    box-shadow: 0 20px 40px -18px rgba(0,0,0,.5);
+    opacity: 0; transform: translateY(-6px) scale(.96);
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 30;
+  }
+  .lang-switch.is-open .lang-switch__menu { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+  .lang-switch__option {
+    display: block; width: 100%; text-align: left;
+    padding: .55rem .75rem; border-radius: .6rem;
+    font-size: .85rem; color: var(--body-muted);
+    transition: background .2s ease, color .2s ease;
+  }
+  .lang-switch__option:hover { background: rgba(255,255,255,.08); color: var(--heading); }
+  .lang-switch__option.is-active { color: var(--heading); background: rgba(255,255,255,.06); font-weight: 500; }
+
   /* ---------- center column ---------- */
   .hero__center {
     position: relative;
@@ -571,85 +618,99 @@
       <span class="brand__name">NM Studio</span>
     </a>
     <nav class="nav__pill">
-      <a href="#how-it-works">How it works?</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#products">Products</a>
-      <a href="#blog">Blog</a>
+      <a href="#how-it-works" data-i18n="nav.how">How it works?</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#products" data-i18n="nav.products">Products</a>
+      <a href="#blog" data-i18n="nav.blog">Blog</a>
     </nav>
-    <a href="#pricing" class="btn-pill">Get Started</a>
+    <div class="nav__right">
+      <div class="lang-switch" id="langSwitch">
+        <button type="button" class="lang-switch__btn" id="langSwitchBtn" aria-haspopup="true" aria-expanded="false">
+          <span id="langSwitchCurrent">EN</span>
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-switch__menu" id="langSwitchMenu" role="menu">
+          <button type="button" class="lang-switch__option" data-lang="en" role="menuitem">English</button>
+          <button type="button" class="lang-switch__option" data-lang="fr" role="menuitem">Fran&ccedil;ais</button>
+          <button type="button" class="lang-switch__option" data-lang="it" role="menuitem">Italiano</button>
+          <button type="button" class="lang-switch__option" data-lang="th" role="menuitem">&#3652;&#3607;&#3618;</button>
+        </div>
+      </div>
+      <a href="#pricing" class="btn-pill" data-i18n="nav.cta">Get Started</a>
+    </div>
   </header>
 
   <div class="hero__center">
-    <p class="badge">Websites for restaurants &amp; local businesses</p>
-    <h1 class="heading" id="heroHeading">Get Found. Get Chosen. Get Paid.</h1>
-    <p class="subline" id="heroSubline">Fast, beautiful websites and QR menus &mdash; built in days, so customers find you before they even walk in.</p>
+    <p class="badge" data-i18n="hero.badge">Websites for restaurants &amp; local businesses</p>
+    <h1 class="heading" id="heroHeading" data-i18n="hero.heading">Get Found. Get Chosen. Get Paid.</h1>
+    <p class="subline" id="heroSubline" data-i18n="hero.subline">Fast, beautiful websites and QR menus &mdash; built in days, so customers find you before they even walk in.</p>
     <div class="hero__form-wrap">
       <form class="hero__form" id="waitlistForm">
         <div class="glass-bar">
-          <input type="email" required placeholder="Enter your email">
-          <button type="submit" class="btn-pill">Join Waitlist</button>
+          <input type="email" required placeholder="Enter your email" data-i18n-placeholder="hero.emailPlaceholder">
+          <button type="submit" class="btn-pill" data-i18n="hero.waitlistBtn">Join Waitlist</button>
         </div>
       </form>
     </div>
   </div>
 
-  <footer class="footer">&copy; 2026 NM Studio &mdash; built to get you found.</footer>
+  <footer class="footer" data-i18n-html="footer.text">&copy; 2026 NM Studio &mdash; built to get you found.</footer>
 </section>
 
 <section class="story" id="how-it-works">
   <div class="story__inner">
-    <p class="story__eyebrow">How it works</p>
+    <p class="story__eyebrow" data-i18n="story.eyebrow">How it works</p>
     <span class="story__rule" aria-hidden="true"></span>
-    <p class="story__line story__line--1">Your business deserves more customers than it's getting online.</p>
-    <p class="story__line story__line--2">At <strong>NM Studio</strong>, I build your site fast &mdash; send your photos, I handle everything. Live in days.</p>
-    <p class="story__line story__line--3">More visibility, more bookings, up to 30% more revenue.</p>
-    <p class="story__line story__line--4">50+ happy clients &mdash; cancel anytime, free.</p>
+    <p class="story__line story__line--1" data-i18n-html="story.line1">Your business deserves more customers than it's getting online.</p>
+    <p class="story__line story__line--2" data-i18n-html="story.line2">At <strong>NM Studio</strong>, I build your site fast &mdash; send your photos, I handle everything. Live in days.</p>
+    <p class="story__line story__line--3" data-i18n-html="story.line3">More visibility, more bookings, up to 30% more revenue.</p>
+    <p class="story__line story__line--4" data-i18n-html="story.line4">50+ happy clients &mdash; cancel anytime, free.</p>
   </div>
 </section>
 
 <section class="examples" id="examples">
   <div class="examples__head">
-    <p class="examples__eyebrow">Our Work</p>
-    <h2 class="examples__title">See it before you decide.</h2>
-    <p class="examples__lead">Real templates, ready to adapt for your business &mdash; pick a category to open a live example.</p>
+    <p class="examples__eyebrow" data-i18n="examples.eyebrow">Our Work</p>
+    <h2 class="examples__title" data-i18n="examples.title">See it before you decide.</h2>
+    <p class="examples__lead" data-i18n="examples.lead">Real templates, ready to adapt for your business &mdash; pick a category to open a live example.</p>
     <button type="button" class="examples__trigger" id="examplesTrigger">
-      <span>See Examples</span>
+      <span data-i18n="examples.seeBtn">See Examples</span>
       <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="examples__tabs" id="examplesTabs">
       <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="example-tab" style="--i:0">
         <div class="example-tab__tilt">
           <span class="example-tab__icon" aria-hidden="true">&#127837;</span>
-          <span class="example-tab__label">Restaurant</span>
-          <span class="example-tab__cta">View example &rarr;</span>
+          <span class="example-tab__label" data-i18n="examples.tabs.restaurant">Restaurant</span>
+          <span class="example-tab__cta" data-i18n="examples.viewCta">View example &rarr;</span>
         </div>
       </a>
       <a href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" target="_blank" rel="noopener" class="example-tab" style="--i:1">
         <div class="example-tab__tilt">
           <span class="example-tab__icon" aria-hidden="true">&#128131;</span>
-          <span class="example-tab__label">Hair Salon</span>
-          <span class="example-tab__cta">View example &rarr;</span>
+          <span class="example-tab__label" data-i18n="examples.tabs.hairSalon">Hair Salon</span>
+          <span class="example-tab__cta" data-i18n="examples.viewCta">View example &rarr;</span>
         </div>
       </a>
       <span class="example-tab example-tab--soon" style="--i:2">
         <div class="example-tab__tilt">
           <span class="example-tab__icon" aria-hidden="true">&#128173;</span>
-          <span class="example-tab__label">Massage</span>
-          <span class="example-tab__badge">Soon</span>
+          <span class="example-tab__label" data-i18n="examples.tabs.massage">Massage</span>
+          <span class="example-tab__badge" data-i18n="examples.soonBadge">Soon</span>
         </div>
       </span>
       <span class="example-tab example-tab--soon" style="--i:3">
         <div class="example-tab__tilt">
           <span class="example-tab__icon" aria-hidden="true">&#127864;</span>
-          <span class="example-tab__label">Bar &amp; Nightlife</span>
-          <span class="example-tab__badge">Soon</span>
+          <span class="example-tab__label" data-i18n="examples.tabs.bar">Bar &amp; Nightlife</span>
+          <span class="example-tab__badge" data-i18n="examples.soonBadge">Soon</span>
         </div>
       </span>
       <span class="example-tab example-tab--soon" style="--i:4">
         <div class="example-tab__tilt">
           <span class="example-tab__icon" aria-hidden="true">&#127790;</span>
-          <span class="example-tab__label">Street Food</span>
-          <span class="example-tab__badge">Soon</span>
+          <span class="example-tab__label" data-i18n="examples.tabs.streetFood">Street Food</span>
+          <span class="example-tab__badge" data-i18n="examples.soonBadge">Soon</span>
         </div>
       </span>
     </div>
@@ -661,9 +722,9 @@
   <div class="pricing__orb pricing__orb--b" aria-hidden="true"></div>
 
   <div class="pricing__head">
-    <p class="pricing__eyebrow">Pricing</p>
-    <h2 class="pricing__title">Choose your plan. Go live in days.</h2>
-    <p class="pricing__lead">Every plan includes a QR menu that just works. Upgrade anytime as your business grows.</p>
+    <p class="pricing__eyebrow" data-i18n="pricing.eyebrow">Pricing</p>
+    <h2 class="pricing__title" data-i18n="pricing.title">Choose your plan. Go live in days.</h2>
+    <p class="pricing__lead" data-i18n="pricing.lead">Every plan includes a QR menu that just works. Upgrade anytime as your business grows.</p>
   </div>
 
   <div class="pricing__grid">
@@ -671,42 +732,42 @@
     <div class="price-card" data-tier="basic">
       <div class="price-card__tilt">
         <div class="price-card__glow" aria-hidden="true"></div>
-        <h3>Basic</h3>
-        <p class="price-card__tagline">Get scanned. Get ordered.</p>
+        <h3 data-i18n="pricing.basic.title">Basic</h3>
+        <p class="price-card__tagline" data-i18n="pricing.basic.tagline">Get scanned. Get ordered.</p>
         <div class="price-card__price">
           <span class="price-card__setup">500&nbsp;&#3647;</span>
-          <span class="price-card__setup-label">setup</span>
+          <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
-        <p class="price-card__monthly"><strong>300&nbsp;&#3647;</strong> / month to stay online</p>
+        <p class="price-card__monthly"><strong>300&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
         <ul class="price-card__features">
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>QR code menu, always up to date</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited menu edits</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Works on any phone, no app needed</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.basic.f1">QR code menu, always up to date</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.basic.f2">Unlimited menu edits</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.basic.f3">Works on any phone, no app needed</span></li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta">Choose Basic</a>
+          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta" data-i18n="pricing.basic.cta">Choose Basic</a>
         </div>
       </div>
     </div>
 
     <div class="price-card price-card--pro" data-tier="pro">
       <div class="price-card__tilt">
-        <span class="price-card__badge">Most popular</span>
+        <span class="price-card__badge" data-i18n="pricing.popularBadge">Most popular</span>
         <div class="price-card__glow" aria-hidden="true"></div>
-        <h3>Pro</h3>
-        <p class="price-card__tagline">Your own website, done for you.</p>
+        <h3 data-i18n="pricing.pro.title">Pro</h3>
+        <p class="price-card__tagline" data-i18n="pricing.pro.tagline">Your own website, done for you.</p>
         <div class="price-card__price">
           <span class="price-card__setup">1,500&nbsp;&#3647;</span>
-          <span class="price-card__setup-label">setup</span>
+          <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
-        <p class="price-card__monthly"><strong>350&nbsp;&#3647;</strong> / month to stay online</p>
+        <p class="price-card__monthly"><strong>350&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
         <ul class="price-card__features">
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Basic</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Full custom website, built from your photos</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in days, not months</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pro.f1">Everything in Basic</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pro.f2">Full custom website, built from your photos</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pro.f3">Live in days, not months</span></li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta">Choose Pro</a>
+          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta" data-i18n="pricing.pro.cta">Choose Pro</a>
         </div>
       </div>
     </div>
@@ -714,27 +775,27 @@
     <div class="price-card" data-tier="elite">
       <div class="price-card__tilt">
         <div class="price-card__glow" aria-hidden="true"></div>
-        <h3>Elite</h3>
-        <p class="price-card__tagline">The full package. Zero effort.</p>
+        <h3 data-i18n="pricing.elite.title">Elite</h3>
+        <p class="price-card__tagline" data-i18n="pricing.elite.tagline">The full package. Zero effort.</p>
         <div class="price-card__price">
           <span class="price-card__setup">3,000&nbsp;&#3647;</span>
-          <span class="price-card__setup-label">setup</span>
+          <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
-        <p class="price-card__monthly">Monthly fee tailored to your needs</p>
+        <p class="price-card__monthly" data-i18n="pricing.elite.monthlyCustom">Monthly fee tailored to your needs</p>
         <ul class="price-card__features">
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Pro</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Social media set up &amp; managed</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.elite.f1">Everything in Pro</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.elite.f2">Social media set up &amp; managed</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.elite.f3">Priority support</span></li>
         </ul>
         <div class="price-card__actions">
-          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta">Talk to us</a>
+          <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta" data-i18n="pricing.elite.cta">Talk to us</a>
         </div>
       </div>
     </div>
 
   </div>
 
-  <p class="pricing__note">Cancel anytime, free. No contracts, no surprise fees.</p>
+  <p class="pricing__note" data-i18n="pricing.note">Cancel anytime, free. No contracts, no surprise fees.</p>
 </section>
 
 <script type="module">
@@ -748,6 +809,236 @@ function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
 </script>
 <script>
+/* ---------- i18n (FR / EN / IT / TH) ----------
+   Instant client-side language switch, same idea as Giulivo's i18n.js but
+   kept inline since this page is a single self-contained file. Every
+   translatable string lives in `translations` below; applyLanguage() walks
+   [data-i18n] / [data-i18n-html] / [data-i18n-placeholder] and swaps the
+   live DOM. Called once before the word-split reveal setup runs (so the
+   heading/subline/story lines get split in the *correct* language), and
+   again any time the visitor picks a language from the nav switcher. */
+var translations = {
+  en: {
+    nav: { how: "How it works?", pricing: "Pricing", products: "Products", blog: "Blog", cta: "Get Started" },
+    hero: {
+      badge: "Websites for restaurants & local businesses",
+      heading: "Get Found. Get Chosen. Get Paid.",
+      subline: "Fast, beautiful websites and QR menus — built in days, so customers find you before they even walk in.",
+      emailPlaceholder: "Enter your email",
+      waitlistBtn: "Join Waitlist"
+    },
+    footer: { text: "© 2026 NM Studio — built to get you found." },
+    story: {
+      eyebrow: "How it works",
+      line1: "Your business deserves more customers than it's getting online.",
+      line2: "At <strong>NM Studio</strong>, I build your site fast — send your photos, I handle everything. Live in days.",
+      line3: "More visibility, more bookings, up to 30% more revenue.",
+      line4: "50+ happy clients — cancel anytime, free."
+    },
+    examples: {
+      eyebrow: "Our Work",
+      title: "See it before you decide.",
+      lead: "Real templates, ready to adapt for your business — pick a category to open a live example.",
+      seeBtn: "See Examples",
+      hideBtn: "Hide Examples",
+      viewCta: "View example →",
+      soonBadge: "Soon",
+      tabs: { restaurant: "Restaurant", hairSalon: "Hair Salon", massage: "Massage", bar: "Bar & Nightlife", streetFood: "Street Food" }
+    },
+    pricing: {
+      eyebrow: "Pricing",
+      title: "Choose your plan. Go live in days.",
+      lead: "Every plan includes a QR menu that just works. Upgrade anytime as your business grows.",
+      setupLabel: "setup",
+      monthlySuffix: "/ month to stay online",
+      note: "Cancel anytime, free. No contracts, no surprise fees.",
+      popularBadge: "Most popular",
+      basic: { title: "Basic", tagline: "Get scanned. Get ordered.", f1: "QR code menu, always up to date", f2: "Unlimited menu edits", f3: "Works on any phone, no app needed", cta: "Choose Basic" },
+      pro: { title: "Pro", tagline: "Your own website, done for you.", f1: "Everything in Basic", f2: "Full custom website, built from your photos", f3: "Live in days, not months", cta: "Choose Pro" },
+      elite: { title: "Elite", tagline: "The full package. Zero effort.", monthlyCustom: "Monthly fee tailored to your needs", f1: "Everything in Pro", f2: "Social media set up & managed", f3: "Priority support", cta: "Talk to us" }
+    }
+  },
+  fr: {
+    nav: { how: "Comment ça marche ?", pricing: "Tarifs", products: "Produits", blog: "Blog", cta: "Commencer" },
+    hero: {
+      badge: "Sites web pour restaurants et commerces locaux",
+      heading: "Soyez vus. Soyez choisis. Soyez payés.",
+      subline: "Des sites web rapides et magnifiques, avec menu QR — en ligne en quelques jours, pour que vos clients vous trouvent avant même de passer la porte.",
+      emailPlaceholder: "Entrez votre email",
+      waitlistBtn: "Rejoindre la liste"
+    },
+    footer: { text: "© 2026 NM Studio — conçu pour vous faire trouver." },
+    story: {
+      eyebrow: "Comment ça marche",
+      line1: "Votre commerce mérite plus de clients que ce qu'il obtient en ligne.",
+      line2: "Chez <strong>NM Studio</strong>, je crée votre site rapidement — envoyez vos photos, je m'occupe de tout. En ligne en quelques jours.",
+      line3: "Plus de visibilité, plus de réservations, jusqu'à 30% de revenus en plus.",
+      line4: "Plus de 50 clients satisfaits — annulez à tout moment, gratuitement."
+    },
+    examples: {
+      eyebrow: "Nos réalisations",
+      title: "Voyez avant de décider.",
+      lead: "De vrais modèles, prêts à adapter à votre commerce — choisissez une catégorie pour ouvrir un exemple en direct.",
+      seeBtn: "Voir les exemples",
+      hideBtn: "Masquer les exemples",
+      viewCta: "Voir l'exemple →",
+      soonBadge: "Bientôt",
+      tabs: { restaurant: "Restaurant", hairSalon: "Salon de coiffure", massage: "Massage", bar: "Bar & Vie nocturne", streetFood: "Street Food" }
+    },
+    pricing: {
+      eyebrow: "Tarifs",
+      title: "Choisissez votre forfait. En ligne en quelques jours.",
+      lead: "Chaque forfait inclut un menu QR qui fonctionne parfaitement. Évoluez à tout moment avec votre commerce.",
+      setupLabel: "mise en place",
+      monthlySuffix: "/ mois pour rester en ligne",
+      note: "Annulez à tout moment, gratuitement. Pas de contrat, pas de frais cachés.",
+      popularBadge: "Le plus populaire",
+      basic: { title: "Basic", tagline: "Scanné. Commandé.", f1: "Menu QR code, toujours à jour", f2: "Modifications de menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic" },
+      pro: { title: "Pro", tagline: "Votre propre site web, clé en main.", f1: "Tout ce qui est inclus dans Basic", f2: "Site web sur-mesure, créé à partir de vos photos", f3: "En ligne en quelques jours, pas en mois", cta: "Choisir Pro" },
+      elite: { title: "Elite", tagline: "Le pack complet. Zéro effort.", monthlyCustom: "Abonnement mensuel sur mesure", f1: "Tout ce qui est inclus dans Pro", f2: "Réseaux sociaux configurés et gérés", f3: "Support prioritaire", cta: "Nous contacter" }
+    }
+  },
+  it: {
+    nav: { how: "Come funziona?", pricing: "Prezzi", products: "Prodotti", blog: "Blog", cta: "Inizia ora" },
+    hero: {
+      badge: "Siti web per ristoranti e attività locali",
+      heading: "Fatti trovare. Fatti scegliere. Fatti pagare.",
+      subline: "Siti web veloci e curati, con menu QR — online in pochi giorni, così i clienti ti trovano prima ancora di entrare.",
+      emailPlaceholder: "Inserisci la tua email",
+      waitlistBtn: "Iscriviti alla lista"
+    },
+    footer: { text: "© 2026 NM Studio — creato per farti trovare." },
+    story: {
+      eyebrow: "Come funziona",
+      line1: "La tua attività merita più clienti di quelli che ottiene online.",
+      line2: "Da <strong>NM Studio</strong>, creo il tuo sito velocemente — invia le tue foto, penso io a tutto. Online in pochi giorni.",
+      line3: "Più visibilità, più prenotazioni, fino al 30% di fatturato in più.",
+      line4: "Oltre 50 clienti soddisfatti — annulla quando vuoi, gratis."
+    },
+    examples: {
+      eyebrow: "I nostri lavori",
+      title: "Guarda prima di decidere.",
+      lead: "Modelli reali, pronti da adattare alla tua attività — scegli una categoria per aprire un esempio dal vivo.",
+      seeBtn: "Vedi esempi",
+      hideBtn: "Nascondi esempi",
+      viewCta: "Vedi l'esempio →",
+      soonBadge: "Presto",
+      tabs: { restaurant: "Ristorante", hairSalon: "Parrucchiere", massage: "Massaggi", bar: "Bar & Locali notturni", streetFood: "Street Food" }
+    },
+    pricing: {
+      eyebrow: "Prezzi",
+      title: "Scegli il tuo piano. Online in pochi giorni.",
+      lead: "Ogni piano include un menu QR che funziona sempre. Aggiorna quando vuoi, man mano che la tua attività cresce.",
+      setupLabel: "attivazione",
+      monthlySuffix: "/ mese per restare online",
+      note: "Annulla quando vuoi, gratis. Nessun contratto, nessuna spesa nascosta.",
+      popularBadge: "Il più scelto",
+      basic: { title: "Basic", tagline: "Scansionato. Ordinato.", f1: "Menu con QR code, sempre aggiornato", f2: "Modifiche al menu illimitate", f3: "Funziona su ogni telefono, senza app", cta: "Scegli Basic" },
+      pro: { title: "Pro", tagline: "Il tuo sito web, chiavi in mano.", f1: "Tutto quello incluso in Basic", f2: "Sito su misura, costruito con le tue foto", f3: "Online in giorni, non mesi", cta: "Scegli Pro" },
+      elite: { title: "Elite", tagline: "Il pacchetto completo. Zero sforzo.", monthlyCustom: "Canone mensile su misura", f1: "Tutto quello incluso in Pro", f2: "Social media impostati e gestiti", f3: "Supporto prioritario", cta: "Contattaci" }
+    }
+  },
+  th: {
+    nav: { how: "วิธีการทำงาน", pricing: "ราคา", products: "บริการ", blog: "บล็อก", cta: "เริ่มต้นเลย" },
+    hero: {
+      badge: "เว็บไซต์สำหรับร้านอาหารและธุรกิจท้องถิ่น",
+      heading: "ถูกมองเห็น ถูกเลือก ได้เงิน",
+      subline: "เว็บไซต์สวยงาม รวดเร็ว พร้อมเมนู QR โค้ด — พร้อมใช้งานภายในไม่กี่วัน ให้ลูกค้าเจอคุณก่อนที่จะเดินเข้าร้านด้วยซ้ำ",
+      emailPlaceholder: "กรอกอีเมลของคุณ",
+      waitlistBtn: "เข้าร่วมรายชื่อรอ"
+    },
+    footer: { text: "© 2026 NM Studio — สร้างมาเพื่อให้คนเจอคุณ" },
+    story: {
+      eyebrow: "วิธีการทำงาน",
+      line1: "ธุรกิจของคุณสมควรได้ลูกค้าออนไลน์มากกว่าที่เป็นอยู่",
+      line2: "ที่ <strong>NM Studio</strong> เราสร้างเว็บไซต์ให้คุณอย่างรวดเร็ว — ส่งรูปภาพมา แล้วเราจัดการทุกอย่างให้ พร้อมใช้งานภายในไม่กี่วัน",
+      line3: "มองเห็นมากขึ้น จองมากขึ้น รายได้เพิ่มขึ้นสูงสุดถึง 30%",
+      line4: "ลูกค้าพึงพอใจกว่า 50 ราย — ยกเลิกได้ทุกเมื่อ ฟรี"
+    },
+    examples: {
+      eyebrow: "ผลงานของเรา",
+      title: "ดูก่อนตัดสินใจ",
+      lead: "เทมเพลตจริง พร้อมปรับให้เข้ากับธุรกิจของคุณ — เลือกหมวดหมู่เพื่อดูตัวอย่างจริง",
+      seeBtn: "ดูตัวอย่าง",
+      hideBtn: "ซ่อนตัวอย่าง",
+      viewCta: "ดูตัวอย่าง →",
+      soonBadge: "เร็วๆ นี้",
+      tabs: { restaurant: "ร้านอาหาร", hairSalon: "ร้านทำผม", massage: "นวด", bar: "บาร์ & ไนท์ไลฟ์", streetFood: "สตรีทฟู้ด" }
+    },
+    pricing: {
+      eyebrow: "ราคา",
+      title: "เลือกแพ็กเกจของคุณ พร้อมใช้งานภายในไม่กี่วัน",
+      lead: "ทุกแพ็กเกจมาพร้อมเมนู QR โค้ดที่ใช้งานได้จริง อัปเกรดได้ทุกเมื่อเมื่อธุรกิจของคุณเติบโต",
+      setupLabel: "ค่าติดตั้ง",
+      monthlySuffix: "/ เดือน เพื่อให้เว็บไซต์ออนไลน์อยู่เสมอ",
+      note: "ยกเลิกได้ทุกเมื่อ ฟรี ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง",
+      popularBadge: "ยอดนิยมที่สุด",
+      basic: { title: "Basic", tagline: "สแกนแล้วสั่งได้เลย", f1: "เมนู QR โค้ด อัปเดตล่าสุดเสมอ", f2: "แก้ไขเมนูได้ไม่จำกัด", f3: "ใช้งานได้ทุกโทรศัพท์ ไม่ต้องโหลดแอป", cta: "เลือก Basic" },
+      pro: { title: "Pro", tagline: "เว็บไซต์ของคุณเอง ทำให้ครบจบในที่เดียว", f1: "รวมทุกอย่างในแพ็กเกจ Basic", f2: "เว็บไซต์ออกแบบเฉพาะ จากรูปภาพของคุณ", f3: "พร้อมใช้งานภายในไม่กี่วัน ไม่ใช่หลายเดือน", cta: "เลือก Pro" },
+      elite: { title: "Elite", tagline: "แพ็กเกจครบวงจร ไม่ต้องทำอะไรเลย", monthlyCustom: "ค่าบริการรายเดือนออกแบบเฉพาะสำหรับคุณ", f1: "รวมทุกอย่างในแพ็กเกจ Pro", f2: "ตั้งค่าและดูแลโซเชียลมีเดียให้", f3: "การสนับสนุนแบบเร่งด่วน", cta: "ติดต่อเรา" }
+    }
+  }
+};
+
+function tKey(lang, path) {
+  var node = translations[lang] || translations.en;
+  var parts = path.split(".");
+  for (var i = 0; i < parts.length; i++) {
+    if (node == null) return null;
+    node = node[parts[i]];
+  }
+  return node;
+}
+
+var currentLang = "en";
+
+var decodeScratch = null;
+function decodeEntities(str) {
+  // Dictionary strings use HTML entities (&eacute;, &#3606; …) for safe
+  // authoring, but a plain JS string assigned via textContent is never
+  // parsed as HTML, so those entities would show up literally on screen.
+  // Decoding through a detached element (never inserted into the page)
+  // gets the browser's own HTML parser to resolve them instead.
+  if (!decodeScratch) decodeScratch = document.createElement("textarea");
+  decodeScratch.innerHTML = str;
+  return decodeScratch.value;
+}
+
+function applyLanguage(lang) {
+  if (!translations[lang]) lang = "en";
+  currentLang = lang;
+  document.documentElement.setAttribute("lang", lang);
+
+  document.querySelectorAll("[data-i18n]").forEach(function (el) {
+    var val = tKey(lang, el.getAttribute("data-i18n"));
+    if (val != null) el.textContent = decodeEntities(val);
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+    var val = tKey(lang, el.getAttribute("data-i18n-html"));
+    if (val != null) el.innerHTML = val;
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+    var val = tKey(lang, el.getAttribute("data-i18n-placeholder"));
+    if (val != null) el.setAttribute("placeholder", decodeEntities(val));
+  });
+
+  var current = document.getElementById("langSwitchCurrent");
+  if (current) current.textContent = lang.toUpperCase();
+  document.querySelectorAll(".lang-switch__option").forEach(function (btn) {
+    btn.classList.toggle("is-active", btn.getAttribute("data-lang") === lang);
+  });
+
+  try { localStorage.setItem("nmLang", lang); } catch (e) {}
+}
+
+function detectInitialLang() {
+  var stored = null;
+  try { stored = localStorage.getItem("nmLang"); } catch (e) {}
+  if (stored && translations[stored]) return stored;
+  var nav = (navigator.language || "en").toLowerCase().slice(0, 2);
+  return translations[nav] ? nav : "en";
+}
+
 /* ---------- reveal orchestration ---------- */
 function splitWords(el, wordClass) {
   const text = el.textContent.trim();
@@ -777,6 +1068,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const formWrap = document.querySelector(".hero__form-wrap");
   const footer = document.querySelector(".footer");
 
+  // Apply the visitor's language BEFORE splitting the heading/subline into
+  // words below, so those words are split from the correct-language text
+  // (not always English, then re-split if the visitor happens to switch).
+  applyLanguage(detectInitialLang());
+
   const headingWords = splitWords(heading, "word--heading");
   const sublineWords = splitWords(subline, "word--sub");
 
@@ -789,6 +1085,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById("waitlistForm");
   form.addEventListener("submit", (e) => e.preventDefault());
+
+  /* Language switcher: dropdown toggled by a button, closes on outside
+     click or Escape. Picking a language calls applyLanguage() again, which
+     simply overwrites the (by-then-already-revealed) text in place —
+     no re-entrance animation needed for a language switch. */
+  try {
+    const langSwitch = document.getElementById("langSwitch");
+    const langSwitchBtn = document.getElementById("langSwitchBtn");
+    const langSwitchMenu = document.getElementById("langSwitchMenu");
+    if (langSwitch && langSwitchBtn && langSwitchMenu) {
+      function closeLangSwitch() {
+        langSwitch.classList.remove("is-open");
+        langSwitchBtn.setAttribute("aria-expanded", "false");
+      }
+      langSwitchBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = langSwitch.classList.toggle("is-open");
+        langSwitchBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      langSwitchMenu.querySelectorAll(".lang-switch__option").forEach((opt) => {
+        opt.addEventListener("click", () => {
+          applyLanguage(opt.getAttribute("data-lang"));
+          closeLangSwitch();
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (!langSwitch.contains(e.target)) closeLangSwitch();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLangSwitch();
+      });
+    }
+  } catch (e) {}
 
   const canvas = document.querySelector(".hero__canvas");
   if (canvas) fluidSimulation(canvas);
@@ -803,7 +1132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       examplesTrigger.addEventListener("click", () => {
         const open = examplesTabs.classList.toggle("is-open");
         examplesTrigger.classList.toggle("is-open", open);
-        examplesTrigger.querySelector("span").textContent = open ? "Hide Examples" : "See Examples";
+        examplesTrigger.querySelector("span").textContent = decodeEntities(tKey(currentLang, open ? "examples.hideBtn" : "examples.seeBtn"));
       });
 
       // Pointer-driven 3D tilt on each example card, same technique as the
