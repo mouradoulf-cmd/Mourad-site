@@ -876,10 +876,10 @@
         <h3 data-i18n="pricing.basic.title">Basic</h3>
         <p class="price-card__tagline" data-i18n="pricing.basic.tagline">Get scanned. Get ordered.</p>
         <div class="price-card__price">
-          <span class="price-card__setup" data-count="500" data-suffix="&nbsp;&#3647;">500&nbsp;&#3647;</span>
+          <span class="price-card__setup" data-price-key="basicSetup" data-count="500" data-suffix="&nbsp;&#3647;">500&nbsp;&#3647;</span>
           <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
-        <p class="price-card__monthly"><strong class="price-card__monthly-num" data-count="300" data-suffix="&nbsp;&#3647;">300&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
+        <p class="price-card__monthly"><strong class="price-card__monthly-num" data-price-key="basicMonthly" data-count="300" data-suffix="&nbsp;&#3647;">300&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
         <ul class="price-card__features">
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.basic.f1">QR code menu, always up to date</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.basic.f2">Unlimited menu edits</span></li>
@@ -898,10 +898,10 @@
         <h3 data-i18n="pricing.pro.title">Pro</h3>
         <p class="price-card__tagline" data-i18n="pricing.pro.tagline">Your own website, done for you.</p>
         <div class="price-card__price">
-          <span class="price-card__setup" data-count="1500" data-suffix="&nbsp;&#3647;">1,500&nbsp;&#3647;</span>
+          <span class="price-card__setup" data-price-key="proSetup" data-count="1500" data-suffix="&nbsp;&#3647;">1,500&nbsp;&#3647;</span>
           <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
-        <p class="price-card__monthly"><strong class="price-card__monthly-num" data-count="350" data-suffix="&nbsp;&#3647;">350&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
+        <p class="price-card__monthly"><strong class="price-card__monthly-num" data-price-key="proMonthly" data-count="350" data-suffix="&nbsp;&#3647;">350&nbsp;&#3647;</strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></p>
         <ul class="price-card__features">
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pro.f1">Everything in Basic</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.pro.f2">Full custom website, built from your photos</span></li>
@@ -919,7 +919,7 @@
         <h3 data-i18n="pricing.elite.title">Elite</h3>
         <p class="price-card__tagline" data-i18n="pricing.elite.tagline">The full package. Zero effort.</p>
         <div class="price-card__price">
-          <span class="price-card__setup" data-count="3000" data-suffix="&nbsp;&#3647;">3,000&nbsp;&#3647;</span>
+          <span class="price-card__setup" data-price-key="eliteSetup" data-count="3000" data-suffix="&nbsp;&#3647;">3,000&nbsp;&#3647;</span>
           <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
         <p class="price-card__monthly" data-i18n="pricing.elite.monthlyCustom">Monthly fee tailored to your needs</p>
@@ -966,7 +966,7 @@ var translations = {
       heading: "Get Found. Get Chosen. Get Paid.",
       subline: "Fast, beautiful websites and QR menus — built in days, so customers find you before they even walk in.",
       emailPlaceholder: "Enter your email",
-      waitlistBtn: "Join Waitlist"
+      waitlistBtn: "Claim Your Spot"
     },
     footer: { text: "© 2026 NM Studio — built to get you found." },
     story: {
@@ -1006,7 +1006,7 @@ var translations = {
       heading: "Le site qui trouve des clients pendant que vous travaillez.",
       subline: "Soyez visible sur internet, pour que vos clients viennent jusqu'à vous — votre site et son menu QR, prêts en quelques jours.",
       emailPlaceholder: "Entrez votre email",
-      waitlistBtn: "Rejoindre la liste"
+      waitlistBtn: "Réserver ma place"
     },
     footer: { text: "© 2026 NM Studio — conçu pour vous faire trouver." },
     story: {
@@ -1046,7 +1046,7 @@ var translations = {
       heading: "Fatti trovare. Fatti scegliere. Fatti pagare.",
       subline: "Siti web veloci e curati, con menu QR — online in pochi giorni, così i clienti ti trovano prima ancora di entrare.",
       emailPlaceholder: "Inserisci la tua email",
-      waitlistBtn: "Iscriviti alla lista"
+      waitlistBtn: "Prenota il tuo posto"
     },
     footer: { text: "© 2026 NM Studio — creato per farti trovare." },
     story: {
@@ -1086,7 +1086,7 @@ var translations = {
       heading: "ถูกมองเห็น ถูกเลือก ได้เงิน",
       subline: "เว็บไซต์สวยงาม รวดเร็ว พร้อมเมนู QR โค้ด — พร้อมใช้งานภายในไม่กี่วัน ให้ลูกค้าเจอคุณก่อนที่จะเดินเข้าร้านด้วยซ้ำ",
       emailPlaceholder: "กรอกอีเมลของคุณ",
-      waitlistBtn: "เข้าร่วมรายชื่อรอ"
+      waitlistBtn: "จองสิทธิ์ของคุณ"
     },
     footer: { text: "© 2026 NM Studio — สร้างมาเพื่อให้คนเจอคุณ" },
     story: {
@@ -1126,7 +1126,7 @@ var translations = {
       heading: "موقع إلكتروني يجذب لك الزبائن وأنت تعمل.",
       subline: "كن مرئياً على الإنترنت ليصل إليك الزبائن — موقعك وقائمة الطعام برمز QR جاهزان خلال أيام.",
       emailPlaceholder: "أدخل بريدك الإلكتروني",
-      waitlistBtn: "انضم إلى القائمة"
+      waitlistBtn: "احجز مكانك"
     },
     footer: { text: "© 2026 NM Studio — صُنع لجعلك مرئياً." },
     story: {
@@ -1202,6 +1202,34 @@ function applyLanguage(lang) {
   document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
     var val = tKey(lang, el.getAttribute("data-i18n-placeholder"));
     if (val != null) el.setAttribute("placeholder", decodeEntities(val));
+  });
+
+  /* Pricing currency per language: Thai and English stay in baht (the
+     real billing currency), French/Italian switch to euro, Arabic to US
+     dollar — each with clean, deliberately-set price points rather than
+     a literal FX conversion of the baht price (which would land on odd,
+     cheap-looking numbers like "13 €"). */
+  var langCurrency = { en: "thb", th: "thb", fr: "eur", it: "eur", ar: "usd" };
+  var priceAmounts = {
+    thb: { basicSetup: 500, basicMonthly: 300, proSetup: 1500, proMonthly: 350, eliteSetup: 3000 },
+    eur: { basicSetup: 19, basicMonthly: 12, proSetup: 49, proMonthly: 15, eliteSetup: 99 },
+    usd: { basicSetup: 19, basicMonthly: 12, proSetup: 49, proMonthly: 15, eliteSetup: 99 }
+  };
+  var currencyFormat = {
+    thb: { prefix: "", suffix: " ฿" },
+    eur: { prefix: "", suffix: " €" },
+    usd: { prefix: "$", suffix: "" }
+  };
+  var currency = langCurrency[lang] || "thb";
+  var amounts = priceAmounts[currency];
+  var format = currencyFormat[currency];
+  document.querySelectorAll("[data-price-key]").forEach(function (el) {
+    var amount = amounts[el.getAttribute("data-price-key")];
+    if (amount == null) return;
+    el.setAttribute("data-count", amount);
+    el.setAttribute("data-prefix", format.prefix);
+    el.setAttribute("data-suffix", format.suffix);
+    el.textContent = format.prefix + amount.toLocaleString("en-US") + format.suffix;
   });
 
   var flagEmoji = { en: "🇬🇧", fr: "🇫🇷", it: "🇮🇹", th: "🇹🇭", ar: "🇸🇦" };
@@ -1527,6 +1555,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!entry.isIntersecting) return;
           const el = entry.target;
           const target = parseInt(el.getAttribute("data-count"), 10);
+          const prefix = el.getAttribute("data-prefix") || "";
           const suffix = el.getAttribute("data-suffix") || "";
           const duration = 1100;
           let startTime = null;
@@ -1535,7 +1564,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const progress = Math.min((ts - startTime) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
             const value = Math.round(target * eased);
-            el.textContent = value.toLocaleString("en-US") + suffix;
+            el.textContent = prefix + value.toLocaleString("en-US") + suffix;
             if (progress < 1) requestAnimationFrame(step);
           }
           requestAnimationFrame(step);
