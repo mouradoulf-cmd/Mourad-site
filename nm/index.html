@@ -202,7 +202,7 @@
   }
 
   .lang-switch__menu {
-    position: absolute; top: calc(100% + .6rem); right: 0;
+    position: absolute; top: calc(100% + .6rem); inset-inline-end: 0;
     min-width: 10rem;
     display: flex; flex-direction: column; gap: .15rem;
     border-radius: 1rem;
@@ -222,7 +222,7 @@
   /* Each option flips in on open (3D rotateX), staggered by --i — same
      flip-open language as the example cards elsewhere on this page. */
   .lang-switch__option {
-    display: flex; align-items: center; gap: .55rem; width: 100%; text-align: left;
+    display: flex; align-items: center; gap: .55rem; width: 100%; text-align: start;
     padding: .55rem .75rem; border-radius: .6rem;
     font-size: .85rem; color: var(--body-muted);
     transform-origin: 50% 0%;
@@ -679,6 +679,7 @@
           <button type="button" class="lang-switch__option" data-lang="fr" role="menuitem" style="--i:1"><span class="lang-flag" aria-hidden="true">🇫🇷</span>Français</button>
           <button type="button" class="lang-switch__option" data-lang="it" role="menuitem" style="--i:2"><span class="lang-flag" aria-hidden="true">🇮🇹</span>Italiano</button>
           <button type="button" class="lang-switch__option" data-lang="th" role="menuitem" style="--i:3"><span class="lang-flag" aria-hidden="true">🇹🇭</span>ไทย</button>
+          <button type="button" class="lang-switch__option" data-lang="ar" role="menuitem" style="--i:4"><span class="lang-flag" aria-hidden="true">🇸🇦</span>العربية</button>
         </div>
       </div>
       <a href="#pricing" class="btn-pill" data-i18n="nav.cta">Get Started</a>
@@ -1022,6 +1023,46 @@ var translations = {
       pro: { title: "Pro", tagline: "เว็บไซต์ของคุณเอง ทำให้ครบจบในที่เดียว", f1: "รวมทุกอย่างในแพ็กเกจ Basic", f2: "เว็บไซต์ออกแบบเฉพาะ จากรูปภาพของคุณ", f3: "พร้อมใช้งานภายในไม่กี่วัน ไม่ใช่หลายเดือน", cta: "เลือก Pro" },
       elite: { title: "Elite", tagline: "แพ็กเกจครบวงจร ไม่ต้องทำอะไรเลย", monthlyCustom: "ค่าบริการรายเดือนออกแบบเฉพาะสำหรับคุณ", f1: "รวมทุกอย่างในแพ็กเกจ Pro", f2: "ตั้งค่าและดูแลโซเชียลมีเดียให้", f3: "การสนับสนุนแบบเร่งด่วน", cta: "ติดต่อเรา" }
     }
+  },
+  ar: {
+    nav: { how: "كيف يعمل؟", pricing: "الأسعار", products: "المنتجات", blog: "المدونة", cta: "ابدأ الآن" },
+    hero: {
+      badge: "مواقع إلكترونية للمطاعم والمحلات المحلية",
+      heading: "موقع إلكتروني يجذب لك الزبائن وأنت تعمل.",
+      subline: "كن مرئياً على الإنترنت ليصل إليك الزبائن — موقعك وقائمة الطعام برمز QR جاهزان خلال أيام.",
+      emailPlaceholder: "أدخل بريدك الإلكتروني",
+      waitlistBtn: "انضم إلى القائمة"
+    },
+    footer: { text: "© 2026 NM Studio — صُنع لجعلك مرئياً." },
+    story: {
+      eyebrow: "كيف يعمل",
+      line1: "عملك يستحق زبائن أكثر مما يحصل عليه حالياً عبر الإنترنت.",
+      line2: "في <strong>NM Studio</strong>، أُنشئ موقعك بسرعة — أرسل صورك، وأنا أتكفل بكل شيء. جاهز خلال أيام.",
+      line3: "رؤية أكبر، حجوزات أكثر، وزيادة في الإيرادات تصل إلى 30%.",
+      line4: "أكثر من 50 عميلاً راضياً — إلغاء في أي وقت، مجاناً."
+    },
+    examples: {
+      eyebrow: "أعمالنا",
+      title: "شاهد قبل أن تقرر.",
+      lead: "نماذج حقيقية جاهزة للتكيّف مع عملك — اختر فئة لفتح مثال مباشر.",
+      seeBtn: "شاهد الأمثلة",
+      hideBtn: "إخفاء الأمثلة",
+      viewCta: "شاهد المثال ←",
+      soonBadge: "قريباً",
+      tabs: { restaurant: "مطعم", hairSalon: "صالون حلاقة", massage: "تدليك", bar: "بار وحياة ليلية", streetFood: "أكل الشارع" }
+    },
+    pricing: {
+      eyebrow: "الأسعار",
+      title: "اختر خطتك. انطلق خلال أيام.",
+      lead: "كل خطة تتضمن قائمة QR تعمل بسلاسة. قم بالترقية في أي وقت مع نمو عملك.",
+      setupLabel: "التأسيس",
+      monthlySuffix: "/ شهرياً للبقاء متصلاً",
+      note: "إلغاء في أي وقت، مجاناً. بلا عقود، بلا رسوم مفاجئة.",
+      popularBadge: "الأكثر طلباً",
+      basic: { title: "Basic", tagline: "يُمسح ويُطلب مباشرة.", f1: "قائمة برمز QR، محدّثة دائماً", f2: "تعديلات غير محدودة للقائمة", f3: "يعمل على أي هاتف، بلا تطبيق", cta: "اختر Basic" },
+      pro: { title: "Pro", tagline: "موقعك الخاص، جاهز بالكامل.", f1: "كل ما في Basic", f2: "موقع مخصص بالكامل، مبني من صورك", f3: "جاهز خلال أيام، لا أشهر", cta: "اختر Pro" },
+      elite: { title: "Elite", tagline: "الباقة الكاملة. بلا أي مجهود.", monthlyCustom: "رسوم شهرية مصممة حسب احتياجك", f1: "كل ما في Pro", f2: "إعداد وإدارة وسائل التواصل الاجتماعي", f3: "دعم ذو أولوية", cta: "تواصل معنا" }
+    }
   }
 };
 
@@ -1053,6 +1094,7 @@ function applyLanguage(lang) {
   if (!translations[lang]) lang = "en";
   currentLang = lang;
   document.documentElement.setAttribute("lang", lang);
+  document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
 
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     var val = tKey(lang, el.getAttribute("data-i18n"));
@@ -1067,7 +1109,7 @@ function applyLanguage(lang) {
     if (val != null) el.setAttribute("placeholder", decodeEntities(val));
   });
 
-  var flagEmoji = { en: "🇬🇧", fr: "🇫🇷", it: "🇮🇹", th: "🇹🇭" };
+  var flagEmoji = { en: "🇬🇧", fr: "🇫🇷", it: "🇮🇹", th: "🇹🇭", ar: "🇸🇦" };
   var current = document.getElementById("langSwitchCurrent");
   if (current) current.textContent = lang.toUpperCase();
   var currentFlag = document.getElementById("langSwitchFlag");
