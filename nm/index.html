@@ -634,14 +634,15 @@
 
   .examples__trigger {
     position: relative; z-index: 1;
-    display: inline-flex; align-items: center; gap: .6rem;
-    padding: .95rem 1.75rem; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: .7rem;
+    padding: 1.15rem 2.25rem; border-radius: 999px;
     border: 1px solid transparent;
     background:
       linear-gradient(var(--hero-base), var(--hero-base)) padding-box,
       linear-gradient(120deg, #22e8ff, #a855f7, #ec4899, #22e8ff) border-box;
     background-size: 100% 100%, 300% 100%;
-    color: var(--heading); font-size: .92rem; font-weight: 600; cursor: pointer;
+    color: var(--heading); font-size: 1.15rem; font-weight: 600; cursor: pointer;
+    max-width: 100%; text-align: center;
     box-shadow: 0 14px 32px -16px rgba(168,85,247,.55);
     animation: triggerBorderShift 6s linear infinite, triggerFloat 3.2s ease-in-out infinite;
     transition: transform .3s cubic-bezier(0.2,0,0,1), box-shadow .3s ease;
@@ -661,14 +662,15 @@
   }
   .examples__trigger.is-open { animation: triggerBorderShift 6s linear infinite; }
   .examples__trigger-spark {
-    display: inline-block; font-size: .85rem;
+    display: inline-block; font-size: 1.05rem; flex-shrink: 0;
     animation: triggerSparkSpin 3.2s ease-in-out infinite;
   }
   @keyframes triggerSparkSpin {
     0%, 100% { transform: rotate(0deg) scale(1); }
     50% { transform: rotate(18deg) scale(1.15); }
   }
-  .examples__trigger svg { width: 1rem; height: 1rem; transition: transform .35s cubic-bezier(0.2,0,0,1); }
+  .examples__trigger-label { max-width: 100%; }
+  .examples__trigger svg { width: 1.2rem; height: 1.2rem; flex-shrink: 0; transition: transform .35s cubic-bezier(0.2,0,0,1); }
   .examples__trigger.is-open svg { transform: rotate(180deg); }
 
   .examples__tabs {
@@ -983,7 +985,7 @@ var translations = {
       eyebrow: "Our Work",
       title: "See it before you decide.",
       lead: "Real templates, ready to adapt for your business — pick a category to open a live example.",
-      seeBtn: "See Examples",
+      seeBtn: "See What You Could Have",
       hideBtn: "Hide Examples",
       viewCta: "View example →",
       soonBadge: "Soon",
@@ -1023,7 +1025,7 @@ var translations = {
       eyebrow: "Nos réalisations",
       title: "Voyez avant de décider.",
       lead: "De vrais modèles, prêts à adapter à votre commerce — choisissez une catégorie pour ouvrir un exemple en direct.",
-      seeBtn: "Voir les exemples",
+      seeBtn: "Voir ce que vous pourriez avoir",
       hideBtn: "Masquer les exemples",
       viewCta: "Voir l'exemple →",
       soonBadge: "Bientôt",
@@ -1063,7 +1065,7 @@ var translations = {
       eyebrow: "I nostri lavori",
       title: "Guarda prima di decidere.",
       lead: "Modelli reali, pronti da adattare alla tua attività — scegli una categoria per aprire un esempio dal vivo.",
-      seeBtn: "Vedi esempi",
+      seeBtn: "Vedi cosa potresti avere",
       hideBtn: "Nascondi esempi",
       viewCta: "Vedi l'esempio →",
       soonBadge: "Presto",
@@ -1103,7 +1105,7 @@ var translations = {
       eyebrow: "ผลงานของเรา",
       title: "ดูก่อนตัดสินใจ",
       lead: "เทมเพลตจริง พร้อมปรับให้เข้ากับธุรกิจของคุณ — เลือกหมวดหมู่เพื่อดูตัวอย่างจริง",
-      seeBtn: "ดูตัวอย่าง",
+      seeBtn: "ดูสิ่งที่คุณจะได้รับ",
       hideBtn: "ซ่อนตัวอย่าง",
       viewCta: "ดูตัวอย่าง →",
       soonBadge: "เร็วๆ นี้",
@@ -1143,7 +1145,7 @@ var translations = {
       eyebrow: "أعمالنا",
       title: "شاهد قبل أن تقرر.",
       lead: "نماذج حقيقية جاهزة للتكيّف مع عملك — اختر فئة لفتح مثال مباشر.",
-      seeBtn: "شاهد الأمثلة",
+      seeBtn: "شاهد ما يمكن أن تحصل عليه",
       hideBtn: "إخفاء الأمثلة",
       viewCta: "شاهد المثال ←",
       soonBadge: "قريباً",
