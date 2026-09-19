@@ -569,16 +569,21 @@
 
   .price-card__badge {
     position: absolute; top: -.9rem; left: 50%; transform: translateX(-50%);
-    font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-    padding: .4rem 1rem; border-radius: 999px; color: var(--hero-base);
+    font-size: .62rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    padding: .35rem .85rem; border-radius: 999px; color: var(--hero-base);
     background: linear-gradient(120deg, #22e8ff, #a855f7);
-    white-space: nowrap; z-index: 2;
+    text-align: center; line-height: 1.25;
+    max-width: calc(100% - 1rem);
+    z-index: 2;
   }
 
   .price-card__tilt h3 { font-size: 1.4rem; font-weight: 600; color: var(--heading); margin: 0 0 .4rem; }
   .price-card__tagline { font-size: .92rem; color: var(--body-muted); margin: 0 0 1.6rem; line-height: 1.5; }
 
-  .price-card__price { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .35rem; }
+  /* flex-wrap so a long "setup" translation drops to its own full-width
+     line under the price instead of squeezing into the leftover sliver of
+     space beside it and wrapping word-by-word (mise / en / place). */
+  .price-card__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: .35rem .5rem; margin-bottom: .35rem; }
   .price-card__setup { font-size: 2.2rem; font-weight: 600; color: var(--heading); letter-spacing: -0.02em; }
   .price-card__setup-label { font-size: .8rem; color: var(--body-muted); }
   .price-card__monthly { font-size: .88rem; color: var(--body-muted); margin: 0 0 1.75rem; }
