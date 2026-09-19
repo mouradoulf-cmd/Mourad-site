@@ -701,6 +701,13 @@
 
   .pricing__note { position: relative; z-index: 2; text-align: center; margin: 3rem auto 0; color: var(--body-muted); font-size: .88rem; max-width: 30rem; }
 
+  .pricing__book-cta {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    margin: 4rem auto 0; padding: 0 1.25rem; max-width: 32rem; text-align: center;
+  }
+  .pricing__book-lead { color: var(--body-muted); font-size: 1.05rem; line-height: 1.5; }
+
   /* ---------- examples section ---------- */
   .examples { position: relative; padding: 6rem 1.25rem; }
   @media (min-width: 640px) { .examples { padding: 7rem 2.5rem; } }
@@ -915,9 +922,9 @@
     <h1 class="heading" id="heroHeading" data-i18n="hero.heading">Get Found. Get Chosen. Get Paid.</h1>
     <p class="subline" id="heroSubline" data-i18n="hero.subline">Fast, beautiful websites and QR menus &mdash; built in days, so customers find you before they even walk in.</p>
     <div class="hero__form-wrap">
-      <button type="button" class="hero__book-btn magnetic" id="bookBtn">
-        <span class="hero__book-btn-icon" aria-hidden="true">&#128197;</span>
-        <span data-i18n="hero.bookBtn">Book an Appointment</span>
+      <button type="button" class="hero__book-btn magnetic" id="heroExploreBtn">
+        <span class="hero__book-btn-icon" aria-hidden="true">&#10024;</span>
+        <span data-i18n="examples.seeBtn">See Our Website Examples</span>
       </button>
     </div>
   </div>
@@ -1106,6 +1113,14 @@
 
   </div>
 
+  <div class="pricing__book-cta">
+    <p class="pricing__book-lead" data-i18n="pricing.bookLead">Ready to move forward? Book a time for us to meet in person and get it set up.</p>
+    <button type="button" class="hero__book-btn magnetic" id="bookBtn">
+      <span class="hero__book-btn-icon" aria-hidden="true">&#128197;</span>
+      <span data-i18n="hero.bookBtn">Book an Appointment</span>
+    </button>
+  </div>
+
   <p class="pricing__note" data-i18n="pricing.note">Cancel anytime, free. No contracts, no surprise fees.</p>
 </section>
 
@@ -1209,6 +1224,7 @@ var translations = {
       setupLabel: "setup",
       monthlySuffix: "/ month to stay online",
       note: "Cancel anytime, free. No contracts, no surprise fees.",
+      bookLead: "Ready to move forward? Book a time for us to meet in person and get it set up.",
       popularBadge: "Most popular",
       basic: { title: "Basic", tagline: "Get scanned. Get ordered.", f1: "QR code menu, always up to date", f2: "Unlimited menu edits", f3: "Works on any phone, no app needed", cta: "Choose Basic", demoLink: "See a real QR menu example →" },
       pro: { title: "Pro", tagline: "Your own website, done for you.", f1: "Everything in Basic", f2: "Full custom website, built from your photos", f3: "Live in days, not months", cta: "Choose Pro" },
@@ -1261,6 +1277,7 @@ var translations = {
       setupLabel: "mise en place",
       monthlySuffix: "/ mois pour rester en ligne",
       note: "Annulez à tout moment, gratuitement. Pas de contrat, pas de frais cachés.",
+      bookLead: "Prêt à vous lancer ? Réservez un moment pour qu'on se rencontre en personne.",
       popularBadge: "Le plus populaire",
       basic: { title: "Basic", tagline: "Scanné. Commandé.", f1: "Menu QR code, toujours à jour", f2: "Modifications de menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic", demoLink: "Voir un exemple réel de menu QR →" },
       pro: { title: "Pro", tagline: "Votre propre site web, clé en main.", f1: "Tout ce qui est inclus dans Basic", f2: "Site web sur-mesure, créé à partir de vos photos", f3: "En ligne en quelques jours, pas en mois", cta: "Choisir Pro" },
@@ -1313,6 +1330,7 @@ var translations = {
       setupLabel: "attivazione",
       monthlySuffix: "/ mese per restare online",
       note: "Annulla quando vuoi, gratis. Nessun contratto, nessuna spesa nascosta.",
+      bookLead: "Pronto per iniziare? Prenota un momento per incontrarci di persona.",
       popularBadge: "Il più scelto",
       basic: { title: "Basic", tagline: "Scansionato. Ordinato.", f1: "Menu con QR code, sempre aggiornato", f2: "Modifiche al menu illimitate", f3: "Funziona su ogni telefono, senza app", cta: "Scegli Basic", demoLink: "Vedi un esempio reale di menu QR →" },
       pro: { title: "Pro", tagline: "Il tuo sito web, chiavi in mano.", f1: "Tutto quello incluso in Basic", f2: "Sito su misura, costruito con le tue foto", f3: "Online in giorni, non mesi", cta: "Scegli Pro" },
@@ -1365,6 +1383,7 @@ var translations = {
       setupLabel: "ค่าติดตั้ง",
       monthlySuffix: "/ เดือน เพื่อให้เว็บไซต์ออนไลน์อยู่เสมอ",
       note: "ยกเลิกได้ทุกเมื่อ ฟรี ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง",
+      bookLead: "พร้อมเริ่มแล้วใช่ไหม? จองเวลานัดพบกันด้วยตนเองเพื่อเริ่มดำเนินการ",
       popularBadge: "ยอดนิยมที่สุด",
       basic: { title: "Basic", tagline: "สแกนแล้วสั่งได้เลย", f1: "เมนู QR โค้ด อัปเดตล่าสุดเสมอ", f2: "แก้ไขเมนูได้ไม่จำกัด", f3: "ใช้งานได้ทุกโทรศัพท์ ไม่ต้องโหลดแอป", cta: "เลือก Basic", demoLink: "ดูตัวอย่างเมนู QR จริง →" },
       pro: { title: "Pro", tagline: "เว็บไซต์ของคุณเอง ทำให้ครบจบในที่เดียว", f1: "รวมทุกอย่างในแพ็กเกจ Basic", f2: "เว็บไซต์ออกแบบเฉพาะ จากรูปภาพของคุณ", f3: "พร้อมใช้งานภายในไม่กี่วัน ไม่ใช่หลายเดือน", cta: "เลือก Pro" },
@@ -1417,6 +1436,7 @@ var translations = {
       setupLabel: "التأسيس",
       monthlySuffix: "/ شهرياً للبقاء متصلاً",
       note: "إلغاء في أي وقت، مجاناً. بلا عقود، بلا رسوم مفاجئة.",
+      bookLead: "هل أنت مستعد للبدء؟ احجز موعداً لنلتقي شخصياً ونبدأ العمل.",
       popularBadge: "الأكثر طلباً",
       basic: { title: "Basic", tagline: "يُمسح ويُطلب مباشرة.", f1: "قائمة برمز QR، محدّثة دائماً", f2: "تعديلات غير محدودة للقائمة", f3: "يعمل على أي هاتف، بلا تطبيق", cta: "اختر Basic", demoLink: "شاهد مثالاً حقيقياً لقائمة QR ←" },
       pro: { title: "Pro", tagline: "موقعك الخاص، جاهز بالكامل.", f1: "كل ما في Basic", f2: "موقع مخصص بالكامل، مبني من صورك", f3: "جاهز خلال أيام، لا أشهر", cta: "اختر Pro" },
@@ -1681,6 +1701,13 @@ document.addEventListener("DOMContentLoaded", () => {
         examplesTrigger.classList.toggle("is-open", open);
         examplesTrigger.querySelector(".examples__trigger-label").textContent = decodeEntities(tKey(currentLang, open ? "examples.hideBtn" : "examples.seeBtn"));
       });
+
+      // Hero's primary CTA is a soft, low-commitment invite to see proof of
+      // work first — visitors haven't seen anything yet, so asking them to
+      // book an in-person appointment right away is premature. It opens the
+      // same examples tabs as the trigger above instead.
+      const heroExploreBtn = document.getElementById("heroExploreBtn");
+      if (heroExploreBtn) heroExploreBtn.addEventListener("click", openExamples);
 
       // "See our examples" links on the Pro/Elite pricing cards act exactly
       // like clicking the main examples trigger: open the tabs and jump the
