@@ -510,10 +510,10 @@
     position: relative; z-index: 2;
     display: grid; gap: 1.75rem;
     max-width: 76rem; margin: 0 auto;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     perspective: 1400px;
   }
-  @media (min-width: 900px) { .pricing__grid { align-items: start; } }
+  @media (min-width: 900px) { .pricing__grid { grid-template-columns: repeat(3, 1fr); align-items: start; } }
 
   /* Outer card: handles scroll entrance only (opacity/translateY). Visible by
      default — the pre-reveal/hidden state is switched on by JS right before a
@@ -596,36 +596,6 @@
     transition: transform .2s ease, background .2s ease;
   }
   .price-card__cta:hover { transform: translateY(-2px); background: rgba(255,255,255,.85); }
-
-  /* Below 900px, keep the 3-column layout (no stacking, no swiping) but
-     shrink everything with fixed px sizes instead of the page's normal
-     vw-locked rem scale — the rem system is tuned to stay roughly
-     "desktop-sized" on phones (great for the hero), which is exactly what
-     a 3-up card needs to escape from here. Placed after all the base
-     .price-card* rules above so it actually wins the cascade at matching
-     specificity, instead of losing to whichever rule happens to come
-     later in the file. */
-  @media (max-width: 899px) {
-    .pricing__grid { gap: .5rem; }
-    /* Grid items default to min-width:auto, which lets long unbreakable
-       content (the "MOST POPULAR" badge, a price like "1,500 ฿") force a
-       track wider than its 1fr share — this is what breaks the 3-up
-       layout even after every font-size above is shrunk. */
-    .price-card { min-width: 0; }
-    .price-card__tilt { padding: 14px 8px; border-radius: 14px; }
-    .price-card--pro .price-card__tilt { padding-bottom: 14px; }
-    .price-card__badge { font-size: 6.5px; letter-spacing: 0; padding: 2px 5px; top: -7px; }
-    .price-card__tilt h3 { font-size: 15px; margin-bottom: 2px; }
-    .price-card__tagline { font-size: 10px; line-height: 1.3; margin-bottom: 10px; }
-    .price-card__price { margin-bottom: 2px; }
-    .price-card__setup { font-size: 17px; }
-    .price-card__setup-label { font-size: 8px; }
-    .price-card__monthly { font-size: 9px; margin-bottom: 10px; }
-    .price-card__features { gap: 6px; margin-bottom: 10px; }
-    .price-card__features li { font-size: 9px; gap: .3rem; line-height: 1.25; }
-    .price-card__features li svg { width: 11px; height: 11px; margin-top: 0; }
-    .price-card__cta { height: 32px; font-size: 9px; }
-  }
 
   .pricing__note { position: relative; z-index: 2; text-align: center; margin: 3rem auto 0; color: var(--body-muted); font-size: .88rem; max-width: 30rem; }
 
