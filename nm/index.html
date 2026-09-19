@@ -899,6 +899,58 @@
     .examples__trigger:hover { transform: none; }
   }
 
+  /* ---------- FAQ section ---------- */
+  .faq { position: relative; padding: 6rem 1.25rem; }
+  @media (min-width: 640px) { .faq { padding: 7rem 2.5rem; } }
+  .faq__head { max-width: 34rem; margin: 0 auto; text-align: center; }
+  .faq__eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #22e8ff; font-weight: 500; margin: 0 0 1rem; }
+  .faq__title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0 0 1rem; line-height: 1.15; }
+  .faq__lead { font-size: 1rem; line-height: 1.6; color: var(--body-muted); margin: 0 0 3rem; }
+
+  .faq__list { max-width: 42rem; margin: 0 auto; display: flex; flex-direction: column; gap: .9rem; }
+
+  /* Visible by default — the pre-reveal/hidden state is switched on by JS
+     right before a confirmed-working IntersectionObserver starts watching,
+     same safety pattern used across the page. */
+  .faq__item.pre-reveal {
+    opacity: 0; transform: translateY(1.25rem);
+    transition: opacity 700ms var(--ease-entrance), transform 700ms var(--ease-entrance),
+                border-color .3s ease, background .3s ease;
+  }
+  .faq__item.pre-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  .faq__item {
+    border: 1px solid var(--glass-border); background: var(--glass-fill);
+    border-radius: 1.1rem; backdrop-filter: blur(12px); overflow: hidden;
+    transition: border-color .3s ease, background .3s ease;
+  }
+  .faq__item.is-open { border-color: rgba(34,232,255,.35); background: rgba(34,232,255,.05); }
+
+  .faq__question {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; padding: 1.15rem 1.4rem; background: none; border: none; cursor: pointer;
+    text-align: left; font-family: inherit; font-size: 1rem; font-weight: 600; color: var(--heading);
+  }
+  html[dir="rtl"] .faq__question { text-align: right; }
+  .faq__question-icon {
+    flex-shrink: 0; width: 1.6rem; height: 1.6rem; border-radius: 999px;
+    border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center;
+    transition: transform .35s cubic-bezier(0.2,0,0,1), border-color .3s ease, color .3s ease;
+    color: var(--body-muted);
+  }
+  .faq__question-icon svg { width: .85rem; height: .85rem; }
+  .faq__item.is-open .faq__question-icon { transform: rotate(180deg); border-color: #22e8ff; color: #22e8ff; }
+
+  .faq__answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height .45s cubic-bezier(0.2,0,0,1);
+  }
+  .faq__answer-inner { padding: 0 1.4rem 1.3rem; color: var(--body-muted); font-size: .95rem; line-height: 1.6; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq__item, .faq__question-icon, .faq__answer { transition: none; }
+  }
+
   /* ---------- site footer ---------- */
   .site-footer { position: relative; background: var(--hero-base); padding: 4.5rem 1.25rem 2.5rem; }
   @media (min-width: 640px) { .site-footer { padding: 5.5rem 2.5rem 2.5rem; } }
@@ -1107,6 +1159,62 @@
   </div>
 </section>
 
+<section class="faq" id="faq">
+  <span class="section-divider" aria-hidden="true"></span>
+  <div class="faq__head">
+    <p class="faq__eyebrow" data-i18n="faq.eyebrow">Questions</p>
+    <h2 class="faq__title" data-i18n="faq.title">Got questions? Good.</h2>
+    <p class="faq__lead" data-i18n="faq.lead">The things people usually ask before getting started.</p>
+  </div>
+  <div class="faq__list" id="faqList">
+    <div class="faq__item">
+      <button type="button" class="faq__question" aria-expanded="false" aria-controls="faqAnswer1">
+        <span data-i18n="faq.q1">I don't know anything about computers — is that a problem?</span>
+        <span class="faq__question-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="faq__answer" id="faqAnswer1">
+        <p class="faq__answer-inner" data-i18n="faq.a1">Not at all. You send me your photos, I take care of everything else.</p>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__question" aria-expanded="false" aria-controls="faqAnswer2">
+        <span data-i18n="faq.q2">Can I change my photos or menu later?</span>
+        <span class="faq__question-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="faq__answer" id="faqAnswer2">
+        <p class="faq__answer-inner" data-i18n="faq.a2">Yes — unlimited edits, anytime, for free.</p>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__question" aria-expanded="false" aria-controls="faqAnswer3">
+        <span data-i18n="faq.q3">What happens if I want to stop?</span>
+        <span class="faq__question-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="faq__answer" id="faqAnswer3">
+        <p class="faq__answer-inner" data-i18n="faq.a3">No commitment. Cancel anytime, free of charge.</p>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__question" aria-expanded="false" aria-controls="faqAnswer4">
+        <span data-i18n="faq.q4">How long before my website is online?</span>
+        <span class="faq__question-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="faq__answer" id="faqAnswer4">
+        <p class="faq__answer-inner" data-i18n="faq.a4">A few days after I receive your photos.</p>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button type="button" class="faq__question" aria-expanded="false" aria-controls="faqAnswer5">
+        <span data-i18n="faq.q5">Are there any hidden fees (hosting, domain name...)?</span>
+        <span class="faq__question-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="faq__answer" id="faqAnswer5">
+        <p class="faq__answer-inner" data-i18n="faq.a5">No — everything is included in the monthly plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="pricing" id="pricing">
   <span class="section-divider" aria-hidden="true"></span>
   <div class="pricing__orb pricing__orb--a" aria-hidden="true"></div>
@@ -1303,6 +1411,21 @@ var translations = {
       realClientBadge: "Real client",
       tabs: { restaurant: "Restaurant", hairSalon: "Hair Salon", massage: "Massage", bar: "Bar & Nightlife", streetFood: "Street Food" }
     },
+    faq: {
+      eyebrow: "Questions",
+      title: "Got questions? Good.",
+      lead: "The things people usually ask before getting started.",
+      q1: "I don't know anything about computers — is that a problem?",
+      a1: "Not at all. You send me your photos, I take care of everything else.",
+      q2: "Can I change my photos or menu later?",
+      a2: "Yes — unlimited edits, anytime, for free.",
+      q3: "What happens if I want to stop?",
+      a3: "No commitment. Cancel anytime, free of charge.",
+      q4: "How long before my website is online?",
+      a4: "A few days after I receive your photos.",
+      q5: "Are there any hidden fees (hosting, domain name...)?",
+      a5: "No — everything is included in the monthly plan."
+    },
     pricing: {
       eyebrow: "Pricing",
       title: "Choose your plan. Go live in days.",
@@ -1364,6 +1487,21 @@ var translations = {
       soonBadge: "Bientôt",
       realClientBadge: "Client réel",
       tabs: { restaurant: "Restaurant", hairSalon: "Salon de coiffure", massage: "Massage", bar: "Bar & Vie nocturne", streetFood: "Street Food" }
+    },
+    faq: {
+      eyebrow: "Questions",
+      title: "Des questions ? Tant mieux.",
+      lead: "Ce que les gens demandent le plus souvent avant de se lancer.",
+      q1: "Je n'y connais rien en informatique, c'est grave ?",
+      a1: "Pas du tout. Vous m'envoyez vos photos, je m'occupe de tout le reste.",
+      q2: "Je peux changer mes photos ou mon menu plus tard ?",
+      a2: "Oui — modifications illimitées, à tout moment, gratuitement.",
+      q3: "Qu'est-ce qui se passe si je veux arrêter ?",
+      a3: "Aucun engagement. Annulez à tout moment, gratuitement.",
+      q4: "Combien de temps avant que mon site soit en ligne ?",
+      a4: "Quelques jours après réception de vos photos.",
+      q5: "Y a-t-il des frais cachés (hébergement, nom de domaine...) ?",
+      a5: "Non — tout est inclus dans l'abonnement mensuel."
     },
     pricing: {
       eyebrow: "Tarifs",
@@ -1427,6 +1565,21 @@ var translations = {
       realClientBadge: "Cliente reale",
       tabs: { restaurant: "Ristorante", hairSalon: "Parrucchiere", massage: "Massaggi", bar: "Bar & Locali notturni", streetFood: "Street Food" }
     },
+    faq: {
+      eyebrow: "Domande",
+      title: "Domande? Bene.",
+      lead: "Le cose che le persone chiedono di solito prima di iniziare.",
+      q1: "Non capisco niente di computer — è un problema?",
+      a1: "Per niente. Mi mandi le tue foto, penso io a tutto il resto.",
+      q2: "Posso cambiare le foto o il menu più avanti?",
+      a2: "Sì — modifiche illimitate, in qualsiasi momento, gratis.",
+      q3: "Cosa succede se voglio smettere?",
+      a3: "Nessun impegno. Annulla quando vuoi, gratis.",
+      q4: "Quanto tempo prima che il mio sito sia online?",
+      a4: "Pochi giorni dopo aver ricevuto le tue foto.",
+      q5: "Ci sono costi nascosti (hosting, dominio...)?",
+      a5: "No — tutto è incluso nel canone mensile."
+    },
     pricing: {
       eyebrow: "Prezzi",
       title: "Scegli il tuo piano. Online in pochi giorni.",
@@ -1489,6 +1642,21 @@ var translations = {
       realClientBadge: "ลูกค้าจริง",
       tabs: { restaurant: "ร้านอาหาร", hairSalon: "ร้านทำผม", massage: "นวด", bar: "บาร์ & ไนท์ไลฟ์", streetFood: "สตรีทฟู้ด" }
     },
+    faq: {
+      eyebrow: "คำถาม",
+      title: "มีคำถามใช่ไหม ดีเลย",
+      lead: "คำถามที่คนมักถามก่อนเริ่มต้นใช้งาน",
+      q1: "ไม่มีความรู้เรื่องคอมพิวเตอร์เลย จะเป็นปัญหาไหม?",
+      a1: "ไม่เป็นปัญหาเลย คุณแค่ส่งรูปภาพมา ที่เหลือเราจัดการให้ทั้งหมด",
+      q2: "เปลี่ยนรูปภาพหรือเมนูทีหลังได้ไหม?",
+      a2: "ได้ค่ะ/ครับ แก้ไขได้ไม่จำกัด ทุกเมื่อ ฟรี",
+      q3: "ถ้าอยากเลิกใช้บริการจะเป็นอย่างไร?",
+      a3: "ไม่มีข้อผูกมัด ยกเลิกได้ทุกเมื่อ ฟรี",
+      q4: "ใช้เวลานานแค่ไหนกว่าเว็บไซต์จะพร้อมใช้งาน?",
+      a4: "ไม่กี่วันหลังจากได้รับรูปภาพจากคุณ",
+      q5: "มีค่าใช้จ่ายแอบแฝงไหม (โฮสติ้ง โดเมน ฯลฯ)?",
+      a5: "ไม่มี ทุกอย่างรวมอยู่ในแพ็กเกจรายเดือนแล้ว"
+    },
     pricing: {
       eyebrow: "ราคา",
       title: "เลือกแพ็กเกจของคุณ พร้อมใช้งานภายในไม่กี่วัน",
@@ -1550,6 +1718,21 @@ var translations = {
       soonBadge: "قريباً",
       realClientBadge: "عميل حقيقي",
       tabs: { restaurant: "مطعم", hairSalon: "صالون حلاقة", massage: "تدليك", bar: "بار وحياة ليلية", streetFood: "أكل الشارع" }
+    },
+    faq: {
+      eyebrow: "أسئلة",
+      title: "لديك أسئلة؟ جيد.",
+      lead: "الأشياء التي يسأل عنها الناس عادةً قبل البدء.",
+      q1: "لا أعرف شيئاً عن الكمبيوتر — هل هذه مشكلة؟",
+      a1: "على الإطلاق. أرسل لي صورك، وأنا أتكفل بكل شيء آخر.",
+      q2: "هل يمكنني تغيير صوري أو قائمة الطعام لاحقاً؟",
+      a2: "نعم — تعديلات غير محدودة، في أي وقت، مجاناً.",
+      q3: "ماذا يحدث إذا أردت التوقف؟",
+      a3: "بلا التزام. ألغِ في أي وقت، مجاناً.",
+      q4: "كم من الوقت يستغرق حتى يصبح موقعي جاهزاً؟",
+      a4: "بضعة أيام بعد استلام صورك.",
+      q5: "هل هناك رسوم مخفية (استضافة، اسم نطاق...)؟",
+      a5: "لا — كل شيء مشمول في الاشتراك الشهري."
     },
     pricing: {
       eyebrow: "الأسعار",
@@ -1750,6 +1933,64 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }, { threshold: 0.3 });
       statsItems.forEach((el) => statsObserver.observe(el));
+    }
+  } catch (e) {}
+
+  /* FAQ accordion: each question toggles its own answer independently via
+     a max-height transition (same technique as the examples tabs panel).
+     max-height is set from the answer's real scrollHeight rather than a
+     fixed guess, so longer translated answers (e.g. Arabic, Thai) never
+     get clipped. */
+  try {
+    const faqItems = Array.prototype.slice.call(document.querySelectorAll(".faq__item"));
+    faqItems.forEach((item) => {
+      const question = item.querySelector(".faq__question");
+      const answer = item.querySelector(".faq__answer");
+      if (!question || !answer) return;
+      question.addEventListener("click", () => {
+        const isOpen = item.classList.contains("is-open");
+        faqItems.forEach((other) => {
+          if (other !== item) {
+            other.classList.remove("is-open");
+            other.querySelector(".faq__question").setAttribute("aria-expanded", "false");
+            other.querySelector(".faq__answer").style.maxHeight = "";
+          }
+        });
+        if (isOpen) {
+          item.classList.remove("is-open");
+          question.setAttribute("aria-expanded", "false");
+          answer.style.maxHeight = "";
+        } else {
+          item.classList.add("is-open");
+          question.setAttribute("aria-expanded", "true");
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    });
+  } catch (e) {}
+
+  /* FAQ list: staggered fade-up, same visible-by-default safety pattern
+     as the stats band above. */
+  try {
+    const faqRevealItems = Array.prototype.slice.call(document.querySelectorAll(".faq__item"));
+    const reduceMotionFaq = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (faqRevealItems.length && !reduceMotionFaq && "IntersectionObserver" in window) {
+      faqRevealItems.forEach((el) => { el.style.transition = "none"; });
+      faqRevealItems.forEach((el) => { el.classList.add("pre-reveal"); });
+      void faqRevealItems[0].offsetHeight;
+      requestAnimationFrame(() => {
+        faqRevealItems.forEach((el) => { el.style.transition = ""; });
+      });
+      const faqObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = faqRevealItems.indexOf(entry.target);
+            setTimeout(() => { entry.target.classList.add("is-visible"); }, Math.max(idx, 0) * 90);
+            faqObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      faqRevealItems.forEach((el) => faqObserver.observe(el));
     }
   } catch (e) {}
 
