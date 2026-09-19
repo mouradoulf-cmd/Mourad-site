@@ -515,6 +515,37 @@
   }
   @media (min-width: 900px) { .pricing__grid { grid-template-columns: repeat(3, 1fr); align-items: start; } }
 
+  /* Below 900px, the 3 cards would be too narrow to read side by side, so
+     the grid becomes a swipeable, snap-to-card carousel instead of a long
+     vertical stack — one card fills most of the screen, with a sliver of
+     the next peeking in to signal there's more. */
+  @media (max-width: 899px) {
+    .pricing__grid {
+      display: flex;
+      grid-template-columns: unset;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: .25rem;
+    }
+    .pricing__grid::-webkit-scrollbar { display: none; }
+    .price-card { flex: 0 0 84%; scroll-snap-align: center; }
+  }
+  @media (min-width: 480px) and (max-width: 899px) {
+    .price-card { flex-basis: 62%; }
+  }
+
+  .pricing__dots { display: none; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
+  @media (max-width: 899px) { .pricing__dots { display: flex; } }
+  .pricing__dot {
+    width: .45rem; height: .45rem; border-radius: 999px;
+    background: var(--glass-border);
+    transition: background .3s ease, transform .3s ease;
+  }
+  .pricing__dot.is-active { background: linear-gradient(90deg, #22e8ff, #a855f7); transform: scale(1.3); }
+
   /* Outer card: handles scroll entrance only (opacity/translateY). Visible by
      default — the pre-reveal/hidden state is switched on by JS right before a
      confirmed-working IntersectionObserver starts watching, same safety
@@ -929,6 +960,12 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="pricing__dots" id="pricingDots" aria-hidden="true">
+    <span class="pricing__dot is-active"></span>
+    <span class="pricing__dot"></span>
+    <span class="pricing__dot"></span>
   </div>
 
   <p class="pricing__note" data-i18n="pricing.note">Cancel anytime, free. No contracts, no surprise fees.</p>
@@ -1538,6 +1575,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }, { threshold: 0.4 });
       countEls.forEach((el) => countObserver.observe(el));
+    }
+  } catch (e) {}
+
+  /* Pricing carousel dots (mobile only): mirrors whichever card is most
+     centered in the swipeable strip. Uses IntersectionObserver against the
+     scroll container itself as root, so it's just "which card is most
+     visible right now" rather than fragile manual scroll-position math. */
+  try {
+    const pricingGrid = document.querySelector(".pricing__grid");
+    const pricingDots = Array.prototype.slice.call(document.querySelectorAll(".pricing__dot"));
+    const priceCardsForDots = Array.prototype.slice.call(document.querySelectorAll(".price-card"));
+    if (pricingGrid && pricingDots.length && priceCardsForDots.length && "IntersectionObserver" in window) {
+      const dotsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio > 0.6) {
+            const idx = priceCardsForDots.indexOf(entry.target);
+            if (idx > -1) {
+              pricingDots.forEach((d) => d.classList.remove("is-active"));
+              if (pricingDots[idx]) pricingDots[idx].classList.add("is-active");
+            }
+          }
+        });
+      }, { root: pricingGrid, threshold: [0, 0.6, 1] });
+      priceCardsForDots.forEach((card) => dotsObserver.observe(card));
     }
   } catch (e) {}
 
