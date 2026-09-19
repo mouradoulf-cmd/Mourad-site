@@ -441,6 +441,109 @@
   @media (min-width: 640px) { .stats__value { font-size: 2.2rem; } }
   .stats__label { color: var(--body-muted); font-size: .92rem; }
 
+  /* ---------- preview section (personalized mockup + comparison) ---------- */
+  .preview { position: relative; padding: 6rem 1.25rem; }
+  @media (min-width: 640px) { .preview { padding: 7rem 2.5rem; } }
+  .preview__head { max-width: 34rem; margin: 0 auto; text-align: center; }
+  .preview__eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #22e8ff; font-weight: 500; margin: 0 0 1rem; }
+  .preview__title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0 0 1rem; line-height: 1.15; }
+  .preview__lead { font-size: 1rem; line-height: 1.6; color: var(--body-muted); margin: 0 0 2.5rem; }
+
+  .preview__input-wrap { max-width: 24rem; margin: 0 auto 2.5rem; }
+  .preview__input {
+    width: 100%; height: 3.4rem; padding: 0 1.25rem; border-radius: 999px;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--hero-base), var(--hero-base)) padding-box,
+      linear-gradient(120deg, #22e8ff, #a855f7, #ec4899, #22e8ff) border-box;
+    background-size: 100% 100%, 300% 100%;
+    animation: triggerBorderShift 6s linear infinite;
+    color: var(--heading); font-size: 1rem; font-family: inherit; text-align: center;
+  }
+  .preview__input::placeholder { color: var(--body-muted); }
+  .preview__input:focus { outline: none; }
+  @media (prefers-reduced-motion: reduce) { .preview__input { animation: none; } }
+
+  .preview__demo { display: flex; justify-content: center; margin-bottom: 4rem; }
+  .preview__phone {
+    position: relative; width: 15rem; padding: .6rem;
+    border-radius: 2.4rem;
+    border: 1px solid var(--glass-border);
+    background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,.6);
+  }
+  .preview__phone-notch {
+    position: absolute; top: .6rem; left: 50%; transform: translateX(-50%);
+    width: 4rem; height: 1.1rem; border-radius: 999px; background: var(--hero-base); z-index: 2;
+  }
+  .preview__phone-screen {
+    position: relative; overflow: hidden;
+    border-radius: 1.9rem; background: var(--hero-base);
+    padding: 2.6rem 1.25rem 1.5rem; text-align: center; min-height: 19rem;
+  }
+  .preview__phone-glow {
+    position: absolute; inset: -20% -20% auto -20%; height: 60%;
+    background: radial-gradient(circle, rgba(168,85,247,.35), rgba(34,232,255,.2) 45%, transparent 72%);
+    filter: blur(20px); pointer-events: none;
+  }
+  .preview__phone-avatar {
+    position: relative; width: 3rem; height: 3rem; margin: 0 auto .9rem;
+    border-radius: 999px; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(120deg, #22e8ff, #a855f7, #ec4899);
+    color: #04050c; font-weight: 700; font-size: 1.2rem;
+  }
+  .preview__phone-name {
+    position: relative; margin: 0 0 .4rem; font-size: 1.15rem; font-weight: 600; color: var(--heading);
+    word-break: break-word;
+  }
+  .preview__phone-tag { position: relative; margin: 0 0 1.4rem; font-size: .72rem; color: var(--body-muted); letter-spacing: .04em; }
+  .preview__phone-menu { position: relative; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.4rem; }
+  .preview__phone-menu-item {
+    height: .55rem; border-radius: 999px; background: rgba(255,255,255,.1);
+  }
+  .preview__phone-menu-item:nth-child(1) { width: 85%; margin: 0 auto; }
+  .preview__phone-menu-item:nth-child(2) { width: 65%; margin: 0 auto; }
+  .preview__phone-menu-item:nth-child(3) { width: 75%; margin: 0 auto; }
+  .preview__phone-qr {
+    position: relative; width: 2.2rem; height: 2.2rem; margin: 0 auto;
+    border-radius: .5rem; border: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; color: #22e8ff;
+  }
+
+  .preview__compare {
+    max-width: 44rem; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+  }
+  @media (min-width: 640px) { .preview__compare { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+  .preview__compare-col {
+    border-radius: 1.25rem; padding: 1.75rem 1.5rem;
+    border: 1px solid var(--glass-border); background: var(--glass-fill);
+  }
+  /* Visible by default — the pre-reveal/hidden state is switched on by JS
+     right before a confirmed-working IntersectionObserver starts watching,
+     same safety pattern used across the page. */
+  .preview__compare-col.pre-reveal {
+    opacity: 0; transform: translateY(1.25rem);
+    transition: opacity 700ms var(--ease-entrance), transform 700ms var(--ease-entrance);
+  }
+  .preview__compare-col.pre-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .preview__compare-col--with { border-color: rgba(34,232,255,.3); background: rgba(34,232,255,.04); }
+  .preview__compare-label { font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 1.1rem; }
+  .preview__compare-col--without .preview__compare-label { color: var(--body-muted); }
+  .preview__compare-col--with .preview__compare-label { color: #22e8ff; }
+  .preview__compare-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .85rem; }
+  .preview__compare-list li { display: flex; align-items: flex-start; gap: .65rem; font-size: .92rem; line-height: 1.45; }
+  .preview__compare-col--without .preview__compare-list li { color: var(--body-muted); }
+  .preview__compare-col--with .preview__compare-list li { color: var(--heading); }
+  .preview__compare-icon { flex-shrink: 0; width: 1.1rem; height: 1.1rem; margin-top: .1rem; }
+  .preview__compare-col--without .preview__compare-icon { color: rgba(239,68,68,.85); }
+  .preview__compare-col--with .preview__compare-icon { color: #22e8ff; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .preview__item, .preview__input { transition: none; }
+  }
+
   /* ---------- booking modal ---------- */
   .booking-modal {
     position: fixed; inset: 0; z-index: 200;
@@ -1098,6 +1201,58 @@
   </div>
 </div>
 
+<section class="preview" id="preview">
+  <span class="section-divider" aria-hidden="true"></span>
+  <div class="preview__head">
+    <p class="preview__eyebrow" data-i18n="preview.eyebrow">Try It Now</p>
+    <h2 class="preview__title" data-i18n="preview.title">See it with your own name.</h2>
+    <p class="preview__lead" data-i18n="preview.lead">Type your business name and watch it come to life.</p>
+  </div>
+
+  <div class="preview__input-wrap">
+    <input type="text" id="previewNameInput" class="preview__input" data-i18n-placeholder="preview.inputPlaceholder" placeholder="e.g. Giulivo" maxlength="28" autocomplete="off">
+  </div>
+
+  <div class="preview__demo">
+    <div class="preview__phone">
+      <div class="preview__phone-notch" aria-hidden="true"></div>
+      <div class="preview__phone-screen">
+        <div class="preview__phone-glow" aria-hidden="true"></div>
+        <div class="preview__phone-avatar" id="previewAvatar" aria-hidden="true">G</div>
+        <h3 class="preview__phone-name" id="previewName">Giulivo</h3>
+        <p class="preview__phone-tag" data-i18n="preview.phoneTag">Menu &middot; Reservations &middot; Reviews</p>
+        <div class="preview__phone-menu" aria-hidden="true">
+          <span class="preview__phone-menu-item"></span>
+          <span class="preview__phone-menu-item"></span>
+          <span class="preview__phone-menu-item"></span>
+        </div>
+        <div class="preview__phone-qr" aria-hidden="true">&#9642;&#9642;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview__compare">
+    <div class="preview__compare-col preview__compare-col--without">
+      <p class="preview__compare-label" data-i18n="preview.withoutLabel">Without a website</p>
+      <ul class="preview__compare-list">
+        <li><svg class="preview__compare-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-i18n="preview.without1">Invisible on Google &amp; Maps</span></li>
+        <li><svg class="preview__compare-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span id="previewWithout2">Tourists searching online never find Giulivo</span></li>
+        <li><svg class="preview__compare-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-i18n="preview.without3">Old menu, hard to update</span></li>
+        <li><svg class="preview__compare-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-i18n="preview.without4">Looks less trustworthy than competitors</span></li>
+      </ul>
+    </div>
+    <div class="preview__compare-col preview__compare-col--with">
+      <p class="preview__compare-label" data-i18n="preview.withLabel">With NM Studio</p>
+      <ul class="preview__compare-list">
+        <li><svg class="preview__compare-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="preview.with1">Found on Google &amp; Maps</span></li>
+        <li><svg class="preview__compare-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="previewWith2">Tourists find Giulivo on Google before they even arrive</span></li>
+        <li><svg class="preview__compare-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="preview.with3">QR menu, updated instantly</span></li>
+        <li><svg class="preview__compare-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="preview.with4">Professional first impression</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="story" id="how-it-works">
   <span class="section-divider" aria-hidden="true"></span>
   <div class="story__inner">
@@ -1386,6 +1541,23 @@ var translations = {
       freeValue: "Free to cancel",
       freeLabel: "No contracts, no surprise fees"
     },
+    preview: {
+      eyebrow: "Try It Now",
+      title: "See it with your own name.",
+      lead: "Type your business name and watch it come to life.",
+      inputPlaceholder: "e.g. Giulivo",
+      phoneTag: "Menu &middot; Reservations &middot; Reviews",
+      withoutLabel: "Without a website",
+      without1: "Invisible on Google & Maps",
+      without2: "Tourists searching Google in Thailand never find {name}",
+      without3: "Old menu, hard to update",
+      without4: "Looks less trustworthy than competitors",
+      withLabel: "With NM Studio",
+      with1: "Found on Google & Maps",
+      with2: "Tourists find {name} on Google before they even land in Thailand",
+      with3: "QR menu, updated instantly",
+      with4: "Professional first impression"
+    },
     booking: {
       title: "Book an appointment",
       lead: "Tell us where and when — we'll come meet you in person to talk it through.",
@@ -1462,6 +1634,23 @@ var translations = {
       speedLabel: "De vos photos à un site en ligne",
       freeValue: "Annulable à tout moment",
       freeLabel: "Sans contrat, sans frais cachés"
+    },
+    preview: {
+      eyebrow: "Essayez maintenant",
+      title: "Voyez-le avec votre propre nom.",
+      lead: "Tapez le nom de votre commerce et regardez-le prendre vie.",
+      inputPlaceholder: "ex. Giulivo",
+      phoneTag: "Menu &middot; Réservations &middot; Avis",
+      withoutLabel: "Sans site web",
+      without1: "Invisible sur Google & Maps",
+      without2: "Vos clients cherchent en ligne… et ne trouvent pas {name}",
+      without3: "Ancien menu, difficile à modifier",
+      without4: "Moins rassurant que la concurrence",
+      withLabel: "Avec NM Studio",
+      with1: "Trouvé sur Google & Maps",
+      with2: "Vos clients trouvent {name} avant même de passer la porte",
+      with3: "Menu QR, mis à jour instantanément",
+      with4: "Première impression professionnelle"
     },
     booking: {
       title: "Prendre rendez-vous",
@@ -1540,6 +1729,23 @@ var translations = {
       freeValue: "Annullabile quando vuoi",
       freeLabel: "Nessun contratto, nessuna spesa nascosta"
     },
+    preview: {
+      eyebrow: "Provalo ora",
+      title: "Guardalo con il tuo nome.",
+      lead: "Scrivi il nome della tua attività e guardalo prendere vita.",
+      inputPlaceholder: "es. Giulivo",
+      phoneTag: "Menu &middot; Prenotazioni &middot; Recensioni",
+      withoutLabel: "Senza sito web",
+      without1: "Invisibile su Google & Maps",
+      without2: "I tuoi clienti cercano online… e non trovano {name}",
+      without3: "Menu vecchio, difficile da aggiornare",
+      without4: "Sembra meno affidabile della concorrenza",
+      withLabel: "Con NM Studio",
+      with1: "Trovato su Google & Maps",
+      with2: "I tuoi clienti trovano {name} prima ancora di entrare",
+      with3: "Menu QR, aggiornato all'istante",
+      with4: "Prima impressione professionale"
+    },
     booking: {
       title: "Prenota un appuntamento",
       lead: "Dicci dove e quando — verremo a parlarne di persona.",
@@ -1617,6 +1823,23 @@ var translations = {
       freeValue: "ยกเลิกได้ทุกเมื่อ",
       freeLabel: "ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง"
     },
+    preview: {
+      eyebrow: "ลองเลยตอนนี้",
+      title: "ดูตัวอย่างด้วยชื่อร้านของคุณเอง",
+      lead: "พิมพ์ชื่อร้านของคุณ แล้วดูมันปรากฏขึ้นมาจริงๆ",
+      inputPlaceholder: "เช่น Giulivo",
+      phoneTag: "เมนู &middot; จองโต๊ะ &middot; รีวิว",
+      withoutLabel: "ไม่มีเว็บไซต์",
+      without1: "หาไม่เจอบน Google & Maps",
+      without2: "นักท่องเที่ยวค้นหาใน Google ที่ประเทศไทย แต่ไม่เจอ {name}",
+      without3: "เมนูเก่า แก้ไขยาก",
+      without4: "ดูน่าเชื่อถือน้อยกว่าคู่แข่ง",
+      withLabel: "กับ NM Studio",
+      with1: "เจอบน Google & Maps",
+      with2: "นักท่องเที่ยวเจอ {name} บน Google ก่อนจะมาถึงประเทศไทยด้วยซ้ำ",
+      with3: "เมนู QR อัปเดตได้ทันที",
+      with4: "ให้ความประทับใจแรกอย่างมืออาชีพ"
+    },
     booking: {
       title: "จองนัดหมาย",
       lead: "บอกเราว่าที่ไหนและเมื่อไหร่ — เราจะไปพบคุณด้วยตนเองเพื่อพูดคุยรายละเอียด",
@@ -1693,6 +1916,23 @@ var translations = {
       speedLabel: "من صورك إلى موقع جاهز",
       freeValue: "إلغاء في أي وقت",
       freeLabel: "بلا عقود، بلا رسوم مفاجئة"
+    },
+    preview: {
+      eyebrow: "جرّب الآن",
+      title: "شاهده باسم عملك الخاص.",
+      lead: "اكتب اسم عملك وشاهده ينبض بالحياة.",
+      inputPlaceholder: "مثال: Giulivo",
+      phoneTag: "قائمة الطعام &middot; الحجوزات &middot; التقييمات",
+      withoutLabel: "بدون موقع إلكتروني",
+      without1: "غير مرئي على Google وخرائط جوجل",
+      without2: "عملاؤك يبحثون عبر الإنترنت... ولا يجدون {name}",
+      without3: "قائمة قديمة، يصعب تحديثها",
+      without4: "يبدو أقل مصداقية من المنافسين",
+      withLabel: "مع NM Studio",
+      with1: "موجود على Google وخرائط جوجل",
+      with2: "عملاؤك يجدون {name} قبل أن يصلوا حتى",
+      with3: "قائمة برمز QR، تُحدَّث فوراً",
+      with4: "انطباع أول احترافي"
     },
     booking: {
       title: "حجز موعد",
@@ -1854,6 +2094,30 @@ function applyLanguage(lang) {
   });
 
   try { localStorage.setItem("nmLang", lang); } catch (e) {}
+
+  renderPreviewTemplates();
+}
+
+/* Preview section: the "{name}" placeholder in preview.without2/with2 gets
+   swapped for whatever the visitor typed (or the default "Giulivo"). Kept
+   as a standalone function — not part of the generic [data-i18n] walk above
+   — so it can re-run both on input and on every language switch without
+   the two writes fighting each other. */
+function renderPreviewTemplates() {
+  var input = document.getElementById("previewNameInput");
+  var withoutEl = document.getElementById("previewWithout2");
+  var withEl = document.getElementById("previewWith2");
+  if (!withoutEl || !withEl) return;
+  var name = (input && input.value.trim()) || "Giulivo";
+  var withoutTpl = tKey(currentLang, "preview.without2") || "";
+  var withTpl = tKey(currentLang, "preview.with2") || "";
+  withoutEl.textContent = decodeEntities(withoutTpl).replace("{name}", name);
+  withEl.textContent = decodeEntities(withTpl).replace("{name}", name);
+
+  var nameEl = document.getElementById("previewName");
+  var avatarEl = document.getElementById("previewAvatar");
+  if (nameEl) nameEl.textContent = name;
+  if (avatarEl) avatarEl.textContent = name.charAt(0).toUpperCase();
 }
 
 function detectInitialLang() {
@@ -1940,6 +2204,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }, { threshold: 0.3 });
       statsItems.forEach((el) => statsObserver.observe(el));
+    }
+  } catch (e) {}
+
+  /* Preview section: live-update the phone mockup and the two comparison
+     lines as the visitor types their own business name. */
+  try {
+    const previewInput = document.getElementById("previewNameInput");
+    if (previewInput) {
+      previewInput.addEventListener("input", renderPreviewTemplates);
+    }
+  } catch (e) {}
+
+  /* Preview comparison columns: staggered fade-up, same visible-by-default
+     safety pattern as the stats band and FAQ list. */
+  try {
+    const compareCols = Array.prototype.slice.call(document.querySelectorAll(".preview__compare-col"));
+    const reduceMotionCompare = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (compareCols.length && !reduceMotionCompare && "IntersectionObserver" in window) {
+      compareCols.forEach((el) => { el.style.transition = "none"; });
+      compareCols.forEach((el) => { el.classList.add("pre-reveal"); });
+      void compareCols[0].offsetHeight;
+      requestAnimationFrame(() => {
+        compareCols.forEach((el) => { el.style.transition = ""; });
+      });
+      const compareObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = compareCols.indexOf(entry.target);
+            setTimeout(() => { entry.target.classList.add("is-visible"); }, Math.max(idx, 0) * 140);
+            compareObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      compareCols.forEach((el) => compareObserver.observe(el));
     }
   } catch (e) {}
 
