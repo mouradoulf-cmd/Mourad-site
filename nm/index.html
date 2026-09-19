@@ -964,7 +964,7 @@
           <button type="button" class="lang-switch__option" data-lang="fr" role="menuitem" style="--i:1"><span class="lang-flag" aria-hidden="true">🇫🇷</span>Français</button>
           <button type="button" class="lang-switch__option" data-lang="it" role="menuitem" style="--i:2"><span class="lang-flag" aria-hidden="true">🇮🇹</span>Italiano</button>
           <button type="button" class="lang-switch__option" data-lang="th" role="menuitem" style="--i:3"><span class="lang-flag" aria-hidden="true">🇹🇭</span>ไทย</button>
-          <button type="button" class="lang-switch__option" data-lang="ar" role="menuitem" style="--i:4"><span class="lang-flag" aria-hidden="true">🇸🇦</span>العربية</button>
+          <button type="button" class="lang-switch__option" data-lang="ar" role="menuitem" style="--i:4"><span class="lang-flag" aria-hidden="true">🇲🇦</span>العربية</button>
         </div>
       </div>
       <a href="#pricing" class="btn-pill magnetic" data-i18n="nav.cta">Get Started</a>
@@ -1643,7 +1643,7 @@ function applyLanguage(lang) {
     if (customEl) customEl.style.display = hasFixedElite ? "none" : "";
   }
 
-  var flagEmoji = { en: "🇬🇧", fr: "🇫🇷", it: "🇮🇹", th: "🇹🇭", ar: "🇸🇦" };
+  var flagEmoji = { en: "🇬🇧", fr: "🇫🇷", it: "🇮🇹", th: "🇹🇭", ar: "🇲🇦" };
   var current = document.getElementById("langSwitchCurrent");
   if (current) current.textContent = lang.toUpperCase();
   var currentFlag = document.getElementById("langSwitchFlag");
