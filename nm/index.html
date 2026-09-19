@@ -594,6 +594,12 @@
   .price-card__features li svg { flex-shrink: 0; width: 1.1rem; height: 1.1rem; margin-top: .1rem; color: #22e8ff; }
 
   .price-card__actions { display: flex; flex-direction: column; gap: .6rem; }
+  .price-card__demo-link {
+    display: block; text-align: center; margin-top: .2rem;
+    font-size: .82rem; font-weight: 500; color: #22e8ff;
+    transition: color .2s ease;
+  }
+  .price-card__demo-link:hover { color: #a855f7; }
   .price-card__cta {
     display: flex; align-items: center; justify-content: center;
     height: 2.9rem; border-radius: 999px; font-size: .92rem; font-weight: 600;
@@ -889,6 +895,7 @@
         </ul>
         <div class="price-card__actions">
           <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="price-card__cta magnetic" data-i18n="pricing.basic.cta">Choose Basic</a>
+          <a href="../giulivo-qr-menu.html" target="_blank" rel="noopener" class="price-card__demo-link" data-i18n="pricing.basic.demoLink">See a real QR menu example →</a>
         </div>
       </div>
     </div>
@@ -999,7 +1006,7 @@ var translations = {
       monthlySuffix: "/ month to stay online",
       note: "Cancel anytime, free. No contracts, no surprise fees.",
       popularBadge: "Most popular",
-      basic: { title: "Basic", tagline: "Get scanned. Get ordered.", f1: "QR code menu, always up to date", f2: "Unlimited menu edits", f3: "Works on any phone, no app needed", cta: "Choose Basic" },
+      basic: { title: "Basic", tagline: "Get scanned. Get ordered.", f1: "QR code menu, always up to date", f2: "Unlimited menu edits", f3: "Works on any phone, no app needed", cta: "Choose Basic", demoLink: "See a real QR menu example →" },
       pro: { title: "Pro", tagline: "Your own website, done for you.", f1: "Everything in Basic", f2: "Full custom website, built from your photos", f3: "Live in days, not months", cta: "Choose Pro" },
       elite: { title: "Elite", tagline: "The full package. Zero effort.", monthlyCustom: "Monthly fee tailored to your needs", f1: "Everything in Pro", f2: "Social media set up & managed", f3: "Priority support", cta: "Talk to us" }
     }
@@ -1039,7 +1046,7 @@ var translations = {
       monthlySuffix: "/ mois pour rester en ligne",
       note: "Annulez à tout moment, gratuitement. Pas de contrat, pas de frais cachés.",
       popularBadge: "Le plus populaire",
-      basic: { title: "Basic", tagline: "Scanné. Commandé.", f1: "Menu QR code, toujours à jour", f2: "Modifications de menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic" },
+      basic: { title: "Basic", tagline: "Scanné. Commandé.", f1: "Menu QR code, toujours à jour", f2: "Modifications de menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic", demoLink: "Voir un exemple réel de menu QR →" },
       pro: { title: "Pro", tagline: "Votre propre site web, clé en main.", f1: "Tout ce qui est inclus dans Basic", f2: "Site web sur-mesure, créé à partir de vos photos", f3: "En ligne en quelques jours, pas en mois", cta: "Choisir Pro" },
       elite: { title: "Elite", tagline: "Le pack complet. Zéro effort.", monthlyCustom: "Abonnement mensuel sur mesure", f1: "Tout ce qui est inclus dans Pro", f2: "Réseaux sociaux configurés et gérés", f3: "Support prioritaire", cta: "Nous contacter" }
     }
@@ -1079,7 +1086,7 @@ var translations = {
       monthlySuffix: "/ mese per restare online",
       note: "Annulla quando vuoi, gratis. Nessun contratto, nessuna spesa nascosta.",
       popularBadge: "Il più scelto",
-      basic: { title: "Basic", tagline: "Scansionato. Ordinato.", f1: "Menu con QR code, sempre aggiornato", f2: "Modifiche al menu illimitate", f3: "Funziona su ogni telefono, senza app", cta: "Scegli Basic" },
+      basic: { title: "Basic", tagline: "Scansionato. Ordinato.", f1: "Menu con QR code, sempre aggiornato", f2: "Modifiche al menu illimitate", f3: "Funziona su ogni telefono, senza app", cta: "Scegli Basic", demoLink: "Vedi un esempio reale di menu QR →" },
       pro: { title: "Pro", tagline: "Il tuo sito web, chiavi in mano.", f1: "Tutto quello incluso in Basic", f2: "Sito su misura, costruito con le tue foto", f3: "Online in giorni, non mesi", cta: "Scegli Pro" },
       elite: { title: "Elite", tagline: "Il pacchetto completo. Zero sforzo.", monthlyCustom: "Canone mensile su misura", f1: "Tutto quello incluso in Pro", f2: "Social media impostati e gestiti", f3: "Supporto prioritario", cta: "Contattaci" }
     }
@@ -1119,7 +1126,7 @@ var translations = {
       monthlySuffix: "/ เดือน เพื่อให้เว็บไซต์ออนไลน์อยู่เสมอ",
       note: "ยกเลิกได้ทุกเมื่อ ฟรี ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง",
       popularBadge: "ยอดนิยมที่สุด",
-      basic: { title: "Basic", tagline: "สแกนแล้วสั่งได้เลย", f1: "เมนู QR โค้ด อัปเดตล่าสุดเสมอ", f2: "แก้ไขเมนูได้ไม่จำกัด", f3: "ใช้งานได้ทุกโทรศัพท์ ไม่ต้องโหลดแอป", cta: "เลือก Basic" },
+      basic: { title: "Basic", tagline: "สแกนแล้วสั่งได้เลย", f1: "เมนู QR โค้ด อัปเดตล่าสุดเสมอ", f2: "แก้ไขเมนูได้ไม่จำกัด", f3: "ใช้งานได้ทุกโทรศัพท์ ไม่ต้องโหลดแอป", cta: "เลือก Basic", demoLink: "ดูตัวอย่างเมนู QR จริง →" },
       pro: { title: "Pro", tagline: "เว็บไซต์ของคุณเอง ทำให้ครบจบในที่เดียว", f1: "รวมทุกอย่างในแพ็กเกจ Basic", f2: "เว็บไซต์ออกแบบเฉพาะ จากรูปภาพของคุณ", f3: "พร้อมใช้งานภายในไม่กี่วัน ไม่ใช่หลายเดือน", cta: "เลือก Pro" },
       elite: { title: "Elite", tagline: "แพ็กเกจครบวงจร ไม่ต้องทำอะไรเลย", monthlyCustom: "ค่าบริการรายเดือนออกแบบเฉพาะสำหรับคุณ", f1: "รวมทุกอย่างในแพ็กเกจ Pro", f2: "ตั้งค่าและดูแลโซเชียลมีเดียให้", f3: "การสนับสนุนแบบเร่งด่วน", cta: "ติดต่อเรา" }
     }
@@ -1159,7 +1166,7 @@ var translations = {
       monthlySuffix: "/ شهرياً للبقاء متصلاً",
       note: "إلغاء في أي وقت، مجاناً. بلا عقود، بلا رسوم مفاجئة.",
       popularBadge: "الأكثر طلباً",
-      basic: { title: "Basic", tagline: "يُمسح ويُطلب مباشرة.", f1: "قائمة برمز QR، محدّثة دائماً", f2: "تعديلات غير محدودة للقائمة", f3: "يعمل على أي هاتف، بلا تطبيق", cta: "اختر Basic" },
+      basic: { title: "Basic", tagline: "يُمسح ويُطلب مباشرة.", f1: "قائمة برمز QR، محدّثة دائماً", f2: "تعديلات غير محدودة للقائمة", f3: "يعمل على أي هاتف، بلا تطبيق", cta: "اختر Basic", demoLink: "شاهد مثالاً حقيقياً لقائمة QR ←" },
       pro: { title: "Pro", tagline: "موقعك الخاص، جاهز بالكامل.", f1: "كل ما في Basic", f2: "موقع مخصص بالكامل، مبني من صورك", f3: "جاهز خلال أيام، لا أشهر", cta: "اختر Pro" },
       elite: { title: "Elite", tagline: "الباقة الكاملة. بلا أي مجهود.", monthlyCustom: "رسوم شهرية مصممة حسب احتياجك", f1: "كل ما في Pro", f2: "إعداد وإدارة وسائل التواصل الاجتماعي", f3: "دعم ذو أولوية", cta: "تواصل معنا" }
     }

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giulivo — Menu</title>
+<meta name="description" content="Esempio di menu digitale con QR code, creato da NM Studio per Giulivo Cucina e Buonumore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #211a14;
+    --ink-2: #2b2117;
+    --cream: #f8f3ea;
+    --terracotta: #d9662f;
+    --olive: #7c8f57;
+    --gold: #d9a35f;
+    --muted: #c9bfae;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Jost', sans-serif;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 3.5rem;
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  .header {
+    position: relative;
+    text-align: center;
+    padding: 2.75rem 1.5rem 2rem;
+    background: radial-gradient(120% 100% at 50% 0%, rgba(217,102,47,.22), transparent 65%), var(--ink);
+    border-bottom: 1px solid rgba(248,243,234,.1);
+  }
+  .header__eyebrow { font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+  .header__name { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 2.4rem; color: var(--cream); letter-spacing: -0.01em; }
+  .header__sub { margin-top: .5rem; font-size: .9rem; color: var(--muted); }
+  .header__rule { display: block; width: 3rem; height: 2px; margin: 1.1rem auto 0; background: linear-gradient(90deg, var(--terracotta), var(--gold)); border-radius: 2px; }
+
+  .catnav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; gap: .5rem; overflow-x: auto;
+    padding: .85rem 1.1rem;
+    background: rgba(33,26,20,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(248,243,234,.08);
+    scrollbar-width: none;
+  }
+  .catnav::-webkit-scrollbar { display: none; }
+  .catnav a {
+    flex-shrink: 0; text-decoration: none;
+    font-size: .82rem; font-weight: 500; color: var(--muted);
+    padding: .5rem 1rem; border-radius: 999px;
+    border: 1px solid rgba(248,243,234,.14);
+    white-space: nowrap;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .catnav a:hover, .catnav a:focus-visible { color: var(--ink); background: var(--gold); border-color: var(--gold); }
+
+  .signature {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem;
+    padding: 1.5rem 1.1rem 0.5rem;
+    max-width: 40rem; margin: 0 auto;
+  }
+  .signature__card {
+    border-radius: .9rem; overflow: hidden;
+    background: var(--ink-2);
+    border: 1px solid rgba(248,243,234,.08);
+  }
+  .signature__card img { width: 100%; height: 6.5rem; object-fit: cover; }
+  .signature__card-body { padding: .65rem .75rem .8rem; }
+  .signature__card-name { font-family: var(--font-display); font-style: italic; font-size: .95rem; color: var(--cream); line-height: 1.25; }
+  .signature__card-price { margin-top: .3rem; font-size: .8rem; color: var(--gold); font-weight: 500; }
+
+  .menu { max-width: 40rem; margin: 0 auto; padding: 0 1.1rem; }
+  .category { padding-top: 2.2rem; scroll-margin-top: 4.2rem; }
+  .category__title {
+    font-family: var(--font-display); font-style: italic; font-weight: 600;
+    font-size: 1.4rem; color: var(--cream); margin-bottom: .2rem;
+  }
+  .category__note { font-size: .78rem; color: var(--muted); margin-bottom: 1rem; }
+  .item {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    padding: .85rem 0;
+    border-bottom: 1px solid rgba(248,243,234,.08);
+  }
+  .item:last-child { border-bottom: none; }
+  .item__text { min-width: 0; }
+  .item__name { font-size: 1rem; font-weight: 500; color: var(--cream); }
+  .item__desc { display: block; margin-top: .2rem; font-size: .82rem; color: var(--muted); line-height: 1.4; }
+  .item__price { flex-shrink: 0; font-size: .95rem; color: var(--gold); font-weight: 500; white-space: nowrap; }
+
+  .footnote {
+    max-width: 40rem; margin: 2.5rem auto 0; padding: 1.25rem 1.1rem;
+    font-size: .76rem; color: var(--muted); text-align: center; line-height: 1.6;
+    border-top: 1px solid rgba(248,243,234,.1);
+  }
+
+  .attribution {
+    position: fixed; left: 50%; bottom: .85rem; transform: translateX(-50%);
+    display: inline-flex; align-items: center; gap: .3rem;
+    padding: .4rem .8rem; border-radius: 999px;
+    background: rgba(33,26,20,.88); backdrop-filter: blur(8px);
+    border: 1px solid rgba(248,243,234,.14);
+    font-size: .66rem; color: var(--muted); text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 10px 25px -12px rgba(0,0,0,.6);
+    z-index: 20;
+  }
+  .attribution strong { color: var(--gold); font-weight: 600; }
+
+  @media (min-width: 640px) {
+    .signature { grid-template-columns: repeat(4, 1fr); }
+    .signature__card img { height: 8rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <p class="header__eyebrow">Vicopisano · Toscana</p>
+  <h1 class="header__name">Giulivo</h1>
+  <p class="header__sub">Cucina e Buonumore</p>
+  <span class="header__rule" aria-hidden="true"></span>
+</header>
+
+<nav class="catnav" aria-label="Categorie del menu">
+  <a href="#antipasti">Antipasti</a>
+  <a href="#primi">Primi</a>
+  <a href="#secondi">Secondi</a>
+  <a href="#contorni">Contorni</a>
+  <a href="#dolci">Dolci</a>
+  <a href="#bevande">Bevande</a>
+</nav>
+
+<div class="signature">
+  <div class="signature__card">
+    <img src="assets/img/tartare.jpg" alt="Tartare di fassona piemontese">
+    <div class="signature__card-body">
+      <div class="signature__card-name">Tartare di fassona</div>
+      <div class="signature__card-price">15&nbsp;€</div>
+    </div>
+  </div>
+  <div class="signature__card">
+    <img src="assets/img/linguine-frutti-di-mare.jpg" alt="Linguine ai frutti di mare">
+    <div class="signature__card-body">
+      <div class="signature__card-name">Linguine ai frutti di mare</div>
+      <div class="signature__card-price">15&nbsp;€</div>
+    </div>
+  </div>
+  <div class="signature__card">
+    <img src="assets/img/tonno-pistacchio.jpg" alt="Tonno in crosta di pistacchio">
+    <div class="signature__card-body">
+      <div class="signature__card-name">Tonno in crosta di pistacchio</div>
+      <div class="signature__card-price">18&nbsp;€</div>
+    </div>
+  </div>
+  <div class="signature__card">
+    <img src="assets/img/panna-cotta.jpg" alt="Panna cotta ai frutti di bosco">
+    <div class="signature__card-body">
+      <div class="signature__card-name">Panna cotta ai frutti di bosco</div>
+      <div class="signature__card-price">5&nbsp;€</div>
+    </div>
+  </div>
+</div>
+
+<main class="menu">
+
+  <section class="category" id="antipasti">
+    <h2 class="category__title">Antipasti</h2>
+    <div class="item"><div class="item__text"><span class="item__name">Burratina</span><span class="item__desc">Su crema di pomodori gialli, melanzana fumè e olive disidratate</span></div><span class="item__price">9&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Uovo pochè</span><span class="item__desc">Con asparagi, crema di pecorino semistagionato e crumble di mais</span></div><span class="item__price">9&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Rustico toscano</span><span class="item__desc">Affettati, formaggi, polentina e crostino ai fegatini</span></div><span class="item__price">14&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Tartare di fassona piemontese</span><span class="item__desc">Cipolle in agrodolce, tuorlo marinato, crema di burrata e senape in grani</span></div><span class="item__price">15&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Prosciutto Patanegra</span></div><span class="item__price">19&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Impepata di cozze</span></div><span class="item__price">11&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Tris Giulivo</span><span class="item__desc">Seppie alla griglia con finocchio croccante e pomodorini, tonno marinato alla curcuma, alici dorate con maionese d'aglio</span></div><span class="item__price">16&nbsp;€</span></div>
+  </section>
+
+  <section class="category" id="primi">
+    <h2 class="category__title">Primi</h2>
+    <p class="category__note">La pasta fresca è fatta a mano, prodotta dal pastificio artigianale "La Castellana".</p>
+    <div class="item"><div class="item__text"><span class="item__name">Risotto alle erbe aromatiche</span><span class="item__desc">Con caprino fresco, granella di nocciole tostate e polvere di speck</span></div><span class="item__price">12&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Rigatoncini al pomodoro fresco</span><span class="item__desc">Con stracciatella e pesto</span></div><span class="item__price">13&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Gigli alla Giulivo</span><span class="item__desc">Ragù di ossobuco, olive taggiasche e zafferano</span></div><span class="item__price">14&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Cappellacci di patate</span><span class="item__desc">Su crema di porcini, fonduta di pecorino e guanciale croccante</span></div><span class="item__price">14&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Rigatoncini alla tarantina</span></div><span class="item__price">12&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Chitarrini allo scoglio</span></div><span class="item__price">15&nbsp;€</span></div>
+  </section>
+
+  <section class="category" id="secondi">
+    <h2 class="category__title">Secondi</h2>
+    <div class="item"><div class="item__text"><span class="item__name">Filetto di maiale</span><span class="item__desc">Cipolle al vino rosso, soia e fonduta di pecorino semistagionato</span></div><span class="item__price">14&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Petto d'anatra al Chianti classico</span></div><span class="item__price">15&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Peposo della tradizione</span></div><span class="item__price">16&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Fracosta di manzo</span><span class="item__desc">Con crudaiola di pomodori e rucola</span></div><span class="item__price">17&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Frittura di totani e gamberoni</span></div><span class="item__price">16&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Tonno in crosta di pistacchio</span><span class="item__desc">Con riduzione di aceto balsamico</span></div><span class="item__price">18&nbsp;€</span></div>
+  </section>
+
+  <section class="category" id="contorni">
+    <h2 class="category__title">Contorni</h2>
+    <div class="item"><div class="item__text"><span class="item__name">Patate fritte</span></div><span class="item__price">4,50&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Patate arrosto</span></div><span class="item__price">4,50&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Verdure saltate</span><span class="item__desc">Secondo stagione</span></div><span class="item__price">4,50&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Fagioli cannellini</span></div><span class="item__price">4,50&nbsp;€</span></div>
+  </section>
+
+  <section class="category" id="dolci">
+    <h2 class="category__title">Dolci</h2>
+    <div class="item"><div class="item__text"><span class="item__name">Tiramisù</span></div><span class="item__price">5&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Cheesecake</span><span class="item__desc">Frutti di bosco o cioccolata</span></div><span class="item__price">5&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Semifreddo al croccantino</span><span class="item__desc">Con coulis di fragole</span></div><span class="item__price">5&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Cantuccini e vin santo</span></div><span class="item__price">5&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Fragole con panna</span></div><span class="item__price">5&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Gelato</span></div><span class="item__price">5&nbsp;€</span></div>
+  </section>
+
+  <section class="category" id="bevande">
+    <h2 class="category__title">Bevande</h2>
+    <div class="item"><div class="item__text"><span class="item__name">Caffè</span></div><span class="item__price">1,50&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Caffè corretto / macchiato</span></div><span class="item__price">2&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Lattina</span></div><span class="item__price">3&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Ponce</span></div><span class="item__price">3,50&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Amari e grappe</span></div><span class="item__price">3&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Cocktails</span></div><span class="item__price">6&nbsp;€</span></div>
+    <div class="item"><div class="item__text"><span class="item__name">Rum</span></div><span class="item__price">8&nbsp;€</span></div>
+  </section>
+
+</main>
+
+<p class="footnote">Coperto 2,50&nbsp;€ a persona · Carta soggetta a variazioni stagionali · Allergeni disponibili su richiesta.</p>
+
+<a class="attribution" href="nm/" target="_blank" rel="noopener">📱 Menu by <strong>NM Studio</strong></a>
+
+</body>
+</html>
