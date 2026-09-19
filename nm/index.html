@@ -922,7 +922,10 @@
           <span class="price-card__setup" data-price-key="eliteSetup" data-count="3000" data-suffix="&nbsp;&#3647;">3,000&nbsp;&#3647;</span>
           <span class="price-card__setup-label" data-i18n="pricing.setupLabel">setup</span>
         </div>
-        <p class="price-card__monthly" data-i18n="pricing.elite.monthlyCustom">Monthly fee tailored to your needs</p>
+        <p class="price-card__monthly" id="eliteMonthly">
+          <span class="price-card__monthly-fixed" style="display:none"><strong class="price-card__monthly-num" data-price-key="eliteMonthly"></strong> <span data-i18n="pricing.monthlySuffix">/ month to stay online</span></span>
+          <span class="price-card__monthly-custom" data-i18n="pricing.elite.monthlyCustom">Monthly fee tailored to your needs</span>
+        </p>
         <ul class="price-card__features">
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.elite.f1">Everything in Pro</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.elite.f2">Social media set up &amp; managed</span></li>
@@ -1212,7 +1215,7 @@ function applyLanguage(lang) {
   var langCurrency = { en: "thb", th: "thb", fr: "eur", it: "eur", ar: "usd" };
   var priceAmounts = {
     thb: { basicSetup: 500, basicMonthly: 300, proSetup: 1500, proMonthly: 350, eliteSetup: 3000 },
-    eur: { basicSetup: 19, basicMonthly: 12, proSetup: 49, proMonthly: 15, eliteSetup: 99 },
+    eur: { basicSetup: 29, basicMonthly: 15, proSetup: 50, proMonthly: 30, eliteSetup: 300, eliteMonthly: 100 },
     usd: { basicSetup: 19, basicMonthly: 12, proSetup: 49, proMonthly: 15, eliteSetup: 99 }
   };
   var currencyFormat = {
@@ -1231,6 +1234,18 @@ function applyLanguage(lang) {
     el.setAttribute("data-suffix", format.suffix);
     el.textContent = format.prefix + amount.toLocaleString("en-US") + format.suffix;
   });
+
+  /* Elite's monthly fee only has a fixed number in euros (100 €/month) —
+     every other currency still shows "tailored to your needs", since no
+     fixed dollar/baht figure was given for it. */
+  var eliteMonthly = document.getElementById("eliteMonthly");
+  if (eliteMonthly) {
+    var hasFixedElite = amounts.eliteMonthly != null;
+    var fixedEl = eliteMonthly.querySelector(".price-card__monthly-fixed");
+    var customEl = eliteMonthly.querySelector(".price-card__monthly-custom");
+    if (fixedEl) fixedEl.style.display = hasFixedElite ? "" : "none";
+    if (customEl) customEl.style.display = hasFixedElite ? "none" : "";
+  }
 
   var flagEmoji = { en: "🇬🇧", fr: "🇫🇷", it: "🇮🇹", th: "🇹🇭", ar: "🇸🇦" };
   var current = document.getElementById("langSwitchCurrent");
