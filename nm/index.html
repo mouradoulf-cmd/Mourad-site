@@ -61,6 +61,21 @@
   a { text-decoration: none; color: inherit; }
   button { font: inherit; border: none; background: none; cursor: pointer; color: inherit; }
 
+  /* Consistent keyboard-focus ring across every interactive element that
+     doesn't already define its own :focus-visible state. */
+  .nav__pill a:focus-visible,
+  .example-tab:focus-visible,
+  .price-card__cta:focus-visible,
+  .price-card__demo-link:focus-visible,
+  .lang-switch__option:focus-visible,
+  .examples__trigger:focus-visible,
+  .footer-link:focus-visible,
+  .site-footer__contact-btn:focus-visible {
+    outline: 2px solid #22e8ff;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
   /* ---------- hero shell ---------- */
   .hero {
     position: relative;
@@ -397,11 +412,19 @@
   @media (min-width: 640px) { .footer { padding: 1.5rem 2.5rem; font-size: 0.8rem; } }
   .footer.is-visible { opacity: 1; transform: translateY(0); }
 
+  /* Subtle fading divider between sections — a full-width flat line reads
+     flat/generic, so this fades out at both ends instead of hitting a hard
+     edge, which reads as more considered without adding real complexity. */
+  .section-divider {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: min(64rem, 90%); height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border) 20%, var(--glass-border) 80%, transparent);
+  }
+
   /* ---------- story section ---------- */
   .story {
     position: relative;
     background: var(--hero-base);
-    border-top: 1px solid var(--glass-border);
     padding: 5rem 1.25rem;
     display: flex;
     justify-content: center;
@@ -479,7 +502,6 @@
   .pricing {
     position: relative;
     background: var(--hero-base);
-    border-top: 1px solid var(--glass-border);
     padding: 6rem 1.25rem 7rem;
     overflow: hidden;
   }
@@ -611,7 +633,7 @@
   .pricing__note { position: relative; z-index: 2; text-align: center; margin: 3rem auto 0; color: var(--body-muted); font-size: .88rem; max-width: 30rem; }
 
   /* ---------- examples section ---------- */
-  .examples { padding: 6rem 1.25rem; border-top: 1px solid var(--glass-border); }
+  .examples { position: relative; padding: 6rem 1.25rem; }
   @media (min-width: 640px) { .examples { padding: 7rem 2.5rem; } }
   .examples__head { max-width: 34rem; margin: 0 auto; text-align: center; }
   .examples__eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #22e8ff; font-weight: 500; margin: 0 0 1rem; }
@@ -741,6 +763,41 @@
     .examples__trigger, .examples__trigger-glow, .examples__trigger-spark { animation: none; }
     .examples__trigger:hover { transform: none; }
   }
+
+  /* ---------- site footer ---------- */
+  .site-footer { position: relative; background: var(--hero-base); padding: 4.5rem 1.25rem 2.5rem; }
+  @media (min-width: 640px) { .site-footer { padding: 5.5rem 2.5rem 2.5rem; } }
+
+  .site-footer__inner {
+    max-width: 76rem; margin: 0 auto; padding-bottom: 2.5rem;
+    display: grid; gap: 2.5rem;
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  @media (min-width: 768px) { .site-footer__inner { grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; } }
+
+  .site-footer__tagline { margin-top: .85rem; font-size: .9rem; color: var(--body-muted); max-width: 22rem; line-height: 1.6; }
+
+  .site-footer__label { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--body-muted); margin: 0 0 1rem; font-weight: 500; }
+  .site-footer__links { display: flex; flex-direction: column; gap: .75rem; }
+  .footer-link { display: block; width: fit-content; font-size: .92rem; color: var(--body-muted); transition: color .2s ease; }
+  .footer-link:hover { color: var(--heading); }
+
+  .site-footer__contact-btn {
+    display: inline-flex; align-items: center; gap: .55rem;
+    padding: .75rem 1.1rem; border-radius: 999px;
+    border: 1px solid var(--glass-border); background: var(--glass-fill);
+    backdrop-filter: blur(12px);
+    font-size: .85rem; font-weight: 500; color: var(--heading);
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .site-footer__contact-btn:hover { border-color: #22e8ff; transform: translateY(-2px); }
+  .site-footer__contact-btn svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; color: #25D366; }
+
+  .site-footer__bottom {
+    max-width: 76rem; margin: 2rem auto 0;
+    text-align: center; font-size: .78rem; color: var(--body-muted);
+  }
 </style>
 </head>
 <body>
@@ -762,9 +819,8 @@
     </a>
     <nav class="nav__pill">
       <a href="#how-it-works" data-i18n="nav.how">How it works?</a>
+      <a href="#examples" data-i18n="nav.examples">Examples</a>
       <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
-      <a href="#products" data-i18n="nav.products">Products</a>
-      <a href="#blog" data-i18n="nav.blog">Blog</a>
     </nav>
     <div class="nav__right">
       <div class="lang-switch" id="langSwitch">
@@ -803,8 +859,9 @@
 </section>
 
 <section class="story" id="how-it-works">
+  <span class="section-divider" aria-hidden="true"></span>
   <div class="story__inner">
-    <p class="story__eyebrow" data-i18n="story.eyebrow">How it works</p>
+    <h2 class="story__eyebrow" data-i18n="story.eyebrow">How it works</h2>
     <span class="story__rule" aria-hidden="true"></span>
     <p class="story__line story__line--1" data-i18n-html="story.line1">Your business deserves more customers than it's getting online.</p>
     <p class="story__line story__line--2" data-i18n-html="story.line2">At <strong>NM Studio</strong>, I build your site fast &mdash; send your photos, I handle everything. Live in days.</p>
@@ -814,6 +871,7 @@
 </section>
 
 <section class="examples" id="examples">
+  <span class="section-divider" aria-hidden="true"></span>
   <div class="examples__head">
     <p class="examples__eyebrow" data-i18n="examples.eyebrow">Our Work</p>
     <h2 class="examples__title" data-i18n="examples.title">See it before you decide.</h2>
@@ -867,6 +925,7 @@
 </section>
 
 <section class="pricing" id="pricing">
+  <span class="section-divider" aria-hidden="true"></span>
   <div class="pricing__orb pricing__orb--a" aria-hidden="true"></div>
   <div class="pricing__orb pricing__orb--b" aria-hidden="true"></div>
 
@@ -953,6 +1012,40 @@
   <p class="pricing__note" data-i18n="pricing.note">Cancel anytime, free. No contracts, no surprise fees.</p>
 </section>
 
+<footer class="site-footer">
+  <span class="section-divider" aria-hidden="true"></span>
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" class="brand">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <span class="brand__name">NM Studio</span>
+      </a>
+      <p class="site-footer__tagline" data-i18n="hero.badge">Websites for restaurants &amp; local businesses</p>
+    </div>
+    <div class="site-footer__col">
+      <p class="site-footer__label" data-i18n="footer.linksLabel">Quick Links</p>
+      <nav class="site-footer__links">
+        <a href="#how-it-works" class="footer-link" data-i18n="nav.how">How it works?</a>
+        <a href="#examples" class="footer-link" data-i18n="nav.examples">Examples</a>
+        <a href="#pricing" class="footer-link" data-i18n="nav.pricing">Pricing</a>
+      </nav>
+    </div>
+    <div class="site-footer__col">
+      <p class="site-footer__label" data-i18n="footer.contactLabel">Get in Touch</p>
+      <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="site-footer__contact-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.08L2 22l5.05-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.43-4.4-1.19l-.31-.18-3.15.83.84-3.07-.2-.32A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+        <span data-i18n="footer.contactBtn">Message us on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <p data-i18n-html="footer.text">&copy; 2026 NM Studio &mdash; built to get you found.</p>
+  </div>
+</footer>
+
 <script type="module">
 /* Isolated in its own module: if the Lenis CDN import fails (slow network,
    blocked resource), only smooth-scroll is lost — it can't take the reveal
@@ -974,7 +1067,7 @@ requestAnimationFrame(raf);
    again any time the visitor picks a language from the nav switcher. */
 var translations = {
   en: {
-    nav: { how: "How it works?", pricing: "Pricing", products: "Products", blog: "Blog", cta: "Get Started" },
+    nav: { how: "How it works?", examples: "Examples", pricing: "Pricing", cta: "Get Started" },
     hero: {
       badge: "Websites for restaurants & local businesses",
       heading: "The website that finds you customers while you work.",
@@ -982,7 +1075,7 @@ var translations = {
       emailPlaceholder: "Enter your email",
       waitlistBtn: "Claim Your Spot"
     },
-    footer: { text: "© 2026 NM Studio — built to get you found." },
+    footer: { text: "© 2026 NM Studio — built to get you found.", linksLabel: "Quick Links", contactLabel: "Get in Touch", contactBtn: "Message us on WhatsApp" },
     story: {
       eyebrow: "How it works",
       line1: "Your business deserves more customers than it's getting online.",
@@ -1014,7 +1107,7 @@ var translations = {
     }
   },
   fr: {
-    nav: { how: "Comment ça marche ?", pricing: "Tarifs", products: "Produits", blog: "Blog", cta: "Commencer" },
+    nav: { how: "Comment ça marche ?", examples: "Exemples", pricing: "Tarifs", cta: "Commencer" },
     hero: {
       badge: "Sites web pour restaurants et commerces locaux",
       heading: "Le site qui trouve des clients pendant que vous travaillez.",
@@ -1022,7 +1115,7 @@ var translations = {
       emailPlaceholder: "Entrez votre email",
       waitlistBtn: "Réserver ma place"
     },
-    footer: { text: "© 2026 NM Studio — conçu pour vous faire trouver." },
+    footer: { text: "© 2026 NM Studio — conçu pour vous faire trouver.", linksLabel: "Liens rapides", contactLabel: "Nous contacter", contactBtn: "Contactez-nous sur WhatsApp" },
     story: {
       eyebrow: "Comment ça marche",
       line1: "Votre commerce mérite plus de clients que ce qu'il obtient en ligne.",
@@ -1054,7 +1147,7 @@ var translations = {
     }
   },
   it: {
-    nav: { how: "Come funziona?", pricing: "Prezzi", products: "Prodotti", blog: "Blog", cta: "Inizia ora" },
+    nav: { how: "Come funziona?", examples: "Esempi", pricing: "Prezzi", cta: "Inizia ora" },
     hero: {
       badge: "Siti web per ristoranti e attività locali",
       heading: "Il sito che trova clienti mentre tu lavori.",
@@ -1062,7 +1155,7 @@ var translations = {
       emailPlaceholder: "Inserisci la tua email",
       waitlistBtn: "Prenota il tuo posto"
     },
-    footer: { text: "© 2026 NM Studio — creato per farti trovare." },
+    footer: { text: "© 2026 NM Studio — creato per farti trovare.", linksLabel: "Link utili", contactLabel: "Contattaci", contactBtn: "Scrivici su WhatsApp" },
     story: {
       eyebrow: "Come funziona",
       line1: "La tua attività merita più clienti di quelli che ottiene online.",
@@ -1094,7 +1187,7 @@ var translations = {
     }
   },
   th: {
-    nav: { how: "วิธีการทำงาน", pricing: "ราคา", products: "บริการ", blog: "บล็อก", cta: "เริ่มต้นเลย" },
+    nav: { how: "วิธีการทำงาน", examples: "ตัวอย่าง", pricing: "ราคา", cta: "เริ่มต้นเลย" },
     hero: {
       badge: "เว็บไซต์สำหรับร้านอาหารและธุรกิจท้องถิ่น",
       heading: "เว็บไซต์ที่หาลูกค้าให้คุณ ในขณะที่คุณทำงาน",
@@ -1102,7 +1195,7 @@ var translations = {
       emailPlaceholder: "กรอกอีเมลของคุณ",
       waitlistBtn: "จองสิทธิ์ของคุณ"
     },
-    footer: { text: "© 2026 NM Studio — สร้างมาเพื่อให้คนเจอคุณ" },
+    footer: { text: "© 2026 NM Studio — สร้างมาเพื่อให้คนเจอคุณ", linksLabel: "ลิงก์ด่วน", contactLabel: "ติดต่อเรา", contactBtn: "แชทผ่าน WhatsApp" },
     story: {
       eyebrow: "วิธีการทำงาน",
       line1: "ธุรกิจของคุณสมควรได้ลูกค้าออนไลน์มากกว่าที่เป็นอยู่",
@@ -1134,7 +1227,7 @@ var translations = {
     }
   },
   ar: {
-    nav: { how: "كيف يعمل؟", pricing: "الأسعار", products: "المنتجات", blog: "المدونة", cta: "ابدأ الآن" },
+    nav: { how: "كيف يعمل؟", examples: "أمثلة", pricing: "الأسعار", cta: "ابدأ الآن" },
     hero: {
       badge: "مواقع إلكترونية للمطاعم والمحلات المحلية",
       heading: "موقع إلكتروني يجذب لك الزبائن وأنت تعمل.",
@@ -1142,7 +1235,7 @@ var translations = {
       emailPlaceholder: "أدخل بريدك الإلكتروني",
       waitlistBtn: "احجز مكانك"
     },
-    footer: { text: "© 2026 NM Studio — صُنع لجعلك مرئياً." },
+    footer: { text: "© 2026 NM Studio — صُنع لجعلك مرئياً.", linksLabel: "روابط سريعة", contactLabel: "تواصل معنا", contactBtn: "راسلنا عبر واتساب" },
     story: {
       eyebrow: "كيف يعمل",
       line1: "عملك يستحق زبائن أكثر مما يحصل عليه حالياً عبر الإنترنت.",
