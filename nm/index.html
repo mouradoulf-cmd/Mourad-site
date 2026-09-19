@@ -98,10 +98,12 @@
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    flex-shrink: 0;
     font-weight: 500;
     font-size: 1.15rem;
     color: var(--on-media);
     letter-spacing: -0.01em;
+    white-space: nowrap;
   }
   @media (min-width: 640px) { .brand { font-size: 1.375rem; } }
   .brand svg { width: 1.35rem; height: 1.35rem; stroke: currentColor; flex-shrink: 0; }
@@ -905,8 +907,8 @@ var translations = {
     nav: { how: "Comment ça marche ?", pricing: "Tarifs", products: "Produits", blog: "Blog", cta: "Commencer" },
     hero: {
       badge: "Sites web pour restaurants et commerces locaux",
-      heading: "Soyez vus. Soyez choisis. Soyez payés.",
-      subline: "Des sites web rapides et magnifiques, avec menu QR — en ligne en quelques jours, pour que vos clients vous trouvent avant même de passer la porte.",
+      heading: "Le site qui trouve des clients pendant que vous travaillez.",
+      subline: "Soyez visible sur internet, pour que vos clients viennent jusqu'à vous — votre site et son menu QR, prêts en quelques jours.",
       emailPlaceholder: "Entrez votre email",
       waitlistBtn: "Rejoindre la liste"
     },
