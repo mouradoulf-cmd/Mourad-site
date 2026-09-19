@@ -441,7 +441,11 @@
   @media (min-width: 640px) { .stats__value { font-size: 2.2rem; } }
   .stats__label { color: var(--body-muted); font-size: .92rem; }
 
-  /* ---------- preview section (3D flip comparison) ---------- */
+  /* ---------- preview section (auto-playing 3D showcase) ---------- */
+  /* Fully hands-off by design: nobody has to tap, swipe, or figure
+     anything out. One card cycles through all 4 points on its own —
+     shows the problem, rotates in 3D to reveal the fix, rotates back,
+     fades to the next point — forever, as long as it's on screen. */
   .preview { position: relative; padding: 6rem 1.25rem; overflow: hidden; }
   @media (min-width: 640px) { .preview { padding: 7rem 2.5rem; } }
   .preview__head { max-width: 34rem; margin: 0 auto; text-align: center; }
@@ -449,69 +453,67 @@
   .preview__title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0 0 1rem; line-height: 1.15; }
   .preview__lead { font-size: 1rem; line-height: 1.6; color: var(--body-muted); margin: 0 0 3rem; }
 
-  .preview__flip-grid {
-    max-width: 50rem; margin: 0 auto 1.5rem;
-    display: grid; grid-template-columns: 1fr; gap: 1.5rem;
-  }
-  @media (min-width: 640px) { .preview__flip-grid { grid-template-columns: 1fr 1fr; gap: 1.75rem; } }
+  .preview__showcase { display: flex; flex-direction: column; align-items: center; gap: 1.75rem; }
 
-  /* Floating idle motion (continues even before/after the flip) — the
-     "moving" premium touch, kept on the outermost element so it never
-     fights the flip's own rotateY transform on the inner card. */
-  .preview__flip-card { animation: previewFloat 5s ease-in-out infinite; }
-  .preview__flip-card:nth-child(2) { animation-delay: -1.2s; }
-  .preview__flip-card:nth-child(3) { animation-delay: -2.4s; }
-  .preview__flip-card:nth-child(4) { animation-delay: -3.6s; }
+  /* Slow continuous idle float, independent of the flip transform below —
+     kept on the static outer element so the two transforms never fight. */
+  .preview__flip-stage {
+    perspective: 1600px;
+    animation: previewFloat 6s ease-in-out infinite;
+  }
   @keyframes previewFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-0.6deg); }
   }
 
-  /* The 3D stage: perspective lives on the static outer element, the flip
-     rotation lives on the inner element, so the idle float above and the
-     180deg flip below never compound into one broken transform. */
-  .preview__flip-stage { perspective: 1400px; cursor: pointer; }
   .preview__flip-card-inner {
-    position: relative; min-height: 8.5rem;
+    position: relative; width: min(26rem, 84vw); min-height: 10rem;
     transform-style: preserve-3d;
-    transition: transform 1.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1), opacity .35s ease;
   }
   .preview__flip-card-inner.is-flipped { transform: rotateY(180deg); }
+  .preview__flip-card-inner.is-fading { opacity: 0; transform: scale(.96); }
   .preview__flip-face {
     position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-    border-radius: 1.25rem; padding: 1.5rem 1.4rem;
+    border-radius: 1.5rem; padding: 2rem 1.75rem;
     border: 1px solid var(--glass-border);
-    display: flex; flex-direction: column; gap: .8rem; justify-content: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem;
+    text-align: center;
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,.6);
   }
-  .preview__flip-face--front { background: var(--glass-fill); }
+  .preview__flip-face--front { background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.01)), var(--glass-fill); }
   .preview__flip-face--back {
-    background: rgba(34,232,255,.06); border-color: rgba(34,232,255,.35);
+    background: linear-gradient(160deg, rgba(34,232,255,.1), rgba(168,85,247,.05)), var(--hero-base);
+    border-color: rgba(34,232,255,.4);
     transform: rotateY(180deg);
   }
-  .preview__flip-tag { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-  .preview__flip-face--front .preview__flip-tag { color: rgba(239,68,68,.85); }
+  .preview__flip-tag { font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .preview__flip-face--front .preview__flip-tag { color: rgba(239,68,68,.9); }
   .preview__flip-face--back .preview__flip-tag { color: #22e8ff; }
-  .preview__flip-row { display: flex; align-items: center; gap: .7rem; }
   .preview__flip-icon {
-    flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 999px;
+    flex-shrink: 0; width: 3rem; height: 3rem; border-radius: 999px;
     display: flex; align-items: center; justify-content: center;
   }
   .preview__flip-face--front .preview__flip-icon { background: rgba(239,68,68,.14); color: rgba(239,68,68,.9); }
-  .preview__flip-face--back .preview__flip-icon { background: rgba(34,232,255,.16); color: #22e8ff; }
-  .preview__flip-icon svg { width: 1.05rem; height: 1.05rem; }
-  .preview__flip-text { font-size: .98rem; line-height: 1.4; color: var(--heading); }
+  .preview__flip-face--back .preview__flip-icon {
+    background: linear-gradient(120deg, #22e8ff, #a855f7, #ec4899); color: #04050c;
+    box-shadow: 0 0 24px rgba(34,232,255,.5);
+  }
+  .preview__flip-icon svg { width: 1.4rem; height: 1.4rem; }
+  .preview__flip-text { font-size: 1.1rem; font-weight: 500; line-height: 1.4; color: var(--heading); max-width: 22rem; }
 
-  .preview__hint { text-align: center; color: var(--body-muted); font-size: .82rem; }
+  /* Progress dots — a passive, universally-understood signal ("this is
+     cycling, more is coming") that asks nothing of the visitor. */
+  .preview__dots { display: flex; gap: .5rem; }
+  .preview__dot { width: .5rem; height: .5rem; border-radius: 999px; background: var(--glass-border); transition: background .4s ease, transform .4s ease; }
+  .preview__dot.is-active { background: #22e8ff; transform: scale(1.3); }
 
-  /* Visible by default — the pre-reveal/hidden state (used for the
-     scroll-triggered staggered flip) is switched on by JS right before a
-     confirmed-working IntersectionObserver starts watching, same safety
-     pattern used across the page. Reduced motion / a script error simply
-     leaves every card showing its "without" face, which is still a
-     complete, correct reading of the section. */
+  /* Reduced motion / a script error: show one static, fully-informative
+     state (the positive "with NM Studio" side) instead of an endless
+     cycle — never a half-finished animation stuck mid-transition. */
   @media (prefers-reduced-motion: reduce) {
-    .preview__flip-card { animation: none; }
-    .preview__flip-card-inner { transition: none; }
+    .preview__flip-stage { animation: none; }
+    .preview__flip-card-inner { transition: none; transform: rotateY(180deg) !important; }
   }
 
   /* ---------- booking modal ---------- */
@@ -1179,89 +1181,28 @@
     <p class="preview__lead" data-i18n="preview.lead">What changes for your business, at a glance.</p>
   </div>
 
-  <div class="preview__flip-grid" id="previewFlipGrid">
-    <div class="preview__flip-card">
-      <div class="preview__flip-stage" data-flip-stage role="button" tabindex="0" aria-label="Flip card">
-        <div class="preview__flip-card-inner">
-          <div class="preview__flip-face preview__flip-face--front">
-            <span class="preview__flip-tag" data-i18n="preview.withoutLabel">Without a website</span>
-            <div class="preview__flip-row">
-              <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-              <span class="preview__flip-text" data-i18n="preview.without1">Invisible on Google &amp; Maps</span>
-            </div>
-          </div>
-          <div class="preview__flip-face preview__flip-face--back">
-            <span class="preview__flip-tag" data-i18n="preview.withLabel">With NM Studio</span>
-            <div class="preview__flip-row">
-              <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="preview__flip-text" data-i18n="preview.with1">Found on Google &amp; Maps</span>
-            </div>
-          </div>
+  <div class="preview__showcase">
+    <div class="preview__flip-stage">
+      <div class="preview__flip-card-inner" id="previewFlipInner">
+        <div class="preview__flip-face preview__flip-face--front">
+          <span class="preview__flip-tag" data-i18n="preview.withoutLabel">Without a website</span>
+          <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="preview__flip-text" id="previewFrontText">Invisible on Google &amp; Maps</span>
+        </div>
+        <div class="preview__flip-face preview__flip-face--back">
+          <span class="preview__flip-tag" data-i18n="preview.withLabel">With NM Studio</span>
+          <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="preview__flip-text" id="previewBackText">Found on Google &amp; Maps</span>
         </div>
       </div>
     </div>
-    <div class="preview__flip-card">
-      <div class="preview__flip-stage" data-flip-stage role="button" tabindex="0" aria-label="Flip card">
-        <div class="preview__flip-card-inner">
-          <div class="preview__flip-face preview__flip-face--front">
-            <span class="preview__flip-tag" data-i18n="preview.withoutLabel">Without a website</span>
-            <div class="preview__flip-row">
-              <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-              <span class="preview__flip-text" data-i18n="preview.without2">Tourists searching Google in Thailand never find you</span>
-            </div>
-          </div>
-          <div class="preview__flip-face preview__flip-face--back">
-            <span class="preview__flip-tag" data-i18n="preview.withLabel">With NM Studio</span>
-            <div class="preview__flip-row">
-              <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="preview__flip-text" data-i18n="preview.with2">Tourists find you on Google before they even land in Thailand</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="preview__flip-card">
-      <div class="preview__flip-stage" data-flip-stage role="button" tabindex="0" aria-label="Flip card">
-        <div class="preview__flip-card-inner">
-          <div class="preview__flip-face preview__flip-face--front">
-            <span class="preview__flip-tag" data-i18n="preview.withoutLabel">Without a website</span>
-            <div class="preview__flip-row">
-              <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-              <span class="preview__flip-text" data-i18n="preview.without3">Old menu, hard to update</span>
-            </div>
-          </div>
-          <div class="preview__flip-face preview__flip-face--back">
-            <span class="preview__flip-tag" data-i18n="preview.withLabel">With NM Studio</span>
-            <div class="preview__flip-row">
-              <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="preview__flip-text" data-i18n="preview.with3">QR menu, updated instantly</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="preview__flip-card">
-      <div class="preview__flip-stage" data-flip-stage role="button" tabindex="0" aria-label="Flip card">
-        <div class="preview__flip-card-inner">
-          <div class="preview__flip-face preview__flip-face--front">
-            <span class="preview__flip-tag" data-i18n="preview.withoutLabel">Without a website</span>
-            <div class="preview__flip-row">
-              <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-              <span class="preview__flip-text" data-i18n="preview.without4">Looks less trustworthy than competitors</span>
-            </div>
-          </div>
-          <div class="preview__flip-face preview__flip-face--back">
-            <span class="preview__flip-tag" data-i18n="preview.withLabel">With NM Studio</span>
-            <div class="preview__flip-row">
-              <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="preview__flip-text" data-i18n="preview.with4">Professional first impression</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="preview__dots" id="previewDots" aria-hidden="true">
+      <span class="preview__dot is-active"></span>
+      <span class="preview__dot"></span>
+      <span class="preview__dot"></span>
+      <span class="preview__dot"></span>
     </div>
   </div>
-  <p class="preview__hint" data-i18n="preview.hint">Tap a card to flip it</p>
 </section>
 
 <section class="story" id="how-it-works">
@@ -1556,7 +1497,6 @@ var translations = {
       eyebrow: "The Difference",
       title: "See the difference.",
       lead: "What changes for your business, at a glance.",
-      hint: "Tap a card to flip it",
       withoutLabel: "Without a website",
       without1: "Invisible on Google & Maps",
       without2: "Tourists searching Google in Thailand never find you",
@@ -1649,7 +1589,6 @@ var translations = {
       eyebrow: "La différence",
       title: "Voyez la différence.",
       lead: "Ce qui change pour votre commerce, en un coup d'œil.",
-      hint: "Touchez une carte pour la retourner",
       withoutLabel: "Sans site web",
       without1: "Invisible sur Google & Maps",
       without2: "Vos clients cherchent en ligne… et ne vous trouvent pas",
@@ -1742,7 +1681,6 @@ var translations = {
       eyebrow: "La differenza",
       title: "Guarda la differenza.",
       lead: "Cosa cambia per la tua attività, in un colpo d'occhio.",
-      hint: "Tocca una carta per girarla",
       withoutLabel: "Senza sito web",
       without1: "Invisibile su Google & Maps",
       without2: "I tuoi clienti cercano online… e non ti trovano",
@@ -1835,7 +1773,6 @@ var translations = {
       eyebrow: "ความแตกต่าง",
       title: "ดูความแตกต่าง",
       lead: "สิ่งที่เปลี่ยนไปสำหรับธุรกิจของคุณ ในสายตาเดียว",
-      hint: "แตะการ์ดเพื่อพลิกดู",
       withoutLabel: "ไม่มีเว็บไซต์",
       without1: "หาไม่เจอบน Google & Maps",
       without2: "นักท่องเที่ยวค้นหาใน Google ที่ประเทศไทย แต่ไม่เจอร้านคุณ",
@@ -1928,7 +1865,6 @@ var translations = {
       eyebrow: "الفرق",
       title: "شاهد الفرق.",
       lead: "ما الذي يتغيّر لعملك، ببساطة.",
-      hint: "المس البطاقة لتقليبها",
       withoutLabel: "بدون موقع إلكتروني",
       without1: "غير مرئي على Google وخرائط جوجل",
       without2: "عملاؤك يبحثون عبر الإنترنت... ولا يجدونك",
@@ -2100,6 +2036,22 @@ function applyLanguage(lang) {
   });
 
   try { localStorage.setItem("nmLang", lang); } catch (e) {}
+
+  refreshPreviewContent();
+}
+
+/* Preview showcase: re-applies the current point's text in whatever
+   language is now active. Standalone (not part of the generic [data-i18n]
+   walk above) so a language switch mid-cycle never fights the auto-loop's
+   own writes — both always go through this one function. */
+var previewPointIndex = 0;
+function refreshPreviewContent() {
+  var frontEl = document.getElementById("previewFrontText");
+  var backEl = document.getElementById("previewBackText");
+  if (!frontEl || !backEl) return;
+  var n = previewPointIndex + 1;
+  frontEl.textContent = decodeEntities(tKey(currentLang, "preview.without" + n) || "");
+  backEl.textContent = decodeEntities(tKey(currentLang, "preview.with" + n) || "");
 }
 
 function detectInitialLang() {
@@ -2189,38 +2141,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   } catch (e) {}
 
-  /* Preview flip cards: each starts showing its "without" face. When the
-     grid scrolls into view, the cards flip to "with NM Studio" one by one
-     (the reveal). After that, each card stays independently clickable —
-     tap/click or Enter/Space toggles it back and forth. A reduced-motion
-     visitor, or a script error, simply keeps every card on its "without"
-     face — still a complete, correct reading of the section. */
+  /* Preview showcase: fully automatic, no tap/swipe required from anyone.
+     One card cycles on its own through all 4 points — shows the problem,
+     flips in 3D to reveal the fix, flips back, fades to the next point —
+     for as long as the section is on screen. Reduced motion (or a script
+     error) leaves it on the static, fully-flipped "with NM Studio" state
+     set by CSS — still a complete, correct, positive reading on its own. */
   try {
-    const flipInners = Array.prototype.slice.call(document.querySelectorAll(".preview__flip-card-inner"));
-    const flipStages = Array.prototype.slice.call(document.querySelectorAll("[data-flip-stage]"));
+    const flipInner = document.getElementById("previewFlipInner");
+    const dots = Array.prototype.slice.call(document.querySelectorAll(".preview__dot"));
     const reduceMotionFlip = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    flipStages.forEach((stage) => {
-      const inner = stage.querySelector(".preview__flip-card-inner");
-      if (!inner) return;
-      function toggleFlip() { inner.classList.toggle("is-flipped"); }
-      stage.addEventListener("click", toggleFlip);
-      stage.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleFlip(); }
-      });
-    });
+    if (flipInner && !reduceMotionFlip && "IntersectionObserver" in window) {
+      let cycleTimer = null;
+      let running = false;
 
-    if (flipInners.length && !reduceMotionFlip && "IntersectionObserver" in window) {
-      const flipObserver = new IntersectionObserver((entries) => {
+      function runCycle() {
+        flipInner.classList.add("is-flipped"); // reveal the fix
+        cycleTimer = setTimeout(() => {
+          flipInner.classList.remove("is-flipped"); // back to the problem
+          cycleTimer = setTimeout(() => {
+            flipInner.classList.add("is-fading");
+            cycleTimer = setTimeout(() => {
+              previewPointIndex = (previewPointIndex + 1) % 4;
+              refreshPreviewContent();
+              dots.forEach((d, i) => d.classList.toggle("is-active", i === previewPointIndex));
+              flipInner.classList.remove("is-fading");
+              cycleTimer = setTimeout(runCycle, 700);
+            }, 350);
+          }, 1100);
+        }, 2300);
+      }
+
+      const showcaseObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = flipInners.indexOf(entry.target);
-            setTimeout(() => { entry.target.classList.add("is-flipped"); }, 300 + Math.max(idx, 0) * 220);
-            flipObserver.unobserve(entry.target);
+          if (entry.isIntersecting && !running) {
+            running = true;
+            cycleTimer = setTimeout(runCycle, 1200);
+          } else if (!entry.isIntersecting && running) {
+            running = false;
+            clearTimeout(cycleTimer);
           }
         });
       }, { threshold: 0.4 });
-      flipInners.forEach((el) => flipObserver.observe(el));
+      showcaseObserver.observe(flipInner);
     }
   } catch (e) {}
 
