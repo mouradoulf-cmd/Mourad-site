@@ -1082,12 +1082,172 @@
     max-width: 76rem; margin: 2rem auto 0;
     text-align: center; font-size: .78rem; color: var(--body-muted);
   }
+
+  /* ---------- Chatbot (fixed overlay, uses px throughout so it stays a
+     consistent physical size regardless of the page's vw-based rem scale) ---------- */
+  .chatbot { position: fixed; right: 20px; bottom: 20px; z-index: 130; font-family: "Onest", sans-serif; }
+  html[dir="rtl"] .chatbot { right: auto; left: 20px; }
+
+  .chatbot__toggle {
+    position: relative;
+    width: 58px; height: 58px; border-radius: 50%; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #22e8ff, #a855f7, #ec4899);
+    box-shadow: 0 10px 30px rgba(168,85,247,.35);
+    color: #0a0a10;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .chatbot__toggle:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 14px 36px rgba(168,85,247,.45); }
+  .chatbot__toggle svg { width: 26px; height: 26px; }
+  .chatbot__toggle .icon-close { display: none; }
+  .chatbot.is-open .chatbot__toggle .icon-chat { display: none; }
+  .chatbot.is-open .chatbot__toggle .icon-close { display: block; }
+
+  .chatbot__ping {
+    position: absolute; top: -2px; right: -2px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #ec4899; border: 2px solid var(--hero-base);
+  }
+  .chatbot__ping::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: #ec4899; opacity: .6;
+    animation: chatbotPing 1.8s cubic-bezier(0,0,.2,1) infinite;
+  }
+  @keyframes chatbotPing { 0% { transform: scale(1); opacity: .6; } 70%,100% { transform: scale(2.2); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .chatbot__ping::after { animation: none; } }
+
+  .chatbot__panel {
+    position: absolute; right: 0; bottom: 72px;
+    width: 360px; max-width: calc(100vw - 40px);
+    max-height: min(70vh, 560px);
+    display: flex; flex-direction: column;
+    background: #0a0d16;
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.5);
+    overflow: hidden;
+    opacity: 0; transform: translateY(12px) scale(.98); pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  html[dir="rtl"] .chatbot__panel { right: auto; left: 0; }
+  .chatbot.is-open .chatbot__panel { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+  .chatbot__header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 16px; border-bottom: 1px solid var(--glass-border);
+    background: rgba(255,255,255,.03);
+  }
+  .chatbot__avatar {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #22e8ff, #a855f7, #ec4899);
+    color: #0a0a10; font-weight: 700; font-size: 13px;
+  }
+  .chatbot__header-text { flex: 1; min-width: 0; }
+  .chatbot__title { margin: 0; font-size: 14px; font-weight: 600; color: var(--heading); }
+  .chatbot__status { margin: 2px 0 0; font-size: 11.5px; color: #6ee7b7; display: flex; align-items: center; gap: 5px; }
+  .chatbot__status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #6ee7b7; flex-shrink: 0; }
+
+  .chatbot__body {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .chatbot__body::-webkit-scrollbar { width: 6px; }
+  .chatbot__body::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 999px; }
+
+  .chatbot__msg {
+    max-width: 85%; padding: 10px 13px; border-radius: 14px;
+    font-size: 13.5px; line-height: 1.5;
+  }
+  .chatbot__msg--bot {
+    align-self: flex-start; background: var(--glass-fill);
+    border: 1px solid var(--glass-border); color: var(--heading);
+    border-bottom-left-radius: 4px;
+  }
+  html[dir="rtl"] .chatbot__msg--bot { border-bottom-left-radius: 14px; border-bottom-right-radius: 4px; }
+  .chatbot__msg--user {
+    align-self: flex-end; background: linear-gradient(135deg, #22e8ff, #a855f7);
+    color: #0a0a10; font-weight: 500;
+    border-bottom-right-radius: 4px;
+  }
+  html[dir="rtl"] .chatbot__msg--user { border-bottom-right-radius: 14px; border-bottom-left-radius: 4px; }
+
+  .chatbot__typing { align-self: flex-start; display: flex; gap: 4px; padding: 12px 14px; background: var(--glass-fill); border: 1px solid var(--glass-border); border-radius: 14px; border-bottom-left-radius: 4px; }
+  .chatbot__typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--body-muted); animation: chatbotTyping 1s ease-in-out infinite; }
+  .chatbot__typing span:nth-child(2) { animation-delay: .15s; }
+  .chatbot__typing span:nth-child(3) { animation-delay: .3s; }
+  @keyframes chatbotTyping { 0%,60%,100% { transform: translateY(0); opacity: .4; } 30% { transform: translateY(-3px); opacity: 1; } }
+
+  .chatbot__questions { display: flex; flex-direction: column; gap: 6px; margin-top: 2px; }
+  .chatbot__question-btn {
+    text-align: left; border: 1px solid var(--glass-border); background: rgba(255,255,255,.03);
+    color: var(--heading); font-family: inherit; font-size: 13px; font-weight: 500;
+    padding: 10px 12px; border-radius: 12px; cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, transform .15s ease;
+  }
+  html[dir="rtl"] .chatbot__question-btn { text-align: right; }
+  .chatbot__question-btn:hover { border-color: #22e8ff; background: rgba(34,232,255,.08); transform: translateX(2px); }
+  html[dir="rtl"] .chatbot__question-btn:hover { transform: translateX(-2px); }
+
+  .chatbot__back-btn {
+    align-self: flex-start; background: none; border: none; cursor: pointer;
+    color: var(--body-muted); font-family: inherit; font-size: 12.5px;
+    padding: 2px 0; text-decoration: underline; text-underline-offset: 3px;
+  }
+  .chatbot__back-btn:hover { color: var(--heading); }
+
+  .chatbot__inline-cta {
+    align-self: flex-start; border: 1px solid var(--glass-border); background: rgba(255,255,255,.05);
+    color: var(--heading); font-family: inherit; font-size: 12.5px; font-weight: 600;
+    padding: 8px 12px; border-radius: 999px; cursor: pointer; transition: border-color .2s ease;
+  }
+  .chatbot__inline-cta:hover { border-color: #a855f7; }
+
+  .chatbot__footer { padding: 12px; border-top: 1px solid var(--glass-border); background: rgba(255,255,255,.02); }
+  .chatbot__whatsapp-btn {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 11px; border-radius: 12px; border: none; cursor: pointer;
+    background: #25D366; color: #06210f; font-family: inherit; font-size: 13.5px; font-weight: 700;
+    transition: transform .15s ease, filter .2s ease;
+  }
+  .chatbot__whatsapp-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .chatbot__whatsapp-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  @media (max-width: 480px) {
+    .chatbot { right: 14px; bottom: 14px; }
+    html[dir="rtl"] .chatbot { right: auto; left: 14px; }
+    .chatbot__panel { width: calc(100vw - 28px); bottom: 70px; }
+  }
 </style>
 </head>
 <body>
 
 <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollProgressBar"></div></div>
 <div class="grain-overlay" aria-hidden="true"></div>
+
+<div class="chatbot" id="chatbot">
+  <div class="chatbot__panel" id="chatbotPanel" role="dialog" aria-modal="false" aria-labelledby="chatbotTitle">
+    <div class="chatbot__header">
+      <div class="chatbot__avatar" aria-hidden="true">NM</div>
+      <div class="chatbot__header-text">
+        <p class="chatbot__title" id="chatbotTitle" data-i18n="chatbot.title">NM Studio</p>
+        <p class="chatbot__status" data-i18n="chatbot.status">Usually replies within minutes</p>
+      </div>
+    </div>
+    <div class="chatbot__body" id="chatbotBody"></div>
+    <div class="chatbot__footer">
+      <button type="button" class="chatbot__whatsapp-btn" id="chatbotWhatsappBtn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.93h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.07-.2-.32a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.15.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.53.13.17 1.73 2.64 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+        <span data-i18n="chatbot.ctaLabel">Chat on WhatsApp</span>
+      </button>
+    </div>
+  </div>
+  <button type="button" class="chatbot__toggle" id="chatbotToggle" data-i18n-aria-label="chatbot.openLabel" aria-label="Open chat" aria-expanded="false">
+    <span class="chatbot__ping" aria-hidden="true"></span>
+    <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
 
 <section class="hero">
   <canvas class="hero__canvas" aria-hidden="true"></canvas>
@@ -1590,6 +1750,27 @@ var translations = {
       basic: { title: "Basic", tagline: "Get scanned. Get ordered.", f1: "QR code menu, always up to date", f2: "Unlimited menu edits", f3: "Works on any phone, no app needed", cta: "Choose Basic", demoLink: "See a real QR menu example →" },
       pro: { title: "Pro", tagline: "Your own website, done for you.", f1: "Everything in Basic", f2: "Full custom website, built from your photos", f3: "Live in days, not months", cta: "Choose Pro" },
       elite: { title: "Elite", tagline: "The full package. Zero effort.", monthlyCustom: "Monthly fee tailored to your needs", f1: "Everything in Pro", f2: "Social media set up & managed", f3: "Priority support", cta: "Talk to us" }
+    },
+    chatbot: {
+      title: "NM Studio",
+      status: "Usually replies within minutes",
+      openLabel: "Open chat",
+      closeLabel: "Close chat",
+      greeting: "Hi 👋 Got a question before you get started? Tap what you're curious about:",
+      backLabel: "← See other questions",
+      ctaLabel: "Chat on WhatsApp",
+      ctaMessage: "Hi, I have a few questions about your offers.",
+      pricingCta: "See pricing ↓",
+      faqs: [
+        { q: "How long until my site is live?", a: "Just a few days after I get your photos — not weeks." },
+        { q: "I'm not techy at all, is that a problem?", a: "Not at all. You send me your photos, I take care of everything else." },
+        { q: "Is the site really mine?", a: "Yes. It's your name, your photos, your content. I build it for you, not for me." },
+        { q: "What if I want to change something later?", a: "No problem — unlimited free edits, anytime." },
+        { q: "How does the QR menu actually work?", a: "Your customer scans the code with their phone, no app needed, and instantly sees your up-to-date menu." },
+        { q: "I already have Instagram, why do I need a site?", a: "Instagram depends on an algorithm you don't control. A website is your own storefront — findable on Google, available 24/7." },
+        { q: "What if I don't like it, can I stop?", a: "Yes, no commitment. Cancel anytime, free of charge." },
+        { q: "How much does it cost?", a: "It depends on the plan — everything's detailed right above. We can also talk it through together.", action: "pricing" }
+      ]
     }
   },
   fr: {
@@ -1682,6 +1863,27 @@ var translations = {
       basic: { title: "Basic", tagline: "Scanné. Commandé.", f1: "Menu QR code, toujours à jour", f2: "Modifications de menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic", demoLink: "Voir un exemple réel de menu QR →" },
       pro: { title: "Pro", tagline: "Votre propre site web, clé en main.", f1: "Tout ce qui est inclus dans Basic", f2: "Site web sur-mesure, créé à partir de vos photos", f3: "En ligne en quelques jours, pas en mois", cta: "Choisir Pro" },
       elite: { title: "Elite", tagline: "Le pack complet. Zéro effort.", monthlyCustom: "Abonnement mensuel sur mesure", f1: "Tout ce qui est inclus dans Pro", f2: "Réseaux sociaux configurés et gérés", f3: "Support prioritaire", cta: "Nous contacter" }
+    },
+    chatbot: {
+      title: "NM Studio",
+      status: "Je réponds généralement en quelques minutes",
+      openLabel: "Ouvrir le chat",
+      closeLabel: "Fermer le chat",
+      greeting: "Salut 👋 Une question avant de vous lancer ? Cliquez sur ce qui vous intéresse :",
+      backLabel: "← Voir d'autres questions",
+      ctaLabel: "Discuter sur WhatsApp",
+      ctaMessage: "Bonjour, j'ai quelques questions sur vos offres.",
+      pricingCta: "Voir les tarifs ↓",
+      faqs: [
+        { q: "Combien de temps pour avoir mon site ?", a: "Quelques jours après avoir reçu vos photos — pas des semaines." },
+        { q: "Je n'y connais rien en informatique, c'est gênant ?", a: "Pas du tout. Vous m'envoyez vos photos, je m'occupe de tout le reste." },
+        { q: "Le site m'appartient vraiment ?", a: "Oui. C'est votre nom, vos photos, votre contenu. Je le construis pour vous, pas pour moi." },
+        { q: "Et si je veux changer quelque chose après ?", a: "Aucun souci — modifications illimitées et gratuites, à tout moment." },
+        { q: "Le menu QR, ça marche comment concrètement ?", a: "Votre client scanne le code avec son téléphone, sans rien installer, et voit votre menu à jour instantanément." },
+        { q: "J'ai déjà Instagram, pourquoi un site ?", a: "Instagram dépend d'un algorithme que vous ne contrôlez pas. Un site, c'est votre vitrine à vous, trouvable sur Google, disponible 24h/24." },
+        { q: "Et si ça ne me plaît pas, je peux arrêter ?", a: "Oui, sans engagement. Vous annulez à tout moment, gratuitement." },
+        { q: "Combien ça coûte ?", a: "Ça dépend du plan choisi — tout est détaillé juste au-dessus. On peut aussi en discuter directement ensemble.", action: "pricing" }
+      ]
     }
   },
   it: {
@@ -1774,6 +1976,27 @@ var translations = {
       basic: { title: "Basic", tagline: "Scansionato. Ordinato.", f1: "Menu con QR code, sempre aggiornato", f2: "Modifiche al menu illimitate", f3: "Funziona su ogni telefono, senza app", cta: "Scegli Basic", demoLink: "Vedi un esempio reale di menu QR →" },
       pro: { title: "Pro", tagline: "Il tuo sito web, chiavi in mano.", f1: "Tutto quello incluso in Basic", f2: "Sito su misura, costruito con le tue foto", f3: "Online in giorni, non mesi", cta: "Scegli Pro" },
       elite: { title: "Elite", tagline: "Il pacchetto completo. Zero sforzo.", monthlyCustom: "Canone mensile su misura", f1: "Tutto quello incluso in Pro", f2: "Social media impostati e gestiti", f3: "Supporto prioritario", cta: "Contattaci" }
+    },
+    chatbot: {
+      title: "NM Studio",
+      status: "Di solito rispondo in pochi minuti",
+      openLabel: "Apri la chat",
+      closeLabel: "Chiudi la chat",
+      greeting: "Ciao 👋 Hai una domanda prima di iniziare? Clicca su ciò che ti interessa:",
+      backLabel: "← Vedi altre domande",
+      ctaLabel: "Scrivimi su WhatsApp",
+      ctaMessage: "Ciao, ho qualche domanda sulle tue offerte.",
+      pricingCta: "Vedi i prezzi ↓",
+      faqs: [
+        { q: "Quanto tempo ci vuole per avere il mio sito?", a: "Solo pochi giorni dopo aver ricevuto le tue foto — non settimane." },
+        { q: "Non capisco nulla di informatica, è un problema?", a: "Per niente. Mi mandi le tue foto, al resto ci penso io." },
+        { q: "Il sito è davvero mio?", a: "Sì. È il tuo nome, le tue foto, i tuoi contenuti. Lo costruisco per te, non per me." },
+        { q: "E se voglio cambiare qualcosa dopo?", a: "Nessun problema — modifiche illimitate e gratuite, in qualsiasi momento." },
+        { q: "Come funziona esattamente il menu QR?", a: "Il cliente scansiona il codice con il telefono, senza installare nulla, e vede subito il tuo menu aggiornato." },
+        { q: "Ho già Instagram, perché mi serve un sito?", a: "Instagram dipende da un algoritmo che non controlli. Un sito è la tua vetrina, trovabile su Google, disponibile 24 ore su 24." },
+        { q: "E se non mi piace, posso smettere?", a: "Sì, nessun vincolo. Annulli quando vuoi, gratuitamente." },
+        { q: "Quanto costa?", a: "Dipende dal piano scelto — tutto è dettagliato qui sopra. Possiamo anche parlarne insieme direttamente.", action: "pricing" }
+      ]
     }
   },
   th: {
@@ -1866,6 +2089,27 @@ var translations = {
       basic: { title: "Basic", tagline: "สแกนแล้วสั่งได้เลย", f1: "เมนู QR โค้ด อัปเดตล่าสุดเสมอ", f2: "แก้ไขเมนูได้ไม่จำกัด", f3: "ใช้งานได้ทุกโทรศัพท์ ไม่ต้องโหลดแอป", cta: "เลือก Basic", demoLink: "ดูตัวอย่างเมนู QR จริง →" },
       pro: { title: "Pro", tagline: "เว็บไซต์ของคุณเอง ทำให้ครบจบในที่เดียว", f1: "รวมทุกอย่างในแพ็กเกจ Basic", f2: "เว็บไซต์ออกแบบเฉพาะ จากรูปภาพของคุณ", f3: "พร้อมใช้งานภายในไม่กี่วัน ไม่ใช่หลายเดือน", cta: "เลือก Pro" },
       elite: { title: "Elite", tagline: "แพ็กเกจครบวงจร ไม่ต้องทำอะไรเลย", monthlyCustom: "ค่าบริการรายเดือนออกแบบเฉพาะสำหรับคุณ", f1: "รวมทุกอย่างในแพ็กเกจ Pro", f2: "ตั้งค่าและดูแลโซเชียลมีเดียให้", f3: "การสนับสนุนแบบเร่งด่วน", cta: "ติดต่อเรา" }
+    },
+    chatbot: {
+      title: "NM Studio",
+      status: "โดยปกติจะตอบกลับภายในไม่กี่นาที",
+      openLabel: "เปิดแชท",
+      closeLabel: "ปิดแชท",
+      greeting: "สวัสดีค่ะ/ครับ 👋 มีคำถามก่อนเริ่มต้นไหม? กดที่สิ่งที่สนใจได้เลย:",
+      backLabel: "← ดูคำถามอื่น",
+      ctaLabel: "แชทผ่าน WhatsApp",
+      ctaMessage: "สวัสดีค่ะ/ครับ ฉันมีคำถามเกี่ยวกับแพ็กเกจของคุณ",
+      pricingCta: "ดูราคา ↓",
+      faqs: [
+        { q: "ใช้เวลานานแค่ไหนกว่าเว็บไซต์จะพร้อมใช้งาน?", a: "ไม่กี่วันหลังจากได้รับรูปภาพจากคุณ — ไม่ใช่หลายสัปดาห์" },
+        { q: "ไม่มีความรู้เรื่องคอมพิวเตอร์เลย จะเป็นปัญหาไหม?", a: "ไม่เป็นปัญหาเลยค่ะ/ครับ คุณแค่ส่งรูปภาพมา ที่เหลือฉันจัดการให้ทั้งหมด" },
+        { q: "เว็บไซต์นี้เป็นของฉันจริงๆ ใช่ไหม?", a: "ใช่ค่ะ/ครับ เป็นชื่อของคุณ รูปของคุณ เนื้อหาของคุณ ฉันสร้างให้คุณ ไม่ใช่สำหรับตัวฉันเอง" },
+        { q: "ถ้าอยากเปลี่ยนอะไรทีหลังล่ะ?", a: "ไม่มีปัญหาค่ะ/ครับ — แก้ไขได้ไม่จำกัด ฟรี ทุกเมื่อ" },
+        { q: "เมนู QR ทำงานยังไงกันแน่?", a: "ลูกค้าสแกนโค้ดด้วยโทรศัพท์ ไม่ต้องโหลดแอป แล้วเห็นเมนูล่าสุดของคุณทันที" },
+        { q: "มี Instagram อยู่แล้ว ทำไมต้องมีเว็บไซต์ด้วย?", a: "Instagram ขึ้นอยู่กับอัลกอริทึมที่คุณควบคุมไม่ได้ แต่เว็บไซต์คือหน้าร้านของคุณเอง หาเจอบน Google ได้ตลอด 24 ชั่วโมง" },
+        { q: "ถ้าไม่ชอบ ยกเลิกได้ไหม?", a: "ได้ค่ะ/ครับ ไม่มีข้อผูกมัด ยกเลิกได้ทุกเมื่อ ฟรี" },
+        { q: "ราคาเท่าไหร่?", a: "ขึ้นอยู่กับแพ็กเกจที่เลือก — รายละเอียดทั้งหมดอยู่ด้านบนนี้ หรือคุยกันโดยตรงก็ได้ค่ะ/ครับ", action: "pricing" }
+      ]
     }
   },
   ar: {
@@ -1958,6 +2202,27 @@ var translations = {
       basic: { title: "Basic", tagline: "يُمسح ويُطلب مباشرة.", f1: "قائمة برمز QR، محدّثة دائماً", f2: "تعديلات غير محدودة للقائمة", f3: "يعمل على أي هاتف، بلا تطبيق", cta: "اختر Basic", demoLink: "شاهد مثالاً حقيقياً لقائمة QR ←" },
       pro: { title: "Pro", tagline: "موقعك الخاص، جاهز بالكامل.", f1: "كل ما في Basic", f2: "موقع مخصص بالكامل، مبني من صورك", f3: "جاهز خلال أيام، لا أشهر", cta: "اختر Pro" },
       elite: { title: "Elite", tagline: "الباقة الكاملة. بلا أي مجهود.", monthlyCustom: "رسوم شهرية مصممة حسب احتياجك", f1: "كل ما في Pro", f2: "إعداد وإدارة وسائل التواصل الاجتماعي", f3: "دعم ذو أولوية", cta: "تواصل معنا" }
+    },
+    chatbot: {
+      title: "NM Studio",
+      status: "أرد عادة خلال دقائق",
+      openLabel: "افتح المحادثة",
+      closeLabel: "أغلق المحادثة",
+      greeting: "مرحباً 👋 عندك سؤال قبل البداية؟ اضغط على ما يهمك:",
+      backLabel: "← شاهد أسئلة أخرى",
+      ctaLabel: "تحدث عبر واتساب",
+      ctaMessage: "مرحباً، عندي بعض الأسئلة حول عروضكم.",
+      pricingCta: "شاهد الأسعار ↓",
+      faqs: [
+        { q: "كم من الوقت يحتاج موقعي ليصبح جاهزاً؟", a: "بضعة أيام فقط بعد استلام صورك — وليس أسابيع." },
+        { q: "لا أفهم شيئاً في الحاسوب، هل هذه مشكلة؟", a: "أبداً. ترسل لي صورك فقط، وأنا أتكفل بكل الباقي." },
+        { q: "هل الموقع ملكي حقاً؟", a: "نعم. باسمك، بصورك، بمحتواك. أبنيه من أجلك، لا من أجلي." },
+        { q: "ماذا لو أردت تغيير شيء لاحقاً؟", a: "لا مشكلة — تعديلات غير محدودة ومجانية، في أي وقت." },
+        { q: "كيف تعمل قائمة QR بالضبط؟", a: "يمسح الزبون الرمز بهاتفه، بدون أي تطبيق، ويرى قائمتك المحدثة فوراً." },
+        { q: "عندي إنستغرام بالفعل، لماذا أحتاج موقعاً؟", a: "إنستغرام يعتمد على خوارزمية لا تتحكم بها. الموقع هو واجهتك الخاصة، يظهر في Google، متاح على مدار الساعة." },
+        { q: "ماذا لو لم يعجبني، هل يمكنني التوقف؟", a: "نعم، بلا التزام. يمكنك الإلغاء في أي وقت، مجاناً." },
+        { q: "كم التكلفة؟", a: "يعتمد على الباقة المختارة — كل التفاصيل أعلاه مباشرة. يمكننا أيضاً التحدث عن ذلك مباشرة.", action: "pricing" }
+      ]
     }
   }
 };
@@ -2061,6 +2326,7 @@ function applyLanguage(lang) {
   try { localStorage.setItem("nmLang", lang); } catch (e) {}
 
   refreshPreviewContent();
+  if (window.refreshChatbot) window.refreshChatbot();
 }
 
 /* Preview showcase: re-applies the current point's text in whatever
@@ -2656,6 +2922,139 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }, { threshold: 0, rootMargin: "-45% 0px -45% 0px" });
       sectionMap.forEach((x) => spyObserver.observe(x.section));
+    }
+  } catch (e) {}
+
+  /* Chatbot: button-driven trust FAQ, no free text / no AI backend —
+     picking a question shows the answer, then a WhatsApp CTA stays
+     available throughout to convert the conversation into a real lead. */
+  try {
+    const chatbotEl = document.getElementById("chatbot");
+    const toggleBtn = document.getElementById("chatbotToggle");
+    const panelEl = document.getElementById("chatbotPanel");
+    const bodyEl = document.getElementById("chatbotBody");
+    const whatsappBtn = document.getElementById("chatbotWhatsappBtn");
+
+    if (chatbotEl && toggleBtn && panelEl && bodyEl) {
+      let greeted = false;
+
+      const scrollBodyToEnd = () => { bodyEl.scrollTop = bodyEl.scrollHeight; };
+
+      const addMessage = (text, role) => {
+        const div = document.createElement("div");
+        div.className = "chatbot__msg chatbot__msg--" + role;
+        div.textContent = text;
+        bodyEl.appendChild(div);
+        scrollBodyToEnd();
+      };
+
+      const showTyping = (callback) => {
+        const typing = document.createElement("div");
+        typing.className = "chatbot__typing";
+        typing.innerHTML = "<span></span><span></span><span></span>";
+        bodyEl.appendChild(typing);
+        scrollBodyToEnd();
+        setTimeout(() => { typing.remove(); callback(); }, 550);
+      };
+
+      const removeQuestionUi = () => {
+        const list = bodyEl.querySelector(".chatbot__questions");
+        if (list) list.remove();
+        const back = bodyEl.querySelector(".chatbot__back-btn");
+        if (back) back.remove();
+      };
+
+      const renderQuestions = () => {
+        removeQuestionUi();
+        const faqs = tKey(currentLang, "chatbot.faqs") || [];
+        const wrap = document.createElement("div");
+        wrap.className = "chatbot__questions";
+        faqs.forEach((item, idx) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "chatbot__question-btn";
+          btn.textContent = item.q;
+          btn.addEventListener("click", () => handleQuestionClick(idx));
+          wrap.appendChild(btn);
+        });
+        bodyEl.appendChild(wrap);
+        scrollBodyToEnd();
+      };
+
+      const closeChat = () => {
+        chatbotEl.classList.remove("is-open");
+        toggleBtn.setAttribute("aria-expanded", "false");
+      };
+
+      function handleQuestionClick(idx) {
+        const faqs = tKey(currentLang, "chatbot.faqs") || [];
+        const item = faqs[idx];
+        if (!item) return;
+        removeQuestionUi();
+        addMessage(item.q, "user");
+        showTyping(() => {
+          addMessage(item.a, "bot");
+          if (item.action === "pricing") {
+            const cta = document.createElement("button");
+            cta.type = "button";
+            cta.className = "chatbot__inline-cta";
+            cta.textContent = tKey(currentLang, "chatbot.pricingCta") || "";
+            cta.addEventListener("click", () => {
+              closeChat();
+              const pricingEl = document.getElementById("pricing");
+              if (pricingEl) pricingEl.scrollIntoView({ behavior: "smooth" });
+            });
+            bodyEl.appendChild(cta);
+          }
+          const back = document.createElement("button");
+          back.type = "button";
+          back.className = "chatbot__back-btn";
+          back.textContent = tKey(currentLang, "chatbot.backLabel") || "";
+          back.addEventListener("click", renderQuestions);
+          bodyEl.appendChild(back);
+          scrollBodyToEnd();
+        });
+      }
+
+      const greet = () => {
+        bodyEl.innerHTML = "";
+        addMessage(tKey(currentLang, "chatbot.greeting") || "", "bot");
+        renderQuestions();
+        greeted = true;
+      };
+
+      const openChat = () => {
+        chatbotEl.classList.add("is-open");
+        toggleBtn.setAttribute("aria-expanded", "true");
+        if (!greeted) greet();
+      };
+
+      toggleBtn.addEventListener("click", () => {
+        if (chatbotEl.classList.contains("is-open")) closeChat(); else openChat();
+      });
+      document.addEventListener("click", (e) => {
+        // Use composedPath() (the path at dispatch time) rather than
+        // contains(e.target): question buttons remove themselves from the
+        // DOM inside their own click handler, and a detached node is never
+        // "contained" by anything, which would otherwise make every
+        // in-chat click look like an outside click and close the panel.
+        const path = typeof e.composedPath === "function" ? e.composedPath() : [];
+        const insideChat = path.length ? path.includes(chatbotEl) : chatbotEl.contains(e.target);
+        if (!insideChat && chatbotEl.classList.contains("is-open")) closeChat();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && chatbotEl.classList.contains("is-open")) closeChat();
+      });
+      if (whatsappBtn) {
+        whatsappBtn.addEventListener("click", () => {
+          const msg = tKey(currentLang, "chatbot.ctaMessage") || "";
+          window.open("https://wa.me/qr/PYPOVXTCVM74I1?text=" + encodeURIComponent(msg), "_blank", "noopener");
+        });
+      }
+
+      // Re-render in the new language on a language switch, but only once
+      // the visitor has actually opened the chat at least once.
+      window.refreshChatbot = () => { if (greeted) greet(); };
     }
   } catch (e) {}
 });
