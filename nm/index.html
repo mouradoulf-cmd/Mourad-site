@@ -498,40 +498,77 @@
     .reasons__item, .reasons__icon { transition: none; opacity: 1; transform: none; }
   }
 
-  /* ---------- rating (5-star trust badge, near the very bottom) ---------- */
-  /* Stars spin in one by one in 3D, then the line settles in under them —
-     one scroll-triggered moment, never repeats. */
-  .rating { position: relative; padding: 5rem 1.25rem 6rem; text-align: center; overflow: hidden; }
-  @media (min-width: 640px) { .rating { padding: 6rem 2.5rem 7rem; } }
-  .rating__inner { max-width: 34rem; margin: 0 auto; perspective: 1000px; }
+  /* ---------- rating (3D "100%" badge, near the very bottom) ---------- */
+  /* A circular progress ring draws itself in while the number counts up,
+     the whole badge pops in with a 3D coin-flip, then settles into a slow
+     idle wobble — one scroll-triggered entrance, the wobble is the only
+     thing that keeps moving, and only ever gently. */
+  .rating { position: relative; padding: 6rem 1.25rem; text-align: center; overflow: hidden; }
+  @media (min-width: 640px) { .rating { padding: 7rem 2.5rem; } }
+  .rating__inner { max-width: 30rem; margin: 0 auto; perspective: 1200px; }
 
-  .rating__stars { display: flex; justify-content: center; gap: .6rem; margin-bottom: 1.5rem; }
-  .rating__star {
-    width: 2.1rem; height: 2.1rem; color: #ffc03d;
-    filter: drop-shadow(0 0 12px rgba(255,192,61,.45));
+  .rating__badge {
+    position: relative;
+    width: 9.5rem; height: 9.5rem;
+    margin: 0 auto 2rem;
     opacity: 0;
-    transform: rotateY(160deg) translateZ(-50px) scale(.3);
-    transition: opacity .5s cubic-bezier(0.34, 1.56, 0.64, 1), transform .6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: rotateY(165deg) scale(.6);
+    transition: opacity .7s cubic-bezier(0.34, 1.56, 0.64, 1), transform .9s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  @media (min-width: 640px) { .rating__star { width: 2.4rem; height: 2.4rem; } }
-  .rating__inner.is-visible .rating__star { opacity: 1; transform: rotateY(0deg) translateZ(0) scale(1); }
-  .rating__inner.is-visible .rating__star:nth-child(1) { transition-delay: 0s; }
-  .rating__inner.is-visible .rating__star:nth-child(2) { transition-delay: .1s; }
-  .rating__inner.is-visible .rating__star:nth-child(3) { transition-delay: .2s; }
-  .rating__inner.is-visible .rating__star:nth-child(4) { transition-delay: .3s; }
-  .rating__inner.is-visible .rating__star:nth-child(5) { transition-delay: .4s; }
+  .rating__inner.is-visible .rating__badge { opacity: 1; transform: none; }
+
+  .rating__badge-glow {
+    position: absolute; inset: -25%; border-radius: 50%;
+    background: radial-gradient(circle, rgba(168,85,247,.4), transparent 70%);
+    filter: blur(20px);
+    animation: ratingGlowPulse 4.5s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+  .rating__inner.is-visible .rating__badge-glow { animation-play-state: running; }
+  @keyframes ratingGlowPulse {
+    0%, 100% { opacity: .45; transform: scale(1); }
+    50% { opacity: .85; transform: scale(1.1); }
+  }
+
+  .rating__ring {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    animation: ratingBadgeFloat 7s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+  .rating__inner.is-visible .rating__ring { animation-play-state: running; }
+  @keyframes ratingBadgeFloat {
+    0%, 100% { transform: rotateY(0deg) rotateX(0deg); }
+    50% { transform: rotateY(9deg) rotateX(-6deg); }
+  }
+  .rating__ring-track { fill: none; stroke: var(--glass-border); stroke-width: 4; }
+  .rating__ring-fill {
+    fill: none; stroke: url(#ratingRingGradient); stroke-width: 4; stroke-linecap: round;
+    stroke-dasharray: 326.7; stroke-dashoffset: 326.7;
+    filter: drop-shadow(0 0 8px rgba(34,232,255,.5));
+    transition: stroke-dashoffset 1.3s cubic-bezier(0.65, 0, 0.35, 1) .2s;
+  }
+  .rating__inner.is-visible .rating__ring-fill { stroke-dashoffset: 0; }
+
+  .rating__badge-number {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--heading);
+  }
 
   .rating__text {
     font-size: clamp(1.3rem, 2.8vw, 1.9rem); font-weight: 500; letter-spacing: -0.01em;
     color: var(--heading); margin: 0;
     opacity: 0; transform: translateY(18px);
-    transition: opacity .8s ease, transform .8s ease;
-    transition-delay: .6s;
+    transition: opacity .8s ease .5s, transform .8s ease .5s;
   }
   .rating__inner.is-visible .rating__text { opacity: 1; transform: translateY(0); }
 
   @media (prefers-reduced-motion: reduce) {
-    .rating__star, .rating__text { transition: none; opacity: 1; transform: none; }
+    .rating__badge, .rating__badge-glow, .rating__ring, .rating__ring-fill, .rating__text {
+      transition: none; animation: none; opacity: 1; transform: none;
+    }
+    .rating__ring-fill { stroke-dashoffset: 0; }
   }
 
   /* ---------- booking modal ---------- */
@@ -1583,14 +1620,22 @@
 <section class="rating" id="rating">
   <span class="section-divider" aria-hidden="true"></span>
   <div class="rating__inner">
-    <div class="rating__stars" aria-hidden="true">
-      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
-      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
-      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
-      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
-      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
+    <div class="rating__badge">
+      <span class="rating__badge-glow" aria-hidden="true"></span>
+      <svg class="rating__ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="ratingRingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#22e8ff"/>
+            <stop offset="55%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#ec4899"/>
+          </linearGradient>
+        </defs>
+        <circle class="rating__ring-track" cx="60" cy="60" r="52"/>
+        <circle class="rating__ring-fill" cx="60" cy="60" r="52" transform="rotate(-90 60 60)"/>
+      </svg>
+      <span class="rating__badge-number"><span data-count="100" data-suffix="%">100%</span></span>
     </div>
-    <p class="rating__text" data-i18n="rating.text">100% of our clients are happy working with us.</p>
+    <p class="rating__text" data-i18n="rating.text">Every client is happy working with us.</p>
   </div>
 </section>
 
@@ -1684,7 +1729,7 @@ var translations = {
       closeLabel: "Close",
       waMessage: "Hi! I'd like to book an appointment.\nBusiness: {business}\nPhone: {phone}\nPreferred date: {date} at {time}"
     },
-    rating: { text: "100% of our clients are happy working with us." },
+    rating: { text: "Every client is happy working with us." },
     footer: { text: "© 2026 NM Studio — built to get you found.", linksLabel: "Quick Links", contactLabel: "Get in Touch", contactBtn: "Message us on WhatsApp" },
     story: {
       eyebrow: "How it works",
@@ -1790,7 +1835,7 @@ var translations = {
       closeLabel: "Fermer",
       waMessage: "Bonjour ! Je souhaite prendre rendez-vous.\nCommerce : {business}\nTéléphone : {phone}\nDate souhaitée : {date} à {time}"
     },
-    rating: { text: "100% de nos clients sont heureux de travailler avec nous." },
+    rating: { text: "Tous nos clients sont heureux de travailler avec nous." },
     footer: { text: "© 2026 NM Studio — conçu pour vous faire trouver.", linksLabel: "Liens rapides", contactLabel: "Nous contacter", contactBtn: "Contactez-nous sur WhatsApp" },
     story: {
       eyebrow: "Comment ça marche",
@@ -1896,7 +1941,7 @@ var translations = {
       closeLabel: "Chiudi",
       waMessage: "Ciao! Vorrei prendere un appuntamento.\nAttività: {business}\nTelefono: {phone}\nData preferita: {date} alle {time}"
     },
-    rating: { text: "Il 100% dei nostri clienti è felice di lavorare con noi." },
+    rating: { text: "Ogni cliente è felice di lavorare con noi." },
     footer: { text: "© 2026 NM Studio — creato per farti trovare.", linksLabel: "Link utili", contactLabel: "Contattaci", contactBtn: "Scrivici su WhatsApp" },
     story: {
       eyebrow: "Come funziona",
@@ -2002,7 +2047,7 @@ var translations = {
       closeLabel: "ปิด",
       waMessage: "สวัสดีค่ะ/ครับ ฉันต้องการนัดหมาย\nร้าน/ธุรกิจ: {business}\nเบอร์โทร: {phone}\nวันที่ต้องการ: {date} เวลา {time}"
     },
-    rating: { text: "ลูกค้าของเรา 100% พึงพอใจที่ได้ร่วมงานกับเรา" },
+    rating: { text: "ลูกค้าทุกคนพึงพอใจที่ได้ร่วมงานกับเรา" },
     footer: { text: "© 2026 NM Studio — สร้างมาเพื่อให้คนเจอคุณ", linksLabel: "ลิงก์ด่วน", contactLabel: "ติดต่อเรา", contactBtn: "แชทผ่าน WhatsApp" },
     story: {
       eyebrow: "วิธีการทำงาน",
@@ -2108,7 +2153,7 @@ var translations = {
       closeLabel: "إغلاق",
       waMessage: "مرحباً! أود حجز موعد.\nالنشاط التجاري: {business}\nرقم الهاتف: {phone}\nالتاريخ المفضل: {date} الساعة {time}"
     },
-    rating: { text: "100% من عملائنا سعداء بالعمل معنا." },
+    rating: { text: "كل عملائنا سعداء بالعمل معنا." },
     footer: { text: "© 2026 NM Studio — صُنع لجعلك مرئياً.", linksLabel: "روابط سريعة", contactLabel: "تواصل معنا", contactBtn: "راسلنا عبر واتساب" },
     story: {
       eyebrow: "كيف يعمل",
