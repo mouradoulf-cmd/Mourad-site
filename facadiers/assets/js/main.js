@@ -61,6 +61,17 @@ function animateWords(words, staggerMs, startDelay){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Some mobile browsers accept the autoplay/muted/playsinline attributes
+  // but still need an explicit play() call to actually start — attributes
+  // alone aren't always enough. Silently ignored if it fails; the poster
+  // image (or the video's own first frame) is still a complete fallback.
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    const playPromise = heroVideo.play();
+    if (playPromise && playPromise.catch) playPromise.catch(() => {});
+  }
+
   const title = document.getElementById('heroTitle');
   const desc = document.getElementById('heroDesc');
   const cta = document.getElementById('heroCta');
