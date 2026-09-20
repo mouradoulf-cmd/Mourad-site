@@ -46,6 +46,26 @@
     background-size: 140px 140px;
   }
 
+  /* ---------- custom cursor (additive only — never hides the native
+     pointer, purely decorative, off entirely on touch) ---------- */
+  .cursor-dot {
+    position: fixed; top: 0; left: 0;
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,.85);
+    pointer-events: none; z-index: 200;
+    opacity: 0;
+    transform: translate(-100px, -100px) translate(-50%, -50%);
+    transition: opacity .25s ease, width .3s cubic-bezier(0.34, 1.56, 0.64, 1), height .3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .3s ease, background .3s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-dot.is-visible { opacity: 1; }
+  .cursor-dot.is-hovering {
+    width: 52px; height: 52px;
+    background: rgba(255,255,255,.12);
+    border-color: transparent;
+  }
+  @media (hover: none), (pointer: coarse) { .cursor-dot { display: none !important; } }
+
   html { font-size: 16px; }
   @media (max-width: 1920px) { html { font-size: 0.833333vw; } }
   @media (max-width: 1440px) { html { font-size: 1.111111vw; } }
@@ -1263,6 +1283,7 @@
 
 <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollProgressBar"></div></div>
 <div class="grain-overlay" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
 <div class="chatbot" id="chatbot">
   <div class="chatbot__panel" id="chatbotPanel" role="dialog" aria-modal="false" aria-labelledby="chatbotTitle">
@@ -2888,6 +2909,41 @@ document.addEventListener("DOMContentLoaded", () => {
       updateProgress();
       window.addEventListener("scroll", updateProgress, { passive: true });
       window.addEventListener("resize", updateProgress);
+    }
+  } catch (e) {}
+
+  /* Custom cursor: a small ring that smoothly trails the real pointer and
+     grows over anything clickable. Purely additive — the native cursor is
+     never hidden, and the dot is display:none on touch devices, so there
+     is no failure mode where a visitor loses their pointer entirely. */
+  try {
+    const cursorDot = document.getElementById("cursorDot");
+    const canHoverCursor = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (cursorDot && canHoverCursor) {
+      let mouseX = -100, mouseY = -100, curX = -100, curY = -100, cursorSeen = false;
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!cursorSeen) {
+          cursorSeen = true;
+          curX = mouseX; curY = mouseY;
+          cursorDot.classList.add("is-visible");
+        }
+      });
+      document.addEventListener("mouseleave", () => cursorDot.classList.remove("is-visible"));
+      (function cursorLoop() {
+        curX += (mouseX - curX) * 0.25;
+        curY += (mouseY - curY) * 0.25;
+        cursorDot.style.transform = "translate(" + curX + "px," + curY + "px) translate(-50%,-50%)";
+        requestAnimationFrame(cursorLoop);
+      })();
+      const cursorHoverSelector = "a, button, .price-card__tilt, [role='button']";
+      document.addEventListener("mouseover", (e) => {
+        if (e.target.closest && e.target.closest(cursorHoverSelector)) cursorDot.classList.add("is-hovering");
+      });
+      document.addEventListener("mouseout", (e) => {
+        if (e.target.closest && e.target.closest(cursorHoverSelector)) cursorDot.classList.remove("is-hovering");
+      });
     }
   } catch (e) {}
 
