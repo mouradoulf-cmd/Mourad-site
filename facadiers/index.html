@@ -19,24 +19,34 @@
       <img src="assets/img/logo.png" alt="Atelier des Façadiers">
     </a>
     <nav class="main-nav" id="mainNav">
-      <a href="#pourquoi">Qui sommes-nous</a>
-      <a href="#services">Bardage</a>
-      <a href="#projets">Projets</a>
-      <a href="#actualites">Actualités</a>
-      <a href="#contact">Contact</a>
+      <a href="#pourquoi" data-i18n="nav.qui">Qui sommes-nous</a>
+      <a href="#services" data-i18n="nav.bardage">Bardage</a>
+      <a href="#projets" data-i18n="nav.projets">Projets</a>
+      <a href="#actualites" data-i18n="nav.actualites">Actualités</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
-    <a href="#contact" class="btn-pill header-cta">Demander un devis</a>
-    <button class="burger" id="burgerBtn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Langue / Language">
+        <button type="button" class="lang-btn active" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#contact" class="btn-pill header-cta" data-i18n="nav.cta">Demander un devis</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <div class="mobile-nav" id="mobileNav">
-    <a href="#pourquoi">Qui sommes-nous</a>
-    <a href="#services">Bardage</a>
-    <a href="#projets">Projets</a>
-    <a href="#actualites">Actualités</a>
-    <a href="#contact">Contact / Devis</a>
+    <div class="lang-switch lang-switch--mobile" role="group" aria-label="Langue / Language">
+      <button type="button" class="lang-btn active" data-lang="fr" aria-pressed="true">FR</button>
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a href="#pourquoi" data-i18n="nav.qui">Qui sommes-nous</a>
+    <a href="#services" data-i18n="nav.bardage">Bardage</a>
+    <a href="#projets" data-i18n="nav.projets">Projets</a>
+    <a href="#actualites" data-i18n="nav.actualites">Actualités</a>
+    <a href="#contact" data-i18n="nav.mobileContact">Contact / Devis</a>
   </div>
 
   <section class="hero" id="top">
@@ -47,49 +57,70 @@
       <div class="hero-vignette"></div>
     </div>
     <div class="hero-content">
-      <h1 class="hero-title" id="heroTitle">Avec notre stock, démarrez vos <em>chantiers</em> dans les starting-blocks</h1>
-      <p class="hero-desc" id="heroDesc">Façonnier et distributeur de solutions de bardage pour les professionnels : stock permanent, préconisation technique et logistique pensés pour tenir vos délais de chantier.</p>
-      <a href="#contact" class="btn-pill hero-cta" id="heroCta">Demander un devis</a>
+      <h1 class="hero-title" id="heroTitle" data-i18n-html="hero.titleHtml">Avec notre stock, démarrez vos <em>chantiers</em> dans les starting-blocks</h1>
+      <p class="hero-desc" id="heroDesc" data-i18n="hero.desc">Façonnier et distributeur de solutions de bardage pour les professionnels : stock permanent, préconisation technique et logistique pensés pour tenir vos délais de chantier.</p>
+      <a href="#contact" class="btn-pill hero-cta" id="heroCta" data-i18n="hero.cta">Demander un devis</a>
     </div>
   </section>
 
   <section class="marquee-band" aria-hidden="true">
     <div class="marquee-track">
-      <span>TRESPA</span><span>•</span><span>EQUITONE</span><span>•</span><span>FUNDERMAX</span><span>•</span><span>STACBOND</span><span>•</span><span>ROCKPANEL</span><span>•</span>
-      <span>TRESPA</span><span>•</span><span>EQUITONE</span><span>•</span><span>FUNDERMAX</span><span>•</span><span>STACBOND</span><span>•</span><span>ROCKPANEL</span><span>•</span>
+      <span class="brand-chip"><img src="assets/img/brands/trespa.png" alt="Trespa"></span>
+      <span class="brand-chip"><img src="assets/img/brands/equitone.png" alt="Equitone"></span>
+      <span class="brand-chip"><img src="assets/img/brands/fundermax.png" alt="Fundermax"></span>
+      <span class="brand-chip"><img src="assets/img/brands/stacbond.png" alt="Stacbond"></span>
+      <span class="brand-chip"><img src="assets/img/brands/rockpanel.png" alt="Rockpanel"></span>
+      <span class="brand-chip"><img src="assets/img/brands/alpolic.png" alt="Alpolic"></span>
+      <span class="brand-chip"><img src="assets/img/brands/cedral.png" alt="Cedral"></span>
+      <span class="brand-chip"><img src="assets/img/brands/fiberdeck.png" alt="Fiberdeck"></span>
+      <span class="brand-chip"><img src="assets/img/brands/pura.png" alt="Pura"></span>
+      <span class="brand-chip"><img src="assets/img/brands/trespa.png" alt="Trespa"></span>
+      <span class="brand-chip"><img src="assets/img/brands/equitone.png" alt="Equitone"></span>
+      <span class="brand-chip"><img src="assets/img/brands/fundermax.png" alt="Fundermax"></span>
+      <span class="brand-chip"><img src="assets/img/brands/stacbond.png" alt="Stacbond"></span>
+      <span class="brand-chip"><img src="assets/img/brands/rockpanel.png" alt="Rockpanel"></span>
+      <span class="brand-chip"><img src="assets/img/brands/alpolic.png" alt="Alpolic"></span>
+      <span class="brand-chip"><img src="assets/img/brands/cedral.png" alt="Cedral"></span>
+      <span class="brand-chip"><img src="assets/img/brands/fiberdeck.png" alt="Fiberdeck"></span>
+      <span class="brand-chip"><img src="assets/img/brands/pura.png" alt="Pura"></span>
     </div>
   </section>
 
   <section class="pillars" id="services">
     <div class="section-head reveal-up">
-      <span class="eyebrow">Notre expertise</span>
-      <h2>Cinq métiers, un seul <em>partenaire</em></h2>
+      <span class="eyebrow" data-i18n="pillars.eyebrow">Notre expertise</span>
+      <h2 data-i18n-html="pillars.headingHtml">Cinq métiers, un seul <em>partenaire</em></h2>
     </div>
-    <div class="pillars-grid">
-      <div class="pillar-card reveal-up" style="--c: var(--c-teal)">
-        <span class="pillar-num">01</span>
-        <h3>Stock</h3>
-        <p>Un stock permanent des principales gammes de bardage pour livrer vos chantiers sans attendre.</p>
+
+    <div class="pillars-interactive reveal-up">
+      <div class="pillars-tabs" role="tablist" aria-label="Nos métiers">
+        <button class="pillar-tab active" type="button" data-color="#4fae8c" data-image="assets/img/atelier-stock.jpg" aria-label="Stock" style="--c:#4fae8c">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        </button>
+        <button class="pillar-tab" type="button" data-color="#f5b90f" data-image="assets/img/pillars/preconisation.jpg" aria-label="Préconisation" style="--c:#f5b90f">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="m9 13 2 2 4-4"/></svg>
+        </button>
+        <button class="pillar-tab" type="button" data-color="#e41959" data-image="assets/img/pillars/logistique.jpg" aria-label="Logistique" style="--c:#e41959">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="13" height="10" rx="1"/><path d="M14 9h4l3 3v4h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        </button>
+        <button class="pillar-tab" type="button" data-color="#4c96d1" data-image="assets/img/pillars/usinage.jpg" aria-label="Usinage" style="--c:#4c96d1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 17 3l4 4L7 21Z"/><path d="m14 6 2 2M11 9l2 2M8 12l2 2M5 15l2 2"/></svg>
+        </button>
+        <button class="pillar-tab" type="button" data-color="#7d2a72" data-image="assets/img/pillars/service-technique.jpg" aria-label="Service technique" style="--c:#7d2a72">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m4.9 4.9 4.24 4.24M14.86 14.86l4.24 4.24M19.1 4.9l-4.24 4.24M9.14 14.86l-4.24 4.24"/></svg>
+        </button>
       </div>
-      <div class="pillar-card reveal-up" style="--c: var(--c-yellow)">
-        <span class="pillar-num">02</span>
-        <h3>Préconisation</h3>
-        <p>Un accompagnement technique pour choisir le bon matériau, la bonne pose, la bonne finition.</p>
-      </div>
-      <div class="pillar-card reveal-up" style="--c: var(--c-pink)">
-        <span class="pillar-num">03</span>
-        <h3>Logistique</h3>
-        <p>Une organisation pensée pour livrer au bon endroit, au bon moment, sans casse ni retard.</p>
-      </div>
-      <div class="pillar-card reveal-up" style="--c: var(--c-blue)">
-        <span class="pillar-num">04</span>
-        <h3>Usinage</h3>
-        <p>Découpe et façonnage sur-mesure des panneaux selon les plans de votre chantier.</p>
-      </div>
-      <div class="pillar-card reveal-up" style="--c: var(--c-purple)">
-        <span class="pillar-num">05</span>
-        <h3>Service technique</h3>
-        <p>Un support réactif avant, pendant et après le chantier pour sécuriser votre mise en œuvre.</p>
+
+      <div class="pillar-panel" id="pillarPanel" style="background:#4fae8c">
+        <div class="pillar-panel-text">
+          <span class="pillar-panel-eyebrow">01</span>
+          <p class="pillar-panel-title">Stock</p>
+          <h3 class="pillar-panel-heading">Avec notre stock, démarrez vos chantiers dans les starting-blocks !</h3>
+          <p class="pillar-panel-body">Notre stock comprend une vaste gamme de panneaux et de systèmes de bardage adaptés à la réalisation rapide de chantiers.</p>
+        </div>
+        <figure class="pillar-panel-media">
+          <img src="assets/img/atelier-stock.jpg" alt="Stock">
+        </figure>
       </div>
     </div>
   </section>
@@ -99,39 +130,39 @@
       <img src="assets/img/atelier-stock.jpg" alt="Atelier et stock Atelier des Façadiers">
     </div>
     <div class="about-text reveal-up">
-      <span class="eyebrow">L'expert du bardage</span>
-      <h2>Le trait d'union entre les <em>fabricants</em> et les poseurs</h2>
-      <p>Atelier des Façadiers accompagne les professionnels du bardage à chaque étape : sélection des matériaux, usinage sur-mesure, logistique de chantier et suivi technique. Un seul interlocuteur pour sécuriser vos délais et la qualité de vos façades.</p>
+      <span class="eyebrow" data-i18n="about.eyebrow">L'expert du bardage</span>
+      <h2 data-i18n-html="about.headingHtml">Le trait d'union entre les <em>fabricants</em> et les poseurs</h2>
+      <p data-i18n="about.body">Atelier des Façadiers accompagne les professionnels du bardage à chaque étape : sélection des matériaux, usinage sur-mesure, logistique de chantier et suivi technique. Un seul interlocuteur pour sécuriser vos délais et la qualité de vos façades.</p>
       <div class="about-stats">
-        <div><strong data-count="5">0</strong><span>métiers intégrés</span></div>
-        <div><strong data-count="5">0</strong><span>marques distribuées</span></div>
+        <div><strong data-count="5">0</strong><span data-i18n="about.stat1Label">métiers intégrés</span></div>
+        <div><strong data-count="5">0</strong><span data-i18n="about.stat2Label">marques distribuées</span></div>
       </div>
     </div>
   </section>
 
   <section class="projects" id="projets">
     <div class="section-head reveal-up">
-      <span class="eyebrow">Réalisations</span>
-      <h2>Des <em>chantiers</em> menés du gros œuvre à la finition</h2>
+      <span class="eyebrow" data-i18n="projects.eyebrow">Réalisations</span>
+      <h2 data-i18n-html="projects.headingHtml">Des <em>chantiers</em> menés du gros œuvre à la finition</h2>
     </div>
     <div class="projects-grid">
       <figure class="project-card reveal-up">
         <img src="assets/img/hero-chantier.jpg" alt="Ossature en construction">
-        <figcaption>Nouveau bâtiment pour l'ossature</figcaption>
+        <figcaption data-i18n="projects.caption1">Nouveau bâtiment pour l'ossature</figcaption>
       </figure>
       <figure class="project-card reveal-up">
         <img src="assets/img/projet-batiment.jpg" alt="Bardage posé sur bâtiment industriel">
-        <figcaption>Bardage métallique — finition posée</figcaption>
+        <figcaption data-i18n="projects.caption2">Bardage métallique — finition posée</figcaption>
       </figure>
     </div>
     <figure class="material-banner reveal-up">
-      <img src="assets/img/equitone-swatches.jpg" alt="Nouvelle gamme EQUITONE [inspira]">
+      <img src="assets/img/equitone-swatches.jpg" alt="Nouvelle gamme EQUITONE [inspira]" data-i18n-alt="projects.materialAlt">
     </figure>
   </section>
 
   <section class="cta-band reveal-up" id="contact">
-    <h2>Un projet de bardage ? <em>Parlons-en.</em></h2>
-    <p>Notre équipe vous répond pour étudier votre chantier et vous proposer la solution la plus adaptée.</p>
+    <h2 data-i18n-html="cta.headingHtml">Un projet de bardage ? <em>Parlons-en.</em></h2>
+    <p data-i18n="cta.body">Notre équipe vous répond pour étudier votre chantier et vous proposer la solution la plus adaptée.</p>
     <a href="tel:0474173333" target="_blank" rel="noopener" class="btn-pill cta-band-btn">04 74 17 33 33</a>
   </section>
 
@@ -141,15 +172,15 @@
         <img src="assets/img/logo.png" alt="Atelier des Façadiers">
         <p>7 rue des Garennes, 01600 Reyrieux</p>
         <p>04 74 17 33 33</p>
-        <p>Lun–Jeu 7h30–17h00 · Ven 7h30–16h00</p>
+        <p data-i18n="footer.hours">Lun–Jeu 7h30–17h00 · Ven 7h30–16h00</p>
       </div>
       <nav class="footer-nav">
-        <a href="#pourquoi">Qui sommes-nous ?</a>
-        <a href="#services">Bardage</a>
-        <a href="#services">Ossature</a>
-        <a href="#projets">Projets</a>
-        <a href="#actualites">Documentation</a>
-        <a href="#contact">Contact / Devis</a>
+        <a href="#pourquoi" data-i18n="footer.nav1">Qui sommes-nous ?</a>
+        <a href="#services" data-i18n="footer.nav2">Bardage</a>
+        <a href="#services" data-i18n="footer.nav3">Ossature</a>
+        <a href="#projets" data-i18n="footer.nav4">Projets</a>
+        <a href="#actualites" data-i18n="footer.nav5">Documentation</a>
+        <a href="#contact" data-i18n="footer.nav6">Contact / Devis</a>
       </nav>
       <div class="footer-social">
         <a href="#" aria-label="LinkedIn">in</a>
@@ -157,12 +188,14 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Atelier des Façadiers — Tous droits réservés</span>
+      <span data-i18n="footer.bottom">© 2026 Atelier des Façadiers — Tous droits réservés</span>
     </div>
   </footer>
 
 </div>
 
+<script src="assets/js/i18n.js"></script>
+<script>FacadiersI18n.init('fr');</script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

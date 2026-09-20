@@ -116,6 +116,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
+  // ===== Interactive pillars (icon tabs + single highlight card) =====
+  const pillarTabs = document.querySelectorAll('.pillar-tab');
+  const pillarPanel = document.getElementById('pillarPanel');
+  if (pillarTabs.length && pillarPanel) {
+    const panelEyebrow = pillarPanel.querySelector('.pillar-panel-eyebrow');
+    const panelTitle = pillarPanel.querySelector('.pillar-panel-title');
+    const panelHeading = pillarPanel.querySelector('.pillar-panel-heading');
+    const panelBody = pillarPanel.querySelector('.pillar-panel-body');
+    const panelImg = pillarPanel.querySelector('.pillar-panel-media img');
+
+    function renderPillar(idx) {
+      const tab = pillarTabs[idx];
+      const color = tab.getAttribute('data-color');
+      const image = tab.getAttribute('data-image');
+      const lang = (window.FacadiersI18n && window.FacadiersI18n.getLang()) || 'fr';
+      const t = window.FacadiersI18n ? window.FacadiersI18n.t : function () { return null; };
+      const title = t(lang, 'pillars.items.' + idx + '.title') || '';
+
+      pillarPanel.style.background = color;
+      panelEyebrow.textContent = String(idx + 1).padStart(2, '0');
+      panelTitle.textContent = title;
+      panelHeading.textContent = t(lang, 'pillars.items.' + idx + '.heading') || '';
+      panelBody.textContent = t(lang, 'pillars.items.' + idx + '.body') || '';
+      panelImg.src = image;
+      panelImg.alt = title;
+
+      pillarTabs.forEach((btn, i) => btn.classList.toggle('active', i === idx));
+    }
+
+    pillarTabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => renderPillar(idx));
+    });
+
+    window.FacadiersRefreshPillars = function () {
+      const activeIdx = Array.from(pillarTabs).findIndex((btn) => btn.classList.contains('active'));
+      renderPillar(activeIdx >= 0 ? activeIdx : 0);
+    };
+
+    renderPillar(0);
+  }
+
   // ===== Count-up stats =====
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const countEls = document.querySelectorAll('[data-count]');
