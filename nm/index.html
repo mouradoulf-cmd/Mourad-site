@@ -498,6 +498,42 @@
     .reasons__item, .reasons__icon { transition: none; opacity: 1; transform: none; }
   }
 
+  /* ---------- rating (5-star trust badge, near the very bottom) ---------- */
+  /* Stars spin in one by one in 3D, then the line settles in under them —
+     one scroll-triggered moment, never repeats. */
+  .rating { position: relative; padding: 5rem 1.25rem 6rem; text-align: center; overflow: hidden; }
+  @media (min-width: 640px) { .rating { padding: 6rem 2.5rem 7rem; } }
+  .rating__inner { max-width: 34rem; margin: 0 auto; perspective: 1000px; }
+
+  .rating__stars { display: flex; justify-content: center; gap: .6rem; margin-bottom: 1.5rem; }
+  .rating__star {
+    width: 2.1rem; height: 2.1rem; color: #ffc03d;
+    filter: drop-shadow(0 0 12px rgba(255,192,61,.45));
+    opacity: 0;
+    transform: rotateY(160deg) translateZ(-50px) scale(.3);
+    transition: opacity .5s cubic-bezier(0.34, 1.56, 0.64, 1), transform .6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @media (min-width: 640px) { .rating__star { width: 2.4rem; height: 2.4rem; } }
+  .rating__inner.is-visible .rating__star { opacity: 1; transform: rotateY(0deg) translateZ(0) scale(1); }
+  .rating__inner.is-visible .rating__star:nth-child(1) { transition-delay: 0s; }
+  .rating__inner.is-visible .rating__star:nth-child(2) { transition-delay: .1s; }
+  .rating__inner.is-visible .rating__star:nth-child(3) { transition-delay: .2s; }
+  .rating__inner.is-visible .rating__star:nth-child(4) { transition-delay: .3s; }
+  .rating__inner.is-visible .rating__star:nth-child(5) { transition-delay: .4s; }
+
+  .rating__text {
+    font-size: clamp(1.3rem, 2.8vw, 1.9rem); font-weight: 500; letter-spacing: -0.01em;
+    color: var(--heading); margin: 0;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .8s ease, transform .8s ease;
+    transition-delay: .6s;
+  }
+  .rating__inner.is-visible .rating__text { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rating__star, .rating__text { transition: none; opacity: 1; transform: none; }
+  }
+
   /* ---------- booking modal ---------- */
   .booking-modal {
     position: fixed; inset: 0; z-index: 200;
@@ -1544,6 +1580,20 @@
   <p class="pricing__note" data-i18n="pricing.note">Cancel anytime, free. No contracts, no surprise fees.</p>
 </section>
 
+<section class="rating" id="rating">
+  <span class="section-divider" aria-hidden="true"></span>
+  <div class="rating__inner">
+    <div class="rating__stars" aria-hidden="true">
+      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
+      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
+      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
+      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
+      <svg class="rating__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.95 6.4 7 .82-5.2 4.8 1.42 7-6.17-3.5-6.17 3.5 1.42-7-5.2-4.8 7-.82L12 2.5z"/></svg>
+    </div>
+    <p class="rating__text" data-i18n="rating.text">100% of our clients are happy working with us.</p>
+  </div>
+</section>
+
 <footer class="site-footer">
   <span class="section-divider" aria-hidden="true"></span>
   <div class="site-footer__inner">
@@ -1634,6 +1684,7 @@ var translations = {
       closeLabel: "Close",
       waMessage: "Hi! I'd like to book an appointment.\nBusiness: {business}\nPhone: {phone}\nPreferred date: {date} at {time}"
     },
+    rating: { text: "100% of our clients are happy working with us." },
     footer: { text: "© 2026 NM Studio — built to get you found.", linksLabel: "Quick Links", contactLabel: "Get in Touch", contactBtn: "Message us on WhatsApp" },
     story: {
       eyebrow: "How it works",
@@ -1739,6 +1790,7 @@ var translations = {
       closeLabel: "Fermer",
       waMessage: "Bonjour ! Je souhaite prendre rendez-vous.\nCommerce : {business}\nTéléphone : {phone}\nDate souhaitée : {date} à {time}"
     },
+    rating: { text: "100% de nos clients sont heureux de travailler avec nous." },
     footer: { text: "© 2026 NM Studio — conçu pour vous faire trouver.", linksLabel: "Liens rapides", contactLabel: "Nous contacter", contactBtn: "Contactez-nous sur WhatsApp" },
     story: {
       eyebrow: "Comment ça marche",
@@ -1844,6 +1896,7 @@ var translations = {
       closeLabel: "Chiudi",
       waMessage: "Ciao! Vorrei prendere un appuntamento.\nAttività: {business}\nTelefono: {phone}\nData preferita: {date} alle {time}"
     },
+    rating: { text: "Il 100% dei nostri clienti è felice di lavorare con noi." },
     footer: { text: "© 2026 NM Studio — creato per farti trovare.", linksLabel: "Link utili", contactLabel: "Contattaci", contactBtn: "Scrivici su WhatsApp" },
     story: {
       eyebrow: "Come funziona",
@@ -1949,6 +2002,7 @@ var translations = {
       closeLabel: "ปิด",
       waMessage: "สวัสดีค่ะ/ครับ ฉันต้องการนัดหมาย\nร้าน/ธุรกิจ: {business}\nเบอร์โทร: {phone}\nวันที่ต้องการ: {date} เวลา {time}"
     },
+    rating: { text: "ลูกค้าของเรา 100% พึงพอใจที่ได้ร่วมงานกับเรา" },
     footer: { text: "© 2026 NM Studio — สร้างมาเพื่อให้คนเจอคุณ", linksLabel: "ลิงก์ด่วน", contactLabel: "ติดต่อเรา", contactBtn: "แชทผ่าน WhatsApp" },
     story: {
       eyebrow: "วิธีการทำงาน",
@@ -2054,6 +2108,7 @@ var translations = {
       closeLabel: "إغلاق",
       waMessage: "مرحباً! أود حجز موعد.\nالنشاط التجاري: {business}\nرقم الهاتف: {phone}\nالتاريخ المفضل: {date} الساعة {time}"
     },
+    rating: { text: "100% من عملائنا سعداء بالعمل معنا." },
     footer: { text: "© 2026 NM Studio — صُنع لجعلك مرئياً.", linksLabel: "روابط سريعة", contactLabel: "تواصل معنا", contactBtn: "راسلنا عبر واتساب" },
     story: {
       eyebrow: "كيف يعمل",
@@ -2348,6 +2403,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         item.addEventListener("mouseleave", () => { icon.style.transform = ""; });
       });
+    }
+  } catch (e) {}
+
+  /* Rating badge: the five stars spin in one by one, then the line settles
+     underneath — triggered once by scroll, same pattern as the reasons
+     section above. */
+  try {
+    const ratingInner = document.querySelector(".rating__inner");
+    if (ratingInner) {
+      if ("IntersectionObserver" in window) {
+        const ratingObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            ratingObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.4 });
+        ratingObserver.observe(ratingInner);
+      } else {
+        ratingInner.classList.add("is-visible");
+      }
     }
   } catch (e) {}
 
