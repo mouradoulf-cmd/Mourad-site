@@ -190,14 +190,12 @@ em{ font-style: normal; }
 /* ===== Hero ===== */
 .hero{
   position: relative;
-  padding: var(--frame-pad);
   height: 100svh;
   min-height: 560px;
 }
 .hero-media{
   position: absolute;
-  inset: var(--frame-pad);
-  border-radius: var(--radius-lg);
+  inset: 0;
   overflow: hidden;
   background: var(--c-navy);
 }
@@ -209,18 +207,20 @@ em{ font-style: normal; }
 }
 .hero-vignette{
   position:absolute; inset:0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(0,0,0,.55) 100%);
+  background:
+    linear-gradient(to bottom, rgba(6,10,16,.35) 0%, rgba(6,10,16,.1) 30%, rgba(6,10,16,.65) 100%),
+    linear-gradient(to top, var(--void) 0%, rgba(6,10,16,0) 12%);
 }
 .hero-content{
   position: absolute;
-  inset: var(--frame-pad);
+  inset: 0;
   z-index: 5;
   display:flex;
   flex-direction: column;
   align-items:center;
   justify-content: flex-end;
   text-align: center;
-  padding: 0 1.5rem 3.5rem;
+  padding: 0 1.5rem 4.5rem;
 }
 .hero-title{
   margin: 0 0 1.1rem;
@@ -450,10 +450,22 @@ section{ padding: 6rem var(--frame-pad); }
 
 /* ===== CTA band ===== */
 .cta-band{
+  position: relative;
   max-width: 720px;
   margin: 0 auto;
   text-align:center;
-  padding: 5rem var(--frame-pad);
+  padding: 5.5rem var(--frame-pad);
+  isolation: isolate;
+}
+.cta-band::before{
+  content:'';
+  position: absolute;
+  left:50%; top:50%;
+  width: 900px; height: 900px;
+  transform: translate(-50%,-50%);
+  background: radial-gradient(circle, rgba(228,25,89,.16) 0%, rgba(228,25,89,0) 65%);
+  z-index: -1;
+  pointer-events: none;
 }
 .cta-band p{ color: var(--text-muted); margin: 1.25rem 0 2rem; font-size: 1rem; }
 .cta-band-btn{ font-size: 1rem; padding: 1.1rem 2.6rem; }
