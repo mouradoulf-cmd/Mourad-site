@@ -441,95 +441,52 @@
   @media (min-width: 640px) { .stats__value { font-size: 2.2rem; } }
   .stats__label { color: var(--body-muted); font-size: .92rem; }
 
-  /* ---------- preview section (auto-playing 3D showcase) ---------- */
-  /* Fully hands-off by design: nobody has to tap, swipe, or figure
-     anything out. One card cycles through all 4 points on its own —
-     shows the problem, rotates in 3D to reveal the fix, rotates back,
-     fades to the next point — forever, as long as it's on screen. */
-  .preview { position: relative; padding: 6rem 1.25rem; overflow: hidden; }
-  @media (min-width: 640px) { .preview { padding: 7rem 2.5rem; } }
-  .preview__head { max-width: 34rem; margin: 0 auto; text-align: center; }
-  .preview__eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #22e8ff; font-weight: 500; margin: 0 0 1rem; }
-  .preview__title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0 0 1rem; line-height: 1.15; }
-  .preview__lead { font-size: 1rem; line-height: 1.6; color: var(--body-muted); margin: 0 0 3rem; }
+  /* ---------- reasons section (why a website, one statement at a time) ---------- */
+  /* Three parallel reasons, each its own scroll-triggered 3D entrance —
+     one settles into place, then the next, as the visitor scrolls down.
+     No auto-play, no looping: motion here only ever answers scrolling. */
+  .reasons { position: relative; padding: 7rem 1.25rem; overflow: hidden; }
+  @media (min-width: 640px) { .reasons { padding: 8rem 2.5rem; } }
+  .reasons__head { max-width: 34rem; margin: 0 auto; text-align: center; }
+  .reasons__eyebrow { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #22e8ff; font-weight: 500; margin: 0 0 1rem; }
+  .reasons__title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0; line-height: 1.15; }
 
-  .preview__showcase { display: flex; flex-direction: column; align-items: center; gap: 1.75rem; }
+  .reasons__list {
+    max-width: 34rem; margin: 5rem auto 0;
+    display: flex; flex-direction: column; gap: 5.5rem;
+    perspective: 1400px;
+  }
+  @media (min-width: 640px) { .reasons__list { gap: 6.5rem; } }
 
-  /* Slow continuous idle float, independent of the flip transform below —
-     kept on the static outer element so the two transforms never fight. */
-  .preview__flip-stage {
-    perspective: 1600px;
-    animation: previewFloat 6s ease-in-out infinite;
-  }
-  @keyframes previewFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(-0.6deg); }
-  }
-
-  .preview__flip-card-inner {
-    position: relative; width: min(26rem, 84vw); height: 13rem;
-    transform-style: preserve-3d;
-    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1), opacity .35s ease;
-  }
-  .preview__flip-card-inner.is-flipped { transform: rotateY(180deg); }
-  .preview__flip-card-inner.is-fading { opacity: 0; transform: scale(.96); }
-  .preview__flip-face {
-    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-    border-radius: 1.5rem; padding: 1.75rem;
-    border: 1px solid var(--glass-border);
-    display: flex; flex-direction: column; align-items: center; gap: .9rem;
+  .reasons__item {
     text-align: center;
-    box-shadow: 0 30px 60px -30px rgba(0,0,0,.6);
+    transform-origin: 50% 100%;
+    opacity: 0;
+    transform: rotateX(-14deg) translateY(38px) scale(.97);
+    transition: opacity .85s cubic-bezier(0.16, 1, 0.3, 1), transform .85s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .preview__flip-face--front { background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.01)), var(--glass-fill); }
-  .preview__flip-face--back {
-    background: linear-gradient(160deg, rgba(34,232,255,.1), rgba(168,85,247,.05)), var(--hero-base);
-    border-color: rgba(34,232,255,.4);
-    transform: rotateY(180deg);
+  .reasons__item.is-visible { opacity: 1; transform: rotateX(0deg) translateY(0) scale(1); }
+
+  .reasons__icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 3.25rem; height: 3.25rem; border-radius: 999px; margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #22e8ff, #a855f7, #ec4899);
+    color: #04050c;
+    box-shadow: 0 0 30px rgba(168,85,247,.4);
   }
-  .preview__flip-tag {
-    flex-shrink: 0;
-    font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-    padding: .3rem .8rem; border-radius: 999px;
+  .reasons__icon svg { width: 1.5rem; height: 1.5rem; }
+
+  .reasons__headline {
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 500; letter-spacing: -0.01em;
+    color: var(--heading); margin: 0 0 .75rem; line-height: 1.25;
   }
-  .preview__flip-face--front .preview__flip-tag { color: rgba(239,68,68,.95); background: rgba(239,68,68,.12); }
-  .preview__flip-face--back .preview__flip-tag { color: #22e8ff; background: rgba(34,232,255,.14); }
-  .preview__flip-icon {
-    flex-shrink: 0; width: 2.75rem; height: 2.75rem; border-radius: 999px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .preview__flip-face--front .preview__flip-icon { background: rgba(239,68,68,.14); color: rgba(239,68,68,.9); }
-  .preview__flip-face--back .preview__flip-icon {
-    background: linear-gradient(120deg, #22e8ff, #a855f7, #ec4899); color: #04050c;
-    box-shadow: 0 0 24px rgba(34,232,255,.5);
-  }
-  .preview__flip-icon svg { width: 1.3rem; height: 1.3rem; }
-  .preview__flip-text {
-    flex: 1; display: flex; align-items: center; justify-content: center;
-    font-size: 1.05rem; font-weight: 500; line-height: 1.4; color: var(--heading); max-width: 20rem;
+  .reasons__body {
+    font-size: 1rem; line-height: 1.65; color: var(--body-muted);
+    max-width: 28rem; margin: 0 auto;
   }
 
-  /* Segmented progress bar (à la Stories) — shows both position and pace
-     at a glance, without asking the visitor to do anything. */
-  .preview__progress { display: flex; gap: .4rem; width: min(26rem, 84vw); }
-  .preview__progress-seg {
-    flex: 1; height: .2rem; border-radius: 999px; background: var(--glass-border);
-    overflow: hidden;
-  }
-  .preview__progress-fill {
-    display: block; height: 100%; width: 0%; border-radius: 999px;
-    background: linear-gradient(90deg, #22e8ff, #a855f7);
-  }
-  .preview__progress-seg.is-done .preview__progress-fill { width: 100%; }
-  .preview__progress-seg.is-active .preview__progress-fill { transition: width 4.45s linear; }
-
-  /* Reduced motion / a script error: show one static, fully-informative
-     state (the positive "with NM Studio" side) instead of an endless
-     cycle — never a half-finished animation stuck mid-transition. */
   @media (prefers-reduced-motion: reduce) {
-    .preview__flip-stage { animation: none; }
-    .preview__flip-card-inner { transition: none; transform: rotateY(180deg) !important; }
-    .preview__progress { display: none; }
+    .reasons__item { transition: none; opacity: 1; transform: none; }
   }
 
   /* ---------- booking modal ---------- */
@@ -607,24 +564,6 @@
   @media (prefers-reduced-motion: reduce) {
     .booking-modal, .booking-modal__card { transition: none; }
   }
-
-  /* ---------- footer ---------- */
-  .footer {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    z-index: 20;
-    display: flex;
-    justify-content: center;
-    padding: 1.25rem;
-    font-size: 0.72rem;
-    color: var(--body-muted);
-    opacity: 0;
-    transform: translateY(1.25rem);
-    transition: opacity 700ms var(--ease-entrance), transform 700ms var(--ease-entrance);
-  }
-  @media (min-width: 640px) { .footer { padding: 1.5rem 2.5rem; font-size: 0.8rem; } }
-  .footer.is-visible { opacity: 1; transform: translateY(0); }
 
   /* Subtle fading divider between sections — a full-width flat line reads
      flat/generic, so this fades out at both ends instead of hitting a hard
@@ -1298,8 +1237,6 @@
       </button>
     </div>
   </div>
-
-  <footer class="footer" data-i18n-html="footer.text">&copy; 2026 NM Studio &mdash; built to get you found.</footer>
 </section>
 
 <section class="stats" id="stats">
@@ -1349,35 +1286,29 @@
   </div>
 </div>
 
-<section class="preview" id="preview">
+<section class="reasons" id="reasons">
   <span class="section-divider" aria-hidden="true"></span>
-  <div class="preview__head">
-    <p class="preview__eyebrow" data-i18n="preview.eyebrow">The Difference</p>
-    <h2 class="preview__title" data-i18n="preview.title">See the difference.</h2>
-    <p class="preview__lead" data-i18n="preview.lead">What changes for your business, at a glance.</p>
+  <div class="reasons__head">
+    <p class="reasons__eyebrow" data-i18n="reasons.eyebrow">Why a website</p>
+    <h2 class="reasons__title" data-i18n="reasons.title">Three things that change.</h2>
   </div>
 
-  <div class="preview__showcase">
-    <div class="preview__flip-stage">
-      <div class="preview__flip-card-inner" id="previewFlipInner">
-        <div class="preview__flip-face preview__flip-face--front">
-          <span class="preview__flip-tag" data-i18n="preview.withoutLabel">Without a website</span>
-          <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-          <span class="preview__flip-text" id="previewFrontText">Invisible on Google &amp; Maps</span>
-        </div>
-        <div class="preview__flip-face preview__flip-face--back">
-          <span class="preview__flip-tag" data-i18n="preview.withLabel">With NM Studio</span>
-          <span class="preview__flip-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="preview__flip-text" id="previewBackText">Found on Google &amp; Maps</span>
-        </div>
-      </div>
-    </div>
-    <div class="preview__progress" id="previewProgress" aria-hidden="true">
-      <span class="preview__progress-seg"><span class="preview__progress-fill"></span></span>
-      <span class="preview__progress-seg"><span class="preview__progress-fill"></span></span>
-      <span class="preview__progress-seg"><span class="preview__progress-fill"></span></span>
-      <span class="preview__progress-seg"><span class="preview__progress-fill"></span></span>
-    </div>
+  <div class="reasons__list">
+    <article class="reasons__item">
+      <span class="reasons__icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M10 18s6-5.7 6-10.2A6 6 0 104 7.8C4 12.3 10 18 10 18z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="10" cy="7.8" r="2.1" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      <h3 class="reasons__headline" data-i18n="reasons.item1.headline">Found on Google &amp; Maps.</h3>
+      <p class="reasons__body" data-i18n="reasons.item1.body">Tourists searching before they even land in Thailand find you — not your competitor.</p>
+    </article>
+    <article class="reasons__item">
+      <span class="reasons__icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2.2l6.5 2.8v4.5c0 4.3-2.8 7.3-6.5 8.3-3.7-1-6.5-4-6.5-8.3V5l6.5-2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 9.8l2.1 2.1L13.3 7.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h3 class="reasons__headline" data-i18n="reasons.item2.headline">A first impression that lands.</h3>
+      <p class="reasons__body" data-i18n="reasons.item2.body">A real website reads as serious and trustworthy — more than a social page alone.</p>
+    </article>
+    <article class="reasons__item">
+      <span class="reasons__icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M3 7.2V4.6a1 1 0 011-1h2.6M17 7.2V4.6a1 1 0 00-1-1h-2.6M3 12.8v2.6a1 1 0 001 1h2.6M17 12.8v2.6a1 1 0 01-1 1h-2.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="7.8" y="7.8" width="4.4" height="4.4" rx=".6" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      <h3 class="reasons__headline" data-i18n="reasons.item3.headline">A menu that's never out of date.</h3>
+      <p class="reasons__body" data-i18n="reasons.item3.body">One scan, always current — no reprinting, ever again.</p>
+    </article>
   </div>
 </section>
 
@@ -1388,8 +1319,6 @@
     <span class="story__rule" aria-hidden="true"></span>
     <p class="story__line story__line--1" data-i18n-html="story.line1">Your business deserves more customers than it's getting online.</p>
     <p class="story__line story__line--2" data-i18n-html="story.line2">At <strong>NM Studio</strong>, I build your site fast &mdash; send your photos, I handle everything. Live in days.</p>
-    <p class="story__line story__line--3" data-i18n-html="story.line3">More visibility, more bookings, up to 30% more revenue.</p>
-    <p class="story__line story__line--4" data-i18n-html="story.line4">50+ happy clients &mdash; cancel anytime, free.</p>
   </div>
 </section>
 
@@ -1676,20 +1605,12 @@ var translations = {
       freeValue: "Free to cancel",
       freeLabel: "No contracts, no surprise fees"
     },
-    preview: {
-      eyebrow: "The Difference",
-      title: "See the difference.",
-      lead: "What changes for your business, at a glance.",
-      withoutLabel: "Without a website",
-      without1: "Invisible on Google & Maps",
-      without2: "Tourists searching Google in Thailand never find you",
-      without3: "Old menu, hard to update",
-      without4: "Looks less trustworthy than competitors",
-      withLabel: "With NM Studio",
-      with1: "Found on Google & Maps",
-      with2: "Tourists find you on Google before they even land in Thailand",
-      with3: "QR menu, updated instantly",
-      with4: "Professional first impression"
+    reasons: {
+      eyebrow: "Why a website",
+      title: "Three things that change.",
+      item1: { headline: "Found on Google &amp; Maps.", body: "Tourists searching before they even land in Thailand find you — not your competitor." },
+      item2: { headline: "A first impression that lands.", body: "A real website reads as serious and trustworthy — more than a social page alone." },
+      item3: { headline: "A menu that's never out of date.", body: "One scan, always current — no reprinting, ever again." }
     },
     booking: {
       title: "Book an appointment",
@@ -1789,20 +1710,12 @@ var translations = {
       freeValue: "Annulable à tout moment",
       freeLabel: "Sans contrat, sans frais cachés"
     },
-    preview: {
-      eyebrow: "La différence",
-      title: "Voyez la différence.",
-      lead: "Ce qui change pour votre commerce, en un coup d'œil.",
-      withoutLabel: "Sans site web",
-      without1: "Invisible sur Google & Maps",
-      without2: "Vos clients cherchent en ligne… et ne vous trouvent pas",
-      without3: "Ancien menu, difficile à modifier",
-      without4: "Moins rassurant que la concurrence",
-      withLabel: "Avec NM Studio",
-      with1: "Trouvé sur Google & Maps",
-      with2: "Vos clients vous trouvent avant même de passer la porte",
-      with3: "Menu QR, mis à jour instantanément",
-      with4: "Première impression professionnelle"
+    reasons: {
+      eyebrow: "Pourquoi un site",
+      title: "Trois choses qui changent.",
+      item1: { headline: "Trouvé sur Google &amp; Maps.", body: "Vos clients vous trouvent avant même de passer la porte — pas votre concurrent." },
+      item2: { headline: "Une première impression qui marque.", body: "Un vrai site paraît sérieux et digne de confiance — bien plus qu'une simple page Instagram." },
+      item3: { headline: "Un menu jamais périmé.", body: "Un scan, toujours à jour — plus jamais besoin de réimprimer une carte." }
     },
     booking: {
       title: "Prendre rendez-vous",
@@ -1902,20 +1815,12 @@ var translations = {
       freeValue: "Annullabile quando vuoi",
       freeLabel: "Nessun contratto, nessuna spesa nascosta"
     },
-    preview: {
-      eyebrow: "La differenza",
-      title: "Guarda la differenza.",
-      lead: "Cosa cambia per la tua attività, in un colpo d'occhio.",
-      withoutLabel: "Senza sito web",
-      without1: "Invisibile su Google & Maps",
-      without2: "I tuoi clienti cercano online… e non ti trovano",
-      without3: "Menu vecchio, difficile da aggiornare",
-      without4: "Sembra meno affidabile della concorrenza",
-      withLabel: "Con NM Studio",
-      with1: "Trovato su Google & Maps",
-      with2: "I tuoi clienti ti trovano prima ancora di entrare",
-      with3: "Menu QR, aggiornato all'istante",
-      with4: "Prima impressione professionale"
+    reasons: {
+      eyebrow: "Perché un sito",
+      title: "Tre cose che cambiano.",
+      item1: { headline: "Trovato su Google &amp; Maps.", body: "I tuoi clienti ti trovano prima ancora di entrare — non il tuo concorrente." },
+      item2: { headline: "Una prima impressione che conta.", body: "Un vero sito web trasmette serietà e fiducia — molto più di una semplice pagina social." },
+      item3: { headline: "Un menu mai obsoleto.", body: "Una scansione, sempre aggiornato — niente più menu da ristampare." }
     },
     booking: {
       title: "Prenota un appuntamento",
@@ -2015,20 +1920,12 @@ var translations = {
       freeValue: "ยกเลิกได้ทุกเมื่อ",
       freeLabel: "ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง"
     },
-    preview: {
-      eyebrow: "ความแตกต่าง",
-      title: "ดูความแตกต่าง",
-      lead: "สิ่งที่เปลี่ยนไปสำหรับธุรกิจของคุณ ในสายตาเดียว",
-      withoutLabel: "ไม่มีเว็บไซต์",
-      without1: "หาไม่เจอบน Google & Maps",
-      without2: "นักท่องเที่ยวค้นหาใน Google ที่ประเทศไทย แต่ไม่เจอร้านคุณ",
-      without3: "เมนูเก่า แก้ไขยาก",
-      without4: "ดูน่าเชื่อถือน้อยกว่าคู่แข่ง",
-      withLabel: "กับ NM Studio",
-      with1: "เจอบน Google & Maps",
-      with2: "นักท่องเที่ยวเจอร้านคุณบน Google ก่อนจะมาถึงประเทศไทยด้วยซ้ำ",
-      with3: "เมนู QR อัปเดตได้ทันที",
-      with4: "ให้ความประทับใจแรกอย่างมืออาชีพ"
+    reasons: {
+      eyebrow: "ทำไมต้องมีเว็บไซต์",
+      title: "สามสิ่งที่เปลี่ยนไป",
+      item1: { headline: "เจอบน Google และแผนที่", body: "นักท่องเที่ยวที่ค้นหาก่อนจะมาถึงประเทศไทยเจอคุณ — ไม่ใช่คู่แข่งของคุณ" },
+      item2: { headline: "ความประทับใจแรกที่น่าจดจำ", body: "เว็บไซต์จริงให้ความรู้สึกน่าเชื่อถือและเป็นมืออาชีพ — มากกว่าแค่หน้าโซเชียลมีเดีย" },
+      item3: { headline: "เมนูที่ไม่มีวันล้าสมัย", body: "สแกนครั้งเดียว อัปเดตเสมอ — ไม่ต้องพิมพ์เมนูใหม่อีกต่อไป" }
     },
     booking: {
       title: "จองนัดหมาย",
@@ -2128,20 +2025,12 @@ var translations = {
       freeValue: "إلغاء في أي وقت",
       freeLabel: "بلا عقود، بلا رسوم مفاجئة"
     },
-    preview: {
-      eyebrow: "الفرق",
-      title: "شاهد الفرق.",
-      lead: "ما الذي يتغيّر لعملك، ببساطة.",
-      withoutLabel: "بدون موقع إلكتروني",
-      without1: "غير مرئي على Google وخرائط جوجل",
-      without2: "عملاؤك يبحثون عبر الإنترنت... ولا يجدونك",
-      without3: "قائمة قديمة، يصعب تحديثها",
-      without4: "يبدو أقل مصداقية من المنافسين",
-      withLabel: "مع NM Studio",
-      with1: "موجود على Google وخرائط جوجل",
-      with2: "عملاؤك يجدونك قبل أن يصلوا حتى",
-      with3: "قائمة برمز QR، تُحدَّث فوراً",
-      with4: "انطباع أول احترافي"
+    reasons: {
+      eyebrow: "لماذا موقع إلكتروني",
+      title: "ثلاثة أشياء تتغيّر.",
+      item1: { headline: "موجود على Google والخرائط.", body: "عملاؤك يجدونك قبل أن يصلوا حتى — لا منافسك." },
+      item2: { headline: "انطباع أول يترك أثراً.", body: "الموقع الحقيقي يعطي انطباعاً جاداً وموثوقاً — أكثر من مجرد صفحة على وسائل التواصل." },
+      item3: { headline: "قائمة لا تنتهي صلاحيتها أبداً.", body: "مسح واحد، محدثة دائماً — لا حاجة لإعادة الطباعة مطلقاً." }
     },
     booking: {
       title: "حجز موعد",
@@ -2325,22 +2214,7 @@ function applyLanguage(lang) {
 
   try { localStorage.setItem("nmLang", lang); } catch (e) {}
 
-  refreshPreviewContent();
   if (window.refreshChatbot) window.refreshChatbot();
-}
-
-/* Preview showcase: re-applies the current point's text in whatever
-   language is now active. Standalone (not part of the generic [data-i18n]
-   walk above) so a language switch mid-cycle never fights the auto-loop's
-   own writes — both always go through this one function. */
-var previewPointIndex = 0;
-function refreshPreviewContent() {
-  var frontEl = document.getElementById("previewFrontText");
-  var backEl = document.getElementById("previewBackText");
-  if (!frontEl || !backEl) return;
-  var n = previewPointIndex + 1;
-  frontEl.textContent = decodeEntities(tKey(currentLang, "preview.without" + n) || "");
-  backEl.textContent = decodeEntities(tKey(currentLang, "preview.with" + n) || "");
 }
 
 function detectInitialLang() {
@@ -2378,7 +2252,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const heading = document.getElementById("heroHeading");
   const subline = document.getElementById("heroSubline");
   const formWrap = document.querySelector(".hero__form-wrap");
-  const footer = document.querySelector(".footer");
 
   // Apply the visitor's language BEFORE splitting the heading/subline into
   // words below, so those words are split from the correct-language text
@@ -2393,7 +2266,6 @@ document.addEventListener("DOMContentLoaded", () => {
   headingWords.forEach((w, i) => reveal(w, 480 + i * 85));
   sublineWords.forEach((w, i) => reveal(w, 1150 + i * 22));
   reveal(formWrap, 1450);
-  reveal(footer, 1650);
 
   try {
     const heroScrollCue = document.getElementById("heroScrollCue");
@@ -2430,77 +2302,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   } catch (e) {}
 
-  /* Preview showcase: fully automatic, no tap/swipe required from anyone.
-     One card cycles on its own through all 4 points — shows the problem,
-     flips in 3D to reveal the fix, flips back, fades to the next point —
-     for as long as the section is on screen. The segmented bar underneath
-     tracks the same timing, so position and pace are both visible without
-     asking the visitor to do anything. Reduced motion (or a script error)
-     leaves the card on its static, fully-flipped "with NM Studio" state
-     set by CSS, and hides the (now meaningless) progress bar — still a
-     complete, correct, positive reading on its own. */
+  /* Reasons section: each of the three statements settles into place
+     with a 3D tilt-and-rise as the visitor scrolls to it — answers
+     scrolling, never plays on its own, and only ever runs once per item. */
   try {
-    const flipInner = document.getElementById("previewFlipInner");
-    const progressSegs = Array.prototype.slice.call(document.querySelectorAll(".preview__progress-seg"));
-    const reduceMotionFlip = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // Named so the progress bar's CSS transition duration (4.45s) and the
-    // JS timing it mirrors can never silently drift apart.
-    const PREVIEW_TIMING = { holdWithFace: 2300, flipBack: 1100, fadeOut: 350, holdWithoutFace: 700, initialDelay: 1200 };
-    const PREVIEW_POINT_COUNT = 4;
-
-    function setActiveSegment(idx) {
-      progressSegs.forEach((seg, i) => {
-        const fill = seg.querySelector(".preview__progress-fill");
-        seg.classList.remove("is-active", "is-done");
-        fill.style.width = ""; // drop any inline width left from when it was active
-        if (i < idx) seg.classList.add("is-done");
-      });
-      const activeSeg = progressSegs[idx];
-      if (!activeSeg) return;
-      const activeFill = activeSeg.querySelector(".preview__progress-fill");
-      activeFill.style.transition = "none";
-      activeFill.style.width = "0%";
-      void activeFill.offsetWidth; // flush the instant, transition-less reset
-      activeSeg.classList.add("is-active");
-      activeFill.style.transition = "";
-      requestAnimationFrame(() => { activeFill.style.width = "100%"; });
-    }
-
-    if (flipInner && progressSegs.length && !reduceMotionFlip && "IntersectionObserver" in window) {
-      let cycleTimer = null;
-      let running = false;
-
-      function runCycle() {
-        flipInner.classList.add("is-flipped"); // reveal the fix
-        cycleTimer = setTimeout(() => {
-          flipInner.classList.remove("is-flipped"); // back to the problem
-          cycleTimer = setTimeout(() => {
-            flipInner.classList.add("is-fading");
-            cycleTimer = setTimeout(() => {
-              previewPointIndex = (previewPointIndex + 1) % PREVIEW_POINT_COUNT;
-              refreshPreviewContent();
-              setActiveSegment(previewPointIndex);
-              flipInner.classList.remove("is-fading");
-              cycleTimer = setTimeout(runCycle, PREVIEW_TIMING.holdWithoutFace);
-            }, PREVIEW_TIMING.fadeOut);
-          }, PREVIEW_TIMING.flipBack);
-        }, PREVIEW_TIMING.holdWithFace);
-      }
-
-      const showcaseObserver = new IntersectionObserver((entries) => {
+    const reasonItems = Array.prototype.slice.call(document.querySelectorAll(".reasons__item"));
+    if (reasonItems.length && "IntersectionObserver" in window) {
+      const reasonsObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !running) {
-            running = true;
-            setActiveSegment(previewPointIndex);
-            cycleTimer = setTimeout(runCycle, PREVIEW_TIMING.initialDelay);
-          } else if (!entry.isIntersecting && running) {
-            running = false;
-            clearTimeout(cycleTimer);
-          }
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          reasonsObserver.unobserve(entry.target);
         });
-      }, { threshold: 0.4 });
-      showcaseObserver.observe(flipInner);
+      }, { threshold: 0.35 });
+      reasonItems.forEach((el) => reasonsObserver.observe(el));
+    } else {
+      reasonItems.forEach((el) => el.classList.add("is-visible"));
     }
   } catch (e) {}
 
