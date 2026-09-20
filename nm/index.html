@@ -2274,23 +2274,23 @@ function applyLanguage(lang) {
     if (val != null) el.setAttribute("aria-label", decodeEntities(val));
   });
 
-  /* Pricing currency per language: Thai and English stay in baht (the
-     real billing currency), French/Italian switch to euro, Arabic to US
-     dollar — each with clean, deliberately-set price points rather than
-     a literal FX conversion of the baht price (which would land on odd,
-     cheap-looking numbers like "13 €"). */
-  var langCurrency = { en: "thb", th: "thb", fr: "eur", it: "eur", ar: "usd" };
+  /* Pricing currency per language: Thai stays in baht (the real billing
+     currency there), English/French/Italian show euro, Arabic (Morocco)
+     shows Moroccan dirham — each with clean, deliberately-set price
+     points rather than a literal FX conversion of the baht price (which
+     would land on odd, cheap-looking numbers like "13 €"). */
+  var langCurrency = { en: "eur", th: "thb", fr: "eur", it: "eur", ar: "mad" };
   var priceAmounts = {
     thb: { basicSetup: 500, basicMonthly: 300, proSetup: 1999, proMonthly: 599, eliteSetup: 7000, eliteMonthly: 2000 },
     eur: { basicSetup: 50, basicMonthly: 15, proSetup: 100, proMonthly: 30, eliteSetup: 300, eliteMonthly: 100 },
-    usd: { basicSetup: 19, basicMonthly: 12, proSetup: 49, proMonthly: 15, eliteSetup: 99 }
+    mad: { basicSetup: 500, basicMonthly: 150, proSetup: 1200, proMonthly: 350, eliteSetup: 3500, eliteMonthly: 1000 }
   };
   var currencyFormat = {
     thb: { prefix: "", suffix: " ฿" },
     eur: { prefix: "", suffix: " €" },
-    usd: { prefix: "$", suffix: "" }
+    mad: { prefix: "", suffix: " DH" }
   };
-  var currency = langCurrency[lang] || "thb";
+  var currency = langCurrency[lang] || "eur";
   var amounts = priceAmounts[currency];
   var format = currencyFormat[currency];
   document.querySelectorAll("[data-price-key]").forEach(function (el) {
