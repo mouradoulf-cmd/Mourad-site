@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Order Line — Démo NM Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nm-header">
+  <div class="nm-brand">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+    </svg>
+    NM <span class="gradient-text">Studio</span>
+  </div>
+  <h1>AI Order Line — prise de commande vocale</h1>
+  <a class="tablet-link" href="tablet.html" target="_blank" rel="noopener">Ouvrir l'écran cuisine &#8599;</a>
+</header>
+
+<main>
+  <section class="panel phone-card">
+    <div class="phone-top">
+      <span class="restaurant" id="restaurantName"></span>
+      <span class="call-status" id="callStatus">En attente</span>
+    </div>
+
+    <div class="mic-wrap">
+      <button class="mic-btn" id="micBtn" type="button" aria-label="Appuyer pour parler">🎙️</button>
+      <div class="mic-hint" id="micHint">Appuyez pour démarrer l'appel et parler</div>
+      <div class="mic-unsupported" id="micUnsupported" style="display:none;">
+        La reconnaissance vocale n'est pas supportée par ce navigateur — utilisez le menu ou le champ texte ci-dessous pour la démo.
+      </div>
+    </div>
+
+    <div class="transcript-box" id="transcriptBox"></div>
+
+    <div>
+      <p class="menu-title">Commander en tapant (démo fiable)</p>
+      <div class="menu-grid" id="menuGrid"></div>
+      <div class="text-fallback">
+        <input type="text" id="textInput" placeholder="Ex : deux menus kebab et une boisson">
+        <button id="textSendBtn" type="button">Envoyer</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <p class="cart-title">Commande en cours</p>
+    <ul class="cart-list" id="cartList"></ul>
+    <div class="cart-total"><span>Total</span><span id="cartTotal">฿0</span></div>
+    <div class="cart-actions">
+      <button class="btn btn-primary" id="finalizeBtn" disabled>Envoyer à la cuisine</button>
+      <button class="btn btn-ghost" id="resetBtn">Réinitialiser</button>
+    </div>
+  </section>
+</main>
+
+<p class="demo-note">
+  Démo de concept : la reconnaissance vocale utilise le micro de <em>ce</em> navigateur (aucun vrai numéro de téléphone
+  branché), et la commande est envoyée à l'écran cuisine via le navigateur local — ouvrez "Écran cuisine" dans un
+  second onglet ou une seconde fenêtre sur le même appareil pour voir la commande apparaître en direct. Une vraie
+  ligne téléphonique demanderait un numéro Twilio + un petit serveur pour relier l'appel entrant à l'IA et à une vraie
+  tablette, sur n'importe quel appareil.
+</p>
+
+<script src="assets/js/menu-data.js"></script>
+<script src="assets/js/order-bus.js"></script>
+<script src="assets/js/nlu.js"></script>
+<script>document.getElementById('restaurantName').textContent = window.NM_RESTAURANT_NAME;</script>
+<script src="assets/js/call.js"></script>
+</body>
+</html>
