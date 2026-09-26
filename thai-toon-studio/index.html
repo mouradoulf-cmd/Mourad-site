@@ -1209,6 +1209,10 @@
           state.warnedFallback = true;
         }
         item.model = legacy.id;
+        // On retient v2.0 pour les prochaines fois (2.5 n'est pas ouvert pour cette clé).
+        state.settings.model = legacy.id;
+        saveSettings();
+        renderChoices();
         (state.activeItems || []).forEach(function (x) { if (x.status === "pending") x.model = legacy.id; });
         onWait && onWait(model.name + " indisponible, envoi avec le moteur v2.0…");
         return createVideo(item, prompt, onWait);
@@ -1223,7 +1227,7 @@
     item.lastRaw = data;
     var raw = data && (data.video_id || (data.data && data.data.video_id) || data.id || data.task_id);
     if (!raw) throw new Error("Réponse Agnes sans identifiant de vidéo : " + JSON.stringify(data).slice(0, 160));
-    return { videoId: extractRealVideoId(raw), taskId: data.task_id || data.id || null };
+    return { rawId: raw, videoId: extractRealVideoId(raw), taskId: data.task_id || data.id || null };
   }
 
   /* Cherche l'URL de la vidéo dans la réponse, quel que soit son emplacement */
@@ -1254,32 +1258,98 @@
     return { status: s, progress: isNaN(p) ? 0 : Math.max(0, Math.min(100, p)) };
   }
 
+  /* Toutes les façons documentées de demander le résultat d'une vidéo.
+     Doc Agnes : « Use model_name when you are using an upstream original video ID ».
+     On essaie chaque variante et on garde celle qui répond. */
+  function pollVariants(item) {
+    var model = item.model || "agnes-video-v2.0";
+    var q = "&model_name=" + encodeURIComponent(model);
+    var real = item.videoId, raw = item.rawId || item.videoId;
+    var list = [];
+    function add(label, url) {
+      if (list.some(function (v) { return v.url === url; })) return;
+      list.push({ label: label, url: url });
+    }
+    add("video_id + model_name", API_BASE + "/agnesapi?video_id=" + encodeURIComponent(real) + q);
+    add("video_id brut", API_BASE + "/agnesapi?video_id=" + encodeURIComponent(raw));
+    add("video_id brut + model_name", API_BASE + "/agnesapi?video_id=" + encodeURIComponent(raw) + q);
+    add("video_id", API_BASE + "/agnesapi?video_id=" + encodeURIComponent(real));
+    if (item.taskId) {
+      add("task_id (ancien)", API_BASE + "/v1/videos/" + encodeURIComponent(item.taskId));
+      add("task_id + model_name", API_BASE + "/agnesapi?video_id=" + encodeURIComponent(item.taskId) + q);
+    }
+    add("/v1/videos/video_id", API_BASE + "/v1/videos/" + encodeURIComponent(real));
+    return list;
+  }
+
+  var DONE_RE = /complet|succe|success|done|finish/;
+  var FAIL_RE = /fail|error|cancel|reject/;
+
   async function pollVideo(item) {
-    var model = byId(MODELS, item.model);
-    var url = API_BASE + "/agnesapi?video_id=" + encodeURIComponent(item.videoId) +
-      (model.v25 ? "&model_name=" + encodeURIComponent(model.id) : "");
-    var legacyUrl = item.taskId ? API_BASE + "/v1/videos/" + encodeURIComponent(item.taskId) : null;
+    var variants = pollVariants(item);
+    var vi = 0;                 // variante utilisée
+    var found = false;          // une variante a déjà reconnu la tâche
+    var misses = 0;             // 404 consécutifs
     var lastChange = Date.now(), lastSig = "";
-    for (var attempt = 1; attempt <= POLL_MAX; attempt++) {
-      await sleep(POLL_EVERY_MS);
-      var data = await agnesFetch(url, { method: "GET", headers: { "Authorization": "Bearer " + apiKey() } }, "Suivi", function (m) {
-        item.msg = m; renderQueueItem(item);
-      });
-      // Plan B toutes les 6 vérifications : l'ancien point d'accès /v1/videos/{task_id}
-      if (legacyUrl && attempt % 6 === 0 && !/complet|succe|done|finish|fail|error/.test(readStatus(data).status)) {
-        try {
-          var alt = await agnesFetch(legacyUrl, { method: "GET", headers: { "Authorization": "Bearer " + apiKey() } }, "Suivi (secours)");
-          if (/complet|succe|done|finish|fail|error/.test(readStatus(alt).status) || findVideoUrl(alt)) data = alt;
-        } catch (e) { if (e instanceof StopError) throw e; }
+    var auth = { method: "GET", headers: { "Authorization": "Bearer " + apiKey() } };
+    var noop = function (m) { item.msg = m; renderQueueItem(item); };
+
+    async function ask(v) {
+      try {
+        return { data: await agnesFetch(v.url, auth, "Suivi", noop) };
+      } catch (e) {
+        if (e instanceof StopError || e.fatal) throw e;
+        return { error: e };
       }
-      item.lastRaw = data;
+    }
+
+    for (var attempt = 1; attempt <= POLL_MAX; attempt++) {
+      await sleep(attempt === 1 ? 4000 : POLL_EVERY_MS);
+      var v = variants[vi];
+      var r = await ask(v);
+
+      if (r.error) {
+        // 404 / 400 : la tâche n'est pas (encore) visible par cette variante → on essaie la suivante.
+        item.lastRaw = { variante: v.label, erreur: r.error.message, reponse: r.error.body || null };
+        misses++;
+        if (!found) vi = (vi + 1) % variants.length;
+        if (misses > variants.length * 8) {
+          throw new Error("Agnes ne retrouve pas cette vidéo (" + (r.error.status || "?") + ") après " + Math.round(attempt * POLL_EVERY_MS / 60000) + " min. Copie les « Détails techniques » et envoie-les pour diagnostic.");
+        }
+        item.status = "processing";
+        item.msg = found ? "Réponse d'Agnes instable, nouvel essai…" : "Enregistrement de la tâche chez Agnes… (" + misses + ")";
+        renderQueueItem(item);
+        continue;
+      }
+
+      misses = 0;
+      found = true;
+      item.pollVariant = v.label;
+      var data = r.data;
       var st = readStatus(data);
+
+      // Si ça stagne, on demande aussi aux autres variantes (l'une peut déjà dire « terminé »).
+      if (!DONE_RE.test(st.status) && !FAIL_RE.test(st.status) && attempt % 6 === 0) {
+        for (var j = 0; j < variants.length; j++) {
+          if (j === vi) continue;
+          var alt = await ask(variants[j]);
+          if (alt.data) {
+            var ast = readStatus(alt.data);
+            if (DONE_RE.test(ast.status) || FAIL_RE.test(ast.status) || (findVideoUrl(alt.data) && !/queue|progress|process|pending|running/.test(ast.status))) {
+              data = alt.data; st = ast; vi = j; item.pollVariant = variants[j].label;
+              break;
+            }
+          }
+        }
+      }
+
+      item.lastRaw = data;
       var vurl = findVideoUrl(data);
-      if (/complet|succe|success|done|finish/.test(st.status) || (vurl && !/queue|progress|process|pending|running/.test(st.status))) {
+      if (DONE_RE.test(st.status) || (vurl && !/queue|progress|process|pending|running/.test(st.status))) {
         if (!vurl) throw new Error("Vidéo terminée mais aucun lien trouvé dans la réponse (voir « Détails techniques »).");
         return vurl;
       }
-      if (/fail|error|cancel|reject/.test(st.status)) {
+      if (FAIL_RE.test(st.status)) {
         var reason = (data && (data.error && (data.error.message || data.error) || data.message || data.fail_reason)) || "Agnes n'a pas pu créer cette scène.";
         throw new Error(typeof reason === "string" ? reason : JSON.stringify(reason));
       }
@@ -1294,7 +1364,7 @@
       renderQueueItem(item);
       renderStatusBar();
     }
-    throw new Error("Pas de résultat après 20 minutes. La vidéo est peut-être encore en cours chez Agnes : réessaie « Vérifier à nouveau » plus tard.");
+    throw new Error("Pas de résultat après 20 minutes. La vidéo est peut-être encore en cours chez Agnes : appuie sur « Vérifier à nouveau » plus tard.");
   }
 
   /* ============================================================
@@ -1363,7 +1433,8 @@
     if (it.lastRaw || it.videoId) {
       dbg.hidden = false;
       var pre = dbg.querySelector("pre");
-      var txt = "Moteur : " + (it.model || "?") + "\nvideo_id : " + (it.videoId || "—") + "\ntask_id : " + (it.taskId || "—") +
+      var txt = "Moteur : " + (it.model || "?") + "\nvideo_id : " + (it.videoId || "—") + (it.rawId && it.rawId !== it.videoId ? "\nvideo_id (brut) : " + it.rawId.slice(0, 60) + "…" : "") +
+        (it.pollVariant ? "\nSuivi via : " + it.pollVariant : "") + "\ntask_id : " + (it.taskId || "—") +
         "\n\nDernière réponse d'Agnes :\n" + (it.lastRaw ? JSON.stringify(it.lastRaw, function (k, v) {
           return typeof v === "string" && v.length > 300 ? v.slice(0, 300) + "…" : v;
         }, 2) : "—");
@@ -1456,6 +1527,7 @@
           })(it));
           state.lastCreateAt = Date.now();
           it.videoId = created.videoId;
+          it.rawId = created.rawId;
           it.taskId = created.taskId;
           savePending(it);
           it.status = "processing"; it.progress = 5;
@@ -1522,7 +1594,7 @@
   }
   function savePending(it) {
     var list = loadPending().filter(function (x) { return x.videoId !== it.videoId; });
-    list.unshift({ videoId: it.videoId, taskId: it.taskId, model: it.model, name: it.photo.name, created: Date.now() });
+    list.unshift({ videoId: it.videoId, rawId: it.rawId, taskId: it.taskId, model: it.model, name: it.photo.name, created: Date.now() });
     lsSet(PENDING_STORAGE, JSON.stringify(list.slice(0, 30)));
   }
   function removePending(videoId) {
@@ -1554,7 +1626,7 @@
     lsSet(PENDING_STORAGE, JSON.stringify(list));
     if (!list.length) return;
     var items = list.map(function (x) {
-      return { id: uid(), photo: { name: x.name, thumb: "", dataUrl: "" }, model: x.model, status: "processing", progress: 0, videoId: x.videoId, taskId: x.taskId, url: null, msg: "Reprise du suivi…" };
+      return { id: uid(), photo: { name: x.name, thumb: "", dataUrl: "" }, model: x.model, status: "processing", progress: 0, videoId: x.videoId, rawId: x.rawId || x.videoId, taskId: x.taskId, url: null, msg: "Reprise du suivi…" };
     });
     state.queue = items;
     renderQueue();
