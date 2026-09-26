@@ -1251,6 +1251,29 @@
   }
 
   var UPLOADERS = [
+    { name: "Agnes", run: async function (blob, fname, photo) {
+        // La photo est ré-hébergée par Agnes lui-même (API images, gratuite) :
+        // le moteur vidéo lit forcément ses propres liens.
+        var PRESERVE = "Reproduce this exact image faithfully as a clean high-quality frame. Keep everything identical: same characters, same faces, same expressions, same clothing, same pose, same composition, same background, same colors and art style. Do not add or remove anything. No text, no watermark.";
+        var tries = [
+          { model: "agnes-image-2.1-flash", prompt: PRESERVE, size: OUT_W + "x" + OUT_H, extra_body: { image: [photo.dataUrl], response_format: "url" } },
+          { model: "agnes-image-2.5-flash", prompt: PRESERVE, size: "1K", ratio: "2:3", extra_body: { image: [photo.dataUrl], response_format: "url" } },
+          { model: "agnes-image-2.0-flash", prompt: PRESERVE, size: OUT_W + "x" + OUT_H, extra_body: { image: [photo.dataUrl], response_format: "url" } }
+        ];
+        var last = "";
+        for (var t = 0; t < tries.length; t++) {
+          try {
+            var d = await agnesFetch(API_BASE + "/v1/images/generations", { method: "POST", headers: headers(), body: JSON.stringify(tries[t]) }, "Image " + tries[t].model);
+            var u = d && d.data && d.data[0] && d.data[0].url;
+            if (u && /^https?:\/\//.test(u)) return u;
+            last = tries[t].model + " : pas de lien";
+          } catch (e) {
+            if (e instanceof StopError || e.fatal) throw e;
+            last = tries[t].model + " : " + e.message;
+          }
+        }
+        throw new Error(last.slice(0, 160));
+    } },
     { name: "tmpfiles", run: async function (blob, fname) {
         var f = new FormData();
         f.append("file", blob, fname); f.append("expire", "3600");
@@ -1311,9 +1334,9 @@
       var idx = (preferredUploader + k) % UPLOADERS.length;
       var up = UPLOADERS[idx];
       if (isBadHost(up.name) || (photo.triedHosts && photo.triedHosts.indexOf(up.name) >= 0)) continue;
-      onWait && onWait("Mise en ligne de la photo (" + up.name + ")…");
+      onWait && onWait(up.name === "Agnes" ? "Préparation de la photo sur les serveurs Agnes (jusqu'à 1 min)…" : "Mise en ligne de la photo (" + up.name + ")…");
       try {
-        var url = await up.run(blob, fname);
+        var url = await up.run(blob, fname, photo);
         photo.publicUrl = url; photo.publicAt = Date.now(); photo.publicHost = up.name;
         preferredUploader = idx;
         return url;
