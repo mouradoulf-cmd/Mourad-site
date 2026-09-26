@@ -105,6 +105,7 @@ button:focus-visible,.opt:focus-visible{outline:3px solid var(--gold);outline-of
 .qi.done{border-color:#9fd6c1;background:#f2fbf7}
 .qi.fail{border-color:#efc9c3;background:#fdf4f2}
 .qi.proc{border-color:#e7cf95;background:var(--gold-soft)}
+.qarrow{color:var(--gold);font-weight:800;flex:none;margin:0 -4px}
 .qth{width:36px;height:48px;border-radius:6px;object-fit:cover;flex:none}
 .qmain{flex:1;min-width:0}
 .qrow{display:flex;justify-content:space-between;font-weight:700;font-size:.85rem}
@@ -185,7 +186,10 @@ button:focus-visible,.opt:focus-visible{outline:3px solid var(--gold);outline-of
     <div class="sec open" id="secTe">
       <div class="sec-h" onclick="document.getElementById('secTe').classList.toggle('open')"><span>📷 Réglages</span><span class="chev">▼</span></div>
       <div class="sec-b"><div class="sec-c">
-        <label class="l" for="engSel">Moteur vidéo</label>
+        <label class="l" for="modeSel">Mode</label>
+    <select id="modeSel"><option value="single">1 image = 1 plan</option><option value="sequence">🎬 Plan séquence (les images s'enchaînent)</option></select>
+    <p class="hint" id="modeNote" style="margin:-4px 0 10px">Chaque image devient un plan séparé.</p>
+    <label class="l" for="engSel">Moteur vidéo</label>
         <select id="engSel"><option value="v2">v2.0 · classique</option><option value="25f">2.5 Flash · nouveau, vertical + son</option></select>
         <div class="row3">
         <div><label class="l" for="durSel">Durée du plan</label>

@@ -37,7 +37,9 @@ var STYLES=[
 {id:'magic',em:'🌟',nm:'Magie Douce',ds:'Ambiance féérique',p:'Magical fairy-tale animated film, soft glowing particles, enchanted atmosphere, warm dreamy light. Characters must remain IDENTICAL to source image.'}
 ];
 
-var S={imgs:[],running:false,stop:false,queue:[],done:0,failed:0,style:'disney',ep:'cooking',prompt:'',frame:'wide',intensity:'subtle',frames:153,engine:'v2'};
+var S={imgs:[],running:false,stop:false,queue:[],done:0,failed:0,style:'disney',ep:'cooking',prompt:'',frame:'wide',intensity:'subtle',frames:153,engine:'v2',mode:'single'};
+var MODE_STORAGE='siam_video_mode';
+try{var _m=localStorage.getItem(MODE_STORAGE);if(_m==='single'||_m==='sequence')S.mode=_m}catch(e){}
 try{var _e=localStorage.getItem(ENGINE_STORAGE);if(_e==='25f'||_e==='v2')S.engine=_e}catch(e){}
 
 function $(id){return document.getElementById(id)}
@@ -53,11 +55,15 @@ else{p.classList.remove('ok');st.classList.remove('ok');tx.textContent='Aucune c
 updateGenBtn()}
 
 function updateGenBtn(){var b=$('genBtn');var hasI=S.imgs.length>0;var hasK=!!getKey();
-b.disabled=!hasI||!hasK||S.running;
+var seq=S.mode==='sequence';var n=seq?Math.max(0,S.imgs.length-1):S.imgs.length;
+b.disabled=!n||!hasK||S.running;
 if(S.running){b.textContent='Création… ('+(S.done+S.failed)+'/'+S.queue.length+')'}
 else if(!hasK){b.textContent='Ajoutez votre clé API'}
 else if(!hasI){b.textContent='Ajoutez des images'}
-else{b.textContent='✨ Créer '+S.imgs.length+' plan'+(S.imgs.length>1?'s':'')}}
+else if(seq&&S.imgs.length<2){b.textContent='Ajoutez au moins 2 images (plan séquence)'}
+else if(seq){b.textContent='🎬 Créer '+n+' clip'+(n>1?'s':'')+' · plan séquence'}
+else{b.textContent='✨ Créer '+n+' plan'+(n>1?'s':'')}
+var mn=$('modeNote');if(mn)mn.textContent=seq?(S.imgs.length>=2?S.imgs.length+' images → '+n+' clips enchaînés : chaque image est la fin d\'un clip et le début du suivant.':'Chaque image est la fin d\'un clip et le début du suivant. Il faut au moins 2 images, dans l\'ordre.'):'Chaque image devient un plan séparé.'}
 
 function fileUri(f){return new Promise(function(ok,ko){var r=new FileReader();r.onload=function(e){ok(e.target.result)};r.onerror=ko;r.readAsDataURL(f)})}
 function thumb(u){return new Promise(function(ok){var i=new Image();i.onload=function(){try{var c=document.createElement('canvas');c.width=200;c.height=Math.round(200*i.height/i.width);c.getContext('2d').drawImage(i,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.7))}catch(e){ok(u)}};i.onerror=function(){ok(u)};i.src=u})}
@@ -94,7 +100,8 @@ if(stN){var ss=STYLES.filter(function(s){return s.id===S.style})[0];stN.textCont
 
 function buildPrompt(){var ep=EPISODES.filter(function(e){return e.id===S.ep})[0];
 var st=STYLES.filter(function(s){return s.id===S.style})[0];var p=[];
-p.push('Animate this exact image as the starting frame of a premium Thai animated series. The subject must remain IDENTICAL: same face, expression, clothing, pose, identity. Preserve exact composition.');
+if(S.mode==='sequence')p.push('The first image is the EXACT first frame and the second image is the EXACT last frame of this shot of a premium Thai animated series. Animate a smooth, continuous, natural transition between them: one continuous camera move, no cut, no fade. Characters must remain IDENTICAL: same faces, clothing and identity.');
+else p.push('Animate this exact image as the starting frame of a premium Thai animated series. The subject must remain IDENTICAL: same face, expression, clothing, pose, identity. Preserve exact composition.');
 if(ep)p.push(ep.p);
 if(st)p.push(st.p);
 if(S.prompt&&S.prompt.trim())p.push('Artistic direction: '+S.prompt.trim());
@@ -112,31 +119,38 @@ return p.join('. ')}
 function realVideoId(id){if(!id||id.indexOf('video_')!==0)return id;var b=id.slice(6);if(b.length<50)return id;
 try{var std=b.replace(/-/g,'+').replace(/_/g,'/');while(std.length%4)std+='=';var m=atob(std).match(/video_id:(video_[A-Za-z0-9]+)/);return m?m[1]:id}catch(e){return id}}
 
-async function createTask(uri,prompt,onQueueWait){
+/* Envoi avec nouvel essai automatique si la file Agnes est pleine (toutes les 60 s, ~1 h max). */
+async function postVideo(body,onQueueWait){var r,e,tries=0;
+while(true){
+r=await fetch(API_BASE+'/videos',{method:'POST',headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:JSON.stringify(body)});
+if(r.ok)return r.json();
+e=await r.text();
+if((r.status===503||r.status===429)&&/queue_full|queue is full|busy|overload|rate/i.test(e)&&tries<60){tries++;
+for(var w=60;w>0;w--){if(S.stop)throw new Error('Arrêt');onQueueWait&&onQueueWait(tries,w);await sleep(1000)}continue}
+throw new Error('HTTP '+r.status+' '+e.slice(0,140))}}
+
+/* uri = photo de départ ; uri2 = photo de fin (mode Plan séquence) */
+async function createTask(uri,prompt,onQueueWait,uri2){
+var d;
 if(S.engine==='25f'){
 var secs=S.frames>=241?'10':(S.frames<=121?'5':'6');
 var b25={model:MODEL_25F,prompt:prompt,mode:'keyframe',first_frame:uri,seconds:secs,size:'720P',aspect_ratio:'9:16'};
-var r5,e5,tries=0;
-while(true){
-r5=await fetch(API_BASE+'/videos',{method:'POST',headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:JSON.stringify(b25)});
-if(r5.ok)break;
-e5=await r5.text();
-/* File d'attente Agnes pleine : on réessaie tout seul toutes les 60 s (jusqu'à ~1 h). */
-if((r5.status===503||r5.status===429)&&/queue_full|queue is full|busy|overload|rate/i.test(e5)&&tries<60){tries++;
-for(var w=60;w>0;w--){if(S.stop)throw new Error('Arrêt');onQueueWait&&onQueueWait(tries,w);await sleep(1000)}continue}
-throw new Error('HTTP '+r5.status+' '+e5.slice(0,140))}
-var d5=await r5.json();var id5=d5.video_id||d5.id||d5.task_id;
-if(!id5)throw new Error('Pas de video_id');return realVideoId(id5)}
-var body={model:MODEL,prompt:prompt,image:uri,num_frames:S.frames,frame_rate:24};
-var r=await fetch(API_BASE+'/videos',{method:'POST',headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:JSON.stringify(body)});
-if(!r.ok){var e=await r.text();throw new Error('HTTP '+r.status+' '+e.slice(0,150))}
-var d=await r.json();var id=d.video_id||d.id||d.task_id;
+if(uri2)b25.last_frame=uri2;
+d=await postVideo(b25,onQueueWait);
+var id5=d.video_id||d.id||d.task_id;if(!id5)throw new Error('Pas de video_id');return realVideoId(id5)}
+var body;
+if(uri2){/* v2.0 keyframes : image de début + image de fin (comme l'app « Plan Séquence » de référence) */
+body={model:MODEL,prompt:prompt,num_frames:S.frames,frame_rate:24,extra_body:{image:[uri,uri2],mode:'keyframes'}}}
+else{body={model:MODEL,prompt:prompt,image:uri,num_frames:S.frames,frame_rate:24}}
+d=await postVideo(body,onQueueWait);
+var id=d.video_id||d.id||d.task_id;
 if(!id)throw new Error('Pas de video_id');return id}
 
-async function pollTask(id,onProg){for(var i=0;i<100;i++){if(S.stop)throw new Error('Arrêt');
+async function pollTask(id,onProg){var withModel=!(S.mode==='sequence'&&S.engine!=='25f');for(var i=0;i<100;i++){if(S.stop)throw new Error('Arrêt');
 if(i>0)for(var w=8;w>0;w--){if(S.stop)throw new Error('Arrêt');await sleep(1000)}
-var u=POLL_BASE+'?video_id='+encodeURIComponent(id)+'&model_name='+encodeURIComponent(S.engine==='25f'?MODEL_25F:MODEL);
+var u=POLL_BASE+'?video_id='+encodeURIComponent(id)+(withModel?'&model_name='+encodeURIComponent(S.engine==='25f'?MODEL_25F:MODEL):'');
 var r=await fetch(u,{headers:{'Authorization':'Bearer '+getKey()}});
+if(!r.ok&&r.status!==429){withModel=!withModel;continue}
 var d={};try{d=await r.json()}catch(e){}
 var st=d.status||'';
 var pr=d.progress||0;onProg(pr,st);
@@ -154,7 +168,7 @@ if(it.status==='proc'){ic='◐';tx=it.progress||'En cours';cls='proc';pct=it.pct
 else if(it.status==='done'){ic='●';tx='Terminé ✓';cls='done';pct=100}
 else if(it.status==='fail'){ic='✕';tx=it.progress||'Échec';cls='fail'}
 else if(it.status==='create'){ic='◐';tx=it.progress||'Envoi à Agnes…';cls='proc';pct=2}
-h+='<div class="qi '+cls+'"><img class="qth" src="'+it.img.thumbnail+'" alt=""><div class="qmain"><div class="qrow"><span class="qn">Plan '+(i+1)+'</span><span class="qic">'+ic+'</span></div>'+
+h+='<div class="qi '+cls+'"><img class="qth" src="'+it.img.thumbnail+'" alt="">'+(it.img2?'<span class="qarrow">→</span><img class="qth" src="'+it.img2.thumbnail+'" alt="">':'')+'<div class="qmain"><div class="qrow"><span class="qn">'+(it.img2?'Clip '+(i+1)+' · image '+(i+1)+' → '+(i+2):'Plan '+(i+1))+'</span><span class="qic">'+ic+'</span></div>'+
 '<div class="qbar"><i style="width:'+pct+'%"></i></div><div class="qs">'+esc(tx)+'</div></div></div>'}
 q.innerHTML=h}
 
@@ -198,12 +212,12 @@ function releaseAwake(){try{if(wakeLock)wakeLock.release()}catch(e){}wakeLock=nu
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&S.running&&!wakeLock)keepAwake()});
 
 async function processOne(item,idx){try{item.status='create';item.progress='Envoi à Agnes…';renderQueue();
-var p=buildPrompt();var id=await createTask(item.img.dataUri,p,function(n,w){item.progress='File Agnes pleine · nouvel essai n°'+n+' dans '+w+' s';renderQueue();setStatus('File Agnes pleine (serveurs saturés) · Plan '+(idx+1)+' : nouvel essai dans '+w+' s')});item.taskId=id;
+var p=buildPrompt();var id=await createTask(item.img.dataUri,p,function(n,w){item.progress='File Agnes pleine · nouvel essai n°'+n+' dans '+w+' s';renderQueue();setStatus('File Agnes pleine (serveurs saturés) · Plan '+(idx+1)+' : nouvel essai dans '+w+' s')},item.img2&&item.img2.dataUri);item.taskId=id;
 item.status='proc';item.progress='Animation en cours…';item.start=Date.now();renderQueue();
 var url=await pollTask(id,function(pr,st){item.pct=Math.max(5,Math.min(99,pr||0));var m=Math.floor((Date.now()-item.start)/60000);
 item.progress=(st==='queued'?'Dans la file Agnes':'Animation')+'… '+(pr||0)+'%'+(m?' · '+m+' min':'');renderQueue()});
 item.status='done';S.done++;renderQueue();updateGenBtn();
-addGallery(url,'Plan '+(idx+1)+' · '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),true);
+addGallery(url,(item.img2?'Clip ':'Plan ')+(idx+1)+' · '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),true);
 toast('Plan '+(idx+1)+' terminé ✓','ok');
 }catch(e){if(e.message==='Arrêt'){item.status='fail';item.progress='Arrêté'}else{item.status='fail';item.progress=e.message||'Échec';S.failed++;toast('Plan '+(idx+1)+' : '+(e.message||'échec'),'err')}
 renderQueue();updateGenBtn()}}
@@ -211,7 +225,9 @@ renderQueue();updateGenBtn()}}
 async function startGen(){if(S.running||!S.imgs.length)return;if(!getKey()){toast('Ajoutez une clé API','err');return}
 S.running=true;S.stop=false;S.done=0;S.failed=0;
 S.prompt=$('mainPrompt').value.trim();
-S.queue=S.imgs.map(function(im,i){return{img:im,status:'pending',progress:null,taskId:null}});
+if(S.mode==='sequence'){S.queue=[];for(var k=0;k<S.imgs.length-1;k++)S.queue.push({img:S.imgs[k],img2:S.imgs[k+1],status:'pending',progress:null,taskId:null})}
+else S.queue=S.imgs.map(function(im,i){return{img:im,status:'pending',progress:null,taskId:null}});
+if(!S.queue.length){S.running=false;toast('Ajoute au moins 2 images pour un plan séquence','wn');updateGenBtn();return}
 $('stopBtn').style.display='block';$('stopBtn').onclick=function(){S.stop=true;toast('Arrêt demandé','wn')};
 $('genBtn').disabled=true;renderQueue();updateGenBtn();keepAwake();
 var qa=$('queueAnchor');if(qa&&qa.scrollIntoView)qa.scrollIntoView({behavior:'smooth',block:'start'});
@@ -243,6 +259,7 @@ $('mainPrompt').oninput=function(e){S.prompt=e.target.value};
 $('durSel').onchange=function(e){S.frames=parseInt(e.target.value,10)};
 $('frSel').onchange=function(e){S.frame=e.target.value};
 $('inSel').onchange=function(e){S.intensity=e.target.value};
+var ms=$('modeSel');if(ms){ms.value=S.mode;ms.onchange=function(e){if(S.running){e.target.value=S.mode;toast('Attends la fin de la création','wn');return}S.mode=e.target.value;try{localStorage.setItem(MODE_STORAGE,S.mode)}catch(x){}updateGenBtn()}}
 var eng=$('engSel');if(eng){eng.value=S.engine;eng.onchange=function(e){if(S.running){e.target.value=S.engine;toast('Attends la fin de la création','wn');return}S.engine=e.target.value;try{localStorage.setItem(ENGINE_STORAGE,S.engine)}catch(x){}
 toast(S.engine==='25f'?'Moteur 2.5 Flash : vertical + son':'Moteur v2.0 classique','ok')}}
 $('genBtn').onclick=startGen;

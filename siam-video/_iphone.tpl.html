@@ -106,6 +106,7 @@ body:has(.bar.on) .cta{bottom:calc(var(--sb) + 64px)}
 .qi.done{border-color:rgba(79,209,139,.5)}
 .qi.fail{border-color:rgba(255,107,125,.5)}
 .qi.proc{border-color:var(--gold3)}
+.qarrow{color:var(--gold);font-weight:800;flex:none;margin:0 -4px}
 .qth{width:42px;height:56px;border-radius:8px;object-fit:cover;flex:none}
 .qmain{flex:1;min-width:0}
 .qrow{display:flex;justify-content:space-between;font-weight:700;font-size:.88rem}
@@ -192,6 +193,9 @@ body:has(.bar.on) .cta{bottom:calc(var(--sb) + 64px)}
 <div class="sec open" id="secTe">
   <div class="sec-h" onclick="document.getElementById('secTe').classList.toggle('open')"><span>📷 Réglages</span><span class="pick">moteur · durée · cadrage</span><span class="chev">▼</span></div>
   <div class="sec-b"><div class="sec-c">
+    <label class="l" for="modeSel">Mode</label>
+    <select id="modeSel"><option value="single">1 image = 1 plan</option><option value="sequence">🎬 Plan séquence (les images s'enchaînent)</option></select>
+    <p class="hint" id="modeNote" style="margin:-4px 0 10px">Chaque image devient un plan séparé.</p>
     <label class="l" for="engSel">Moteur vidéo</label>
     <select id="engSel"><option value="v2">v2.0 · classique</option><option value="25f">2.5 Flash · nouveau, vertical + son</option></select>
     <label class="l" for="durSel">Durée du plan</label>
