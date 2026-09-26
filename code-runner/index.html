@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Code Runner">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f1115">
+<title>Code Runner</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --line: #2a2f3a;
+    --ink: #e8eaf0;
+    --muted: #8b92a3;
+    --accent: #3ddc97;
+    --accent-ink: #06170f;
+    --blue: #5aa9ff;
+    --danger: #ff6b7a;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    overflow: hidden;
+  }
+
+  /* Écran divisé : éditeur 50 % en haut, aperçu 50 % en bas, boutons en bas */
+  .app {
+    height: 100vh;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr 1fr auto;
+    padding-top: var(--safe-top);
+  }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+    min-height: 40px;
+  }
+  .topbar h1 { margin: 0; font-size: 1rem; font-weight: 700; letter-spacing: 0.02em; }
+  .topbar h1 span { color: var(--accent); }
+  .status { font-size: 0.8rem; color: var(--muted); text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .status.ok { color: var(--accent); }
+  .status.err { color: var(--danger); }
+
+  .editor { min-height: 0; display: flex; position: relative; }
+  textarea {
+    flex: 1;
+    width: 100%;
+    resize: none;
+    border: 0;
+    outline: 0;
+    padding: 12px 16px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 16px; /* 16px minimum : évite le zoom automatique sur iPhone */
+    line-height: 1.45;
+    white-space: pre;
+    overflow: auto;
+    tab-size: 2;
+  }
+  textarea::placeholder { color: var(--muted); }
+  .count {
+    position: absolute; right: 10px; bottom: 6px;
+    font-size: 0.72rem; color: var(--muted);
+    background: var(--panel); padding: 2px 8px; border-radius: 999px;
+    pointer-events: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .preview { min-height: 0; position: relative; border-top: 2px solid var(--line); background: #fff; }
+  .preview iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
+  .placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    padding: 16px; text-align: center;
+    background: var(--panel); color: var(--muted);
+  }
+  .placeholder strong { color: var(--ink); font-size: 1rem; }
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 10px 12px calc(10px + var(--safe-bottom));
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+  }
+  .toolbar .run { grid-column: span 2; }
+  button {
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-height: 48px;
+    padding: 8px 6px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: #20242d;
+    color: var(--ink);
+    cursor: pointer;
+    touch-action: manipulation;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+  button:active { transform: scale(0.97); }
+  button:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  button.run { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-size: 1rem; }
+  button.danger { color: var(--danger); }
+  button.danger.armed { background: var(--danger); border-color: var(--danger); color: #1a0508; }
+
+  @media (min-width: 700px) {
+    .toolbar { grid-template-columns: 2fr repeat(4, 1fr); }
+    .toolbar .run { grid-column: auto; }
+  }
+  @media (max-width: 360px) { button { font-size: 0.82rem; } }
+  .topbar .right { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .topbar button { min-height: 44px; padding: 6px 12px; font-size: 0.8rem; font-weight: 600; }
+
+  /* Mode plein écran : l'aperçu prend tout l'écran */
+  .app.full { grid-template-rows: 1fr; padding-top: 0; }
+  .app.full .topbar, .app.full .editor, .app.full .toolbar { display: none; }
+  .app.full .preview { border-top: 0; }
+  .exit-full {
+    position: fixed; z-index: 10;
+    top: calc(8px + var(--safe-top)); right: 8px;
+    min-height: 44px; padding: 8px 14px;
+    background: rgba(15, 17, 21, 0.82); color: #fff; border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  }
+  .exit-full.dim { opacity: 0.35; }
+
+  @media (prefers-reduced-motion: reduce) { button:active { transform: none; } }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="topbar">
+    <h1>Code <span>Runner</span></h1>
+    <div class="right">
+      <div class="status" id="status" role="status" aria-live="polite">Colle ton code puis lance l'aperçu</div>
+      <button type="button" id="restoreBtn">↩️ Restaurer</button>
+    </div>
+  </header>
+
+  <div class="editor">
+    <label for="code" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Code HTML</label>
+    <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"
+      placeholder="Colle ici ton code HTML / CSS / JS complet&#10;(de <!DOCTYPE html> jusqu'à </html>)&#10;&#10;Puis appuie sur ▶️ Lancer l'aperçu."></textarea>
+    <span class="count" id="count">0 ligne</span>
+  </div>
+
+  <div class="preview">
+    <iframe id="frame" title="Aperçu"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads allow-modals"
+      allow="clipboard-read; clipboard-write; autoplay; fullscreen"></iframe>
+    <div class="placeholder" id="placeholder">
+      <strong>Aperçu</strong>
+      <span>Ton site ou ton appli s'affichera ici.</span>
+    </div>
+  </div>
+
+  <nav class="toolbar" aria-label="Actions">
+    <button type="button" class="run" id="runBtn">▶️ Lancer l'aperçu</button>
+    <button type="button" id="fullBtn">🔄 Plein écran</button>
+    <button type="button" id="saveBtn">💾 Sauvegarder</button>
+    <button type="button" id="pasteBtn">📋 Coller</button>
+    <button type="button" class="danger" id="clearBtn">🗑️ Effacer</button>
+  </nav>
+</div>
+
+<button type="button" class="exit-full" id="exitFull" hidden>✕ Quitter le plein écran</button>
+
+<script>
+(function () {
+  "use strict";
+  var KEY = "code-runner:code";
+  var app = document.getElementById("app");
+  var code = document.getElementById("code");
+  var frame = document.getElementById("frame");
+  var placeholder = document.getElementById("placeholder");
+  var statusEl = document.getElementById("status");
+  var countEl = document.getElementById("count");
+  var exitFull = document.getElementById("exitFull");
+  var clearBtn = document.getElementById("clearBtn");
+  var statusTimer, dimTimer, clearTimer;
+
+  function setStatus(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = "status" + (kind ? " " + kind : "");
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(function () {
+      statusEl.textContent = "Prêt";
+      statusEl.className = "status";
+    }, 4000);
+  }
+
+  function readSaved() {
+    try { return localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+  function writeSaved(v) {
+    try { localStorage.setItem(KEY, v); return true; } catch (e) { return false; }
+  }
+
+  function updateCount() {
+    var n = code.value ? code.value.split("\n").length : 0;
+    countEl.textContent = n + (n > 1 ? " lignes" : " ligne");
+  }
+
+  function wrap(html) {
+    // Un bout de code sans <html>/<body> est enveloppé pour s'afficher correctement.
+    if (/<html[\s>]/i.test(html) || /<body[\s>]/i.test(html) || /<!doctype/i.test(html)) return html;
+    return '<!doctype html><html><head><meta charset="utf-8">' +
+      '<meta name="viewport" content="width=device-width, initial-scale=1"></head><body>' +
+      html + "</body></html>";
+  }
+
+  function run() {
+    var html = code.value;
+    if (!html.trim()) { setStatus("La zone est vide : colle d'abord un code", "err"); return; }
+    // Recréer l'iframe repart d'une page propre (timers et écouteurs de l'ancien code arrêtés).
+    var fresh = frame.cloneNode(false);
+    frame.parentNode.replaceChild(fresh, frame);
+    frame = fresh;
+    frame.srcdoc = wrap(html);
+    placeholder.hidden = true;
+    writeSaved(html); // sauvegarde automatique à chaque lancement
+    code.blur();
+    setStatus("Aperçu lancé ✓", "ok");
+  }
+
+  function setFull(on) {
+    if (on && placeholder.hidden === false && code.value.trim()) run();
+    app.classList.toggle("full", on);
+    exitFull.hidden = !on;
+    exitFull.classList.remove("dim");
+    clearTimeout(dimTimer);
+    if (on) dimTimer = setTimeout(function () { exitFull.classList.add("dim"); }, 2500);
+  }
+
+  document.getElementById("runBtn").addEventListener("click", run);
+  document.getElementById("fullBtn").addEventListener("click", function () {
+    if (!code.value.trim() && placeholder.hidden === false) {
+      setStatus("Colle un code avant le plein écran", "err");
+      return;
+    }
+    setFull(!app.classList.contains("full"));
+  });
+  exitFull.addEventListener("click", function () { setFull(false); });
+
+  document.getElementById("saveBtn").addEventListener("click", function () {
+    if (!code.value.trim()) { setStatus("Rien à sauvegarder", "err"); return; }
+    if (writeSaved(code.value)) setStatus("Sauvegardé ✓", "ok");
+    else setStatus("Sauvegarde impossible (navigation privée ?)", "err");
+  });
+
+  document.getElementById("restoreBtn").addEventListener("click", function () {
+    var saved = readSaved();
+    if (!saved) { setStatus("Aucune sauvegarde trouvée", "err"); return; }
+    code.value = saved;
+    updateCount();
+    setStatus("Dernière sauvegarde restaurée ✓", "ok");
+  });
+
+  document.getElementById("pasteBtn").addEventListener("click", function () {
+    function manual() {
+      code.focus();
+      setStatus("Appuie longuement dans la zone → Coller", "err");
+    }
+    if (!navigator.clipboard || !navigator.clipboard.readText) { manual(); return; }
+    navigator.clipboard.readText().then(function (text) {
+      if (!text) { setStatus("Le presse-papiers est vide", "err"); return; }
+      code.value = text;
+      updateCount();
+      code.scrollTop = 0;
+      setStatus("Code collé ✓ — appuie sur ▶️", "ok");
+    }).catch(manual);
+  });
+
+  // Effacer demande une confirmation en deux appuis (pas de fenêtre de confirmation).
+  clearBtn.addEventListener("click", function () {
+    if (!clearBtn.classList.contains("armed")) {
+      clearBtn.classList.add("armed");
+      clearBtn.textContent = "Appuie encore";
+      clearTimeout(clearTimer);
+      clearTimer = setTimeout(function () {
+        clearBtn.classList.remove("armed");
+        clearBtn.textContent = "🗑️ Effacer";
+      }, 3000);
+      return;
+    }
+    clearTimeout(clearTimer);
+    clearBtn.classList.remove("armed");
+    clearBtn.textContent = "🗑️ Effacer";
+    code.value = "";
+    updateCount();
+    setStatus("Zone vidée (la sauvegarde est conservée)", "ok");
+  });
+
+  code.addEventListener("input", updateCount);
+
+  // Tabulation = 2 espaces (clavier externe / iPad)
+  code.addEventListener("keydown", function (e) {
+    if (e.key === "Tab") {
+      e.preventDefault();
+      var s = code.selectionStart, en = code.selectionEnd;
+      code.value = code.value.slice(0, s) + "  " + code.value.slice(en);
+      code.selectionStart = code.selectionEnd = s + 2;
+    }
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") { e.preventDefault(); run(); }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") {
+      e.preventDefault();
+      document.getElementById("saveBtn").click();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && app.classList.contains("full")) setFull(false);
+  });
+
+  // Au démarrage : on recharge automatiquement la dernière sauvegarde.
+  var saved = readSaved();
+  if (saved) {
+    code.value = saved;
+    setStatus("Dernière sauvegarde rechargée", "ok");
+  }
+  updateCount();
+})();
+</script>
+</body>
+</html>
