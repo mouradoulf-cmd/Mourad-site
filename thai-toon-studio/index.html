@@ -1207,7 +1207,7 @@
         model: model.id,
         prompt: prompt,
         mode: "keyframe",
-        first_frame: item.photo.publicUrl || item.photo.dataUrl,
+        first_frame: (!item.photo.forceInline && item.photo.publicUrl) || item.photo.dataUrl,
         seconds: String(Math.round(Number(dur.id))),
         size: model.size,
         aspect_ratio: "9:16"
@@ -1216,7 +1216,7 @@
     return {
       model: model.id,
       prompt: prompt,
-      image: item.photo.publicUrl || item.photo.dataUrl,
+      image: (!item.photo.forceInline && item.photo.publicUrl) || item.photo.dataUrl,
       num_frames: dur.frames,
       frame_rate: FRAME_RATE,
       width: OUT_W,
@@ -1262,13 +1262,6 @@
   }
 
   var UPLOADERS = [
-    { name: "Litterbox", run: async function (blob, fname) {
-        var f = new FormData();
-        f.append("reqtype", "fileupload"); f.append("time", "1h"); f.append("fileToUpload", blob, fname);
-        var r = await postWithTimeout("https://litterbox.catbox.moe/resources/internals/api.php", f, 45000);
-        if (!r.res.ok || !/^https?:\/\//.test(r.text)) throw new Error("HTTP " + r.res.status + " " + r.text.slice(0, 80));
-        return r.text;
-    } },
     { name: "tmpfiles", run: async function (blob, fname) {
         var f = new FormData();
         f.append("file", blob, fname); f.append("expire", "3600");
@@ -1295,9 +1288,29 @@
         var m = r.text.match(/https?:\/\/\S+/);
         if (!r.res.ok || !m) throw new Error("HTTP " + r.res.status);
         return m[0];
+    } },
+    { name: "Litterbox", run: async function (blob, fname) {
+        var f = new FormData();
+        f.append("reqtype", "fileupload"); f.append("time", "1h"); f.append("fileToUpload", blob, fname);
+        var r = await postWithTimeout("https://litterbox.catbox.moe/resources/internals/api.php", f, 45000);
+        if (!r.res.ok || !/^https?:\/\//.test(r.text)) throw new Error("HTTP " + r.res.status + " " + r.text.slice(0, 80));
+        return r.text;
     } }
   ];
   var preferredUploader = 0;
+  var BAD_HOSTS_STORAGE = "thai_toon_bad_hosts";
+  function badHosts() {
+    try { var b = JSON.parse(lsGet(BAD_HOSTS_STORAGE) || "{}"); return b && typeof b === "object" ? b : {}; } catch (e) { return {}; }
+  }
+  function markBadHost(name) {
+    var b = badHosts(); b[name] = Date.now();
+    lsSet(BAD_HOSTS_STORAGE, JSON.stringify(b));
+  }
+  function isBadHost(name) {
+    var t = badHosts()[name];
+    return !!t && Date.now() - t < 7 * 24 * 3600 * 1000; // oublié après 7 jours
+  }
+  var DOWNLOAD_FAIL_RE = /download image|image url failed|failed to download|download.*fail|fetch.*image|image.*(unreachable|inaccessible|not accessible)|connection (reset|aborted)/i;
 
   async function ensurePublicUrl(photo, onWait) {
     // Un lien reste valable 1 h : on le réutilise pendant 50 min.
@@ -1308,6 +1321,7 @@
     for (var k = 0; k < UPLOADERS.length; k++) {
       var idx = (preferredUploader + k) % UPLOADERS.length;
       var up = UPLOADERS[idx];
+      if (isBadHost(up.name) || (photo.triedHosts && photo.triedHosts.indexOf(up.name) >= 0)) continue;
       onWait && onWait("Mise en ligne de la photo (" + up.name + ")…");
       try {
         var url = await up.run(blob, fname);
@@ -1325,7 +1339,7 @@
 
   async function createVideo(item, prompt, onWait) {
     var model = byId(MODELS, item.model);
-    if (!item.photo.textOnly && (!item.photo.publicUrl || Date.now() - item.photo.publicAt >= 50 * 60000)) {
+    if (!item.photo.textOnly && !item.photo.forceInline && (!item.photo.publicUrl || Date.now() - item.photo.publicAt >= 50 * 60000)) {
       var pub = await ensurePublicUrl(item.photo, onWait);
       if (!pub) {
         toast("Impossible de mettre la photo en ligne (" + (item.photo.uploadFailures || []).join(" · ") + "). Envoi direct, sans garantie.", "warning", 8000);
@@ -1338,6 +1352,20 @@
     } catch (err) {
       if (err instanceof StopError || err.fatal) throw err;
       item.lastRaw = { erreur: err.message, http_status: err.status || null, reponse: err.body || null };
+      // Agnes n'a pas réussi à télécharger la photo depuis cet hébergeur : on en essaie un autre.
+      if (!item.photo.textOnly && item.photo.publicHost && DOWNLOAD_FAIL_RE.test(err.message + " " + (err.body || ""))) {
+        var badHost = item.photo.publicHost;
+        markBadHost(badHost);
+        item.photo.triedHosts = (item.photo.triedHosts || []).concat(badHost);
+        item.photo.publicUrl = null; item.photo.publicAt = 0; item.photo.publicHost = null;
+        toast("Agnes n'arrive pas à lire la photo sur " + badHost + " : essai avec un autre hébergeur.", "warning", 6000);
+        var next = await ensurePublicUrl(item.photo, onWait);
+        if (!next) {
+          onWait && onWait("Aucun hébergeur lisible par Agnes : envoi direct de la photo…");
+          item.photo.forceInline = true;
+        }
+        return createVideo(item, prompt, onWait);
+      }
       if (model.v25 && err.status && err.status !== 429) {
         // Le moteur 2.5 n'est pas disponible pour cette clé : bascule automatique sur v2.0.
         var legacy = byId(MODELS, "agnes-video-v2.0");
