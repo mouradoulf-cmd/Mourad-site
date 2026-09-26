@@ -184,7 +184,10 @@ button:focus-visible,.opt:focus-visible{outline:3px solid var(--gold);outline-of
     </div>
     <div class="sec open" id="secTe">
       <div class="sec-h" onclick="document.getElementById('secTe').classList.toggle('open')"><span>📷 Réglages</span><span class="chev">▼</span></div>
-      <div class="sec-b"><div class="sec-c"><div class="row3">
+      <div class="sec-b"><div class="sec-c">
+        <label class="l" for="engSel">Moteur vidéo</label>
+        <select id="engSel"><option value="v2">v2.0 · classique</option><option value="25f">2.5 Flash · nouveau, vertical + son</option></select>
+        <div class="row3">
         <div><label class="l" for="durSel">Durée du plan</label>
           <select id="durSel"><option value="121">5 s</option><option value="153" selected>6,4 s</option><option value="241">10 s</option></select></div>
         <div><label class="l" for="frSel">Cadrage</label>
@@ -228,6 +231,8 @@ button:focus-visible,.opt:focus-visible{outline:3px solid var(--gold);outline-of
 var API_BASE='https://apihub.agnes-ai.com/v1';
 var POLL_BASE='https://apihub.agnes-ai.com/agnesapi';
 var MODEL='agnes-video-v2.0';
+var MODEL_25F='agnes-video-2.5-flash';
+var ENGINE_STORAGE='siam_video_engine';
 var KEY_STORAGE='siam_family_key';
 var GAL_STORAGE='siam_video_gallery';
 
@@ -257,7 +262,8 @@ var STYLES=[
 {id:'magic',em:'🌟',nm:'Magie Douce',ds:'Ambiance féérique',p:'Magical fairy-tale animated film, soft glowing particles, enchanted atmosphere, warm dreamy light. Characters must remain IDENTICAL to source image.'}
 ];
 
-var S={imgs:[],running:false,stop:false,queue:[],done:0,failed:0,style:'disney',ep:'cooking',prompt:'',frame:'wide',intensity:'subtle',frames:153};
+var S={imgs:[],running:false,stop:false,queue:[],done:0,failed:0,style:'disney',ep:'cooking',prompt:'',frame:'wide',intensity:'subtle',frames:153,engine:'v2'};
+try{var _e=localStorage.getItem(ENGINE_STORAGE);if(_e==='25f'||_e==='v2')S.engine=_e}catch(e){}
 
 function $(id){return document.getElementById(id)}
 function getKey(){try{return (localStorage.getItem(KEY_STORAGE)||'').trim()}catch(e){return ''}}
@@ -327,7 +333,19 @@ p.push('Portrait 9:16 vertical, 24fps, no text, no watermarks, consistent charac
 return p.join('. ')}
 
 /* --- Appels Agnes : identiques à Siam Family --- */
-async function createTask(uri,prompt){var body={model:MODEL,prompt:prompt,image:uri,num_frames:S.frames,frame_rate:24};
+/* Le moteur 2.5 renvoie parfois un identifiant « emballé » (video_ + base64) : on extrait le vrai. */
+function realVideoId(id){if(!id||id.indexOf('video_')!==0)return id;var b=id.slice(6);if(b.length<50)return id;
+try{var std=b.replace(/-/g,'+').replace(/_/g,'/');while(std.length%4)std+='=';var m=atob(std).match(/video_id:(video_[A-Za-z0-9]+)/);return m?m[1]:id}catch(e){return id}}
+
+async function createTask(uri,prompt){
+if(S.engine==='25f'){
+var secs=S.frames>=241?'10':(S.frames<=121?'5':'6');
+var b25={model:MODEL_25F,prompt:prompt,mode:'keyframe',first_frame:uri,seconds:secs,size:'720P',aspect_ratio:'9:16'};
+var r5=await fetch(API_BASE+'/videos',{method:'POST',headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:JSON.stringify(b25)});
+if(!r5.ok){var e5=await r5.text();throw new Error((r5.status===503?'Moteur 2.5 Flash indisponible pour ce compte (503) — repasse en v2.0. ':'HTTP '+r5.status+' ')+e5.slice(0,120))}
+var d5=await r5.json();var id5=d5.video_id||d5.id||d5.task_id;
+if(!id5)throw new Error('Pas de video_id');return realVideoId(id5)}
+var body={model:MODEL,prompt:prompt,image:uri,num_frames:S.frames,frame_rate:24};
 var r=await fetch(API_BASE+'/videos',{method:'POST',headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:JSON.stringify(body)});
 if(!r.ok){var e=await r.text();throw new Error('HTTP '+r.status+' '+e.slice(0,150))}
 var d=await r.json();var id=d.video_id||d.id||d.task_id;
@@ -335,7 +353,7 @@ if(!id)throw new Error('Pas de video_id');return id}
 
 async function pollTask(id,onProg){for(var i=0;i<100;i++){if(S.stop)throw new Error('Arrêt');
 if(i>0)for(var w=8;w>0;w--){if(S.stop)throw new Error('Arrêt');await sleep(1000)}
-var u=POLL_BASE+'?video_id='+encodeURIComponent(id)+'&model_name='+encodeURIComponent(MODEL);
+var u=POLL_BASE+'?video_id='+encodeURIComponent(id)+'&model_name='+encodeURIComponent(S.engine==='25f'?MODEL_25F:MODEL);
 var r=await fetch(u,{headers:{'Authorization':'Bearer '+getKey()}});
 var d={};try{d=await r.json()}catch(e){}
 var st=d.status||'';
@@ -443,6 +461,8 @@ $('mainPrompt').oninput=function(e){S.prompt=e.target.value};
 $('durSel').onchange=function(e){S.frames=parseInt(e.target.value,10)};
 $('frSel').onchange=function(e){S.frame=e.target.value};
 $('inSel').onchange=function(e){S.intensity=e.target.value};
+var eng=$('engSel');if(eng){eng.value=S.engine;eng.onchange=function(e){if(S.running){e.target.value=S.engine;toast('Attends la fin de la création','wn');return}S.engine=e.target.value;try{localStorage.setItem(ENGINE_STORAGE,S.engine)}catch(x){}
+toast(S.engine==='25f'?'Moteur 2.5 Flash : vertical + son':'Moteur v2.0 classique','ok')}}
 $('genBtn').onclick=startGen;
 var cg=$('clearGal');if(cg)cg.onclick=function(){if(!confirm('Vider la galerie ?'))return;saveGal([]);$('galGrid').innerHTML='';$('gallery').style.display='none';var c=$('galCount');if(c)c.textContent=''};
 

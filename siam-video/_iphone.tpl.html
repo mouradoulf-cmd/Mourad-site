@@ -189,9 +189,11 @@ body:has(.bar.on) .cta{bottom:calc(var(--sb) + 64px)}
   </div></div>
 </div>
 
-<div class="sec" id="secTe">
-  <div class="sec-h" onclick="document.getElementById('secTe').classList.toggle('open')"><span>📷 Réglages</span><span class="pick">6,4 s · large</span><span class="chev">▼</span></div>
+<div class="sec open" id="secTe">
+  <div class="sec-h" onclick="document.getElementById('secTe').classList.toggle('open')"><span>📷 Réglages</span><span class="pick">moteur · durée · cadrage</span><span class="chev">▼</span></div>
   <div class="sec-b"><div class="sec-c">
+    <label class="l" for="engSel">Moteur vidéo</label>
+    <select id="engSel"><option value="v2">v2.0 · classique</option><option value="25f">2.5 Flash · nouveau, vertical + son</option></select>
     <label class="l" for="durSel">Durée du plan</label>
     <select id="durSel"><option value="121">5 s</option><option value="153" selected>6,4 s</option><option value="241">10 s</option></select>
     <label class="l" for="frSel">Cadrage</label>
