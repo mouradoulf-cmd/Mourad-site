@@ -1351,6 +1351,8 @@
 
   async function createVideo(item, prompt, onWait) {
     var model = byId(MODELS, item.model);
+    // Comme la méthode de référence : la photo part d'abord directement (base64) dans la requête.
+    if (!item.photo.textOnly && !item.photo.inlineFailed && !item.photo.publicUrl) item.photo.forceInline = true;
     if (!item.photo.textOnly && !item.photo.forceInline && (!item.photo.publicUrl || Date.now() - item.photo.publicAt >= 50 * 60000)) {
       var pub = await ensurePublicUrl(item.photo, onWait);
       if (!pub) {
@@ -1393,12 +1395,14 @@
         onWait && onWait(model.name + " indisponible, envoi avec le moteur v2.0…");
         return createVideo(item, prompt, onWait);
       }
-      if (!model.v25 && err.status && err.status >= 400 && err.status < 500) {
-        // Ancien moteur : si le format demandé est refusé, on réessaie sans largeur/hauteur.
-        delete body.width; delete body.height;
-        onWait && onWait("Nouvel essai avec le format par défaut…");
-        data = await postVideo(body, onWait);
-      } else throw err;
+      if (!item.photo.textOnly && item.photo.forceInline && !item.photo.inlineFailed && err.status && err.status >= 400 && err.status < 500 && err.status !== 429) {
+        // L'envoi direct est refusé (photo trop lourde…) : on passe par un lien hébergé.
+        item.photo.inlineFailed = true;
+        item.photo.forceInline = false;
+        onWait && onWait("Envoi direct refusé, hébergement de la photo…");
+        return createVideo(item, prompt, onWait);
+      }
+      throw err;
     }
     item.lastRaw = data;
     var raw = data && (data.video_id || (data.data && data.data.video_id) || data.id || data.task_id);
@@ -1588,6 +1592,7 @@
     var diag = el.querySelector(".q-diag");
     var bits = [];
     if (it.photo.textOnly) bits.push("🧪 Test sans photo");
+    else if (it.photo.forceInline) bits.push("✅ Photo envoyée directement");
     else if (it.photo.publicUrl) bits.push("✅ Photo en ligne (" + it.photo.publicHost + ")");
     else if (it.photo.uploadFailures) bits.push("❌ Photo NON mise en ligne");
     if (it.model) bits.push("Moteur : " + byId(MODELS, it.model).name);
