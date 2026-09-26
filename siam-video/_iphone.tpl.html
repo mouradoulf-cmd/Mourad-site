@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Siam Video">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0b0a14">
+<title>Siam Video · iPhone</title>
+<style>
+:root{
+  --bg:#0b0a14;--bg2:#12101f;--card:#17142a;--card2:#1e1a36;--line:#2c2748;
+  --gold:#e8b949;--gold2:#ffd97a;--gold3:#a77c1c;--ink:#f4efe6;--muted:#a79fbd;--dim:#6f6889;
+  --ok:#4fd18b;--err:#ff6b7d;--wn:#f5a524;
+  --st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Noto Sans Thai",sans-serif;color:var(--ink);line-height:1.5;
+  background:radial-gradient(900px 480px at 50% -160px,rgba(232,185,73,.22),transparent 70%),radial-gradient(600px 400px at 120% 40%,rgba(120,80,220,.14),transparent 70%),var(--bg);
+  background-attachment:fixed;min-height:100vh;padding:calc(var(--st) + 18px) 16px calc(var(--sb) + 110px)}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+
+/* En-tête */
+.hero{text-align:center;padding:6px 0 4px}
+.logo{width:64px;height:64px;margin:0 auto 10px;border-radius:20px;display:grid;place-items:center;font-size:30px;
+  background:linear-gradient(145deg,#2a2150,#140f28);border:1px solid rgba(232,185,73,.45);box-shadow:0 10px 30px rgba(232,185,73,.2),inset 0 1px 0 rgba(255,255,255,.08)}
+.eyebrow{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:4px 0;
+  background:linear-gradient(180deg,#fff6dc,var(--gold2) 45%,var(--gold) 75%,var(--gold3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.th{color:var(--gold);font-size:.9rem;opacity:.9}
+.sub{color:var(--muted);font-size:.86rem;margin-top:6px}
+
+/* Cartes */
+.box{background:linear-gradient(180deg,rgba(30,26,54,.92),rgba(23,20,42,.92));border:1px solid var(--line);border-radius:20px;padding:16px;position:relative}
+.box::before{content:"";position:absolute;left:20px;right:20px;top:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,217,122,.55),transparent)}
+.box.ok{border-color:rgba(79,209,139,.45)}
+.bh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.step{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:800;color:var(--gold2);border:1px solid var(--gold3);background:rgba(232,185,73,.1);flex:none}
+.bh h2{font-size:1rem;font-weight:700}
+.bh .aside{margin-left:auto;font-size:.78rem;color:var(--muted)}
+
+input[type=password],textarea,select{width:100%;padding:14px;border-radius:14px;border:1px solid var(--line);background:#0e0c1a;color:var(--ink);font-family:inherit;font-size:16px;margin-bottom:10px;-webkit-appearance:none;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:36px}
+textarea{min-height:110px;resize:vertical;line-height:1.5}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,185,73,.2)}
+::placeholder{color:var(--dim)}
+label.l{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin:2px 0 6px}
+
+button{width:100%;min-height:52px;padding:14px;border-radius:16px;border:none;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;touch-action:manipulation;
+  color:#1a1206;background:linear-gradient(180deg,var(--gold2),var(--gold) 55%,#c4921a);box-shadow:0 8px 24px rgba(232,185,73,.28),inset 0 1px 0 rgba(255,255,255,.4)}
+button:active{transform:scale(.98)}
+button:disabled{background:#241f3d;color:var(--dim);box-shadow:none;border:1px solid var(--line)}
+.cta button{box-shadow:0 10px 30px rgba(0,0,0,.55)}
+
+.status{font-size:.84rem;padding:10px 12px;border-radius:12px;background:#0e0c1a;color:var(--muted);display:flex;align-items:center;gap:8px;margin:10px 0 6px}
+.status.ok{background:rgba(79,209,139,.1);color:var(--ok);font-weight:700}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--dim);flex:none}
+.status.ok .dot{background:var(--ok);box-shadow:0 0 10px var(--ok)}
+.hint{font-size:.78rem;color:var(--muted)}
+.hint a{color:var(--gold)}
+
+/* Photos */
+.upload{border:1.5px dashed var(--gold3);border-radius:18px;padding:26px 14px;text-align:center;cursor:pointer;background:rgba(232,185,73,.05)}
+.upload.over,.upload:active{background:rgba(232,185,73,.12);border-color:var(--gold)}
+.upload input{display:none}
+.upload .ico{font-size:2.2rem;color:var(--gold);line-height:1;margin-bottom:6px}
+.upload .txt{font-weight:700;margin-bottom:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px;margin-top:12px}
+.grid:empty{display:none}
+.card{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:9/16;background:#0e0c1a;border:1px solid var(--line)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .num{position:absolute;top:5px;left:5px;background:var(--gold);color:#1a1206;min-width:22px;height:22px;border-radius:11px;font-size:11px;font-weight:800;display:grid;place-items:center}
+.card .rm{position:absolute;top:4px;right:4px;width:32px;height:32px;min-height:0;padding:0;background:rgba(0,0,0,.7);box-shadow:none;border-radius:50%;color:#fff;font-size:12px;border:1px solid rgba(255,255,255,.2)}
+
+/* Sections repliables */
+.sec{background:linear-gradient(180deg,rgba(30,26,54,.92),rgba(23,20,42,.92));border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.sec-h{min-height:56px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:.8rem;font-weight:800;color:var(--gold2);text-transform:uppercase;letter-spacing:.1em}
+.sec-h .pick{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:600;color:var(--muted);font-size:.8rem}
+.sec-h .chev{color:var(--dim);transition:transform .2s;font-size:.7rem}
+.sec.open .sec-h .chev{transform:rotate(180deg)}
+.sec-b{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.sec.open .sec-b{max-height:6000px}
+.sec-c{padding:0 14px 16px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.opt{min-height:62px;padding:10px;border-radius:14px;border:1px solid var(--line);background:#0e0c1a;cursor:pointer;display:flex;align-items:center;gap:9px}
+.opt .em{font-size:1.4rem;flex:none}
+.opt .nm{font-weight:700;font-size:.86rem;line-height:1.2}
+.opt .ds{font-size:.7rem;color:var(--muted);margin-top:2px;line-height:1.25}
+.opt.sel{border-color:var(--gold);background:linear-gradient(180deg,rgba(232,185,73,.24),rgba(232,185,73,.08));box-shadow:inset 0 0 0 1px var(--gold)}
+.opt.sel .nm{color:var(--gold2)}
+
+/* Bouton principal collant */
+.cta{position:sticky;bottom:calc(var(--sb) + 12px);z-index:20;display:flex;flex-direction:column;gap:8px}
+#genBtn{min-height:58px;font-size:1.05rem}
+body:has(.bar.on) .cta{bottom:calc(var(--sb) + 64px)}
+#stopBtn{background:rgba(255,107,125,.12);color:var(--err);box-shadow:none;border:1px solid rgba(255,107,125,.45)}
+
+/* File d'attente */
+.q{display:none}
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.qhead strong{color:var(--gold2);font-size:1rem}
+.qi{display:flex;gap:12px;align-items:center;padding:10px;border-radius:14px;border:1px solid var(--line);background:#0e0c1a;margin-bottom:8px}
+.qi.done{border-color:rgba(79,209,139,.5)}
+.qi.fail{border-color:rgba(255,107,125,.5)}
+.qi.proc{border-color:var(--gold3)}
+.qth{width:42px;height:56px;border-radius:8px;object-fit:cover;flex:none}
+.qmain{flex:1;min-width:0}
+.qrow{display:flex;justify-content:space-between;font-weight:700;font-size:.88rem}
+.qic{color:var(--gold)}
+.qi.done .qic{color:var(--ok)}.qi.fail .qic{color:var(--err)}
+.qbar{height:5px;border-radius:5px;background:#26213f;overflow:hidden;margin:6px 0 4px}
+.qbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold3),var(--gold2));border-radius:5px;transition:width .5s}
+.qi.proc .qbar i{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.55}}
+.qs{font-size:.74rem;color:var(--muted);overflow-wrap:anywhere}
+.qi.fail .qs{color:var(--err)}
+
+/* Galerie */
+.gal{display:none}
+.gg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gi{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;display:flex;flex-direction:column}
+.gi video{width:100%;display:block;aspect-ratio:9/16;object-fit:contain;background:#000}
+.gi .cap{padding:8px 10px 2px;background:var(--card);font-size:.72rem;color:var(--muted)}
+.gi .gact{display:grid;grid-template-columns:1fr auto;gap:6px;padding:8px;background:var(--card)}
+.gi .gact button{min-height:44px;padding:8px;font-size:.82rem;border-radius:12px}
+.gi .gact .lk{background:#0e0c1a;color:var(--ink);box-shadow:none;border:1px solid var(--line);width:auto;padding:8px 12px}
+.ghint{font-size:.76rem;color:var(--muted);margin-top:10px}
+.clear{background:transparent;color:var(--muted);box-shadow:none;border:1px solid var(--line);min-height:44px;font-size:.85rem;margin-top:10px}
+
+/* Barre d'état + toasts */
+.bar{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(var(--sb) + 12px);background:rgba(11,10,20,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--gold3);color:var(--ink);font-size:.84rem;display:flex;align-items:center;gap:10px;transform:translateY(110%);transition:transform .3s;z-index:40}
+.bar.on{transform:translateY(0)}
+.sp{width:16px;height:16px;border:2px solid rgba(232,185,73,.25);border-top-color:var(--gold2);border-radius:50%;animation:spin .8s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;top:calc(var(--st) + 12px);left:50%;transform:translateX(-50%) translateY(-140px);background:#1e1a36;border:1px solid var(--line);border-left:4px solid var(--ok);color:#fff;padding:12px 16px;border-radius:14px;font-size:.86rem;font-weight:600;z-index:1000;opacity:0;transition:all .35s;width:max-content;max-width:calc(100vw - 32px);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.toast.on{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.err{border-left-color:var(--err)}.toast.wn{border-left-color:var(--wn)}
+.foot{text-align:center;font-size:.72rem;color:var(--dim);padding-top:4px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="logo" aria-hidden="true">🪷</div>
+  <div class="eyebrow">Studio d'animation IA · iPhone</div>
+  <h1>Siam Video</h1>
+  <div class="th" lang="th">สยามวิดีโอ</div>
+  <p class="sub">Ta photo devient un plan animé de série thaïlandaise.</p>
+</header>
+
+<section class="box" id="apiPanel">
+  <div class="bh"><span class="step">1</span><h2>Clé API Agnes</h2></div>
+  <input type="password" id="apiKey" placeholder="Colle ta clé API ici (sk-...)" autocomplete="off" autocapitalize="off" spellcheck="false">
+  <button id="apiSave">Enregistrer la clé</button>
+  <div class="status" id="apiStatus"><span class="dot"></span><span id="apiText">Aucune clé API enregistrée</span></div>
+  <div class="hint">Clé gratuite sur <a href="https://platform.agnes-ai.com" target="_blank" rel="noopener">platform.agnes-ai.com</a></div>
+</section>
+
+<section class="box">
+  <div class="bh"><span class="step">2</span><h2>Tes images</h2><span class="aside" id="imgCount"></span></div>
+  <div class="upload" id="uploadZone">
+    <input type="file" id="fileInput" accept="image/*" multiple>
+    <div class="ico">＋</div>
+    <div class="txt">Ajoute tes images d'épisode</div>
+    <div class="hint">Le garçon, sa famille, les animaux, les lieux · 1 image = 1 plan</div>
+  </div>
+  <div class="grid" id="imagesGrid"></div>
+</section>
+
+<div class="sec open" id="secEp">
+  <div class="sec-h" onclick="document.getElementById('secEp').classList.toggle('open')"><span>📅 Activité du jour</span><span class="pick" id="epName"></span><span class="chev">▼</span></div>
+  <div class="sec-b"><div class="sec-c"><div class="opts" id="epGrid"></div></div></div>
+</div>
+
+<div class="sec" id="secSt">
+  <div class="sec-h" onclick="document.getElementById('secSt').classList.toggle('open')"><span>🎨 Style premium</span><span class="pick" id="stName"></span><span class="chev">▼</span></div>
+  <div class="sec-b"><div class="sec-c"><div class="opts" id="stGrid"></div></div></div>
+</div>
+
+<div class="sec" id="secPr">
+  <div class="sec-h" onclick="document.getElementById('secPr').classList.toggle('open')"><span>✍️ Votre vision</span><span class="pick">facultatif</span><span class="chev">▼</span></div>
+  <div class="sec-b"><div class="sec-c">
+    <textarea id="mainPrompt" placeholder="Ex : Un garçon thaïlandais joyeux, sa mère douce, son père protecteur, leur chien fidèle et leur éléphant majestueux. Couleurs chaudes."></textarea>
+  </div></div>
+</div>
+
+<div class="sec" id="secTe">
+  <div class="sec-h" onclick="document.getElementById('secTe').classList.toggle('open')"><span>📷 Réglages</span><span class="pick">6,4 s · large</span><span class="chev">▼</span></div>
+  <div class="sec-b"><div class="sec-c">
+    <label class="l" for="durSel">Durée du plan</label>
+    <select id="durSel"><option value="121">5 s</option><option value="153" selected>6,4 s</option><option value="241">10 s</option></select>
+    <label class="l" for="frSel">Cadrage</label>
+    <select id="frSel"><option value="wide" selected>Plan large</option><option value="medium">Plan moyen</option><option value="close">Gros plan</option><option value="random">Aléatoire</option></select>
+    <label class="l" for="inSel">Mouvement</label>
+    <select id="inSel"><option value="subtle" selected>Subtile</option><option value="moderate">Modérée</option><option value="strong">Forte</option><option value="random">Aléatoire</option></select>
+  </div></div>
+</div>
+
+<div id="queueAnchor"></div>
+<section class="box q" id="queue"></section>
+
+<section class="box gal" id="gallery">
+  <div class="bh"><span class="step">🎬</span><h2>Mes vidéos</h2><span class="aside" id="galCount"></span></div>
+  <div class="gg" id="galGrid"></div>
+  <p class="ghint">« Télécharger » ouvre le menu de partage : choisis <b>Enregistrer la vidéo</b> pour l'avoir dans Photos.</p>
+  <button type="button" class="clear" id="clearGal">Vider la galerie</button>
+</section>
+
+<div class="cta">
+  <button id="genBtn" disabled>Ajoutez votre clé API</button>
+  <button id="stopBtn" style="display:none">⏹ Arrêter</button>
+</div>
+
+<p class="foot">Siam Video · Agnes Video v2.0 · 1 plan par minute (limite gratuite)</p>
+</div>
+
+<div class="bar" id="statusBar"><div class="sp"></div><span id="statusTxt">Préparation…</span></div>
+<div class="toast" id="toast">Message</div>
+
+<script>
+{{ENGINE}}
+</script>
+</body>
+</html>
