@@ -714,6 +714,7 @@
 
   var DURATIONS = [
     { id: "5", name: "5 s", frames: 121 },
+    { id: "6.4", name: "6,4 s", frames: 153 },
     { id: "8", name: "8 s", frames: 193 },
     { id: "10", name: "10 s", frames: 241 },
     { id: "12", name: "12 s", frames: 289 }
@@ -736,7 +737,7 @@
      ============================================================ */
   var state = {
     photos: [],          // { id, name, dataUrl, thumb, w, h }
-    settings: { model: "agnes-video-v2.0", style: "buddha", duration: "5", framing: "medium", intensity: "moderate", dialogue: "", extra: "" },
+    settings: { model: "agnes-video-v2.0", style: "buddha", duration: "6.4", framing: "medium", intensity: "moderate", dialogue: "", extra: "" },
     queue: [],           // { id, photo, status, progress, videoId, url, msg }
     gallery: [],         // { id, url, name, style, date }
     running: false,
@@ -1188,7 +1189,7 @@
     if (item.photo.textOnly) {
       return model.v25
         ? { model: model.id, prompt: prompt, mode: "text", seconds: "5", size: model.size, aspect_ratio: "9:16" }
-        : { model: model.id, prompt: prompt, num_frames: 121, frame_rate: FRAME_RATE, width: OUT_W, height: OUT_H };
+        : { model: model.id, prompt: prompt, num_frames: 121, frame_rate: FRAME_RATE };
     }
     if (model.v25) {
       // Protocole 2.5 : la photo devient la première image (mode keyframe)
@@ -1207,9 +1208,8 @@
       prompt: prompt,
       image: (!item.photo.forceInline && item.photo.publicUrl) || item.photo.dataUrl,
       num_frames: dur.frames,
-      frame_rate: FRAME_RATE,
-      width: OUT_W,
-      height: OUT_H
+      frame_rate: FRAME_RATE
+      // Pas de width/height : une taille personnalisée laissait la vidéo bloquée à 30 %.
     };
   }
 
@@ -1536,6 +1536,9 @@
       var phase = /queue|pending|wait/.test(st.status) ? "Dans la file Agnes" : "Animation en cours";
       var mins = Math.floor(attempt * POLL_EVERY_MS / 60000);
       item.msg = phase + "… " + Math.round(item.progress) + " %" + (mins ? " · " + mins + " min" : "");
+      if (Date.now() - lastChange > 10 * 60000) {
+        throw new Error("Agnes n'avance plus depuis 10 min (bloqué à " + Math.round(item.progress) + " %). Sa file gratuite est peut-être saturée ou ton quota du jour épuisé : réessaie plus tard.");
+      }
       if (Date.now() - lastChange > STALL_MS) item.msg += " · Agnes est lent en ce moment, on continue d'attendre";
       renderQueueItem(item);
       renderStatusBar();
