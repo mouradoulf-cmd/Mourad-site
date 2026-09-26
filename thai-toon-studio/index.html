@@ -567,7 +567,7 @@
         <button type="button" class="btn-sm btn-ghost" id="clearDialogue">Effacer</button>
       </div>
     </div>
-    <p class="hint">Un texte en français sera dit en thaï par l'IA, avec sous-titres thaï. Le bouton 🔊 lit la réplique avec la voix thaï de ton appareil (simple aperçu).</p>
+    <p class="hint">Un texte en français sera dit en thaï par l'IA. Ajoute tes sous-titres au montage (CapCut) : l'IA écrit du charabia. Le bouton 🔊 lit la réplique avec la voix thaï de ton appareil (simple aperçu).</p>
   </section>
 
   <!-- ================= 5. RÉGLAGES ================= -->
@@ -1060,10 +1060,8 @@
     if (d) {
       if (hasThai(d)) {
         parts.push('The character speaks this line in Thai with ' + autoVoice + ', lips synchronized with the speech: "' + d + '".');
-        parts.push('Show Thai subtitles at the bottom of the frame: "' + d + '".');
       } else {
         parts.push('The character speaks, in natural Thai, the translation of this line: "' + d + '", with ' + autoVoice + ', lips synchronized with the speech.');
-        parts.push("Show the Thai translation as Thai subtitles at the bottom of the frame.");
       }
     } else {
       parts.push("No dialogue, natural ambient Thai sounds only.");
@@ -1071,7 +1069,7 @@
     parts.push(fr.prompt + ".");
     parts.push(it.prompt + ".");
     if (s.extra.trim()) parts.push(s.extra.trim().replace(/\.?$/, "."));
-    parts.push("Portrait 9:16, 24fps, no watermarks.");
+    parts.push("24fps, no text, no subtitles, no watermarks.");
     return parts.join(" ");
   }
 
