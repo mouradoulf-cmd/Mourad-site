@@ -397,9 +397,6 @@
     font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.72rem; line-height: 1.45; color: #d8c7a6;
     white-space: pre-wrap; overflow-wrap: anywhere; max-height: 260px; overflow: auto;
   }
-  .seg.models .chip { flex: 1 1 150px; }
-  .seg.models .chip .face { flex-direction: column; align-items: flex-start; text-align: left; min-height: 60px; }
-  .seg.models .chip .desc { white-space: normal; }
 
   /* ---------- Galerie ---------- */
   .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
@@ -580,10 +577,6 @@
       <h2 id="t-set">Réglages de la scène</h2>
     </div>
     <div class="setting">
-      <span class="lbl" id="l-model">Moteur vidéo</span>
-      <div class="seg models" id="models" role="radiogroup" aria-labelledby="l-model"></div>
-    </div>
-    <div class="setting">
       <span class="lbl" id="l-dur">Durée</span>
       <div class="seg" id="durations" role="radiogroup" aria-labelledby="l-dur"></div>
     </div>
@@ -677,9 +670,8 @@
      ============================================================ */
   var API_BASE = "https://apihub.agnes-ai.com";
   var MODELS = [
-    { id: "agnes-video-2.5-flash", name: "2.5 Flash", desc: "Gratuit · rapide · son inclus", v25: true, size: "720P" },
-    { id: "agnes-video-2.5", name: "2.5 Pro", desc: "Payant · meilleure qualité", v25: true, size: "720P" },
-    { id: "agnes-video-v2.0", name: "v2.0", desc: "Ancien moteur", v25: false }
+    // Seul moteur gratuit qui accepte la clé : agnes-video-v2.0
+    { id: "agnes-video-v2.0", name: "Agnes Video", desc: "Gratuit", v25: false }
   ];
   var PENDING_STORAGE = "thai_toon_pending";
   var KEY_STORAGE = "agnes_api_key";
@@ -744,7 +736,7 @@
      ============================================================ */
   var state = {
     photos: [],          // { id, name, dataUrl, thumb, w, h }
-    settings: { model: "agnes-video-2.5-flash", style: "buddha", duration: "5", framing: "medium", intensity: "moderate", dialogue: "", extra: "" },
+    settings: { model: "agnes-video-v2.0", style: "buddha", duration: "5", framing: "medium", intensity: "moderate", dialogue: "", extra: "" },
     queue: [],           // { id, photo, status, progress, videoId, url, msg }
     gallery: [],         // { id, url, name, style, date }
     running: false,
@@ -980,9 +972,6 @@
     var s = state.settings;
     buildChoices("styles", "style", STYLES, s.style, function (it) {
       return '<span class="emo" aria-hidden="true">' + it.emo + '</span><span class="txt"><span class="name">' + esc(it.name) + '</span><span class="desc">' + esc(it.desc) + '</span></span>';
-    });
-    buildChoices("models", "model", MODELS, s.model, function (it) {
-      return '<span class="txt"><span class="name">' + esc(it.name) + '</span><span class="desc">' + esc(it.desc) + '</span></span>';
     });
     buildChoices("durations", "duration", DURATIONS, s.duration, function (it) { return '<span class="name">' + esc(it.name) + '</span>'; });
     buildChoices("framings", "framing", FRAMINGS, s.framing, function (it) { return '<span class="name">' + esc(it.name) + '</span>'; });
@@ -1377,7 +1366,6 @@
         // On retient v2.0 pour les prochaines fois (2.5 n'est pas ouvert pour cette clé).
         state.settings.model = legacy.id;
         saveSettings();
-        renderChoices();
         (state.activeItems || []).forEach(function (x) { if (x.status === "pending") x.model = legacy.id; });
         onWait && onWait(model.name + " indisponible, envoi avec le moteur v2.0…");
         return createVideo(item, prompt, onWait);
