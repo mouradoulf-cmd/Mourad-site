@@ -58,6 +58,37 @@
 
   .wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; padding-block: 18px; }
 
+  /* ---------- Colonnes (PC) ---------- */
+  .cols, .col-main, .col-side { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .only-desk { display: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .only-desk { display: inline; }
+    .only-touch { display: none; }
+  }
+  @media (min-width: 1080px) {
+    .wrap { max-width: 1320px; }
+    .appbar__in { max-width: 1320px !important; }
+    .hero { padding-block: 22px 8px; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 440px); gap: 22px; align-items: start; }
+    .col-side {
+      position: sticky; top: calc(76px + env(safe-area-inset-top, 0px));
+      max-height: calc(100vh - 96px); overflow-y: auto;
+      padding-right: 4px; scrollbar-width: thin; scrollbar-color: var(--gold-lo) transparent;
+    }
+    .col-side .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .styles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .drop { padding: 34px 16px; }
+    .thumbs { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+    body.running { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+    .statusbar .inner { max-width: 1320px; }
+  }
+  @media (min-width: 1080px) and (hover: hover) {
+    .chip .face:hover { border-color: var(--gold-lo); background: rgba(212,160,23,0.06); }
+    button:hover:not(:disabled) { border-color: var(--gold-lo); }
+    .btn-gold:hover:not(:disabled) { filter: brightness(1.06); }
+    .drop:hover { background: rgba(212,160,23,0.08); border-color: var(--gold); }
+  }
+
   /* ---------- Barre d'app ---------- */
   .appbar {
     position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30;
@@ -288,6 +319,8 @@
   .chip input:checked + .face .name { color: var(--gold-hi); }
   .chip input:focus-visible + .face { outline: 3px solid var(--gold-hi); outline-offset: 2px; }
 
+  .auto-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--ok); border: 1px solid rgba(76,195,138,0.4); background: rgba(76,195,138,0.08); padding: 4px 10px; border-radius: 999px; }
+  .auto-pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
   .voices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
   .voices .chip .face { flex-direction: column; justify-content: center; gap: 2px; min-height: 70px; text-align: center; padding: 8px 6px; }
   .voices .chip .emo { width: auto; font-size: 22px; }
@@ -461,6 +494,8 @@
     <div class="ornament" aria-hidden="true"></div>
   </header>
 
+  <div class="cols">
+  <div class="col-main">
   <!-- ================= 1. CLÉ API ================= -->
   <section class="card" aria-labelledby="t-key">
     <div class="card-head">
@@ -492,7 +527,7 @@
     <label class="drop" id="drop">
       <input type="file" id="fileInput" accept="image/*" multiple aria-label="Ajouter des photos">
       <span class="big" aria-hidden="true">🖼️</span>
-      <strong>Ajouter des photos</strong>
+      <strong><span class="only-touch">Ajouter des photos</span><span class="only-desk">Glisse tes photos ici ou clique pour choisir</span></strong>
       <span>Une photo = une scène animée · plusieurs à la fois possible</span>
     </label>
     <div class="thumbs" id="thumbs"></div>
@@ -515,12 +550,10 @@
   <section class="card" aria-labelledby="t-voice">
     <div class="card-head">
       <span class="step">4</span>
-      <h2 id="t-voice">Voix &amp; dialogue</h2>
+      <h2 id="t-voice">Dialogue</h2>
+      <span class="sub"><span class="auto-pill">Voix automatique</span></span>
     </div>
-    <div class="setting">
-      <span class="lbl" id="l-voice">Voix thaï</span>
-      <div class="voices" id="voices" role="radiogroup" aria-labelledby="l-voice"></div>
-    </div>
+    <p class="hint">Pas besoin de choisir une voix : l'IA donne à chaque personnage une voix thaï adaptée à son âge et à son allure (enfant, adulte, personne âgée).</p>
     <div>
       <label class="lbl" for="dialogue">Dialogue (thaï ou français)</label>
       <textarea id="dialogue" lang="th" placeholder="Ex. : สวัสดีครับ วันนี้เราจะไปตลาดน้ำกัน!&#10;ou : Bonjour ! Aujourd'hui on va au marché flottant !"></textarea>
@@ -532,7 +565,7 @@
         <button type="button" class="btn-sm btn-ghost" id="clearDialogue">Effacer</button>
       </div>
     </div>
-    <p class="hint">Un texte en français sera demandé en thaï à l'IA, avec sous-titres thaï. Le bouton 🔊 lit la réplique avec la voix thaï de ton téléphone (aperçu seulement).</p>
+    <p class="hint">Un texte en français sera dit en thaï par l'IA, avec sous-titres thaï. Le bouton 🔊 lit la réplique avec la voix thaï de ton appareil (simple aperçu).</p>
   </section>
 
   <!-- ================= 5. RÉGLAGES ================= -->
@@ -581,6 +614,8 @@
     </div>
   </section>
 
+  </div>
+  <aside class="col-side" aria-label="Création et vidéos">
   <!-- ================= FILE D'ATTENTE ================= -->
   <section class="card" aria-labelledby="t-queue" id="queueCard" hidden>
     <div class="card-head">
@@ -603,8 +638,10 @@
     <div class="row" id="galTools" hidden>
       <button type="button" class="btn-ghost btn-sm" id="clearGallery">Vider la galerie</button>
     </div>
-    <p class="hint">Sur iPhone : « Télécharger » ouvre le menu de partage. Choisis <strong>Enregistrer la vidéo</strong> pour l'avoir dans Photos. Les liens Agnes peuvent expirer : télécharge tes vidéos rapidement.</p>
+    <p class="hint"><span class="only-touch">Sur iPhone : « Télécharger » ouvre le menu de partage. Choisis <strong>Enregistrer la vidéo</strong> pour l'avoir dans Photos. </span><span class="only-desk">Sur PC : « Télécharger » enregistre la vidéo MP4 dans ton dossier Téléchargements. </span>Les liens Agnes peuvent expirer : télécharge tes vidéos rapidement.</p>
   </section>
+  </aside>
+  </div>
 
   <footer class="footer">
     <p>Thai Toon Studio · propulsé par l'API Agnes Video</p>
@@ -677,15 +714,6 @@
       prompt: "Style: magical Thai festival night, Loy Krathong floating krathongs with candles on the river, Yi Peng lanterns rising in the sky, fireworks, joyful celebration" }
   ];
 
-  var VOICES = [
-    { id: "female", emo: "👩", name: "Femme", prompt: "a warm, gentle adult Thai female voice" },
-    { id: "male", emo: "👨", name: "Homme", prompt: "a friendly, confident adult Thai male voice" },
-    { id: "child", emo: "🧒", name: "Enfant", prompt: "a cheerful, playful Thai child voice" },
-    { id: "monk", emo: "🧘", name: "Moine", prompt: "a calm, slow and wise Thai Buddhist monk voice" },
-    { id: "villain", emo: "😈", name: "Méchant", prompt: "a deep, sly and theatrical Thai villain voice (cartoonish, not scary)" },
-    { id: "granny", emo: "👵", name: "Grand-mère", prompt: "a soft, affectionate elderly Thai grandmother voice" }
-  ];
-
   var DURATIONS = [
     { id: "5", name: "5 s", frames: 121 },
     { id: "8", name: "8 s", frames: 193 },
@@ -710,7 +738,7 @@
      ============================================================ */
   var state = {
     photos: [],          // { id, name, dataUrl, thumb, w, h }
-    settings: { model: "agnes-video-2.5-flash", style: "buddha", voice: "child", duration: "5", framing: "medium", intensity: "moderate", dialogue: "", extra: "" },
+    settings: { model: "agnes-video-2.5-flash", style: "buddha", duration: "5", framing: "medium", intensity: "moderate", dialogue: "", extra: "" },
     queue: [],           // { id, photo, status, progress, videoId, url, msg }
     gallery: [],         // { id, url, name, style, date }
     running: false,
@@ -947,9 +975,6 @@
     buildChoices("styles", "style", STYLES, s.style, function (it) {
       return '<span class="emo" aria-hidden="true">' + it.emo + '</span><span class="txt"><span class="name">' + esc(it.name) + '</span><span class="desc">' + esc(it.desc) + '</span></span>';
     });
-    buildChoices("voices", "voice", VOICES, s.voice, function (it) {
-      return '<span class="emo" aria-hidden="true">' + it.emo + '</span><span class="name">' + esc(it.name) + '</span>';
-    });
     buildChoices("models", "model", MODELS, s.model, function (it) {
       return '<span class="txt"><span class="name">' + esc(it.name) + '</span><span class="desc">' + esc(it.desc) + '</span></span>';
     });
@@ -965,7 +990,7 @@
       if (s && typeof s === "object") {
         Object.keys(state.settings).forEach(function (k) { if (typeof s[k] === "string") state.settings[k] = s[k]; });
       }
-      var lists = { model: MODELS, style: STYLES, voice: VOICES, duration: DURATIONS, framing: FRAMINGS, intensity: INTENSITIES };
+      var lists = { model: MODELS, style: STYLES, duration: DURATIONS, framing: FRAMINGS, intensity: INTENSITIES };
       Object.keys(lists).forEach(function (k) {
         var ok = lists[k].some(function (x) { return x.id === state.settings[k]; });
         if (!ok) state.settings[k] = lists[k][0].id;
@@ -1012,9 +1037,7 @@
       var voices = speechSynthesis.getVoices() || [];
       var v = voices.filter(function (x) { return x.lang && x.lang.toLowerCase().indexOf(th ? "th" : "fr") === 0; })[0];
       if (v) u.voice = v;
-      var vid = state.settings.voice;
-      u.pitch = vid === "child" ? 1.5 : vid === "villain" ? 0.6 : vid === "monk" ? 0.8 : vid === "granny" ? 1.1 : vid === "male" ? 0.85 : 1.1;
-      u.rate = vid === "monk" ? 0.75 : vid === "granny" ? 0.85 : vid === "child" ? 1.05 : 0.95;
+      u.rate = 0.95;
       speechSynthesis.speak(u);
       if (th && !v) toast("Aucune voix thaï installée sur ce téléphone : la lecture peut sonner faux.", "warning");
     } catch (e) {
@@ -1028,7 +1051,7 @@
   function buildPrompt() {
     var s = state.settings;
     var st = byId(STYLES, s.style);
-    var vo = byId(VOICES, s.voice);
+    var autoVoice = "a natural Thai voice automatically matched to the character's apparent age and gender (children sound like children, adults like adults, elders like elders)";
     var fr = byId(FRAMINGS, s.framing);
     var it = byId(INTENSITIES, s.intensity);
     var parts = [
@@ -1040,10 +1063,10 @@
     var d = s.dialogue.trim().replace(/\s+/g, " ");
     if (d) {
       if (hasThai(d)) {
-        parts.push('The character speaks this line in Thai with ' + vo.prompt + ', lips synchronized with the speech: "' + d + '".');
+        parts.push('The character speaks this line in Thai with ' + autoVoice + ', lips synchronized with the speech: "' + d + '".');
         parts.push('Show Thai subtitles at the bottom of the frame: "' + d + '".');
       } else {
-        parts.push('The character speaks, in natural Thai, the translation of this line: "' + d + '", with ' + vo.prompt + ', lips synchronized with the speech.');
+        parts.push('The character speaks, in natural Thai, the translation of this line: "' + d + '", with ' + autoVoice + ', lips synchronized with the speech.');
         parts.push("Show the Thai translation as Thai subtitles at the bottom of the frame.");
       }
     } else {
