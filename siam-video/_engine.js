@@ -112,12 +112,19 @@ return p.join('. ')}
 function realVideoId(id){if(!id||id.indexOf('video_')!==0)return id;var b=id.slice(6);if(b.length<50)return id;
 try{var std=b.replace(/-/g,'+').replace(/_/g,'/');while(std.length%4)std+='=';var m=atob(std).match(/video_id:(video_[A-Za-z0-9]+)/);return m?m[1]:id}catch(e){return id}}
 
-async function createTask(uri,prompt){
+async function createTask(uri,prompt,onQueueWait){
 if(S.engine==='25f'){
 var secs=S.frames>=241?'10':(S.frames<=121?'5':'6');
 var b25={model:MODEL_25F,prompt:prompt,mode:'keyframe',first_frame:uri,seconds:secs,size:'720P',aspect_ratio:'9:16'};
-var r5=await fetch(API_BASE+'/videos',{method:'POST',headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:JSON.stringify(b25)});
-if(!r5.ok){var e5=await r5.text();throw new Error((r5.status===503?'Moteur 2.5 Flash indisponible pour ce compte (503) — repasse en v2.0. ':'HTTP '+r5.status+' ')+e5.slice(0,120))}
+var r5,e5,tries=0;
+while(true){
+r5=await fetch(API_BASE+'/videos',{method:'POST',headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:JSON.stringify(b25)});
+if(r5.ok)break;
+e5=await r5.text();
+/* File d'attente Agnes pleine : on réessaie tout seul toutes les 60 s (jusqu'à ~1 h). */
+if((r5.status===503||r5.status===429)&&/queue_full|queue is full|busy|overload|rate/i.test(e5)&&tries<60){tries++;
+for(var w=60;w>0;w--){if(S.stop)throw new Error('Arrêt');onQueueWait&&onQueueWait(tries,w);await sleep(1000)}continue}
+throw new Error('HTTP '+r5.status+' '+e5.slice(0,140))}
 var d5=await r5.json();var id5=d5.video_id||d5.id||d5.task_id;
 if(!id5)throw new Error('Pas de video_id');return realVideoId(id5)}
 var body={model:MODEL,prompt:prompt,image:uri,num_frames:S.frames,frame_rate:24};
@@ -146,7 +153,7 @@ for(var i=0;i<S.queue.length;i++){var it=S.queue[i];var ic='○',tx='En attente'
 if(it.status==='proc'){ic='◐';tx=it.progress||'En cours';cls='proc';pct=it.pct||5}
 else if(it.status==='done'){ic='●';tx='Terminé ✓';cls='done';pct=100}
 else if(it.status==='fail'){ic='✕';tx=it.progress||'Échec';cls='fail'}
-else if(it.status==='create'){ic='◐';tx='Envoi à Agnes…';cls='proc';pct=2}
+else if(it.status==='create'){ic='◐';tx=it.progress||'Envoi à Agnes…';cls='proc';pct=2}
 h+='<div class="qi '+cls+'"><img class="qth" src="'+it.img.thumbnail+'" alt=""><div class="qmain"><div class="qrow"><span class="qn">Plan '+(i+1)+'</span><span class="qic">'+ic+'</span></div>'+
 '<div class="qbar"><i style="width:'+pct+'%"></i></div><div class="qs">'+esc(tx)+'</div></div></div>'}
 q.innerHTML=h}
@@ -191,7 +198,7 @@ function releaseAwake(){try{if(wakeLock)wakeLock.release()}catch(e){}wakeLock=nu
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&S.running&&!wakeLock)keepAwake()});
 
 async function processOne(item,idx){try{item.status='create';item.progress='Envoi à Agnes…';renderQueue();
-var p=buildPrompt();var id=await createTask(item.img.dataUri,p);item.taskId=id;
+var p=buildPrompt();var id=await createTask(item.img.dataUri,p,function(n,w){item.progress='File Agnes pleine · nouvel essai n°'+n+' dans '+w+' s';renderQueue();setStatus('File Agnes pleine (serveurs saturés) · Plan '+(idx+1)+' : nouvel essai dans '+w+' s')});item.taskId=id;
 item.status='proc';item.progress='Animation en cours…';item.start=Date.now();renderQueue();
 var url=await pollTask(id,function(pr,st){item.pct=Math.max(5,Math.min(99,pr||0));var m=Math.floor((Date.now()-item.start)/60000);
 item.progress=(st==='queued'?'Dans la file Agnes':'Animation')+'… '+(pr||0)+'%'+(m?' · '+m+' min':'');renderQueue()});
