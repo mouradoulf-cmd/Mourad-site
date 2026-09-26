@@ -385,6 +385,11 @@
   .q-item.processing .bar i, .q-item.creating .bar i { animation: shimmer 1.6s linear infinite; background-size: 200% 100%; background-image: linear-gradient(90deg, var(--gold-lo), var(--gold-hi), var(--gold-lo)); }
   @keyframes shimmer { from { background-position: 200% 0; } to { background-position: 0 0; } }
   .q-actions { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; }
+  .q-diag {
+    grid-column: 1 / -1; font-size: 0.76rem; line-height: 1.45; color: #e6d6b4;
+    background: rgba(0,0,0,0.28); border: 1px dashed var(--line); border-radius: 10px; padding: 8px 10px;
+    font-variant-numeric: tabular-nums;
+  }
   .q-debug { grid-column: 1 / -1; border-top: 1px solid var(--line-soft); padding-top: 6px; }
   .q-debug summary { cursor: pointer; font-size: 0.78rem; color: var(--dim); min-height: 36px; display: flex; align-items: center; }
   .q-debug pre {
@@ -608,6 +613,7 @@
     </div>
     <div class="create-box">
       <button type="button" class="btn-gold btn-xl" id="createBtn" disabled>✨ Créer les scènes animées</button>
+      <button type="button" class="btn-ghost" id="testBtn" disabled>🧪 Test rapide sans photo (vérifie que ta clé produit bien une vidéo)</button>
       <button type="button" class="btn-danger btn-xl" id="stopBtn" hidden>⏹ Arrêter</button>
       <p class="why" id="whyDisabled">Ajoute ta clé API et au moins une photo.</p>
       <p class="estimate" id="estimate" hidden></p>
@@ -1087,6 +1093,8 @@
     var n = state.photos.length;
     var btn = $("createBtn");
     btn.disabled = state.running || !hasKey || n === 0;
+    $("testBtn").disabled = state.running || !hasKey;
+    $("testBtn").hidden = state.running;
     var why = $("whyDisabled");
     if (state.running) { why.textContent = "Création en cours… garde cette page ouverte."; }
     else if (!hasKey && n === 0) { why.textContent = "Ajoute ta clé API et au moins une photo."; }
@@ -1188,6 +1196,11 @@
 
   function buildBody(model, prompt, item) {
     var dur = byId(DURATIONS, state.settings.duration);
+    if (item.photo.textOnly) {
+      return model.v25
+        ? { model: model.id, prompt: prompt, mode: "text", seconds: "5", size: model.size, aspect_ratio: "9:16" }
+        : { model: model.id, prompt: prompt, num_frames: 121, frame_rate: FRAME_RATE, width: OUT_W, height: OUT_H };
+    }
     if (model.v25) {
       // Protocole 2.5 : la photo devient la première image (mode keyframe)
       return {
@@ -1312,7 +1325,7 @@
 
   async function createVideo(item, prompt, onWait) {
     var model = byId(MODELS, item.model);
-    if (!item.photo.publicUrl || Date.now() - item.photo.publicAt >= 50 * 60000) {
+    if (!item.photo.textOnly && (!item.photo.publicUrl || Date.now() - item.photo.publicAt >= 50 * 60000)) {
       var pub = await ensurePublicUrl(item.photo, onWait);
       if (!pub) {
         toast("Impossible de mettre la photo en ligne (" + (item.photo.uploadFailures || []).join(" · ") + "). Envoi direct, sans garantie.", "warning", 8000);
@@ -1506,6 +1519,7 @@
         '<img alt="">' +
         '<div class="q-main"><div class="q-title"></div><div class="bar"><i></i></div><div class="q-msg"></div></div>' +
         '<span class="pill"></span>' +
+        '<div class="q-diag"></div>' +
         '<div class="q-actions"></div>' +
         '<details class="q-debug" hidden><summary>Détails techniques</summary><pre></pre>' +
         '<button type="button" class="btn-sm q-copy">📋 Copier les détails</button></details>';
@@ -1529,6 +1543,20 @@
     pill.textContent = STATUS_LABEL[it.status] || it.status;
     var p = it.status === "done" ? 100 : it.status === "creating" ? Math.max(it.progress, 4) : it.progress;
     el.querySelector(".bar i").style.width = p + "%";
+    var diag = el.querySelector(".q-diag");
+    var bits = [];
+    if (it.photo.textOnly) bits.push("🧪 Test sans photo");
+    else if (it.photo.publicUrl) bits.push("✅ Photo en ligne (" + it.photo.publicHost + ")");
+    else if (it.photo.uploadFailures) bits.push("❌ Photo NON mise en ligne");
+    if (it.model) bits.push("Moteur : " + byId(MODELS, it.model).name);
+    if (it.lastRaw && typeof it.lastRaw === "object") {
+      var rs = readStatus(it.lastRaw);
+      if (rs.status) bits.push("Agnes : « " + rs.status + " » " + Math.round(rs.progress) + " %");
+      else if (it.lastRaw.erreur) bits.push("Erreur : " + String(it.lastRaw.erreur).slice(0, 80));
+    }
+    if (it.startedAt && it.status !== "done") bits.push(Math.floor((Date.now() - it.startedAt) / 60000) + " min");
+    diag.textContent = bits.join(" · ");
+    diag.hidden = !bits.length;
     var msg = el.querySelector(".q-msg");
     msg.textContent = it.msg || "";
     msg.classList.toggle("err", it.status === "failed");
@@ -1603,6 +1631,16 @@
   $("stopBtn").addEventListener("click", stopGeneration);
   $("sbStop").addEventListener("click", stopGeneration);
 
+  var TEST_PROMPT = "Premium 3D animated children's series scene: a cheerful Thai boy in a straw hat waves and smiles in a green rice field at sunrise, gentle camera push-in, warm cinematic light, no text, no watermark.";
+  $("testBtn").addEventListener("click", function () {
+    if (!apiKey()) { toast("Enregistre d'abord ta clé API.", "warning"); return; }
+    var it = { id: uid(), photo: { name: "Test sans photo", thumb: "", dataUrl: "", textOnly: true }, model: state.settings.model, status: "pending", progress: 0, videoId: null, taskId: null, url: null, msg: "Test : vidéo créée uniquement à partir d'un texte" };
+    state.queue = [it];
+    renderQueue();
+    $("queueCard").scrollIntoView({ behavior: "smooth", block: "start" });
+    startGeneration([it]);
+  });
+
   $("createBtn").addEventListener("click", function () {
     if (!apiKey()) { toast("Enregistre d'abord ta clé API.", "warning"); return; }
     if (!state.photos.length) { toast("Ajoute au moins une photo.", "warning"); return; }
@@ -1647,7 +1685,7 @@
         it.status = "creating"; it.msg = "Envoi de la photo à Agnes…"; renderQueueItem(it);
         renderStatusBar("Envoi de la scène " + (i + 1) + "/" + items.length + "…");
         try {
-          var created = await createVideo(it, prompt, (function (item) {
+          var created = await createVideo(it, it.photo.textOnly ? TEST_PROMPT : prompt, (function (item) {
             return function (m) { item.msg = m; renderQueueItem(item); renderStatusBar(m); };
           })(it));
           state.lastCreateAt = Date.now();
@@ -1656,6 +1694,7 @@
           it.taskId = created.taskId;
           savePending(it);
           it.status = "processing"; it.progress = 5;
+          it.startedAt = Date.now();
           it.msg = "Scène envoyée ✓ Animation en cours…";
           renderQueueItem(it);
           pollers.push(followItem(it));
