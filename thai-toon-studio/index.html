@@ -58,11 +58,35 @@
 
   .wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; padding-block: 18px; }
 
+  /* ---------- Barre d'app ---------- */
+  .appbar {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30;
+    margin: 0 -16px;
+    padding: 8px 16px;
+    background: rgba(15, 8, 5, 0.82);
+    -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid rgba(212, 160, 23, 0.18);
+  }
+  .appbar__in { max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; min-height: 44px; }
+  .brand__mark svg { width: 28px; height: 28px; display: block; }
+  .brand__name { font-weight: 600; font-size: 0.98rem; letter-spacing: 0.01em; }
+  .brand__name b { color: var(--gold-hi); font-weight: 800; }
+  .appbar__key {
+    display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 4px 12px;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    border-radius: 999px; text-decoration: none;
+    color: var(--warn); border: 1px solid rgba(240,163,58,0.4); background: rgba(240,163,58,0.08);
+  }
+  .appbar__key::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .appbar__key.ok { color: var(--ok); border-color: rgba(76,195,138,0.4); background: rgba(76,195,138,0.08); }
+
   /* ---------- En-tête ---------- */
+  .eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 8px; }
   .hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; padding-block: 10px 4px; }
   .crest {
-    width: 64px; height: 64px; border-radius: 50%;
-    display: grid; place-items: center; font-size: 30px;
+    width: 76px; height: 76px; border-radius: 50%;
+    display: grid; place-items: center;
     background: radial-gradient(circle at 35% 30%, #3b280f, #140b05 70%);
     border: 1px solid var(--gold-lo);
     box-shadow: 0 0 0 4px rgba(212,160,23,0.08), 0 10px 30px rgba(212,160,23,0.18);
@@ -89,6 +113,7 @@
 
   /* ---------- Cartes / étapes ---------- */
   .card {
+    position: relative;
     background: linear-gradient(180deg, rgba(38, 25, 14, 0.92), rgba(26, 16, 9, 0.92));
     border: 1px solid var(--line);
     border-radius: var(--radius);
@@ -96,16 +121,22 @@
     display: flex; flex-direction: column; gap: 14px;
     box-shadow: 0 1px 0 rgba(243, 201, 83, 0.06) inset, 0 12px 30px rgba(0, 0, 0, 0.25);
   }
+  .card::before {
+    content: ""; position: absolute; left: 18px; right: 18px; top: -1px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(243, 201, 83, 0.55), transparent);
+  }
   .card-head { display: flex; align-items: center; gap: 12px; }
   .step {
     flex: none;
     width: 30px; height: 30px; border-radius: 50%;
     display: grid; place-items: center;
     font-weight: 800; font-size: 0.9rem;
-    color: #1a1204;
-    background: linear-gradient(180deg, var(--gold-hi), var(--gold));
+    color: var(--gold-hi);
+    background: rgba(212, 160, 23, 0.1);
+    border: 1px solid var(--gold-lo);
     font-variant-numeric: tabular-nums;
   }
+  .step--icon { color: var(--gold-hi); }
   .card-head h2 { margin: 0; font-size: 1.08rem; font-weight: 700; letter-spacing: 0.005em; }
   .card-head .sub { margin-left: auto; color: var(--muted); font-size: 0.85rem; text-align: right; }
   .hint { margin: 0; color: var(--muted); font-size: 0.88rem; }
@@ -321,6 +352,16 @@
   .q-item.processing .bar i, .q-item.creating .bar i { animation: shimmer 1.6s linear infinite; background-size: 200% 100%; background-image: linear-gradient(90deg, var(--gold-lo), var(--gold-hi), var(--gold-lo)); }
   @keyframes shimmer { from { background-position: 200% 0; } to { background-position: 0 0; } }
   .q-actions { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; }
+  .q-debug { grid-column: 1 / -1; border-top: 1px solid var(--line-soft); padding-top: 6px; }
+  .q-debug summary { cursor: pointer; font-size: 0.78rem; color: var(--dim); min-height: 36px; display: flex; align-items: center; }
+  .q-debug pre {
+    margin: 6px 0 8px; padding: 10px; border-radius: 10px; background: #0a0503; border: 1px solid var(--line-soft);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.72rem; line-height: 1.45; color: #d8c7a6;
+    white-space: pre-wrap; overflow-wrap: anywhere; max-height: 260px; overflow: auto;
+  }
+  .seg.models .chip { flex: 1 1 150px; }
+  .seg.models .chip .face { flex-direction: column; align-items: flex-start; text-align: left; min-height: 60px; }
+  .seg.models .chip .desc { white-space: normal; }
 
   /* ---------- Galerie ---------- */
   .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
@@ -398,14 +439,25 @@
 
 <div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
 
-<main class="wrap">
+<header class="appbar">
+  <div class="appbar__in">
+    <a class="brand" href="#top" aria-label="Thai Toon Studio">
+      <span class="brand__mark"><svg viewBox="0 0 64 64" width="46" height="46" aria-hidden="true"><defs><linearGradient id="gg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0c2"/><stop offset=".5" stop-color="#f3c953"/><stop offset="1" stop-color="#b3830d"/></linearGradient></defs><g fill="none" stroke="url(#gg1)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6c2 5 2 8 0 12-2-4-2-7 0-12z" fill="url(#gg1)" stroke="none"/><path d="M32 18v4"/><path d="M24 30c0-5 4-8 8-8s8 3 8 8"/><path d="M20 38c0-5 5-8 12-8s12 3 12 8"/><path d="M14 46h36"/><path d="M18 46v6h28v-6"/><path d="M12 56h40"/></g></svg></span>
+      <span class="brand__name">Thai Toon <b>Studio</b></span>
+    </a>
+    <a class="appbar__key" id="appbarKey" href="#t-key">Clé requise</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
 
   <!-- ================= EN-TÊTE ================= -->
   <header class="hero">
-    <div class="crest" aria-hidden="true">🪷</div>
+    <div class="crest" aria-hidden="true"><svg viewBox="0 0 64 64" width="46" height="46" aria-hidden="true"><defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0c2"/><stop offset=".5" stop-color="#f3c953"/><stop offset="1" stop-color="#b3830d"/></linearGradient></defs><g fill="none" stroke="url(#gg)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6c2 5 2 8 0 12-2-4-2-7 0-12z" fill="url(#gg)" stroke="none"/><path d="M32 18v4"/><path d="M24 30c0-5 4-8 8-8s8 3 8 8"/><path d="M20 38c0-5 5-8 12-8s12 3 12 8"/><path d="M14 46h36"/><path d="M18 46v6h28v-6"/><path d="M12 56h40"/></g></svg></div>
+    <span class="eyebrow">Studio d'animation IA · Série thaïlandaise</span>
     <h1>Thai Toon Studio</h1>
     <div class="th" lang="th">สตูดิโอการ์ตูนไทย</div>
-    <p>Transforme tes photos en scènes animées de série thaïlandaise premium, avec l'API Agnes.</p>
+    <p>Tes photos deviennent des scènes animées de série thaïlandaise, en vertical 9:16, prêtes pour TikTok et Reels.</p>
     <div class="ornament" aria-hidden="true"></div>
   </header>
 
@@ -424,7 +476,7 @@
       </div>
     </div>
     <div class="row">
-      <button type="button" class="btn-gold grow" id="saveKey">🔐 Enregistrer la clé</button>
+      <button type="button" class="btn-gold grow" id="saveKey">Enregistrer la clé</button>
       <button type="button" class="btn-ghost btn-sm" id="forgetKey">Oublier</button>
     </div>
     <p class="hint">Pas encore de clé ? Crée-la gratuitement sur <strong>platform.agnes-ai.com</strong>, puis colle-la ici.</p>
@@ -490,6 +542,10 @@
       <h2 id="t-set">Réglages de la scène</h2>
     </div>
     <div class="setting">
+      <span class="lbl" id="l-model">Moteur vidéo</span>
+      <div class="seg models" id="models" role="radiogroup" aria-labelledby="l-model"></div>
+    </div>
+    <div class="setting">
       <span class="lbl" id="l-dur">Durée</span>
       <div class="seg" id="durations" role="radiogroup" aria-labelledby="l-dur"></div>
     </div>
@@ -528,7 +584,7 @@
   <!-- ================= FILE D'ATTENTE ================= -->
   <section class="card" aria-labelledby="t-queue" id="queueCard" hidden>
     <div class="card-head">
-      <span class="step">⏳</span>
+      <span class="step step--icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
       <h2 id="t-queue">File d'attente</h2>
       <span class="sub" id="queueSummary"></span>
     </div>
@@ -538,7 +594,7 @@
   <!-- ================= GALERIE ================= -->
   <section class="card" aria-labelledby="t-gal">
     <div class="card-head">
-      <span class="step">🎬</span>
+      <span class="step step--icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></span>
       <h2 id="t-gal">Mes vidéos</h2>
       <span class="sub" id="galCount">0 vidéo</span>
     </div>
@@ -551,7 +607,7 @@
   </section>
 
   <footer class="footer">
-    <p>Thai Toon Studio · API Agnes (agnes-video-v2.0)</p>
+    <p>Thai Toon Studio · propulsé par l'API Agnes Video</p>
     <p>Limite Agnes : environ 1 scène par minute. Garde l'écran allumé pendant la création.</p>
   </footer>
 </main>
@@ -577,13 +633,19 @@
      CONFIGURATION
      ============================================================ */
   var API_BASE = "https://apihub.agnes-ai.com";
-  var MODEL = "agnes-video-v2.0";
+  var MODELS = [
+    { id: "agnes-video-2.5-flash", name: "2.5 Flash", desc: "Gratuit · rapide · son inclus", v25: true, size: "720P" },
+    { id: "agnes-video-2.5", name: "2.5 Pro", desc: "Payant · meilleure qualité", v25: true, size: "720P" },
+    { id: "agnes-video-v2.0", name: "v2.0", desc: "Ancien moteur", v25: false }
+  ];
+  var PENDING_STORAGE = "thai_toon_pending";
   var KEY_STORAGE = "agnes_api_key";
   var SETTINGS_STORAGE = "thai_toon_settings";
   var GALLERY_STORAGE = "thai_toon_gallery";
   var CREATE_GAP_MS = 62000;      // 62 s minimum entre deux créations
-  var POLL_EVERY_MS = 8000;       // interrogation toutes les 8 s
-  var POLL_MAX = 100;             // 100 tentatives max
+  var POLL_EVERY_MS = 5000;       // interrogation toutes les 5 s
+  var POLL_MAX = 240;             // 240 × 5 s = 20 min max
+  var STALL_MS = 4 * 60000;       // prévenir si rien ne bouge pendant 4 min
   var FRAME_RATE = 24;
   var MAX_SIDE = 1280;            // taille max envoyée (côté long)
   var OUT_W = 720, OUT_H = 1280;  // format portrait 9:16
@@ -626,8 +688,9 @@
 
   var DURATIONS = [
     { id: "5", name: "5 s", frames: 121 },
-    { id: "6.4", name: "6,4 s", frames: 153 },
-    { id: "10", name: "10 s", frames: 241 }
+    { id: "8", name: "8 s", frames: 193 },
+    { id: "10", name: "10 s", frames: 241 },
+    { id: "12", name: "12 s", frames: 289 }
   ];
 
   var FRAMINGS = [
@@ -647,7 +710,7 @@
      ============================================================ */
   var state = {
     photos: [],          // { id, name, dataUrl, thumb, w, h }
-    settings: { style: "buddha", voice: "child", duration: "6.4", framing: "medium", intensity: "moderate", dialogue: "", extra: "" },
+    settings: { model: "agnes-video-2.5-flash", style: "buddha", voice: "child", duration: "5", framing: "medium", intensity: "moderate", dialogue: "", extra: "" },
     queue: [],           // { id, photo, status, progress, videoId, url, msg }
     gallery: [],         // { id, url, name, style, date }
     running: false,
@@ -731,6 +794,9 @@
     var ok = !!getKey();
     $("keyStatus").classList.toggle("ok", ok);
     $("keyStatusTxt").textContent = ok ? "Clé enregistrée" : "Aucune clé";
+    var ab = $("appbarKey");
+    ab.textContent = ok ? "Clé active" : "Clé requise";
+    ab.classList.toggle("ok", ok);
     updateCreateButton();
   }
   $("saveKey").addEventListener("click", function () {
@@ -884,6 +950,9 @@
     buildChoices("voices", "voice", VOICES, s.voice, function (it) {
       return '<span class="emo" aria-hidden="true">' + it.emo + '</span><span class="name">' + esc(it.name) + '</span>';
     });
+    buildChoices("models", "model", MODELS, s.model, function (it) {
+      return '<span class="txt"><span class="name">' + esc(it.name) + '</span><span class="desc">' + esc(it.desc) + '</span></span>';
+    });
     buildChoices("durations", "duration", DURATIONS, s.duration, function (it) { return '<span class="name">' + esc(it.name) + '</span>'; });
     buildChoices("framings", "framing", FRAMINGS, s.framing, function (it) { return '<span class="name">' + esc(it.name) + '</span>'; });
     buildChoices("intensities", "intensity", INTENSITIES, s.intensity, function (it) { return '<span class="name">' + esc(it.name) + '</span>'; });
@@ -896,6 +965,11 @@
       if (s && typeof s === "object") {
         Object.keys(state.settings).forEach(function (k) { if (typeof s[k] === "string") state.settings[k] = s[k]; });
       }
+      var lists = { model: MODELS, style: STYLES, voice: VOICES, duration: DURATIONS, framing: FRAMINGS, intensity: INTENSITIES };
+      Object.keys(lists).forEach(function (k) {
+        var ok = lists[k].some(function (x) { return x.id === state.settings[k]; });
+        if (!ok) state.settings[k] = lists[k][0].id;
+      });
     } catch (e) {}
   }
 
@@ -998,7 +1072,7 @@
     else { why.textContent = n + (n > 1 ? " scènes seront créées, une par photo." : " scène sera créée."); }
     var est = $("estimate");
     if (n > 0 && !state.running) {
-      var mins = Math.ceil(((n - 1) * CREATE_GAP_MS + 150000) / 60000);
+      var mins = Math.ceil(((n - 1) * CREATE_GAP_MS + 180000) / 60000);
       est.hidden = false;
       est.textContent = "Temps estimé : environ " + mins + " min (limite Agnes : 1 scène par minute)";
     } else est.hidden = true;
@@ -1064,31 +1138,62 @@
     return { "Authorization": "Bearer " + apiKey(), "Content-Type": "application/json" };
   }
 
+  /* Agnes renvoie parfois un identifiant « emballé » (video_ + base64 LiteLLM).
+     Il faut en extraire le vrai video_id, sinon le suivi ne trouve jamais la vidéo. */
+  function extractRealVideoId(id) {
+    if (!id || typeof id !== "string" || id.indexOf("video_") !== 0) return id;
+    var b64 = id.slice(6);
+    if (b64.length < 50) return id;
+    try {
+      var std = b64.replace(/-/g, "+").replace(/_/g, "/");
+      while (std.length % 4) std += "=";
+      var decoded = atob(std);
+      var m = decoded.match(/video_id:(video_[A-Za-z0-9]+)/);
+      return m ? m[1] : id;
+    } catch (e) { return id; }
+  }
+
   async function createVideo(item, prompt, onWait) {
+    var model = byId(MODELS, item.model);
     var dur = byId(DURATIONS, state.settings.duration);
-    var body = {
-      model: MODEL,
-      prompt: prompt,
-      image: item.photo.dataUrl,
-      num_frames: dur.frames,
-      frame_rate: FRAME_RATE,
-      width: OUT_W,
-      height: OUT_H
-    };
+    var body;
+    if (model.v25) {
+      // Nouveau protocole 2.5 : la photo devient la première image (mode keyframe)
+      body = {
+        model: model.id,
+        prompt: prompt,
+        mode: "keyframe",
+        first_frame: item.photo.dataUrl,
+        seconds: String(Math.round(Number(dur.id))),
+        size: model.size,
+        aspect_ratio: "9:16"
+      };
+    } else {
+      body = {
+        model: model.id,
+        prompt: prompt,
+        image: item.photo.dataUrl,
+        num_frames: dur.frames,
+        frame_rate: FRAME_RATE,
+        width: OUT_W,
+        height: OUT_H
+      };
+    }
     var data;
     try {
       data = await agnesFetch(API_BASE + "/v1/videos", { method: "POST", headers: headers(), body: JSON.stringify(body) }, "Création", onWait);
     } catch (err) {
-      // Si le format demandé est refusé, on réessaie sans largeur/hauteur.
-      if (err.status && err.status >= 400 && err.status < 500) {
+      // Ancien moteur : si le format demandé est refusé, on réessaie sans largeur/hauteur.
+      if (!model.v25 && err.status && err.status >= 400 && err.status < 500) {
         delete body.width; delete body.height;
         onWait && onWait("Nouvel essai avec le format par défaut…");
         data = await agnesFetch(API_BASE + "/v1/videos", { method: "POST", headers: headers(), body: JSON.stringify(body) }, "Création", onWait);
       } else throw err;
     }
-    var vid = data && (data.video_id || (data.data && data.data.video_id) || data.id || data.task_id);
-    if (!vid) throw new Error("Réponse Agnes sans identifiant de vidéo : " + JSON.stringify(data).slice(0, 160));
-    return { videoId: vid, taskId: data.task_id || data.id || null };
+    item.lastRaw = data;
+    var raw = data && (data.video_id || (data.data && data.data.video_id) || data.id || data.task_id);
+    if (!raw) throw new Error("Réponse Agnes sans identifiant de vidéo : " + JSON.stringify(data).slice(0, 160));
+    return { videoId: extractRealVideoId(raw), taskId: data.task_id || data.id || null };
   }
 
   /* Cherche l'URL de la vidéo dans la réponse, quel que soit son emplacement */
@@ -1120,29 +1225,46 @@
   }
 
   async function pollVideo(item) {
-    var url = API_BASE + "/agnesapi?video_id=" + encodeURIComponent(item.videoId) + "&model_name=" + encodeURIComponent(MODEL);
+    var model = byId(MODELS, item.model);
+    var url = API_BASE + "/agnesapi?video_id=" + encodeURIComponent(item.videoId) +
+      (model.v25 ? "&model_name=" + encodeURIComponent(model.id) : "");
+    var legacyUrl = item.taskId ? API_BASE + "/v1/videos/" + encodeURIComponent(item.taskId) : null;
+    var lastChange = Date.now(), lastSig = "";
     for (var attempt = 1; attempt <= POLL_MAX; attempt++) {
       await sleep(POLL_EVERY_MS);
       var data = await agnesFetch(url, { method: "GET", headers: { "Authorization": "Bearer " + apiKey() } }, "Suivi", function (m) {
         item.msg = m; renderQueueItem(item);
       });
+      // Plan B toutes les 6 vérifications : l'ancien point d'accès /v1/videos/{task_id}
+      if (legacyUrl && attempt % 6 === 0 && !/complet|succe|done|finish|fail|error/.test(readStatus(data).status)) {
+        try {
+          var alt = await agnesFetch(legacyUrl, { method: "GET", headers: { "Authorization": "Bearer " + apiKey() } }, "Suivi (secours)");
+          if (/complet|succe|done|finish|fail|error/.test(readStatus(alt).status) || findVideoUrl(alt)) data = alt;
+        } catch (e) { if (e instanceof StopError) throw e; }
+      }
+      item.lastRaw = data;
       var st = readStatus(data);
       var vurl = findVideoUrl(data);
-      if (/complet|succe|success|done|finish/.test(st.status) || (vurl && !st.status)) {
-        if (!vurl) throw new Error("Vidéo terminée mais aucun lien trouvé dans la réponse.");
+      if (/complet|succe|success|done|finish/.test(st.status) || (vurl && !/queue|progress|process|pending|running/.test(st.status))) {
+        if (!vurl) throw new Error("Vidéo terminée mais aucun lien trouvé dans la réponse (voir « Détails techniques »).");
         return vurl;
       }
       if (/fail|error|cancel|reject/.test(st.status)) {
         var reason = (data && (data.error && (data.error.message || data.error) || data.message || data.fail_reason)) || "Agnes n'a pas pu créer cette scène.";
         throw new Error(typeof reason === "string" ? reason : JSON.stringify(reason));
       }
+      var sig = st.status + ":" + Math.round(st.progress);
+      if (sig !== lastSig) { lastSig = sig; lastChange = Date.now(); }
       item.status = "processing";
-      item.progress = Math.max(item.progress, st.progress || Math.min(95, attempt * 3));
-      item.msg = "Animation en cours… " + Math.round(item.progress) + " % (vérification " + attempt + "/" + POLL_MAX + ")";
+      item.progress = Math.max(item.progress, st.progress || 0);
+      var phase = /queue|pending|wait/.test(st.status) ? "Dans la file Agnes" : "Animation en cours";
+      var mins = Math.floor(attempt * POLL_EVERY_MS / 60000);
+      item.msg = phase + "… " + Math.round(item.progress) + " %" + (mins ? " · " + mins + " min" : "");
+      if (Date.now() - lastChange > STALL_MS) item.msg += " · Agnes est lent en ce moment, on continue d'attendre";
       renderQueueItem(item);
       renderStatusBar();
     }
-    throw new Error("Délai dépassé : la scène n'était pas prête après " + POLL_MAX + " vérifications.");
+    throw new Error("Pas de résultat après 20 minutes. La vidéo est peut-être encore en cours chez Agnes : réessaie « Vérifier à nouveau » plus tard.");
   }
 
   /* ============================================================
@@ -1160,9 +1282,13 @@
         '<img alt="">' +
         '<div class="q-main"><div class="q-title"></div><div class="bar"><i></i></div><div class="q-msg"></div></div>' +
         '<span class="pill"></span>' +
-        '<div class="q-actions"></div>';
-      el.querySelector("img").src = it.photo.thumb;
+        '<div class="q-actions"></div>' +
+        '<details class="q-debug" hidden><summary>Détails techniques</summary><pre></pre>' +
+        '<button type="button" class="btn-sm q-copy">📋 Copier les détails</button></details>';
+      if (it.photo.thumb) el.querySelector("img").src = it.photo.thumb;
       el.querySelector(".q-title").textContent = "Scène " + (i + 1) + " · " + it.photo.name;
+      el.querySelector(".q-copy").addEventListener("click", function () { copyText(el.querySelector(".q-debug pre").textContent); });
+      if (!it.photo.thumb) el.querySelector("img").style.visibility = "hidden";
       box.appendChild(el);
       renderQueueItem(it);
     });
@@ -1190,13 +1316,29 @@
       a.addEventListener("click", function () { downloadVideo(it.url, fileNameFor(it.photo.name), a); });
       acts.appendChild(a);
     }
-    if ((it.status === "failed" || it.status === "stopped") && !state.running) {
+    if ((it.status === "failed" || it.status === "stopped") && !state.running && it.photo.dataUrl) {
       var r = document.createElement("button");
       r.type = "button"; r.className = "btn-sm"; r.textContent = "🔁 Réessayer cette scène";
       r.addEventListener("click", function () { startGeneration([it]); });
       acts.appendChild(r);
+      if (it.videoId) {
+        var c = document.createElement("button");
+        c.type = "button"; c.className = "btn-sm"; c.textContent = "🔎 Vérifier à nouveau";
+        c.addEventListener("click", function () { resumeItems([it]); });
+        acts.appendChild(c);
+      }
     }
     acts.hidden = !acts.children.length;
+    var dbg = el.querySelector(".q-debug");
+    if (it.lastRaw || it.videoId) {
+      dbg.hidden = false;
+      var pre = dbg.querySelector("pre");
+      var txt = "Moteur : " + (it.model || "?") + "\nvideo_id : " + (it.videoId || "—") + "\ntask_id : " + (it.taskId || "—") +
+        "\n\nDernière réponse d'Agnes :\n" + (it.lastRaw ? JSON.stringify(it.lastRaw, function (k, v) {
+          return typeof v === "string" && v.length > 300 ? v.slice(0, 300) + "…" : v;
+        }, 2) : "—");
+      if (pre.textContent !== txt) pre.textContent = txt;
+    } else dbg.hidden = true;
     renderQueueSummary();
   }
 
@@ -1239,7 +1381,7 @@
     if (!apiKey()) { toast("Enregistre d'abord ta clé API.", "warning"); return; }
     if (!state.photos.length) { toast("Ajoute au moins une photo.", "warning"); return; }
     var items = state.photos.map(function (p) {
-      return { id: uid(), photo: p, status: "pending", progress: 0, videoId: null, url: null, msg: "En attente de son tour" };
+      return { id: uid(), photo: p, model: state.settings.model, status: "pending", progress: 0, videoId: null, taskId: null, url: null, msg: "En attente de son tour" };
     });
     state.queue = items;
     renderQueue();
@@ -1251,7 +1393,7 @@
     if (state.running) return;
     state.abort = new AbortController();
     state.activeItems = items;
-    items.forEach(function (it) { it.status = "pending"; it.progress = 0; it.msg = "En attente de son tour"; it.url = null; it.videoId = null; renderQueueItem(it); });
+    items.forEach(function (it) { it.status = "pending"; it.progress = 0; it.msg = "En attente de son tour"; it.url = null; it.videoId = null; it.taskId = null; it.model = state.settings.model; renderQueueItem(it); });
     setRunning(true);
     var prompt = buildPrompt();
     var pollers = [];
@@ -1283,6 +1425,8 @@
           })(it));
           state.lastCreateAt = Date.now();
           it.videoId = created.videoId;
+          it.taskId = created.taskId;
+          savePending(it);
           it.status = "processing"; it.progress = 5;
           it.msg = "Scène envoyée ✓ Animation en cours…";
           renderQueueItem(it);
@@ -1323,18 +1467,68 @@
     try {
       var url = await pollVideo(it);
       it.status = "done"; it.progress = 100; it.url = url;
+      removePending(it.videoId);
       it.msg = "Terminé ✓";
       renderQueueItem(it);
       addToGallery({ id: uid(), url: url, name: it.photo.name, style: state.settings.style, date: Date.now() });
       toast("Scène prête : " + it.photo.name, "success");
     } catch (err) {
       if (err instanceof StopError) return;
+      if (!/20 minutes/.test(err.message)) removePending(it.videoId);
       it.status = "failed"; it.msg = err.message;
       renderQueueItem(it);
       toast(it.photo.name + " : " + err.message, "error");
     } finally {
       renderStatusBar();
     }
+  }
+
+  /* ============================================================
+     REPRISE (les vidéos en cours sont mémorisées)
+     ============================================================ */
+  function loadPending() {
+    try { var p = JSON.parse(lsGet(PENDING_STORAGE) || "[]"); return Array.isArray(p) ? p : []; } catch (e) { return []; }
+  }
+  function savePending(it) {
+    var list = loadPending().filter(function (x) { return x.videoId !== it.videoId; });
+    list.unshift({ videoId: it.videoId, taskId: it.taskId, model: it.model, name: it.photo.name, created: Date.now() });
+    lsSet(PENDING_STORAGE, JSON.stringify(list.slice(0, 30)));
+  }
+  function removePending(videoId) {
+    lsSet(PENDING_STORAGE, JSON.stringify(loadPending().filter(function (x) { return x.videoId !== videoId; })));
+  }
+
+  async function resumeItems(items) {
+    if (state.running) return;
+    if (!apiKey()) { toast("Enregistre ta clé API pour reprendre le suivi.", "warning"); return; }
+    state.abort = new AbortController();
+    state.activeItems = items;
+    items.forEach(function (it) { it.status = "processing"; it.msg = "Reprise du suivi…"; renderQueueItem(it); });
+    setRunning(true);
+    $("sbTitle").textContent = "Suivi de " + items.length + (items.length > 1 ? " scènes" : " scène");
+    renderStatusBar("Vérification chez Agnes…");
+    try {
+      await Promise.all(items.map(followItem));
+    } finally {
+      items.forEach(function (it) {
+        if (it.status === "processing") { it.status = "stopped"; it.msg = "Suivi arrêté. Tu peux le relancer."; }
+      });
+      setRunning(false);
+      items.forEach(renderQueueItem);
+    }
+  }
+
+  function resumeSaved() {
+    var list = loadPending().filter(function (x) { return Date.now() - x.created < 24 * 3600 * 1000; });
+    lsSet(PENDING_STORAGE, JSON.stringify(list));
+    if (!list.length) return;
+    var items = list.map(function (x) {
+      return { id: uid(), photo: { name: x.name, thumb: "", dataUrl: "" }, model: x.model, status: "processing", progress: 0, videoId: x.videoId, taskId: x.taskId, url: null, msg: "Reprise du suivi…" };
+    });
+    state.queue = items;
+    renderQueue();
+    toast("Reprise du suivi de " + items.length + (items.length > 1 ? " scènes commencées avant." : " scène commencée avant."), "info");
+    resumeItems(items);
   }
 
   /* ============================================================
@@ -1540,6 +1734,7 @@
   renderGallery();
   renderKeyStatus();
   onSettingsChange();
+  resumeSaved();
   if ("speechSynthesis" in window) { try { speechSynthesis.getVoices(); } catch (e) {} }
 })();
 </script>
