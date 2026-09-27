@@ -1101,8 +1101,8 @@
      API AGNES
      ============================================================ */
   var WAIT_429 = [15, 30, 60, 120, 180];
-  var WAIT_503 = [5, 15, 30];
-  var NO_CHANNEL = /channel|渠道|no available|not available|unavailable|model_not_found|not supported|does not exist|no provider|overload/i;
+  var WAIT_503 = [15, 30, 60];
+  var MAX_503 = 60; // Agnes saturé : on réessaie toutes les 60 s pendant ~1 h
 
   async function agnesFetch(url, options, label, onWait) {
     var n429 = 0, n503 = 0, nNet = 0;
@@ -1133,13 +1133,12 @@
         try { busyText = await res.text(); } catch (e) {}
         var w2 = WAIT_503[Math.min(n503, WAIT_503.length - 1)];
         n503++;
-        // « Aucun canal disponible pour ce modèle » : inutile de réessayer.
-        if (n503 > WAIT_503.length || NO_CHANNEL.test(busyText)) {
+        if (n503 > MAX_503) {
           var e3 = new Error("Agnes indisponible pour ce moteur (" + res.status + ")" + (busyText ? " : " + busyText.slice(0, 160) : ""));
           e3.status = res.status; e3.body = busyText;
           throw e3;
         }
-        await sleep(w2 * 1000, function (left) { onWait && onWait("Serveur occupé (" + res.status + ") : nouvel essai dans " + fmtSec(left)); });
+        await sleep(w2 * 1000, function (left) { onWait && onWait("Agnes saturé (" + res.status + ") · essai " + n503 + "/" + MAX_503 + " : nouvel essai dans " + fmtSec(left)); });
         continue;
       }
       var text = "";
