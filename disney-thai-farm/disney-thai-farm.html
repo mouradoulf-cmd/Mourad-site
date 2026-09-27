@@ -7,238 +7,353 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Disney Farm Thai Family</title>
 <style>
-  /* ---------- Palette & base ---------- */
+  /* =========================================================
+     PALETTE & BASE
+     ========================================================= */
   :root {
-    --bg: #fafafa; --panel: #ffffff; --line: #e5e5e5; --ink: #1d1d1f; --muted: #6e6e73;
-    --thai: #c8102e; --thai-dark: #a00d25; --ok: #2d8a4e; --warn: #c77700; --blue: #241d4f;
-    --radius: 12px; --shadow: 0 1px 3px rgba(0,0,0,.05), 0 8px 24px rgba(0,0,0,.04);
+    --bg: #fafafa;
+    --panel: #ffffff;
+    --line: #e5e5e5;
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --thai: #c8102e;
+    --thai-dark: #a00d25;
+    --thai-pale: #fdecef;
+    --blue: #241d4f;
+    --ok: #2d8a4e;
+    --err: #c0392b;
+    --warn: #d4a017;
+    --radius: 12px;
+    --ease: 0.3s ease;
+    --shadow: 0 1px 3px rgba(0, 0, 0, .05), 0 8px 24px rgba(0, 0, 0, .04);
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   [hidden] { display: none !important; }
   html, body { margin: 0; background: var(--bg); color: var(--ink); }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Noto Sans Thai", "Thonburi", sans-serif;
-    font-size: 16px; line-height: 1.5; padding-bottom: 110px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Noto Sans Thai', 'Thonburi', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    padding-bottom: 120px;
   }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 16px; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
 
-  /* ---------- En-tête ---------- */
-  header.top {
-    position: sticky; top: 0; z-index: 20; background: rgba(250,250,250,.88);
-    backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px);
-    border-bottom: 1px solid var(--line);
+  /* =========================================================
+     EN-TÊTE
+     ========================================================= */
+  .flagbar {
+    height: 5px;
+    background: linear-gradient(90deg,
+      var(--thai) 0 16.66%, #fff 16.66% 33.33%, var(--blue) 33.33% 66.66%,
+      #fff 66.66% 83.33%, var(--thai) 83.33% 100%);
   }
-  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; padding-bottom: 12px; }
-  header.top h1 { margin: 0; font-size: 1.15rem; letter-spacing: -.01em; }
-  .flagbar { height: 4px; background: linear-gradient(90deg, var(--thai) 0 16.6%, #fff 16.6% 33.3%, var(--blue) 33.3% 66.6%, #fff 66.6% 83.3%, var(--thai) 83.3%); }
-  .chip { font-size: .78rem; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; transition: all .3s; }
-  .chip.on { color: var(--ok); border-color: rgba(45,138,78,.35); background: rgba(45,138,78,.07); }
+  header.top { background: var(--panel); border-bottom: 1px solid var(--line); }
+  header.top .wrap { padding-top: 1rem; padding-bottom: 1rem; display: flex; align-items: center; gap: 12px; }
+  header.top h1 { margin: 0; font-size: 1.3rem; letter-spacing: -.01em; }
+  header.top p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
+  header.top .grow { flex: 1; min-width: 0; }
+  .chip {
+    font-size: .78rem; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line);
+    color: var(--muted); white-space: nowrap; transition: all var(--ease);
+  }
+  .chip.on { color: var(--ok); border-color: rgba(45, 138, 78, .35); background: rgba(45, 138, 78, .07); }
 
-  /* ---------- Panneaux ---------- */
+  /* =========================================================
+     BANNIÈRE
+     ========================================================= */
   .banner {
-    background: linear-gradient(135deg, #fff5f6, #fff 55%, #f4f3fb); border: 1px solid var(--line);
-    border-radius: var(--radius); padding: 18px; margin: 16px 0; box-shadow: var(--shadow);
+    background: var(--thai-pale); border: 1px solid rgba(200, 16, 46, .18); border-radius: var(--radius);
+    padding: 1rem 1.2rem; margin-bottom: 1rem;
   }
-  .banner h2 { margin: 0 0 6px; font-size: 1.25rem; }
-  .banner p { margin: 0; color: var(--muted); }
-  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow); transition: box-shadow .3s; }
-  .panel h3 { margin: 0 0 10px; font-size: 1rem; display: flex; align-items: center; gap: 8px; }
-  .panel h3 .n { width: 24px; height: 24px; border-radius: 50%; background: var(--thai); color: #fff; font-size: .8rem; display: inline-grid; place-items: center; }
+  .banner strong { color: var(--thai); }
+  .banner ol { margin: 8px 0 0; padding-left: 1.2rem; color: #4a4a4f; font-size: .92rem; }
+
+  /* =========================================================
+     PANNEAUX REPLIABLES
+     ========================================================= */
+  .panel {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    margin-bottom: 1rem; box-shadow: var(--shadow); overflow: hidden;
+  }
+  .panel > .ph {
+    width: 100%; display: flex; align-items: center; gap: 10px; padding: 1rem 1.1rem;
+    background: none; border: 0; font: inherit; font-weight: 700; font-size: 1rem; color: var(--ink);
+    cursor: pointer; text-align: left;
+  }
+  .panel > .ph .ttl { flex: 1; }
+  .panel > .ph .meta { font-weight: 500; font-size: .82rem; color: var(--muted); }
+  .chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform var(--ease); margin-right: 4px; }
+  .panel.closed .chev { transform: rotate(-45deg); }
+  .panel > .pb { padding: 0 1.1rem 1.1rem; }
+  .panel.closed > .pb { display: none; }
   .hint { color: var(--muted); font-size: .85rem; margin: 6px 0 0; }
   label.lb { display: block; font-size: .85rem; font-weight: 600; margin: 10px 0 6px; }
 
   input[type=password], input[type=text], textarea, select {
     width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: #fff;
-    border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; transition: border-color .3s, box-shadow .3s;
+    border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px;
+    transition: border-color var(--ease), box-shadow var(--ease);
   }
-  textarea { min-height: 110px; resize: vertical; }
-  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--thai); box-shadow: 0 0 0 3px rgba(200,16,46,.12); }
+  textarea { min-height: 120px; resize: vertical; }
+  textarea.thai { font-size: 17px; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--thai); box-shadow: 0 0 0 3px rgba(200, 16, 46, .12); }
   .row { display: flex; gap: 8px; align-items: center; }
   .row > * { flex: 1; }
   .row > .shrink { flex: 0 0 auto; }
   .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  @media (max-width: 560px) { .grid3 { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .grid3 { grid-template-columns: 1fr; } .wrap { padding: 1rem; } }
 
-  /* ---------- Boutons ---------- */
-  button { font: inherit; cursor: pointer; border-radius: 10px; border: 1px solid var(--line); background: #fff; color: var(--ink); padding: 10px 14px; transition: all .3s; }
-  button:active { transform: scale(.98); }
+  /* =========================================================
+     BOUTONS
+     ========================================================= */
+  button { font: inherit; cursor: pointer; border-radius: 10px; border: 1px solid var(--line); background: #fff; color: var(--ink); padding: 10px 14px; transition: all var(--ease); }
+  button:active:not(:disabled) { transform: scale(.98); }
   button:disabled { opacity: .5; cursor: not-allowed; }
   .btn-dark { background: var(--ink); color: #fff; border-color: var(--ink); }
   .btn-main {
-    display: block; width: 100%; padding: 16px; font-size: 1.08rem; font-weight: 700; color: #fff;
-    background: var(--thai); border-color: var(--thai); box-shadow: 0 6px 18px rgba(200,16,46,.25);
+    display: block; width: 100%; padding: 17px; font-size: 1.1rem; font-weight: 700; color: #fff;
+    background: var(--thai); border-color: var(--thai); box-shadow: 0 6px 18px rgba(200, 16, 46, .25);
   }
   .btn-main:hover:not(:disabled) { background: var(--thai-dark); }
-  .btn-stop { display: block; width: 100%; margin-top: 10px; color: var(--thai); border-color: rgba(200,16,46,.4); font-weight: 600; }
+  .btn-stop { display: block; width: 100%; margin-top: 10px; color: var(--err); border-color: rgba(192, 57, 43, .4); font-weight: 600; }
   .btn-sm { padding: 7px 10px; font-size: .85rem; }
   .btn-ok { background: var(--ok); border-color: var(--ok); color: #fff; }
 
-  /* ---------- Upload ---------- */
+  /* =========================================================
+     UPLOAD & MINIATURES
+     ========================================================= */
   .drop {
-    border: 2px dashed #d4d4d4; border-radius: var(--radius); padding: 26px 14px; text-align: center; cursor: pointer;
-    color: var(--muted); transition: all .3s; background: #fcfcfc;
+    border: 2px dashed #d4d4d4; border-radius: var(--radius); padding: 28px 14px; text-align: center; cursor: pointer;
+    color: var(--muted); background: #fcfcfc; transition: all var(--ease);
   }
-  .drop.over { border-color: var(--thai); background: #fff5f6; color: var(--thai); }
+  .drop.over { border-color: var(--thai); background: var(--thai-pale); color: var(--thai); }
   .drop strong { color: var(--ink); display: block; font-size: 1.02rem; margin-bottom: 2px; }
   .drop input { display: none; }
   .thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap: 8px; margin-top: 12px; }
-  .thumb { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #eee; }
+  .thumb { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #eee; animation: fadeIn .3s ease; }
   .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .thumb .x { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; padding: 0; border-radius: 50%; border: 0; background: rgba(0,0,0,.6); color: #fff; font-size: .8rem; line-height: 26px; }
-  .thumb .num { position: absolute; left: 4px; bottom: 4px; background: rgba(0,0,0,.6); color: #fff; font-size: .7rem; padding: 1px 6px; border-radius: 6px; }
+  .thumb .x { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; padding: 0; border-radius: 50%; border: 0; background: rgba(0, 0, 0, .6); color: #fff; font-size: .8rem; line-height: 26px; }
+  .thumb .num { position: absolute; left: 4px; bottom: 4px; background: rgba(0, 0, 0, .6); color: #fff; font-size: .7rem; padding: 1px 6px; border-radius: 6px; }
 
-  /* ---------- Réglages ---------- */
-  .switch { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); margin-top: 10px; }
+  /* =========================================================
+     INTERRUPTEURS
+     ========================================================= */
+  .switch { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 0 0; margin-top: 12px; border-top: 1px solid var(--line); }
   .switch span small { display: block; color: var(--muted); font-size: .8rem; }
   .tog { position: relative; width: 50px; height: 30px; flex: 0 0 auto; }
   .tog input { opacity: 0; width: 0; height: 0; }
-  .tog i { position: absolute; inset: 0; border-radius: 30px; background: #d4d4d4; transition: .3s; }
-  .tog i::after { content: ""; position: absolute; left: 3px; top: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; transition: .3s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+  .tog i { position: absolute; inset: 0; border-radius: 30px; background: #d4d4d4; transition: var(--ease); }
+  .tog i::after { content: ""; position: absolute; left: 3px; top: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; transition: var(--ease); box-shadow: 0 1px 3px rgba(0, 0, 0, .2); }
   .tog input:checked + i { background: var(--ok); }
   .tog input:checked + i::after { transform: translateX(20px); }
 
-  /* ---------- File d'attente ---------- */
-  .qhead { display: flex; justify-content: space-between; font-size: .9rem; color: var(--muted); margin-bottom: 8px; }
-  .qhead strong { color: var(--ink); }
+  /* =========================================================
+     FILE D'ATTENTE
+     ========================================================= */
+  .qhead { display: flex; justify-content: space-between; gap: 10px; font-size: .9rem; color: var(--muted); margin-bottom: 6px; }
+  .qhead strong { color: var(--ink); white-space: nowrap; }
   .qi { display: flex; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
-  .qi img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex: 0 0 auto; }
+  .qi img { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; flex: 0 0 auto; }
   .qi .m { flex: 1; min-width: 0; }
   .qi .t { display: flex; justify-content: space-between; font-weight: 600; font-size: .9rem; }
   .qi .s { color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
-  .qi.done .s { color: var(--ok); } .qi.fail .s { color: var(--thai); }
+  .qi.done .s { color: var(--ok); }
+  .qi.fail .s { color: var(--err); }
   .bar { height: 6px; background: #eee; border-radius: 6px; overflow: hidden; margin: 5px 0; }
-  .bar i { display: block; height: 100%; width: 0; background: var(--thai); border-radius: 6px; transition: width .3s; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--thai); border-radius: 6px; transition: width var(--ease); }
   .qi.done .bar i { background: var(--ok); }
+  .qi.fail .bar i { background: var(--err); }
 
-  /* ---------- Galerie ---------- */
+  /* =========================================================
+     GALERIE
+     ========================================================= */
   .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-  .gi { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; }
-  .gi video { width: 100%; aspect-ratio: 9/16; object-fit: cover; background: #000; display: block; }
+  .gi { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; animation: fadeIn .5s ease; }
+  .gi video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; display: block; }
   .gi .cap { padding: 8px; display: flex; flex-direction: column; gap: 6px; }
   .gi .cap b { font-size: .88rem; }
+  .gi .cap small { color: var(--muted); font-size: .75rem; }
   .gi .acts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   .gi .acts .dl { grid-column: 1 / -1; }
   .empty { color: var(--muted); text-align: center; padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-  /* ---------- Barre de statut & toasts ---------- */
+  /* =========================================================
+     BARRE DE STATUT & TOASTS
+     ========================================================= */
   .statusbar {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: rgba(29,29,31,.94); color: #fff;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--thai); color: #fff;
     padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 12px;
-    transform: translateY(110%); transition: transform .3s;
+    transform: translateY(110%); transition: transform var(--ease); box-shadow: 0 -6px 20px rgba(200, 16, 46, .25);
   }
   .statusbar.on { transform: none; }
-  .statusbar span { flex: 1; font-size: .9rem; }
-  .spin { width: 20px; height: 20px; border-radius: 50%; border: 3px solid rgba(255,255,255,.25); border-top-color: #fff; animation: sp 1s linear infinite; flex: 0 0 auto; }
-  @keyframes sp { to { transform: rotate(360deg); } }
-  .toasts { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); z-index: 40; width: min(92vw, 440px); display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
-  .toast { pointer-events: auto; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--ink); border-radius: 10px; padding: 10px 12px; box-shadow: 0 8px 24px rgba(0,0,0,.12); font-size: .9rem; animation: tin .3s; }
-  .toast.ok { border-left-color: var(--ok); } .toast.err { border-left-color: var(--thai); } .toast.warn { border-left-color: var(--warn); }
-  @keyframes tin { from { opacity: 0; transform: translateY(-8px); } }
+  .statusbar span { flex: 1; font-size: .92rem; }
+  .spin { width: 20px; height: 20px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, .35); border-top-color: #fff; animation: spin 1s linear infinite; flex: 0 0 auto; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .toasts { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 40; width: min(92vw, 440px); display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+  .toast { pointer-events: auto; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--ink); border-radius: 10px; padding: 10px 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, .12); font-size: .9rem; animation: fadeIn .3s ease; }
+  .toast.ok { border-left-color: var(--ok); }
+  .toast.err { border-left-color: var(--err); }
+  .toast.warn { border-left-color: var(--warn); }
   #wakeVideo { position: fixed; width: 1px; height: 1px; opacity: 0; pointer-events: none; left: 0; top: 0; }
 </style>
 </head>
 <body>
 
+<!-- ============================ EN-TÊTE ============================ -->
+<div class="flagbar"></div>
 <header class="top">
-  <div class="flagbar"></div>
   <div class="wrap">
-    <h1>🇹🇭 Disney Farm Thai Family</h1>
+    <div class="grow">
+      <h1>🇹🇭 Disney Farm Thai Family</h1>
+      <p>Votre photo devient un dessin animé 3D parlant en thaïlandais</p>
+    </div>
     <span class="chip" id="keyChip">Clé absente</span>
   </div>
 </header>
 
 <main class="wrap">
-  <!-- Bannière explicative -->
+
+  <!-- ============================ BANNIÈRE ============================ -->
   <section class="banner">
-    <h2>Tes photos deviennent un dessin animé 3D</h2>
-    <p>Envoie des photos de famille : chacune devient une scène animée style Disney Pixar, dans une ferme thaïlandaise heureuse (maison sur pilotis, rizières, buffles). Ajoute des dialogues en thaï lus par une voix thaïe.</p>
+    <strong>Le concept :</strong> chaque photo de famille devient une scène animée style <strong>Disney Pixar</strong>, dans une ferme thaïlandaise heureuse (maison sur pilotis, rizières, buffles, coucher de soleil doré). Tes dialogues sont lus par une <strong>voix thaïe</strong>.
+    <ol>
+      <li>Colle ta clé API Agnes</li>
+      <li>Ajoute tes photos et écris tes dialogues en thaï</li>
+      <li>Appuie sur « Créer » et laisse la page ouverte</li>
+    </ol>
   </section>
 
-  <!-- 1. Clé API -->
-  <section class="panel">
-    <h3><span class="n">1</span> Clé API Agnes</h3>
-    <div class="row">
-      <input type="password" id="apiKey" placeholder="sk-..." autocomplete="off" autocapitalize="off" spellcheck="false">
-      <button type="button" class="btn-dark shrink" id="saveKey">Enregistrer</button>
+  <!-- ============================ CLÉ API ============================ -->
+  <section class="panel" id="pApi">
+    <button type="button" class="ph"><span class="ttl">🔑 Clé API Agnes</span><span class="meta" id="apiMeta"></span><i class="chev"></i></button>
+    <div class="pb">
+      <div class="row">
+        <input type="password" id="apiKey" placeholder="sk-..." autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button type="button" class="btn-dark shrink" id="saveKey">Enregistrer la clé</button>
+      </div>
+      <p class="hint" id="keyStatus">Ta clé reste uniquement dans ce navigateur.</p>
+      <p class="hint" id="speedInfo">📊 Vitesse moyenne : pas encore de mesure</p>
+      <label class="switch"><span>☀️ Garder l'écran allumé<small id="wakeStatus">Inactif</small></span>
+        <span class="tog"><input type="checkbox" id="wakeToggle"><i></i></span></label>
     </div>
-    <p class="hint" id="keyStatus">Ta clé reste uniquement dans ce navigateur.</p>
-    <p class="hint" id="speedInfo">Vitesse moyenne : pas encore de mesure.</p>
   </section>
 
-  <!-- 2. Photos -->
-  <section class="panel">
-    <h3><span class="n">2</span> Photos</h3>
-    <div class="drop" id="drop">
-      <strong>📷 Touche pour choisir des photos</strong>
-      ou glisse-les ici (plusieurs possibles)
-      <input type="file" id="fileInput" accept="image/*" multiple>
+  <!-- ============================ PHOTOS ============================ -->
+  <section class="panel" id="pPhotos">
+    <button type="button" class="ph"><span class="ttl">📸 Photos</span><span class="meta" id="photoMeta">0 photo</span><i class="chev"></i></button>
+    <div class="pb">
+      <div class="drop" id="drop">
+        <strong>Touche pour choisir des photos</strong>
+        ou glisse-les ici (plusieurs possibles)
+        <input type="file" id="fileInput" accept="image/*" multiple>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
     </div>
-    <div class="thumbs" id="thumbs"></div>
   </section>
 
-  <!-- 3. Scène -->
-  <section class="panel">
-    <h3><span class="n">3</span> Description de la scène</h3>
-    <textarea id="sceneText">The family harvests rice together in the golden paddies, the children laugh and chase the chickens, grandmother waves from the wooden stilt house while the water buffalo grazes nearby.</textarea>
-    <p class="hint">En anglais de préférence. Le style Disney Thai Farm est ajouté automatiquement.</p>
+  <!-- ============================ SCÈNE ============================ -->
+  <section class="panel" id="pScene">
+    <button type="button" class="ph"><span class="ttl">🎬 Description de la scène</span><i class="chev"></i></button>
+    <div class="pb">
+      <textarea id="sceneText">The whole family harvests rice together in the golden paddies. The children laugh and chase the chickens, grandmother waves from the wooden stilt house, grandfather rides the gentle water buffalo, and everyone smiles at the camera at sunset.</textarea>
+      <p class="hint">En anglais de préférence. Le style Disney Thai Farm est ajouté automatiquement avant et après ton texte.</p>
+    </div>
   </section>
 
-  <!-- 4. Dialogues -->
-  <section class="panel">
-    <h3><span class="n">4</span> Dialogues en thaïlandais</h3>
-    <textarea id="dialogues" placeholder="Un dialogue par ligne">สวัสดีครับ คุณยาย!
+  <!-- ============================ DIALOGUES ============================ -->
+  <section class="panel" id="pVoice">
+    <button type="button" class="ph"><span class="ttl">🗣️ Dialogues en thaïlandais</span><i class="chev"></i></button>
+    <div class="pb">
+      <textarea id="dialogues" class="thai" placeholder="Un dialogue par ligne">สวัสดีครับ คุณยาย!
 วันนี้เราไปเกี่ยวข้าวกันนะ
 ดูสิ ควายกำลังกินหญ้า
 ครอบครัวเรามีความสุขที่สุดเลย</textarea>
-    <div class="grid3" style="margin-top:10px">
-      <div><label class="lb" for="voiceRate">Vitesse</label>
-        <select id="voiceRate"><option value="0.8">Lente (0.8)</option><option value="1" selected>Normale (1)</option><option value="1.2">Rapide (1.2)</option></select></div>
-      <div><label class="lb" for="voiceGender">Voix</label>
-        <select id="voiceGender"><option value="female">Féminine</option><option value="male">Masculine</option></select></div>
-      <div><label class="lb">&nbsp;</label><button type="button" id="testVoice" style="width:100%">🔊 Tester la voix thaï</button></div>
+      <div class="grid3" style="margin-top:10px">
+        <div>
+          <label class="lb" for="voiceRate">Vitesse</label>
+          <select id="voiceRate">
+            <option value="0.8">Lente (0.8)</option>
+            <option value="1" selected>Normale (1)</option>
+            <option value="1.2">Rapide (1.2)</option>
+          </select>
+        </div>
+        <div>
+          <label class="lb" for="voiceGender">Voix</label>
+          <select id="voiceGender">
+            <option value="default" selected>Par défaut</option>
+            <option value="male">Masculine</option>
+            <option value="female">Féminine</option>
+          </select>
+        </div>
+        <div>
+          <label class="lb">&nbsp;</label>
+          <button type="button" id="testVoice" style="width:100%">🔊 Tester la voix thaï</button>
+        </div>
+      </div>
+      <p class="hint" id="voiceInfo">Recherche des voix thaïes…</p>
     </div>
-    <p class="hint" id="voiceInfo">Recherche des voix thaïes…</p>
   </section>
 
-  <!-- 5. Réglages -->
-  <section class="panel">
-    <h3><span class="n">5</span> Réglages techniques</h3>
-    <div class="grid3">
-      <div><label class="lb" for="duration">Durée</label>
-        <select id="duration"><option value="121">5 secondes</option><option value="153" selected>6,4 secondes</option><option value="241">10 secondes</option></select></div>
-      <div><label class="lb" for="format">Format</label>
-        <select id="format"><option value="portrait" selected>9:16 vertical (TikTok)</option><option value="landscape">16:9 horizontal (YouTube)</option></select></div>
-      <div><label class="lb" for="intensity">Intensité du mouvement</label>
-        <select id="intensity"><option value="soft">Douce</option><option value="normal" selected>Normale</option><option value="dynamic">Dynamique</option></select></div>
+  <!-- ============================ RÉGLAGES ============================ -->
+  <section class="panel closed" id="pSettings">
+    <button type="button" class="ph"><span class="ttl">📷 Réglages techniques</span><i class="chev"></i></button>
+    <div class="pb">
+      <div class="grid3">
+        <div>
+          <label class="lb" for="duration">Durée</label>
+          <select id="duration">
+            <option value="121">5 secondes</option>
+            <option value="153" selected>6,4 secondes</option>
+            <option value="241">10 secondes</option>
+          </select>
+        </div>
+        <div>
+          <label class="lb" for="format">Format</label>
+          <select id="format">
+            <option value="portrait" selected>9:16 vertical</option>
+            <option value="landscape">16:9 horizontal</option>
+          </select>
+        </div>
+        <div>
+          <label class="lb" for="intensity">Intensité</label>
+          <select id="intensity">
+            <option value="soft">Douce</option>
+            <option value="normal" selected>Normale</option>
+            <option value="dynamic">Dynamique</option>
+          </select>
+        </div>
+      </div>
+      <p class="hint">Mode gratuit Agnes : 1 requête par minute. L'application attend 65 s entre chaque appel et vérifie l'avancement toutes les 30 s minimum.</p>
     </div>
-    <label class="switch"><span>☀️ Garder l'écran allumé<small>Évite la mise en veille pendant la création</small></span>
-      <span class="tog"><input type="checkbox" id="wakeToggle" checked><i></i></span></label>
-    <label class="switch"><span>⚡ Relance si bloqué<small>Si une vidéo n'avance plus pendant 4 min, une copie est relancée. La première finie gagne.</small></span>
-      <span class="tog"><input type="checkbox" id="forceToggle" checked><i></i></span></label>
   </section>
 
   <button type="button" class="btn-main" id="createBtn">🎬 Créer les vidéos Disney Thai</button>
   <button type="button" class="btn-stop" id="stopBtn" hidden>⏹ Arrêter</button>
 
-  <!-- File d'attente -->
-  <section class="panel" id="queuePanel" style="margin-top:14px" hidden>
-    <h3>File d'attente</h3>
-    <div class="qhead"><span id="queueHead">Progression</span><strong id="queueCount">0/0</strong></div>
-    <div id="queue"></div>
+  <!-- ============================ FILE D'ATTENTE ============================ -->
+  <section class="panel" id="queuePanel" style="margin-top:1rem" hidden>
+    <button type="button" class="ph"><span class="ttl">⏳ File d'attente</span><span class="meta" id="queueCount">0/0</span><i class="chev"></i></button>
+    <div class="pb">
+      <div class="qhead"><span id="queueHead">Progression</span></div>
+      <div id="queue"></div>
+    </div>
   </section>
 
-  <!-- Galerie -->
-  <section class="panel" style="margin-top:14px">
-    <h3>🎞️ Mes vidéos <span class="hint" id="galCount" style="margin:0 0 0 auto">0 vidéo</span></h3>
-    <div class="gallery" id="gallery"></div>
-    <p class="empty" id="galEmpty">Tes vidéos apparaîtront ici.</p>
-    <p class="hint">Sur iPhone : « Télécharger » ouvre le menu de partage, puis choisis <b>Enregistrer la vidéo</b>. Les liens Agnes peuvent expirer : télécharge vite.</p>
+  <!-- ============================ GALERIE ============================ -->
+  <section class="panel" id="pGallery" style="margin-top:1rem">
+    <button type="button" class="ph"><span class="ttl">🎞️ Mes vidéos</span><span class="meta" id="galCount">0 vidéo</span><i class="chev"></i></button>
+    <div class="pb">
+      <div class="gallery" id="gallery"></div>
+      <p class="empty" id="galEmpty">Tes vidéos apparaîtront ici.</p>
+      <p class="hint">Sur iPhone : « Télécharger » ouvre le menu de partage → <b>Enregistrer la vidéo</b>. Les liens Agnes peuvent expirer : télécharge vite.</p>
+    </div>
   </section>
 </main>
 
 <div class="statusbar" id="statusbar"><div class="spin"></div><span id="statusText">…</span></div>
 <div class="toasts" id="toasts"></div>
-<video id="wakeVideo" muted loop playsinline></video>
+<video id="wakeVideo" muted playsinline loop></video>
 
 <script>
 'use strict';
@@ -252,19 +367,15 @@ const MODEL = 'agnes-video-v2.0';
 const FRAME_RATE = 24;
 const KEY_STORAGE = 'agnes_api_key_thai';
 const TIMING_STORAGE = 'agnes_timing_cache_thai';
-const WAKE_STORAGE = 'agnes_wake_pref_thai';
+const WAKE_STORAGE = 'agnes_wakelock_enabled';
 const GALLERY_STORAGE = 'agnes_gallery_thai';
-const CREATE_GAP_MS = 62000;           // 1 création par minute (limite Agnes)
-const POLL_EVERY_MS = 8000;            // suivi toutes les 8 s
-const POLL_MAX_MS = 40 * 60000;        // abandon après 40 min
-const STALL_MS = 4 * 60000;            // « bloqué » = aucun progrès pendant 4 min
-const MAX_RELAUNCH = 3;                // relances maximum par image
-const WAIT_429 = [15, 30, 45, 60, 90, 120, 180];
-const WAIT_503 = [5, 10, 15, 20, 30, 45];
-const MAX_503 = 60;                    // puis 60 s entre essais, ~1 h maximum
+const POLL_INTERVAL_MS = 30000;   // 30 s minimum entre deux vérifications
+const POLL_MAX_TRIES = 100;       // environ 50 minutes maximum
+const MAX_503_RETRIES = 6;        // nouveaux essais sur 502/503/504
+const MAX_NET_RETRIES = 4;        // nouveaux essais sur coupure réseau
 
-const PROMPT_PREAMBLE = "Create a high-quality 3D animated scene in Disney Pixar animation style, inspired by the input image. The scene depicts a happy Thai family at a traditional Thai farm. Elements: wooden stilt house, green rice paddies, water buffalo grazing, chickens, tropical palm trees, golden sunset light. Characters: Thai grandmother and grandfather smiling, children running joyfully, parents working together. Warm colors, soft global illumination, Pixar-style character design with expressive eyes, subsurface scattering on skin, cinematic depth of field. Preserve the family composition and identity of the people in the source image, but reimagine them as Pixar-style 3D characters. {FORMAT}, 24fps, no text overlays, no watermarks. Ambient sound: gentle Thai traditional music, birds, water flowing.";
-const PROMPT_SUFFIX = "Style: Disney Pixar 3D animation, cinematic lighting, warm Thai atmosphere, family friendly, joyful mood.";
+const PROMPT_PREFIX = "Create a high-quality 3D animated scene in Disney Pixar animation style, inspired by the input image. The scene depicts a happy Thai family at a traditional Thai farm. Elements: wooden stilt house, green rice paddies, water buffalo grazing, chickens, tropical palm trees, golden sunset light. Characters: Thai grandmother and grandfather smiling, children running joyfully, parents working together. Warm colors, soft global illumination, Pixar-style character design with expressive eyes, subsurface scattering on skin, cinematic depth of field. Preserve the family composition and identity of the people in the source image, but reimagine them as Pixar-style 3D characters. 9:16 vertical portrait, 24fps, no text overlays, no watermarks. Ambient sound: gentle Thai traditional music, birds, water flowing.";
+const PROMPT_SUFFIX = "Style: Disney Pixar 3D animation, cinematic lighting, warm Thai atmosphere, family friendly, joyful mood, high detail, professional render quality.";
 const INTENSITY_TEXT = {
   soft: 'Motion: gentle, subtle movements, slow camera.',
   normal: 'Motion: natural lively movements, smooth camera push-in.',
@@ -275,49 +386,76 @@ const INTENSITY_TEXT = {
    ÉTAT GLOBAL
    ================================================================= */
 const state = {
-  images: [],            // { id, name, dataUri, thumb }
-  queue: [],             // éléments de la file
+  images: [],          // { id, name, dataUri, thumb }
+  queue: [],           // éléments de la file de génération
   running: false,
   stopRequested: false,
-  lastCreateAt: 0,
-  createLock: Promise.resolve(),
   startedAt: 0,
   thaiVoices: [],
+  speakToken: 0,       // permet d'annuler une lecture en cours
   wakeLock: null,
   wakeStream: null,
-  timers: new Set()      // tous les timers actifs (nettoyés à l'arrêt)
+  wakeTimer: null,
+  countdownTimer: null
 };
 
 const $ = (id) => document.getElementById(id);
 
 /* =================================================================
-   OUTILS
+   OUTILS GÉNÉRAUX
    ================================================================= */
-// Pause interruptible (s'arrête si l'utilisateur demande l'arrêt)
+// Pause qui se termine plus tôt si l'utilisateur demande l'arrêt
 function sleep(ms) {
   return new Promise((resolve) => {
-    const t = setTimeout(() => { state.timers.delete(t); resolve(); }, ms);
-    state.timers.add(t);
+    const end = Date.now() + ms;
+    const iv = setInterval(() => {
+      if (state.stopRequested || Date.now() >= end) { clearInterval(iv); resolve(); }
+    }, 250);
   });
 }
-async function waitSeconds(sec, onTick) {
-  for (let s = sec; s > 0; s--) {
-    if (state.stopRequested) throw new StopError();
-    if (onTick) onTick(s);
-    await sleep(1000);
-  }
+
+class StopError extends Error {
+  constructor() { super('Arrêté'); this.name = 'StopError'; }
 }
-class StopError extends Error { constructor() { super('Arrêté'); this.name = 'StopError'; } }
+function checkStop() { if (state.stopRequested) throw new StopError(); }
+
+// Journal console (détails techniques)
+function log(msg) { console.log('[Disney Thai] ' + msg); }
 
 function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* stockage indisponible */ } }
-function esc(s) { return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
 function fmtMin(ms) {
   const m = Math.round(ms / 60000);
   return m < 1 ? '< 1 min' : m + ' min';
 }
 
-// Notifications toast
+// Barre de statut en bas de l'écran
+function setStatus(text) {
+  const bar = $('statusbar');
+  if (text) { $('statusText').textContent = text; bar.classList.add('on'); }
+  else bar.classList.remove('on');
+}
+
+// Compte à rebours affiché dans la barre de statut pendant une attente
+function startCountdown(prefix, ms) {
+  stopCountdown();
+  const end = Date.now() + ms;
+  const tick = () => {
+    const left = Math.max(0, Math.ceil((end - Date.now()) / 1000));
+    setStatus(prefix + ' (' + left + 's)');
+    if (left <= 0) stopCountdown();
+  };
+  tick();
+  state.countdownTimer = setInterval(tick, 1000);
+}
+function stopCountdown() {
+  if (state.countdownTimer) { clearInterval(state.countdownTimer); state.countdownTimer = null; }
+}
+
+// Notifications toast (ok / err / warn / info)
 function toast(msg, type = 'info', ms) {
   const box = $('toasts');
   const el = document.createElement('div');
@@ -325,22 +463,22 @@ function toast(msg, type = 'info', ms) {
   el.textContent = msg;
   box.appendChild(el);
   while (box.children.length > 3) box.removeChild(box.firstChild);
-  const onClick = () => remove();
-  el.addEventListener('click', onClick);
-  const t = setTimeout(remove, ms || (type === 'err' ? 6500 : 3800));
+  const timer = setTimeout(remove, ms || (type === 'err' ? 6500 : 4000));
+  function onClick() { remove(); }
   function remove() {
-    clearTimeout(t);
+    clearTimeout(timer);
     el.removeEventListener('click', onClick);
     if (el.parentNode) el.parentNode.removeChild(el);
   }
+  el.addEventListener('click', onClick);
 }
 
-// Barre de statut en bas
-function setStatus(text) {
-  const bar = $('statusbar');
-  if (text) { $('statusText').textContent = text; bar.classList.add('on'); }
-  else bar.classList.remove('on');
-}
+/* =================================================================
+   SECTIONS REPLIABLES
+   ================================================================= */
+document.querySelectorAll('.panel > .ph').forEach((head) => {
+  head.addEventListener('click', () => head.parentElement.classList.toggle('closed'));
+});
 
 /* =================================================================
    CLÉ API
@@ -350,8 +488,11 @@ function refreshKeyUI() {
   const k = getKey();
   $('keyChip').textContent = k ? '● Clé active' : 'Clé absente';
   $('keyChip').classList.toggle('on', !!k);
-  $('keyStatus').textContent = k ? 'Clé enregistrée (' + k.slice(0, 5) + '…' + k.slice(-4) + ').' : 'Ta clé reste uniquement dans ce navigateur.';
-  if (k && !$('apiKey').value) $('apiKey').placeholder = '•••••••• (enregistrée)';
+  $('apiMeta').textContent = k ? '✓ enregistrée' : '';
+  $('keyStatus').textContent = k
+    ? 'Clé enregistrée (' + k.slice(0, 5) + '…' + k.slice(-4) + '). Colle une nouvelle clé pour la remplacer.'
+    : 'Ta clé reste uniquement dans ce navigateur.';
+  $('apiKey').placeholder = k ? '•••••••• (enregistrée)' : 'sk-...';
 }
 $('saveKey').addEventListener('click', () => {
   const k = $('apiKey').value.trim().replace(/^Bearer\s+/i, '');
@@ -361,6 +502,7 @@ $('saveKey').addEventListener('click', () => {
   refreshKeyUI();
   toast('Clé enregistrée ✓', 'ok');
 });
+$('apiKey').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); $('saveKey').click(); } });
 
 /* =================================================================
    PHOTOS (compression JPEG max 1024 px)
@@ -381,33 +523,33 @@ function loadImage(src) {
     img.src = src;
   });
 }
+function drawScaled(img, maxSide, quality) {
+  const scale = Math.min(1, maxSide / Math.max(img.width, img.height));
+  const c = document.createElement('canvas');
+  c.width = Math.max(1, Math.round(img.width * scale));
+  c.height = Math.max(1, Math.round(img.height * scale));
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+  return c.toDataURL('image/jpeg', quality);
+}
 async function compress(file) {
   const img = await loadImage(await readAsDataURL(file));
-  const scale = Math.min(1, 1024 / Math.max(img.width, img.height));
-  const c = document.createElement('canvas');
-  c.width = Math.round(img.width * scale);
-  c.height = Math.round(img.height * scale);
-  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-  const dataUri = c.toDataURL('image/jpeg', 0.85);
-  const t = document.createElement('canvas');
-  const ts = 180 / Math.max(img.width, img.height);
-  t.width = Math.round(img.width * ts); t.height = Math.round(img.height * ts);
-  t.getContext('2d').drawImage(img, 0, 0, t.width, t.height);
-  return { dataUri, thumb: t.toDataURL('image/jpeg', 0.7) };
+  return { dataUri: drawScaled(img, 1024, 0.85), thumb: drawScaled(img, 200, 0.7) };
 }
 async function addFiles(fileList) {
   const files = Array.from(fileList || []).filter((f) => /^image\//.test(f.type) || /\.(heic|jpe?g|png|webp)$/i.test(f.name));
   if (!files.length) return;
+  let added = 0;
   for (const f of files) {
     try {
       const c = await compress(f);
       state.images.push({ id: Math.random().toString(36).slice(2), name: f.name, dataUri: c.dataUri, thumb: c.thumb });
+      added++;
     } catch (e) {
       toast(f.name + ' : ' + e.message, 'err');
     }
   }
   renderThumbs();
-  toast(files.length + ' photo' + (files.length > 1 ? 's' : '') + ' ajoutée' + (files.length > 1 ? 's' : ''), 'ok');
+  if (added) toast(added + ' photo' + (added > 1 ? 's ajoutées' : ' ajoutée'), 'ok');
 }
 function renderThumbs() {
   const box = $('thumbs');
@@ -424,6 +566,8 @@ function renderThumbs() {
     });
     box.appendChild(d);
   });
+  const n = state.images.length;
+  $('photoMeta').textContent = n + (n > 1 ? ' photos' : ' photo');
   updateCreateBtn();
 }
 const drop = $('drop');
@@ -434,109 +578,153 @@ $('fileInput').addEventListener('change', (e) => { addFiles(e.target.files); e.t
 drop.addEventListener('drop', (e) => { if (e.dataTransfer) addFiles(e.dataTransfer.files); });
 
 /* =================================================================
-   PROMPT
+   CONSTRUCTION DU PROMPT
    ================================================================= */
 function buildPrompt() {
-  const fmt = $('format').value === 'landscape' ? '16:9 horizontal landscape' : '9:16 vertical portrait';
+  let prefix = PROMPT_PREFIX;
+  if ($('format').value === 'landscape') prefix = prefix.replace('9:16 vertical portrait', '16:9 horizontal landscape');
   const user = $('sceneText').value.trim();
-  return [PROMPT_PREAMBLE.replace('{FORMAT}', fmt), user ? 'Scene: ' + user : '', INTENSITY_TEXT[$('intensity').value], PROMPT_SUFFIX]
-    .filter(Boolean).join(' ');
+  return [prefix, user, INTENSITY_TEXT[$('intensity').value], PROMPT_SUFFIX].filter(Boolean).join(' ');
 }
 
 /* =================================================================
-   VOIX THAÏE (SpeechSynthesis)
+   VOIX THAÏLANDAISE (SpeechSynthesis)
    ================================================================= */
-const FEMALE_RE = /kanya|narisa|premwadee|female|woman|femme|หญิง/i;
-const MALE_RE = /niwat|pattara|male|man|homme|ชาย/i;
+const FEMALE_RE = /kanya|narisa|premwadee|achara|female|woman|หญิง/i;
+const MALE_RE = /niwat|pattara|male(?!.*fe)|\bman\b|ชาย/i;
+let voiceWarned = false;
+
 function loadVoices() {
-  if (!('speechSynthesis' in window)) { $('voiceInfo').textContent = '⚠️ Ce navigateur ne sait pas lire à voix haute.'; return; }
+  if (!('speechSynthesis' in window)) {
+    $('voiceInfo').textContent = '⚠️ Ce navigateur ne sait pas lire à voix haute.';
+    return;
+  }
   const all = speechSynthesis.getVoices();
+  if (!all.length) return; // pas encore chargées : on attend onvoiceschanged
   state.thaiVoices = all.filter((v) => /^th/i.test(v.lang));
   if (state.thaiVoices.length) {
-    $('voiceInfo').textContent = '✓ ' + state.thaiVoices.length + ' voix thaïe(s) : ' + state.thaiVoices.map((v) => v.name).join(', ');
-  } else if (all.length) {
-    $('voiceInfo').textContent = '⚠️ Aucune voix thaïe sur cet appareil : voix par défaut utilisée. (iPhone : Réglages → Accessibilité → Contenu énoncé → Voix → Thaï)';
+    $('voiceInfo').textContent = '✓ Voix thaïe(s) : ' + state.thaiVoices.map((v) => v.name).join(', ');
+  } else {
+    $('voiceInfo').textContent = '⚠️ Aucune voix thaïe sur cet appareil : voix par défaut. (iPhone : Réglages → Accessibilité → Contenu énoncé → Voix → Thaï)';
   }
 }
 function pickVoice() {
   const list = state.thaiVoices;
   if (!list.length) return null;
-  const wantMale = $('voiceGender').value === 'male';
-  const byGender = list.find((v) => (wantMale ? MALE_RE : FEMALE_RE).test(v.name) && !(wantMale ? FEMALE_RE : MALE_RE).test(v.name));
-  return byGender || list[0];
+  const g = $('voiceGender').value;
+  if (g === 'male') return list.find((v) => MALE_RE.test(v.name) && !FEMALE_RE.test(v.name)) || list[0];
+  if (g === 'female') return list.find((v) => FEMALE_RE.test(v.name)) || list[0];
+  return list.find((v) => v.default) || list[0];
 }
-// Lit les lignes l'une après l'autre
+function dialogueLines() {
+  return $('dialogues').value.split('\n').map((l) => l.trim()).filter(Boolean);
+}
+// Lit les lignes une par une (la suivante démarre à la fin de la précédente)
 function speakLines(lines) {
   if (!('speechSynthesis' in window)) { toast('Voix non disponible sur ce navigateur.', 'err'); return; }
+  if (!lines.length) { toast('Écris au moins un dialogue.', 'warn'); return; }
+  if (!state.thaiVoices.length && !voiceWarned) {
+    voiceWarned = true;
+    toast('Aucune voix thaïe trouvée : voix par défaut utilisée.', 'warn');
+  }
   speechSynthesis.cancel();
+  const token = ++state.speakToken;
   const voice = pickVoice();
   const wantMale = $('voiceGender').value === 'male';
   const rate = parseFloat($('voiceRate').value) || 1;
-  lines.filter((l) => l.trim()).forEach((line) => {
-    const u = new SpeechSynthesisUtterance(line.trim());
+  let i = 0;
+  const next = () => {
+    if (token !== state.speakToken || i >= lines.length) return;
+    const u = new SpeechSynthesisUtterance(lines[i++]);
     u.lang = 'th-TH';
     if (voice) u.voice = voice;
     u.rate = rate;
-    // Pas de vraie voix masculine ? On baisse la hauteur de la voix disponible.
-    u.pitch = wantMale && !(voice && MALE_RE.test(voice.name)) ? 0.7 : 1;
+    // Pas de vraie voix masculine installée ? On baisse la hauteur.
+    u.pitch = wantMale && !(voice && MALE_RE.test(voice.name) && !FEMALE_RE.test(voice.name)) ? 0.7 : 1;
+    u.onend = next;
+    u.onerror = next;
     speechSynthesis.speak(u);
-  });
+  };
+  next();
 }
-function dialogueLines() { return $('dialogues').value.split('\n').filter((l) => l.trim()); }
-$('testVoice').addEventListener('click', () => {
-  const lines = dialogueLines();
-  if (!lines.length) { toast('Écris au moins un dialogue.', 'warn'); return; }
-  speakLines(lines);
-});
+function stopSpeaking() {
+  state.speakToken++;
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+}
+$('testVoice').addEventListener('click', () => speakLines(dialogueLines()));
 if ('speechSynthesis' in window) {
   loadVoices();
-  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  speechSynthesis.onvoiceschanged = loadVoices;
+} else {
+  loadVoices();
 }
 
 /* =================================================================
    ANTI-VEILLE (Wake Lock + secours iOS)
    ================================================================= */
+function setWakeStatus(text) { $('wakeStatus').textContent = text; }
+function onWakeRelease() {
+  state.wakeLock = null;
+  if ($('wakeToggle').checked) setWakeStatus('En pause (revient au retour sur la page)');
+}
 async function enableWake() {
   if (!$('wakeToggle').checked) return;
-  try {
-    if ('wakeLock' in navigator) {
+  // 1) API officielle Screen Wake Lock
+  if ('wakeLock' in navigator) {
+    try {
       if (!state.wakeLock) {
         state.wakeLock = await navigator.wakeLock.request('screen');
         state.wakeLock.addEventListener('release', onWakeRelease);
       }
+      setWakeStatus('✓ Actif (Wake Lock)');
       return;
-    }
-  } catch (e) { /* on passe au secours */ }
-  // Secours iOS : une mini vidéo muette en boucle garde la page « active »
+    } catch (e) { log('Wake Lock refusé : ' + e.message); }
+  }
+  // 2) Secours iOS : mini vidéo muette en boucle alimentée par un canvas
   try {
     if (!state.wakeStream) {
       const c = document.createElement('canvas');
       c.width = 2; c.height = 2;
       const ctx = c.getContext('2d');
-      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, 2, 2);
+      if (typeof c.captureStream !== 'function') throw new Error('captureStream absent');
       state.wakeStream = c.captureStream(1);
-      state.wakeCanvasTimer = setInterval(() => { ctx.fillStyle = Math.random() > .5 ? '#000' : '#010101'; ctx.fillRect(0, 0, 2, 2); }, 1000);
+      state.wakeTimer = setInterval(() => {
+        ctx.fillStyle = Math.random() > 0.5 ? '#000' : '#010101';
+        ctx.fillRect(0, 0, 2, 2);
+      }, 1000);
       const v = $('wakeVideo');
       v.srcObject = state.wakeStream;
       await v.play();
     }
-  } catch (e) { /* rien de plus à faire */ }
+    setWakeStatus('✓ Actif (mode secours)');
+  } catch (e) {
+    setWakeStatus('Non supporté sur ce navigateur');
+  }
 }
-function onWakeRelease() { state.wakeLock = null; }
 function disableWake() {
-  try { if (state.wakeLock) { state.wakeLock.removeEventListener('release', onWakeRelease); state.wakeLock.release(); } } catch (e) {}
+  try {
+    if (state.wakeLock) {
+      state.wakeLock.removeEventListener('release', onWakeRelease);
+      state.wakeLock.release();
+    }
+  } catch (e) { /* déjà libéré */ }
   state.wakeLock = null;
-  if (state.wakeCanvasTimer) { clearInterval(state.wakeCanvasTimer); state.wakeCanvasTimer = null; }
+  if (state.wakeTimer) { clearInterval(state.wakeTimer); state.wakeTimer = null; }
   if (state.wakeStream) {
     state.wakeStream.getTracks().forEach((t) => t.stop());
     state.wakeStream = null;
-    const v = $('wakeVideo'); v.pause(); v.srcObject = null;
+    const v = $('wakeVideo');
+    v.pause();
+    v.srcObject = null;
   }
+  setWakeStatus($('wakeToggle').checked ? 'Prêt (s\'active pendant la création)' : 'Inactif');
 }
-$('wakeToggle').checked = lsGet(WAKE_STORAGE) !== '0';
+$('wakeToggle').checked = lsGet(WAKE_STORAGE) !== 'false';
+setWakeStatus($('wakeToggle').checked ? 'Prêt (s\'active pendant la création)' : 'Inactif');
 $('wakeToggle').addEventListener('change', () => {
-  lsSet(WAKE_STORAGE, $('wakeToggle').checked ? '1' : '0');
-  if ($('wakeToggle').checked && state.running) enableWake(); else if (!$('wakeToggle').checked) disableWake();
+  lsSet(WAKE_STORAGE, $('wakeToggle').checked ? 'true' : 'false');
+  if ($('wakeToggle').checked) { if (state.running) enableWake(); else setWakeStatus('Prêt (s\'active pendant la création)'); }
+  else disableWake();
 });
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible' && state.running) enableWake();
@@ -544,249 +732,257 @@ document.addEventListener('visibilitychange', () => {
 
 /* =================================================================
    CACHE DE TIMING (estimation du temps restant)
+   Structure : { "153": [durées ms], "241": [...] }
    ================================================================= */
 function loadTimings() {
-  try { const a = JSON.parse(lsGet(TIMING_STORAGE) || '[]'); return Array.isArray(a) ? a : []; } catch (e) { return []; }
+  try {
+    const o = JSON.parse(lsGet(TIMING_STORAGE) || '{}');
+    return o && typeof o === 'object' && !Array.isArray(o) ? o : {};
+  } catch (e) { return {}; }
 }
-function saveTiming(ms) {
-  const a = loadTimings(); a.push(ms);
-  lsSet(TIMING_STORAGE, JSON.stringify(a.slice(-20)));
+function saveTiming(frames, ms) {
+  const o = loadTimings();
+  const k = String(frames);
+  o[k] = (o[k] || []).concat(ms).slice(-10);
+  lsSet(TIMING_STORAGE, JSON.stringify(o));
   refreshSpeed();
 }
-function medianTiming() {
-  const a = loadTimings().slice(-10).sort((x, y) => x - y);
-  if (!a.length) return 0;
+function median(arr) {
+  if (!arr || !arr.length) return 0;
+  const a = arr.slice().sort((x, y) => x - y);
   const m = Math.floor(a.length / 2);
   return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2;
 }
+function medianFor(frames) { return median(loadTimings()[String(frames)]); }
 function refreshSpeed() {
-  const med = medianTiming();
-  $('speedInfo').textContent = med ? 'Vitesse moyenne : ≈ ' + fmtMin(med) + ' par vidéo (' + loadTimings().length + ' mesure(s)).' : 'Vitesse moyenne : pas encore de mesure.';
-}
-
-/* =================================================================
-   API AGNES
-   ================================================================= */
-// Envoi d'une création, avec nouveaux essais sur 429 / 5xx
-async function postVideo(body, onWait) {
-  let n429 = 0, n503 = 0;
-  while (true) {
-    if (state.stopRequested) throw new StopError();
-    let r;
-    try {
-      r = await fetch(API_BASE + '/videos', {
-        method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + getKey(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-    } catch (e) {
-      console.error('[Agnes] réseau', e);
-      if (n503++ >= MAX_503) throw new Error('Impossible de joindre Agnes (réseau).');
-      await waitSeconds(15, (s) => onWait('Connexion perdue · nouvel essai dans ' + s + ' s'));
-      continue;
-    }
-    if (r.ok) return r.json();
-    const text = await r.text().catch(() => '');
-    console.error('[Agnes] POST /videos HTTP ' + r.status, text);
-    if (r.status === 429) {
-      const w = WAIT_429[Math.min(n429, WAIT_429.length - 1)];
-      if (++n429 > 12) throw new Error('Limite Agnes atteinte (429). Réessaie plus tard.');
-      await waitSeconds(w, (s) => onWait('Limite Agnes (429) · pause ' + s + ' s'));
-      continue;
-    }
-    if (r.status === 502 || r.status === 503 || r.status === 504) {
-      const w = n503 < WAIT_503.length ? WAIT_503[n503] : 60;
-      if (++n503 > MAX_503) throw new Error('Agnes indisponible (' + r.status + ') depuis 1 h. Réessaie plus tard.');
-      await waitSeconds(w, (s) => onWait('Agnes saturé (' + r.status + ') · essai ' + n503 + ' · nouvel essai dans ' + s + ' s'));
-      continue;
-    }
-    if (r.status === 401 || r.status === 403) throw new Error('Clé API refusée (' + r.status + '). Vérifie ta clé.');
-    throw new Error('HTTP ' + r.status + ' ' + text.slice(0, 140));
-  }
-}
-
-// Création espacée de 62 s (partagée entre toutes les images et relances)
-function gatedCreate(image, frames, onWait) {
-  const run = state.createLock.then(async () => {
-    let left = CREATE_GAP_MS - (Date.now() - state.lastCreateAt);
-    while (left > 0) {
-      if (state.stopRequested) throw new StopError();
-      onWait('Départ dans ' + Math.ceil(left / 1000) + ' s (limite Agnes : 1 / min)');
-      await sleep(1000);
-      left = CREATE_GAP_MS - (Date.now() - state.lastCreateAt);
-    }
-    try {
-      const body = { model: MODEL, prompt: buildPrompt(), image: image.dataUri, num_frames: frames, frame_rate: FRAME_RATE };
-      const d = await postVideo(body, onWait);
-      const id = d.video_id || d.id || d.task_id;
-      if (!id) throw new Error('Réponse Agnes sans video_id');
-      return id;
-    } finally {
-      state.lastCreateAt = Date.now();
-    }
-  });
-  state.createLock = run.catch(() => {});
-  return run;
-}
-
-// Une vérification d'état
-async function checkTask(t) {
-  const url = POLL_BASE + '?video_id=' + encodeURIComponent(t.id) + (t.withModel ? '&model_name=' + encodeURIComponent(MODEL) : '');
-  let r;
-  try { r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + getKey() } }); }
-  catch (e) { return { state: 'wait' }; }
-  if (!r.ok) {
-    console.error('[Agnes] suivi HTTP ' + r.status + ' (' + t.id + ')');
-    if (r.status !== 429) t.withModel = !t.withModel; // essaie l'autre forme d'URL
-    return { state: 'wait' };
-  }
-  const d = await r.json().catch(() => ({}));
-  const st = String(d.status || '').toLowerCase();
-  const pr = Number(d.progress) || 0;
-  if (/complet|succe|done/.test(st)) {
-    const link = (d.metadata && d.metadata.url) || d.url || (d.output && d.output.url) || d.remixed_from_video_id;
-    return link ? { state: 'done', url: link } : { state: 'fail', msg: 'Terminé mais sans lien vidéo' };
-  }
-  if (/fail|error|cancel/.test(st)) {
-    const why = (d.error && (d.error.message || d.error)) || d.message || 'Agnes n\'a pas pu créer la vidéo';
-    return { state: 'fail', msg: typeof why === 'string' ? why : JSON.stringify(why) };
-  }
-  return { state: 'wait', pr, st };
-}
-
-/* =================================================================
-   PIPELINE : une image
-   ================================================================= */
-async function processItem(item, idx) {
   const frames = parseInt($('duration').value, 10);
-  const onWait = (m) => { item.msg = m; renderQueue(); };
-  item.status = 'create'; onWait('En attente de son tour…');
-  const t0 = Date.now();
-  try {
-    const firstId = await gatedCreate(item.image, frames, onWait);
-    const tasks = [{ id: firstId, withModel: true }];
-    item.status = 'proc'; item.pct = 3; onWait('Envoyée ✓ Animation en cours…');
-    let best = -1, lastMove = Date.now(), relaunches = 0, relaunching = false, lastErr = '';
+  const med = medianFor(frames);
+  $('speedInfo').textContent = med
+    ? '📊 Vitesse moyenne : ' + (med / 1000).toFixed(1) + ' s par vidéo (' + (loadTimings()[String(frames)] || []).length + ' mesure(s), ' + (frames / FRAME_RATE).toFixed(1) + ' s de vidéo)'
+    : '📊 Vitesse moyenne : pas encore de mesure pour cette durée';
+}
+$('duration').addEventListener('change', refreshSpeed);
 
-    // Relance d'une copie plus légère (5 s) si c'est bloqué
-    const relaunch = async (why) => {
-      if (relaunching || relaunches >= MAX_RELAUNCH || state.stopRequested) return;
-      relaunching = true; relaunches++;
-      const n = relaunches;
-      try {
-        const id = await gatedCreate(item.image, 121, (m) => onWait('⚡ ' + why + ' · relance n°' + n + ' : ' + m));
-        tasks.push({ id, withModel: true });
-        lastMove = Date.now();
-        onWait('⚡ Relance n°' + n + ' envoyée · ' + tasks.filter((x) => !x.dead).length + ' essais en course');
-      } catch (e) {
-        if (!(e instanceof StopError)) lastErr = e.message;
-        lastMove = Date.now();
-      } finally { relaunching = false; }
-    };
+/* =================================================================
+   ⚠️ THROTTLE GLOBAL — TOUS les appels Agnes passent par ici
+   ================================================================= */
+// 全局节流：免费版 1 RPM → 每次请求之间强制等待 65 秒
+let lastAgnesCallTime = 0;
+const AGNES_MIN_INTERVAL_MS = 65000;
 
-    while (true) {
-      if (state.stopRequested) throw new StopError();
-      if (Date.now() - t0 > POLL_MAX_MS) throw new Error('Pas de résultat après 40 min' + (relaunches ? ' (' + relaunches + ' relance(s))' : '') + '. Agnes est saturé, réessaie plus tard.');
-      for (const t of tasks) {
-        if (t.dead) continue;
-        const r = await checkTask(t);
-        if (r.state === 'done') {
-          item.status = 'done'; item.pct = 100; item.url = r.url; item.msg = 'Terminé ✓';
-          saveTiming(Date.now() - t0);
-          return r.url;
-        }
-        if (r.state === 'fail') { t.dead = true; lastErr = r.msg; continue; }
-        if (typeof r.pr === 'number') {
-          t.pr = r.pr; t.st = r.st;
-          if (r.pr > best) { best = r.pr; lastMove = Date.now(); }
-        }
-      }
-      const alive = tasks.filter((x) => !x.dead);
-      const force = $('forceToggle').checked;
-      if (!alive.length && !relaunching) {
-        if (!force || relaunches >= MAX_RELAUNCH) throw new Error(lastErr || 'Échec');
-        relaunch('Échec chez Agnes');
-      } else if (force && Date.now() - lastMove > STALL_MS) {
-        relaunch('Bloqué depuis ' + Math.round((Date.now() - lastMove) / 60000) + ' min');
-      }
-      if (!relaunching) {
-        const top = alive.reduce((a, x) => ((x.pr || 0) > (a.pr || 0) ? x : a), alive[0] || {});
-        const mins = Math.floor((Date.now() - t0) / 60000);
-        item.pct = Math.max(3, Math.min(99, top.pr || 0));
-        onWait((/queue|pending/.test(top.st || '') ? 'Dans la file Agnes' : 'Animation') + '… ' + Math.round(top.pr || 0) + ' %' +
-          (mins ? ' · ' + mins + ' min' : '') + (alive.length > 1 ? ' · ⚡ ' + alive.length + ' essais en course' : ''));
-      }
-      await sleep(POLL_EVERY_MS);
+async function throttledAgnesFetch(url, options = {}, label = 'API') {
+  const now = Date.now();
+  const elapsed = now - lastAgnesCallTime;
+  const waitTime = Math.max(0, AGNES_MIN_INTERVAL_MS - elapsed);
+
+  if (waitTime > 0) {
+    const waitSec = Math.ceil(waitTime / 1000);
+    log(label + ' : 节流等待 ' + waitSec + 's');
+    setStatus('等待 API 配额释放… (' + waitSec + 's)');
+    startCountdown('等待 API 配额释放… · ' + label, waitTime); // affichage seconde par seconde
+    await sleep(waitTime);
+    stopCountdown();
+  }
+  checkStop();
+
+  lastAgnesCallTime = Date.now();
+  const res = await fetch(url, options);
+
+  if (res.status === 429) {
+    log(label + ' : 429 服务器饱和，等待 90 秒');
+    setStatus('Agnes 服务器饱和，等待中…');
+    startCountdown('Agnes 服务器饱和，等待中… · ' + label, 90000);
+    await sleep(90000);
+    stopCountdown();
+    checkStop();
+    lastAgnesCallTime = Date.now();
+    return await fetch(url, options);
+  }
+
+  return res;
+}
+
+// Couche de robustesse autour du throttle : 502/503/504 et coupures réseau
+// (chaque nouvel essai repasse par throttledAgnesFetch, donc respecte les 65 s)
+async function agnesRequest(url, options, label) {
+  let n503 = 0;
+  let nNet = 0;
+  while (true) {
+    checkStop();
+    let res;
+    try {
+      res = await throttledAgnesFetch(url, options, label);
+    } catch (e) {
+      if (e instanceof StopError) throw e;
+      nNet++;
+      console.error('[Agnes] ' + label + ' : erreur réseau', e);
+      if (nNet > MAX_NET_RETRIES) throw new Error('Impossible de joindre Agnes. Vérifie ta connexion.');
+      setStatus('Connexion perdue, nouvel essai…');
+      await sleep(5000 * nNet);
+      continue;
     }
-  } catch (e) {
-    if (e instanceof StopError) { item.status = 'fail'; item.msg = 'Arrêté'; renderQueue(); return null; }
-    item.status = 'fail'; item.msg = e.message || 'Échec';
-    toast('Image ' + (idx + 1) + ' : ' + item.msg, 'err');
-    return null;
-  } finally {
+    if (res.status === 502 || res.status === 503 || res.status === 504) {
+      n503++;
+      const body = await res.text().catch(() => '');
+      console.error('[Agnes] ' + label + ' : HTTP ' + res.status, body);
+      if (n503 > MAX_503_RETRIES) throw new Error('Agnes indisponible (' + res.status + '). Réessaie plus tard.');
+      startCountdown('Agnes saturé (' + res.status + ') · nouvel essai ' + n503 + '/' + MAX_503_RETRIES, 15000 * n503);
+      await sleep(15000 * n503);
+      stopCountdown();
+      continue;
+    }
+    return res;
+  }
+}
+
+/* =================================================================
+   API : création et suivi
+   ================================================================= */
+async function createVideoTask(image, frames) {
+  const body = {
+    model: MODEL,
+    prompt: buildPrompt(),
+    image: image.dataUri,
+    num_frames: frames,
+    frame_rate: FRAME_RATE
+  };
+  const res = await agnesRequest(API_BASE + '/videos', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + getKey(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }, 'Création');
+  const text = await res.text().catch(() => '');
+  if (!res.ok) {
+    console.error('[Agnes] POST /videos HTTP ' + res.status, text);
+    if (res.status === 401 || res.status === 403) throw new Error('Clé API refusée (' + res.status + '). Vérifie ta clé.');
+    if (res.status === 429) throw new Error('Agnes saturé (429) même après 90 s d\'attente.');
+    throw new Error('Création refusée (HTTP ' + res.status + ') ' + text.slice(0, 120));
+  }
+  let data = {};
+  try { data = JSON.parse(text); } catch (e) { /* réponse non JSON */ }
+  const id = data.video_id || data.id || data.task_id;
+  if (!id) throw new Error('Réponse Agnes sans video_id');
+  log('Tâche créée : ' + id);
+  return id;
+}
+
+async function pollVideo(item) {
+  let withModel = true;
+  for (let attempt = 1; attempt <= POLL_MAX_TRIES; attempt++) {
+    checkStop();
+    // Au moins 30 s entre deux vérifications (le throttle impose ensuite ses 65 s)
+    const since = Date.now() - (item.lastPollAt || item.startTime);
+    if (since < POLL_INTERVAL_MS) await sleep(POLL_INTERVAL_MS - since);
+    checkStop();
+
+    const url = POLL_BASE + '?video_id=' + encodeURIComponent(item.videoId) + (withModel ? '&model_name=' + encodeURIComponent(MODEL) : '');
+    item.msg = 'Vérification n°' + attempt + '…';
+    renderQueue();
+    const res = await agnesRequest(url, { method: 'GET', headers: { 'Authorization': 'Bearer ' + getKey() } }, 'Suivi image ' + (item.index + 1));
+    item.lastPollAt = Date.now();
+
+    if (!res.ok) {
+      const t = await res.text().catch(() => '');
+      console.error('[Agnes] suivi HTTP ' + res.status, t);
+      if (res.status === 401 || res.status === 403) throw new Error('Clé API refusée pendant le suivi (' + res.status + ').');
+      withModel = !withModel; // on essaie l'autre forme de l'URL
+      item.msg = 'Agnes ne répond pas encore (' + res.status + '), on réessaie…';
+      renderQueue();
+      continue;
+    }
+    const d = await res.json().catch(() => ({}));
+    const st = String(d.status || '').toLowerCase();
+    const pr = Math.max(0, Math.min(100, Number(d.progress) || 0));
+
+    if (/complet|succe|done/.test(st)) {
+      const link = (d.metadata && d.metadata.url) || d.url || (d.output && d.output.url) || d.remixed_from_video_id;
+      if (!link) throw new Error('Terminé mais sans lien vidéo');
+      return link;
+    }
+    if (/fail|error|cancel/.test(st)) {
+      const why = (d.error && (d.error.message || d.error)) || d.message || 'Agnes n\'a pas pu créer la vidéo';
+      throw new Error(typeof why === 'string' ? why : JSON.stringify(why));
+    }
+    item.pct = Math.max(item.pct || 0, pr, 5);
+    const mins = Math.floor((Date.now() - item.startTime) / 60000);
+    item.msg = (/queue|pending/.test(st) ? 'Dans la file Agnes' : 'Animation') + '… ' + Math.round(pr) + ' %' + (mins ? ' · ' + mins + ' min' : '');
     renderQueue();
   }
+  throw new Error('Pas de résultat après ' + POLL_MAX_TRIES + ' vérifications (≈ 50 min).');
 }
 
 /* =================================================================
    FILE D'ATTENTE (affichage)
    ================================================================= */
+const ICONS = { wait: '○', create: '◐', proc: '◐', done: '●', fail: '✕' };
 function renderQueue() {
   const q = state.queue;
   $('queuePanel').hidden = !q.length;
   const done = q.filter((x) => x.status === 'done').length;
   const finished = q.filter((x) => x.status === 'done' || x.status === 'fail').length;
-  const med = medianTiming();
-  const left = q.length - finished;
-  const eta = state.running && left ? (med ? ' — ≈ ' + fmtMin(med + (left - 1) * CREATE_GAP_MS) + ' restant' : ' — estimation après la 1re vidéo') : '';
-  $('queueHead').textContent = 'Progression ' + finished + '/' + q.length + eta;
-  $('queueCount').textContent = done + ' ✓';
-  const box = $('queue');
-  box.innerHTML = q.map((it, i) =>
-    '<div class="qi ' + it.status + '"><img alt="" src="' + it.image.thumb + '"><div class="m">' +
-    '<div class="t"><span>Image ' + (i + 1) + '</span><span>' + ({ wait: '○', create: '◐', proc: '◐', done: '●', fail: '✕' }[it.status] || '') + '</span></div>' +
-    '<div class="bar"><i style="width:' + (it.status === 'done' ? 100 : it.pct || 0) + '%"></i></div>' +
-    '<div class="s">' + esc(it.msg || '') + '</div></div></div>').join('');
-  if (state.running) {
-    const cur = q.find((x) => x.status === 'proc' || x.status === 'create');
-    setStatus(cur ? 'Image ' + (q.indexOf(cur) + 1) + '/' + q.length + ' · ' + cur.msg : 'Finalisation…');
+  $('queueCount').textContent = done + '/' + q.length + ' ✓';
+
+  // Estimation : médiane mesurée (ou 3 appels de 65 s minimum) × images restantes
+  let eta = '';
+  if (state.running && finished < q.length) {
+    const frames = parseInt($('duration').value, 10);
+    const per = medianFor(frames) || 4 * 65000;
+    const current = q.find((x) => x.status === 'proc');
+    const spent = current ? Date.now() - current.startTime : 0;
+    const left = Math.max(0, (q.length - finished) * per - spent);
+    eta = ' — ≈ ' + fmtMin(left) + ' restant';
   }
+  $('queueHead').textContent = 'Progression ' + finished + '/' + q.length + eta;
+
+  $('queue').innerHTML = q.map((it, i) =>
+    '<div class="qi ' + it.status + '"><img alt="" src="' + it.image.thumb + '"><div class="m">' +
+      '<div class="t"><span>Image ' + (i + 1) + '</span><span>' + ICONS[it.status] + '</span></div>' +
+      '<div class="bar"><i style="width:' + (it.status === 'done' ? 100 : (it.pct || 0)) + '%"></i></div>' +
+      '<div class="s">' + esc(it.msg || '') + '</div>' +
+    '</div></div>').join('');
 }
 
 /* =================================================================
-   GALERIE
+   GALERIE (sauvegardée dans le navigateur)
    ================================================================= */
 function loadGallery() {
   try { const g = JSON.parse(lsGet(GALLERY_STORAGE) || '[]'); return Array.isArray(g) ? g : []; } catch (e) { return []; }
 }
 function saveGallery(g) { lsSet(GALLERY_STORAGE, JSON.stringify(g.slice(0, 40))); }
+
+function buildGalleryItem(v) {
+  const el = document.createElement('div');
+  el.className = 'gi';
+  el.innerHTML =
+    '<video controls preload="metadata" muted playsinline></video>' +
+    '<div class="cap"><b></b><small></small><div class="acts">' +
+      '<button type="button" class="btn-sm btn-ok dl">⬇️ Télécharger</button>' +
+      '<button type="button" class="btn-sm talk">🔊 Parler</button>' +
+      '<button type="button" class="btn-sm del">Retirer</button>' +
+    '</div></div>';
+  const video = el.querySelector('video');
+  video.src = v.url;
+  el.querySelector('b').textContent = v.label;
+  el.querySelector('small').textContent = new Date(v.date).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
+  const lines = () => (v.lines && v.lines.length ? v.lines : dialogueLines());
+  // La voix thaïe démarre en même temps que la vidéo
+  video.addEventListener('play', () => speakLines(lines()));
+  video.addEventListener('pause', stopSpeaking);
+  video.addEventListener('error', () => { el.querySelector('small').textContent = 'Lien expiré ? Essaie « Télécharger ».'; });
+  el.querySelector('.talk').addEventListener('click', () => speakLines(lines()));
+  const dl = el.querySelector('.dl');
+  dl.addEventListener('click', () => downloadVideo(v.url, dl));
+  el.querySelector('.del').addEventListener('click', () => {
+    saveGallery(loadGallery().filter((x) => x.id !== v.id));
+    renderGallery();
+  });
+  return el;
+}
 function renderGallery() {
   const g = loadGallery();
   const box = $('gallery');
   box.innerHTML = '';
-  g.forEach((v) => {
-    const el = document.createElement('div');
-    el.className = 'gi';
-    el.innerHTML = '<video controls preload="metadata" muted playsinline></video>' +
-      '<div class="cap"><b></b><div class="acts">' +
-      '<button type="button" class="btn-sm btn-ok dl">⬇️ Télécharger</button>' +
-      '<button type="button" class="btn-sm talk">🔊 Parler</button>' +
-      '<button type="button" class="btn-sm del">Retirer</button></div></div>';
-    const video = el.querySelector('video');
-    video.src = v.url;
-    el.querySelector('b').textContent = v.label;
-    // La voix thaïe démarre quand la vidéo commence
-    video.addEventListener('play', () => speakLines(v.lines && v.lines.length ? v.lines : dialogueLines()));
-    video.addEventListener('pause', () => { if ('speechSynthesis' in window) speechSynthesis.cancel(); });
-    el.querySelector('.talk').addEventListener('click', () => speakLines(v.lines && v.lines.length ? v.lines : dialogueLines()));
-    const dl = el.querySelector('.dl');
-    dl.addEventListener('click', () => downloadVideo(v.url, dl));
-    el.querySelector('.del').addEventListener('click', () => {
-      saveGallery(loadGallery().filter((x) => x.id !== v.id));
-      renderGallery();
-    });
-    box.appendChild(el);
-  });
+  g.forEach((v) => box.appendChild(buildGalleryItem(v)));
   $('galCount').textContent = g.length + (g.length > 1 ? ' vidéos' : ' vidéo');
   $('galEmpty').hidden = g.length > 0;
 }
@@ -797,10 +993,11 @@ function addToGallery(url, label, lines) {
   renderGallery();
 }
 
-// Téléchargement : partage iPhone → « Enregistrer la vidéo », sinon lien direct
+// Téléchargement : menu de partage sur iPhone (« Enregistrer la vidéo »), sinon lien direct
 async function downloadVideo(url, btn) {
   const old = btn.textContent;
-  btn.disabled = true; btn.textContent = '⏳ …';
+  btn.disabled = true;
+  btn.textContent = '⏳ …';
   const name = 'disney-thai-farm-' + Date.now() + '.mp4';
   try {
     const r = await fetch(url);
@@ -808,63 +1005,108 @@ async function downloadVideo(url, btn) {
     const blob = await r.blob();
     const file = new File([blob], name, { type: 'video/mp4' });
     if (navigator.canShare && navigator.share && navigator.canShare({ files: [file] })) {
-      try { await navigator.share({ files: [file], title: name }); toast('Choisis « Enregistrer la vidéo »', 'ok'); return; }
-      catch (e) { if (e && e.name === 'AbortError') return; }
+      try {
+        await navigator.share({ files: [file], title: name });
+        toast('Choisis « Enregistrer la vidéo »', 'ok');
+        return;
+      } catch (e) {
+        if (e && e.name === 'AbortError') return;
+      }
     }
-    const o = URL.createObjectURL(blob);
+    const objUrl = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = o; a.download = name;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(o), 60000);
+    a.href = objUrl;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(objUrl), 60000);
     toast('Téléchargement lancé ✓', 'ok');
   } catch (e) {
     console.error('[Téléchargement]', e);
     window.open(url, '_blank', 'noopener');
     toast('Vidéo ouverte : Partager → Enregistrer la vidéo (ou clic droit → Enregistrer)', 'warn');
   } finally {
-    btn.disabled = false; btn.textContent = old;
+    btn.disabled = false;
+    btn.textContent = old;
   }
 }
 
 /* =================================================================
-   LANCEMENT / ARRÊT
+   PIPELINE DE GÉNÉRATION (séquentielle)
    ================================================================= */
 function updateCreateBtn() {
   const b = $('createBtn');
-  b.disabled = state.running || !state.images.length;
-  b.textContent = state.running ? '⏳ Création en cours…' : (state.images.length ? '🎬 Créer les vidéos Disney Thai (' + state.images.length + ')' : '🎬 Créer les vidéos Disney Thai');
+  const n = state.images.length;
+  b.disabled = state.running || !n;
+  b.textContent = state.running ? '⏳ Création en cours…' : '🎬 Créer les vidéos Disney Thai' + (n ? ' (' + n + ')' : '');
 }
 
-$('createBtn').addEventListener('click', async () => {
+async function processItem(item, frames, lines) {
+  try {
+    item.status = 'create';
+    item.msg = 'Envoi de la photo à Agnes…';
+    renderQueue();
+    item.videoId = await createVideoTask(item.image, frames);
+    item.startTime = Date.now();
+    item.lastPollAt = item.startTime;
+    item.status = 'proc';
+    item.pct = 3;
+    item.msg = 'Envoyée ✓ Animation en cours…';
+    renderQueue();
+
+    const url = await pollVideo(item);
+    item.status = 'done';
+    item.pct = 100;
+    item.msg = 'Terminé ✓';
+    saveTiming(frames, Date.now() - item.startTime);
+    addToGallery(url, 'Image ' + (item.index + 1), lines);
+    toast('Image ' + (item.index + 1) + ' terminée ✓', 'ok');
+  } catch (e) {
+    item.status = 'fail';
+    if (e instanceof StopError) {
+      item.msg = item.videoId ? 'Arrêté (la vidéo continue peut-être chez Agnes)' : 'Arrêté';
+    } else {
+      item.msg = e.message || 'Échec';
+      console.error('[Agnes] image ' + (item.index + 1), e);
+      toast('Image ' + (item.index + 1) + ' : ' + item.msg, 'err');
+    }
+  } finally {
+    renderQueue();
+  }
+}
+
+async function startGeneration() {
   if (state.running) return;
   if (!getKey()) { toast('Enregistre d\'abord ta clé API.', 'warn'); return; }
   if (!state.images.length) { toast('Ajoute au moins une photo.', 'warn'); return; }
+
   state.running = true;
   state.stopRequested = false;
   state.startedAt = Date.now();
-  state.queue = state.images.map((image) => ({ image, status: 'wait', msg: 'En attente', pct: 0 }));
+  const frames = parseInt($('duration').value, 10);
+  const lines = dialogueLines();
+  state.queue = state.images.map((image, index) => ({ image, index, status: 'wait', msg: 'En attente', pct: 0 }));
   $('stopBtn').hidden = false;
   updateCreateBtn();
   enableWake();
   renderQueue();
+  $('queuePanel').classList.remove('closed');
   $('queuePanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setStatus('Démarrage…');
 
-  const lines = dialogueLines();
-  // Toutes les images partent en parallèle ; les créations restent espacées de 62 s.
-  await Promise.all(state.queue.map(async (item, i) => {
-    const url = await processItem(item, i);
-    if (url) {
-      addToGallery(url, 'Image ' + (i + 1), lines);
-      toast('Image ' + (i + 1) + ' terminée ✓', 'ok');
-    }
-  }));
+  // Les images sont traitées une par une ; une image en échec n'arrête pas la file
+  for (const item of state.queue) {
+    if (state.stopRequested) { item.status = 'fail'; item.msg = 'Arrêté avant l\'envoi'; continue; }
+    setStatus('Image ' + (item.index + 1) + '/' + state.queue.length + ' en cours…');
+    await processItem(item, frames, lines);
+  }
 
   const ok = state.queue.filter((x) => x.status === 'done').length;
   const total = state.queue.length;
   state.running = false;
   state.stopRequested = false;
-  state.timers.forEach((t) => clearTimeout(t));
-  state.timers.clear();
+  stopCountdown();
   disableWake();
   $('stopBtn').hidden = true;
   updateCreateBtn();
@@ -872,12 +1114,24 @@ $('createBtn').addEventListener('click', async () => {
   const summary = '✦ ' + ok + '/' + total + ' vidéos créées en ' + fmtMin(Date.now() - state.startedAt) + ' ✦';
   setStatus(summary);
   toast(summary, ok ? 'ok' : 'err', 6000);
-  setTimeout(() => { if (!state.running) setStatus(null); }, 4000);
-});
+  await sleep(4000);
+  if (!state.running) setStatus(null);
+}
 
+$('createBtn').addEventListener('click', startGeneration);
 $('stopBtn').addEventListener('click', () => {
   state.stopRequested = true;
+  stopSpeaking();
   toast('Arrêt demandé…', 'warn');
+});
+
+// Rafraîchit l'ETA chaque minute pendant la génération
+const etaTimer = setInterval(() => { if (state.running) renderQueue(); }, 60000);
+window.addEventListener('pagehide', () => {
+  clearInterval(etaTimer);
+  stopCountdown();
+  disableWake();
+  stopSpeaking();
 });
 
 /* =================================================================
