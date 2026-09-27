@@ -95,6 +95,12 @@
       <button type="button" class="shrink" id="saveKey">Enregistrer</button>
     </div>
     <p class="hint">Crée-la sur dashboard.pruna.ai (menu ☰ → API Keys). Elle reste uniquement sur cet appareil.</p>
+    <label class="lb" for="relay">Adresse du relais (si Pruna bloque le navigateur)</label>
+    <div class="row">
+      <input type="text" id="relay" placeholder="https://pruna-relais.xxxx.workers.dev" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button type="button" class="shrink" id="saveRelay">OK</button>
+    </div>
+    <p class="hint" id="relayInfo">Pas de relais : connexion directe à Pruna.</p>
   </section>
 
   <!-- Photos -->
@@ -153,7 +159,14 @@
 'use strict';
 
 /* ================= Constantes ================= */
-const API = 'https://api.pruna.ai/v1';
+const PRUNA = 'https://api.pruna.ai';
+const RELAY_STORAGE = 'pruna_relay_url';
+// Adresse de base : le relais s'il est configuré, sinon Pruna en direct
+function base() { const r = (lsGetSafe(RELAY_STORAGE) || '').trim().replace(/\/+$/, ''); return r || PRUNA; }
+function lsGetSafe(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+// Toute adresse Pruna qu'on appelle passe par le relais (les adresses données À Pruna restent inchangées)
+function via(u) { return typeof u === 'string' ? u.replace(PRUNA, base()) : u; }
+const API = PRUNA + '/v1';
 const MODEL = 'p-video';
 const KEY_STORAGE = 'pruna_api_key';
 const GAL_STORAGE = 'pruna_gallery';
@@ -197,9 +210,9 @@ $('saveKey').addEventListener('click', () => {
 });
 async function testKey() {
   if (!getKey()) { toast('Aucune clé.', 'warn'); return; }
-  log('[Test] Connexion à ' + API + ' …');
+  log('[Test] Connexion à ' + base() + (base() === PRUNA ? ' (direct)' : ' (via le relais)') + ' …');
   try {
-    const r = await fetch(API + '/predictions/status/test-connexion', { headers: headers() });
+    const r = await fetch(via(API + '/predictions/status/test-connexion'), { headers: headers() });
     const t = await r.text().catch(() => '');
     log('[Test] HTTP ' + r.status + ' · ' + t.slice(0, 200));
     if (r.status === 401 || r.status === 403) toast('Clé refusée (' + r.status + '). Vérifie-la.', 'err');
@@ -210,6 +223,12 @@ async function testKey() {
   }
 }
 $('diagBtn').addEventListener('click', testKey);
+function refreshRelay() { const r = base(); $('relayInfo').textContent = r === PRUNA ? 'Pas de relais : connexion directe à Pruna.' : '✓ Relais actif : ' + r; $('relay').value = r === PRUNA ? '' : r; }
+$('saveRelay').addEventListener('click', () => {
+  let v = $('relay').value.trim().replace(/\/+$/, '');
+  if (v && !/^https:\/\//.test(v)) v = 'https://' + v;
+  lsSet(RELAY_STORAGE, v); refreshRelay(); toast(v ? 'Relais enregistré ✓' : 'Relais retiré', 'ok'); if (getKey()) testKey();
+});
 $('logCopy').addEventListener('click', async () => { const t = logLines.join('\n'); try { await navigator.clipboard.writeText(t); toast('Journal copié ✓', 'ok'); } catch (e) { prompt('Copie :', t); } });
 
 /* ================= Photos ================= */
@@ -255,7 +274,7 @@ async function uploadImage(im) {
   if (im.fileUrl) return im.fileUrl;
   for (const field of ['file', 'content']) {
     const fd = new FormData(); fd.append(field, im.blob, (im.name || 'image').replace(/\.[^.]+$/, '') + '.jpg');
-    const r = await fetch(API + '/files', { method: 'POST', headers: headers(), body: fd });
+    const r = await fetch(via(API + '/files'), { method: 'POST', headers: headers(), body: fd });
     const t = await r.text().catch(() => '');
     log('[Upload] champ « ' + field + ' » → HTTP ' + r.status + ' · ' + t.slice(0, 250));
     if (!r.ok) continue;
@@ -271,7 +290,7 @@ function buildPrompt() { return [STYLE_PREFIX, $('scene').value.trim(), STYLE_SU
 async function createPrediction(im, imageRef) {
   const input = { prompt: buildPrompt(), image: imageRef, duration: parseInt($('duration').value, 10), resolution: $('resolution').value, draft: $('draft').checked };
   log('[Création] entrée : ' + JSON.stringify(Object.assign({}, input, { image: imageRef.slice(0, 40) + '…', prompt: input.prompt.slice(0, 50) + '…' })));
-  const r = await fetch(API + '/predictions', { method: 'POST', headers: headers({ 'Content-Type': 'application/json', 'Model': MODEL }), body: JSON.stringify({ input }) });
+  const r = await fetch(via(API + '/predictions'), { method: 'POST', headers: headers({ 'Content-Type': 'application/json', 'Model': MODEL }), body: JSON.stringify({ input }) });
   const t = await r.text().catch(() => '');
   log('[Création] HTTP ' + r.status + ' · ' + t.slice(0, 400));
   let d = {}; try { d = JSON.parse(t); } catch (e) {}
@@ -295,7 +314,7 @@ async function waitResult(item, d) {
     if (Date.now() - t0 > POLL_MAX_MS) throw new Error('Pas de résultat après 15 min');
     if (!statusUrl) throw new Error('Pruna n\'a pas donné d\'adresse de suivi (voir le journal)');
     await sleep(POLL_MS);
-    const r = await fetch(statusUrl, { headers: headers() });
+    const r = await fetch(via(statusUrl), { headers: headers() });
     const t = await r.text().catch(() => '');
     let s = {}; try { s = JSON.parse(t); } catch (e) {}
     const st = String(s.status || '').toLowerCase();
@@ -312,7 +331,7 @@ async function waitResult(item, d) {
 // Le lien de livraison peut exiger la clé : on télécharge la vidéo pour l'afficher sans souci
 async function fetchVideoBlob(url) {
   for (const h of [headers(), {}]) {
-    try { const r = await fetch(url, { headers: h }); if (r.ok) return await r.blob(); log('[Vidéo] HTTP ' + r.status); } catch (e) { log('[Vidéo] ' + e.message); }
+    try { const r = await fetch(via(url), { headers: h }); if (r.ok) return await r.blob(); log('[Vidéo] HTTP ' + r.status); } catch (e) { log('[Vidéo] ' + e.message); }
   }
   return null;
 }
@@ -409,7 +428,7 @@ async function download(v, btn) {
   finally { btn.disabled = false; btn.textContent = old; }
 }
 
-refreshKey(); renderThumbs(); renderGallery();
+refreshKey(); refreshRelay(); renderThumbs(); renderGallery();
 log('Siam Studio prêt. Moteur : Pruna ' + MODEL + '.');
 </script>
 </body>
