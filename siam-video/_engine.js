@@ -157,7 +157,8 @@ createChain=run.catch(function(){});return run}
 
 /* --- Une vérification d'une tâche Agnes --- */
 async function checkTask(t){
-var u=POLL_BASE+'?video_id='+encodeURIComponent(t.id)+(t.withModel?'&model_name='+encodeURIComponent(t.engine==='25f'?MODEL_25F:MODEL):'');
+/* model_name va avec l'ID d'origine ; l'ID « emballé » s'interroge seul */
+var u=POLL_BASE+'?video_id='+encodeURIComponent(t.withModel?realVideoId(t.id):t.id)+(t.withModel?'&model_name='+encodeURIComponent(t.engine==='25f'?MODEL_25F:MODEL):'');
 var r;try{r=await fetch(u,{headers:{'Authorization':'Bearer '+getKey()}})}catch(e){return{state:'wait',pr:t.pr||0,st:t.st||''}}
 if(!r.ok){if(r.status!==429)t.withModel=!t.withModel;return{state:'wait',pr:t.pr||0,st:t.st||''}}
 var d={};try{d=await r.json()}catch(e){}

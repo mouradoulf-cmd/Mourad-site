@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#c8102e">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Disney Farm Thai Family</title>
 <style>
@@ -886,7 +887,33 @@ async function createVideoTask(image, frames) {
   return videoId;
 }
 
+/* L'API renvoie parfois un video_id « emballé » (video_ + base64) qui contient
+   « …;video_id:video_xxx ». On en extrait l'identifiant d'origine. */
+function unwrapVideoId(id) {
+  if (!id || id.indexOf('video_') !== 0) return id;
+  const b = id.slice(6);
+  if (b.length < 50) return id;
+  try {
+    let std = b.replace(/-/g, '+').replace(/_/g, '/');
+    while (std.length % 4) std += '=';
+    const m = atob(std).match(/video_id:(video_[A-Za-z0-9]+)/);
+    return m ? m[1] : id;
+  } catch (e) { return id; }
+}
+
+/* Deux façons valides d'interroger Agnes (doc : model_name va avec l'ID d'origine) :
+   1) ID d'origine + model_name   2) ID emballé seul, sans model_name */
+function pollUrls(item) {
+  const real = unwrapVideoId(item.videoId);
+  const list = [POLL_BASE + '?video_id=' + encodeURIComponent(real) + '&model_name=' + encodeURIComponent(MODEL_VIDEO)];
+  if (real !== item.videoId) list.push(POLL_BASE + '?video_id=' + encodeURIComponent(item.videoId));
+  return list;
+}
+
 async function pollVideo(item) {
+  const urls = pollUrls(item);
+  let ui = 0;
+  if (urls.length > 1) log('[Image] ID d\'origine : ' + unwrapVideoId(item.videoId));
   for (let attempt = 1; attempt <= POLL_MAX_TRIES; attempt++) {
     checkStop();
     // Au moins 30 s entre deux vérifications (le throttle impose ensuite ses 65 s)
@@ -894,8 +921,8 @@ async function pollVideo(item) {
     if (since < POLL_INTERVAL_MS) await sleep(POLL_INTERVAL_MS - since);
     checkStop();
 
-    // video_id + model_name (obligatoire, sinon 404 « task not found »)
-    const url = POLL_BASE + '?video_id=' + encodeURIComponent(item.videoId) + '&model_name=' + encodeURIComponent(MODEL_VIDEO);
+    const url = urls[ui];
+    log('[Polling] GET ' + url.replace(POLL_BASE, ''));
     item.msg = 'Vérification n°' + attempt + '…';
     renderQueue();
     const res = await agnesRequest(url, { method: 'GET', headers: { 'Authorization': 'Bearer ' + getKey() } }, 'Suivi image ' + (item.index + 1));
@@ -905,12 +932,17 @@ async function pollVideo(item) {
       const t = await res.text().catch(() => '');
       console.error('[Agnes] suivi HTTP ' + res.status, t);
       if (res.status === 401 || res.status === 403) throw new Error('Clé API refusée pendant le suivi (' + res.status + ').');
+      ui = (ui + 1) % urls.length; // l'autre forme d'URL au prochain essai
       item.msg = 'Agnes ne répond pas encore (' + res.status + '), on réessaie…';
       renderQueue();
       continue;
     }
-    const d = await res.json().catch(() => ({}));
+    const raw = await res.text().catch(() => '');
+    let d = {};
+    try { d = JSON.parse(raw); } catch (e) { /* réponse non JSON */ }
     log('[Polling] status=' + (d.status || 'unknown') + ' progress=' + (d.progress || 0) + '%');
+    log('[Polling] réponse brute : ' + raw.slice(0, 400));
+    if (!d.status) ui = (ui + 1) % urls.length; // réponse sans statut : on essaie l'autre forme
     const st = String(d.status || '').toLowerCase();
     const pr = Math.max(0, Math.min(100, Number(d.progress) || 0));
 
