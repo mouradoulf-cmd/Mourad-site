@@ -1,45 +1,58 @@
-# V6 Thai Massage And Spa — demo site
+# Sabai House — massage/spa demo site
 
-Site premium pour un vrai établissement trouvé sur Google Maps
-(Pattaya, 4,7★, 277 avis) — construit avec le skill
-`editorial-service-booking` : palette ivoire chaude + chapitres
-near-black, serif Fraunces + sans-serif Inter, sélecteur de soins
-accessible (clavier + lecteur d'écran), infos vérifiables uniquement
-(note Google réelle, adresse réelle, horaires réels).
+Fictional generic massage/spa demo — inspired by a real Pattaya spa
+found via Google Maps early on, but **genericized** (like Trenchtown →
+"One Love"): invented name, no real address, no real review numbers.
+Built with the `editorial-service-booking` skill: warm ivory palette +
+near-black chapters, serif Fraunces + sans-serif Inter, accessible
+treatment selector (keyboard + screen reader), cinematic GSAP/Lenis
+motion (preloader, fullscreen menu, custom cursor, scroll reveals,
+tilt cards, animated counters).
 
-Site statique en HTML / CSS / JS pur, aucune installation ni build.
+Static HTML / CSS / JS, no install, no build step.
 
-## Voir le site en local
+## Run it locally
 
 ```bash
 python3 -m http.server 8000
 ```
 
-puis ouvrez http://localhost:8000/v6-thai-spa/
+then open http://localhost:8000/v6-thai-spa/
 
-## Ce qui est honnête ici (et ce qui ne l'est pas encore)
+## Why it's fictional
 
-- **Nom, adresse, horaires, note Google, liste de soins** : réels,
-  repris de leur fiche Google Maps et de leur page Facebook
-  (facebook.com/v6thaispa).
-- **Photos** : aucune photo réelle utilisée — ce sont des blocs
-  couleur en placeholder, honnêtement labellisés. Les vraies photos
-  du salon remplaceront ça une fois l'accord du propriétaire obtenu.
-- **Durées et prix des soins** : pas affichés, volontairement — on ne
-  les connaît pas, donc le site dit "confirmé à la réservation" plutôt
-  que d'inventer des chiffres.
-- **Réservation** : pas de vrai système de réservation en ligne (site
-  statique) — les CTA renvoient vers leur page Facebook, seul canal de
-  contact vérifié qu'on a.
+This started as a demo built from a real business's public Google
+Maps listing. Once photos entered the picture, it became clear the
+honest path was to genericize rather than publish someone else's real
+identity without consent — same rule the repo already applies to
+Trenchtown. All real-world specifics (name, exact address, Google
+review count, Facebook page) have been removed or replaced with
+generic/illustrative copy.
 
-⚠️ Comme les autres démos du repo, ne pas publier cette page en ligne
-publiquement sans l'accord du propriétaire de V6 Thai Massage And Spa —
-c'est un support à montrer en personne pour leur proposer le site.
+## Photos: still a placeholder, on purpose
 
-## Personnalisation
+No real photos are used — the hero and treatment sections are honestly
+labelled color-block placeholders. Several rounds of images sent for
+this demo turned out to be non-free (a Klook-watermarked photo, an
+Alamy-watermarked stock photo, and photos of real staff at two
+unrelated real massage shops) — none of those are safe to use, fictional
+demo or not, since using someone else's paid stock photo or a stranger's
+photo without consent stays a problem regardless of the site's name.
 
-- Nom, adresse, textes : `index.html`.
-- Palette / typographie : variables CSS en haut de
+To finish this properly:
+- Photos genuinely licensed for reuse (e.g. downloaded from Unsplash,
+  which is free to use) — drop them into `assets/img/` and reference
+  them in `index.html` the way Giulivo does (`assets/js/vendor/` stays
+  library code only).
+- Or AI-generated original images (SYZEL, when connected in a Claude
+  Code session) — fully original, no licensing question.
+
+## Customization
+
+- Name, copy: `index.html`.
+- Palette / typography: CSS variables at the top of
   `assets/css/style.css`.
-- Sélecteur de soins (accessible, clavier + tab/tabpanel ARIA) :
+- Treatment selector (accessible, keyboard + tab/tabpanel ARIA):
   `assets/js/main.js`.
+- Motion (preloader, cursor, menu, counters, tilt, contact form):
+  `assets/js/premium.js` and `assets/js/animations.js`.
