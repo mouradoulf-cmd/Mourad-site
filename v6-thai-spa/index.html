@@ -13,26 +13,47 @@
 </head>
 <body>
 
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-mark">V6</div>
+  <div class="preloader-bar"><span></span></div>
+</div>
+
+<div class="cursor" data-cursor aria-hidden="true">
+  <span class="cursor-label" data-cursor-label></span>
+</div>
+
 <header class="site-header">
   <div class="container">
     <a class="brand" href="#top">V6 Thai<span class="sub">Massage &amp; Spa</span></a>
-    <nav class="main-nav">
-      <a href="#treatments">Treatments</a>
-      <a href="#about">About</a>
-      <a href="#location">Location</a>
-    </nav>
     <div class="header-right">
       <span class="location-chip">
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
         Soi Lengkee, Pattaya
       </span>
-      <a class="btn btn-dark btn-sm" data-magnetic="0.25" href="https://www.facebook.com/v6thaispa/" target="_blank" rel="noopener">Book a visit</a>
+      <a class="btn btn-dark btn-sm" data-magnetic="0.25" data-cursor-label="Book" href="https://www.facebook.com/v6thaispa/" target="_blank" rel="noopener">Book a visit</a>
+      <button class="burger" id="burgerBtn" aria-expanded="false" aria-controls="fullMenu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
 
+<nav class="full-menu" id="fullMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#treatments" data-menu-link data-cursor-label="Go">Treatments</a></li>
+    <li><a href="#about" data-menu-link data-cursor-label="Go">About</a></li>
+    <li><a href="#location" data-menu-link data-cursor-label="Go">Location</a></li>
+    <li><a href="#contact" data-menu-link data-cursor-label="Go">Contact</a></li>
+  </ul>
+  <div class="full-menu-foot">
+    <a href="https://www.facebook.com/v6thaispa/" target="_blank" rel="noopener" data-cursor-label="Open">Facebook ↗</a>
+    <span>340, Nongprue, 32 Soi Lengkee, Pattaya</span>
+  </div>
+</nav>
+
 <section class="hero" id="top">
   <div class="hero-media">
+    <canvas class="hero-3d" data-webgl-3d-object aria-hidden="true"></canvas>
     <span class="placeholder-tag">Photo placeholder — real photography to come</span>
     <div class="hero-caption">
       <div>
@@ -40,7 +61,7 @@
         <h1 data-motion-text="lines">Authentic Thai massage,<br>quietly done well.</h1>
         <p data-reveal="fade-up" data-reveal-delay="0.5">Traditional massage, foot reflexology and dermatological treatments — a calm, unhurried space in the middle of the city.</p>
       </div>
-      <a class="btn btn-on-dark" data-magnetic="0.3" data-reveal="fade-up" data-reveal-delay="0.65" href="#treatments">See treatments</a>
+      <a class="btn btn-on-dark" data-magnetic="0.3" data-cursor-label="View" data-reveal="fade-up" data-reveal-delay="0.65" href="#treatments">See treatments</a>
     </div>
   </div>
 </section>
@@ -156,17 +177,17 @@
       <h2>What guests keep coming back for.</h2>
     </div>
     <div class="why-grid" data-reveal-group>
-      <div class="why-card" data-reveal-item>
-        <div class="num">4.7★</div>
+      <div class="why-card" data-reveal-item data-tilt>
+        <div class="num"><span data-counter data-counter-to="4.7" data-counter-decimals="1">0</span>★</div>
         <h3>277 Google reviews</h3>
         <p>A consistent rating built one appointment at a time — not a launch-week average.</p>
       </div>
-      <div class="why-card" data-reveal-item>
-        <div class="num">3</div>
+      <div class="why-card" data-reveal-item data-tilt>
+        <div class="num" data-counter data-counter-to="3">0</div>
         <h3>Focused treatments</h3>
         <p>Thai massage, foot reflexology, and skin treatments — done properly rather than a long menu done thin.</p>
       </div>
-      <div class="why-card" data-reveal-item>
+      <div class="why-card" data-reveal-item data-tilt>
         <div class="num">11:00</div>
         <h3>Open daily</h3>
         <p>Central Pattaya location on Soi Lengkee, open every day from late morning.</p>
@@ -217,6 +238,34 @@
   </div>
 </section>
 
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head" data-reveal="fade-up">
+      <span class="label">Contact</span>
+      <h2>Send a quick message.</h2>
+      <p>This opens your email app with the details filled in — for a faster reply, message us on Facebook instead.</p>
+    </div>
+    <form class="contact-form" id="contactForm" novalidate data-reveal="fade-up" data-reveal-delay="0.15">
+      <div class="form-row">
+        <label for="cf-name">Name<span aria-hidden="true">*</span></label>
+        <input type="text" id="cf-name" name="name" required autocomplete="name">
+        <span class="form-error" data-error-for="cf-name"></span>
+      </div>
+      <div class="form-row">
+        <label for="cf-email">Email<span aria-hidden="true">*</span></label>
+        <input type="email" id="cf-email" name="email" required autocomplete="email">
+        <span class="form-error" data-error-for="cf-email"></span>
+      </div>
+      <div class="form-row">
+        <label for="cf-message">Message<span aria-hidden="true">*</span></label>
+        <textarea id="cf-message" name="message" rows="4" required></textarea>
+        <span class="form-error" data-error-for="cf-message"></span>
+      </div>
+      <button type="submit" class="btn btn-dark" data-magnetic="0.2">Open in email app</button>
+    </form>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -251,6 +300,8 @@
 <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/js/vendor/lenis.min.js"></script>
 <script src="assets/js/animations.js"></script>
+<script src="assets/js/premium.js"></script>
+<script type="module" src="assets/js/three-hero.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
