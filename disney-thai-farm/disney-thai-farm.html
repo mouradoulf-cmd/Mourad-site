@@ -1110,7 +1110,15 @@ async function pollVideo(item) {
     }
     item.pct = Math.max(item.pct || 0, pr, 5);
     const mins = Math.floor((Date.now() - item.startTime) / 60000);
-    item.msg = (/queue|pending/.test(st) ? 'Dans la file Agnes' : 'Animation') + '… ' + Math.round(pr) + ' %' + (mins ? ' · ' + mins + ' min' : '');
+    // Agnes ne donne que des étapes : 0 % = file d'attente, 30 % = calcul GPU (« inference »), 100 % = terminé
+    const phase = String(d.internal_status || '').toLowerCase();
+    if (phase === 'inference') {
+      if (!item.inferSince) { item.inferSince = Date.now(); log('[Polling] Agnes a commencé le calcul GPU (inference).'); }
+      const im = Math.floor((Date.now() - item.inferSince) / 60000);
+      item.msg = '🎨 Agnes calcule ta vidéo sur son GPU (étape 30 %, passe directement à 100 % à la fin)' + (im ? ' · ' + im + ' min' : '');
+    } else {
+      item.msg = (/queue|pending/.test(st) || /queue|pending|wait/.test(phase) ? 'Dans la file Agnes' : 'Animation') + '… ' + Math.round(pr) + ' %' + (mins ? ' · ' + mins + ' min' : '');
+    }
     renderQueue();
   }
   throw satErr('Agnes bloqué : pas de résultat après ' + POLL_MAX_TRIES + ' vérifications (≈ 50 min).');
