@@ -1,0 +1,631 @@
+/* NM Studio — translations.
+   The HTML ships in English (for no-JS visitors and search engines); this
+   file swaps every [data-i18n], [data-i18n-html], [data-i18n-placeholder]
+   and [data-i18n-aria-label] node instantly on language change. */
+(function () {
+  "use strict";
+
+  var DICT = {
+    en: {
+      meta: {
+        title: "NM Studio — Websites & QR menus for restaurants and local businesses",
+        description: "NM Studio designs fast, beautiful websites and QR menus for restaurants, salons, spas and local businesses. Send your photos — you're live in days. No contract."
+      },
+      a11y: { skip: "Skip to content", language: "Language", menu: "Menu", whatsapp: "Message us on WhatsApp" },
+      nav: { work: "Work", process: "Process", pricing: "Pricing", faq: "FAQ", cta: "Start a project" },
+      hero: {
+        eyebrow: "Web studio for restaurants & local businesses",
+        title: "Websites that bring customers <em>to your door.</em>",
+        sub: "Send us your photos. We design your website and QR menu in your customers' languages — and you're live in days.",
+        ctaPrimary: "Start your project",
+        ctaSecondary: "See our work",
+        chipLive: "Live in days",
+        chipQr: "QR menu included"
+      },
+      facts: {
+        f1v: "Days", f1l: "from your photos to a live site",
+        f2l: "languages, including Thai & Arabic",
+        f3v: "Unlimited", f3l: "edits, whenever you need them",
+        f4l: "contracts — cancel anytime, free"
+      },
+      audience: {
+        i1: "Restaurants", i2: "Cafés", i3: "Hair salons", i4: "Spas & massage", i5: "Bars", i6: "Street food", i7: "Local companies",
+        sr: "We work with restaurants, cafés, hair salons, spas and massage salons, bars, street food vendors and local companies."
+      },
+      why: {
+        eyebrow: "Why it matters",
+        manifesto: "Your next customers are already searching. <em>We make sure they find you — and choose you.</em>",
+        r1t: "Found on Google & Maps",
+        r1b: "Travellers choose where to eat and unwind before they even land. With a real website, they find you — not the place next door.",
+        r2t: "A first impression that earns trust",
+        r2b: "A beautiful site shows you take your business seriously. It reassures new customers far more than a social media page on its own.",
+        r3t: "A menu that's always up to date",
+        r3b: "One QR code on the table, always current. Change a price or a dish in minutes — no reprinting, ever again."
+      },
+      work: {
+        eyebrow: "Selected work",
+        title: "Real sites. <em>Live right now.</em>",
+        lead: "Each one is built around the business — its photos, its customers, its languages. Open any of them: they're all online.",
+        realClient: "Real client", concept: "Concept", visit: "Visit live site", cursor: "Visit",
+        p1cat: "Restaurant · Tuscany",
+        p1desc: "A warm, photo-led site for a family trattoria: the full menu, reservations, and a QR menu on every table — in Italian, English, German and Thai.",
+        p2cat: "Massage & spa · Pattaya",
+        p2desc: "A calm, editorial site for a Thai massage salon, with a treatment picker and a step-by-step booking request designed for the phone.",
+        p3cat: "Hair salon · Bangkok",
+        p3desc: "A fashion-magazine feel for a hair and beauty studio: a clear price list, client reviews and one-tap booking on WhatsApp.",
+        p4cat: "B2B supplier · France",
+        p4desc: "A confident corporate site for a cladding supplier: a video hero, services, partner brands, projects and quote requests.",
+        tMulti: "4 languages", tQr: "QR menu", tBooking: "Online booking", tTreat: "Treatment picker", tMobile: "Mobile-first",
+        tPrices: "Price list", tReviews: "Reviews", tWhatsapp: "WhatsApp booking", tVideo: "Video hero", tProjects: "Projects", tQuote: "Quote requests",
+        soon: "Coming soon", soonList: "Bar & nightlife · Street food"
+      },
+      process: {
+        eyebrow: "How it works",
+        title: "From your photos to a live site, <em>in days.</em>",
+        lead: "No meetings to prepare, no technical jargon. You run your business — we take care of everything else.",
+        s1t: "Send your photos", s1b: "Photos, menu, opening hours — straight from WhatsApp. That's all we need to start.",
+        s2t: "We design your site", s2b: "Design, copy, QR menu, Google Maps and every language your customers speak — done for you.",
+        s3t: "You're live", s3b: "Your site goes online in days. Want to change something later? Just send a message — edits are unlimited."
+      },
+      pricing: {
+        eyebrow: "Pricing",
+        title: "Simple plans. <em>No surprises.</em>",
+        lead: "Every plan includes a QR menu. Start small and upgrade whenever your business is ready.",
+        setup: "one-time setup", monthly: "per month", popular: "Most popular",
+        note: "No contract, no hidden fees. Cancel anytime, free of charge.",
+        basic: { title: "Basic", tagline: "Your menu, one scan away.", f1: "QR code menu, always up to date", f2: "Unlimited menu edits", f3: "Works on any phone — no app needed", cta: "Choose Basic", demo: "See a real QR menu →" },
+        pro: { title: "Pro", tagline: "Your own website, done for you.", f1: "Everything in Basic", f2: "A custom website built from your photos", f3: "Multilingual, with Google Maps & WhatsApp", f4: "Live in days, not months", cta: "Choose Pro" },
+        elite: { title: "Elite", tagline: "The complete package, zero effort.", f1: "Everything in Pro", f2: "Social media set up & managed", f3: "Priority support", cta: "Talk to us" }
+      },
+      faq: {
+        eyebrow: "Questions",
+        title: "Everything you <em>want to know.</em>",
+        lead: "Still unsure about something? Ask us directly — we usually reply within minutes.",
+        ask: "Ask on WhatsApp",
+        q1: "I'm not good with technology — is that a problem?", a1: "Not at all. You send us your photos and we take care of everything else — design, text, hosting and updates.",
+        q2: "How long until my site is online?", a2: "A few days after we receive your photos and information — not weeks.",
+        q3: "Can I change my photos or menu later?", a3: "Yes. Edits are unlimited and free — just send us a message whenever something changes.",
+        q4: "How does the QR menu work?", a4: "Your customers scan the code with their phone camera — no app needed — and instantly see your latest menu.",
+        q5: "I already have Instagram. Why do I need a website?", a5: "Instagram depends on an algorithm you don't control. A website is your own storefront: it shows up on Google, it's open 24/7, and it belongs to you.",
+        q6: "Is the website really mine?", a6: "Yes — your name, your photos, your content. We build it for your business, not for us.",
+        q7: "What if I want to stop?", a7: "There's no commitment. You can cancel anytime, free of charge.",
+        q8: "Have you worked with businesses like mine?", a8: "Yes — restaurants, salons, spas and companies. Have a look at the live sites in the Work section above."
+      },
+      finale: {
+        eyebrow: "Let's talk",
+        title: "Your next customer is searching <em>right now.</em>",
+        sub: "Tell us about your business. We'll come and meet you, show you what your site could look like, and get it online in days.",
+        book: "Book a meeting", whatsapp: "Message us on WhatsApp"
+      },
+      footer: {
+        tagline: "Websites and QR menus for restaurants and local businesses.",
+        explore: "Explore", contact: "Contact", book: "Book a meeting", language: "Language",
+        rights: "© 2026 NM Studio. Built to get you found.", backTop: "Back to top"
+      },
+      booking: {
+        eyebrow: "Book a meeting", title: "Let's meet in person",
+        lead: "Tell us where and when. We'll come to you and talk it through — no obligation.",
+        business: "Business name", businessPh: "e.g. Giulivo", phone: "Phone number", date: "Preferred date", time: "Preferred time",
+        submit: "Send on WhatsApp", close: "Close",
+        hint: "Your message is copied automatically — just paste it into the WhatsApp chat that opens.",
+        required: "Please fill in this field.", pastDate: "Please choose today or a later date.",
+        toast: "Message copied — paste it into WhatsApp to send.",
+        waMessage: "Hi! I'd like to book a meeting.\nBusiness: {business}\nPhone: {phone}\nPreferred date: {date} at {time}"
+      }
+    },
+
+    fr: {
+      meta: {
+        title: "NM Studio — Sites web et menus QR pour restaurants et commerces",
+        description: "NM Studio crée des sites web et menus QR rapides et élégants pour restaurants, salons, spas et commerces locaux. Envoyez vos photos, votre site est en ligne en quelques jours. Sans engagement."
+      },
+      a11y: { skip: "Aller au contenu", language: "Langue", menu: "Menu", whatsapp: "Nous écrire sur WhatsApp" },
+      nav: { work: "Réalisations", process: "Méthode", pricing: "Tarifs", faq: "FAQ", cta: "Lancer mon projet" },
+      hero: {
+        eyebrow: "Studio web pour restaurants et commerces",
+        title: "Des sites qui amènent les clients <em>jusqu'à votre porte.</em>",
+        sub: "Envoyez-nous vos photos. Nous créons votre site et votre menu QR dans les langues de vos clients — en ligne en quelques jours.",
+        ctaPrimary: "Lancer mon projet",
+        ctaSecondary: "Voir nos réalisations",
+        chipLive: "En ligne en quelques jours",
+        chipQr: "Menu QR inclus"
+      },
+      facts: {
+        f1v: "Quelques jours", f1l: "de vos photos à un site en ligne",
+        f2l: "langues, dont le thaï et l'arabe",
+        f3v: "Illimitées", f3l: "modifications, quand vous voulez",
+        f4l: "contrat — résiliable à tout moment, sans frais"
+      },
+      audience: {
+        i1: "Restaurants", i2: "Cafés", i3: "Salons de coiffure", i4: "Spas & massages", i5: "Bars", i6: "Street food", i7: "Entreprises locales",
+        sr: "Nous travaillons avec des restaurants, cafés, salons de coiffure, spas et salons de massage, bars, vendeurs de street food et entreprises locales."
+      },
+      why: {
+        eyebrow: "Pourquoi c'est important",
+        manifesto: "Vos prochains clients vous cherchent déjà. <em>Nous faisons en sorte qu'ils vous trouvent — et vous choisissent.</em>",
+        r1t: "Visible sur Google et Maps",
+        r1b: "Les voyageurs choisissent où manger et se détendre avant même d'atterrir. Avec un vrai site, c'est vous qu'ils trouvent — pas le voisin.",
+        r2t: "Une première impression qui inspire confiance",
+        r2b: "Un beau site montre que vous prenez votre activité au sérieux. Il rassure bien plus qu'une simple page sur les réseaux sociaux.",
+        r3t: "Un menu toujours à jour",
+        r3b: "Un seul QR code sur la table, toujours à jour. Changez un prix ou un plat en quelques minutes — plus jamais de réimpression."
+      },
+      work: {
+        eyebrow: "Réalisations",
+        title: "De vrais sites. <em>En ligne dès maintenant.</em>",
+        lead: "Chacun est pensé pour son activité — ses photos, ses clients, ses langues. Ouvrez-les : ils sont tous en ligne.",
+        realClient: "Client réel", concept: "Concept", visit: "Voir le site", cursor: "Voir",
+        p1cat: "Restaurant · Toscane",
+        p1desc: "Un site chaleureux, porté par la photo, pour une trattoria familiale : la carte complète, les réservations et un menu QR sur chaque table — en italien, anglais, allemand et thaï.",
+        p2cat: "Massage & spa · Pattaya",
+        p2desc: "Un site calme et éditorial pour un salon de massage thaï, avec un choix de soins et une demande de réservation étape par étape pensée pour le mobile.",
+        p3cat: "Salon de coiffure · Bangkok",
+        p3desc: "L'élégance d'un magazine de mode pour un salon de coiffure et beauté : grille tarifaire claire, avis clients et réservation en un geste sur WhatsApp.",
+        p4cat: "Fournisseur B2B · France",
+        p4desc: "Un site d'entreprise affirmé pour un fournisseur de bardage : vidéo en ouverture, services, marques partenaires, réalisations et demandes de devis.",
+        tMulti: "4 langues", tQr: "Menu QR", tBooking: "Réservation en ligne", tTreat: "Choix des soins", tMobile: "Pensé mobile",
+        tPrices: "Grille tarifaire", tReviews: "Avis clients", tWhatsapp: "Réservation WhatsApp", tVideo: "Vidéo d'ouverture", tProjects: "Réalisations", tQuote: "Demande de devis",
+        soon: "Bientôt", soonList: "Bar & vie nocturne · Street food"
+      },
+      process: {
+        eyebrow: "Notre méthode",
+        title: "De vos photos à un site en ligne, <em>en quelques jours.</em>",
+        lead: "Aucune réunion à préparer, aucun jargon technique. Vous gérez votre activité — nous nous occupons du reste.",
+        s1t: "Envoyez vos photos", s1b: "Photos, menu, horaires — directement sur WhatsApp. C'est tout ce qu'il nous faut pour commencer.",
+        s2t: "Nous créons votre site", s2b: "Design, textes, menu QR, Google Maps et toutes les langues de vos clients — on s'occupe de tout.",
+        s3t: "Vous êtes en ligne", s3b: "Votre site est en ligne en quelques jours. Un changement plus tard ? Un simple message suffit — modifications illimitées."
+      },
+      pricing: {
+        eyebrow: "Tarifs",
+        title: "Des formules simples. <em>Aucune surprise.</em>",
+        lead: "Chaque formule inclut un menu QR. Commencez petit et évoluez quand votre activité est prête.",
+        setup: "mise en place unique", monthly: "par mois", popular: "Le plus choisi",
+        note: "Sans engagement ni frais cachés. Résiliable à tout moment, gratuitement.",
+        basic: { title: "Basic", tagline: "Votre menu, à un scan.", f1: "Menu QR code, toujours à jour", f2: "Modifications du menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic", demo: "Voir un vrai menu QR →" },
+        pro: { title: "Pro", tagline: "Votre site web, clé en main.", f1: "Tout le contenu de Basic", f2: "Un site sur mesure, créé à partir de vos photos", f3: "Multilingue, avec Google Maps et WhatsApp", f4: "En ligne en quelques jours, pas en mois", cta: "Choisir Pro" },
+        elite: { title: "Elite", tagline: "La formule complète, zéro effort.", f1: "Tout le contenu de Pro", f2: "Réseaux sociaux créés et gérés", f3: "Support prioritaire", cta: "Nous contacter" }
+      },
+      faq: {
+        eyebrow: "Questions",
+        title: "Tout ce que vous <em>voulez savoir.</em>",
+        lead: "Un doute ? Posez-nous directement la question — nous répondons généralement en quelques minutes.",
+        ask: "Poser une question sur WhatsApp",
+        q1: "Je ne suis pas à l'aise avec l'informatique, c'est un problème ?", a1: "Pas du tout. Vous nous envoyez vos photos, nous nous occupons de tout le reste — design, textes, hébergement et mises à jour.",
+        q2: "Combien de temps avant que mon site soit en ligne ?", a2: "Quelques jours après réception de vos photos et informations — pas des semaines.",
+        q3: "Puis-je changer mes photos ou mon menu plus tard ?", a3: "Oui. Les modifications sont illimitées et gratuites — envoyez-nous simplement un message.",
+        q4: "Comment fonctionne le menu QR ?", a4: "Vos clients scannent le code avec l'appareil photo de leur téléphone — sans appli — et voient immédiatement votre menu à jour.",
+        q5: "J'ai déjà Instagram. Pourquoi un site web ?", a5: "Instagram dépend d'un algorithme que vous ne contrôlez pas. Un site, c'est votre propre vitrine : visible sur Google, ouverte 24h/24, et elle vous appartient.",
+        q6: "Le site m'appartient vraiment ?", a6: "Oui — votre nom, vos photos, votre contenu. Nous le créons pour votre activité, pas pour nous.",
+        q7: "Et si je veux arrêter ?", a7: "Aucun engagement. Vous pouvez résilier à tout moment, gratuitement.",
+        q8: "Avez-vous déjà travaillé avec des commerces comme le mien ?", a8: "Oui — restaurants, salons, spas et entreprises. Découvrez les sites en ligne dans la section Réalisations."
+      },
+      finale: {
+        eyebrow: "Parlons-en",
+        title: "Votre prochain client vous cherche <em>en ce moment.</em>",
+        sub: "Parlez-nous de votre activité. Nous venons vous rencontrer, vous montrons à quoi pourrait ressembler votre site, et le mettons en ligne en quelques jours.",
+        book: "Prendre rendez-vous", whatsapp: "Nous écrire sur WhatsApp"
+      },
+      footer: {
+        tagline: "Sites web et menus QR pour restaurants et commerces locaux.",
+        explore: "Explorer", contact: "Contact", book: "Prendre rendez-vous", language: "Langue",
+        rights: "© 2026 NM Studio. Conçu pour être trouvé.", backTop: "Haut de page"
+      },
+      booking: {
+        eyebrow: "Prendre rendez-vous", title: "Rencontrons-nous",
+        lead: "Dites-nous où et quand. Nous venons vous voir pour en parler — sans engagement.",
+        business: "Nom de votre commerce", businessPh: "ex. Giulivo", phone: "Numéro de téléphone", date: "Date souhaitée", time: "Heure souhaitée",
+        submit: "Envoyer sur WhatsApp", close: "Fermer",
+        hint: "Votre message est copié automatiquement — collez-le simplement dans la conversation WhatsApp qui s'ouvre.",
+        required: "Merci de remplir ce champ.", pastDate: "Choisissez aujourd'hui ou une date ultérieure.",
+        toast: "Message copié — collez-le dans WhatsApp pour l'envoyer.",
+        waMessage: "Bonjour ! Je souhaite prendre rendez-vous.\nCommerce : {business}\nTéléphone : {phone}\nDate souhaitée : {date} à {time}"
+      }
+    },
+
+    it: {
+      meta: {
+        title: "NM Studio — Siti web e menù QR per ristoranti e attività locali",
+        description: "NM Studio crea siti web e menù QR veloci ed eleganti per ristoranti, saloni, spa e attività locali. Inviaci le tue foto: sei online in pochi giorni. Senza contratto."
+      },
+      a11y: { skip: "Vai al contenuto", language: "Lingua", menu: "Menù", whatsapp: "Scrivici su WhatsApp" },
+      nav: { work: "Progetti", process: "Metodo", pricing: "Prezzi", faq: "FAQ", cta: "Inizia un progetto" },
+      hero: {
+        eyebrow: "Studio web per ristoranti e attività locali",
+        title: "Siti che portano i clienti <em>fino alla tua porta.</em>",
+        sub: "Inviaci le tue foto. Creiamo il tuo sito e il tuo menù QR nelle lingue dei tuoi clienti — e sei online in pochi giorni.",
+        ctaPrimary: "Inizia il tuo progetto",
+        ctaSecondary: "Guarda i progetti",
+        chipLive: "Online in pochi giorni",
+        chipQr: "Menù QR incluso"
+      },
+      facts: {
+        f1v: "Pochi giorni", f1l: "dalle tue foto al sito online",
+        f2l: "lingue, tra cui thai e arabo",
+        f3v: "Illimitate", f3l: "modifiche, quando ne hai bisogno",
+        f4l: "contratti — disdici quando vuoi, gratis"
+      },
+      audience: {
+        i1: "Ristoranti", i2: "Caffè", i3: "Parrucchieri", i4: "Spa e massaggi", i5: "Bar", i6: "Street food", i7: "Aziende locali",
+        sr: "Lavoriamo con ristoranti, caffè, parrucchieri, spa e centri massaggi, bar, street food e aziende locali."
+      },
+      why: {
+        eyebrow: "Perché conta",
+        manifesto: "I tuoi prossimi clienti ti stanno già cercando. <em>Noi facciamo in modo che ti trovino — e che scelgano te.</em>",
+        r1t: "Visibile su Google e Maps",
+        r1b: "I viaggiatori scelgono dove mangiare e rilassarsi prima ancora di atterrare. Con un vero sito trovano te — non il locale accanto.",
+        r2t: "Una prima impressione che ispira fiducia",
+        r2b: "Un bel sito dimostra che prendi sul serio la tua attività. Rassicura i nuovi clienti molto più di una semplice pagina social.",
+        r3t: "Un menù sempre aggiornato",
+        r3b: "Un solo QR code sul tavolo, sempre aggiornato. Cambia un prezzo o un piatto in pochi minuti — niente più ristampe."
+      },
+      work: {
+        eyebrow: "Progetti selezionati",
+        title: "Siti veri. <em>Online adesso.</em>",
+        lead: "Ognuno è costruito attorno all'attività — le sue foto, i suoi clienti, le sue lingue. Aprili pure: sono tutti online.",
+        realClient: "Cliente reale", concept: "Concept", visit: "Visita il sito", cursor: "Apri",
+        p1cat: "Ristorante · Toscana",
+        p1desc: "Un sito caldo e fotografico per una trattoria di famiglia: il menù completo, le prenotazioni e un menù QR su ogni tavolo — in italiano, inglese, tedesco e thai.",
+        p2cat: "Massaggi e spa · Pattaya",
+        p2desc: "Un sito calmo ed editoriale per un centro massaggi thai, con la scelta dei trattamenti e una richiesta di prenotazione passo dopo passo pensata per lo smartphone.",
+        p3cat: "Parrucchiere · Bangkok",
+        p3desc: "L'eleganza di una rivista di moda per un salone di bellezza: listino chiaro, recensioni dei clienti e prenotazione con un tocco su WhatsApp.",
+        p4cat: "Fornitore B2B · Francia",
+        p4desc: "Un sito aziendale deciso per un fornitore di rivestimenti: video in apertura, servizi, marchi partner, progetti e richieste di preventivo.",
+        tMulti: "4 lingue", tQr: "Menù QR", tBooking: "Prenotazione online", tTreat: "Scelta trattamenti", tMobile: "Pensato per mobile",
+        tPrices: "Listino prezzi", tReviews: "Recensioni", tWhatsapp: "Prenotazione WhatsApp", tVideo: "Video in apertura", tProjects: "Progetti", tQuote: "Preventivi",
+        soon: "In arrivo", soonList: "Bar e vita notturna · Street food"
+      },
+      process: {
+        eyebrow: "Come funziona",
+        title: "Dalle tue foto al sito online, <em>in pochi giorni.</em>",
+        lead: "Nessuna riunione da preparare, nessun linguaggio tecnico. Tu pensi alla tua attività — al resto pensiamo noi.",
+        s1t: "Inviaci le tue foto", s1b: "Foto, menù, orari — direttamente su WhatsApp. Non ci serve altro per iniziare.",
+        s2t: "Creiamo il tuo sito", s2b: "Design, testi, menù QR, Google Maps e tutte le lingue dei tuoi clienti — pensiamo a tutto noi.",
+        s3t: "Sei online", s3b: "Il tuo sito va online in pochi giorni. Vuoi cambiare qualcosa? Basta un messaggio — le modifiche sono illimitate."
+      },
+      pricing: {
+        eyebrow: "Prezzi",
+        title: "Piani semplici. <em>Nessuna sorpresa.</em>",
+        lead: "Ogni piano include un menù QR. Inizia in piccolo e passa al livello successivo quando vuoi.",
+        setup: "attivazione una tantum", monthly: "al mese", popular: "Il più scelto",
+        note: "Nessun contratto, nessun costo nascosto. Disdici quando vuoi, gratis.",
+        basic: { title: "Basic", tagline: "Il tuo menù, a portata di scansione.", f1: "Menù con QR code, sempre aggiornato", f2: "Modifiche al menù illimitate", f3: "Funziona su ogni telefono, senza app", cta: "Scegli Basic", demo: "Guarda un vero menù QR →" },
+        pro: { title: "Pro", tagline: "Il tuo sito, chiavi in mano.", f1: "Tutto ciò che include Basic", f2: "Un sito su misura, creato con le tue foto", f3: "Multilingue, con Google Maps e WhatsApp", f4: "Online in giorni, non in mesi", cta: "Scegli Pro" },
+        elite: { title: "Elite", tagline: "Il pacchetto completo, zero pensieri.", f1: "Tutto ciò che include Pro", f2: "Social media creati e gestiti", f3: "Assistenza prioritaria", cta: "Contattaci" }
+      },
+      faq: {
+        eyebrow: "Domande",
+        title: "Tutto quello che <em>vuoi sapere.</em>",
+        lead: "Hai ancora un dubbio? Chiedici direttamente — di solito rispondiamo in pochi minuti.",
+        ask: "Chiedi su WhatsApp",
+        q1: "Non sono pratico di tecnologia: è un problema?", a1: "Per niente. Ci invii le tue foto e pensiamo noi a tutto il resto — design, testi, hosting e aggiornamenti.",
+        q2: "Quanto tempo serve per andare online?", a2: "Pochi giorni dopo aver ricevuto le tue foto e informazioni — non settimane.",
+        q3: "Posso cambiare foto o menù in seguito?", a3: "Sì. Le modifiche sono illimitate e gratuite — basta mandarci un messaggio.",
+        q4: "Come funziona il menù QR?", a4: "I tuoi clienti inquadrano il codice con la fotocamera del telefono — senza app — e vedono subito il tuo menù aggiornato.",
+        q5: "Ho già Instagram. Perché mi serve un sito?", a5: "Instagram dipende da un algoritmo che non controlli. Un sito è la tua vetrina: compare su Google, è aperto 24 ore su 24 ed è tuo.",
+        q6: "Il sito è davvero mio?", a6: "Sì — il tuo nome, le tue foto, i tuoi contenuti. Lo costruiamo per la tua attività, non per noi.",
+        q7: "E se voglio smettere?", a7: "Nessun vincolo. Puoi disdire quando vuoi, gratuitamente.",
+        q8: "Avete già lavorato con attività come la mia?", a8: "Sì — ristoranti, saloni, spa e aziende. Dai un'occhiata ai siti online nella sezione Progetti."
+      },
+      finale: {
+        eyebrow: "Parliamone",
+        title: "Il tuo prossimo cliente ti sta cercando <em>proprio ora.</em>",
+        sub: "Raccontaci della tua attività. Veniamo a conoscerti, ti mostriamo come potrebbe essere il tuo sito e lo mettiamo online in pochi giorni.",
+        book: "Prenota un incontro", whatsapp: "Scrivici su WhatsApp"
+      },
+      footer: {
+        tagline: "Siti web e menù QR per ristoranti e attività locali.",
+        explore: "Esplora", contact: "Contatti", book: "Prenota un incontro", language: "Lingua",
+        rights: "© 2026 NM Studio. Fatto per farti trovare.", backTop: "Torna su"
+      },
+      booking: {
+        eyebrow: "Prenota un incontro", title: "Incontriamoci di persona",
+        lead: "Dicci dove e quando. Veniamo da te a parlarne — senza impegno.",
+        business: "Nome dell'attività", businessPh: "es. Giulivo", phone: "Numero di telefono", date: "Data preferita", time: "Ora preferita",
+        submit: "Invia su WhatsApp", close: "Chiudi",
+        hint: "Il messaggio viene copiato automaticamente — incollalo nella chat WhatsApp che si apre.",
+        required: "Compila questo campo.", pastDate: "Scegli oggi o una data successiva.",
+        toast: "Messaggio copiato — incollalo su WhatsApp per inviarlo.",
+        waMessage: "Ciao! Vorrei prenotare un incontro.\nAttività: {business}\nTelefono: {phone}\nData preferita: {date} alle {time}"
+      }
+    },
+
+    th: {
+      meta: {
+        title: "NM Studio — เว็บไซต์และเมนู QR สำหรับร้านอาหารและธุรกิจท้องถิ่น",
+        description: "NM Studio ออกแบบเว็บไซต์และเมนู QR ที่สวยและรวดเร็ว สำหรับร้านอาหาร ร้านทำผม สปา และธุรกิจท้องถิ่น ส่งรูปมา แล้วเว็บของคุณพร้อมออนไลน์ภายในไม่กี่วัน ไม่มีสัญญาผูกมัด"
+      },
+      a11y: { skip: "ข้ามไปยังเนื้อหา", language: "ภาษา", menu: "เมนู", whatsapp: "ส่งข้อความหาเราทาง WhatsApp" },
+      nav: { work: "ผลงาน", process: "ขั้นตอน", pricing: "ราคา", faq: "คำถาม", cta: "เริ่มโปรเจกต์" },
+      hero: {
+        eyebrow: "สตูดิโอเว็บสำหรับร้านอาหารและธุรกิจท้องถิ่น",
+        title: "เว็บไซต์ที่พาลูกค้า <em>มาถึงหน้าร้านคุณ</em>",
+        sub: "ส่งรูปของคุณมา เราออกแบบเว็บไซต์และเมนู QR ในภาษาของลูกค้าคุณ — และพร้อมออนไลน์ภายในไม่กี่วัน",
+        ctaPrimary: "เริ่มโปรเจกต์ของคุณ",
+        ctaSecondary: "ดูผลงานของเรา",
+        chipLive: "ออนไลน์ในไม่กี่วัน",
+        chipQr: "รวมเมนู QR แล้ว"
+      },
+      facts: {
+        f1v: "ไม่กี่วัน", f1l: "จากรูปของคุณสู่เว็บไซต์ที่ออนไลน์",
+        f2l: "ภาษา รวมถึงภาษาไทยและอาหรับ",
+        f3v: "ไม่จำกัด", f3l: "แก้ไขได้ทุกเมื่อที่ต้องการ",
+        f4l: "สัญญา — ยกเลิกได้ทุกเมื่อ ฟรี"
+      },
+      audience: {
+        i1: "ร้านอาหาร", i2: "คาเฟ่", i3: "ร้านทำผม", i4: "สปาและร้านนวด", i5: "บาร์", i6: "สตรีทฟู้ด", i7: "บริษัทท้องถิ่น",
+        sr: "เราทำงานกับร้านอาหาร คาเฟ่ ร้านทำผม สปาและร้านนวด บาร์ ร้านสตรีทฟู้ด และบริษัทท้องถิ่น"
+      },
+      why: {
+        eyebrow: "ทำไมถึงสำคัญ",
+        manifesto: "ลูกค้าคนต่อไปของคุณกำลังค้นหาอยู่แล้ว <em>เราทำให้พวกเขาเจอคุณ — และเลือกคุณ</em>",
+        r1t: "ค้นเจอบน Google และ Maps",
+        r1b: "นักท่องเที่ยวเลือกที่กินและที่พักผ่อนตั้งแต่ก่อนเครื่องลง เมื่อมีเว็บไซต์จริง พวกเขาจะเจอคุณ — ไม่ใช่ร้านข้าง ๆ",
+        r2t: "ความประทับใจแรกที่สร้างความเชื่อมั่น",
+        r2b: "เว็บไซต์ที่สวยงามแสดงว่าคุณจริงจังกับธุรกิจ และสร้างความมั่นใจให้ลูกค้าใหม่ได้มากกว่าเพจโซเชียลเพียงอย่างเดียว",
+        r3t: "เมนูที่อัปเดตอยู่เสมอ",
+        r3b: "QR โค้ดเดียวบนโต๊ะ อัปเดตตลอด เปลี่ยนราคาหรือเมนูได้ในไม่กี่นาที — ไม่ต้องพิมพ์ใหม่อีกเลย"
+      },
+      work: {
+        eyebrow: "ผลงานที่คัดสรร",
+        title: "เว็บไซต์จริง <em>ออนไลน์อยู่ตอนนี้</em>",
+        lead: "แต่ละเว็บสร้างขึ้นจากตัวธุรกิจ — รูปภาพ ลูกค้า และภาษาของพวกเขา เปิดดูได้เลย ทุกเว็บออนไลน์อยู่",
+        realClient: "ลูกค้าจริง", concept: "คอนเซปต์", visit: "เข้าชมเว็บไซต์", cursor: "เปิดดู",
+        p1cat: "ร้านอาหาร · ทัสคานี",
+        p1desc: "เว็บไซต์อบอุ่นที่เล่าเรื่องด้วยภาพสำหรับร้านอาหารครอบครัว: เมนูครบ การจองโต๊ะ และเมนู QR บนทุกโต๊ะ — ในภาษาอิตาลี อังกฤษ เยอรมัน และไทย",
+        p2cat: "นวดและสปา · พัทยา",
+        p2desc: "เว็บไซต์สงบและมีสไตล์สำหรับร้านนวดไทย พร้อมระบบเลือกทรีตเมนต์ และการส่งคำขอจองทีละขั้นที่ออกแบบมาสำหรับมือถือ",
+        p3cat: "ร้านทำผม · กรุงเทพฯ",
+        p3desc: "ความหรูแบบนิตยสารแฟชั่นสำหรับร้านทำผมและความงาม: ราคาบริการชัดเจน รีวิวจากลูกค้า และจองได้ในแตะเดียวผ่าน WhatsApp",
+        p4cat: "ซัพพลายเออร์ B2B · ฝรั่งเศส",
+        p4desc: "เว็บไซต์องค์กรที่มั่นใจสำหรับผู้จำหน่ายวัสดุผนังภายนอก: วิดีโอเปิดหน้า บริการ แบรนด์พาร์ทเนอร์ ผลงาน และการขอใบเสนอราคา",
+        tMulti: "4 ภาษา", tQr: "เมนู QR", tBooking: "จองออนไลน์", tTreat: "เลือกทรีตเมนต์", tMobile: "ออกแบบเพื่อมือถือ",
+        tPrices: "ราคาบริการ", tReviews: "รีวิว", tWhatsapp: "จองผ่าน WhatsApp", tVideo: "วิดีโอเปิดหน้า", tProjects: "ผลงาน", tQuote: "ขอใบเสนอราคา",
+        soon: "เร็ว ๆ นี้", soonList: "บาร์และไนท์ไลฟ์ · สตรีทฟู้ด"
+      },
+      process: {
+        eyebrow: "ขั้นตอนการทำงาน",
+        title: "จากรูปของคุณสู่เว็บไซต์ออนไลน์ <em>ในไม่กี่วัน</em>",
+        lead: "ไม่ต้องเตรียมประชุม ไม่มีศัพท์เทคนิค คุณดูแลธุรกิจของคุณ — ที่เหลือเราจัดการให้",
+        s1t: "ส่งรูปของคุณมา", s1b: "รูปภาพ เมนู เวลาเปิด-ปิด — ส่งมาทาง WhatsApp ได้เลย แค่นี้ก็เริ่มได้แล้ว",
+        s2t: "เราออกแบบเว็บให้", s2b: "ดีไซน์ ข้อความ เมนู QR Google Maps และทุกภาษาที่ลูกค้าของคุณใช้ — เราทำให้ทั้งหมด",
+        s3t: "เว็บของคุณออนไลน์แล้ว", s3b: "เว็บไซต์ออนไลน์ได้ในไม่กี่วัน อยากเปลี่ยนอะไรภายหลัง? แค่ส่งข้อความมา — แก้ไขได้ไม่จำกัด"
+      },
+      pricing: {
+        eyebrow: "ราคา",
+        title: "แพ็กเกจเรียบง่าย <em>ไม่มีค่าใช้จ่ายแอบแฝง</em>",
+        lead: "ทุกแพ็กเกจรวมเมนู QR เริ่มจากเล็ก ๆ แล้วอัปเกรดได้เมื่อธุรกิจของคุณพร้อม",
+        setup: "ค่าติดตั้งครั้งเดียว", monthly: "ต่อเดือน", popular: "ยอดนิยม",
+        note: "ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง ยกเลิกได้ทุกเมื่อ ฟรี",
+        basic: { title: "Basic", tagline: "เมนูของคุณ แค่สแกนเดียว", f1: "เมนู QR โค้ด อัปเดตอยู่เสมอ", f2: "แก้ไขเมนูได้ไม่จำกัด", f3: "ใช้ได้กับทุกโทรศัพท์ ไม่ต้องโหลดแอป", cta: "เลือก Basic", demo: "ดูตัวอย่างเมนู QR จริง →" },
+        pro: { title: "Pro", tagline: "เว็บไซต์ของคุณเอง เราทำให้ครบ", f1: "ทุกอย่างในแพ็กเกจ Basic", f2: "เว็บไซต์ออกแบบเฉพาะจากรูปของคุณ", f3: "หลายภาษา พร้อม Google Maps และ WhatsApp", f4: "ออนไลน์ในไม่กี่วัน ไม่ใช่หลายเดือน", cta: "เลือก Pro" },
+        elite: { title: "Elite", tagline: "แพ็กเกจครบวงจร ไม่ต้องทำอะไรเลย", f1: "ทุกอย่างในแพ็กเกจ Pro", f2: "ตั้งค่าและดูแลโซเชียลมีเดียให้", f3: "บริการช่วยเหลือแบบเร่งด่วน", cta: "คุยกับเรา" }
+      },
+      faq: {
+        eyebrow: "คำถามที่พบบ่อย",
+        title: "ทุกอย่างที่คุณ <em>อยากรู้</em>",
+        lead: "ยังสงสัยอะไรอยู่ไหม? ถามเราได้โดยตรง — ปกติเราตอบภายในไม่กี่นาที",
+        ask: "ถามทาง WhatsApp",
+        q1: "ไม่ค่อยถนัดเรื่องเทคโนโลยี จะมีปัญหาไหม?", a1: "ไม่มีปัญหาเลย แค่ส่งรูปมา ที่เหลือเราดูแลให้ทั้งหมด — ดีไซน์ ข้อความ โฮสติ้ง และการอัปเดต",
+        q2: "ใช้เวลานานแค่ไหนกว่าเว็บจะออนไลน์?", a2: "ไม่กี่วันหลังจากที่เราได้รับรูปและข้อมูลของคุณ — ไม่ใช่หลายสัปดาห์",
+        q3: "เปลี่ยนรูปหรือเมนูภายหลังได้ไหม?", a3: "ได้ แก้ไขได้ไม่จำกัดและฟรี — แค่ส่งข้อความมาเมื่อมีอะไรเปลี่ยน",
+        q4: "เมนู QR ทำงานอย่างไร?", a4: "ลูกค้าสแกนโค้ดด้วยกล้องโทรศัพท์ — ไม่ต้องโหลดแอป — แล้วเห็นเมนูล่าสุดของคุณทันที",
+        q5: "มี Instagram อยู่แล้ว ทำไมต้องมีเว็บไซต์?", a5: "Instagram ขึ้นอยู่กับอัลกอริทึมที่คุณควบคุมไม่ได้ เว็บไซต์คือหน้าร้านของคุณเอง: ค้นเจอบน Google เปิดตลอด 24 ชั่วโมง และเป็นของคุณ",
+        q6: "เว็บไซต์เป็นของฉันจริงไหม?", a6: "จริง — ชื่อของคุณ รูปของคุณ เนื้อหาของคุณ เราสร้างเพื่อธุรกิจของคุณ ไม่ใช่เพื่อเรา",
+        q7: "ถ้าอยากเลิกใช้บริการล่ะ?", a7: "ไม่มีข้อผูกมัด ยกเลิกได้ทุกเมื่อ ไม่มีค่าใช้จ่าย",
+        q8: "เคยทำงานกับธุรกิจแบบของฉันไหม?", a8: "เคย — ร้านอาหาร ร้านทำผม สปา และบริษัท ดูเว็บไซต์จริงได้ในส่วนผลงานด้านบน"
+      },
+      finale: {
+        eyebrow: "มาคุยกัน",
+        title: "ลูกค้าคนต่อไปของคุณกำลังค้นหา <em>อยู่ตอนนี้</em>",
+        sub: "เล่าเรื่องธุรกิจของคุณให้เราฟัง เราจะไปพบคุณ แสดงให้เห็นว่าเว็บไซต์ของคุณจะออกมาเป็นอย่างไร และทำให้ออนไลน์ภายในไม่กี่วัน",
+        book: "นัดพบ", whatsapp: "ส่งข้อความทาง WhatsApp"
+      },
+      footer: {
+        tagline: "เว็บไซต์และเมนู QR สำหรับร้านอาหารและธุรกิจท้องถิ่น",
+        explore: "สำรวจ", contact: "ติดต่อ", book: "นัดพบ", language: "ภาษา",
+        rights: "© 2026 NM Studio. สร้างมาเพื่อให้คุณถูกค้นเจอ", backTop: "กลับขึ้นด้านบน"
+      },
+      booking: {
+        eyebrow: "นัดพบ", title: "มาพบกันแบบตัวต่อตัว",
+        lead: "บอกเราว่าที่ไหนและเมื่อไหร่ เราจะไปหาคุณเพื่อพูดคุย — ไม่มีข้อผูกมัด",
+        business: "ชื่อร้าน / ธุรกิจ", businessPh: "เช่น Giulivo", phone: "เบอร์โทรศัพท์", date: "วันที่สะดวก", time: "เวลาที่สะดวก",
+        submit: "ส่งทาง WhatsApp", close: "ปิด",
+        hint: "ข้อความจะถูกคัดลอกให้อัตโนมัติ — แค่วางในแชท WhatsApp ที่เปิดขึ้นมา",
+        required: "กรุณากรอกช่องนี้", pastDate: "กรุณาเลือกวันนี้หรือวันถัดไป",
+        toast: "คัดลอกข้อความแล้ว — วางใน WhatsApp เพื่อส่ง",
+        waMessage: "สวัสดี ต้องการนัดพบเพื่อพูดคุยเรื่องเว็บไซต์\nร้าน/ธุรกิจ: {business}\nเบอร์โทร: {phone}\nวันที่สะดวก: {date} เวลา {time}"
+      }
+    },
+
+    ar: {
+      meta: {
+        title: "NM Studio — مواقع إلكترونية وقوائم QR للمطاعم والمحلات المحلية",
+        description: "يصمم NM Studio مواقع إلكترونية وقوائم QR سريعة وأنيقة للمطاعم والصالونات ومراكز السبا والمحلات المحلية. أرسل صورك ويصبح موقعك متاحاً خلال أيام. بلا عقود."
+      },
+      a11y: { skip: "انتقل إلى المحتوى", language: "اللغة", menu: "القائمة", whatsapp: "راسلنا على واتساب" },
+      nav: { work: "أعمالنا", process: "طريقة العمل", pricing: "الأسعار", faq: "الأسئلة", cta: "ابدأ مشروعك" },
+      hero: {
+        eyebrow: "استوديو مواقع للمطاعم والمحلات المحلية",
+        title: "مواقع تجلب الزبائن <em>إلى باب محلك.</em>",
+        sub: "أرسل لنا صورك. نصمم موقعك وقائمة QR بلغات زبائنك — ويصبح موقعك متاحاً خلال أيام.",
+        ctaPrimary: "ابدأ مشروعك",
+        ctaSecondary: "شاهد أعمالنا",
+        chipLive: "متاح خلال أيام",
+        chipQr: "قائمة QR مشمولة"
+      },
+      facts: {
+        f1v: "أيام", f1l: "من صورك إلى موقع متاح على الإنترنت",
+        f2l: "لغات، منها التايلاندية والعربية",
+        f3v: "بلا حدود", f3l: "تعديلات متى احتجت إليها",
+        f4l: "عقود — ألغِ في أي وقت، مجاناً"
+      },
+      audience: {
+        i1: "مطاعم", i2: "مقاهٍ", i3: "صالونات حلاقة", i4: "سبا ومراكز تدليك", i5: "بارات", i6: "أكل الشارع", i7: "شركات محلية",
+        sr: "نعمل مع المطاعم والمقاهي وصالونات الحلاقة ومراكز السبا والتدليك والبارات وباعة أكل الشارع والشركات المحلية."
+      },
+      why: {
+        eyebrow: "لماذا يهم ذلك",
+        manifesto: "زبائنك القادمون يبحثون عنك الآن. <em>نحن نضمن أن يجدوك — وأن يختاروك.</em>",
+        r1t: "ظهور على Google والخرائط",
+        r1b: "يختار المسافرون أين يأكلون ويسترخون قبل أن تهبط طائرتهم. مع موقع حقيقي، سيجدونك أنت — لا المحل المجاور.",
+        r2t: "انطباع أول يبني الثقة",
+        r2b: "الموقع الجميل يُظهر أنك تأخذ عملك بجدية، ويطمئن الزبائن الجدد أكثر بكثير من صفحة على وسائل التواصل وحدها.",
+        r3t: "قائمة محدّثة دائماً",
+        r3b: "رمز QR واحد على الطاولة، محدّث دائماً. غيّر سعراً أو طبقاً في دقائق — دون إعادة طباعة بعد اليوم."
+      },
+      work: {
+        eyebrow: "أعمال مختارة",
+        title: "مواقع حقيقية. <em>متاحة الآن.</em>",
+        lead: "كل موقع مبني حول نشاطه — صوره وزبائنه ولغاته. افتح أياً منها: جميعها متاحة على الإنترنت.",
+        realClient: "عميل حقيقي", concept: "نموذج", visit: "زيارة الموقع", cursor: "افتح",
+        p1cat: "مطعم · توسكانا",
+        p1desc: "موقع دافئ تقوده الصور لمطعم عائلي: القائمة كاملة، والحجوزات، وقائمة QR على كل طاولة — بالإيطالية والإنجليزية والألمانية والتايلاندية.",
+        p2cat: "تدليك وسبا · باتايا",
+        p2desc: "موقع هادئ بطابع مجلات لمركز تدليك تايلاندي، مع اختيار العلاجات وطلب حجز خطوة بخطوة مصمم للهاتف.",
+        p3cat: "صالون شعر · بانكوك",
+        p3desc: "أناقة مجلات الموضة لصالون شعر وتجميل: قائمة أسعار واضحة، وآراء العملاء، وحجز بلمسة واحدة عبر واتساب.",
+        p4cat: "مورد للشركات · فرنسا",
+        p4desc: "موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار.",
+        tMulti: "4 لغات", tQr: "قائمة QR", tBooking: "حجز عبر الإنترنت", tTreat: "اختيار العلاجات", tMobile: "مصمم للهاتف",
+        tPrices: "قائمة الأسعار", tReviews: "آراء العملاء", tWhatsapp: "حجز عبر واتساب", tVideo: "فيديو افتتاحي", tProjects: "المشاريع", tQuote: "طلب عرض سعر",
+        soon: "قريباً", soonList: "بارات وحياة ليلية · أكل الشارع"
+      },
+      process: {
+        eyebrow: "طريقة العمل",
+        title: "من صورك إلى موقع متاح على الإنترنت، <em>خلال أيام.</em>",
+        lead: "لا اجتماعات للتحضير ولا مصطلحات تقنية. أنت تدير عملك — ونحن نتكفل بالباقي.",
+        s1t: "أرسل صورك", s1b: "الصور، القائمة، أوقات العمل — مباشرة عبر واتساب. هذا كل ما نحتاجه للبدء.",
+        s2t: "نصمم موقعك", s2b: "التصميم، والنصوص، وقائمة QR، وخرائط Google، وكل لغات زبائنك — نتكفل بكل شيء.",
+        s3t: "موقعك متاح", s3b: "يصبح موقعك متاحاً خلال أيام. تريد تغيير شيء لاحقاً؟ أرسل رسالة فقط — التعديلات بلا حدود."
+      },
+      pricing: {
+        eyebrow: "الأسعار",
+        title: "باقات بسيطة. <em>بلا مفاجآت.</em>",
+        lead: "كل باقة تتضمن قائمة QR. ابدأ بالبسيط وقم بالترقية متى أصبح عملك مستعداً.",
+        setup: "رسوم إعداد لمرة واحدة", monthly: "شهرياً", popular: "الأكثر اختياراً",
+        note: "بلا عقود ولا رسوم خفية. ألغِ في أي وقت، مجاناً.",
+        basic: { title: "Basic", tagline: "قائمتك على بُعد مسحة واحدة.", f1: "قائمة برمز QR، محدّثة دائماً", f2: "تعديلات غير محدودة على القائمة", f3: "تعمل على أي هاتف — بلا تطبيق", cta: "اختر Basic", demo: "شاهد قائمة QR حقيقية ←" },
+        pro: { title: "Pro", tagline: "موقعك الخاص، جاهز بالكامل.", f1: "كل ما في باقة Basic", f2: "موقع مخصص مبني من صورك", f3: "متعدد اللغات، مع خرائط Google وواتساب", f4: "متاح خلال أيام، لا أشهر", cta: "اختر Pro" },
+        elite: { title: "Elite", tagline: "الباقة الكاملة، بلا أي مجهود.", f1: "كل ما في باقة Pro", f2: "إعداد وإدارة وسائل التواصل الاجتماعي", f3: "دعم ذو أولوية", cta: "تحدث معنا" }
+      },
+      faq: {
+        eyebrow: "الأسئلة الشائعة",
+        title: "كل ما <em>تريد معرفته.</em>",
+        lead: "ما زال لديك سؤال؟ اسألنا مباشرة — نرد عادةً خلال دقائق.",
+        ask: "اسأل عبر واتساب",
+        q1: "لست بارعاً في التكنولوجيا — هل هذه مشكلة؟", a1: "إطلاقاً. ترسل لنا صورك ونتكفل نحن بكل شيء آخر — التصميم والنصوص والاستضافة والتحديثات.",
+        q2: "كم يستغرق حتى يصبح موقعي متاحاً؟", a2: "بضعة أيام بعد استلام صورك ومعلوماتك — لا أسابيع.",
+        q3: "هل يمكنني تغيير الصور أو القائمة لاحقاً؟", a3: "نعم. التعديلات غير محدودة ومجانية — فقط أرسل لنا رسالة عند أي تغيير.",
+        q4: "كيف تعمل قائمة QR؟", a4: "يمسح زبائنك الرمز بكاميرا الهاتف — دون أي تطبيق — ويرون قائمتك المحدّثة فوراً.",
+        q5: "لدي إنستغرام بالفعل. لماذا أحتاج موقعاً؟", a5: "إنستغرام يعتمد على خوارزمية لا تتحكم بها. الموقع هو واجهة محلك الخاصة: يظهر على Google، ومتاح على مدار الساعة، وملك لك.",
+        q6: "هل الموقع ملكي حقاً؟", a6: "نعم — اسمك وصورك ومحتواك. نبنيه لعملك، لا لنا.",
+        q7: "ماذا لو أردت التوقف؟", a7: "بلا أي التزام. يمكنك الإلغاء في أي وقت، مجاناً.",
+        q8: "هل عملتم مع أنشطة مثل نشاطي؟", a8: "نعم — مطاعم وصالونات ومراكز سبا وشركات. ألقِ نظرة على المواقع المتاحة في قسم أعمالنا."
+      },
+      finale: {
+        eyebrow: "لنتحدث",
+        title: "زبونك القادم يبحث عنك <em>في هذه اللحظة.</em>",
+        sub: "حدثنا عن نشاطك. سنأتي لمقابلتك، ونريك كيف يمكن أن يبدو موقعك، ونطلقه خلال أيام.",
+        book: "احجز موعداً", whatsapp: "راسلنا على واتساب"
+      },
+      footer: {
+        tagline: "مواقع إلكترونية وقوائم QR للمطاعم والمحلات المحلية.",
+        explore: "استكشف", contact: "تواصل", book: "احجز موعداً", language: "اللغة",
+        rights: "© 2026 NM Studio. صُمم ليجدك الزبائن.", backTop: "العودة للأعلى"
+      },
+      booking: {
+        eyebrow: "احجز موعداً", title: "لنلتقِ شخصياً",
+        lead: "أخبرنا أين ومتى. سنأتي إليك للحديث — دون أي التزام.",
+        business: "اسم النشاط التجاري", businessPh: "مثال: Giulivo", phone: "رقم الهاتف", date: "التاريخ المفضل", time: "الوقت المفضل",
+        submit: "إرسال عبر واتساب", close: "إغلاق",
+        hint: "تُنسخ رسالتك تلقائياً — الصقها فقط في محادثة واتساب التي ستُفتح.",
+        required: "يرجى ملء هذا الحقل.", pastDate: "يرجى اختيار تاريخ اليوم أو تاريخ لاحق.",
+        toast: "تم نسخ الرسالة — الصقها في واتساب لإرسالها.",
+        waMessage: "مرحباً! أود حجز موعد.\nالنشاط التجاري: {business}\nرقم الهاتف: {phone}\nالتاريخ المفضل: {date} الساعة {time}"
+      }
+    }
+  };
+
+  /* Pricing per language — deliberate price points per currency rather than
+     a literal FX conversion (which would land on odd numbers). */
+  var CURRENCY = { en: "eur", fr: "eur", it: "eur", th: "thb", ar: "mad" };
+  var PRICES = {
+    eur: { basicSetup: 50, basicMonthly: 15, proSetup: 100, proMonthly: 30, eliteSetup: 300, eliteMonthly: 100 },
+    thb: { basicSetup: 500, basicMonthly: 300, proSetup: 1999, proMonthly: 599, eliteSetup: 7000, eliteMonthly: 2000 },
+    mad: { basicSetup: 500, basicMonthly: 150, proSetup: 1200, proMonthly: 350, eliteSetup: 3500, eliteMonthly: 1000 }
+  };
+  var SYMBOL = { eur: " €", thb: " ฿", mad: " DH" };
+  var LABEL = { en: "EN", fr: "FR", it: "IT", th: "TH", ar: "AR" };
+
+  function get(lang, path) {
+    var node = DICT[lang] || DICT.en;
+    var parts = path.split(".");
+    for (var i = 0; i < parts.length; i++) {
+      if (node == null) return null;
+      node = node[parts[i]];
+    }
+    return node == null && lang !== "en" ? get("en", path) : node;
+  }
+
+  function formatPrice(currency, amount) {
+    return amount.toLocaleString("en-US") + SYMBOL[currency];
+  }
+
+  function apply(lang) {
+    if (!DICT[lang]) lang = "en";
+    var root = document.documentElement;
+    root.lang = lang;
+    root.dir = lang === "ar" ? "rtl" : "ltr";
+
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var v = get(lang, el.getAttribute("data-i18n"));
+      if (typeof v === "string") el.textContent = v;
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var v = get(lang, el.getAttribute("data-i18n-html"));
+      if (typeof v === "string") el.innerHTML = v;
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+      var v = get(lang, el.getAttribute("data-i18n-placeholder"));
+      if (typeof v === "string") el.setAttribute("placeholder", v);
+    });
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
+      var v = get(lang, el.getAttribute("data-i18n-aria-label"));
+      if (typeof v === "string") el.setAttribute("aria-label", v);
+    });
+
+    document.title = get(lang, "meta.title");
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", get(lang, "meta.description"));
+
+    var currency = CURRENCY[lang];
+    document.querySelectorAll("[data-price]").forEach(function (el) {
+      var amount = PRICES[currency][el.getAttribute("data-price")];
+      if (amount != null) el.textContent = formatPrice(currency, amount);
+    });
+
+    document.querySelectorAll(".lang__current").forEach(function (el) { el.textContent = LABEL[lang]; });
+    document.querySelectorAll("[data-lang]").forEach(function (btn) {
+      btn.setAttribute("aria-current", btn.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+
+    try { localStorage.setItem("nmLang", lang); } catch (e) {}
+    window.NM_LANG = lang;
+    document.dispatchEvent(new CustomEvent("nm:lang", { detail: { lang: lang } }));
+  }
+
+  function detect() {
+    var stored = null;
+    try { stored = localStorage.getItem("nmLang"); } catch (e) {}
+    if (stored && DICT[stored]) return stored;
+    var nav = (navigator.language || "en").toLowerCase().slice(0, 2);
+    return DICT[nav] ? nav : "en";
+  }
+
+  window.NMI18n = { apply: apply, t: function (path) { return get(window.NM_LANG || "en", path); } };
+
+  // Loaded with defer ahead of main.js: the markup is parsed and the
+  // language is applied before the animation code splits any headings.
+  apply(detect());
+})();
