@@ -317,8 +317,9 @@
         <div>
           <label class="lb" for="duration">Durée</label>
           <select id="duration">
-            <option value="121">5 secondes</option>
-            <option value="153" selected>6,4 secondes</option>
+            <option value="81">≈ 3,4 secondes</option>
+            <option value="121" selected>5 secondes</option>
+            <option value="161">≈ 6,7 secondes</option>
             <option value="241">10 secondes</option>
           </select>
         </div>
@@ -391,9 +392,10 @@ const MAX_NET_RETRIES = 4;        // nouveaux essais sur coupure réseau
 const MODEL_VIDEO = MODEL;
 const SAFE_FRAMES = 121;          // valeur de secours (5 s)
 
-// num_frames valide = 8n+1 et au moins 81 (81, 121, 153, 161, 201, 241…)
+// Seules valeurs de num_frames acceptées (liste stricte, aucune autre ne passe)
+const VALID_FRAMES = new Set([81, 121, 161, 201, 241, 281, 321, 361, 401, 441]);
 function validFrames(n) {
-  return Number.isInteger(n) && n >= 81 && (n - 1) % 8 === 0;
+  return VALID_FRAMES.has(n);
 }
 
 const PROMPT_PREFIX = "Create a high-quality 3D animated scene in Disney Pixar animation style, inspired by the input image. The scene depicts a happy Thai family at a traditional Thai farm. Elements: wooden stilt house, green rice paddies, water buffalo grazing, chickens, tropical palm trees, golden sunset light. Characters: Thai grandmother and grandfather smiling, children running joyfully, parents working together. Warm colors, soft global illumination, Pixar-style character design, subsurface scattering on skin. Preserve family composition. 9:16 vertical portrait, 24fps.";
@@ -926,10 +928,11 @@ async function agnesRequest(url, options, label) {
 async function createVideoTask(image, frames) {
   // Validation de num_frames avant l'envoi
   if (!validFrames(frames)) {
-    log('num_frames invalide (' + frames + ') → ' + SAFE_FRAMES);
+    log('⚠️ num_frames=' + frames + ' invalide, forcé à ' + SAFE_FRAMES);
     toast('Durée invalide : 5 s utilisées à la place.', 'warn');
     frames = SAFE_FRAMES;
   }
+  log('[Image] num_frames final: ' + frames);
   const body = {
     model: MODEL,
     prompt: buildPrompt(),
