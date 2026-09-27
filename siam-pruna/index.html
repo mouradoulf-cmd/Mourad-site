@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a1030">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Siam Studio · Pruna</title>
+<style>
+  :root {
+    --bg: #120b22; --panel: #1c1433; --line: #33285a; --ink: #f4f0ff; --muted: #a59bc8;
+    --accent: #9b6cff; --accent2: #ffcf5c; --ok: #3ecf8e; --err: #ff6b7a; --warn: #ffb547;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Noto Sans Thai', sans-serif; font-size: 16px; line-height: 1.5; padding-bottom: 110px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 16px; }
+  header { padding: 22px 16px 8px; text-align: center; }
+  header h1 { margin: 0; font-size: 1.5rem; letter-spacing: -.01em; }
+  header h1 span { color: var(--accent2); }
+  header p { margin: 4px 0 0; color: var(--muted); font-size: .92rem; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; }
+  .panel h2 { margin: 0 0 10px; font-size: 1.02rem; }
+  .hint { color: var(--muted); font-size: .84rem; margin: 6px 0 0; }
+  label.lb { display: block; font-size: .85rem; font-weight: 600; margin: 10px 0 6px; color: var(--muted); }
+  input[type=password], input[type=text], textarea, select {
+    width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: #140e28; border: 1px solid var(--line);
+    border-radius: 10px; padding: 11px 12px;
+  }
+  textarea { min-height: 96px; resize: vertical; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row > * { flex: 1; }
+  .row > .shrink { flex: 0 0 auto; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  button { font: inherit; cursor: pointer; border-radius: 10px; border: 1px solid var(--line); background: #241a44; color: var(--ink); padding: 10px 14px; }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  .btn-main { display: block; width: 100%; padding: 16px; font-size: 1.08rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), #6f3cff); border: 0; color: #fff; box-shadow: 0 8px 24px rgba(155,108,255,.35); }
+  .btn-stop { display: block; width: 100%; margin-top: 10px; color: var(--err); border-color: rgba(255,107,122,.4); background: transparent; }
+  .btn-sm { padding: 7px 10px; font-size: .85rem; }
+  .btn-ok { background: var(--ok); border-color: var(--ok); color: #06281a; font-weight: 700; }
+  .chip { display: inline-block; font-size: .78rem; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .chip.on { color: var(--ok); border-color: rgba(62,207,142,.4); }
+  .drop { border: 2px dashed var(--line); border-radius: var(--radius); padding: 22px 12px; text-align: center; color: var(--muted); cursor: pointer; }
+  .drop strong { display: block; color: var(--ink); }
+  .drop input { display: none; }
+  .thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; margin-top: 12px; }
+  .thumb { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: #000; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb .x { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; padding: 0; border-radius: 50%; border: 0; background: rgba(0,0,0,.65); color: #fff; }
+  .thumb .n { position: absolute; left: 4px; bottom: 4px; background: rgba(0,0,0,.65); font-size: .7rem; padding: 1px 6px; border-radius: 6px; }
+  .price { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: rgba(255,207,92,.08); border: 1px solid rgba(255,207,92,.3); color: var(--accent2); font-weight: 600; font-size: .92rem; }
+  .qi { display: flex; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+  .qi img { width: 48px; height: 48px; object-fit: cover; border-radius: 8px; }
+  .qi .m { flex: 1; min-width: 0; }
+  .qi .s { color: var(--muted); font-size: .82rem; overflow-wrap: anywhere; }
+  .qi.done .s { color: var(--ok); } .qi.fail .s { color: var(--err); }
+  .bar { height: 6px; background: #0e0920; border-radius: 6px; overflow: hidden; margin: 5px 0; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+  .qi.done .bar i { background: var(--ok); }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .gi { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #0e0920; }
+  .gi video { width: 100%; aspect-ratio: 9/16; object-fit: cover; background: #000; display: block; }
+  .gi .cap { padding: 8px; display: flex; flex-direction: column; gap: 6px; font-size: .85rem; }
+  .gi .cap small { color: var(--muted); }
+  .empty { color: var(--muted); text-align: center; padding: 16px; border: 1px dashed var(--line); border-radius: var(--radius); }
+  .logbox { max-height: 260px; overflow: auto; background: #07040f; color: #b9ffcf; font: 12px/1.45 ui-monospace, Menlo, Consolas, monospace; padding: 10px; border-radius: 10px; white-space: pre-wrap; word-break: break-all; margin: 0; }
+  .statusbar { position: fixed; left: 0; right: 0; bottom: 0; background: #2a1d55; color: #fff; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); display: flex; gap: 12px; align-items: center; transform: translateY(110%); transition: transform .3s; z-index: 20; }
+  .statusbar.on { transform: none; }
+  .spin { width: 18px; height: 18px; border-radius: 50%; border: 3px solid rgba(255,255,255,.3); border-top-color: #fff; animation: sp 1s linear infinite; flex: 0 0 auto; }
+  @keyframes sp { to { transform: rotate(360deg); } }
+  .toasts { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); width: min(92vw, 440px); z-index: 30; display: flex; flex-direction: column; gap: 8px; }
+  .toast { background: #241a44; border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 10px; padding: 10px 12px; font-size: .9rem; }
+  .toast.ok { border-left-color: var(--ok); } .toast.err { border-left-color: var(--err); } .toast.warn { border-left-color: var(--warn); }
+  .switch { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; }
+  .switch small { display: block; color: var(--muted); font-size: .8rem; }
+  .switch input { width: 22px; height: 22px; accent-color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🇹🇭 Siam <span>Studio</span></h1>
+  <p>Photo → vidéo 3D en quelques secondes · moteur Pruna P-Video</p>
+</header>
+
+<main class="wrap">
+  <!-- Clé -->
+  <section class="panel">
+    <h2>🔑 Clé API Pruna <span class="chip" id="keyChip">absente</span></h2>
+    <div class="row">
+      <input type="password" id="apiKey" placeholder="Colle ta clé Pruna" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button type="button" class="shrink" id="saveKey">Enregistrer</button>
+    </div>
+    <p class="hint">Crée-la sur dashboard.pruna.ai (menu ☰ → API Keys). Elle reste uniquement sur cet appareil.</p>
+  </section>
+
+  <!-- Photos -->
+  <section class="panel">
+    <h2>📸 Photos (dans l'ordre de l'histoire)</h2>
+    <div class="drop" id="drop"><strong>Touche pour choisir des photos</strong>une photo = un clip<input type="file" id="fileInput" accept="image/*" multiple></div>
+    <div class="thumbs" id="thumbs"></div>
+  </section>
+
+  <!-- Histoire -->
+  <section class="panel">
+    <h2>🎬 Ce qui se passe</h2>
+    <textarea id="scene">The characters come alive naturally: they smile, blink and move gently, the family stays together, slow cinematic camera push-in.</textarea>
+    <p class="hint">Décris l'action en anglais (une action simple par clip). Le style Pixar et la cohérence des personnages sont ajoutés automatiquement.</p>
+  </section>
+
+  <!-- Réglages -->
+  <section class="panel">
+    <h2>⚙️ Réglages</h2>
+    <div class="grid2">
+      <div><label class="lb" for="duration">Durée</label>
+        <select id="duration"><option value="5" selected>5 secondes</option><option value="10">10 secondes</option></select></div>
+      <div><label class="lb" for="resolution">Qualité</label>
+        <select id="resolution"><option value="720p" selected>720p (0,02 $/s)</option><option value="1080p">1080p (0,04 $/s)</option></select></div>
+    </div>
+    <label class="switch"><span>⚡ Mode brouillon<small>Aperçu rapide et moins cher, pour vérifier avant la version finale</small></span><input type="checkbox" id="draft"></label>
+    <div class="price" id="price">Coût estimé : —</div>
+  </section>
+
+  <button type="button" class="btn-main" id="createBtn">🎬 Créer les vidéos</button>
+  <button type="button" class="btn-stop" id="stopBtn" hidden>⏹ Arrêter</button>
+
+  <section class="panel" id="queuePanel" style="margin-top:14px" hidden>
+    <h2>⏳ File d'attente</h2>
+    <div id="queue"></div>
+  </section>
+
+  <section class="panel" style="margin-top:14px">
+    <h2>🎞️ Mes vidéos <span class="chip" id="galCount">0</span></h2>
+    <div class="gallery" id="gallery"></div>
+    <p class="empty" id="galEmpty">Tes vidéos apparaîtront ici.</p>
+    <p class="hint">Sur iPhone : « Télécharger » ouvre le partage → <b>Enregistrer la vidéo</b>.</p>
+  </section>
+
+  <section class="panel">
+    <h2>🧾 Journal technique</h2>
+    <pre class="logbox" id="logBox"></pre>
+    <div class="row" style="margin-top:8px"><button type="button" class="btn-sm" id="logCopy">📋 Copier le journal</button><button type="button" class="btn-sm" id="diagBtn">🔍 Tester la clé</button></div>
+  </section>
+</main>
+
+<div class="statusbar" id="statusbar"><div class="spin"></div><span id="statusText">…</span></div>
+<div class="toasts" id="toasts"></div>
+
+<script>
+'use strict';
+
+/* ================= Constantes ================= */
+const API = 'https://api.pruna.ai/v1';
+const MODEL = 'p-video';
+const KEY_STORAGE = 'pruna_api_key';
+const GAL_STORAGE = 'pruna_gallery';
+const PRICE = { '720p': 0.02, '1080p': 0.04 };   // $ par seconde (tarif public)
+const DRAFT_FACTOR = 0.25;                        // estimation prudente du mode brouillon
+const POLL_MS = 3000;
+const POLL_MAX_MS = 15 * 60000;
+
+const STYLE_PREFIX = 'Premium 3D animated children\'s series, Disney Pixar quality, Thai countryside. Animate this exact image: keep every character IDENTICAL (same faces, hair, clothes, colors, proportions), do not add, remove or replace any character, keep the same location, no scene change.';
+const STYLE_SUFFIX = 'Warm cinematic lighting, soft global illumination, expressive Pixar eyes, smooth stable motion, no text, no watermark.';
+
+const state = { images: [], queue: [], running: false, stop: false };
+const $ = (id) => document.getElementById(id);
+
+/* ================= Outils ================= */
+const logLines = [];
+function log(m) {
+  const line = new Date().toLocaleTimeString('fr-FR') + '  ' + m;
+  console.log('[Siam Studio] ' + m);
+  logLines.push(line); if (logLines.length > 400) logLines.shift();
+  $('logBox').textContent = logLines.join('\n'); $('logBox').scrollTop = 1e9;
+}
+function toast(msg, type = 'info', ms) {
+  const el = document.createElement('div'); el.className = 'toast ' + type; el.textContent = msg;
+  $('toasts').appendChild(el); while ($('toasts').children.length > 3) $('toasts').firstChild.remove();
+  setTimeout(() => el.remove(), ms || (type === 'err' ? 7000 : 4000));
+}
+function setStatus(t) { if (t) { $('statusText').textContent = t; $('statusbar').classList.add('on'); } else $('statusbar').classList.remove('on'); }
+function sleep(ms) { return new Promise((r) => { const end = Date.now() + ms; const iv = setInterval(() => { if (state.stop || Date.now() >= end) { clearInterval(iv); r(); } }, 200); }); }
+function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function esc(s) { return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function getKey() { return (lsGet(KEY_STORAGE) || '').trim(); }
+function headers(extra) { return Object.assign({ 'apikey': getKey() }, extra || {}); }
+
+/* ================= Clé ================= */
+function refreshKey() { const k = getKey(); $('keyChip').textContent = k ? '● active' : 'absente'; $('keyChip').classList.toggle('on', !!k); $('apiKey').placeholder = k ? '•••••• (enregistrée)' : 'Colle ta clé Pruna'; }
+$('saveKey').addEventListener('click', () => {
+  const k = $('apiKey').value.trim(); if (!k) { toast('Colle d\'abord ta clé.', 'warn'); return; }
+  lsSet(KEY_STORAGE, k); $('apiKey').value = ''; refreshKey(); toast('Clé enregistrée ✓', 'ok'); testKey();
+});
+async function testKey() {
+  if (!getKey()) { toast('Aucune clé.', 'warn'); return; }
+  log('[Test] Connexion à ' + API + ' …');
+  try {
+    const r = await fetch(API + '/predictions/status/test-connexion', { headers: headers() });
+    const t = await r.text().catch(() => '');
+    log('[Test] HTTP ' + r.status + ' · ' + t.slice(0, 200));
+    if (r.status === 401 || r.status === 403) toast('Clé refusée (' + r.status + '). Vérifie-la.', 'err');
+    else toast('✅ Pruna répond (HTTP ' + r.status + '). La clé semble acceptée.', 'ok', 5000);
+  } catch (e) {
+    log('[Test] ❌ ' + e.message + ' (souvent : le navigateur bloque l\'accès direct à Pruna, « CORS »)');
+    toast('Impossible de joindre Pruna depuis ce navigateur. Envoie le journal à Claude.', 'err', 8000);
+  }
+}
+$('diagBtn').addEventListener('click', testKey);
+$('logCopy').addEventListener('click', async () => { const t = logLines.join('\n'); try { await navigator.clipboard.writeText(t); toast('Journal copié ✓', 'ok'); } catch (e) { prompt('Copie :', t); } });
+
+/* ================= Photos ================= */
+function loadImg(src) { return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('Image illisible')); i.src = src; }); }
+function readFile(f) { return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(new Error('Lecture impossible')); r.readAsDataURL(f); }); }
+function scaled(img, max, q) { const s = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return c; }
+async function addFiles(list) {
+  for (const f of Array.from(list || [])) {
+    try {
+      const img = await loadImg(await readFile(f));
+      const big = scaled(img, 1280, .9); const blob = await new Promise((r) => big.toBlob(r, 'image/jpeg', .9));
+      state.images.push({ id: Math.random().toString(36).slice(2), name: f.name, blob, dataUri: big.toDataURL('image/jpeg', .9), thumb: scaled(img, 200, .7).toDataURL('image/jpeg', .7), portrait: img.height >= img.width });
+    } catch (e) { toast(f.name + ' : ' + e.message, 'err'); }
+  }
+  renderThumbs();
+}
+function renderThumbs() {
+  $('thumbs').innerHTML = '';
+  state.images.forEach((im, i) => {
+    const d = document.createElement('div'); d.className = 'thumb';
+    d.innerHTML = '<img alt=""><span class="n">' + (i + 1) + '</span><button type="button" class="x">✕</button>';
+    d.querySelector('img').src = im.thumb;
+    d.querySelector('.x').onclick = () => { if (state.running) return; state.images = state.images.filter((x) => x.id !== im.id); renderThumbs(); };
+    $('thumbs').appendChild(d);
+  });
+  updatePrice();
+}
+$('drop').addEventListener('click', (e) => { if (e.target.id !== 'fileInput') $('fileInput').click(); });
+$('fileInput').addEventListener('change', (e) => { addFiles(e.target.files); e.target.value = ''; });
+
+/* ================= Prix ================= */
+function clipCost() { const d = parseInt($('duration').value, 10); const p = PRICE[$('resolution').value] * d; return $('draft').checked ? p * DRAFT_FACTOR : p; }
+function updatePrice() {
+  const n = state.images.length; const c = clipCost();
+  $('price').textContent = n ? 'Coût estimé : ≈ ' + (c * n).toFixed(2) + ' $ pour ' + n + ' clip' + (n > 1 ? 's' : '') + ' (≈ ' + c.toFixed(3) + ' $ / clip' + ($('draft').checked ? ', brouillon estimé' : '') + ')' : 'Coût estimé : ajoute des photos';
+  $('createBtn').textContent = n ? '🎬 Créer ' + n + ' vidéo' + (n > 1 ? 's' : '') + ' (≈ ' + (c * n).toFixed(2) + ' $)' : '🎬 Créer les vidéos';
+}
+['duration', 'resolution', 'draft'].forEach((id) => $(id).addEventListener('change', updatePrice));
+
+/* ================= API Pruna ================= */
+// Envoie l'image : d'abord directement (data URI), sinon via l'envoi de fichier /v1/files
+async function uploadImage(im) {
+  if (im.fileUrl) return im.fileUrl;
+  for (const field of ['file', 'content']) {
+    const fd = new FormData(); fd.append(field, im.blob, (im.name || 'image').replace(/\.[^.]+$/, '') + '.jpg');
+    const r = await fetch(API + '/files', { method: 'POST', headers: headers(), body: fd });
+    const t = await r.text().catch(() => '');
+    log('[Upload] champ « ' + field + ' » → HTTP ' + r.status + ' · ' + t.slice(0, 250));
+    if (!r.ok) continue;
+    let d = {}; try { d = JSON.parse(t); } catch (e) {}
+    const url = d.url || d.file_url || (d.urls && (d.urls.get || d.urls.file)) || (d.id ? API + '/files/' + d.id : null);
+    if (url) { im.fileUrl = url; return url; }
+  }
+  throw new Error('Envoi de la photo refusé (voir le journal)');
+}
+
+function buildPrompt() { return [STYLE_PREFIX, $('scene').value.trim(), STYLE_SUFFIX].filter(Boolean).join(' '); }
+
+async function createPrediction(im, imageRef) {
+  const input = { prompt: buildPrompt(), image: imageRef, duration: parseInt($('duration').value, 10), resolution: $('resolution').value, draft: $('draft').checked };
+  log('[Création] entrée : ' + JSON.stringify(Object.assign({}, input, { image: imageRef.slice(0, 40) + '…', prompt: input.prompt.slice(0, 50) + '…' })));
+  const r = await fetch(API + '/predictions', { method: 'POST', headers: headers({ 'Content-Type': 'application/json', 'Model': MODEL }), body: JSON.stringify({ input }) });
+  const t = await r.text().catch(() => '');
+  log('[Création] HTTP ' + r.status + ' · ' + t.slice(0, 400));
+  let d = {}; try { d = JSON.parse(t); } catch (e) {}
+  if (!r.ok) { const e = new Error('HTTP ' + r.status + ' ' + (d.detail || d.error || d.message || t).toString().slice(0, 160)); e.status = r.status; throw e; }
+  return d;
+}
+
+function findOutput(d) {
+  if (!d || typeof d !== 'object') return null;
+  const c = [d.generation_url, d.output_url, d.video_url, d.url, typeof d.output === 'string' ? d.output : null, Array.isArray(d.output) ? d.output[0] : null, d.output && d.output.url, d.output && d.output.video, d.result && d.result.url];
+  for (const u of c) if (typeof u === 'string' && /^https?:/.test(u)) return u;
+  return null;
+}
+
+async function waitResult(item, d) {
+  const t0 = Date.now();
+  let statusUrl = d.get_url || (d.urls && d.urls.get) || (d.id ? API + '/predictions/status/' + d.id : null);
+  let out = /succe|complet/i.test(d.status || '') ? findOutput(d) : null;
+  while (!out) {
+    if (state.stop) throw new Error('Arrêté');
+    if (Date.now() - t0 > POLL_MAX_MS) throw new Error('Pas de résultat après 15 min');
+    if (!statusUrl) throw new Error('Pruna n\'a pas donné d\'adresse de suivi (voir le journal)');
+    await sleep(POLL_MS);
+    const r = await fetch(statusUrl, { headers: headers() });
+    const t = await r.text().catch(() => '');
+    let s = {}; try { s = JSON.parse(t); } catch (e) {}
+    const st = String(s.status || '').toLowerCase();
+    log('[Suivi] HTTP ' + r.status + ' · statut=' + (st || '?') + ' · ' + t.slice(0, 220));
+    if (!r.ok && r.status !== 404) continue;
+    if (/fail|error|cancel/.test(st)) throw new Error('Pruna : ' + (s.error || s.message || st));
+    if (/succe|complet/.test(st)) { out = findOutput(s); if (!out) throw new Error('Terminé mais sans lien (voir le journal)'); break; }
+    const sec = Math.round((Date.now() - t0) / 1000);
+    item.pct = Math.min(95, 10 + sec * 3); item.msg = 'Génération… ' + sec + ' s'; renderQueue();
+  }
+  return out;
+}
+
+// Le lien de livraison peut exiger la clé : on télécharge la vidéo pour l'afficher sans souci
+async function fetchVideoBlob(url) {
+  for (const h of [headers(), {}]) {
+    try { const r = await fetch(url, { headers: h }); if (r.ok) return await r.blob(); log('[Vidéo] HTTP ' + r.status); } catch (e) { log('[Vidéo] ' + e.message); }
+  }
+  return null;
+}
+
+/* ================= File ================= */
+function renderQueue() {
+  $('queuePanel').hidden = !state.queue.length;
+  $('queue').innerHTML = state.queue.map((it, i) =>
+    '<div class="qi ' + it.status + '"><img alt="" src="' + it.im.thumb + '"><div class="m"><b>Clip ' + (i + 1) + '</b>' +
+    '<div class="bar"><i style="width:' + (it.status === 'done' ? 100 : it.pct || 0) + '%"></i></div><div class="s">' + esc(it.msg || '') + '</div></div></div>').join('');
+}
+async function processItem(it, idx) {
+  it.status = 'proc'; it.pct = 3; it.msg = 'Envoi…'; renderQueue();
+  let d;
+  try {
+    try { d = await createPrediction(it.im, it.im.dataUri); }
+    catch (e) {
+      if (e.status && e.status >= 400 && e.status < 500 && e.status !== 401 && e.status !== 402 && e.status !== 429) {
+        log('[Création] image directe refusée → envoi du fichier');
+        it.msg = 'Envoi de la photo…'; renderQueue();
+        d = await createPrediction(it.im, await uploadImage(it.im));
+      } else throw e;
+    }
+    it.msg = 'Génération…'; it.pct = 10; renderQueue();
+    const url = await waitResult(it, d);
+    log('[Résultat] ' + url);
+    const blob = await fetchVideoBlob(url);
+    const local = blob ? URL.createObjectURL(blob) : url;
+    it.status = 'done'; it.msg = 'Terminé ✓'; renderQueue();
+    addGallery({ url, local, blob, label: 'Clip ' + (idx + 1) + ($('draft').checked ? ' (brouillon)' : '') });
+  } catch (e) {
+    it.status = 'fail';
+    it.msg = /Failed to fetch|NetworkError|Load failed/i.test(e.message) ? 'Pruna injoignable depuis ce navigateur (CORS). Envoie le journal à Claude.' : e.message;
+    if (e.status === 402) it.msg = 'Crédit insuffisant sur Pruna (402).';
+    if (e.status === 401 || e.status === 403) it.msg = 'Clé refusée (' + e.status + ').';
+    log('[Erreur] clip ' + (idx + 1) + ' : ' + e.message);
+    toast('Clip ' + (idx + 1) + ' : ' + it.msg, 'err');
+    renderQueue();
+  }
+}
+$('createBtn').addEventListener('click', async () => {
+  if (state.running) return;
+  if (!getKey()) { toast('Enregistre d\'abord ta clé.', 'warn'); return; }
+  if (!state.images.length) { toast('Ajoute au moins une photo.', 'warn'); return; }
+  state.running = true; state.stop = false;
+  $('createBtn').disabled = true; $('stopBtn').hidden = false;
+  state.queue = state.images.map((im) => ({ im, status: 'wait', msg: 'En attente', pct: 0 }));
+  renderQueue();
+  for (let i = 0; i < state.queue.length; i++) {
+    if (state.stop) break;
+    setStatus('Clip ' + (i + 1) + '/' + state.queue.length + ' en cours…');
+    await processItem(state.queue[i], i);
+  }
+  const ok = state.queue.filter((x) => x.status === 'done').length;
+  setStatus('✦ ' + ok + '/' + state.queue.length + ' vidéos créées ✦'); setTimeout(() => setStatus(null), 4000);
+  toast(ok + '/' + state.queue.length + ' vidéos créées', ok ? 'ok' : 'err');
+  state.running = false; $('createBtn').disabled = false; $('stopBtn').hidden = true;
+});
+$('stopBtn').addEventListener('click', () => { state.stop = true; toast('Arrêt demandé…', 'warn'); });
+
+/* ================= Galerie ================= */
+function loadGal() { try { const g = JSON.parse(lsGet(GAL_STORAGE) || '[]'); return Array.isArray(g) ? g : []; } catch (e) { return []; } }
+const blobs = {};
+function addGallery(v) {
+  const id = Math.random().toString(36).slice(2);
+  if (v.blob) blobs[id] = { blob: v.blob, local: v.local };
+  const g = loadGal(); g.unshift({ id, url: v.url, label: v.label, date: Date.now() }); lsSet(GAL_STORAGE, JSON.stringify(g.slice(0, 40)));
+  renderGallery();
+}
+function renderGallery() {
+  const g = loadGal(); $('gallery').innerHTML = '';
+  g.forEach((v) => {
+    const el = document.createElement('div'); el.className = 'gi';
+    el.innerHTML = '<video controls playsinline preload="metadata"></video><div class="cap"><b></b><small></small><button type="button" class="btn-sm btn-ok">⬇️ Télécharger</button><button type="button" class="btn-sm del">Retirer</button></div>';
+    el.querySelector('video').src = (blobs[v.id] && blobs[v.id].local) || v.url;
+    el.querySelector('b').textContent = v.label;
+    el.querySelector('small').textContent = new Date(v.date).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
+    el.querySelector('.btn-ok').onclick = (e) => download(v, e.currentTarget);
+    el.querySelector('.del').onclick = () => { lsSet(GAL_STORAGE, JSON.stringify(loadGal().filter((x) => x.id !== v.id))); renderGallery(); };
+    $('gallery').appendChild(el);
+  });
+  $('galCount').textContent = g.length; $('galEmpty').hidden = g.length > 0;
+}
+async function download(v, btn) {
+  btn.disabled = true; const old = btn.textContent; btn.textContent = '⏳ …';
+  try {
+    const blob = (blobs[v.id] && blobs[v.id].blob) || await fetchVideoBlob(v.url);
+    if (!blob) throw new Error('lien expiré');
+    const name = 'siam-studio-' + Date.now() + '.mp4';
+    const file = new File([blob], name, { type: 'video/mp4' });
+    if (navigator.canShare && navigator.share && navigator.canShare({ files: [file] })) { try { await navigator.share({ files: [file] }); return; } catch (e) { if (e.name === 'AbortError') return; } }
+    const u = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 60000);
+  } catch (e) { toast('Téléchargement impossible : ' + e.message, 'err'); window.open(v.url, '_blank', 'noopener'); }
+  finally { btn.disabled = false; btn.textContent = old; }
+}
+
+refreshKey(); renderThumbs(); renderGallery();
+log('Siam Studio prêt. Moteur : Pruna ' + MODEL + '.');
+</script>
+</body>
+</html>
