@@ -113,7 +113,8 @@ function initWebGL3DObject(canvas, options) {
 }
 
 var canvas = document.querySelector('[data-webgl-3d-object]');
-if (canvas) {
+var isPhoneWidth = window.matchMedia('(max-width: 760px)').matches;
+if (canvas && !isPhoneWidth) {
   initWebGL3DObject(canvas, {
     color: 0x9c7a4f,
     rimColor: 0xffd9a0,

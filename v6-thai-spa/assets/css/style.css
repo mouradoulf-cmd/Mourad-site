@@ -127,7 +127,13 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -
   position: absolute; top: 0; right: 0; width: min(52%, 620px); height: 100%;
   z-index: 1; opacity: 0.92; pointer-events: none;
 }
-@media (max-width: 900px) { .hero-3d { width: 78%; opacity: 0.55; } }
+@media (max-width: 760px) {
+  /* The object is decorative and, at phone width, sits directly behind the
+     headline with no room to shrink without covering the text — same
+     "never leave a broken half-state" rule as the speech-recognition
+     fallback: drop it cleanly rather than fight it with opacity/sizing. */
+  .hero-3d { display: none; }
+}
 .hero-media .placeholder-tag {
   position: absolute; top: 20px; left: 20px; z-index: 2;
   font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
