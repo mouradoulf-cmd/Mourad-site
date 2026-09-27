@@ -8,7 +8,7 @@ for ln in tl['lines']:
     x = np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(np.float32) / 32768; w.close()
     s = int(round(ln['T'] * SR)); V[s:s + len(x)] += x * GAIN[ln['who']]
 w = wave.open('audio/voice.wav', 'wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((np.clip(V, -1, 1) * 32767).astype('<i2').tobytes()); w.close()
-fc = ("[0:a]aecho=0.8:0.6:40:0.1,volume=2.4,asplit=2[v][vk];[1:a]volume=0.62[m];[m][vk]sidechaincompress=threshold=0.025:ratio=5:attack=40:release=500[md];"
+fc = ("[0:a]aformat=channel_layouts=stereo,aecho=0.8:0.6:40:0.1,volume=2.4,asplit=2[v][vk];[1:a]volume=0.62[m];[m][vk]sidechaincompress=threshold=0.025:ratio=5:attack=40:release=500[md];"
       "[2:a]volume=0.55[s];[v][md][s]amix=inputs=3:normalize=0[a]")
 subprocess.run([FF, '-loglevel', 'error', '-y', '-i', 'audio/voice.wav', '-i', 'audio/music.wav', '-i', 'audio/sfx.wav', '-filter_complex', fc, '-map', '[a]', '-ar', '48000', 'audio/pre.wav'], check=True)
 out = subprocess.run([FF, '-hide_banner', '-i', 'audio/pre.wav', '-af', 'ebur128', '-f', 'null', '-'], capture_output=True, text=True).stderr

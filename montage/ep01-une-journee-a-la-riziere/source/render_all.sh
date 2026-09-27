@@ -12,6 +12,6 @@ for ((s=0; s<TOTAL; s+=CH)); do e=$((s+CH)); [ $e -gt $TOTAL ] && e=$TOTAL; n=$(
   i=$((i+1)); while [ $(jobs -r | wc -l) -ge $PAR ]; do sleep 2; done
 done
 wait
-ls seg/s*.mp4 | sort | sed "s/^/file '/; s/$/'/" > seg/list.txt
+(cd seg && ls s*.mp4 | sort | sed "s/^/file '/; s/$/'/") > seg/list.txt
 $FF -loglevel error -y -f concat -safe 0 -i seg/list.txt -c copy video.mp4
 echo "video frames: $($FF -hide_banner -i video.mp4 2>&1 | grep Duration)"
