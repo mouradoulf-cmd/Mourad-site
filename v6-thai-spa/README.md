@@ -7,7 +7,7 @@ Built with the `editorial-service-booking` skill: warm ivory palette +
 near-black chapters, serif Fraunces + sans-serif Inter, accessible
 treatment selector (keyboard + screen reader), cinematic GSAP/Lenis
 motion (preloader, fullscreen menu, custom cursor, scroll reveals,
-tilt cards, animated counters).
+animated counters).
 
 Static HTML / CSS / JS, no install, no build step.
 
@@ -29,30 +29,37 @@ Trenchtown. All real-world specifics (name, exact address, Google
 review count, Facebook page) have been removed or replaced with
 generic/illustrative copy.
 
-## Photos: still a placeholder, on purpose
+## Redesign with 21st.dev references
 
-No real photos are used — the hero and treatment sections are honestly
-labelled color-block placeholders. Several rounds of images sent for
-this demo turned out to be non-free (a Klook-watermarked photo, an
-Alamy-watermarked stock photo, and photos of real staff at two
-unrelated real massage shops) — none of those are safe to use, fictional
-demo or not, since using someone else's paid stock photo or a stranger's
-photo without consent stays a problem regardless of the site's name.
+The page was redone using components found through the 21st.dev MCP
+catalog as layout references, re-implemented in plain HTML/CSS/JS (no
+React, no build step — same as every other site in this repo):
 
-To finish this properly:
-- Photos genuinely licensed for reuse (e.g. downloaded from Unsplash,
-  which is free to use) — drop them into `assets/img/` and reference
-  them in `index.html` the way Giulivo does (`assets/js/vendor/` stays
-  library code only).
-- Or AI-generated original images (SYZEL, when connected in a Claude
-  Code session) — fully original, no licensing question.
+- Hero — "Editorial Image Hero": full-width photo band fading into the
+  paper, with a split tagline / large serif headline below.
+- About — "Editorial Collage Hero": two layered photos + count-up stats.
+- Treatments — "Hover Expand Gallery": hairline panels with vertical
+  labels; the open one expands to photo + details. Accessible accordion
+  (buttons with `aria-expanded`, arrow/Home/End keys, tap to open, no
+  hover dependency). Below 1024px it becomes a vertical accordion.
+- Booking — "Appointment Intake Match": 4-step request (treatment,
+  length, preferred time, details) with a live summary card. Choices are
+  kept in `sessionStorage`, and it sends an email *request* — it never
+  claims a slot is booked.
+
+## Photos
+
+`hero-treatment.jpg` and `hero-hot-stone.jpg` are genuine Unsplash
+downloads (free license). Foot reflexology and skin treatments still use
+labelled color-block placeholders. `hero-storefront.jpg` is **not used**:
+it shows a real business's sign ("Once Upon a Thai"), which contradicts
+the fictional Malee identity.
 
 ## Customization
 
 - Name, copy: `index.html`.
 - Palette / typography: CSS variables at the top of
   `assets/css/style.css`.
-- Treatment selector (accessible, keyboard + tab/tabpanel ARIA):
-  `assets/js/main.js`.
-- Motion (preloader, cursor, menu, counters, tilt, contact form):
+- Treatment panels, booking steps, scroll progress: `assets/js/main.js`.
+- Motion (preloader, cursor, menu, counters):
   `assets/js/premium.js` and `assets/js/animations.js`.
