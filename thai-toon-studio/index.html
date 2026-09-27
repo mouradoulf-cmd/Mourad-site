@@ -1469,7 +1469,7 @@
     var misses = 0;             // 404 consécutifs
     var lastChange = Date.now(), lastSig = "";
     var auth = { method: "GET", headers: { "Authorization": "Bearer " + apiKey() } };
-    var noop = function (m) { item.msg = m; renderQueueItem(item); };
+    var noop = function (m) { item.msg = m; renderQueueItem(item); renderStatusBar(); };
 
     async function ask(v) {
       try {
@@ -1496,6 +1496,7 @@
         item.status = "processing";
         item.msg = found ? "Réponse d'Agnes instable, nouvel essai…" : "Enregistrement de la tâche chez Agnes… (" + misses + ")";
         renderQueueItem(item);
+        renderStatusBar();
         continue;
       }
 
@@ -1654,7 +1655,17 @@
     q.forEach(function (x) { sum += x.status === "done" || x.status === "failed" ? 100 : x.progress || 0; });
     $("sbCount").textContent = finished + "/" + q.length;
     $("sbBar").style.width = (q.length ? sum / q.length : 0) + "%";
+    if (!detail) {
+      // Sans message précis : on affiche l'état réel de la scène en cours.
+      var cur = q.filter(function (x) { return x.status === "processing" || x.status === "creating"; })[0];
+      if (cur && cur.msg) detail = "Scène " + (q.indexOf(cur) + 1) + " : " + cur.msg;
+    }
     if (detail) $("sbDetail").textContent = detail;
+    // Sécurité : si toutes les scènes sont finies, la barre ne doit pas rester affichée.
+    if (state.running && q.length && finished === q.length) {
+      $("sbDetail").textContent = "Terminé ✓";
+      setTimeout(function () { if (q.every(function (x) { return x.status === "done" || x.status === "failed"; })) $("statusbar").hidden = true; }, 1500);
+    }
   }
 
   function setRunning(on) {
@@ -1781,6 +1792,7 @@
       removePending(it.videoId);
       it.msg = "Terminé ✓";
       renderQueueItem(it);
+      renderStatusBar();
       addToGallery({ id: uid(), url: url, name: it.photo.name, style: state.settings.style, date: Date.now() });
       toast("Scène prête : " + it.photo.name, "success");
     } catch (err) {
