@@ -118,6 +118,7 @@
   .btn-main:hover:not(:disabled) { background: var(--thai-dark); }
   .btn-stop { display: block; width: 100%; margin-top: 10px; color: var(--err); border-color: rgba(192, 57, 43, .4); font-weight: 600; }
   .btn-retry { display: block; width: 100%; margin-top: 10px; font-weight: 700; color: #7a5a00; background: #fff8e1; border-color: var(--warn); }
+  .logbox { max-height: 280px; overflow: auto; background: #111; color: #d7ffd9; font: 12px/1.45 ui-monospace, Menlo, Consolas, monospace; padding: 10px; border-radius: 10px; white-space: pre-wrap; word-break: break-all; margin: 0; }
   .btn-sm { padding: 7px 10px; font-size: .85rem; }
   .btn-ok { background: var(--ok); border-color: var(--ok); color: #fff; }
 
@@ -235,9 +236,20 @@
         <button type="button" class="btn-dark shrink" id="saveKey">Enregistrer la clé</button>
       </div>
       <p class="hint" id="keyStatus">Ta clé reste uniquement dans ce navigateur.</p>
+      <button type="button" id="diagBtn" style="width:100%;margin-top:10px">🔍 Diagnostic API</button>
       <p class="hint" id="speedInfo">📊 Vitesse moyenne : pas encore de mesure</p>
       <label class="switch"><span>☀️ Garder l'écran allumé<small id="wakeStatus">Inactif</small></span>
         <span class="tog"><input type="checkbox" id="wakeToggle"><i></i></span></label>
+    </div>
+  </section>
+
+  <!-- ============================ JOURNAL ============================ -->
+  <section class="panel closed" id="pLog">
+    <button type="button" class="ph"><span class="ttl">🧾 Journal technique</span><span class="meta" id="logCount">0 ligne</span><i class="chev"></i></button>
+    <div class="pb">
+      <p class="hint" style="margin-top:0">Tout ce qu'Agnes répond (utile sur iPhone, où la console n'est pas visible).</p>
+      <pre id="logBox" class="logbox"></pre>
+      <div class="row" style="margin-top:8px"><button type="button" id="logCopy" class="btn-sm">📋 Copier le journal</button><button type="button" id="logClear" class="btn-sm">Effacer</button></div>
     </div>
   </section>
 
@@ -434,7 +446,19 @@ function satErr(msg) { const e = new Error(msg); e.saturated = true; return e; }
 const SATURATED_RE = /429|satur|overload|busy|queue.?full|bloqu/i;
 
 // Journal console (détails techniques)
-function log(msg) { console.log('[Disney Thai] ' + msg); }
+const logLines = [];
+function log(msg) {
+  console.log('[Disney Thai] ' + msg);
+  const t = new Date().toLocaleTimeString('fr-FR');
+  logLines.push(t + '  ' + msg);
+  if (logLines.length > 300) logLines.shift();
+  const box = document.getElementById('logBox');
+  if (box) {
+    box.textContent = logLines.join('\n');
+    box.scrollTop = box.scrollHeight;
+    document.getElementById('logCount').textContent = logLines.length + (logLines.length > 1 ? ' lignes' : ' ligne');
+  }
+}
 
 function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* stockage indisponible */ } }
@@ -508,14 +532,61 @@ function refreshKeyUI() {
     : 'Ta clé reste uniquement dans ce navigateur.';
   $('apiKey').placeholder = k ? '•••••••• (enregistrée)' : 'sk-...';
 }
-$('saveKey').addEventListener('click', () => {
+// Test de la clé sur /v1/models (appel léger, hors génération vidéo)
+async function testApiKey() {
+  const key = getKey();
+  if (!key) { toast('Aucune clé enregistrée.', 'warn'); return false; }
+  log('[Clé] Test sur ' + API_BASE + '/models …');
+  try {
+    const res = await fetch(API_BASE + '/models', { method: 'GET', headers: { 'Authorization': 'Bearer ' + key } });
+    const body = await res.text().catch(() => '');
+    log('[Clé] HTTP ' + res.status + ' · ' + body.slice(0, 300));
+    if (res.status === 401 || res.status === 403) {
+      log('❌ Clé API invalide (' + res.status + '). Vérifie sur platform.agnes-ai.com');
+      toast('Clé API invalide ou expirée (' + res.status + ')', 'err', 6000);
+      return false;
+    }
+    if (res.ok) {
+      const hasVideo = /agnes-video/.test(body);
+      log('✅ Clé API valide' + (hasVideo ? ' · modèles vidéo visibles' : ''));
+      toast('✅ Clé API valide' + (hasVideo ? ' (modèles vidéo disponibles)' : ''), 'ok', 5000);
+      return true;
+    }
+    log('⚠️ Test clé : HTTP ' + res.status);
+    toast('Test de la clé : réponse HTTP ' + res.status + ' (voir le journal)', 'warn', 6000);
+    return true;
+  } catch (e) {
+    log('❌ Test clé échoué : ' + e.message);
+    toast('Impossible de joindre Agnes : ' + e.message, 'err', 6000);
+    return false;
+  }
+}
+
+$('saveKey').addEventListener('click', async () => {
   const k = $('apiKey').value.trim().replace(/^Bearer\s+/i, '');
   if (!k) { toast('Colle d\'abord ta clé sk-...', 'warn'); return; }
   lsSet(KEY_STORAGE, k);
   $('apiKey').value = '';
   refreshKeyUI();
-  toast('Clé enregistrée ✓', 'ok');
+  toast('Clé enregistrée ✓ · test en cours…', 'ok');
+  await testApiKey();
 });
+
+$('diagBtn').addEventListener('click', async () => {
+  $('pLog').classList.remove('closed');
+  log('===== Diagnostic API =====');
+  log('Navigateur : ' + navigator.userAgent);
+  log('Base : ' + API_BASE + ' · Suivi : ' + POLL_BASE + ' · Modèle : ' + MODEL_VIDEO);
+  const k = getKey();
+  log('Clé : ' + (k ? k.slice(0, 5) + '…' + k.slice(-4) + ' (' + k.length + ' caractères)' : 'absente'));
+  await testApiKey();
+});
+$('logCopy').addEventListener('click', async () => {
+  const txt = logLines.join('\n');
+  try { await navigator.clipboard.writeText(txt); toast('Journal copié ✓', 'ok'); }
+  catch (e) { window.prompt('Copie le journal :', txt); }
+});
+$('logClear').addEventListener('click', () => { logLines.length = 0; log('Journal effacé'); });
 $('apiKey').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); $('saveKey').click(); } });
 
 /* =================================================================
@@ -880,11 +951,13 @@ async function createVideoTask(image, frames) {
   }
   let data = {};
   try { data = JSON.parse(text); } catch (e) { /* réponse non JSON */ }
-  // UNIQUEMENT video_id pour le suivi (jamais task_id ni id)
-  const videoId = data.video_id;
-  if (!videoId) throw new Error('Pas de video_id retourné par l\'API');
-  log('[Image] video_id récupéré : ' + videoId);
-  return videoId;
+  // On garde TOUS les identifiants : le suivi essaiera chacun jusqu'à trouver le bon
+  log('[Création] réponse brute : ' + text.slice(0, 400));
+  const videoId = data.video_id || data.id || data.task_id;
+  const taskId = data.task_id || data.id || null;
+  if (!videoId) throw new Error('Aucun identifiant retourné par l\'API');
+  log('IDs reçus : video_id=' + videoId + ' task_id=' + taskId);
+  return { videoId, taskId };
 }
 
 /* L'API renvoie parfois un video_id « emballé » (video_ + base64) qui contient
@@ -901,19 +974,37 @@ function unwrapVideoId(id) {
   } catch (e) { return id; }
 }
 
-/* Deux façons valides d'interroger Agnes (doc : model_name va avec l'ID d'origine) :
-   1) ID d'origine + model_name   2) ID emballé seul, sans model_name */
+/* Tous les formats de suivi possibles, du plus probable au moins probable.
+   On passe au suivant tant qu'Agnes ne renvoie pas de statut, puis on garde celui qui marche. */
 function pollUrls(item) {
-  const real = unwrapVideoId(item.videoId);
-  const list = [POLL_BASE + '?video_id=' + encodeURIComponent(real) + '&model_name=' + encodeURIComponent(MODEL_VIDEO)];
-  if (real !== item.videoId) list.push(POLL_BASE + '?video_id=' + encodeURIComponent(item.videoId));
+  const wrapped = item.videoId;
+  const real = unwrapVideoId(wrapped);
+  const mn = '&model_name=' + encodeURIComponent(MODEL_VIDEO);
+  const list = [];
+  const add = (label, url) => { if (!list.some((x) => x.url === url)) list.push({ label, url }); };
+  if (real !== wrapped) add('ID emballé seul', POLL_BASE + '?video_id=' + encodeURIComponent(wrapped));
+  add('ID + model_name', POLL_BASE + '?video_id=' + encodeURIComponent(real) + mn);
+  if (real !== wrapped) add('/v1/videos/ID emballé', API_BASE + '/videos/' + encodeURIComponent(wrapped));
+  add('/v1/videos/ID', API_BASE + '/videos/' + encodeURIComponent(real));
+  if (real !== wrapped) add('ID emballé + model_name', POLL_BASE + '?video_id=' + encodeURIComponent(wrapped) + mn);
+  add('ID seul', POLL_BASE + '?video_id=' + encodeURIComponent(real));
+  if (item.taskId && item.taskId !== wrapped && item.taskId !== real) {
+    add('task_id + model_name', POLL_BASE + '?task_id=' + encodeURIComponent(item.taskId) + mn);
+    add('video_id=task_id + model_name', POLL_BASE + '?video_id=' + encodeURIComponent(item.taskId) + mn);
+    add('/v1/videos/task_id', API_BASE + '/videos/' + encodeURIComponent(item.taskId));
+  }
+  add('/agnesapi/ID', POLL_BASE + '/' + encodeURIComponent(real));
+  add('/agnesapi/task/ID', POLL_BASE + '/task/' + encodeURIComponent(real));
   return list;
 }
 
 async function pollVideo(item) {
   const urls = pollUrls(item);
   let ui = 0;
-  if (urls.length > 1) log('[Image] ID d\'origine : ' + unwrapVideoId(item.videoId));
+  let found = false;        // un format a déjà renvoyé un statut
+  let failStreak = 0;       // échecs consécutifs
+  if (unwrapVideoId(item.videoId) !== item.videoId) log('[Image] ID d\'origine (décodé) : ' + unwrapVideoId(item.videoId));
+  log('[Polling] ' + urls.length + ' formats possibles : ' + urls.map((u) => u.label).join(' | '));
   for (let attempt = 1; attempt <= POLL_MAX_TRIES; attempt++) {
     checkStop();
     // Au moins 30 s entre deux vérifications (le throttle impose ensuite ses 65 s)
@@ -921,8 +1012,9 @@ async function pollVideo(item) {
     if (since < POLL_INTERVAL_MS) await sleep(POLL_INTERVAL_MS - since);
     checkStop();
 
-    const url = urls[ui];
-    log('[Polling] GET ' + url.replace(POLL_BASE, ''));
+    const cand = urls[ui];
+    const url = cand.url;
+    log('[Polling] essai ' + attempt + ' · format « ' + cand.label + ' » · GET ' + url);
     item.msg = 'Vérification n°' + attempt + '…';
     renderQueue();
     const res = await agnesRequest(url, { method: 'GET', headers: { 'Authorization': 'Bearer ' + getKey() } }, 'Suivi image ' + (item.index + 1));
@@ -931,9 +1023,14 @@ async function pollVideo(item) {
     if (!res.ok) {
       const t = await res.text().catch(() => '');
       console.error('[Agnes] suivi HTTP ' + res.status, t);
-      if (res.status === 401 || res.status === 403) throw new Error('Clé API refusée pendant le suivi (' + res.status + ').');
-      ui = (ui + 1) % urls.length; // l'autre forme d'URL au prochain essai
-      item.msg = 'Agnes ne répond pas encore (' + res.status + '), on réessaie…';
+      log('[Polling] ❌ HTTP ' + res.status + ' (« ' + cand.label + ' ») · ' + t.slice(0, 200));
+      if (res.status === 401 || res.status === 403) throw new Error('Clé API refusée pendant le suivi (' + res.status + '). Lance « 🔍 Diagnostic API ».');
+      failStreak++;
+      if (!found && failStreak >= urls.length * 3) {
+        throw new Error('Aucun format de suivi ne fonctionne (404 partout). Lance « 🔍 Diagnostic API » et envoie le journal.');
+      }
+      if (!found || failStreak >= 3) ui = (ui + 1) % urls.length; // format suivant
+      item.msg = 'Agnes : HTTP ' + res.status + ' · essai d\'un autre format (' + (ui + 1) + '/' + urls.length + ')…';
       renderQueue();
       continue;
     }
@@ -942,14 +1039,34 @@ async function pollVideo(item) {
     try { d = JSON.parse(raw); } catch (e) { /* réponse non JSON */ }
     log('[Polling] status=' + (d.status || 'unknown') + ' progress=' + (d.progress || 0) + '%');
     log('[Polling] réponse brute : ' + raw.slice(0, 400));
-    if (!d.status) ui = (ui + 1) % urls.length; // réponse sans statut : on essaie l'autre forme
+    if (!d.status) {
+      failStreak++;
+      if (!found || failStreak >= 3) ui = (ui + 1) % urls.length; // réponse sans statut : format suivant
+      item.msg = 'Réponse sans statut · essai d\'un autre format…';
+      renderQueue();
+      continue;
+    }
+    if (!found) log('[Polling] ✅ Format qui fonctionne : « ' + cand.label + ' »');
+    found = true;
+    failStreak = 0;
     const st = String(d.status || '').toLowerCase();
     const pr = Math.max(0, Math.min(100, Number(d.progress) || 0));
 
     if (/complet|succe|done/.test(st)) {
-      const link = (d.metadata && d.metadata.url) || d.url || (d.output && d.output.url) || d.remixed_from_video_id;
-      if (!link) throw new Error('Terminé mais sans lien vidéo');
-      return link;
+      const link = (d.metadata && d.metadata.url) || d.url || (d.output && d.output.url) || (d.result && d.result.url) || (d.data && d.data.url) || d.remixed_from_video_id;
+      if (link) return link;
+      // Format « /v1/videos/ID » : le fichier se télécharge sur /content (avec la clé)
+      if (url.indexOf(API_BASE + '/videos/') === 0) {
+        log('[Polling] terminé sans lien : téléchargement via ' + url + '/content');
+        const cr = await agnesRequest(url + '/content', { method: 'GET', headers: { 'Authorization': 'Bearer ' + getKey() } }, 'Récupération vidéo');
+        if (cr.ok) {
+          const blob = await cr.blob();
+          log('[Polling] vidéo récupérée (' + Math.round(blob.size / 1024) + ' Ko)');
+          return URL.createObjectURL(blob);
+        }
+        log('[Polling] ❌ /content HTTP ' + cr.status);
+      }
+      throw new Error('Terminé mais sans lien vidéo (voir le journal)');
     }
     if (/fail|error|cancel/.test(st)) {
       const why = (d.error && (d.error.message || d.error)) || d.message || 'Agnes n\'a pas pu créer la vidéo';
@@ -1099,7 +1216,9 @@ async function processItem(item, frames, lines) {
     item.status = 'create';
     item.msg = 'Envoi de la photo à Agnes…';
     renderQueue();
-    item.videoId = await createVideoTask(item.image, frames);
+    const ids = await createVideoTask(item.image, frames);
+    item.videoId = ids.videoId;
+    item.taskId = ids.taskId;
     item.startTime = Date.now();
     item.lastPollAt = item.startTime;
     item.status = 'proc';
