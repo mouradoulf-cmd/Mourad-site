@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>ชาวนาตัวน้อย — ต้นข้าวต้นแรก</title>
+<style>
+@font-face{font-family:K;font-weight:700;src:url(kanit-thai-700-normal.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:K;font-weight:700;src:url(kanit-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:K;font-weight:500;src:url(kanit-thai-500-normal.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:K;font-weight:500;src:url(kanit-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:K,sans-serif}
+svg{position:absolute;inset:0;display:block}
+.sub{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);padding:14px 38px 18px;border-radius:40px;
+ background:rgba(20,24,30,.62);color:#fff;font-weight:500;font-size:50px;line-height:1.25;white-space:nowrap;opacity:0;
+ text-shadow:0 2px 0 rgba(0,0,0,.35)}
+.sub.boy{color:#FFE27A}
+.sub .who{font-size:34px;opacity:.85;margin-right:14px;color:#9FE0FF}
+#title,#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.t1{font-weight:700;font-size:170px;color:#FFF6D8;-webkit-text-stroke:10px #6B3A1E;paint-order:stroke fill;
+ text-shadow:0 12px 0 #3E2210,0 22px 40px rgba(0,0,0,.35);letter-spacing:2px;line-height:1.15}
+.t2{margin-top:10px;font-weight:500;font-size:64px;color:#fff;background:#D9453B;padding:6px 40px 12px;border-radius:50px;
+ box-shadow:0 8px 0 #8E2A22}
+.e1{font-weight:700;font-size:220px;color:#FFE27A;-webkit-text-stroke:12px #6B3A1E;paint-order:stroke fill;text-shadow:0 14px 0 #3E2210}
+.e2{font-weight:500;font-size:60px;color:#fff;margin-top:6px;text-shadow:0 4px 0 rgba(0,0,0,.4)}
+#black{position:absolute;inset:0;background:#000;opacity:0}
+#endBg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(40,20,10,.72),rgba(40,20,10,.35) 60%,rgba(0,0,0,.15));opacity:0}
+</style>
+</head>
+<body>
+<div id="stage">
+<svg id="svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <linearGradient id="gDay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6EC6F0"/><stop offset=".7" stop-color="#BFE8F7"/><stop offset="1" stop-color="#FFF4D6"/></linearGradient>
+ <linearGradient id="gDawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B6FB5"/><stop offset=".45" stop-color="#F29A8E"/><stop offset=".8" stop-color="#FFD08A"/><stop offset="1" stop-color="#FFF0C9"/></linearGradient>
+ <linearGradient id="gStorm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E6B7C"/><stop offset="1" stop-color="#A9B6C2"/></linearGradient>
+ <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7A25A"/><stop offset=".55" stop-color="#FFD27E"/><stop offset="1" stop-color="#FFF1C4"/></linearGradient>
+ <radialGradient id="gSun"><stop offset="0" stop-color="#FFF7C2"/><stop offset=".35" stop-color="#FFE066" stop-opacity=".9"/><stop offset="1" stop-color="#FFB84D" stop-opacity="0"/></radialGradient>
+ <linearGradient id="gWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ED7D2"/><stop offset="1" stop-color="#4F9CA6"/></linearGradient>
+ <linearGradient id="gMud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A6A45"/><stop offset="1" stop-color="#6B4F33"/></linearGradient>
+ <pattern id="pPaka" width="24" height="14" patternUnits="userSpaceOnUse"><rect width="24" height="14" fill="#D9453B"/><rect x="0" width="6" height="14" fill="#F4E6D8" opacity=".85"/><rect y="5" width="24" height="4" fill="#9E2A22" opacity=".6"/></pattern>
+ <clipPath id="cGold"><rect id="goldClip" x="0" y="0" width="0" height="1080"/></clipPath>
+ <clipPath id="cFrame"><rect width="1920" height="1080"/></clipPath>
+</defs>
+<g clip-path="url(#cFrame)">
+<g id="world">
+ <rect width="1920" height="1080" fill="url(#gDay)"/>
+ <rect id="skyDawn" width="1920" height="1080" fill="url(#gDawn)"/>
+ <rect id="skyStorm" width="1920" height="1080" fill="url(#gStorm)" opacity="0"/>
+ <rect id="skyGold" width="1920" height="1080" fill="url(#gGold)" opacity="0"/>
+ <g id="rainbow" opacity="0"></g>
+ <g id="sun"><circle r="230" fill="url(#gSun)"/><circle r="92" fill="#FFE45C"/><circle r="92" fill="none" stroke="#FFC93C" stroke-width="10"/></g>
+ <g id="mountains"></g>
+ <g id="clouds"></g>
+ <g id="storm" opacity="0"></g>
+ <g id="land">
+  <g id="village"></g>
+  <g id="fieldGreen"></g>
+  <g id="fieldGold" clip-path="url(#cGold)"></g>
+  <g id="dike"></g>
+  <g id="birds"></g>
+  <g id="buffWide"></g>
+  <g id="boyWide"></g>
+  <g id="hearts"></g>
+  <g id="front"></g>
+ </g>
+ <g id="close" opacity="0">
+  <g id="bank"></g>
+  <rect x="0" y="640" width="1920" height="440" fill="url(#gWater)"/>
+  <g id="ripplesBg"></g>
+  <g id="plant"></g>
+  <g id="rings"></g>
+  <g id="boyClose"></g>
+  <rect x="0" y="905" width="1920" height="175" fill="#5AA6AE" opacity=".78"/>
+  <g id="waterLines"></g>
+  <g id="sparkles"></g>
+ </g>
+ <g id="rain" opacity="0"></g>
+</g>
+</g>
+</svg>
+<div id="title"><div class="t1" id="t1">ชาวนาตัวน้อย</div><div class="t2" id="t2">ตอน ต้นข้าวต้นแรก</div></div>
+<div id="subs"></div>
+<div id="endBg"></div>
+<div id="end"><div class="e1" id="e1">จบ</div><div class="e2" id="e2">ติดตามตอนต่อไปนะ</div></div>
+<div id="black"></div>
+</div>
+<script src="gsap.min.js"></script>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+function el(tag,attrs,parent,html){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(html)e.innerHTML=html;if(parent)parent.appendChild(e);return e;}
+let seed=11;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};
+
+/* ---------- decor ---------- */
+function cloud(p,x,y,s,col){const g=el('g',{transform:`translate(${x},${y}) scale(${s})`},p);
+ [[0,0,70],[70,-25,85],[150,0,70],[75,20,75],[-50,15,50],[200,18,48]].forEach(([cx,cy,r])=>el('circle',{cx,cy,r,fill:col},g));return g;}
+function mountains(){const m=$('mountains');
+ el('path',{d:'M0,720 L0,560 Q180,430 360,540 Q520,380 720,520 Q900,410 1080,530 Q1280,400 1480,520 Q1680,430 1920,540 L1920,720Z',fill:'#8FB9C9'},m);
+ el('path',{d:'M0,720 L0,610 Q240,520 480,600 Q700,520 960,610 Q1200,530 1440,600 Q1700,520 1920,600 L1920,720Z',fill:'#79AE8F'},m);}
+function palm(p,x,y,h,s){const g=el('g',{transform:`translate(${x},${y}) scale(${s})`},p);
+ el('path',{d:`M-7,0 L-4,${-h} L4,${-h} L7,0Z`,fill:'#6B4A2E'},g);
+ const c=el('g',{transform:`translate(0,${-h})`},g);
+ for(let i=0;i<14;i++){const a=i/14*Math.PI*2;el('path',{d:`M0,0 L${Math.cos(a-0.12)*55},${Math.sin(a-0.12)*40} L${Math.cos(a)*78},${Math.sin(a)*58} L${Math.cos(a+0.12)*55},${Math.sin(a+0.12)*40}Z`,fill:i%2?'#2F7D3A':'#3F9447'},c);}
+ el('circle',{r:14,fill:'#2A6B31'},c);return g;}
+function house(p,x,y,s){const g=el('g',{transform:`translate(${x},${y}) scale(${s})`},p);
+ [-70,-25,25,70].forEach(sx=>el('rect',{x:sx-5,y:-60,width:10,height:60,fill:'#5B3B22'},g));
+ el('rect',{x:-90,y:-150,width:180,height:92,fill:'#A8743F'},g);
+ for(let i=0;i<9;i++)el('rect',{x:-90+i*20,y:-150,width:3,height:92,fill:'#8B5E30'},g);
+ el('rect',{x:-20,y:-125,width:40,height:67,fill:'#5B3B22'},g);
+ el('path',{d:'M-120,-146 L0,-265 L120,-146Z',fill:'#8A3B24'},g);
+ el('path',{d:'M-120,-146 L0,-265 L120,-146',fill:'none',stroke:'#5E2616','stroke-width':8},g);
+ el('path',{d:'M0,-265 q-6,-24 12,-34',fill:'none',stroke:'#5E2616','stroke-width':7,'stroke-linecap':'round'},g);
+ el('rect',{x:-100,y:-64,width:200,height:8,fill:'#5B3B22'},g);return g;}
+function field(p,base,tuft,grain){
+ el('rect',{x:0,y:688,width:1920,height:392,fill:base},p);
+ let y=700,row=0;
+ while(y<1100){const sz=10+(y-690)/10;let d='';
+  for(let x=-40+(row%2)*sz;x<1960;x+=sz*1.6){d+=`M${x},${y} l${sz*.35},${-sz*1.6} l${sz*.3},${sz*1.2} l${sz*.25},${-sz*1.9} l${sz*.25},${sz*1.9} l${sz*.3},${-sz*1.2} l${sz*.35},${sz*1.6}Z `;}
+  el('path',{d,fill:tuft},p);
+  if(grain){for(let x=(row%2)*sz;x<1920;x+=sz*3.2)el('circle',{cx:x+sz*.8,cy:y-sz*1.9,r:sz*.16,fill:grain},p);}
+  y+=sz*1.15;row++;}}
+function dike(){const d=$('dike');
+ el('path',{d:'M-20,835 Q480,800 960,818 T1940,812 L1940,872 Q1440,880 960,876 T-20,892Z',fill:'#C19A67'},d);
+ el('path',{d:'M-20,835 Q480,800 960,818 T1940,812',fill:'none',stroke:'#D8B988','stroke-width':6},d);
+ for(let i=0;i<40;i++){const x=i*50+rnd()*20;el('path',{d:`M${x},${878+rnd()*8} l6,-16 l6,14 l6,-20 l6,20`,fill:'#6FAF4B'},d);}}
+
+/* ---------- characters ---------- */
+function boy(p,id){const B=el('g',{id},p);const body=el('g',{id:id+'_body'},B);
+ const legL=el('g',{id:id+'_legL'},body),legR=el('g',{id:id+'_legR'},body);
+ el('rect',{x:-26,y:-72,width:17,height:70,rx:8,fill:'#E9B27E'},legL);el('ellipse',{cx:-18,cy:-2,rx:16,ry:7,fill:'#6B3A1E'},legL);
+ el('rect',{x:9,y:-72,width:17,height:70,rx:8,fill:'#E9B27E'},legR);el('ellipse',{cx:18,cy:-2,rx:16,ry:7,fill:'#6B3A1E'},legR);
+ el('path',{d:'M-38,-112 L38,-112 L40,-66 L4,-66 L0,-80 L-4,-66 L-40,-66Z',fill:'#5B3A29'},body);
+ const armL=el('g',{id:id+'_armL'},body),armR=el('g',{id:id+'_armR'},body);
+ el('rect',{x:-58,y:-186,width:24,height:78,rx:12,fill:'#E9B27E'},armL);el('rect',{x:-58,y:-188,width:24,height:36,rx:10,fill:'#2E4A7D'},armL);el('circle',{cx:-46,cy:-106,r:13,fill:'#F2BE8C'},armL);
+ el('rect',{x:34,y:-186,width:24,height:78,rx:12,fill:'#E9B27E'},armR);el('rect',{x:34,y:-188,width:24,height:36,rx:10,fill:'#2E4A7D'},armR);el('circle',{cx:46,cy:-106,r:13,fill:'#F2BE8C'},armR);
+ el('rect',{x:-42,y:-194,width:84,height:92,rx:22,fill:'#2E4A7D'},body);
+ el('path',{d:'M-16,-194 L0,-170 L16,-194',fill:'none',stroke:'#1F3358','stroke-width':6,'stroke-linejoin':'round'},body);
+ el('rect',{x:-44,y:-122,width:88,height:16,rx:6,fill:'url(#pPaka)'},body);
+ el('path',{d:'M26,-110 l14,34 l-16,-6Z',fill:'#D9453B'},body);
+ const head=el('g',{id:id+'_head'},body);
+ el('circle',{cx:-60,cy:-252,r:15,fill:'#F2BE8C'},head);el('circle',{cx:60,cy:-252,r:15,fill:'#F2BE8C'},head);
+ el('circle',{cx:0,cy:-255,r:63,fill:'#F5C896'},head);
+ el('path',{d:'M-58,-270 Q-40,-318 0,-316 Q42,-318 58,-270 Q30,-292 12,-282 Q0,-296 -14,-282 Q-34,-294 -58,-270Z',fill:'#2B1D14'},head);
+ el('path',{d:'M-34,-280 q10,-6 20,0 M14,-280 q10,-6 20,0',fill:'none',stroke:'#2B1D14','stroke-width':5,'stroke-linecap':'round'},head);
+ const eyes=el('g',{id:id+'_eyes'},head);
+ [[-23],[23]].forEach(([x])=>{el('ellipse',{cx:x,cy:-256,rx:10,ry:14,fill:'#1D1410'},eyes);el('circle',{cx:x+3,cy:-261,r:4,fill:'#fff'},eyes);});
+ el('ellipse',{cx:-40,cy:-232,rx:12,ry:8,fill:'#F28B82',opacity:.6},head);el('ellipse',{cx:40,cy:-232,rx:12,ry:8,fill:'#F28B82',opacity:.6},head);
+ el('path',{d:'M-3,-242 q3,4 6,0',fill:'none',stroke:'#C98B5E','stroke-width':3},head);
+ el('path',{id:id+'_mC',d:'M-16,-226 Q0,-212 16,-226',fill:'none',stroke:'#7A2E24','stroke-width':5,'stroke-linecap':'round'},head);
+ const mO=el('g',{id:id+'_mO',opacity:0},head);
+ el('path',{d:'M-16,-229 Q0,-200 16,-229Z',fill:'#8B2E2E'},mO);el('ellipse',{cx:0,cy:-212,rx:7,ry:4,fill:'#E77A7A'},mO);
+ const hat=el('g',{id:id+'_hat'},head);
+ el('path',{d:'M-128,-292 Q0,-392 128,-292 Q0,-270 -128,-292Z',fill:'#E3B35F'},hat);
+ el('path',{d:'M-128,-292 Q0,-270 128,-292',fill:'none',stroke:'#B9843A','stroke-width':6},hat);
+ for(let i=-3;i<=3;i++)el('path',{d:`M${i*34},${-285+Math.abs(i)*2} L0,-362`,stroke:'#C9934A','stroke-width':3},hat);
+ el('path',{d:'M-70,-302 Q0,-330 70,-302',fill:'none',stroke:'#D9453B','stroke-width':8},hat);
+ return B;}
+function buffalo(p,id){const B=el('g',{id},p);const body=el('g',{id:id+'_body'},B);
+ const tail=el('g',{id:id+'_tail'},body);el('path',{d:'M-160,-150 Q-205,-120 -196,-62',fill:'none',stroke:'#56626F','stroke-width':9,'stroke-linecap':'round'},tail);el('ellipse',{cx:-196,cy:-56,rx:10,ry:16,fill:'#3E4852'},tail);
+ const legs=[];[[-118,'a'],[-78,'b'],[72,'c'],[112,'d']].forEach(([x,k])=>{const g=el('g',{id:id+'_leg'+k},body);el('rect',{x:x-14,y:-80,width:28,height:78,rx:10,fill:k=='b'||k=='d'?'#4F5A66':'#5B6775'},g);el('rect',{x:x-15,y:-14,width:30,height:14,rx:5,fill:'#2F363D'},g);legs.push(g);});
+ el('ellipse',{cx:0,cy:-128,rx:172,ry:86,fill:'#6D7A8C'},body);
+ el('ellipse',{cx:10,cy:-98,rx:120,ry:42,fill:'#8592A3'},body);
+ const head=el('g',{id:id+'_head'},body);
+ el('ellipse',{cx:190,cy:-185,rx:72,ry:60,fill:'#768498'},head);
+ el('ellipse',{cx:125,cy:-218,rx:30,ry:14,fill:'#5E6B7C',transform:'rotate(-25 125 -218)'},head);
+ el('ellipse',{cx:252,cy:-222,rx:28,ry:13,fill:'#5E6B7C',transform:'rotate(25 252 -222)'},head);
+ el('path',{d:'M150,-228 Q70,-262 92,-196 Q98,-238 160,-214Z',fill:'#F1E7D3'},head);
+ el('path',{d:'M228,-228 Q308,-262 286,-196 Q280,-238 218,-214Z',fill:'#F1E7D3'},head);
+ el('ellipse',{cx:200,cy:-150,rx:48,ry:32,fill:'#E9ABA6'},head);
+ el('ellipse',{cx:184,cy:-150,rx:7,ry:9,fill:'#8E4D4A'},head);el('ellipse',{cx:216,cy:-150,rx:7,ry:9,fill:'#8E4D4A'},head);
+ const eyes=el('g',{id:id+'_eyes'},head);
+ [[166],[214]].forEach(([x])=>{el('ellipse',{cx:x,cy:-196,rx:9,ry:12,fill:'#1D1410'},eyes);el('circle',{cx:x+3,cy:-200,r:3.5,fill:'#fff'},eyes);});
+ el('path',{d:'M172,-122 Q190,-100 212,-122',fill:'none',stroke:'#A0B0C0','stroke-width':6},head);
+ el('circle',{cx:192,cy:-104,r:14,fill:'#F2C14E',stroke:'#B98A1E','stroke-width':4},head);
+ return B;}
+function plant(p){const g=el('g',{id:'pl'},p);
+ const leaves=[['M0,0 C-4,-60 -30,-110 -70,-150','#4CAF50'],['M0,0 C4,-70 30,-120 64,-170','#5CBF5A'],['M0,0 C0,-80 -6,-150 -2,-200','#43A047'],
+  ['M0,0 C-10,-50 -60,-80 -110,-95','#66BB6A'],['M0,0 C10,-55 60,-90 110,-110','#4CAF50'],['M0,0 C-2,-90 -40,-170 -48,-230','#57B85A'],['M0,0 C2,-95 40,-180 36,-240','#3E9B45']];
+ leaves.forEach(([d,c],i)=>el('path',{id:'lf'+i,d,fill:'none',stroke:c,'stroke-width':12,'stroke-linecap':'round'},g));
+ const gr=el('g',{id:'grains',opacity:0},g);
+ [[-48,-230],[36,-240],[-2,-200]].forEach(([x,y],k)=>{for(let i=0;i<7;i++)el('ellipse',{cx:x+(k?4:-4)*i*0.9,cy:y+i*13,rx:7,ry:11,fill:'#F2B632',stroke:'#C88A12','stroke-width':2},gr);});
+ return g;}
+
+/* ---------- build scene ---------- */
+mountains();
+cloud($('clouds'),150,190,1,'#fff').id='c1';cloud($('clouds'),1300,140,1.2,'#fff').id='c2';cloud($('clouds'),760,300,.7,'#fff').id='c3';
+const st=$('storm');[[-100,170,1.8],[500,120,2.1],[1150,180,1.9],[1650,110,1.7],[250,300,1.5],[1400,320,1.6]].forEach(([x,y,s])=>cloud(st,x,y,s,'#7D8896'));
+const rb=$('rainbow');['#E8505B','#F59E42','#F7D154','#6BC96B','#4DA6E8','#8C6BD9'].forEach((c,i)=>el('path',{class:'rbArc',d:`M${260+i*26},900 A${700-i*26},${620-i*26} 0 0 1 ${1660-i*26},900`,fill:'none',stroke:c,'stroke-width':26,opacity:.75,'pathLength':1,'stroke-dasharray':1,'stroke-dashoffset':1},rb));
+const V=$('village');palm(V,180,700,300,1);palm(V,300,705,240,.9);house(V,560,700,.9);palm(V,1560,700,320,1);house(V,1330,705,.75);palm(V,1760,705,250,.85);palm(V,980,700,200,.7);
+field($('fieldGreen'),'#8BCF5E','#5FAF45',null);field($('fieldGold'),'#F2C14E','#D99A26','#FFE08A');dike();
+const fr=$('front');for(let i=0;i<22;i++){const x=i*92+rnd()*40;el('path',{d:`M${x},1085 l14,-70 l12,56 l14,-90 l14,90 l12,-56 l14,70Z`,fill:i%2?'#4E9E3C':'#5DB049'},fr);}
+boy($('boyWide'),'bw');buffalo($('buffWide'),'fw');
+const hs=$('hearts');for(let i=0;i<5;i++){const hg=el('g',{transform:`translate(${1000+i*40},560)`},hs);el('path',{class:'heart',d:'M0,0 C-20,-22 -44,4 0,34 C44,4 20,-22 0,0Z',fill:'#FF6B8A',opacity:0},hg);}
+const bd=$('birds');for(let i=0;i<5;i++){const g=el('g',{class:'bird'},bd);el('path',{class:'wing',d:'M-26,0 Q-13,-16 0,0 Q13,-16 26,0',fill:'none',stroke:'#3B3B4F','stroke-width':6,'stroke-linecap':'round'},g);}
+/* close-up */
+const bk=$('bank');el('rect',{x:0,y:600,width:1920,height:60,fill:'#7DBF5A'},bk);for(let x=0;x<1920;x+=38)el('path',{d:`M${x},640 l8,-40 l6,32 l8,-52 l8,52 l6,-32 l8,40Z`,fill:'#4F9E3E'},bk);
+const rbg=$('ripplesBg');for(let i=0;i<14;i++)el('ellipse',{cx:rnd()*1920,cy:700+rnd()*200,rx:60+rnd()*80,ry:6,fill:'#fff',opacity:.18},rbg);
+plant($('plant'));
+const rg=$('rings');for(let i=0;i<3;i++)el('ellipse',{class:'ring',cx:960,cy:905,rx:40,ry:10,fill:'none',stroke:'#fff','stroke-width':5,opacity:0},rg);
+boy($('boyClose'),'bc');
+const wl=$('waterLines');for(let i=0;i<9;i++)el('path',{class:'wl',d:`M${i*230-60},${930+(i%3)*40} q40,-10 80,0 t80,0`,fill:'none',stroke:'#fff','stroke-width':4,opacity:.35},wl);
+const sp=$('sparkles');for(let i=0;i<12;i++){const a=i/12*Math.PI*2;el('path',{class:'spk',d:'M0,-22 L6,-6 L22,0 L6,6 L0,22 L-6,6 L-22,0 L-6,-6Z',fill:'#FFF3A6',opacity:0,transform:`translate(${960+Math.cos(a)*210},${720+Math.sin(a)*170})`},sp);}
+const rn=$('rain');for(let i=0;i<150;i++){const X=rnd()*2100,Y=-60-rnd()*1100;el('line',{class:'drop',x1:X,y1:Y,x2:X-10,y2:Y+42,stroke:'#DDEBFA','stroke-width':4,'stroke-linecap':'round',opacity:.8},rn);}
+
+/* subtitles */
+const SUBS=[
+ [6.0,8.95,'ณ หมู่บ้านเล็กๆ กลางทุ่งนาสีเขียว'],[9.4,12.05,'มีเด็กชายคนหนึ่ง ชื่อน้องข้าว'],
+ [12.4,14.8,'สวัสดีครับ! ผมชื่อน้องข้าว','boy'],[16.9,20.35,'และนี่คือเพื่อนรักของเขา ควายน้อยชื่อทุย'],
+ [21.6,26.2,'วันนี้ น้องข้าวจะปลูกต้นข้าวต้นแรกของตัวเอง'],[27.5,29.85,'ปลูกเบาๆ นะ ต้นข้าวน้อย','boy'],
+ [31.0,33.7,'ฝนตกลงมา รดน้ำให้ต้นข้าว'],[37.8,42.0,'แสงแดดส่องอบอุ่น ต้นข้าวค่อยๆ เติบโตขึ้นทุกวัน'],
+ [45.6,49.0,'ไม่นานนัก ทุ่งนาก็กลายเป็นสีทองอร่าม'],[49.4,51.3,'เย้! ต้นข้าวของเราโตแล้ว!','boy'],
+ [53.3,56.8,'ความขยันและความอดทน ทำให้ทุกอย่างงอกงาม']];
+const subsEl=$('subs');SUBS.forEach((s,i)=>{const d=document.createElement('div');d.className='sub'+(s[3]?' boy':'');d.id='s'+i;d.innerHTML=(s[3]?'<span class="who">น้องข้าว</span>':'')+s[2];subsEl.appendChild(d);});
+
+/* ---------- timeline ---------- */
+gsap.defaults({ease:'sine.inOut'});
+const tl=gsap.timeline({paused:true});
+const T=(t,target,vars)=>tl.to(target,vars,t);
+const S=(t,target,vars)=>tl.set(target,vars,t);
+const O=(t,target,from,to)=>tl.fromTo(target,from,to,t);
+gsap.set(['#bw','#fw','#pl','#bc','#sun','.bird'],{svgOrigin:'0 0'});gsap.set('#world',{svgOrigin:'960 540'});gsap.set(['.heart','.spk','.ring','#t1','#t2','#e1','#e2'],{transformOrigin:'50% 50%'});
+gsap.set('#pl',{x:1035,y:865,scale:.55});gsap.set('#bc',{x:1180,y:1085,scale:1.5});
+function part(id,x,y){gsap.set('#'+id,{svgOrigin:`${x} ${y}`});}
+['bw','bc'].forEach(b=>{part(b+'_legL',-18,-72);part(b+'_legR',18,-72);part(b+'_armL',-46,-178);part(b+'_armR',46,-178);part(b+'_eyes',0,-256);part(b+'_head',0,-200);part(b+'_body',0,0);});
+part('fw_tail',-160,-150);part('fw_head',170,-150);part('fw_eyes',190,-196);part('fw_body',0,0);['a','b','c','d'].forEach(k=>part('fw_leg'+k,0,-80));
+
+// loops
+T(0,'#c1',{x:260,duration:60,ease:'none'});T(0,'#c2',{x:-220,duration:60,ease:'none'});T(0,'#c3',{x:180,duration:60,ease:'none'});
+[['bw',1.3],['bc',1.3]].forEach(([b])=>{[3.1,7.4,11.2,17.8,23.4,28.9,33.2,39.5,44.1,47.6,52.2,55.9].forEach(t=>{T(t,'#'+b+'_eyes',{scaleY:.08,duration:.07,ease:'none'});T(t+.1,'#'+b+'_eyes',{scaleY:1,duration:.08,ease:'none'});});});
+[5.2,13.6,19.1,24.7,50.4,54.8].forEach(t=>{T(t,'#fw_eyes',{scaleY:.08,duration:.07,ease:'none'});T(t+.1,'#fw_eyes',{scaleY:1,duration:.08,ease:'none'});});
+O(0,'#fw_tail',{rotation:-10},{rotation:14,duration:.6,repeat:99,yoyo:true});
+function talk(b,t0,t1){const n=Math.floor((t1-t0)/.13);O(t0,'#'+b+'_mO',{opacity:0},{opacity:1,duration:.13,repeat:n,yoyo:true,ease:'steps(1)'});O(t0,'#'+b+'_mC',{opacity:1},{opacity:0,duration:.13,repeat:n,yoyo:true,ease:'steps(1)'});S(t1+.02,['#'+b+'_mO'],{opacity:0});S(t1+.02,'#'+b+'_mC',{opacity:1});
+ O(t0,'#'+b+'_head',{rotation:-2},{rotation:3,duration:.45,repeat:Math.floor((t1-t0)/.45),yoyo:true});S(t1+.05,'#'+b+'_head',{rotation:0});}
+function walk(b,t0,t1,leg=.26){const n=Math.floor((t1-t0)/leg);O(t0,'#'+b+'_legL',{rotation:-22},{rotation:22,duration:leg,repeat:n,yoyo:true});O(t0,'#'+b+'_legR',{rotation:22},{rotation:-22,duration:leg,repeat:n,yoyo:true});
+ O(t0,'#'+b+'_armL',{rotation:16},{rotation:-16,duration:leg,repeat:n,yoyo:true});O(t0,'#'+b+'_armR',{rotation:-16},{rotation:16,duration:leg,repeat:n,yoyo:true});
+ O(t0,'#'+b+'_body',{y:0},{y:-10,duration:leg/2,repeat:n*2+1,yoyo:true});
+ S(t1+.01,['#'+b+'_legL','#'+b+'_legR','#'+b+'_armL','#'+b+'_armR'],{rotation:0});S(t1+.01,'#'+b+'_body',{y:0});}
+
+// S1 title 0-6
+S(0,'#world',{scale:1.12,x:0,y:40});T(0,'#world',{scale:1.02,y:0,duration:12,ease:'power1.out'});
+S(0,'#sun',{x:1500,y:760});T(0,'#sun',{y:250,x:1480,duration:7,ease:'power2.out'});
+T(1.0,'#skyDawn',{opacity:0,duration:6});
+S(0,'#bw',{x:-200,y:860,scale:.78});S(0,'#fw',{x:2250,y:872,scaleX:-.62,scaleY:.62});
+O(.5,'#t1',{scale:0,rotation:-8,opacity:0},{scale:1,rotation:0,opacity:1,duration:.9,ease:'back.out(2.2)'});
+O(1.2,'#t2',{y:60,opacity:0},{y:0,opacity:1,duration:.7,ease:'back.out(1.8)'});
+O(2.1,'#t1',{scale:1},{scale:1.05,duration:.9,repeat:2,yoyo:true});
+T(5.1,'#t1',{y:-500,opacity:0,duration:.7,ease:'back.in(1.5)'});T(5.2,'#t2',{y:400,opacity:0,duration:.6,ease:'back.in(1.5)'});
+
+// S2 boy walks in, waves
+walk('bw',8.2,12.2);T(8.2,'#bw',{x:760,duration:4.0,ease:'none'});
+T(12.3,'#bw_armR',{rotation:-150,duration:.35,ease:'back.out(2)'});O(12.65,'#bw_armR',{rotation:-150},{rotation:-120,duration:.25,repeat:7,yoyo:true});T(14.8,'#bw_armR',{rotation:0,duration:.4});
+talk('bw',12.4,14.75);
+T(10.5,'#world',{x:-80,duration:5,ease:'sine.inOut'});
+
+// S3 buffalo arrives
+['a','c'].forEach(k=>O(14.8,'#fw_leg'+k,{rotation:-18},{rotation:18,duration:.3,repeat:5,yoyo:true}));['b','d'].forEach(k=>O(14.8,'#fw_leg'+k,{rotation:18},{rotation:-18,duration:.3,repeat:5,yoyo:true}));
+S(16.6,['#fw_lega','#fw_legb','#fw_legc','#fw_legd'],{rotation:0});
+T(14.8,'#fw',{x:1330,duration:1.8,ease:'power1.out'});O(14.8,'#fw_body',{y:0},{y:-8,duration:.15,repeat:11,yoyo:true});
+T(16.4,'#fw_head',{rotation:-16,duration:.35,ease:'power2.out'});T(17.3,'#fw_head',{rotation:0,duration:.5});
+O(17.5,'#bw',{y:860},{y:830,duration:.18,repeat:3,yoyo:true,ease:'power1.out'});
+tl.fromTo('.heart',{opacity:0,y:0,scale:.3},{opacity:1,scale:1,y:-60,duration:.6,stagger:.25,ease:'back.out(2)'},17.6);
+tl.to('.heart',{opacity:0,y:-200,duration:1,stagger:.25},18.4);
+T(15.5,'#world',{scale:1.16,x:-140,y:-90,duration:4.8});
+
+// S4 close-up planting 21-30
+T(20.7,'#land',{opacity:0,duration:.6});T(20.7,'#close',{opacity:1,duration:.6});S(20.7,'#world',{scale:1,x:0,y:0});
+O(20.7,'#world',{scale:1.06},{scale:1,duration:9,ease:'power1.out'});
+S(20.7,'#sun',{x:1650,y:210});
+tl.fromTo('.wl',{x:-30},{x:30,duration:2.4,repeat:16,yoyo:true,stagger:.2},20.7);
+T(25.8,'#bc_armL',{rotation:52,duration:.9,ease:'power2.inOut'});
+T(25.9,'#pl',{x:960,y:905,duration:1.0,ease:'power2.in'});
+tl.fromTo('.ring',{opacity:.9,scale:.4},{opacity:0,scale:3.2,duration:1.4,stagger:.3,ease:'power1.out'},26.95);
+T(27.3,'#bc_armL',{rotation:0,duration:.7});
+talk('bc',27.5,29.8);
+
+// S5 rain 30-37
+T(30.0,'#storm',{opacity:1,duration:1.0});O(30.0,'#storm',{x:-200},{x:0,duration:2,ease:'power2.out'});T(30.0,'#skyStorm',{opacity:1,duration:1.0});T(30.0,'#sun',{opacity:0,duration:.8});
+T(30.5,'#rain',{opacity:1,duration:.5});
+tl.fromTo('.drop',{y:0},{y:1250,duration:.85,repeat:8,ease:'none',stagger:{each:.006,from:'random'}},30.4);
+T(35.7,'#rain',{opacity:0,duration:.8});T(35.6,'#storm',{opacity:0,x:300,duration:1.4});T(35.6,'#skyStorm',{opacity:0,duration:1.4});
+T(35.2,'#rainbow',{opacity:1,duration:.4});tl.to('.rbArc',{attr:{'stroke-dashoffset':0},duration:1.6,stagger:.08,ease:'power1.inOut'},35.3);
+T(41.5,'#rainbow',{opacity:0,duration:1.5});
+T(33.4,'#bc_head',{rotation:-8,duration:.6});T(35.6,'#bc_head',{rotation:0,duration:.6});
+
+// S6 sun + growth 37-45
+T(36.2,'#sun',{opacity:1,duration:.8});S(36.2,'#sun',{x:300,y:500});T(36.2,'#sun',{x:960,y:180,duration:3,ease:'power1.out'});T(39.5,'#sun',{x:1650,y:400,duration:5,ease:'sine.in'});
+O(38,'#sun',{rotation:0},{rotation:40,duration:6});
+T(37.4,'#pl',{scale:1.15,duration:3.2,ease:'power1.inOut'});T(40.6,'#pl',{scale:1.75,duration:3,ease:'power1.inOut'});
+for(let i=3;i<7;i++){const t=37.6+(i-3)*1.1;O(t,'#lf'+i,{strokeDasharray:'0 400'},{strokeDasharray:'400 0',duration:1.2,ease:'power2.out'});}
+tl.fromTo('#grains',{opacity:0,scale:.6,transformOrigin:'50% 100%'},{opacity:1,scale:1,duration:.8,ease:'back.out(2)'},43.3);
+tl.fromTo('.spk',{opacity:0,scale:0},{opacity:1,scale:1,duration:.35,stagger:.05,yoyo:true,repeat:1,ease:'back.out(3)'},43.3);
+O(42.9,'#bc',{y:1085},{y:1050,duration:.2,repeat:3,yoyo:true});
+
+// S7 golden field 45-53
+T(44.6,'#close',{opacity:0,duration:.6});T(44.6,'#land',{opacity:1,duration:.6});
+S(44.6,'#world',{scale:1.08,x:-60,y:-40});T(44.6,'#world',{scale:1,x:0,y:0,duration:8});
+S(44.6,'#bw',{x:760,y:860});S(44.6,'#fw',{x:1180,y:872});
+S(44.6,'#sun',{x:1560,y:220,rotation:0,opacity:1});T(45.0,'#skyGold',{opacity:.75,duration:4});
+T(45.3,'#goldClip',{attr:{width:1920},duration:3.4,ease:'power1.inOut'});
+tl.fromTo('.bird',{x:i=>-120-i*90,y:i=>260+(i%2)*50},{x:i=>2100-i*60,y:i=>200+(i%3)*40,duration:7.5,ease:'none',stagger:.35},45.6);
+tl.fromTo('.wing',{scaleY:1,transformOrigin:'50% 100%'},{scaleY:-.6,duration:.18,repeat:44,yoyo:true},45.6);
+O(49.2,'#bw',{y:860},{y:780,duration:.3,repeat:5,yoyo:true,ease:'power1.out'});
+O(49.3,'#fw',{y:872},{y:830,duration:.3,repeat:5,yoyo:true,ease:'power1.out'});
+T(49.2,'#bw_armL',{rotation:150,duration:.3});T(49.2,'#bw_armR',{rotation:-150,duration:.3});T(51.3,['#bw_armL','#bw_armR'],{rotation:0,duration:.4});
+talk('bw',49.4,51.25);
+
+// S8 moral + end 53-60
+T(52.5,'#skyDawn',{opacity:.55,duration:4});T(52.5,'#sun',{y:560,duration:6,ease:'sine.in'});
+T(53.0,'#world',{scale:1.05,duration:6});
+T(56.8,'#endBg',{opacity:1,duration:.6});
+O(57.0,'#e1',{scale:0,rotation:10,opacity:0},{scale:1,rotation:0,opacity:1,duration:.8,ease:'back.out(2.4)'});
+O(57.6,'#e2',{y:40,opacity:0},{y:0,opacity:1,duration:.6,ease:'power2.out'});
+T(59.2,'#black',{opacity:1,duration:.8,ease:'none'});
+S(0,['#e1','#e2'],{opacity:0});
+
+SUBS.forEach((s,i)=>{O(s[0]-.15,'#s'+i,{opacity:0,y:14},{opacity:1,y:0,duration:.25,ease:'power2.out'});T(s[1]+.1,'#s'+i,{opacity:0,duration:.25});});
+tl.set({},{},60);
+window.DUR=60;window.seek=t=>{tl.seek(t,false);};
+document.fonts.ready.then(()=>{window.READY=true;});
+</script>
+</body>
+</html>
