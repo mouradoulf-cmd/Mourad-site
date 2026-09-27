@@ -881,8 +881,8 @@ async function createVideoTask(image, frames) {
   try { data = JSON.parse(text); } catch (e) { /* réponse non JSON */ }
   // UNIQUEMENT video_id pour le suivi (jamais task_id ni id)
   const videoId = data.video_id;
-  if (!videoId) throw new Error('Pas de video_id retourné');
-  log('Tâche créée : video_id=' + videoId);
+  if (!videoId) throw new Error('Pas de video_id retourné par l\'API');
+  log('[Image] video_id récupéré : ' + videoId);
   return videoId;
 }
 
@@ -910,6 +910,7 @@ async function pollVideo(item) {
       continue;
     }
     const d = await res.json().catch(() => ({}));
+    log('[Polling] status=' + (d.status || 'unknown') + ' progress=' + (d.progress || 0) + '%');
     const st = String(d.status || '').toLowerCase();
     const pr = Math.max(0, Math.min(100, Number(d.progress) || 0));
 
