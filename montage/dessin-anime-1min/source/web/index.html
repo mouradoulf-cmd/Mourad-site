@@ -251,7 +251,7 @@ T(5.1,'#t1',{y:-500,opacity:0,duration:.7,ease:'back.in(1.5)'});T(5.2,'#t2',{y:4
 walk('bw',8.2,12.2);T(8.2,'#bw',{x:760,duration:4.0,ease:'none'});
 T(12.3,'#bw_armR',{rotation:-150,duration:.35,ease:'back.out(2)'});O(12.65,'#bw_armR',{rotation:-150},{rotation:-120,duration:.25,repeat:7,yoyo:true});T(14.8,'#bw_armR',{rotation:0,duration:.4});
 talk('bw',12.4,14.75);
-T(10.5,'#world',{x:-80,duration:5,ease:'sine.inOut'});
+T(10.5,'#world',{x:-80,scale:1.1,duration:5,ease:'sine.inOut'});
 
 // S3 buffalo arrives
 ['a','c'].forEach(k=>O(14.8,'#fw_leg'+k,{rotation:-18},{rotation:18,duration:.3,repeat:5,yoyo:true}));['b','d'].forEach(k=>O(14.8,'#fw_leg'+k,{rotation:18},{rotation:-18,duration:.3,repeat:5,yoyo:true}));
@@ -261,7 +261,7 @@ T(16.4,'#fw_head',{rotation:-16,duration:.35,ease:'power2.out'});T(17.3,'#fw_hea
 O(17.5,'#bw',{y:860},{y:830,duration:.18,repeat:3,yoyo:true,ease:'power1.out'});
 tl.fromTo('.heart',{opacity:0,y:0,scale:.3},{opacity:1,scale:1,y:-60,duration:.6,stagger:.25,ease:'back.out(2)'},17.6);
 tl.to('.heart',{opacity:0,y:-200,duration:1,stagger:.25},18.4);
-T(15.5,'#world',{scale:1.16,x:-140,y:-90,duration:4.8});
+T(15.5,'#world',{scale:1.16,x:-140,y:-70,duration:4.8});
 
 // S4 close-up planting 21-30
 T(20.7,'#land',{opacity:0,duration:.6});T(20.7,'#close',{opacity:1,duration:.6});S(20.7,'#world',{scale:1,x:0,y:0});
