@@ -1,4 +1,4 @@
-# Sabai House — massage/spa demo site
+# Malee — massage/spa demo site
 
 Fictional generic massage/spa demo — inspired by a real Pattaya spa
 found via Google Maps early on, but **genericized** (like Trenchtown →
