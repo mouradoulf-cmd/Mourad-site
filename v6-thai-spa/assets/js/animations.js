@@ -117,7 +117,7 @@
 
   function initHeroEntrance() {
     if (reduceMotion) return;
-    var hero = document.querySelector('.hero-media');
+    var hero = document.querySelector('.hero-band');
     if (!hero) return;
     gsap.fromTo(hero, { scale: 1.06 }, { scale: 1, duration: 1.6, ease: 'power3.out' });
   }
