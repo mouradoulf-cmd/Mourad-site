@@ -116,6 +116,7 @@
   }
   .btn-main:hover:not(:disabled) { background: var(--thai-dark); }
   .btn-stop { display: block; width: 100%; margin-top: 10px; color: var(--err); border-color: rgba(192, 57, 43, .4); font-weight: 600; }
+  .btn-retry { display: block; width: 100%; margin-top: 10px; font-weight: 700; color: #7a5a00; background: #fff8e1; border-color: var(--warn); }
   .btn-sm { padding: 7px 10px; font-size: .85rem; }
   .btn-ok { background: var(--ok); border-color: var(--ok); color: #fff; }
 
@@ -330,6 +331,7 @@
 
   <button type="button" class="btn-main" id="createBtn">🎬 Créer les vidéos Disney Thai</button>
   <button type="button" class="btn-stop" id="stopBtn" hidden>⏹ Arrêter</button>
+  <button type="button" class="btn-retry" id="retryBtn" hidden>🔄 Réessayer sans attente</button>
 
   <!-- ============================ FILE D'ATTENTE ============================ -->
   <section class="panel" id="queuePanel" style="margin-top:1rem" hidden>
@@ -373,9 +375,16 @@ const POLL_INTERVAL_MS = 30000;   // 30 s minimum entre deux vérifications
 const POLL_MAX_TRIES = 100;       // environ 50 minutes maximum
 const MAX_503_RETRIES = 6;        // nouveaux essais sur 502/503/504
 const MAX_NET_RETRIES = 4;        // nouveaux essais sur coupure réseau
+const MODEL_VIDEO = MODEL;
+const SAFE_FRAMES = 121;          // valeur de secours (5 s)
 
-const PROMPT_PREFIX = "Create a high-quality 3D animated scene in Disney Pixar animation style, inspired by the input image. The scene depicts a happy Thai family at a traditional Thai farm. Elements: wooden stilt house, green rice paddies, water buffalo grazing, chickens, tropical palm trees, golden sunset light. Characters: Thai grandmother and grandfather smiling, children running joyfully, parents working together. Warm colors, soft global illumination, Pixar-style character design with expressive eyes, subsurface scattering on skin, cinematic depth of field. Preserve the family composition and identity of the people in the source image, but reimagine them as Pixar-style 3D characters. 9:16 vertical portrait, 24fps, no text overlays, no watermarks. Ambient sound: gentle Thai traditional music, birds, water flowing.";
-const PROMPT_SUFFIX = "Style: Disney Pixar 3D animation, cinematic lighting, warm Thai atmosphere, family friendly, joyful mood, high detail, professional render quality.";
+// num_frames valide = 8n+1 et au moins 81 (81, 121, 153, 161, 201, 241…)
+function validFrames(n) {
+  return Number.isInteger(n) && n >= 81 && (n - 1) % 8 === 0;
+}
+
+const PROMPT_PREFIX = "Create a high-quality 3D animated scene in Disney Pixar animation style, inspired by the input image. The scene depicts a happy Thai family at a traditional Thai farm. Elements: wooden stilt house, green rice paddies, water buffalo grazing, chickens, tropical palm trees, golden sunset light. Characters: Thai grandmother and grandfather smiling, children running joyfully, parents working together. Warm colors, soft global illumination, Pixar-style character design, subsurface scattering on skin. Preserve family composition. 9:16 vertical portrait, 24fps.";
+const PROMPT_SUFFIX = "Style: Disney Pixar 3D animation, warm Thai atmosphere, joyful mood.";
 const INTENSITY_TEXT = {
   soft: 'Motion: gentle, subtle movements, slow camera.',
   normal: 'Motion: natural lively movements, smooth camera push-in.',
@@ -418,6 +427,10 @@ class StopError extends Error {
   constructor() { super('Arrêté'); this.name = 'StopError'; }
 }
 function checkStop() { if (state.stopRequested) throw new StopError(); }
+
+// Erreur « Agnes saturé » (429 / 503 / file bloquée) : relançable avec « Réessayer sans attente »
+function satErr(msg) { const e = new Error(msg); e.saturated = true; return e; }
+const SATURATED_RE = /429|satur|overload|busy|queue.?full|bloqu/i;
 
 // Journal console (détails techniques)
 function log(msg) { console.log('[Disney Thai] ' + msg); }
@@ -766,7 +779,7 @@ $('duration').addEventListener('change', refreshSpeed);
 /* =================================================================
    ⚠️ THROTTLE GLOBAL — TOUS les appels Agnes passent par ici
    ================================================================= */
-// 全局节流：免费版 1 RPM → 每次请求之间强制等待 65 秒
+// Throttle global : Agnes gratuit = 1 requête/min → 65 s minimum entre deux appels
 let lastAgnesCallTime = 0;
 const AGNES_MIN_INTERVAL_MS = 65000;
 
@@ -777,7 +790,7 @@ async function throttledAgnesFetch(url, options = {}, label = 'API') {
 
   if (waitTime > 0) {
     const waitSec = Math.ceil(waitTime / 1000);
-    log(label + ' : 节流等待 ' + waitSec + 's');
+    log(label + ' : attente ' + waitSec + 's');
     setStatus('等待 API 配额释放… (' + waitSec + 's)');
     startCountdown('等待 API 配额释放… · ' + label, waitTime); // affichage seconde par seconde
     await sleep(waitTime);
@@ -789,9 +802,9 @@ async function throttledAgnesFetch(url, options = {}, label = 'API') {
   const res = await fetch(url, options);
 
   if (res.status === 429) {
-    log(label + ' : 429 服务器饱和，等待 90 秒');
-    setStatus('Agnes 服务器饱和，等待中…');
-    startCountdown('Agnes 服务器饱和，等待中… · ' + label, 90000);
+    log(label + ' : 429, attente 90s');
+    setStatus('Agnes saturé, attente 90s…');
+    startCountdown('Agnes saturé, attente 90s… · ' + label, 90000);
     await sleep(90000);
     stopCountdown();
     checkStop();
@@ -825,7 +838,7 @@ async function agnesRequest(url, options, label) {
       n503++;
       const body = await res.text().catch(() => '');
       console.error('[Agnes] ' + label + ' : HTTP ' + res.status, body);
-      if (n503 > MAX_503_RETRIES) throw new Error('Agnes indisponible (' + res.status + '). Réessaie plus tard.');
+      if (n503 > MAX_503_RETRIES) throw satErr('Agnes saturé (' + res.status + '). Réessaie plus tard.');
       startCountdown('Agnes saturé (' + res.status + ') · nouvel essai ' + n503 + '/' + MAX_503_RETRIES, 15000 * n503);
       await sleep(15000 * n503);
       stopCountdown();
@@ -839,6 +852,12 @@ async function agnesRequest(url, options, label) {
    API : création et suivi
    ================================================================= */
 async function createVideoTask(image, frames) {
+  // Validation de num_frames avant l'envoi
+  if (!validFrames(frames)) {
+    log('num_frames invalide (' + frames + ') → ' + SAFE_FRAMES);
+    toast('Durée invalide : 5 s utilisées à la place.', 'warn');
+    frames = SAFE_FRAMES;
+  }
   const body = {
     model: MODEL,
     prompt: buildPrompt(),
@@ -855,19 +874,19 @@ async function createVideoTask(image, frames) {
   if (!res.ok) {
     console.error('[Agnes] POST /videos HTTP ' + res.status, text);
     if (res.status === 401 || res.status === 403) throw new Error('Clé API refusée (' + res.status + '). Vérifie ta clé.');
-    if (res.status === 429) throw new Error('Agnes saturé (429) même après 90 s d\'attente.');
+    if (res.status === 429) throw satErr('Agnes saturé (429) même après 90 s d\'attente.');
     throw new Error('Création refusée (HTTP ' + res.status + ') ' + text.slice(0, 120));
   }
   let data = {};
   try { data = JSON.parse(text); } catch (e) { /* réponse non JSON */ }
-  const id = data.video_id || data.id || data.task_id;
-  if (!id) throw new Error('Réponse Agnes sans video_id');
-  log('Tâche créée : ' + id);
-  return id;
+  // UNIQUEMENT video_id pour le suivi (jamais task_id ni id)
+  const videoId = data.video_id;
+  if (!videoId) throw new Error('Pas de video_id retourné');
+  log('Tâche créée : video_id=' + videoId);
+  return videoId;
 }
 
 async function pollVideo(item) {
-  let withModel = true;
   for (let attempt = 1; attempt <= POLL_MAX_TRIES; attempt++) {
     checkStop();
     // Au moins 30 s entre deux vérifications (le throttle impose ensuite ses 65 s)
@@ -875,7 +894,8 @@ async function pollVideo(item) {
     if (since < POLL_INTERVAL_MS) await sleep(POLL_INTERVAL_MS - since);
     checkStop();
 
-    const url = POLL_BASE + '?video_id=' + encodeURIComponent(item.videoId) + (withModel ? '&model_name=' + encodeURIComponent(MODEL) : '');
+    // video_id + model_name (obligatoire, sinon 404 « task not found »)
+    const url = POLL_BASE + '?video_id=' + encodeURIComponent(item.videoId) + '&model_name=' + encodeURIComponent(MODEL_VIDEO);
     item.msg = 'Vérification n°' + attempt + '…';
     renderQueue();
     const res = await agnesRequest(url, { method: 'GET', headers: { 'Authorization': 'Bearer ' + getKey() } }, 'Suivi image ' + (item.index + 1));
@@ -885,7 +905,6 @@ async function pollVideo(item) {
       const t = await res.text().catch(() => '');
       console.error('[Agnes] suivi HTTP ' + res.status, t);
       if (res.status === 401 || res.status === 403) throw new Error('Clé API refusée pendant le suivi (' + res.status + ').');
-      withModel = !withModel; // on essaie l'autre forme de l'URL
       item.msg = 'Agnes ne répond pas encore (' + res.status + '), on réessaie…';
       renderQueue();
       continue;
@@ -908,7 +927,7 @@ async function pollVideo(item) {
     item.msg = (/queue|pending/.test(st) ? 'Dans la file Agnes' : 'Animation') + '… ' + Math.round(pr) + ' %' + (mins ? ' · ' + mins + ' min' : '');
     renderQueue();
   }
-  throw new Error('Pas de résultat après ' + POLL_MAX_TRIES + ' vérifications (≈ 50 min).');
+  throw satErr('Agnes bloqué : pas de résultat après ' + POLL_MAX_TRIES + ' vérifications (≈ 50 min).');
 }
 
 /* =================================================================
@@ -1068,6 +1087,7 @@ async function processItem(item, frames, lines) {
       item.msg = item.videoId ? 'Arrêté (la vidéo continue peut-être chez Agnes)' : 'Arrêté';
     } else {
       item.msg = e.message || 'Échec';
+      item.saturated = !!e.saturated || SATURATED_RE.test(item.msg);
       console.error('[Agnes] image ' + (item.index + 1), e);
       toast('Image ' + (item.index + 1) + ' : ' + item.msg, 'err');
     }
@@ -1080,14 +1100,29 @@ async function startGeneration() {
   if (state.running) return;
   if (!getKey()) { toast('Enregistre d\'abord ta clé API.', 'warn'); return; }
   if (!state.images.length) { toast('Ajoute au moins une photo.', 'warn'); return; }
+  state.queue = state.images.map((image, index) => ({ image, index, status: 'wait', msg: 'En attente', pct: 0 }));
+  await runQueue(state.queue);
+}
+
+// « Réessayer sans attente » : relance uniquement les images bloquées par la saturation
+async function retrySaturated() {
+  if (state.running) return;
+  const items = state.queue.filter((x) => x.status === 'fail' && x.saturated);
+  if (!items.length) { toast('Aucune image saturée à relancer.', 'info'); return; }
+  items.forEach((x) => { x.status = 'wait'; x.msg = 'Relance…'; x.pct = 0; x.videoId = null; x.saturated = false; });
+  toast('Relance de ' + items.length + ' image(s) depuis le début.', 'info');
+  await runQueue(items);
+}
+
+async function runQueue(items) {
 
   state.running = true;
   state.stopRequested = false;
   state.startedAt = Date.now();
   const frames = parseInt($('duration').value, 10);
   const lines = dialogueLines();
-  state.queue = state.images.map((image, index) => ({ image, index, status: 'wait', msg: 'En attente', pct: 0 }));
   $('stopBtn').hidden = false;
+  $('retryBtn').hidden = true;
   updateCreateBtn();
   enableWake();
   renderQueue();
@@ -1096,7 +1131,7 @@ async function startGeneration() {
   setStatus('Démarrage…');
 
   // Les images sont traitées une par une ; une image en échec n'arrête pas la file
-  for (const item of state.queue) {
+  for (const item of items) {
     if (state.stopRequested) { item.status = 'fail'; item.msg = 'Arrêté avant l\'envoi'; continue; }
     setStatus('Image ' + (item.index + 1) + '/' + state.queue.length + ' en cours…');
     await processItem(item, frames, lines);
@@ -1109,6 +1144,7 @@ async function startGeneration() {
   stopCountdown();
   disableWake();
   $('stopBtn').hidden = true;
+  $('retryBtn').hidden = !state.queue.some((x) => x.status === 'fail' && x.saturated);
   updateCreateBtn();
   renderQueue();
   const summary = '✦ ' + ok + '/' + total + ' vidéos créées en ' + fmtMin(Date.now() - state.startedAt) + ' ✦';
@@ -1119,6 +1155,7 @@ async function startGeneration() {
 }
 
 $('createBtn').addEventListener('click', startGeneration);
+$('retryBtn').addEventListener('click', retrySaturated);
 $('stopBtn').addEventListener('click', () => {
   state.stopRequested = true;
   stopSpeaking();
