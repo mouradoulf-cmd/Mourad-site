@@ -420,6 +420,7 @@ const state = {
   wakeLock: null,
   wakeStream: null,
   wakeTimer: null,
+  durationFrames: 121, // num_frames réellement envoyé à Agnes
   countdownTimer: null
 };
 
@@ -922,24 +923,54 @@ async function agnesRequest(url, options, label) {
   }
 }
 
+/* Vérifie le num_frames réellement utilisé par Agnes (champ perf_params) */
+function checkPerfParams(d) {
+  const find = (o, depth) => {
+    if (!o || typeof o !== 'object' || depth > 4) return null;
+    if (o.perf_params) return o.perf_params;
+    for (const k of Object.keys(o)) { const r = find(o[k], depth + 1); if (r) return r; }
+    return null;
+  };
+  let pp = find(d, 0);
+  if (typeof pp === 'string') { try { pp = JSON.parse(pp); } catch (e) { /* texte brut */ } }
+  if (!pp) return;
+  const used = pp && typeof pp === 'object' ? pp.num_frames : null;
+  log('[Agnes] perf_params : ' + (typeof pp === 'string' ? pp : JSON.stringify(pp)).slice(0, 300));
+  if (used && Number(used) !== state.durationFrames) {
+    log('⚠️ Agnes utilise num_frames=' + used + ' alors qu\'on a envoyé ' + state.durationFrames + ' : notre valeur est ignorée par le serveur.');
+  } else if (used) {
+    log('✅ Agnes utilise bien num_frames=' + used);
+  }
+}
+
 /* =================================================================
    API : création et suivi
    ================================================================= */
 async function createVideoTask(image, frames) {
-  // Validation de num_frames avant l'envoi
-  if (!validFrames(frames)) {
-    log('⚠️ num_frames=' + frames + ' invalide, forcé à ' + SAFE_FRAMES);
+  // 1) Validation forcée, tout au début
+  state.durationFrames = frames;
+  if (!VALID_FRAMES.has(state.durationFrames)) {
+    log('⚠️ num_frames=' + state.durationFrames + ' invalide, forcé à ' + SAFE_FRAMES);
     toast('Durée invalide : 5 s utilisées à la place.', 'warn');
-    frames = SAFE_FRAMES;
+    state.durationFrames = SAFE_FRAMES;
   }
-  log('[Image] num_frames final: ' + frames);
+  log('[Image] num_frames avant envoi : ' + state.durationFrames);
+  // 2) Assertion : aucune valeur interdite ne peut partir
+  if (!VALID_FRAMES.has(state.durationFrames)) {
+    throw new Error('num_frames interdit : ' + state.durationFrames);
+  }
+  // 3) num_frames à la racine (doc officielle) ET dans extra_body :
+  //    la passerelle LiteLLM d'Agnes peut ignorer les champs inconnus à la racine,
+  //    alors qu'elle transmet extra_body tel quel au moteur vidéo.
   const body = {
     model: MODEL,
     prompt: buildPrompt(),
     image: image.dataUri,
-    num_frames: frames,
-    frame_rate: FRAME_RATE
+    num_frames: state.durationFrames,
+    frame_rate: FRAME_RATE,
+    extra_body: { num_frames: state.durationFrames, frame_rate: FRAME_RATE }
   };
+  log('[Image] corps envoyé (sans la photo) : ' + JSON.stringify(Object.assign({}, body, { image: '<photo ' + Math.round(image.dataUri.length / 1024) + ' Ko>', prompt: body.prompt.slice(0, 60) + '…' })));
   const res = await agnesRequest(API_BASE + '/videos', {
     method: 'POST',
     headers: { 'Authorization': 'Bearer ' + getKey(), 'Content-Type': 'application/json' },
@@ -956,6 +987,7 @@ async function createVideoTask(image, frames) {
   try { data = JSON.parse(text); } catch (e) { /* réponse non JSON */ }
   // On garde TOUS les identifiants : le suivi essaiera chacun jusqu'à trouver le bon
   log('[Création] réponse brute : ' + text.slice(0, 400));
+  checkPerfParams(data);
   const videoId = data.video_id || data.id || data.task_id;
   const taskId = data.task_id || data.id || null;
   if (!videoId) throw new Error('Aucun identifiant retourné par l\'API');
@@ -1042,6 +1074,7 @@ async function pollVideo(item) {
     try { d = JSON.parse(raw); } catch (e) { /* réponse non JSON */ }
     log('[Polling] status=' + (d.status || 'unknown') + ' progress=' + (d.progress || 0) + '%');
     log('[Polling] réponse brute : ' + raw.slice(0, 400));
+    checkPerfParams(d);
     if (!d.status) {
       failStreak++;
       if (!found || failStreak >= 3) ui = (ui + 1) % urls.length; // réponse sans statut : format suivant
