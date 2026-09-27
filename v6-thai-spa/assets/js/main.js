@@ -25,4 +25,15 @@
   });
 
   if (tabs.length) activate(0);
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var heroSlides = Array.prototype.slice.call(document.querySelectorAll('.hero-slide'));
+  if (heroSlides.length > 1 && !prefersReducedMotion) {
+    var heroSlideIndex = 0;
+    setInterval(function () {
+      heroSlides[heroSlideIndex].classList.remove('is-active');
+      heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+      heroSlides[heroSlideIndex].classList.add('is-active');
+    }, 5000);
+  }
 })();
