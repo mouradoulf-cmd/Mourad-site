@@ -170,7 +170,7 @@ return{state:'wait',pr:pr,st:st}}
 
 /* --- Mode « forcer » : si une vidéo n'avance plus, on relance une copie plus légère
    en gardant l'ancienne ; la première qui finit gagne. --- */
-var STALL_MS=4*60000,MAX_RELAUNCH=3,RACE_MAX_MS=40*60000;
+var STALL_MS=8*60000,MAX_RELAUNCH=3,RACE_MAX_MS=40*60000;
 async function raceTasks(item,first,relaunch,onProg){
 var tasks=[first],t0=Date.now(),lastMove=Date.now(),best=-1,relaunches=0,relaunching=false,lastErr='';
 function startRelaunch(why){if(relaunching||relaunches>=MAX_RELAUNCH||S.stop)return;relaunching=true;relaunches++;var n=relaunches;
@@ -246,7 +246,7 @@ async function processOne(item,idx){try{item.status='create';item.progress='Envo
 var p=buildPrompt();var qw=function(n,w){item.progress='Agnes saturé · nouvel essai n°'+n+' dans '+w+' s';renderQueue();setStatus('Agnes saturé ou indisponible · Plan '+(idx+1)+' : nouvel essai dans '+w+' s')};
 var id=await gatedCreate(function(){return createTask(item.img.dataUri,p,qw,item.img2&&item.img2.dataUri)},function(s){item.progress='Départ dans '+s+' s (limite Agnes)';renderQueue()});item.taskId=id;
 item.status='proc';item.progress='Animation en cours…';item.start=Date.now();renderQueue();
-var first={id:id,withModel:!(S.mode==='sequence'&&S.engine!=='25f'),engine:S.engine};
+var first={id:id,withModel:S.engine==='25f',engine:S.engine};
 var url=await raceTasks(item,first,function(n){return createTask(item.img.dataUri,p,qw,item.img2&&item.img2.dataUri,121)},function(pr,st,note){var m=Math.floor((Date.now()-item.start)/60000);
 if(pr===null){item.progress=note;renderQueue();return}
 item.pct=Math.max(5,Math.min(99,pr||0));
