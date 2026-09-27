@@ -3,10 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NM Studio — Get Found. Get Chosen. Get Paid.</title>
+<title>NM Studio — Websites &amp; QR menus for restaurants and local businesses</title>
+<meta name="description" content="NM Studio builds fast, beautiful websites and QR menus for restaurants, salons, spas and local businesses — send your photos, go live in days. Cancel anytime.">
+<meta name="theme-color" content="#04050c">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2304050c'/%3E%3Cpath d='M3.5 9.5c2.2 0 2.2 3.7 4.4 3.7S10.2 9.5 12 9.5s2.2 3.7 4.4 3.7 2.2-3.7 4.1-3.7' stroke='%2322e8ff' stroke-width='1.9' fill='none' stroke-linecap='round'/%3E%3Cpath d='M3.5 14.5c2.2 0 2.2 3.7 4.4 3.7s2.3-3.7 4.1-3.7 2.2 3.7 4.4 3.7 2.2-3.7 4.1-3.7' stroke='%23a855f7' stroke-width='1.9' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NM Studio">
+<meta property="og:title" content="NM Studio — The website that finds you customers while you work">
+<meta property="og:description" content="Websites and QR menus for restaurants and local businesses. Send your photos, go live in days.">
+<meta property="og:url" content="https://mouradoulf-cmd.github.io/Mourad-site/nm/">
+<meta property="og:image" content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "NM Studio",
+  "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/",
+  "image": "https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og.jpg",
+  "description": "Websites and QR menus for restaurants, salons, spas and local businesses.",
+  "areaServed": ["TH", "FR", "IT", "MA"],
+  "availableLanguage": ["en", "fr", "it", "th", "ar"],
+  "knowsAbout": ["Web design", "QR code menus", "Local SEO"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="importmap">{ "imports": { "lenis": "https://unpkg.com/lenis@1.3.19/dist/lenis.mjs" } }</script>
 <style>
   :root {
@@ -84,17 +111,22 @@
   /* Consistent keyboard-focus ring across every interactive element that
      doesn't already define its own :focus-visible state. */
   .nav__pill a:focus-visible,
-  .example-tab:focus-visible,
   .price-card__cta:focus-visible,
   .price-card__demo-link:focus-visible,
   .lang-switch__option:focus-visible,
-  .examples__trigger:focus-visible,
   .footer-link:focus-visible,
   .site-footer__contact-btn:focus-visible {
     outline: 2px solid #22e8ff;
     outline-offset: 3px;
     border-radius: 4px;
   }
+
+  .skip-link {
+    position: fixed; top: -100px; left: 1rem; z-index: 300;
+    padding: .7rem 1.1rem; border-radius: 999px;
+    background: #fff; color: #04050c; font-size: .9rem; font-weight: 500;
+  }
+  .skip-link:focus { top: 1rem; }
 
   /* ---------- hero shell ---------- */
   .hero {
@@ -126,9 +158,15 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: radial-gradient(115% 95% at 50% 46%,
-      var(--scrim-strong) 0%, var(--scrim-strong) 24%, var(--scrim) 52%, var(--scrim-soft) 100%);
+    background:
+      linear-gradient(180deg, transparent 72%, var(--hero-base) 100%),
+      radial-gradient(70% 55% at 50% 50%, rgba(4,5,12,.78) 0%, rgba(4,5,12,.6) 45%, transparent 100%),
+      radial-gradient(115% 95% at 50% 46%,
+        var(--scrim-strong) 0%, var(--scrim-strong) 24%, var(--scrim) 52%, var(--scrim-soft) 100%);
   }
+  /* Keeps the headline crisp over the busiest parts of the fluid sim. */
+  .heading { text-shadow: 0 2px 30px rgba(4,5,12,.55); }
+  .subline { color: #d3d7e3; text-shadow: 0 1px 16px rgba(4,5,12,.7); }
 
   /* ---------- nav ---------- */
   .nav {
@@ -255,6 +293,15 @@
     transition: color var(--duration-fast) var(--ease-entrance), border-color var(--duration-fast) var(--ease-entrance);
   }
   @media (min-width: 640px) { .lang-switch__btn { height: 2.75rem; padding: 0 .85rem; font-size: .85rem; } }
+  /* Narrow phones: tighten the header so the brand never touches the switcher. */
+  @media (max-width: 420px) {
+    .nav, .nav-sticky { padding-inline: 1rem; gap: .5rem; }
+    .brand { font-size: 1.02rem; gap: .45rem; }
+    .brand svg { width: 1.15rem; height: 1.15rem; }
+    .lang-switch__btn { padding: 0 .55rem; gap: .3rem; }
+    .lang-switch__btn svg { display: none; }
+    .btn-pill { padding: 0 .9rem; font-size: .8rem; }
+  }
   .lang-switch__btn:hover { color: var(--heading); border-color: rgba(255,255,255,.3); }
   .lang-switch__btn svg { width: .75rem; height: .75rem; transition: transform .3s var(--ease-entrance); }
   .lang-switch.is-open .lang-switch__btn svg { transform: rotate(180deg); }
@@ -535,6 +582,23 @@
   @media (prefers-reduced-motion: reduce) {
     .reasons__item, .reasons__icon { transition: none; opacity: 1; transform: none; }
   }
+  /* Desktop: the three reasons sit side by side as cards instead of one
+     long centered column — same 3D entrance, staggered left to right. */
+  @media (min-width: 900px) {
+    .reasons__list {
+      max-width: 70rem; margin-top: 4.5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .reasons__item {
+      padding: 2.25rem 1.75rem 2rem; border-radius: 1.25rem;
+      border: 1px solid var(--glass-border);
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+    }
+    .reasons__item:nth-child(2) { transition-delay: .12s; }
+    .reasons__item:nth-child(3) { transition-delay: .24s; }
+    .reasons__headline { font-size: 1.35rem; }
+    .reasons__body { font-size: .95rem; }
+  }
 
   /* ---------- rating (3D "100%" badge, near the very bottom) ---------- */
   /* A circular progress ring draws itself in while the number counts up,
@@ -771,6 +835,46 @@
     .story strong, .brand__name { animation: none; }
   }
 
+  /* ---------- how it works: three steps ---------- */
+  .story { flex-direction: column; align-items: center; }
+  .steps {
+    list-style: none; padding: 0; counter-reset: none;
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
+    width: 100%; max-width: 68rem; margin: 4rem auto 0;
+  }
+  @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 4.5rem; } }
+  .steps__item {
+    position: relative; text-align: start;
+    padding: 1.75rem 1.5rem 1.6rem; border-radius: 1.25rem;
+    border: 1px solid var(--glass-border);
+    background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+    overflow: hidden;
+  }
+  .steps__item::after {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(34,232,255,.6), rgba(168,85,247,.6), transparent);
+    opacity: .6;
+  }
+  .steps__num {
+    position: absolute; top: 1.1rem; inset-inline-end: 1.25rem;
+    font-size: 2.6rem; font-weight: 500; letter-spacing: -0.04em; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.16);
+  }
+  .steps__icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.75rem; height: 2.75rem; border-radius: .85rem;
+    background: rgba(34,232,255,.1); color: #22e8ff; border: 1px solid rgba(34,232,255,.25);
+  }
+  .steps__icon svg { width: 1.35rem; height: 1.35rem; }
+  .steps__title { margin: 1.25rem 0 .5rem; font-size: 1.2rem; font-weight: 500; letter-spacing: -0.01em; color: var(--heading); }
+  .steps__body { margin: 0; font-size: .95rem; line-height: 1.6; color: var(--body-muted); }
+  .steps.pre-reveal .steps__item { opacity: 0; transform: translateY(24px); }
+  .steps.pre-reveal .steps__item.is-visible {
+    opacity: 1; transform: none;
+    transition: opacity .7s cubic-bezier(0.2,0,0,1) calc(var(--i,0) * 110ms), transform .7s cubic-bezier(0.2,0,0,1) calc(var(--i,0) * 110ms);
+  }
+  @media (prefers-reduced-motion: reduce) { .steps.pre-reveal .steps__item { opacity: 1; transform: none; } }
+
   /* ---------- pricing section ---------- */
   .pricing {
     position: relative;
@@ -920,133 +1024,94 @@
   .examples__title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; color: var(--heading); margin: 0 0 1rem; line-height: 1.15; }
   .examples__lead { font-size: 1rem; line-height: 1.6; color: var(--body-muted); margin: 0 0 2rem; }
 
-  /* A soft pulsing halo sits behind the button to draw the eye, and the
-     button itself gently floats + cycles a gradient border — both loops
-     pause once the visitor actually opens it (reward the click, stop
-     nagging) and are switched off entirely for reduced motion. */
-  .examples__trigger-wrap { position: relative; display: inline-flex; }
-  .examples__trigger-glow {
-    position: absolute; inset: -0.9rem;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(34,232,255,.4), rgba(168,85,247,.28) 45%, transparent 72%);
-    filter: blur(16px);
-    opacity: .55;
-    pointer-events: none;
-    z-index: 0;
-    animation: triggerPulse 2.8s ease-in-out infinite;
+  /* Showcase: every live example is visible up front — a browser frame with
+     the real desktop screenshot plus an overlapping phone with the mobile
+     one, so a visitor sees the actual work before clicking anything. */
+  .examples__lead { margin-bottom: 0; }
+  .work-grid {
+    display: grid; gap: 1.5rem; grid-template-columns: 1fr;
+    max-width: 72rem; margin: 3.5rem auto 0;
   }
-  @keyframes triggerPulse {
-    0%, 100% { transform: scale(.9); opacity: .4; }
-    50% { transform: scale(1.1); opacity: .75; }
+  @media (min-width: 860px) { .work-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+  .work-card {
+    position: relative; display: flex; flex-direction: column;
+    border-radius: 1.5rem; padding: 1rem 1rem 0;
+    border: 1px solid var(--glass-border);
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    color: var(--heading); text-decoration: none; overflow: hidden;
+    transition: border-color .3s ease, box-shadow .4s ease, transform .4s cubic-bezier(0.2,0,0,1);
   }
-
-  .examples__trigger {
-    position: relative; z-index: 1;
-    display: inline-flex; align-items: center; gap: .7rem;
-    padding: 1.15rem 2.25rem; border-radius: 999px;
-    border: 1px solid transparent;
-    background:
-      linear-gradient(var(--hero-base), var(--hero-base)) padding-box,
-      linear-gradient(120deg, #22e8ff, #a855f7, #ec4899, #22e8ff) border-box;
-    background-size: 100% 100%, 300% 100%;
-    color: var(--heading); font-size: 1.15rem; font-weight: 600; cursor: pointer;
-    max-width: 100%; text-align: center;
-    box-shadow: 0 14px 32px -16px rgba(168,85,247,.55);
-    animation: triggerBorderShift 6s linear infinite, triggerFloat 3.2s ease-in-out infinite;
-    transition: transform .3s cubic-bezier(0.2,0,0,1), box-shadow .3s ease;
+  .work-card::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(60% 50% at 50% 0%, rgba(34,232,255,.16), transparent 70%);
+    opacity: 0; transition: opacity .4s ease;
   }
-  @keyframes triggerBorderShift {
-    0% { background-position: 0 0, 0% 50%; }
-    100% { background-position: 0 0, 300% 50%; }
+  .work-card:hover { border-color: rgba(34,232,255,.45); box-shadow: 0 30px 60px -30px rgba(34,232,255,.35); transform: translateY(-4px); }
+  .work-card:hover::before { opacity: 1; }
+  .work-card:focus-visible { outline: 2px solid #22e8ff; outline-offset: 4px; }
+  .work-card__stage { position: relative; padding: 0 0 1.25rem; }
+  @media (min-width: 480px) { .work-card__stage { padding-right: 16%; } }
+  .work-card__browser {
+    border-radius: .9rem; overflow: hidden; background: #0d0f1a;
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,.7);
   }
-  @keyframes triggerFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+  .work-card__bar { display: flex; gap: 6px; padding: .6rem .75rem; background: rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .work-card__bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.18); }
+  .work-card__browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform 1.2s cubic-bezier(0.2,0,0,1); }
+  .work-card:hover .work-card__browser img { transform: scale(1.03); }
+  .work-card__phone {
+    display: none; position: absolute; right: 0; bottom: 0; width: 24%;
+    border-radius: 1.1rem; padding: 5px; background: #0b0c14;
+    border: 1px solid rgba(255,255,255,.18);
+    box-shadow: 0 24px 40px -14px rgba(0,0,0,.8);
+    transition: transform .6s cubic-bezier(0.2,0,0,1);
   }
-  .examples__trigger:hover {
-    animation-play-state: running, paused;
-    transform: translateY(-6px) scale(1.045);
-    box-shadow: 0 20px 42px -16px rgba(168,85,247,.75);
+  @media (min-width: 480px) { .work-card__phone { display: block; } }
+  .work-card__phone img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; border-radius: .8rem; }
+  .work-card:hover .work-card__phone { transform: translateY(-8px) rotate(-1.5deg); }
+  .work-card__meta {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+    padding: 1.1rem .35rem 1.35rem; border-top: 1px solid rgba(255,255,255,.08);
   }
-  .examples__trigger.is-open { animation: triggerBorderShift 6s linear infinite; }
-  .examples__trigger-spark {
-    display: inline-block; font-size: 1.05rem; flex-shrink: 0;
-    animation: triggerSparkSpin 3.2s ease-in-out infinite;
+  @media (max-width: 479px) {
+    .work-card__meta { flex-direction: column; align-items: flex-start; gap: .9rem; }
   }
-  @keyframes triggerSparkSpin {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(18deg) scale(1.15); }
-  }
-  .examples__trigger-label { max-width: 100%; }
-  .examples__trigger svg { width: 1.2rem; height: 1.2rem; flex-shrink: 0; transition: transform .35s cubic-bezier(0.2,0,0,1); }
-  .examples__trigger.is-open svg { transform: rotate(180deg); }
-
-  .examples__tabs {
-    display: grid; gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 48rem; margin: 0 auto; margin-top: 0;
-    max-height: 0; overflow: hidden; opacity: 0;
-    perspective: 1200px;
-    transition: max-height .6s cubic-bezier(0.2,0,0,1), opacity .3s ease, margin-top .6s cubic-bezier(0.2,0,0,1);
-  }
-  @media (min-width: 640px) { .examples__tabs { grid-template-columns: repeat(3, 1fr); } }
-  .examples__tabs.is-open { max-height: 34rem; opacity: 1; margin-top: 2.4rem; }
-
-  /* Outer card: handles ONLY the 3D flip-open entrance (opacity + rotateX).
-     Inner .example-tab__tilt handles ONLY the pointer-driven hover tilt.
-     Kept on separate elements so the two transforms never fight each other
-     (same split used on the pricing cards). */
-  .example-tab {
-    position: relative; display: block;
-    transform-style: preserve-3d; transform-origin: 50% 100%;
-    opacity: 0; transform: rotateX(-65deg) translateY(6px);
-    transition: transform .3s ease-out, opacity .3s ease;
-  }
-  .examples__tabs.is-open .example-tab {
-    opacity: 1; transform: rotateX(0deg) translateY(0);
-    transition: transform .6s cubic-bezier(0.34,1.56,0.64,1) calc(var(--i, 0) * 90ms),
-                opacity .5s ease calc(var(--i, 0) * 90ms);
-  }
-  .example-tab--soon { cursor: default; }
-
-  .example-tab__tilt {
-    position: relative; height: 100%;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: .5rem; text-align: center;
-    padding: 1.7rem 1rem;
-    border-radius: 1.25rem;
-    border: 1px solid var(--glass-border); background: var(--glass-fill);
-    backdrop-filter: blur(12px);
-    color: var(--heading); font-size: .9rem; font-weight: 600;
-    transform-style: preserve-3d;
-    transition: transform .15s ease-out, border-color .3s ease, background .3s ease, box-shadow .3s ease, opacity .3s ease;
-    will-change: transform;
-  }
-  .example-tab:not(.example-tab--soon):hover .example-tab__tilt {
-    border-color: #22e8ff; background: rgba(34,232,255,.08);
-    box-shadow: 0 24px 45px -20px rgba(34,232,255,.35);
-  }
-  .example-tab--soon .example-tab__tilt { opacity: .5; }
-  .example-tab__icon { font-size: 1.6rem; }
-  .example-tab__cta {
-    font-size: .74rem; font-weight: 500; color: #22e8ff;
-    opacity: 0; transform: translateY(4px);
-    transition: opacity .25s ease, transform .25s ease;
-  }
-  .example-tab:hover .example-tab__cta { opacity: 1; transform: translateY(0); }
-  .example-tab__badge {
-    font-size: .62rem; letter-spacing: .06em; text-transform: uppercase;
-    padding: .2rem .5rem; border-radius: 999px; background: rgba(255,255,255,.1); color: var(--body-muted);
-  }
-  /* Distinguishes a genuine working client from the template examples —
-     positive accent instead of the muted "soon" gray. */
-  .example-tab__badge--live {
+  .work-card__label { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; font-size: 1.15rem; font-weight: 500; letter-spacing: -0.01em; margin: 0; }
+  .work-card__desc { margin: .3rem 0 0; font-size: .88rem; color: var(--body-muted); }
+  .work-card__badge {
+    font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 600;
+    padding: .25rem .55rem; border-radius: 999px;
     background: rgba(34,232,255,.14); color: #22e8ff; border: 1px solid rgba(34,232,255,.3);
   }
+  .work-card__cta {
+    flex-shrink: 0; font-size: .82rem; font-weight: 500; color: #22e8ff; white-space: nowrap;
+    padding: .55rem .95rem; border-radius: 999px; border: 1px solid rgba(34,232,255,.3);
+    transition: background .25s ease, color .25s ease;
+  }
+  .work-card:hover .work-card__cta { background: #22e8ff; color: #04050c; }
+  html[dir="rtl"] .work-card__stage { padding-right: 0; }
+  @media (min-width: 480px) { html[dir="rtl"] .work-card__stage { padding-left: 16%; } html[dir="rtl"] .work-card__phone { right: auto; left: 0; } }
+
+  /* Reveal: visible by default; JS adds .pre-reveal only once an observer is running. */
+  .work-grid.pre-reveal .work-card { opacity: 0; transform: translateY(28px); }
+  .work-grid.pre-reveal .work-card.is-visible {
+    opacity: 1; transform: none;
+    transition: opacity .8s cubic-bezier(0.2,0,0,1) calc(var(--i,0) * 90ms), transform .8s cubic-bezier(0.2,0,0,1) calc(var(--i,0) * 90ms), border-color .3s ease, box-shadow .4s ease;
+  }
+  .work-soon {
+    display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .6rem;
+    margin: 2rem auto 0; font-size: .85rem; color: var(--body-muted);
+  }
+  .work-soon > span:first-child {
+    font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 600;
+    padding: .25rem .55rem; border-radius: 999px; background: rgba(255,255,255,.08);
+  }
+  .work-soon__sep { width: 1.5rem; height: 1px; background: var(--glass-border); }
   @media (prefers-reduced-motion: reduce) {
-    .examples__tabs, .example-tab, .example-tab__tilt, .examples__trigger svg { transition: none; }
-    .examples__trigger, .examples__trigger-glow, .examples__trigger-spark { animation: none; }
-    .examples__trigger:hover { transform: none; }
+    .work-card, .work-card__browser img, .work-card__phone { transition: none; }
+    .work-card:hover, .work-card:hover .work-card__phone, .work-card:hover .work-card__browser img { transform: none; }
+    .work-grid.pre-reveal .work-card { opacity: 1; transform: none; }
   }
 
   /* ---------- FAQ section ---------- */
@@ -1280,6 +1345,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollProgressBar"></div></div>
 <div class="grain-overlay" aria-hidden="true"></div>
@@ -1310,7 +1376,7 @@
 </div>
 
 <header class="nav-sticky" id="navSticky">
-  <a href="/" class="brand">
+  <a href="./" class="brand" aria-label="NM Studio — home">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
       <path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
@@ -1341,12 +1407,13 @@
   </div>
 </header>
 
+<main id="main">
 <section class="hero">
   <canvas class="hero__canvas" aria-hidden="true"></canvas>
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <header class="nav">
-    <a href="/" class="brand">
+    <a href="./" class="brand" aria-label="NM Studio — home">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         <path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
@@ -1473,6 +1540,26 @@
     <p class="story__line story__line--1" data-i18n-html="story.line1">Your business deserves more customers than it's getting online.</p>
     <p class="story__line story__line--2" data-i18n-html="story.line2">At <strong>NM Studio</strong>, I build your site fast &mdash; send your photos, I handle everything. Live in days.</p>
   </div>
+  <ol class="steps" id="storySteps">
+    <li class="steps__item" style="--i:0">
+      <span class="steps__num" aria-hidden="true">01</span>
+      <span class="steps__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10.5" r="1.8" stroke="currentColor" stroke-width="1.6"/><path d="M4 17l5-4.5 3.5 3 3-2.5L20 17" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+      <h3 class="steps__title" data-i18n="story.steps.s1t">Send your photos</h3>
+      <p class="steps__body" data-i18n="story.steps.s1b">Photos, menu, opening hours — straight from WhatsApp. That's all I need.</p>
+    </li>
+    <li class="steps__item" style="--i:1">
+      <span class="steps__num" aria-hidden="true">02</span>
+      <span class="steps__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h3 class="steps__title" data-i18n="story.steps.s2t">I build your site</h3>
+      <p class="steps__body" data-i18n="story.steps.s2b">Design, text, QR menu and Google Maps — done for you, in the languages your customers speak.</p>
+    </li>
+    <li class="steps__item" style="--i:2">
+      <span class="steps__num" aria-hidden="true">03</span>
+      <span class="steps__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h3 class="steps__title" data-i18n="story.steps.s3t">You're live</h3>
+      <p class="steps__body" data-i18n="story.steps.s3b">Online in days. Want a change later? Just send a message.</p>
+    </li>
+  </ol>
 </section>
 
 <section class="examples" id="examples">
@@ -1481,60 +1568,83 @@
     <p class="examples__eyebrow" data-i18n="examples.eyebrow">Our Work</p>
     <h2 class="examples__title" data-i18n="examples.title">See it before you decide.</h2>
     <p class="examples__lead" data-i18n="examples.lead">Real templates, ready to adapt for your business &mdash; pick a category to open a live example.</p>
-    <div class="examples__trigger-wrap">
-      <span class="examples__trigger-glow" aria-hidden="true"></span>
-      <button type="button" class="examples__trigger" id="examplesTrigger">
-        <span class="examples__trigger-spark" aria-hidden="true">&#10024;</span>
-        <span class="examples__trigger-label" data-i18n="examples.seeBtn">See Examples</span>
-        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-    <div class="examples__tabs" id="examplesTabs">
-      <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="example-tab" style="--i:0">
-        <div class="example-tab__tilt">
-          <span class="example-tab__badge example-tab__badge--live" data-i18n="examples.realClientBadge">Real client</span>
-          <span class="example-tab__icon" aria-hidden="true">&#127837;</span>
-          <span class="example-tab__label" data-i18n="examples.tabs.restaurant">Restaurant</span>
-          <span class="example-tab__cta" data-i18n="examples.viewCta">View example &rarr;</span>
-        </div>
-      </a>
-      <a href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" target="_blank" rel="noopener" class="example-tab" style="--i:1">
-        <div class="example-tab__tilt">
-          <span class="example-tab__icon" aria-hidden="true">&#128131;</span>
-          <span class="example-tab__label" data-i18n="examples.tabs.hairSalon">Hair Salon</span>
-          <span class="example-tab__cta" data-i18n="examples.viewCta">View example &rarr;</span>
-        </div>
-      </a>
-      <a href="https://mouradoulf-cmd.github.io/Mourad-site/facadiers/" target="_blank" rel="noopener" class="example-tab" style="--i:2">
-        <div class="example-tab__tilt">
-          <span class="example-tab__icon" aria-hidden="true">&#127970;</span>
-          <span class="example-tab__label" data-i18n="examples.tabs.company">Company</span>
-          <span class="example-tab__cta" data-i18n="examples.viewCta">View example &rarr;</span>
-        </div>
-      </a>
-      <a href="https://mouradoulf-cmd.github.io/Mourad-site/v6-thai-spa/" target="_blank" rel="noopener" class="example-tab" style="--i:3">
-        <div class="example-tab__tilt">
-          <span class="example-tab__icon" aria-hidden="true">&#128134;</span>
-          <span class="example-tab__label" data-i18n="examples.tabs.massage">Massage Salon</span>
-          <span class="example-tab__cta" data-i18n="examples.viewCta">View example &rarr;</span>
-        </div>
-      </a>
-      <span class="example-tab example-tab--soon" style="--i:4">
-        <div class="example-tab__tilt">
-          <span class="example-tab__icon" aria-hidden="true">&#127864;</span>
-          <span class="example-tab__label" data-i18n="examples.tabs.bar">Bar &amp; Nightlife</span>
-          <span class="example-tab__badge" data-i18n="examples.soonBadge">Soon</span>
-        </div>
-      </span>
-      <span class="example-tab example-tab--soon" style="--i:5">
-        <div class="example-tab__tilt">
-          <span class="example-tab__icon" aria-hidden="true">&#127790;</span>
-          <span class="example-tab__label" data-i18n="examples.tabs.streetFood">Street Food</span>
-          <span class="example-tab__badge" data-i18n="examples.soonBadge">Soon</span>
-        </div>
-      </span>
-    </div>
   </div>
+  <div class="work-grid" id="workGrid">
+    <a href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" class="work-card" style="--i:0">
+      <div class="work-card__stage">
+        <div class="work-card__browser">
+          <div class="work-card__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img src="assets/img/work/giulivo-desk.jpg" alt="Giulivo — Tuscan restaurant website" width="1280" height="800" loading="lazy" decoding="async">
+        </div>
+        <div class="work-card__phone" aria-hidden="true">
+          <img src="assets/img/work/giulivo-mob.jpg" alt="" width="585" height="1170" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="work-card__meta">
+        <div>
+          <p class="work-card__label"><span data-i18n="examples.tabs.restaurant">Restaurant</span>
+          <span class="work-card__badge" data-i18n="examples.realClientBadge">Real client</span></p>
+          <p class="work-card__desc" data-i18n="examples.desc.restaurant">Tuscan trattoria · 4 languages · live menu</p>
+        </div>
+        <span class="work-card__cta"><span data-i18n="examples.viewCta">View example &rarr;</span></span>
+      </div>
+    </a>
+    <a href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" target="_blank" rel="noopener" class="work-card" style="--i:1">
+      <div class="work-card__stage">
+        <div class="work-card__browser">
+          <div class="work-card__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img src="assets/img/work/noir-desk.jpg" alt="Noir — hair salon website" width="1280" height="800" loading="lazy" decoding="async">
+        </div>
+        <div class="work-card__phone" aria-hidden="true">
+          <img src="assets/img/work/noir-mob.jpg" alt="" width="585" height="1170" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="work-card__meta">
+        <div>
+          <p class="work-card__label"><span data-i18n="examples.tabs.hairSalon">Hair Salon</span></p>
+          <p class="work-card__desc" data-i18n="examples.desc.hairSalon">Editorial salon · price list · booking</p>
+        </div>
+        <span class="work-card__cta"><span data-i18n="examples.viewCta">View example &rarr;</span></span>
+      </div>
+    </a>
+    <a href="https://mouradoulf-cmd.github.io/Mourad-site/facadiers/" target="_blank" rel="noopener" class="work-card" style="--i:2">
+      <div class="work-card__stage">
+        <div class="work-card__browser">
+          <div class="work-card__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img src="assets/img/work/facadiers-desk.jpg" alt="Atelier des Façadiers — company website" width="1280" height="800" loading="lazy" decoding="async">
+        </div>
+        <div class="work-card__phone" aria-hidden="true">
+          <img src="assets/img/work/facadiers-mob.jpg" alt="" width="585" height="1170" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="work-card__meta">
+        <div>
+          <p class="work-card__label"><span data-i18n="examples.tabs.company">Company</span></p>
+          <p class="work-card__desc" data-i18n="examples.desc.company">B2B supplier · projects · quote requests</p>
+        </div>
+        <span class="work-card__cta"><span data-i18n="examples.viewCta">View example &rarr;</span></span>
+      </div>
+    </a>
+    <a href="https://mouradoulf-cmd.github.io/Mourad-site/v6-thai-spa/" target="_blank" rel="noopener" class="work-card" style="--i:3">
+      <div class="work-card__stage">
+        <div class="work-card__browser">
+          <div class="work-card__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img src="assets/img/work/malee-desk.jpg" alt="Malee — Thai massage salon website" width="1280" height="800" loading="lazy" decoding="async">
+        </div>
+        <div class="work-card__phone" aria-hidden="true">
+          <img src="assets/img/work/malee-mob.jpg" alt="" width="585" height="1170" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="work-card__meta">
+        <div>
+          <p class="work-card__label"><span data-i18n="examples.tabs.massage">Massage Salon</span></p>
+          <p class="work-card__desc" data-i18n="examples.desc.massage">Thai spa · treatment picker · booking request</p>
+        </div>
+        <span class="work-card__cta"><span data-i18n="examples.viewCta">View example &rarr;</span></span>
+      </div>
+    </a>
+  </div>
+  <p class="work-soon"><span data-i18n="examples.soonBadge">Soon</span><span class="work-soon__sep" aria-hidden="true"></span><span data-i18n="examples.tabs.bar">Bar &amp; Nightlife</span><span aria-hidden="true">&middot;</span><span data-i18n="examples.tabs.streetFood">Street Food</span></p>
 </section>
 
 <section class="faq" id="faq">
@@ -1710,11 +1820,13 @@
   </div>
 </section>
 
+</main>
+
 <footer class="site-footer">
   <span class="section-divider" aria-hidden="true"></span>
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <a href="/" class="brand">
+      <a href="./" class="brand" aria-label="NM Studio — home">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           <path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
@@ -1803,6 +1915,7 @@ var translations = {
     rating: { text: "Every client is happy working with us." },
     footer: { text: "© 2026 NM Studio — built to get you found.", linksLabel: "Quick Links", contactLabel: "Get in Touch", contactBtn: "Message us on WhatsApp" },
     story: {
+      steps: { s1t: "Send your photos", s1b: "Photos, menu, opening hours — straight from WhatsApp. That's all I need.", s2t: "I build your site", s2b: "Design, text, QR menu and Google Maps — done for you, in the languages your customers speak.", s3t: "You're live", s3b: "Online in days. Want a change later? Just send a message." },
       eyebrow: "How it works",
       line1: "Your business deserves more customers than it's getting online.",
       line2: "At <strong>NM Studio</strong>, I build your site fast — send your photos, I handle everything. Live in days.",
@@ -1818,7 +1931,8 @@ var translations = {
       viewCta: "View example →",
       soonBadge: "Soon",
       realClientBadge: "Real client",
-      tabs: { restaurant: "Restaurant", hairSalon: "Hair Salon", company: "Company", massage: "Massage Salon", bar: "Bar & Nightlife", streetFood: "Street Food" }
+      tabs: { restaurant: "Restaurant", hairSalon: "Hair Salon", company: "Company", massage: "Massage Salon", bar: "Bar & Nightlife", streetFood: "Street Food" },
+      desc: { restaurant: "Tuscan trattoria · 4 languages · live menu", hairSalon: "Editorial salon · price list · booking", company: "B2B supplier · projects · quote requests", massage: "Thai spa · treatment picker · booking request" }
     },
     faq: {
       eyebrow: "Questions",
@@ -1909,6 +2023,7 @@ var translations = {
     rating: { text: "Tous nos clients sont heureux de travailler avec nous." },
     footer: { text: "© 2026 NM Studio — conçu pour vous faire trouver.", linksLabel: "Liens rapides", contactLabel: "Nous contacter", contactBtn: "Contactez-nous sur WhatsApp" },
     story: {
+      steps: { s1t: "Envoyez vos photos", s1b: "Photos, menu, horaires — directement sur WhatsApp. C'est tout ce qu'il me faut.", s2t: "Je crée votre site", s2b: "Design, textes, menu QR et Google Maps — je m'occupe de tout, dans les langues de vos clients.", s3t: "Vous êtes en ligne", s3b: "En ligne en quelques jours. Un changement plus tard ? Un simple message suffit." },
       eyebrow: "Comment ça marche",
       line1: "Votre commerce mérite plus de clients que ce qu'il obtient en ligne.",
       line2: "Chez <strong>NM Studio</strong>, je crée votre site rapidement — envoyez vos photos, je m'occupe de tout. En ligne en quelques jours.",
@@ -1924,7 +2039,8 @@ var translations = {
       viewCta: "Voir l'exemple →",
       soonBadge: "Bientôt",
       realClientBadge: "Client réel",
-      tabs: { restaurant: "Restaurant", hairSalon: "Salon de coiffure", company: "Entreprise", massage: "Salon de massage", bar: "Bar & Vie nocturne", streetFood: "Street Food" }
+      tabs: { restaurant: "Restaurant", hairSalon: "Salon de coiffure", company: "Entreprise", massage: "Salon de massage", bar: "Bar & Vie nocturne", streetFood: "Street Food" },
+      desc: { restaurant: "Trattoria toscane · 4 langues · menu à jour", hairSalon: "Salon éditorial · tarifs · réservation", company: "Fournisseur B2B · réalisations · devis", massage: "Spa thaï · choix du soin · demande de réservation" }
     },
     faq: {
       eyebrow: "Questions",
@@ -2015,6 +2131,7 @@ var translations = {
     rating: { text: "Ogni cliente è felice di lavorare con noi." },
     footer: { text: "© 2026 NM Studio — creato per farti trovare.", linksLabel: "Link utili", contactLabel: "Contattaci", contactBtn: "Scrivici su WhatsApp" },
     story: {
+      steps: { s1t: "Inviami le tue foto", s1b: "Foto, menù, orari — direttamente su WhatsApp. Non mi serve altro.", s2t: "Creo il tuo sito", s2b: "Design, testi, menù QR e Google Maps — faccio tutto io, nelle lingue dei tuoi clienti.", s3t: "Sei online", s3b: "Online in pochi giorni. Vuoi cambiare qualcosa? Basta un messaggio." },
       eyebrow: "Come funziona",
       line1: "La tua attività merita più clienti di quelli che ottiene online.",
       line2: "Da <strong>NM Studio</strong>, creo il tuo sito velocemente — invia le tue foto, penso io a tutto. Online in pochi giorni.",
@@ -2030,7 +2147,8 @@ var translations = {
       viewCta: "Vedi l'esempio →",
       soonBadge: "Presto",
       realClientBadge: "Cliente reale",
-      tabs: { restaurant: "Ristorante", hairSalon: "Parrucchiere", company: "Azienda", massage: "Centro massaggi", bar: "Bar & Locali notturni", streetFood: "Street Food" }
+      tabs: { restaurant: "Ristorante", hairSalon: "Parrucchiere", company: "Azienda", massage: "Centro massaggi", bar: "Bar & Locali notturni", streetFood: "Street Food" },
+      desc: { restaurant: "Trattoria toscana · 4 lingue · menù aggiornato", hairSalon: "Salone editoriale · listino · prenotazione", company: "Fornitore B2B · progetti · preventivi", massage: "Spa thai · scelta del trattamento · richiesta di prenotazione" }
     },
     faq: {
       eyebrow: "Domande",
@@ -2121,6 +2239,7 @@ var translations = {
     rating: { text: "ลูกค้าทุกคนพึงพอใจที่ได้ร่วมงานกับเรา" },
     footer: { text: "© 2026 NM Studio — สร้างมาเพื่อให้คนเจอคุณ", linksLabel: "ลิงก์ด่วน", contactLabel: "ติดต่อเรา", contactBtn: "แชทผ่าน WhatsApp" },
     story: {
+      steps: { s1t: "ส่งรูปของคุณมา", s1b: "รูปภาพ เมนู เวลาเปิด-ปิด — ส่งทาง WhatsApp ได้เลย แค่นั้นก็พอ", s2t: "ผมสร้างเว็บให้", s2b: "ดีไซน์ ข้อความ เมนู QR และ Google Maps — ผมจัดการให้ทั้งหมด ในภาษาที่ลูกค้าของคุณใช้", s3t: "เว็บออนไลน์แล้ว", s3b: "ออนไลน์ได้ในไม่กี่วัน อยากแก้ไขภายหลัง? แค่ส่งข้อความมา" },
       eyebrow: "วิธีการทำงาน",
       line1: "ธุรกิจของคุณสมควรได้ลูกค้าออนไลน์มากกว่าที่เป็นอยู่",
       line2: "ที่ <strong>NM Studio</strong> เราสร้างเว็บไซต์ให้คุณอย่างรวดเร็ว — ส่งรูปภาพมา แล้วเราจัดการทุกอย่างให้ พร้อมใช้งานภายในไม่กี่วัน",
@@ -2136,7 +2255,8 @@ var translations = {
       viewCta: "ดูตัวอย่าง →",
       soonBadge: "เร็วๆ นี้",
       realClientBadge: "ลูกค้าจริง",
-      tabs: { restaurant: "ร้านอาหาร", hairSalon: "ร้านทำผม", company: "บริษัท", massage: "ร้านนวด", bar: "บาร์ & ไนท์ไลฟ์", streetFood: "สตรีทฟู้ด" }
+      tabs: { restaurant: "ร้านอาหาร", hairSalon: "ร้านทำผม", company: "บริษัท", massage: "ร้านนวด", bar: "บาร์ & ไนท์ไลฟ์", streetFood: "สตรีทฟู้ด" },
+      desc: { restaurant: "ร้านอาหารทัสคานี · 4 ภาษา · เมนูอัปเดตเสมอ", hairSalon: "ซาลอนสไตล์นิตยสาร · ราคาบริการ · จองคิว", company: "ซัพพลายเออร์ B2B · ผลงาน · ขอใบเสนอราคา", massage: "สปาไทย · เลือกทรีตเมนต์ · ส่งคำขอจอง" }
     },
     faq: {
       eyebrow: "คำถาม",
@@ -2227,6 +2347,7 @@ var translations = {
     rating: { text: "كل عملائنا سعداء بالعمل معنا." },
     footer: { text: "© 2026 NM Studio — صُنع لجعلك مرئياً.", linksLabel: "روابط سريعة", contactLabel: "تواصل معنا", contactBtn: "راسلنا عبر واتساب" },
     story: {
+      steps: { s1t: "أرسل صورك", s1b: "الصور، القائمة، أوقات العمل — مباشرة عبر واتساب. هذا كل ما أحتاجه.", s2t: "أبني موقعك", s2b: "التصميم، النصوص، قائمة QR وخرائط Google — أتكفل بكل شيء، بلغات زبائنك.", s3t: "موقعك أصبح متاحاً", s3b: "متاح على الإنترنت خلال أيام. تريد تغيير شيء لاحقاً؟ أرسل رسالة فقط." },
       eyebrow: "كيف يعمل",
       line1: "عملك يستحق زبائن أكثر مما يحصل عليه حالياً عبر الإنترنت.",
       line2: "في <strong>NM Studio</strong>، أُنشئ موقعك بسرعة — أرسل صورك، وأنا أتكفل بكل شيء. جاهز خلال أيام.",
@@ -2242,7 +2363,8 @@ var translations = {
       viewCta: "شاهد المثال ←",
       soonBadge: "قريباً",
       realClientBadge: "عميل حقيقي",
-      tabs: { restaurant: "مطعم", hairSalon: "صالون حلاقة", company: "شركة", massage: "صالون تدليك", bar: "بار وحياة ليلية", streetFood: "أكل الشارع" }
+      tabs: { restaurant: "مطعم", hairSalon: "صالون حلاقة", company: "شركة", massage: "صالون تدليك", bar: "بار وحياة ليلية", streetFood: "أكل الشارع" },
+      desc: { restaurant: "مطعم توسكاني · 4 لغات · قائمة محدثة", hairSalon: "صالون بطابع مجلات · الأسعار · الحجز", company: "مورد للشركات · المشاريع · طلب عرض سعر", massage: "سبا تايلاندي · اختيار العلاج · طلب حجز" }
     },
     faq: {
       eyebrow: "أسئلة",
@@ -2713,53 +2835,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   } catch (e) {}
 
-  /* Examples: click to reveal the category tabs. Closed by default (no
-     load-time animation dependency, purely a user-triggered interaction),
-     so there's no "stuck invisible" risk to guard against here. */
+  /* Examples showcase: cards are visible by default; the hidden start
+     state is only applied once a working IntersectionObserver is watching. */
   try {
-    const examplesTrigger = document.getElementById("examplesTrigger");
-    const examplesTabs = document.getElementById("examplesTabs");
-    if (examplesTrigger && examplesTabs) {
-      examplesTrigger.addEventListener("click", () => {
-        const open = examplesTabs.classList.toggle("is-open");
-        examplesTrigger.classList.toggle("is-open", open);
-        examplesTrigger.querySelector(".examples__trigger-label").textContent = decodeEntities(tKey(currentLang, open ? "examples.hideBtn" : "examples.seeBtn"));
+    const workGrid = document.getElementById("workGrid");
+    const reduceMotionWork = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (workGrid && "IntersectionObserver" in window && !reduceMotionWork) {
+      const workCards = workGrid.querySelectorAll(".work-card");
+      const workObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add("is-visible"); workObserver.unobserve(entry.target); }
+        });
+      }, { threshold: 0.15 });
+      workGrid.classList.add("pre-reveal");
+      workCards.forEach((card) => workObserver.observe(card));
+    }
+
+    // FAQ's "have you done this before" answer links straight to the showcase.
+    const faqExamplesLink = document.getElementById("faqExamplesLink");
+    if (faqExamplesLink) {
+      faqExamplesLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("examples").scrollIntoView({ behavior: reduceMotionWork ? "auto" : "smooth" });
       });
+    }
+  } catch (e) {}
 
-      // FAQ's "have you done this before" answer links straight to the
-      // examples tabs — opens them (same trigger behavior) if closed,
-      // otherwise just scrolls up to them.
-      const faqExamplesLink = document.getElementById("faqExamplesLink");
-      if (faqExamplesLink) {
-        faqExamplesLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          if (!examplesTabs.classList.contains("is-open")) {
-            examplesTrigger.click();
-          } else {
-            document.getElementById("examples").scrollIntoView({ behavior: "smooth" });
-          }
+  /* How-it-works steps: same visible-by-default reveal pattern. */
+  try {
+    const storySteps = document.getElementById("storySteps");
+    const reduceMotionSteps = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (storySteps && "IntersectionObserver" in window && !reduceMotionSteps) {
+      const stepItems = storySteps.querySelectorAll(".steps__item");
+      const stepsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add("is-visible"); stepsObserver.unobserve(entry.target); }
         });
-      }
-
-      // Pointer-driven 3D tilt on each example card, same technique as the
-      // pricing cards. Desktop/mouse only — skipped on touch.
-      const canHoverFineExamples = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      const reduceMotionExamples = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (canHoverFineExamples && !reduceMotionExamples) {
-        examplesTabs.querySelectorAll(".example-tab__tilt").forEach((tilt) => {
-          tilt.addEventListener("mousemove", (e) => {
-            const rect = tilt.getBoundingClientRect();
-            const px = (e.clientX - rect.left) / rect.width;
-            const py = (e.clientY - rect.top) / rect.height;
-            const rx = (0.5 - py) * 14;
-            const ry = (px - 0.5) * 14;
-            tilt.style.transform = "rotateX(" + rx + "deg) rotateY(" + ry + "deg) translateY(-3px)";
-          });
-          tilt.addEventListener("mouseleave", () => {
-            tilt.style.transform = "";
-          });
-        });
-      }
+      }, { threshold: 0.2 });
+      storySteps.classList.add("pre-reveal");
+      stepItems.forEach((item) => stepsObserver.observe(item));
     }
   } catch (e) {}
 
