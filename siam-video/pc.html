@@ -359,35 +359,65 @@ for(var w=60;w>0;w--){if(S.stop)throw new Error('Arrêt');onQueueWait&&onQueueWa
 throw new Error('HTTP '+r.status+' '+e.slice(0,140))}}
 
 /* uri = photo de départ ; uri2 = photo de fin (mode Plan séquence) */
-async function createTask(uri,prompt,onQueueWait,uri2){
-var d;
+async function createTask(uri,prompt,onQueueWait,uri2,framesOverride){
+var d;var NF=framesOverride||S.frames;
 if(S.engine==='25f'){
-var secs=S.frames>=241?'10':(S.frames<=121?'5':'6');
+var secs=NF>=241?'10':(NF<=121?'5':'6');
 var b25={model:MODEL_25F,prompt:prompt,mode:'keyframe',first_frame:uri,seconds:secs,size:'720P',aspect_ratio:'9:16'};
 if(uri2)b25.last_frame=uri2;
 d=await postVideo(b25,onQueueWait);
 var id5=d.video_id||d.id||d.task_id;if(!id5)throw new Error('Pas de video_id');return realVideoId(id5)}
 var body;
 if(uri2){/* v2.0 keyframes : image de début + image de fin (comme l'app « Plan Séquence » de référence) */
-body={model:MODEL,prompt:prompt,num_frames:S.frames,frame_rate:24,extra_body:{image:[uri,uri2],mode:'keyframes'}}}
-else{body={model:MODEL,prompt:prompt,image:uri,num_frames:S.frames,frame_rate:24}}
+body={model:MODEL,prompt:prompt,num_frames:NF,frame_rate:24,extra_body:{image:[uri,uri2],mode:'keyframes'}}}
+else{body={model:MODEL,prompt:prompt,image:uri,num_frames:NF,frame_rate:24}}
 d=await postVideo(body,onQueueWait);
 var id=d.video_id||d.id||d.task_id;
 if(!id)throw new Error('Pas de video_id');return id}
 
-async function pollTask(id,onProg){var withModel=!(S.mode==='sequence'&&S.engine!=='25f');for(var i=0;i<100;i++){if(S.stop)throw new Error('Arrêt');
-if(i>0)for(var w=8;w>0;w--){if(S.stop)throw new Error('Arrêt');await sleep(1000)}
-var u=POLL_BASE+'?video_id='+encodeURIComponent(id)+(withModel?'&model_name='+encodeURIComponent(S.engine==='25f'?MODEL_25F:MODEL):'');
-var r=await fetch(u,{headers:{'Authorization':'Bearer '+getKey()}});
-if(!r.ok&&r.status!==429){withModel=!withModel;continue}
-var d={};try{d=await r.json()}catch(e){}
-var st=d.status||'';
-var pr=d.progress||0;onProg(pr,st);
-if(st==='completed'||st==='succeeded'||st==='done'){var url=(d.metadata&&d.metadata.url)||d.url||(d.output&&d.output.url)||d.remixed_from_video_id;if(!url)throw new Error('Terminé mais pas de lien vidéo');return url}
-if(st==='failed'||st==='error'){var why=(d.error&&(d.error.message||d.error))||d.message||st;throw new Error('Agnes : '+(typeof why==='string'?why:JSON.stringify(why)).slice(0,140))}}
-throw new Error('Délai dépassé (13 min)')}
-
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
+
+/* --- Envois espacés de 62 s (limite Agnes : 1 création / min), partagés entre plans et relances --- */
+var createChain=Promise.resolve();S.lastCreate=0;
+function gatedCreate(fn,onGap){var run=createChain.then(async function(){
+var left=62000-(Date.now()-S.lastCreate);while(left>0){if(S.stop)throw new Error('Arrêt');onGap&&onGap(Math.ceil(left/1000));await sleep(1000);left=62000-(Date.now()-S.lastCreate)}
+try{return await fn()}finally{S.lastCreate=Date.now()}});
+createChain=run.catch(function(){});return run}
+
+/* --- Une vérification d'une tâche Agnes --- */
+async function checkTask(t){
+var u=POLL_BASE+'?video_id='+encodeURIComponent(t.id)+(t.withModel?'&model_name='+encodeURIComponent(t.engine==='25f'?MODEL_25F:MODEL):'');
+var r;try{r=await fetch(u,{headers:{'Authorization':'Bearer '+getKey()}})}catch(e){return{state:'wait',pr:t.pr||0,st:t.st||''}}
+if(!r.ok){if(r.status!==429)t.withModel=!t.withModel;return{state:'wait',pr:t.pr||0,st:t.st||''}}
+var d={};try{d=await r.json()}catch(e){}
+var st=d.status||'',pr=d.progress||0;
+if(st==='completed'||st==='succeeded'||st==='done'){var url=(d.metadata&&d.metadata.url)||d.url||(d.output&&d.output.url)||d.remixed_from_video_id;
+return url?{state:'done',url:url}:{state:'fail',msg:'Terminé mais pas de lien vidéo'}}
+if(st==='failed'||st==='error'){var why=(d.error&&(d.error.message||d.error))||d.message||st;return{state:'fail',msg:'Agnes : '+(typeof why==='string'?why:JSON.stringify(why)).slice(0,140)}}
+return{state:'wait',pr:pr,st:st}}
+
+/* --- Mode « forcer » : si une vidéo n'avance plus, on relance une copie plus légère
+   en gardant l'ancienne ; la première qui finit gagne. --- */
+var STALL_MS=4*60000,MAX_RELAUNCH=3,RACE_MAX_MS=40*60000;
+async function raceTasks(item,first,relaunch,onProg){
+var tasks=[first],t0=Date.now(),lastMove=Date.now(),best=-1,relaunches=0,relaunching=false,lastErr='';
+function startRelaunch(why){if(relaunching||relaunches>=MAX_RELAUNCH||S.stop)return;relaunching=true;relaunches++;var n=relaunches;
+onProg(null,null,'⚡ '+why+' · relance n°'+n+' en préparation…');
+gatedCreate(function(){return relaunch(n)},function(s){onProg(null,null,'⚡ '+why+' · relance n°'+n+' dans '+s+' s (limite Agnes)')})
+.then(function(id){tasks.push({id:id,withModel:first.withModel,engine:first.engine,n:n});lastMove=Date.now();onProg(null,null,'⚡ Relance n°'+n+' envoyée · '+tasks.length+' essais en course')})
+.catch(function(e){lastErr=e.message||'';lastMove=Date.now()}).then(function(){relaunching=false})}
+while(true){if(S.stop)throw new Error('Arrêt');
+if(Date.now()-t0>RACE_MAX_MS)throw new Error('Agnes bloqué depuis 40 min malgré '+relaunches+' relance(s). Réessaie plus tard.');
+for(var i=0;i<tasks.length;i++){var t=tasks[i];if(t.dead)continue;var r=await checkTask(t);
+if(r.state==='done')return r.url;
+if(r.state==='fail'){t.dead=true;lastErr=r.msg;continue}
+t.pr=r.pr;t.st=r.st;if(r.pr>best){best=r.pr;lastMove=Date.now()}}
+var alive=tasks.filter(function(x){return!x.dead});
+if(!alive.length&&!relaunching){if(relaunches>=MAX_RELAUNCH)throw new Error(lastErr||'Échec');startRelaunch('Échec chez Agnes')}
+else if(Date.now()-lastMove>STALL_MS)startRelaunch('Bloqué depuis '+Math.round((Date.now()-lastMove)/60000)+' min');
+var top=alive.reduce(function(a,x){return(x.pr||0)>(a.pr||0)?x:a},alive[0]||{});
+onProg(top.pr||0,top.st||'',alive.length>1?alive.length+' essais en course':'');
+for(var w=8;w>0;w--){if(S.stop)throw new Error('Arrêt');await sleep(1000)}}}
 
 function renderQueue(){var q=$('queue');if(!S.queue.length){q.style.display='none';return}
 q.style.display='block';var h='';var done=S.done+S.failed;var total=S.queue.length;
@@ -441,10 +471,14 @@ function releaseAwake(){try{if(wakeLock)wakeLock.release()}catch(e){}wakeLock=nu
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&S.running&&!wakeLock)keepAwake()});
 
 async function processOne(item,idx){try{item.status='create';item.progress='Envoi à Agnes…';renderQueue();
-var p=buildPrompt();var id=await createTask(item.img.dataUri,p,function(n,w){item.progress='Agnes saturé · nouvel essai n°'+n+' dans '+w+' s';renderQueue();setStatus('Agnes saturé ou indisponible · Plan '+(idx+1)+' : nouvel essai dans '+w+' s')},item.img2&&item.img2.dataUri);item.taskId=id;
+var p=buildPrompt();var qw=function(n,w){item.progress='Agnes saturé · nouvel essai n°'+n+' dans '+w+' s';renderQueue();setStatus('Agnes saturé ou indisponible · Plan '+(idx+1)+' : nouvel essai dans '+w+' s')};
+var id=await gatedCreate(function(){return createTask(item.img.dataUri,p,qw,item.img2&&item.img2.dataUri)},function(s){item.progress='Départ dans '+s+' s (limite Agnes)';renderQueue()});item.taskId=id;
 item.status='proc';item.progress='Animation en cours…';item.start=Date.now();renderQueue();
-var url=await pollTask(id,function(pr,st){item.pct=Math.max(5,Math.min(99,pr||0));var m=Math.floor((Date.now()-item.start)/60000);
-item.progress=(st==='queued'?'Dans la file Agnes':'Animation')+'… '+(pr||0)+'%'+(m?' · '+m+' min':'');renderQueue()});
+var first={id:id,withModel:!(S.mode==='sequence'&&S.engine!=='25f'),engine:S.engine};
+var url=await raceTasks(item,first,function(n){return createTask(item.img.dataUri,p,qw,item.img2&&item.img2.dataUri,121)},function(pr,st,note){var m=Math.floor((Date.now()-item.start)/60000);
+if(pr===null){item.progress=note;renderQueue();return}
+item.pct=Math.max(5,Math.min(99,pr||0));
+item.progress=(st==='queued'?'Dans la file Agnes':'Animation')+'… '+(pr||0)+'%'+(m?' · '+m+' min':'')+(note?' · ⚡ '+note:'');renderQueue()});
 item.status='done';S.done++;renderQueue();updateGenBtn();
 addGallery(url,(item.img2?'Clip ':'Plan ')+(idx+1)+' · '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),true);
 toast('Plan '+(idx+1)+' terminé ✓','ok');
@@ -463,7 +497,7 @@ var qa=$('queueAnchor');if(qa&&qa.scrollIntoView)qa.scrollIntoView({behavior:'sm
 var tasks=[];
 for(var i=0;i<S.queue.length;i++){if(S.stop)break;
 var t=processOne(S.queue[i],i);tasks.push(t);
-if(i<S.queue.length-1&&!S.stop){for(var w=62;w>0;w--){if(S.stop)break;setStatus('Pause Agnes (1 plan / min) · Plan '+(i+2)+'/'+S.queue.length+' dans '+w+' s');await sleep(1000)}}}
+if(i<S.queue.length-1&&!S.stop){await sleep(500);setStatus('Plans envoyés un par un (limite Agnes : 1 / min)')}}
 setStatus('Animation en cours… garde la page ouverte');
 await Promise.all(tasks);
 setStatus('✦ '+(S.done)+'/'+S.queue.length+' plans créés ✦');
