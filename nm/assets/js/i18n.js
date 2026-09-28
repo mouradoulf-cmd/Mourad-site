@@ -790,13 +790,16 @@
   // in lockstep.
   function waveFlags() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var strips = 14;
     document.querySelectorAll(".flag").forEach(function (f, k) {
-      f.style.setProperty("--n", strips);
+      // ~2px strips, a whole number of pixels each so edges stay sharp.
+      var w = f.offsetWidth || 24, strips = Math.max(6, Math.round(w / 2)), sw = Math.round(w / strips);
+      strips = Math.ceil(w / sw);
+      f.style.setProperty("--sw", sw + "px");
       f.style.setProperty("--d", (k * -0.37).toFixed(2) + "s");
       for (var i = 0; i < strips; i++) {
         var s = document.createElement("i");
         s.style.setProperty("--i", i);
+        if (i === strips - 1) s.style.width = (w - sw * i) + "px";
         f.appendChild(s);
       }
       f.classList.add("is-waving");

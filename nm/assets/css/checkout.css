@@ -11,7 +11,7 @@
 .co-langs button { min-width: 2.2rem; height: 2.1rem; border-radius: 8px; font-size: .75rem; font-weight: 500; color: var(--muted); border: 1px solid transparent; transition: color .2s ease, border-color .2s ease, background-color .2s ease; }
 .co-langs button:hover { color: var(--text); }
 .co-langs button[aria-current="true"] { color: var(--text); border-color: var(--line-strong); background: rgba(255,255,255,.05); }
-.co-langs .flag { --w: 1.4rem; --h: .93rem; }
+.co-langs .flag { --w: 27px; --h: 18px; }
 @media (max-width: 640px) { .co-secure { display: none; } .co-langs button { min-width: 2.1rem; } }
 @media (pointer: coarse) { .co-langs button { min-width: 2.5rem; height: 2.5rem; } }
 
