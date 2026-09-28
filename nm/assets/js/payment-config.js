@@ -11,7 +11,10 @@
  *             card numbers never touch this site.
  * promptpay — your PromptPay ID (Thai mobile number like "0812345678" or a
  *             13-digit tax/citizen ID). A scannable PromptPay QR with the
- *             exact amount is generated on the confirmation screen.
+ *             exact amount is generated on the checkout page.
+ * promptpayName — optional: the account name your bank app shows to the
+ *             payer (e.g. "Mourad N."), printed under the QR so customers
+ *             can check they're paying the right person.
  * bank      — bank transfer details shown on the confirmation screen.
  */
 window.NM_PAYMENTS = {
@@ -21,5 +24,6 @@ window.NM_PAYMENTS = {
     mad: { basic: "", pro: "", elite: "" }
   },
   promptpay: "",
+  promptpayName: "",
   bank: { holder: "", bank: "", iban: "", bic: "" }
 };
