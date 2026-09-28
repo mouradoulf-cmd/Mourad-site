@@ -197,8 +197,8 @@ html[dir="rtl"] .progress span { transform-origin: 100% 50%; }
   border-bottom: 1px solid transparent;
 }
 .header.is-solid {
-  background: rgba(7, 8, 12, .72); border-bottom-color: var(--line);
-  backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: rgba(7, 8, 12, .97); border-bottom-color: var(--line);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
 }
 .header.is-hidden { transform: translateY(-100%); }
 .header__inner {
