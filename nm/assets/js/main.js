@@ -604,8 +604,11 @@
   });
 
   /* Process: rail draws across as the steps come in. */
-  gsap.to(".steps__rail span", { scaleX: 1, ease: "none", scrollTrigger: { trigger: "#steps", start: "top 80%", end: "bottom 60%", scrub: 0.5 } });
-  gsap.from(".step", { y: 50, opacity: 0, duration: 1.1, stagger: 0.14, ease: "expo.out", scrollTrigger: { trigger: "#steps", start: "top 80%", once: true } });
+  $$(".flow__step").forEach(function (step, i) {
+    var st = { trigger: step, start: "top 88%", once: true };
+    gsap.from(step, { y: 60, opacity: 0, duration: 1.1, delay: window.innerWidth >= 960 ? i * 0.12 : 0, ease: "expo.out", scrollTrigger: st });
+    gsap.from($$(".wa__msg, .bk, .build__tools, .live__url, .live__tile", step), { y: 14, opacity: 0, duration: .7, stagger: .12, delay: (window.innerWidth >= 960 ? i * 0.12 : 0) + .35, ease: "power3.out", scrollTrigger: st });
+  });
 
   /* Finale + footer word. */
   gsap.from(".finale__sub, .finale__ctas", { y: 24, opacity: 0, duration: 1.1, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 70%", once: true } });
