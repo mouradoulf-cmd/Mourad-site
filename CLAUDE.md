@@ -97,6 +97,34 @@ reviews and phone number are demo content to swap per client.
 - Booking/phone CTAs use `tel:`/`wa.me` links — always add
   `target="_blank" rel="noopener"` to them, same reason as above.
 
+## Neon Tiger — reference template for bars / pubs / nightlife
+
+The user asked for a festive Pattaya bar site (pool, beer, parties);
+**Neon Tiger** (`neon-tiger/`) is the reference for future bar, pub or
+nightlife sites. Photos: Unsplash + CC0 pool shots (sources in
+`neon-tiger/README.md`); bar name, events, prices and reviews are demo.
+
+- Design language: night palette (`--night`, neon `--pink`/`--cyan`/
+  `--violet`, `--amber` for beer and happy hour, `--green` for pool) with
+  text-shadow neon glows (`.glow`, `.glow--amber`, `.glow--green`);
+  `--pink-btn` is the darker pink used under white text (AA contrast).
+  Fonts self-hosted: `Unbounded` (display, uppercase), `Monoton` (neon
+  sign logo), `Manrope` (body).
+- Sections: neon-sign intro, hero slideshow + live panel (open status,
+  happy-hour countdown, tonight's event — Bangkok time, a night after
+  midnight still counts as the previous evening), tilted marquee, the bar,
+  weekly events tabs (today highlighted), drinks tabs with happy-hour
+  prices switching live, colour-changing signature cocktail, pool (free
+  tables, hall of fame), bento gallery + lightbox, reviews, booking
+  (night → time → people → spot → WhatsApp, ticket-style summary), FAQ,
+  find us with a Thai address card for taxi drivers, final CTA.
+- EN/FR/TH/RU in `assets/js/i18n.js` (English baked into the HTML). Prices
+  are stored in baht and shown as EN → USD, FR → EUR, TH/RU → THB.
+- The site does not market staff as an attraction: the team is presented
+  as a friendly crew (keeps it usable for Google/Meta ads).
+- Plain HTML/CSS/JS, no build step; `tel:`/`wa.me` links keep
+  `target="_blank" rel="noopener"`.
+
 ## NM Studio — the studio's own site (`nm/`)
 
 Plain HTML/CSS/JS, no build step, split into:
