@@ -112,3 +112,30 @@ for that specific run:**
 - `login` opens a VEED OAuth browser flow — only needed for the free
   `background-removal` route (to host the file) or if the user explicitly
   wants a paid feature.
+
+## NM Studio — the studio's own site (`nm/`)
+
+Plain HTML/CSS/JS, no build step, split into:
+`nm/index.html` (English baked in for SEO/no-JS), `nm/assets/css/nm.css`,
+`nm/assets/js/i18n.js` (EN/FR/IT/TH/AR dictionaries, per-language currency
+€/฿/DH, RTL for Arabic — every new string needs all five languages),
+`nm/assets/js/main.js` (Lenis + GSAP/ScrollTrigger choreography, vendored in
+`assets/js/vendor/`), `nm/assets/js/hero-gl.js` (raw WebGL light field).
+Showcase screenshots live in `nm/assets/img/work/` and are captured from
+the live demos with Playwright; the Façadiers one uses a people-free frame
+of its own hero video (the video carries a clideo.com watermark — crop
+above it). Content is visible by default; motion is only layered on once
+GSAP has loaded. `nm/checkout.html` is the plan checkout (`assets/js/checkout.js`,
+`assets/css/checkout.css`, strings in `assets/js/checkout-i18n.js` merged via
+`window.NM_EXTRA_DICT`). Payment methods are configured in
+`nm/assets/js/payment-config.js` (Stripe Payment Links per currency/plan,
+PromptPay ID — the QR payload is generated client-side — and bank details);
+anything left empty falls back to finishing the order on WhatsApp. Never
+add card-number fields to the site. In Thai (`th`) the checkout shows only
+the Thai QR Payment card, modeled on Thai payment pages (Omise/2C2P): order
+ref, payee name (`promptpayName`), 15-min validity countdown with "new QR",
+save-card-as-image, "waiting for payment" status, and a transfer-slip
+upload that is handed to WhatsApp (no backend, so no fake auto-detection).
+`checkout.html?demo=1` previews it with a stamped, non-scannable sample QR
+while no PromptPay ID is configured. Deployed via the `claude/thai-app-mnw166` branch, which is
+the GitHub Pages source (not `gh-pages`).
