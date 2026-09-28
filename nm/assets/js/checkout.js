@@ -85,6 +85,14 @@
     if (window.NM_LANG === "th") methods.insertBefore(pp, methods.firstElementChild);
     else if (methods.firstElementChild === pp) methods.insertBefore(pp, methods.children[2]);
 
+    // Thai visitors pay the way everyone does in Thailand: one Thai QR
+    // Payment (PromptPay) code with the amount, no method list.
+    var thai = window.NM_LANG === "th";
+    form.classList.toggle("co-form--thai", thai);
+    $("#thaiQr").hidden = !thai;
+    $("#coPayTitle").textContent = t(thai ? "checkout.payTitleQr" : "checkout.payTitle");
+    if (thai) { var ppRadio = $('input[name="method"][value="promptpay"]', form); if (!ppRadio.checked) ppRadio.checked = true; renderThaiQr(); }
+
     var m = method(), note = "";
     if (m === "card") note = cardLink(p) ? t("checkout.nCardLive").replace("{amount}", fmt(a.setup)) : t("checkout.nCardManual");
     if (m === "promptpay") note = PAY.promptpay ? t("checkout.nPromptLive") : t("checkout.nManual");
@@ -93,12 +101,49 @@
     $("#coMethodNote").textContent = note;
 
     var label;
-    if (m === "meeting") label = t("checkout.payConfirm");
+    if (thai) label = PAY.promptpay ? t("checkout.payPaid").replace("{amount}", thbText(p)) : t("checkout.payOrder").replace("{amount}", thbText(p));
+    else if (m === "meeting") label = t("checkout.payConfirm");
     else if (m === "card" && cardLink(p)) label = t("checkout.payNow").replace("{amount}", fmt(a.setup));
     else label = t("checkout.payOrder").replace("{amount}", fmt(a.setup));
     $("#coPayLabel").textContent = label;
   }
   document.addEventListener("nm:lang", render);
+
+  /* ---------- Thai QR Payment card ---------- */
+  function thbAmount(plan) { return window.NMI18n.price(plan + "Setup", "thb"); }
+  function thbText(plan) { return thbAmount(plan).toLocaleString("en-US") + " ฿"; }
+  var qrKey = "";
+  function renderThaiQr() {
+    var p = planKey(), amount = thbAmount(p);
+    $("#thaiQrAmount").textContent = amount.toLocaleString("en-US", { minimumFractionDigits: 2 }) + " ฿";
+    var box = $("#thaiQr"), ready = !!PAY.promptpay && !!window.QRCode;
+    box.classList.toggle("thaiqr--pending", !ready);
+    $("#thaiQrPending").hidden = ready;
+    if (!ready) return;
+    var key = PAY.promptpay + "|" + amount;
+    if (key === qrKey) return;
+    qrKey = key;
+    var holder = $("#thaiQrCode"); holder.innerHTML = "";
+    new window.QRCode(holder, { text: promptPayPayload(PAY.promptpay, amount), width: 480, height: 480, colorDark: "#0b2b5e", colorLight: "#ffffff", correctLevel: window.QRCode.CorrectLevel.M });
+    $$("img, canvas", holder).forEach(function (el) { el.setAttribute("aria-hidden", "true"); if (el.tagName === "IMG") el.alt = ""; });
+  }
+  // On a phone you can't scan your own screen: Thai banking apps scan a QR
+  // from the photo gallery, so offer the code as an image to save.
+  $("#thaiQrSave").addEventListener("click", function () {
+    var canvas = $("#thaiQrCode canvas");
+    if (!canvas) return;
+    var name = "nm-studio-promptpay-" + thbAmount(planKey()) + ".png";
+    canvas.toBlob(function (blob) {
+      var file = blob && window.File ? new File([blob], name, { type: "image/png" }) : null;
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: "PromptPay · NM Studio" }).catch(function () {});
+        return;
+      }
+      var a = document.createElement("a");
+      a.href = canvas.toDataURL("image/png"); a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+  });
 
   /* ---------- steps ---------- */
   function setErr(field, msg) {
@@ -222,7 +267,9 @@
     $("#coTermsErr").textContent = "";
 
     var d = collect(), a = amounts(d.plan);
+    var thaiMode = window.NM_LANG === "th";
     var o = Object.assign(d, {
+      thai: thaiMode,
       ref: "NM-" + Date.now().toString(36).slice(-6).toUpperCase(),
       setup: a.setup, monthly: a.monthly, currency: window.NMI18n.currency(),
       methodLabel: $('input[name="method"]:checked + .co-method__card b', form).textContent,
@@ -246,14 +293,14 @@
     var done = $("#coDone"); done.hidden = false;
     $("#doneRef").textContent = t("checkout.doneRef") + " " + o.ref;
 
-    var lead = {
+    var lead = o.thai ? (PAY.promptpay ? t("checkout.leadSlip") : t("checkout.leadManual")) : {
       card: t("checkout.leadCard"), promptpay: PAY.promptpay ? t("checkout.leadPrompt") : t("checkout.leadManual"),
       bank: PAY.bank && PAY.bank.iban ? t("checkout.leadBank") : t("checkout.leadManual"), meeting: t("checkout.leadMeet")
     }[o.method];
     $("#doneLead").textContent = lead;
 
     var payBox = $("#donePay"); payBox.innerHTML = ""; payBox.hidden = true;
-    if (o.method === "promptpay" && PAY.promptpay && window.QRCode) {
+    if (!o.thai && o.method === "promptpay" && PAY.promptpay && window.QRCode) {
       var amountThb = window.NMI18n.price(o.plan + "Setup", "thb"); // PromptPay settles in baht
       payBox.hidden = false;
       payBox.innerHTML = '<div class="pp"><div class="pp__head"><b>PromptPay</b><span>' + amountThb.toLocaleString("en-US") + ' ฿</span></div><div class="pp__qr" id="ppQr"></div><p class="pp__note"></p></div>';

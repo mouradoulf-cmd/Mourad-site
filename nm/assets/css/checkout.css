@@ -18,7 +18,7 @@
 .co { position: relative; overflow: clip; padding: clamp(2rem, 5vw, 3.5rem) 0 6rem; }
 .co__glow { position: absolute; top: -12rem; left: 50%; width: min(70rem, 140vw); height: 32rem; transform: translateX(-50%); pointer-events: none; z-index: -1;
   background: radial-gradient(closest-side, rgba(168,85,247,.2), transparent), radial-gradient(40% 60% at 25% 50%, rgba(34,232,255,.12), transparent 70%); filter: blur(20px); }
-.co__layout { max-width: 72rem; margin: 0 auto; padding-inline: var(--gutter); display: grid; gap: 2rem; align-items: start; }
+.co__layout { max-width: 72rem; margin: 0 auto; padding-inline: var(--gutter); display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: start; }
 @media (min-width: 960px) { .co__layout { grid-template-columns: minmax(0, 1fr) 23rem; gap: 3.5rem; } }
 
 .co-back { display: inline-flex; align-items: center; gap: .45rem; font-size: .88rem; color: var(--muted); transition: color .2s ease, gap .3s var(--ease-out); }
@@ -234,6 +234,31 @@ html[lang="th"] .co-done__label, html[lang="ar"] .co-done__label { letter-spacin
 /* keep each fieldset legend inside its card (legends otherwise sit on the border) */
 .co-panel__title { float: left; }
 html[dir="rtl"] .co-panel__title { float: right; }
-.co-panel__title + * { clear: both; }
+.co-panel > :not(legend) { clear: both; }
 .co-panel::after { content: ""; display: table; clear: both; }
 .co-panel:not(.is-open) .co-panel__title { padding-block: 1.1rem; }
+
+/* ---------- Thai mode: one Thai QR Payment card instead of a method list ---------- */
+.co-form--thai .co-methods, .co-form--thai #coMethodNote { display: none !important; }
+.thaiqr { margin-top: 1rem; display: grid; gap: 1.2rem; align-items: center; }
+@media (min-width: 640px) { .thaiqr { grid-template-columns: 15.5rem 1fr; gap: 1.6rem; } }
+.thaiqr__card { width: 100%; max-width: 15.5rem; margin-inline: auto; border-radius: 18px; overflow: hidden; background: #fff; color: #0b2b5e; box-shadow: 0 30px 60px -25px rgba(34,232,255,.35), 0 0 0 1px rgba(255,255,255,.1); }
+.thaiqr__head { display: flex; align-items: center; justify-content: center; gap: .5rem; padding: .7rem; background: #113566; color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .12em; }
+.thaiqr__mark { width: 1.1rem; height: 1.1rem; border-radius: 4px; background: conic-gradient(#0aa6d6 0 25%, #fff 0 50%, #0aa6d6 0 75%, #fff 0); box-shadow: inset 0 0 0 2px #fff; }
+.thaiqr__body { padding: .9rem 1rem 1rem; text-align: center; }
+.thaiqr__pp { font-weight: 700; font-size: 1rem; color: #0b2b5e; }
+.thaiqr__pp span { font-family: "Noto Sans Thai", sans-serif; font-weight: 600; color: #1d63b8; margin-inline-start: .3rem; }
+.thaiqr__qr { width: 100%; aspect-ratio: 1; margin-top: .6rem; display: grid; place-items: center; }
+.thaiqr__qr canvas, .thaiqr__qr img { width: 100% !important; height: auto !important; display: block; image-rendering: pixelated; }
+.thaiqr__to { margin-top: .6rem; font-size: .8rem; color: #5a6b85; }
+.thaiqr__to b { color: #0b2b5e; }
+.thaiqr__amount { margin-top: .2rem; font-size: 1.5rem; font-weight: 700; color: #0b2b5e; font-variant-numeric: tabular-nums; }
+.thaiqr__steps { counter-reset: s; display: grid; gap: .7rem; }
+.thaiqr__steps li { counter-increment: s; position: relative; padding-inline-start: 2.1rem; font-size: .95rem; color: #d2d5df; line-height: 1.45; }
+.thaiqr__steps li::before { content: counter(s); position: absolute; inset-inline-start: 0; top: -.05rem; display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; font-size: .75rem; font-weight: 600; color: var(--ink); background: var(--cyan); }
+.thaiqr__save { margin-top: 1.1rem; }
+.thaiqr__save svg { width: 1.05rem; height: 1.05rem; }
+.thaiqr__banks { margin-top: .9rem; font-size: .8rem; color: var(--faint); line-height: 1.5; }
+.thaiqr__pending { grid-column: 1 / -1; padding: .8rem 1rem; border-radius: var(--radius-sm); font-size: .88rem; color: #cfd3de; background: rgba(34,232,255,.06); border: 1px solid rgba(34,232,255,.18); }
+.thaiqr--pending .thaiqr__card, .thaiqr--pending .thaiqr__save { display: none; }
+.thaiqr--pending { grid-template-columns: 1fr !important; }

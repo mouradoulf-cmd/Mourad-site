@@ -148,7 +148,7 @@
 
         <!-- STEP 3 — PAYMENT -->
         <fieldset class="co-panel" data-step="3" disabled>
-          <legend class="co-panel__title"><span class="co-panel__n">03</span><span data-i18n="checkout.payTitle">Payment method</span></legend>
+          <legend class="co-panel__title"><span class="co-panel__n">03</span><span id="coPayTitle" data-i18n="checkout.payTitle">Payment method</span></legend>
           <div class="co-methods" id="coMethods">
             <label class="co-method">
               <input type="radio" name="method" value="card" checked>
@@ -181,6 +181,27 @@
             </label>
           </div>
           <p class="co-method-note" id="coMethodNote" role="status"></p>
+          <div class="thaiqr" id="thaiQr" hidden>
+            <div class="thaiqr__card">
+              <div class="thaiqr__head"><span class="thaiqr__mark" aria-hidden="true"></span><span>THAI QR PAYMENT</span></div>
+              <div class="thaiqr__body">
+                <p class="thaiqr__pp">PromptPay <span>พร้อมเพย์</span></p>
+                <div class="thaiqr__qr" id="thaiQrCode" role="img" aria-label="PromptPay QR"></div>
+                <p class="thaiqr__to"><span data-i18n="checkout.qrTo">To</span> <b>NM Studio</b></p>
+                <p class="thaiqr__amount" id="thaiQrAmount">—</p>
+              </div>
+            </div>
+            <div class="thaiqr__side">
+              <ol class="thaiqr__steps">
+                <li data-i18n="checkout.qr1">Open your banking app</li>
+                <li data-i18n="checkout.qr2">Tap Scan, or choose the saved QR from your gallery</li>
+                <li data-i18n="checkout.qr3">Check the amount and confirm</li>
+              </ol>
+              <button type="button" class="btn btn--ghost thaiqr__save" id="thaiQrSave"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5M4 14.5V16a1 1 0 001 1h10a1 1 0 001-1v-1.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="checkout.qrSave">Save QR to photos</span></button>
+              <p class="thaiqr__banks" data-i18n="checkout.qrBanks">Works with every Thai bank: K PLUS, SCB EASY, Bangkok Bank, Krungthai NEXT, krungsri…</p>
+            </div>
+            <p class="thaiqr__pending" id="thaiQrPending" hidden data-i18n="checkout.qrPending">Your PromptPay QR with the exact amount will be sent on WhatsApp as soon as you confirm.</p>
+          </div>
 
           <label class="co-terms">
             <input type="checkbox" id="coTerms" required aria-describedby="coTermsErr">
