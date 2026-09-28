@@ -50,6 +50,7 @@
   var finale = $(".finale");
   var menuEl = $("#menu");
   var lastY = window.scrollY;
+  var narrow = window.matchMedia("(max-width: 959px)");
   // Layout metrics are measured on load/resize only, never inside scroll.
   var metrics = { heroEnd: 600, maxScroll: 1, finaleTop: Infinity, vh: window.innerHeight };
   function measure() {
@@ -68,7 +69,12 @@
     else if (y > lastY + 4) header.classList.add("is-hidden");
     if (Math.abs(y - lastY) > 4 || y < metrics.heroEnd) lastY = y;
     if (progressBar) progressBar.style.transform = "scaleX(" + Math.min(1, y / metrics.maxScroll) + ")";
-    if (waFloat) waFloat.classList.toggle("is-visible", y > metrics.heroEnd && y + metrics.vh * 0.85 < metrics.finaleTop);
+    if (waFloat) {
+      // On phones the floating button would sit on top of the text being
+      // read, so it follows the header: hidden while reading down, back on scroll up.
+      var readingDown = narrow.matches && header.classList.contains("is-hidden");
+      waFloat.classList.toggle("is-visible", y > metrics.heroEnd && y + metrics.vh * 0.85 < metrics.finaleTop && !readingDown);
+    }
     updateManifesto();
   }
   var scrollQueued = false;
@@ -410,22 +416,65 @@
   prepareManifesto();
   onScroll();
 
-  /* ---------- "The difference": the step in the middle of the screen drives the phone ---------- */
-  var diffPhone = $("#diffPhone");
-  var diffSteps = $$(".diff__step");
-  function setDiffState(n) {
-    if (!diffPhone || diffPhone.getAttribute("data-state") === String(n)) return;
-    diffPhone.setAttribute("data-state", String(n));
-    diffSteps.forEach(function (st) { st.classList.toggle("is-active", st.getAttribute("data-step") === String(n)); });
-  }
-  if (diffPhone && diffSteps.length && "IntersectionObserver" in window) {
-    var diffObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) { if (entry.isIntersecting) setDiffState(entry.target.getAttribute("data-step")); });
-    // On phones the sticky phone covers the top half, so the trigger band
-    // sits lower, where the step text is actually readable.
-    }, { rootMargin: window.innerWidth < 960 ? "-68% 0px -22% 0px" : "-45% 0px -45% 0px" });
-    diffSteps.forEach(function (st) { diffObserver.observe(st); });
-  }
+  /* ---------- "The difference" ----------
+     Desktop: the step crossing the middle of the screen drives the sticky phone.
+     Phones/tablets: the steps are tappable cards under the phone; they
+     auto-advance while the section is on screen, until the visitor taps one. */
+  (function difference() {
+    var section = $("#difference");
+    var diffPhone = $("#diffPhone");
+    var diffSteps = $$(".diff__step");
+    if (!section || !diffPhone || !diffSteps.length) return;
+    var DIFF_MS = 3800;
+    section.style.setProperty("--diff-ms", DIFF_MS + "ms");
+    function setState(n) {
+      n = String(n);
+      diffPhone.setAttribute("data-state", n);
+      diffSteps.forEach(function (st) {
+        var on = st.getAttribute("data-step") === n;
+        st.classList.remove("is-active");
+        if (on) { void st.offsetWidth; st.classList.add("is-active"); }
+        var hit = st.querySelector(".diff__hit");
+        if (hit) hit.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    }
+    var desktop = window.matchMedia("(min-width: 960px)");
+    var io = null, autoTimer = null, inView = false, userTook = false;
+    function current() { return Number(diffPhone.getAttribute("data-state")) || 1; }
+    function stopAuto() { clearTimeout(autoTimer); section.classList.remove("is-auto"); }
+    function runAuto() {
+      stopAuto();
+      if (desktop.matches || userTook || reduce || !inView || document.hidden) return;
+      section.classList.add("is-auto");
+      setState(current());
+      autoTimer = setTimeout(function next() {
+        setState(current() % diffSteps.length + 1);
+        autoTimer = setTimeout(next, DIFF_MS);
+      }, DIFF_MS);
+    }
+    function onTap(e) {
+      userTook = true; stopAuto();
+      setState(e.currentTarget.getAttribute("data-step"));
+    }
+    function setup() {
+      if (io) { io.disconnect(); io = null; }
+      stopAuto();
+      if (!("IntersectionObserver" in window)) return;
+      if (desktop.matches) {
+        io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) { if (entry.isIntersecting) setState(entry.target.getAttribute("data-step")); });
+        }, { rootMargin: "-45% 0px -45% 0px" });
+        diffSteps.forEach(function (st) { io.observe(st); });
+      } else {
+        io = new IntersectionObserver(function (entries) { inView = entries[0].isIntersecting; runAuto(); }, { threshold: 0.35 });
+        io.observe(diffPhone);
+      }
+    }
+    $$(".diff__hit", section).forEach(function (btn) { btn.addEventListener("click", onTap); });
+    document.addEventListener("visibilitychange", runAuto);
+    if (desktop.addEventListener) desktop.addEventListener("change", setup); else desktop.addListener(setup);
+    setup();
+  })();
 
   /* ---------- footer: live local time in Pattaya ---------- */
   var clock = $("#localTime");
