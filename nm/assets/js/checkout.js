@@ -10,6 +10,12 @@
   var WA_URL = "https://wa.me/qr/PYPOVXTCVM74I1";
   var STORE = "nmCheckout";
   var PAY = window.NM_PAYMENTS || {};
+  var params = new URLSearchParams(location.search);
+  // ?demo=1 previews the Thai QR flow with a clearly labelled sample code
+  // while no real PromptPay ID is configured. It never pays anyone.
+  var DEMO = params.get("demo") === "1" && !PAY.promptpay;
+  var PP_ID = PAY.promptpay || (DEMO ? "0000000000" : "");
+  var QR_TTL = 15 * 60 * 1000;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
@@ -37,13 +43,20 @@
   (function restore() {
     var saved = {};
     try { saved = JSON.parse(sessionStorage.getItem(STORE) || "{}"); } catch (e) {}
-    var q = new URLSearchParams(location.search).get("plan") || saved.plan;
+    var q = params.get("plan") || saved.plan;
     var r = q && $('input[name="plan"][value="' + q + '"]', form);
     if (r) r.checked = true;
     ["business", "type", "name", "phone", "email", "notes"].forEach(function (k) { if (saved[k] && form.elements[k]) form.elements[k].value = saved[k]; });
     if (saved.langs) $$('input[name="langs"]', form).forEach(function (c) { c.checked = saved.langs.indexOf(c.value) > -1; });
     if (saved.method) { var m = $('input[name="method"][value="' + saved.method + '"]', form); if (m) m.checked = true; }
   })();
+  // One order reference per checkout, shown on the QR card and in the order.
+  var orderRef = "";
+  try { orderRef = sessionStorage.getItem(STORE + "Ref") || ""; } catch (e) {}
+  if (!orderRef) {
+    orderRef = "NM-" + Date.now().toString(36).slice(-6).toUpperCase();
+    try { sessionStorage.setItem(STORE + "Ref", orderRef); } catch (e) {}
+  }
   function save() {
     var d = collect();
     try { sessionStorage.setItem(STORE, JSON.stringify(d)); } catch (e) {}
@@ -89,6 +102,8 @@
     // Payment (PromptPay) code with the amount, no method list.
     var thai = window.NM_LANG === "th";
     form.classList.toggle("co-form--thai", thai);
+    var sec = $(".sum__secure span"), secKey = thai ? "checkout.secureNoteQr" : "checkout.secureNote";
+    sec.setAttribute("data-i18n", secKey); sec.textContent = t(secKey);
     $("#thaiQr").hidden = !thai;
     $("#coPayTitle").textContent = t(thai ? "checkout.payTitleQr" : "checkout.payTitle");
     if (thai) { var ppRadio = $('input[name="method"][value="promptpay"]', form); if (!ppRadio.checked) ppRadio.checked = true; renderThaiQr(); }
@@ -101,7 +116,7 @@
     $("#coMethodNote").textContent = note;
 
     var label;
-    if (thai) label = PAY.promptpay ? t("checkout.payPaid").replace("{amount}", thbText(p)) : t("checkout.payOrder").replace("{amount}", thbText(p));
+    if (thai) label = t(!PP_ID ? "checkout.payOrder" : slip ? "checkout.payNotify" : "checkout.payPaid").replace("{amount}", thbText(p));
     else if (m === "meeting") label = t("checkout.payConfirm");
     else if (m === "card" && cardLink(p)) label = t("checkout.payNow").replace("{amount}", fmt(a.setup));
     else label = t("checkout.payOrder").replace("{amount}", fmt(a.setup));
@@ -112,37 +127,128 @@
   /* ---------- Thai QR Payment card ---------- */
   function thbAmount(plan) { return window.NMI18n.price(plan + "Setup", "thb"); }
   function thbText(plan) { return thbAmount(plan).toLocaleString("en-US") + " ฿"; }
-  var qrKey = "";
+  var qrKey = "", qrExpiry = 0, qrTimer = 0, slip = null;
   function renderThaiQr() {
     var p = planKey(), amount = thbAmount(p);
     $("#thaiQrAmount").textContent = amount.toLocaleString("en-US", { minimumFractionDigits: 2 }) + " ฿";
-    var box = $("#thaiQr"), ready = !!PAY.promptpay && !!window.QRCode;
+    $("#thaiQrRef").textContent = t("checkout.qrRef") + " " + orderRef;
+    $("#thaiQrPayee").textContent = PAY.promptpayName || "NM Studio";
+    $("#thaiQrStatusText").textContent = t(slip ? "checkout.qrSlipIn" : "checkout.qrWaiting");
+    var box = $("#thaiQr"), ready = !!PP_ID && !!window.QRCode;
     box.classList.toggle("thaiqr--pending", !ready);
+    box.classList.toggle("thaiqr--slip", !!slip);
     $("#thaiQrPending").hidden = ready;
+    $("#thaiQrDemo").hidden = !DEMO;
+    $("#thaiQrCopy").hidden = !PAY.promptpay;
     if (!ready) return;
-    var key = PAY.promptpay + "|" + amount;
+    var key = PP_ID + "|" + amount;
     if (key === qrKey) return;
     qrKey = key;
-    var holder = $("#thaiQrCode"); holder.innerHTML = "";
-    new window.QRCode(holder, { text: promptPayPayload(PAY.promptpay, amount), width: 480, height: 480, colorDark: "#0b2b5e", colorLight: "#ffffff", correctLevel: window.QRCode.CorrectLevel.M });
+    var holder = $("#thaiQrCode");
+    $$("canvas, img", holder).forEach(function (el) { el.remove(); });
+    new window.QRCode(holder, { text: promptPayPayload(PP_ID, amount), width: 480, height: 480, colorDark: "#0b2b5e", colorLight: "#ffffff", correctLevel: window.QRCode.CorrectLevel.M });
+    holder.removeAttribute("title");
     $$("img, canvas", holder).forEach(function (el) { el.setAttribute("aria-hidden", "true"); if (el.tagName === "IMG") el.alt = ""; });
+    // A new amount is a new code: restart its validity window.
+    if (qrExpiry) startQrTimer();
   }
-  // On a phone you can't scan your own screen: Thai banking apps scan a QR
-  // from the photo gallery, so offer the code as an image to save.
+
+  // Thai payment pages (Omise, 2C2P, marketplaces) show how long the QR
+  // stays valid and let you make a fresh one when it runs out.
+  function startQrTimer() {
+    qrExpiry = Date.now() + QR_TTL;
+    $("#thaiQr").classList.remove("thaiqr--expired");
+    $("#thaiQrExpired").hidden = true;
+    clearInterval(qrTimer);
+    qrTimer = setInterval(tickQr, 1000);
+    tickQr();
+  }
+  function tickQr() {
+    var left = Math.max(0, qrExpiry - Date.now()), sec = Math.ceil(left / 1000);
+    $("#thaiQrClock").textContent = Math.floor(sec / 60) + ":" + ("0" + (sec % 60)).slice(-2);
+    $("#thaiQrBar").style.transform = "scaleX(" + (left / QR_TTL).toFixed(4) + ")";
+    $("#thaiQrTimer").classList.toggle("is-low", sec <= 120);
+    if (left > 0) return;
+    clearInterval(qrTimer);
+    $("#thaiQr").classList.add("thaiqr--expired");
+    $("#thaiQrExpired").hidden = false;
+  }
+  $("#thaiQrRenew").addEventListener("click", function () {
+    startQrTimer();
+    var c = $("#thaiQrWrap");
+    c.classList.remove("is-fresh"); void c.offsetWidth; c.classList.add("is-fresh");
+  });
+
+  // On a phone you can't scan your own screen: Thai banking apps read a QR
+  // from the photo gallery, so offer the whole payment card as an image.
+  function qrCardImage(cb) {
+    var qr = $("#thaiQrCode canvas");
+    if (!qr) return cb(null);
+    var W = 720, H = 1010, c = document.createElement("canvas"), x = c.getContext("2d");
+    c.width = W; c.height = H;
+    x.fillStyle = "#ffffff"; x.fillRect(0, 0, W, H);
+    x.fillStyle = "#113566"; x.fillRect(0, 0, W, 104);
+    x.textAlign = "center"; x.textBaseline = "middle";
+    var font = function (w, px) { return w + " " + px + "px Geist, 'Helvetica Neue', Arial, sans-serif"; };
+    x.fillStyle = "#ffffff"; x.font = font(700, 30); x.fillText("THAI QR PAYMENT", W / 2, 54);
+    x.fillStyle = "#0b2b5e"; x.font = font(700, 34); x.fillText("PromptPay", W / 2, 160);
+    x.drawImage(qr, 120, 200, 480, 480);
+    x.fillStyle = "#5a6b85"; x.font = font(500, 26); x.fillText("To  " + (PAY.promptpayName || "NM Studio"), W / 2, 730);
+    x.fillStyle = "#0b2b5e"; x.font = font(700, 58); x.fillText($("#thaiQrAmount").textContent.replace(" ฿", "") + " THB", W / 2, 800);
+    x.fillStyle = "#eef2f8"; x.fillRect(60, 862, W - 120, 1);
+    x.fillStyle = "#5a6b85"; x.font = font(500, 24); x.fillText("Order " + orderRef + "  ·  NM Studio", W / 2, 910);
+    if (DEMO) {
+      x.save(); x.translate(W / 2, 440); x.rotate(-0.5); x.fillStyle = "rgba(220,38,38,.85)"; x.font = font(800, 90); x.fillText("SAMPLE", 0, 0); x.restore();
+    }
+    c.toBlob(cb, "image/png");
+  }
   $("#thaiQrSave").addEventListener("click", function () {
-    var canvas = $("#thaiQrCode canvas");
-    if (!canvas) return;
-    var name = "nm-studio-promptpay-" + thbAmount(planKey()) + ".png";
-    canvas.toBlob(function (blob) {
-      var file = blob && window.File ? new File([blob], name, { type: "image/png" }) : null;
+    var name = "nm-studio-promptpay-" + orderRef + ".png";
+    qrCardImage(function (blob) {
+      if (!blob) return;
+      var file = window.File ? new File([blob], name, { type: "image/png" }) : null;
       if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share({ files: [file], title: "PromptPay · NM Studio" }).catch(function () {});
+        navigator.share({ files: [file], title: "PromptPay · NM Studio" }).then(function () { showToast(t("checkout.qrSaved")); }, function () {});
         return;
       }
-      var a = document.createElement("a");
-      a.href = canvas.toDataURL("image/png"); a.download = name;
+      var a = document.createElement("a"), url = URL.createObjectURL(blob);
+      a.href = url; a.download = name;
       document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+      showToast(t("checkout.qrSaved"));
     });
+  });
+  $("#thaiQrCopy").addEventListener("click", function () {
+    if (navigator.clipboard) navigator.clipboard.writeText(PAY.promptpay).then(function () { showToast(t("checkout.qrCopied")); }, function () {});
+  });
+
+  // Transfer slip: every Thai shop that takes PromptPay asks for the slip
+  // the banking app produces after the transfer. With no server here, it is
+  // kept in the page and handed to WhatsApp on the confirmation screen.
+  var slipInput = $("#slipFile"), slipUrl = "";
+  function setSlip(file) {
+    if (slipUrl) URL.revokeObjectURL(slipUrl);
+    slip = file || null; slipUrl = slip ? URL.createObjectURL(slip) : "";
+    $("#slipPreview").hidden = !slip;
+    $("#slipDrop").hidden = !!slip;
+    if (slip) { $("#slipImg").src = slipUrl; $("#slipName").textContent = slip.name; }
+    else slipInput.value = "";
+    render();
+  }
+  slipInput.addEventListener("change", function (e) {
+    e.stopPropagation();
+    var f = slipInput.files && slipInput.files[0];
+    if (f && !/^image\//.test(f.type)) { showToast(t("checkout.slipBad")); slipInput.value = ""; return; }
+    if (f) setSlip(f);
+  });
+  $("#slipRemove").addEventListener("click", function () { setSlip(null); slipInput.focus(); });
+  var drop = $("#slipDrop");
+  ["dragenter", "dragover"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("is-over"); }); });
+  ["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function () { drop.classList.remove("is-over"); }); });
+  drop.addEventListener("drop", function (e) {
+    e.preventDefault();
+    var f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f && /^image\//.test(f.type)) setSlip(f); else if (f) showToast(t("checkout.slipBad"));
   });
 
   /* ---------- steps ---------- */
@@ -185,6 +291,7 @@
       d.classList.toggle("is-done", s < n);
       if (s < n) d.setAttribute("aria-current", "false"); else if (s === n) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
     });
+    if (n === 3 && window.NM_LANG === "th" && PP_ID && !qrExpiry) startQrTimer();
     var panel = panels[n - 1];
     if (focus !== false) {
       var top = $(".co-steps").getBoundingClientRect().top + window.scrollY - 90;
@@ -242,6 +349,7 @@
   function orderMessage(o) {
     return [
       t("checkout.waHead") + " " + o.ref,
+      o.slip ? t("checkout.waSlip") : "",
       t("checkout.waPlan") + ": NM Studio " + t("pricing." + o.plan + ".title"),
       t("checkout.sumSetup") + ": " + fmt(o.setup) + " · " + t("checkout.sumMonthly") + ": " + fmt(o.monthly),
       t("checkout.waMethod") + ": " + o.methodLabel,
@@ -252,7 +360,7 @@
       "Email: " + o.email,
       t("checkout.langs") + ": " + (o.langs.join(", ") || "—"),
       o.notes ? t("checkout.notes") + " " + o.notes : ""
-    ].filter(Boolean).join("\n");
+    ].filter(function (l, i) { return l || i === 5; }).join("\n");
   }
   function showToast(msg) {
     var toast = $("#toast"); toast.textContent = msg; toast.classList.add("is-visible");
@@ -269,8 +377,8 @@
     var d = collect(), a = amounts(d.plan);
     var thaiMode = window.NM_LANG === "th";
     var o = Object.assign(d, {
-      thai: thaiMode,
-      ref: "NM-" + Date.now().toString(36).slice(-6).toUpperCase(),
+      thai: thaiMode, slip: thaiMode && !!slip,
+      ref: orderRef,
       setup: a.setup, monthly: a.monthly, currency: window.NMI18n.currency(),
       methodLabel: $('input[name="method"]:checked + .co-method__card b', form).textContent,
       typeLabel: form.elements.type.options[form.elements.type.selectedIndex].text
@@ -293,13 +401,22 @@
     var done = $("#coDone"); done.hidden = false;
     $("#doneRef").textContent = t("checkout.doneRef") + " " + o.ref;
 
-    var lead = o.thai ? (PAY.promptpay ? t("checkout.leadSlip") : t("checkout.leadManual")) : {
+    var lead = o.thai ? t(!PP_ID ? "checkout.leadManual" : o.slip ? "checkout.leadSlipSent" : "checkout.leadSlip") : {
       card: t("checkout.leadCard"), promptpay: PAY.promptpay ? t("checkout.leadPrompt") : t("checkout.leadManual"),
       bank: PAY.bank && PAY.bank.iban ? t("checkout.leadBank") : t("checkout.leadManual"), meeting: t("checkout.leadMeet")
     }[o.method];
     $("#doneLead").textContent = lead;
 
     var payBox = $("#donePay"); payBox.innerHTML = ""; payBox.hidden = true;
+    $("#doneTrack").hidden = !(o.thai && PP_ID);
+    var slipFile = o.slip && slip;
+    if (slipFile) {
+      payBox.hidden = false;
+      payBox.innerHTML = '<div class="done-slip"><img alt=""><span><b></b><small></small></span></div>';
+      $(".done-slip img", payBox).src = slipUrl;
+      $(".done-slip b", payBox).textContent = t("checkout.slipOk");
+      $(".done-slip small", payBox).textContent = $("#thaiQrAmount").textContent + " · " + o.ref;
+    }
     if (!o.thai && o.method === "promptpay" && PAY.promptpay && window.QRCode) {
       var amountThb = window.NMI18n.price(o.plan + "Setup", "thb"); // PromptPay settles in baht
       payBox.hidden = false;
@@ -326,21 +443,30 @@
       dt.textContent = t(r[0]); dd.textContent = r[1]; div.appendChild(dt); div.appendChild(dd); recap.appendChild(div);
     });
 
+    var waKey = slipFile ? "checkout.doneWaSlip" : "checkout.doneWa", waSpan = $("#doneWa span");
+    waSpan.setAttribute("data-i18n", waKey); waSpan.textContent = t(waKey);
     $("#doneWa").onclick = function () {
       var msg = orderMessage(o);
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(msg).then(function () { showToast(t("booking.toast")); }, function () {});
+      // Phones can hand the slip image and the order text straight to
+      // WhatsApp through the share sheet.
+      if (slipFile && navigator.canShare && navigator.canShare({ files: [slipFile] })) {
+        navigator.share({ files: [slipFile], text: msg }).catch(function () {});
+        return;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(msg).then(function () { showToast(t(slipFile ? "checkout.slipHint" : "booking.toast")); }, function () {});
       window.open(WA_URL + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
     };
     $("#donePrint").onclick = function () { window.print(); };
 
     window.scrollTo({ top: 0, behavior: "auto" });
     done.focus({ preventScroll: true });
-    try { sessionStorage.removeItem(STORE); } catch (e) {}
+    clearInterval(qrTimer);
+    try { sessionStorage.removeItem(STORE); sessionStorage.removeItem(STORE + "Ref"); } catch (e) {}
   }
 
   // Returning from Stripe (configure the Payment Link's success URL as
   // …/checkout.html?paid=1) shows the confirmation for the stored order.
-  if (new URLSearchParams(location.search).get("paid") === "1") {
+  if (params.get("paid") === "1") {
     try { var stored = JSON.parse(sessionStorage.getItem(STORE + "Order") || "null"); if (stored) { showDone(stored); $("#doneLead").textContent = t("checkout.leadPaid"); } } catch (e) {}
   }
 

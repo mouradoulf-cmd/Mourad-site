@@ -182,13 +182,22 @@
           </div>
           <p class="co-method-note" id="coMethodNote" role="status"></p>
           <div class="thaiqr" id="thaiQr" hidden>
+            <div class="thaiqr__status" id="thaiQrStatus" role="status"><span class="thaiqr__dot" aria-hidden="true"></span><span id="thaiQrStatusText" data-i18n="checkout.qrWaiting">Waiting for payment</span><span class="thaiqr__ref" id="thaiQrRef"></span></div>
             <div class="thaiqr__card">
               <div class="thaiqr__head"><span class="thaiqr__mark" aria-hidden="true"></span><span>THAI QR PAYMENT</span></div>
               <div class="thaiqr__body">
                 <p class="thaiqr__pp">PromptPay <span>พร้อมเพย์</span></p>
-                <div class="thaiqr__qr" id="thaiQrCode" role="img" aria-label="PromptPay QR"></div>
-                <p class="thaiqr__to"><span data-i18n="checkout.qrTo">To</span> <b>NM Studio</b></p>
+                <div class="thaiqr__qr" id="thaiQrWrap">
+                  <div class="thaiqr__code" id="thaiQrCode" role="img" aria-label="PromptPay QR"></div>
+                  <span class="thaiqr__demo" id="thaiQrDemo" hidden data-i18n="checkout.qrDemo">Sample</span>
+                  <div class="thaiqr__expired" id="thaiQrExpired" hidden>
+                    <p data-i18n="checkout.qrExpired">QR expired</p>
+                    <button type="button" class="thaiqr__renew" id="thaiQrRenew"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M15.5 8A6 6 0 004.6 6.5M4.5 12a6 6 0 0010.9 1.5M4.3 3.5v3.2h3.2M15.7 16.5v-3.2h-3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="checkout.qrRenew">New QR code</span></button>
+                  </div>
+                </div>
+                <p class="thaiqr__to"><span data-i18n="checkout.qrTo">To</span> <b id="thaiQrPayee">NM Studio</b></p>
                 <p class="thaiqr__amount" id="thaiQrAmount">—</p>
+                <div class="thaiqr__timer" id="thaiQrTimer"><span data-i18n="checkout.qrValid">Valid for</span> <b id="thaiQrClock">15:00</b><i aria-hidden="true"><s id="thaiQrBar"></s></i></div>
               </div>
             </div>
             <div class="thaiqr__side">
@@ -196,9 +205,29 @@
                 <li data-i18n="checkout.qr1">Open your banking app</li>
                 <li data-i18n="checkout.qr2">Tap Scan, or choose the saved QR from your gallery</li>
                 <li data-i18n="checkout.qr3">Check the amount and confirm</li>
+                <li data-i18n="checkout.qr4">Attach your slip below</li>
               </ol>
-              <button type="button" class="btn btn--ghost thaiqr__save" id="thaiQrSave"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5M4 14.5V16a1 1 0 001 1h10a1 1 0 001-1v-1.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="checkout.qrSave">Save QR to photos</span></button>
-              <p class="thaiqr__banks" data-i18n="checkout.qrBanks">Works with every Thai bank: K PLUS, SCB EASY, Bangkok Bank, Krungthai NEXT, krungsri…</p>
+              <div class="thaiqr__actions">
+                <button type="button" class="btn btn--ghost thaiqr__save" id="thaiQrSave"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5M4 14.5V16a1 1 0 001 1h10a1 1 0 001-1v-1.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="checkout.qrSave">Save QR to photos</span></button>
+                <button type="button" class="btn btn--ghost thaiqr__copy" id="thaiQrCopy" hidden><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="7" y="7" width="9.5" height="9.5" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M13 7V5.5A1.5 1.5 0 0011.5 4h-6A1.5 1.5 0 004 5.5v6A1.5 1.5 0 005.5 13H7" stroke="currentColor" stroke-width="1.6"/></svg><span data-i18n="checkout.qrCopy">Copy PromptPay number</span></button>
+              </div>
+              <p class="thaiqr__banks-label" data-i18n="checkout.qrBanks">Works with every Thai bank app</p>
+              <ul class="thaiqr__banks" aria-label="Thai banks">
+                <li style="--b:#0d7424">K PLUS</li><li style="--b:#4e2a84">SCB</li><li style="--b:#1e4598">Bangkok Bank</li><li style="--b:#0a76a8">Krungthai</li><li style="--b:#fec43b;--t:#4d3a00">krungsri</li><li style="--b:#0050f0">ttb</li><li style="--b:#c01374">GSB</li>
+              </ul>
+            </div>
+
+            <div class="slip" id="slipBox">
+              <input type="file" id="slipFile" accept="image/*" class="slip__input" aria-label="Attach your transfer slip" data-i18n-aria-label="checkout.slipTitle">
+              <label for="slipFile" class="slip__drop" id="slipDrop">
+                <span class="slip__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7.5L19 8v11a1.5 1.5 0 01-1.5 1.5h-10A1.5 1.5 0 016 19V5a1.5 1.5 0 011-1.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3.5V8h5M12 17v-6m0 0l-2.5 2.5M12 11l2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="slip__text"><b data-i18n="checkout.slipTitle">Attach your transfer slip</b><small data-i18n="checkout.slipSub">Screenshot from your banking app — we check it and confirm within the hour.</small></span>
+              </label>
+              <div class="slip__preview" id="slipPreview" hidden>
+                <img id="slipImg" alt="">
+                <span class="slip__meta"><b data-i18n="checkout.slipOk">Slip attached</b><small id="slipName"></small></span>
+                <button type="button" class="slip__remove" id="slipRemove" data-i18n-aria-label="checkout.slipRemove" aria-label="Remove slip"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              </div>
             </div>
             <p class="thaiqr__pending" id="thaiQrPending" hidden data-i18n="checkout.qrPending">Your PromptPay QR with the exact amount will be sent on WhatsApp as soon as you confirm.</p>
           </div>
@@ -258,6 +287,12 @@
     <p class="co-done__lead" id="doneLead"></p>
 
     <div class="co-done__pay" id="donePay" hidden></div>
+    <ol class="co-track" id="doneTrack" hidden>
+      <li class="is-done"><span data-i18n="checkout.trOrder">Order placed</span></li>
+      <li class="is-done" id="trPay"><span data-i18n="checkout.trPaid">Payment sent</span></li>
+      <li class="is-now"><span data-i18n="checkout.trCheck">Slip check · within the hour</span></li>
+      <li><span data-i18n="checkout.trStart">Design starts</span></li>
+    </ol>
 
     <div class="co-done__grid">
       <div class="co-done__card">

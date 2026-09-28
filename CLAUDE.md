@@ -107,5 +107,11 @@ GSAP has loaded. `nm/checkout.html` is the plan checkout (`assets/js/checkout.js
 `nm/assets/js/payment-config.js` (Stripe Payment Links per currency/plan,
 PromptPay ID — the QR payload is generated client-side — and bank details);
 anything left empty falls back to finishing the order on WhatsApp. Never
-add card-number fields to the site. Deployed via the `claude/thai-app-mnw166` branch, which is
+add card-number fields to the site. In Thai (`th`) the checkout shows only
+the Thai QR Payment card, modeled on Thai payment pages (Omise/2C2P): order
+ref, payee name (`promptpayName`), 15-min validity countdown with "new QR",
+save-card-as-image, "waiting for payment" status, and a transfer-slip
+upload that is handed to WhatsApp (no backend, so no fake auto-detection).
+`checkout.html?demo=1` previews it with a stamped, non-scannable sample QR
+while no PromptPay ID is configured. Deployed via the `claude/thai-app-mnw166` branch, which is
 the GitHub Pages source (not `gh-pages`).
