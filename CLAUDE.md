@@ -101,5 +101,11 @@ Showcase screenshots live in `nm/assets/img/work/` and are captured from
 the live demos with Playwright; the Façadiers one uses a people-free frame
 of its own hero video (the video carries a clideo.com watermark — crop
 above it). Content is visible by default; motion is only layered on once
-GSAP has loaded. Deployed via the `claude/thai-app-mnw166` branch, which is
+GSAP has loaded. `nm/checkout.html` is the plan checkout (`assets/js/checkout.js`,
+`assets/css/checkout.css`, strings in `assets/js/checkout-i18n.js` merged via
+`window.NM_EXTRA_DICT`). Payment methods are configured in
+`nm/assets/js/payment-config.js` (Stripe Payment Links per currency/plan,
+PromptPay ID — the QR payload is generated client-side — and bank details);
+anything left empty falls back to finishing the order on WhatsApp. Never
+add card-number fields to the site. Deployed via the `claude/thai-app-mnw166` branch, which is
 the GitHub Pages source (not `gh-pages`).
