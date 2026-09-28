@@ -183,11 +183,81 @@
   </div>
 </section>
 
+<!-- ============ THE DIFFERENCE (scroll story) ============ -->
+<section class="diff" id="difference" aria-labelledby="diffTitle">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="diff.eyebrow">The difference</p>
+      <h2 class="section-title" id="diffTitle" data-i18n-html="diff.title" data-anim="words">Same place. <em>Two very different first impressions.</em></h2>
+    </div>
+    <div class="diff__grid">
+      <div class="diff__stickywrap">
+        <div class="diff__phone" id="diffPhone" data-state="1" aria-hidden="true">
+          <div class="dp">
+            <div class="dp__notch"></div>
+            <!-- Screen 1: the search -->
+            <div class="dp__screen dp__screen--1">
+              <div class="dp-map">
+                <span class="dp-map__road dp-map__road--a"></span><span class="dp-map__road dp-map__road--b"></span><span class="dp-map__road dp-map__road--c"></span>
+                <span class="dp-pin" style="left:22%;top:30%"></span><span class="dp-pin" style="left:64%;top:22%"></span><span class="dp-pin" style="left:48%;top:48%"></span><span class="dp-pin" style="left:76%;top:56%"></span><span class="dp-pin" style="left:30%;top:62%"></span><span class="dp-pin dp-pin--you" style="left:55%;top:36%"></span>
+              </div>
+              <div class="dp-search"><svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M13.2 13.2L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span data-i18n="diff.query">Italian restaurant near me</span><i class="dp-caret"></i></div>
+              <div class="dp-sheet">
+                <div class="dp-grab"></div>
+                <div class="dp-row"><span class="dp-thumb dp-thumb--a"></span><div><b>Trattoria Roma</b><small>★★★★☆ · 0.4 km</small></div></div>
+                <div class="dp-row"><span class="dp-thumb dp-thumb--b"></span><div><b>Bella Napoli</b><small>★★★★☆ · 0.7 km</small></div></div>
+                <div class="dp-row dp-row--you"><span class="dp-thumb dp-thumb--c"></span><div><b data-i18n="diff.you">Your restaurant</b><small>0.2 km</small></div></div>
+              </div>
+            </div>
+            <!-- Screen 2: a listing with no website -->
+            <div class="dp__screen dp__screen--2">
+              <div class="dp-photos"><span></span><span></span><span></span></div>
+              <div class="dp-card">
+                <b class="dp-card__name" data-i18n="diff.you">Your restaurant</b>
+                <small class="dp-card__meta" data-i18n="diff.meta">Restaurant · 0.2 km</small>
+                <div class="dp-actions"><span data-i18n="diff.directions">Directions</span><span data-i18n="diff.call">Call</span><span class="is-off" data-i18n="diff.noSite">No website</span></div>
+                <div class="dp-lines"><i></i><i></i><i></i></div>
+                <p class="dp-note" data-i18n="diff.noMenu">No menu · no prices · no photos of the dishes</p>
+              </div>
+              <div class="dp-scroll"><svg viewBox="0 0 20 20" fill="none"><path d="M10 4v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="diff.keepScrolling">They keep scrolling…</span></div>
+            </div>
+            <!-- Screen 3: the NM Studio website -->
+            <div class="dp__screen dp__screen--3">
+              <div class="dp-url"><svg viewBox="0 0 20 20" fill="none"><rect x="5" y="9" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 9V7a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.5"/></svg><span>your-restaurant.com</span></div>
+              <img src="assets/img/work/giulivo-mob.jpg" alt="" width="585" height="1170" loading="lazy" decoding="async">
+              <div class="dp-cta"><span data-i18n="diff.book">Book a table</span></div>
+            </div>
+          </div>
+          <span class="diff__badge diff__badge--bad" data-i18n="diff.badBadge">Lost customer</span>
+          <span class="diff__badge diff__badge--good" data-i18n="diff.goodBadge">New customer</span>
+        </div>
+      </div>
+      <ol class="diff__steps">
+        <li class="diff__step is-active" data-step="1">
+          <span class="diff__num">01</span>
+          <h3 data-i18n="diff.s1t">They search</h3>
+          <p data-i18n="diff.s1b">New city, phone in hand: "Italian restaurant near me". Dozens of pins appear — yours is one of them.</p>
+        </li>
+        <li class="diff__step" data-step="2">
+          <span class="diff__num">02</span>
+          <h3 data-i18n="diff.s2t">Without a website</h3>
+          <p data-i18n="diff.s2b">A pin, a few blurry photos, no menu, no prices. They can't tell if it's right for them — so they move on to the next one.</p>
+        </li>
+        <li class="diff__step" data-step="3">
+          <span class="diff__num">03</span>
+          <h3 data-i18n="diff.s3t">With NM Studio</h3>
+          <p data-i18n="diff.s3b">Your photos, your menu in their language, directions and booking in one tap. They choose you — before they've even arrived.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <!-- ============ WORK ============ -->
 <section class="work" id="work" aria-labelledby="workTitle">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow" data-i18n="work.eyebrow">Selected work</p>
+      <p class="eyebrow"><span data-i18n="work.eyebrow">Selected work</span> <span class="count">(04)</span></p>
       <h2 class="section-title" id="workTitle" data-i18n-html="work.title" data-anim="words">Real sites. <em>Live right now.</em></h2>
       <p class="section-lead" data-i18n="work.lead">Each one is built around the business — its photos, its customers, its languages. Open any of them: they're all online.</p>
     </div>
@@ -289,6 +359,20 @@
         </li>
       </ol>
     </div>
+    <div class="tryit" id="tryit">
+      <div class="tryit__copy">
+        <p class="eyebrow" data-i18n="tryit.eyebrow">Try it now</p>
+        <h3 class="tryit__title" data-i18n-html="tryit.title">Don't take our word for it. <em>Scan it.</em></h3>
+        <p class="tryit__body" data-i18n="tryit.body">Take out your phone and point the camera at the code. That's a real QR menu we built — exactly what your customers see at the table.</p>
+        <a class="btn btn--dark tryit__open" href="../giulivo-qr-menu.html" target="_blank" rel="noopener"><span data-i18n="tryit.open">Open the live menu</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <figure class="tryit__card">
+        <div class="tryit__qr" id="tryitQr" role="img" aria-label="QR code linking to Giulivo's live QR menu"></div>
+        <figcaption><span class="live-dot" aria-hidden="true"></span><span data-i18n="tryit.caption">Giulivo · live QR menu</span></figcaption>
+        <span class="tryit__corner tryit__corner--tl" aria-hidden="true"></span><span class="tryit__corner tryit__corner--tr" aria-hidden="true"></span><span class="tryit__corner tryit__corner--bl" aria-hidden="true"></span><span class="tryit__corner tryit__corner--br" aria-hidden="true"></span>
+        <span class="tryit__scan" aria-hidden="true"></span>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -379,6 +463,13 @@
   <div class="container finale__inner">
     <p class="eyebrow" data-i18n="finale.eyebrow">Let's talk</p>
     <h2 class="finale__title" id="finaleTitle" data-i18n-html="finale.title" data-anim="words">Your next customer is searching <em>right now.</em></h2>
+    <button type="button" class="orbit magnetic" data-open-booking data-i18n-aria-label="nav.cta" aria-label="Start a project">
+      <svg class="orbit__ring" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="orbitPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+        <text><textPath href="#orbitPath" textLength="486" lengthAdjust="spacing" data-i18n="finale.orbit">START A PROJECT · START A PROJECT · </textPath></text>
+      </svg>
+      <span class="orbit__core" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </button>
     <p class="finale__sub" data-i18n="finale.sub">Tell us about your business. We'll come and meet you, show you what your site could look like, and get it online in days.</p>
     <div class="finale__ctas">
       <button type="button" class="btn btn--light btn--lg magnetic" data-open-booking>
@@ -424,6 +515,7 @@
     <p class="footer__word" aria-hidden="true">NM Studio</p>
     <div class="footer__bottom">
       <span data-i18n="footer.rights">© 2026 NM Studio. Built to get you found.</span>
+      <span class="footer__clock"><span class="live-dot" aria-hidden="true"></span><span data-i18n="footer.local">Pattaya, Thailand</span> · <time id="localTime">--:--</time></span>
       <a href="#top"><span data-i18n="footer.backTop">Back to top</span> ↑</a>
     </div>
   </div>
@@ -478,6 +570,7 @@
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/vendor/lenis.min.js" defer></script>
 <script src="assets/js/hero-gl.js" defer></script>
+<script src="assets/js/qrcode.min.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
