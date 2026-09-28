@@ -134,6 +134,14 @@ USD/EUR/THB). Treatment cards with duration pills, a mood recommender, a
 gift-card builder and a WhatsApp booking flow. Photos are Unsplash (IDs in
 its README); business details are fictional demo content.
 
+## Mae Lek — reference for street food / casual eateries (`street-food/`)
+
+Simple but polished: paper + chili + turmeric "sticker" cards (hard ink
+shadow), Rubik + Manrope + Caveat. Filterable 15-dish menu, takeaway bag →
+WhatsApp order drawer, spice meter, nightly chalkboard special, phrase cards
+to show the cook. `SFI18n` EN/FR/TH/RU, baht → USD/EUR/THB. Careful: i18n
+rewrites the text of every `[data-price]`, so containers use `data-thb`.
+
 ## NM Studio — the studio's own site (`nm/`)
 
 Plain HTML/CSS/JS, no build step, split into:
