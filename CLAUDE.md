@@ -125,6 +125,15 @@ nightlife sites. Photos: Unsplash + CC0 pool shots (sources in
 - Plain HTML/CSS/JS, no build step; `tel:`/`wa.me` links keep
   `target="_blank" rel="noopener"`.
 
+## Malee — reference for massage / spa / wellness (`v6-thai-spa/`)
+
+Premium rebuild (folder name kept because NM Studio links to it). Jungle
+green + ivory + gold, Cormorant Garamond + Inter Tight self-hosted,
+vanilla JS like Noir/Neon Tiger (`MLI18n`, EN baked + FR/TH/RU, baht →
+USD/EUR/THB). Treatment cards with duration pills, a mood recommender, a
+gift-card builder and a WhatsApp booking flow. Photos are Unsplash (IDs in
+its README); business details are fictional demo content.
+
 ## NM Studio — the studio's own site (`nm/`)
 
 Plain HTML/CSS/JS, no build step, split into:
