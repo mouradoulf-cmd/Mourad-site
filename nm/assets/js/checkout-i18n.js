@@ -1,6 +1,8 @@
 /* NM Studio — checkout strings (merged into i18n.js by NM_EXTRA_DICT). */
 window.NM_EXTRA_DICT = {
   en: { checkout: {
+    payTitleQr: "Pay by Thai QR",
+    qrTo: "To", qr1: "Open your banking app", qr2: "Tap Scan — or save the QR and pick it from your gallery", qr3: "Check the amount and confirm", qrSave: "Save QR to photos", qrBanks: "Works with every Thai bank: K PLUS, SCB EASY, Bangkok Bank, Krungthai NEXT, Krungsri…", qrPending: "Your PromptPay QR with the exact amount will be sent on WhatsApp as soon as you confirm.", payPaid: "I've paid {amount}", leadSlip: "Thank you! Send us your transfer slip on WhatsApp and we'll get started right away.",
     meta: { title: "Checkout — NM Studio", description: "Start your NM Studio plan: choose your plan, add your details and pay securely." },
     secure: "Secure checkout", back: "Back to pricing",
     title: "Let's get your site <em>live.</em>", lead: "Three quick steps. No contract — cancel anytime.",
@@ -46,6 +48,8 @@ window.NM_EXTRA_DICT = {
     waHead: "New NM Studio order", waPlan: "Plan", waMethod: "Payment"
   } },
   fr: { checkout: {
+    payTitleQr: "Payer par QR thaï",
+    qrTo: "À", qr1: "Ouvrez votre appli bancaire", qr2: "Touchez Scanner — ou enregistrez le QR et choisissez-le dans vos photos", qr3: "Vérifiez le montant et confirmez", qrSave: "Enregistrer le QR", qrBanks: "Compatible avec toutes les banques thaïes : K PLUS, SCB EASY, Bangkok Bank, Krungthai NEXT, Krungsri…", qrPending: "Votre QR PromptPay avec le montant exact vous sera envoyé sur WhatsApp dès votre confirmation.", payPaid: "J'ai payé {amount}", leadSlip: "Merci ! Envoyez-nous le reçu de votre virement sur WhatsApp et nous démarrons tout de suite.",
     meta: { title: "Paiement — NM Studio", description: "Démarrez votre formule NM Studio : choisissez votre formule, renseignez vos informations et payez en toute sécurité." },
     secure: "Paiement sécurisé", back: "Retour aux tarifs",
     title: "Mettons votre site <em>en ligne.</em>", lead: "Trois étapes rapides. Sans engagement — résiliable à tout moment.",
@@ -91,6 +95,8 @@ window.NM_EXTRA_DICT = {
     waHead: "Nouvelle commande NM Studio", waPlan: "Formule", waMethod: "Paiement"
   } },
   it: { checkout: {
+    payTitleQr: "Paga con QR thailandese",
+    qrTo: "A", qr1: "Apri la tua app bancaria", qr2: "Tocca Scansiona — oppure salva il QR e sceglilo dalla galleria", qr3: "Controlla l'importo e conferma", qrSave: "Salva il QR", qrBanks: "Funziona con tutte le banche thailandesi: K PLUS, SCB EASY, Bangkok Bank, Krungthai NEXT, Krungsri…", qrPending: "Il tuo QR PromptPay con l'importo esatto ti verrà inviato su WhatsApp appena confermi.", payPaid: "Ho pagato {amount}", leadSlip: "Grazie! Inviaci la ricevuta del bonifico su WhatsApp e iniziamo subito.",
     meta: { title: "Pagamento — NM Studio", description: "Attiva il tuo piano NM Studio: scegli il piano, inserisci i tuoi dati e paga in sicurezza." },
     secure: "Pagamento sicuro", back: "Torna ai prezzi",
     title: "Mettiamo online <em>il tuo sito.</em>", lead: "Tre passaggi veloci. Nessun contratto — disdici quando vuoi.",
@@ -136,6 +142,8 @@ window.NM_EXTRA_DICT = {
     waHead: "Nuovo ordine NM Studio", waPlan: "Piano", waMethod: "Pagamento"
   } },
   th: { checkout: {
+    payTitleQr: "ชำระเงินด้วย QR พร้อมเพย์",
+    qrTo: "ผู้รับ", qr1: "เปิดแอปธนาคารของคุณ", qr2: "กดสแกน — หรือบันทึก QR แล้วเลือกจากอัลบั้มรูป", qr3: "ตรวจสอบยอดเงินแล้วยืนยัน", qrSave: "บันทึก QR ลงเครื่อง", qrBanks: "ใช้ได้กับทุกธนาคาร: K PLUS, SCB EASY, บัวหลวง, เป๋าตัง/Krungthai NEXT, กรุงศรี…", qrPending: "เราจะส่ง QR พร้อมเพย์พร้อมยอดเงินให้ทาง WhatsApp ทันทีที่คุณยืนยัน", payPaid: "ชำระแล้ว {amount}", leadSlip: "ขอบคุณค่ะ! ส่งสลิปการโอนให้เราทาง WhatsApp แล้วเราจะเริ่มงานทันที",
     meta: { title: "ชำระเงิน — NM Studio", description: "เริ่มแพ็กเกจ NM Studio: เลือกแพ็กเกจ กรอกข้อมูล และชำระเงินอย่างปลอดภัย" },
     secure: "ชำระเงินอย่างปลอดภัย", back: "กลับไปหน้าราคา",
     title: "มาทำให้เว็บของคุณ <em>ออนไลน์กันเลย</em>", lead: "สามขั้นตอนง่าย ๆ ไม่มีสัญญา — ยกเลิกได้ทุกเมื่อ",
@@ -181,6 +189,8 @@ window.NM_EXTRA_DICT = {
     waHead: "คำสั่งซื้อใหม่ NM Studio", waPlan: "แพ็กเกจ", waMethod: "การชำระเงิน"
   } },
   ar: { checkout: {
+    payTitleQr: "الدفع عبر رمز QR التايلاندي",
+    qrTo: "إلى", qr1: "افتح تطبيقك البنكي", qr2: "اضغط مسح — أو احفظ الرمز واختره من الصور", qr3: "تحقق من المبلغ وأكّد", qrSave: "حفظ الرمز", qrBanks: "يعمل مع جميع البنوك التايلاندية: K PLUS وSCB EASY وBangkok Bank وKrungthai NEXT وKrungsri…", qrPending: "سنرسل لك رمز PromptPay بالمبلغ الدقيق عبر واتساب فور تأكيدك.", payPaid: "دفعت {amount}", leadSlip: "شكراً! أرسل لنا إيصال التحويل عبر واتساب وسنبدأ فوراً.",
     meta: { title: "الدفع — NM Studio", description: "ابدأ باقتك مع NM Studio: اختر الباقة، أدخل بياناتك وادفع بأمان." },
     secure: "دفع آمن", back: "العودة إلى الأسعار",
     title: "لنطلق موقعك <em>الآن.</em>", lead: "ثلاث خطوات سريعة. بلا عقود — ألغِ في أي وقت.",
