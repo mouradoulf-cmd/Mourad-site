@@ -47,25 +47,40 @@
   var progressBar = $(".progress span");
   var waFloat = $(".wa-float");
   var hero = $(".hero");
+  var finale = $(".finale");
+  var menuEl = $("#menu");
   var lastY = window.scrollY;
+  // Layout metrics are measured on load/resize only, never inside scroll.
+  var metrics = { heroEnd: 600, maxScroll: 1, finaleTop: Infinity, vh: window.innerHeight };
+  function measure() {
+    metrics.vh = window.innerHeight;
+    metrics.heroEnd = hero ? hero.offsetHeight * 0.8 : 600;
+    metrics.maxScroll = Math.max(1, document.documentElement.scrollHeight - metrics.vh);
+    metrics.finaleTop = finale ? finale.getBoundingClientRect().top + window.scrollY : Infinity;
+  }
   function onScroll() {
     var y = window.scrollY;
     header.classList.toggle("is-solid", y > 24);
-    var heroEnd = hero ? hero.offsetHeight * 0.8 : 600;
-    var menuOpen = !$("#menu").hidden;
-    header.classList.toggle("is-hidden", !menuOpen && y > heroEnd && y > lastY + 2);
-    if (y < lastY - 2 || y < heroEnd) header.classList.remove("is-hidden");
-    lastY = y;
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    if (progressBar) progressBar.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
-    if (waFloat) {
-      var finale = document.querySelector(".finale");
-      var nearEnd = finale && finale.getBoundingClientRect().top < window.innerHeight * 0.85;
-      waFloat.classList.toggle("is-visible", y > heroEnd && !nearEnd);
-    }
+    var menuOpen = menuEl && !menuEl.hidden;
+    // Hide on a deliberate move down past the hero, show on a move up; tiny
+    // easing deltas at the end of a smooth scroll leave the state unchanged.
+    if (y < metrics.heroEnd || menuOpen || y < lastY - 4) header.classList.remove("is-hidden");
+    else if (y > lastY + 4) header.classList.add("is-hidden");
+    if (Math.abs(y - lastY) > 4 || y < metrics.heroEnd) lastY = y;
+    if (progressBar) progressBar.style.transform = "scaleX(" + Math.min(1, y / metrics.maxScroll) + ")";
+    if (waFloat) waFloat.classList.toggle("is-visible", y > metrics.heroEnd && y + metrics.vh * 0.85 < metrics.finaleTop);
+    updateManifesto();
   }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  var scrollQueued = false;
+  window.addEventListener("scroll", function () {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(function () { scrollQueued = false; onScroll(); });
+  }, { passive: true });
+  var resizeTimer;
+  window.addEventListener("resize", function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { measure(); onScroll(); }, 120); });
+  window.addEventListener("load", function () { measure(); onScroll(); });
+  measure();
 
   var navLinks = $$('.nav a[href^="#"]');
   if ("IntersectionObserver" in window) {
@@ -81,8 +96,11 @@
   /* ---------- mobile menu ---------- */
   var burger = $("#burger");
   var menu = $("#menu");
+  var behindMenu = [$(".skip-link"), $("main"), $("footer")];
+  function setInert(on) { behindMenu.forEach(function (el) { if (el) { if (on) el.setAttribute("inert", ""); else el.removeAttribute("inert"); } }); }
   function openMenu() {
     menu.hidden = false;
+    setInert(true);
     burger.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
     if (lenis) lenis.stop();
@@ -91,6 +109,7 @@
   function closeMenu() {
     if (!menu || menu.hidden) return;
     menu.hidden = true;
+    setInert(false);
     burger.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
     if (lenis) lenis.start();
@@ -235,14 +254,18 @@
   if (finePointer && !reduce) {
     var cursor = $(".cursor");
     var label = $(".cursor__label");
-    var cx = -100, cy = -100, tx = -100, ty = -100;
-    window.addEventListener("pointermove", function (e) { tx = e.clientX; ty = e.clientY; cursor.classList.add("is-active"); }, { passive: true });
-    document.addEventListener("pointerleave", function () { cursor.classList.remove("is-active"); });
-    (function loop() {
+    var cx = -100, cy = -100, tx = -100, ty = -100, cursorRunning = false;
+    function cursorLoop() {
       cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
-      cursor.style.transform = "translate3d(" + cx + "px," + cy + "px,0)";
-      requestAnimationFrame(loop);
-    })();
+      cursor.style.transform = "translate3d(" + cx.toFixed(1) + "px," + cy.toFixed(1) + "px,0)";
+      if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) requestAnimationFrame(cursorLoop);
+      else cursorRunning = false; // sleep until the pointer moves again
+    }
+    window.addEventListener("pointermove", function (e) {
+      tx = e.clientX; ty = e.clientY; cursor.classList.add("is-active");
+      if (!cursorRunning) { cursorRunning = true; requestAnimationFrame(cursorLoop); }
+    }, { passive: true });
+    document.documentElement.addEventListener("pointerleave", function () { cursor.classList.remove("is-active"); });
     $$("[data-cursor]").forEach(function (el) {
       el.addEventListener("pointerenter", function () { label.textContent = t("work.cursor"); cursor.classList.add("is-view"); });
       el.addEventListener("pointerleave", function () { cursor.classList.remove("is-view"); });
@@ -289,6 +312,66 @@
     }
   }
 
+  /* ---------- hero stage: cycle through the four live projects ---------- */
+  (function stageShowcase() {
+    var view = $("#stageView"), phoneView = $("#stagePhoneView");
+    var nameEl = $("#stageName"), catEl = $("#stageCat"), dots = $$(".stage__dots i");
+    if (!view || !phoneView || reduce) return;
+    var projects = [
+      { slug: "giulivo", name: "Giulivo", cat: "work.p1cat" },
+      { slug: "malee", name: "Malee", cat: "work.p2cat" },
+      { slug: "noir", name: "Noir", cat: "work.p3cat" },
+      { slug: "facadiers", name: "Atelier des Façadiers", cat: "work.p4cat" }
+    ];
+    var SWAP_MS = 4200, index = 0, timer = null, layers = [], visible = true;
+    document.documentElement.style.setProperty("--swap-ms", SWAP_MS + "ms");
+    function layer(parent, src) {
+      var img = new Image();
+      img.className = "swap-layer"; img.alt = ""; img.decoding = "async"; img.src = src;
+      parent.appendChild(img);
+      return img;
+    }
+    var z = 1;
+    function build() {
+      // Every project (the first included) gets a layer, so each swap is a
+      // true cross-fade: the incoming layer fades in on top of the current one.
+      layers = projects.map(function (p) {
+        return { desk: layer(view, "assets/img/work/" + p.slug + "-desk.webp"), mob: layer(phoneView, "assets/img/work/" + p.slug + "-mob-360.webp") };
+      });
+      layers[0].desk.classList.add("is-on"); layers[0].mob.classList.add("is-on");
+      show(0);
+      schedule();
+    }
+    function show(i) {
+      var prev = layers[index], next = layers[i];
+      index = i;
+      if (next && prev !== next) {
+        z += 1;
+        next.desk.style.zIndex = next.mob.style.zIndex = z;
+        next.desk.classList.add("is-on"); next.mob.classList.add("is-on");
+        setTimeout(function () {
+          if (layers[index] !== prev) { prev.desk.classList.remove("is-on"); prev.mob.classList.remove("is-on"); }
+        }, 1100);
+      }
+      nameEl.textContent = projects[i].name;
+      catEl.setAttribute("data-i18n", projects[i].cat);
+      catEl.textContent = t(projects[i].cat);
+      dots.forEach(function (d, k) { d.classList.remove("is-on"); if (k === i) { void d.offsetWidth; d.classList.add("is-on"); } });
+    }
+    function schedule() {
+      clearTimeout(timer);
+      if (!visible || document.hidden) return;
+      timer = setTimeout(function () { show((index + 1) % projects.length); schedule(); }, SWAP_MS);
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; schedule(); }).observe(view);
+    }
+    document.addEventListener("visibilitychange", schedule);
+    // Extra screenshots load only after the page itself has finished loading.
+    if (document.readyState === "complete") setTimeout(build, 1200);
+    else window.addEventListener("load", function () { setTimeout(build, 1200); });
+  })();
+
   /* ---------- manifesto: words light up as you scroll ---------- */
   var manifestoWords = [];
   function prepareManifesto() {
@@ -313,17 +396,19 @@
     })(el);
     updateManifesto();
   }
+  var manifestoEl = $(".manifesto");
   function updateManifesto() {
-    var el = $(".manifesto");
+    var el = manifestoEl;
     if (!el || !manifestoWords.length) return;
     var r = el.getBoundingClientRect();
     var vh = window.innerHeight;
+    if (r.bottom < -vh || r.top > vh * 2) return;
     var p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
     var lit = Math.round(p * manifestoWords.length);
     for (var i = 0; i < manifestoWords.length; i++) manifestoWords[i].classList.toggle("on", i < lit);
   }
   prepareManifesto();
-  window.addEventListener("scroll", updateManifesto, { passive: true });
+  onScroll();
 
   /* ---------- "The difference": the step in the middle of the screen drives the phone ---------- */
   var diffPhone = $("#diffPhone");
@@ -350,6 +435,9 @@
     var url = new URL("../giulivo-qr-menu.html", window.location.href).href;
     new window.QRCode(qrBox, { text: url, width: 480, height: 480, colorDark: "#111216", colorLight: "#f2efe8", correctLevel: window.QRCode.CorrectLevel.M });
     qrBox.removeAttribute("title");
+    // The library renders a canvas plus a fallback <img>; the container
+    // carries the accessible name, so its children are decorative.
+    $$("img, canvas", qrBox).forEach(function (el) { el.setAttribute("aria-hidden", "true"); if (el.tagName === "IMG") el.alt = ""; });
   }
   if (qrBox) {
     if ("IntersectionObserver" in window) {
@@ -377,6 +465,9 @@
   if (!hasGsap || reduce) return;
   var gsap = window.gsap, ST = window.ScrollTrigger;
   gsap.registerPlugin(ST);
+  // Mobile browsers resize the viewport when the address bar hides; don't
+  // recalculate every trigger (and jump) for that.
+  ST.config({ ignoreMobileResize: true });
 
   // Split a heading into masked words while keeping <em> styling intact;
   // restore the original markup afterwards so the gradient stays seamless.
@@ -463,7 +554,7 @@
     gsap.from(el, { y: 40, opacity: 0, duration: 1.1, ease: "expo.out", delay: (i % 3) * 0.08, scrollTrigger: { trigger: el, start: "top 88%", once: true } });
   });
   $$(".section-lead, .eyebrow").forEach(function (el) {
-    if (el.closest(".hero")) return;
+    if (el.closest(".hero, dialog")) return;
     gsap.from(el, { y: 18, opacity: 0, duration: 1, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 90%", once: true } });
   });
 
