@@ -2,437 +2,534 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Malee — Thai Massage &amp; Spa</title>
-<meta name="description" content="Authentic Thai massage, foot reflexology and skin treatments in central Pattaya. Demo site — not a real business.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Malee — Thai Massage &amp; Spa, Pattaya</title>
+<meta name="description" content="Malee is a Thai massage and spa sanctuary in central Pattaya: traditional Thai massage, aromatherapy, hot stones, foot reflexology and facials. Open daily 11:00–23:00. Book online in a minute.">
+<meta name="theme-color" content="#0e1a14">
+<meta property="og:title" content="Malee — Thai Massage &amp; Spa, Pattaya">
+<meta property="og:description" content="Slow hands, warm oil, and an hour that belongs to you.">
+<meta property="og:image" content="assets/img/hero-candle.jpg">
+<link rel="preload" as="font" href="assets/fonts/cormorant-garamond-italic-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="assets/fonts/inter-tight-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/hero-candle.webp" type="image/webp">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/js/vendor/lenis.css">
-<link rel="preload" as="image" href="assets/img/hero-treatment.jpg">
+<script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("mlIntro"))document.documentElement.classList.add("no-intro")}catch(e){}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"DaySpa","name":"Malee Thai Massage & Spa","image":"assets/img/hero-candle.jpg","telephone":"+66812345678","priceRange":"฿฿",
+"address":{"@type":"PostalAddress","streetAddress":"Soi 13, Second Road","addressLocality":"Pattaya","postalCode":"20150","addressCountry":"TH"},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:00","closes":"23:00"}]}
+</script>
 </head>
 <body>
+<a class="skip" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<div class="preloader" id="preloader" aria-hidden="true">
-  <div class="preloader-mark">Malee</div>
-  <div class="preloader-bar"><span></span></div>
+<!-- Intro: a lotus draws itself, once per visit -->
+<div class="intro" aria-hidden="true">
+  <svg class="intro__lotus" viewBox="0 0 120 80" fill="none">
+    <path d="M60 70C48 58 44 40 60 14c16 26 12 44 0 56z"/>
+    <path d="M60 70C44 64 30 50 30 30c14 6 26 18 30 40z"/>
+    <path d="M60 70c16-6 30-20 30-40-14 6-26 18-30 40z"/>
+    <path d="M60 70C40 70 18 62 8 46c18-2 38 6 52 24z"/>
+    <path d="M60 70c20 0 42-8 52-24-18-2-38 6-52 24z"/>
+  </svg>
+  <p class="intro__word">Malee</p>
+  <p class="intro__sub" data-i18n="intro.sub">Thai massage &amp; spa · Pattaya</p>
 </div>
 
-<div class="cursor" data-cursor aria-hidden="true">
-  <span class="cursor-label" data-cursor-label></span>
-</div>
+<div class="progress" aria-hidden="true"><span></span></div>
 
-<div class="scroll-progress" aria-hidden="true"><span></span></div>
-
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="#top">Malee<span class="sub">Massage &amp; Spa</span></a>
-    <nav class="header-nav" aria-label="Primary">
-      <a href="#treatments">Treatments</a>
-      <a href="#about">About</a>
-      <a href="#visit">Visit</a>
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#top" class="logo" aria-label="Malee — home">
+      <svg class="logo__mark" viewBox="0 0 120 80" fill="none" aria-hidden="true"><path d="M60 70C48 58 44 40 60 14c16 26 12 44 0 56z"/><path d="M60 70C44 64 30 50 30 30c14 6 26 18 30 40z"/><path d="M60 70c16-6 30-20 30-40-14 6-26 18-30 40z"/></svg>
+      <span>Malee</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#treatments" data-i18n="nav.treatments">Treatments</a>
+      <a href="#sanctuary" data-i18n="nav.sanctuary">Sanctuary</a>
+      <a href="#gifts" data-i18n="nav.gifts">Gift cards</a>
+      <a href="#visit" data-i18n="nav.visit">Visit</a>
     </nav>
-    <div class="header-right">
-      <span class="location-chip">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-        Central Pattaya
-      </span>
-      <a class="btn btn-dark btn-sm" data-magnetic="0.25" data-cursor-label="Book" href="#book">Book a visit</a>
-      <button class="burger" id="burgerBtn" aria-expanded="false" aria-controls="fullMenu" aria-label="Open menu">
-        <span></span><span></span>
-      </button>
+    <div class="header__end">
+      <div class="langs" role="group" aria-label="Language" data-i18n-attr="aria-label:a11y.language">
+        <button type="button" data-lang="en" lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="fr" lang="fr" aria-label="Français">FR</button>
+        <button type="button" data-lang="th" lang="th" aria-label="ไทย">TH</button>
+        <button type="button" data-lang="ru" lang="ru" aria-label="Русский">RU</button>
+      </div>
+      <a href="#book" class="btn btn--gold btn--sm header__cta" data-i18n="nav.book">Book</a>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu" data-i18n-attr="aria-label:a11y.menu"><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<nav class="full-menu" id="fullMenu" aria-hidden="true" aria-label="Menu">
-  <ul>
-    <li><a href="#treatments" data-menu-link data-cursor-label="Go">Treatments</a></li>
-    <li><a href="#about" data-menu-link data-cursor-label="Go">About</a></li>
-    <li><a href="#visit" data-menu-link data-cursor-label="Go">Visit</a></li>
-    <li><a href="#book" data-menu-link data-cursor-label="Go">Book</a></li>
-  </ul>
-  <div class="full-menu-foot">
-    <span>Open daily from 11:00</span>
-    <span>Central Pattaya, Thailand</span>
-  </div>
-</nav>
-
-<main id="main">
-
-<!-- Hero — editorial image band + split headline (pattern: 21st.dev "Editorial Image Hero") -->
-<section class="hero" id="top">
-  <div class="hero-band">
-    <div class="hero-slides" aria-hidden="true">
-      <div class="hero-slide is-active" style="background-image:url('assets/img/hero-treatment.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('assets/img/hero-hot-stone.jpg')"></div>
-    </div>
-    <div class="hero-fade" aria-hidden="true"></div>
-    <div class="hero-badge" data-reveal="fade-up" data-reveal-delay="0.9">
-      <span class="dot" aria-hidden="true"></span> Open today from 11:00
-    </div>
-  </div>
-
-  <div class="container hero-copy">
-    <div class="hero-aside">
-      <span class="label" data-reveal="fade-up">Thai massage · Central Pattaya</span>
-      <dl class="hero-facts" data-reveal="fade-up" data-reveal-delay="0.2">
-        <div><dt>Style</dt><dd>Traditional Thai</dd></div>
-        <div><dt>Hours</dt><dd>Daily, from 11:00</dd></div>
-      </dl>
-    </div>
-    <div class="hero-main">
-      <h1 data-motion-text="lines">Authentic Thai massage,<br><em>quietly</em> done well.</h1>
-      <p data-reveal="fade-up" data-reveal-delay="0.45">Traditional massage, foot reflexology and skin treatments — a calm, unhurried room in the middle of the city.</p>
-      <div class="hero-ctas" data-reveal="fade-up" data-reveal-delay="0.6">
-        <a class="btn btn-dark" data-magnetic="0.3" data-cursor-label="Book" href="#book">Book a treatment</a>
-        <a class="btn btn-line" href="#treatments">See treatments <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="confidence-line" aria-hidden="true">
-  <div class="track">
-    <span>Traditional Thai techniques</span><i>✦</i>
-    <span>Foot reflexology</span><i>✦</i>
-    <span>Skin treatments</span><i>✦</i>
-    <span>Open daily from 11:00</span><i>✦</i>
-    <span>Traditional Thai techniques</span><i>✦</i>
-    <span>Foot reflexology</span><i>✦</i>
-    <span>Skin treatments</span><i>✦</i>
-    <span>Open daily from 11:00</span><i>✦</i>
+<div class="menu" id="menu" hidden>
+  <nav class="menu__nav" aria-label="Mobile">
+    <a href="#treatments"><i>01</i><span data-i18n="nav.treatments">Treatments</span></a>
+    <a href="#feel"><i>02</i><span data-i18n="nav.feel">How do you feel?</span></a>
+    <a href="#sanctuary"><i>03</i><span data-i18n="nav.sanctuary">Sanctuary</span></a>
+    <a href="#gifts"><i>04</i><span data-i18n="nav.gifts">Gift cards</span></a>
+    <a href="#visit"><i>05</i><span data-i18n="nav.visit">Visit</span></a>
+  </nav>
+  <div class="menu__foot">
+    <a href="#book" class="btn btn--gold" data-i18n="nav.bookFull">Book a treatment</a>
+    <p class="menu__meta">Soi 13, Second Road, Pattaya · 11:00–23:00<br><a href="tel:+66812345678" target="_blank" rel="noopener">+66 81 234 5678</a></p>
   </div>
 </div>
 
-<!-- About — layered photo collage (pattern: 21st.dev "Editorial Collage Hero") -->
-<section class="section" id="about">
-  <div class="container about">
-    <div class="about-collage" data-reveal-group>
-      <figure class="collage-back" data-reveal-item>
-        <img src="assets/img/hero-hot-stone.jpg" alt="Warm basalt stones resting along a guest's back during a treatment" loading="lazy" width="1920" height="1279">
-      </figure>
-      <figure class="collage-front" data-reveal-item>
-        <img src="assets/img/hero-treatment.jpg" alt="A therapist working pressure points along a guest's leg on a floor mat" loading="lazy" width="1600" height="1065">
-        <figcaption>The floor mat — where a traditional session happens</figcaption>
-      </figure>
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="hero__slides" aria-hidden="true">
+    <picture class="hero__slide is-on"><source srcset="assets/img/hero-candle.webp" type="image/webp"><img src="assets/img/hero-candle.jpg" alt="" width="2000" height="1294" fetchpriority="high" decoding="async"></picture>
+    <picture class="hero__slide"><source srcset="assets/img/hero-stones.webp" type="image/webp"><img src="assets/img/hero-stones.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+    <picture class="hero__slide"><source srcset="assets/img/hero-room.webp" type="image/webp"><img src="assets/img/hero-room.jpg" alt="" width="2000" height="1602" loading="lazy" decoding="async"></picture>
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <p class="eyebrow" data-reveal><span data-i18n="hero.eyebrow">Thai massage &amp; spa · Central Pattaya</span></p>
+    <h1 class="hero__title" id="heroTitle">
+      <span class="line"><span data-i18n="hero.t1">Slow hands.</span></span>
+      <span class="line"><span data-i18n="hero.t2">Warm oil.</span></span>
+      <span class="line"><em data-i18n="hero.t3">An hour that's yours.</em></span>
+    </h1>
+    <p class="hero__lead" data-reveal data-i18n="hero.lead">Traditional Thai massage, aromatherapy and hot stones by therapists trained at Wat Pho — in a quiet garden sanctuary two minutes from Second Road.</p>
+    <div class="hero__ctas" data-reveal>
+      <a href="#book" class="btn btn--gold btn--lg magnetic"><span data-i18n="hero.cta">Book a treatment</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#feel" class="btn btn--glass btn--lg" data-i18n="hero.cta2">Help me choose</a>
     </div>
-    <div class="about-copy">
-      <span class="label" data-reveal="fade-up">About</span>
-      <h2 data-motion-text="words">A quiet room, made for slowing down.</h2>
-      <p data-reveal="fade-up">Malee sits in central Pattaya, built around one idea: a proper Thai massage, done with care, without the rush.</p>
-      <p data-reveal="fade-up">Guests come back for the foot reflexology and the skin treatments as much as the massage itself — a calm space that doesn't try to be anything more than it is.</p>
-      <div class="stats" data-reveal-group>
-        <div class="stat" data-reveal-item>
-          <div class="num"><span data-counter data-counter-to="15">0</span>+</div>
-          <p>Years of combined practice</p>
-        </div>
-        <div class="stat" data-reveal-item>
-          <div class="num" data-counter data-counter-to="3">0</div>
-          <p>Focused treatments, done properly</p>
-        </div>
-        <div class="stat" data-reveal-item>
-          <div class="num">7<small>/7</small></div>
-          <p>Open every day from 11:00</p>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="hero__foot">
+    <p class="rating" data-reveal><span class="rating__stars" aria-hidden="true">★★★★★</span><b>4.9</b><span data-i18n="hero.rating">· 1,200+ reviews</span></p>
+    <p class="status" data-reveal><span class="dot" aria-hidden="true"></span><span data-status>Open daily 11:00–23:00</span></p>
+    <p class="hero__from" data-reveal><span data-i18n="hero.from">Thai massage from</span> <b data-price="350">฿350</b></p>
   </div>
 </section>
 
-<!-- Treatments — hover/tap-expand panels (pattern: 21st.dev "Hover Expand Gallery") -->
-<section class="section section-dark" id="treatments">
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span data-i18n="mq.1">Traditional Thai massage</span><i>✿</i><span data-i18n="mq.2">Aromatherapy oils</span><i>✿</i><span data-i18n="mq.3">Hot stones</span><i>✿</i><span data-i18n="mq.4">Foot reflexology</span><i>✿</i><span data-i18n="mq.5">Herbal compress</span><i>✿</i><span data-i18n="mq.6">Couples room</span><i>✿</i>
+    <span data-i18n="mq.1">Traditional Thai massage</span><i>✿</i><span data-i18n="mq.2">Aromatherapy oils</span><i>✿</i><span data-i18n="mq.3">Hot stones</span><i>✿</i><span data-i18n="mq.4">Foot reflexology</span><i>✿</i><span data-i18n="mq.5">Herbal compress</span><i>✿</i><span data-i18n="mq.6">Couples room</span><i>✿</i>
+  </div>
+</div>
+
+<!-- ============ TREATMENTS ============ -->
+<section class="treatments section" id="treatments" aria-labelledby="trTitle">
   <div class="container">
-    <div class="section-head split" data-reveal="fade-up">
+    <div class="head head--split">
       <div>
-        <span class="label">Treatments</span>
-        <h2>Three ways to spend an hour well.</h2>
+        <p class="eyebrow" data-reveal><span data-i18n="tr.eyebrow">The menu</span></p>
+        <h2 class="title" id="trTitle" data-reveal data-i18n="tr.title">Six ways to <em>let go.</em></h2>
       </div>
-      <p>Every session is fitted to what you need that day. Final duration and price are confirmed with you when we reply to your request.</p>
+      <p class="head__aside" data-reveal data-i18n="tr.aside">Pick a length — the price updates. Every treatment starts with a foot wash and ends with ginger tea.</p>
     </div>
-
-    <div class="tx" id="tx" data-reveal="fade-up">
-      <article class="tx-item is-open" data-tx>
-        <h3 class="tx-head">
-          <button class="tx-trigger" id="tx-btn-0" aria-expanded="true" aria-controls="tx-panel-0">
-            <span class="tx-idx">01</span>
-            <span class="tx-name">Authentic Thai Massage</span>
-          </button>
-        </h3>
-        <div class="tx-panel" id="tx-panel-0" role="region" aria-labelledby="tx-btn-0">
-          <div class="tx-media">
-            <img src="assets/img/hero-treatment.jpg" alt="Therapist applying palm pressure to a guest's calf" loading="lazy" width="1600" height="1065">
-          </div>
-          <div class="tx-copy">
-            <span class="label">01 — Signature</span>
-            <p class="tx-title">Authentic Thai Massage</p>
-            <p class="desc">Traditional stretching and pressure-point work on a floor mat — slow, deliberate, and adjusted to how you're holding tension that day.</p>
-            <dl class="tx-meta">
-              <div><dt>Style</dt><dd>Traditional Thai</dd></div>
-              <div><dt>Sessions</dt><dd>60 · 90 · 120 min</dd></div>
-            </dl>
-            <a class="btn btn-on-dark" href="#book" data-book-service="Authentic Thai Massage">Book this treatment</a>
-          </div>
+    <div class="cards">
+      <article class="card" data-tr="thai" data-prices="60:350,90:500,120:650" data-reveal>
+        <div class="card__media clip"><picture><source srcset="assets/img/t-thai.webp" type="image/webp"><img src="assets/img/t-thai.jpg" alt="A therapist working deep pressure along a guest's leg" data-i18n-attr="alt:tr.thaiAlt" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="card__tag" data-i18n="tr.popular">Most booked</span></div>
+        <div class="card__body">
+          <h3 data-i18n="tr.thai">Traditional Thai</h3>
+          <p data-i18n="tr.thaiD">Acupressure, rhythmic compression and assisted yoga stretches on a floor mat. No oil, loose clothes provided.</p>
+          <div class="card__foot"><div class="durs" role="group" aria-label="Length" data-i18n-attr="aria-label:tr.length"></div><b class="card__price" aria-live="polite"></b></div>
+          <button type="button" class="card__book" data-i18n="tr.book">Book this</button>
         </div>
       </article>
-
-      <article class="tx-item" data-tx>
-        <h3 class="tx-head">
-          <button class="tx-trigger" id="tx-btn-1" aria-expanded="false" aria-controls="tx-panel-1">
-            <span class="tx-idx">02</span>
-            <span class="tx-name">Foot Reflexology</span>
-          </button>
-        </h3>
-        <div class="tx-panel" id="tx-panel-1" role="region" aria-labelledby="tx-btn-1">
-          <div class="tx-media tx-media--block tone-sand">
-            <span class="placeholder-tag">Photo placeholder</span>
-          </div>
-          <div class="tx-copy">
-            <span class="label">02 — Restorative</span>
-            <p class="tx-title">Foot Reflexology</p>
-            <p class="desc">Focused pressure-point work across the feet and lower legs — a favourite after a long day of walking around Pattaya.</p>
-            <dl class="tx-meta">
-              <div><dt>Focus</dt><dd>Feet &amp; lower leg</dd></div>
-              <div><dt>Sessions</dt><dd>30 · 60 min</dd></div>
-            </dl>
-            <a class="btn btn-on-dark" href="#book" data-book-service="Foot Reflexology">Book this treatment</a>
-          </div>
+      <article class="card" data-tr="oil" data-prices="60:600,90:850,120:1100" data-reveal>
+        <div class="card__media clip"><picture><source srcset="assets/img/t-oil.webp" type="image/webp"><img src="assets/img/t-oil.jpg" alt="Warm oil poured into a therapist's palm above a guest's back" data-i18n-attr="alt:tr.oilAlt" width="1100" height="733" loading="lazy" decoding="async"></picture></div>
+        <div class="card__body">
+          <h3 data-i18n="tr.oil">Aromatherapy oil</h3>
+          <p data-i18n="tr.oilD">Long flowing strokes with warm oil — lemongrass, jasmine or coconut. The one to book after a long flight.</p>
+          <div class="card__foot"><div class="durs" role="group" aria-label="Length" data-i18n-attr="aria-label:tr.length"></div><b class="card__price" aria-live="polite"></b></div>
+          <button type="button" class="card__book" data-i18n="tr.book">Book this</button>
         </div>
       </article>
-
-      <article class="tx-item" data-tx>
-        <h3 class="tx-head">
-          <button class="tx-trigger" id="tx-btn-2" aria-expanded="false" aria-controls="tx-panel-2">
-            <span class="tx-idx">03</span>
-            <span class="tx-name">Skin Treatments</span>
-          </button>
-        </h3>
-        <div class="tx-panel" id="tx-panel-2" role="region" aria-labelledby="tx-btn-2">
-          <div class="tx-media tx-media--block tone-clay">
-            <span class="placeholder-tag">Photo placeholder</span>
-          </div>
-          <div class="tx-copy">
-            <span class="label">03 — Skin care</span>
-            <p class="tx-title">Skin Treatments</p>
-            <p class="desc">Skin-focused treatments for guests who want more than a massage — tell us about your skin and we'll suggest what fits.</p>
-            <dl class="tx-meta">
-              <div><dt>Focus</dt><dd>Face &amp; skin care</dd></div>
-              <div><dt>Sessions</dt><dd>Confirmed on reply</dd></div>
-            </dl>
-            <a class="btn btn-on-dark" href="#book" data-book-service="Skin Treatments">Book this treatment</a>
-          </div>
+      <article class="card" data-tr="stone" data-prices="90:1200,120:1500" data-reveal>
+        <div class="card__media clip"><picture><source srcset="assets/img/t-stone.webp" type="image/webp"><img src="assets/img/t-stone.jpg" alt="Smooth black basalt stones along a guest's back, white orchids beside" data-i18n-attr="alt:tr.stoneAlt" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="card__tag card__tag--sig" data-i18n="tr.sig">Signature</span></div>
+        <div class="card__body">
+          <h3 data-i18n="tr.stone">Hot stone ritual</h3>
+          <p data-i18n="tr.stoneD">Heated basalt stones melt deep tension while oil massage works the muscles loose. Our most requested treat.</p>
+          <div class="card__foot"><div class="durs" role="group" aria-label="Length" data-i18n-attr="aria-label:tr.length"></div><b class="card__price" aria-live="polite"></b></div>
+          <button type="button" class="card__book" data-i18n="tr.book">Book this</button>
         </div>
       </article>
+      <article class="card" data-tr="foot" data-prices="30:250,60:400" data-reveal>
+        <div class="card__media clip"><picture><source srcset="assets/img/t-foot.webp" type="image/webp"><img src="assets/img/t-foot.jpg" alt="Feet resting in warm water with frangipani and orchid flowers" data-i18n-attr="alt:tr.footAlt" width="1100" height="734" loading="lazy" decoding="async"></picture></div>
+        <div class="card__body">
+          <h3 data-i18n="tr.foot">Foot reflexology</h3>
+          <p data-i18n="tr.footD">A flower foot bath, then firm pressure on the points that map the whole body. Perfect after a day of walking.</p>
+          <div class="card__foot"><div class="durs" role="group" aria-label="Length" data-i18n-attr="aria-label:tr.length"></div><b class="card__price" aria-live="polite"></b></div>
+          <button type="button" class="card__book" data-i18n="tr.book">Book this</button>
+        </div>
+      </article>
+      <article class="card" data-tr="herbal" data-prices="90:950,120:1250" data-reveal>
+        <div class="card__media clip"><picture><source srcset="assets/img/t-back.webp" type="image/webp"><img src="assets/img/t-back.jpg" alt="A therapist's hands pressing along a guest's lower back" data-i18n-attr="alt:tr.herbalAlt" width="1100" height="1650" loading="lazy" decoding="async"></picture></div>
+        <div class="card__body">
+          <h3 data-i18n="tr.herbal">Herbal compress</h3>
+          <p data-i18n="tr.herbalD">Steamed pouches of Thai herbs — plai, turmeric, kaffir lime — pressed along the body after a Thai massage.</p>
+          <div class="card__foot"><div class="durs" role="group" aria-label="Length" data-i18n-attr="aria-label:tr.length"></div><b class="card__price" aria-live="polite"></b></div>
+          <button type="button" class="card__book" data-i18n="tr.book">Book this</button>
+        </div>
+      </article>
+      <article class="card" data-tr="face" data-prices="60:800,90:1100" data-reveal>
+        <div class="card__media clip"><picture><source srcset="assets/img/t-face.webp" type="image/webp"><img src="assets/img/t-face.jpg" alt="A guest relaxing during a facial with a cooling mask" data-i18n-attr="alt:tr.faceAlt" width="1100" height="733" loading="lazy" decoding="async"></picture></div>
+        <div class="card__body">
+          <h3 data-i18n="tr.face">Glow facial</h3>
+          <p data-i18n="tr.faceD">Cleanse, gentle exfoliation, a cooling aloe and cucumber mask and a face and scalp massage. Sun-tired skin, restored.</p>
+          <div class="card__foot"><div class="durs" role="group" aria-label="Length" data-i18n-attr="aria-label:tr.length"></div><b class="card__price" aria-live="polite"></b></div>
+          <button type="button" class="card__book" data-i18n="tr.book">Book this</button>
+        </div>
+      </article>
+    </div>
+    <p class="fx" data-fx data-i18n="tr.fx">Prices in US dollars are a guide — you pay in Thai baht at the spa. Cash, cards and Thai QR.</p>
+  </div>
+</section>
+
+<!-- ============ HOW DO YOU FEEL ============ -->
+<section class="feel section" id="feel" aria-labelledby="feelTitle">
+  <div class="container feel__grid">
+    <div class="feel__copy">
+      <p class="eyebrow" data-reveal><span data-i18n="feel.eyebrow">Not sure what to book?</span></p>
+      <h2 class="title" id="feelTitle" data-reveal data-i18n="feel.title">How does your body <em>feel today?</em></h2>
+      <div class="moods" role="group" aria-label="How do you feel?" data-i18n-attr="aria-label:nav.feel" data-reveal>
+        <button type="button" class="mood" data-mood="stiff" aria-pressed="false"><span class="mood__ico" aria-hidden="true">🪨</span><span data-i18n="feel.stiff">Stiff &amp; sore</span></button>
+        <button type="button" class="mood" data-mood="tired" aria-pressed="false"><span class="mood__ico" aria-hidden="true">✈️</span><span data-i18n="feel.tired">Jet-lagged</span></button>
+        <button type="button" class="mood" data-mood="stressed" aria-pressed="false"><span class="mood__ico" aria-hidden="true">🌪️</span><span data-i18n="feel.stressed">Stressed</span></button>
+        <button type="button" class="mood" data-mood="walked" aria-pressed="false"><span class="mood__ico" aria-hidden="true">👣</span><span data-i18n="feel.walked">Walked all day</span></button>
+        <button type="button" class="mood" data-mood="sun" aria-pressed="false"><span class="mood__ico" aria-hidden="true">☀️</span><span data-i18n="feel.sun">Too much sun</span></button>
+        <button type="button" class="mood" data-mood="treat" aria-pressed="false"><span class="mood__ico" aria-hidden="true">✨</span><span data-i18n="feel.treat">Just want a treat</span></button>
+      </div>
+    </div>
+    <div class="match" id="match" aria-live="polite" data-reveal>
+      <div class="match__empty">
+        <svg viewBox="0 0 120 80" fill="none" aria-hidden="true"><path d="M60 70C48 58 44 40 60 14c16 26 12 44 0 56z"/><path d="M60 70C44 64 30 50 30 30c14 6 26 18 30 40z"/><path d="M60 70c16-6 30-20 30-40-14 6-26 18-30 40z"/></svg>
+        <p data-i18n="feel.empty">Tap how you feel — we'll tell you what our therapists would book.</p>
+      </div>
+      <div class="match__card" hidden>
+        <div class="match__media"><img alt="" id="matchImg" width="1100" height="733"></div>
+        <div class="match__body">
+          <p class="match__label" data-i18n="feel.we">We'd book you</p>
+          <h3 id="matchName"></h3>
+          <p id="matchWhy"></p>
+          <p class="match__meta"><span id="matchDur"></span> · <b id="matchPrice"></b></p>
+          <button type="button" class="btn btn--gold" id="matchBook" data-i18n="feel.book">Book this for me</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Recommendation copy, in the page so it translates with everything else -->
+  <div hidden>
+    <span data-i18n="feel.stiffW">Deep acupressure and stretching unlock tight hips, shoulders and back. Tell your therapist how firm you like it.</span>
+    <span data-i18n="feel.tiredW">Long, slow oil strokes bring circulation back after a flight and help you sleep tonight.</span>
+    <span data-i18n="feel.stressedW">Heat does what words can't: warm stones and oil switch your nervous system off.</span>
+    <span data-i18n="feel.walkedW">A flower foot bath and reflexology — your legs will thank you tomorrow.</span>
+    <span data-i18n="feel.sunW">Cooling aloe and cucumber calm sun-tired skin, with a scalp massage to finish.</span>
+    <span data-i18n="feel.treatW">Thai massage followed by steamed herbal pouches — the full Thai experience.</span>
+  </div>
+</section>
+
+<!-- ============ SANCTUARY ============ -->
+<section class="sanctuary section" id="sanctuary" aria-labelledby="sanTitle">
+  <div class="container san__grid">
+    <div class="san__media">
+      <figure class="san__a clip" data-reveal="clip"><picture><source srcset="assets/img/room-thai.webp" type="image/webp"><img src="assets/img/room-thai.jpg" alt="A treatment room with a teak floor, white linen and garden light" data-i18n-attr="alt:san.alt1" width="1400" height="933" loading="lazy" decoding="async"></picture></figure>
+      <figure class="san__b clip" data-reveal="clip"><picture><source srcset="assets/img/tea.webp" type="image/webp"><img src="assets/img/tea.jpg" alt="A white teapot and a cup of warm ginger tea on a wooden tray" data-i18n-attr="alt:san.alt2" width="1100" height="733" loading="lazy" decoding="async"></picture></figure>
+    </div>
+    <div class="san__copy">
+      <p class="eyebrow" data-reveal><span data-i18n="san.eyebrow">The sanctuary</span></p>
+      <h2 class="title" id="sanTitle" data-reveal data-i18n="san.title">A garden hidden <em>off Second Road.</em></h2>
+      <p class="lead" data-reveal data-i18n="san.p1">Step through the teak door and the city goes quiet: frangipani in the courtyard, lemongrass in the air, eight private rooms and a couples suite with its own bath.</p>
+      <p data-reveal data-i18n="san.p2">Our therapists trained at the Wat Pho school in Bangkok, where Thai massage has been taught for two centuries. Every one of them has at least eight years of practice.</p>
+      <dl class="stats" data-reveal>
+        <div><dd><span data-count="12">12</span></dd><dt data-i18n="san.s1">therapists</dt></div>
+        <div><dd><span data-count="8">8</span></dd><dt data-i18n="san.s2">private rooms</dt></div>
+        <div><dd><span data-count="4.9" data-decimals="1">4.9</span></dd><dt data-i18n="san.s3">guest rating</dt></div>
+        <div><dd><span data-count="40">40</span>k</dd><dt data-i18n="san.s4">massages given</dt></div>
+      </dl>
     </div>
   </div>
 </section>
 
-<!-- How a visit works -->
-<section class="section">
+<!-- ============ RITUAL ============ -->
+<section class="ritual section" aria-labelledby="ritTitle">
+  <div class="ritual__bg" aria-hidden="true"><picture><source srcset="assets/img/g-jungle.webp" type="image/webp"><img src="assets/img/g-jungle.jpg" alt="" width="1100" height="733" loading="lazy" decoding="async"></picture></div>
   <div class="container">
-    <div class="section-head" data-reveal="fade-up">
-      <span class="label">Your visit</span>
-      <h2>Simple, from message to mat.</h2>
+    <div class="head head--center">
+      <p class="eyebrow" data-reveal><span data-i18n="rit.eyebrow">Every visit</span></p>
+      <h2 class="title" id="ritTitle" data-reveal data-i18n="rit.title">The Malee <em>ritual.</em></h2>
     </div>
-    <ol class="steps" data-reveal-group>
-      <li class="step" data-reveal-item>
-        <span class="step-num">01</span>
-        <h3>Send a request</h3>
-        <p>Pick a treatment, a length and a rough time below. Nothing is charged online.</p>
-      </li>
-      <li class="step" data-reveal-item>
-        <span class="step-num">02</span>
-        <h3>We confirm</h3>
-        <p>We reply with an available slot and the exact price — only then is it booked.</p>
-      </li>
-      <li class="step" data-reveal-item>
-        <span class="step-num">03</span>
-        <h3>Arrive &amp; unwind</h3>
-        <p>Come ten minutes early for tea and a quick chat about what needs attention.</p>
-      </li>
+    <ol class="steps">
+      <li data-reveal><span class="steps__n">01</span><h3 data-i18n="rit.1t">Welcome</h3><p data-i18n="rit.1b">A cold towel, butterfly-pea tea, and a minute to tell us what hurts and how firm you like it.</p></li>
+      <li data-reveal><span class="steps__n">02</span><h3 data-i18n="rit.2t">Foot bath</h3><p data-i18n="rit.2b">Warm water, lime and frangipani. A small Thai gesture of welcome before every treatment.</p></li>
+      <li data-reveal><span class="steps__n">03</span><h3 data-i18n="rit.3t">Treatment</h3><p data-i18n="rit.3b">A private room, soft light, no phones. Your therapist checks the pressure — and then stays quiet.</p></li>
+      <li data-reveal><span class="steps__n">04</span><h3 data-i18n="rit.4t">Ginger tea</h3><p data-i18n="rit.4b">Back in the garden with warm ginger tea and fresh fruit. Stay as long as you like.</p></li>
     </ol>
   </div>
 </section>
 
-<!-- Booking — step-by-step intake + live summary (pattern: 21st.dev "Appointment Intake Match") -->
-<section class="section section-paper2" id="book">
+<!-- ============ GALLERY ============ -->
+<section class="gallery section" id="gallery" aria-labelledby="galTitle">
   <div class="container">
-    <div class="section-head split" data-reveal="fade-up">
+    <div class="head head--split">
       <div>
-        <span class="label">Book</span>
-        <h2>Three choices, then we take it from there.</h2>
+        <p class="eyebrow" data-reveal><span data-i18n="gal.eyebrow">Inside Malee</span></p>
+        <h2 class="title" id="galTitle" data-reveal data-i18n="gal.title">Soft light, <em>warm hands.</em></h2>
       </div>
-      <p>This sends a booking <em>request</em> by email — your slot is only held once we reply to confirm it.</p>
+      <p class="head__aside" data-reveal data-i18n="gal.aside">Tap a photo to see it full screen.</p>
     </div>
+    <div class="bento">
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-candles.webp" type="image/webp"><img src="assets/img/g-candles.jpg" alt="Candles and a reed diffuser beside rolled white towels" data-i18n-attr="alt:gal.a0" width="1100" height="1650" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c0">Lemongrass &amp; jasmine</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-hands.webp" type="image/webp"><img src="assets/img/g-hands.jpg" alt="A therapist's hands working a guest's shoulder" data-i18n-attr="alt:gal.a1" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c1">Shoulders, unknotted</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-dropper.webp" type="image/webp"><img src="assets/img/g-dropper.jpg" alt="A drop of golden oil falling onto skin" data-i18n-attr="alt:gal.a2" width="1100" height="1375" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c2">Cold-pressed oils</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-bw.webp" type="image/webp"><img src="assets/img/g-bw.jpg" alt="Black and white photo of a guest relaxing during a back massage" data-i18n-attr="alt:gal.a3" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c3">The quiet part</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-towels.webp" type="image/webp"><img src="assets/img/g-towels.jpg" alt="A rolled towel, a candle, a bottle of oil and pink tulips" data-i18n-attr="alt:gal.a4" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c4">Ready for you</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-river.webp" type="image/webp"><img src="assets/img/g-river.jpg" alt="A turquoise river between palm trees seen from above" data-i18n-attr="alt:gal.a5" width="1100" height="1331" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c5">Our herbs' home</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-temple.webp" type="image/webp"><img src="assets/img/g-temple.jpg" alt="A golden Thai temple under a blue sky" data-i18n-attr="alt:gal.a6" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c6">Two centuries of tradition</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-bath.webp" type="image/webp"><img src="assets/img/g-bath.jpg" alt="A guest in a stone bathtub by a large window" data-i18n-attr="alt:gal.a7" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c7">The couples suite</span></button>
+    </div>
+  </div>
+</section>
 
-    <div class="booking" data-reveal="fade-up">
-      <form class="booking-form" id="bookingForm" novalidate>
-        <p class="booking-step-count" id="stepCount" aria-live="polite">Step 1 of 4</p>
+<!-- ============ REVIEWS ============ -->
+<section class="reviews section" aria-labelledby="revTitle">
+  <div class="container">
+    <div class="head head--center">
+      <p class="eyebrow" data-reveal><span data-i18n="rev.eyebrow">Guests</span></p>
+      <h2 class="title" id="revTitle" data-reveal data-i18n="rev.title">Words from <em>the massage table.</em></h2>
+    </div>
+    <div class="quotes" data-reveal>
+      <div class="quotes__track">
+        <figure class="quote is-on"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q1">“The best Thai massage of my trip — and I had one every single day. Strong hands, perfect pressure.”</blockquote><figcaption><b>Sophie</b><span>🇫🇷</span></figcaption></figure>
+        <figure class="quote"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q2">“Walked in off a 14-hour flight, walked out a new person. The hot stones are unreal.”</blockquote><figcaption><b>Daniel</b><span>🇬🇧</span></figcaption></figure>
+        <figure class="quote"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q3">“So calm and so clean. You forget you're five minutes from Walking Street.”</blockquote><figcaption><b>Anna</b><span>🇷🇺</span></figcaption></figure>
+        <figure class="quote"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q4">“We booked the couples suite for our anniversary. The flower foot bath, the tea, the quiet — perfect.”</blockquote><figcaption><b>Mia &amp; Jonas</b><span>🇩🇪</span></figcaption></figure>
+        <figure class="quote"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q5">“Honest prices, no upselling, and the best foot reflexology I've had in Thailand.”</blockquote><figcaption><b>Ploy</b><span>🇹🇭</span></figcaption></figure>
+      </div>
+      <div class="quotes__nav">
+        <button type="button" class="quotes__arrow" data-dir="-1" aria-label="Previous review" data-i18n-attr="aria-label:rev.prev"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 4.5L7 10l5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="quotes__dots"></div>
+        <button type="button" class="quotes__arrow" data-dir="1" aria-label="Next review" data-i18n-attr="aria-label:rev.next"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <fieldset class="bstep is-current" data-step="1">
-          <legend>Which treatment?</legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="service" value="Authentic Thai Massage" checked><span class="choice-body"><strong>Authentic Thai Massage</strong><small>Stretching and pressure points on a floor mat</small></span><span class="choice-key" aria-hidden="true">1</span></label>
-            <label class="choice"><input type="radio" name="service" value="Foot Reflexology"><span class="choice-body"><strong>Foot Reflexology</strong><small>Feet and lower legs, seated</small></span><span class="choice-key" aria-hidden="true">2</span></label>
-            <label class="choice"><input type="radio" name="service" value="Skin Treatments"><span class="choice-body"><strong>Skin Treatments</strong><small>Face and skin care, suggested on arrival</small></span><span class="choice-key" aria-hidden="true">3</span></label>
+<!-- ============ GIFT CARDS ============ -->
+<section class="gifts section" id="gifts" aria-labelledby="giftTitle">
+  <div class="container gift__grid">
+    <div class="gift__copy">
+      <p class="eyebrow" data-reveal><span data-i18n="gift.eyebrow">Gift cards</span></p>
+      <h2 class="title" id="giftTitle" data-reveal data-i18n="gift.title">Give someone <em>an hour off.</em></h2>
+      <p class="lead" data-reveal data-i18n="gift.lead">Choose an amount, add a message, and we'll send a beautiful gift card by WhatsApp — ready to forward. Valid for twelve months on every treatment.</p>
+      <form class="gform" id="giftForm" novalidate data-reveal>
+        <fieldset class="gform__set">
+          <legend data-i18n="gift.amount">Amount</legend>
+          <div class="chips" id="giftAmounts">
+            <label class="chip"><input type="radio" name="gamount" value="1000"><span data-price="1000">฿1,000</span></label>
+            <label class="chip"><input type="radio" name="gamount" value="2000" checked><span data-price="2000">฿2,000</span></label>
+            <label class="chip"><input type="radio" name="gamount" value="3000"><span data-price="3000">฿3,000</span></label>
+            <label class="chip"><input type="radio" name="gamount" value="5000"><span data-price="5000">฿5,000</span></label>
           </div>
         </fieldset>
-
-        <fieldset class="bstep" data-step="2" hidden>
-          <legend>How long?</legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="duration" value="60 min" checked><span class="choice-body"><strong>60 minutes</strong><small>A proper reset</small></span><span class="choice-key" aria-hidden="true">1</span></label>
-            <label class="choice"><input type="radio" name="duration" value="90 min"><span class="choice-body"><strong>90 minutes</strong><small>Time for the full routine</small></span><span class="choice-key" aria-hidden="true">2</span></label>
-            <label class="choice"><input type="radio" name="duration" value="120 min"><span class="choice-body"><strong>120 minutes</strong><small>Slow, with nothing skipped</small></span><span class="choice-key" aria-hidden="true">3</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="bstep" data-step="3" hidden>
-          <legend>When suits you?</legend>
-          <div class="form-grid">
-            <div class="form-row">
-              <label for="bk-date">Preferred day</label>
-              <input type="date" id="bk-date" name="date" required>
-              <span class="form-error" data-error-for="bk-date"></span>
-            </div>
-            <div class="form-row">
-              <label for="bk-time">Preferred time</label>
-              <select id="bk-time" name="time">
-                <option>Late morning (11:00–13:00)</option>
-                <option selected>Afternoon (13:00–17:00)</option>
-                <option>Evening (17:00–21:00)</option>
-              </select>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset class="bstep" data-step="4" hidden>
-          <legend>Your details</legend>
-          <div class="form-row">
-            <label for="bk-name">Name<span aria-hidden="true">*</span></label>
-            <input type="text" id="bk-name" name="name" required autocomplete="name">
-            <span class="form-error" data-error-for="bk-name"></span>
-          </div>
-          <div class="form-row">
-            <label for="bk-email">Email<span aria-hidden="true">*</span></label>
-            <input type="email" id="bk-email" name="email" required autocomplete="email">
-            <span class="form-error" data-error-for="bk-email"></span>
-          </div>
-          <div class="form-row">
-            <label for="bk-notes">Anything we should know? <em>(optional)</em></label>
-            <textarea id="bk-notes" name="notes" rows="3"></textarea>
-          </div>
-        </fieldset>
-
-        <div class="booking-nav">
-          <button type="button" class="btn btn-line" id="bkBack" hidden>Back</button>
-          <button type="button" class="btn btn-dark" id="bkNext">Next</button>
-          <button type="submit" class="btn btn-dark" id="bkSubmit" hidden>Send request by email</button>
+        <div class="fields">
+          <label class="field"><span data-i18n="gift.to">For</span><input type="text" id="gTo" maxlength="28" autocomplete="off" data-i18n-attr="placeholder:gift.toPh" placeholder="Their name"></label>
+          <label class="field"><span data-i18n="gift.from">From</span><input type="text" id="gFrom" maxlength="28" autocomplete="name" data-i18n-attr="placeholder:gift.fromPh" placeholder="Your name"></label>
+          <label class="field field--full"><span data-i18n="gift.msg">Message <i>(optional)</i></span><input type="text" id="gMsg" maxlength="70" autocomplete="off" data-i18n-attr="placeholder:gift.msgPh" placeholder="Happy birthday — go relax!"></label>
         </div>
-        <p class="booking-note" id="bkStatus" role="status" aria-live="polite"></p>
+        <button type="submit" class="btn btn--gold"><span data-i18n="gift.send">Request this gift card</span></button>
       </form>
+    </div>
+    <div class="voucher-wrap" data-reveal>
+      <div class="voucher" id="voucher" aria-hidden="true">
+        <div class="voucher__top">
+          <span class="voucher__brand"><svg viewBox="0 0 120 80" fill="none"><path d="M60 70C48 58 44 40 60 14c16 26 12 44 0 56z"/><path d="M60 70C44 64 30 50 30 30c14 6 26 18 30 40z"/><path d="M60 70c16-6 30-20 30-40-14 6-26 18-30 40z"/></svg>Malee</span>
+          <span class="voucher__kind" data-i18n="gift.card">Gift card</span>
+        </div>
+        <p class="voucher__amount" id="vAmount">฿2,000</p>
+        <p class="voucher__msg" id="vMsg">“Happy birthday — go relax!”</p>
+        <div class="voucher__names"><span><small data-i18n="gift.to">For</small><b id="vTo">—</b></span><span><small data-i18n="gift.from">From</small><b id="vFrom">—</b></span></div>
+        <p class="voucher__code">MLE-<span id="vCode">7K2Q</span> · <span data-i18n="gift.valid">valid 12 months</span></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <aside class="booking-summary" aria-label="Your request so far">
-        <img src="assets/img/hero-hot-stone.jpg" alt="" loading="lazy" width="1920" height="1279">
-        <div class="summary-card">
-          <p class="summary-kicker"><span class="dot" aria-hidden="true"></span> Your request</p>
+<!-- ============ BOOK ============ -->
+<section class="book section" id="book" aria-labelledby="bookTitle">
+  <div class="container">
+    <div class="head">
+      <p class="eyebrow" data-reveal><span data-i18n="book.eyebrow">Book</span></p>
+      <h2 class="title" id="bookTitle" data-reveal data-i18n="book.title">Your room <em>is ready.</em></h2>
+      <p class="lead head__lead" data-reveal data-i18n="book.lead">Choose your treatment and a time. We confirm on WhatsApp within minutes — no deposit, no card needed.</p>
+    </div>
+    <div class="book__grid">
+      <form class="bform" id="bookForm" novalidate>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">1</span><span data-i18n="book.s1">Treatment</span></legend>
+          <div class="chips" id="bTreat"></div>
+        </fieldset>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">2</span><span data-i18n="book.s2">Length</span></legend>
+          <div class="chips" id="bDur"></div>
+        </fieldset>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">3</span><span data-i18n="book.s3">Day</span></legend>
+          <div class="chips chips--scroll" id="bDay"></div>
+        </fieldset>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">4</span><span data-i18n="book.s4">Time</span></legend>
+          <div class="slots" id="bTime"></div>
+          <p class="err" id="timeErr" role="alert"></p>
+        </fieldset>
+        <fieldset class="bstep bstep--row">
+          <legend><span class="bstep__n">5</span><span data-i18n="book.s5">Guests</span></legend>
+          <div class="stepper">
+            <button type="button" class="stepper__btn" data-step="-1" aria-label="Fewer guests" data-i18n-attr="aria-label:book.fewer">−</button>
+            <output class="stepper__val" id="guests" aria-live="polite">1</output>
+            <button type="button" class="stepper__btn" data-step="1" aria-label="More guests" data-i18n-attr="aria-label:book.more">+</button>
+          </div>
+          <p class="perk" id="couplePerk" hidden data-i18n="book.couple">💞 Two guests? You'll have the couples suite, side by side.</p>
+        </fieldset>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">6</span><span data-i18n="book.s6">Your details</span></legend>
+          <div class="fields">
+            <label class="field"><span data-i18n="book.name">Name</span><input type="text" id="fName" autocomplete="name" required><em class="err" id="fNameErr"></em></label>
+            <label class="field"><span data-i18n="book.phone">WhatsApp or phone</span><input type="tel" id="fPhone" autocomplete="tel" inputmode="tel" required><em class="err" id="fPhoneErr"></em></label>
+            <label class="field field--full"><span data-i18n="book.pressure">Pressure</span>
+              <span class="range"><input type="range" id="fPressure" min="1" max="3" step="1" value="2" aria-describedby="pressureVal"><output id="pressureVal"></output></span>
+            </label>
+            <label class="field field--full"><span data-i18n="book.note">Anything we should know? <i>(optional)</i></span><textarea id="fNote" rows="2" data-i18n-attr="placeholder:book.notePh" placeholder="Injuries, pregnancy, a female therapist…"></textarea></label>
+          </div>
+        </fieldset>
+        <p class="recap" id="recap" aria-hidden="true"></p>
+        <button type="submit" class="btn btn--gold btn--lg bform__submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 004.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm5.8 14.1c-.24.68-1.42 1.3-1.95 1.34-.5.05-.97.23-3.27-.68-2.76-1.09-4.5-3.91-4.64-4.09-.13-.18-1.1-1.47-1.1-2.8 0-1.33.7-1.99.95-2.26.24-.27.53-.34.71-.34l.51.01c.16.01.38-.06.6.46.23.54.77 1.87.84 2 .07.14.11.3.02.48-.09.18-.13.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.28-.12.55.16.27.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.58-.07.16-.18.67-.78.85-1.05.18-.27.36-.22.6-.13.25.09 1.57.74 1.84.88.27.13.45.2.51.31.07.12.07.66-.17 1.33z"/></svg><span data-i18n="book.send">Send my booking on WhatsApp</span></button>
+        <p class="bform__hint" data-i18n="book.hint">Free cancellation up to 2 hours before. Please arrive ten minutes early.</p>
+      </form>
+      <aside class="summary" aria-labelledby="sumTitle">
+        <div class="summary__card">
+          <p class="summary__title" id="sumTitle" data-i18n="book.summary">Your visit</p>
           <dl>
-            <div><dt>Treatment</dt><dd data-summary="service">Authentic Thai Massage</dd></div>
-            <div><dt>Length</dt><dd data-summary="duration">60 min</dd></div>
-            <div><dt>When</dt><dd data-summary="when">Not chosen yet</dd></div>
-            <div><dt>Where</dt><dd>Central Pattaya</dd></div>
+            <div><dt data-i18n="book.s1">Treatment</dt><dd id="sTreat">—</dd></div>
+            <div><dt data-i18n="book.s2">Length</dt><dd id="sDur">—</dd></div>
+            <div><dt data-i18n="book.s3">Day</dt><dd id="sDay">—</dd></div>
+            <div><dt data-i18n="book.s4">Time</dt><dd id="sTime">—</dd></div>
+            <div><dt data-i18n="book.s5">Guests</dt><dd id="sGuests">1</dd></div>
           </dl>
-          <p class="summary-foot">Not booked until we confirm by reply.</p>
+          <p class="summary__total"><span data-i18n="book.total">Total</span><b id="sTotal">—</b></p>
+          <p class="summary__foot" data-i18n="book.incl">Foot bath, ginger tea and fresh fruit included.</p>
         </div>
       </aside>
     </div>
   </div>
 </section>
 
-<section class="section" id="visit">
-  <div class="container">
-    <div class="section-head" data-reveal="fade-up">
-      <span class="label">Visit</span>
-      <h2>Find us in central Pattaya.</h2>
+<!-- ============ FAQ ============ -->
+<section class="faq section" aria-labelledby="faqTitle">
+  <div class="container faq__grid">
+    <div>
+      <p class="eyebrow" data-reveal><span data-i18n="faq.eyebrow">Good to know</span></p>
+      <h2 class="title" id="faqTitle" data-reveal data-i18n="faq.title">Before <em>you come.</em></h2>
     </div>
-    <div class="location-grid" data-reveal-group>
-      <div class="info-rows" data-reveal-item>
-        <div class="info-row">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-          <div><div class="k">Address</div><div class="v">Central Pattaya, Thailand</div></div>
-        </div>
-        <div class="info-row">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          <div><div class="k">Hours</div><div class="v">Open daily from 11:00</div></div>
-        </div>
-        <div class="info-row">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          <div><div class="k">Access</div><div class="v">Ground-floor treatment rooms</div></div>
-        </div>
-        <div class="info-row">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6"/></svg>
-          <div><div class="k">Contact</div><div class="v"><a class="link" href="#book">Send a booking request</a></div></div>
-        </div>
-      </div>
-      <div class="map-frame" data-reveal-item>
-        <span class="placeholder-tag">Map placeholder — exact address to come</span>
-      </div>
+    <div class="faq__list">
+      <details data-reveal><summary data-i18n="faq.q1">What should I wear?</summary><p data-i18n="faq.a1">Nothing special. For Thai massage we give you loose cotton clothes; for oil treatments, disposable underwear and a towel. You're always covered.</p></details>
+      <details data-reveal><summary data-i18n="faq.q2">Can I choose a female or male therapist?</summary><p data-i18n="faq.a2">Of course — just add it to your booking note and we'll arrange it.</p></details>
+      <details data-reveal><summary data-i18n="faq.q3">Is Thai massage painful?</summary><p data-i18n="faq.a3">It can be firm, but never more than you want. Your therapist checks the pressure at the start and you can say “bao bao” (gently) at any time.</p></details>
+      <details data-reveal><summary data-i18n="faq.q4">I'm pregnant — can I book?</summary><p data-i18n="faq.a4">From the second trimester, yes: we offer a gentle side-lying massage with therapists trained for pregnancy. Please tell us when you book.</p></details>
+      <details data-reveal><summary data-i18n="faq.q5">Do you accept walk-ins?</summary><p data-i18n="faq.a5">Always, when a room is free. Evenings and weekends fill up, so booking a few hours ahead is safer.</p></details>
     </div>
   </div>
 </section>
 
-<section class="section section-tight">
-  <div class="container">
-    <div class="cta-band" data-reveal="scale">
-      <div>
-        <h2>Ready for an hour that's <em>yours</em>?</h2>
-        <p>Quiet, focused, done properly.</p>
+<!-- ============ VISIT ============ -->
+<section class="visit section" id="visit" aria-labelledby="visitTitle">
+  <div class="container visit__grid">
+    <div class="visit__copy">
+      <p class="eyebrow" data-reveal><span data-i18n="visit.eyebrow">Visit</span></p>
+      <h2 class="title" id="visitTitle" data-reveal data-i18n="visit.title">Find the <em>teak door.</em></h2>
+      <div class="visit__blocks">
+        <div data-reveal>
+          <p class="visit__label" data-i18n="visit.where">Where</p>
+          <p>Soi 13, Second Road<br>Pattaya, Chonburi 20150</p>
+          <p class="visit__hint" data-i18n="visit.hint">Opposite the 7-Eleven, look for the frangipani tree.</p>
+          <a class="link" href="https://maps.google.com/?q=Soi+13+Second+Road+Pattaya" target="_blank" rel="noopener" data-i18n="visit.maps">Open in Google Maps</a>
+        </div>
+        <div data-reveal>
+          <p class="visit__label" data-i18n="visit.when">When</p>
+          <p class="visit__hours"><span data-i18n="visit.daily">Every day</span> <b>11:00 – 23:00</b></p>
+          <p class="visit__hours"><span data-i18n="visit.last">Last booking</span> <b>21:30</b></p>
+          <p class="status"><span class="dot" aria-hidden="true"></span><span data-status>Open daily 11:00–23:00</span></p>
+        </div>
+        <div data-reveal>
+          <p class="visit__label" data-i18n="visit.talk">Talk to us</p>
+          <p><a class="link" href="https://wa.me/66812345678" target="_blank" rel="noopener">WhatsApp</a> · <a class="link" href="tel:+66812345678" target="_blank" rel="noopener">+66 81 234 5678</a></p>
+        </div>
       </div>
-      <a class="btn btn-on-dark" data-magnetic="0.25" href="#book">Book a visit</a>
+      <div class="taxi" data-reveal>
+        <div>
+          <p class="taxi__label" data-i18n="visit.taxi">Show this to your taxi or baht-bus driver</p>
+          <p class="taxi__thai" lang="th">มะลิ นวดแผนไทย<br>ซอย 13 ถนนพัทยาสาย 2</p>
+        </div>
+        <button type="button" class="btn btn--dark taxi__btn" id="taxiBtn"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 7.5V4a1 1 0 011-1h3.5M12.5 3H16a1 1 0 011 1v3.5M17 12.5V16a1 1 0 01-1 1h-3.5M7.5 17H4a1 1 0 01-1-1v-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span data-i18n="visit.taxiBtn">Full screen</span></button>
+      </div>
     </div>
+    <div class="visit__map clip" data-reveal="clip">
+      <iframe title="Map: Malee, Soi 13, Second Road, Pattaya" data-i18n-attr="title:visit.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Soi%2013%20Second%20Road%20Pattaya&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section class="final" aria-labelledby="finalTitle">
+  <div class="final__bg" aria-hidden="true"><picture><source srcset="assets/img/calm.webp" type="image/webp"><img src="assets/img/calm.jpg" alt="" width="1600" height="1067" loading="lazy" decoding="async"></picture></div>
+  <div class="container final__inner">
+    <h2 class="final__title" id="finalTitle" data-reveal data-i18n="final.title">Breathe out. <em>We'll take it from here.</em></h2>
+    <a href="#book" class="btn btn--gold btn--lg magnetic" data-reveal><span data-i18n="hero.cta">Book a treatment</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </section>
 
 </main>
 
-<footer class="site-footer">
+<footer class="footer">
   <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a class="brand" href="#top">Malee<span class="sub">Massage &amp; Spa</span></a>
-        <p class="footer-about">Central Pattaya, Thailand</p>
-      </div>
-      <div>
-        <h4>Treatments</h4>
-        <ul>
-          <li><a href="#treatments">Thai Massage</a></li>
-          <li><a href="#treatments">Foot Reflexology</a></li>
-          <li><a href="#treatments">Skin Treatments</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Visit</h4>
-        <ul>
-          <li><p>Open daily from 11:00</p></li>
-          <li><a href="#book">Booking request</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Malee — demo, not a real business</span>
-      <span>Demo built by NM Studio</span>
+    <p class="footer__word" aria-hidden="true"></p>
+    <div class="footer__row">
+      <p>© 2026 Malee Thai Massage &amp; Spa · Pattaya</p>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#treatments" data-i18n="nav.treatments">Treatments</a>
+        <a href="#gifts" data-i18n="nav.gifts">Gift cards</a>
+        <a href="#book" data-i18n="nav.book">Book</a>
+        <a href="#visit" data-i18n="nav.visit">Visit</a>
+      </nav>
+      <p><span data-i18n="footer.credit">Website by</span> <a href="../nm/" target="_blank" rel="noopener">NM Studio</a></p>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/vendor/gsap.min.js"></script>
-<script src="assets/js/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/js/vendor/lenis.min.js"></script>
-<script src="assets/js/animations.js"></script>
-<script src="assets/js/premium.js"></script>
-<script src="assets/js/main.js"></script>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery" data-i18n-attr="aria-label:gal.eyebrow" hidden>
+  <button type="button" class="lightbox__close" aria-label="Close" data-i18n-attr="aria-label:a11y.close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  <button type="button" class="lightbox__arrow lightbox__arrow--prev" data-dir="-1" aria-label="Previous photo" data-i18n-attr="aria-label:a11y.prev"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 4.5L7 10l5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <figure class="lightbox__stage"><img alt="" id="lbImg"><figcaption id="lbCap"></figcaption></figure>
+  <button type="button" class="lightbox__arrow lightbox__arrow--next" data-dir="1" aria-label="Next photo" data-i18n-attr="aria-label:a11y.next"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="lightbox__dock" id="lbDock"></div>
+</div>
+
+<div class="taxicard" id="taxiCard" role="dialog" aria-modal="true" aria-label="Address for the driver" data-i18n-attr="aria-label:visit.taxi" hidden>
+  <button type="button" class="lightbox__close" aria-label="Close" data-i18n-attr="aria-label:a11y.close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  <p class="taxicard__hello" lang="th">สวัสดีครับ/ค่ะ 🙏 ไปที่นี่ครับ/ค่ะ</p>
+  <p class="taxicard__name" lang="th">มะลิ นวดแผนไทย</p>
+  <p class="taxicard__addr" lang="th">ซอย 13 ถนนพัทยาสาย 2<br>พัทยา ชลบุรี</p>
+  <p class="taxicard__en">Malee Thai Massage · Soi 13, Second Road, Pattaya</p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Strings used by main.js that have no element of their own -->
+<template data-i18n="dur.min">min</template>
+<template data-i18n="book.p1">Gentle</template>
+<template data-i18n="book.p2">Medium</template>
+<template data-i18n="book.p3">Strong</template>
+
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
