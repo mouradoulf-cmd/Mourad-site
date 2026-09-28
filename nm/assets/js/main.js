@@ -427,27 +427,6 @@
     diffSteps.forEach(function (st) { diffObserver.observe(st); });
   }
 
-  /* ---------- live QR code (real, scannable) ---------- */
-  var qrBox = $("#tryitQr");
-  function renderQr() {
-    if (!qrBox || qrBox.dataset.done || typeof window.QRCode === "undefined") return;
-    qrBox.dataset.done = "1";
-    var url = new URL("../giulivo-qr-menu.html", window.location.href).href;
-    new window.QRCode(qrBox, { text: url, width: 480, height: 480, colorDark: "#111216", colorLight: "#f2efe8", correctLevel: window.QRCode.CorrectLevel.M });
-    qrBox.removeAttribute("title");
-    // The library renders a canvas plus a fallback <img>; the container
-    // carries the accessible name, so its children are decorative.
-    $$("img, canvas", qrBox).forEach(function (el) { el.setAttribute("aria-hidden", "true"); if (el.tagName === "IMG") el.alt = ""; });
-  }
-  if (qrBox) {
-    if ("IntersectionObserver" in window) {
-      var qrObserver = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { renderQr(); qrObserver.disconnect(); }
-      }, { rootMargin: "400px 0px" });
-      qrObserver.observe(qrBox);
-    } else renderQr();
-  }
-
   /* ---------- footer: live local time in Pattaya ---------- */
   var clock = $("#localTime");
   function tick() {

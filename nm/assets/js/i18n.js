@@ -43,7 +43,7 @@
         r3b: "One QR code on the table, always current. Change a price or a dish in minutes — no reprinting, ever again."
       },
       diff: {"eyebrow": "The difference", "title": "Same place. <em>Two very different first impressions.</em>", "query": "Italian restaurant near me", "you": "Your restaurant", "meta": "Restaurant · 0.2 km", "directions": "Directions", "call": "Call", "noSite": "No website", "noMenu": "No menu · no prices · no photos of the dishes", "keepScrolling": "They keep scrolling…", "book": "Book a table", "badBadge": "Customer lost", "goodBadge": "New customer", "s1t": "They search", "s1b": "New city, phone in hand: “Italian restaurant near me”. Dozens of pins appear — yours is one of them.", "s2t": "Without a website", "s2b": "A pin, a few blurry photos, no menu, no prices. They can't tell if it's right for them — so they move on to the next one.", "s3t": "With NM Studio", "s3b": "Your photos, your menu in their language, directions and booking in one tap. They choose you — before they've even arrived."},
-      tryit: {"eyebrow": "Try it now", "title": "Don't take our word for it. <em>Scan it.</em>", "body": "Take out your phone and point the camera at the code. That's a real QR menu we built — exactly what your customers see at the table.", "open": "Open the live menu", "caption": "Giulivo · live QR menu"},
+      tryit: {"eyebrow": "Try it now", "title": "Don't take our word for it. <em>Scan it.</em>", "body": "Take out your phone and point the camera at the code. That's a real QR menu we built — exactly what your customers see at the table.", "open": "Open the live menu", "qrAlt": "QR code that opens Giulivo's live QR menu", "caption": "Giulivo · live QR menu"},
       work: {
         eyebrow: "Selected work",
         title: "Real sites. <em>Live right now.</em>",
@@ -155,7 +155,7 @@
         r3b: "Un seul QR code sur la table, toujours à jour. Changez un prix ou un plat en quelques minutes — plus jamais de réimpression."
       },
       diff: {"eyebrow": "La différence", "title": "Le même commerce. <em>Deux premières impressions opposées.</em>", "query": "Restaurant italien près de moi", "you": "Votre restaurant", "meta": "Restaurant · 0,2 km", "directions": "Itinéraire", "call": "Appeler", "noSite": "Pas de site", "noMenu": "Pas de menu · pas de prix · aucune photo des plats", "keepScrolling": "Ils continuent de chercher…", "book": "Réserver une table", "badBadge": "Client perdu", "goodBadge": "Nouveau client", "s1t": "Ils cherchent", "s1b": "Nouvelle ville, téléphone en main : « restaurant italien près de moi ». Des dizaines d'épingles s'affichent — la vôtre en fait partie.", "s2t": "Sans site web", "s2b": "Une épingle, quelques photos floues, pas de menu, pas de prix. Impossible de savoir si c'est pour eux — alors ils passent au suivant.", "s3t": "Avec NM Studio", "s3b": "Vos photos, votre menu dans leur langue, l'itinéraire et la réservation en un geste. Ils vous choisissent — avant même d'être arrivés."},
-      tryit: {"eyebrow": "Essayez maintenant", "title": "Ne nous croyez pas sur parole. <em>Scannez.</em>", "body": "Sortez votre téléphone et visez le code avec l'appareil photo. C'est un vrai menu QR que nous avons créé — exactement ce que vos clients voient à table.", "open": "Ouvrir le menu en ligne", "caption": "Giulivo · menu QR en ligne"},
+      tryit: {"eyebrow": "Essayez maintenant", "title": "Ne nous croyez pas sur parole. <em>Scannez.</em>", "body": "Sortez votre téléphone et visez le code avec l'appareil photo. C'est un vrai menu QR que nous avons créé — exactement ce que vos clients voient à table.", "open": "Ouvrir le menu en ligne", "qrAlt": "QR code qui ouvre le vrai menu QR de Giulivo", "caption": "Giulivo · menu QR en ligne"},
       work: {
         eyebrow: "Réalisations",
         title: "De vrais sites. <em>En ligne dès maintenant.</em>",
@@ -267,7 +267,7 @@
         r3b: "Un solo QR code sul tavolo, sempre aggiornato. Cambia un prezzo o un piatto in pochi minuti — niente più ristampe."
       },
       diff: {"eyebrow": "La differenza", "title": "Lo stesso locale. <em>Due prime impressioni opposte.</em>", "query": "Ristorante italiano vicino a me", "you": "Il tuo ristorante", "meta": "Ristorante · 0,2 km", "directions": "Indicazioni", "call": "Chiama", "noSite": "Nessun sito", "noMenu": "Nessun menù · nessun prezzo · nessuna foto dei piatti", "keepScrolling": "Continuano a cercare…", "book": "Prenota un tavolo", "badBadge": "Cliente perso", "goodBadge": "Nuovo cliente", "s1t": "Cercano", "s1b": "Città nuova, telefono in mano: “ristorante italiano vicino a me”. Compaiono decine di segnaposto — il tuo è uno di questi.", "s2t": "Senza un sito", "s2b": "Un segnaposto, qualche foto sfocata, niente menù, niente prezzi. Non capiscono se fa per loro — e passano al prossimo.", "s3t": "Con NM Studio", "s3b": "Le tue foto, il tuo menù nella loro lingua, indicazioni e prenotazione con un tocco. Scelgono te — prima ancora di arrivare."},
-      tryit: {"eyebrow": "Provalo ora", "title": "Non fidarti solo delle parole. <em>Scansiona.</em>", "body": "Prendi il telefono e inquadra il codice con la fotocamera. È un vero menù QR che abbiamo creato — esattamente ciò che i tuoi clienti vedono al tavolo.", "open": "Apri il menù online", "caption": "Giulivo · menù QR online"},
+      tryit: {"eyebrow": "Provalo ora", "title": "Non fidarti solo delle parole. <em>Scansiona.</em>", "body": "Prendi il telefono e inquadra il codice con la fotocamera. È un vero menù QR che abbiamo creato — esattamente ciò che i tuoi clienti vedono al tavolo.", "open": "Apri il menù online", "qrAlt": "Codice QR che apre il vero menù QR di Giulivo", "caption": "Giulivo · menù QR online"},
       work: {
         eyebrow: "Progetti selezionati",
         title: "Siti veri. <em>Online adesso.</em>",
@@ -379,7 +379,7 @@
         r3b: "QR โค้ดเดียวบนโต๊ะ อัปเดตตลอด เปลี่ยนราคาหรือเมนูได้ในไม่กี่นาที — ไม่ต้องพิมพ์ใหม่อีกเลย"
       },
       diff: {"eyebrow": "ความแตกต่าง", "title": "ร้านเดียวกัน <em>แต่ความประทับใจแรกต่างกันลิบลับ</em>", "query": "ร้านอาหารอิตาเลียนใกล้ฉัน", "you": "ร้านของคุณ", "meta": "ร้านอาหาร · 0.2 กม.", "directions": "เส้นทาง", "call": "โทร", "noSite": "ไม่มีเว็บไซต์", "noMenu": "ไม่มีเมนู · ไม่มีราคา · ไม่มีรูปอาหาร", "keepScrolling": "พวกเขาเลื่อนผ่านไป…", "book": "จองโต๊ะ", "badBadge": "เสียลูกค้า", "goodBadge": "ได้ลูกค้าใหม่", "s1t": "พวกเขาค้นหา", "s1b": "เมืองใหม่ โทรศัพท์ในมือ: “ร้านอาหารอิตาเลียนใกล้ฉัน” หมุดนับสิบปรากฏขึ้น — หนึ่งในนั้นคือร้านของคุณ", "s2t": "ถ้าไม่มีเว็บไซต์", "s2b": "แค่หมุด รูปเบลอไม่กี่รูป ไม่มีเมนู ไม่มีราคา พวกเขาไม่รู้ว่าร้านนี้ใช่ไหม — เลยไปดูร้านถัดไป", "s3t": "เมื่อมี NM Studio", "s3b": "รูปของคุณ เมนูในภาษาของพวกเขา เส้นทางและการจองในแตะเดียว พวกเขาเลือกคุณ — ตั้งแต่ก่อนมาถึง"},
-      tryit: {"eyebrow": "ลองเลย", "title": "ไม่ต้องเชื่อเรา <em>ลองสแกนดู</em>", "body": "หยิบโทรศัพท์แล้วส่องกล้องไปที่โค้ด นี่คือเมนู QR จริงที่เราทำ — เหมือนที่ลูกค้าของคุณจะเห็นบนโต๊ะ", "open": "เปิดเมนูออนไลน์", "caption": "Giulivo · เมนู QR จริง"},
+      tryit: {"eyebrow": "ลองเลย", "title": "ไม่ต้องเชื่อเรา <em>ลองสแกนดู</em>", "body": "หยิบโทรศัพท์แล้วส่องกล้องไปที่โค้ด นี่คือเมนู QR จริงที่เราทำ — เหมือนที่ลูกค้าของคุณจะเห็นบนโต๊ะ", "open": "เปิดเมนูออนไลน์", "qrAlt": "QR โค้ดที่เปิดเมนู QR จริงของ Giulivo", "caption": "Giulivo · เมนู QR จริง"},
       work: {
         eyebrow: "ผลงานที่คัดสรร",
         title: "เว็บไซต์จริง <em>ออนไลน์อยู่ตอนนี้</em>",
@@ -491,7 +491,7 @@
         r3b: "رمز QR واحد على الطاولة، محدّث دائماً. غيّر سعراً أو طبقاً في دقائق — دون إعادة طباعة بعد اليوم."
       },
       diff: {"eyebrow": "الفرق", "title": "المحل نفسه. <em>وانطباعان أولان مختلفان تماماً.</em>", "query": "مطعم إيطالي بالقرب مني", "you": "مطعمك", "meta": "مطعم · 0.2 كم", "directions": "الاتجاهات", "call": "اتصال", "noSite": "لا يوجد موقع", "noMenu": "لا قائمة · لا أسعار · لا صور للأطباق", "keepScrolling": "يواصلون البحث…", "book": "احجز طاولة", "badBadge": "زبون ضائع", "goodBadge": "زبون جديد", "s1t": "يبحثون", "s1b": "مدينة جديدة والهاتف في اليد: «مطعم إيطالي بالقرب مني». تظهر عشرات الدبابيس — ومحلك واحد منها.", "s2t": "بدون موقع", "s2b": "دبوس وبضع صور ضبابية، بلا قائمة ولا أسعار. لا يعرفون إن كان المكان يناسبهم — فينتقلون إلى التالي.", "s3t": "مع NM Studio", "s3b": "صورك، وقائمتك بلغتهم، والاتجاهات والحجز بلمسة واحدة. يختارونك — قبل أن يصلوا حتى."},
-      tryit: {"eyebrow": "جرّبها الآن", "title": "لا تكتفِ بكلامنا. <em>امسح الرمز.</em>", "body": "أخرج هاتفك ووجّه الكاميرا نحو الرمز. هذه قائمة QR حقيقية صممناها — تماماً ما يراه زبائنك على الطاولة.", "open": "افتح القائمة المباشرة", "caption": "Giulivo · قائمة QR مباشرة"},
+      tryit: {"eyebrow": "جرّبها الآن", "title": "لا تكتفِ بكلامنا. <em>امسح الرمز.</em>", "body": "أخرج هاتفك ووجّه الكاميرا نحو الرمز. هذه قائمة QR حقيقية صممناها — تماماً ما يراه زبائنك على الطاولة.", "open": "افتح القائمة المباشرة", "qrAlt": "رمز QR يفتح قائمة Giulivo الحقيقية", "caption": "Giulivo · قائمة QR مباشرة"},
       work: {
         eyebrow: "أعمال مختارة",
         title: "مواقع حقيقية. <em>متاحة الآن.</em>",
@@ -624,6 +624,10 @@
     document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
       var v = get(lang, el.getAttribute("data-i18n-placeholder"));
       if (typeof v === "string") el.setAttribute("placeholder", v);
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      var v = get(lang, el.getAttribute("data-i18n-alt"));
+      if (typeof v === "string") el.setAttribute("alt", v);
     });
     document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
       var v = get(lang, el.getAttribute("data-i18n-aria-label"));
