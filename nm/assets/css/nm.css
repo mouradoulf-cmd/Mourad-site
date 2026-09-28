@@ -675,13 +675,12 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { line-height: 1.
 .diff { padding: clamp(5rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6rem); border-top: 1px solid var(--line); }
 .diff__grid { display: grid; gap: 2rem; }
 @media (min-width: 960px) { .diff__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6rem; align-items: start; } .diff__stickywrap { order: 2; } }
-.diff__stickywrap { position: sticky; top: calc(var(--header-h) + 1rem); z-index: 2; }
-@media (min-width: 960px) { .diff__stickywrap { top: calc(50vh - 20.6rem); } }
+@media (min-width: 960px) { .diff__stickywrap { position: sticky; top: calc(50vh - 20.6rem); z-index: 2; } }
 @media (max-width: 959px) {
-  .diff__stickywrap { top: 0.5rem; padding: .5rem 0 1.5rem; background: linear-gradient(180deg, var(--ink) 82%, transparent); }
+  .diff__stickywrap { padding: .5rem 0 1rem; }
 }
 .diff__phone { position: relative; width: min(18.75rem, 62vw); margin-inline: auto; }
-@media (max-width: 959px) { .diff__phone { width: min(180px, 42vw); } }
+@media (max-width: 959px) { .diff__phone { width: min(15rem, 58vw); } }
 .dp {
   position: relative; aspect-ratio: 9 / 19; border-radius: 40px; padding: 10px;
   background: linear-gradient(145deg, #23252e, #0b0c11); border: 1px solid rgba(255,255,255,.14);
@@ -721,7 +720,7 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { line-height: 1.
 .dp-grab { width: 34px; height: 4px; margin: 0 auto 8px; border-radius: 4px; background: #d5d7db; }
 .dp-row { display: flex; gap: 9px; align-items: center; padding: 7px 0; border-top: 1px solid #eef0f2; }
 .dp-row b { display: block; font-weight: 600; }
-.dp-row small { color: #6d717a; }
+.dp-row small { color: #5b5f68; }
 .dp-row--you { background: #f3f0ff; margin: 0 -12px; padding: 7px 12px; }
 .dp-thumb { width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0; }
 @media (max-width: 959px) { .dp-thumb { width: 24px; height: 24px; } }
@@ -773,7 +772,26 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { line-height: 1.
 .diff__step.is-active h3 { opacity: 1; }
 .diff__step.is-active p { color: #c6cad6; }
 @media (min-width: 960px) { .diff__step:last-child { min-height: 84vh; } }
-@media (max-width: 959px) { .diff__step { min-height: 52vh; padding: 1rem 0; justify-content: flex-end; } .diff__step:last-child { min-height: 50vh; } }
+/* Phones & tablets: no sticky overlap — the steps become tappable cards
+   under the phone, and they drive its screen (auto-advancing until touched). */
+@media (max-width: 959px) {
+  .diff__steps { gap: .75rem; }
+  .diff__step {
+    min-height: 0; padding: 1.1rem 1.2rem 1.2rem; position: relative; overflow: hidden;
+    border-radius: var(--radius-md); border: 1px solid var(--line); background: rgba(255,255,255,.02);
+    transition: border-color .35s ease, background-color .35s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .diff__step.is-active { border-color: rgba(168,85,247,.55); background: rgba(168,85,247,.07); }
+  .diff__step h3 { margin-top: .35rem; font-size: 1.35rem; }
+  .diff__step p { margin-top: .45rem; font-size: .95rem; line-height: 1.55; }
+  .diff__step::after {
+    content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+    background: var(--brand); transform: scaleX(0); transform-origin: 0 50%;
+  }
+  html[dir="rtl"] .diff__step::after { transform-origin: 100% 50%; }
+  .diff.is-auto .diff__step.is-active::after { animation: dotFill var(--diff-ms, 3800ms) linear forwards; }
+}
 .diff__num { font-size: .8rem; color: var(--faint); letter-spacing: .08em; }
 .diff__step h3 { margin-top: .8rem; font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.08; }
 .diff__step p { margin-top: 1rem; max-width: 30rem; color: var(--muted); font-size: 1.08rem; }
@@ -881,3 +899,10 @@ html[dir="rtl"] .stage__dots i.is-on::after { transform-origin: 100% 50%; }
   .booking__hint { margin-top: .7rem; font-size: .76rem; }
 }
 .booking { overscroll-behavior: contain; }
+
+/* Full-card tap target for the story steps (phones/tablets only). */
+.diff__hit { display: none; }
+@media (max-width: 959px) {
+  .diff__hit { display: block; position: absolute; inset: 0; z-index: 1; width: 100%; border-radius: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .diff__hit:focus-visible { outline: 2px solid var(--cyan); outline-offset: -2px; }
+}
