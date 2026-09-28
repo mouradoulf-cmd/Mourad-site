@@ -59,7 +59,8 @@
         p4desc: "A confident corporate site for a cladding supplier: a video hero, services, partner brands, projects and quote requests.",
         tMulti: "4 languages", tQr: "QR menu", tBooking: "Online booking", tTreat: "Treatment picker", tMobile: "Mobile-first",
         tPrices: "Price list", tReviews: "Reviews", tWhatsapp: "WhatsApp booking", tVideo: "Video hero", tProjects: "Projects", tQuote: "Quote requests",
-        soon: "Coming soon", soonList: "Bar & nightlife · Street food"
+        p5cat: "Bar & nightlife · Pattaya", p5desc: "A neon-lit site for a pool bar: tonight's event and a live happy-hour countdown, the drinks menu, pool nights and table booking on WhatsApp — in four languages.", tLive: "Live happy hour", tEvents: "Weekly events",
+        soon: "Coming soon", soonList: "Street food · Hotels"
       },
       process: {
         v3toastT: "New booking",
@@ -191,7 +192,8 @@
         p4desc: "Un site d'entreprise affirmé pour un fournisseur de bardage : vidéo en ouverture, services, marques partenaires, réalisations et demandes de devis.",
         tMulti: "4 langues", tQr: "Menu QR", tBooking: "Réservation en ligne", tTreat: "Choix des soins", tMobile: "Pensé mobile",
         tPrices: "Grille tarifaire", tReviews: "Avis clients", tWhatsapp: "Réservation WhatsApp", tVideo: "Vidéo d'ouverture", tProjects: "Réalisations", tQuote: "Demande de devis",
-        soon: "Bientôt", soonList: "Bar & vie nocturne · Street food"
+        p5cat: "Bar & vie nocturne · Pattaya", p5desc: "Un site aux néons pour un bar billard : la soirée du jour et le happy hour en direct, la carte des boissons, les soirées billard et la réservation de table sur WhatsApp — en quatre langues.", tLive: "Happy hour en direct", tEvents: "Soirées de la semaine",
+        soon: "Bientôt", soonList: "Street food · Hôtels"
       },
       process: {
         v3toastT: "Nouvelle réservation",
@@ -323,7 +325,8 @@
         p4desc: "Un sito aziendale deciso per un fornitore di rivestimenti: video in apertura, servizi, marchi partner, progetti e richieste di preventivo.",
         tMulti: "4 lingue", tQr: "Menù QR", tBooking: "Prenotazione online", tTreat: "Scelta trattamenti", tMobile: "Pensato per mobile",
         tPrices: "Listino prezzi", tReviews: "Recensioni", tWhatsapp: "Prenotazione WhatsApp", tVideo: "Video in apertura", tProjects: "Progetti", tQuote: "Preventivi",
-        soon: "In arrivo", soonList: "Bar e vita notturna · Street food"
+        p5cat: "Bar e vita notturna · Pattaya", p5desc: "Un sito al neon per un bar con biliardo: l'evento della serata e l'happy hour in diretta, la carta dei drink, le serate di biliardo e la prenotazione del tavolo su WhatsApp — in quattro lingue.", tLive: "Happy hour in diretta", tEvents: "Eventi settimanali",
+        soon: "In arrivo", soonList: "Street food · Hotel"
       },
       process: {
         v3toastT: "Nuova prenotazione",
@@ -455,7 +458,8 @@
         p4desc: "เว็บไซต์องค์กรที่มั่นใจสำหรับผู้จำหน่ายวัสดุผนังภายนอก: วิดีโอเปิดหน้า บริการ แบรนด์พาร์ทเนอร์ ผลงาน และการขอใบเสนอราคา",
         tMulti: "4 ภาษา", tQr: "เมนู QR", tBooking: "จองออนไลน์", tTreat: "เลือกทรีตเมนต์", tMobile: "ออกแบบเพื่อมือถือ",
         tPrices: "ราคาบริการ", tReviews: "รีวิว", tWhatsapp: "จองผ่าน WhatsApp", tVideo: "วิดีโอเปิดหน้า", tProjects: "ผลงาน", tQuote: "ขอใบเสนอราคา",
-        soon: "เร็ว ๆ นี้", soonList: "บาร์และไนท์ไลฟ์ · สตรีทฟู้ด"
+        p5cat: "บาร์และไนท์ไลฟ์ · พัทยา", p5desc: "เว็บไซต์แสงนีออนสำหรับบาร์พูล: อีเวนต์คืนนี้และนับถอยหลังแฮปปี้อาวร์แบบเรียลไทม์ เมนูเครื่องดื่ม คืนแข่งพูล และจองโต๊ะทาง WhatsApp — สี่ภาษา", tLive: "แฮปปี้อาวร์เรียลไทม์", tEvents: "อีเวนต์ทุกสัปดาห์",
+        soon: "เร็ว ๆ นี้", soonList: "สตรีทฟู้ด · โรงแรม"
       },
       process: {
         v3toastT: "มีการจองใหม่",
@@ -587,7 +591,8 @@
         p4desc: "موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار.",
         tMulti: "4 لغات", tQr: "قائمة QR", tBooking: "حجز عبر الإنترنت", tTreat: "اختيار العلاجات", tMobile: "مصمم للهاتف",
         tPrices: "قائمة الأسعار", tReviews: "آراء العملاء", tWhatsapp: "حجز عبر واتساب", tVideo: "فيديو افتتاحي", tProjects: "المشاريع", tQuote: "طلب عرض سعر",
-        soon: "قريباً", soonList: "بارات وحياة ليلية · أكل الشارع"
+        p5cat: "بار وحياة ليلية · باتايا", p5desc: "موقع بأضواء النيون لبار بلياردو: فعالية الليلة وعدّ تنازلي مباشر لساعة التخفيضات، وقائمة المشروبات، وليالي البلياردو، وحجز الطاولات عبر واتساب — بأربع لغات.", tLive: "ساعة التخفيضات مباشرة", tEvents: "فعاليات أسبوعية",
+        soon: "قريباً", soonList: "أكل الشارع · فنادق"
       },
       process: {
         v3toastT: "حجز جديد",

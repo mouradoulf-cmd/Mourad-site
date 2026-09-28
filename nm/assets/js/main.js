@@ -320,7 +320,7 @@
     }
   }
 
-  /* ---------- hero stage: cycle through the four live projects ---------- */
+  /* ---------- hero stage: cycle through the live projects ---------- */
   (function stageShowcase() {
     var view = $("#stageView"), phoneView = $("#stagePhoneView");
     var nameEl = $("#stageName"), catEl = $("#stageCat"), dots = $$(".stage__dots i");
@@ -329,7 +329,8 @@
       { slug: "giulivo", name: "Giulivo", cat: "work.p1cat" },
       { slug: "malee", name: "Malee", cat: "work.p2cat" },
       { slug: "noir", name: "Noir", cat: "work.p3cat" },
-      { slug: "facadiers", name: "Atelier des Façadiers", cat: "work.p4cat" }
+      { slug: "facadiers", name: "Atelier des Façadiers", cat: "work.p4cat" },
+      { slug: "neon-tiger", name: "Neon Tiger", cat: "work.p5cat" }
     ];
     var SWAP_MS = 4200, index = 0, timer = null, layers = [], visible = true;
     document.documentElement.style.setProperty("--swap-ms", SWAP_MS + "ms");
