@@ -390,6 +390,10 @@ html[dir="rtl"] .cal__nav svg { transform: scaleX(-1); }
 .summary dl div { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--line); font-size: .92rem; }
 .summary dt { color: var(--muted); }
 .summary dd { text-align: end; font-weight: 600; }
+.summary__price dd { color: var(--bronze); font-size: 1.05rem; }
+.summary dl div.summary__price { border-bottom: 0; padding-top: 1rem; }
+.svc__fx[hidden] { display: none; }
+.svc__fx { display: block; margin-top: .4rem; color: var(--faint); font-size: .82rem; }
 .summary dd.is-new { animation: flash .6s var(--ease); }
 @keyframes flash { from { color: var(--bronze); transform: translateY(-3px); } }
 .summary__foot { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1.2rem; font-size: .82rem; color: var(--muted); }
@@ -402,6 +406,7 @@ html[dir="rtl"] .cal__nav svg { transform: scaleX(-1); }
   .bform__recap { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: center; }
   .bform__recap span { padding: .3rem .75rem; border-radius: 999px; border: 1px solid var(--line-2); font-size: .82rem; color: var(--cream-2); }
   .bform__recap span.is-set { border-color: rgba(201,161,114,.5); color: var(--cream); background: rgba(201,161,114,.1); }
+  .bform__recap span.is-price { border-color: var(--bronze); color: var(--bronze); font-weight: 600; }
 }
 
 /* ---------- faq ---------- */

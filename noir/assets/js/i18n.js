@@ -23,7 +23,8 @@
       "studio.alt1": "Le salon Noir : murs noirs, miroirs ronds et fauteuils de coiffure", "studio.alt2": "Brosses, peignes et sèche-cheveux posés sur fond blanc",
       "svc.eyebrow": "La carte", "svc.title": "Tout ce dont vos cheveux ont besoin. <em>Rien de plus.</em>", "svc.tablist": "Catégories de prestations",
       "svc.cut": "Coupe &amp; coiffage", "svc.colour": "Couleur", "svc.barber": "Barbier", "svc.care": "Rituels", "svc.bridal": "Mariée",
-      "svc.note": "Les prix varient selon la longueur et le niveau du coiffeur. La consultation est toujours offerte.", "svc.cta": "Réserver cette prestation",
+      "svc.note": "Les prix varient selon la longueur et le niveau du coiffeur. La consultation est toujours offerte.",
+      "svc.fx": "Prix indiqués en euros à titre indicatif — le règlement se fait en bahts au salon.", "book.price": "À partir de", "svc.cta": "Réserver cette prestation",
       "p.from": "dès", "p.m20": "20 min", "p.m30": "30 min", "p.m40": "40 min", "p.m45": "45 min", "p.m50": "50 min", "p.m60": "60 min", "p.m75": "75 min", "p.m90": "90 min", "p.h2": "2 h", "p.h25": "2 h 30", "p.h3": "3 h",
       "p.cut1": "Coupe &amp; coiffage signature", "p.cut1d": "Consultation, rituel de lavage, coupe de précision et brushing.",
       "p.cut2": "Changement de style", "p.cut2d": "Une nouvelle silhouette, avec une consultation approfondie.",
@@ -100,7 +101,8 @@
       "studio.alt1": "ร้าน Noir: ผนังสีดำ กระจกทรงกลม และเก้าอี้ทำผม", "studio.alt2": "แปรง หวี และไดร์เป่าผมวางบนพื้นขาว",
       "svc.eyebrow": "เมนูบริการ", "svc.title": "ทุกสิ่งที่เส้นผมต้องการ <em>ไม่มีอะไรเกินจำเป็น</em>", "svc.tablist": "หมวดบริการ",
       "svc.cut": "ตัดและจัดแต่งทรง", "svc.colour": "ทำสีผม", "svc.barber": "บาร์เบอร์", "svc.care": "ทรีตเมนต์", "svc.bridal": "เจ้าสาว",
-      "svc.note": "ราคาขึ้นอยู่กับความยาวผมและระดับของช่าง ปรึกษาฟรีทุกครั้ง", "svc.cta": "จองบริการนี้",
+      "svc.note": "ราคาขึ้นอยู่กับความยาวผมและระดับของช่าง ปรึกษาฟรีทุกครั้ง",
+      "svc.fx": "", "book.price": "ราคาเริ่มต้น", "svc.cta": "จองบริการนี้",
       "p.from": "เริ่มต้น", "p.m20": "20 นาที", "p.m30": "30 นาที", "p.m40": "40 นาที", "p.m45": "45 นาที", "p.m50": "50 นาที", "p.m60": "60 นาที", "p.m75": "75 นาที", "p.m90": "90 นาที", "p.h2": "2 ชม.", "p.h25": "2.5 ชม.", "p.h3": "3 ชม.",
       "p.cut1": "ตัดและจัดแต่งทรงซิกเนเจอร์", "p.cut1d": "ปรึกษา สระผม ตัดอย่างประณีต และไดร์",
       "p.cut2": "เปลี่ยนทรงใหม่", "p.cut2d": "ทรงใหม่ทั้งหมด พร้อมการปรึกษาอย่างละเอียด",
@@ -169,19 +171,34 @@
           slotsFor: "Times for {d}", chooseDay: "Please choose a day.", chooseTime: "Please choose a time.",
           required: "Please fill this in.", phoneBad: "Please enter a phone number we can reach.", any: "No preference",
           sent: "WhatsApp is opening with your request — just press send.", waHello: "Hello Noir, I'd like to book:",
-          waSvc: "Service", waSty: "Stylist", waDay: "Day", waTime: "Time", waName: "Name", waPhone: "Phone", waNote: "Note", dayNames: "Mon" },
+          waSvc: "Service", waSty: "Stylist", waDay: "Day", waTime: "Time", waName: "Name", waPhone: "Phone", waNote: "Note", waPrice: "Price from" },
     fr: { openNow: "Ouvert · jusqu'à {t}", opensAt: "Fermé · ouvre {d} à {t}", today: "aujourd'hui", tomorrow: "demain",
           slotsFor: "Horaires du {d}", chooseDay: "Merci de choisir un jour.", chooseTime: "Merci de choisir un horaire.",
           required: "Merci de remplir ce champ.", phoneBad: "Merci d'indiquer un numéro où vous joindre.", any: "Sans préférence",
           sent: "WhatsApp s'ouvre avec votre demande — il ne reste qu'à l'envoyer.", waHello: "Bonjour Noir, je souhaite réserver :",
-          waSvc: "Prestation", waSty: "Coiffeur", waDay: "Jour", waTime: "Heure", waName: "Nom", waPhone: "Téléphone", waNote: "Note" },
+          waSvc: "Prestation", waSty: "Coiffeur", waDay: "Jour", waTime: "Heure", waName: "Nom", waPhone: "Téléphone", waNote: "Note", waPrice: "À partir de" },
     th: { openNow: "เปิดอยู่ · ถึง {t} น.", opensAt: "ปิดอยู่ · เปิด{d} เวลา {t} น.", today: "วันนี้", tomorrow: "พรุ่งนี้",
           slotsFor: "เวลาว่างวันที่ {d}", chooseDay: "กรุณาเลือกวัน", chooseTime: "กรุณาเลือกเวลา",
           required: "กรุณากรอกข้อมูลนี้", phoneBad: "กรุณากรอกเบอร์ที่ติดต่อได้", any: "ไม่ระบุ",
           sent: "กำลังเปิด WhatsApp พร้อมคำขอของคุณ — กดส่งได้เลย", waHello: "สวัสดีค่ะ Noir ต้องการจองคิว:",
-          waSvc: "บริการ", waSty: "ช่าง", waDay: "วัน", waTime: "เวลา", waName: "ชื่อ", waPhone: "เบอร์โทร", waNote: "หมายเหตุ" }
+          waSvc: "บริการ", waSty: "ช่าง", waDay: "วัน", waTime: "เวลา", waName: "ชื่อ", waPhone: "เบอร์โทร", waNote: "หมายเหตุ", waPrice: "ราคาเริ่มต้น" }
   };
   var LOCALE = { en: "en-GB", fr: "fr-FR", th: "th-TH-u-ca-gregory" };
+
+  // Prices follow the language: English in US dollars, French in euros,
+  // Thai in baht (what is actually paid at the studio). Rounded by hand to
+  // clean numbers rather than converted live.
+  var CURRENCY = { en: "usd", fr: "eur", th: "thb" };
+  var PRICES = {
+    thb: { cut1: 1800, cut2: 2400, cut3: 900, cut4: 400, col1: 5500, col2: 3200, col3: 2200, col4: 1500, bar1: 900, bar2: 1100, bar3: 600, bar4: 1500, car1: 4800, car2: 1600, car3: 1400, car4: 900, bri1: 3500, bri2: 6500, bri3: 1800 },
+    eur: { cut1: 45, cut2: 65, cut3: 25, cut4: 10, col1: 145, col2: 85, col3: 60, col4: 40, bar1: 25, bar2: 30, bar3: 15, bar4: 40, car1: 125, car2: 45, car3: 35, car4: 25, bri1: 90, bri2: 170, bri3: 45 },
+    usd: { cut1: 50, cut2: 70, cut3: 25, cut4: 12, col1: 155, col2: 90, col3: 65, col4: 45, bar1: 25, bar2: 30, bar3: 18, bar4: 45, car1: 135, car2: 45, car3: 40, car4: 25, bri1: 100, bri2: 185, bri3: 50 }
+  };
+  function money(amount, cur) {
+    if (cur === "eur") return amount.toLocaleString("fr-FR") + "\u00a0€";
+    if (cur === "usd") return "$" + amount.toLocaleString("en-US");
+    return "฿" + amount.toLocaleString("en-US");
+  }
 
   // Capture the baked-in English once.
   var EN = {};
@@ -222,6 +239,13 @@
         var p = pair.split(":"); if (p[1]) el.setAttribute(p[0], t(p[1]));
       });
     });
+    var cur = CURRENCY[lang];
+    document.querySelectorAll("[data-price]").forEach(function (el) {
+      var v = PRICES[cur][el.getAttribute("data-price")];
+      if (v != null) el.textContent = money(v, cur);
+    });
+    // The "prices are a guide" note only makes sense outside baht.
+    document.querySelectorAll("[data-fx]").forEach(function (el) { el.hidden = cur === "thb"; });
     document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-current", b.getAttribute("data-lang") === lang ? "true" : "false"); });
     var titles = { en: "Noir — Hair Studio, Bangkok", fr: "Noir — Salon de coiffure, Bangkok", th: "Noir — ร้านทำผม กรุงเทพฯ" };
     document.title = titles[lang];
@@ -233,6 +257,9 @@
   try { start = localStorage.getItem("noirLang") || ""; } catch (e) {}
   if (!DICT[start]) { var nav = (navigator.language || "en").slice(0, 2).toLowerCase(); start = DICT[nav] ? nav : "en"; }
 
-  window.NoirI18n = { apply: apply, t: t, ui: ui, lang: function () { return current; }, locale: function () { return LOCALE[current]; } };
+  window.NoirI18n = {
+    apply: apply, t: t, ui: ui, lang: function () { return current; }, locale: function () { return LOCALE[current]; },
+    price: function (key) { var c = CURRENCY[current]; return PRICES[c][key] != null ? money(PRICES[c][key], c) : ""; }
+  };
   if (start !== "en") apply(start); else document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-current", b.getAttribute("data-lang") === "en" ? "true" : "false"); });
 })();
