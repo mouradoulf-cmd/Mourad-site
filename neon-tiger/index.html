@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Neon Tiger — Pool Bar, Pattaya</title>
+<meta name="description" content="Neon Tiger is a pool bar on Soi 7, Pattaya: six free pool tables, happy hour 4–8 pm, cold beer, buckets, DJ nights and live football. Open every night until 3 a.m.">
+<meta name="theme-color" content="#07060d">
+<meta property="og:title" content="Neon Tiger — Pool Bar, Pattaya">
+<meta property="og:description" content="Cold beer. Hot nights. Pool till 3 a.m.">
+<meta property="og:image" content="assets/img/hero-1.jpg">
+<link rel="preload" as="font" href="assets/fonts/unbounded-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="assets/fonts/monoton-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/hero-1.webp" type="image/webp">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("ntIntro"))document.documentElement.classList.add("no-intro")}catch(e){}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarOrPub","name":"Neon Tiger Pool Bar","image":"assets/img/hero-1.jpg","telephone":"+66812345678","priceRange":"฿",
+"address":{"@type":"PostalAddress","streetAddress":"Soi 7, Beach Road","addressLocality":"Pattaya","postalCode":"20150","addressCountry":"TH"},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"16:00","closes":"03:00"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<!-- Neon sign switching on (JS only, once per visit) -->
+<div class="intro" aria-hidden="true">
+  <p class="intro__sign"><span class="intro__word">NEON</span><span class="intro__word intro__word--2">TIGER</span></p>
+  <p class="intro__sub" data-i18n="intro.sub">Pool bar · Pattaya</p>
+</div>
+
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#top" class="logo" aria-label="Neon Tiger — home"><span class="logo__neon">NEON</span><span class="logo__tiger">TIGER</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#tonight" data-i18n="nav.tonight">Tonight</a>
+      <a href="#drinks" data-i18n="nav.drinks">Drinks</a>
+      <a href="#pool" data-i18n="nav.pool">Pool</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#find" data-i18n="nav.find">Find us</a>
+    </nav>
+    <div class="header__end">
+      <div class="langs" role="group" aria-label="Language" data-i18n-attr="aria-label:a11y.language">
+        <button type="button" data-lang="en" lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="fr" lang="fr" aria-label="Français">FR</button>
+        <button type="button" data-lang="th" lang="th" aria-label="ไทย">TH</button>
+        <button type="button" data-lang="ru" lang="ru" aria-label="Русский">RU</button>
+      </div>
+      <a href="#book" class="btn btn--neon btn--sm header__cta" data-i18n="nav.book">Book a table</a>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu" data-i18n-attr="aria-label:a11y.menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu__nav" aria-label="Mobile">
+    <a href="#tonight"><i>01</i><span data-i18n="nav.tonight">Tonight</span></a>
+    <a href="#drinks"><i>02</i><span data-i18n="nav.drinks">Drinks</span></a>
+    <a href="#pool"><i>03</i><span data-i18n="nav.pool">Pool</span></a>
+    <a href="#gallery"><i>04</i><span data-i18n="nav.gallery">Gallery</span></a>
+    <a href="#find"><i>05</i><span data-i18n="nav.find">Find us</span></a>
+  </nav>
+  <div class="menu__foot">
+    <a href="#book" class="btn btn--neon" data-i18n="nav.book">Book a table</a>
+    <p class="menu__meta">Soi 7, Beach Road, Pattaya · 16:00–03:00<br><a href="tel:+66812345678" target="_blank" rel="noopener">+66 81 234 5678</a></p>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="hero__slides" aria-hidden="true">
+    <picture class="hero__slide is-on"><source srcset="assets/img/hero-1.webp" type="image/webp"><img src="assets/img/hero-1.jpg" alt="" width="2000" height="1333" fetchpriority="high" decoding="async"></picture>
+    <picture class="hero__slide"><source srcset="assets/img/hero-2.webp" type="image/webp"><img src="assets/img/hero-2.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+    <picture class="hero__slide"><source srcset="assets/img/hero-3.webp" type="image/webp"><img src="assets/img/hero-3.jpg" alt="" width="2000" height="1400" loading="lazy" decoding="async"></picture>
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow" data-reveal><span data-i18n="hero.eyebrow">Pool bar · Soi 7 · Pattaya</span></p>
+      <h1 class="hero__title" id="heroTitle">
+        <span class="line"><span data-i18n="hero.t1">Cold beer.</span></span>
+        <span class="line"><span data-i18n="hero.t2">Hot nights.</span></span>
+        <span class="line"><em class="glow" data-i18n="hero.t3">Pool till 3 a.m.</em></span>
+      </h1>
+      <p class="hero__lead" data-reveal data-i18n="hero.lead">Six free pool tables, forty drinks, the loudest happy hour on Beach Road — and a crew that remembers your name. Open every night from 4 p.m.</p>
+      <div class="hero__ctas" data-reveal>
+        <a href="#book" class="btn btn--neon btn--lg magnetic"><span data-i18n="hero.cta">Book a table</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#tonight" class="btn btn--glass btn--lg" data-i18n="hero.cta2">What's on tonight</a>
+      </div>
+    </div>
+
+    <aside class="live" aria-label="Tonight at Neon Tiger" data-i18n-attr="aria-label:live.label" data-reveal>
+      <p class="live__status"><span class="dot" aria-hidden="true"></span><span data-status>Open daily 16:00–03:00</span></p>
+      <div class="live__hh" id="hh">
+        <p class="live__label" data-i18n="live.hh">Happy hour · 16:00–20:00</p>
+        <p class="live__clock" id="hhClock" aria-live="off">2 for 1</p>
+        <p class="live__sub" id="hhSub" data-i18n="live.hhDeal">Draft Chang at happy-hour price · cocktails half price</p>
+      </div>
+      <a class="live__tonight" href="#tonight">
+        <span class="live__label" data-i18n="live.tonight">Tonight</span>
+        <b id="liveEvent">DJ Night</b>
+        <span id="liveTime">22:00</span>
+      </a>
+    </aside>
+  </div>
+  <div class="hero__dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span data-i18n="mq.1">Happy hour 16–20</span><i>●</i><span data-i18n="mq.2">Pool is free. Always.</span><i>●</i><span data-i18n="mq.3">Live football on 6 screens</span><i>●</i><span data-i18n="mq.4">DJ every Friday &amp; Saturday</span><i>●</i><span data-i18n="mq.5">Buckets from <span data-price="390">฿390</span></span><i>●</i><span data-i18n="mq.6">Open till 3 a.m.</span><i>●</i>
+    <span data-i18n="mq.1">Happy hour 16–20</span><i>●</i><span data-i18n="mq.2">Pool is free. Always.</span><i>●</i><span data-i18n="mq.3">Live football on 6 screens</span><i>●</i><span data-i18n="mq.4">DJ every Friday &amp; Saturday</span><i>●</i><span data-i18n="mq.5">Buckets from <span data-price="390">฿390</span></span><i>●</i><span data-i18n="mq.6">Open till 3 a.m.</span><i>●</i>
+  </div>
+</div>
+
+<!-- ============ THE BAR ============ -->
+<section class="vibe section" id="bar" aria-labelledby="vibeTitle">
+  <div class="container vibe__grid">
+    <div class="vibe__copy">
+      <p class="eyebrow" data-reveal><span data-i18n="vibe.eyebrow">The bar</span></p>
+      <h2 class="title" id="vibeTitle" data-reveal data-i18n="vibe.title">Where Pattaya <em class="glow">warms up.</em></h2>
+      <p class="lead" data-reveal data-i18n="vibe.p1">Open-front, fans spinning, music just loud enough. Neon Tiger is the kind of Soi 7 bar you walk past once — and then come back to every night of your trip.</p>
+      <p data-reveal data-i18n="vibe.p2">Tourists, expats and locals at the same tables. A crew of twelve behind the bar and on the floor, fast with a cold one and faster with a pool cue. No cover charge, no dress code, no attitude.</p>
+      <dl class="stats" data-reveal>
+        <div><dd><span data-count="6">6</span></dd><dt data-i18n="vibe.s1">free pool tables</dt></div>
+        <div><dd><span data-count="40">40</span>+</dd><dt data-i18n="vibe.s2">beers &amp; cocktails</dt></div>
+        <div><dd><span data-count="6">6</span></dd><dt data-i18n="vibe.s3">big screens</dt></div>
+        <div><dd><span data-count="365">365</span></dd><dt data-i18n="vibe.s4">nights a year</dt></div>
+      </dl>
+    </div>
+    <div class="vibe__media">
+      <figure class="vibe__a clip" data-reveal="clip"><picture><source srcset="assets/img/bar-gold.webp" type="image/webp"><img src="assets/img/bar-gold.jpg" alt="The long bar lit by warm hanging bulbs" data-i18n-attr="alt:vibe.alt1" width="1400" height="1050" loading="lazy" decoding="async"></picture></figure>
+      <figure class="vibe__b clip" data-reveal="clip"><picture><source srcset="assets/img/bar-red.webp" type="image/webp"><img src="assets/img/bar-red.jpg" alt="Friends at the bar under red neon light" data-i18n-attr="alt:vibe.alt2" width="1400" height="933" loading="lazy" decoding="async"></picture></figure>
+      <span class="sticker" aria-hidden="true"><b data-i18n="vibe.sticker">No cover</b><small data-i18n="vibe.sticker2">ever</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TONIGHT / WEEK ============ -->
+<section class="week section" id="tonight" aria-labelledby="weekTitle">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow" data-reveal><span data-i18n="week.eyebrow">Every night</span></p>
+        <h2 class="title" id="weekTitle" data-reveal data-i18n="week.title">Seven nights. <em class="glow">Seven reasons.</em></h2>
+      </div>
+      <p class="head__aside" data-reveal data-i18n="week.aside">Tonight is highlighted — tap any day.</p>
+    </div>
+    <div class="days" role="tablist" aria-label="Day of the week" data-i18n-attr="aria-label:week.days" data-reveal>
+      <button type="button" role="tab" id="d1" aria-controls="ev" data-day="1" aria-selected="false" tabindex="-1"><span data-wd="1">Mon</span></button>
+      <button type="button" role="tab" id="d2" aria-controls="ev" data-day="2" aria-selected="false" tabindex="-1"><span data-wd="2">Tue</span></button>
+      <button type="button" role="tab" id="d3" aria-controls="ev" data-day="3" aria-selected="false" tabindex="-1"><span data-wd="3">Wed</span></button>
+      <button type="button" role="tab" id="d4" aria-controls="ev" data-day="4" aria-selected="false" tabindex="-1"><span data-wd="4">Thu</span></button>
+      <button type="button" role="tab" id="d5" aria-controls="ev" data-day="5" aria-selected="true"><span data-wd="5">Fri</span></button>
+      <button type="button" role="tab" id="d6" aria-controls="ev" data-day="6" aria-selected="false" tabindex="-1"><span data-wd="6">Sat</span></button>
+      <button type="button" role="tab" id="d0" aria-controls="ev" data-day="0" aria-selected="false" tabindex="-1"><span data-wd="0">Sun</span></button>
+    </div>
+    <div class="ev" id="ev" role="tabpanel" aria-labelledby="d5" data-reveal>
+      <div class="ev__media">
+        <picture data-ev="1"><source srcset="assets/img/pool-shot.webp" type="image/webp"><img src="assets/img/pool-shot.jpg" alt="" width="1024" height="683" loading="lazy" decoding="async"></picture>
+        <picture data-ev="2"><source srcset="assets/img/g-beers.webp" type="image/webp"><img src="assets/img/g-beers.jpg" alt="" width="1100" height="733" loading="lazy" decoding="async"></picture>
+        <picture data-ev="3"><source srcset="assets/img/ev-band.webp" type="image/webp"><img src="assets/img/ev-band.jpg" alt="" width="1100" height="733" loading="lazy" decoding="async"></picture>
+        <picture data-ev="4"><source srcset="assets/img/g-sign.webp" type="image/webp"><img src="assets/img/g-sign.jpg" alt="" width="1100" height="734" loading="lazy" decoding="async"></picture>
+        <picture data-ev="5" class="is-on"><source srcset="assets/img/hero-2.webp" type="image/webp"><img src="assets/img/hero-2.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+        <picture data-ev="6"><source srcset="assets/img/ev-party.webp" type="image/webp"><img src="assets/img/ev-party.jpg" alt="" width="1100" height="734" loading="lazy" decoding="async"></picture>
+        <picture data-ev="0"><source srcset="assets/img/ev-crowd.webp" type="image/webp"><img src="assets/img/ev-crowd.jpg" alt="" width="1100" height="734" loading="lazy" decoding="async"></picture>
+        <span class="ev__today" id="evToday" data-i18n="week.today">Tonight</span>
+      </div>
+      <div class="ev__body">
+        <!-- Every night's copy is in the page for no-JS/SEO; JS shows the chosen one. -->
+        <div class="ev__item" data-ev="1"><p class="ev__time">20:00</p><h3 data-i18n="ev.1t">Pool Knockout</h3><p data-i18n="ev.1b">Sixteen players, one table, no mercy. <span data-price="200">฿200</span> to enter, winner takes the pot and a free bucket.</p><span class="tag" data-i18n="ev.1g">Sign up at the bar</span></div>
+        <div class="ev__item" data-ev="2"><p class="ev__time">21:00</p><h3 data-i18n="ev.2t">Beer Pong Tuesday</h3><p data-i18n="ev.2b">Teams of two, cups of Chang, a bracket on the chalkboard. Winners drink free for the rest of the night.</p><span class="tag" data-i18n="ev.2g">Free entry</span></div>
+        <div class="ev__item" data-ev="3"><p class="ev__time">21:30</p><h3 data-i18n="ev.3t">Live Band</h3><p data-i18n="ev.3b">Thai rock, 90s anthems and whatever you shout loud enough. Two sets, one encore, zero silence.</p><span class="tag" data-i18n="ev.3g">Requests welcome</span></div>
+        <div class="ev__item" data-ev="4"><p class="ev__time">20:30</p><h3 data-i18n="ev.4t">Neon Quiz</h3><p data-i18n="ev.4b">Six rounds, music round included. Top team wins a Sang Som bottle set — last place buys the shots.</p><span class="tag" data-i18n="ev.4g">Teams up to 6</span></div>
+        <div class="ev__item is-on" data-ev="5"><p class="ev__time">22:00 → 03:00</p><h3 data-i18n="ev.5t">DJ Night</h3><p data-i18n="ev.5b">House, hip-hop and Thai hits until the lights come up. The pool tables turn into a dance floor around midnight.</p><span class="tag" data-i18n="ev.5g">Free entry</span></div>
+        <div class="ev__item" data-ev="6"><p class="ev__time">22:00 → 03:00</p><h3 data-i18n="ev.6t">Neon Party</h3><p data-i18n="ev.6b">UV lights, glow paint at the door, confetti at midnight and a DJ who does not take breaks.</p><span class="tag" data-i18n="ev.6g">Biggest night of the week</span></div>
+        <div class="ev__item" data-ev="0"><p class="ev__time" data-i18n="ev.0time">All day</p><h3 data-i18n="ev.0t">Football Sunday</h3><p data-i18n="ev.0b">Every big match live on six screens with sound. Buckets of beer for the table, wings until the final whistle.</p><span class="tag" data-i18n="ev.0g">Premier League · Champions League</span></div>
+        <a href="#book" class="btn btn--neon ev__cta"><span data-i18n="week.cta">Book for this night</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRINKS ============ -->
+<section class="drinks section" id="drinks" aria-labelledby="drinksTitle">
+  <div class="container">
+    <div class="head">
+      <p class="eyebrow" data-reveal><span data-i18n="dr.eyebrow">The menu</span></p>
+      <h2 class="title" id="drinksTitle" data-reveal data-i18n="dr.title">Drinks. <em class="glow glow--amber">Lots of them.</em></h2>
+      <p class="lead head__lead" data-reveal><span class="hhflag" id="hhFlag" hidden data-i18n="dr.hhNow">Happy hour is on right now</span><span data-i18n="dr.lead">Prices include tax. Happy-hour prices in neon.</span></p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Drinks" data-i18n-attr="aria-label:dr.tablist" data-reveal>
+      <button type="button" role="tab" id="t-beer" aria-controls="p-beer" aria-selected="true" data-i18n="dr.beer">Beer</button>
+      <button type="button" role="tab" id="t-cocktails" aria-controls="p-cocktails" aria-selected="false" tabindex="-1" data-i18n="dr.cocktails">Cocktails</button>
+      <button type="button" role="tab" id="t-buckets" aria-controls="p-buckets" aria-selected="false" tabindex="-1" data-i18n="dr.buckets">Buckets</button>
+      <button type="button" role="tab" id="t-bottles" aria-controls="p-bottles" aria-selected="false" tabindex="-1" data-i18n="dr.bottles">Bottles</button>
+      <button type="button" role="tab" id="t-food" aria-controls="p-food" aria-selected="false" tabindex="-1" data-i18n="dr.food">Bar food</button>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-grid__media" aria-hidden="true">
+        <picture class="is-on" data-for="beer"><source srcset="assets/img/drink-beer.webp" type="image/webp"><img src="assets/img/drink-beer.jpg" alt="" width="1100" height="1650" loading="lazy" decoding="async"></picture>
+        <picture data-for="cocktails"><source srcset="assets/img/drink-cocktails.webp" type="image/webp"><img src="assets/img/drink-cocktails.jpg" alt="" width="1100" height="667" loading="lazy" decoding="async"></picture>
+        <picture data-for="buckets"><source srcset="assets/img/g-twobeers.webp" type="image/webp"><img src="assets/img/g-twobeers.jpg" alt="" width="1100" height="1650" loading="lazy" decoding="async"></picture>
+        <picture data-for="bottles"><source srcset="assets/img/drink-bottles.webp" type="image/webp"><img src="assets/img/drink-bottles.jpg" alt="" width="1100" height="732" loading="lazy" decoding="async"></picture>
+        <picture data-for="food"><source srcset="assets/img/g-market.webp" type="image/webp"><img src="assets/img/g-market.jpg" alt="" width="1100" height="619" loading="lazy" decoding="async"></picture>
+      </div>
+      <div class="menu-grid__panels">
+        <div class="panel" role="tabpanel" id="p-beer" aria-labelledby="t-beer">
+          <ul class="list">
+            <li><div><h3>Chang <small data-i18n="dr.draft">draft</small></h3><p data-i18n="dr.b1">The Pattaya classic, ice-cold from the tap.</p></div><b data-price="90" data-hh="60">$2.50</b></li>
+            <li><div><h3>Leo</h3><p data-i18n="dr.b2">Light, crisp, the locals' choice.</p></div><b data-price="100" data-hh="70">$3</b></li>
+            <li><div><h3>Singha</h3><p data-i18n="dr.b3">Thailand's original lager since 1933.</p></div><b data-price="110" data-hh="80">$3</b></li>
+            <li><div><h3>Tiger · Heineken</h3><p data-i18n="dr.b4">Bottle, served in a frozen glass.</p></div><b data-price="120" data-hh="90">$3.50</b></li>
+            <li><div><h3>Hoegaarden <small data-i18n="dr.draft">draft</small></h3><p data-i18n="dr.b5">Belgian wheat beer with a slice of orange.</p></div><b data-price="220">$6.50</b></li>
+            <li><div><h3 data-i18n="dr.b6t">Chang tower · 3 L</h3><p data-i18n="dr.b6">For the table. Comes with its own tap.</p></div><b data-price="650" data-hh="490">$18.50</b></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p-cocktails" aria-labelledby="t-cocktails" hidden>
+          <ul class="list">
+            <li><div><h3>Neon Tiger <span class="new" data-i18n="dr.sig">signature</span></h3><p data-i18n="dr.c1">Vodka, lychee, passion fruit and butterfly pea — it turns from blue to pink.</p></div><b data-price="250">$7</b></li>
+            <li><div><h3>Thai Mule</h3><p data-i18n="dr.c2">Sang Som rum, ginger beer, fresh lime.</p></div><b data-price="190" data-hh="95">$5.50</b></li>
+            <li><div><h3>Mojito</h3><p data-i18n="dr.c3">White rum, mint from the market, lots of crushed ice.</p></div><b data-price="180" data-hh="90">$5</b></li>
+            <li><div><h3>Mai Tai</h3><p data-i18n="dr.c4">Two rums, orange, almond. Tastes like holidays.</p></div><b data-price="200" data-hh="100">$5.50</b></li>
+            <li><div><h3>Long Island</h3><p data-i18n="dr.c5">Five spirits, one glass. Pace yourself.</p></div><b data-price="220" data-hh="110">$6.50</b></li>
+            <li><div><h3>Margarita</h3><p data-i18n="dr.c6">Tequila, lime, salt rim — frozen or on the rocks.</p></div><b data-price="190" data-hh="95">$5.50</b></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p-buckets" aria-labelledby="t-buckets" hidden>
+          <ul class="list">
+            <li><div><h3 data-i18n="dr.k1t">Sang Som bucket</h3><p data-i18n="dr.k1">Thai rum, Coke, Red Bull, lime. The Soi 7 original.</p></div><b data-price="390">$11</b></li>
+            <li><div><h3 data-i18n="dr.k2t">Vodka Red Bull bucket</h3><p data-i18n="dr.k2">For when the DJ starts.</p></div><b data-price="490">$14</b></li>
+            <li><div><h3 data-i18n="dr.k3t">Neon bucket</h3><p data-i18n="dr.k3">Our signature bucket, with glow sticks and six straws.</p></div><b data-price="590">$17</b></li>
+            <li><div><h3 data-i18n="dr.k4t">Beer bucket · 5 bottles</h3><p data-i18n="dr.k4">Chang, Leo or Singha on ice. Mix and match.</p></div><b data-price="450" data-hh="350">$13</b></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p-bottles" aria-labelledby="t-bottles" hidden>
+          <ul class="list">
+            <li><div><h3 data-i18n="dr.o1t">Sang Som 70 cl set</h3><p data-i18n="dr.o1">With soda, Coke, ice and lime for the table.</p></div><b data-price="890">$25.50</b></li>
+            <li><div><h3 data-i18n="dr.o2t">Absolut vodka set</h3><p data-i18n="dr.o2">70 cl, mixers and ice included.</p></div><b data-price="1900">$54</b></li>
+            <li><div><h3 data-i18n="dr.o3t">Johnnie Walker Black set</h3><p data-i18n="dr.o3">70 cl, soda, ice. Classic.</p></div><b data-price="2600">$74</b></li>
+            <li><div><h3 data-i18n="dr.o4t">Jägermeister shots × 6</h3><p data-i18n="dr.o4">Ice-cold, for the whole crew.</p></div><b data-price="690">$19.50</b></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p-food" aria-labelledby="t-food" hidden>
+          <ul class="list">
+            <li><div><h3 data-i18n="dr.f1t">Chicken wings</h3><p data-i18n="dr.f1">Eight wings, sweet chilli or spicy larb style.</p></div><b data-price="180">$5</b></li>
+            <li><div><h3 data-i18n="dr.f2t">Pad thai</h3><p data-i18n="dr.f2">From the street cart next door, straight to your table.</p></div><b data-price="150">$4.50</b></li>
+            <li><div><h3 data-i18n="dr.f3t">Loaded fries</h3><p data-i18n="dr.f3">Cheese, bacon, jalapeños. Built for sharing.</p></div><b data-price="160">$4.50</b></li>
+            <li><div><h3 data-i18n="dr.f4t">Soft drinks · water</h3><p data-i18n="dr.f4">Coke, Sprite, soda, Red Bull, water.</p></div><b data-price="50">$1.50</b></li>
+          </ul>
+        </div>
+        <p class="fx" data-fx data-i18n="dr.fx">Prices in US dollars are a guide — you pay in Thai baht at the bar. Cash, cards and Thai QR.</p>
+      </div>
+    </div>
+
+    <!-- Signature cocktail: butterfly pea turns pink when the lime goes in -->
+    <div class="sig" data-reveal>
+      <div class="sig__glass" id="sigGlass" aria-hidden="true">
+        <div class="glass"><div class="glass__liquid"></div><div class="glass__ice"><i></i><i></i><i></i></div><span class="glass__lime"></span><span class="glass__straw"></span></div>
+      </div>
+      <div class="sig__copy">
+        <p class="eyebrow"><span data-i18n="sig.eyebrow">House signature</span></p>
+        <h3 class="sig__title" data-i18n="sig.title">The Neon Tiger <em class="glow">changes colour.</em></h3>
+        <p data-i18n="sig.body">Butterfly pea flower makes it electric blue. Squeeze in the lime and it turns neon pink in front of you — the most photographed drink on Soi 7.</p>
+        <button type="button" class="btn btn--glass sig__btn" id="sigBtn" aria-pressed="false"><span class="sig__lime" aria-hidden="true"></span><span data-i18n="sig.btn">Squeeze the lime</span></button>
+        <template data-i18n="sig.btn2">Once more</template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POOL ============ -->
+<section class="pool section" id="pool" aria-labelledby="poolTitle">
+  <div class="balls" aria-hidden="true"><i class="b8">8</i><i class="b9">9</i><i class="b3">3</i><i class="bc"></i></div>
+  <div class="container pool__grid">
+    <div class="pool__media">
+      <figure class="pool__main clip" data-reveal="clip"><picture><source srcset="assets/img/pool-shot.webp" type="image/webp"><img src="assets/img/pool-shot.jpg" alt="A player lining up a shot on a blue pool table, screens behind" data-i18n-attr="alt:pool.alt1" width="1024" height="683" loading="lazy" decoding="async"></picture></figure>
+      <figure class="pool__small clip" data-reveal="clip"><picture><source srcset="assets/img/pool-eight.webp" type="image/webp"><img src="assets/img/pool-eight.jpg" alt="The black eight ball on green felt" data-i18n-attr="alt:pool.alt2" width="1024" height="683" loading="lazy" decoding="async"></picture></figure>
+    </div>
+    <div class="pool__copy">
+      <p class="eyebrow" data-reveal><span data-i18n="pool.eyebrow">Pool</span></p>
+      <h2 class="title" id="poolTitle" data-reveal data-i18n="pool.title">Six tables. <em class="glow glow--green">Always free.</em></h2>
+      <p class="lead" data-reveal data-i18n="pool.lead">Grab a drink, grab a cue, put your name on the board. Our tables are level, the cloth is new and the crew plays well — beat one of us and your next round is on the house.</p>
+      <ul class="perks" data-reveal>
+        <li data-i18n="pool.p1">Free play all night with any drink</li>
+        <li data-i18n="pool.p2">Knockout tournament every Monday · <span data-price="200">฿200</span></li>
+        <li data-i18n="pool.p3">House cues, chalk and a rack master</li>
+        <li data-i18n="pool.p4">Beat the crew, the round is on us</li>
+      </ul>
+      <div class="fame" data-reveal>
+        <p class="fame__title" data-i18n="pool.fame">Hall of fame · Monday knockout</p>
+        <ol>
+          <li><span class="fame__month" data-month="8">Sep</span><b>“Big Tom”</b><span>🇬🇧</span><em>7-0</em></li>
+          <li><span class="fame__month" data-month="7">Aug</span><b>Nok</b><span>🇹🇭</span><em>7-4</em></li>
+          <li><span class="fame__month" data-month="6">Jul</span><b>Sasha</b><span>🇷🇺</span><em>7-5</em></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery section" id="gallery" aria-labelledby="galTitle">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow" data-reveal><span data-i18n="gal.eyebrow">Last weekend</span></p>
+        <h2 class="title" id="galTitle" data-reveal data-i18n="gal.title">You had to <em class="glow">be there.</em></h2>
+      </div>
+      <p class="head__aside" data-reveal data-i18n="gal.aside">Tap a photo to see it full screen.</p>
+    </div>
+    <div class="bento">
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-toast.webp" type="image/webp"><img src="assets/img/g-toast.jpg" alt="Friends clinking cocktail glasses on the dance floor" data-i18n-attr="alt:gal.a0" width="1100" height="1141" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c0">Saturday, 1 a.m.</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-redneon.webp" type="image/webp"><img src="assets/img/g-redneon.jpg" alt="A crowd dancing under red neon" data-i18n-attr="alt:gal.a1" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c1">Neon Party</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-pour.webp" type="image/webp"><img src="assets/img/g-pour.jpg" alt="Draft beer pouring from the tap" data-i18n-attr="alt:gal.a2" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c2">Draft, always cold</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-cheers.webp" type="image/webp"><img src="assets/img/g-cheers.jpg" alt="Friends toasting with drinks" data-i18n-attr="alt:gal.a3" width="1100" height="1648" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c3">Birthday crew</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-cocktail.webp" type="image/webp"><img src="assets/img/g-cocktail.jpg" alt="An amber cocktail with fresh herbs on a dark bar" data-i18n-attr="alt:gal.a4" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c4">Behind the bar</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-street.webp" type="image/webp"><img src="assets/img/g-street.jpg" alt="A Thai street at night glowing with neon signs and tuk-tuks" data-i18n-attr="alt:gal.a5" width="1100" height="851" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c5">The night outside</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-beers.webp" type="image/webp"><img src="assets/img/g-beers.jpg" alt="A group raising beers and cocktails together" data-i18n-attr="alt:gal.a6" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c6">Football Sunday</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-sign.webp" type="image/webp"><img src="assets/img/g-sign.jpg" alt="A pink neon sign on a brick wall" data-i18n-attr="alt:gal.a7" width="1100" height="734" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c7">Our wall</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews section" aria-labelledby="revTitle">
+  <div class="container">
+    <div class="head head--center">
+      <p class="eyebrow" data-reveal><span data-i18n="rev.eyebrow">Regulars</span></p>
+      <h2 class="title" id="revTitle" data-reveal data-i18n="rev.title">Came for one beer. <em class="glow">Stayed till three.</em></h2>
+    </div>
+    <div class="quotes" data-reveal>
+      <div class="quotes__track">
+        <figure class="quote is-on"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q1">“Best pool bar on Beach Road. The tables are actually level and the beer is actually cold.”</blockquote><figcaption><b>Mark</b><span>🇬🇧</span></figcaption></figure>
+        <figure class="quote"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q2">“Came for one beer, stayed for the DJ, left at three. Did the same thing the next night.”</blockquote><figcaption><b>Julien</b><span>🇫🇷</span></figcaption></figure>
+        <figure class="quote"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q3">“Friendly crew, great music, fair prices. Our first stop every single trip.”</blockquote><figcaption><b>Dmitri</b><span>🇷🇺</span></figcaption></figure>
+        <figure class="quote"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q4">“The Neon Tiger cocktail really changes colour. Worth it for the video alone.”</blockquote><figcaption><b>Aom</b><span>🇹🇭</span></figcaption></figure>
+        <figure class="quote"><p class="quote__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q5">“Watched the derby on the big screen with sixty strangers. Best atmosphere in Pattaya.”</blockquote><figcaption><b>Liam</b><span>🇮🇪</span></figcaption></figure>
+      </div>
+      <div class="quotes__nav">
+        <button type="button" class="quotes__arrow" data-dir="-1" aria-label="Previous review" data-i18n-attr="aria-label:rev.prev"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 4.5L7 10l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="quotes__dots"></div>
+        <button type="button" class="quotes__arrow" data-dir="1" aria-label="Next review" data-i18n-attr="aria-label:rev.next"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK ============ -->
+<section class="book section" id="book" aria-labelledby="bookTitle">
+  <div class="container">
+    <div class="head">
+      <p class="eyebrow" data-reveal><span data-i18n="book.eyebrow">Book a table</span></p>
+      <h2 class="title" id="bookTitle" data-reveal data-i18n="book.title">Save your spot. <em class="glow">We'll keep it cold.</em></h2>
+      <p class="lead head__lead" data-reveal data-i18n="book.lead">Walk-ins are always welcome — but on Fridays, Saturdays and match days, a booked table saves you a wait. We confirm on WhatsApp in minutes.</p>
+    </div>
+    <div class="book__grid">
+      <form class="bform" id="bookForm" novalidate>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">1</span><span data-i18n="book.s1">Which night?</span></legend>
+          <div class="chips chips--scroll" id="nights"></div>
+          <p class="err" id="nightErr" role="alert"></p>
+        </fieldset>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">2</span><span data-i18n="book.s2">What time?</span></legend>
+          <div class="chips" id="times"></div>
+        </fieldset>
+        <fieldset class="bstep bstep--row">
+          <legend><span class="bstep__n">3</span><span data-i18n="book.s3">How many?</span></legend>
+          <div class="stepper">
+            <button type="button" class="stepper__btn" data-step="-1" aria-label="Fewer people" data-i18n-attr="aria-label:book.fewer">−</button>
+            <output class="stepper__val" id="people" aria-live="polite">4</output>
+            <button type="button" class="stepper__btn" data-step="1" aria-label="More people" data-i18n-attr="aria-label:book.more">+</button>
+            <span class="stepper__unit" data-i18n="book.people">people</span>
+          </div>
+          <p class="perk" id="groupPerk" hidden data-i18n="book.perk">🎉 Groups of 6+: a free Neon bucket on arrival.</p>
+        </fieldset>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">4</span><span data-i18n="book.s4">Where do you want to be?</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="spot" value="pool" checked><span data-i18n="book.o1">🎱 Pool table</span></label>
+            <label class="chip"><input type="radio" name="spot" value="booth"><span data-i18n="book.o2">🛋️ Booth</span></label>
+            <label class="chip"><input type="radio" name="spot" value="bar"><span data-i18n="book.o3">🍺 At the bar</span></label>
+            <label class="chip"><input type="radio" name="spot" value="screen"><span data-i18n="book.o4">⚽ Near the big screen</span></label>
+            <label class="chip"><input type="radio" name="spot" value="party"><span data-i18n="book.o5">🎂 Birthday / party</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="bstep">
+          <legend><span class="bstep__n">5</span><span data-i18n="book.s5">Your details</span></legend>
+          <div class="fields">
+            <label class="field"><span data-i18n="book.name">Name</span><input type="text" id="fName" name="name" autocomplete="name" required><em class="err" id="fNameErr"></em></label>
+            <label class="field"><span data-i18n="book.phone">WhatsApp or phone</span><input type="tel" id="fPhone" name="phone" autocomplete="tel" inputmode="tel" required><em class="err" id="fPhoneErr"></em></label>
+            <label class="field field--full"><span data-i18n="book.note">Anything else? <i>(optional)</i></span><textarea name="note" rows="2" data-i18n-attr="placeholder:book.notePh" placeholder="Birthday cake, big match, a cue for a left-hander…"></textarea></label>
+          </div>
+        </fieldset>
+        <p class="recap" id="recap" aria-hidden="true"></p>
+        <button type="submit" class="btn btn--neon btn--lg bform__submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 004.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm5.8 14.1c-.24.68-1.42 1.3-1.95 1.34-.5.05-.97.23-3.27-.68-2.76-1.09-4.5-3.91-4.64-4.09-.13-.18-1.1-1.47-1.1-2.8 0-1.33.7-1.99.95-2.26.24-.27.53-.34.71-.34l.51.01c.16.01.38-.06.6.46.23.54.77 1.87.84 2 .07.14.11.3.02.48-.09.18-.13.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.28-.12.55.16.27.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.58-.07.16-.18.67-.78.85-1.05.18-.27.36-.22.6-.13.25.09 1.57.74 1.84.88.27.13.45.2.51.31.07.12.07.66-.17 1.33z"/></svg><span data-i18n="book.send">Send on WhatsApp</span></button>
+        <p class="bform__hint" data-i18n="book.hint">No deposit, no card needed. Tables are held for 30 minutes.</p>
+      </form>
+      <aside class="ticket" aria-labelledby="tkTitle">
+        <div class="ticket__card">
+          <p class="ticket__brand" aria-hidden="true">NEON TIGER</p>
+          <p class="ticket__title" id="tkTitle" data-i18n="book.ticket">Your night</p>
+          <dl>
+            <div><dt data-i18n="book.tNight">Night</dt><dd id="tkNight">—</dd></div>
+            <div><dt data-i18n="book.tTime">Time</dt><dd id="tkTime">—</dd></div>
+            <div><dt data-i18n="book.tPeople">Crew</dt><dd id="tkPeople">4</dd></div>
+            <div><dt data-i18n="book.tSpot">Spot</dt><dd id="tkSpot">—</dd></div>
+            <div><dt data-i18n="book.tEvent">On that night</dt><dd id="tkEvent">—</dd></div>
+          </dl>
+          <p class="ticket__foot" data-i18n="book.tFoot">Show this at the door · 20+ only</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq section" aria-labelledby="faqTitle">
+  <div class="container faq__grid">
+    <div>
+      <p class="eyebrow" data-reveal><span data-i18n="faq.eyebrow">Before you come</span></p>
+      <h2 class="title" id="faqTitle" data-reveal data-i18n="faq.title">Good <em class="glow">to know.</em></h2>
+    </div>
+    <div class="faq__list">
+      <details data-reveal><summary data-i18n="faq.q1">Is there an entry fee or dress code?</summary><p data-i18n="faq.a1">No cover charge, ever. Shorts and flip-flops are fine — it's Pattaya.</p></details>
+      <details data-reveal><summary data-i18n="faq.q2">How old do I need to be?</summary><p data-i18n="faq.a2">20+, as Thai law requires. Bring an ID or a photo of your passport.</p></details>
+      <details data-reveal><summary data-i18n="faq.q3">Do I really not pay for pool?</summary><p data-i18n="faq.a3">Really. Order a drink and the tables are yours. Only the Monday knockout has a <span data-price="200">฿200</span> entry, and it all goes into the prize pot.</p></details>
+      <details data-reveal><summary data-i18n="faq.q4">How can I pay?</summary><p data-i18n="faq.a4">Cash in baht, Visa and Mastercard, or any Thai banking app with the QR at the bar.</p></details>
+      <details data-reveal><summary data-i18n="faq.q5">Can we book the whole bar?</summary><p data-i18n="faq.a5">Yes — for birthdays, stag parties or company nights, up to 120 guests, with a DJ and your own playlist. Message us on WhatsApp.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIND US ============ -->
+<section class="find section" id="find" aria-labelledby="findTitle">
+  <div class="container find__grid">
+    <div class="find__copy">
+      <p class="eyebrow" data-reveal><span data-i18n="find.eyebrow">Find us</span></p>
+      <h2 class="title" id="findTitle" data-reveal data-i18n="find.title">Soi 7, <em class="glow">follow the neon.</em></h2>
+      <div class="find__blocks">
+        <div data-reveal>
+          <p class="find__label" data-i18n="find.where">Where</p>
+          <p>Soi 7, Beach Road<br>Pattaya, Chonburi 20150</p>
+          <p class="find__hint" data-i18n="find.hint">Two minutes from Beach Road — look for the pink tiger.</p>
+          <a class="link" href="https://maps.google.com/?q=Soi+7+Beach+Road+Pattaya" target="_blank" rel="noopener" data-i18n="find.maps">Open in Google Maps</a>
+        </div>
+        <div data-reveal>
+          <p class="find__label" data-i18n="find.when">When</p>
+          <p class="find__hours"><span data-i18n="find.daily">Every day</span> <b>16:00 – 03:00</b></p>
+          <p class="find__hours"><span data-i18n="find.hhours">Happy hour</span> <b>16:00 – 20:00</b></p>
+          <p class="status"><span class="dot" aria-hidden="true"></span><span data-status>Open daily 16:00–03:00</span></p>
+        </div>
+        <div data-reveal>
+          <p class="find__label" data-i18n="find.talk">Talk to us</p>
+          <p><a class="link" href="https://wa.me/66812345678" target="_blank" rel="noopener">WhatsApp</a> · <a class="link" href="tel:+66812345678" target="_blank" rel="noopener">+66 81 234 5678</a></p>
+        </div>
+      </div>
+      <!-- Pattaya essential: an address card in Thai to show the driver -->
+      <div class="taxi" data-reveal>
+        <div>
+          <p class="taxi__label" data-i18n="find.taxi">Show this to your taxi or baht-bus driver</p>
+          <p class="taxi__thai" lang="th">นีออน ไทเกอร์ บาร์<br>ซอย 7 ถนนเลียบชายหาด พัทยา</p>
+        </div>
+        <button type="button" class="btn btn--glass taxi__btn" id="taxiBtn"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 7.5V4a1 1 0 011-1h3.5M12.5 3H16a1 1 0 011 1v3.5M17 12.5V16a1 1 0 01-1 1h-3.5M7.5 17H4a1 1 0 01-1-1v-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span data-i18n="find.taxiBtn">Full screen</span></button>
+      </div>
+    </div>
+    <div class="find__map clip" data-reveal="clip">
+      <iframe title="Map: Neon Tiger, Soi 7, Pattaya" data-i18n-attr="title:find.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Soi%207%20Beach%20Road%20Pattaya&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section class="final" aria-labelledby="finalTitle">
+  <div class="final__bg" aria-hidden="true"><picture><source srcset="assets/img/ev-party.webp" type="image/webp"><img src="assets/img/ev-party.jpg" alt="" width="1100" height="734" loading="lazy" decoding="async"></picture></div>
+  <div class="container final__inner">
+    <h2 class="final__title" id="finalTitle" data-reveal data-i18n="final.title">Tonight's on. <em class="glow">Are you?</em></h2>
+    <div class="hero__ctas final__ctas" data-reveal>
+      <a href="#book" class="btn btn--neon btn--lg magnetic"><span data-i18n="hero.cta">Book a table</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="https://wa.me/66812345678" target="_blank" rel="noopener" class="btn btn--glass btn--lg">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__sign" aria-hidden="true"><span></span><span></span></p>
+    <div class="footer__row">
+      <p>© 2026 Neon Tiger Pool Bar · Pattaya</p>
+      <p class="footer__law" data-i18n="footer.law">20+ only · Please drink responsibly</p>
+      <p><span data-i18n="footer.credit">Website by</span> <a href="../nm/" target="_blank" rel="noopener">NM Studio</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery" data-i18n-attr="aria-label:nav.gallery" hidden>
+  <button type="button" class="lightbox__close" aria-label="Close" data-i18n-attr="aria-label:a11y.close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  <button type="button" class="lightbox__arrow lightbox__arrow--prev" data-dir="-1" aria-label="Previous photo" data-i18n-attr="aria-label:a11y.prev"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 4.5L7 10l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <figure class="lightbox__stage"><img alt="" id="lbImg"><figcaption id="lbCap"></figcaption></figure>
+  <button type="button" class="lightbox__arrow lightbox__arrow--next" data-dir="1" aria-label="Next photo" data-i18n-attr="aria-label:a11y.next"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="lightbox__dock" id="lbDock"></div>
+</div>
+
+<!-- Taxi card, full screen -->
+<div class="taxicard" id="taxiCard" role="dialog" aria-modal="true" aria-label="Address for the driver" data-i18n-attr="aria-label:find.taxi" hidden>
+  <button type="button" class="lightbox__close" id="taxiClose" aria-label="Close" data-i18n-attr="aria-label:a11y.close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  <p class="taxicard__hello" lang="th">สวัสดีครับ/ค่ะ 🙏 ไปที่นี่ครับ/ค่ะ</p>
+  <p class="taxicard__name" lang="th">นีออน ไทเกอร์ บาร์</p>
+  <p class="taxicard__addr" lang="th">ซอย 7 ถนนเลียบชายหาด<br>พัทยา ชลบุรี</p>
+  <p class="taxicard__en">Neon Tiger Bar · Soi 7, Beach Road, Pattaya</p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
