@@ -142,6 +142,14 @@ WhatsApp order drawer, spice meter, nightly chalkboard special, phrase cards
 to show the cook. `SFI18n` EN/FR/TH/RU, baht → USD/EUR/THB. Careful: i18n
 rewrites the text of every `[data-price]`, so containers use `data-thb`.
 
+## Ride Siam — reference for rentals / premium services (`scooter/`)
+
+Premium scooter rental: graphite + off-white + tangerine, Geologica +
+Inter. Fleet cards carry `data-day/-week/-month/-deposit`; a period toggle
+switches displayed prices. Booking builder with a vanilla range calendar
+(2 months desktop / 1 mobile), tiered pricing (7+ days weekly, 28+ monthly),
+extras, delivery and a WhatsApp request; `RSI18n` EN/FR/TH/RU.
+
 ## NM Studio — the studio's own site (`nm/`)
 
 Plain HTML/CSS/JS, no build step, split into:
