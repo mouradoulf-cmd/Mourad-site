@@ -437,6 +437,48 @@
         var hit = st.querySelector(".diff__hit");
         if (hit) hit.setAttribute("aria-pressed", on ? "true" : "false");
       });
+      $$(".diff__dots i", section).forEach(function (d, i) { d.classList.toggle("is-on", String(i + 1) === n); });
+      if (!desktop.matches && !swiping) centerCard(Number(n));
+    }
+    // Phones: the cards are a horizontal carousel under the phone. Keep the
+    // active card centred, and let a swipe pick the step.
+    var list = $(".diff__steps", section), swiping = false, touching = false, settle = 0;
+    function centerCard(n) {
+      var card = diffSteps[n - 1];
+      if (!card || !list) return;
+      var lr = list.getBoundingClientRect(), cr = card.getBoundingClientRect();
+      var delta = (cr.left + cr.width / 2) - (lr.left + lr.width / 2);
+      if (Math.abs(delta) > 2) list.scrollBy({ left: delta, behavior: reduce ? "auto" : "smooth" });
+    }
+    function centredStep() {
+      var lr = list.getBoundingClientRect(), mid = lr.left + lr.width / 2, best = 1, dist = Infinity;
+      diffSteps.forEach(function (st, i) {
+        var r = st.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid);
+        if (d < dist) { dist = d; best = i + 1; }
+      });
+      return best;
+    }
+    function settleSwipe() {
+      swiping = false;
+      var n = centredStep();
+      if (n !== current()) setState(n);
+    }
+    if (list) {
+      // A horizontal scroll while a finger is down is a swipe: it takes over
+      // from the auto-advance. Vertical page scrolls over the cards don't.
+      list.addEventListener("touchstart", function () { touching = true; clearTimeout(settle); }, { passive: true });
+      list.addEventListener("touchend", function () {
+        touching = false;
+        if (swiping) { clearTimeout(settle); settle = setTimeout(settleSwipe, 400); }
+      }, { passive: true });
+      var wheelAt = 0;
+      list.addEventListener("wheel", function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) wheelAt = Date.now(); }, { passive: true });
+      list.addEventListener("scroll", function () {
+        if (!touching && !swiping && Date.now() - wheelAt > 250) return;
+        if (!swiping) { swiping = true; userTook = true; stopAuto(); }
+        clearTimeout(settle);
+        settle = setTimeout(settleSwipe, touching ? 600 : 140);
+      }, { passive: true });
     }
     var desktop = window.matchMedia("(min-width: 960px)");
     var io = null, autoTimer = null, inView = false, userTook = false;
@@ -453,7 +495,7 @@
       }, DIFF_MS);
     }
     function onTap(e) {
-      userTook = true; stopAuto();
+      userTook = true; stopAuto(); swiping = false; clearTimeout(settle);
       setState(e.currentTarget.getAttribute("data-step"));
     }
     function setup() {
