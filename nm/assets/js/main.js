@@ -330,7 +330,9 @@
       { slug: "malee", name: "Malee", cat: "work.p2cat" },
       { slug: "noir", name: "Noir", cat: "work.p3cat" },
       { slug: "facadiers", name: "Atelier des Façadiers", cat: "work.p4cat" },
-      { slug: "neon-tiger", name: "Neon Tiger", cat: "work.p5cat" }
+      { slug: "neon-tiger", name: "Neon Tiger", cat: "work.p5cat" },
+      { slug: "mae-lek", name: "Mae Lek", cat: "work.p6cat" },
+      { slug: "ride-siam", name: "Ride Siam", cat: "work.p7cat" }
     ];
     var SWAP_MS = 4200, index = 0, timer = null, layers = [], visible = true;
     document.documentElement.style.setProperty("--swap-ms", SWAP_MS + "ms");
