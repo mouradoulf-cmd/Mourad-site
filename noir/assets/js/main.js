@@ -10,7 +10,7 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // If i18n.js failed to load, keep everything working in English.
   var I = window.NoirI18n || {
-    apply: function () {}, lang: function () { return "en"; }, locale: function () { return "en-GB"; },
+    apply: function () {}, lang: function () { return "en"; }, locale: function () { return "en-GB"; }, price: function () { return ""; },
     t: function (k) { var el = document.querySelector('[data-i18n="' + k + '"]'); return el ? el.textContent : ""; },
     ui: function (k) {
       return ({ openNow: "Open now · until {t}", opensAt: "Closed · opens {d} at {t}", today: "today", tomorrow: "tomorrow", slotsFor: "Times for {d}",
@@ -312,13 +312,17 @@
     var r = $('input[name="' + name + '"]:checked');
     return r ? r.nextElementSibling.textContent : "—";
   }
+  // Booking choice → the menu line whose "from" price it shows.
+  var FROM = { cut: "cut1", colour: "col2", balayage: "col1", barber: "bar1", care: "car2", bridal: "bri1" };
+  function priceFrom() { var r = $('input[name="service"]:checked'); return (r && I.price(FROM[r.value])) || "—"; }
   var prevSum = {};
   function updateSummary() {
     var vals = {
       sumSvc: label("service"),
       sumSty: form.elements.stylist.value === "any" ? I.ui("any") : form.elements.stylist.value,
       sumDay: picked ? fmt(picked, { weekday: "short", day: "numeric", month: "short" }) : "—",
-      sumTime: pickedTime || "—"
+      sumTime: pickedTime || "—",
+      sumPrice: priceFrom()
     };
     Object.keys(vals).forEach(function (id) {
       var el = document.getElementById(id);
@@ -330,10 +334,11 @@
     });
     var recap = $("#recap");
     recap.innerHTML = "";
-    [vals.sumSvc, vals.sumSty, vals.sumDay === "—" ? I.t("book.day") : vals.sumDay, vals.sumTime === "—" ? I.t("book.time") : vals.sumTime].forEach(function (v, i) {
+    [vals.sumSvc, vals.sumSty, vals.sumDay === "—" ? I.t("book.day") : vals.sumDay, vals.sumTime === "—" ? I.t("book.time") : vals.sumTime, I.t("book.price") + " " + vals.sumPrice].forEach(function (v, i) {
       var sp = document.createElement("span");
       sp.textContent = v;
       if (i < 2 || (i === 2 && picked) || (i === 3 && pickedTime)) sp.classList.add("is-set");
+      if (i === 4) sp.classList.add("is-price");
       recap.appendChild(sp);
     });
   }
@@ -362,7 +367,7 @@
     var note = form.elements.note.value.trim();
     var msg = [
       I.ui("waHello"), "",
-      "• " + I.ui("waSvc") + ": " + label("service"),
+      "• " + I.ui("waSvc") + ": " + label("service") + " (" + I.ui("waPrice") + " " + priceFrom() + ")",
       "• " + I.ui("waSty") + ": " + (form.elements.stylist.value === "any" ? I.ui("any") : form.elements.stylist.value),
       "• " + I.ui("waDay") + ": " + fmt(picked, { weekday: "long", day: "numeric", month: "long" }),
       "• " + I.ui("waTime") + ": " + pickedTime,

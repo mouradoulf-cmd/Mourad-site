@@ -85,7 +85,10 @@ reviews and phone number are demo content to swap per client.
   patterns ("Interactive Bento Gallery", "Preset Time Selection Calendar").
 - i18n EN/FR/TH in `assets/js/i18n.js`: English is baked into the HTML and
   captured from the DOM, so only FR/TH dictionaries exist; strings built
-  in JS live in its `UI` table (all three languages).
+  in JS live in its `UI` table (all three languages). Prices follow the
+  language (`CURRENCY`/`PRICES` in `i18n.js`: EN → USD, FR → EUR, TH → THB,
+  hand-rounded, not live-converted); menu prices carry `data-price="key"`,
+  and a "guide price, paid in baht" note shows outside THB.
 - Interactions: vanilla JS only (no GSAP/Lenis). Reveals only hide content
   after IntersectionObserver is confirmed (`html.reveal-ready`); clip
   reveals put the `clip-path` on the inner `<picture>`, never on the
