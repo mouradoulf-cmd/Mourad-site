@@ -122,6 +122,10 @@
     else for (var i = 0; i < 3; i++) { var s = document.createElement("i"); if (i < n) s.className = "on"; c.appendChild(s); }
     $(".add", d).addEventListener("click", function (e) { addToBag(id, e.currentTarget); });
   });
+  // The painted board adds straight to the bag.
+  $$(".bitem").forEach(function (b) {
+    b.addEventListener("click", function () { addToBag(b.getAttribute("data-add"), b); });
+  });
   var cat = "all", vegOnly = $("#vegOnly");
   function filter() {
     var shown = 0;
@@ -179,6 +183,11 @@
       add.setAttribute("data-qty", q ? q.qty : "");
       add.setAttribute("aria-label", I.ui("addOne") + ": " + DISHES[d.getAttribute("data-id")].name + (q ? " (" + q.qty + ")" : ""));
     });
+    $$(".bitem").forEach(function (b) {
+      var id = b.getAttribute("data-add"), q = bag.filter(function (l) { return l.id === id && !l.special; })[0];
+      b.setAttribute("data-qty", q ? q.qty : "");
+      b.setAttribute("aria-label", I.ui("addOne") + ": " + DISHES[id].name + " — ฿" + DISHES[id].price + (q ? " (" + q.qty + ")" : ""));
+    });
     var ul = $("#lines"); ul.innerHTML = "";
     bag.forEach(function (l) {
       var li = document.createElement("li"); li.className = "oline";
@@ -225,7 +234,7 @@
   range.addEventListener("input", function () { setSpice(Number(range.value)); });
 
   /* ---------- tonight's chalkboard ---------- */
-  var SPECIALS = { 2: ["tomyum", 99], 3: ["padthai", 65], 4: ["grill", 75], 5: ["moo", 30], 6: ["curry", 65], 0: ["mango", 60] };
+  var SPECIALS = { 2: ["tomyum", 89], 3: ["padthai", 55], 4: ["grill", 69], 5: ["moo", 30], 6: ["curry", 55], 0: ["mango", 50] };
   function renderBoard() {
     var n = bkk(), nd = evening(n), sp = SPECIALS[nd];
     $("#boardDay").textContent = I.ui("tonight") + " · " + new Intl.DateTimeFormat(I.locale(), { weekday: "long" }).format(new Date(Date.UTC(2024, 0, 7 + nd, 12)));
