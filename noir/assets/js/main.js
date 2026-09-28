@@ -8,7 +8,17 @@
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var I = window.NoirI18n;
+  // If i18n.js failed to load, keep everything working in English.
+  var I = window.NoirI18n || {
+    apply: function () {}, lang: function () { return "en"; }, locale: function () { return "en-GB"; },
+    t: function (k) { var el = document.querySelector('[data-i18n="' + k + '"]'); return el ? el.textContent : ""; },
+    ui: function (k) {
+      return ({ openNow: "Open now · until {t}", opensAt: "Closed · opens {d} at {t}", today: "today", tomorrow: "tomorrow", slotsFor: "Times for {d}",
+        chooseDay: "Please choose a day.", chooseTime: "Please choose a time.", required: "Please fill this in.", phoneBad: "Please enter a phone number we can reach.",
+        any: "No preference", sent: "WhatsApp is opening with your request — just press send.", waHello: "Hello Noir, I'd like to book:",
+        waSvc: "Service", waSty: "Stylist", waDay: "Day", waTime: "Time", waName: "Name", waPhone: "Phone", waNote: "Note" })[k] || "";
+    }
+  };
   var root = document.documentElement;
   var WA = "66812345678";
   var TZ = "Asia/Bangkok";
