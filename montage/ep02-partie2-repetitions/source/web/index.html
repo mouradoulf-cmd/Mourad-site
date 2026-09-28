@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>ชาวนาตัวน้อย — งานวันเด็ก ตอนที่ 1</title>
+<style>
+@font-face{font-family:K;font-weight:700;src:url(fonts/kanit-thai-700-normal.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:K;font-weight:700;src:url(fonts/kanit-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:K;font-weight:500;src:url(fonts/kanit-thai-500-normal.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:K;font-weight:500;src:url(fonts/kanit-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:K,sans-serif}
+#svg{position:absolute;inset:0;display:block}
+.sub{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);padding:12px 36px 16px;border-radius:40px;
+ background:rgba(20,24,30,.64);color:#fff;font-weight:500;font-size:48px;line-height:1.25;white-space:normal;max-width:1640px;width:max-content;text-align:center;opacity:0;
+ text-shadow:0 2px 0 rgba(0,0,0,.35)}
+.sub .who{font-size:32px;margin-right:14px;padding:2px 14px 4px;border-radius:20px;vertical-align:4px}
+.sub.B{color:#FFE27A}.sub.B .who{background:#E0A800;color:#3a2600}
+.sub.F{color:#BFE6FF}.sub.F .who{background:#2E6FB8;color:#fff}
+.sub.M{color:#FFD0E0}.sub.M .who{background:#D9537E;color:#fff}
+.sub.T{color:#D8F5E0}.sub.T .who{background:#2E8B57;color:#fff}
+.sub.G{color:#FFD6EC}.sub.G .who{background:#E0559A;color:#fff}
+.sub.O{color:#FFE0B8}.sub.O .who{background:#E07B24;color:#fff}
+.sub.Y{color:#E6DAF7}.sub.Y .who{background:#7E57C2;color:#fff}
+.sub.C{color:#FFFFFF}.sub.C .who{background:#555C70;color:#fff}
+.ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;opacity:0}
+.t1{font-weight:700;font-size:170px;color:#FFF6D8;-webkit-text-stroke:10px #6B3A1E;paint-order:stroke fill;text-shadow:0 12px 0 #3E2210,0 22px 40px rgba(0,0,0,.35);line-height:1.15}
+.t2{margin-top:10px;font-weight:500;font-size:64px;color:#fff;background:#D9453B;padding:6px 40px 12px;border-radius:50px;box-shadow:0 8px 0 #8E2A22}
+.e1{font-weight:700;font-size:200px;color:#FFE27A;-webkit-text-stroke:12px #6B3A1E;paint-order:stroke fill;text-shadow:0 14px 0 #3E2210}
+.e2{font-weight:500;font-size:58px;color:#fff;margin-top:4px;text-shadow:0 4px 0 rgba(0,0,0,.4)}
+.e3{font-weight:500;font-size:44px;color:#3a2600;background:#FFE27A;margin-top:26px;padding:6px 34px 10px;border-radius:40px;box-shadow:0 6px 0 #B98A00}
+.tag{position:absolute;font-weight:700;font-size:54px;color:#fff;padding:4px 30px 10px;border-radius:40px;opacity:0;white-space:nowrap;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.num{position:absolute;width:96px;height:96px;border-radius:50%;background:#FFE27A;color:#6B3A1E;font-weight:700;font-size:62px;display:flex;align-items:center;justify-content:center;opacity:0;box-shadow:0 6px 0 #B98A00;border:5px solid #fff}
+#fade{position:absolute;inset:0;background:#000;opacity:0}
+</style>
+</head>
+<body>
+<div id="stage">
+<svg id="svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"></svg>
+<div id="dom"></div>
+<div id="subs"></div>
+<div id="fade"></div>
+</div>
+<script src="gsap.min.js"></script>
+<script src="timeline.js"></script>
+<script src="lib.js"></script>
+<script src="lib2.js"></script>
+<script src="scenes_a.js"></script>
+<script src="scenes_b.js"></script>
+<script src="scenes_p1a.js"></script>
+<script src="scenes_p1b.js"></script>
+<script src="lib3.js"></script>
+<script src="scenes_p2a.js"></script>
+<script src="scenes_p2b.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
