@@ -88,3 +88,18 @@ Swap those for real client photos once available; everything else
 - Plain HTML/CSS/JS, no build step, same as the other templates.
 - Booking/phone CTAs use `tel:`/`wa.me` links — always add
   `target="_blank" rel="noopener"` to them, same reason as above.
+
+## NM Studio — the studio's own site (`nm/`)
+
+Plain HTML/CSS/JS, no build step, split into:
+`nm/index.html` (English baked in for SEO/no-JS), `nm/assets/css/nm.css`,
+`nm/assets/js/i18n.js` (EN/FR/IT/TH/AR dictionaries, per-language currency
+€/฿/DH, RTL for Arabic — every new string needs all five languages),
+`nm/assets/js/main.js` (Lenis + GSAP/ScrollTrigger choreography, vendored in
+`assets/js/vendor/`), `nm/assets/js/hero-gl.js` (raw WebGL light field).
+Showcase screenshots live in `nm/assets/img/work/` and are captured from
+the live demos with Playwright; the Façadiers one uses a people-free frame
+of its own hero video (the video carries a clideo.com watermark — crop
+above it). Content is visible by default; motion is only layered on once
+GSAP has loaded. Deployed via the `claude/thai-app-mnw166` branch, which is
+the GitHub Pages source (not `gh-pages`).
