@@ -65,26 +65,31 @@ client's business needs) rather than designing from scratch.
 The user has asked to reuse **Noir** (`noir/index.html`, `noir/assets/`) as
 the base style/reference for any future hair salon, barbershop, or beauty
 site built in this repo (as opposed to Giulivo for restaurants and
-Façadiers for B2B). Built with no real photos supplied — the "lookbook"
-section uses editorial color-block cards instead of photography, honestly
-labeled as placeholder ("your own photos would replace these on launch").
-Swap those for real client photos once available; everything else
-(services, pricing, copy) adapts per client same as the other templates.
+Façadiers for B2B). Rebuilt as a premium site with real photography
+(Unsplash License, sources in `noir/README.md`); the studio, team names,
+reviews and phone number are demo content to swap per client.
 
 - Design language: near-black warm palette (`--ink`, `--cream`, `--bronze`
-  in `assets/css/style.css`), `Bodoni Moda` italic display serif +
-  `Manrope` sans-serif body, thin gold hairline accents, editorial/
-  fashion-magazine feel rather than Giulivo's rustic warmth or Façadiers'
-  corporate brightness.
-- Sections: hero (with decorative animated SVG "hair strand" lines, no
-  photo), services marquee, services grid (price list), about/philosophy
-  with count-up stats, lookbook (color-block cards), reviews carousel,
-  booking (WhatsApp deep link), contact (address/hours/map), footer.
-- Interactions: vanilla JS only (no GSAP/Lenis) — IntersectionObserver
-  scroll reveals, count-up stats, testimonial carousel, mobile burger
-  menu. Same "visible by default, hidden state only switched on right
-  before a confirmed-working observer" safety pattern as the other
-  templates use for GSAP — keep it if you add reveals elsewhere.
+  in `assets/css/style.css`), `Bodoni Moda` (italic for emphasis) +
+  `Manrope`, both self-hosted variable woff2 in `assets/fonts/` (small serif
+  headings pin `font-variation-settings: "opsz" 14` so hairlines stay
+  sturdy). Editorial/fashion-magazine feel.
+- Sections: intro curtain (once per session), full-bleed photo hero with
+  live Bangkok-time "open now" status, marquee, studio + count-up stats,
+  services menu (ARIA tabs, photo per category), ritual steps, lookbook
+  bento (explicit `grid-template-areas`, no holes) + lightbox, team,
+  reviews carousel, booking (service → stylist → calendar → time slots →
+  WhatsApp message; mobile shows a compact recap instead of the summary
+  card), FAQ, contact (hours with today highlighted, map), final CTA.
+- The bento/lightbox and the calendar+slots are vanilla ports of 21st.dev
+  patterns ("Interactive Bento Gallery", "Preset Time Selection Calendar").
+- i18n EN/FR/TH in `assets/js/i18n.js`: English is baked into the HTML and
+  captured from the DOM, so only FR/TH dictionaries exist; strings built
+  in JS live in its `UI` table (all three languages).
+- Interactions: vanilla JS only (no GSAP/Lenis). Reveals only hide content
+  after IntersectionObserver is confirmed (`html.reveal-ready`); clip
+  reveals put the `clip-path` on the inner `<picture>`, never on the
+  observed element (a fully clipped element never intersects).
 - Plain HTML/CSS/JS, no build step, same as the other templates.
 - Booking/phone CTAs use `tel:`/`wa.me` links — always add
   `target="_blank" rel="noopener"` to them, same reason as above.
