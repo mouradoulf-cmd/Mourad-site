@@ -28,10 +28,10 @@ VOICE = {  # tts speed, ffmpeg voice chain
 import numpy as np, difflib, re
 TTS = {}
 REC = None
-DIG = {'1':'หนึ่ง','2':'สอง','3':'สาม','4':'สี่','5':'ห้า','0':'ศูนย์'}
+DIG = {'10':'สิบ','1':'หนึ่ง','2':'สอง','3':'สาม','4':'สี่','5':'ห้า','6':'หก','7':'เจ็ด','8':'แปด','9':'เก้า','0':'ศูนย์'}
 def norm(t):
     for k,v in DIG.items(): t=t.replace(k,v)
-    return re.sub(r'[\s!?.,ๆ"\'\-]','',t)
+    return re.sub(r'[\s!?.,ๆ"\'\-ชภ]','',t)
 def get_tts(ns, nw):
     if (ns,nw) not in TTS:
         TTS[(ns,nw)] = sherpa_onnx.OfflineTts(sherpa_onnx.OfflineTtsConfig(model=sherpa_onnx.OfflineTtsModelConfig(vits=sherpa_onnx.OfflineTtsVitsModelConfig(
@@ -45,6 +45,7 @@ def asr(x, sr):
     pad=np.zeros(int(sr*.8),np.float32); st=REC.create_stream(); st.accept_waveform(sr,np.concatenate([pad,x,pad])); REC.decode_stream(st); return st.result.text.strip()
 CANDS=[(0.667,0.8,0.0),(0.5,0.7,0.0),(0.4,0.6,0.0),(0.667,0.8,-0.05),(0.5,0.7,-0.05),(0.4,0.6,-0.05)]*2+[(0.3,0.5,-0.08),(0.3,0.5,0.0)]
 SCORES={}
+ES=0.93
 SF=os.path.join(os.path.dirname(os.path.abspath(__file__)),'scores.json')
 def synth(who, text, path, say_override=None):
     ref=say_override or text; say=say_text(ref); best=None
@@ -52,7 +53,7 @@ def synth(who, text, path, say_override=None):
         a=get_tts(ns,nw).generate(say, sid=0, speed=VOICE[who][0]+dsp); x=np.array(a.samples,np.float32)
         h=asr(x,a.sample_rate); sc=difflib.SequenceMatcher(None,norm(ref),norm(h)).ratio()
         if best is None or sc>best[0]+1e-9: best=(sc,x,a.sample_rate,h)
-        if sc>=0.93: break
+        if sc>=ES: break
     sc,x,sr,h=best; SCORES[os.path.basename(path)]=(round(sc,3),h)
     raw = path + '.raw.wav'
     w = wave.open(raw, 'wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
