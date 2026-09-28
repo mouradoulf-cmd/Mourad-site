@@ -73,7 +73,9 @@
       // On phones the floating button would sit on top of the text being
       // read, so it follows the header: hidden while reading down, back on scroll up.
       var readingDown = narrow.matches && header.classList.contains("is-hidden");
-      waFloat.classList.toggle("is-visible", y > metrics.heroEnd && y + metrics.vh * 0.85 < metrics.finaleTop && !readingDown);
+      // …and it stays out of the way of the "difference" stage's tabs.
+      var onStage = narrow.matches && document.documentElement.classList.contains("diff-on-stage");
+      waFloat.classList.toggle("is-visible", y > metrics.heroEnd && y + metrics.vh * 0.85 < metrics.finaleTop && !readingDown && !onStage);
     }
     updateManifesto();
   }
@@ -424,65 +426,28 @@
     var section = $("#difference");
     var diffPhone = $("#diffPhone");
     var diffSteps = $$(".diff__step");
+    var tabs = $$(".diff__tab");
     if (!section || !diffPhone || !diffSteps.length) return;
-    var DIFF_MS = 3800;
+    var DIFF_MS = 4200;
     section.style.setProperty("--diff-ms", DIFF_MS + "ms");
+    var desktop = window.matchMedia("(min-width: 960px)");
+    var io = null, autoTimer = null, inView = false, userTook = false;
+
+    function current() { return Number(diffPhone.getAttribute("data-state")) || 1; }
     function setState(n) {
       n = String(n);
       diffPhone.setAttribute("data-state", n);
-      diffSteps.forEach(function (st) {
-        var on = st.getAttribute("data-step") === n;
-        st.classList.remove("is-active");
-        if (on) { void st.offsetWidth; st.classList.add("is-active"); }
-        var hit = st.querySelector(".diff__hit");
-        if (hit) hit.setAttribute("aria-pressed", on ? "true" : "false");
+      diffSteps.forEach(function (st) { st.classList.toggle("is-active", st.getAttribute("data-step") === n); });
+      tabs.forEach(function (tb) {
+        var on = tb.getAttribute("data-step") === n;
+        tb.classList.remove("is-on");
+        if (on) { void tb.offsetWidth; tb.classList.add("is-on"); } // restart the progress fill
+        tb.setAttribute("aria-pressed", on ? "true" : "false");
       });
-      $$(".diff__dots i", section).forEach(function (d, i) { d.classList.toggle("is-on", String(i + 1) === n); });
-      if (!desktop.matches && !swiping) centerCard(Number(n));
     }
-    // Phones: the cards are a horizontal carousel under the phone. Keep the
-    // active card centred, and let a swipe pick the step.
-    var list = $(".diff__steps", section), swiping = false, touching = false, settle = 0;
-    function centerCard(n) {
-      var card = diffSteps[n - 1];
-      if (!card || !list) return;
-      var lr = list.getBoundingClientRect(), cr = card.getBoundingClientRect();
-      var delta = (cr.left + cr.width / 2) - (lr.left + lr.width / 2);
-      if (Math.abs(delta) > 2) list.scrollBy({ left: delta, behavior: reduce ? "auto" : "smooth" });
-    }
-    function centredStep() {
-      var lr = list.getBoundingClientRect(), mid = lr.left + lr.width / 2, best = 1, dist = Infinity;
-      diffSteps.forEach(function (st, i) {
-        var r = st.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid);
-        if (d < dist) { dist = d; best = i + 1; }
-      });
-      return best;
-    }
-    function settleSwipe() {
-      swiping = false;
-      var n = centredStep();
-      if (n !== current()) setState(n);
-    }
-    if (list) {
-      // A horizontal scroll while a finger is down is a swipe: it takes over
-      // from the auto-advance. Vertical page scrolls over the cards don't.
-      list.addEventListener("touchstart", function () { touching = true; clearTimeout(settle); }, { passive: true });
-      list.addEventListener("touchend", function () {
-        touching = false;
-        if (swiping) { clearTimeout(settle); settle = setTimeout(settleSwipe, 400); }
-      }, { passive: true });
-      var wheelAt = 0;
-      list.addEventListener("wheel", function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) wheelAt = Date.now(); }, { passive: true });
-      list.addEventListener("scroll", function () {
-        if (!touching && !swiping && Date.now() - wheelAt > 250) return;
-        if (!swiping) { swiping = true; userTook = true; stopAuto(); }
-        clearTimeout(settle);
-        settle = setTimeout(settleSwipe, touching ? 600 : 140);
-      }, { passive: true });
-    }
-    var desktop = window.matchMedia("(min-width: 960px)");
-    var io = null, autoTimer = null, inView = false, userTook = false;
-    function current() { return Number(diffPhone.getAttribute("data-state")) || 1; }
+
+    // Phones: auto-advance while the stage is on screen, until the visitor
+    // takes over with a tab or a swipe.
     function stopAuto() { clearTimeout(autoTimer); section.classList.remove("is-auto"); }
     function runAuto() {
       stopAuto();
@@ -494,13 +459,56 @@
         autoTimer = setTimeout(next, DIFF_MS);
       }, DIFF_MS);
     }
-    function onTap(e) {
-      userTook = true; stopAuto(); swiping = false; clearTimeout(settle);
-      setState(e.currentTarget.getAttribute("data-step"));
+    function takeOver(n) { userTook = true; stopAuto(); setState(n); }
+    tabs.forEach(function (tb) {
+      tb.addEventListener("click", function () { takeOver(tb.getAttribute("data-step")); });
+    });
+
+    // Swipe the phone left/right to move between steps.
+    var sx = 0, sy = 0, tracking = false;
+    var stage = diffPhone.parentNode;
+    stage.addEventListener("touchstart", function (e) { var t = e.touches[0]; sx = t.clientX; sy = t.clientY; tracking = true; }, { passive: true });
+    stage.addEventListener("touchend", function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+      var rtl = document.documentElement.dir === "rtl";
+      var step = (dx < 0) !== rtl ? 1 : -1, n = current() + step;
+      if (n >= 1 && n <= diffSteps.length) takeOver(n);
+    }, { passive: true });
+
+    // Phones: size the phone so tabs + phone + text fill one screen. The
+    // phone is scaled as a whole (zoom) so its screen never gets cramped.
+    // Measured against the small viewport height, so Safari's toolbars
+    // showing/hiding while scrolling doesn't make it jump.
+    var probe = document.createElement("div");
+    probe.style.cssText = "position:fixed;top:0;left:0;width:0;height:100svh;visibility:hidden;pointer-events:none";
+    document.body.appendChild(probe);
+    var lastW = 0;
+    function fit(force) {
+      if (desktop.matches) { section.style.removeProperty("--dz"); return; }
+      if (!force && window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
+      var vh = probe.offsetHeight || window.innerHeight;
+      var rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      var header = rem * 4.5, phoneW = rem * 15;
+      var tabsH = tabs.length ? tabs[0].parentNode.offsetHeight : 0;
+      var textH = $(".diff__steps", section).offsetHeight;
+      var free = vh - header - tabsH - textH - 64;       // gaps + breathing room
+      var base = phoneW * 19 / 9;                          // phone height at zoom 1
+      var z = Math.min(free / base, (window.innerWidth * 0.66) / phoneW, 1.12);
+      section.style.setProperty("--dz", Math.max(0.58, z).toFixed(3));
     }
+    window.addEventListener("resize", function () { fit(false); });
+    document.addEventListener("nm:lang", function () { fit(true); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fit(true); });
+
     function setup() {
       if (io) { io.disconnect(); io = null; }
       stopAuto();
+      document.documentElement.classList.remove("diff-on-stage");
+      fit(true);
       if (!("IntersectionObserver" in window)) return;
       if (desktop.matches) {
         io = new IntersectionObserver(function (entries) {
@@ -508,11 +516,14 @@
         }, { rootMargin: "-45% 0px -45% 0px" });
         diffSteps.forEach(function (st) { io.observe(st); });
       } else {
-        io = new IntersectionObserver(function (entries) { inView = entries[0].isIntersecting; runAuto(); }, { threshold: 0.35 });
+        io = new IntersectionObserver(function (entries) {
+          inView = entries[0].isIntersecting;
+          document.documentElement.classList.toggle("diff-on-stage", inView);
+          runAuto();
+        }, { threshold: 0.5 });
         io.observe(diffPhone);
       }
     }
-    $$(".diff__hit", section).forEach(function (btn) { btn.addEventListener("click", onTap); });
     document.addEventListener("visibilitychange", runAuto);
     if (desktop.addEventListener) desktop.addEventListener("change", setup); else desktop.addListener(setup);
     setup();
