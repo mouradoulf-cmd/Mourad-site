@@ -234,6 +234,35 @@ html[dir="rtl"] .lang__list { transform-origin: top left; }
 .lang__list button { width: 100%; text-align: start; padding: .6rem .8rem; border-radius: 8px; font-size: .92rem; color: var(--muted); transition: background-color .2s ease, color .2s ease; }
 .lang__list button:hover, .lang__list button[aria-current="true"] { background: rgba(255,255,255,.07); color: var(--text); }
 
+/* ---------- Language flags ----------
+   Each flag is a background image; i18n.js slices it into vertical strips
+   that ripple out of phase, so it waves like cloth. Without JS (or with
+   reduced motion) the flag simply shows still. */
+.flag[data-flag="en"] { --flag: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40' preserveAspectRatio='none'%3E%3Crect width='60' height='40' fill='%23012169'/%3E%3Cpath d='M0 0L60 40M60 0L0 40' stroke='%23fff' stroke-width='8'/%3E%3Cpath d='M0 0L60 40M60 0L0 40' stroke='%23C8102E' stroke-width='3'/%3E%3Cpath d='M30 0v40M0 20h60' stroke='%23fff' stroke-width='12'/%3E%3Cpath d='M30 0v40M0 20h60' stroke='%23C8102E' stroke-width='7'/%3E%3C/svg%3E"); }
+.flag[data-flag="fr"] { --flag: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2' preserveAspectRatio='none'%3E%3Crect width='1' height='2' fill='%230055A4'/%3E%3Crect x='1' width='1' height='2' fill='%23fff'/%3E%3Crect x='2' width='1' height='2' fill='%23EF4135'/%3E%3C/svg%3E"); }
+.flag[data-flag="it"] { --flag: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2' preserveAspectRatio='none'%3E%3Crect width='1' height='2' fill='%23009246'/%3E%3Crect x='1' width='1' height='2' fill='%23fff'/%3E%3Crect x='2' width='1' height='2' fill='%23CE2B37'/%3E%3C/svg%3E"); }
+.flag[data-flag="th"] { --flag: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 6' preserveAspectRatio='none'%3E%3Crect width='9' height='6' fill='%23A51931'/%3E%3Crect y='1' width='9' height='4' fill='%23F4F5F8'/%3E%3Crect y='2' width='9' height='2' fill='%232D2A4A'/%3E%3C/svg%3E"); }
+.flag[data-flag="ar"] { --flag: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'%3E%3Crect width='30' height='20' fill='%23C1272D'/%3E%3Cpath d='M15.00 4.80 L18.29 14.93 L9.67 8.67 L20.33 8.67 L11.71 14.93Z' fill='none' stroke='%23006233' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.flag { --w: 1.5rem; --h: 1rem; position: relative; display: inline-flex; flex-shrink: 0; width: var(--w); height: var(--h); border-radius: 3px; background: var(--flag) center / 100% 100%; box-shadow: 0 0 0 1px rgba(255,255,255,.14); vertical-align: middle; direction: ltr; }
+.flag.is-waving { background: none; box-shadow: none; }
+.flag i { position: absolute; top: 0; left: calc(var(--i) * var(--w) / var(--n)); width: calc(var(--w) / var(--n) + 1px); height: 100%; background: var(--flag) no-repeat; background-size: var(--w) var(--h); background-position: calc(var(--i) * var(--w) / var(--n) * -1) 0; animation: flagWave 1.8s ease-in-out infinite; animation-delay: calc(var(--i) * -.14s + var(--d, 0s)); will-change: transform; }
+.flag i::after { content: ""; position: absolute; inset: 0; background: #000; opacity: 0; animation: flagShade 1.8s ease-in-out infinite; animation-delay: inherit; }
+.flag i:first-child { border-radius: 3px 0 0 3px; }
+.flag i:last-child { border-radius: 0 3px 3px 0; width: calc(var(--w) / var(--n)); }
+@keyframes flagWave { 0%, 100% { transform: translateY(-7%); } 50% { transform: translateY(7%); } }
+@keyframes flagShade { 0%, 100% { opacity: 0; } 50% { opacity: .18; } }
+.flag-btn { display: inline-grid; place-items: center; }
+.flag-btn .flag { opacity: .72; filter: saturate(.85); transition: opacity .25s ease, filter .25s ease, transform .35s var(--ease-out); }
+.flag-btn:hover .flag, .flag-btn:focus-visible .flag { opacity: .9; filter: none; transform: scale(1.08); }
+.flag-btn[aria-current="true"] .flag { opacity: 1; filter: none; transform: scale(1.12); }
+.lang__btn .flag { --w: 1.35rem; --h: .9rem; }
+.lang__list button { display: flex; align-items: center; gap: .65rem; }
+.lang__list .flag { --w: 1.35rem; --h: .9rem; }
+.footer__langs .flag-btn { padding: .45rem .55rem; }
+.footer__langs .flag { --w: 1.65rem; --h: 1.1rem; }
+.footer__langs button.flag-btn[aria-current="true"] { background: rgba(255,255,255,.08); border-color: var(--line-strong); }
+@media (prefers-reduced-motion: reduce) { .flag i, .flag i::after { animation: none; } }
+
 .burger { display: grid; place-content: center; gap: 6px; width: 42px; height: 42px; border-radius: 999px; border: 1px solid var(--line); }
 .burger span { display: block; width: 18px; height: 1.5px; background: var(--text); transition: transform .35s var(--ease-out); }
 .burger[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }

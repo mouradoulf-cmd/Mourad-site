@@ -66,15 +66,15 @@
     <div class="header__actions">
       <div class="lang" id="lang">
         <button type="button" class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-i18n-aria-label="a11y.language" aria-label="Language">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span class="flag lang__flag" data-flag="en" aria-hidden="true"></span>
           <span class="lang__current">EN</span>
         </button>
         <ul class="lang__list" id="langList" hidden>
-          <li><button type="button" data-lang="en" lang="en">English</button></li>
-          <li><button type="button" data-lang="fr" lang="fr">Français</button></li>
-          <li><button type="button" data-lang="it" lang="it">Italiano</button></li>
-          <li><button type="button" data-lang="th" lang="th">ไทย</button></li>
-          <li><button type="button" data-lang="ar" lang="ar">العربية</button></li>
+          <li><button type="button" data-lang="en" lang="en"><span class="flag" data-flag="en" aria-hidden="true"></span><span>English</span></button></li>
+          <li><button type="button" data-lang="fr" lang="fr"><span class="flag" data-flag="fr" aria-hidden="true"></span><span>Français</span></button></li>
+          <li><button type="button" data-lang="it" lang="it"><span class="flag" data-flag="it" aria-hidden="true"></span><span>Italiano</span></button></li>
+          <li><button type="button" data-lang="th" lang="th"><span class="flag" data-flag="th" aria-hidden="true"></span><span>ไทย</span></button></li>
+          <li><button type="button" data-lang="ar" lang="ar"><span class="flag" data-flag="ar" aria-hidden="true"></span><span>العربية</span></button></li>
         </ul>
       </div>
       <button type="button" class="btn btn--light btn--sm magnetic header__cta" data-open-booking data-i18n="nav.cta">Start a project</button>
@@ -555,7 +555,7 @@
       <div class="footer__col">
         <p class="footer__label" data-i18n="footer.language">Language</p>
         <div class="footer__langs">
-          <button type="button" data-lang="en" lang="en" aria-label="English">EN</button><button type="button" data-lang="fr" lang="fr" aria-label="Français">FR</button><button type="button" data-lang="it" lang="it" aria-label="Italiano">IT</button><button type="button" data-lang="th" lang="th" aria-label="ไทย">TH</button><button type="button" data-lang="ar" lang="ar" aria-label="العربية">AR</button>
+          <button type="button" class="flag-btn" data-lang="en" lang="en" aria-label="English" title="English"><span class="flag" data-flag="en" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="fr" lang="fr" aria-label="Français" title="Français"><span class="flag" data-flag="fr" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="it" lang="it" aria-label="Italiano" title="Italiano"><span class="flag" data-flag="it" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="th" lang="th" aria-label="ไทย" title="ไทย"><span class="flag" data-flag="th" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="ar" lang="ar" aria-label="العربية" title="العربية"><span class="flag" data-flag="ar" aria-hidden="true"></span></button>
         </div>
       </div>
     </div>
