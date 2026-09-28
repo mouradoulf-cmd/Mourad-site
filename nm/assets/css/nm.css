@@ -697,18 +697,9 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { line-height: 1.
 .diff__grid { display: grid; gap: 2rem; }
 @media (min-width: 960px) { .diff__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6rem; align-items: start; } .diff__stickywrap { order: 2; } }
 @media (min-width: 960px) { .diff__stickywrap { position: sticky; top: calc(50vh - 20.6rem); z-index: 2; } }
-@media (max-width: 959px) {
-  .diff__stickywrap { padding: .5rem 0 1rem; }
-}
+
 .diff__phone { position: relative; width: min(18.75rem, 62vw); margin-inline: auto; }
-/* Phones: sized by the screen height too, so the phone and the story card
-   under it are always on screen together. */
-@media (max-width: 959px) { .diff__phone { width: min(15rem, 58vw); } }
-/* Scale the whole phone (not just its width, which would cramp the screen
-   inside) on shorter viewports. */
-@media (max-width: 959px) and (max-height: 860px) { .diff__phone { zoom: .86; } }
-@media (max-width: 959px) and (max-height: 760px) { .diff__phone { zoom: .76; } }
-@media (max-width: 959px) and (max-height: 680px) { .diff__phone { zoom: .68; } }
+
 .dp {
   position: relative; aspect-ratio: 9 / 19; border-radius: 40px; padding: 10px;
   background: linear-gradient(145deg, #23252e, #0b0c11); border: 1px solid rgba(255,255,255,.14);
@@ -800,48 +791,55 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { line-height: 1.
 .diff__step.is-active h3 { opacity: 1; }
 .diff__step.is-active p { color: #c6cad6; }
 @media (min-width: 960px) { .diff__step:last-child { min-height: 84vh; } }
-/* Phones & tablets: no sticky overlap — the steps become tappable cards
-   under the phone, and they drive its screen (auto-advancing until touched). */
-@media (max-width: 959px) {
-  .diff__grid { gap: 1.25rem; }
-  .diff__stickywrap { padding: .25rem 0 .5rem; }
-  /* The story cards sit side by side under the phone: swipe or tap, and
-     the phone changes right above what you're reading. */
-  .diff__steps {
-    display: flex; gap: .75rem; overflow-x: auto; overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory; scrollbar-width: none;
-    margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
-  }
-  .diff__steps::-webkit-scrollbar { display: none; }
-  .diff__step {
-    flex: 0 0 88%; scroll-snap-align: center; scroll-snap-stop: always;
-    min-height: 0; padding: 1.1rem 1.2rem 1.2rem; position: relative; overflow: hidden;
-    border-radius: var(--radius-md); border: 1px solid var(--line); background: rgba(255,255,255,.02);
-    transition: border-color .35s ease, background-color .35s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .diff__step.is-active { border-color: rgba(168,85,247,.55); background: rgba(168,85,247,.07); }
-  .diff__step { padding: 1rem 1.1rem 1.1rem; }
-  .diff__step h3 { margin-top: .25rem; font-size: 1.25rem; }
-  .diff__step p { margin-top: .4rem; font-size: .9rem; line-height: 1.5; }
-  .diff__step::after {
-    content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
-    background: var(--brand); transform: scaleX(0); transform-origin: 0 50%;
-  }
-  html[dir="rtl"] .diff__step::after { transform-origin: 100% 50%; }
-  .diff.is-auto .diff__step.is-active::after { animation: dotFill var(--diff-ms, 3800ms) linear forwards; }
-}
-.diff__dots { display: none; }
-@media (max-width: 959px) {
-  .diff__dots { display: flex; justify-content: center; gap: .4rem; margin-top: -.25rem; }
-  .diff__dots i { width: .4rem; height: .4rem; border-radius: 999px; background: rgba(255,255,255,.22); transition: width .35s var(--ease-out), background-color .35s ease; }
-  .diff__dots i.is-on { width: 1.4rem; background: var(--brand); }
+.diff__num { display: none; }
+  .diff__step h3 { display: none; }
+  .diff__step p { margin: 0 auto; max-width: 24rem; font-size: .95rem; line-height: 1.55; color: #c6cad6; }
 }
 .diff__num { font-size: .8rem; color: var(--faint); letter-spacing: .08em; }
 .diff__step h3 { margin-top: .8rem; font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.08; }
 .diff__step p { margin-top: 1rem; max-width: 30rem; color: var(--muted); font-size: 1.08rem; }
 .diff__step[data-step="3"] h3 { background: var(--brand); -webkit-background-clip: text; background-clip: text; color: transparent; width: fit-content; }
-@media (prefers-reduced-motion: reduce) { .dp-pin--you, .dp-caret, .dp-scroll svg { animation: none; } }
+/* Phones & tablets: one screen-sized "stage" — tabs, the phone (sized to
+   the screen by main.js), and the matching text right under it. Tap a tab,
+   swipe the phone, or let it play; nothing needs scrolling back up. */
+.diff__tabs { display: none; }
+@media (max-width: 959px) {
+  .diff .section-head { margin-bottom: 1.5rem; }
+  .diff__grid {
+    display: flex; flex-direction: column; align-items: center; gap: .9rem;
+    min-height: calc(100svh - var(--header-h) - 1rem); justify-content: center;
+  }
+  .diff__tabs {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; width: 100%; max-width: 30rem;
+    padding: .25rem; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.035);
+  }
+  .diff__tab {
+    position: relative; overflow: hidden; min-height: 2.6rem; padding: .35rem .45rem; border-radius: 999px;
+    font-size: .76rem; font-weight: 500; line-height: 1.15; color: var(--muted); text-align: center;
+    transition: color .3s ease, background-color .3s ease; -webkit-tap-highlight-color: transparent;
+  }
+  .diff__tab span { position: relative; z-index: 1; }
+  .diff__tab.is-on { color: var(--text); background: rgba(255,255,255,.09); }
+  .diff__tab i { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(100deg, rgba(34,232,255,.22), rgba(168,85,247,.28)); transform: scaleX(0); transform-origin: 0 50%; }
+  html[dir="rtl"] .diff__tab i { transform-origin: 100% 50%; }
+  .diff__tab.is-on i { transform: scaleX(1); transition: transform .35s var(--ease-out); }
+  .diff.is-auto .diff__tab.is-on i { transition: none; animation: dotFill var(--diff-ms, 3800ms) linear forwards; }
+  .diff__tab:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+  .diff__stickywrap { padding: 0; touch-action: pan-y; }
+  .diff__phone { width: 15rem; zoom: var(--dz, .8); }
+
+  /* The three texts share one cell, so the block keeps a steady height and
+     the phone never jumps; only the active one is shown. */
+  .diff__steps { display: grid; width: 100%; max-width: 30rem; }
+  .diff__step {
+    grid-area: 1 / 1; min-height: 0; padding: 0 .25rem; text-align: center; align-items: center; justify-content: flex-start;
+    opacity: 0; visibility: hidden; transform: translateY(8px);
+    transition: opacity .45s var(--ease-out), transform .45s var(--ease-out), visibility 0s .45s;
+  }
+  .diff__step.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity .45s var(--ease-out) .08s, transform .45s var(--ease-out) .08s, visibility 0s; }
+  .diff__step @media (prefers-reduced-motion: reduce) { .dp-pin--you, .dp-caret, .dp-scroll svg { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .diff__step { transition: none !important; transform: none !important; } }
 
 /* ==========================================================================
    TRY IT — live QR card inside the light chapter
@@ -945,12 +943,6 @@ html[dir="rtl"] .stage__dots i.is-on::after { transform-origin: 100% 50%; }
 }
 .booking { overscroll-behavior: contain; }
 
-/* Full-card tap target for the story steps (phones/tablets only). */
-.diff__hit { display: none; }
-@media (max-width: 959px) {
-  .diff__hit { display: block; position: absolute; inset: 0; z-index: 1; width: 100%; border-radius: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-  .diff__hit:focus-visible { outline: 2px solid var(--cyan); outline-offset: -2px; }
-}
 
 
 /* ==========================================================================
