@@ -68,6 +68,7 @@
   var uM = gl.getUniformLocation(prog, "m");
 
   var scale = coarse ? 0.35 : 0.5;
+  var frameMs = coarse ? 32 : 24;
   function resize() {
     var w = Math.max(1, Math.round(canvas.clientWidth * scale));
     var h = Math.max(1, Math.round(canvas.clientHeight * scale));
@@ -90,8 +91,9 @@
   function frame(now) {
     if (!visible || document.hidden) { running = false; return; }
     running = true;
-    // ~40fps cap: the motion is slow, so this saves battery with no visible cost.
-    if (now - last > 24) {
+    // Frame cap (~40fps, ~30fps on phones): the motion is slow, so this
+    // saves battery with no visible cost.
+    if (now - last > frameMs) {
       last = now;
       resize();
       mouse.x += (target.x - mouse.x) * 0.04;

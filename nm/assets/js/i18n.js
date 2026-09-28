@@ -592,8 +592,23 @@
     return amount.toLocaleString("en-US") + SYMBOL[currency];
   }
 
+  // Latin fonts are self-hosted; Thai and Arabic faces are only fetched
+  // when someone actually switches to those languages.
+  var SCRIPT_FONTS = {
+    th: "https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600&display=swap",
+    ar: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap"
+  };
+  function loadScriptFont(lang) {
+    var href = SCRIPT_FONTS[lang];
+    if (!href || document.querySelector('link[data-font="' + lang + '"]')) return;
+    var link = document.createElement("link");
+    link.rel = "stylesheet"; link.href = href; link.setAttribute("data-font", lang);
+    document.head.appendChild(link);
+  }
+
   function apply(lang) {
     if (!DICT[lang]) lang = "en";
+    loadScriptFont(lang);
     var root = document.documentElement;
     root.lang = lang;
     root.dir = lang === "ar" ? "rtl" : "ltr";
