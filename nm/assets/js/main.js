@@ -258,6 +258,16 @@
       el.addEventListener("pointerleave", function () { el.style.transform = ""; });
     });
 
+    // Work mockups: gentle 3D tilt under the pointer.
+    $$(".project__media").forEach(function (media) {
+      media.addEventListener("pointermove", function (e) {
+        var r = media.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+        media.style.transform = "perspective(1400px) rotateY(" + (px * 6).toFixed(2) + "deg) rotateX(" + (-py * 5).toFixed(2) + "deg)";
+      });
+      media.addEventListener("pointerleave", function () { media.style.transform = ""; });
+    });
+
     // Hero stage: pointer-driven depth.
     var stage = $("#stage");
     if (stage && hero) {
@@ -314,6 +324,54 @@
   }
   prepareManifesto();
   window.addEventListener("scroll", updateManifesto, { passive: true });
+
+  /* ---------- "The difference": the step in the middle of the screen drives the phone ---------- */
+  var diffPhone = $("#diffPhone");
+  var diffSteps = $$(".diff__step");
+  function setDiffState(n) {
+    if (!diffPhone || diffPhone.getAttribute("data-state") === String(n)) return;
+    diffPhone.setAttribute("data-state", String(n));
+    diffSteps.forEach(function (st) { st.classList.toggle("is-active", st.getAttribute("data-step") === String(n)); });
+  }
+  if (diffPhone && diffSteps.length && "IntersectionObserver" in window) {
+    var diffObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { if (entry.isIntersecting) setDiffState(entry.target.getAttribute("data-step")); });
+    // On phones the sticky phone covers the top half, so the trigger band
+    // sits lower, where the step text is actually readable.
+    }, { rootMargin: window.innerWidth < 960 ? "-68% 0px -22% 0px" : "-45% 0px -45% 0px" });
+    diffSteps.forEach(function (st) { diffObserver.observe(st); });
+  }
+
+  /* ---------- live QR code (real, scannable) ---------- */
+  var qrBox = $("#tryitQr");
+  function renderQr() {
+    if (!qrBox || qrBox.dataset.done || typeof window.QRCode === "undefined") return;
+    qrBox.dataset.done = "1";
+    var url = new URL("../giulivo-qr-menu.html", window.location.href).href;
+    new window.QRCode(qrBox, { text: url, width: 480, height: 480, colorDark: "#111216", colorLight: "#f2efe8", correctLevel: window.QRCode.CorrectLevel.M });
+    qrBox.removeAttribute("title");
+  }
+  if (qrBox) {
+    if ("IntersectionObserver" in window) {
+      var qrObserver = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { renderQr(); qrObserver.disconnect(); }
+      }, { rootMargin: "400px 0px" });
+      qrObserver.observe(qrBox);
+    } else renderQr();
+  }
+
+  /* ---------- footer: live local time in Pattaya ---------- */
+  var clock = $("#localTime");
+  function tick() {
+    if (!clock) return;
+    try {
+      var now = new Date();
+      clock.textContent = now.toLocaleTimeString(window.NM_LANG || "en", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Bangkok" });
+      clock.setAttribute("datetime", now.toISOString());
+    } catch (e) {}
+  }
+  tick(); setInterval(tick, 30000);
+  document.addEventListener("nm:lang", tick);
 
   /* ==================== GSAP choreography ==================== */
   if (!hasGsap || reduce) return;
@@ -433,6 +491,16 @@
   /* Finale + footer word. */
   gsap.from(".finale__sub, .finale__ctas", { y: 24, opacity: 0, duration: 1.1, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 70%", once: true } });
   gsap.fromTo(".footer__word", { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: ".footer", start: "top bottom", end: "bottom bottom", scrub: true } });
+
+  /* Difference: the phone rises in with a slight tilt. */
+  gsap.from(".dp", { y: 80, rotateX: 18, opacity: 0, duration: 1.4, ease: "expo.out", transformPerspective: 1200, scrollTrigger: { trigger: ".diff__grid", start: "top 80%", once: true } });
+
+  /* Try it: the card lifts in, the QR frame snaps into place. */
+  gsap.from(".tryit", { y: 60, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".tryit", start: "top 85%", once: true } });
+  gsap.from(".tryit__corner", { scale: 1.8, opacity: 0, duration: .9, stagger: .06, ease: "back.out(2)", scrollTrigger: { trigger: ".tryit", start: "top 70%", once: true } });
+
+  /* Finale orbit badge. */
+  gsap.from(".orbit", { scale: .6, opacity: 0, rotate: -90, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 75%", once: true } });
 
   window.addEventListener("load", function () { ST.refresh(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
