@@ -759,6 +759,7 @@
     });
 
     document.querySelectorAll(".lang__current").forEach(function (el) { el.textContent = LABEL[lang]; });
+    document.querySelectorAll(".lang__flag").forEach(function (el) { el.setAttribute("data-flag", lang); });
     document.querySelectorAll("[data-lang]").forEach(function (btn) {
       btn.setAttribute("aria-current", btn.getAttribute("data-lang") === lang ? "true" : "false");
     });
@@ -783,6 +784,25 @@
     price: function (key, currency) { return PRICES[currency || CURRENCY[window.NM_LANG || "en"]][key]; },
     format: function (amount) { return formatPrice(CURRENCY[window.NM_LANG || "en"], amount); }
   };
+
+  // Waving flags: cut each flag into strips that ripple out of phase.
+  // Each flag starts at its own point in the wave so a row never moves
+  // in lockstep.
+  function waveFlags() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var strips = 14;
+    document.querySelectorAll(".flag").forEach(function (f, k) {
+      f.style.setProperty("--n", strips);
+      f.style.setProperty("--d", (k * -0.37).toFixed(2) + "s");
+      for (var i = 0; i < strips; i++) {
+        var s = document.createElement("i");
+        s.style.setProperty("--i", i);
+        f.appendChild(s);
+      }
+      f.classList.add("is-waving");
+    });
+  }
+  waveFlags();
 
   // Loaded with defer ahead of main.js: the markup is parsed and the
   // language is applied before the animation code splits any headings.
