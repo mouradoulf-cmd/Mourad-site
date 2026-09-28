@@ -62,6 +62,8 @@
         soon: "Coming soon", soonList: "Bar & nightlife · Street food"
       },
       process: {
+        v3toastT: "New booking",
+        v3toastB: "Table for 4 · tonight 20:00",
         v1online: "online",
         v1hello: "Hi! Send us your photos and menu 👋",
         v3live: "Live",
@@ -95,7 +97,7 @@
         note: "No contract, no hidden fees. Cancel anytime, free of charge.",
         basic: { title: "Basic", tagline: "Your menu, one scan away.", f1: "QR code menu, always up to date", f2: "Unlimited menu edits", f3: "Works on any phone — no app needed", cta: "Choose Basic", demo: "See a real QR menu →" },
         pro: { title: "Pro", tagline: "Your own website, done for you.", f1: "Everything in Basic", f2: "A custom website built from your photos", f3: "Multilingual, with Google Maps & WhatsApp", f4: "Live in days, not months", cta: "Choose Pro" },
-        elite: { title: "Elite", tagline: "The complete package, zero effort.", f1: "Everything in Pro", f2: "Social media set up & managed", f3: "Priority support", cta: "Talk to us" }
+        elite: { title: "Elite", tagline: "The complete package, zero effort.", f1: "Everything in Pro", f2: "Social media set up & managed", f3: "Priority support", cta: "Choose Elite" }
       },
       faq: {
         eyebrow: "Questions",
@@ -192,6 +194,8 @@
         soon: "Bientôt", soonList: "Bar & vie nocturne · Street food"
       },
       process: {
+        v3toastT: "Nouvelle réservation",
+        v3toastB: "Table pour 4 · ce soir 20h00",
         v1online: "en ligne",
         v1hello: "Bonjour ! Envoyez-nous vos photos et votre menu 👋",
         v3live: "En ligne",
@@ -225,7 +229,7 @@
         note: "Sans engagement ni frais cachés. Résiliable à tout moment, gratuitement.",
         basic: { title: "Basic", tagline: "Votre menu, à un scan.", f1: "Menu QR code, toujours à jour", f2: "Modifications du menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic", demo: "Voir un vrai menu QR →" },
         pro: { title: "Pro", tagline: "Votre site web, clé en main.", f1: "Tout le contenu de Basic", f2: "Un site sur mesure, créé à partir de vos photos", f3: "Multilingue, avec Google Maps et WhatsApp", f4: "En ligne en quelques jours, pas en mois", cta: "Choisir Pro" },
-        elite: { title: "Elite", tagline: "La formule complète, zéro effort.", f1: "Tout le contenu de Pro", f2: "Réseaux sociaux créés et gérés", f3: "Support prioritaire", cta: "Nous contacter" }
+        elite: { title: "Elite", tagline: "La formule complète, zéro effort.", f1: "Tout le contenu de Pro", f2: "Réseaux sociaux créés et gérés", f3: "Support prioritaire", cta: "Choisir Elite" }
       },
       faq: {
         eyebrow: "Questions",
@@ -322,6 +326,8 @@
         soon: "In arrivo", soonList: "Bar e vita notturna · Street food"
       },
       process: {
+        v3toastT: "Nuova prenotazione",
+        v3toastB: "Tavolo per 4 · stasera alle 20:00",
         v1online: "online",
         v1hello: "Ciao! Inviaci le tue foto e il menù 👋",
         v3live: "Online",
@@ -355,7 +361,7 @@
         note: "Nessun contratto, nessun costo nascosto. Disdici quando vuoi, gratis.",
         basic: { title: "Basic", tagline: "Il tuo menù, a portata di scansione.", f1: "Menù con QR code, sempre aggiornato", f2: "Modifiche al menù illimitate", f3: "Funziona su ogni telefono, senza app", cta: "Scegli Basic", demo: "Guarda un vero menù QR →" },
         pro: { title: "Pro", tagline: "Il tuo sito, chiavi in mano.", f1: "Tutto ciò che include Basic", f2: "Un sito su misura, creato con le tue foto", f3: "Multilingue, con Google Maps e WhatsApp", f4: "Online in giorni, non in mesi", cta: "Scegli Pro" },
-        elite: { title: "Elite", tagline: "Il pacchetto completo, zero pensieri.", f1: "Tutto ciò che include Pro", f2: "Social media creati e gestiti", f3: "Assistenza prioritaria", cta: "Contattaci" }
+        elite: { title: "Elite", tagline: "Il pacchetto completo, zero pensieri.", f1: "Tutto ciò che include Pro", f2: "Social media creati e gestiti", f3: "Assistenza prioritaria", cta: "Scegli Elite" }
       },
       faq: {
         eyebrow: "Domande",
@@ -452,6 +458,8 @@
         soon: "เร็ว ๆ นี้", soonList: "บาร์และไนท์ไลฟ์ · สตรีทฟู้ด"
       },
       process: {
+        v3toastT: "มีการจองใหม่",
+        v3toastB: "โต๊ะ 4 ที่ · คืนนี้ 20:00",
         v1online: "ออนไลน์",
         v1hello: "สวัสดี! ส่งรูปและเมนูมาได้เลย 👋",
         v3live: "ออนไลน์",
@@ -485,7 +493,7 @@
         note: "ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง ยกเลิกได้ทุกเมื่อ ฟรี",
         basic: { title: "Basic", tagline: "เมนูของคุณ แค่สแกนเดียว", f1: "เมนู QR โค้ด อัปเดตอยู่เสมอ", f2: "แก้ไขเมนูได้ไม่จำกัด", f3: "ใช้ได้กับทุกโทรศัพท์ ไม่ต้องโหลดแอป", cta: "เลือก Basic", demo: "ดูตัวอย่างเมนู QR จริง →" },
         pro: { title: "Pro", tagline: "เว็บไซต์ของคุณเอง เราทำให้ครบ", f1: "ทุกอย่างในแพ็กเกจ Basic", f2: "เว็บไซต์ออกแบบเฉพาะจากรูปของคุณ", f3: "หลายภาษา พร้อม Google Maps และ WhatsApp", f4: "ออนไลน์ในไม่กี่วัน ไม่ใช่หลายเดือน", cta: "เลือก Pro" },
-        elite: { title: "Elite", tagline: "แพ็กเกจครบวงจร ไม่ต้องทำอะไรเลย", f1: "ทุกอย่างในแพ็กเกจ Pro", f2: "ตั้งค่าและดูแลโซเชียลมีเดียให้", f3: "บริการช่วยเหลือแบบเร่งด่วน", cta: "คุยกับเรา" }
+        elite: { title: "Elite", tagline: "แพ็กเกจครบวงจร ไม่ต้องทำอะไรเลย", f1: "ทุกอย่างในแพ็กเกจ Pro", f2: "ตั้งค่าและดูแลโซเชียลมีเดียให้", f3: "บริการช่วยเหลือแบบเร่งด่วน", cta: "เลือก Elite" }
       },
       faq: {
         eyebrow: "คำถามที่พบบ่อย",
@@ -582,6 +590,8 @@
         soon: "قريباً", soonList: "بارات وحياة ليلية · أكل الشارع"
       },
       process: {
+        v3toastT: "حجز جديد",
+        v3toastB: "طاولة لـ4 · الليلة 20:00",
         v1online: "متصل",
         v1hello: "مرحباً! أرسل لنا صورك وقائمتك 👋",
         v3live: "متاح",
@@ -615,7 +625,7 @@
         note: "بلا عقود ولا رسوم خفية. ألغِ في أي وقت، مجاناً.",
         basic: { title: "Basic", tagline: "قائمتك على بُعد مسحة واحدة.", f1: "قائمة برمز QR، محدّثة دائماً", f2: "تعديلات غير محدودة على القائمة", f3: "تعمل على أي هاتف — بلا تطبيق", cta: "اختر Basic", demo: "شاهد قائمة QR حقيقية ←" },
         pro: { title: "Pro", tagline: "موقعك الخاص، جاهز بالكامل.", f1: "كل ما في باقة Basic", f2: "موقع مخصص مبني من صورك", f3: "متعدد اللغات، مع خرائط Google وواتساب", f4: "متاح خلال أيام، لا أشهر", cta: "اختر Pro" },
-        elite: { title: "Elite", tagline: "الباقة الكاملة، بلا أي مجهود.", f1: "كل ما في باقة Pro", f2: "إعداد وإدارة وسائل التواصل الاجتماعي", f3: "دعم ذو أولوية", cta: "تحدث معنا" }
+        elite: { title: "Elite", tagline: "الباقة الكاملة، بلا أي مجهود.", f1: "كل ما في باقة Pro", f2: "إعداد وإدارة وسائل التواصل الاجتماعي", f3: "دعم ذو أولوية", cta: "اختر Elite" }
       },
       faq: {
         eyebrow: "الأسئلة الشائعة",
@@ -667,6 +677,19 @@
   };
   var SYMBOL = { eur: " €", thb: " ฿", mad: " DH" };
   var LABEL = { en: "EN", fr: "FR", it: "IT", th: "TH", ar: "AR" };
+
+  // A page can ship extra strings (e.g. the checkout) by defining
+  // window.NM_EXTRA_DICT = { en: {...}, fr: {...} } before this script runs.
+  (function mergeExtra(extra) {
+    if (!extra) return;
+    function deep(target, src) {
+      Object.keys(src).forEach(function (k) {
+        if (src[k] && typeof src[k] === "object" && !Array.isArray(src[k])) { target[k] = target[k] || {}; deep(target[k], src[k]); }
+        else target[k] = src[k];
+      });
+    }
+    Object.keys(extra).forEach(function (lang) { if (DICT[lang]) deep(DICT[lang], extra[lang]); });
+  })(window.NM_EXTRA_DICT);
 
   function get(lang, path) {
     var node = DICT[lang] || DICT.en;
@@ -724,9 +747,10 @@
       if (typeof v === "string") el.setAttribute("aria-label", v);
     });
 
-    document.title = get(lang, "meta.title");
+    var metaKey = document.body.getAttribute("data-meta") || "meta";
+    document.title = get(lang, metaKey + ".title");
     var desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", get(lang, "meta.description"));
+    if (desc) desc.setAttribute("content", get(lang, metaKey + ".description"));
 
     var currency = CURRENCY[lang];
     document.querySelectorAll("[data-price]").forEach(function (el) {
@@ -752,7 +776,13 @@
     return DICT[nav] ? nav : "en";
   }
 
-  window.NMI18n = { apply: apply, t: function (path) { return get(window.NM_LANG || "en", path); } };
+  window.NMI18n = {
+    apply: apply,
+    t: function (path) { return get(window.NM_LANG || "en", path); },
+    currency: function () { return CURRENCY[window.NM_LANG || "en"]; },
+    price: function (key, currency) { return PRICES[currency || CURRENCY[window.NM_LANG || "en"]][key]; },
+    format: function (amount) { return formatPrice(CURRENCY[window.NM_LANG || "en"], amount); }
+  };
 
   // Loaded with defer ahead of main.js: the markup is parsed and the
   // language is applied before the animation code splits any headings.

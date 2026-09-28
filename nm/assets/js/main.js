@@ -476,6 +476,43 @@
     setup();
   })();
 
+  /* ---------- process flow: play illustrations in view, rail progress, spotlight ---------- */
+  (function processFlow() {
+    var wrap = $(".flow-wrap");
+    if (!wrap) return;
+    var steps = $$(".flow__step", wrap);
+    var fill = $(".flow__rail", wrap);
+    var nodes = $$(".flow__node", wrap);
+    if ("IntersectionObserver" in window) {
+      var playIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.target.classList.toggle("is-playing", e.isIntersecting); });
+      }, { threshold: 0.25 });
+      steps.forEach(function (st) { playIO.observe(st); });
+    } else steps.forEach(function (st) { st.classList.add("is-playing"); });
+
+    var queued = false;
+    function progress() {
+      queued = false;
+      var r = wrap.getBoundingClientRect(), vh = window.innerHeight;
+      var p = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / (r.height * (narrow.matches ? 0.95 : 0.55))));
+      fill.style.setProperty("--p", reduce ? 1 : p.toFixed(3));
+      nodes.forEach(function (n, i) { n.classList.toggle("is-on", reduce || p >= i / 2 - 0.02); });
+    }
+    window.addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(progress); } }, { passive: true });
+    window.addEventListener("resize", progress);
+    progress();
+
+    if (finePointer) {
+      steps.forEach(function (st) {
+        st.addEventListener("pointermove", function (e) {
+          var r = st.getBoundingClientRect();
+          st.style.setProperty("--mx", (e.clientX - r.left) + "px");
+          st.style.setProperty("--my", (e.clientY - r.top) + "px");
+        });
+      });
+    }
+  })();
+
   /* ---------- footer: live local time in Pattaya ---------- */
   var clock = $("#localTime");
   function tick() {
@@ -605,9 +642,7 @@
 
   /* Process: rail draws across as the steps come in. */
   $$(".flow__step").forEach(function (step, i) {
-    var st = { trigger: step, start: "top 88%", once: true };
-    gsap.from(step, { y: 60, opacity: 0, duration: 1.1, delay: window.innerWidth >= 960 ? i * 0.12 : 0, ease: "expo.out", scrollTrigger: st });
-    gsap.from($$(".wa__msg, .bk, .build__tools, .live__url, .live__tile", step), { y: 14, opacity: 0, duration: .7, stagger: .12, delay: (window.innerWidth >= 960 ? i * 0.12 : 0) + .35, ease: "power3.out", scrollTrigger: st });
+    gsap.from(step, { y: 60, opacity: 0, duration: 1.1, delay: window.innerWidth >= 960 ? i * 0.12 : 0, ease: "expo.out", scrollTrigger: { trigger: step, start: "top 88%", once: true } });
   });
 
   /* Finale + footer word. */
