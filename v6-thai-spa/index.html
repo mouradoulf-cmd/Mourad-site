@@ -8,14 +8,14 @@
 <meta name="theme-color" content="#0e1a14">
 <meta property="og:title" content="Malee — Thai Massage &amp; Spa, Pattaya">
 <meta property="og:description" content="Slow hands, warm oil, and an hour that belongs to you.">
-<meta property="og:image" content="assets/img/hero-candle.jpg">
+<meta property="og:image" content="assets/img/hero-wide.jpg">
 <link rel="preload" as="font" href="assets/fonts/cormorant-garamond-italic-latin.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="assets/fonts/inter-tight-latin.woff2" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/img/hero-candle.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/hero-arch.webp" type="image/webp">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("mlIntro"))document.documentElement.classList.add("no-intro")}catch(e){}</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"DaySpa","name":"Malee Thai Massage & Spa","image":"assets/img/hero-candle.jpg","telephone":"+66812345678","priceRange":"฿฿",
+{"@context":"https://schema.org","@type":"DaySpa","name":"Malee Thai Massage & Spa","image":"assets/img/hero-wide.jpg","telephone":"+66812345678","priceRange":"฿฿",
 "address":{"@type":"PostalAddress","streetAddress":"Soi 13, Second Road","addressLocality":"Pattaya","postalCode":"20150","addressCountry":"TH"},
 "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:00","closes":"23:00"}]}
 </script>
@@ -81,30 +81,37 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top" aria-labelledby="heroTitle">
-  <div class="hero__slides" aria-hidden="true">
-    <picture class="hero__slide is-on"><source srcset="assets/img/hero-candle.webp" type="image/webp"><img src="assets/img/hero-candle.jpg" alt="" width="2000" height="1294" fetchpriority="high" decoding="async"></picture>
-    <picture class="hero__slide"><source srcset="assets/img/hero-stones.webp" type="image/webp"><img src="assets/img/hero-stones.jpg" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
-    <picture class="hero__slide"><source srcset="assets/img/hero-room.webp" type="image/webp"><img src="assets/img/hero-room.jpg" alt="" width="2000" height="1602" loading="lazy" decoding="async"></picture>
-  </div>
-  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__inner">
-    <p class="eyebrow" data-reveal><span data-i18n="hero.eyebrow">Thai massage &amp; spa · Central Pattaya</span></p>
-    <h1 class="hero__title" id="heroTitle">
-      <span class="line"><span data-i18n="hero.t1">Slow hands.</span></span>
-      <span class="line"><span data-i18n="hero.t2">Warm oil.</span></span>
-      <span class="line"><em data-i18n="hero.t3">An hour that's yours.</em></span>
-    </h1>
-    <p class="hero__lead" data-reveal data-i18n="hero.lead">Traditional Thai massage, aromatherapy and hot stones by therapists trained at Wat Pho — in a quiet garden sanctuary two minutes from Second Road.</p>
-    <div class="hero__ctas" data-reveal>
-      <a href="#book" class="btn btn--gold btn--lg magnetic"><span data-i18n="hero.cta">Book a treatment</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="#feel" class="btn btn--glass btn--lg" data-i18n="hero.cta2">Help me choose</a>
+    <div class="hero__copy">
+      <p class="eyebrow"><span data-i18n="hero.eyebrow">Thai massage &amp; spa · Central Pattaya</span></p>
+      <h1 class="hero__title" id="heroTitle">
+        <span class="line"><span data-i18n="hero.t1">Slow hands.</span></span>
+        <span class="line"><span data-i18n="hero.t2">Warm oil.</span></span>
+        <span class="line"><em data-i18n="hero.t3">An hour that's yours.</em></span>
+      </h1>
+      <p class="hero__lead" data-i18n="hero.lead">Traditional Thai massage, aromatherapy and hot stones by therapists trained at Wat Pho — in a quiet garden sanctuary two minutes from Second Road.</p>
+      <div class="hero__ctas">
+        <a href="#book" class="btn btn--gold btn--lg magnetic"><span data-i18n="hero.cta">Book a treatment</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#feel" class="btn btn--line btn--lg" data-i18n="hero.cta2">Help me choose</a>
+      </div>
+      <div class="hero__facts">
+        <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span><b>4.9</b><span data-i18n="hero.rating">· 1,200+ reviews</span></p>
+        <p class="status"><span class="dot" aria-hidden="true"></span><span data-status>Open daily 11:00–23:00</span></p>
+        <p class="hero__from"><span data-i18n="hero.from">Thai massage from</span> <b data-price="350">฿350</b></p>
+      </div>
+    </div>
+    <div class="hero__art">
+      <figure class="arch"><picture><source srcset="assets/img/hero-arch.webp" type="image/webp"><img src="assets/img/hero-arch.jpg" alt="A woman relaxing, eyes closed, during a warm oil shoulder massage" data-i18n-attr="alt:hero.alt" width="1100" height="1172" fetchpriority="high" decoding="async"></picture></figure>
+      <figure class="stamp" aria-hidden="true"><picture><source srcset="assets/img/g-candles.webp" type="image/webp"><img src="assets/img/g-candles.jpg" alt="" width="1100" height="1650" decoding="async"></picture></figure>
+      <div class="seal" aria-hidden="true">
+        <svg class="seal__ring" viewBox="0 0 200 200"><defs><path id="sealPath" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs><text><textPath href="#sealPath" textLength="500">WAT PHO TRAINED · SINCE 2009 · PATTAYA ·</textPath></text></svg>
+        <svg class="seal__lotus" viewBox="0 0 120 80" fill="none"><path d="M60 70C48 58 44 40 60 14c16 26 12 44 0 56z"/><path d="M60 70C44 64 30 50 30 30c14 6 26 18 30 40z"/><path d="M60 70c16-6 30-20 30-40-14 6-26 18-30 40z"/></svg>
+      </div>
+      <span class="petal petal--1" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 2c7 8 9 17 0 36C11 19 13 10 20 2z" fill="currentColor"/></svg></span><span class="petal petal--2" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 2c7 8 9 17 0 36C11 19 13 10 20 2z" fill="currentColor"/></svg></span><span class="petal petal--3" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 2c7 8 9 17 0 36C11 19 13 10 20 2z" fill="currentColor"/></svg></span><span class="petal petal--4" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 2c7 8 9 17 0 36C11 19 13 10 20 2z" fill="currentColor"/></svg></span><span class="petal petal--5" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 2c7 8 9 17 0 36C11 19 13 10 20 2z" fill="currentColor"/></svg></span>
     </div>
   </div>
-  <div class="hero__foot">
-    <p class="rating" data-reveal><span class="rating__stars" aria-hidden="true">★★★★★</span><b>4.9</b><span data-i18n="hero.rating">· 1,200+ reviews</span></p>
-    <p class="status" data-reveal><span class="dot" aria-hidden="true"></span><span data-status>Open daily 11:00–23:00</span></p>
-    <p class="hero__from" data-reveal><span data-i18n="hero.from">Thai massage from</span> <b data-price="350">฿350</b></p>
-  </div>
+  <a class="hero__scroll" href="#treatments" aria-label="Scroll to the treatments" data-i18n-attr="aria-label:hero.scroll"><span></span></a>
 </section>
 
 <!-- ============ MARQUEE ============ -->
@@ -114,6 +121,15 @@
     <span data-i18n="mq.1">Traditional Thai massage</span><i>✿</i><span data-i18n="mq.2">Aromatherapy oils</span><i>✿</i><span data-i18n="mq.3">Hot stones</span><i>✿</i><span data-i18n="mq.4">Foot reflexology</span><i>✿</i><span data-i18n="mq.5">Herbal compress</span><i>✿</i><span data-i18n="mq.6">Couples room</span><i>✿</i>
   </div>
 </div>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto" aria-label="Our promise" data-i18n-attr="aria-label:man.aria">
+  <div class="container">
+    <svg class="manifesto__lotus" viewBox="0 0 120 80" fill="none" aria-hidden="true"><path d="M60 70C48 58 44 40 60 14c16 26 12 44 0 56z"/><path d="M60 70C44 64 30 50 30 30c14 6 26 18 30 40z"/><path d="M60 70c16-6 30-20 30-40-14 6-26 18-30 40z"/></svg>
+    <p class="manifesto__text" data-words data-i18n="man.text">Two centuries of Thai healing, eight quiet rooms and one simple rule: <em>for the next hour, nothing is asked of you.</em></p>
+    <p class="manifesto__sign" data-i18n="man.sign">— Khun Malee, founder</p>
+  </div>
+</section>
 
 <!-- ============ TREATMENTS ============ -->
 <section class="treatments section" id="treatments" aria-labelledby="trTitle">
