@@ -111,6 +111,46 @@
     }, 7000);
   }
 
+  /* ---------- manifesto: words light up as the paragraph crosses the screen ---------- */
+  var manWords = [];
+  function splitWords() {
+    var el = $("[data-words]"); if (!el || reduce) return;
+    manWords = [];
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement("span"); w.className = "w"; w.textContent = part; frag.appendChild(w); manWords.push(w);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) walk(child);
+      });
+    })(el);
+    litWords();
+  }
+  function litWords() {
+    if (!manWords.length) return;
+    var el = $("[data-words]"), r = el.getBoundingClientRect(), vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.45)));
+    var n = Math.round(p * manWords.length);
+    manWords.forEach(function (w, i) { w.classList.toggle("is-lit", i < n); });
+  }
+  window.addEventListener("scroll", function () { requestAnimationFrame(litWords); }, { passive: true });
+
+  /* ---------- hero: the arch drifts gently with the pointer ---------- */
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !reduce) {
+    var mx = 0, my = 0, raf = 0;
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width - 0.5; my = (e.clientY - r.top) / r.height - 0.5;
+      if (!raf) raf = requestAnimationFrame(function () { raf = 0; hero.style.setProperty("--mx", mx.toFixed(3)); hero.style.setProperty("--my", my.toFixed(3)); });
+    });
+    hero.addEventListener("pointerleave", function () { hero.style.setProperty("--mx", 0); hero.style.setProperty("--my", 0); });
+  }
+
   /* ---------- treatments: durations drive the price ---------- */
   var TREATS = $$(".card[data-tr]").map(function (card) {
     return {
@@ -393,7 +433,7 @@
 
   /* ---------- language changes ---------- */
   function renderAll() {
-    tick(); TREATS.forEach(renderCard); renderMatch(false); renderVoucher();
+    splitWords(); tick(); TREATS.forEach(renderCard); renderMatch(false); renderVoucher();
     buildTreats(); buildDurs(); buildDays(); buildTimes(); update();
   }
   document.addEventListener("ml:lang", renderAll);
