@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NM Studio — Websites &amp; QR menus for restaurants and local businesses</title>
 <meta name="description" content="NM Studio designs fast, beautiful websites and QR menus for restaurants, salons, spas and local businesses. Send your photos — you're live in days. No contract.">
-<meta name="theme-color" content="#07080c">
+<meta name="theme-color" content="#0b0a09">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2307080c'/%3E%3Cpath d='M3.5 9.5c2.2 0 2.2 3.7 4.4 3.7S10.2 9.5 12 9.5s2.2 3.7 4.4 3.7 2.2-3.7 4.1-3.7' stroke='%2322e8ff' stroke-width='1.9' fill='none' stroke-linecap='round'/%3E%3Cpath d='M3.5 14.5c2.2 0 2.2 3.7 4.4 3.7s2.3-3.7 4.1-3.7 2.2 3.7 4.4 3.7 2.2-3.7 4.1-3.7' stroke='%23a855f7' stroke-width='1.9' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230b0a09'/%3E%3Cpath d='M3.5 9.5c2.2 0 2.2 3.7 4.4 3.7S10.2 9.5 12 9.5s2.2 3.7 4.4 3.7 2.2-3.7 4.1-3.7' stroke='%23f4b860' stroke-width='1.9' fill='none' stroke-linecap='round'/%3E%3Cpath d='M3.5 14.5c2.2 0 2.2 3.7 4.4 3.7s2.3-3.7 4.1-3.7 2.2 3.7 4.4 3.7 2.2-3.7 4.1-3.7' stroke='%23f0643c' stroke-width='1.9' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NM Studio">
 <meta property="og:title" content="NM Studio — Websites that bring customers to your door">
-<meta property="og:description" content="Websites and QR menus for restaurants and local businesses. Send your photos, go live in days.">
+<meta property="og:description" content="Google, QR menu, website — from ฿990. Send your photos, go live in days. Pattaya, Thailand.">
 <meta property="og:url" content="https://mouradoulf-cmd.github.io/Mourad-site/nm/">
 <meta property="og:image" content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -21,25 +21,48 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "NM Studio",
-  "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/",
-  "image": "https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og.jpg",
-  "description": "Websites and QR menus for restaurants, salons, spas and local businesses.",
-  "areaServed": ["TH", "FR", "IT", "MA"],
-  "availableLanguage": ["en", "fr", "it", "th", "ar"],
-  "knowsAbout": ["Web design", "QR code menus", "Local SEO"],
-  "makesOffer": [
-    { "@type": "Offer", "name": "Basic — QR menu" },
-    { "@type": "Offer", "name": "Pro — Custom website" },
-    { "@type": "Offer", "name": "Elite — Website and social media" }
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://mouradoulf-cmd.github.io/Mourad-site/nm/#studio",
+      "name": "NM Studio",
+      "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/",
+      "image": "https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og.jpg",
+      "description": "Websites, Google Business Profiles and QR menus for restaurants, salons, spas and local businesses in Pattaya.",
+      "address": { "@type": "PostalAddress", "addressLocality": "Pattaya", "addressRegion": "Chonburi", "addressCountry": "TH" },
+      "areaServed": ["Pattaya", "Jomtien", "Naklua", "Thailand"],
+      "availableLanguage": ["en", "fr", "it", "th", "ar"],
+      "priceRange": "฿990–฿9,990",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog", "name": "NM Studio offers",
+        "itemListElement": [
+          { "@type": "Offer", "price": "990", "priceCurrency": "THB", "itemOffered": { "@type": "Service", "name": "Google Business Profile" } },
+          { "@type": "Offer", "price": "1990", "priceCurrency": "THB", "itemOffered": { "@type": "Service", "name": "QR Menu" } },
+          { "@type": "Offer", "price": "4990", "priceCurrency": "THB", "itemOffered": { "@type": "Service", "name": "Complete Pack — website, Google and QR menu" } },
+          { "@type": "Offer", "price": "9990", "priceCurrency": "THB", "itemOffered": { "@type": "Service", "name": "Ultimate + Social media" } }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "I'm not good with technology — is that a problem?", "acceptedAnswer": { "@type": "Answer", "text": "Not at all. You send us your photos and we take care of everything else — design, text, hosting and updates." } },
+        { "@type": "Question", "name": "How long until my site is online?", "acceptedAnswer": { "@type": "Answer", "text": "A few days after we receive your photos and information — not weeks." } },
+        { "@type": "Question", "name": "Can I change my photos or menu later?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Edits are unlimited and free — just send us a message whenever something changes." } },
+        { "@type": "Question", "name": "How does the QR menu work?", "acceptedAnswer": { "@type": "Answer", "text": "Your customers scan the code with their phone camera — no app needed — and instantly see your latest menu." } }
+      ]
+    }
   ]
 }
 </script>
 <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/webp" href="assets/img/hero-1.webp" media="(min-width: 701px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="assets/img/hero-1-m.webp" media="(max-width: 700px)" fetchpriority="high">
 <link rel="stylesheet" href="assets/js/vendor/lenis.css">
 <link rel="stylesheet" href="assets/css/nm.css">
+<script src="assets/js/nm-dict.js"></script>
+<script src="assets/js/offers-config.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
@@ -58,9 +81,10 @@
       <span>NM Studio</span>
     </a>
     <nav class="nav" aria-label="Main">
+      <a href="#offers" data-i18n="nav2.offers">Offers</a>
       <a href="#work" data-i18n="nav.work">Work</a>
-      <a href="#process" data-i18n="nav.process">Process</a>
-      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="services.html" data-i18n="nav2.services">Services</a>
+      <a href="pricing.html" data-i18n="nav2.pricing">Pricing</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
     </nav>
     <div class="header__actions">
@@ -77,7 +101,7 @@
           <li><button type="button" data-lang="ar" lang="ar"><span class="flag" data-flag="ar" aria-hidden="true"></span><span>العربية</span></button></li>
         </ul>
       </div>
-      <button type="button" class="btn btn--light btn--sm magnetic header__cta" data-open-booking data-i18n="nav.cta">Start a project</button>
+      <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="btn btn--sun btn--sm magnetic header__cta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.93h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.07-.2-.32a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.15.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.53.13.17 1.73 2.64 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg><span data-i18n="nav2.cta">Chat on WhatsApp</span></a>
       <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" data-i18n-aria-label="a11y.menu" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
@@ -85,62 +109,65 @@
 
 <div class="menu" id="menu" hidden>
   <nav class="menu__nav" aria-label="Mobile">
-    <a href="#work" data-i18n="nav.work">Work</a>
-    <a href="#process" data-i18n="nav.process">Process</a>
-    <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
-    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="#offers" data-i18n="nav2.offers">Offers</a>
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="services.html" data-i18n="nav2.services">Services</a>
+      <a href="pricing.html" data-i18n="nav2.pricing">Pricing</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
   </nav>
-  <button type="button" class="btn btn--light btn--block" data-open-booking data-i18n="nav.cta">Start a project</button>
+  <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="btn btn--sun btn--block"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.93h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.07-.2-.32a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.15.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.53.13.17 1.73 2.64 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg><span data-i18n="nav2.cta">Chat on WhatsApp</span></a>
 </div>
 
 <main id="main">
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top" aria-labelledby="heroTitle">
-  <canvas class="hero__gl" aria-hidden="true"></canvas>
+  <div class="hero__media" aria-hidden="true">
+    <picture class="hero__slide is-on"><source media="(max-width: 700px)" type="image/webp" srcset="assets/img/hero-1-m.webp"><source type="image/webp" srcset="assets/img/hero-1.webp"><img src="assets/img/hero-1.jpg" alt="" width="2200" height="1300" decoding="async" fetchpriority="high"></picture>
+    <picture class="hero__slide" data-lazy><source media="(max-width: 700px)" type="image/webp" data-srcset="assets/img/hero-2-m.webp"><source type="image/webp" data-srcset="assets/img/hero-2.webp"><img data-src="assets/img/hero-2.jpg" alt="" width="2200" height="1300" decoding="async"></picture>
+    <picture class="hero__slide" data-lazy><source media="(max-width: 700px)" type="image/webp" data-srcset="assets/img/hero-3-m.webp"><source type="image/webp" data-srcset="assets/img/hero-3.webp"><img data-src="assets/img/hero-3.jpg" alt="" width="2200" height="1300" decoding="async"></picture>
+  </div>
+  <canvas class="hero__dust" aria-hidden="true"></canvas>
   <div class="hero__veil" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <div class="hero__inner">
     <div class="hero__copy">
-      <p class="hero__eyebrow" data-anim="fade"><span class="live-dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Web studio for restaurants &amp; local businesses</span></p>
-      <h1 class="hero__title" id="heroTitle" data-i18n-html="hero.title" data-anim="words">Websites that bring customers <em>to your door.</em></h1>
+      <p class="hero__eyebrow" data-anim="fade"><span class="live-dot" aria-hidden="true"></span><span data-i18n="hero2.eyebrow">Web studio · Pattaya, Thailand</span></p>
+      <h1 class="hero__title" id="heroTitle" data-i18n-html="hero.title">Websites that bring customers <em>to your door.</em></h1>
+      <p class="hero__price" data-anim="fade" data-i18n-html="hero2.price">Google, QR menu, website — from <b>฿990</b>.</p>
       <p class="hero__sub" data-anim="fade" data-i18n="hero.sub">Send us your photos. We design your website and QR menu in your customers' languages — and you're live in days.</p>
       <div class="hero__ctas" data-anim="fade">
-        <button type="button" class="btn btn--light magnetic" data-open-booking>
-          <span data-i18n="hero.ctaPrimary">Start your project</span>
+        <a href="#offers" class="btn btn--sun btn--lg magnetic">
+          <span data-i18n="hero2.ctaOffers">Discover the offers</span>
           <svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <a href="#work" class="btn btn--ghost magnetic" data-i18n="hero.ctaSecondary">See our work</a>
+        </a>
+        <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="btn btn--glass btn--lg magnetic">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.93h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.07-.2-.32a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.15.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.53.13.17 1.73 2.64 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+          <span data-i18n="hero2.ctaWa">Chat on WhatsApp</span>
+        </a>
       </div>
     </div>
 
-    <div class="hero__stage" aria-hidden="true">
-      <div class="stage" id="stage">
-        <div class="stage__screen stage__screen--back">
-          <div class="frame"><div class="frame__bar"><i></i><i></i><i></i></div><picture><source type="image/webp" srcset="assets/img/work/noir-desk.webp"><img src="assets/img/work/noir-desk.jpg" alt="" width="1280" height="800" decoding="async"></picture></div>
-        </div>
-        <div class="stage__screen stage__screen--mid">
-          <div class="frame"><div class="frame__bar"><i></i><i></i><i></i></div><picture><source type="image/webp" srcset="assets/img/work/malee-desk.webp"><img src="assets/img/work/malee-desk.jpg" alt="" width="1280" height="800" decoding="async"></picture></div>
-        </div>
-        <div class="stage__screen stage__screen--front">
-          <div class="frame"><div class="frame__bar"><i></i><i></i><i></i></div><div class="frame__view" id="stageView"><picture><source type="image/webp" srcset="assets/img/work/giulivo-desk.webp"><img src="assets/img/work/giulivo-desk.jpg" alt="" width="1280" height="800" decoding="async" fetchpriority="high"></picture></div></div>
-        </div>
-        <div class="stage__phone">
-          <div class="device"><div class="device__view" id="stagePhoneView"><picture><source type="image/webp" srcset="assets/img/work/giulivo-mob-360.webp 360w, assets/img/work/giulivo-mob.webp 585w" sizes="(max-width: 959px) 30vw, 12rem"><img src="assets/img/work/giulivo-mob.jpg" alt="" width="585" height="1170" decoding="async"></picture></div></div>
-        </div>
-        <p class="stage__caption" id="stageCaption" aria-live="off"><span class="stage__dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></span><b id="stageName">Giulivo</b><span id="stageCat" data-i18n="work.p1cat">Restaurant · Tuscany</span></p>
-        <div class="stage__chip stage__chip--a"><div class="chip"><span class="live-dot"></span><span data-i18n="hero.chipLive">Live in days</span></div></div>
-        <div class="stage__chip stage__chip--b"><div class="chip"><svg viewBox="0 0 20 20" fill="none"><path d="M3 7V4.5A1.5 1.5 0 014.5 3H7M13 3h2.5A1.5 1.5 0 0117 4.5V7M17 13v2.5a1.5 1.5 0 01-1.5 1.5H13M7 17H4.5A1.5 1.5 0 013 15.5V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="7.5" y="7.5" width="5" height="5" rx=".8" stroke="currentColor" stroke-width="1.5"/></svg><span data-i18n="hero.chipQr">QR menu included</span></div></div>
+    <div class="hero__device" aria-hidden="true">
+      <div class="hero__phone">
+        <div class="device"><div class="device__view" id="stagePhoneView"><picture><source type="image/webp" srcset="assets/img/work/giulivo-mob-360.webp 360w, assets/img/work/giulivo-mob.webp 585w" sizes="15rem"><img src="assets/img/work/giulivo-mob.jpg" alt="" width="585" height="1170" decoding="async"></picture></div></div>
+        <p class="hero__caption" id="stageCaption"><span class="stage__dots"><i class="is-on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span><b id="stageName">Giulivo</b><span id="stageCat" data-i18n="work.p1cat">Restaurant · Tuscany</span></p>
       </div>
+      <div class="hero__chip hero__chip--a"><div class="chip"><span class="live-dot"></span><span data-i18n="hero.chipLive">Live in days</span></div></div>
+      <div class="hero__chip hero__chip--b"><div class="chip"><svg viewBox="0 0 20 20" fill="none"><path d="M3 7V4.5A1.5 1.5 0 014.5 3H7M13 3h2.5A1.5 1.5 0 0117 4.5V7M17 13v2.5a1.5 1.5 0 01-1.5 1.5H13M7 17H4.5A1.5 1.5 0 013 15.5V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="7.5" y="7.5" width="5" height="5" rx=".8" stroke="currentColor" stroke-width="1.5"/></svg><span data-i18n="hero.chipQr">QR menu included</span></div></div>
     </div>
   </div>
 
-  <ul class="hero__facts" data-anim="fade">
-    <li><strong data-i18n="facts.f1v">Days</strong><span data-i18n="facts.f1l">from your photos to a live site</span></li>
-    <li><strong>5</strong><span data-i18n="facts.f2l">languages, including Thai &amp; Arabic</span></li>
-    <li><strong data-i18n="facts.f3v">Unlimited</strong><span data-i18n="facts.f3l">edits, whenever you need them</span></li>
-    <li><strong>0</strong><span data-i18n="facts.f4l">contracts — cancel anytime, free</span></li>
-  </ul>
+  <div class="hero__base">
+    <ul class="hero__facts" data-anim="fade">
+      <li><strong><span data-count="5">5</span></strong><span data-i18n="hero2.l1">languages, including Thai &amp; Arabic</span></li>
+      <li><strong><span data-count="7">7</span></strong><span data-i18n="hero2.l2">live sites to explore</span></li>
+      <li><strong data-i18n="hero2.v3">48h</strong><span data-i18n="hero2.l3">average delivery</span></li>
+      <li><strong><span data-count="0">0</span></strong><span data-i18n="hero2.l4">contracts — pay once, stay free</span></li>
+    </ul>
+    <div class="hero__reel" aria-hidden="true"><i class="is-on"><b></b></i><i><b></b></i><i><b></b></i></div>
+  </div>
 </section>
 
 <!-- ============ WHO IT'S FOR ============ -->
@@ -154,30 +181,124 @@
   <p class="visually-hidden" data-i18n="audience.sr">We work with restaurants, cafés, hair salons, spas and massage salons, bars, street food vendors and local companies.</p>
 </div>
 
-<!-- ============ WHY ============ -->
+<!-- ============ STORY (3 screens) ============ -->
+<section class="story" id="story" aria-labelledby="storyEyebrow">
+  <div class="story__sticky">
+    <div class="story__bg" aria-hidden="true">
+      <picture class="story__img is-on"><source media="(max-width: 700px)" type="image/webp" srcset="assets/img/story-1-m.webp"><source type="image/webp" srcset="assets/img/story-1.webp"><img src="assets/img/story-1.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async"></picture>
+      <picture class="story__img"><source media="(max-width: 700px)" type="image/webp" srcset="assets/img/story-2-m.webp"><source type="image/webp" srcset="assets/img/story-2.webp"><img src="assets/img/story-2.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async"></picture>
+      <picture class="story__img"><source media="(max-width: 700px)" type="image/webp" srcset="assets/img/story-3-m.webp"><source type="image/webp" srcset="assets/img/story-3.webp"><img src="assets/img/story-3.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async"></picture>
+    </div>
+    <div class="story__shade" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="container story__inner">
+      <p class="eyebrow" id="storyEyebrow" data-i18n="story.eyebrow">Right now, in Pattaya</p>
+      <ol class="story__lines">
+        <li class="story__line is-on"><span class="story__n">01</span><p data-i18n-html="story.l1">Tourists are searching for you on Google <em>right now.</em></p></li>
+        <li class="story__line"><span class="story__n">02</span><p data-i18n-html="story.l2">Without a listing, <em>they don't find you.</em></p></li>
+        <li class="story__line"><span class="story__n">03</span><p data-i18n-html="story.l3">Here's how we fix that — <em>in days.</em></p></li>
+      </ol>
+      <div class="story__foot">
+        <div class="story__bars" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
+        <a href="#offers" class="link-arrow story__cta"><span data-i18n="story.cta">See how</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12m0 0l-4.5-4.5M10 16l4.5-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFFERS ============ -->
+<section class="offers" id="offers" aria-labelledby="offersTitle">
+  <div class="offers__glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow" data-i18n="offers.eyebrow">Offers</p>
+      <h2 class="section-title" id="offersTitle" data-i18n-html="offers.title" data-anim="words">Four ways to get found. <em>Pick yours.</em></h2>
+      <p class="section-lead" data-i18n="offers.lead">Prices in Thai baht, paid once. Add a care plan later if you want us to keep everything fresh.</p>
+    </div>
+    <div class="offer-grid">
+      <article class="offer" data-offer="google" data-anim="rise">
+        <div class="offer__top"><span class="offer__tier">01</span><span class="offer__watch"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8.2 6.8v6.4l5-3.2z" fill="currentColor"/></svg><span data-i18n="offers.watch">Watch the video</span></span></div>
+        <div class="offer__icon" data-icon="google"></div>
+        <h3 class="offer__name" data-i18n="offers.google.name">Google Business Profile</h3>
+        <p class="offer__benefit" data-i18n="offers.google.benefit">Show up on Google Maps — with photos that make people stop scrolling.</p>
+        <div class="offer__price"><strong data-thb="990">฿990</strong><span data-i18n="offers.once">one-time</span></div>
+        <p class="offer__approx" data-approx="990">≈ 25 €</p>
+        <button type="button" class="btn btn--outline btn--block offer__more" data-offer-open="google"><span data-i18n="offers.details">View details</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </article>
+      <article class="offer" data-offer="qr" data-anim="rise">
+        <div class="offer__top"><span class="offer__tier">02</span><span class="offer__watch"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8.2 6.8v6.4l5-3.2z" fill="currentColor"/></svg><span data-i18n="offers.watch">Watch the video</span></span></div>
+        <div class="offer__icon" data-icon="qr"></div>
+        <h3 class="offer__name" data-i18n="offers.qr.name">QR Menu</h3>
+        <p class="offer__benefit" data-i18n="offers.qr.benefit">Your menu on every phone, in their language — change it anytime.</p>
+        <div class="offer__price"><strong data-thb="1990">฿1,990</strong><span data-i18n="offers.once">one-time</span></div>
+        <p class="offer__approx" data-approx="1990">≈ 50 €</p>
+        <button type="button" class="btn btn--outline btn--block offer__more" data-offer-open="qr"><span data-i18n="offers.details">View details</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </article>
+      <article class="offer offer--featured" data-offer="pack" data-anim="rise">
+        <span class="offer__badge" data-i18n="offers.popular">Most popular</span>
+        <div class="offer__top"><span class="offer__tier">03</span><span class="offer__watch"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8.2 6.8v6.4l5-3.2z" fill="currentColor"/></svg><span data-i18n="offers.watch">Watch the video</span></span></div>
+        <div class="offer__icon" data-icon="pack"></div>
+        <h3 class="offer__name" data-i18n="offers.pack.name">Complete Pack</h3>
+        <p class="offer__benefit" data-i18n="offers.pack.benefit">Website, Google and QR menu — everything a tourist looks for, done for you.</p>
+        <div class="offer__price"><strong data-thb="4990">฿4,990</strong><span data-i18n="offers.once">one-time</span></div>
+        <p class="offer__approx" data-approx="4990">≈ 125 €</p>
+        <button type="button" class="btn btn--sun btn--block offer__more" data-offer-open="pack"><span data-i18n="offers.details">View details</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </article>
+      <article class="offer" data-offer="ultimate" data-anim="rise">
+        <div class="offer__top"><span class="offer__tier">04</span><span class="offer__watch"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8.2 6.8v6.4l5-3.2z" fill="currentColor"/></svg><span data-i18n="offers.watch">Watch the video</span></span></div>
+        <div class="offer__icon" data-icon="ultimate"></div>
+        <h3 class="offer__name" data-i18n="offers.ultimate.name">Ultimate + Social</h3>
+        <p class="offer__benefit" data-i18n="offers.ultimate.benefit">The Complete Pack, plus social media that runs itself — with a new video every month.</p>
+        <div class="offer__price"><strong data-thb="9990">฿9,990</strong><span data-i18n="offers.once">one-time</span></div>
+        <p class="offer__approx" data-approx="9990">≈ 250 €</p>
+        <button type="button" class="btn btn--outline btn--block offer__more" data-offer-open="ultimate"><span data-i18n="offers.details">View details</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </article>
+    </div>
+    <p class="offers__links">
+      <a class="link-arrow" href="pricing.html"><span data-i18n="offers.pricingLink">See prices &amp; care plans</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="link-arrow" href="services.html#compare"><span data-i18n="offers.compare">Compare the offers</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </p>
+    <div class="trust">
+      <p class="trust__secure"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.5" y="9" width="11" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 9V6.5a3 3 0 016 0V9" stroke="currentColor" stroke-width="1.6"/></svg><span data-i18n="trust.secure">Secure payment by Stripe</span></p>
+      <ul class="trust__marks" aria-label="Card · Apple Pay · Google Pay · PromptPay" data-i18n-aria-label="trust.methods">
+        <li class="pm pm--visa" aria-hidden="true">VISA</li>
+        <li class="pm pm--mc" aria-hidden="true"><i></i><i></i></li>
+        <li class="pm pm--apple" aria-hidden="true"><svg viewBox="0 0 14 17"><path fill="currentColor" d="M11.6 9c0-2 1.7-3 1.8-3a3.9 3.9 0 00-3-1.7c-1.3-.1-2.5.8-3.2.8s-1.7-.8-2.8-.7A4.2 4.2 0 00.9 6.6c-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.5 2.2 2.6 2.1s1.4-.7 2.7-.7 1.6.7 2.7.7 1.8-1 2.5-2.1a8.7 8.7 0 001.1-2.3A3.6 3.6 0 0111.6 9zM9.5 2.8A3.6 3.6 0 0010.4 0a3.8 3.8 0 00-2.4 1.3 3.5 3.5 0 00-.9 2.6 3.1 3.1 0 002.4-1.1z"/></svg>Pay</li>
+        <li class="pm pm--gpay" aria-hidden="true"><b>G</b>Pay</li>
+        <li class="pm pm--pp" aria-hidden="true">PromptPay</li>
+      </ul>
+      <p class="trust__note" data-i18n="trust.noCard">Card details never touch this site</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY NM STUDIO ============ -->
 <section class="why" id="why" aria-labelledby="whyTitle">
   <div class="container">
-    <p class="eyebrow" data-i18n="why.eyebrow">Why it matters</p>
-    <h2 class="manifesto" id="whyTitle" data-i18n-html="why.manifesto" data-anim="scrub">Your next customers are already searching. <em>We make sure they find you — and choose you.</em></h2>
-
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow" data-i18n="why2.eyebrow">Why NM Studio</p>
+        <h2 class="section-title" id="whyTitle" data-i18n-html="why2.title" data-anim="words">Real people. <em>Real results.</em></h2>
+      </div>
+    </div>
     <ol class="reasons">
       <li class="reason" data-anim="rise">
         <span class="reason__num">01</span>
-        <span class="reason__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.6 7-11.8A7 7 0 005 9.2C5 14.4 12 21 12 21z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="9.2" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg></span>
-        <h3 class="reason__title" data-i18n="why.r1t">Found on Google &amp; Maps</h3>
-        <p class="reason__body" data-i18n="why.r1b">Travellers choose where to eat and unwind before they even land. With a real website, they find you — not the place next door.</p>
+        <span class="reason__icon reason__icon--visit" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.6 7-11.8A7 7 0 005 9.2C5 14.4 12 21 12 21z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="9.2" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg><i></i></span>
+        <h3 class="reason__title" data-i18n="why2.r1t">We come to you</h3>
+        <p class="reason__body" data-i18n="why2.r1b">We meet you at your shop anywhere in Pattaya, take the photos and handle everything. You never touch the tech.</p>
       </li>
       <li class="reason" data-anim="rise">
         <span class="reason__num">02</span>
-        <span class="reason__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8l7.5 3.2v5.2c0 5-3.2 8.4-7.5 9.6-4.3-1.2-7.5-4.6-7.5-9.6V6L12 2.8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.6 11.8l2.4 2.4 4.6-4.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <h3 class="reason__title" data-i18n="why.r2t">A first impression that earns trust</h3>
-        <p class="reason__body" data-i18n="why.r2b">A beautiful site shows you take your business seriously. It reassures new customers far more than a social media page on its own.</p>
+        <span class="reason__icon reason__icon--fast" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 13V9.2M9.5 2.8h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="reason__hand" d="M12 13l3.2-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <h3 class="reason__title" data-i18n="why2.r2t">Live in days, not months</h3>
+        <p class="reason__body" data-i18n="why2.r2b">Send your photos today — your listing, menu or website goes live within days.</p>
       </li>
       <li class="reason" data-anim="rise">
         <span class="reason__num">03</span>
-        <span class="reason__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8V5.5A1.5 1.5 0 015.5 4H8M16 4h2.5A1.5 1.5 0 0120 5.5V8M20 16v2.5a1.5 1.5 0 01-1.5 1.5H16M8 20H5.5A1.5 1.5 0 014 18.5V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></span>
-        <h3 class="reason__title" data-i18n="why.r3t">A menu that's always up to date</h3>
-        <p class="reason__body" data-i18n="why.r3b">One QR code on the table, always current. Change a price or a dish in minutes — no reprinting, ever again.</p>
+        <span class="reason__icon reason__icon--chat" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 18.5l1.1-3.3A7.5 7.5 0 1112 19.5a7.4 7.4 0 01-3.9-1.1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle class="reason__dot" cx="9" cy="12" r="1" fill="currentColor"/><circle class="reason__dot" cx="12" cy="12" r="1" fill="currentColor"/><circle class="reason__dot" cx="15" cy="12" r="1" fill="currentColor"/></svg></span>
+        <h3 class="reason__title" data-i18n="why2.r3t">Edits on WhatsApp, no contract</h3>
+        <p class="reason__body" data-i18n="why2.r3b">Change a price, a dish or a photo with one message. Pay once, stay because you want to.</p>
       </li>
     </ol>
   </div>
@@ -258,6 +379,34 @@
   </div>
 </section>
 
+<!-- ============ CALCULATOR ============ -->
+<section class="calc" id="calc" aria-labelledby="calcTitle">
+  <div class="container calc__grid">
+    <div class="calc__intro">
+      <p class="eyebrow" data-i18n="calc.eyebrow">Quick maths</p>
+      <h2 class="section-title" id="calcTitle" data-i18n-html="calc.title" data-anim="words">How many customers are you <em>losing?</em></h2>
+      <p class="section-lead" data-i18n="calc.lead">Move the sliders. Every tourist who can't find you walks into the place next door.</p>
+    </div>
+    <div class="calc__card" data-anim="rise">
+      <div class="range">
+        <div class="range__top"><label for="calcSpend" data-i18n="calc.spend">Average spend per customer</label><output id="calcSpendOut" for="calcSpend">฿400</output></div>
+        <input type="range" id="calcSpend" min="100" max="2000" step="50" value="400">
+      </div>
+      <div class="range">
+        <div class="range__top"><label for="calcMissed" data-i18n="calc.missed">Customers who can't find you, each week</label><output id="calcMissedOut" for="calcMissed">10</output></div>
+        <input type="range" id="calcMissed" min="1" max="60" step="1" value="10">
+      </div>
+      <div class="calc__result" aria-live="polite">
+        <p class="calc__label" data-i18n="calc.month">Walking past you every month</p>
+        <p class="calc__big" id="calcMonth">฿17,320</p>
+        <p class="calc__pay"><span data-i18n="calc.pays">The Complete Pack pays for itself in</span> <b id="calcDays">9 days</b></p>
+      </div>
+      <a href="#offers" class="btn btn--sun btn--block magnetic"><span data-i18n="calc.cta">Stop losing them</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p class="calc__note" data-i18n="calc.note">An estimate based on your own numbers — not a promise.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ WORK ============ -->
 <section class="work" id="work" aria-labelledby="workTitle">
   <div class="container">
@@ -279,7 +428,7 @@
           <p class="project__cat" data-i18n="work.p1cat">Restaurant · Tuscany</p>
           <p class="project__desc" data-i18n="work.p1desc">A warm, photo-led site for a family trattoria: the full menu, reservations, and a QR menu on every table — in Italian, English, German and Thai.</p>
           <ul class="project__tags"><li data-i18n="work.tMulti">4 languages</li><li data-i18n="work.tQr">QR menu</li><li data-i18n="work.tBooking">Online booking</li></ul>
-          <a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="project__links"><a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><button type="button" class="link-arrow link-preview" data-preview="../" data-name="Giulivo"><span data-i18n="preview.btn">Live preview</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="15" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
         </div>
       </article>
 
@@ -294,7 +443,7 @@
           <p class="project__cat" data-i18n="work.p2cat">Massage &amp; spa · Pattaya</p>
           <p class="project__desc" data-i18n="work.p2desc">A premium spa site with real photography: treatments priced live by duration, a “how do you feel?” recommender, a gift-card builder and WhatsApp booking — in four languages.</p>
           <ul class="project__tags"><li data-i18n="work.tTreat">Treatment picker</li><li data-i18n="work.tBooking">Online booking</li><li data-i18n="work.tMobile">Mobile-first</li></ul>
-          <a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/v6-thai-spa/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="project__links"><a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/v6-thai-spa/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><button type="button" class="link-arrow link-preview" data-preview="../v6-thai-spa/" data-name="Malee"><span data-i18n="preview.btn">Live preview</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="15" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
         </div>
       </article>
 
@@ -309,7 +458,7 @@
           <p class="project__cat" data-i18n="work.p3cat">Hair salon · Bangkok</p>
           <p class="project__desc" data-i18n="work.p3desc">A fashion-magazine feel for a hair and beauty studio: a clear price list, client reviews and one-tap booking on WhatsApp.</p>
           <ul class="project__tags"><li data-i18n="work.tPrices">Price list</li><li data-i18n="work.tReviews">Reviews</li><li data-i18n="work.tWhatsapp">WhatsApp booking</li></ul>
-          <a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="project__links"><a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><button type="button" class="link-arrow link-preview" data-preview="../noir/" data-name="Noir"><span data-i18n="preview.btn">Live preview</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="15" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
         </div>
       </article>
 
@@ -324,7 +473,7 @@
           <p class="project__cat" data-i18n="work.p4cat">B2B supplier · France</p>
           <p class="project__desc" data-i18n="work.p4desc">A confident corporate site for a cladding supplier: a video hero, services, partner brands, projects and quote requests.</p>
           <ul class="project__tags"><li data-i18n="work.tVideo">Video hero</li><li data-i18n="work.tProjects">Projects</li><li data-i18n="work.tQuote">Quote requests</li></ul>
-          <a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/facadiers/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="project__links"><a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/facadiers/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><button type="button" class="link-arrow link-preview" data-preview="../facadiers/" data-name="Atelier des Façadiers"><span data-i18n="preview.btn">Live preview</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="15" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
         </div>
       </article>
 
@@ -339,7 +488,7 @@
           <p class="project__cat" data-i18n="work.p5cat">Bar &amp; nightlife · Pattaya</p>
           <p class="project__desc" data-i18n="work.p5desc">A neon-lit site for a pool bar: tonight's event and a live happy-hour countdown, the drinks menu, pool nights and table booking on WhatsApp — in four languages.</p>
           <ul class="project__tags"><li data-i18n="work.tLive">Live happy hour</li><li data-i18n="work.tEvents">Weekly events</li><li data-i18n="work.tWhatsapp">WhatsApp booking</li></ul>
-          <a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/neon-tiger/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="project__links"><a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/neon-tiger/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><button type="button" class="link-arrow link-preview" data-preview="../neon-tiger/" data-name="Neon Tiger"><span data-i18n="preview.btn">Live preview</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="15" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
         </div>
       </article>
 
@@ -354,7 +503,7 @@
           <p class="project__cat" data-i18n="work.p6cat">Street food · Pattaya</p>
           <p class="project__desc" data-i18n="work.p6desc">A lively, simple site for a street kitchen: a filterable menu, a takeaway bag sent to WhatsApp, a spice meter, tonight's chalkboard special and phrase cards to show the cook.</p>
           <ul class="project__tags"><li data-i18n="work.tOrder">Takeaway ordering</li><li data-i18n="work.tSpice">Spice meter</li><li data-i18n="work.tMulti">4 languages</li></ul>
-          <a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/street-food/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="project__links"><a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/street-food/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><button type="button" class="link-arrow link-preview" data-preview="../street-food/" data-name="Mae Lek"><span data-i18n="preview.btn">Live preview</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="15" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
         </div>
       </article>
 
@@ -369,7 +518,7 @@
           <p class="project__cat" data-i18n="work.p7cat">Scooter rental · Pattaya</p>
           <p class="project__desc" data-i18n="work.p7desc">A premium rental site: fleet with day, week and month prices, a range calendar with live pricing and extras, hotel delivery and requests on WhatsApp.</p>
           <ul class="project__tags"><li data-i18n="work.tFleet">Fleet &amp; prices</li><li data-i18n="work.tCalendar">Booking calendar</li><li data-i18n="work.tWhatsapp">WhatsApp booking</li></ul>
-          <a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/scooter/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="project__links"><a class="link-arrow" href="https://mouradoulf-cmd.github.io/Mourad-site/scooter/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit live site</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><button type="button" class="link-arrow link-preview" data-preview="../scooter/" data-name="Ride Siam"><span data-i18n="preview.btn">Live preview</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="15" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
         </div>
       </article>
     </div>
@@ -472,59 +621,48 @@
   </div>
 </section>
 
-<!-- ============ PRICING ============ -->
-<section class="pricing" id="pricing" aria-labelledby="pricingTitle">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <p class="eyebrow" data-i18n="pricing.eyebrow">Pricing</p>
-      <h2 class="section-title" id="pricingTitle" data-i18n-html="pricing.title" data-anim="words">Simple plans. <em>No surprises.</em></h2>
-      <p class="section-lead" data-i18n="pricing.lead">Every plan includes a QR menu. Start small and upgrade whenever your business is ready.</p>
+<!-- ============ WE COME TO YOU (map) ============ -->
+<section class="visit" id="visit" aria-labelledby="visitTitle">
+  <div class="container visit__grid">
+    <div class="visit__copy">
+      <p class="eyebrow" data-i18n="visit.eyebrow">We come to you</p>
+      <h2 class="section-title" id="visitTitle" data-i18n-html="visit.title" data-anim="words">Anywhere in Pattaya. <em>Free visit.</em></h2>
+      <p class="section-lead" data-i18n="visit.lead">Naklua, Central Pattaya, Pratumnak or Jomtien — we come to your shop, show you what your site could look like and take the photos on the spot.</p>
+      <button type="button" class="btn btn--sun btn--lg magnetic visit__cta" data-open-booking><span data-i18n="visit.cta">Book a free visit</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
-
-    <div class="plans">
-      <article class="plan" data-anim="rise">
-        <h3 class="plan__name" data-i18n="pricing.basic.title">Basic</h3>
-        <p class="plan__tagline" data-i18n="pricing.basic.tagline">Your menu, one scan away.</p>
-        <p class="plan__price"><span class="plan__amount" data-price="basicSetup">50 €</span><span class="plan__unit" data-i18n="pricing.setup">one-time setup</span></p>
-        <p class="plan__monthly"><strong data-price="basicMonthly">15 €</strong> <span data-i18n="pricing.monthly">per month</span></p>
-        <ul class="plan__features">
-          <li data-i18n="pricing.basic.f1">QR code menu, always up to date</li>
-          <li data-i18n="pricing.basic.f2">Unlimited menu edits</li>
-          <li data-i18n="pricing.basic.f3">Works on any phone — no app needed</li>
-        </ul>
-        <a href="checkout.html?plan=basic" class="btn btn--outline btn--block plan__cta" data-i18n="pricing.basic.cta">Choose Basic</a>
-        <a href="../giulivo-qr-menu.html" target="_blank" rel="noopener" class="plan__demo" data-i18n="pricing.basic.demo">See a real QR menu →</a>
-      </article>
-
-      <article class="plan plan--featured" data-anim="rise">
-        <span class="plan__badge" data-i18n="pricing.popular">Most popular</span>
-        <h3 class="plan__name" data-i18n="pricing.pro.title">Pro</h3>
-        <p class="plan__tagline" data-i18n="pricing.pro.tagline">Your own website, done for you.</p>
-        <p class="plan__price"><span class="plan__amount" data-price="proSetup">100 €</span><span class="plan__unit" data-i18n="pricing.setup">one-time setup</span></p>
-        <p class="plan__monthly"><strong data-price="proMonthly">30 €</strong> <span data-i18n="pricing.monthly">per month</span></p>
-        <ul class="plan__features">
-          <li data-i18n="pricing.pro.f1">Everything in Basic</li>
-          <li data-i18n="pricing.pro.f2">A custom website built from your photos</li>
-          <li data-i18n="pricing.pro.f3">Multilingual, with Google Maps &amp; WhatsApp</li>
-          <li data-i18n="pricing.pro.f4">Live in days, not months</li>
-        </ul>
-        <a href="checkout.html?plan=pro" class="btn btn--light btn--block plan__cta" data-i18n="pricing.pro.cta">Choose Pro</a>
-      </article>
-
-      <article class="plan" data-anim="rise">
-        <h3 class="plan__name" data-i18n="pricing.elite.title">Elite</h3>
-        <p class="plan__tagline" data-i18n="pricing.elite.tagline">The complete package, zero effort.</p>
-        <p class="plan__price"><span class="plan__amount" data-price="eliteSetup">300 €</span><span class="plan__unit" data-i18n="pricing.setup">one-time setup</span></p>
-        <p class="plan__monthly"><strong data-price="eliteMonthly">100 €</strong> <span data-i18n="pricing.monthly">per month</span></p>
-        <ul class="plan__features">
-          <li data-i18n="pricing.elite.f1">Everything in Pro</li>
-          <li data-i18n="pricing.elite.f2">Social media set up &amp; managed</li>
-          <li data-i18n="pricing.elite.f3">Priority support</li>
-        </ul>
-        <a href="checkout.html?plan=elite" class="btn btn--outline btn--block plan__cta" data-i18n="pricing.elite.cta">Choose Elite</a>
-      </article>
-    </div>
-    <p class="pricing__note"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pricing.note">No contract, no hidden fees. Cancel anytime, free of charge.</span></p>
+    <figure class="visit__map" data-anim="rise">
+      <svg viewBox="0 0 400 480" role="img" aria-labelledby="mapTitle" class="map">
+        <title id="mapTitle" data-i18n="visit.mapAlt">Stylised map of Pattaya showing the areas we visit, from Naklua to Jomtien</title>
+        <defs>
+          <linearGradient id="mapSea" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#15110f"/><stop offset="1" stop-color="#1d1714"/></linearGradient>
+          <pattern id="mapGrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0v20" fill="none" stroke="rgba(255,240,225,.05)" stroke-width="1"/></pattern>
+          <radialGradient id="mapPulse"><stop offset="0" stop-color="#f0643c" stop-opacity=".55"/><stop offset="1" stop-color="#f0643c" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="400" height="480" fill="url(#mapGrid)"/>
+        <path class="map__sea" d="M168 0C156 58 182 104 172 150c-8 38-28 64-18 104 8 30-22 56-12 92 9 34 38 60 26 134H0V0z" fill="url(#mapSea)"/>
+        <path class="map__coast" d="M168 0C156 58 182 104 172 150c-8 38-28 64-18 104 8 30-22 56-12 92 9 34 38 60 26 134"/>
+        <text class="map__sea-label" x="60" y="250" data-i18n="visit.sea">Gulf of Thailand</text>
+        <path class="map__road map__road--main" d="M306 0c-6 120 10 240 2 480"/>
+        <path class="map__road" d="M246 0c-10 90 8 170-2 260s16 160 6 220"/>
+        <path class="map__road" d="M186 0c-8 60 16 106 6 150-8 36-26 62-16 102"/>
+        <path class="map__road map__road--thin" d="M170 330c40-8 80 4 136 0M160 200h146M180 90h126M190 410h116"/>
+        <path class="map__route" id="mapRoute" d="M332 250C300 250 260 200 214 198"/>
+        <g class="map__areas">
+          <g class="map__area" data-area="naklua" transform="translate(212 70)"><circle r="5"/><text x="12" y="4" data-i18n="visit.naklua">Naklua</text></g>
+          <g class="map__area" data-area="central" transform="translate(214 198)"><circle r="5"/><text x="12" y="4" data-i18n="visit.central">Central Pattaya</text></g>
+          <g class="map__area" data-area="walking" transform="translate(196 272)"><circle r="5"/><text x="12" y="4" data-i18n="visit.walking">Walking Street</text></g>
+          <g class="map__area" data-area="pratumnak" transform="translate(178 330)"><circle r="5"/><text x="12" y="4" data-i18n="visit.pratumnak">Pratumnak</text></g>
+          <g class="map__area" data-area="jomtien" transform="translate(208 424)"><circle r="5"/><text x="12" y="4" data-i18n="visit.jomtien">Jomtien</text></g>
+          <g class="map__area" data-area="east" transform="translate(332 250)"><circle r="5"/><text x="0" y="24" text-anchor="middle" data-i18n="visit.east">East Pattaya</text></g>
+        </g>
+        <g class="map__pin" id="mapPin" transform="translate(214 198)">
+          <circle class="map__pulse" r="34" fill="url(#mapPulse)"/>
+          <path d="M0 0s-13-12-13-21.5a13 13 0 0126 0C13-12 0 0 0 0z" fill="#f0643c"/>
+          <circle cy="-21.5" r="5" fill="#fff"/>
+        </g>
+      </svg>
+      <figcaption class="visit__tag"><span class="live-dot" aria-hidden="true"></span><span data-i18n="visit.pin">On our way</span> · <b id="mapArea">Central Pattaya</b></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -556,23 +694,19 @@
 <!-- ============ FINAL CTA ============ -->
 <section class="finale" aria-labelledby="finaleTitle">
   <div class="finale__glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
   <div class="container finale__inner">
     <p class="eyebrow" data-i18n="finale.eyebrow">Let's talk</p>
-    <h2 class="finale__title" id="finaleTitle" data-i18n-html="finale.title" data-anim="words">Your next customer is searching <em>right now.</em></h2>
-    <button type="button" class="orbit magnetic" data-open-booking data-i18n-aria-label="nav.cta" aria-label="Start a project">
-      <svg class="orbit__ring" viewBox="0 0 200 200" aria-hidden="true">
-        <defs><path id="orbitPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-        <text><textPath href="#orbitPath" textLength="486" lengthAdjust="spacing" data-i18n="finale.orbit">START A PROJECT · START A PROJECT · </textPath></text>
-      </svg>
-      <span class="orbit__core" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    </button>
+    <h2 class="finale__title" id="finaleTitle" data-i18n-html="finale2.title" data-anim="words">Ready to be seen? <em>Message us on WhatsApp.</em></h2>
+    <a class="wa-giant magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener">
+      <span class="wa-giant__rings" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="wa-giant__core" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.93h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.07-.2-.32a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.15.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.53.13.17 1.73 2.64 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg></span>
+      <span class="wa-giant__label" data-i18n="finale2.wa">Chat on WhatsApp</span>
+    </a>
+    <p class="finale__replies"><span class="live-dot" aria-hidden="true"></span><span data-i18n="finale2.replies">We usually reply within minutes</span></p>
     <p class="finale__sub" data-i18n="finale.sub">Tell us about your business. We'll come and meet you, show you what your site could look like, and get it online in days.</p>
     <div class="finale__ctas">
-      <button type="button" class="btn btn--light btn--lg magnetic" data-open-booking>
-        <span data-i18n="finale.book">Book a meeting</span>
-        <svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="btn btn--ghost btn--lg magnetic" data-i18n="finale.whatsapp">Message us on WhatsApp</a>
+      <button type="button" class="btn btn--ghost btn--lg magnetic" data-open-booking><span data-i18n="finale.book">Book a meeting</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
 </section>
@@ -588,24 +722,28 @@
           <span>NM Studio</span>
         </a>
         <p data-i18n="footer.tagline">Websites and QR menus for restaurants and local businesses.</p>
+        <div class="footer__langs"><button type="button" class="flag-btn" data-lang="en" lang="en" aria-label="English" title="English"><span class="flag" data-flag="en" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="fr" lang="fr" aria-label="Français" title="Français"><span class="flag" data-flag="fr" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="it" lang="it" aria-label="Italiano" title="Italiano"><span class="flag" data-flag="it" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="th" lang="th" aria-label="ไทย" title="ไทย"><span class="flag" data-flag="th" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="ar" lang="ar" aria-label="العربية" title="العربية"><span class="flag" data-flag="ar" aria-hidden="true"></span></button></div>
       </div>
       <nav class="footer__col" aria-label="Footer">
         <p class="footer__label" data-i18n="footer.explore">Explore</p>
+        <a href="#offers" data-i18n="nav2.offers">Offers</a>
         <a href="#work" data-i18n="nav.work">Work</a>
-        <a href="#process" data-i18n="nav.process">Process</a>
-        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="services.html" data-i18n="nav2.services">Services</a>
+        <a href="pricing.html" data-i18n="nav2.pricing">Pricing</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
       <div class="footer__col">
         <p class="footer__label" data-i18n="footer.contact">Contact</p>
         <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener">WhatsApp</a>
         <button type="button" class="footer__link" data-open-booking data-i18n="footer.book">Book a meeting</button>
+        <a href="account.html" data-i18n="nav2.account">My account</a>
       </div>
       <div class="footer__col">
-        <p class="footer__label" data-i18n="footer.language">Language</p>
-        <div class="footer__langs">
-          <button type="button" class="flag-btn" data-lang="en" lang="en" aria-label="English" title="English"><span class="flag" data-flag="en" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="fr" lang="fr" aria-label="Français" title="Français"><span class="flag" data-flag="fr" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="it" lang="it" aria-label="Italiano" title="Italiano"><span class="flag" data-flag="it" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="th" lang="th" aria-label="ไทย" title="ไทย"><span class="flag" data-flag="th" aria-hidden="true"></span></button><button type="button" class="flag-btn" data-lang="ar" lang="ar" aria-label="العربية" title="العربية"><span class="flag" data-flag="ar" aria-hidden="true"></span></button>
-        </div>
+        <p class="footer__label" data-i18n="footer2.legal">Legal</p>
+        <a href="legal.html#notice" data-i18n="footer2.notice">Legal notice</a>
+        <a href="legal.html#terms" data-i18n="footer2.terms">Terms of sale</a>
+        <a href="legal.html#privacy" data-i18n="footer2.privacy">Privacy</a>
+        <a href="legal.html#cookies" data-i18n="footer2.cookies">Cookies</a>
       </div>
     </div>
     <p class="footer__word" aria-hidden="true">NM Studio</p>
@@ -616,11 +754,9 @@
     </div>
   </div>
   <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="wa-float" data-i18n-aria-label="a11y.whatsapp" aria-label="Message us on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.93h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.07-.2-.32a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.15.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.53.13.17 1.73 2.64 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
-</a>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.93h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.07-.2-.32a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.15.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.53.13.17 1.73 2.64 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+  </a>
 </footer>
-
-
 
 <dialog class="booking" id="booking" aria-labelledby="bookingTitle">
   <form class="booking__card" id="bookingForm" novalidate>
@@ -660,13 +796,59 @@
   </form>
 </dialog>
 
+<dialog class="om" id="offerModal" aria-labelledby="omTitle">
+  <div class="om__card">
+    <button type="button" class="dialog-close om__close" data-close data-i18n-aria-label="offers.close" aria-label="Close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+    <div class="om__media" id="omMedia">
+      <div class="om__art" id="omArt"></div>
+      <p class="om__soon"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8.2 6.8v6.4l5-3.2z" fill="currentColor"/></svg><span data-i18n="offers.soon">Video coming soon</span></p>
+    </div>
+    <div class="om__body">
+      <p class="om__tier" id="omTier">03</p>
+      <h2 class="om__title" id="omTitle">Complete Pack</h2>
+      <p class="om__benefit" id="omBenefit"></p>
+      <p class="om__price"><strong id="omPrice">฿4,990</strong> <span data-i18n="offers.once">one-time</span> <span class="om__approx" id="omApprox"></span></p>
+      <p class="om__label" data-i18n="offers.includes">What's included</p>
+      <ul class="om__list" id="omList"></ul>
+      <dl class="om__meta">
+        <div><dt data-i18n="offers.delivery">Delivery</dt><dd id="omTime"></dd></div>
+        <div><dt data-i18n="offers.care">Optional care plan</dt><dd id="omCare"></dd></div>
+      </dl>
+      <div class="om__ctas">
+        <a class="btn btn--sun btn--lg btn--block" id="omOrder" href="checkout.html?offer=pack"><span id="omOrderLabel">Order now — ฿4,990</span><svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn btn--ghost btn--lg btn--block" href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.93h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.07-.2-.32a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.15.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.53.13.17 1.73 2.64 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg><span data-i18n="offers.chat">Chat on WhatsApp</span></a>
+      </div>
+      <p class="om__trust"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.5" y="9" width="11" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 9V6.5a3 3 0 016 0V9" stroke="currentColor" stroke-width="1.6"/></svg><span data-i18n="trust.secure">Secure payment by Stripe</span> · <span data-i18n="trust.methods">Card · Apple Pay · Google Pay · PromptPay</span></p>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="pv" id="preview" aria-labelledby="pvName">
+  <div class="pv__card">
+    <div class="pv__bar">
+      <p class="pv__title"><span class="live-dot" aria-hidden="true"></span><span data-i18n="preview.title">Live preview</span> · <b id="pvName">Giulivo</b></p>
+      <div class="seg pv__modes" role="group" data-i18n-aria-label="preview.title" aria-label="Live preview">
+        <button type="button" class="seg__btn" data-mode="desktop" aria-pressed="true" data-i18n="preview.desktop">Desktop</button>
+        <button type="button" class="seg__btn" data-mode="mobile" aria-pressed="false" data-i18n="preview.mobile">Mobile</button>
+      </div>
+      <a class="pv__open" id="pvOpen" href="#" target="_blank" rel="noopener"><span data-i18n="preview.open">Open in a new tab</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button type="button" class="dialog-close" data-close data-i18n-aria-label="preview.close" aria-label="Close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="pv__stage" id="pvStage" data-mode="desktop">
+      <div class="pv__viewport" id="pvViewport"><iframe id="pvFrame" title="Live preview" tabindex="0"></iframe></div>
+      <p class="pv__loading" data-i18n="preview.loading">Loading the live site…</p>
+    </div>
+  </div>
+</dialog>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/offer-icons.js" defer></script>
 <script src="assets/js/vendor/gsap.min.js" defer></script>
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/vendor/lenis.min.js" defer></script>
-<script src="assets/js/hero-gl.js" defer></script>
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/nm-home.js" defer></script>
 </body>
 </html>
