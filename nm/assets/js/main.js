@@ -24,6 +24,7 @@
       (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
     }
   }
+  window.NM_LENIS = lenis;
   // Offsets come from CSS scroll-padding-top (header height), which both
   // Lenis and native scrolling respect.
   function scrollToTarget(target) {
@@ -98,7 +99,7 @@
         navLinks.forEach(function (a) { a.classList.toggle("is-current", a.getAttribute("href") === "#" + entry.target.id); });
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    ["work", "process", "pricing", "faq"].forEach(function (id) { var s = document.getElementById(id); if (s) sectionObserver.observe(s); });
+    ["offers", "work", "faq"].forEach(function (id) { var s = document.getElementById(id); if (s) sectionObserver.observe(s); });
   }
 
   /* ---------- mobile menu ---------- */
@@ -324,7 +325,7 @@
   (function stageShowcase() {
     var view = $("#stageView"), phoneView = $("#stagePhoneView");
     var nameEl = $("#stageName"), catEl = $("#stageCat"), dots = $$(".stage__dots i");
-    if (!view || !phoneView || reduce) return;
+    if (!phoneView || reduce) return;
     var projects = [
       { slug: "giulivo", name: "Giulivo", cat: "work.p1cat" },
       { slug: "malee", name: "Malee", cat: "work.p2cat" },
@@ -347,9 +348,10 @@
       // Every project (the first included) gets a layer, so each swap is a
       // true cross-fade: the incoming layer fades in on top of the current one.
       layers = projects.map(function (p) {
-        return { desk: layer(view, "assets/img/work/" + p.slug + "-desk.webp"), mob: layer(phoneView, "assets/img/work/" + p.slug + "-mob-360.webp") };
+        return { desk: view ? layer(view, "assets/img/work/" + p.slug + "-desk.webp") : null, mob: layer(phoneView, "assets/img/work/" + p.slug + "-mob.webp") };
       });
-      layers[0].desk.classList.add("is-on"); layers[0].mob.classList.add("is-on");
+      if (layers[0].desk) layers[0].desk.classList.add("is-on");
+      layers[0].mob.classList.add("is-on");
       show(0);
       schedule();
     }
@@ -358,10 +360,11 @@
       index = i;
       if (next && prev !== next) {
         z += 1;
-        next.desk.style.zIndex = next.mob.style.zIndex = z;
-        next.desk.classList.add("is-on"); next.mob.classList.add("is-on");
+        next.mob.style.zIndex = z;
+        next.mob.classList.add("is-on");
+        if (next.desk) { next.desk.style.zIndex = z; next.desk.classList.add("is-on"); }
         setTimeout(function () {
-          if (layers[index] !== prev) { prev.desk.classList.remove("is-on"); prev.mob.classList.remove("is-on"); }
+          if (layers[index] !== prev) { prev.mob.classList.remove("is-on"); if (prev.desk) prev.desk.classList.remove("is-on"); }
         }, 1100);
       }
       nameEl.textContent = projects[i].name;
@@ -375,7 +378,7 @@
       timer = setTimeout(function () { show((index + 1) % projects.length); schedule(); }, SWAP_MS);
     }
     if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; schedule(); }).observe(view);
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; schedule(); }).observe(view || phoneView);
     }
     document.addEventListener("visibilitychange", schedule);
     // Extra screenshots load only after the page itself has finished loading.
@@ -626,33 +629,77 @@
     return { words: words, revert: function () { el.innerHTML = original; } };
   }
 
-  /* Hero entrance — starts as the intro curtain lifts. */
+  /* Hero entrance — the headline assembles letter by letter as the intro
+     curtain lifts; words stay unbroken so lines never split mid-word. */
+  function splitChars(el) {
+    var original = el.innerHTML, chars = [];
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(" ")); return; }
+            var word = document.createElement("span"); word.className = "wm";
+            Array.from(part).forEach(function (c) {
+              var ch = document.createElement("span"); ch.className = "ch"; ch.textContent = c;
+              word.appendChild(ch); chars.push(ch);
+            });
+            frag.appendChild(word);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) walk(child);
+      });
+    })(el);
+    // Letters inside <em> each carry their slice of the gradient.
+    $$("em", el).forEach(function (em) {
+      var er = em.getBoundingClientRect(), bg = getComputedStyle(em).backgroundImage;
+      $$(".ch", em).forEach(function (c) {
+        var cr = c.getBoundingClientRect();
+        c.style.backgroundImage = bg;
+        c.style.backgroundSize = er.width + "px " + er.height + "px";
+        c.style.backgroundPosition = (er.left - cr.left) + "px " + (er.top - cr.top) + "px";
+        c.style.webkitBackgroundClip = "text"; c.style.backgroundClip = "text"; c.style.color = "transparent";
+      });
+    });
+    return { chars: chars, revert: function () { el.innerHTML = original; } };
+  }
   var heroTitle = $(".hero__title");
   var tl = gsap.timeline({ delay: 0.35, defaults: { ease: "expo.out" } });
+  if (!hero) tl.kill();
+  // Thai and Arabic are shaped scripts: letters must stay joined, so they rise word by word.
+  var shaped = /^(th|ar)$/.test(document.documentElement.lang);
   if (heroTitle) {
-    var heroSplit = splitWords(heroTitle);
-    tl.from(heroSplit.words, { yPercent: 115, rotate: 4, duration: 1.05, stagger: 0.04 }, 0);
-    // Keep the split markup after the entrance (rebuilding the headline would
-    // repaint it); restore the plain markup only if the layout changes.
-    window.addEventListener("resize", function once() { heroSplit.revert(); window.removeEventListener("resize", once); });
+    if (shaped) {
+      var heroSplit = splitWords(heroTitle);
+      tl.from(heroSplit.words, { yPercent: 115, duration: 1.05, stagger: 0.05 }, 0);
+    } else {
+      var heroChars = splitChars(heroTitle);
+      tl.from(heroChars.chars, { yPercent: 110, opacity: 0, rotate: 8, duration: 1, stagger: 0.022, onComplete: function () {
+        if (heroTitle.contains(heroChars.chars[0])) heroChars.revert();
+      } }, 0);
+      heroSplit = heroChars;
+    }
+    // Restore the plain headline if the layout changes — unless a language
+    // switch has already replaced it with fresh markup.
+    var splitLang = document.documentElement.lang;
+    window.addEventListener("resize", function once() {
+      window.removeEventListener("resize", once);
+      if (document.documentElement.lang === splitLang) heroSplit.revert();
+    });
   }
-  tl.from(".hero__eyebrow", { y: 16, opacity: 0, duration: 1 }, 0)
-    .from(".hero__sub", { y: 22, opacity: 0, duration: 1.1 }, 0.45)
-    .from(".hero__ctas", { y: 22, opacity: 0, duration: 1.1 }, 0.55)
-    // Inner wrappers are animated so the CSS 3D transforms on the stage
-    // layers (and the pointer-driven tilt) are never overwritten.
-    .from(".stage__screen--back .frame", { opacity: 0, y: 80, duration: 1.8 }, 0.2)
-    .from(".stage__screen--mid .frame", { opacity: 0, y: 100, duration: 1.8 }, 0.3)
-    .from(".stage__screen--front .frame", { opacity: 0, y: 120, duration: 1.8 }, 0.4)
-    .from(".stage__phone .device", { opacity: 0, y: 140, duration: 1.6 }, 0.6)
-    .from(".stage__chip .chip", { opacity: 0, scale: .8, y: 20, duration: 1, stagger: 0.15, ease: "back.out(1.6)" }, 1.1)
+  if (hero) tl.from(".hero__eyebrow", { y: 16, opacity: 0, duration: 1 }, 0)
+    .from(".hero__price", { y: 22, opacity: 0, duration: 1.1 }, 0.55)
+    .from(".hero__sub", { y: 22, opacity: 0, duration: 1.1 }, 0.62)
+    .from(".hero__ctas", { y: 22, opacity: 0, duration: 1.1 }, 0.7)
+    .from(".hero__phone .device", { opacity: 0, y: 120, rotate: 6, duration: 1.8 }, 0.35)
+    .from(".hero__chip .chip", { opacity: 0, scale: .8, y: 20, duration: 1, stagger: 0.15, ease: "back.out(1.6)" }, 1.1)
     .from(".hero__facts li", { opacity: 0, y: 20, duration: 1, stagger: 0.08 }, 0.8);
 
-  // Hero scroll: the stage drifts up and settles, copy eases away.
-  gsap.to("#stage", { yPercent: -10, scale: 0.94, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-  gsap.to(".hero__copy", { yPercent: -14, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "25% top", end: "bottom top", scrub: true } });
-  gsap.to(".stage__chip--a .chip", { y: -60, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-  gsap.to(".stage__chip--b .chip", { y: -110, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  // Hero scroll: the phone drifts up, the copy eases away.
+  if ($(".hero__device")) gsap.to(".hero__device", { yPercent: -18, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  if ($(".hero__copy")) gsap.to(".hero__copy", { yPercent: -14, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "25% top", end: "bottom top", scrub: true } });
+  if ($(".hero__media")) gsap.to(".hero__media", { yPercent: 12, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
 
   /* Section titles: word-by-word rise when they enter. Words are split and
      tucked below their masks up front; a language switch simply replaces the
@@ -672,7 +719,9 @@
 
   /* Generic fades / rises. */
   $$('[data-anim="rise"]').forEach(function (el, i) {
-    gsap.from(el, { y: 40, opacity: 0, duration: 1.1, ease: "expo.out", delay: (i % 3) * 0.08, scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+    if (el.classList.contains("offer")) return;
+    el.style.transition = "none";
+    gsap.fromTo(el, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: "expo.out", delay: (i % 3) * 0.08, clearProps: "transform,opacity,transition", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
   });
   $$(".section-lead, .eyebrow").forEach(function (el) {
     if (el.closest(".hero, dialog")) return;
@@ -702,18 +751,30 @@
   });
 
   /* Finale + footer word. */
-  gsap.from(".finale__sub, .finale__ctas", { y: 24, opacity: 0, duration: 1.1, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 70%", once: true } });
-  gsap.fromTo(".footer__word", { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: ".footer", start: "top bottom", end: "bottom bottom", scrub: true } });
+  if ($(".finale__sub")) gsap.from(".finale__sub, .finale__ctas, .finale__replies", { y: 24, opacity: 0, duration: 1.1, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 70%", once: true } });
+  if ($(".footer__word")) gsap.fromTo(".footer__word", { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: ".footer", start: "top bottom", end: "bottom bottom", scrub: true } });
 
   /* Difference: the phone rises in with a slight tilt. */
-  gsap.from(".dp", { y: 80, rotateX: 18, opacity: 0, duration: 1.4, ease: "expo.out", transformPerspective: 1200, scrollTrigger: { trigger: ".diff__grid", start: "top 80%", once: true } });
+  if ($(".dp")) gsap.from(".dp", { y: 80, rotateX: 18, opacity: 0, duration: 1.4, ease: "expo.out", transformPerspective: 1200, scrollTrigger: { trigger: ".diff__grid", start: "top 80%", once: true } });
 
   /* Try it: the card lifts in, the QR frame snaps into place. */
-  gsap.from(".tryit", { y: 60, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".tryit", start: "top 85%", once: true } });
-  gsap.from(".tryit__corner", { scale: 1.8, opacity: 0, duration: .9, stagger: .06, ease: "back.out(2)", scrollTrigger: { trigger: ".tryit", start: "top 70%", once: true } });
+  if ($(".tryit")) gsap.from(".tryit", { y: 60, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".tryit", start: "top 85%", once: true } });
+  if ($(".tryit__corner")) gsap.from(".tryit__corner", { scale: 1.8, opacity: 0, duration: .9, stagger: .06, ease: "back.out(2)", scrollTrigger: { trigger: ".tryit", start: "top 70%", once: true } });
 
-  /* Finale orbit badge. */
-  gsap.from(".orbit", { scale: .6, opacity: 0, rotate: -90, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 75%", once: true } });
+  /* Finale: the WhatsApp button rises in. */
+  if ($(".wa-giant")) gsap.from(".wa-giant", { scale: .6, opacity: 0, duration: 1.3, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 70%", once: true } });
+
+  /* Offers: cards rise in with a slight 3D tilt. */
+  // Explicit start and end values: the cards' own CSS transform transition
+  // (used by the hover tilt) must not be read back as the resting state.
+  if ($(".offer-grid")) {
+    var offerCards = $$(".offer");
+    offerCards.forEach(function (c) { c.style.transition = "none"; });
+    gsap.fromTo(offerCards, { y: 70, rotateX: 10, opacity: 0, transformPerspective: 1200 }, {
+      y: 0, rotateX: 0, opacity: 1, duration: 1.2, stagger: 0.09, ease: "expo.out", clearProps: "transform,opacity,transition",
+      scrollTrigger: { trigger: ".offer-grid", start: "top 85%", once: true }
+    });
+  }
 
   window.addEventListener("load", function () { ST.refresh(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });

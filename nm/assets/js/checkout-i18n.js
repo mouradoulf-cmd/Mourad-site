@@ -1,5 +1,8 @@
 /* NM Studio — checkout strings (merged into i18n.js by NM_EXTRA_DICT). */
-window.NM_EXTRA_DICT = {
+(function (D) {
+  function merge(a, b) { Object.keys(b).forEach(function (k) { if (b[k] && typeof b[k] === "object" && !Array.isArray(b[k])) { a[k] = a[k] || {}; merge(a[k], b[k]); } else if (!(k in a)) a[k] = b[k]; }); return a; }
+  window.NM_EXTRA_DICT = merge(window.NM_EXTRA_DICT || {}, D);
+})({
   en: { checkout: {
     secureNoteQr: "Encrypted connection · Thai QR PromptPay payment",
     qrWaiting: "Waiting for payment", qrSlipIn: "Slip attached — confirm below", qrDemo: "Sample", qrExpired: "QR code expired", qrRenew: "New QR code", qrValid: "QR valid for", qr4: "Attach your transfer slip below", qrCopy: "Copy PromptPay number", qrCopied: "PromptPay number copied", qrSaved: "QR saved — open your banking app and pick it from your gallery", qrRef: "Order", slipTitle: "Attach your transfer slip", slipSub: "A screenshot from your banking app — we check it and confirm within the hour.", slipOk: "Slip attached", slipRemove: "Remove slip", slipBad: "Please choose an image file.", payNotify: "Confirm payment {amount}", trOrder: "Order placed", trPaid: "Payment sent", trCheck: "Slip check · within the hour", trStart: "Design starts", leadSlipSent: "Payment noted. Tap below to send your slip and order on WhatsApp — we confirm within the hour.", doneWaSlip: "Send my slip on WhatsApp", slipHint: "Don't forget to attach your slip in the WhatsApp chat.", waSlip: "Transfer slip: attached",
@@ -245,4 +248,4 @@ window.NM_EXTRA_DICT = {
     doneWa: "أرسل طلبي عبر واتساب", donePrint: "طباعة الملخص", doneHome: "العودة إلى الموقع",
     waHead: "طلب جديد من NM Studio", waPlan: "الباقة", waMethod: "الدفع"
   } }
-};
+});
