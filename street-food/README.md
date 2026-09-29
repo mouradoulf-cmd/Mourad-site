@@ -30,7 +30,7 @@ Caveat (chalkboard). Thai loads Noto Sans Thai on demand.
 ## Photos (Unsplash License)
 Unsplash photo IDs — hero-1 1764414240760-61c181171a45 · hero-2 1760062690909-b151a9686aac ·
 hero-3 1552538962-40822613a09d · mae
-1734071555084-215eca735e58 · tables 1718942900361-d01a1ee8d077 · d-krapao
+1734071555084-215eca735e58 · tables 1743485754079-d7fde0e9283f · d-krapao
 1707897634981-39bcfe435268 · d-padthai 1746973645769-c11eb0a81025 · d-somtam
 1648421331147-9fcfab29536e · d-tomyum 1628428798909-75a2d42a557e · d-curry
 1618449840665-9ed506d73a34 · d-noodle 1555126634-323283e090fa · d-moo

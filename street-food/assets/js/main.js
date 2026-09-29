@@ -111,6 +111,37 @@
     }, 6000);
   }
 
+  /* ---------- hero: sparks rising from the wok ---------- */
+  (function () {
+    var cv = $(".embers"); if (!cv || reduce || !cv.getContext) return;
+    var ctx = cv.getContext("2d"), dpr = Math.min(2, window.devicePixelRatio || 1), W = 0, H = 0, sparks = [], on = true, last = 0;
+    function size() { W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    function spawn() {
+      return { x: W * (0.1 + Math.random() * 0.8), y: H * (0.75 + Math.random() * 0.3), r: 0.6 + Math.random() * 1.8, vy: 0.35 + Math.random() * 0.9,
+               vx: (Math.random() - 0.5) * 0.3, life: 0, max: 220 + Math.random() * 260, hue: 18 + Math.random() * 30, ph: Math.random() * 6.28 };
+    }
+    size(); window.addEventListener("resize", size);
+    var count = W < 700 ? 26 : 48;
+    for (var i = 0; i < count; i++) { var p = spawn(); p.life = Math.random() * p.max; sparks.push(p); }
+    new IntersectionObserver(function (e) { on = e[0].isIntersecting; if (on) requestAnimationFrame(frame); }).observe(cv);
+    function frame(t) {
+      if (!on || document.hidden) return;
+      var dt = Math.min(3, (t - last) / 16.7 || 1); last = t;
+      ctx.clearRect(0, 0, W, H);
+      sparks.forEach(function (p, i) {
+        p.life += dt; p.y -= p.vy * dt; p.x += (p.vx + Math.sin(p.life / 40 + p.ph) * 0.35) * dt;
+        var k = p.life / p.max, a = k < 0.15 ? k / 0.15 : 1 - (k - 0.15) / 0.85;
+        if (k >= 1 || p.y < -10) { sparks[i] = spawn(); return; }
+        var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
+        g.addColorStop(0, "hsla(" + p.hue + ",100%,70%," + (a * 0.95).toFixed(3) + ")");
+        g.addColorStop(1, "hsla(" + p.hue + ",100%,50%,0)");
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 5, 0, 6.2832); ctx.fill();
+      });
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+
   /* ---------- dishes: chili marks, filters ---------- */
   var DISHES = {};
   $$(".dish").forEach(function (d) {
