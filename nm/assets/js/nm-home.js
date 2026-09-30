@@ -1,6 +1,6 @@
-/* NM Studio — home & services interactions: hero reel and gold dust, the
-   three-screen story, offer cards + detail dialog, the "customers lost"
-   calculator, the Pattaya map and the live site preview.
+/* NM Studio — shared page interactions: counters, offer cards + detail
+   dialog, pricing toggle, success/account pages, social links and the live
+   site preview.
    Every block is optional: it quietly skips if its markup isn't on the page. */
 (function () {
   "use strict";
@@ -18,109 +18,6 @@
   }
 
   if (P) P.render();
-
-  /* ---------- hero: cinematic reel of three scenes ---------- */
-  (function heroReel() {
-    var slides = $$(".hero__slide"), bars = $$(".hero__reel i");
-    if (slides.length < 2) return;
-    var SLIDE_MS = 6500, i = 0, timer = null, visible = true, ready = false;
-    document.documentElement.style.setProperty("--slide-ms", SLIDE_MS + "ms");
-    function hydrate(p) {
-      if (!p.hasAttribute("data-lazy")) return;
-      $$("source", p).forEach(function (s) { s.srcset = s.getAttribute("data-srcset"); });
-      var img = $("img", p); img.src = img.getAttribute("data-src");
-      p.removeAttribute("data-lazy");
-    }
-    function show(n) {
-      slides[i].classList.remove("is-on");
-      i = n;
-      hydrate(slides[(i + 1) % slides.length]);
-      slides[i].classList.add("is-on");
-      bars.forEach(function (b, k) {
-        b.classList.remove("is-on");
-        b.classList.toggle("is-done", k < i);
-        if (k === i) { void b.offsetWidth; b.classList.add("is-on"); }
-      });
-    }
-    function schedule() {
-      clearTimeout(timer);
-      if (!ready || !visible || document.hidden || reduce) return;
-      timer = setTimeout(function () { show((i + 1) % slides.length); schedule(); }, SLIDE_MS);
-    }
-    function start() { hydrate(slides[1]); ready = true; show(0); schedule(); }
-    onVisible($(".hero"), function (v) { visible = v; schedule(); });
-    document.addEventListener("visibilitychange", schedule);
-    if (reduce) return;
-    if (document.readyState === "complete") setTimeout(start, 600);
-    else window.addEventListener("load", function () { setTimeout(start, 600); });
-  })();
-
-  /* ---------- hero: cinematic video (when one is configured) ----------
-     Autoplay, muted, looping, inline; the poster shows at once and the photo
-     reel stays underneath until the first frame plays. Skipped with reduced
-     motion or data saver, and paused whenever the hero is off screen. */
-  (function heroVideo() {
-    var hero = $(".hero"), media = $(".hero__media"), cfg = O && O.hero;
-    if (!hero || !media || !cfg || !(cfg.mp4 || cfg.webm)) return;
-    var saver = navigator.connection && navigator.connection.saveData;
-    if (reduce || saver) return;
-    var v = document.createElement("video");
-    v.className = "hero__video";
-    v.muted = true; v.loop = cfg.loop !== false; v.playsInline = true; v.autoplay = true; v.preload = "auto";
-    v.setAttribute("muted", ""); v.setAttribute("playsinline", ""); v.setAttribute("aria-hidden", "true"); v.tabIndex = -1;
-    if (cfg.poster) v.poster = cfg.poster;
-    var phone = window.matchMedia("(max-width: 700px)").matches;
-    if (cfg.webm && !phone) { var w = document.createElement("source"); w.src = cfg.webm; w.type = "video/webm"; v.appendChild(w); }
-    var m = document.createElement("source"); m.src = phone && cfg.mp4Mobile ? cfg.mp4Mobile : cfg.mp4; m.type = "video/mp4"; v.appendChild(m);
-    v.addEventListener("playing", function () { hero.classList.add("has-video"); }, { once: true });
-    media.appendChild(v);
-    // A video that plays once rests on its last frame: never restart it.
-    function resume() { if (v.ended) return; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-    onVisible(hero, function (on) { if (on && !document.hidden) resume(); else v.pause(); });
-    document.addEventListener("visibilitychange", function () { if (document.hidden) v.pause(); else if (hero.getBoundingClientRect().bottom > 0) resume(); });
-  })();
-
-  /* ---------- hero: slow gold dust drifting up through the light ---------- */
-  (function heroDust() {
-    var canvas = $(".hero__dust");
-    if (!canvas || reduce || !canvas.getContext) return;
-    var ctx = canvas.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    var W = 0, H = 0, motes = [], running = false, raf = 0, visible = true;
-    function size() {
-      W = canvas.clientWidth; H = canvas.clientHeight;
-      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.round(Math.min(70, W * H / 22000));
-      motes = [];
-      for (var k = 0; k < n; k++) motes.push(mote(true));
-    }
-    function mote(anywhere) {
-      return { x: Math.random() * W, y: anywhere ? Math.random() * H : H + 10, r: .4 + Math.random() * 1.6, v: .12 + Math.random() * .4, a: Math.random() * Math.PI * 2, s: .004 + Math.random() * .01, o: .25 + Math.random() * .55 };
-    }
-    function frame() {
-      ctx.clearRect(0, 0, W, H);
-      for (var k = 0; k < motes.length; k++) {
-        var m = motes[k];
-        m.y -= m.v; m.a += m.s; m.x += Math.sin(m.a) * .25;
-        if (m.y < -10) motes[k] = m = mote(false);
-        var flick = .65 + Math.sin(m.a * 3) * .35;
-        ctx.beginPath();
-        var jade = k % 3 === 0;
-        ctx.fillStyle = jade ? "rgba(150,215,255," + (m.o * flick).toFixed(3) + ")" : "rgba(245," + (206 + (k % 3) * 10) + "," + (140 + (k % 4) * 12) + "," + (m.o * flick).toFixed(3) + ")";
-        ctx.shadowColor = jade ? "rgba(138,99,248,.9)" : "rgba(156,122,250,.8)"; ctx.shadowBlur = m.r * 6;
-        ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
-      }
-      raf = requestAnimationFrame(frame);
-    }
-    function play(on) {
-      if (on && !running) { running = true; raf = requestAnimationFrame(frame); }
-      if (!on && running) { running = false; cancelAnimationFrame(raf); }
-    }
-    size();
-    var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(size, 200); });
-    onVisible(canvas, function (v) { visible = v; play(v && !document.hidden); });
-    document.addEventListener("visibilitychange", function () { play(visible && !document.hidden); });
-  })();
 
   /* ---------- counters ---------- */
   (function counters() {
@@ -140,87 +37,6 @@
         })(performance.now());
       }, { threshold: .6 });
     });
-  })();
-
-  /* ---------- story: a short self-playing film in three scenes ----------
-     Each scene: the photo drifts like a camera move, the line rises word
-     by word, the progress bar fills, then a cut (wipe + light flash) to the
-     next scene; loops while on screen. Tap right / left to skip, hover to
-     hold (desktop). Reduced motion keeps the three lines stacked. */
-  (function story() {
-    var section = $(".story");
-    if (!section || reduce || !("IntersectionObserver" in window)) return;
-    var lines = $$(".story__line", section), imgs = $$(".story__img", section), bars = $$(".story__bars i", section);
-    var SCENE_MS = 4600, cur = -1, timer = null, visible = false, held = false, started = 0, left = SCENE_MS;
-    section.classList.add("is-film");
-    section.style.setProperty("--scene-ms", SCENE_MS + "ms");
-    var tc = document.createElement("p"); tc.className = "story__tc"; tc.setAttribute("aria-hidden", "true");
-    var flash = document.createElement("div"); flash.className = "story__flash"; flash.setAttribute("aria-hidden", "true");
-    $(".story__sticky", section).appendChild(tc); $(".story__sticky", section).appendChild(flash);
-    function splitLine(p) {
-      if (p.querySelector(".stw")) return;
-      var i = 0;
-      (function walk(node) {
-        Array.prototype.slice.call(node.childNodes).forEach(function (c) {
-          if (c.nodeType === 3) {
-            var frag = document.createDocumentFragment();
-            c.textContent.split(/(\s+)/).forEach(function (part) {
-              if (!part) return;
-              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(" ")); return; }
-              var w = document.createElement("span"); w.className = "stw"; w.style.setProperty("--i", i++); w.textContent = part; frag.appendChild(w);
-            });
-            node.replaceChild(frag, c);
-          } else if (c.nodeType === 1) walk(c);
-        });
-      })(p);
-    }
-    function splitAll() { lines.forEach(function (l) { splitLine($("p", l)); }); }
-    function show(n) {
-      var prev = cur; cur = (n + lines.length) % lines.length;
-      lines.forEach(function (l, k) { l.classList.toggle("is-on", k === cur); l.classList.toggle("is-past", k === prev && k !== cur); });
-      imgs.forEach(function (im, k) {
-        im.classList.toggle("is-out", k === prev && k !== cur);
-        im.classList.remove("is-on"); if (k === cur) { void im.offsetWidth; im.classList.add("is-on"); }
-      });
-      bars.forEach(function (b, k) { b.classList.remove("is-on"); b.classList.toggle("is-done", k < cur); if (k === cur) { void b.offsetWidth; b.classList.add("is-on"); } });
-      if (prev !== -1) { flash.classList.remove("is-go"); void flash.offsetWidth; flash.classList.add("is-go"); }
-      tc.textContent = "SC " + ("0" + (cur + 1)) + " / 0" + lines.length;
-      left = SCENE_MS; schedule();
-    }
-    function schedule() {
-      clearTimeout(timer);
-      var run = visible && !held && !document.hidden;
-      section.classList.toggle("is-held", !run);
-      if (!run) return;
-      started = Date.now();
-      timer = setTimeout(function () { show(cur + 1); }, left);
-    }
-    function hold(on) {
-      if (on && !held) { held = true; left = Math.max(400, left - (Date.now() - started)); }
-      else if (!on && held) held = false;
-      schedule();
-    }
-    splitAll();
-    new IntersectionObserver(function (en) {
-      var was = visible; visible = en[0].isIntersecting;
-      if (visible && cur === -1) { show(0); return; }
-      if (visible === was) return;
-      if (!visible && !held) left = Math.max(400, left - (Date.now() - started)); // resume where it stopped
-      schedule();
-    }, { threshold: 0.35 }).observe(section);
-    document.addEventListener("visibilitychange", schedule);
-    if (finePointer) {
-      var inner = $(".story__inner", section);
-      inner.addEventListener("pointerenter", function () { hold(true); });
-      inner.addEventListener("pointerleave", function () { hold(false); });
-    }
-    $(".story__sticky", section).addEventListener("click", function (e) {
-      if (e.target.closest("a, button")) return;
-      var r = section.getBoundingClientRect(), right = (e.clientX - r.left) > r.width / 2;
-      if (document.documentElement.dir === "rtl") right = !right;
-      held = false; show(cur + (right ? 1 : -1));
-    });
-    document.addEventListener("nm:lang", function () { splitAll(); if (cur >= 0) { var n = cur; cur = -1; show(n); } });
   })();
 
   /* ---------- offers: play illustrations in view, tilt, open the detail dialog ---------- */
@@ -419,7 +235,7 @@
     if (!canvas || reduce || !canvas.getContext) return;
     var ctx = canvas.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = canvas.width = innerWidth * dpr, H = canvas.height = innerHeight * dpr;
-    var colors = ["#c9b8ff", "#9c7afa", "#8a63f8", "#5c43fa", "#5a8cff", "#ffffff"];
+    var colors = ["#f6e1ad", "#e6c27a", "#c79c50", "#7b61ff", "#4f7bff", "#ffffff"];
     var bits = [];
     for (var k = 0; k < 160; k++) {
       var a = -Math.PI / 2 + (Math.random() - .5) * 1.6, v = (9 + Math.random() * 11) * dpr;
@@ -440,84 +256,15 @@
     })(t0);
   }
 
-  /* ---------- calculator ---------- */
-  (function calculator() {
-    var spend = $("#calcSpend"), missed = $("#calcMissed");
-    if (!spend || !missed) return;
-    var outSpend = $("#calcSpendOut"), outMissed = $("#calcMissedOut"), month = $("#calcMonth"), days = $("#calcDays");
-    var seen = false;
-    function fill(r) { r.style.setProperty("--p", ((r.value - r.min) / (r.max - r.min) * 100).toFixed(1) + "%"); }
-    /* The monthly figure rolls like a slot machine: every digit is a
-       column 0–9 that slides to its value (screen readers get plain text). */
-    function slots(text) {
-      if (reduce) { month.textContent = text; return; }
-      month.classList.add("slot-on");
-      var sr = month.querySelector(".visually-hidden");
-      var wrap = month.querySelector(".slot");
-      var chars = Array.from(text);
-      if (!wrap || wrap.getAttribute("data-shape") !== text.replace(/\d/g, "0")) {
-        wrap = document.createElement("span"); wrap.className = "slot"; wrap.setAttribute("aria-hidden", "true");
-        wrap.setAttribute("data-shape", text.replace(/\d/g, "0"));
-        var k = 0;
-        chars.forEach(function (c) {
-          if (/\d/.test(c)) {
-            var d = document.createElement("span"); d.className = "slot__d";
-            var col = document.createElement("span"); col.className = "slot__col"; col.style.setProperty("--k", k++);
-            for (var n = 0; n < 10; n++) { var x = document.createElement("span"); x.textContent = n; col.appendChild(x); }
-            d.appendChild(col); wrap.appendChild(d);
-          } else { var sp = document.createElement("span"); sp.textContent = c; wrap.appendChild(sp); }
-        });
-        month.textContent = "";
-        sr = document.createElement("span"); sr.className = "visually-hidden";
-        month.appendChild(sr); month.appendChild(wrap);
-        void wrap.offsetWidth; // let the columns start from 0 so they roll in
-      }
-      sr.textContent = text;
-      var cols = wrap.querySelectorAll(".slot__col"), i = 0;
-      chars.forEach(function (c) { if (/\d/.test(c)) cols[i++].style.setProperty("--v", seen ? c : 0); });
-    }
-    function tween(to) { slots(P.thb(to)); }
-    function update() {
-      var s = +spend.value, m = +missed.value;
-      fill(spend); fill(missed);
-      outSpend.textContent = P.thb(s);
-      outMissed.textContent = String(m);
-      tween(Math.round(m * s * 4.33 / 10) * 10);
-      var d = Math.max(1, Math.ceil(O.price.pack / (m / 7 * s)));
-      days.textContent = d === 1 ? t("calc.day") : t("calc.days").replace("{n}", d);
-    }
-    spend.addEventListener("input", update); missed.addEventListener("input", update);
-    onVisible(month, function (v) { if (v && !seen) { seen = true; update(); } }, { threshold: .6 });
-    document.addEventListener("nm:lang", update);
-    update();
-  })();
-
-  /* ---------- Pattaya map: the pin hops between neighbourhoods ---------- */
-  (function map() {
-    var pin = $("#mapPin"), route = $("#mapRoute"), label = $("#mapArea");
-    if (!pin) return;
-    var areas = $$(".map__area").filter(function (a) { return a.getAttribute("data-area") !== "east"; });
-    var ORIGIN = [332, 250], i = 1, timer = null, visible = false;
-    function xy(el) { var m = /translate\(([-\d.]+)[ ,]+([-\d.]+)\)/.exec(el.getAttribute("transform")); return [+m[1], +m[2]]; }
-    function go(n) {
-      i = n;
-      var a = areas[i], p = xy(a), key = a.getAttribute("data-area");
-      areas.forEach(function (x) { x.classList.toggle("is-on", x === a); });
-      pin.style.transform = "translate(" + p[0] + "px, " + p[1] + "px)";
-      var mx = (ORIGIN[0] + p[0]) / 2, my = Math.min(ORIGIN[1], p[1]) - 40;
-      route.setAttribute("d", "M" + ORIGIN[0] + " " + ORIGIN[1] + "Q" + mx + " " + my + " " + p[0] + " " + p[1]);
-      label.setAttribute("data-i18n", "visit." + key);
-      label.textContent = t("visit." + key);
-    }
-    pin.removeAttribute("transform");
-    go(i);
-    function schedule() {
-      clearTimeout(timer);
-      if (!visible || document.hidden || reduce) return;
-      timer = setTimeout(function () { go((i + 1) % areas.length); schedule(); }, 2600);
-    }
-    onVisible($(".visit__map"), function (v) { visible = v; schedule(); });
-    document.addEventListener("visibilitychange", schedule);
+  /* ---------- social links: shown only once they are configured ---------- */
+  (function socials() {
+    var cfg = (O && O.social) || {};
+    $$("[data-social]").forEach(function (a) {
+      var url = cfg[a.getAttribute("data-social")];
+      if (!url) return;
+      a.href = url;
+      a.parentNode.hidden = false;
+    });
   })();
 
   /* ---------- live site preview ---------- */

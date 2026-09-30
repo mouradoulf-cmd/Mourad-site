@@ -5,7 +5,7 @@ Plain HTML/CSS/JS, no build step. Hosted on GitHub Pages
 
 | Page | What it does |
 |---|---|
-| `index.html` | Home: cinematic hero, self-playing 3-scene story film, the 4 offers (+ detail dialog), why us, before/after, "customers lost" calculator, live work previews, process, QR demo, Pattaya map, FAQ, WhatsApp CTA |
+| `index.html` | Home (v4): 50/50 hero « Be found. Be chosen. » with a MacBook + iPhone cycling through the 7 live sites, key figures + sectors marquee, the 7 demos (device mockups, live preview), the 4 offers (+ detail dialog), why us (3 photos), how it works (3 steps), FAQ (8), « Ready to be visible? » WhatsApp finale, footer |
 | `services.html` | The 4 offers in depth, "which offer is right for you", comparison table, service FAQ |
 | `pricing.html` | Prices, care plan with Monthly / Yearly toggle, comparison table, pricing FAQ |
 | `checkout.html` | 4-step checkout: offer + care plan → details → payment → review (promo code) → confirmation |
@@ -31,15 +31,11 @@ Everything is in **`assets/js/offers-config.js`**:
 Yearly care plan = 10 months (2 months free). Visitors reading in another
 language see an approximate amount in € (or DH in Arabic), hand-rounded.
 
-### Hero video (16:9, ≤ 2 MB)
+### Social links
 
-Put the files in `assets/video/` and fill `hero` in `offers-config.js`:
-`mp4` (H.264, required), `webm` (optional, lighter), `mp4Mobile` (optional
-720p for phones) and `poster` (a still frame shown instantly). The video
-autoplays muted and looping behind a dark veil, pauses off screen, and is
-skipped with reduced motion or data saver. Left empty, the photo reel plays.
-Encode with: `ffmpeg -i in.mov -t 10 -vf scale=1920:-2 -c:v libx264 -crf 26 -preset slow -an -movflags +faststart hero.mp4`
-(and `-c:v libvpx-vp9 -crf 36 -b:v 0 hero.webm`).
+Fill `social` in `offers-config.js` (`facebook`, `instagram`, `tiktok`,
+`line`). Each footer icon uses the brand's real logo and stays hidden until
+its link is set.
 
 ### Offer videos (15–20 s, ≤ 2 MB each)
 
@@ -112,45 +108,42 @@ receipts, invoices and dunning emails.
   issued (refund rule confirmed by the owner).
 - **Testimonials**: intentionally none until there are real ones.
 
-## Design system — v3.3 "Ink"
+## Design system — v4 "Night future, touch of gold"
 
-- Colours (`assets/css/nm.css` `:root`), tuned to the fluid hero: near-black
-  `#04050c`, text `#eef0f6`, muted `#b9becf`; the ink band cyan `#4fd6ff`
-  (`--ice`) → violet `#8a63f8` (token still `--jade`) → magenta `#e35cf0`
-  (`--magenta`); text/price gradients `--brand` / `--lux`; glass
-  `rgba(255,255,255,.08)` with `.16` borders; primary CTAs are white pills
-  with dark text (`.btn--sun`); neon green `#00ff88` live dots.
-- Hero: `assets/js/fluid.js` — GPU fluid simulation (Pavel Dobryakov's
-  WebGL Fluid Simulation, MIT) tuned for oily cyan→magenta ink: load burst,
-  an invisible cursor orbiting the centre forever, mouse / finger stir it.
-  Starts after the intro curtain, pauses off screen / hidden tab, lighter
-  burst on phones. Without WebGL or with reduced motion, `.hero__ink` shows a
-  static CSS ink gradient. Centred copy over a radial scrim; heading and
-  sub-line reveal word by word. A video in `NM_OFFERS.hero` would replace
-  the ink (none set).
-- Type: Bricolage Grotesque (display headings), Newsreader italic (the key
-  word of each heading), Geist (text), Geist Mono (prices, labels) — all
-  self-hosted; Noto Sans Thai / IBM Plex Sans Arabic loaded on demand.
-- Components: glass cards with layered shadows and a pointer-lit border
-  (`.offer`, `.pcard`, `.reason--card`), `.btn--sun / --glass / --ghost`
-  with sweep fill + ripple, `.lift` sections (overlap the previous one),
-  `.om` offer dialog (grows out of the clicked card), `.pv` live preview.
-- Motion (`main.js` + `fx.js`, GSAP + ScrollTrigger + Lenis): intro curtain
-  once per session, letter-by-letter hero title, hero closing into a card on
-  scroll, two marquees whose speed/direction follow the scroll, story image
-  masks, offer tilt + count-up prices, slot-machine calculator, pinned
-  horizontal work gallery (desktop, LTR), QR codes assembling module by
-  module, footer reveal, cursor dot + ring + light trail (native cursor kept),
-  magnetic buttons, animated underlines. Everything has a
-  `prefers-reduced-motion` fallback; content is visible without JavaScript.
+- One stylesheet: `assets/css/site.css` (+ `checkout.css` on the checkout).
+  Colours in `:root`: night `#07060c` / `#0b0a13`, surface `#121019`, text
+  `#f4f2fa`, muted `#a9a6bb`; light from violet `#7b61ff` → blue `#4f7bff`
+  (buttons use the darker `--grad-btn` so white text passes AA) and gold
+  `#e6c27a` (`--grad-gold`) for the key word, prices of the featured offer,
+  icons and details; green `#3ddc97` live dots.
+- Type: Satoshi 500/700/900 (display, Fontshare), Fraunces italic in gold for
+  the one key word per heading, Inter for text — all self-hosted; Noto Sans
+  Thai / IBM Plex Sans Arabic loaded on demand.
+- Logos are always the real brand marks: Simple Icons paths (CC0) inline for
+  WhatsApp, Google Maps, Instagram, TikTok, Facebook, LINE, Visa, Mastercard,
+  Apple Pay, Google Pay; the official Google "G"; the PromptPay logo as an
+  image (`assets/img/logos/`, public domain).
+- Home markup is generated by an authoring script (not in the repo) from
+  shared partials: when editing header/footer/offer cards, update every page.
+- Motion: `main.js` (GSAP + ScrollTrigger + Lenis: hero entrance word by word,
+  heading word reveals, card rises, image drift, finale), `home.js` (gold dust
+  canvas, hero devices cross-fading through the 7 sites every 4.2 s, pointer
+  depth on the stage, pointer-lit tilting work cards, "how it works" line,
+  animated key-figure icons), `fx.js` (cursor dot + ring + light trail — the
+  native cursor is kept — ripple, magnetic buttons, scroll-driven marquee,
+  price count-up), `nm-home.js` (offer dialog growing out of its card,
+  pricing toggle, success/account pages, social links, live preview).
+  Everything has a `prefers-reduced-motion` fallback and content is visible
+  without JavaScript.
 - QR codes are real: `assets/js/nm-qr.js` computes them (vendored
   qrcode.min.js) and draws SVG modules — `data-qr="menu"` (live demo menu),
-  `data-qr="whatsapp"` or any URL. The offer illustration, the "Scan it"
-  card and the finale's "On a computer?" card all scan.
+  `data-qr="whatsapp"` or any URL.
 
 ## Photos
 
-Unsplash License. Hero: 1716638298765 (Bangkok neon street),
+Unsplash License. v4 "why us" / "how it works" pictures (`assets/img/v4/`)
+are re-crops of the photos below and of the demo sites' own photos. Earlier
+hero: 1716638298765 (Bangkok neon street),
 1785011070032-e7c04afab462 (street-food wok), 1667038408487 (lantern
 restaurant). Story: 1779365340849 (visitor with phone), 1779540174821 (empty
 restaurant), 1695606453510 (full restaurant). All colour-graded warm.

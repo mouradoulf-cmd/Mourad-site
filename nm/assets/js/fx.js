@@ -1,6 +1,6 @@
-/* NM Studio — v3 micro-interactions, layered on top of main.js:
+/* NM Studio — micro-interactions, layered on top of main.js:
    cursor dot + light trail, button ripple and magnetism, scroll-driven
-   marquees, price count-up, QR card tilt and the footer reveal.
+   marquees, price count-up and pointer-lit card borders.
    Only transform/opacity are animated; every loop sleeps when idle, and
    nothing here runs with prefers-reduced-motion. */
 (function () {
@@ -11,19 +11,6 @@
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var t = function (k) { return (window.NMI18n && window.NMI18n.t(k)) || ""; };
   var P = window.NMPrice;
-
-  /* ---------- footer reveal: the page lifts off a footer that waits underneath ---------- */
-  (function footerReveal() {
-    var footer = $(".footer"), root = document.documentElement;
-    if (!footer || !$("main")) return;
-    function check() {
-      var ok = window.innerWidth >= 960 && footer.offsetHeight < window.innerHeight * 0.92;
-      root.classList.toggle("footer-reveal", ok);
-    }
-    check();
-    var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(check, 150); });
-    document.addEventListener("nm:lang", check);
-  })();
 
   if (reduce) return;
 
@@ -108,7 +95,7 @@
           var k = i / pts.length;
           ctx.beginPath();
           ctx.moveTo(pts[i - 1].x, pts[i - 1].y); ctx.lineTo(pts[i].x, pts[i].y);
-          ctx.strokeStyle = "rgba(" + Math.round(124 + 131 * k) + "," + Math.round(201 + 9 * k) + "," + Math.round(242 - 142 * k) + "," + (k * 0.55).toFixed(3) + ")"; // ice tail → gold head
+          ctx.strokeStyle = "rgba(" + Math.round(123 + 107 * k) + "," + Math.round(97 + 97 * k) + "," + Math.round(255 - 133 * k) + "," + (k * 0.55).toFixed(3) + ")"; // violet tail → gold head
           ctx.lineWidth = 0.6 + k * 3.2;
           ctx.stroke();
         }
@@ -148,20 +135,8 @@
     el.addEventListener("pointerleave", function () { el.style.transform = ""; });
   });
 
-  /* ---------- "Scan it" card follows the pointer in 3D ---------- */
-  (function qrTilt() {
-    var card = $(".tryit__card"), zone = $(".tryit");
-    if (!card || !zone) return;
-    zone.addEventListener("pointermove", function (e) {
-      var r = card.getBoundingClientRect();
-      var px = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / 400)), py = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / 400));
-      card.style.setProperty("--ry", (px * 14).toFixed(2) + "deg"); card.style.setProperty("--rx", (-py * 12).toFixed(2) + "deg");
-    });
-    zone.addEventListener("pointerleave", function () { card.style.setProperty("--rx", "0deg"); card.style.setProperty("--ry", "0deg"); });
-  })();
-
   /* ---------- pricing cards and reasons: pointer-lit border ---------- */
-  $$(".pcard, .reason--card").forEach(function (c) {
+  $$(".pcard, .why-card, .how-step").forEach(function (c) {
     c.addEventListener("pointermove", function (e) {
       var r = c.getBoundingClientRect();
       c.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100).toFixed(1) + "%");
