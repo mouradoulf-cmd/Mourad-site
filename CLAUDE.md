@@ -201,3 +201,27 @@ everything (Stripe setup, going live).
   Deployed via the `claude/thai-app-mnw166` branch (GitHub Pages source).
 - The user wants the live link sent at the end of every finished change:
   https://mouradoulf-cmd.github.io/Mourad-site/nm/ (plus the page changed).
+
+## Open Edit CLI — video creation/editing tool
+
+The user has asked to have `@veedstudio/openedit-cli` (https://github.com/veedstudio/open-edit)
+available for video tasks (promo/demo videos for client sites, social content)
+across all sessions in this repo. Run it via `npx @veedstudio/openedit-cli
+<command>` — no persistent install needed, npx fetches it on demand.
+
+**Free-plan only — do not spend paid credits without explicit user confirmation
+for that specific run:**
+
+- Safe/free: `transcribe` (default WhisperX, local, no login needed),
+  `whisper`, `prep`, `synth-timings`, `background-removal` (default free VEED
+  route — never add `--fast`, which bills a fal key), `install-ffmpeg`,
+  `install-whisperx`, `install-engine`, `content-root`, `engine-path`, `lint`,
+  `wcag-pass`, `design-gate`, `probe-qa`, `scoped-edit`, `brand`,
+  `expect-windows`, `mux-audio`, `mix-audio`, `token`.
+- Never run without asking first (each spends real money/credits):
+  `generate` / `generate-set` (AI Playground + TTS credits), `lipsync`
+  (always fal-billed), `background-removal --fast` (fal-billed),
+  `transcribe --provider veed` (spends VEED transcription credits).
+- `login` opens a VEED OAuth browser flow — only needed for the free
+  `background-removal` route (to host the file) or if the user explicitly
+  wants a paid feature.
