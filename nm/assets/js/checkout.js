@@ -14,7 +14,10 @@
   var params = new URLSearchParams(location.search);
   // ?demo=1 previews the Thai QR flow with a clearly labelled sample code
   // while no real PromptPay ID is configured. It never pays anyone.
-  var DEMO = params.get("demo") === "1" && !PAY.promptpay;
+  // ?demo=1 — or `demo: true` in payment-config.js while no PromptPay ID is
+  // set yet — shows a stamped sample QR. It never pays anyone; the order is
+  // still finished on WhatsApp.
+  var DEMO = (params.get("demo") === "1" || PAY.demo === true) && !PAY.promptpay;
   var PP_ID = PAY.promptpay || (DEMO ? "0000000000" : "");
   var QR_TTL = 15 * 60 * 1000;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -146,7 +149,7 @@
     $("#coMethodNote").textContent = note;
 
     var label;
-    if (thai) label = t(!PP_ID ? "checkout.payOrder" : slip ? "checkout.payNotify" : "checkout.payPaid").replace("{amount}", thbText(p));
+    if (thai) label = t(!PP_ID || DEMO ? "checkout.payOrder" : slip ? "checkout.payNotify" : "checkout.payPaid").replace("{amount}", thbText(p));
     else if (m === "meeting") label = t("checkout.payConfirm");
     else if (m === "card" && cardLink(p)) label = t("checkout.payNow").replace("{amount}", fmt(a.today));
     else label = t("checkout.payOrder").replace("{amount}", fmt(a.today));
@@ -196,6 +199,7 @@
     box.classList.toggle("thaiqr--slip", !!slip);
     $("#thaiQrPending").hidden = ready;
     $("#thaiQrDemo").hidden = !DEMO;
+    if (DEMO) { $("#thaiQrPending").hidden = false; $("#slipBox").hidden = true; }
     $("#thaiQrCopy").hidden = !PAY.promptpay;
     if (!ready) return;
     var key = PP_ID + "|" + amount;
@@ -462,14 +466,14 @@
     var done = $("#coDone"); done.hidden = false;
     $("#doneRef").textContent = t("checkout.doneRef") + " " + o.ref;
 
-    var lead = o.thai ? t(!PP_ID ? "checkout.leadManual" : o.slip ? "checkout.leadSlipSent" : "checkout.leadSlip") : {
+    var lead = o.thai ? t(!PP_ID || DEMO ? "checkout.leadManual" : o.slip ? "checkout.leadSlipSent" : "checkout.leadSlip") : {
       card: t("checkout.leadCard"), promptpay: PAY.promptpay ? t("checkout.leadPrompt") : t("checkout.leadManual"),
       bank: PAY.bank && PAY.bank.iban ? t("checkout.leadBank") : t("checkout.leadManual"), meeting: t("checkout.leadMeet")
     }[o.method];
     $("#doneLead").textContent = lead;
 
     var payBox = $("#donePay"); payBox.innerHTML = ""; payBox.hidden = true;
-    $("#doneTrack").hidden = !(o.thai && PP_ID);
+    $("#doneTrack").hidden = !(o.thai && PP_ID && !DEMO);
     var slipFile = o.slip && slip;
     if (slipFile) {
       payBox.hidden = false;
