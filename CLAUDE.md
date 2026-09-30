@@ -152,14 +152,15 @@ extras, delivery and a WhatsApp request; `RSI18n` EN/FR/TH/RU.
 
 ## NM Studio — the studio's own site (`nm/`)
 
-Plain HTML/CSS/JS, no build step. v3.1 "Gold & Ice" (tuned by the user to a
-reference hero video): night `#0a0a0a` + amber gold `#f0b45a` (token still
-`--jade`) + champagne `#f3d28c` prices + ice blue `#7cc9f2`,
+Plain HTML/CSS/JS, no build step. v3.2 "Violet Night" (tuned to the hero
+video the user supplied): night `#030305` + violet `#8a63f8` (token still
+`--jade`) + blue `#5a8cff` + gradient `#9c7afa→#5a8cff`, CTA gradient with
+white text, neon green live dots,
 Bricolage Grotesque display + Newsreader italic key word + Geist + Geist
 Mono, glass cards with pointer-lit borders, grain. Pages: `index.html`
-(intro curtain once per session, hero = original canvas particle scene
-`hero-scene.js` — website → Maps pin → real QR → shop, gold stream + ice
-haze + reflection; a video in `NM_OFFERS.hero` replaces it; letter-split title, two scroll-driven marquees, 3-screen story,
+(intro curtain once per session, hero = video `assets/video/hero.*` via `NM_OFFERS.hero`
+(plays once, rests on its last frame = poster `hero-video-end.*`; demo
+footage from the user, to be replaced by owned footage); letter-split title, two scroll-driven marquees, 3-screen story,
 4 offer cards + morphing detail dialog `.om`, why us, "difference",
 slot-machine calculator, pinned horizontal work gallery (desktop LTR) with
 live iframe preview `.pv`, process, real animated QR, Pattaya SVG map, FAQ,

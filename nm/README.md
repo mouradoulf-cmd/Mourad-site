@@ -31,7 +31,7 @@ Everything is in **`assets/js/offers-config.js`**:
 Yearly care plan = 10 months (2 months free). Visitors reading in another
 language see an approximate amount in € (or DH in Arabic), hand-rounded.
 
-### Hero video (10 s, 16:9, ≤ 2 MB)
+### Hero video (16:9, ≤ 2 MB)
 
 Put the files in `assets/video/` and fill `hero` in `offers-config.js`:
 `mp4` (H.264, required), `webm` (optional, lighter), `mp4Mobile` (optional
@@ -112,21 +112,23 @@ receipts, invoices and dunning emails.
   issued (refund rule confirmed by the owner).
 - **Testimonials**: intentionally none until there are real ones.
 
-## Design system — v3.1 "Gold & Ice"
+## Design system — v3.2 "Violet Night"
 
-- Colours (`assets/css/nm.css` `:root`): night `#0a0a0a`, surface `#0d100e`,
-  text ivory `#f2ede3`, muted `#a4a79f`; signature amber gold `#f0b45a`
-  (token still named `--jade`; light `#ffe0a3`, deep `#c9822a`) used as light
-  and on CTAs (dark text `#1a1104`), champagne `#f3d28c` for prices
-  (`--lux`), ice blue `#7cc9f2` (`--ice`) as the cool accent.
-- Hero: `assets/js/hero-scene.js` — an original particle scene (gold light
-  streaming in from the left, assembling in turn into a website on a phone,
-  a Google Maps pin with five stars, a real QR code and a shop with
-  customers; ice-blue haze; mirrored floor), captions `v3.s1…s4`, adaptive
-  quality, still frame with reduced motion; `assets/img/hero-scene*.webp`
-  is the poster shown before it starts and without JavaScript. Setting
-  `NM_OFFERS.hero` (video) replaces the scene. Main CTA `.btn--ring`
-  (rotating gold conic border + round arrow).
+- Colours (`assets/css/nm.css` `:root`), tuned to the hero video: night
+  `#030305`, surface `#0a0a10`, text `#ffffff`, muted `#a9a9b8`; signature
+  violet `#8a63f8` (token still named `--jade`; soft `#c9b8ff`, deep
+  `#5c43fa`), electric blue `#5a8cff` (`--ice`), text/price gradient
+  `#9c7afa → #5a8cff` (`--brand`, `--lux`), CTA gradient `#7a55f0 → #5c43fa`
+  with white text (`--accent-grad`, AA), neon green `#00ff88` live dots.
+- Hero: the video in `assets/video/` (`hero.webm` VP8 1080p, `hero.mp4`
+  H.264 1080p, `hero-m.mp4` 960p for phones; 5 s city → penthouse → studio
+  desk), set in `NM_OFFERS.hero` with `loop: false`: it plays once and rests
+  on its last frame; `assets/img/hero-video-end.*` is that frame, shown with
+  reduced motion, data saver or without JavaScript. On desktop the video is
+  118 % wide so the desk sits right of the headline, under a left-to-right
+  dark veil. Replace the files (same names) to change the hero.
+  The video was supplied by the owner as a demo from a third-party design
+  prompt: swap it for footage the studio owns before promoting the site.
 - Type: Bricolage Grotesque (display headings), Newsreader italic (the key
   word of each heading), Geist (text), Geist Mono (prices, labels) — all
   self-hosted; Noto Sans Thai / IBM Plex Sans Arabic loaded on demand.

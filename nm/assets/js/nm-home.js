@@ -66,7 +66,7 @@
     if (reduce || saver) return;
     var v = document.createElement("video");
     v.className = "hero__video";
-    v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true; v.preload = "metadata";
+    v.muted = true; v.loop = cfg.loop !== false; v.playsInline = true; v.autoplay = true; v.preload = "auto";
     v.setAttribute("muted", ""); v.setAttribute("playsinline", ""); v.setAttribute("aria-hidden", "true"); v.tabIndex = -1;
     if (cfg.poster) v.poster = cfg.poster;
     var phone = window.matchMedia("(max-width: 700px)").matches;
@@ -74,11 +74,10 @@
     var m = document.createElement("source"); m.src = phone && cfg.mp4Mobile ? cfg.mp4Mobile : cfg.mp4; m.type = "video/mp4"; v.appendChild(m);
     v.addEventListener("playing", function () { hero.classList.add("has-video"); }, { once: true });
     media.appendChild(v);
-    onVisible(hero, function (on) {
-      if (on && !document.hidden) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-      else v.pause();
-    });
-    document.addEventListener("visibilitychange", function () { if (document.hidden) v.pause(); else if (hero.getBoundingClientRect().bottom > 0) v.play().catch(function () {}); });
+    // A video that plays once rests on its last frame: never restart it.
+    function resume() { if (v.ended) return; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    onVisible(hero, function (on) { if (on && !document.hidden) resume(); else v.pause(); });
+    document.addEventListener("visibilitychange", function () { if (document.hidden) v.pause(); else if (hero.getBoundingClientRect().bottom > 0) resume(); });
   })();
 
   /* ---------- hero: slow gold dust drifting up through the light ---------- */
@@ -108,7 +107,7 @@
         ctx.beginPath();
         var jade = k % 3 === 0;
         ctx.fillStyle = jade ? "rgba(150,215,255," + (m.o * flick).toFixed(3) + ")" : "rgba(245," + (206 + (k % 3) * 10) + "," + (140 + (k % 4) * 12) + "," + (m.o * flick).toFixed(3) + ")";
-        ctx.shadowColor = jade ? "rgba(240,180,90,.9)" : "rgba(243,210,140,.8)"; ctx.shadowBlur = m.r * 6;
+        ctx.shadowColor = jade ? "rgba(138,99,248,.9)" : "rgba(156,122,250,.8)"; ctx.shadowBlur = m.r * 6;
         ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
       }
       raf = requestAnimationFrame(frame);
@@ -365,7 +364,7 @@
     if (!canvas || reduce || !canvas.getContext) return;
     var ctx = canvas.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = canvas.width = innerWidth * dpr, H = canvas.height = innerHeight * dpr;
-    var colors = ["#ffe0a3", "#f3d28c", "#f0b45a", "#c9822a", "#7cc9f2", "#f2ede3"];
+    var colors = ["#c9b8ff", "#9c7afa", "#8a63f8", "#5c43fa", "#5a8cff", "#ffffff"];
     var bits = [];
     for (var k = 0; k < 160; k++) {
       var a = -Math.PI / 2 + (Math.random() - .5) * 1.6, v = (9 + Math.random() * 11) * dpr;

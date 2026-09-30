@@ -11,7 +11,9 @@
  *          < 2 MB). Put the files in assets/video/ and fill the paths:
  *          mp4 (H.264, required), webm (optional, lighter), mp4Mobile
  *          (optional 720p version for phones), poster (a still frame shown
- *          instantly while it loads). Left empty, the photo reel plays.
+ *          instantly while it loads), loop (false = plays once and rests
+ *          on its last frame, which is also the no-JS / reduced-motion image
+ *          assets/img/hero-video-end.*).
  */
 window.NM_OFFERS = {
   order: ["google", "qr", "pack", "ultimate"],
@@ -21,7 +23,7 @@ window.NM_OFFERS = {
   yearlyMonths: 10,
   videos: { google: "", qr: "", pack: "", ultimate: "" },
   posters: { google: "", qr: "", pack: "", ultimate: "" },
-  hero: { mp4: "", webm: "", mp4Mobile: "", poster: "" },
+  hero: { mp4: "assets/video/hero.mp4", webm: "assets/video/hero.webm", mp4Mobile: "assets/video/hero-m.mp4", poster: "assets/img/hero-video-start.jpg", loop: false },
 
   /* Approximate amounts shown next to the baht price for visitors reading in
      another language — hand-rounded, not a live exchange rate. */
