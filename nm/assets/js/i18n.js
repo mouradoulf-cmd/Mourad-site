@@ -26,7 +26,7 @@
         f1v: "Days", f1l: "from your photos to a live site",
         f2l: "languages, including Thai & Arabic",
         f3v: "Unlimited", f3l: "edits, whenever you need them",
-        f4l: "contracts — cancel anytime, free"
+        f4v: "No", f4l: "contracts — cancel anytime, free"
       },
       audience: {
         i1: "Restaurants", i2: "Cafés", i3: "Hair salons", i4: "Spas & massage", i5: "Bars", i6: "Street food", i7: "Local companies",
@@ -158,7 +158,7 @@
         f1v: "Quelques jours", f1l: "de vos photos à un site en ligne",
         f2l: "langues, dont le thaï et l'arabe",
         f3v: "Illimitées", f3l: "modifications, quand vous voulez",
-        f4l: "contrat — résiliable à tout moment, sans frais"
+        f4v: "Aucun", f4l: "contrat — résiliable à tout moment, sans frais"
       },
       audience: {
         i1: "Restaurants", i2: "Cafés", i3: "Salons de coiffure", i4: "Spas & massages", i5: "Bars", i6: "Street food", i7: "Entreprises locales",
@@ -290,7 +290,7 @@
         f1v: "Pochi giorni", f1l: "dalle tue foto al sito online",
         f2l: "lingue, tra cui thai e arabo",
         f3v: "Illimitate", f3l: "modifiche, quando ne hai bisogno",
-        f4l: "contratti — disdici quando vuoi, gratis"
+        f4v: "Nessun", f4l: "contratto — disdici quando vuoi, gratis"
       },
       audience: {
         i1: "Ristoranti", i2: "Caffè", i3: "Parrucchieri", i4: "Spa e massaggi", i5: "Bar", i6: "Street food", i7: "Aziende locali",
@@ -422,7 +422,7 @@
         f1v: "ไม่กี่วัน", f1l: "จากรูปของคุณสู่เว็บไซต์ที่ออนไลน์",
         f2l: "ภาษา รวมถึงภาษาไทยและอาหรับ",
         f3v: "ไม่จำกัด", f3l: "แก้ไขได้ทุกเมื่อที่ต้องการ",
-        f4l: "สัญญา — ยกเลิกได้ทุกเมื่อ ฟรี"
+        f4v: "ไม่มี", f4l: "สัญญา — ยกเลิกได้ทุกเมื่อ ฟรี"
       },
       audience: {
         i1: "ร้านอาหาร", i2: "คาเฟ่", i3: "ร้านทำผม", i4: "สปาและร้านนวด", i5: "บาร์", i6: "สตรีทฟู้ด", i7: "บริษัทท้องถิ่น",
@@ -554,7 +554,7 @@
         f1v: "أيام", f1l: "من صورك إلى موقع متاح على الإنترنت",
         f2l: "لغات، منها التايلاندية والعربية",
         f3v: "بلا حدود", f3l: "تعديلات متى احتجت إليها",
-        f4l: "عقود — ألغِ في أي وقت، مجاناً"
+        f4v: "بدون", f4l: "عقود — ألغِ في أي وقت، مجاناً"
       },
       audience: {
         i1: "مطاعم", i2: "مقاهٍ", i3: "صالونات حلاقة", i4: "سبا ومراكز تدليك", i5: "بارات", i6: "أكل الشارع", i7: "شركات محلية",
