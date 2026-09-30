@@ -87,7 +87,7 @@
     v.className = "offer__clip"; v.muted = true; v.loop = true; v.playsInline = true; v.preload = "metadata";
     v.setAttribute("muted", ""); v.setAttribute("playsinline", ""); v.setAttribute("aria-hidden", "true");
     v.poster = "assets/video/offer-" + k + ".jpg";
-    v.innerHTML = '<source src="assets/video/offer-' + k + '.webm" type="video/webm"><source src="assets/video/offer-' + k + '.mp4" type="video/mp4">';
+    v.innerHTML = '<source src="assets/video/offer-' + k + '.mp4" type="video/mp4"><source src="assets/video/offer-' + k + '.webm" type="video/webm">';
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduce && "IntersectionObserver" in window) {
       clipIO = clipIO || new IntersectionObserver(function (es) {
