@@ -629,75 +629,38 @@
     return { words: words, revert: function () { el.innerHTML = original; } };
   }
 
-  /* Hero entrance — the headline assembles letter by letter as the intro
-     curtain lifts; words stay unbroken so lines never split mid-word. */
-  function splitChars(el) {
-    var original = el.innerHTML, chars = [];
-    (function walk(node) {
-      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
-        if (child.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          child.textContent.split(/(\s+)/).forEach(function (part) {
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(" ")); return; }
-            var word = document.createElement("span"); word.className = "wm";
-            Array.from(part).forEach(function (c) {
-              var ch = document.createElement("span"); ch.className = "ch"; ch.textContent = c;
-              word.appendChild(ch); chars.push(ch);
-            });
-            frag.appendChild(word);
-          });
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === 1) walk(child);
-      });
-    })(el);
-    // Letters inside <em> each carry their slice of the gradient.
-    $$("em", el).forEach(function (em) {
-      var er = em.getBoundingClientRect(), bg = getComputedStyle(em).backgroundImage;
-      $$(".ch", em).forEach(function (c) {
-        var cr = c.getBoundingClientRect();
-        c.style.backgroundImage = bg;
-        c.style.backgroundSize = er.width + "px " + er.height + "px";
-        c.style.backgroundPosition = (er.left - cr.left) + "px " + (er.top - cr.top) + "px";
-        c.style.webkitBackgroundClip = "text"; c.style.backgroundClip = "text"; c.style.color = "transparent";
-      });
-    });
-    return { chars: chars, revert: function () { el.innerHTML = original; } };
-  }
   var heroTitle = $(".hero__title");
   // The intro curtain (first visit of the session) lifts at ~1.2s.
   var introOn = !!$(".intro") && !document.documentElement.classList.contains("no-intro");
   var tl = gsap.timeline({ delay: introOn ? 1.2 : 0.3, defaults: { ease: "expo.out" } });
   if (!hero) tl.kill();
-  // Thai and Arabic are shaped scripts: letters must stay joined, so they rise word by word.
-  var shaped = /^(th|ar)$/.test(document.documentElement.lang);
+  // Heading and sub-line rise word by word (every language, so shaped
+  // scripts stay joined); the split markup is restored afterwards.
   if (heroTitle) {
-    if (shaped) {
-      var heroSplit = splitWords(heroTitle);
-      tl.from(heroSplit.words, { yPercent: 115, duration: 1.05, stagger: 0.05 }, 0);
-    } else {
-      var heroChars = splitChars(heroTitle);
-      tl.from(heroChars.chars, { yPercent: 110, opacity: 0, rotate: 8, filter: "blur(12px)", duration: 1.1, stagger: 0.024, onComplete: function () {
-        if (heroTitle.contains(heroChars.chars[0])) heroChars.revert();
-      } }, 0);
-      heroSplit = heroChars;
-    }
-    // Restore the plain headline if the layout changes — unless a language
-    // switch has already replaced it with fresh markup.
+    var heroSplit = splitWords(heroTitle);
+    tl.from(heroSplit.words, { y: 26, opacity: 0, duration: 0.72, stagger: 0.085, ease: "power3.out", onComplete: function () {
+      if (heroSplit.words[0] && heroTitle.contains(heroSplit.words[0])) heroSplit.revert();
+    } }, 0.33);
     var splitLang = document.documentElement.lang;
     window.addEventListener("resize", function once() {
       window.removeEventListener("resize", once);
-      if (document.documentElement.lang === splitLang) heroSplit.revert();
+      if (document.documentElement.lang === splitLang && heroSplit.words[0] && heroTitle.contains(heroSplit.words[0])) heroSplit.revert();
     });
   }
-  if (hero) tl.from(".hero__eyebrow", { y: 16, opacity: 0, duration: 1 }, 0)
-    .from(".hero__price", { y: 22, opacity: 0, duration: 1.1 }, 0.55)
-    .from(".hero__sub", { y: 22, opacity: 0, duration: 1.1 }, 0.62)
-    .from(".hero__ctas", { y: 22, opacity: 0, duration: 1.1 }, 0.7)
-    .from(".hero__facts li", { opacity: 0, y: 20, duration: 1, stagger: 0.08 }, 0.8);
+  var heroSub = $(".hero__sub");
+  if (heroSub) {
+    var subSplit = splitWords(heroSub);
+    tl.from(subSplit.words, { y: 14, opacity: 0, duration: 0.6, stagger: 0.022, ease: "power3.out", onComplete: function () {
+      if (subSplit.words[0] && heroSub.contains(subSplit.words[0])) subSplit.revert();
+    } }, 1.0);
+  }
+  if (hero) tl.from(".hero__eyebrow", { y: 20, opacity: 0, duration: 0.8 }, 0.17)
+    .from(".hero__price", { y: 20, opacity: 0, duration: 0.9 }, 0.85)
+    .from(".hero__ctas", { y: 20, opacity: 0, duration: 0.9 }, 1.3)
+    .from(".hero__facts li", { opacity: 0, y: 20, duration: 0.9, stagger: 0.08 }, 1.5);
   if ($(".hero__phone .device")) tl.from(".hero__phone .device", { opacity: 0, y: 120, rotate: 6, duration: 1.8 }, 0.35);
   if ($(".hero__chip .chip")) tl.from(".hero__chip .chip", { opacity: 0, scale: .8, y: 20, duration: 1, stagger: 0.15, ease: "back.out(1.6)" }, 1.1);
-  if ($(".hero__scene")) tl.from(".hero__scene", { opacity: 0, duration: 2.2, ease: "power2.out" }, 0);
+
 
   // Hero scroll: the phone drifts up, the copy eases away.
   if ($(".hero__device")) gsap.to(".hero__device", { yPercent: -18, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
@@ -705,7 +668,7 @@
   if ($(".hero__media")) gsap.to(".hero__media", { yPercent: 12, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
   // Desktop: as you scroll away, the full-bleed hero closes into a rounded card.
   if ($(".hero__media") && window.matchMedia("(min-width: 960px)").matches) {
-    gsap.fromTo(".hero__media", { clipPath: "inset(0% 0% 0% 0% round 0px)" }, { clipPath: "inset(4% 3% 10% 3% round 44px)", ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    gsap.fromTo(".hero__media, .hero__fluid", { clipPath: "inset(0% 0% 0% 0% round 0px)" }, { clipPath: "inset(4% 3% 10% 3% round 44px)", ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
   }
 
   /* Section titles: word-by-word rise when they enter. Words are split and

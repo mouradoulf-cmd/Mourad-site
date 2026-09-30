@@ -152,15 +152,15 @@ extras, delivery and a WhatsApp request; `RSI18n` EN/FR/TH/RU.
 
 ## NM Studio — the studio's own site (`nm/`)
 
-Plain HTML/CSS/JS, no build step. v3.2 "Violet Night" (tuned to the hero
-video the user supplied): night `#030305` + violet `#8a63f8` (token still
-`--jade`) + blue `#5a8cff` + gradient `#9c7afa→#5a8cff`, CTA gradient with
-white text, neon green live dots,
+Plain HTML/CSS/JS, no build step. v3.3 "Ink" (user-approved, tuned to the
+fluid hero): `#04050c` + ink band cyan `#4fd6ff` → violet `#8a63f8` (token
+still `--jade`) → magenta `#e35cf0`, glass fills, white pill CTAs, neon green
+live dots,
 Bricolage Grotesque display + Newsreader italic key word + Geist + Geist
 Mono, glass cards with pointer-lit borders, grain. Pages: `index.html`
-(intro curtain once per session, hero = video `assets/video/hero.*` via `NM_OFFERS.hero`
-(plays once, rests on its last frame = poster `hero-video-end.*`; footage
-purchased by the user); letter-split title, two scroll-driven marquees, 3-screen story,
+(intro curtain once per session, hero = WebGL fluid ink `fluid.js` (Dobryakov, MIT; auto
+orbit + pointer; static CSS ink fallback), centred copy, word-by-word
+heading/sub reveal; letter-split title, two scroll-driven marquees, 3-screen story,
 4 offer cards + morphing detail dialog `.om`, why us, "difference",
 slot-machine calculator, pinned horizontal work gallery (desktop LTR) with
 live iframe preview `.pv`, process, real animated QR, Pattaya SVG map, FAQ,

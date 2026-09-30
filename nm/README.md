@@ -112,23 +112,22 @@ receipts, invoices and dunning emails.
   issued (refund rule confirmed by the owner).
 - **Testimonials**: intentionally none until there are real ones.
 
-## Design system — v3.2 "Violet Night"
+## Design system — v3.3 "Ink"
 
-- Colours (`assets/css/nm.css` `:root`), tuned to the hero video: night
-  `#030305`, surface `#0a0a10`, text `#ffffff`, muted `#a9a9b8`; signature
-  violet `#8a63f8` (token still named `--jade`; soft `#c9b8ff`, deep
-  `#5c43fa`), electric blue `#5a8cff` (`--ice`), text/price gradient
-  `#9c7afa → #5a8cff` (`--brand`, `--lux`), CTA gradient `#7a55f0 → #5c43fa`
-  with white text (`--accent-grad`, AA), neon green `#00ff88` live dots.
-- Hero: the video in `assets/video/` (`hero.webm` VP8 1080p, `hero.mp4`
-  H.264 1080p, `hero-m.mp4` 960p for phones; 5 s city → penthouse → studio
-  desk), set in `NM_OFFERS.hero` with `loop: false`: it plays once and rests
-  on its last frame; `assets/img/hero-video-end.*` is that frame, shown with
-  reduced motion, data saver or without JavaScript. On desktop the video is
-  118 % wide so the desk sits right of the headline, under a left-to-right
-  dark veil. Replace the files (same names) to change the hero.
-  The video was purchased by the owner (paid design-prompt pack); keep the
-  receipt / licence terms with the studio's records.
+- Colours (`assets/css/nm.css` `:root`), tuned to the fluid hero: near-black
+  `#04050c`, text `#eef0f6`, muted `#b9becf`; the ink band cyan `#4fd6ff`
+  (`--ice`) → violet `#8a63f8` (token still `--jade`) → magenta `#e35cf0`
+  (`--magenta`); text/price gradients `--brand` / `--lux`; glass
+  `rgba(255,255,255,.08)` with `.16` borders; primary CTAs are white pills
+  with dark text (`.btn--sun`); neon green `#00ff88` live dots.
+- Hero: `assets/js/fluid.js` — GPU fluid simulation (Pavel Dobryakov's
+  WebGL Fluid Simulation, MIT) tuned for oily cyan→magenta ink: load burst,
+  an invisible cursor orbiting the centre forever, mouse / finger stir it.
+  Starts after the intro curtain, pauses off screen / hidden tab, lighter
+  burst on phones. Without WebGL or with reduced motion, `.hero__ink` shows a
+  static CSS ink gradient. Centred copy over a radial scrim; heading and
+  sub-line reveal word by word. A video in `NM_OFFERS.hero` would replace
+  the ink (none set).
 - Type: Bricolage Grotesque (display headings), Newsreader italic (the key
   word of each heading), Geist (text), Geist Mono (prices, labels) — all
   self-hosted; Noto Sans Thai / IBM Plex Sans Arabic loaded on demand.

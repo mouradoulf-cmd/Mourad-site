@@ -23,7 +23,7 @@ window.NM_OFFERS = {
   yearlyMonths: 10,
   videos: { google: "", qr: "", pack: "", ultimate: "" },
   posters: { google: "", qr: "", pack: "", ultimate: "" },
-  hero: { mp4: "assets/video/hero.mp4", webm: "assets/video/hero.webm", mp4Mobile: "assets/video/hero-m.mp4", poster: "assets/img/hero-video-start.jpg", loop: false },
+  hero: { mp4: "", webm: "", mp4Mobile: "", poster: "", loop: true },
 
   /* Approximate amounts shown next to the baht price for visitors reading in
      another language — hand-rounded, not a live exchange rate. */
