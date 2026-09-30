@@ -160,7 +160,7 @@ Bricolage Grotesque display + Newsreader italic key word + Geist + Geist
 Mono, glass cards with pointer-lit borders, grain. Pages: `index.html`
 (intro curtain once per session, hero = WebGL fluid ink `fluid.js` (Dobryakov, MIT; auto
 orbit + pointer; static CSS ink fallback), centred copy, word-by-word
-heading/sub reveal; letter-split title, two scroll-driven marquees, 3-screen story,
+heading/sub reveal; two scroll-driven marquees, self-playing 3-scene story film (camera moves, wipe cuts, word reveals, tap to skip),
 4 offer cards + morphing detail dialog `.om`, why us, "difference",
 slot-machine calculator, pinned horizontal work gallery (desktop LTR) with
 live iframe preview `.pv`, process, real animated QR, Pattaya SVG map, FAQ,

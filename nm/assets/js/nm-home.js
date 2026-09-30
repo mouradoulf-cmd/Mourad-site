@@ -142,30 +142,85 @@
     });
   })();
 
-  /* ---------- story: three screens, driven by scroll ---------- */
+  /* ---------- story: a short self-playing film in three scenes ----------
+     Each scene: the photo drifts like a camera move, the line rises word
+     by word, the progress bar fills, then a cut (wipe + light flash) to the
+     next scene; loops while on screen. Tap right / left to skip, hover to
+     hold (desktop). Reduced motion keeps the three lines stacked. */
   (function story() {
     var section = $(".story");
     if (!section || reduce || !("IntersectionObserver" in window)) return;
     var lines = $$(".story__line", section), imgs = $$(".story__img", section), bars = $$(".story__bars i", section);
-    section.classList.add("is-scroll");
-    var current = -1, queued = false;
-    function set(n) {
-      if (n === current) return;
-      current = n;
-      lines.forEach(function (l, k) { l.classList.toggle("is-on", k === n); l.classList.toggle("is-past", k < n); });
-      imgs.forEach(function (im, k) { im.classList.toggle("is-on", k === n); });
+    var SCENE_MS = 4600, cur = -1, timer = null, visible = false, held = false, started = 0, left = SCENE_MS;
+    section.classList.add("is-film");
+    section.style.setProperty("--scene-ms", SCENE_MS + "ms");
+    var tc = document.createElement("p"); tc.className = "story__tc"; tc.setAttribute("aria-hidden", "true");
+    var flash = document.createElement("div"); flash.className = "story__flash"; flash.setAttribute("aria-hidden", "true");
+    $(".story__sticky", section).appendChild(tc); $(".story__sticky", section).appendChild(flash);
+    function splitLine(p) {
+      if (p.querySelector(".stw")) return;
+      var i = 0;
+      (function walk(node) {
+        Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+          if (c.nodeType === 3) {
+            var frag = document.createDocumentFragment();
+            c.textContent.split(/(\s+)/).forEach(function (part) {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(" ")); return; }
+              var w = document.createElement("span"); w.className = "stw"; w.style.setProperty("--i", i++); w.textContent = part; frag.appendChild(w);
+            });
+            node.replaceChild(frag, c);
+          } else if (c.nodeType === 1) walk(c);
+        });
+      })(p);
     }
-    function update() {
-      queued = false;
-      var r = section.getBoundingClientRect(), vh = window.innerHeight;
-      var total = Math.max(1, r.height - vh);
-      var p = Math.min(1, Math.max(0, -r.top / total));
-      set(Math.min(lines.length - 1, Math.floor(p * lines.length * 0.999)));
-      bars.forEach(function (b, k) { b.style.setProperty("--p", Math.min(1, Math.max(0, p * lines.length - k)).toFixed(3)); });
+    function splitAll() { lines.forEach(function (l) { splitLine($("p", l)); }); }
+    function show(n) {
+      var prev = cur; cur = (n + lines.length) % lines.length;
+      lines.forEach(function (l, k) { l.classList.toggle("is-on", k === cur); l.classList.toggle("is-past", k === prev && k !== cur); });
+      imgs.forEach(function (im, k) {
+        im.classList.toggle("is-out", k === prev && k !== cur);
+        im.classList.remove("is-on"); if (k === cur) { void im.offsetWidth; im.classList.add("is-on"); }
+      });
+      bars.forEach(function (b, k) { b.classList.remove("is-on"); b.classList.toggle("is-done", k < cur); if (k === cur) { void b.offsetWidth; b.classList.add("is-on"); } });
+      if (prev !== -1) { flash.classList.remove("is-go"); void flash.offsetWidth; flash.classList.add("is-go"); }
+      tc.textContent = "SC " + ("0" + (cur + 1)) + " / 0" + lines.length;
+      left = SCENE_MS; schedule();
     }
-    window.addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
-    window.addEventListener("resize", update);
-    update();
+    function schedule() {
+      clearTimeout(timer);
+      var run = visible && !held && !document.hidden;
+      section.classList.toggle("is-held", !run);
+      if (!run) return;
+      started = Date.now();
+      timer = setTimeout(function () { show(cur + 1); }, left);
+    }
+    function hold(on) {
+      if (on && !held) { held = true; left = Math.max(400, left - (Date.now() - started)); }
+      else if (!on && held) held = false;
+      schedule();
+    }
+    splitAll();
+    new IntersectionObserver(function (en) {
+      var was = visible; visible = en[0].isIntersecting;
+      if (visible && cur === -1) { show(0); return; }
+      if (visible === was) return;
+      if (!visible && !held) left = Math.max(400, left - (Date.now() - started)); // resume where it stopped
+      schedule();
+    }, { threshold: 0.35 }).observe(section);
+    document.addEventListener("visibilitychange", schedule);
+    if (finePointer) {
+      var inner = $(".story__inner", section);
+      inner.addEventListener("pointerenter", function () { hold(true); });
+      inner.addEventListener("pointerleave", function () { hold(false); });
+    }
+    $(".story__sticky", section).addEventListener("click", function (e) {
+      if (e.target.closest("a, button")) return;
+      var r = section.getBoundingClientRect(), right = (e.clientX - r.left) > r.width / 2;
+      if (document.documentElement.dir === "rtl") right = !right;
+      held = false; show(cur + (right ? 1 : -1));
+    });
+    document.addEventListener("nm:lang", function () { splitAll(); if (cur >= 0) { var n = cur; cur = -1; show(n); } });
   })();
 
   /* ---------- offers: play illustrations in view, tilt, open the detail dialog ---------- */
