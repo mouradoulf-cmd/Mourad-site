@@ -152,21 +152,22 @@ extras, delivery and a WhatsApp request; `RSI18n` EN/FR/TH/RU.
 
 ## NM Studio — the studio's own site (`nm/`)
 
-Plain HTML/CSS/JS, no build step. v3.3 "Ink" (user-approved, tuned to the
-fluid hero): `#04050c` + ink band cyan `#4fd6ff` → violet `#8a63f8` (token
-still `--jade`) → magenta `#e35cf0`, glass fills, white pill CTAs, neon green
-live dots,
-Bricolage Grotesque display + Newsreader italic key word + Geist + Geist
-Mono, glass cards with pointer-lit borders, grain. Pages: `index.html`
-(intro curtain once per session, hero = WebGL fluid ink `fluid.js` (Dobryakov, MIT; auto
-orbit + pointer; static CSS ink fallback), centred copy, word-by-word
-heading/sub reveal; two scroll-driven marquees, self-playing 3-scene story film (camera moves, wipe cuts, word reveals, tap to skip),
-4 offer cards + morphing detail dialog `.om`, why us, "difference",
-slot-machine calculator, pinned horizontal work gallery (desktop LTR) with
-live iframe preview `.pv`, process, real animated QR, Pattaya SVG map, FAQ,
-WhatsApp CTA with scan-to-chat QR, footer reveal), `services.html`, `pricing.html` (care plan Monthly/Yearly toggle, comparison
-table), `checkout.html`, `success.html`, `cancel.html`, `account.html`,
-`legal.html`. `nm/README.md` documents everything (Stripe setup, going live).
+Plain HTML/CSS/JS, no build step. v4 "Night future, touch of gold"
+(user-approved plan, full restructure): night `#07060c`, violet `#7b61ff` →
+blue `#4f7bff` light, gold `#e6c27a` details, one stylesheet
+`assets/css/site.css`. Satoshi (display) + Fraunces italic gold key word +
+Inter, self-hosted. Home order: 50/50 hero « Be found. Be chosen. » (MacBook
++ iPhone cycling the 7 live demos, gold dust, orb), key figures + sectors
+marquee, the 7 demos in device mockups (live preview `.pv`), 4 offers +
+morphing dialog `.om`, why us (3 photos), how it works (3 steps), FAQ (8),
+« Ready to be visible? » giant WhatsApp finale, footer. No testimonials
+until real ones exist. Every logo must be the real brand mark (Simple Icons
+paths, official Google G, PromptPay image in `assets/img/logos/`); footer
+social icons stay hidden until `social` links are filled in
+`offers-config.js`. Other pages: `services.html`, `pricing.html` (care plan
+Monthly/Yearly toggle, comparison table), `checkout.html`, `success.html`,
+`cancel.html`, `account.html`, `legal.html`. `nm/README.md` documents
+everything (Stripe setup, going live).
 
 - Offers/prices: `assets/js/offers-config.js` (`NM_OFFERS` + `NMPrice`):
   Google ฿990, QR ฿1,990, Complete ฿4,990, Ultimate ฿9,990 one-time; optional
@@ -192,8 +193,9 @@ table), `checkout.html`, `success.html`, `cancel.html`, `account.html`,
   `fromTo` + `clearProps` (and `transition:none` during the tween), or GSAP
   reads a mid-transition value as the resting state and cards stay offset.
 - QR codes are always real (`nm-qr.js` → SVG modules, `data-qr`); never
-  draw a fake QR. Motion lives in `main.js` (GSAP) and `fx.js` (cursor
-  trail, ripple, marquee speed, count-up, footer reveal).
+  draw a fake QR. Motion lives in `main.js` (GSAP), `home.js` (home only:
+  dust, hero device carousel, tilt) and `fx.js` (cursor trail, ripple,
+  marquee speed, count-up).
 - Showcase screenshots in `nm/assets/img/work/` are captured from the live
   demos with Playwright (1280×800 and 390×780 @1.5 → jpg + webp + 360w).
   Deployed via the `claude/thai-app-mnw166` branch (GitHub Pages source).
