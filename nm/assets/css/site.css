@@ -582,66 +582,17 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
    OFFER ILLUSTRATIONS (offer-icons.js)
    ========================================================================== */
 .ic { color: #1a1512; }
-.ic .ic-surface { fill: rgba(244,242,250,.06); stroke: rgba(244,242,250,.14); }
-.ic .ic-road { fill: none; stroke: rgba(244,242,250,.16); stroke-width: 4; stroke-linecap: round; }
-.ic .ic-road--thin { stroke-width: 2.2; }
-.ic .ic-dot { fill: rgba(244,242,250,.28); }
-.ic .ic-card { fill: #ffffff; }
-.ic .ic-shadow { fill: rgba(0,0,0,.45); }
-.ic .ic-star { fill: #fbbc05; }
-.ic .ic-halo { opacity: .8; }
-.ic .ic-mod, .ic .ic-finder { fill: #1a1512; }
-.ic .ic-scan { fill: #7b61ff; opacity: 0; filter: drop-shadow(0 0 4px #7b61ff); }
-.ic .ic-device { fill: #0d0b16; stroke: rgba(244,242,250,.3); }
-.ic .ic-screen { fill: #15131e; }
-.ic .ic-line { fill: rgba(244,242,250,.14); }
-.ic .ic-line--hot { fill: #e6c27a; }
-.ic .ic-line--btn { fill: #7b61ff; }
-.ic .ic-edge { fill: none; stroke: rgba(255,255,255,.35); stroke-width: 1; opacity: 0; }
-.ic .ic-spark { fill: #f6e1ad; opacity: 0; }
-.ic .ic-tile-bg { fill: #efe7dc; }
-.ic .ic-heart { fill: #7b61ff; opacity: 0; }
-.ic .ic-dust circle { fill: #e6c27a; opacity: 0; }
+.ic .ic-halo { opacity: .55; }
+.ic .ic-badge { fill: rgba(18,16,25,.55); stroke: rgba(230,194,122,.4); stroke-width: 1; }
+.ic .ic-glyph { fill: none; stroke: #e6c27a; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.ic .ic-glyph-fill { fill: #e6c27a; }
+.ic .ic-mod { fill: #e6c27a; }
 .ic * { transform-box: fill-box; transform-origin: center; }
 
-.is-playing .ic--google .ic-pin { animation: icPinDrop 5s var(--ease-out) infinite; }
-.is-playing .ic--google .ic-shadow { animation: icShadow 5s var(--ease-out) infinite; }
-.is-playing .ic--google .ic-bubble { animation: icPop 5s var(--ease-out) infinite; transform-origin: 0% 100%; }
-.is-playing .ic--google .ic-star { animation: icStar 5s ease infinite; animation-delay: calc(var(--i) * .12s); }
-@keyframes icPinDrop { 0% { transform: translateY(-70px); opacity: 0; } 14% { transform: translateY(0); opacity: 1; } 20% { transform: translateY(-9px); } 26%, 88% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(0); opacity: 0; } }
-@keyframes icShadow { 0% { transform: scale(.3); opacity: 0; } 14% { transform: scale(1); opacity: 1; } 20% { transform: scale(.8); } 26%, 88% { transform: scale(1); opacity: 1; } 100% { opacity: 0; } }
-@keyframes icPop { 0%, 28% { transform: scale(.4); opacity: 0; } 38% { transform: scale(1.06); opacity: 1; } 44%, 88% { transform: scale(1); opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
-@keyframes icStar { 0%, 40% { fill: #4a4039; transform: scale(.6); } 48% { fill: #fbbc05; transform: scale(1.35); } 54%, 90% { fill: #fbbc05; transform: scale(1); } 100% { fill: #fbbc05; } }
-
-.is-playing .ic--qr .ic-mod { animation: icMod 5s var(--ease-out) infinite; animation-delay: calc(var(--i) * .035s); }
-.is-playing .ic--qr .ic-finder { animation: icMod 5s var(--ease-out) infinite; }
-.is-playing .ic--qr .ic-scan { animation: icScan 5s var(--ease-in-out) infinite; }
-.is-playing .ic--qr .ic-phone { animation: icPhone 5s var(--ease-out) infinite; }
-.is-playing .ic--qr .ic-line { animation: icLine 5s var(--ease-out) infinite; animation-delay: calc(var(--i) * .08s); transform-origin: 0 50%; }
-@keyframes icMod { 0% { transform: scale(0); opacity: 0; } 12%, 92% { transform: scale(1); opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
-@keyframes icScan { 0%, 22% { transform: translateY(0); opacity: 0; } 26% { opacity: 1; } 44% { transform: translateY(69px); opacity: 1; } 48%, 100% { transform: translateY(69px); opacity: 0; } }
-@keyframes icPhone { 0%, 42% { transform: translateX(34px); opacity: 0; } 54%, 92% { transform: none; opacity: 1; } 100% { opacity: 0; } }
-@keyframes icLine { 0%, 54% { transform: scaleX(0); } 64%, 100% { transform: scaleX(1); } }
-
-.is-playing .ic--pack .ic-face--top { animation: icFaceTop 5s var(--ease-out) infinite; }
-.is-playing .ic--pack .ic-face--left { animation: icFaceL 5s var(--ease-out) infinite; }
-.is-playing .ic--pack .ic-face--right { animation: icFaceR 5s var(--ease-out) infinite; }
-.is-playing .ic--pack .ic-edge { animation: icEdge 5s ease infinite; }
-.is-playing .ic--pack .ic-halo { animation: icHalo 5s ease infinite; }
-.is-playing .ic--pack .ic-spark { animation: icSpark 5s ease infinite; }
-@keyframes icFaceTop { 0% { transform: translateY(-26px); opacity: 0; } 10% { opacity: 1; } 30%, 90% { transform: none; opacity: 1; } 100% { opacity: 0; } }
-@keyframes icFaceL { 0%, 6% { transform: translate(-30px, 14px); opacity: 0; } 16% { opacity: 1; } 34%, 90% { transform: none; opacity: 1; } 100% { opacity: 0; } }
-@keyframes icFaceR { 0%, 12% { transform: translate(30px, 14px); opacity: 0; } 22% { opacity: 1; } 38%, 90% { transform: none; opacity: 1; } 100% { opacity: 0; } }
-@keyframes icEdge { 0%, 38% { opacity: 0; } 44% { opacity: 1; } 60%, 100% { opacity: .4; } }
-@keyframes icHalo { 0%, 36% { opacity: .5; transform: scale(.9); } 46% { opacity: 1; transform: scale(1.12); } 70%, 100% { opacity: .8; transform: scale(1); } }
-@keyframes icSpark { 0%, 40% { opacity: 0; transform: scale(.3) rotate(0); } 48% { opacity: 1; transform: scale(1.15) rotate(20deg); } 62%, 100% { opacity: 0; transform: scale(.5) rotate(40deg); } }
-
-.is-playing .ic--ultimate .ic-tile { animation: icTile 5s var(--ease-out) infinite; animation-delay: calc(var(--i) * .14s); }
-.is-playing .ic--ultimate .ic-heart { animation: icHeart 5s ease-out infinite; animation-delay: calc(1.1s + var(--i) * .4s); }
-.is-playing .ic--ultimate .ic-dust circle { animation: icDust 5s ease-out infinite; animation-delay: calc(.9s + var(--i) * .3s); }
-@keyframes icTile { 0% { transform: scale(.3); opacity: 0; } 12% { transform: scale(1.08); opacity: 1; } 18%, 90% { transform: scale(1); opacity: 1; } 100% { opacity: 0; } }
-@keyframes icHeart { 0% { transform: translateY(8px) scale(.4); opacity: 0; } 12% { opacity: 1; transform: translateY(0) scale(1); } 45% { transform: translateY(-26px) scale(.9); opacity: 0; } 100% { opacity: 0; } }
-@keyframes icDust { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 55% { transform: translateY(-60px); opacity: 0; } 100% { opacity: 0; } }
+.is-playing .ic .ic-in { animation: icIn .7s var(--ease-out) both; animation-delay: calc(var(--i, 0) * .1s); }
+@keyframes icIn { 0% { opacity: 0; transform: translateY(6px) scale(.94); } 100% { opacity: 1; transform: none; } }
+.is-playing .ic .ic-halo { animation: icHaloPulse 5s ease infinite; animation-delay: .7s; }
+@keyframes icHaloPulse { 0%, 100% { opacity: .5; } 50% { opacity: .75; } }
 
 /* ==========================================================================
    OFFER CARDS — glass, pointer-lit border, gold on the featured one
