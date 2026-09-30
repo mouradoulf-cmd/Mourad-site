@@ -98,13 +98,9 @@ receipts, invoices and dunning emails.
 
 ## To complete before promoting the site
 
-- **Legal page**: add the registered business name, address and tax ID in
-  the legal notice, and confirm the refund rule in the terms (currently:
-  full refund if work hasn't started).
-- **Testimonials**: none are shown on purpose — send 3 real ones (name,
-  business, photo with permission) and they can be added.
-- **"48h average delivery"** in the hero is the figure from the brief; adjust
-  in `nm-dict.js` (`hero2.v3`) if needed.
+- **Legal page**: add the street address in Pattaya and the tax ID once
+  issued (refund rule confirmed by the owner).
+- **Testimonials**: intentionally none until there are real ones.
 
 ## Design system
 
