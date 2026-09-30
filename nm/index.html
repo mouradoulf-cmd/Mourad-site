@@ -77,10 +77,13 @@
 <!-- ============ 1 · HERO ============ -->
 <section class="h" id="top" aria-labelledby="heroTitle">
   <div class="h__bg" aria-hidden="true">
+    <video class="h__video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg">
+      <source src="assets/video/hero.webm" type="video/webm">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="h__shade"></div>
     <div class="h__aurora"><i></i><i></i><i></i></div>
-    <canvas class="h__dust"></canvas>
-    <div class="h__lines"></div>
-    <div class="grain"></div>
+        <div class="grain"></div>
   </div>
   <div class="container h__grid">
     <div class="h__copy">
@@ -613,6 +616,7 @@
 <script src="assets/js/fx.js" defer></script>
 <script src="assets/js/nm-home.js" defer></script>
 <script src="assets/js/home.js" defer></script>
+<script>(function(){var v=document.querySelector(".h__video");if(!v)return;if(matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.pause();return}var p=v.play();if(p&&p.catch)p.catch(function(){})})();</script>
 </body>
 </html>
 
