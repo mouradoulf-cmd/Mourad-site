@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mae Lek — Thai Street Kitchen, Pattaya</title>
+<meta name="description" content="Mae Lek is a Thai street kitchen on Soi Buakhao, Pattaya: pad kra pao, pad thai, som tam, boat noodles and mango sticky rice from ฿40. One wok, holy basil, since 1998. Open Tue–Sun 17:00–01:00. Order ahead on WhatsApp.">
+<meta name="theme-color" content="#16110d">
+<meta property="og:title" content="Mae Lek — Thai Street Kitchen, Pattaya">
+<meta property="og:description" content="Wok fire. Holy basil. Proper Thai food.">
+<meta property="og:image" content="assets/img/hero-1.jpg">
+<link rel="preload" as="font" href="assets/fonts/rubik-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="assets/fonts/manrope-latin.woff2" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add("js")</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Mae Lek Thai Street Kitchen","servesCuisine":"Thai","priceRange":"฿","image":"assets/img/hero-1.jpg","telephone":"+66812345678",
+"address":{"@type":"PostalAddress","streetAddress":"Soi Buakhao","addressLocality":"Pattaya","postalCode":"20150","addressCountry":"TH"},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"17:00","closes":"01:00"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="a11y.skip">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#top" class="logo" aria-label="Mae Lek — home">
+      <span class="logo__badge" aria-hidden="true">แม่</span>
+      <span class="logo__word">Mae Lek</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#board" data-i18n="nav.menu">Menu</a>
+      <a href="#tonight" data-i18n="nav.tonight">Tonight</a>
+      <a href="#story" data-i18n="nav.story">Our story</a>
+      <a href="#find" data-i18n="nav.find">Find us</a>
+    </nav>
+    <div class="header__end">
+      <div class="langs" role="group" aria-label="Language" data-i18n-attr="aria-label:a11y.language">
+        <button type="button" data-lang="en" lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="fr" lang="fr" aria-label="Français">FR</button>
+        <button type="button" data-lang="th" lang="th" aria-label="ไทย">TH</button>
+        <button type="button" data-lang="ru" lang="ru" aria-label="Русский">RU</button>
+      </div>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Menu" data-i18n-attr="aria-label:a11y.menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mnav" id="mnav" hidden>
+  <nav aria-label="Mobile">
+    <a href="#menu" data-i18n="nav.menu">Menu</a>
+    <a href="#tonight" data-i18n="nav.tonight">Tonight</a>
+    <a href="#local" data-i18n="nav.local">Eat like a local</a>
+    <a href="#story" data-i18n="nav.story">Our story</a>
+    <a href="#find" data-i18n="nav.find">Find us</a>
+  </nav>
+  <p class="mnav__meta">Soi Buakhao, Pattaya · <span data-i18n="hours.short">Tue–Sun 17:00–01:00</span></p>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="hero__media" aria-hidden="true">
+    <picture class="hero__slide is-on">
+      <source media="(max-width: 700px)" srcset="assets/img/hero-1-m.webp" type="image/webp">
+      <source media="(max-width: 700px)" srcset="assets/img/hero-1-m.jpg">
+      <source srcset="assets/img/hero-1.webp" type="image/webp">
+      <img src="assets/img/hero-1.jpg" alt="" width="1920" height="1200" fetchpriority="high" decoding="async">
+    </picture>
+    <picture class="hero__slide">
+      <source media="(max-width: 700px)" srcset="assets/img/hero-2-m.webp" type="image/webp">
+      <source media="(max-width: 700px)" srcset="assets/img/hero-2-m.jpg">
+      <source srcset="assets/img/hero-2.webp" type="image/webp">
+      <img src="assets/img/hero-2.jpg" alt="" width="1920" height="1200" loading="lazy" decoding="async">
+    </picture>
+    <picture class="hero__slide">
+      <source media="(max-width: 700px)" srcset="assets/img/hero-3-m.webp" type="image/webp">
+      <source media="(max-width: 700px)" srcset="assets/img/hero-3-m.jpg">
+      <source srcset="assets/img/hero-3.webp" type="image/webp">
+      <img src="assets/img/hero-3.jpg" alt="" width="1920" height="1200" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <canvas class="embers" aria-hidden="true"></canvas>
+  <div class="hero__inner">
+    <p class="tag tag--light" data-reveal><span class="status"><span class="dot" aria-hidden="true"></span><span data-status>Tue–Sun 17:00–01:00</span></span></p>
+    <h1 class="hero__title" id="heroTitle">
+      <span class="line"><span data-i18n="hero.t1">Wok fire.</span></span>
+      <span class="line"><span data-i18n="hero.t2">Holy basil.</span></span>
+      <span class="line"><em data-i18n="hero.t3">Proper Thai food.</em></span>
+    </h1>
+    <p class="hero__lead" data-reveal data-i18n="hero.lead">Mae Lek has cooked on this corner of Soi Buakhao since 1998 — one wok, fifteen dishes and the best pad kra pao in Pattaya. Eat at the stall, or order ahead and pick it up hot.</p>
+    <div class="hero__ctas" data-reveal>
+      <a href="#board" class="btn btn--chili btn--lg"><span data-i18n="hero.cta">See the menu</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v11m0 0l-4.5-4.5M10 15l4.5-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#find" class="btn btn--ghost btn--lg" data-i18n="hero.cta2">How to find us</a>
+    </div>
+  </div>
+  <div class="sticker" aria-hidden="true">
+    <span class="sticker__top" data-i18n="hero.stickerTop">Pad kra pao + egg</span>
+    <b data-price="50">฿50</b>
+    <span class="sticker__bot" data-i18n="hero.stickerBot">since 1998</span>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span data-i18n="tk.1">No reservations — just sit down</span><i>🌶</i><span data-i18n="tk.2">Cash &amp; Thai QR</span><i>🌶</i><span data-i18n="tk.3">You choose the spice</span><i>🌶</i><span data-i18n="tk.4">Order ahead on WhatsApp</span><i>🌶</i><span data-i18n="tk.5">Vegetarian on request</span><i>🌶</i>
+    <span data-i18n="tk.1">No reservations — just sit down</span><i>🌶</i><span data-i18n="tk.2">Cash &amp; Thai QR</span><i>🌶</i><span data-i18n="tk.3">You choose the spice</span><i>🌶</i><span data-i18n="tk.4">Order ahead on WhatsApp</span><i>🌶</i><span data-i18n="tk.5">Vegetarian on request</span><i>🌶</i>
+  </div>
+</div>
+
+<!-- ============ THE BOARD (like the painted signs on the stall) ============ -->
+<section class="stall" id="board" aria-labelledby="boardTitle">
+  <div class="tarp" aria-hidden="true"></div>
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="tag" data-reveal data-i18n="board.tag">The board</p>
+        <h2 class="title" id="boardTitle" data-reveal data-i18n="board.title">Point at the board. <em>That's the menu.</em></h2>
+      </div>
+      <p class="head__aside" data-reveal data-i18n="board.aside">Just like the signs hanging under our tarp — tap a dish to drop it in your bag. Prices in baht, exactly as painted.</p>
+    </div>
+    <div class="boards">
+      <div class="panel panel--pink" data-reveal>
+        <p class="panel__head"><span lang="th">อาหารจานเดียว</span><small data-i18n="board.g1">Rice &amp; wok</small></p>
+        <ul class="panel__list">
+          <li><button type="button" class="bitem" data-add="krapao" aria-label="Add Pad kra pao — 50 baht"><picture><source srcset="assets/img/t-krapao.webp" type="image/webp"><img src="assets/img/t-krapao.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ผัดกะเพราหมูสับไข่ดาว</span><span class="bitem__en">Pad kra pao</span></span><b class="bitem__p"><small>฿</small>50</b></button></li>
+          <li><button type="button" class="bitem" data-add="rice" aria-label="Add Khao pad — 50 baht"><picture><source srcset="assets/img/t-rice.webp" type="image/webp"><img src="assets/img/t-rice.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ข้าวผัด</span><span class="bitem__en">Khao pad</span></span><b class="bitem__p"><small>฿</small>50</b></button></li>
+          <li><button type="button" class="bitem" data-add="chicken" aria-label="Add Gai tod Hat Yai — 60 baht"><picture><source srcset="assets/img/t-chicken.webp" type="image/webp"><img src="assets/img/t-chicken.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ไก่ทอดหาดใหญ่</span><span class="bitem__en">Gai tod Hat Yai</span></span><b class="bitem__p"><small>฿</small>60</b></button></li>
+          <li><button type="button" class="bitem" data-add="glory" aria-label="Add Pad pak boong — 50 baht"><picture><source srcset="assets/img/t-glory.webp" type="image/webp"><img src="assets/img/t-glory.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ผัดผักบุ้งไฟแดง</span><span class="bitem__en">Pad pak boong</span></span><b class="bitem__p"><small>฿</small>50</b></button></li>
+          <li><button type="button" class="bitem" data-add="curry" aria-label="Add Kaeng kiew wan — 60 baht"><picture><source srcset="assets/img/t-curry.webp" type="image/webp"><img src="assets/img/t-curry.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">แกงเขียวหวานไก่</span><span class="bitem__en">Kaeng kiew wan</span></span><b class="bitem__p"><small>฿</small>60</b></button></li>
+        </ul>
+      </div>
+      <div class="panel panel--red" data-reveal>
+        <p class="panel__head"><span lang="th">ก๋วยเตี๋ยว</span><small data-i18n="board.g2">Noodles &amp; soups</small></p>
+        <ul class="panel__list">
+          <li><button type="button" class="bitem" data-add="padthai" aria-label="Add Pad thai goong — 60 baht"><picture><source srcset="assets/img/t-padthai.webp" type="image/webp"><img src="assets/img/t-padthai.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ผัดไทยกุ้งสด</span><span class="bitem__en">Pad thai goong</span></span><b class="bitem__p"><small>฿</small>60</b></button></li>
+          <li><button type="button" class="bitem" data-add="seeew" aria-label="Add Pad kee mao — 60 baht"><picture><source srcset="assets/img/t-seeew.webp" type="image/webp"><img src="assets/img/t-seeew.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ผัดขี้เมาทะเล</span><span class="bitem__en">Pad kee mao</span></span><b class="bitem__p"><small>฿</small>60</b></button></li>
+          <li><button type="button" class="bitem" data-add="noodle" aria-label="Add Kuay teow tom yum — 50 baht"><picture><source srcset="assets/img/t-noodle.webp" type="image/webp"><img src="assets/img/t-noodle.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ก๋วยเตี๋ยวต้มยำ</span><span class="bitem__en">Kuay teow tom yum</span></span><b class="bitem__p"><small>฿</small>50</b></button></li>
+          <li><button type="button" class="bitem" data-add="boat" aria-label="Add Kuay teow reua — 40 baht"><picture><source srcset="assets/img/t-boat.webp" type="image/webp"><img src="assets/img/t-boat.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ก๋วยเตี๋ยวเรือ</span><span class="bitem__en">Kuay teow reua</span></span><b class="bitem__p"><small>฿</small>40</b></button></li>
+          <li><button type="button" class="bitem" data-add="tomyum" aria-label="Add Tom yum goong — 100 baht"><picture><source srcset="assets/img/t-tomyum.webp" type="image/webp"><img src="assets/img/t-tomyum.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ต้มยำกุ้งน้ำข้น</span><span class="bitem__en">Tom yum goong</span></span><b class="bitem__p"><small>฿</small>100</b></button></li>
+        </ul>
+      </div>
+      <div class="panel panel--violet" data-reveal>
+        <p class="panel__head"><span lang="th">ส้มตำ · ปิ้งย่าง · ของหวาน</span><small data-i18n="board.g3">Salad, grill &amp; sweets</small></p>
+        <ul class="panel__list">
+          <li><button type="button" class="bitem" data-add="somtam" aria-label="Add Som tam Thai — 50 baht"><picture><source srcset="assets/img/t-somtam.webp" type="image/webp"><img src="assets/img/t-somtam.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ส้มตำไทย</span><span class="bitem__en">Som tam Thai</span></span><b class="bitem__p"><small>฿</small>50</b></button></li>
+          <li><button type="button" class="bitem" data-add="moo" aria-label="Add Moo ping — 40 baht"><picture><source srcset="assets/img/t-moo.webp" type="image/webp"><img src="assets/img/t-moo.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">หมูปิ้ง ข้าวเหนียว</span><span class="bitem__en">Moo ping</span></span><b class="bitem__p"><small>฿</small>40</b></button></li>
+          <li><button type="button" class="bitem" data-add="grill" aria-label="Add Gai yang — 80 baht"><picture><source srcset="assets/img/t-grill.webp" type="image/webp"><img src="assets/img/t-grill.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ไก่ย่าง</span><span class="bitem__en">Gai yang</span></span><b class="bitem__p"><small>฿</small>80</b></button></li>
+          <li><button type="button" class="bitem" data-add="mango" aria-label="Add Khao niao mamuang — 60 baht"><picture><source srcset="assets/img/t-mango.webp" type="image/webp"><img src="assets/img/t-mango.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ข้าวเหนียวมะม่วง</span><span class="bitem__en">Khao niao mamuang</span></span><b class="bitem__p"><small>฿</small>60</b></button></li>
+          <li><button type="button" class="bitem" data-add="tea" aria-label="Add Cha yen — 25 baht"><picture><source srcset="assets/img/t-tea.webp" type="image/webp"><img src="assets/img/t-tea.jpg" alt="" width="180" height="180" loading="lazy" decoding="async"></picture><span class="bitem__txt"><span class="bitem__th" lang="th">ชาเย็น</span><span class="bitem__en">Cha yen</span></span><b class="bitem__p"><small>฿</small>25</b></button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="menu section" id="menu" aria-labelledby="menuTitle">
+  <div class="container">
+    <div class="head">
+      <p class="tag" data-reveal data-i18n="menu.tag">The menu</p>
+      <h2 class="title" id="menuTitle" data-reveal data-i18n="menu.title">Fifteen dishes. <em>All of them good.</em></h2>
+      <p class="head__lead" data-reveal data-i18n="menu.lead">Point, order, eat. Tap <b>+</b> to build a takeaway order — we'll have it hot when you arrive.</p>
+    </div>
+
+    <div class="filters" data-reveal>
+      <div class="chips" role="group" aria-label="Category" data-i18n-attr="aria-label:menu.cat" id="cats">
+        <button type="button" class="fchip" data-cat="all" aria-pressed="true" data-i18n="cat.all">Everything</button>
+        <button type="button" class="fchip" data-cat="wok" aria-pressed="false" data-i18n="cat.wok">Wok &amp; rice</button>
+        <button type="button" class="fchip" data-cat="noodle" aria-pressed="false" data-i18n="cat.noodle">Noodles</button>
+        <button type="button" class="fchip" data-cat="soup" aria-pressed="false" data-i18n="cat.soup">Soups &amp; salads</button>
+        <button type="button" class="fchip" data-cat="grill" aria-pressed="false" data-i18n="cat.grill">Grill</button>
+        <button type="button" class="fchip" data-cat="sweet" aria-pressed="false" data-i18n="cat.sweet">Sweet &amp; drinks</button>
+        <label class="toggle"><input type="checkbox" id="vegOnly"><span class="toggle__ui" aria-hidden="true"></span><span data-i18n="menu.veg">Vegetarian</span></label>
+      </div>
+    </div>
+
+    <div class="dishes" id="dishes">
+      <article class="dish" data-id="krapao" data-cat="wok" data-thb="50" data-chili="3" data-veg="opt" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-krapao.webp" type="image/webp"><img src="assets/img/d-krapao.jpg" alt="Minced pork stir-fried with holy basil, a crispy fried egg and rice" data-i18n-attr="alt:d.krapaoA" width="720" height="720" loading="lazy" decoding="async"></picture><span class="dish__badge" data-i18n="menu.best">Bestseller</span></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ผัดกะเพราหมูสับไข่ดาว</p>
+          <h3 class="dish__name">Pad kra pao</h3>
+          <p class="dish__desc" data-i18n="d.krapao">Minced pork, holy basil and bird's-eye chili, flash-fried over a roaring flame. With rice and a crispy fried egg.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="3"></span><span class="vtag" data-i18n="menu.vegOpt">veg option</span></span><b class="dish__price" data-price="50">฿50</b><button type="button" class="add" aria-label="Add Pad kra pao"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="padthai" data-cat="noodle" data-thb="60" data-chili="1" data-veg="opt" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-padthai.webp" type="image/webp"><img src="assets/img/d-padthai.jpg" alt="Pad thai with prawns, bean sprouts, peanuts and lime" data-i18n-attr="alt:d.padthaiA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ผัดไทยกุ้งสด</p>
+          <h3 class="dish__name">Pad thai goong</h3>
+          <p class="dish__desc" data-i18n="d.padthai">Rice noodles in tamarind sauce with fresh prawns, egg, tofu, bean sprouts and crushed peanuts.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="1"></span><span class="vtag" data-i18n="menu.vegOpt">veg option</span></span><b class="dish__price" data-price="60">฿60</b><button type="button" class="add" aria-label="Add Pad thai goong"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="somtam" data-cat="soup" data-thb="50" data-chili="3" data-veg="opt" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-somtam.webp" type="image/webp"><img src="assets/img/d-somtam.jpg" alt="Green papaya salad with tomatoes and peanuts on a blue plate" data-i18n-attr="alt:d.somtamA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ส้มตำไทย</p>
+          <h3 class="dish__name">Som tam Thai</h3>
+          <p class="dish__desc" data-i18n="d.somtam">Green papaya pounded in the clay mortar with lime, palm sugar, tomatoes, long beans and peanuts.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="3"></span><span class="vtag" data-i18n="menu.vegOpt">veg option</span></span><b class="dish__price" data-price="50">฿50</b><button type="button" class="add" aria-label="Add Som tam Thai"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="boat" data-cat="noodle" data-thb="40" data-chili="2" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-boat.webp" type="image/webp"><img src="assets/img/d-boat.jpg" alt="Two bowls of noodle soup with meatballs and herbs" data-i18n-attr="alt:d.boatA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ก๋วยเตี๋ยวเรือ</p>
+          <h3 class="dish__name">Kuay teow reua</h3>
+          <p class="dish__desc" data-i18n="d.boat">Boat noodles: a small, dark, spiced broth with beef, meatballs and morning glory. Locals order two.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="2"></span></span><b class="dish__price" data-price="40">฿40</b><button type="button" class="add" aria-label="Add Kuay teow reua"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="tomyum" data-cat="soup" data-thb="100" data-chili="3" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-tomyum.webp" type="image/webp"><img src="assets/img/d-tomyum.jpg" alt="Tom yum soup with river prawns and side dishes" data-i18n-attr="alt:d.tomyumA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ต้มยำกุ้งน้ำข้น</p>
+          <h3 class="dish__name">Tom yum goong</h3>
+          <p class="dish__desc" data-i18n="d.tomyum">Hot and sour prawn soup with lemongrass, galangal, kaffir lime and a splash of evaporated milk.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="3"></span></span><b class="dish__price" data-price="100">฿100</b><button type="button" class="add" aria-label="Add Tom yum goong"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="moo" data-cat="grill" data-thb="40" data-chili="0" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-moo.webp" type="image/webp"><img src="assets/img/d-moo.jpg" alt="Rows of grilled pork skewers on banana leaves" data-i18n-attr="alt:d.mooA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">หมูปิ้ง ข้าวเหนียว</p>
+          <h3 class="dish__name">Moo ping</h3>
+          <p class="dish__desc" data-i18n="d.moo">Three skewers of garlic and coconut-milk pork, grilled over charcoal, with a bag of sticky rice.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="0"></span></span><b class="dish__price" data-price="40">฿40</b><button type="button" class="add" aria-label="Add Moo ping"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="seeew" data-cat="noodle" data-thb="60" data-chili="3" data-veg="opt" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-seeew.webp" type="image/webp"><img src="assets/img/d-seeew.jpg" alt="Wide stir-fried noodles with seafood and basil" data-i18n-attr="alt:d.seeewA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ผัดขี้เมาทะเล</p>
+          <h3 class="dish__name">Pad kee mao</h3>
+          <p class="dish__desc" data-i18n="d.seeew">"Drunken noodles": wide rice noodles, seafood, basil, fresh chili and green peppercorns. Loud and smoky.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="3"></span><span class="vtag" data-i18n="menu.vegOpt">veg option</span></span><b class="dish__price" data-price="60">฿60</b><button type="button" class="add" aria-label="Add Pad kee mao"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="rice" data-cat="wok" data-thb="50" data-chili="0" data-veg="opt" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-rice.webp" type="image/webp"><img src="assets/img/d-rice.jpg" alt="Fried rice tossed in a black wok over a flame" data-i18n-attr="alt:d.riceA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ข้าวผัด</p>
+          <h3 class="dish__name">Khao pad</h3>
+          <p class="dish__desc" data-i18n="d.rice">Wok-fried rice with egg, spring onion and your choice of chicken, pork or prawns. Lime and cucumber on the side.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="0"></span><span class="vtag" data-i18n="menu.vegOpt">veg option</span></span><b class="dish__price" data-price="50">฿50</b><button type="button" class="add" aria-label="Add Khao pad"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="curry" data-cat="soup" data-thb="60" data-chili="2" data-veg="opt" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-curry.webp" type="image/webp"><img src="assets/img/d-curry.jpg" alt="Coconut curry with greens and lime in a black bowl" data-i18n-attr="alt:d.curryA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">แกงเขียวหวานไก่</p>
+          <h3 class="dish__name">Kaeng kiew wan</h3>
+          <p class="dish__desc" data-i18n="d.curry">Green curry with chicken, Thai eggplant and sweet basil in coconut milk. Rice on the side.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="2"></span><span class="vtag" data-i18n="menu.vegOpt">veg option</span></span><b class="dish__price" data-price="60">฿60</b><button type="button" class="add" aria-label="Add Kaeng kiew wan"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="chicken" data-cat="wok" data-thb="60" data-chili="0" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-chicken.webp" type="image/webp"><img src="assets/img/d-chicken.jpg" alt="Crispy fried chicken topped with fried shallots, with sticky rice" data-i18n-attr="alt:d.chickenA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ไก่ทอดหาดใหญ่</p>
+          <h3 class="dish__name">Gai tod Hat Yai</h3>
+          <p class="dish__desc" data-i18n="d.chicken">Southern-style fried chicken, marinated in coriander root and pepper, buried in crispy shallots.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="0"></span></span><b class="dish__price" data-price="60">฿60</b><button type="button" class="add" aria-label="Add Gai tod Hat Yai"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="noodle" data-cat="noodle" data-thb="50" data-chili="2" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-noodle.webp" type="image/webp"><img src="assets/img/d-noodle.jpg" alt="A bowl of spicy noodle soup with pork and herbs" data-i18n-attr="alt:d.noodleA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ก๋วยเตี๋ยวต้มยำ</p>
+          <h3 class="dish__name">Kuay teow tom yum</h3>
+          <p class="dish__desc" data-i18n="d.noodle">Thin rice noodles in a sour-spicy broth with pork, fish balls, ground peanuts and a squeeze of lime.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="2"></span></span><b class="dish__price" data-price="50">฿50</b><button type="button" class="add" aria-label="Add Kuay teow tom yum"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="glory" data-cat="wok" data-thb="50" data-chili="2" data-veg="yes" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-glory.webp" type="image/webp"><img src="assets/img/d-glory.jpg" alt="Stir-fried morning glory with garlic and chili" data-i18n-attr="alt:d.gloryA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ผัดผักบุ้งไฟแดง</p>
+          <h3 class="dish__name">Pad pak boong</h3>
+          <p class="dish__desc" data-i18n="d.glory">Morning glory flash-fried with garlic, chili and soybean paste — the flame shoots a metre high.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="2"></span><span class="vtag vtag--yes" data-i18n="menu.vegYes">vegetarian</span></span><b class="dish__price" data-price="50">฿50</b><button type="button" class="add" aria-label="Add Pad pak boong"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="grill" data-cat="grill" data-thb="80" data-chili="0" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-grill.webp" type="image/webp"><img src="assets/img/d-grill.jpg" alt="Meat grilling on a charcoal grill" data-i18n-attr="alt:d.grillA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ไก่ย่าง</p>
+          <h3 class="dish__name">Gai yang</h3>
+          <p class="dish__desc" data-i18n="d.grill">Half a chicken, lemongrass-marinated and grilled slowly over charcoal, with tamarind dipping sauce.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="0"></span></span><b class="dish__price" data-price="80">฿80</b><button type="button" class="add" aria-label="Add Gai yang"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="mango" data-cat="sweet" data-thb="60" data-chili="0" data-veg="yes" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-mango.webp" type="image/webp"><img src="assets/img/d-mango.jpg" alt="Sticky rice with slices of ripe yellow mango" data-i18n-attr="alt:d.mangoA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ข้าวเหนียวมะม่วง</p>
+          <h3 class="dish__name">Khao niao mamuang</h3>
+          <p class="dish__desc" data-i18n="d.mango">Warm sticky rice, salted coconut cream and a whole ripe nam dok mai mango. Only while the mangoes last.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="0"></span><span class="vtag vtag--yes" data-i18n="menu.vegYes">vegetarian</span></span><b class="dish__price" data-price="60">฿60</b><button type="button" class="add" aria-label="Add Khao niao mamuang"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="dish" data-id="tea" data-cat="sweet" data-thb="25" data-chili="0" data-veg="yes" data-reveal>
+        <div class="dish__media"><picture><source srcset="assets/img/d-tea.webp" type="image/webp"><img src="assets/img/d-tea.jpg" alt="Two glasses of orange Thai iced milk tea" data-i18n-attr="alt:d.teaA" width="720" height="720" loading="lazy" decoding="async"></picture></div>
+        <div class="dish__body">
+          <p class="dish__th" lang="th">ชาเย็น</p>
+          <h3 class="dish__name">Cha yen</h3>
+          <p class="dish__desc" data-i18n="d.tea">Thai iced tea, strong, orange and very sweet, pulled over crushed ice with condensed milk.</p>
+          <div class="dish__foot"><span class="dish__meta"><span class="chili" data-n="0"></span><span class="vtag vtag--yes" data-i18n="menu.vegYes">vegetarian</span></span><b class="dish__price" data-price="25">฿25</b><button type="button" class="add" aria-label="Add Cha yen"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+    </div>
+    <p class="empty" id="empty" hidden data-i18n="menu.empty">Nothing here yet — try another category.</p>
+    <p class="fx" data-fx data-i18n="menu.fx">Prices in US dollars are a guide — you pay in Thai baht. Cash or Thai QR.</p>
+  </div>
+</section>
+
+<!-- ============ SPICE ============ -->
+<section class="spice" aria-labelledby="spiceTitle">
+  <div class="container spice__inner">
+    <div>
+      <p class="tag tag--light" data-reveal data-i18n="spice.tag">Before you order</p>
+      <h2 class="title title--light" id="spiceTitle" data-reveal data-i18n="spice.title">How spicy <em>can you go?</em></h2>
+      <p class="spice__lead" data-reveal data-i18n="spice.lead">Thai spicy is not tourist spicy. Pick your level — it's added to your order, and Mae Lek will cook to it.</p>
+    </div>
+    <div class="meter" data-reveal>
+      <div class="meter__chilis" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <input type="range" id="spice" min="0" max="4" step="1" value="1" aria-describedby="spiceName" aria-label="Spice level" data-i18n-attr="aria-label:spice.aria">
+      <p class="meter__name" id="spiceName" aria-live="polite"><b id="spiceTh" lang="th">เผ็ดนิดหน่อย</b><span id="spiceEn">A little spicy</span></p>
+      <p class="meter__note" id="spiceNote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TONIGHT ============ -->
+<section class="tonight section" id="tonight" aria-labelledby="tonTitle">
+  <div class="container ton__grid">
+    <div class="board" data-reveal>
+      <p class="board__day" id="boardDay">Tonight</p>
+      <h2 class="board__title" id="tonTitle" data-i18n="ton.title">Mae's special</h2>
+      <div class="board__special" id="boardSpecial">
+        <p class="board__dish" id="boardDish">—</p>
+        <p class="board__note" id="boardNote"></p>
+        <p class="board__price"><s id="boardWas"></s> <b id="boardNow"></b></p>
+        <button type="button" class="btn btn--turmeric" id="boardAdd" data-i18n="ton.add">Add tonight's special</button>
+      </div>
+      <p class="board__closed" id="boardClosed" hidden data-i18n="ton.closed">Monday is Mae's day off. See you Tuesday at five!</p>
+      <ul class="board__week" id="boardWeek" aria-label="This week" data-i18n-attr="aria-label:ton.week"></ul>
+    </div>
+    <figure class="polaroid" data-reveal><picture><img id="boardImg" src="assets/img/d-tomyum.jpg" alt="" width="720" height="720" loading="lazy" decoding="async"></picture><figcaption id="boardCap" data-i18n="ton.cap">fresh from the wok ↑</figcaption></figure>
+  </div>
+  <!-- Nightly notes, in the page so they translate with everything else -->
+  <div hidden>
+    <span data-i18n="ton.n2">River prawns straight from the morning market.</span>
+    <span data-i18n="ton.n3">Wednesday is noodle night.</span>
+    <span data-i18n="ton.n4">Charcoal lit at four — the chicken's been waiting.</span>
+    <span data-i18n="ton.n5">Friday skewer night — the cheapest moo ping in town.</span>
+    <span data-i18n="ton.n6">Mae's own curry paste, pounded this afternoon.</span>
+    <span data-i18n="ton.n0">Sunday treat: the sweetest mangoes of the week.</span>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story section" id="story" aria-labelledby="storyTitle">
+  <div class="container story__grid">
+    <figure class="story__mae" data-reveal="clip"><picture><source srcset="assets/img/mae.webp" type="image/webp"><img src="assets/img/mae.jpg" alt="An older Thai cook ladling soup at her street stall at night" data-i18n-attr="alt:story.alt1" width="1200" height="1800" loading="lazy" decoding="async"></picture><figcaption class="hand" data-i18n="story.cap">Mae Lek, 27 years at the same wok</figcaption></figure>
+    <div class="story__copy">
+      <p class="tag" data-reveal data-i18n="story.tag">Our story</p>
+      <h2 class="title" id="storyTitle" data-reveal data-i18n="story.title">One corner. <em>One wok. Since 1998.</em></h2>
+      <p class="lead" data-reveal data-i18n="story.p1">Mae Lek — "little mum" — came to Pattaya from Isaan with her mother's recipes and a second-hand wok. She rolled her cart onto this corner of Soi Buakhao one evening in 1998 and never left.</p>
+      <p data-reveal data-i18n="story.p2">Today her son runs the grill, her niece pounds the som tam, and Mae still cooks every plate of kra pao herself. Twelve tables under the blue tarp, no air-con — and a queue of taxi drivers, which is how you know.</p>
+      <dl class="stats" data-reveal>
+        <div><dd><span data-count="27">27</span></dd><dt data-i18n="story.s1">years on this corner</dt></div>
+        <div><dd><span data-count="400">400</span>+</dd><dt data-i18n="story.s2">plates a night</dt></div>
+        <div><dd><span data-count="12">12</span></dd><dt data-i18n="story.s3">little tables</dt></div>
+        <div><dd>฿<span data-count="40">40</span></dd><dt data-i18n="story.s4">cheapest dish</dt></div>
+      </dl>
+    </div>
+    <figure class="story__tables" data-reveal="clip"><picture><source srcset="assets/img/tables.webp" type="image/webp"><img src="assets/img/tables.jpg" alt="Food stalls glowing under paper lanterns at night" data-i18n-attr="alt:story.alt2" width="1200" height="800" loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+
+<!-- ============ EAT LIKE A LOCAL ============ -->
+<section class="local section" id="local" aria-labelledby="localTitle">
+  <div class="container">
+    <div class="head head--center">
+      <p class="tag" data-reveal data-i18n="local.tag">First time?</p>
+      <h2 class="title" id="localTitle" data-reveal data-i18n="local.title">Eat like <em>a local.</em></h2>
+    </div>
+    <ol class="steps">
+      <li data-reveal><span class="steps__n">1</span><h3 data-i18n="local.1t">Find a seat</h3><p data-i18n="local.1b">Any free table is yours. Share with strangers — that's half the fun.</p></li>
+      <li data-reveal><span class="steps__n">2</span><h3 data-i18n="local.2t">Point &amp; order</h3><p data-i18n="local.2b">Show the menu on your phone or use the cards below. Mae understands pointing perfectly.</p></li>
+      <li data-reveal><span class="steps__n">3</span><h3 data-i18n="local.3t">Season it yourself</h3><p data-i18n="local.3b">The four jars on every table: chili flakes, sugar, fish sauce with chili, and vinegar.</p></li>
+      <li data-reveal><span class="steps__n">4</span><h3 data-i18n="local.4t">Pay at the cart</h3><p data-i18n="local.4b">Say “check bin”, pay cash or scan the Thai QR. No tip expected — a smile is plenty.</p></li>
+    </ol>
+    <h3 class="phrases__title" data-reveal data-i18n="local.phrases">Tap a card and show it to Mae</h3>
+    <div class="phrases" data-reveal>
+      <button type="button" class="phrase" data-th="ไม่เผ็ด" data-rom="mai phet"><b lang="th">ไม่เผ็ด</b><i>mai phet</i><span data-i18n="ph.1">Not spicy, please</span></button>
+      <button type="button" class="phrase" data-th="เผ็ดนิดหน่อย" data-rom="phet nit noi"><b lang="th">เผ็ดนิดหน่อย</b><i>phet nit noi</i><span data-i18n="ph.2">Just a little spicy</span></button>
+      <button type="button" class="phrase" data-th="ไม่ใส่ผักชี" data-rom="mai sai phak chi"><b lang="th">ไม่ใส่ผักชี</b><i>mai sai phak chi</i><span data-i18n="ph.3">No coriander</span></button>
+      <button type="button" class="phrase" data-th="กินเจ ไม่ใส่เนื้อสัตว์" data-rom="gin jay"><b lang="th">กินเจ</b><i>gin jay</i><span data-i18n="ph.4">I'm vegetarian — no meat, no fish sauce</span></button>
+      <button type="button" class="phrase" data-th="ใส่ถุงกลับบ้าน" data-rom="sai tung"><b lang="th">ใส่ถุง</b><i>sai tung</i><span data-i18n="ph.5">To take away</span></button>
+      <button type="button" class="phrase" data-th="อร่อยมาก!" data-rom="aroi mak!"><b lang="th">อร่อยมาก!</b><i>aroi mak!</i><span data-i18n="ph.6">Very delicious!</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery section" aria-labelledby="galTitle">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="tag" data-reveal data-i18n="gal.tag">On the street</p>
+        <h2 class="title" id="galTitle" data-reveal data-i18n="gal.title">Smoke, sizzle <em>&amp; neon.</em></h2>
+      </div>
+      <p class="head__aside" data-reveal data-i18n="gal.aside">Tap a photo to see it full screen.</p>
+    </div>
+    <div class="bento">
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-cook.webp" type="image/webp"><img src="assets/img/g-cook.jpg" alt="A cook frying snacks at a busy street stall" data-i18n-attr="alt:gal.a0" width="1100" height="868" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c0">The 6 pm rush</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-skewers.webp" type="image/webp"><img src="assets/img/g-skewers.jpg" alt="Skewers of grilled chicken and squid under price signs" data-i18n-attr="alt:gal.a1" width="1100" height="1650" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c1">Skewer wall</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-night.webp" type="image/webp"><img src="assets/img/g-night.jpg" alt="A Thai street food stand lit up at night beside the road" data-i18n-attr="alt:gal.a2" width="1100" height="1467" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c2">Soi Buakhao after dark</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-mortar.webp" type="image/webp"><img src="assets/img/g-mortar.jpg" alt="A cook pounding papaya salad in a wooden mortar" data-i18n-attr="alt:gal.a3" width="1100" height="1650" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c3">Pok pok pok — som tam</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-wok.webp" type="image/webp"><img src="assets/img/g-wok.jpg" alt="An older cook at a street stall under a hand-painted kra pao sign" data-i18n-attr="alt:gal.a4" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c4">Kra pao, hand-painted</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-spread.webp" type="image/webp"><img src="assets/img/g-spread.jpg" alt="A table covered in Thai dishes seen from above" data-i18n-attr="alt:gal.a5" width="1100" height="792" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c5">Order everything, share everything</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-cart.webp" type="image/webp"><img src="assets/img/g-cart.jpg" alt="A street food cart glowing at dusk" data-i18n-attr="alt:gal.a6" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c6">The cart that started it</span></button>
+      <button type="button" class="bento__item" data-reveal><picture><source srcset="assets/img/g-pots.webp" type="image/webp"><img src="assets/img/g-pots.jpg" alt="A street stall under a blue tarp with skewers and a price sign" data-i18n-attr="alt:gal.a7" width="1100" height="733" loading="lazy" decoding="async"></picture><span class="bento__cap" data-i18n="gal.c7">Under the blue tarp</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews section" aria-labelledby="revTitle">
+  <div class="container">
+    <div class="head head--center">
+      <p class="tag tag--light" data-reveal data-i18n="rev.tag">Regulars</p>
+      <h2 class="title title--light" id="revTitle" data-reveal data-i18n="rev.title">“Aroi mak!” <em>— everyone.</em></h2>
+    </div>
+    <div class="revs">
+      <figure class="rev" data-reveal><p class="rev__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q1">“Best kra pao of my life for 50 baht. I ate here six nights out of seven — the seventh was Monday.”</blockquote><figcaption><b>Tom</b> · 🇬🇧</figcaption></figure>
+      <figure class="rev" data-reveal><p class="rev__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q2">“Zero decor, incredible food. Mae laughed at my Thai and gave me extra mango.”</blockquote><figcaption><b>Camille</b> · 🇫🇷</figcaption></figure>
+      <figure class="rev" data-reveal><p class="rev__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q3">“Ordered ahead on WhatsApp, it was ready and hot when I arrived. The boat noodles are the real deal.”</blockquote><figcaption><b>Dmitri</b> · 🇷🇺</figcaption></figure>
+      <figure class="rev" data-reveal><p class="rev__stars" aria-hidden="true">★★★★★</p><blockquote data-i18n="rev.q4">“The som tam is exactly like my grandmother's in Khon Kaen. Honest prices, real taste.”</blockquote><figcaption><b>Nok</b> · 🇹🇭</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIND US ============ -->
+<section class="find section" id="find" aria-labelledby="findTitle">
+  <div class="container find__grid">
+    <div>
+      <p class="tag" data-reveal data-i18n="find.tag">Find us</p>
+      <h2 class="title" id="findTitle" data-reveal data-i18n="find.title">Look for the <em>blue tarp.</em></h2>
+      <p class="lead" data-reveal data-i18n="find.lead">On the corner of Soi Buakhao, opposite the Tree Town market, under the string of yellow bulbs. If you smell basil and see smoke, you're there.</p>
+      <div class="find__cards" data-reveal>
+        <div class="fcard">
+          <p class="fcard__label" data-i18n="find.hours">Hours</p>
+          <ul class="hours" id="hours">
+            <li data-day="2"><span data-wd="2">Tue</span><b>17:00 – 01:00</b></li>
+            <li data-day="3"><span data-wd="3">Wed</span><b>17:00 – 01:00</b></li>
+            <li data-day="4"><span data-wd="4">Thu</span><b>17:00 – 01:00</b></li>
+            <li data-day="5"><span data-wd="5">Fri</span><b>17:00 – 01:00</b></li>
+            <li data-day="6"><span data-wd="6">Sat</span><b>17:00 – 01:00</b></li>
+            <li data-day="0"><span data-wd="0">Sun</span><b>17:00 – 01:00</b></li>
+            <li data-day="1" class="is-off"><span data-wd="1">Mon</span><b data-i18n="find.closed">Closed</b></li>
+          </ul>
+        </div>
+        <div class="fcard">
+          <p class="fcard__label" data-i18n="find.where">Where</p>
+          <p>Soi Buakhao, Pattaya<br>Chonburi 20150</p>
+          <p class="fcard__links"><a class="link" href="https://maps.google.com/?q=Soi+Buakhao+Pattaya" target="_blank" rel="noopener" data-i18n="find.maps">Google Maps</a><a class="link" href="https://wa.me/66812345678" target="_blank" rel="noopener">WhatsApp</a><a class="link" href="tel:+66812345678" target="_blank" rel="noopener">+66 81 234 5678</a></p>
+          <button type="button" class="btn btn--ink btn--sm" id="taxiBtn"><span aria-hidden="true">🛺</span><span data-i18n="find.taxi">Card for the driver</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="find__map" data-reveal>
+      <iframe title="Map: Mae Lek, Soi Buakhao, Pattaya" data-i18n-attr="title:find.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Soi%20Buakhao%20Pattaya&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq section" aria-labelledby="faqTitle">
+  <div class="container faq__grid">
+    <div>
+      <p class="tag" data-reveal data-i18n="faq.tag">Questions</p>
+      <h2 class="title" id="faqTitle" data-reveal data-i18n="faq.title">Good <em>to know.</em></h2>
+    </div>
+    <div class="faq__list">
+      <details data-reveal><summary data-i18n="faq.q1">Can I book a table?</summary><p data-i18n="faq.a1">No need — it's a street kitchen, tables turn over fast. For groups of eight or more, send us a WhatsApp and we'll push tables together.</p></details>
+      <details data-reveal><summary data-i18n="faq.q2">Is the food safe for tourists?</summary><p data-i18n="faq.a2">Everything is cooked to order over a very hot flame, ice comes from a sealed factory bag, and the stall has its municipal food licence on the wall.</p></details>
+      <details data-reveal><summary data-i18n="faq.q3">Do you have vegetarian food?</summary><p data-i18n="faq.a3">Yes. Most wok dishes can be made with tofu and without fish or oyster sauce — say “gin jay” or use the card above.</p></details>
+      <details data-reveal><summary data-i18n="faq.q4">How does ordering ahead work?</summary><p data-i18n="faq.a4">Add dishes with +, choose a pick-up time and send the order on WhatsApp. We reply with a thumbs-up and start cooking so it's hot when you arrive. Pay when you collect.</p></details>
+      <details data-reveal><summary data-i18n="faq.q5">Can I pay by card?</summary><p data-i18n="faq.a5">Cash or Thai QR (PromptPay) only — there's an ATM at the 7-Eleven thirty metres away.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="finalTitle">
+  <div class="container final__inner">
+    <h2 class="final__title" id="finalTitle" data-reveal data-i18n="final.title">Hungry? <em>The wok is on.</em></h2>
+    <a href="#menu" class="btn btn--turmeric btn--lg" data-reveal data-i18n="final.cta">Build my order</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__row">
+    <p class="footer__logo"><span class="logo__badge" aria-hidden="true">แม่</span> Mae Lek · <span data-i18n="footer.tag">Thai street kitchen since 1998</span></p>
+    <p>© 2026 Mae Lek · Soi Buakhao, Pattaya</p>
+    <p><span data-i18n="footer.credit">Website by</span> <a href="../nm/" target="_blank" rel="noopener">NM Studio</a></p>
+  </div>
+</footer>
+
+<!-- ============ ORDER BAR + DRAWER ============ -->
+<button type="button" class="obar" id="obar" hidden aria-controls="drawer" aria-expanded="false">
+  <span class="obar__count" id="obarCount">0</span>
+  <span class="obar__label" data-i18n="order.view">View my order</span>
+  <b class="obar__total" id="obarTotal">฿0</b>
+</button>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+  <div class="drawer__scrim" data-close></div>
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      <h2 id="drawerTitle" data-i18n="order.title">Your order</h2>
+      <button type="button" class="xbtn" data-close aria-label="Close" data-i18n-attr="aria-label:a11y.close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="drawer__body">
+      <ul class="lines" id="lines"></ul>
+      <p class="drawer__empty" id="linesEmpty" data-i18n="order.empty">Your bag is empty — add something tasty.</p>
+      <form class="oform" id="orderForm" novalidate>
+        <fieldset class="oform__set">
+          <legend data-i18n="order.spice">Spice level</legend>
+          <div class="seg" id="oSpice"></div>
+        </fieldset>
+        <fieldset class="oform__set">
+          <legend id="pickLegend" data-i18n="order.pickup">Pick-up time</legend>
+          <div class="slots" id="oTime"></div>
+          <p class="err" id="oTimeErr" role="alert"></p>
+        </fieldset>
+        <div class="oform__fields">
+          <label class="field"><span data-i18n="order.name">Name</span><input type="text" id="oName" autocomplete="name" required><em class="err" id="oNameErr"></em></label>
+          <label class="field"><span data-i18n="order.phone">WhatsApp or phone</span><input type="tel" id="oPhone" autocomplete="tel" inputmode="tel" required><em class="err" id="oPhoneErr"></em></label>
+          <label class="field field--full"><span data-i18n="order.note">Note for Mae <i>(optional)</i></span><input type="text" id="oNote" maxlength="120" data-i18n-attr="placeholder:order.notePh" placeholder="No coriander, extra egg…"></label>
+        </div>
+      </form>
+    </div>
+    <div class="drawer__foot">
+      <p class="drawer__total"><span data-i18n="order.total">Total</span><b id="dTotal">฿0</b></p>
+      <p class="drawer__fx" data-fx data-i18n="order.fx">You pay in baht when you collect.</p>
+      <button type="submit" form="orderForm" class="btn btn--chili btn--lg drawer__send"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.32 4.94L2.05 22l5.31-1.39a9.87 9.87 0 004.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm5.8 14.1c-.24.68-1.42 1.3-1.95 1.34-.5.05-.97.23-3.27-.68-2.76-1.09-4.5-3.91-4.64-4.09-.13-.18-1.1-1.47-1.1-2.8 0-1.33.7-1.99.95-2.26.24-.27.53-.34.71-.34l.51.01c.16.01.38-.06.6.46.23.54.77 1.87.84 2 .07.14.11.3.02.48-.09.18-.13.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.28-.12.55.16.27.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.58-.07.16-.18.67-.78.85-1.05.18-.27.36-.22.6-.13.25.09 1.57.74 1.84.88.27.13.45.2.51.31.07.12.07.66-.17 1.33z"/></svg><span data-i18n="order.send">Send order on WhatsApp</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photos" data-i18n-attr="aria-label:gal.tag" hidden>
+  <button type="button" class="xbtn lightbox__close" data-close aria-label="Close" data-i18n-attr="aria-label:a11y.close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <button type="button" class="lightbox__arrow lightbox__arrow--prev" data-dir="-1" aria-label="Previous photo" data-i18n-attr="aria-label:a11y.prev"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 4.5L7 10l5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <figure class="lightbox__stage"><img alt="" id="lbImg"><figcaption id="lbCap"></figcaption></figure>
+  <button type="button" class="lightbox__arrow lightbox__arrow--next" data-dir="1" aria-label="Next photo" data-i18n-attr="aria-label:a11y.next"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+
+<div class="showcard" id="showcard" role="dialog" aria-modal="true" aria-labelledby="scThai" hidden>
+  <button type="button" class="xbtn showcard__close" data-close aria-label="Close" data-i18n-attr="aria-label:a11y.close"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <p class="showcard__hello" lang="th" id="scHello">สวัสดีค่ะ 🙏</p>
+  <p class="showcard__thai" lang="th" id="scThai"></p>
+  <p class="showcard__rom" id="scRom"></p>
+  <p class="showcard__mean" id="scMean"></p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<template data-i18n="order.asap">As soon as possible</template>
+<template data-i18n="order.min">≈ 20 min</template>
+<template data-i18n="find.taxiMean">Mae Lek street kitchen, Soi Buakhao, Pattaya</template>
+
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

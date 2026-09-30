@@ -1,6 +1,7 @@
 /* NM Studio — checkout flow (checkout.html).
-   Three steps (plan → details → payment) with inline validation, a live
-   order summary in the visitor's currency, and a confirmation screen.
+   Four steps (offer + optional care plan → details → payment → review)
+   with inline validation, a live order summary in baht, and a confirmation
+   screen.
    Payments: Stripe Payment Links / PromptPay / bank details come from
    payment-config.js; any method not configured falls back to finishing
    the payment on WhatsApp. No card data is ever collected on this page. */
@@ -13,14 +14,19 @@
   var params = new URLSearchParams(location.search);
   // ?demo=1 previews the Thai QR flow with a clearly labelled sample code
   // while no real PromptPay ID is configured. It never pays anyone.
-  var DEMO = params.get("demo") === "1" && !PAY.promptpay;
+  // ?demo=1 — or `demo: true` in payment-config.js while no PromptPay ID is
+  // set yet — shows a stamped sample QR. It never pays anyone; the order is
+  // still finished on WhatsApp.
+  var DEMO = (params.get("demo") === "1" || PAY.demo === true) && !PAY.promptpay;
   var PP_ID = PAY.promptpay || (DEMO ? "0000000000" : "");
   var QR_TTL = 15 * 60 * 1000;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var t = function (k) { return window.NMI18n.t(k) || ""; };
-  var fmt = function (n) { return window.NMI18n.format(n); };
+  var O = window.NM_OFFERS;
+  var fmt = function (n) { return window.NMPrice.thb(n); };
+  var LAST = 4;
 
   var form = $("#coForm");
   var panels = $$(".co-panel", form);
@@ -28,27 +34,40 @@
   var current = 1, maxReached = 1;
 
   /* ---------- state ---------- */
-  function planKey() { var r = $('input[name="plan"]:checked', form); return r ? r.value : "pro"; }
+  function planKey() { var r = $('input[name="offer"]:checked', form); return r ? r.value : O.featured; }
+  function careMode(plan) {
+    if (!O.care[plan || planKey()]) return "none";
+    var r = $('input[name="care"]:checked', form); return r ? r.value : "none";
+  }
   function method() { var r = $('input[name="method"]:checked', form); return r ? r.value : "card"; }
+  // Due today = the offer, plus the first care-plan period when one is chosen.
   function amounts(plan) {
     plan = plan || planKey();
-    return { setup: window.NMI18n.price(plan + "Setup"), monthly: window.NMI18n.price(plan + "Monthly") };
+    var mode = careMode(plan), per = O.care[plan] * (mode === "yearly" ? O.yearlyMonths : 1);
+    var care = mode === "none" ? 0 : per;
+    return { setup: O.price[plan], care: care, mode: mode, today: O.price[plan] + care, monthly: care };
   }
   function cardLink(plan) {
-    var c = PAY.card && PAY.card[window.NMI18n.currency()];
-    return (c && c[plan]) || "";
+    var c = PAY.card || {}, mode = careMode(plan);
+    return (mode === "none" ? c[plan] : c[plan + "_" + mode]) || "";
   }
+  function periodLabel(mode) { return t(mode === "yearly" ? "co2.year" : "co2.month"); }
 
   // Preselect the plan from ?plan=… and restore anything already typed.
   (function restore() {
     var saved = {};
     try { saved = JSON.parse(sessionStorage.getItem(STORE) || "{}"); } catch (e) {}
-    var q = params.get("plan") || saved.plan;
-    var r = q && $('input[name="plan"][value="' + q + '"]', form);
+    var q = params.get("offer") || saved.plan;
+    var r = q && $('input[name="offer"][value="' + q + '"]', form);
     if (r) r.checked = true;
+    var cq = params.get("care") || saved.care;
+    var cr = cq && $('input[name="care"][value="' + cq + '"]', form);
+    if (cr) cr.checked = true;
+    if (saved.promo && form.elements.promo) form.elements.promo.value = saved.promo;
     ["business", "type", "name", "phone", "email", "notes"].forEach(function (k) { if (saved[k] && form.elements[k]) form.elements[k].value = saved[k]; });
     if (saved.langs) $$('input[name="langs"]', form).forEach(function (c) { c.checked = saved.langs.indexOf(c.value) > -1; });
-    if (saved.method) { var m = $('input[name="method"][value="' + saved.method + '"]', form); if (m) m.checked = true; }
+    var mq = params.get("method") || saved.method;
+    if (mq) { var m = $('input[name="method"][value="' + mq + '"]', form); if (m) m.checked = true; }
   })();
   // One order reference per checkout, shown on the QR card and in the order.
   var orderRef = "";
@@ -63,7 +82,7 @@
   }
   function collect() {
     return {
-      plan: planKey(), method: method(),
+      plan: planKey(), care: careMode(), method: method(), promo: (form.elements.promo.value || "").trim().toUpperCase(),
       business: form.elements.business.value.trim(), type: form.elements.type.value,
       name: form.elements.name.value.trim(), phone: form.elements.phone.value.trim(),
       email: form.elements.email.value.trim(), notes: form.elements.notes.value.trim(),
@@ -76,22 +95,36 @@
   /* ---------- rendering ---------- */
   function render() {
     var p = planKey(), a = amounts(p);
-    $("#sumPlanName").textContent = t("pricing." + p + ".title");
-    $("#sumPlanTag").textContent = t("pricing." + p + ".tagline");
+    $("#sumPlanName").textContent = t("offers." + p + ".name");
+    $("#sumPlanTag").textContent = t("offers." + p + ".benefit");
     $("#sumSetup").textContent = fmt(a.setup);
-    $("#sumMonthly").textContent = fmt(a.monthly) + " / " + t("checkout.month");
-    $("#sumToday").textContent = fmt(a.setup);
-    $("#sumTodayMini").textContent = fmt(a.setup);
+    $("#sumMonthly").textContent = a.care ? fmt(a.care) + " / " + periodLabel(a.mode) : t("co2.sumNone");
+    $("#sumToday").textContent = fmt(a.today);
+    $("#sumTodayMini").textContent = fmt(a.today);
+    var renew = $("#sumRenew");
+    renew.hidden = !a.care;
+    if (a.care) renew.textContent = t("co2.renew").replace("{price}", fmt(a.care)).replace("{period}", periodLabel(a.mode));
+
+    // Care plan options follow the chosen offer.
+    var careBox = $("#coCare"), hasCare = !!O.care[p];
+    $(".co-care__opts", careBox).hidden = !hasCare;
+    $("#careGoogle").hidden = hasCare;
+    if (hasCare) {
+      $("#careMonthlyPrice").textContent = fmt(O.care[p]);
+      $("#careYearlyPrice").textContent = fmt(O.care[p] * O.yearlyMonths);
+    }
+    $$(".co-offer").forEach(function (l) { l.classList.toggle("is-playing", $("input", l).checked); });
 
     var inc = $("#coIncluded"); inc.innerHTML = "";
-    ["f1", "f2", "f3", "f4"].forEach(function (f) {
-      var txt = t("pricing." + p + "." + f);
+    ["i1", "i2", "i3", "i4", "i5"].forEach(function (f) {
+      var txt = t("offers." + p + "." + f);
       if (!txt) return;
       var li = document.createElement("li");
       li.innerHTML = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 10.5l3 3 7-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       var s = document.createElement("span"); s.textContent = txt; li.appendChild(s);
       inc.appendChild(li);
     });
+    renderReview(p, a);
 
     // PromptPay is a Thai method: listed first for Thai visitors.
     var methods = $("#coMethods"), pp = $('input[value="promptpay"]', methods).closest(".co-method");
@@ -109,24 +142,51 @@
     if (thai) { var ppRadio = $('input[name="method"][value="promptpay"]', form); if (!ppRadio.checked) ppRadio.checked = true; renderThaiQr(); }
 
     var m = method(), note = "";
-    if (m === "card") note = cardLink(p) ? t("checkout.nCardLive").replace("{amount}", fmt(a.setup)) : t("checkout.nCardManual");
+    if (m === "card") note = cardLink(p) ? t("checkout.nCardLive").replace("{amount}", fmt(a.today)) : t("checkout.nCardManual");
     if (m === "promptpay") note = PAY.promptpay ? t("checkout.nPromptLive") : t("checkout.nManual");
     if (m === "bank") note = PAY.bank && PAY.bank.iban ? t("checkout.nBankLive") : t("checkout.nManual");
     if (m === "meeting") note = t("checkout.nMeet");
     $("#coMethodNote").textContent = note;
 
     var label;
-    if (thai) label = t(!PP_ID ? "checkout.payOrder" : slip ? "checkout.payNotify" : "checkout.payPaid").replace("{amount}", thbText(p));
+    if (thai) label = t(!PP_ID || DEMO ? "checkout.payOrder" : slip ? "checkout.payNotify" : "checkout.payPaid").replace("{amount}", thbText(p));
     else if (m === "meeting") label = t("checkout.payConfirm");
-    else if (m === "card" && cardLink(p)) label = t("checkout.payNow").replace("{amount}", fmt(a.setup));
-    else label = t("checkout.payOrder").replace("{amount}", fmt(a.setup));
+    else if (m === "card" && cardLink(p)) label = t("checkout.payNow").replace("{amount}", fmt(a.today));
+    else label = t("checkout.payOrder").replace("{amount}", fmt(a.today));
     $("#coPayLabel").textContent = label;
+    // Promo codes are redeemed on Stripe's page, so the field only shows for card payments.
+    $("#coPromoField").hidden = !(m === "card" && !thai);
+  }
+
+  function renderReview(p, a) {
+    var box = $("#coReview"); if (!box) return;
+    var mLabel = $('input[name="method"]:checked + .co-method__card b', form);
+    var rows = [
+      ["co2.step1", t("offers." + p + ".name") + " · " + fmt(a.setup), 1],
+      ["co2.sumCare", a.care ? fmt(a.care) + " / " + periodLabel(a.mode) : t("co2.sumNone"), 1],
+      ["booking.business", form.elements.business.value.trim() || "—", 2],
+      ["checkout.email", form.elements.email.value.trim() || "—", 2],
+      ["co2.method", window.NM_LANG === "th" ? "PromptPay" : (mLabel ? mLabel.textContent : "—"), 3],
+      ["checkout.sumToday", fmt(a.today), 0]
+    ];
+    box.innerHTML = "";
+    rows.forEach(function (r) {
+      var div = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
+      if (!r[2]) div.className = "co-review__total";
+      dt.textContent = t(r[0]); dd.textContent = r[1];
+      div.appendChild(dt); div.appendChild(dd);
+      if (r[2]) {
+        var b = document.createElement("button"); b.type = "button"; b.className = "co-review__edit"; b.setAttribute("data-go", r[2]);
+        b.textContent = t("co2.edit"); b.setAttribute("aria-label", t("co2.edit") + " — " + t(r[0])); div.appendChild(b);
+      }
+      box.appendChild(div);
+    });
   }
   document.addEventListener("nm:lang", render);
 
   /* ---------- Thai QR Payment card ---------- */
-  function thbAmount(plan) { return window.NMI18n.price(plan + "Setup", "thb"); }
-  function thbText(plan) { return thbAmount(plan).toLocaleString("en-US") + " ฿"; }
+  function thbAmount(plan) { return amounts(plan).today; }
+  function thbText(plan) { return fmt(thbAmount(plan)); }
   var qrKey = "", qrExpiry = 0, qrTimer = 0, slip = null;
   function renderThaiQr() {
     var p = planKey(), amount = thbAmount(p);
@@ -139,6 +199,7 @@
     box.classList.toggle("thaiqr--slip", !!slip);
     $("#thaiQrPending").hidden = ready;
     $("#thaiQrDemo").hidden = !DEMO;
+    if (DEMO) { $("#thaiQrPending").hidden = false; $("#slipBox").hidden = true; }
     $("#thaiQrCopy").hidden = !PAY.promptpay;
     if (!ready) return;
     var key = PP_ID + "|" + amount;
@@ -292,6 +353,7 @@
       if (s < n) d.setAttribute("aria-current", "false"); else if (s === n) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
     });
     if (n === 3 && window.NM_LANG === "th" && PP_ID && !qrExpiry) startQrTimer();
+    if (n === LAST) render();
     var panel = panels[n - 1];
     if (focus !== false) {
       var top = $(".co-steps").getBoundingClientRect().top + window.scrollY - 90;
@@ -309,7 +371,7 @@
   });
   // Enter in a text field moves forward instead of submitting early.
   form.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" && e.target.tagName === "INPUT" && current < 3) { e.preventDefault(); go(current + 1); }
+    if (e.key === "Enter" && e.target.tagName === "INPUT" && current < LAST) { e.preventDefault(); go(current + 1); }
   });
 
   /* ---------- mobile summary toggle ---------- */
@@ -350,8 +412,10 @@
     return [
       t("checkout.waHead") + " " + o.ref,
       o.slip ? t("checkout.waSlip") : "",
-      t("checkout.waPlan") + ": NM Studio " + t("pricing." + o.plan + ".title"),
-      t("checkout.sumSetup") + ": " + fmt(o.setup) + " · " + t("checkout.sumMonthly") + ": " + fmt(o.monthly),
+      t("checkout.waPlan") + ": " + t("offers." + o.plan + ".name") + " — " + fmt(o.setup),
+      t("co2.sumCare") + ": " + (o.care !== "none" ? fmt(o.monthly) + " / " + periodLabel(o.care) : t("co2.sumNone")),
+      t("checkout.sumToday") + ": " + fmt(o.today),
+      o.promo ? t("co2.promo") + ": " + o.promo : "",
       t("checkout.waMethod") + ": " + o.methodLabel,
       "",
       t("booking.business") + ": " + o.business + " (" + o.typeLabel + ")",
@@ -369,7 +433,7 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (current !== 3) { go(current + 1); return; }
+    if (current !== LAST) { go(current + 1); return; }
     var terms = $("#coTerms");
     if (!terms.checked) { $("#coTermsErr").textContent = t("checkout.termsRequired"); terms.focus(); return; }
     $("#coTermsErr").textContent = "";
@@ -379,7 +443,7 @@
     var o = Object.assign(d, {
       thai: thaiMode, slip: thaiMode && !!slip,
       ref: orderRef,
-      setup: a.setup, monthly: a.monthly, currency: window.NMI18n.currency(),
+      setup: a.setup, monthly: a.care, today: a.today, currency: "thb",
       methodLabel: $('input[name="method"]:checked + .co-method__card b', form).textContent,
       typeLabel: form.elements.type.options[form.elements.type.selectedIndex].text
     });
@@ -389,7 +453,8 @@
     if (link) {
       var btn = $("#coPay"); btn.disabled = true; btn.classList.add("is-loading");
       $("#coPayLabel").textContent = t("checkout.redirecting");
-      var url = link + (link.indexOf("?") > -1 ? "&" : "?") + "prefilled_email=" + encodeURIComponent(d.email) + "&client_reference_id=" + encodeURIComponent(o.ref);
+      var url = link + (link.indexOf("?") > -1 ? "&" : "?") + "prefilled_email=" + encodeURIComponent(d.email) + "&client_reference_id=" + encodeURIComponent(o.ref) +
+        (d.promo ? "&prefilled_promo_code=" + encodeURIComponent(d.promo) : "") + (window.NM_LANG ? "&locale=" + encodeURIComponent(window.NM_LANG) : "");
       setTimeout(function () { window.location.href = url; }, 400);
       return;
     }
@@ -401,14 +466,14 @@
     var done = $("#coDone"); done.hidden = false;
     $("#doneRef").textContent = t("checkout.doneRef") + " " + o.ref;
 
-    var lead = o.thai ? t(!PP_ID ? "checkout.leadManual" : o.slip ? "checkout.leadSlipSent" : "checkout.leadSlip") : {
+    var lead = o.thai ? t(!PP_ID || DEMO ? "checkout.leadManual" : o.slip ? "checkout.leadSlipSent" : "checkout.leadSlip") : {
       card: t("checkout.leadCard"), promptpay: PAY.promptpay ? t("checkout.leadPrompt") : t("checkout.leadManual"),
       bank: PAY.bank && PAY.bank.iban ? t("checkout.leadBank") : t("checkout.leadManual"), meeting: t("checkout.leadMeet")
     }[o.method];
     $("#doneLead").textContent = lead;
 
     var payBox = $("#donePay"); payBox.innerHTML = ""; payBox.hidden = true;
-    $("#doneTrack").hidden = !(o.thai && PP_ID);
+    $("#doneTrack").hidden = !(o.thai && PP_ID && !DEMO);
     var slipFile = o.slip && slip;
     if (slipFile) {
       payBox.hidden = false;
@@ -418,7 +483,7 @@
       $(".done-slip small", payBox).textContent = $("#thaiQrAmount").textContent + " · " + o.ref;
     }
     if (!o.thai && o.method === "promptpay" && PAY.promptpay && window.QRCode) {
-      var amountThb = window.NMI18n.price(o.plan + "Setup", "thb"); // PromptPay settles in baht
+      var amountThb = o.today;
       payBox.hidden = false;
       payBox.innerHTML = '<div class="pp"><div class="pp__head"><b>PromptPay</b><span>' + amountThb.toLocaleString("en-US") + ' ฿</span></div><div class="pp__qr" id="ppQr"></div><p class="pp__note"></p></div>';
       $(".pp__note", payBox).textContent = t("checkout.ppNote");
@@ -426,7 +491,7 @@
     }
     if (o.method === "bank" && PAY.bank && PAY.bank.iban) {
       payBox.hidden = false;
-      var rows = [["checkout.bHolder", PAY.bank.holder], ["checkout.bBank", PAY.bank.bank], ["IBAN", PAY.bank.iban], ["BIC / SWIFT", PAY.bank.bic], ["checkout.bRef", o.ref], ["checkout.sumToday", fmt(o.setup)]];
+      var rows = [["checkout.bHolder", PAY.bank.holder], ["checkout.bBank", PAY.bank.bank], ["IBAN", PAY.bank.iban], ["BIC / SWIFT", PAY.bank.bic], ["checkout.bRef", o.ref], ["checkout.sumToday", fmt(o.today)]];
       var dl = document.createElement("dl"); dl.className = "sum__rows";
       rows.forEach(function (r) {
         if (!r[1]) return;
@@ -438,7 +503,7 @@
     }
 
     var recap = $("#doneRecap"); recap.innerHTML = "";
-    [["checkout.waPlan", "NM Studio " + t("pricing." + o.plan + ".title")], ["checkout.sumSetup", fmt(o.setup)], ["checkout.sumMonthly", fmt(o.monthly) + " / " + t("checkout.month")], ["checkout.waMethod", o.methodLabel], ["booking.business", o.business], ["checkout.email", o.email]].forEach(function (r) {
+    [["checkout.waPlan", t("offers." + o.plan + ".name")], ["co2.sumOffer", fmt(o.setup)], ["co2.sumCare", o.care !== "none" ? fmt(o.monthly) + " / " + periodLabel(o.care) : t("co2.sumNone")], ["checkout.sumToday", fmt(o.today)], ["checkout.waMethod", o.methodLabel], ["booking.business", o.business], ["checkout.email", o.email]].forEach(function (r) {
       var div = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
       dt.textContent = t(r[0]); dd.textContent = r[1]; div.appendChild(dt); div.appendChild(dd); recap.appendChild(div);
     });

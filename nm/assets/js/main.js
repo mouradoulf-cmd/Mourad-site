@@ -24,6 +24,7 @@
       (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })(0);
     }
   }
+  window.NM_LENIS = lenis;
   // Offsets come from CSS scroll-padding-top (header height), which both
   // Lenis and native scrolling respect.
   function scrollToTarget(target) {
@@ -46,7 +47,7 @@
   var header = $("#header");
   var progressBar = $(".progress span");
   var waFloat = $(".wa-float");
-  var hero = $(".hero");
+  var hero = $(".h, .phero, .status");
   var finale = $(".finale");
   var menuEl = $("#menu");
   var lastY = window.scrollY;
@@ -75,7 +76,6 @@
       var readingDown = narrow.matches && header.classList.contains("is-hidden");
       waFloat.classList.toggle("is-visible", y > metrics.heroEnd && y + metrics.vh * 0.85 < metrics.finaleTop && !readingDown);
     }
-    updateManifesto();
   }
   var scrollQueued = false;
   window.addEventListener("scroll", function () {
@@ -96,7 +96,7 @@
         navLinks.forEach(function (a) { a.classList.toggle("is-current", a.getAttribute("href") === "#" + entry.target.id); });
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    ["work", "process", "pricing", "faq"].forEach(function (id) { var s = document.getElementById(id); if (s) sectionObserver.observe(s); });
+    ["work", "offers", "why", "how", "faq"].forEach(function (id) { var s = document.getElementById(id); if (s) sectionObserver.observe(s); });
   }
 
   /* ---------- mobile menu ---------- */
@@ -150,7 +150,6 @@
     // Translated headings replace their markup; keep them fully visible and
     // let ScrollTrigger re-measure the new text lengths.
     $$("[data-anim]").forEach(function (el) { el.style.opacity = ""; el.style.transform = ""; });
-    prepareManifesto();
     if (hasGsap) window.ScrollTrigger.refresh();
   });
 
@@ -256,6 +255,7 @@
     });
   }
 
+
   /* ---------- cursor follower + magnetic buttons (fine pointers only) ---------- */
   if (finePointer && !reduce) {
     var cursor = $(".cursor");
@@ -287,231 +287,9 @@
       el.addEventListener("pointerleave", function () { el.style.transform = ""; });
     });
 
-    // Work mockups: gentle 3D tilt under the pointer.
-    $$(".project__media").forEach(function (media) {
-      media.addEventListener("pointermove", function (e) {
-        var r = media.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
-        media.style.transform = "perspective(1400px) rotateY(" + (px * 6).toFixed(2) + "deg) rotateX(" + (-py * 5).toFixed(2) + "deg)";
-      });
-      media.addEventListener("pointerleave", function () { media.style.transform = ""; });
-    });
-
-    // Hero stage: pointer-driven depth.
-    var stage = $("#stage");
-    if (stage && hero) {
-      var rx = 0, ry = 0, trx = 0, try_ = 0, stageRunning = false;
-      hero.addEventListener("pointermove", function (e) {
-        var r = hero.getBoundingClientRect();
-        try_ = ((e.clientX - r.left) / r.width - 0.5) * 10;
-        trx = -((e.clientY - r.top) / r.height - 0.5) * 7;
-        if (!stageRunning) { stageRunning = true; requestAnimationFrame(stageLoop); }
-      });
-      hero.addEventListener("pointerleave", function () { trx = 0; try_ = 0; });
-      var stageLoop = function () {
-        rx += (trx - rx) * 0.07; ry += (try_ - ry) * 0.07;
-        stage.style.setProperty("--rx", rx.toFixed(2) + "deg");
-        stage.style.setProperty("--ry", ry.toFixed(2) + "deg");
-        if (Math.abs(trx - rx) > 0.01 || Math.abs(try_ - ry) > 0.01) requestAnimationFrame(stageLoop);
-        else stageRunning = false;
-      };
-    }
   }
 
-  /* ---------- hero stage: cycle through the four live projects ---------- */
-  (function stageShowcase() {
-    var view = $("#stageView"), phoneView = $("#stagePhoneView");
-    var nameEl = $("#stageName"), catEl = $("#stageCat"), dots = $$(".stage__dots i");
-    if (!view || !phoneView || reduce) return;
-    var projects = [
-      { slug: "giulivo", name: "Giulivo", cat: "work.p1cat" },
-      { slug: "malee", name: "Malee", cat: "work.p2cat" },
-      { slug: "noir", name: "Noir", cat: "work.p3cat" },
-      { slug: "facadiers", name: "Atelier des Façadiers", cat: "work.p4cat" }
-    ];
-    var SWAP_MS = 4200, index = 0, timer = null, layers = [], visible = true;
-    document.documentElement.style.setProperty("--swap-ms", SWAP_MS + "ms");
-    function layer(parent, src) {
-      var img = new Image();
-      img.className = "swap-layer"; img.alt = ""; img.decoding = "async"; img.src = src;
-      parent.appendChild(img);
-      return img;
-    }
-    var z = 1;
-    function build() {
-      // Every project (the first included) gets a layer, so each swap is a
-      // true cross-fade: the incoming layer fades in on top of the current one.
-      layers = projects.map(function (p) {
-        return { desk: layer(view, "assets/img/work/" + p.slug + "-desk.webp"), mob: layer(phoneView, "assets/img/work/" + p.slug + "-mob-360.webp") };
-      });
-      layers[0].desk.classList.add("is-on"); layers[0].mob.classList.add("is-on");
-      show(0);
-      schedule();
-    }
-    function show(i) {
-      var prev = layers[index], next = layers[i];
-      index = i;
-      if (next && prev !== next) {
-        z += 1;
-        next.desk.style.zIndex = next.mob.style.zIndex = z;
-        next.desk.classList.add("is-on"); next.mob.classList.add("is-on");
-        setTimeout(function () {
-          if (layers[index] !== prev) { prev.desk.classList.remove("is-on"); prev.mob.classList.remove("is-on"); }
-        }, 1100);
-      }
-      nameEl.textContent = projects[i].name;
-      catEl.setAttribute("data-i18n", projects[i].cat);
-      catEl.textContent = t(projects[i].cat);
-      dots.forEach(function (d, k) { d.classList.remove("is-on"); if (k === i) { void d.offsetWidth; d.classList.add("is-on"); } });
-    }
-    function schedule() {
-      clearTimeout(timer);
-      if (!visible || document.hidden) return;
-      timer = setTimeout(function () { show((index + 1) % projects.length); schedule(); }, SWAP_MS);
-    }
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; schedule(); }).observe(view);
-    }
-    document.addEventListener("visibilitychange", schedule);
-    // Extra screenshots load only after the page itself has finished loading.
-    if (document.readyState === "complete") setTimeout(build, 1200);
-    else window.addEventListener("load", function () { setTimeout(build, 1200); });
-  })();
-
-  /* ---------- manifesto: words light up as you scroll ---------- */
-  var manifestoWords = [];
-  function prepareManifesto() {
-    var el = $(".manifesto");
-    if (!el || reduce) return;
-    manifestoWords = [];
-    (function walk(node) {
-      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
-        if (child.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          child.textContent.split(/(\s+)/).forEach(function (part) {
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
-            var s = document.createElement("span"); s.className = "w"; s.textContent = part;
-            frag.appendChild(s); manifestoWords.push(s);
-          });
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === 1 && !child.classList.contains("w")) {
-          walk(child);
-        }
-      });
-    })(el);
-    updateManifesto();
-  }
-  var manifestoEl = $(".manifesto");
-  function updateManifesto() {
-    var el = manifestoEl;
-    if (!el || !manifestoWords.length) return;
-    var r = el.getBoundingClientRect();
-    var vh = window.innerHeight;
-    if (r.bottom < -vh || r.top > vh * 2) return;
-    var p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
-    var lit = Math.round(p * manifestoWords.length);
-    for (var i = 0; i < manifestoWords.length; i++) manifestoWords[i].classList.toggle("on", i < lit);
-  }
-  prepareManifesto();
   onScroll();
-
-  /* ---------- "The difference" ----------
-     Desktop: the step crossing the middle of the screen drives the sticky phone.
-     Phones/tablets: the steps are tappable cards under the phone; they
-     auto-advance while the section is on screen, until the visitor taps one. */
-  (function difference() {
-    var section = $("#difference");
-    var diffPhone = $("#diffPhone");
-    var diffSteps = $$(".diff__step");
-    if (!section || !diffPhone || !diffSteps.length) return;
-    var DIFF_MS = 3800;
-    section.style.setProperty("--diff-ms", DIFF_MS + "ms");
-    function setState(n) {
-      n = String(n);
-      diffPhone.setAttribute("data-state", n);
-      diffSteps.forEach(function (st) {
-        var on = st.getAttribute("data-step") === n;
-        st.classList.remove("is-active");
-        if (on) { void st.offsetWidth; st.classList.add("is-active"); }
-        var hit = st.querySelector(".diff__hit");
-        if (hit) hit.setAttribute("aria-pressed", on ? "true" : "false");
-      });
-    }
-    var desktop = window.matchMedia("(min-width: 960px)");
-    var io = null, autoTimer = null, inView = false, userTook = false;
-    function current() { return Number(diffPhone.getAttribute("data-state")) || 1; }
-    function stopAuto() { clearTimeout(autoTimer); section.classList.remove("is-auto"); }
-    function runAuto() {
-      stopAuto();
-      if (desktop.matches || userTook || reduce || !inView || document.hidden) return;
-      section.classList.add("is-auto");
-      setState(current());
-      autoTimer = setTimeout(function next() {
-        setState(current() % diffSteps.length + 1);
-        autoTimer = setTimeout(next, DIFF_MS);
-      }, DIFF_MS);
-    }
-    function onTap(e) {
-      userTook = true; stopAuto();
-      setState(e.currentTarget.getAttribute("data-step"));
-    }
-    function setup() {
-      if (io) { io.disconnect(); io = null; }
-      stopAuto();
-      if (!("IntersectionObserver" in window)) return;
-      if (desktop.matches) {
-        io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) { if (entry.isIntersecting) setState(entry.target.getAttribute("data-step")); });
-        }, { rootMargin: "-45% 0px -45% 0px" });
-        diffSteps.forEach(function (st) { io.observe(st); });
-      } else {
-        io = new IntersectionObserver(function (entries) { inView = entries[0].isIntersecting; runAuto(); }, { threshold: 0.35 });
-        io.observe(diffPhone);
-      }
-    }
-    $$(".diff__hit", section).forEach(function (btn) { btn.addEventListener("click", onTap); });
-    document.addEventListener("visibilitychange", runAuto);
-    if (desktop.addEventListener) desktop.addEventListener("change", setup); else desktop.addListener(setup);
-    setup();
-  })();
-
-  /* ---------- process flow: play illustrations in view, rail progress, spotlight ---------- */
-  (function processFlow() {
-    var wrap = $(".flow-wrap");
-    if (!wrap) return;
-    var steps = $$(".flow__step", wrap);
-    var fill = $(".flow__rail", wrap);
-    var nodes = $$(".flow__node", wrap);
-    if ("IntersectionObserver" in window) {
-      var playIO = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { e.target.classList.toggle("is-playing", e.isIntersecting); });
-      }, { threshold: 0.25 });
-      steps.forEach(function (st) { playIO.observe(st); });
-    } else steps.forEach(function (st) { st.classList.add("is-playing"); });
-
-    var queued = false;
-    function progress() {
-      queued = false;
-      var r = wrap.getBoundingClientRect(), vh = window.innerHeight;
-      var p = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / (r.height * (narrow.matches ? 0.95 : 0.55))));
-      fill.style.setProperty("--p", reduce ? 1 : p.toFixed(3));
-      nodes.forEach(function (n, i) { n.classList.toggle("is-on", reduce || p >= i / 2 - 0.02); });
-    }
-    window.addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(progress); } }, { passive: true });
-    window.addEventListener("resize", progress);
-    progress();
-
-    if (finePointer) {
-      steps.forEach(function (st) {
-        st.addEventListener("pointermove", function (e) {
-          var r = st.getBoundingClientRect();
-          st.style.setProperty("--mx", (e.clientX - r.left) + "px");
-          st.style.setProperty("--my", (e.clientY - r.top) + "px");
-        });
-      });
-    }
-  })();
 
   /* ---------- footer: live local time in Pattaya ---------- */
   var clock = $("#localTime");
@@ -569,95 +347,112 @@
     });
     return { words: words, revert: function () { el.innerHTML = original; } };
   }
-
-  /* Hero entrance — starts as the intro curtain lifts. */
-  var heroTitle = $(".hero__title");
-  var tl = gsap.timeline({ delay: 0.35, defaults: { ease: "expo.out" } });
+  /* Hero: the pill, the title word by word, then the rest; the devices rise
+     in from below and the floating chips pop around them. */
+  var heroTitle = $(".h__title");
+  var tl = gsap.timeline({ delay: 0.15, defaults: { ease: "expo.out" } });
   if (heroTitle) {
     var heroSplit = splitWords(heroTitle);
-    tl.from(heroSplit.words, { yPercent: 115, rotate: 4, duration: 1.05, stagger: 0.04 }, 0);
-    // Keep the split markup after the entrance (rebuilding the headline would
-    // repaint it); restore the plain markup only if the layout changes.
-    window.addEventListener("resize", function once() { heroSplit.revert(); window.removeEventListener("resize", once); });
-  }
-  tl.from(".hero__eyebrow", { y: 16, opacity: 0, duration: 1 }, 0)
-    .from(".hero__sub", { y: 22, opacity: 0, duration: 1.1 }, 0.45)
-    .from(".hero__ctas", { y: 22, opacity: 0, duration: 1.1 }, 0.55)
-    // Inner wrappers are animated so the CSS 3D transforms on the stage
-    // layers (and the pointer-driven tilt) are never overwritten.
-    .from(".stage__screen--back .frame", { opacity: 0, y: 80, duration: 1.8 }, 0.2)
-    .from(".stage__screen--mid .frame", { opacity: 0, y: 100, duration: 1.8 }, 0.3)
-    .from(".stage__screen--front .frame", { opacity: 0, y: 120, duration: 1.8 }, 0.4)
-    .from(".stage__phone .device", { opacity: 0, y: 140, duration: 1.6 }, 0.6)
-    .from(".stage__chip .chip", { opacity: 0, scale: .8, y: 20, duration: 1, stagger: 0.15, ease: "back.out(1.6)" }, 1.1)
-    .from(".hero__facts li", { opacity: 0, y: 20, duration: 1, stagger: 0.08 }, 0.8);
-
-  // Hero scroll: the stage drifts up and settles, copy eases away.
-  gsap.to("#stage", { yPercent: -10, scale: 0.94, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-  gsap.to(".hero__copy", { yPercent: -14, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "25% top", end: "bottom top", scrub: true } });
-  gsap.to(".stage__chip--a .chip", { y: -60, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-  gsap.to(".stage__chip--b .chip", { y: -110, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    gsap.set(heroSplit.words, { yPercent: 115 });
+    tl.to(heroSplit.words, { yPercent: 0, duration: 1.2, stagger: 0.09, onComplete: function () {
+      if (heroSplit.words[0] && heroTitle.contains(heroSplit.words[0])) heroSplit.revert();
+    } }, 0.2);
+    var splitLang = document.documentElement.lang;
+    window.addEventListener("resize", function once() {
+      window.removeEventListener("resize", once);
+      if (document.documentElement.lang === splitLang && heroSplit.words[0] && heroTitle.contains(heroSplit.words[0])) heroSplit.revert();
+    });
+    tl.from(".h__pill", { y: 18, opacity: 0, duration: 0.9 }, 0)
+      .from(".h__sub", { y: 24, opacity: 0, duration: 1 }, 0.75)
+      .from(".h__ctas > *", { y: 22, opacity: 0, duration: 1, stagger: 0.08 }, 0.9)
+      .from(".h__proof li", { y: 16, opacity: 0, duration: 0.9, stagger: 0.07 }, 1.05)
+      .from(".h__orb", { scale: 0.6, opacity: 0, duration: 2 }, 0)
+      .from(".h__ring", { scale: 0.7, opacity: 0, duration: 1.8, stagger: 0.1 }, 0.1)
+      .from(".dev--hero .mac__view", { opacity: 0.05, duration: 1.4, ease: "power2.out" }, 0.1)
+      .from(".dev--hero .iph", { y: 140, duration: 1.5 }, 0.4)
+      .from(".h__chip .chip", { scale: 0.6, opacity: 0, y: 20, duration: 1, stagger: 0.14, ease: "back.out(1.7)" }, 1.1)
+      .from(".h__now", { opacity: 0, y: 10, duration: 0.8 }, 1.4);
+    // Scrolling away: the copy drifts up and fades, the stage sinks slower.
+    gsap.to(".h__copy", { yPercent: -12, opacity: 0.25, ease: "none", scrollTrigger: { trigger: ".h", start: "30% top", end: "bottom top", scrub: true } });
+    gsap.to(".h__visual", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".h", start: "top top", end: "bottom top", scrub: true } });
+  } else tl.kill();
 
   /* Section titles: word-by-word rise when they enter. Words are split and
      tucked below their masks up front; a language switch simply replaces the
      markup, which leaves the translated title fully visible. */
   $$('[data-anim="words"]').forEach(function (el) {
-    if (el === heroTitle) return;
     var split = splitWords(el);
     gsap.set(split.words, { yPercent: 115 });
     ST.create({
       trigger: el, start: "top 86%", once: true,
       onEnter: function () {
         if (!split.words[0] || !el.contains(split.words[0])) return;
-        gsap.to(split.words, { yPercent: 0, duration: 1.1, stagger: 0.045, ease: "expo.out", onComplete: split.revert });
+        gsap.to(split.words, { yPercent: 0, duration: 1.1, stagger: 0.05, ease: "expo.out", onComplete: split.revert });
       }
     });
   });
 
-  /* Generic fades / rises. */
-  $$('[data-anim="rise"]').forEach(function (el, i) {
-    gsap.from(el, { y: 40, opacity: 0, duration: 1.1, ease: "expo.out", delay: (i % 3) * 0.08, scrollTrigger: { trigger: el, start: "top 88%", once: true } });
-  });
-  $$(".section-lead, .eyebrow").forEach(function (el) {
-    if (el.closest(".hero, dialog")) return;
+  $$(".section-lead, .section-head .eyebrow, .phero .eyebrow, .phero__lead").forEach(function (el) {
+    if (el.closest(".h, dialog")) return;
     gsap.from(el, { y: 18, opacity: 0, duration: 1, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 90%", once: true } });
   });
 
-  /* Work: masked reveal + depth parallax on each project. */
-  $$(".project").forEach(function (project) {
-    var media = $(".project__media", project);
-    var browser = $(".project__browser", project);
-    var img = $(".project__browser img", project);
-    var phone = $(".project__phone", project);
-    var info = $(".project__info", project);
-    gsap.fromTo(browser, { clipPath: "inset(14% 10% 14% 10% round 28px)" }, {
-      clipPath: "inset(0% 0% 0% 0% round 14px)", ease: "none",
-      scrollTrigger: { trigger: media, start: "top 95%", end: "top 55%", scrub: 0.6 }
+  /* Key figures: each rises in, its icon starts moving once it's on screen. */
+  var stItems = $$(".st__item");
+  if (stItems.length) {
+    gsap.fromTo(stItems, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, stagger: 0.1, ease: "expo.out", clearProps: "transform,opacity",
+      scrollTrigger: { trigger: ".st__grid", start: "top 88%", once: true } });
+  }
+
+  /* Cards with a CSS transform transition (hover lift / tilt) use explicit
+     start and end values and no transition during the tween, or GSAP reads a
+     mid-transition value as the resting state. */
+  function rise(sel, opts) {
+    var els = $$(sel);
+    if (!els.length) return;
+    var from = Object.assign({ y: 70, opacity: 0 }, opts && opts.from);
+    els.forEach(function (c) { c.style.transition = "none"; });
+    gsap.set(els, from);
+    ST.batch(els, {
+      start: "top 90%", once: true,
+      onEnter: function (batch) {
+        gsap.fromTo(batch, from, Object.assign({ y: 0, opacity: 1, rotateX: 0, scale: 1, duration: 1.2, stagger: 0.1, ease: "expo.out", clearProps: "transform,opacity,transition" }, opts && opts.to));
+      }
     });
-    gsap.fromTo(img, { scale: 1.3 }, { scale: 1.08, ease: "none", scrollTrigger: { trigger: media, start: "top bottom", end: "bottom top", scrub: true } });
-    gsap.fromTo(phone, { y: 120 }, { y: -30, ease: "none", scrollTrigger: { trigger: media, start: "top bottom", end: "bottom top", scrub: 0.6 } });
-    gsap.from($("img", phone), { opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: { trigger: media, start: "top 80%", once: true } });
-    gsap.from($$(":scope > *", info), { y: 30, opacity: 0, duration: 1, stagger: 0.07, ease: "expo.out", scrollTrigger: { trigger: info, start: "top 82%", once: true } });
+  }
+  rise(".wk-card", { from: { y: 90, rotateX: 8, transformPerspective: 1400 } });
+  rise(".why-card");
+  rise(".how-step", { from: { y: 80, scale: 0.96 } });
+  rise(".offer", { from: { y: 70, rotateX: 10, transformPerspective: 1200 } });
+  // Device screens inside the work cards settle from a slight zoom.
+  $$(".wk-card .mac__view img").forEach(function (img) {
+    gsap.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "none", scrollTrigger: { trigger: img.closest(".wk-card"), start: "top bottom", end: "center center", scrub: true } });
+  });
+  // Photos in why/how cards drift inside their frame.
+  $$(".why-card__media img, .how-step__media img").forEach(function (img) {
+    gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: img.parentNode, start: "top bottom", end: "bottom top", scrub: true } });
   });
 
-  /* Process: rail draws across as the steps come in. */
-  $$(".flow__step").forEach(function (step, i) {
-    gsap.from(step, { y: 60, opacity: 0, duration: 1.1, delay: window.innerWidth >= 960 ? i * 0.12 : 0, ease: "expo.out", scrollTrigger: { trigger: step, start: "top 88%", once: true } });
+  /* Finale: the WhatsApp button rises in, then the rest. */
+  if ($(".wa-giant")) gsap.from(".wa-giant", { scale: .6, opacity: 0, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 70%", once: true } });
+  if ($(".finale__sub")) gsap.from(".finale__sub, .finale__replies, .finale__scan, .finale__ctas", { y: 24, opacity: 0, duration: 1.1, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 70%", once: true } });
+
+  /* Everything else fades up in small staggered groups as it enters. */
+  var batchSel = ".qa, .footer__brand, .footer__col, .pcard, .guide__row, .cmp-wrap, .legal__sec, .status__card, .trust, .offers__links, .faq__intro .btn, .bill, .carebox, .phero__chips";
+  var batchEls = $$(batchSel).filter(function (el) { return !el.hasAttribute("data-anim") && !el.closest("dialog, .h, [data-anim]"); });
+  if (batchEls.length) {
+    batchEls.forEach(function (el) { el.style.transition = "none"; });
+    gsap.set(batchEls, { y: 36, opacity: 0 });
+    ST.batch(batchEls, {
+      start: "top 92%", once: true,
+      onEnter: function (els) { gsap.to(els, { y: 0, opacity: 1, duration: 1, stagger: 0.08, ease: "expo.out", clearProps: "transform,opacity,transition" }); }
+    });
+  }
+
+  /* Light parallax on page-hero photos. */
+  $$(".phero__bg img").forEach(function (img) {
+    gsap.fromTo(img, { yPercent: -6, scale: 1.12 }, { yPercent: 8, scale: 1.12, ease: "none", scrollTrigger: { trigger: img.closest("section"), start: "top top", end: "bottom top", scrub: true } });
   });
-
-  /* Finale + footer word. */
-  gsap.from(".finale__sub, .finale__ctas", { y: 24, opacity: 0, duration: 1.1, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 70%", once: true } });
-  gsap.fromTo(".footer__word", { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: ".footer", start: "top bottom", end: "bottom bottom", scrub: true } });
-
-  /* Difference: the phone rises in with a slight tilt. */
-  gsap.from(".dp", { y: 80, rotateX: 18, opacity: 0, duration: 1.4, ease: "expo.out", transformPerspective: 1200, scrollTrigger: { trigger: ".diff__grid", start: "top 80%", once: true } });
-
-  /* Try it: the card lifts in, the QR frame snaps into place. */
-  gsap.from(".tryit", { y: 60, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".tryit", start: "top 85%", once: true } });
-  gsap.from(".tryit__corner", { scale: 1.8, opacity: 0, duration: .9, stagger: .06, ease: "back.out(2)", scrollTrigger: { trigger: ".tryit", start: "top 70%", once: true } });
-
-  /* Finale orbit badge. */
-  gsap.from(".orbit", { scale: .6, opacity: 0, rotate: -90, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: ".finale", start: "top 75%", once: true } });
 
   window.addEventListener("load", function () { ST.refresh(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
