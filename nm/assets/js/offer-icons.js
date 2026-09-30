@@ -5,9 +5,9 @@
 (function () {
   "use strict";
   var defs = '<defs>' +
-    '<linearGradient id="icSun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe0a3"/><stop offset=".55" stop-color="#f0b45a"/><stop offset="1" stop-color="#c9822a"/></linearGradient>' +
-    '<linearGradient id="icGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe9c0"/><stop offset="1" stop-color="#f3d28c"/></linearGradient>' +
-    '<radialGradient id="icGlow"><stop offset="0" stop-color="#f0b45a" stop-opacity=".55"/><stop offset="1" stop-color="#f0b45a" stop-opacity="0"/></radialGradient>' +
+    '<linearGradient id="icSun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9b8ff"/><stop offset=".55" stop-color="#8a63f8"/><stop offset="1" stop-color="#5c43fa"/></linearGradient>' +
+    '<linearGradient id="icGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2d8ff"/><stop offset="1" stop-color="#9c7afa"/></linearGradient>' +
+    '<radialGradient id="icGlow"><stop offset="0" stop-color="#8a63f8" stop-opacity=".55"/><stop offset="1" stop-color="#8a63f8" stop-opacity="0"/></radialGradient>' +
     '</defs>';
 
   function stars(x, y) {
@@ -52,8 +52,8 @@
       '<ellipse cx="80" cy="64" rx="58" ry="44" fill="url(#icGlow)" class="ic-halo"/>' +
       '<g class="ic-cube">' +
       '<g class="ic-face ic-face--top"><path d="M80 22l34 18-34 18-34-18z" fill="url(#icGold)"/><path d="M80 31.5s-6 5.5-6 10a6 6 0 0012 0c0-4.5-6-10-6-10z" fill="#1a1512" opacity=".75"/></g>' +
-      '<g class="ic-face ic-face--left"><path d="M46 40l34 18v38L46 78z" fill="#f0b45a"/><g fill="#fff" opacity=".9"><rect x="55" y="57" width="6" height="6" rx="1.2"/><rect x="65" y="62" width="6" height="6" rx="1.2"/><rect x="55" y="67" width="6" height="6" rx="1.2"/><rect x="65" y="72" width="6" height="6" rx="1.2"/></g></g>' +
-      '<g class="ic-face ic-face--right"><path d="M114 40L80 58v38l34-18z" fill="#c9822a"/><path d="M88 64l18-9.5v4L88 68z" fill="#fff" opacity=".9"/><path d="M88 72l18-9.5v12L88 84z" fill="#fff" opacity=".35"/></g>' +
+      '<g class="ic-face ic-face--left"><path d="M46 40l34 18v38L46 78z" fill="#8a63f8"/><g fill="#fff" opacity=".9"><rect x="55" y="57" width="6" height="6" rx="1.2"/><rect x="65" y="62" width="6" height="6" rx="1.2"/><rect x="55" y="67" width="6" height="6" rx="1.2"/><rect x="65" y="72" width="6" height="6" rx="1.2"/></g></g>' +
+      '<g class="ic-face ic-face--right"><path d="M114 40L80 58v38l34-18z" fill="#5c43fa"/><path d="M88 64l18-9.5v4L88 68z" fill="#fff" opacity=".9"/><path d="M88 72l18-9.5v12L88 84z" fill="#fff" opacity=".35"/></g>' +
       '</g>' +
       '<path d="M80 58v38M46 40l34 18 34-18" class="ic-edge"/>' +
       '<g transform="translate(128 24) scale(1)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g><g transform="translate(32 90) scale(0.8)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g><g transform="translate(134 90) scale(0.6)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g>' +
