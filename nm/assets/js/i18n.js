@@ -781,6 +781,7 @@
 
   function detect() {
     var stored = null;
+    try { var q = new URLSearchParams(location.search).get("lang"); if (q && DICT[q]) return q; } catch (e) {}
     try { stored = localStorage.getItem("nmLang"); } catch (e) {}
     if (stored && DICT[stored]) return stored;
     var nav = (navigator.language || "en").toLowerCase().slice(0, 2);
