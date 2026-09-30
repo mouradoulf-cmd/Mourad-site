@@ -159,8 +159,8 @@ white text, neon green live dots,
 Bricolage Grotesque display + Newsreader italic key word + Geist + Geist
 Mono, glass cards with pointer-lit borders, grain. Pages: `index.html`
 (intro curtain once per session, hero = video `assets/video/hero.*` via `NM_OFFERS.hero`
-(plays once, rests on its last frame = poster `hero-video-end.*`; demo
-footage from the user, to be replaced by owned footage); letter-split title, two scroll-driven marquees, 3-screen story,
+(plays once, rests on its last frame = poster `hero-video-end.*`; footage
+purchased by the user); letter-split title, two scroll-driven marquees, 3-screen story,
 4 offer cards + morphing detail dialog `.om`, why us, "difference",
 slot-machine calculator, pinned horizontal work gallery (desktop LTR) with
 live iframe preview `.pv`, process, real animated QR, Pattaya SVG map, FAQ,
