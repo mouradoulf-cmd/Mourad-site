@@ -57,6 +57,8 @@
         mapAlt: "Stylised map of Pattaya showing the areas we visit, from Naklua to Jomtien"
       },
       preview: { btn: "Live preview", title: "Live preview", desktop: "Desktop", mobile: "Mobile", open: "Open in a new tab", loading: "Loading the live site…", close: "Close" },
+      audience: { i8: "Hotels", i9: "Guesthouses", i10: "Car & bike rentals", i11: "Beach clubs", i12: "Gyms", i13: "Tour agencies", i14: "Clinics", i15: "Shops", sr: "We work with restaurants, cafés, hair salons, spas and massage salons, bars, street food vendors, hotels, guesthouses, rental shops, beach clubs, gyms, tour agencies, clinics, shops and local companies." },
+      v3: { play: "Play", scanT: "On a computer?", scanB: "Scan with your phone to chat on WhatsApp.", scroll: "Scroll to explore" },
       finale2: { title: "Ready to be seen? <em>Message us on WhatsApp.</em>", replies: "We usually reply within minutes", wa: "Chat on WhatsApp" },
       footer2: { pages: "Pages", legal: "Legal", notice: "Legal notice", terms: "Terms of sale", privacy: "Privacy", cookies: "Cookies" },
       svc: {
@@ -172,6 +174,8 @@
         mapAlt: "Carte stylisée de Pattaya montrant les quartiers où nous nous déplaçons, de Naklua à Jomtien"
       },
       preview: { btn: "Aperçu en direct", title: "Aperçu en direct", desktop: "Ordinateur", mobile: "Mobile", open: "Ouvrir dans un nouvel onglet", loading: "Chargement du site…", close: "Fermer" },
+      audience: { i8: "Hôtels", i9: "Maisons d'hôtes", i10: "Location de voitures et motos", i11: "Beach clubs", i12: "Salles de sport", i13: "Agences de voyage", i14: "Cliniques", i15: "Boutiques", sr: "Nous travaillons avec des restaurants, cafés, salons de coiffure, spas et salons de massage, bars, vendeurs de street food, hôtels, maisons d'hôtes, loueurs, beach clubs, salles de sport, agences de voyage, cliniques, boutiques et entreprises locales." },
+      v3: { play: "Lire", scanT: "Sur ordinateur ?", scanB: "Scannez avec votre téléphone pour discuter sur WhatsApp.", scroll: "Faites défiler" },
       finale2: { title: "Prêt à être vu ? <em>Écrivez-nous sur WhatsApp.</em>", replies: "Réponse en général en quelques minutes", wa: "Discuter sur WhatsApp" },
       footer2: { pages: "Pages", legal: "Légal", notice: "Mentions légales", terms: "CGV", privacy: "Confidentialité", cookies: "Cookies" },
       svc: {
@@ -287,6 +291,8 @@
         mapAlt: "Mappa stilizzata di Pattaya con le zone che visitiamo, da Naklua a Jomtien"
       },
       preview: { btn: "Anteprima dal vivo", title: "Anteprima dal vivo", desktop: "Desktop", mobile: "Mobile", open: "Apri in una nuova scheda", loading: "Caricamento del sito…", close: "Chiudi" },
+      audience: { i8: "Hotel", i9: "Guesthouse", i10: "Noleggio auto e moto", i11: "Beach club", i12: "Palestre", i13: "Agenzie di viaggio", i14: "Cliniche", i15: "Negozi", sr: "Lavoriamo con ristoranti, caffè, parrucchieri, spa e centri massaggi, bar, street food, hotel, guesthouse, noleggi, beach club, palestre, agenzie di viaggio, cliniche, negozi e aziende locali." },
+      v3: { play: "Guarda", scanT: "Sei al computer?", scanB: "Inquadra con il telefono per scriverci su WhatsApp.", scroll: "Scorri" },
       finale2: { title: "Pronto a farti vedere? <em>Scrivici su WhatsApp.</em>", replies: "Di solito rispondiamo in pochi minuti", wa: "Scrivici su WhatsApp" },
       footer2: { pages: "Pagine", legal: "Note legali", notice: "Note legali", terms: "Condizioni di vendita", privacy: "Privacy", cookies: "Cookie" },
       svc: {
@@ -402,6 +408,8 @@
         mapAlt: "แผนที่พัทยาแบบย่อ แสดงพื้นที่ที่เราเข้าไปให้บริการ ตั้งแต่นาเกลือถึงจอมเทียน"
       },
       preview: { btn: "ดูตัวอย่างสด", title: "ตัวอย่างสด", desktop: "คอมพิวเตอร์", mobile: "มือถือ", open: "เปิดในแท็บใหม่", loading: "กำลังโหลดเว็บไซต์…", close: "ปิด" },
+      audience: { i8: "โรงแรม", i9: "เกสต์เฮาส์", i10: "เช่ารถและมอเตอร์ไซค์", i11: "บีชคลับ", i12: "ฟิตเนส", i13: "บริษัททัวร์", i14: "คลินิก", i15: "ร้านค้า", sr: "เราทำงานกับร้านอาหาร คาเฟ่ ร้านทำผม สปาและร้านนวด บาร์ ร้านสตรีทฟู้ด โรงแรม เกสต์เฮาส์ ร้านเช่ารถ บีชคลับ ฟิตเนส บริษัททัวร์ คลินิก ร้านค้า และธุรกิจท้องถิ่น" },
+      v3: { play: "เล่น", scanT: "ใช้คอมพิวเตอร์อยู่ใช่ไหม?", scanB: "สแกนด้วยมือถือเพื่อแชทกับเราทาง WhatsApp", scroll: "เลื่อนเพื่อดู" },
       finale2: { title: "พร้อมให้ลูกค้าเห็นคุณหรือยัง? <em>ทักเราทาง WhatsApp</em>", replies: "ปกติเราตอบภายในไม่กี่นาที", wa: "แชททาง WhatsApp" },
       footer2: { pages: "หน้าต่าง ๆ", legal: "กฎหมาย", notice: "ข้อมูลทางกฎหมาย", terms: "เงื่อนไขการขาย", privacy: "ความเป็นส่วนตัว", cookies: "คุกกี้" },
       svc: {
@@ -517,6 +525,8 @@
         mapAlt: "خريطة مبسطة لباتايا تُظهر المناطق التي نزورها من ناكلوا إلى جومتيان"
       },
       preview: { btn: "معاينة مباشرة", title: "معاينة مباشرة", desktop: "حاسوب", mobile: "هاتف", open: "افتح في علامة تبويب جديدة", loading: "جارٍ تحميل الموقع…", close: "إغلاق" },
+      audience: { i8: "فنادق", i9: "بيوت ضيافة", i10: "تأجير السيارات والدراجات", i11: "نوادي الشاطئ", i12: "صالات رياضية", i13: "وكالات سياحية", i14: "عيادات", i15: "متاجر", sr: "نعمل مع المطاعم والمقاهي وصالونات الحلاقة والتجميل والسبا ومراكز التدليك والحانات وباعة طعام الشارع والفنادق وبيوت الضيافة ومحلات التأجير ونوادي الشاطئ والصالات الرياضية والوكالات السياحية والعيادات والمتاجر والشركات المحلية." },
+      v3: { play: "تشغيل", scanT: "على الكمبيوتر؟", scanB: "امسح الرمز بهاتفك لمراسلتنا على واتساب.", scroll: "مرّر للاستكشاف" },
       finale2: { title: "مستعد لأن يراك الزبائن؟ <em>راسلنا على واتساب.</em>", replies: "نردّ عادةً خلال دقائق", wa: "تحدّث معنا على واتساب" },
       footer2: { pages: "الصفحات", legal: "قانوني", notice: "الإشعار القانوني", terms: "شروط البيع", privacy: "الخصوصية", cookies: "ملفات تعريف الارتباط" },
       svc: {

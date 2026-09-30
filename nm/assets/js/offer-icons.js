@@ -5,9 +5,9 @@
 (function () {
   "use strict";
   var defs = '<defs>' +
-    '<linearGradient id="icSun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc978"/><stop offset=".55" stop-color="#f0643c"/><stop offset="1" stop-color="#e24d7a"/></linearGradient>' +
-    '<linearGradient id="icGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe0a6"/><stop offset="1" stop-color="#f4b860"/></linearGradient>' +
-    '<radialGradient id="icGlow"><stop offset="0" stop-color="#f0643c" stop-opacity=".55"/><stop offset="1" stop-color="#f0643c" stop-opacity="0"/></radialGradient>' +
+    '<linearGradient id="icSun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fe9cf"/><stop offset=".55" stop-color="#2cc295"/><stop offset="1" stop-color="#17916b"/></linearGradient>' +
+    '<linearGradient id="icGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0dca8"/><stop offset="1" stop-color="#d8ae5e"/></linearGradient>' +
+    '<radialGradient id="icGlow"><stop offset="0" stop-color="#2cc295" stop-opacity=".55"/><stop offset="1" stop-color="#2cc295" stop-opacity="0"/></radialGradient>' +
     '</defs>';
 
   function stars(x, y) {
@@ -18,18 +18,11 @@
     return s;
   }
 
-  // 9×9 module pattern for the QR illustration (finder squares added separately).
-  var QR = ["000010100", "000001010", "000010110", "010111001", "101010111", "011001010", "000011101", "000010011", "000011010"];
-  function qrModules() {
-    var s = "", k = 0;
-    for (var r = 0; r < 9; r++) for (var c = 0; c < 9; c++) {
-      if (QR[r][c] !== "1") continue;
-      s += '<rect class="ic-mod" style="--i:' + (k++ % 17) + '" x="' + (27 + c * 6) + '" y="' + (33 + r * 6) + '" width="5" height="5" rx="1"/>';
-    }
-    return s;
-  }
-  function finder(x, y) {
-    return '<g transform="translate(' + x + ' ' + y + ')"><g class="ic-finder"><rect x=".75" y=".75" width="15.5" height="15.5" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="5" width="7" height="7" rx="1.6"/></g></g>';
+  // The QR illustration is a real code (it opens the live demo menu),
+  // computed by nm-qr.js; a plain card is drawn if that script is missing.
+  function qrArt() {
+    var Q = window.NMQR, mx = Q && Q.matrix(Q.MENU_URL, "L");
+    return mx ? Q.modules(mx, 24, 30, 60, { cls: "ic-mod", finderCls: "ic-finder", gap: 0.04 }) : "";
   }
 
   var SVG = {
@@ -44,24 +37,23 @@
       '<g class="ic-bubble"><rect x="92" y="10" width="58" height="22" rx="11" class="ic-card"/>' + stars(98, 17.5) + '</g>' +
       '</svg>',
 
-    qr:
-      '<svg viewBox="0 0 160 120" class="ic ic--qr" aria-hidden="true" focusable="false">' + defs +
+    qr: function () { return '<svg viewBox="0 0 160 120" class="ic ic--qr" aria-hidden="true" focusable="false">' + defs +
       '<ellipse cx="70" cy="66" rx="60" ry="42" fill="url(#icGlow)" class="ic-halo"/>' +
       '<g class="ic-code"><rect x="18" y="24" width="72" height="72" rx="12" class="ic-card"/>' +
-      '<g class="ic-qr">' + finder(24, 30) + finder(67, 30) + finder(24, 73) + qrModules() + '</g></g>' +
+      '<g class="ic-qr">' + qrArt() + '</g></g>' +
       '<rect x="18" y="24" width="72" height="3" rx="1.5" class="ic-scan"/>' +
       '<g class="ic-phone"><rect x="104" y="18" width="42" height="84" rx="9" class="ic-device"/><rect x="108" y="26" width="34" height="68" rx="5" class="ic-screen"/>' +
       '<rect x="112" y="31" width="18" height="3" rx="1.5" class="ic-line ic-line--hot" style="--i:0"/>' +
       '<rect x="112" y="40" width="26" height="8" rx="2" class="ic-line" style="--i:1"/><rect x="112" y="52" width="26" height="8" rx="2" class="ic-line" style="--i:2"/><rect x="112" y="64" width="26" height="8" rx="2" class="ic-line" style="--i:3"/><rect x="112" y="78" width="26" height="9" rx="4.5" class="ic-line ic-line--btn" style="--i:4"/></g>' +
-      '</svg>',
+      '</svg>'; },
 
     pack:
       '<svg viewBox="0 0 160 120" class="ic ic--pack" aria-hidden="true" focusable="false">' + defs +
       '<ellipse cx="80" cy="64" rx="58" ry="44" fill="url(#icGlow)" class="ic-halo"/>' +
       '<g class="ic-cube">' +
       '<g class="ic-face ic-face--top"><path d="M80 22l34 18-34 18-34-18z" fill="url(#icGold)"/><path d="M80 31.5s-6 5.5-6 10a6 6 0 0012 0c0-4.5-6-10-6-10z" fill="#1a1512" opacity=".75"/></g>' +
-      '<g class="ic-face ic-face--left"><path d="M46 40l34 18v38L46 78z" fill="#f0643c"/><g fill="#fff" opacity=".9"><rect x="55" y="57" width="6" height="6" rx="1.2"/><rect x="65" y="62" width="6" height="6" rx="1.2"/><rect x="55" y="67" width="6" height="6" rx="1.2"/><rect x="65" y="72" width="6" height="6" rx="1.2"/></g></g>' +
-      '<g class="ic-face ic-face--right"><path d="M114 40L80 58v38l34-18z" fill="#e24d7a"/><path d="M88 64l18-9.5v4L88 68z" fill="#fff" opacity=".9"/><path d="M88 72l18-9.5v12L88 84z" fill="#fff" opacity=".35"/></g>' +
+      '<g class="ic-face ic-face--left"><path d="M46 40l34 18v38L46 78z" fill="#2cc295"/><g fill="#fff" opacity=".9"><rect x="55" y="57" width="6" height="6" rx="1.2"/><rect x="65" y="62" width="6" height="6" rx="1.2"/><rect x="55" y="67" width="6" height="6" rx="1.2"/><rect x="65" y="72" width="6" height="6" rx="1.2"/></g></g>' +
+      '<g class="ic-face ic-face--right"><path d="M114 40L80 58v38l34-18z" fill="#17916b"/><path d="M88 64l18-9.5v4L88 68z" fill="#fff" opacity=".9"/><path d="M88 72l18-9.5v12L88 84z" fill="#fff" opacity=".35"/></g>' +
       '</g>' +
       '<path d="M80 58v38M46 40l34 18 34-18" class="ic-edge"/>' +
       '<g transform="translate(128 24) scale(1)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g><g transform="translate(32 90) scale(0.8)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g><g transform="translate(134 90) scale(0.6)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g>' +
@@ -81,13 +73,15 @@
       '</svg>'
   };
 
+  function build(k) { return typeof SVG[k] === "function" ? SVG[k]() : SVG[k]; }
+
   function mount(root) {
     (root || document).querySelectorAll("[data-icon]").forEach(function (el) {
       if (el.firstElementChild) return;
-      var svg = SVG[el.getAttribute("data-icon")];
+      var svg = build(el.getAttribute("data-icon"));
       if (svg) el.innerHTML = svg;
     });
   }
-  window.NMIcons = { mount: mount, svg: function (k) { return SVG[k] || ""; } };
+  window.NMIcons = { mount: mount, svg: function (k) { return build(k) || ""; } };
   mount();
 })();

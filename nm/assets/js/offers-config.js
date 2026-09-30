@@ -7,6 +7,11 @@
  *          assets/video/ and put its path here, e.g. "assets/video/google.mp4".
  *          Left empty, the offer shows its animated illustration instead.
  * posters — optional still image shown while the video loads.
+ * hero   — the home page's cinematic hero video (10 s, 16:9, no sound,
+ *          < 2 MB). Put the files in assets/video/ and fill the paths:
+ *          mp4 (H.264, required), webm (optional, lighter), mp4Mobile
+ *          (optional 720p version for phones), poster (a still frame shown
+ *          instantly while it loads). Left empty, the photo reel plays.
  */
 window.NM_OFFERS = {
   order: ["google", "qr", "pack", "ultimate"],
@@ -16,6 +21,7 @@ window.NM_OFFERS = {
   yearlyMonths: 10,
   videos: { google: "", qr: "", pack: "", ultimate: "" },
   posters: { google: "", qr: "", pack: "", ultimate: "" },
+  hero: { mp4: "", webm: "", mp4Mobile: "", poster: "" },
 
   /* Approximate amounts shown next to the baht price for visitors reading in
      another language — hand-rounded, not a live exchange rate. */

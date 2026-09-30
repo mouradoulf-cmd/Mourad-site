@@ -152,13 +152,16 @@ extras, delivery and a WhatsApp request; `RSI18n` EN/FR/TH/RU.
 
 ## NM Studio — the studio's own site (`nm/`)
 
-Plain HTML/CSS/JS, no build step. 2026 redesign "Pattaya sunset": warm ink
-`#0b0a09` + gold/sun/rose (`--brand`), Geist + Instrument Serif italic,
-grain, glass cards. Pages: `index.html` (photo-reel hero with Ken Burns +
-gold-dust canvas, letter-split title, 3-screen scroll story, 4 offer cards +
-detail dialog `.om`, why us, "difference", calculator, work with live iframe
-preview `.pv`, process, QR demo, Pattaya SVG map, FAQ, giant WhatsApp CTA),
-`services.html`, `pricing.html` (care plan Monthly/Yearly toggle, comparison
+Plain HTML/CSS/JS, no build step. v3 "Jade Nuit" (user-picked palette):
+night `#0a0a0a` + jade `#2cc295` as light + gold `#d8ae5e` for prices,
+Bricolage Grotesque display + Newsreader italic key word + Geist + Geist
+Mono, glass cards with pointer-lit borders, grain. Pages: `index.html`
+(intro curtain once per session, hero video slot `NM_OFFERS.hero` over the
+photo reel, letter-split title, two scroll-driven marquees, 3-screen story,
+4 offer cards + morphing detail dialog `.om`, why us, "difference",
+slot-machine calculator, pinned horizontal work gallery (desktop LTR) with
+live iframe preview `.pv`, process, real animated QR, Pattaya SVG map, FAQ,
+WhatsApp CTA with scan-to-chat QR, footer reveal), `services.html`, `pricing.html` (care plan Monthly/Yearly toggle, comparison
 table), `checkout.html`, `success.html`, `cancel.html`, `account.html`,
 `legal.html`. `nm/README.md` documents everything (Stripe setup, going live).
 
@@ -185,6 +188,9 @@ table), `checkout.html`, `success.html`, `cancel.html`, `account.html`,
 - GSAP gotcha: elements with a CSS `transition: transform` must use
   `fromTo` + `clearProps` (and `transition:none` during the tween), or GSAP
   reads a mid-transition value as the resting state and cards stay offset.
+- QR codes are always real (`nm-qr.js` → SVG modules, `data-qr`); never
+  draw a fake QR. Motion lives in `main.js` (GSAP) and `fx.js` (cursor
+  trail, ripple, marquee speed, count-up, footer reveal).
 - Showcase screenshots in `nm/assets/img/work/` are captured from the live
   demos with Playwright (1280×800 and 390×780 @1.5 → jpg + webp + 360w).
   Deployed via the `claude/thai-app-mnw166` branch (GitHub Pages source).
