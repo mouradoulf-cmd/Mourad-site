@@ -107,8 +107,8 @@
         var flick = .65 + Math.sin(m.a * 3) * .35;
         ctx.beginPath();
         var jade = k % 3 === 0;
-        ctx.fillStyle = jade ? "rgba(150,235,205," + (m.o * flick).toFixed(3) + ")" : "rgba(245," + (206 + (k % 3) * 10) + "," + (140 + (k % 4) * 12) + "," + (m.o * flick).toFixed(3) + ")";
-        ctx.shadowColor = jade ? "rgba(44,194,149,.9)" : "rgba(216,174,94,.8)"; ctx.shadowBlur = m.r * 6;
+        ctx.fillStyle = jade ? "rgba(150,215,255," + (m.o * flick).toFixed(3) + ")" : "rgba(245," + (206 + (k % 3) * 10) + "," + (140 + (k % 4) * 12) + "," + (m.o * flick).toFixed(3) + ")";
+        ctx.shadowColor = jade ? "rgba(240,180,90,.9)" : "rgba(243,210,140,.8)"; ctx.shadowBlur = m.r * 6;
         ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
       }
       raf = requestAnimationFrame(frame);
@@ -365,7 +365,7 @@
     if (!canvas || reduce || !canvas.getContext) return;
     var ctx = canvas.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = canvas.width = innerWidth * dpr, H = canvas.height = innerHeight * dpr;
-    var colors = ["#9fe9cf", "#d8ae5e", "#2cc295", "#17916b", "#3ee08f", "#f2ede3"];
+    var colors = ["#ffe0a3", "#f3d28c", "#f0b45a", "#c9822a", "#7cc9f2", "#f2ede3"];
     var bits = [];
     for (var k = 0; k < 160; k++) {
       var a = -Math.PI / 2 + (Math.random() - .5) * 1.6, v = (9 + Math.random() * 11) * dpr;
