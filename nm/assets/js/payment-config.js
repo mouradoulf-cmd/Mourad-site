@@ -36,6 +36,9 @@ window.NM_PAYMENTS = {
   },
   portal: "",
   promptpay: "",
+  // Sample PromptPay QR (stamped "Sample", can't be paid) until the real
+  // PromptPay ID above is filled in — then it switches off by itself.
+  demo: true,
   promptpayName: "",
   bank: { holder: "", bank: "", iban: "", bic: "" }
 };
