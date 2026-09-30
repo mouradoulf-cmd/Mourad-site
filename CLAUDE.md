@@ -197,3 +197,5 @@ table), `checkout.html`, `success.html`, `cancel.html`, `account.html`,
 - Showcase screenshots in `nm/assets/img/work/` are captured from the live
   demos with Playwright (1280×800 and 390×780 @1.5 → jpg + webp + 360w).
   Deployed via the `claude/thai-app-mnw166` branch (GitHub Pages source).
+- The user wants the live link sent at the end of every finished change:
+  https://mouradoulf-cmd.github.io/Mourad-site/nm/ (plus the page changed).
