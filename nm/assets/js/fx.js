@@ -108,7 +108,7 @@
           var k = i / pts.length;
           ctx.beginPath();
           ctx.moveTo(pts[i - 1].x, pts[i - 1].y); ctx.lineTo(pts[i].x, pts[i].y);
-          ctx.strokeStyle = "rgba(" + Math.round(44 + 150 * k) + ",220," + Math.round(160 + 40 * k) + "," + (k * 0.55).toFixed(3) + ")";
+          ctx.strokeStyle = "rgba(" + Math.round(124 + 131 * k) + "," + Math.round(201 + 9 * k) + "," + Math.round(242 - 142 * k) + "," + (k * 0.55).toFixed(3) + ")"; // ice tail → gold head
           ctx.lineWidth = 0.6 + k * 3.2;
           ctx.stroke();
         }

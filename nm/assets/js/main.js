@@ -694,9 +694,10 @@
     .from(".hero__price", { y: 22, opacity: 0, duration: 1.1 }, 0.55)
     .from(".hero__sub", { y: 22, opacity: 0, duration: 1.1 }, 0.62)
     .from(".hero__ctas", { y: 22, opacity: 0, duration: 1.1 }, 0.7)
-    .from(".hero__phone .device", { opacity: 0, y: 120, rotate: 6, duration: 1.8 }, 0.35)
-    .from(".hero__chip .chip", { opacity: 0, scale: .8, y: 20, duration: 1, stagger: 0.15, ease: "back.out(1.6)" }, 1.1)
     .from(".hero__facts li", { opacity: 0, y: 20, duration: 1, stagger: 0.08 }, 0.8);
+  if ($(".hero__phone .device")) tl.from(".hero__phone .device", { opacity: 0, y: 120, rotate: 6, duration: 1.8 }, 0.35);
+  if ($(".hero__chip .chip")) tl.from(".hero__chip .chip", { opacity: 0, scale: .8, y: 20, duration: 1, stagger: 0.15, ease: "back.out(1.6)" }, 1.1);
+  if ($(".hero__scene")) tl.from(".hero__scene", { opacity: 0, duration: 2.2, ease: "power2.out" }, 0);
 
   // Hero scroll: the phone drifts up, the copy eases away.
   if ($(".hero__device")) gsap.to(".hero__device", { yPercent: -18, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });

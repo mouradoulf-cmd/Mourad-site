@@ -112,12 +112,21 @@ receipts, invoices and dunning emails.
   issued (refund rule confirmed by the owner).
 - **Testimonials**: intentionally none until there are real ones.
 
-## Design system — v3 "Jade Nuit"
+## Design system — v3.1 "Gold & Ice"
 
 - Colours (`assets/css/nm.css` `:root`): night `#0a0a0a`, surface `#0d100e`,
-  text ivory `#f2ede3`, muted `#a4a79f`; signature jade `#2cc295` (light
-  `#9fe9cf`, deep `#17916b`) used as light and on CTAs (dark text
-  `#04140e`), gold `#d8ae5e` for prices and details (`--lux`).
+  text ivory `#f2ede3`, muted `#a4a79f`; signature amber gold `#f0b45a`
+  (token still named `--jade`; light `#ffe0a3`, deep `#c9822a`) used as light
+  and on CTAs (dark text `#1a1104`), champagne `#f3d28c` for prices
+  (`--lux`), ice blue `#7cc9f2` (`--ice`) as the cool accent.
+- Hero: `assets/js/hero-scene.js` — an original particle scene (gold light
+  streaming in from the left, assembling in turn into a website on a phone,
+  a Google Maps pin with five stars, a real QR code and a shop with
+  customers; ice-blue haze; mirrored floor), captions `v3.s1…s4`, adaptive
+  quality, still frame with reduced motion; `assets/img/hero-scene*.webp`
+  is the poster shown before it starts and without JavaScript. Setting
+  `NM_OFFERS.hero` (video) replaces the scene. Main CTA `.btn--ring`
+  (rotating gold conic border + round arrow).
 - Type: Bricolage Grotesque (display headings), Newsreader italic (the key
   word of each heading), Geist (text), Geist Mono (prices, labels) — all
   self-hosted; Noto Sans Thai / IBM Plex Sans Arabic loaded on demand.
