@@ -117,6 +117,24 @@
   <a class="h__scroll" href="#stats" aria-label="Scroll" data-i18n-aria-label="hero2.scroll"><i></i></a>
 </section>
 
+<!-- ============ 1b · SCROLL FILM (video scrubbed by scroll) ============ -->
+<section class="film" id="film" aria-labelledby="filmTitle">
+  <div class="film__stick">
+    <video class="film__video" muted playsinline preload="auto" poster="assets/video/film-poster.jpg" aria-hidden="true"><source src="assets/video/film.mp4" type="video/mp4"><source src="assets/video/film.webm" type="video/webm"></video>
+    <div class="film__shade" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="container film__inner">
+      <p class="eyebrow" id="filmTitle" data-i18n="film.eyebrow">The 30-second tour</p>
+      <div class="film__chapters">
+        <div class="film__ch is-on"><span class="film__n">01</span><h2 class="film__t" data-i18n="film.t1">Be found.</h2><p class="film__p" data-i18n="film.p1"></p></div>
+        <div class="film__ch"><span class="film__n">02</span><h2 class="film__t" data-i18n="film.t2">Be scanned.</h2><p class="film__p" data-i18n="film.p2"></p></div>
+        <div class="film__ch"><span class="film__n">03</span><h2 class="film__t" data-i18n="film.t3">Be chosen.</h2><p class="film__p" data-i18n="film.p3"></p></div>
+      </div>
+      <div class="film__rail" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 2 · KEY FIGURES + SECTORS ============ -->
 <section class="st" id="stats" aria-label="Key figures">
   <div class="grain" aria-hidden="true"></div>
@@ -617,6 +635,7 @@
 <script src="assets/js/fx.js" defer></script>
 <script src="assets/js/nm-home.js?v=20260930b" defer></script>
 <script src="assets/js/home.js?v=20260930b" defer></script>
+<script src="assets/js/film.js?v=20260930c" defer></script>
 <script>(function(){var v=document.querySelector(".h__video");if(!v)return;if(matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.pause();return}var p=v.play();if(p&&p.catch)p.catch(function(){})})();</script>
 </body>
 </html>
