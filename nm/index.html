@@ -311,6 +311,13 @@
 
   /* ---------- center column ---------- */
   /* ---------- hero (strict: headline, subline, CTA, proof + one visual) ---------- */
+  .hero__video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  .hero__shade { position:absolute; inset:0; z-index:1; pointer-events:none;
+    background: linear-gradient(90deg, rgba(5,5,8,.92) 0%, rgba(5,5,8,.55) 40%, rgba(5,5,8,.05) 100%),
+                linear-gradient(0deg, rgba(3,3,5,.75) 0%, rgba(3,3,5,0) 30%),
+                linear-gradient(180deg, rgba(3,3,5,.6) 0%, rgba(3,3,5,0) 25%); }
+  @media (max-width: 768px) { .hero__shade { background: linear-gradient(180deg, rgba(3,3,5,.8), rgba(5,5,8,.72) 55%, rgba(3,3,5,.92)); } }
+  .hero .nav { z-index: 20; }
   .hero__inner {
     position: relative; z-index: 10; width: 100%; max-width: 76rem; margin: 0 auto;
     display: grid; gap: 2.75rem; align-items: center;
@@ -1311,6 +1318,11 @@
 </header>
 
 <section class="hero">
+  <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg" aria-hidden="true">
+    <source src="assets/video/hero.webm" type="video/webm">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero__shade" aria-hidden="true"></div>
   <header class="nav">
     <a href="/" class="brand">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -1359,10 +1371,6 @@
         <li data-i18n="hero.proof2">Live in 48h</li>
         <li data-i18n="hero.proof3">No contract</li>
       </ul>
-    </div>
-    <div class="hero__stage" aria-hidden="true">
-      <div class="hero__laptop"><img src="assets/img/mock-laptop.jpg" width="1200" height="750" alt="" decoding="async"></div>
-      <div class="hero__phone"><img src="assets/img/mock-phone.jpg" width="585" height="1266" alt="" decoding="async"></div>
     </div>
   </div>
 </section>
