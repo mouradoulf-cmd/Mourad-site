@@ -72,6 +72,7 @@
 </div>
 
 <main id="main" class="legal">
+<div class="phero__bg phero__bg--page" aria-hidden="true"><video class="phero__video" autoplay muted loop playsinline preload="metadata" poster="assets/video/page-legal.jpg" aria-hidden="true"><source src="assets/video/page-legal.webm" type="video/webm"><source src="assets/video/page-legal.mp4" type="video/mp4"></video></div><div class="phero__shade phero__shade--page" aria-hidden="true"></div>
   <div class="status__glow" aria-hidden="true"></div>
   <div class="container legal__grid">
     <aside class="legal__toc">
@@ -249,5 +250,6 @@
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/fx.js" defer></script>
 <script src="assets/js/nm-home.js" defer></script>
+<script>(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;document.querySelectorAll(".phero__video").forEach(function(v){if(m){v.removeAttribute("autoplay");v.pause();return}var p=v.play();if(p&&p.catch)p.catch(function(){})})})();</script>
 </body>
 </html>
