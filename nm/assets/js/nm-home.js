@@ -55,6 +55,32 @@
     else window.addEventListener("load", function () { setTimeout(start, 600); });
   })();
 
+  /* ---------- hero: cinematic video (when one is configured) ----------
+     Autoplay, muted, looping, inline; the poster shows at once and the photo
+     reel stays underneath until the first frame plays. Skipped with reduced
+     motion or data saver, and paused whenever the hero is off screen. */
+  (function heroVideo() {
+    var hero = $(".hero"), media = $(".hero__media"), cfg = O && O.hero;
+    if (!hero || !media || !cfg || !(cfg.mp4 || cfg.webm)) return;
+    var saver = navigator.connection && navigator.connection.saveData;
+    if (reduce || saver) return;
+    var v = document.createElement("video");
+    v.className = "hero__video";
+    v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true; v.preload = "metadata";
+    v.setAttribute("muted", ""); v.setAttribute("playsinline", ""); v.setAttribute("aria-hidden", "true"); v.tabIndex = -1;
+    if (cfg.poster) v.poster = cfg.poster;
+    var phone = window.matchMedia("(max-width: 700px)").matches;
+    if (cfg.webm && !phone) { var w = document.createElement("source"); w.src = cfg.webm; w.type = "video/webm"; v.appendChild(w); }
+    var m = document.createElement("source"); m.src = phone && cfg.mp4Mobile ? cfg.mp4Mobile : cfg.mp4; m.type = "video/mp4"; v.appendChild(m);
+    v.addEventListener("playing", function () { hero.classList.add("has-video"); }, { once: true });
+    media.appendChild(v);
+    onVisible(hero, function (on) {
+      if (on && !document.hidden) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else v.pause();
+    });
+    document.addEventListener("visibilitychange", function () { if (document.hidden) v.pause(); else if (hero.getBoundingClientRect().bottom > 0) v.play().catch(function () {}); });
+  })();
+
   /* ---------- hero: slow gold dust drifting up through the light ---------- */
   (function heroDust() {
     var canvas = $(".hero__dust");
@@ -80,8 +106,9 @@
         if (m.y < -10) motes[k] = m = mote(false);
         var flick = .65 + Math.sin(m.a * 3) * .35;
         ctx.beginPath();
-        ctx.fillStyle = "rgba(255," + (190 + (k % 3) * 18) + "," + (110 + (k % 4) * 12) + "," + (m.o * flick).toFixed(3) + ")";
-        ctx.shadowColor = "rgba(244,184,96,.8)"; ctx.shadowBlur = m.r * 6;
+        var jade = k % 3 === 0;
+        ctx.fillStyle = jade ? "rgba(150,235,205," + (m.o * flick).toFixed(3) + ")" : "rgba(245," + (206 + (k % 3) * 10) + "," + (140 + (k % 4) * 12) + "," + (m.o * flick).toFixed(3) + ")";
+        ctx.shadowColor = jade ? "rgba(44,194,149,.9)" : "rgba(216,174,94,.8)"; ctx.shadowBlur = m.r * 6;
         ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
       }
       raf = requestAnimationFrame(frame);
@@ -206,14 +233,55 @@
     }
     if (offerModal.showModal) offerModal.showModal(); else offerModal.setAttribute("open", "");
     if (lenis()) lenis().stop();
+    morph(originCard(k, trigger), false);
     $("#omOrder").focus({ preventScroll: true });
+  }
+
+  /* The dialog grows out of the card that was clicked, and shrinks back
+     into it on close (FLIP on the dialog panel; content fades in after). */
+  var morphCard = null;
+  function originCard(k, trigger) {
+    var c = (trigger && trigger.closest && trigger.closest(".offer, .pcard")) || $('.offer[data-offer="' + k + '"]');
+    if (!c) return null;
+    var r = c.getBoundingClientRect();
+    return r.bottom > 0 && r.top < window.innerHeight ? c : null;
+  }
+  function morph(card, closing, done) {
+    var panel = $(".om__card", offerModal);
+    morphCard = closing ? morphCard : card;
+    if (reduce || !card || !panel.animate) { if (done) done(); return; }
+    offerModal.classList.add("is-morph");
+    var a = card.getBoundingClientRect(), b = panel.getBoundingClientRect();
+    var from = "translate(" + (a.left - b.left).toFixed(1) + "px," + (a.top - b.top).toFixed(1) + "px) scale(" + (a.width / b.width).toFixed(4) + "," + (a.height / b.height).toFixed(4) + ")";
+    var frames = [{ transform: from, opacity: 0.35 }, { transform: "none", opacity: 1 }];
+    var opts = { duration: closing ? 480 : 700, easing: closing ? "cubic-bezier(.6,0,.4,1)" : "cubic-bezier(.16,1,.3,1)", fill: "both" };
+    panel.style.transformOrigin = "0 0";
+    var kids = Array.prototype.slice.call(panel.children);
+    if (closing) {
+      kids.forEach(function (el) { el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160, fill: "both" }); });
+      frames.reverse();
+    } else {
+      kids.forEach(function (el) { el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, delay: 260, easing: "ease-out", fill: "backwards" }); });
+    }
+    var anim = panel.animate(frames, opts);
+    anim.onfinish = function () {
+      if (closing) { if (done) done(); kids.forEach(function (el) { el.getAnimations().forEach(function (x) { x.cancel(); }); }); }
+      anim.cancel(); panel.style.transformOrigin = ""; offerModal.classList.remove("is-morph");
+    };
+  }
+  function closeOffer() {
+    if (!offerModal.open || offerModal.classList.contains("is-closing")) return;
+    var card = morphCard && morphCard.getBoundingClientRect().bottom > 0 ? morphCard : null;
+    offerModal.classList.add("is-closing");
+    morph(card, true, function () { offerModal.classList.remove("is-closing"); offerModal.close(); });
   }
   if (offerModal) {
     document.addEventListener("click", function (e) {
       var b = e.target.closest("[data-offer-open]");
       if (b) { e.preventDefault(); e.stopPropagation(); openOffer(b.getAttribute("data-offer-open"), b); }
     });
-    offerModal.addEventListener("click", function (e) { if (e.target === offerModal || e.target.closest("[data-close]")) offerModal.close(); });
+    offerModal.addEventListener("click", function (e) { if (e.target === offerModal || e.target.closest("[data-close]")) closeOffer(); });
+    offerModal.addEventListener("cancel", function (e) { e.preventDefault(); closeOffer(); });
     offerModal.addEventListener("close", function () {
       var v = $("video", offerModal); if (v) { v.pause(); v.remove(); }
       if (lenis()) lenis().start();
@@ -297,7 +365,7 @@
     if (!canvas || reduce || !canvas.getContext) return;
     var ctx = canvas.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = canvas.width = innerWidth * dpr, H = canvas.height = innerHeight * dpr;
-    var colors = ["#ffc978", "#f4b860", "#f0643c", "#e24d7a", "#3ee08f", "#f7f2eb"];
+    var colors = ["#9fe9cf", "#d8ae5e", "#2cc295", "#17916b", "#3ee08f", "#f2ede3"];
     var bits = [];
     for (var k = 0; k < 160; k++) {
       var a = -Math.PI / 2 + (Math.random() - .5) * 1.6, v = (9 + Math.random() * 11) * dpr;
@@ -323,19 +391,38 @@
     var spend = $("#calcSpend"), missed = $("#calcMissed");
     if (!spend || !missed) return;
     var outSpend = $("#calcSpendOut"), outMissed = $("#calcMissedOut"), month = $("#calcMonth"), days = $("#calcDays");
-    var shown = 0, anim = 0;
+    var seen = false;
     function fill(r) { r.style.setProperty("--p", ((r.value - r.min) / (r.max - r.min) * 100).toFixed(1) + "%"); }
-    function tween(to) {
-      cancelAnimationFrame(anim);
-      if (reduce) { shown = to; month.textContent = P.thb(to); return; }
-      var from = shown, t0 = performance.now();
-      (function step(now) {
-        var p = Math.min(1, (now - t0) / 500), e = 1 - Math.pow(1 - p, 3);
-        shown = from + (to - from) * e;
-        month.textContent = P.thb(Math.round(shown / 10) * 10);
-        if (p < 1) anim = requestAnimationFrame(step);
-      })(t0);
+    /* The monthly figure rolls like a slot machine: every digit is a
+       column 0–9 that slides to its value (screen readers get plain text). */
+    function slots(text) {
+      if (reduce) { month.textContent = text; return; }
+      month.classList.add("slot-on");
+      var sr = month.querySelector(".visually-hidden");
+      var wrap = month.querySelector(".slot");
+      var chars = Array.from(text);
+      if (!wrap || wrap.getAttribute("data-shape") !== text.replace(/\d/g, "0")) {
+        wrap = document.createElement("span"); wrap.className = "slot"; wrap.setAttribute("aria-hidden", "true");
+        wrap.setAttribute("data-shape", text.replace(/\d/g, "0"));
+        var k = 0;
+        chars.forEach(function (c) {
+          if (/\d/.test(c)) {
+            var d = document.createElement("span"); d.className = "slot__d";
+            var col = document.createElement("span"); col.className = "slot__col"; col.style.setProperty("--k", k++);
+            for (var n = 0; n < 10; n++) { var x = document.createElement("span"); x.textContent = n; col.appendChild(x); }
+            d.appendChild(col); wrap.appendChild(d);
+          } else { var sp = document.createElement("span"); sp.textContent = c; wrap.appendChild(sp); }
+        });
+        month.textContent = "";
+        sr = document.createElement("span"); sr.className = "visually-hidden";
+        month.appendChild(sr); month.appendChild(wrap);
+        void wrap.offsetWidth; // let the columns start from 0 so they roll in
+      }
+      sr.textContent = text;
+      var cols = wrap.querySelectorAll(".slot__col"), i = 0;
+      chars.forEach(function (c) { if (/\d/.test(c)) cols[i++].style.setProperty("--v", seen ? c : 0); });
     }
+    function tween(to) { slots(P.thb(to)); }
     function update() {
       var s = +spend.value, m = +missed.value;
       fill(spend); fill(missed);
@@ -346,6 +433,7 @@
       days.textContent = d === 1 ? t("calc.day") : t("calc.days").replace("{n}", d);
     }
     spend.addEventListener("input", update); missed.addEventListener("input", update);
+    onVisible(month, function (v) { if (v && !seen) { seen = true; update(); } }, { threshold: .6 });
     document.addEventListener("nm:lang", update);
     update();
   })();

@@ -31,6 +31,16 @@ Everything is in **`assets/js/offers-config.js`**:
 Yearly care plan = 10 months (2 months free). Visitors reading in another
 language see an approximate amount in € (or DH in Arabic), hand-rounded.
 
+### Hero video (10 s, 16:9, ≤ 2 MB)
+
+Put the files in `assets/video/` and fill `hero` in `offers-config.js`:
+`mp4` (H.264, required), `webm` (optional, lighter), `mp4Mobile` (optional
+720p for phones) and `poster` (a still frame shown instantly). The video
+autoplays muted and looping behind a dark veil, pauses off screen, and is
+skipped with reduced motion or data saver. Left empty, the photo reel plays.
+Encode with: `ffmpeg -i in.mov -t 10 -vf scale=1920:-2 -c:v libx264 -crf 26 -preset slow -an -movflags +faststart hero.mp4`
+(and `-c:v libvpx-vp9 -crf 36 -b:v 0 hero.webm`).
+
 ### Offer videos (15–20 s, ≤ 2 MB each)
 
 Put the MP4 files in `assets/video/` and fill `videos` (and optionally
@@ -102,19 +112,31 @@ receipts, invoices and dunning emails.
   issued (refund rule confirmed by the owner).
 - **Testimonials**: intentionally none until there are real ones.
 
-## Design system
+## Design system — v3 "Jade Nuit"
 
-- Colours (`assets/css/nm.css` `:root`): ink `#0b0a09`, surface `#1a1715`,
-  text `#f7f2eb`, muted `#b7aea4`; Pattaya-sunset accents gold `#f4b860`,
-  sun `#f0643c`, rose `#e24d7a` (`--brand` gradient). CTA buttons use dark
-  text on the sunset gradient (AA contrast).
-- Type: Geist (UI) + Instrument Serif italic for emphasis, self-hosted;
-  Noto Sans Thai / IBM Plex Sans Arabic loaded on demand.
-- Components: `.btn--sun / --glass / --ghost / --outline`, `.offer` cards
-  (glass, pointer spotlight + 3D tilt), `.om` offer dialog, `.pv` live preview,
-  `.cmp` comparison table, `.bill` toggle, `.range` sliders, `.trust` marks.
-- Motion: GSAP + ScrollTrigger + Lenis (vendored); every animation has a
+- Colours (`assets/css/nm.css` `:root`): night `#0a0a0a`, surface `#0d100e`,
+  text ivory `#f2ede3`, muted `#a4a79f`; signature jade `#2cc295` (light
+  `#9fe9cf`, deep `#17916b`) used as light and on CTAs (dark text
+  `#04140e`), gold `#d8ae5e` for prices and details (`--lux`).
+- Type: Bricolage Grotesque (display headings), Newsreader italic (the key
+  word of each heading), Geist (text), Geist Mono (prices, labels) — all
+  self-hosted; Noto Sans Thai / IBM Plex Sans Arabic loaded on demand.
+- Components: glass cards with layered shadows and a pointer-lit border
+  (`.offer`, `.pcard`, `.reason--card`), `.btn--sun / --glass / --ghost`
+  with sweep fill + ripple, `.lift` sections (overlap the previous one),
+  `.om` offer dialog (grows out of the clicked card), `.pv` live preview.
+- Motion (`main.js` + `fx.js`, GSAP + ScrollTrigger + Lenis): intro curtain
+  once per session, letter-by-letter hero title, hero closing into a card on
+  scroll, two marquees whose speed/direction follow the scroll, story image
+  masks, offer tilt + count-up prices, slot-machine calculator, pinned
+  horizontal work gallery (desktop, LTR), QR codes assembling module by
+  module, footer reveal, cursor dot + ring + light trail (native cursor kept),
+  magnetic buttons, animated underlines. Everything has a
   `prefers-reduced-motion` fallback; content is visible without JavaScript.
+- QR codes are real: `assets/js/nm-qr.js` computes them (vendored
+  qrcode.min.js) and draws SVG modules — `data-qr="menu"` (live demo menu),
+  `data-qr="whatsapp"` or any URL. The offer illustration, the "Scan it"
+  card and the finale's "On a computer?" card all scan.
 
 ## Photos
 
