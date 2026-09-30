@@ -5,7 +5,7 @@ Plain HTML/CSS/JS, no build step. Hosted on GitHub Pages
 
 | Page | What it does |
 |---|---|
-| `index.html` | Home: cinematic hero, 3-screen story, the 4 offers (+ detail dialog), why us, before/after, "customers lost" calculator, live work previews, process, QR demo, Pattaya map, FAQ, WhatsApp CTA |
+| `index.html` | Home: cinematic hero, self-playing 3-scene story film, the 4 offers (+ detail dialog), why us, before/after, "customers lost" calculator, live work previews, process, QR demo, Pattaya map, FAQ, WhatsApp CTA |
 | `services.html` | The 4 offers in depth, "which offer is right for you", comparison table, service FAQ |
 | `pricing.html` | Prices, care plan with Monthly / Yearly toggle, comparison table, pricing FAQ |
 | `checkout.html` | 4-step checkout: offer + care plan → details → payment → review (promo code) → confirmation |
