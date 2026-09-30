@@ -112,24 +112,6 @@
   }
   @media (min-width: 640px) { .hero { padding: 0 2.5rem; } }
 
-  .hero__canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .hero__scrim {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: radial-gradient(115% 95% at 50% 46%,
-      var(--scrim-strong) 0%, var(--scrim-strong) 24%, var(--scrim) 52%, var(--scrim-soft) 100%);
-  }
-
   /* ---------- nav ---------- */
   .nav {
     position: absolute;
@@ -328,80 +310,92 @@
   }
 
   /* ---------- center column ---------- */
-  .hero__center {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 22rem;
+  /* ---------- hero (strict: headline, subline, CTA, proof + one visual) ---------- */
+  .hero__inner {
+    position: relative; z-index: 10; width: 100%; max-width: 76rem; margin: 0 auto;
+    display: grid; gap: 2.75rem; align-items: center;
+    padding: 6.5rem 0 0;
   }
-  @media (min-width: 640px)  { .hero__center { max-width: 40rem; } }
-  @media (min-width: 1024px) { .hero__center { max-width: 52rem; } }
+  .hero__copy { display: flex; flex-direction: column; align-items: flex-start; text-align: start; }
+  .hero__title {
+    font-size: clamp(2.6rem, 9.5vw, 5.2rem); font-weight: 500; line-height: 1.02;
+    letter-spacing: -0.03em; color: var(--heading); text-wrap: balance;
+  }
+  .hero__lead {
+    margin-top: 1.25rem; max-width: 30rem; font-size: 1.05rem; line-height: 1.55; color: var(--body-muted);
+  }
+  .hero__actions { margin-top: 2rem; display: flex; flex-direction: column; gap: .9rem; width: 100%; }
+  .hero__wa {
+    display: inline-flex; align-items: center; justify-content: center; gap: .7rem;
+    height: 3.6rem; padding: 0 2rem; border-radius: 9999px; background: #25d366; color: #04150b;
+    font-weight: 600; font-size: 1.05rem; text-decoration: none;
+    box-shadow: 0 16px 36px -18px rgba(37,211,102,.7);
+    transition: transform .25s cubic-bezier(0.2,0,0,1), box-shadow .25s ease, filter .25s ease;
+  }
+  .hero__wa svg { width: 1.35rem; height: 1.35rem; flex-shrink: 0; }
+  .hero__wa:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 22px 44px -18px rgba(37,211,102,.85); }
+  .hero__more {
+    display: inline-flex; align-items: center; justify-content: center; height: 3rem; padding: 0 .5rem;
+    color: var(--body-muted); font-size: .95rem; font-weight: 500; text-decoration: none;
+    border-bottom: 1px solid transparent; transition: color .2s ease;
+  }
+  .hero__more:hover { color: var(--heading); }
+  .hero__proof {
+    margin-top: 2.25rem; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .4rem 0;
+    font-size: .88rem; color: var(--body-muted);
+  }
+  .hero__proof li { display: inline-flex; align-items: center; white-space: nowrap; }
+  .hero__proof li + li::before { content: "·"; margin: 0 .7rem; color: rgba(255,255,255,.28); }
+  .hero__proof strong { color: var(--heading); font-weight: 600; }
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    border-radius: 9999px;
-    border: 1px solid var(--glass-border);
-    background: var(--glass-fill);
-    padding: 0.4rem 0.875rem;
-    font-size: 0.72rem;
-    color: var(--body-muted);
-    backdrop-filter: blur(12px);
-    opacity: 0;
-    transform: translateY(1.25rem);
-    transition: opacity 700ms var(--ease-entrance), transform 700ms var(--ease-entrance);
+  /* Visual: a real client site (Giulivo) on laptop + phone. Static, no motion. */
+  .hero__stage {
+    position: relative; width: 100%; max-width: 40rem; margin: 0 auto; aspect-ratio: 1 / .82;
+    -webkit-mask-image: linear-gradient(#000 78%, transparent 100%); mask-image: linear-gradient(#000 78%, transparent 100%);
   }
-  @media (min-width: 640px) { .badge { font-size: 0.8rem; } }
-  .badge.is-visible { opacity: 1; transform: translateY(0); }
+  .hero__stage::before {
+    content: ""; position: absolute; inset: -12% -8% -4%; z-index: -1;
+    background: radial-gradient(closest-side, rgba(124,92,255,.30), rgba(34,232,255,.06) 60%, transparent 75%);
+  }
+  .hero__laptop {
+    position: absolute; inset-inline-end: 0; top: 4%; width: 90%;
+    border: 1px solid rgba(255,255,255,.14); border-bottom: 0; border-radius: .9rem .9rem 0 0;
+    background: #0b0d18; padding: .45rem .45rem 0; box-shadow: 0 40px 80px -30px rgba(0,0,0,.9);
+  }
+  .hero__laptop img { display: block; width: 100%; height: auto; border-radius: .5rem .5rem 0 0; }
+  .hero__laptop::after {
+    content: ""; position: absolute; left: -3%; right: -3%; bottom: -.7rem; height: .7rem;
+    background: linear-gradient(#20233a, #12142a); border-radius: 0 0 .9rem .9rem;
+  }
+  .hero__phone {
+    position: absolute; inset-inline-start: 0; bottom: 0; width: 30%;
+    border: 5px solid #1b1e33; border-radius: 1.6rem; background: #000; overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.95), 0 0 0 1px rgba(255,255,255,.12);
+  }
+  .hero__phone img { display: block; width: 100%; height: auto; }
 
-  .heading {
-    margin-top: 1.25rem;
-    max-width: 20rem;
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: var(--heading);
-    text-align: center;
+  @media (min-width: 640px) {
+    .hero__actions { flex-direction: row; align-items: center; width: auto; gap: 1.4rem; }
+    .hero__lead { font-size: 1.15rem; }
+    .hero__proof { font-size: .95rem; }
   }
-  @media (min-width: 640px)  { .heading { margin-top: 1.75rem; max-width: 34rem; font-size: 3.5rem; } }
-  @media (min-width: 1024px) { .heading { max-width: 46rem; font-size: 5rem; } }
-
-  .subline {
-    margin-top: 1rem;
-    max-width: 20rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--body-muted);
+  @media (min-width: 960px) {
+    .hero { padding: 0 2.5rem; }
+    .hero__inner { grid-template-columns: 1.05fr 1fr; gap: 3rem; padding: 5.5rem 0 0; min-height: 100svh; align-content: center; }
+    .hero__title { font-size: clamp(3.4rem, 5.4vw, 5.4rem); }
+    .hero__stage { margin: 0; max-width: none; }
   }
-  @media (min-width: 640px)  { .subline { margin-top: 1.25rem; max-width: 34rem; font-size: 1.1rem; } }
-  @media (min-width: 1024px) { .subline { max-width: none; font-size: 1.2rem; } }
-
-  .word { display: inline-block; opacity: 0; }
-  .word.is-visible { opacity: 1; transform: translateY(0) !important; }
-  .word--heading {
-    transform: translateY(26px);
-    transition: opacity 720ms cubic-bezier(0.2,0,0,1), transform 720ms cubic-bezier(0.2,0,0,1);
+  @media (max-width: 959px) {
+    .hero { justify-content: flex-start; }
+    .hero__stage { margin-top: .5rem; }
   }
-  .word--sub {
-    transform: translateY(14px);
-    transition: opacity 600ms cubic-bezier(0.2,0,0,1), transform 600ms cubic-bezier(0.2,0,0,1);
-  }
-
-  .hero__form-wrap {
-    margin-top: 1.75rem;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    opacity: 0;
-    transform: translateY(1.25rem);
-    transition: opacity 700ms var(--ease-entrance), transform 700ms var(--ease-entrance);
-  }
-  @media (min-width: 640px) { .hero__form-wrap { margin-top: 2.5rem; } }
-  .hero__form-wrap.is-visible { opacity: 1; transform: translateY(0); }
+  :lang(th) .hero__title { line-height: 1.18; font-size: clamp(2.2rem, 8vw, 4.2rem); }
+  @media (min-width: 960px) { :lang(th) .hero__title { font-size: clamp(2.8rem, 4.4vw, 4.4rem); } }
+  @keyframes heroIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .hero__copy > *, .hero__stage { animation: heroIn .8s cubic-bezier(0.2,0,0,1) both; }
+  .hero__copy > :nth-child(2) { animation-delay: .08s; } .hero__copy > :nth-child(3) { animation-delay: .16s; }
+  .hero__copy > :nth-child(4) { animation-delay: .24s; } .hero__stage { animation-delay: .3s; }
+  @media (prefers-reduced-motion: reduce) { .hero__copy > *, .hero__stage { animation: none; } }
 
   /* Hero primary CTA: opens the booking modal. Styled with the site's
      signature gradient border (same trick as the Pro pricing card and the
@@ -424,31 +418,6 @@
   .hero__book-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 42px -16px rgba(168,85,247,.7); }
   .hero__book-btn-icon { font-size: 1.1rem; }
   @media (prefers-reduced-motion: reduce) { .hero__book-btn { animation: none; } }
-
-  /* Hero's only CTA is a quiet scroll invitation, not a competing sales
-     button — the site's one explicit "see examples" ask lives in the
-     Examples section further down, where it belongs. Keeps the hero calm
-     while still nudging visitors to keep going. */
-  .hero__scroll-cue {
-    display: inline-flex; flex-direction: column; align-items: center; gap: .6rem;
-    background: none; border: none; padding: 0; cursor: pointer;
-    color: var(--body-muted); font-size: .78rem; font-weight: 600;
-    letter-spacing: .12em; text-transform: uppercase;
-    transition: color .25s ease;
-  }
-  .hero__scroll-cue:hover { color: var(--heading); }
-  .hero__scroll-cue-icon {
-    width: 2.1rem; height: 2.1rem; border-radius: 999px;
-    border: 1px solid var(--glass-border);
-    display: flex; align-items: center; justify-content: center;
-    animation: scrollCueBounce 2.2s ease-in-out infinite;
-  }
-  .hero__scroll-cue-icon svg { width: 1rem; height: 1rem; }
-  @keyframes scrollCueBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
-  }
-  @media (prefers-reduced-motion: reduce) { .hero__scroll-cue-icon { animation: none; } }
 
   /* Stats band: the "hook" right after the hero fold — pulls the strongest
      claims already made elsewhere (30% revenue, live in days, cancel
@@ -1342,9 +1311,6 @@
 </header>
 
 <section class="hero">
-  <canvas class="hero__canvas" aria-hidden="true"></canvas>
-  <div class="hero__scrim" aria-hidden="true"></div>
-
   <header class="nav">
     <a href="/" class="brand">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -1377,17 +1343,26 @@
     </div>
   </header>
 
-  <div class="hero__center">
-    <p class="badge" data-i18n="hero.badge">Websites for restaurants &amp; local businesses</p>
-    <h1 class="heading" id="heroHeading" data-i18n="hero.heading">Get Found. Get Chosen. Get Paid.</h1>
-    <p class="subline" id="heroSubline" data-i18n="hero.subline">Fast, beautiful websites and QR menus &mdash; built in days, so customers find you before they even walk in.</p>
-    <div class="hero__form-wrap">
-      <button type="button" class="hero__scroll-cue" id="heroScrollCue">
-        <span class="hero__scroll-cue-label" data-i18n="hero.scrollCue">Discover</span>
-        <span class="hero__scroll-cue-icon" aria-hidden="true">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M5 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-      </button>
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <h1 class="hero__title" data-i18n="hero.heading">Be found. Be chosen.</h1>
+      <p class="hero__lead" data-i18n="hero.subline">Websites, QR menus and Google profiles for Pattaya businesses.</p>
+      <div class="hero__actions">
+        <a class="hero__wa" href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.48 15l-1.5 5.5 5.63-1.48A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.3 15l-.31-.19-3.3.87.88-3.2-.2-.33A8.1 8.1 0 0 1 12.04 3.8zM8.6 7.5c-.2 0-.5.07-.75.35-.25.27-.98.96-.98 2.34s1 2.71 1.14 2.9c.14.18 1.96 3.05 4.84 4.16 2.4.94 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.19-.54-.33-.28-.14-1.68-.83-1.94-.92-.26-.1-.45-.14-.64.14-.19.28-.73.92-.9 1.1-.16.19-.33.21-.61.07-.28-.14-1.2-.44-2.28-1.4-.84-.75-1.41-1.68-1.58-1.96-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.63-1.55-.87-2.11-.23-.55-.47-.48-.64-.49z"/></svg>
+          <span data-i18n="hero.cta">Chat on WhatsApp</span>
+        </a>
+        <a class="hero__more" href="#pricing" data-i18n="hero.cta2">See pricing</a>
+      </div>
+      <ul class="hero__proof">
+        <li><strong data-i18n="hero.proof1">From ฿990</strong></li>
+        <li data-i18n="hero.proof2">Live in 48h</li>
+        <li data-i18n="hero.proof3">No contract</li>
+      </ul>
+    </div>
+    <div class="hero__stage" aria-hidden="true">
+      <div class="hero__laptop"><img src="assets/img/mock-laptop.jpg" width="1200" height="750" alt="" decoding="async"></div>
+      <div class="hero__phone"><img src="assets/img/mock-phone.jpg" width="585" height="1266" alt="" decoding="async"></div>
     </div>
   </div>
 </section>
@@ -1768,8 +1743,13 @@ var translations = {
     nav: { how: "How it works?", examples: "Examples", pricing: "Pricing", cta: "Get Started" },
     hero: {
       badge: "Websites for restaurants & local businesses",
-      heading: "The website that finds you customers while you work.",
-      subline: "Be visible online, so your customers come to you — your site and its QR menu, ready in days.",
+      heading: "Be found. Be chosen.",
+      subline: "Websites, QR menus and Google profiles for Pattaya businesses.",
+      cta: "Chat on WhatsApp",
+      cta2: "See pricing",
+      proof1: "From ฿990",
+      proof2: "Live in 48h",
+      proof3: "No contract",
       bookBtn: "Book an Appointment",
       scrollCue: "Discover"
     },
@@ -1874,8 +1854,13 @@ var translations = {
     nav: { how: "Comment ça marche ?", examples: "Exemples", pricing: "Tarifs", cta: "Commencer" },
     hero: {
       badge: "Sites web pour restaurants et commerces locaux",
-      heading: "Le site qui trouve des clients pendant que vous travaillez.",
-      subline: "Soyez visible sur internet, pour que vos clients viennent jusqu'à vous — votre site et son menu QR, prêts en quelques jours.",
+      heading: "Soyez trouvé. Soyez choisi.",
+      subline: "Sites web, menus QR et profils Google pour les commerces de Pattaya.",
+      cta: "Écrire sur WhatsApp",
+      cta2: "Voir les offres",
+      proof1: "Dès ฿990",
+      proof2: "En ligne en 48 h",
+      proof3: "Sans engagement",
       bookBtn: "Prendre RDV",
       scrollCue: "Découvrir"
     },
@@ -1980,8 +1965,13 @@ var translations = {
     nav: { how: "Come funziona?", examples: "Esempi", pricing: "Prezzi", cta: "Inizia ora" },
     hero: {
       badge: "Siti web per ristoranti e attività locali",
-      heading: "Il sito che trova clienti mentre tu lavori.",
-      subline: "Sii visibile online, così i tuoi clienti vengono da te — il tuo sito e il suo menu QR, pronti in pochi giorni.",
+      heading: "Fatti trovare. Fatti scegliere.",
+      subline: "Siti web, menu QR e profili Google per le attività di Pattaya.",
+      cta: "Scrivici su WhatsApp",
+      cta2: "Vedi le offerte",
+      proof1: "Da ฿990",
+      proof2: "Online in 48 ore",
+      proof3: "Senza vincoli",
       bookBtn: "Prenota un appuntamento",
       scrollCue: "Scopri di più"
     },
@@ -2086,8 +2076,13 @@ var translations = {
     nav: { how: "วิธีการทำงาน", examples: "ตัวอย่าง", pricing: "ราคา", cta: "เริ่มต้นเลย" },
     hero: {
       badge: "เว็บไซต์สำหรับร้านอาหารและธุรกิจท้องถิ่น",
-      heading: "เว็บไซต์ที่หาลูกค้าให้คุณ ในขณะที่คุณทำงาน",
-      subline: "มองเห็นได้บนอินเทอร์เน็ต เพื่อให้ลูกค้าเดินทางมาหาคุณ — เว็บไซต์และเมนู QR ของคุณ พร้อมใช้งานภายในไม่กี่วัน",
+      heading: "ให้ลูกค้าหาคุณเจอ แล้วเลือกคุณ",
+      subline: "เว็บไซต์ เมนู QR และโปรไฟล์ Google สำหรับธุรกิจในพัทยา",
+      cta: "แชทผ่าน WhatsApp",
+      cta2: "ดูแพ็กเกจ",
+      proof1: "เริ่มต้น ฿990",
+      proof2: "ออนไลน์ใน 48 ชม.",
+      proof3: "ไม่มีสัญญาผูกมัด",
       bookBtn: "นัดหมายเลย",
       scrollCue: "ดูเพิ่มเติม"
     },
@@ -2192,8 +2187,13 @@ var translations = {
     nav: { how: "كيف يعمل؟", examples: "أمثلة", pricing: "الأسعار", cta: "ابدأ الآن" },
     hero: {
       badge: "مواقع إلكترونية للمطاعم والمحلات المحلية",
-      heading: "موقع إلكتروني يجذب لك الزبائن وأنت تعمل.",
-      subline: "كن مرئياً على الإنترنت ليصل إليك الزبائن — موقعك وقائمة الطعام برمز QR جاهزان خلال أيام.",
+      heading: "اجعلهم يجدونك. اجعلهم يختارونك.",
+      subline: "مواقع إلكترونية وقوائم QR وملفات Google لأعمال باتايا.",
+      cta: "تواصل عبر واتساب",
+      cta2: "شاهد الأسعار",
+      proof1: "ابتداءً من ฿990",
+      proof2: "جاهز خلال 48 ساعة",
+      proof3: "بدون عقود",
       bookBtn: "احجز موعداً",
       scrollCue: "اكتشف المزيد"
     },
@@ -2433,34 +2433,12 @@ function reveal(el, delay) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".nav");
-  const badge = document.querySelector(".badge");
-  const heading = document.getElementById("heroHeading");
-  const subline = document.getElementById("heroSubline");
-  const formWrap = document.querySelector(".hero__form-wrap");
-
   // Apply the visitor's language BEFORE splitting the heading/subline into
   // words below, so those words are split from the correct-language text
   // (not always English, then re-split if the visitor happens to switch).
   applyLanguage(detectInitialLang());
 
-  const headingWords = splitWords(heading, "word--heading");
-  const sublineWords = splitWords(subline, "word--sub");
-
   reveal(nav, 150);
-  reveal(badge, 320);
-  headingWords.forEach((w, i) => reveal(w, 480 + i * 85));
-  sublineWords.forEach((w, i) => reveal(w, 1150 + i * 22));
-  reveal(formWrap, 1450);
-
-  try {
-    const heroScrollCue = document.getElementById("heroScrollCue");
-    const statsSection = document.getElementById("stats");
-    if (heroScrollCue && statsSection) {
-      heroScrollCue.addEventListener("click", () => {
-        statsSection.scrollIntoView({ behavior: "smooth" });
-      });
-    }
-  } catch (e) {}
 
   /* Stats band: staggered fade-up, same visible-by-default safety pattern
      as the pricing cards below. */
@@ -2694,8 +2672,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   } catch (e) {}
 
-  const canvas = document.querySelector(".hero__canvas");
-  if (canvas) fluidSimulation(canvas);
 
   /* Sticky header visibility: appears once the hero has scrolled out of
      view, hides again back at the top. One IntersectionObserver on the
@@ -3159,1179 +3135,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (e) {}
 });
 
-/* ---------- WebGL fluid ink simulation ---------- */
-function fluidSimulation(canvas) {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-
-    let config = {
-        SIM_RESOLUTION: 200,
-        DYE_RESOLUTION: 512,
-        DENSITY_DISSIPATION: 0.958,
-        VELOCITY_DISSIPATION: 0.96,
-        PRESSURE_DISSIPATION: 0.8,
-        PRESSURE_ITERATIONS: 20,
-        CURL: 42,
-        SPLAT_RADIUS: 0.22,
-        SHADING: true,
-        COLORFUL: true,
-        PAUSED: false,
-        BACK_COLOR: { r: 4, g: 5, b: 12 },
-        TRANSPARENT: false,
-        BLOOM: false,
-        BLOOM_ITERATIONS: 8,
-        BLOOM_RESOLUTION: 256,
-        BLOOM_INTENSITY: 0.8,
-        BLOOM_THRESHOLD: 0.8,
-        BLOOM_SOFT_KNEE: 0.7
-    }
-
-    function pointerPrototype() {
-        this.id = -1;
-        this.x = 0;
-        this.y = 0;
-        this.dx = 0;
-        this.dy = 0;
-        this.down = false;
-        this.moved = false;
-        this.color = [30, 0, 300];
-    }
-
-    let pointers = [];
-    let splatStack = [];
-    let bloomFramebuffers = [];
-    pointers.push(new pointerPrototype());
-
-    const { gl, ext } = getWebGLContext(canvas);
-
-    if (isMobile())
-        config.SHADING = false;
-    if (!ext.supportLinearFiltering) {
-        config.SHADING = false;
-        config.BLOOM = false;
-    }
-
-    function getWebGLContext(canvas) {
-        const params = { alpha: true, depth: false, stencil: false, antialias: false, preserveDrawingBuffer: false };
-
-        let gl = canvas.getContext('webgl2', params);
-        const isWebGL2 = !!gl;
-        if (!isWebGL2)
-            gl = canvas.getContext('webgl', params) || canvas.getContext('experimental-webgl', params);
-
-        let halfFloat;
-        let supportLinearFiltering;
-        if (isWebGL2) {
-            gl.getExtension('EXT_color_buffer_float');
-            supportLinearFiltering = gl.getExtension('OES_texture_float_linear');
-        } else {
-            halfFloat = gl.getExtension('OES_texture_half_float');
-            supportLinearFiltering = gl.getExtension('OES_texture_half_float_linear');
-        }
-
-        gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
-        const halfFloatTexType = isWebGL2 ? gl.HALF_FLOAT : halfFloat.HALF_FLOAT_OES;
-        let formatRGBA;
-        let formatRG;
-        let formatR;
-
-        if (isWebGL2) {
-            formatRGBA = getSupportedFormat(gl, gl.RGBA16F, gl.RGBA, halfFloatTexType);
-            formatRG = getSupportedFormat(gl, gl.RG16F, gl.RG, halfFloatTexType);
-            formatR = getSupportedFormat(gl, gl.R16F, gl.RED, halfFloatTexType);
-        }
-        else {
-            formatRGBA = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType);
-            formatRG = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType);
-            formatR = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType);
-        }
-
-        return {
-            gl,
-            ext: {
-                formatRGBA,
-                formatRG,
-                formatR,
-                halfFloatTexType,
-                supportLinearFiltering
-            }
-        };
-    }
-
-    function getSupportedFormat(gl, internalFormat, format, type) {
-        if (!supportRenderTextureFormat(gl, internalFormat, format, type)) {
-            switch (internalFormat) {
-                case gl.R16F:
-                    return getSupportedFormat(gl, gl.RG16F, gl.RG, type);
-                case gl.RG16F:
-                    return getSupportedFormat(gl, gl.RGBA16F, gl.RGBA, type);
-                default:
-                    return null;
-            }
-        }
-
-        return {
-            internalFormat,
-            format
-        }
-    }
-
-    function supportRenderTextureFormat(gl, internalFormat, format, type) {
-        let texture = gl.createTexture();
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-        gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, 4, 4, 0, format, type, null);
-
-        let fbo = gl.createFramebuffer();
-        gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
-        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
-
-        const status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
-        if (status != gl.FRAMEBUFFER_COMPLETE)
-            return false;
-        return true;
-    }
-
-    function clamp01(input) {
-        return Math.min(Math.max(input, 0), 1);
-    }
-
-    function isMobile() {
-        return /Mobi|Android/i.test(navigator.userAgent);
-    }
-
-    class GLProgram {
-        constructor(vertexShader, fragmentShader) {
-            this.uniforms = {};
-            this.program = gl.createProgram();
-
-            gl.attachShader(this.program, vertexShader);
-            gl.attachShader(this.program, fragmentShader);
-            gl.linkProgram(this.program);
-
-            if (!gl.getProgramParameter(this.program, gl.LINK_STATUS))
-                throw gl.getProgramInfoLog(this.program);
-
-            const uniformCount = gl.getProgramParameter(this.program, gl.ACTIVE_UNIFORMS);
-            for (let i = 0; i < uniformCount; i++) {
-                const uniformName = gl.getActiveUniform(this.program, i).name;
-                this.uniforms[uniformName] = gl.getUniformLocation(this.program, uniformName);
-            }
-        }
-
-        bind() {
-            gl.useProgram(this.program);
-        }
-    }
-
-    function compileShader(type, source) {
-        const shader = gl.createShader(type);
-        gl.shaderSource(shader, source);
-        gl.compileShader(shader);
-
-        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
-            throw gl.getShaderInfoLog(shader);
-
-        return shader;
-    };
-
-    const baseVertexShader = compileShader(gl.VERTEX_SHADER, `
-        precision highp float;
-        attribute vec2 aPosition;
-        varying vec2 vUv;
-        varying vec2 vL;
-        varying vec2 vR;
-        varying vec2 vT;
-        varying vec2 vB;
-        uniform vec2 texelSize;
-        void main () {
-            vUv = aPosition * 0.5 + 0.5;
-            vL = vUv - vec2(texelSize.x, 0.0);
-            vR = vUv + vec2(texelSize.x, 0.0);
-            vT = vUv + vec2(0.0, texelSize.y);
-            vB = vUv - vec2(0.0, texelSize.y);
-            gl_Position = vec4(aPosition, 0.0, 1.0);
-        }
-    `);
-
-    const clearShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        precision mediump sampler2D;
-        varying highp vec2 vUv;
-        uniform sampler2D uTexture;
-        uniform float value;
-        void main () {
-            gl_FragColor = value * texture2D(uTexture, vUv);
-        }
-    `);
-
-    const colorShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        uniform vec4 color;
-        void main () {
-            gl_FragColor = color;
-        }
-    `);
-
-    const backgroundShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        uniform sampler2D uTexture;
-        uniform float aspectRatio;
-        #define SCALE 25.0
-        void main () {
-            vec2 uv = floor(vUv * SCALE * vec2(aspectRatio, 1.0));
-            float v = mod(uv.x + uv.y, 2.0);
-            v = v * 0.1 + 0.8;
-            gl_FragColor = vec4(vec3(v), 1.0);
-        }
-    `);
-
-    const displayShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        uniform sampler2D uTexture;
-        void main () {
-            vec3 C = texture2D(uTexture, vUv).rgb;
-            float a = max(C.r, max(C.g, C.b));
-            gl_FragColor = vec4(C, a);
-        }
-    `);
-
-    const displayBloomShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        uniform sampler2D uTexture;
-        uniform sampler2D uBloom;
-        uniform sampler2D uDithering;
-        uniform vec2 ditherScale;
-        void main () {
-            vec3 C = texture2D(uTexture, vUv).rgb;
-            vec3 bloom = texture2D(uBloom, vUv).rgb;
-            vec3 noise = texture2D(uDithering, vUv * ditherScale).rgb;
-            noise = noise * 2.0 - 1.0;
-            bloom += noise / 800.0;
-            bloom = pow(bloom.rgb, vec3(1.0 / 2.2));
-            C += bloom;
-            float a = max(C.r, max(C.g, C.b));
-            gl_FragColor = vec4(C, a);
-        }
-    `);
-
-    const displayShadingShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        varying vec2 vL;
-        varying vec2 vR;
-        varying vec2 vT;
-        varying vec2 vB;
-        uniform sampler2D uTexture;
-        uniform vec2 texelSize;
-        void main () {
-            vec3 L = texture2D(uTexture, vL).rgb;
-            vec3 R = texture2D(uTexture, vR).rgb;
-            vec3 T = texture2D(uTexture, vT).rgb;
-            vec3 B = texture2D(uTexture, vB).rgb;
-            vec3 C = texture2D(uTexture, vUv).rgb;
-            float dx = length(R) - length(L);
-            float dy = length(T) - length(B);
-            vec3 n = normalize(vec3(dx, dy, length(texelSize)));
-            vec3 l = vec3(0.0, 0.0, 1.0);
-            float diffuse = clamp(dot(n, l) + 0.7, 0.7, 1.0);
-            C.rgb *= diffuse;
-            float a = max(C.r, max(C.g, C.b));
-            gl_FragColor = vec4(C, a);
-        }
-    `);
-
-    const displayBloomShadingShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        varying vec2 vL;
-        varying vec2 vR;
-        varying vec2 vT;
-        varying vec2 vB;
-        uniform sampler2D uTexture;
-        uniform sampler2D uBloom;
-        uniform sampler2D uDithering;
-        uniform vec2 ditherScale;
-        uniform vec2 texelSize;
-        void main () {
-            vec3 L = texture2D(uTexture, vL).rgb;
-            vec3 R = texture2D(uTexture, vR).rgb;
-            vec3 T = texture2D(uTexture, vT).rgb;
-            vec3 B = texture2D(uTexture, vB).rgb;
-            vec3 C = texture2D(uTexture, vUv).rgb;
-            float dx = length(R) - length(L);
-            float dy = length(T) - length(B);
-            vec3 n = normalize(vec3(dx, dy, length(texelSize)));
-            vec3 l = vec3(0.0, 0.0, 1.0);
-            float diffuse = clamp(dot(n, l) + 0.7, 0.7, 1.0);
-            C *= diffuse;
-            vec3 bloom = texture2D(uBloom, vUv).rgb;
-            vec3 noise = texture2D(uDithering, vUv * ditherScale).rgb;
-            noise = noise * 2.0 - 1.0;
-            bloom += noise / 800.0;
-            bloom = pow(bloom.rgb, vec3(1.0 / 2.2));
-            C += bloom;
-            float a = max(C.r, max(C.g, C.b));
-            gl_FragColor = vec4(C, a);
-        }
-    `);
-
-    const bloomPrefilterShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        precision mediump sampler2D;
-        varying vec2 vUv;
-        uniform sampler2D uTexture;
-        uniform vec3 curve;
-        uniform float threshold;
-        void main () {
-            vec3 c = texture2D(uTexture, vUv).rgb;
-            float br = max(c.r, max(c.g, c.b));
-            float rq = clamp(br - curve.x, 0.0, curve.y);
-            rq = curve.z * rq * rq;
-            c *= max(rq, br - threshold) / max(br, 0.0001);
-            gl_FragColor = vec4(c, 0.0);
-        }
-    `);
-
-    const bloomBlurShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        precision mediump sampler2D;
-        varying vec2 vL;
-        varying vec2 vR;
-        varying vec2 vT;
-        varying vec2 vB;
-        uniform sampler2D uTexture;
-        void main () {
-            vec4 sum = vec4(0.0);
-            sum += texture2D(uTexture, vL);
-            sum += texture2D(uTexture, vR);
-            sum += texture2D(uTexture, vT);
-            sum += texture2D(uTexture, vB);
-            sum *= 0.25;
-            gl_FragColor = sum;
-        }
-    `);
-
-    const bloomFinalShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        precision mediump sampler2D;
-        varying vec2 vL;
-        varying vec2 vR;
-        varying vec2 vT;
-        varying vec2 vB;
-        uniform sampler2D uTexture;
-        uniform float intensity;
-        void main () {
-            vec4 sum = vec4(0.0);
-            sum += texture2D(uTexture, vL);
-            sum += texture2D(uTexture, vR);
-            sum += texture2D(uTexture, vT);
-            sum += texture2D(uTexture, vB);
-            sum *= 0.25;
-            gl_FragColor = sum * intensity;
-        }
-    `);
-
-    const splatShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        uniform sampler2D uTarget;
-        uniform float aspectRatio;
-        uniform vec3 color;
-        uniform vec2 point;
-        uniform float radius;
-        void main () {
-            vec2 p = vUv - point.xy;
-            p.x *= aspectRatio;
-            vec3 splat = exp(-dot(p, p) / radius) * color;
-            vec3 base = texture2D(uTarget, vUv).xyz;
-            gl_FragColor = vec4(base + splat, 1.0);
-        }
-    `);
-
-    const advectionManualFilteringShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        uniform sampler2D uVelocity;
-        uniform sampler2D uSource;
-        uniform vec2 texelSize;
-        uniform vec2 dyeTexelSize;
-        uniform float dt;
-        uniform float dissipation;
-        vec4 bilerp (sampler2D sam, vec2 uv, vec2 tsize) {
-            vec2 st = uv / tsize - 0.5;
-            vec2 iuv = floor(st);
-            vec2 fuv = fract(st);
-            vec4 a = texture2D(sam, (iuv + vec2(0.5, 0.5)) * tsize);
-            vec4 b = texture2D(sam, (iuv + vec2(1.5, 0.5)) * tsize);
-            vec4 c = texture2D(sam, (iuv + vec2(0.5, 1.5)) * tsize);
-            vec4 d = texture2D(sam, (iuv + vec2(1.5, 1.5)) * tsize);
-            return mix(mix(a, b, fuv.x), mix(c, d, fuv.x), fuv.y);
-        }
-        void main () {
-            vec2 coord = vUv - dt * bilerp(uVelocity, vUv, texelSize).xy * texelSize;
-            gl_FragColor = dissipation * bilerp(uSource, coord, dyeTexelSize);
-            gl_FragColor.a = 1.0;
-        }
-    `);
-
-    const advectionShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        uniform sampler2D uVelocity;
-        uniform sampler2D uSource;
-        uniform vec2 texelSize;
-        uniform float dt;
-        uniform float dissipation;
-        void main () {
-            vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize;
-            gl_FragColor = dissipation * texture2D(uSource, coord);
-            gl_FragColor.a = 1.0;
-        }
-    `);
-
-    const divergenceShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        precision mediump sampler2D;
-        varying highp vec2 vUv;
-        varying highp vec2 vL;
-        varying highp vec2 vR;
-        varying highp vec2 vT;
-        varying highp vec2 vB;
-        uniform sampler2D uVelocity;
-        void main () {
-            float L = texture2D(uVelocity, vL).x;
-            float R = texture2D(uVelocity, vR).x;
-            float T = texture2D(uVelocity, vT).y;
-            float B = texture2D(uVelocity, vB).y;
-            vec2 C = texture2D(uVelocity, vUv).xy;
-            if (vL.x < 0.0) { L = -C.x; }
-            if (vR.x > 1.0) { R = -C.x; }
-            if (vT.y > 1.0) { T = -C.y; }
-            if (vB.y < 0.0) { B = -C.y; }
-            float div = 0.5 * (R - L + T - B);
-            gl_FragColor = vec4(div, 0.0, 0.0, 1.0);
-        }
-    `);
-
-    const curlShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        precision mediump sampler2D;
-        varying highp vec2 vUv;
-        varying highp vec2 vL;
-        varying highp vec2 vR;
-        varying highp vec2 vT;
-        varying highp vec2 vB;
-        uniform sampler2D uVelocity;
-        void main () {
-            float L = texture2D(uVelocity, vL).y;
-            float R = texture2D(uVelocity, vR).y;
-            float T = texture2D(uVelocity, vT).x;
-            float B = texture2D(uVelocity, vB).x;
-            float vorticity = R - L - T + B;
-            gl_FragColor = vec4(0.5 * vorticity, 0.0, 0.0, 1.0);
-        }
-    `);
-
-    const vorticityShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision highp float;
-        precision highp sampler2D;
-        varying vec2 vUv;
-        varying vec2 vL;
-        varying vec2 vR;
-        varying vec2 vT;
-        varying vec2 vB;
-        uniform sampler2D uVelocity;
-        uniform sampler2D uCurl;
-        uniform float curl;
-        uniform float dt;
-        void main () {
-            float L = texture2D(uCurl, vL).x;
-            float R = texture2D(uCurl, vR).x;
-            float T = texture2D(uCurl, vT).x;
-            float B = texture2D(uCurl, vB).x;
-            float C = texture2D(uCurl, vUv).x;
-            vec2 force = 0.5 * vec2(abs(T) - abs(B), abs(R) - abs(L));
-            force /= length(force) + 0.0001;
-            force *= curl * C;
-            force.y *= -1.0;
-            vec2 vel = texture2D(uVelocity, vUv).xy;
-            gl_FragColor = vec4(vel + force * dt, 0.0, 1.0);
-        }
-    `);
-
-    const pressureShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        precision mediump sampler2D;
-        varying highp vec2 vUv;
-        varying highp vec2 vL;
-        varying highp vec2 vR;
-        varying highp vec2 vT;
-        varying highp vec2 vB;
-        uniform sampler2D uPressure;
-        uniform sampler2D uDivergence;
-        vec2 boundary (vec2 uv) {
-            return uv;
-        }
-        void main () {
-            float L = texture2D(uPressure, boundary(vL)).x;
-            float R = texture2D(uPressure, boundary(vR)).x;
-            float T = texture2D(uPressure, boundary(vT)).x;
-            float B = texture2D(uPressure, boundary(vB)).x;
-            float C = texture2D(uPressure, vUv).x;
-            float divergence = texture2D(uDivergence, vUv).x;
-            float pressure = (L + R + B + T - divergence) * 0.25;
-            gl_FragColor = vec4(pressure, 0.0, 0.0, 1.0);
-        }
-    `);
-
-    const gradientSubtractShader = compileShader(gl.FRAGMENT_SHADER, `
-        precision mediump float;
-        precision mediump sampler2D;
-        varying highp vec2 vUv;
-        varying highp vec2 vL;
-        varying highp vec2 vR;
-        varying highp vec2 vT;
-        varying highp vec2 vB;
-        uniform sampler2D uPressure;
-        uniform sampler2D uVelocity;
-        vec2 boundary (vec2 uv) {
-            return uv;
-        }
-        void main () {
-            float L = texture2D(uPressure, boundary(vL)).x;
-            float R = texture2D(uPressure, boundary(vR)).x;
-            float T = texture2D(uPressure, boundary(vT)).x;
-            float B = texture2D(uPressure, boundary(vB)).x;
-            vec2 velocity = texture2D(uVelocity, vUv).xy;
-            velocity.xy -= vec2(R - L, T - B);
-            gl_FragColor = vec4(velocity, 0.0, 1.0);
-        }
-    `);
-
-    const blit = (() => {
-        gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, -1, 1, 1, 1, 1, -1]), gl.STATIC_DRAW);
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer());
-        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 0, 2, 3]), gl.STATIC_DRAW);
-        gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(0);
-
-        return (destination) => {
-            gl.bindFramebuffer(gl.FRAMEBUFFER, destination);
-            gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
-        }
-    })();
-
-    let simWidth;
-    let simHeight;
-    let dyeWidth;
-    let dyeHeight;
-    let density;
-    let velocity;
-    let divergence;
-    let curl;
-    let pressure;
-    let bloom;
-
-    let ditheringTexture = createNoiseTexture(256);
-
-    const clearProgram = new GLProgram(baseVertexShader, clearShader);
-    const colorProgram = new GLProgram(baseVertexShader, colorShader);
-    const backgroundProgram = new GLProgram(baseVertexShader, backgroundShader);
-    const displayProgram = new GLProgram(baseVertexShader, displayShader);
-    const displayBloomProgram = new GLProgram(baseVertexShader, displayBloomShader);
-    const displayShadingProgram = new GLProgram(baseVertexShader, displayShadingShader);
-    const displayBloomShadingProgram = new GLProgram(baseVertexShader, displayBloomShadingShader);
-    const bloomPrefilterProgram = new GLProgram(baseVertexShader, bloomPrefilterShader);
-    const bloomBlurProgram = new GLProgram(baseVertexShader, bloomBlurShader);
-    const bloomFinalProgram = new GLProgram(baseVertexShader, bloomFinalShader);
-    const splatProgram = new GLProgram(baseVertexShader, splatShader);
-    const advectionProgram = new GLProgram(baseVertexShader, ext.supportLinearFiltering ? advectionShader : advectionManualFilteringShader);
-    const divergenceProgram = new GLProgram(baseVertexShader, divergenceShader);
-    const curlProgram = new GLProgram(baseVertexShader, curlShader);
-    const vorticityProgram = new GLProgram(baseVertexShader, vorticityShader);
-    const pressureProgram = new GLProgram(baseVertexShader, pressureShader);
-    const gradienSubtractProgram = new GLProgram(baseVertexShader, gradientSubtractShader);
-
-    function initFramebuffers() {
-        let simRes = getResolution(config.SIM_RESOLUTION);
-        let dyeRes = getResolution(config.DYE_RESOLUTION);
-
-        simWidth = simRes.width;
-        simHeight = simRes.height;
-        dyeWidth = dyeRes.width;
-        dyeHeight = dyeRes.height;
-
-        const texType = ext.halfFloatTexType;
-        const rgba = ext.formatRGBA;
-        const rg = ext.formatRG;
-        const r = ext.formatR;
-        const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST;
-
-        if (density == null)
-            density = createDoubleFBO(dyeWidth, dyeHeight, rgba.internalFormat, rgba.format, texType, filtering);
-        else
-            density = resizeDoubleFBO(density, dyeWidth, dyeHeight, rgba.internalFormat, rgba.format, texType, filtering);
-
-        if (velocity == null)
-            velocity = createDoubleFBO(simWidth, simHeight, rg.internalFormat, rg.format, texType, filtering);
-        else
-            velocity = resizeDoubleFBO(velocity, simWidth, simHeight, rg.internalFormat, rg.format, texType, filtering);
-
-        divergence = createFBO(simWidth, simHeight, r.internalFormat, r.format, texType, gl.NEAREST);
-        curl = createFBO(simWidth, simHeight, r.internalFormat, r.format, texType, gl.NEAREST);
-        pressure = createDoubleFBO(simWidth, simHeight, r.internalFormat, r.format, texType, gl.NEAREST);
-
-        initBloomFramebuffers();
-    }
-
-    function initBloomFramebuffers() {
-        let res = getResolution(config.BLOOM_RESOLUTION);
-
-        const texType = ext.halfFloatTexType;
-        const rgba = ext.formatRGBA;
-        const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST;
-
-        bloom = createFBO(res.width, res.height, rgba.internalFormat, rgba.format, texType, filtering);
-
-        bloomFramebuffers.length = 0;
-        for (let i = 0; i < config.BLOOM_ITERATIONS; i++) {
-            let width = res.width >> (i + 1);
-            let height = res.height >> (i + 1);
-
-            if (width < 2 || height < 2) break;
-
-            let fbo = createFBO(width, height, rgba.internalFormat, rgba.format, texType, filtering);
-            bloomFramebuffers.push(fbo);
-        }
-    }
-
-    function createFBO(w, h, internalFormat, format, type, param) {
-        gl.activeTexture(gl.TEXTURE0);
-        let texture = gl.createTexture();
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, param);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, param);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-        gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, w, h, 0, format, type, null);
-
-        let fbo = gl.createFramebuffer();
-        gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
-        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
-        gl.viewport(0, 0, w, h);
-        gl.clear(gl.COLOR_BUFFER_BIT);
-
-        return {
-            texture,
-            fbo,
-            width: w,
-            height: h,
-            attach(id) {
-                gl.activeTexture(gl.TEXTURE0 + id);
-                gl.bindTexture(gl.TEXTURE_2D, texture);
-                return id;
-            }
-        };
-    }
-
-    function createDoubleFBO(w, h, internalFormat, format, type, param) {
-        let fbo1 = createFBO(w, h, internalFormat, format, type, param);
-        let fbo2 = createFBO(w, h, internalFormat, format, type, param);
-
-        return {
-            get read() { return fbo1; },
-            set read(value) { fbo1 = value; },
-            get write() { return fbo2; },
-            set write(value) { fbo2 = value; },
-            swap() {
-                let temp = fbo1;
-                fbo1 = fbo2;
-                fbo2 = temp;
-            }
-        }
-    }
-
-    function resizeFBO(target, w, h, internalFormat, format, type, param) {
-        let newFBO = createFBO(w, h, internalFormat, format, type, param);
-        clearProgram.bind();
-        gl.uniform1i(clearProgram.uniforms.uTexture, target.attach(0));
-        gl.uniform1f(clearProgram.uniforms.value, 1);
-        blit(newFBO.fbo);
-        return newFBO;
-    }
-
-    function resizeDoubleFBO(target, w, h, internalFormat, format, type, param) {
-        target.read = resizeFBO(target.read, w, h, internalFormat, format, type, param);
-        target.write = createFBO(w, h, internalFormat, format, type, param);
-        return target;
-    }
-
-    function createNoiseTexture(size) {
-        const data = new Uint8Array(size * size * 3);
-        for (let i = 0; i < data.length; i++)
-            data[i] = Math.floor(Math.random() * 256);
-        let texture = gl.createTexture();
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, size, size, 0, gl.RGB, gl.UNSIGNED_BYTE, data);
-        return {
-            texture,
-            width: size,
-            height: size,
-            attach(id) {
-                gl.activeTexture(gl.TEXTURE0 + id);
-                gl.bindTexture(gl.TEXTURE_2D, texture);
-                return id;
-            }
-        };
-    }
-
-    initFramebuffers();
-    multipleSplats(34);
-    for (let i = 0; i < 8; i++)
-        splatStack.push(10 + parseInt(Math.random() * 10));
-
-    let lastColorChangeTime = Date.now();
-    let virtualSeeded = false;
-    let orbitAngle = 0;
-    let vPrevX = 0, vPrevY = 0;
-    let virtualColor = null;
-    let lastVColorTime = 0;
-    const engineStart = Date.now();
-    const ORBIT_RADIUS = 300;
-    const ORBIT_SPEED = 0.026;
-    const ORBIT_START_DELAY = 700;
-
-    let rafHandle = 0;
-    let destroyed = false;
-
-    update();
-
-    function update() {
-        if (destroyed) return;
-        resizeCanvas();
-        driveVirtualPointer();
-        input();
-        if (!config.PAUSED)
-            step(0.016);
-        render(null);
-        rafHandle = requestAnimationFrame(update);
-    }
-
-    function driveVirtualPointer() {
-        if (Date.now() - engineStart < ORBIT_START_DELAY)
-            return;
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
-        const base = Math.min(ORBIT_RADIUS, canvas.width * 0.35, canvas.height * 0.35);
-        const r = base * (0.72 + 0.28 * Math.sin(orbitAngle * 0.37));
-        orbitAngle += ORBIT_SPEED;
-        const x = cx + Math.cos(orbitAngle) * r;
-        const y = cy + Math.sin(orbitAngle) * r;
-        if (!virtualSeeded) {
-            virtualSeeded = true;
-            vPrevX = x;
-            vPrevY = y;
-            return;
-        }
-        if (!virtualColor || Date.now() - lastVColorTime > 120) {
-            virtualColor = generateColor();
-            virtualColor.r *= 3.2;
-            virtualColor.g *= 3.2;
-            virtualColor.b *= 3.2;
-            lastVColorTime = Date.now();
-        }
-        const dx = (x - vPrevX) * 9.0;
-        const dy = (y - vPrevY) * 9.0;
-        vPrevX = x;
-        vPrevY = y;
-        splat(x, y, dx, dy, virtualColor);
-    }
-
-    function input() {
-        if (splatStack.length > 0)
-            multipleSplats(splatStack.pop());
-
-        for (let i = 0; i < pointers.length; i++) {
-            const p = pointers[i];
-            if (p.moved) {
-                splat(p.x, p.y, p.dx, p.dy, p.color);
-                p.moved = false;
-            }
-        }
-
-        if (!config.COLORFUL)
-            return;
-
-        if (lastColorChangeTime + 100 < Date.now()) {
-            lastColorChangeTime = Date.now();
-            for (let i = 0; i < pointers.length; i++) {
-                const p = pointers[i];
-                p.color = generateColor();
-            }
-        }
-    }
-
-    function step(dt) {
-        gl.disable(gl.BLEND);
-        gl.viewport(0, 0, simWidth, simHeight);
-
-        curlProgram.bind();
-        gl.uniform2f(curlProgram.uniforms.texelSize, 1.0 / simWidth, 1.0 / simHeight);
-        gl.uniform1i(curlProgram.uniforms.uVelocity, velocity.read.attach(0));
-        blit(curl.fbo);
-
-        vorticityProgram.bind();
-        gl.uniform2f(vorticityProgram.uniforms.texelSize, 1.0 / simWidth, 1.0 / simHeight);
-        gl.uniform1i(vorticityProgram.uniforms.uVelocity, velocity.read.attach(0));
-        gl.uniform1i(vorticityProgram.uniforms.uCurl, curl.attach(1));
-        gl.uniform1f(vorticityProgram.uniforms.curl, config.CURL);
-        gl.uniform1f(vorticityProgram.uniforms.dt, dt);
-        blit(velocity.write.fbo);
-        velocity.swap();
-
-        divergenceProgram.bind();
-        gl.uniform2f(divergenceProgram.uniforms.texelSize, 1.0 / simWidth, 1.0 / simHeight);
-        gl.uniform1i(divergenceProgram.uniforms.uVelocity, velocity.read.attach(0));
-        blit(divergence.fbo);
-
-        clearProgram.bind();
-        gl.uniform1i(clearProgram.uniforms.uTexture, pressure.read.attach(0));
-        gl.uniform1f(clearProgram.uniforms.value, config.PRESSURE_DISSIPATION);
-        blit(pressure.write.fbo);
-        pressure.swap();
-
-        pressureProgram.bind();
-        gl.uniform2f(pressureProgram.uniforms.texelSize, 1.0 / simWidth, 1.0 / simHeight);
-        gl.uniform1i(pressureProgram.uniforms.uDivergence, divergence.attach(0));
-        for (let i = 0; i < config.PRESSURE_ITERATIONS; i++) {
-            gl.uniform1i(pressureProgram.uniforms.uPressure, pressure.read.attach(1));
-            blit(pressure.write.fbo);
-            pressure.swap();
-        }
-
-        gradienSubtractProgram.bind();
-        gl.uniform2f(gradienSubtractProgram.uniforms.texelSize, 1.0 / simWidth, 1.0 / simHeight);
-        gl.uniform1i(gradienSubtractProgram.uniforms.uPressure, pressure.read.attach(0));
-        gl.uniform1i(gradienSubtractProgram.uniforms.uVelocity, velocity.read.attach(1));
-        blit(velocity.write.fbo);
-        velocity.swap();
-
-        advectionProgram.bind();
-        gl.uniform2f(advectionProgram.uniforms.texelSize, 1.0 / simWidth, 1.0 / simHeight);
-        if (!ext.supportLinearFiltering)
-            gl.uniform2f(advectionProgram.uniforms.dyeTexelSize, 1.0 / simWidth, 1.0 / simHeight);
-        let velocityId = velocity.read.attach(0);
-        gl.uniform1i(advectionProgram.uniforms.uVelocity, velocityId);
-        gl.uniform1i(advectionProgram.uniforms.uSource, velocityId);
-        gl.uniform1f(advectionProgram.uniforms.dt, dt);
-        gl.uniform1f(advectionProgram.uniforms.dissipation, config.VELOCITY_DISSIPATION);
-        blit(velocity.write.fbo);
-        velocity.swap();
-
-        gl.viewport(0, 0, dyeWidth, dyeHeight);
-
-        if (!ext.supportLinearFiltering)
-            gl.uniform2f(advectionProgram.uniforms.dyeTexelSize, 1.0 / dyeWidth, 1.0 / dyeHeight);
-        gl.uniform1i(advectionProgram.uniforms.uVelocity, velocity.read.attach(0));
-        gl.uniform1i(advectionProgram.uniforms.uSource, density.read.attach(1));
-        gl.uniform1f(advectionProgram.uniforms.dissipation, config.DENSITY_DISSIPATION);
-        blit(density.write.fbo);
-        density.swap();
-    }
-
-    function render(target) {
-        if (config.BLOOM)
-            applyBloom(density.read, bloom);
-
-        if (target == null || !config.TRANSPARENT) {
-            gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-            gl.enable(gl.BLEND);
-        }
-        else {
-            gl.disable(gl.BLEND);
-        }
-
-        let width = target == null ? gl.drawingBufferWidth : dyeWidth;
-        let height = target == null ? gl.drawingBufferHeight : dyeHeight;
-
-        gl.viewport(0, 0, width, height);
-
-        if (!config.TRANSPARENT) {
-            colorProgram.bind();
-            let bc = config.BACK_COLOR;
-            gl.uniform4f(colorProgram.uniforms.color, bc.r / 255, bc.g / 255, bc.b / 255, 1);
-            blit(target);
-        }
-
-        if (target == null && config.TRANSPARENT) {
-            backgroundProgram.bind();
-            gl.uniform1f(backgroundProgram.uniforms.aspectRatio, canvas.width / canvas.height);
-            blit(null);
-        }
-
-        if (config.SHADING) {
-            let program = config.BLOOM ? displayBloomShadingProgram : displayShadingProgram;
-            program.bind();
-            gl.uniform2f(program.uniforms.texelSize, 1.0 / width, 1.0 / height);
-            gl.uniform1i(program.uniforms.uTexture, density.read.attach(0));
-            if (config.BLOOM) {
-                gl.uniform1i(program.uniforms.uBloom, bloom.attach(1));
-                gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
-                let scale = getTextureScale(ditheringTexture, width, height);
-                gl.uniform2f(program.uniforms.ditherScale, scale.x, scale.y);
-            }
-        }
-        else {
-            let program = config.BLOOM ? displayBloomProgram : displayProgram;
-            program.bind();
-            gl.uniform1i(program.uniforms.uTexture, density.read.attach(0));
-            if (config.BLOOM) {
-                gl.uniform1i(program.uniforms.uBloom, bloom.attach(1));
-                gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
-                let scale = getTextureScale(ditheringTexture, width, height);
-                gl.uniform2f(program.uniforms.ditherScale, scale.x, scale.y);
-            }
-        }
-
-        blit(target);
-    }
-
-    function applyBloom(source, destination) {
-        if (bloomFramebuffers.length < 2)
-            return;
-
-        let last = destination;
-
-        gl.disable(gl.BLEND);
-        bloomPrefilterProgram.bind();
-        let knee = config.BLOOM_THRESHOLD * config.BLOOM_SOFT_KNEE + 0.0001;
-        let curve0 = config.BLOOM_THRESHOLD - knee;
-        let curve1 = knee * 2;
-        let curve2 = 0.25 / knee;
-        gl.uniform3f(bloomPrefilterProgram.uniforms.curve, curve0, curve1, curve2);
-        gl.uniform1f(bloomPrefilterProgram.uniforms.threshold, config.BLOOM_THRESHOLD);
-        gl.uniform1i(bloomPrefilterProgram.uniforms.uTexture, source.attach(0));
-        gl.viewport(0, 0, last.width, last.height);
-        blit(last.fbo);
-
-        bloomBlurProgram.bind();
-        for (let i = 0; i < bloomFramebuffers.length; i++) {
-            let dest = bloomFramebuffers[i];
-            gl.uniform2f(bloomBlurProgram.uniforms.texelSize, 1.0 / last.width, 1.0 / last.height);
-            gl.uniform1i(bloomBlurProgram.uniforms.uTexture, last.attach(0));
-            gl.viewport(0, 0, dest.width, dest.height);
-            blit(dest.fbo);
-            last = dest;
-        }
-
-        gl.blendFunc(gl.ONE, gl.ONE);
-        gl.enable(gl.BLEND);
-
-        for (let i = bloomFramebuffers.length - 2; i >= 0; i--) {
-            let baseTex = bloomFramebuffers[i];
-            gl.uniform2f(bloomBlurProgram.uniforms.texelSize, 1.0 / last.width, 1.0 / last.height);
-            gl.uniform1i(bloomBlurProgram.uniforms.uTexture, last.attach(0));
-            gl.viewport(0, 0, baseTex.width, baseTex.height);
-            blit(baseTex.fbo);
-            last = baseTex;
-        }
-
-        gl.disable(gl.BLEND);
-        bloomFinalProgram.bind();
-        gl.uniform2f(bloomFinalProgram.uniforms.texelSize, 1.0 / last.width, 1.0 / last.height);
-        gl.uniform1i(bloomFinalProgram.uniforms.uTexture, last.attach(0));
-        gl.uniform1f(bloomFinalProgram.uniforms.intensity, config.BLOOM_INTENSITY);
-        gl.viewport(0, 0, destination.width, destination.height);
-        blit(destination.fbo);
-    }
-
-    function splat(x, y, dx, dy, color) {
-        gl.viewport(0, 0, simWidth, simHeight);
-        splatProgram.bind();
-        gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.attach(0));
-        gl.uniform1f(splatProgram.uniforms.aspectRatio, canvas.width / canvas.height);
-        gl.uniform2f(splatProgram.uniforms.point, x / canvas.width, 1.0 - y / canvas.height);
-        gl.uniform3f(splatProgram.uniforms.color, dx, -dy, 1.0);
-        gl.uniform1f(splatProgram.uniforms.radius, config.SPLAT_RADIUS / 100.0);
-        blit(velocity.write.fbo);
-        velocity.swap();
-
-        gl.viewport(0, 0, dyeWidth, dyeHeight);
-        gl.uniform1i(splatProgram.uniforms.uTarget, density.read.attach(0));
-        gl.uniform3f(splatProgram.uniforms.color, color.r, color.g, color.b);
-        blit(density.write.fbo);
-        density.swap();
-    }
-
-    function multipleSplats(amount) {
-        for (let i = 0; i < amount; i++) {
-            const color = generateColor();
-            color.r *= 10.0;
-            color.g *= 10.0;
-            color.b *= 10.0;
-            const x = canvas.width * Math.random();
-            const y = canvas.height * Math.random();
-            const dx = 1000 * (Math.random() - 0.5);
-            const dy = 1000 * (Math.random() - 0.5);
-            splat(x, y, dx, dy, color);
-        }
-    }
-
-    function resizeCanvas() {
-        if (canvas.width != canvas.clientWidth || canvas.height != canvas.clientHeight) {
-            canvas.width = canvas.clientWidth;
-            canvas.height = canvas.clientHeight;
-            initFramebuffers();
-        }
-    }
-
-    function pointerPos(clientX, clientY) {
-        const rect = canvas.getBoundingClientRect();
-        return { x: clientX - rect.left, y: clientY - rect.top };
-    }
-
-    const teardown = [];
-    function on(target, type, handler, opts) {
-        target.addEventListener(type, handler, opts);
-        teardown.push(() => target.removeEventListener(type, handler, opts));
-    }
-
-    on(window, 'mousemove', e => {
-        const { x, y } = pointerPos(e.clientX, e.clientY);
-        const p = pointers[0];
-        if (!p.everMoved) {
-            p.everMoved = true;
-            p.x = x;
-            p.y = y;
-            p.down = true;
-            return;
-        }
-        p.down = true;
-        p.moved = true;
-        p.dx = (x - p.x) * 5.0;
-        p.dy = (y - p.y) * 5.0;
-        p.x = x;
-        p.y = y;
-        p.color = generateColor();
-    });
-
-    on(window, 'touchmove', e => {
-        const touches = e.targetTouches;
-        for (let i = 0; i < touches.length; i++) {
-            if (i >= pointers.length)
-                pointers.push(new pointerPrototype());
-            const p = pointers[i];
-            const { x, y } = pointerPos(touches[i].clientX, touches[i].clientY);
-            p.down = true;
-            p.moved = p.everMoved === true;
-            p.everMoved = true;
-            p.dx = (x - p.x) * 8.0;
-            p.dy = (y - p.y) * 8.0;
-            p.x = x;
-            p.y = y;
-        }
-    }, { passive: true });
-
-    on(window, 'touchstart', e => {
-        const touches = e.targetTouches;
-        for (let i = 0; i < touches.length; i++) {
-            if (i >= pointers.length)
-                pointers.push(new pointerPrototype());
-            const p = pointers[i];
-            const { x, y } = pointerPos(touches[i].clientX, touches[i].clientY);
-            p.id = touches[i].identifier;
-            p.down = true;
-            p.x = x;
-            p.y = y;
-            p.color = generateColor();
-        }
-    }, { passive: true });
-
-    on(window, 'mouseup', () => {
-        pointers[0].down = false;
-    });
-
-    on(window, 'touchend', e => {
-        const touches = e.changedTouches;
-        for (let i = 0; i < touches.length; i++)
-            for (let j = 0; j < pointers.length; j++)
-                if (touches[i].identifier == pointers[j].id)
-                    pointers[j].down = false;
-    });
-
-    return function destroy() {
-        destroyed = true;
-        if (rafHandle) cancelAnimationFrame(rafHandle);
-        for (const off of teardown) off();
-    };
-
-    function generateColor() {
-        const h = 0.5 + Math.random() * 0.42;
-        let c = HSVtoRGB(h, 0.95, 1.0);
-        c.r *= 0.92;
-        c.g *= 0.92;
-        c.b *= 0.92;
-        return c;
-    }
-
-    function HSVtoRGB(h, s, v) {
-        let r, g, b, i, f, p, q, t;
-        i = Math.floor(h * 6);
-        f = h * 6 - i;
-        p = v * (1 - s);
-        q = v * (1 - f * s);
-        t = v * (1 - (1 - f) * s);
-
-        switch (i % 6) {
-            case 0: r = v, g = t, b = p; break;
-            case 1: r = q, g = v, b = p; break;
-            case 2: r = p, g = v, b = t; break;
-            case 3: r = p, g = q, b = v; break;
-            case 4: r = t, g = p, b = v; break;
-            case 5: r = v, g = p, b = q; break;
-        }
-        return { r, g, b };
-    }
-
-    function getResolution(resolution) {
-        let aspectRatio = gl.drawingBufferWidth / gl.drawingBufferHeight;
-        if (aspectRatio < 1)
-            aspectRatio = 1.0 / aspectRatio;
-
-        let max = Math.round(resolution * aspectRatio);
-        let min = Math.round(resolution);
-
-        if (gl.drawingBufferWidth > gl.drawingBufferHeight)
-            return { width: max, height: min };
-        else
-            return { width: min, height: max };
-    }
-
-    function getTextureScale(texture, width, height) {
-        return { x: width / texture.width, y: height / texture.height };
-    }
-}
 </script>
 </body>
 </html>
