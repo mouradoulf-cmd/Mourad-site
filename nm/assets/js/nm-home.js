@@ -19,6 +19,30 @@
 
   if (P) P.render();
 
+  /* ---------- device mockups: scale the fixed-px devices.css frames
+     (MacBook Pro / iPhone 14 Pro) to fit their responsive slot ---------- */
+  (function deviceScale() {
+    var NATIVE_W = { "device-macbook-pro": 740, "device-iphone-14-pro": 428 };
+    var els = $$(".dev-scale .device");
+    if (!els.length) return;
+    function nativeWidth(el) {
+      for (var k in NATIVE_W) { if (el.classList.contains(k)) return NATIVE_W[k]; }
+      return el.offsetWidth || 1;
+    }
+    function fit(el) {
+      var w = el.parentElement.offsetWidth, nw = nativeWidth(el);
+      el.style.setProperty("--s", w ? w / nw : 1);
+    }
+    function fitAll() { els.forEach(fit); }
+    fitAll();
+    if ("ResizeObserver" in window) {
+      var ro = new ResizeObserver(fitAll);
+      els.forEach(function (el) { ro.observe(el.parentElement); });
+    } else {
+      var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(fitAll, 150); });
+    }
+  })();
+
   /* ---------- counters ---------- */
   (function counters() {
     $$("[data-count]").forEach(function (el) {
