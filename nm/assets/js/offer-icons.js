@@ -13,9 +13,9 @@
 
   // The QR glyph is a real code (it opens the live demo menu), computed by
   // nm-qr.js — never a decorative fake pattern (see repo rule on this).
-  function qrArt() {
+  function qrArt(x, y, size, cls) {
     var Q = window.NMQR, mx = Q && Q.matrix(Q.MENU_URL, "L");
-    return mx ? Q.modules(mx, 60, 40, 40, { cls: "ic-mod", finderCls: "ic-mod", gap: 0.1 }) : "";
+    return mx ? Q.modules(mx, x, y, size, { cls: cls, finderCls: cls, gap: 0.1 }) : "";
   }
 
   function badge(x, y, r) {
@@ -40,19 +40,31 @@
     qr: function () {
       return '<svg viewBox="0 0 160 120" class="ic ic--qr" aria-hidden="true" focusable="false">' + defs +
         badge(80, 60, 34) +
-        '<g class="ic-in" style="--i:1">' + qrArt() + '</g>' +
+        '<g class="ic-in" style="--i:1">' + qrArt(60, 40, 40, "ic-mod") + '</g>' +
         '</svg>';
     },
 
-    pack:
-      '<svg viewBox="0 0 160 120" class="ic ic--pack" aria-hidden="true" focusable="false">' + defs +
-      badge(80, 60, 34) +
-      '<g class="ic-glyph ic-in" style="--i:1">' +
-      '<rect x="58" y="43" width="44" height="33" rx="5"/>' +
-      '<path d="M58 53h44"/>' +
-      '</g>' +
-      '<g class="ic-glyph-fill ic-in" style="--i:1"><circle cx="64" cy="48" r="1.4"/><circle cx="70" cy="48" r="1.4"/><circle cx="76" cy="48" r="1.4"/></g>' +
-      '</svg>',
+    pack: function () {
+      return '<svg viewBox="0 0 160 120" class="ic ic--pack" aria-hidden="true" focusable="false">' + defs +
+        '<ellipse cx="80" cy="60" rx="50" ry="38" fill="url(#icGlow)" class="ic-halo ic-halo--boom"/>' +
+        /* four corners: Google, QR, GPS pin, website — converge to the centre, then the assembled result pops in. */
+        '<g class="ic-corner ic-corner--tl"><circle cx="34" cy="30" r="13" class="ic-chip-bg"/><g transform="translate(26 22) scale(.333)">' + googleG + '</g></g>' +
+        '<g class="ic-corner ic-corner--tr"><circle cx="126" cy="30" r="13" class="ic-chip-bg"/>' + qrArt(118, 22, 16, "ic-mod") + '</g>' +
+        '<g class="ic-corner ic-corner--bl"><circle cx="34" cy="90" r="13" class="ic-chip-bg"/>' +
+        '<g class="ic-glyph-sm"><path d="M34 82.5c-4.3 0-7.8 3.3-7.8 7.4 0 5.4 7.8 12 7.8 12s7.8-6.6 7.8-12c0-4.1-3.5-7.4-7.8-7.4z"/><circle cx="34" cy="89.6" r="2.6"/></g></g>' +
+        '<g class="ic-corner ic-corner--br"><circle cx="126" cy="90" r="13" class="ic-chip-bg"/>' +
+        '<g class="ic-glyph-sm"><rect x="118" y="84" width="16" height="12" rx="2.2"/><path d="M118 88h16"/></g></g>' +
+        '<circle cx="80" cy="60" r="30" class="ic-boom"/>' +
+        '<g class="ic-final">' +
+        '<circle cx="80" cy="60" r="34" class="ic-badge"/>' +
+        '<g class="ic-glyph">' +
+        '<rect x="58" y="43" width="44" height="33" rx="5"/>' +
+        '<path d="M58 53h44"/>' +
+        '</g>' +
+        '<g class="ic-glyph-fill"><circle cx="64" cy="48" r="1.4"/><circle cx="70" cy="48" r="1.4"/><circle cx="76" cy="48" r="1.4"/></g>' +
+        '</g>' +
+        '</svg>';
+    },
 
     ultimate:
       '<svg viewBox="0 0 160 120" class="ic ic--ultimate" aria-hidden="true" focusable="false">' + defs +

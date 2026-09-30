@@ -594,6 +594,31 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 .is-playing .ic .ic-halo { animation: icHaloPulse 5s ease infinite; animation-delay: .7s; }
 @keyframes icHaloPulse { 0%, 100% { opacity: .5; } 50% { opacity: .75; } }
 
+/* Complete Pack — four corners (Google, QR, GPS, website) converge to a
+   burst, then the assembled badge pops in. Runs in place of the generic
+   .ic-in fade; default (not playing) state just shows the final badge. */
+.ic--pack .ic-chip-bg { fill: rgba(18,16,25,.75); stroke: rgba(230,194,122,.5); stroke-width: 1; }
+.ic--pack .ic-glyph-sm { fill: none; stroke: #e6c27a; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ic--pack .ic-corner { opacity: 0; }
+.ic--pack .ic-boom { fill: none; stroke: #e6c27a; stroke-width: 2; opacity: 0; }
+.ic--pack .ic-final { opacity: 1; }
+
+.is-playing .ic--pack .ic-corner--tl { animation: icCnTL 5s var(--ease-out) infinite; }
+.is-playing .ic--pack .ic-corner--tr { animation: icCnTR 5s var(--ease-out) infinite; animation-delay: .03s; }
+.is-playing .ic--pack .ic-corner--bl { animation: icCnBL 5s var(--ease-out) infinite; animation-delay: .06s; }
+.is-playing .ic--pack .ic-corner--br { animation: icCnBR 5s var(--ease-out) infinite; animation-delay: .09s; }
+.is-playing .ic--pack .ic-boom { animation: icBoom 5s var(--ease-out) infinite; }
+.is-playing .ic--pack .ic-final { animation: icFinal 5s var(--ease-out) infinite; }
+.is-playing .ic--pack .ic-halo--boom { animation: icHaloBoom 5s ease infinite; }
+
+@keyframes icCnTL { 0% { opacity: 0; transform: translate(0,0) scale(1) rotate(0); } 6% { opacity: 1; } 8%, 36% { opacity: 1; transform: translate(0,0) scale(1) rotate(0); } 46% { opacity: 1; transform: translate(46px,30px) scale(.35) rotate(12deg); } 52% { opacity: 0; transform: translate(46px,30px) scale(.05) rotate(12deg); } 100% { opacity: 0; } }
+@keyframes icCnTR { 0% { opacity: 0; transform: translate(0,0) scale(1) rotate(0); } 6% { opacity: 1; } 8%, 36% { opacity: 1; transform: translate(0,0) scale(1) rotate(0); } 46% { opacity: 1; transform: translate(-46px,30px) scale(.35) rotate(-12deg); } 52% { opacity: 0; transform: translate(-46px,30px) scale(.05) rotate(-12deg); } 100% { opacity: 0; } }
+@keyframes icCnBL { 0% { opacity: 0; transform: translate(0,0) scale(1) rotate(0); } 6% { opacity: 1; } 8%, 36% { opacity: 1; transform: translate(0,0) scale(1) rotate(0); } 46% { opacity: 1; transform: translate(46px,-30px) scale(.35) rotate(-12deg); } 52% { opacity: 0; transform: translate(46px,-30px) scale(.05) rotate(-12deg); } 100% { opacity: 0; } }
+@keyframes icCnBR { 0% { opacity: 0; transform: translate(0,0) scale(1) rotate(0); } 6% { opacity: 1; } 8%, 36% { opacity: 1; transform: translate(0,0) scale(1) rotate(0); } 46% { opacity: 1; transform: translate(-46px,-30px) scale(.35) rotate(12deg); } 52% { opacity: 0; transform: translate(-46px,-30px) scale(.05) rotate(12deg); } 100% { opacity: 0; } }
+@keyframes icBoom { 0%, 44% { opacity: 0; transform: scale(.3); } 48% { opacity: .85; transform: scale(.6); } 60% { opacity: 0; transform: scale(1.7); } 100% { opacity: 0; } }
+@keyframes icFinal { 0%, 48% { opacity: 0; transform: scale(.3); } 56% { opacity: 1; transform: scale(1.1); } 62%, 90% { opacity: 1; transform: scale(1); } 97%, 100% { opacity: 0; transform: scale(.92); } }
+@keyframes icHaloBoom { 0%, 44% { opacity: .4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.25); } 66%, 92% { opacity: .55; transform: scale(1); } 100% { opacity: .4; } }
+
 /* ==========================================================================
    OFFER CARDS — glass, pointer-lit border, gold on the featured one
    ========================================================================== */
