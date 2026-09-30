@@ -127,8 +127,8 @@ receipts, invoices and dunning emails.
   reduced motion, data saver or without JavaScript. On desktop the video is
   118 % wide so the desk sits right of the headline, under a left-to-right
   dark veil. Replace the files (same names) to change the hero.
-  The video was supplied by the owner as a demo from a third-party design
-  prompt: swap it for footage the studio owns before promoting the site.
+  The video was purchased by the owner (paid design-prompt pack); keep the
+  receipt / licence terms with the studio's records.
 - Type: Bricolage Grotesque (display headings), Newsreader italic (the key
   word of each heading), Geist (text), Geist Mono (prices, labels) — all
   self-hosted; Noto Sans Thai / IBM Plex Sans Arabic loaded on demand.
