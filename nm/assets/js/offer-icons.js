@@ -51,13 +51,24 @@
     pack:
       '<svg viewBox="0 0 160 120" class="ic ic--pack" aria-hidden="true" focusable="false">' + defs +
       '<ellipse cx="80" cy="64" rx="58" ry="44" fill="url(#icGlow)" class="ic-halo"/>' +
-      '<g class="ic-cube">' +
-      '<g class="ic-face ic-face--top"><path d="M80 22l34 18-34 18-34-18z" fill="url(#icGold)"/><path d="M80 31.5s-6 5.5-6 10a6 6 0 0012 0c0-4.5-6-10-6-10z" fill="#1a1512" opacity=".75"/></g>' +
-      '<g class="ic-face ic-face--left"><path d="M46 40l34 18v38L46 78z" fill="#7b61ff"/><g fill="#fff" opacity=".9"><rect x="55" y="57" width="6" height="6" rx="1.2"/><rect x="65" y="62" width="6" height="6" rx="1.2"/><rect x="55" y="67" width="6" height="6" rx="1.2"/><rect x="65" y="72" width="6" height="6" rx="1.2"/></g></g>' +
-      '<g class="ic-face ic-face--right"><path d="M114 40L80 58v38l34-18z" fill="#4f7bff"/><path d="M88 64l18-9.5v4L88 68z" fill="#fff" opacity=".9"/><path d="M88 72l18-9.5v12L88 84z" fill="#fff" opacity=".35"/></g>' +
-      '</g>' +
-      '<path d="M80 58v38M46 40l34 18 34-18" class="ic-edge"/>' +
-      '<g transform="translate(128 24) scale(1)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g><g transform="translate(32 90) scale(0.8)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g><g transform="translate(134 90) scale(0.6)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g>' +
+      /* the website itself: a small browser card, with a Google-pin badge and
+         a QR badge docking onto its corners — Complete Pack is those three
+         things bundled, so the icon shows exactly that instead of an
+         abstract gift box. */
+      '<g class="ic-face ic-face--top"><rect x="30" y="26" width="100" height="66" rx="11" class="ic-card"/>' +
+      '<path d="M30 37a11 11 0 0111-11h78a11 11 0 0111 11v6H30z" fill="rgba(20,17,28,.07)"/>' +
+      '<circle cx="39" cy="31.5" r="2.1" fill="#e8846b"/><circle cx="46.5" cy="31.5" r="2.1" fill="#e8c467"/><circle cx="54" cy="31.5" r="2.1" fill="#7fc98f"/>' +
+      '<rect x="39" y="49" width="48" height="6" rx="3" class="ic-line ic-line--hot"/>' +
+      '<rect x="39" y="61" width="72" height="4" rx="2" class="ic-line"/>' +
+      '<rect x="39" y="69" width="58" height="4" rx="2" class="ic-line"/>' +
+      '<rect x="39" y="80" width="32" height="9" rx="4.5" class="ic-line ic-line--btn"/></g>' +
+      '<g class="ic-face ic-face--left"><circle cx="28" cy="30" r="17" class="ic-card"/>' +
+      '<path d="M28 36.5s-9-8.2-9-14.8a9 9 0 0118 0c0 6.6-9 14.8-9 14.8z" fill="url(#icSun)"/><circle cx="28" cy="21" r="3.4" fill="#fff"/></g>' +
+      '<g class="ic-face ic-face--right"><rect x="112" y="72" width="34" height="34" rx="10" class="ic-card"/>' +
+      '<g fill="#15131e"><rect x="119" y="79" width="6" height="6"/><rect x="133" y="79" width="6" height="6"/><rect x="119" y="93" width="6" height="6"/>' +
+      '<rect x="128" y="79" width="2.4" height="2.4"/><rect x="128" y="84.6" width="2.4" height="2.4"/><rect x="133" y="88" width="2.4" height="2.4"/><rect x="128" y="93" width="2.4" height="2.4"/><rect x="138.6" y="93" width="2.4" height="2.4"/></g></g>' +
+      '<rect x="30" y="26" width="100" height="66" rx="11" class="ic-edge"/>' +
+      '<g transform="translate(128 24) scale(1)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g><g transform="translate(14 68) scale(0.8)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g><g transform="translate(134 62) scale(0.6)"><path class="ic-spark" d="M0-7l1.8 5.2L7 0 1.8 1.8 0 7-1.8 1.8-7 0-1.8-1.8z"/></g>' +
       '</svg>',
 
     ultimate:
