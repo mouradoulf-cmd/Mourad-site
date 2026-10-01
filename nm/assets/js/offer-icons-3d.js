@@ -8,7 +8,7 @@
 (function () {
   "use strict";
   var REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var GOLD = "#e6c27a", INK = "#15131e", VIOLET = "#8d7bff";
+  var GOLD = "#c9a961", INK = "#15131e";
 
   function loadThree(cb) {
     if (window.THREE) { cb(); return; }
@@ -38,7 +38,7 @@
   function buildCoin(THREE) {
     var geo = new THREE.CylinderGeometry(1.15, 1.15, 0.22, 56);
     var side = new THREE.MeshStandardMaterial({ color: GOLD, metalness: 0.85, roughness: 0.22 });
-    var cap = new THREE.MeshStandardMaterial({ color: "#241f35", metalness: 0.35, roughness: 0.5 });
+    var cap = new THREE.MeshStandardMaterial({ color: "#241f1a", metalness: 0.35, roughness: 0.5 });
     var mesh = new THREE.Mesh(geo, [side, cap, cap]);
     mesh.rotation.x = Math.PI / 2;
     return mesh;
@@ -130,8 +130,8 @@
 
       scene.add(new THREE.AmbientLight(0xffffff, 0.55));
       var key = new THREE.DirectionalLight(0xfff2d9, 1.1); key.position.set(2.5, 3, 3); scene.add(key);
-      var fill = new THREE.DirectionalLight(0x8d7bff, 0.5); fill.position.set(-3, -1.5, 2); scene.add(fill);
-      var rim = new THREE.PointLight(0xe6c27a, 0.6, 8); rim.position.set(-1.5, 1, -2); scene.add(rim);
+      var fill = new THREE.DirectionalLight(0x8a6324, 0.5); fill.position.set(-3, -1.5, 2); scene.add(fill);
+      var rim = new THREE.PointLight(0xc9a961, 0.6, 8); rim.position.set(-1.5, 1, -2); scene.add(rim);
 
       var root = new THREE.Group();
       root.add(buildCoin(THREE));

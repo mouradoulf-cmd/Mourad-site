@@ -45,13 +45,20 @@
 
   /* ---------- counters ---------- */
   (function counters() {
+    /* The real number (baked into the HTML) stays on screen the whole
+       time — it's only replaced by the animated "0 → target" count the
+       instant the reveal actually starts. That way a flaky observer
+       (threshold never crossed, element never fully settles, an iOS
+       quirk we can't reproduce here) leaves the correct number showing
+       statically instead of stuck at a blanked-out "0". */
     $$("[data-count]").forEach(function (el) {
       var to = +el.getAttribute("data-count");
       if (reduce || !to) return;
-      el.textContent = "0";
-      onVisible(el, function (v) {
-        if (!v || el.dataset.done) return;
-        el.dataset.done = "1";
+      var started = false;
+      function run() {
+        if (started) return;
+        started = true;
+        el.textContent = "0";
         var t0 = null, dur = 1400;
         (function step(ts) {
           if (!t0) t0 = ts;
@@ -59,7 +66,11 @@
           el.textContent = String(Math.round(to * e));
           if (p < 1) requestAnimationFrame(step);
         })(performance.now());
-      }, { threshold: .6 });
+      }
+      onVisible(el, function (v) { if (v) run(); }, { threshold: .2 });
+      // Safety net: if the observer never reports visible (any reason),
+      // just count up on a timer instead of leaving it to chance forever.
+      setTimeout(function () { if (!started && el.getBoundingClientRect().top < innerHeight) run(); }, 2500);
     });
   })();
 
@@ -261,7 +272,7 @@
     if (!canvas || reduce || !canvas.getContext) return;
     var ctx = canvas.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = canvas.width = innerWidth * dpr, H = canvas.height = innerHeight * dpr;
-    var colors = ["#f6e1ad", "#e6c27a", "#c79c50", "#7b61ff", "#4f7bff", "#ffffff"];
+    var colors = ["#f6e1ad", "#c9a961", "#8a6324", "#e4cf9a", "#b8794f", "#ffffff"];
     var bits = [];
     for (var k = 0; k < 160; k++) {
       var a = -Math.PI / 2 + (Math.random() - .5) * 1.6, v = (9 + Math.random() * 11) * dpr;

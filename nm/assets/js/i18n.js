@@ -107,7 +107,7 @@
         q5: "I already have Instagram. Why do I need a website?", a5: "Instagram depends on an algorithm you don't control. A website is your own storefront: it shows up on Google, it's open 24/7, and it belongs to you.",
         q6: "Is the website really mine?", a6: "Yes — your name, your photos, your content. We build it for your business, not for us.",
         q7: "What if I want to stop?", a7: "There's no commitment. You can cancel anytime, free of charge.",
-        q8: "Have you worked with businesses like mine?", a8: "Yes — restaurants, salons, spas and companies. Have a look at the live sites in the Work section above."
+        q8: "Have you worked with businesses like mine?", a8: "Yes — restaurants, salons, spas and companies.", a8link: "See the live sites →"
       },
       finale: {
         orbit: "START A PROJECT · START A PROJECT · ",
@@ -235,7 +235,7 @@
         q5: "J'ai déjà Instagram. Pourquoi un site web ?", a5: "Instagram dépend d'un algorithme que vous ne contrôlez pas. Un site, c'est votre propre vitrine : visible sur Google, ouverte 24h/24, et elle vous appartient.",
         q6: "Le site m'appartient vraiment ?", a6: "Oui — votre nom, vos photos, votre contenu. Nous le créons pour votre activité, pas pour nous.",
         q7: "Et si je veux arrêter ?", a7: "Aucun engagement. Vous pouvez résilier à tout moment, gratuitement.",
-        q8: "Avez-vous déjà travaillé avec des commerces comme le mien ?", a8: "Oui — restaurants, salons, spas et entreprises. Découvrez les sites en ligne dans la section Réalisations."
+        q8: "Avez-vous déjà travaillé avec des commerces comme le mien ?", a8: "Oui — restaurants, salons, spas et entreprises.", a8link: "Voir les sites en ligne →"
       },
       finale: {
         orbit: "LANCER MON PROJET · LANCER MON PROJET · ",
@@ -363,7 +363,7 @@
         q5: "Ho già Instagram. Perché mi serve un sito?", a5: "Instagram dipende da un algoritmo che non controlli. Un sito è la tua vetrina: compare su Google, è aperto 24 ore su 24 ed è tuo.",
         q6: "Il sito è davvero mio?", a6: "Sì — il tuo nome, le tue foto, i tuoi contenuti. Lo costruiamo per la tua attività, non per noi.",
         q7: "E se voglio smettere?", a7: "Nessun vincolo. Puoi disdire quando vuoi, gratuitamente.",
-        q8: "Avete già lavorato con attività come la mia?", a8: "Sì — ristoranti, saloni, spa e aziende. Dai un'occhiata ai siti online nella sezione Progetti."
+        q8: "Avete già lavorato con attività come la mia?", a8: "Sì — ristoranti, saloni, spa e aziende.", a8link: "Guarda i siti online →"
       },
       finale: {
         orbit: "INIZIA UN PROGETTO · INIZIA UN PROGETTO · ",
@@ -491,7 +491,7 @@
         q5: "มี Instagram อยู่แล้ว ทำไมต้องมีเว็บไซต์?", a5: "Instagram ขึ้นอยู่กับอัลกอริทึมที่คุณควบคุมไม่ได้ เว็บไซต์คือหน้าร้านของคุณเอง: ค้นเจอบน Google เปิดตลอด 24 ชั่วโมง และเป็นของคุณ",
         q6: "เว็บไซต์เป็นของฉันจริงไหม?", a6: "จริง — ชื่อของคุณ รูปของคุณ เนื้อหาของคุณ เราสร้างเพื่อธุรกิจของคุณ ไม่ใช่เพื่อเรา",
         q7: "ถ้าอยากเลิกใช้บริการล่ะ?", a7: "ไม่มีข้อผูกมัด ยกเลิกได้ทุกเมื่อ ไม่มีค่าใช้จ่าย",
-        q8: "เคยทำงานกับธุรกิจแบบของฉันไหม?", a8: "เคย — ร้านอาหาร ร้านทำผม สปา และบริษัท ดูเว็บไซต์จริงได้ในส่วนผลงานด้านบน"
+        q8: "เคยทำงานกับธุรกิจแบบของฉันไหม?", a8: "เคย — ร้านอาหาร ร้านทำผม สปา และบริษัท", a8link: "ดูเว็บไซต์จริง →"
       },
       finale: {
         orbit: "เริ่มโปรเจกต์ · เริ่มโปรเจกต์ · เริ่มโปรเจกต์ · ",
@@ -619,7 +619,7 @@
         q5: "لدي إنستغرام بالفعل. لماذا أحتاج موقعاً؟", a5: "إنستغرام يعتمد على خوارزمية لا تتحكم بها. الموقع هو واجهة محلك الخاصة: يظهر على Google، ومتاح على مدار الساعة، وملك لك.",
         q6: "هل الموقع ملكي حقاً؟", a6: "نعم — اسمك وصورك ومحتواك. نبنيه لعملك، لا لنا.",
         q7: "ماذا لو أردت التوقف؟", a7: "بلا أي التزام. يمكنك الإلغاء في أي وقت، مجاناً.",
-        q8: "هل عملتم مع أنشطة مثل نشاطي؟", a8: "نعم — مطاعم وصالونات ومراكز سبا وشركات. ألقِ نظرة على المواقع المتاحة في قسم أعمالنا."
+        q8: "هل عملتم مع أنشطة مثل نشاطي؟", a8: "نعم — مطاعم وصالونات ومراكز سبا وشركات.", a8link: "شاهد المواقع المباشرة ←"
       },
       finale: {
         orbit: "ابدأ مشروعك · ابدأ مشروعك · ابدأ مشروعك · ",

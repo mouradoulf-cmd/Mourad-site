@@ -95,7 +95,7 @@
           var k = i / pts.length;
           ctx.beginPath();
           ctx.moveTo(pts[i - 1].x, pts[i - 1].y); ctx.lineTo(pts[i].x, pts[i].y);
-          ctx.strokeStyle = "rgba(" + Math.round(123 + 107 * k) + "," + Math.round(97 + 97 * k) + "," + Math.round(255 - 133 * k) + "," + (k * 0.55).toFixed(3) + ")"; // violet tail → gold head
+          ctx.strokeStyle = "rgba(" + Math.round(138 + 63 * k) + "," + Math.round(99 + 70 * k) + "," + Math.round(36 + 61 * k) + "," + (k * 0.55).toFixed(3) + ")"; // bronze tail → gold head
           ctx.lineWidth = 0.6 + k * 3.2;
           ctx.stroke();
         }

@@ -23,7 +23,7 @@
 
   if (reduce) return;
 
-  /* ---------- hero: gold and violet dust drifting up through the light ---------- */
+  /* ---------- hero: gold and ivory dust drifting up through the light ---------- */
   (function dust() {
     var canvas = $(".h__dust");
     if (!canvas || !canvas.getContext) return;
@@ -48,8 +48,8 @@
         if (m.y < -10) motes[k] = m = mote(false);
         var o = (m.o * (0.65 + Math.sin(m.a * 3) * 0.35)).toFixed(3);
         ctx.beginPath();
-        ctx.fillStyle = m.gold ? "rgba(243,214,150," + o + ")" : "rgba(170,150,255," + o + ")";
-        ctx.shadowColor = m.gold ? "rgba(230,194,122,.9)" : "rgba(123,97,255,.9)";
+        ctx.fillStyle = m.gold ? "rgba(243,214,150," + o + ")" : "rgba(245,237,214," + o + ")";
+        ctx.shadowColor = m.gold ? "rgba(201,169,97,.9)" : "rgba(245,241,232,.75)";
         ctx.shadowBlur = m.r * 6;
         ctx.arc(m.x, m.y, m.r, 0, 6.2832); ctx.fill();
       }

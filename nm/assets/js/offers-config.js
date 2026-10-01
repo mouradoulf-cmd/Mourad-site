@@ -40,7 +40,7 @@ window.NMPrice = (function () {
     var cur = l === "ar" ? "mad" : "eur";
     var v = O.approx[cur][n];
     if (v == null) v = cur === "eur" ? Math.round(n / 38) : Math.round(n * 0.28 / 10) * 10;
-    return "≈ " + group(v) + (cur === "eur" ? " €" : " DH");
+    return "about " + group(v) + (cur === "eur" ? " €" : " DH");
   }
   function render(root) {
     (root || document).querySelectorAll("[data-thb]").forEach(function (el) { el.textContent = thb(+el.getAttribute("data-thb")); });
