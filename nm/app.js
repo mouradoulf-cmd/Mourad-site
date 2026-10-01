@@ -573,7 +573,13 @@
   function frame() {
     if (!paused) {
       target = scrollY;
-      current = staticMode ? target : lerp(current, target, 0.085);
+      /* Touch momentum scroll is already smooth on its own; lerping it
+         again on top makes `current` lag behind a fast flick and the
+         pinned scenes render stale in-between frames while it catches
+         up — the "opens a little, stutters" feel. Desktop wheel input
+         is the opposite: discrete ticks that need the lerp to feel
+         fluid. So track 1:1 on touch, ease on desktop. */
+      current = (staticMode || touch) ? target : lerp(current, target, 0.085);
       if (Math.abs(current - target) < 0.05) current = target;
       mx = lerp(mx, mxT, 0.06);
       my = lerp(my, myT, 0.06);
@@ -655,8 +661,22 @@
     }, 16);
   }
 
-  let rt;
-  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(measure, 200); });
+  /* On mobile, the address bar hiding/showing while the user scrolls
+     fires `resize` with the SAME width and a different height — if we
+     remeasure then, docH / body height get rewritten mid-gesture and
+     the browser corrects scrollY under the user's thumb, which is the
+     other half of the "opens a little, stutters" bug. Only a real
+     width change (rotation, actual resize) should trigger a remeasure
+     on touch devices; desktop keeps remeasuring on any resize. */
+  let rt, lastVW = innerWidth;
+  addEventListener('resize', () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => {
+      if (touch && innerWidth === lastVW) return;
+      lastVW = innerWidth;
+      measure();
+    }, 200);
+  });
 
   /* hook de debug (captures outillées) */
   window.__ea = {

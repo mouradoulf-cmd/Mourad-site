@@ -130,6 +130,7 @@ body.handoff .dock {
 .scene { position: relative; }
 .scene .pin {
   height: 100vh;
+  height: 100svh; /* small viewport height — stays put when a mobile toolbar hides/shows mid-scroll, matching the JS's innerHeight measurement so pin math doesn't drift */
   position: relative;
   overflow: hidden;
   will-change: transform;
@@ -192,6 +193,7 @@ body.is-ready .fl img { transform: scale(1); }
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw; height: 100vh;
+  height: 100svh;
   object-fit: cover;
   border-radius: 0;
   max-width: none;
@@ -239,6 +241,7 @@ body.is-ready .fl img { transform: scale(1); }
   background: var(--white);
   padding: 14vh var(--gutter) 30vh;
   margin-top: -100vh; /* recouvre le manifeste grisé SUR PLACE, pendant son épinglage */
+  margin-top: -100svh;
   z-index: 2;
   overflow: visible;
 }
