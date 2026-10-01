@@ -18,6 +18,46 @@
     document.head.appendChild(s);
   }
 
+  /* The real Google "G" mark (same path/colors as the flat SVG fallback
+     in offer-icons.js) rasterized onto a transparent plaque, plus a
+     small storefront glyph for "Business Profile" — replaces the
+     abstract pin. Drawn via an Image so the G's curves stay pixel-
+     accurate instead of being hand-approximated in canvas calls. */
+  var GOOGLE_G_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">' +
+    '<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>' +
+    '<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>' +
+    '<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>' +
+    '<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>' +
+    '</svg>';
+
+  function googleCanvas(onReady) {
+    var c = document.createElement("canvas"); c.width = c.height = 256;
+    var ctx = c.getContext("2d");
+    var img = new Image();
+    img.onload = function () {
+      ctx.clearRect(0, 0, 256, 256);
+      var s = 118; // the G, large and centered-high
+      ctx.drawImage(img, (256 - s) / 2, 30, s, s);
+      // a simple storefront glyph underneath — Google blue, generic (not a reproduced brand asset)
+      ctx.save();
+      ctx.translate(128, 190);
+      ctx.fillStyle = "#4285F4";
+      ctx.strokeStyle = "#4285F4";
+      ctx.lineWidth = 7;
+      ctx.lineJoin = "round"; ctx.lineCap = "round";
+      ctx.strokeRect(-38, -4, 76, 34);
+      ctx.beginPath();
+      ctx.moveTo(-46, -4); ctx.lineTo(-30, -26); ctx.lineTo(30, -26); ctx.lineTo(46, -4); ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = "#15131e";
+      ctx.fillRect(-10, 8, 20, 22);
+      ctx.restore();
+      onReady();
+    };
+    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(GOOGLE_G_SVG);
+    return c;
+  }
+
   /* Real QR canvas texture — same rule as everywhere else on the site:
      an actual scannable code, never a decorative fake pattern. */
   function qrCanvas() {
@@ -49,15 +89,12 @@
 
   var BUILD = {
     google: function (THREE, group) {
-      var pts = [[0, 0], [0.09, 0.06], [0.26, 0.21], [0.36, 0.44], [0.36, 0.64], [0.26, 0.8], [0.1, 0.88], [0, 0.9]]
-        .map(function (p) { return new THREE.Vector2(p[0], p[1]); });
-      var geo = new THREE.LatheGeometry(pts, 48);
-      var pinMat = new THREE.MeshStandardMaterial({ color: GOLD, metalness: 0.55, roughness: 0.4 });
-      var pin = new THREE.Mesh(geo, pinMat);
-      pin.scale.setScalar(0.72);
-      pin.position.z = 0.14;
-      pin.position.y = -0.3;
-      group.add(pin);
+      var tex = new THREE.CanvasTexture(googleCanvas(function () { tex.needsUpdate = true; }));
+      tex.anisotropy = 4;
+      var mat = new THREE.MeshStandardMaterial({ map: tex, transparent: true, metalness: 0.1, roughness: 0.55 });
+      var plaque = new THREE.Mesh(new THREE.PlaneGeometry(2.05, 2.05), mat);
+      plaque.position.z = 0.115;
+      group.add(plaque);
     },
     qr: function (THREE, group) {
       var tex = new THREE.CanvasTexture(qrCanvas());
