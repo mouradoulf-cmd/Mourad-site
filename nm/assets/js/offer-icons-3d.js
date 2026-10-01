@@ -165,24 +165,35 @@
         group.add(pin);
       });
     },
+    /* A small gold crown — Ultimate is the top tier, so it gets the
+       clearest "best one" symbol rather than another abstract shape. */
     ultimate: function (THREE, group) {
-      var nodes = [[0, 0.32], [-0.3, -0.2], [0.3, -0.2]];
-      var sphGeo = new THREE.SphereGeometry(0.13, 24, 24);
-      var pos = nodes.map(function (n) { return new THREE.Vector3(n[0], n[1], 0.14); });
-      pos.forEach(function (p) {
-        var s = new THREE.Mesh(sphGeo, goldMat(THREE));
-        s.position.copy(p);
-        group.add(s);
-      });
-      function rod(a, b) {
-        var dir = new THREE.Vector3().subVectors(b, a), len = dir.length();
-        var geo = new THREE.CylinderGeometry(0.03, 0.03, len, 12);
-        var m = new THREE.Mesh(geo, goldMat(THREE));
-        m.position.copy(a).add(b).multiplyScalar(0.5);
-        m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.clone().normalize());
-        group.add(m);
+      var jewelMat = new THREE.MeshStandardMaterial({ color: "#8a1f2d", metalness: 0.3, roughness: 0.2, emissive: 0x4a0f16, emissiveIntensity: 0.4 });
+      var y0 = -0.32; // band sits low so the points have room to rise
+
+      var band = new THREE.Mesh(new THREE.TorusGeometry(0.46, 0.065, 12, 36), goldMat(THREE));
+      band.rotation.x = Math.PI / 2;
+      band.position.y = y0;
+      group.add(band);
+      var trim = new THREE.Mesh(new THREE.TorusGeometry(0.46, 0.022, 8, 36), goldMat(THREE));
+      trim.rotation.x = Math.PI / 2;
+      trim.position.y = y0 + 0.11;
+      group.add(trim);
+
+      var N = 5, R = 0.44;
+      for (var i = 0; i < N; i++) {
+        var a = (i / N) * Math.PI * 2;
+        var tall = i % 2 === 0;
+        var h = tall ? 0.62 : 0.4;
+        var x = Math.cos(a) * R, z = Math.sin(a) * R * 0.35 + 0.1;
+        var spike = new THREE.Mesh(new THREE.ConeGeometry(0.1, h, 10), goldMat(THREE));
+        spike.position.set(x, y0 + 0.12 + h / 2, z);
+        spike.rotation.z = -Math.cos(a) * 0.18;
+        group.add(spike);
+        var jewel = new THREE.Mesh(new THREE.SphereGeometry(tall ? 0.065 : 0.05, 16, 16), tall ? jewelMat : goldMat(THREE));
+        jewel.position.set(x, y0 + 0.12 + h, z);
+        group.add(jewel);
       }
-      rod(pos[0], pos[1]); rod(pos[1], pos[2]); rod(pos[2], pos[0]);
     }
   };
 
