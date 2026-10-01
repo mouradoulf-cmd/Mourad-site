@@ -114,7 +114,10 @@
     d.shop.name=$('shop').value.trim();d.shop.open=o;d.shop.close=c;Store.save(d);say('บันทึกแล้ว');};
   $('copy').onclick=function(){var l=$('link');l.select();
     (navigator.clipboard?navigator.clipboard.writeText(l.value):Promise.reject()).then(function(){say('คัดลอกลิงก์แล้ว')},function(){document.execCommand&&document.execCommand('copy');say('คัดลอกลิงก์แล้ว')});};
-  $('reset').onclick=function(){if(confirm('ล้างข้อมูลเดโมทั้งหมด?')){Store.reset();renderAll();say('ล้างข้อมูลแล้ว');}};
+  var rt=null;
+  $('reset').onclick=function(){var b=this;
+    if(rt){clearTimeout(rt);rt=null;b.textContent='ล้างข้อมูลเดโม';Store.reset();renderAll();say('ล้างข้อมูลแล้ว');return;}
+    b.textContent='กดอีกครั้งเพื่อยืนยันการล้างข้อมูล';rt=setTimeout(function(){rt=null;b.textContent='ล้างข้อมูลเดโม';},4000);};
   window.addEventListener('storage',renderAll);
   renderAll();
 })();
