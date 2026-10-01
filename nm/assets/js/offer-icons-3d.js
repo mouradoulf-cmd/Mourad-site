@@ -138,14 +138,18 @@
       var glyph = new THREE.Group();
       BUILD[kind](THREE, glyph);
       root.add(glyph);
-      root.scale.setScalar(0.001);
       scene.add(root);
+      /* Reduced motion still gets the medallion — just no spin, no
+         pop-in: a still frame, lit and tilted like the others. */
+      root.scale.setScalar(REDUCE ? 1 : 0.001);
+      if (REDUCE) root.rotation.x = 0.08;
 
       function resize() {
         var w = container.clientWidth, h = container.clientHeight || w;
         if (!w || !h) return;
         renderer.setSize(w, h, false);
         camera.aspect = w / h; camera.updateProjectionMatrix();
+        if (REDUCE) renderer.render(scene, camera);
       }
       resize();
       window.addEventListener("resize", resize, { passive: true });
@@ -154,6 +158,7 @@
          runs synchronously before showModal()) — a plain resize listener
          misses that. ResizeObserver catches the box becoming real. */
       if ("ResizeObserver" in window) new ResizeObserver(resize).observe(container);
+      if (REDUCE) { renderer.render(scene, camera); return; }
 
       var raf = 0, active = false, entered = false, enterStart = 0;
       function easeOutBack(t) { var c1 = 1.4, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); }
@@ -177,13 +182,13 @@
   }
 
   function mountAll(root) {
-    if (REDUCE || !window.WebGLRenderingContext) return;
+    if (!window.WebGLRenderingContext) return;
     (root || document).querySelectorAll(".offer__icon[data-icon]").forEach(function (el) {
       mountOne(el, el.getAttribute("data-icon"));
     });
   }
 
-  window.NMIcon3D = { mount: mountOne, supported: !REDUCE && !!window.WebGLRenderingContext };
+  window.NMIcon3D = { mount: mountOne, supported: !!window.WebGLRenderingContext };
   if (document.readyState === "complete") mountAll();
   else window.addEventListener("load", function () { mountAll(); });
 })();
