@@ -5,7 +5,6 @@
   "use strict";
   var D = {
     en: {
-      film: {"eyebrow": "The 30-second tour", "t1": "Be found.", "p1": "Your Google profile puts you on the map — in front of every customer searching nearby.", "t2": "Be scanned.", "p2": "One QR code opens your menu, your site and your WhatsApp — in their language.", "t3": "Be chosen.", "p3": "A premium site that turns a glance into a booking — live in 48 hours, paid once."},
       meta2: {
         services: { title: "Services — Google, QR menu & websites | NM Studio", description: "Four offers for restaurants, salons, spas and street food in Pattaya: Google Business Profile, QR menu, Complete Pack and Ultimate + Social. From ฿990, paid once." },
         pricing: { title: "Pricing — pay once, stay free | NM Studio", description: "Clear prices in Thai baht: from ฿990 one-time, with an optional care plan from ฿290 a month. No contract." }
@@ -124,7 +123,6 @@
     },
 
     fr: {
-      film: {"eyebrow": "La visite en 30 secondes", "t1": "Soyez trouvé.", "p1": "Votre fiche Google vous place sur la carte — devant chaque client qui cherche autour de lui.", "t2": "Soyez scanné.", "p2": "Un seul QR code ouvre votre menu, votre site et votre WhatsApp — dans leur langue.", "t3": "Soyez choisi.", "p3": "Un site premium qui transforme un regard en réservation — en ligne sous 48 h, payé une seule fois."},
       meta2: {
         services: { title: "Services — Google, menu QR et sites web | NM Studio", description: "Quatre offres pour restaurants, salons, spas et street food à Pattaya : fiche Google, menu QR, Pack complet et Ultime + réseaux. Dès 990 ฿, payé une fois." },
         pricing: { title: "Tarifs — payez une fois, restez libre | NM Studio", description: "Des prix clairs en bahts : dès 990 ฿ en paiement unique, avec un forfait d'entretien optionnel dès 290 ฿ par mois. Sans engagement." }
@@ -243,7 +241,6 @@
     },
 
     it: {
-      film: {"eyebrow": "Il tour in 30 secondi", "t1": "Fatti trovare.", "p1": "Il tuo profilo Google ti mette sulla mappa, davanti a ogni cliente che cerca nei dintorni.", "t2": "Fatti scansionare.", "p2": "Un solo QR code apre menu, sito e WhatsApp, nella loro lingua.", "t3": "Fatti scegliere.", "p3": "Un sito premium che trasforma uno sguardo in una prenotazione: online in 48 ore, si paga una volta."},
       meta2: {
         services: { title: "Servizi — Google, menù QR e siti web | NM Studio", description: "Quattro offerte per ristoranti, saloni, spa e street food a Pattaya: scheda Google, menù QR, Pacchetto completo e Ultimate + social. Da 990 ฿, pagati una volta." },
         pricing: { title: "Prezzi — paghi una volta, resti libero | NM Studio", description: "Prezzi chiari in baht: da 990 ฿ una tantum, con un piano di assistenza facoltativo da 290 ฿ al mese. Nessun vincolo." }
@@ -362,7 +359,6 @@
     },
 
     th: {
-      film: {"eyebrow": "ทัวร์ 30 วินาที", "t1": "ให้ลูกค้าหาเจอ", "p1": "โปรไฟล์ Google ปักหมุดคุณบนแผนที่ ต่อหน้าลูกค้าทุกคนที่ค้นหาใกล้ตัว", "t2": "ให้ลูกค้าสแกน", "p2": "QR code เดียวเปิดเมนู เว็บไซต์ และ WhatsApp ของคุณ ในภาษาของลูกค้า", "t3": "ให้ลูกค้าเลือกคุณ", "p3": "เว็บไซต์พรีเมียมที่เปลี่ยนสายตาเป็นการจอง ออนไลน์ใน 48 ชั่วโมง จ่ายครั้งเดียว"},
       meta2: {
         services: { title: "บริการ — Google, เมนู QR และเว็บไซต์ | NM Studio", description: "สี่แพ็กเกจสำหรับร้านอาหาร ร้านทำผม สปา และสตรีทฟู้ดในพัทยา: Google Business Profile, เมนู QR, แพ็กเกจครบชุด และอัลติเมท + โซเชียล เริ่มต้น 990 บาท จ่ายครั้งเดียว" },
         pricing: { title: "ราคา — จ่ายครั้งเดียว ไม่มีสัญญา | NM Studio", description: "ราคาชัดเจนเป็นเงินบาท เริ่มต้น 990 บาท จ่ายครั้งเดียว พร้อมแพ็กดูแลรายเดือนแบบเลือกได้ เริ่ม 290 บาท/เดือน ไม่มีสัญญาผูกมัด" }
@@ -481,7 +477,6 @@
     },
 
     ar: {
-      film: {"eyebrow": "جولة في 30 ثانية", "t1": "ليجدك العملاء", "p1": "ملفك على Google يضعك على الخريطة أمام كل عميل يبحث بالقرب منه.", "t2": "ليمسحك العملاء", "p2": "رمز QR واحد يفتح قائمتك وموقعك وواتساب بلغتهم.", "t3": "ليختارك العملاء", "p3": "موقع فاخر يحوّل النظرة إلى حجز — يعمل خلال 48 ساعة ويُدفع مرة واحدة."},
       meta2: {
         services: { title: "الخدمات — Google وقائمة QR والمواقع | NM Studio", description: "أربعة عروض للمطاعم والصالونات والسبا وأكشاك الطعام في باتايا: ملف Google التجاري، قائمة QR، الباقة الكاملة، والباقة القصوى + التواصل الاجتماعي. ابتداءً من 990 بات، تُدفع مرة واحدة." },
         pricing: { title: "الأسعار — ادفع مرة واحدة وابقَ حرًا | NM Studio", description: "أسعار واضحة بالبات التايلاندي: ابتداءً من 990 بات دفعة واحدة، مع خطة عناية اختيارية ابتداءً من 290 بات شهريًا. بدون عقد." }

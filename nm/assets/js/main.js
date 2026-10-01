@@ -334,15 +334,18 @@
         }
       });
     })(el, false);
-    // Give each word inside <em> its slice of the gradient.
-    $$("em", el).forEach(function (em) {
-      var er = em.getBoundingClientRect();
-      $$(".wi", em).forEach(function (w) {
-        var wr = w.getBoundingClientRect();
-        w.style.backgroundImage = getComputedStyle(em).backgroundImage;
-        w.style.backgroundSize = er.width + "px 100%";
-        w.style.backgroundPosition = (er.left - wr.left) + "px 0";
-        w.style.webkitBackgroundClip = "text"; w.style.backgroundClip = "text"; w.style.color = "transparent";
+    // Give each word inside <em> its slice of the gradient. Read every rect
+    // and computed style first, then write — interleaving the two forces a
+    // synchronous layout on each word and adds up across several titles.
+    var emReads = $$("em", el).map(function (em) {
+      return { em: em, rect: em.getBoundingClientRect(), bg: getComputedStyle(em).backgroundImage, words: $$(".wi", em).map(function (w) { return { w: w, rect: w.getBoundingClientRect() }; }) };
+    });
+    emReads.forEach(function (e) {
+      e.words.forEach(function (ww) {
+        ww.w.style.backgroundImage = e.bg;
+        ww.w.style.backgroundSize = e.rect.width + "px 100%";
+        ww.w.style.backgroundPosition = (e.rect.left - ww.rect.left) + "px 0";
+        ww.w.style.webkitBackgroundClip = "text"; ww.w.style.backgroundClip = "text"; ww.w.style.color = "transparent";
       });
     });
     return { words: words, revert: function () { el.innerHTML = original; } };
@@ -377,19 +380,28 @@
     gsap.to(".h__visual", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".h", start: "top top", end: "bottom top", scrub: true } });
   } else tl.kill();
 
-  /* Section titles: word-by-word rise when they enter. Words are split and
-     tucked below their masks up front; a language switch simply replaces the
-     markup, which leaves the translated title fully visible. */
+  /* Section titles: word-by-word rise when they enter. Splitting a title
+     into word spans forces a layout read, so titles well below the fold
+     are only split once they're getting close — not all at once on load,
+     which used to add up across six titles. Words are tucked below their
+     masks right before the reveal trigger; a language switch simply
+     replaces the markup, which leaves the translated title fully visible. */
   $$('[data-anim="words"]').forEach(function (el) {
-    var split = splitWords(el);
-    gsap.set(split.words, { yPercent: 115 });
-    ST.create({
-      trigger: el, start: "top 86%", once: true,
-      onEnter: function () {
-        if (!split.words[0] || !el.contains(split.words[0])) return;
-        gsap.to(split.words, { yPercent: 0, duration: 1.1, stagger: 0.05, ease: "expo.out", onComplete: split.revert });
-      }
-    });
+    function setup() {
+      var split = splitWords(el);
+      gsap.set(split.words, { yPercent: 115 });
+      ST.create({
+        trigger: el, start: "top 86%", once: true,
+        onEnter: function () {
+          if (!split.words[0] || !el.contains(split.words[0])) return;
+          gsap.to(split.words, { yPercent: 0, duration: 1.1, stagger: 0.05, ease: "expo.out", onComplete: split.revert });
+        }
+      });
+    }
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); setup(); } }, { rootMargin: "50% 0px" });
+      io.observe(el);
+    } else setup();
   });
 
   $$(".section-lead, .section-head .eyebrow, .phero .eyebrow, .phero__lead").forEach(function (el) {
