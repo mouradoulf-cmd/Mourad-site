@@ -3,69 +3,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>จองง่าย — ระบบจองคิวผ่าน LINE สำหรับร้านเล็ก</title>
-<meta name="description" content="ระบบจองคิวออนไลน์สำหรับร้านนวด สปา ร้านเสริมสวย คลินิก ลูกค้าจองเองได้ตลอด 24 ชั่วโมง ร้านเห็นคิวทั้งหมดในที่เดียว">
+<title>จองง่าย — ระบบจองคิวสำหรับร้านนวด ร้านเสริมสวย และคลินิก</title>
+<meta name="description" content="ลูกค้าจองคิวเองได้ตลอด 24 ชั่วโมง ร้านเห็นคิวทั้งหมดในที่เดียว ไม่ต้องตอบแชททั้งวัน สำหรับร้านนวด สปา ร้านเสริมสวย ทำเล็บ และคลินิก">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Mitr:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<header class="nav"><div class="container">
-  <a class="logo" href="index.html">จอง<b>ง่าย</b></a>
-  <nav class="nav-links">
-    <a href="#features">ฟีเจอร์</a><a href="#pricing">ราคา</a><a href="#faq">คำถาม</a>
-    <a class="btn btn--sm" href="dashboard.html">ลองใช้ฟรี</a>
+<header class="nav"><div class="wrap">
+  <a class="logo" href="index.html">จอง<i>ง่าย</i></a>
+  <nav class="nav-links" aria-label="เมนูหลัก">
+    <a href="#why">ทำไมต้องจองง่าย</a><a href="#features">ฟีเจอร์</a><a href="#pricing">ราคา</a><a href="#faq">คำถาม</a>
+    <a class="btn btn--sm btn--dark" href="dashboard.html">ลองหน้าร้านฟรี</a>
   </nav>
 </div></header>
 
 <main>
-<section class="hero"><div class="container">
-  <span class="badge">สำหรับร้านนวด สปา เสริมสวย คลินิก</span>
-  <h1>ลูกค้าจองคิวเอง<br><em>คุณไม่ต้องตอบแชททั้งวัน</em></h1>
-  <p>ส่งลิงก์จองให้ลูกค้าทาง LINE, Facebook หรือ Instagram ลูกค้าเลือกบริการและเวลาว่างได้เอง ร้านเห็นคิวทั้งหมดในหน้าเดียว</p>
-  <div class="actions">
-    <a class="btn" href="book.html">ลองหน้าจองของลูกค้า</a>
-    <a class="btn btn--ghost" href="dashboard.html">ดูหน้าจัดการของร้าน</a>
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>ลูกค้าจองคิวเอง<br>ร้านไม่ต้องตอบแชททั้งวัน</h1>
+    <p class="lead">ส่งลิงก์ให้ลูกค้าทาง LINE, Facebook หรือ Instagram ลูกค้าเลือกบริการและเวลาว่างได้เอง คิวที่ถูกจองแล้วจะไม่ซ้ำ และร้านเห็นทุกคิวในที่เดียว</p>
+    <div class="actions">
+      <a class="btn" href="book.html">ลองจองคิวแบบลูกค้า</a>
+      <a class="btn btn--line" href="dashboard.html">ดูหน้าจัดการของร้าน</a>
+    </div>
+    <small>ใช้ผ่านมือถือได้เลย ไม่ต้องติดตั้งแอป</small>
+  </div>
+
+  <div class="book-board" id="board" aria-label="ตัวอย่างสมุดคิวที่กดจองได้">
+    <div class="bb-head"><span>สมุดคิววันนี้</span><span>กดช่องว่างเพื่อลองจอง</span></div>
+    <div class="bb-grid" id="bbGrid" role="grid"></div>
+    <div class="bb-foot"><span>จองแล้ว <b id="bbCount">0</b> คิว</span><span>คาดว่ารายได้ <b id="bbSum">฿0</b></span></div>
+    <div class="bb-hint">ตัวอย่างเพื่อให้เห็นภาพ ไม่ใช่ข้อมูลร้านจริง</div>
   </div>
 </div></section>
 
-<section id="features"><div class="container">
-  <h2>ทำงานง่าย ใช้ได้ในไม่กี่นาที</h2>
-  <p class="sub">ไม่ต้องติดตั้งโปรแกรม ใช้ผ่านมือถือได้ทันที</p>
-  <div class="grid grid-3">
-    <div class="card"><div class="step-n">1</div><h3>ตั้งค่าบริการ</h3><p>ใส่ชื่อบริการ ราคา และเวลาเปิด–ปิดร้าน ใช้เวลาไม่ถึง 5 นาที</p></div>
-    <div class="card"><div class="step-n">2</div><h3>ส่งลิงก์ให้ลูกค้า</h3><p>แปะลิงก์ใน LINE OA, Facebook หรือ Instagram ลูกค้ากดจองได้เลย</p></div>
-    <div class="card"><div class="step-n">3</div><h3>เห็นคิวทั้งหมด</h3><p>ดูรายการจอง ยืนยันหรือยกเลิกได้ในคลิกเดียว คิวที่ถูกจองแล้วจะไม่ซ้ำกัน</p></div>
-  </div>
-  <div class="grid grid-3" style="margin-top:18px">
-    <div class="card"><div class="ico">🕒</div><h3>จองได้ 24 ชั่วโมง</h3><p>ลูกค้าจองตอนดึกได้ ร้านไม่พลาดลูกค้า</p></div>
-    <div class="card"><div class="ico">🚫</div><h3>ไม่มีคิวชนกัน</h3><p>เวลาที่ถูกจองแล้วจะถูกปิดอัตโนมัติ</p></div>
-    <div class="card"><div class="ico">💬</div><h3>ส่งยืนยันทาง LINE</h3><p>ลูกค้ากดปุ่มเดียวเพื่อส่งรายละเอียดการจองเข้า LINE ร้าน</p></div>
+<section class="sec" id="why" style="background:var(--paper)"><div class="wrap">
+  <h2>จากแชทวุ่น ๆ มาเป็นคิวที่เห็นครบ</h2>
+  <p class="sub">ร้านเล็กส่วนใหญ่จองคิวผ่านแชท ลูกค้าถามซ้ำ ร้านต้องจดเอง และคิวพลาดได้ง่าย</p>
+  <div class="compare">
+    <div class="pane pane--bad">
+      <h3>แบบเดิม: จองผ่านแชท</h3>
+      <div class="chat">
+        <div class="msg msg--in">พรุ่งนี้บ่ายสองว่างไหมคะ</div>
+        <div class="msg msg--out">ขอเช็กก่อนนะคะ</div>
+        <div class="msg msg--in">แล้วบ่ายสามล่ะคะ</div>
+        <div class="msg msg--out">บ่ายสามน้องแอนไม่ว่างค่ะ…</div>
+        <div class="msg msg--in">งั้นเดี๋ยวทักมาใหม่ค่ะ</div>
+      </div>
+    </div>
+    <div class="pane pane--good">
+      <h3>แบบจองง่าย: ลูกค้าเลือกเอง</h3>
+      <ul>
+        <li>ลูกค้าเห็นเวลาว่างทันที ไม่ต้องรอตอบ</li>
+        <li>จองได้ตอนดึก ตอนที่ร้านปิดแล้ว</li>
+        <li>เวลาที่ถูกจองแล้วถูกปิดให้อัตโนมัติ คิวไม่ชน</li>
+        <li>ร้านเปิดหน้าเดียวก็เห็นคิวทั้งวัน</li>
+      </ul>
+    </div>
   </div>
 </div></section>
 
-<section id="pricing"><div class="container">
+<section class="sec sec--ink" id="how"><div class="wrap">
+  <h2>เริ่มใช้ได้ในสามขั้นตอน</h2>
+  <p class="sub">ไม่ต้องมีความรู้คอมพิวเตอร์ ถ้าใช้ LINE เป็นก็ใช้ได้</p>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>ใส่บริการของร้าน</h3><p>ชื่อบริการ ราคา และเวลาเปิด–ปิด ใช้เวลาไม่ถึง 5 นาที</p></div>
+    <div class="step"><b>2</b><h3>ส่งลิงก์ให้ลูกค้า</h3><p>แปะลิงก์ใน LINE OA, Facebook หรือ Instagram ของร้าน</p></div>
+    <div class="step"><b>3</b><h3>ดูคิวและยืนยัน</h3><p>เห็นรายการจองทั้งหมด กดยืนยันหรือยกเลิกได้ในคลิกเดียว</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="features"><div class="wrap">
+  <h2>มีแค่สิ่งที่ร้านเล็กต้องใช้จริง</h2>
+  <p class="sub">เราไม่ทำระบบใหญ่โตที่ใช้ยาก ทำเฉพาะสิ่งที่ช่วยให้ไม่พลาดลูกค้า</p>
+  <div class="feat">
+    <div><h3>ลิงก์จองประจำร้าน</h3><p>ลิงก์เดียวใช้ได้ทุกช่องทาง ลูกค้าไม่ต้องสมัครสมาชิก กรอกแค่ชื่อกับเบอร์โทร</p></div>
+    <div><h3>ส่งรายละเอียดเข้า LINE</h3><p>หลังจองเสร็จ ลูกค้ากดปุ่มเดียวเพื่อส่งรายละเอียดการจองเข้า LINE ของร้าน</p></div>
+    <div><h3>ปิดเวลาที่ถูกจองให้เอง</h3><p>เวลาที่มีคนจองแล้วจะเลือกไม่ได้อีก ไม่ต้องมานั่งเช็กคิวชน</p></div>
+    <div><h3>เห็นรายได้จากคิวที่ยืนยัน</h3><p>สรุปจำนวนคิวและรายได้ในหน้าเดียว รู้ว่าวันนี้ร้านทำได้เท่าไร</p></div>
+    <div><h3>แก้บริการและราคาได้เอง</h3><p>เพิ่ม ลบ หรือเปลี่ยนราคาบริการได้ทุกเมื่อ ไม่ต้องรอใคร</p></div>
+    <div><h3>เหมาะกับมือถือ</h3><p>ทั้งลูกค้าและเจ้าของร้านใช้ผ่านมือถือได้สะดวก ไม่ต้องมีคอมพิวเตอร์</p></div>
+  </div>
+  <h3 style="margin:48px 0 14px;color:var(--indigo)">เหมาะกับร้านแบบไหน</h3>
+  <div class="who"><span>ร้านนวด</span><span>สปา</span><span>ร้านเสริมสวย</span><span>ร้านทำเล็บ</span><span>บาร์เบอร์</span><span>คลินิกความงาม</span><span>สักและเจาะ</span></div>
+</div></section>
+
+<section class="sec" id="pricing" style="background:var(--paper)"><div class="wrap">
   <h2>ราคาเรียบง่าย</h2>
-  <p class="sub">ทดลองใช้ฟรี 14 วัน ยกเลิกเมื่อไหร่ก็ได้</p>
-  <div class="grid grid-3">
-    <div class="card"><h3>เริ่มต้น</h3><div class="price">฿299<small> / เดือน</small></div>
-      <ul class="list"><li>1 สาขา</li><li>บริการไม่จำกัด</li><li>ลิงก์จองของร้าน</li><li>หน้าจัดการคิว</li></ul>
-      <a class="btn btn--ghost" href="dashboard.html">ลองใช้ฟรี</a></div>
-    <div class="card card--hl"><h3>มืออาชีพ</h3><div class="price">฿499<small> / เดือน</small></div>
-      <ul class="list"><li>ทุกอย่างในแพ็กเกจเริ่มต้น</li><li>พนักงานหลายคน</li><li>แจ้งเตือนผ่าน LINE</li><li>รายงานรายได้</li></ul>
-      <a class="btn" href="dashboard.html">ลองใช้ฟรี</a></div>
+  <p class="sub">เริ่มจากทดลองใช้ ไม่มีสัญญาผูกมัด</p>
+  <div class="plans">
+    <div class="plan"><h3>เริ่มต้น</h3><div class="price">฿299<small> / เดือน</small></div>
+      <ul><li>1 สาขา</li><li>บริการไม่จำกัด</li><li>ลิงก์จองประจำร้าน</li><li>หน้าจัดการคิว</li></ul>
+      <a class="btn btn--line" href="dashboard.html">ลองหน้าร้านฟรี</a></div>
+    <div class="plan plan--hl"><h3>มืออาชีพ</h3><div class="price">฿499<small> / เดือน</small></div>
+      <ul><li>ทุกอย่างในแพ็กเกจเริ่มต้น</li><li>แยกคิวตามช่าง</li><li>แจ้งเตือนเข้า LINE</li><li>รายงานรายได้รายเดือน</li></ul>
+      <a class="btn" href="dashboard.html">ลองหน้าร้านฟรี</a></div>
   </div>
-  <div class="note"><b>หมายเหตุ:</b> หน้านี้คือเดโมสำหรับทดสอบกับร้านจริง ข้อมูลเก็บไว้ในเบราว์เซอร์ของคุณเท่านั้น ราคาเป็นราคาที่ตั้งไว้ทดสอบตลาด ยังไม่ได้เปิดขายจริง</div>
+  <p class="fine fine--box"><b>สถานะตอนนี้:</b> นี่คือเดโมสำหรับทดลองใช้ ข้อมูลเก็บไว้ในเบราว์เซอร์ของคุณเท่านั้น ราคาที่แสดงเป็นราคาทดสอบตลาด ยังไม่เปิดรับชำระเงิน และแพ็กเกจมืออาชีพยังอยู่ระหว่างพัฒนา</p>
 </div></section>
 
-<section id="faq"><div class="container" style="max-width:720px">
-  <h2>คำถามที่พบบ่อย</h2><p class="sub">&nbsp;</p>
-  <details><summary>ต้องมีความรู้คอมพิวเตอร์ไหม?</summary><p>ไม่ต้อง ใช้งานผ่านมือถือได้เหมือนใช้ LINE</p></details>
-  <details><summary>ลูกค้าต้องสมัครสมาชิกไหม?</summary><p>ไม่ต้อง ลูกค้าแค่กรอกชื่อและเบอร์โทร</p></details>
-  <details><summary>ใช้กับ LINE OA ได้ไหม?</summary><p>ได้ แปะลิงก์จองในข้อความต้อนรับหรือเมนูของ LINE OA ได้เลย</p></details>
-  <details><summary>รับชำระเงินผ่าน PromptPay ได้ไหม?</summary><p>อยู่ในแผนพัฒนา ตอนนี้ยังเป็นการจองคิวอย่างเดียว</p></details>
+<section class="sec" id="faq"><div class="wrap">
+  <h2>คำถามที่พบบ่อย</h2>
+  <div class="faq" style="margin-top:28px">
+    <details><summary>ต้องมีความรู้คอมพิวเตอร์ไหม</summary><p>ไม่ต้อง ใช้ผ่านมือถือได้เหมือนใช้ LINE</p></details>
+    <details><summary>ลูกค้าต้องสมัครสมาชิกไหม</summary><p>ไม่ต้อง ลูกค้ากรอกแค่ชื่อกับเบอร์โทร</p></details>
+    <details><summary>ใช้กับ LINE OA ได้ไหม</summary><p>ได้ แปะลิงก์จองไว้ในข้อความต้อนรับหรือเมนูของ LINE OA ได้เลย</p></details>
+    <details><summary>รับชำระเงินผ่าน PromptPay ได้ไหม</summary><p>ยังไม่ได้ ตอนนี้เป็นการจองคิวอย่างเดียว การรับชำระเงินอยู่ในแผนพัฒนา</p></details>
+    <details><summary>ข้อมูลของร้านอยู่ที่ไหน</summary><p>ในเดโมนี้ ข้อมูลอยู่ในเบราว์เซอร์ของคุณเอง ไม่ถูกส่งไปที่อื่น เวอร์ชันใช้งานจริงจะเก็บบนเซิร์ฟเวอร์เพื่อให้ร้านเปิดดูได้จากทุกเครื่อง</p></details>
+  </div>
 </div></section>
 </main>
-<footer><div class="container">© จองง่าย — เดโมสำหรับทดสอบตลาด</div></footer>
+
+<section class="cta"><div class="wrap">
+  <div><h2>อยากลองกับร้านของคุณ</h2><p>ลองจองและดูหน้าจัดการได้เลย ใช้เวลาไม่ถึงสองนาที</p></div>
+  <div class="actions" style="display:flex;gap:12px;flex-wrap:wrap">
+    <a class="btn btn--dark" href="dashboard.html">ลองหน้าร้านฟรี</a>
+    <a class="btn btn--line" id="chatBtn" href="#" target="_blank" rel="noopener" hidden>คุยกับเรา</a>
+  </div>
+</div></section>
+<footer class="foot"><div class="wrap">© จองง่าย · เดโมสำหรับทดสอบตลาด</div></footer>
+<div class="mobile-cta"><a class="btn" href="book.html">ลองจองคิวแบบลูกค้า</a></div>
+
+<script src="assets/js/config.js"></script>
+<script>
+(function(){
+  // contact button appears only when a LINE ID is configured
+  var id=(window.JONGNGAI||{}).LINE_ID, cb=document.getElementById('chatBtn');
+  if(id){cb.href='https://line.me/R/ti/p/'+encodeURIComponent(id);cb.hidden=false;}
+
+  // interactive appointment book
+  var staff=['ช่างนิ่ม','ช่างแอน','ช่างมะลิ'], hours=[10,11,12,13,14,15,16], PRICE=350;
+  var pre={'10-0':'คุณพลอย','11-1':'คุณมะลิ','13-2':'คุณต้น','14-0':'คุณแพร','15-1':'คุณเอ'};
+  var booked={}; Object.keys(pre).forEach(function(k){booked[k]=pre[k];});
+  var grid=document.getElementById('bbGrid');
+  function draw(newKey){
+    var h='<div class="bb-col"></div>'+staff.map(function(s){return '<div class="bb-col">'+s+'</div>';}).join('');
+    hours.forEach(function(t,r){
+      h+='<div class="bb-time">'+('0'+t).slice(-2)+':00</div>';
+      staff.forEach(function(_,c){
+        var k=t+'-'+c, b=booked[k];
+        h+='<div class="bb-slot'+(b?' is-booked':'')+(k===newKey?' is-new':'')+'" role="gridcell"><button type="button" data-k="'+k+'" aria-label="'+(b?'จองแล้ว '+b:'ว่าง กดเพื่อจอง')+'" '+(b&&!(k in added)?'tabindex="-1"':'')+'>'+(b||'+')+'</button></div>';
+      });
+    });
+    grid.innerHTML=h;
+    var n=Object.keys(booked).length;
+    document.getElementById('bbCount').textContent=n;
+    document.getElementById('bbSum').textContent='฿'+(n*PRICE).toLocaleString();
+  }
+  var added={}, guests=['คุณนก','คุณบัว','คุณฟ้า','คุณโอ๋','คุณจ๋า','คุณมิ้นต์'], gi=0;
+  grid.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-k]'); if(!b)return;
+    var k=b.dataset.k;
+    if(!booked[k]){booked[k]=guests[gi++%guests.length];added[k]=1;draw(k);}
+    else if(added[k]){delete booked[k];delete added[k];draw();}
+  });
+  draw();
+})();
+</script>
 </body>
 </html>

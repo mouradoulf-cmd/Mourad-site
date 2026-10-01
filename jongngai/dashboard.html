@@ -4,58 +4,119 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>จัดการคิว — จองง่าย</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Mitr:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<header class="nav"><div class="container"><a class="logo" href="index.html">จอง<b>ง่าย</b></a><a class="btn btn--sm" href="book.html" target="_blank" rel="noopener">เปิดหน้าจองของลูกค้า</a></div></header>
-<main class="container page">
+<header class="nav"><div class="wrap"><a class="logo" href="index.html">จอง<i>ง่าย</i></a><a class="btn btn--sm" href="book.html" target="_blank" rel="noopener">เปิดหน้าจองของลูกค้า</a></div></header>
+<main class="wrap page">
   <div class="stats">
     <div class="stat"><b id="sNew">0</b><span>รอยืนยัน</span></div>
     <div class="stat"><b id="sOk">0</b><span>ยืนยันแล้ว</span></div>
-    <div class="stat"><b id="sRev">฿0</b><span>รายได้ที่ยืนยันแล้ว</span></div>
+    <div class="stat"><b id="sRev">฿0</b><span>รายได้จากคิวที่ยืนยัน</span></div>
   </div>
-  <div class="panel"><h2 style="text-align:left;font-size:1.3rem">รายการจอง</h2>
-    <div class="table-wrap"><table><thead><tr><th>วันที่/เวลา</th><th>ลูกค้า</th><th>บริการ</th><th>สถานะ</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
-    <div id="empty" class="empty">ยังไม่มีการจอง ลองเปิด "หน้าจองของลูกค้า" แล้วจองสักรายการ</div>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-tab="q" role="tab">คิว</button>
+    <button class="tab" data-tab="s" role="tab">บริการและราคา</button>
+    <button class="tab" data-tab="c" role="tab">ตั้งค่าร้านและลิงก์</button>
   </div>
-  <div class="panel"><h2 style="text-align:left;font-size:1.3rem">ตั้งค่าร้าน</h2>
+
+  <section id="tab-q" class="panel">
+    <div class="filters" id="filters">
+      <button class="chip on" data-f="upcoming">คิวที่จะถึง</button><button class="chip" data-f="today">วันนี้</button><button class="chip" data-f="new">รอยืนยัน</button><button class="chip" data-f="all">ทั้งหมด</button>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>วัน/เวลา</th><th>ลูกค้า</th><th>บริการ</th><th>สถานะ</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+    <div id="empty" class="empty"></div>
+  </section>
+
+  <section id="tab-s" class="panel" hidden>
+    <h2>บริการและราคา</h2>
+    <div id="svcList"></div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn--sm btn--line" id="addSvc" type="button">+ เพิ่มบริการ</button><button class="btn btn--sm" id="saveSvc" type="button">บันทึกบริการ</button></div>
+  </section>
+
+  <section id="tab-c" class="panel" hidden>
+    <h2>ลิงก์จองของร้าน</h2>
+    <div class="share"><input id="link" readonly aria-label="ลิงก์จอง"><button class="btn btn--sm" id="copy" type="button">คัดลอก</button></div>
+    <p class="fine">ส่งลิงก์นี้ให้ลูกค้าทาง LINE, Facebook หรือ Instagram หมายเหตุ: ในเดโมนี้ข้อมูลเก็บในเบราว์เซอร์เครื่องนี้เท่านั้น</p>
+    <h2 style="margin-top:28px">ข้อมูลร้าน</h2>
     <label for="shop">ชื่อร้าน</label><input id="shop">
-    <div style="display:flex;gap:12px"><div style="flex:1"><label for="open">เปิด (ชม.)</label><input id="open" type="number" min="0" max="23"></div>
-    <div style="flex:1"><label for="close">ปิด (ชม.)</label><input id="close" type="number" min="1" max="24"></div></div>
-    <button class="btn btn--sm" style="margin-top:16px" id="saveShop">บันทึก</button>
-    <button class="btn btn--sm btn--ghost" style="margin-top:16px" id="reset">ล้างข้อมูลเดโม</button>
-  </div>
+    <div style="display:flex;gap:12px"><div style="flex:1"><label for="open">เปิด (ชั่วโมง)</label><input id="open" type="number" min="0" max="23"></div>
+    <div style="flex:1"><label for="close">ปิด (ชั่วโมง)</label><input id="close" type="number" min="1" max="24"></div></div>
+    <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap"><button class="btn btn--sm" id="saveShop" type="button">บันทึก</button><button class="btn btn--sm btn--line" id="reset" type="button">ล้างข้อมูลเดโม</button></div>
+    <p id="msg" class="fine" role="status"></p>
+  </section>
 </main>
 <script src="assets/js/store.js"></script>
 <script>
 (function(){
   var $=function(i){return document.getElementById(i)};
+  var filter='upcoming',label={new:'รอยืนยัน',ok:'ยืนยันแล้ว',no:'ยกเลิก'};
   function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
-  var label={new:'รอยืนยัน',ok:'ยืนยันแล้ว',no:'ยกเลิก'};
-  function render(){
-    var d=Store.get(),bk=d.bookings.slice().sort(function(a,b){return (a.date+a.time).localeCompare(b.date+b.time)});
-    $('sNew').textContent=bk.filter(function(b){return b.status==='new'}).length;
-    $('sOk').textContent=bk.filter(function(b){return b.status==='ok'}).length;
-    $('sRev').textContent='฿'+bk.filter(function(b){return b.status==='ok'}).reduce(function(s,b){return s+b.price},0).toLocaleString();
+  function today(){var d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);}
+  function say(m){$('msg').textContent=m;}
+
+  function renderQ(){
+    var d=Store.get(),all=d.bookings.slice().sort(function(a,b){return (a.date+a.time).localeCompare(b.date+b.time)});
+    var t=today();
+    $('sNew').textContent=all.filter(function(b){return b.status==='new'}).length;
+    $('sOk').textContent=all.filter(function(b){return b.status==='ok'}).length;
+    $('sRev').textContent='฿'+all.filter(function(b){return b.status==='ok'}).reduce(function(s,b){return s+b.price},0).toLocaleString();
+    var bk=all.filter(function(b){
+      if(filter==='today')return b.date===t;
+      if(filter==='new')return b.status==='new';
+      if(filter==='upcoming')return b.date>=t&&b.status!=='no';
+      return true;
+    });
     $('empty').style.display=bk.length?'none':'block';
+    $('empty').textContent=all.length?'ไม่มีรายการในมุมมองนี้':'ยังไม่มีการจอง กด "เปิดหน้าจองของลูกค้า" ด้านบนเพื่อลองจองสักคิว';
     $('rows').innerHTML=bk.map(function(b){
-      var tel='tel:'+encodeURIComponent(b.phone);
-      return '<tr><td>'+esc(b.date)+'<br>'+esc(b.time)+'</td><td>'+esc(b.name)+'<br><a href="'+tel+'" target="_blank" rel="noopener" style="color:var(--green-d)">'+esc(b.phone)+'</a></td><td>'+esc(b.service)+'</td>'
+      return '<tr><td><b>'+esc(b.date)+'</b><br>'+esc(b.time)+'</td><td>'+esc(b.name)+'<br><a href="tel:'+encodeURIComponent(b.phone)+'" target="_blank" rel="noopener" style="color:var(--indigo);text-decoration:underline">'+esc(b.phone)+'</a></td><td>'+esc(b.service)+'<br><small style="color:var(--muted)">฿'+b.price+'</small></td>'
        +'<td><span class="pill pill--'+b.status+'">'+label[b.status]+'</span></td>'
-       +'<td><div class="row-actions">'+(b.status!=='ok'?'<button class="btn btn--sm" data-id="'+b.id+'" data-st="ok">ยืนยัน</button>':'')+(b.status!=='no'?'<button class="btn btn--sm btn--ghost" data-id="'+b.id+'" data-st="no">ยกเลิก</button>':'')+'</div></td></tr>';
+       +'<td><div class="row-actions">'+(b.status!=='ok'?'<button class="btn btn--sm btn--ok" data-id="'+b.id+'" data-st="ok">ยืนยัน</button>':'')+(b.status!=='no'?'<button class="btn btn--sm btn--line" data-id="'+b.id+'" data-st="no">ยกเลิก</button>':'')+'</div></td></tr>';
     }).join('');
-    $('shop').value=d.shop.name;$('open').value=d.shop.open;$('close').value=d.shop.close;
   }
-  $('rows').onclick=function(e){var t=e.target;if(t.dataset&&t.dataset.id){Store.setStatus(t.dataset.id,t.dataset.st);render();}};
+  function renderS(){
+    var d=Store.get();
+    $('svcList').innerHTML=d.services.map(function(s,i){
+      return '<div class="svc-row" data-i="'+i+'"><input aria-label="ชื่อบริการ" value="'+esc(s.name).replace(/"/g,'&quot;')+'"><input aria-label="ราคา (บาท)" type="number" min="0" value="'+s.price+'"><input aria-label="ระยะเวลา (นาที)" type="number" min="5" value="'+s.mins+'"><button class="btn btn--sm btn--line" type="button" data-del="'+i+'" aria-label="ลบบริการ">ลบ</button></div>';
+    }).join('')||'<p class="fine">ยังไม่มีบริการ กด "เพิ่มบริการ" เพื่อเริ่มต้น</p>';
+  }
+  function renderC(){
+    var d=Store.get();
+    $('shop').value=d.shop.name;$('open').value=d.shop.open;$('close').value=d.shop.close;
+    $('link').value=new URL('book.html',location.href).href;
+  }
+  function readSvc(){
+    var rows=[].slice.call(document.querySelectorAll('.svc-row')),out=[],old=Store.get().services;
+    rows.forEach(function(r,i){var f=r.querySelectorAll('input');
+      out.push({id:(old[i]&&old[i].id)||('s'+Date.now()+i),name:f[0].value.trim(),price:+f[1].value,mins:+f[2].value});});
+    return out;
+  }
+  function renderAll(){renderQ();renderS();renderC();}
+
+  document.querySelector('.tabs').onclick=function(e){var t=e.target.closest('.tab');if(!t)return;
+    [].forEach.call(document.querySelectorAll('.tab'),function(x){x.classList.toggle('on',x===t)});
+    ['q','s','c'].forEach(function(k){$('tab-'+k).hidden=(k!==t.dataset.tab)});};
+  $('filters').onclick=function(e){var c=e.target.closest('.chip');if(!c)return;filter=c.dataset.f;
+    [].forEach.call(document.querySelectorAll('#filters .chip'),function(x){x.classList.toggle('on',x===c)});renderQ();};
+  $('rows').onclick=function(e){var t=e.target;if(t.dataset&&t.dataset.id){Store.setStatus(t.dataset.id,t.dataset.st);renderQ();}};
+  $('addSvc').onclick=function(){var cur=readSvc();cur.push({id:'s'+Date.now(),name:'บริการใหม่',price:300,mins:60});Store.saveServices(cur);renderS();};
+  $('svcList').onclick=function(e){var i=e.target.dataset&&e.target.dataset.del;if(i===undefined)return;var cur=readSvc();cur.splice(+i,1);Store.saveServices(cur);renderS();};
+  $('saveSvc').onclick=function(){var cur=readSvc();
+    if(!cur.length||cur.some(function(s){return !s.name||!(s.price>=0)||!(s.mins>=5)})){say('กรุณาใส่ชื่อ ราคา และระยะเวลา (อย่างน้อย 5 นาที) ให้ครบทุกบริการ');return;}
+    Store.saveServices(cur);say('บันทึกบริการแล้ว');renderS();};
   $('saveShop').onclick=function(){
     var d=Store.get(),o=+$('open').value,c=+$('close').value;
-    if(!$('shop').value.trim()||!(o>=0&&c>o&&c<=24)){alert('กรุณาตรวจสอบชื่อร้านและเวลาเปิด–ปิด');return;}
-    d.shop.name=$('shop').value.trim();d.shop.open=o;d.shop.close=c;Store.save(d);render();alert('บันทึกแล้ว');
-  };
-  $('reset').onclick=function(){if(confirm('ล้างข้อมูลเดโมทั้งหมด?')){Store.reset();render();}};
-  window.addEventListener('storage',render);
-  render();
+    if(!$('shop').value.trim()||!(o>=0&&c>o&&c<=24)){say('กรุณาใส่ชื่อร้านและเวลาเปิด–ปิดให้ถูกต้อง (เวลาปิดต้องมากกว่าเวลาเปิด)');return;}
+    d.shop.name=$('shop').value.trim();d.shop.open=o;d.shop.close=c;Store.save(d);say('บันทึกแล้ว');};
+  $('copy').onclick=function(){var l=$('link');l.select();
+    (navigator.clipboard?navigator.clipboard.writeText(l.value):Promise.reject()).then(function(){say('คัดลอกลิงก์แล้ว')},function(){document.execCommand&&document.execCommand('copy');say('คัดลอกลิงก์แล้ว')});};
+  $('reset').onclick=function(){if(confirm('ล้างข้อมูลเดโมทั้งหมด?')){Store.reset();renderAll();say('ล้างข้อมูลแล้ว');}};
+  window.addEventListener('storage',renderAll);
+  renderAll();
 })();
 </script>
 </body>

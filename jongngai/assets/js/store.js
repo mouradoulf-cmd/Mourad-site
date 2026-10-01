@@ -22,6 +22,7 @@
     addBooking:function(b){var d=load();b.id='b'+Date.now();b.status='new';b.createdAt=Date.now();d.bookings.push(b);save(d);return b;},
     setStatus:function(id,st){var d=load();d.bookings.forEach(function(b){if(b.id===id)b.status=st;});save(d);},
     taken:function(date){return load().bookings.filter(function(b){return b.date===date&&b.status!=='no';}).map(function(b){return b.time;});},
+    saveServices:function(list){var d=load();d.services=list;save(d);},
     reset:function(){try{localStorage.removeItem(KEY);}catch(e){}}
   };
 })();

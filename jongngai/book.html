@@ -4,70 +4,81 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>จองคิว — จองง่าย</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Mitr:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<header class="nav"><div class="container"><a class="logo" href="index.html">จอง<b>ง่าย</b></a><a class="btn btn--sm btn--ghost" href="dashboard.html">หน้าร้าน</a></div></header>
-<main class="container page" style="max-width:640px">
-  <h1 id="shopName" style="margin:0 0 4px"></h1>
-  <p style="color:var(--muted);margin:0 0 20px">เลือกบริการและเวลาที่สะดวก</p>
-  <form id="form" class="panel">
-    <label>บริการ</label><div id="services" class="chips"></div>
-    <label for="date">วันที่</label><input id="date" type="date" required>
-    <label>เวลา</label><div id="times" class="chips"></div>
+<header class="nav"><div class="wrap"><a class="logo" href="index.html">จอง<i>ง่าย</i></a><a class="btn btn--sm btn--line" href="dashboard.html">หน้าร้าน</a></div></header>
+<main class="wrap page" style="max-width:620px">
+  <div class="shop-head"><div class="avatar" id="av"></div><div><h1 id="shopName" style="font-size:1.4rem"></h1><div style="color:var(--muted);font-size:.92rem" id="hours"></div></div></div>
+  <div class="progress" aria-hidden="true"><i class="on" id="p1"></i><i id="p2"></i><i id="p3"></i></div>
+  <form id="form" class="panel" novalidate>
+    <h2>1. เลือกบริการ</h2><div id="services" class="chips"></div>
+    <h2 style="margin-top:26px">2. เลือกวัน</h2><div id="days" class="days"></div>
+    <h2 style="margin-top:26px">3. เลือกเวลา</h2><div id="times" class="chips"></div>
+    <h2 style="margin-top:26px">4. ข้อมูลของคุณ</h2>
     <label for="name">ชื่อ</label><input id="name" required autocomplete="name">
-    <label for="phone">เบอร์โทร</label><input id="phone" type="tel" required inputmode="tel" autocomplete="tel" pattern="[0-9\- +]{9,15}">
-    <p id="err" style="color:var(--danger);margin:12px 0 0;display:none"></p>
+    <label for="phone">เบอร์โทร</label><input id="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="08x-xxx-xxxx">
+    <div class="summary" id="summary" hidden></div>
+    <p id="err" class="err" role="alert"></p>
     <button class="btn" style="width:100%;margin-top:18px" type="submit">ยืนยันการจอง</button>
   </form>
   <div id="done" class="panel" hidden>
-    <div class="ok-box"><div class="tick">✅</div><h2 style="margin:8px 0">จองสำเร็จ</h2><p id="sum" style="color:var(--muted)"></p>
-    <a id="lineBtn" class="btn" href="#" target="_blank" rel="noopener">ส่งรายละเอียดทาง LINE</a>
-    <p><a href="book.html" style="color:var(--green-d)">จองอีกครั้ง</a></p></div>
+    <div class="ok-box"><div class="tick">✓</div><h2 style="margin:6px 0">จองสำเร็จ</h2><div class="stamp">จองแล้ว</div>
+    <p id="sum" style="color:var(--muted)"></p>
+    <a id="lineBtn" class="btn btn--ok" href="#" target="_blank" rel="noopener">ส่งรายละเอียดเข้า LINE</a>
+    <p><a href="book.html" style="color:var(--indigo);text-decoration:underline">จองคิวอีกครั้ง</a></p></div>
   </div>
 </main>
 <script src="assets/js/store.js"></script>
 <script>
 (function(){
-  var data=Store.get(), sel={svc:null,time:null};
+  var data=Store.get(), sel={svc:null,date:null,time:null};
   var $=function(i){return document.getElementById(i)};
-  $('shopName').textContent=data.shop.name;
-  var dateEl=$('date'), today=new Date(); today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
-  dateEl.min=dateEl.value=today.toISOString().slice(0,10);
+  var dn=['อา','จ','อ','พ','พฤ','ศ','ส'], mn=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+  function iso(d){var x=new Date(d.getTime()-d.getTimezoneOffset()*60000);return x.toISOString().slice(0,10);}
+  $('shopName').textContent=data.shop.name;$('av').textContent=data.shop.name.trim().charAt(0);
+  $('hours').textContent='เปิด '+('0'+data.shop.open).slice(-2)+':00 – '+('0'+data.shop.close).slice(-2)+':00';
+  var days=[];for(var i=0;i<14;i++){var d=new Date();d.setDate(d.getDate()+i);days.push(d);}
+  sel.date=iso(days[0]);
 
-  function chips(el,items,key,fmt){
-    el.innerHTML='';
-    items.forEach(function(it){
-      var b=document.createElement('button');b.type='button';b.className='chip'+(sel[key]===it.v?' on':'');b.textContent=it.t;
-      if(it.off)b.disabled=true;
-      b.onclick=function(){sel[key]=it.v;render();};
-      el.appendChild(b);
-    });
-  }
+  function btn(cls,html,on,off,fn){var b=document.createElement('button');b.type='button';b.className=cls+(on?' on':'');b.innerHTML=html;if(off)b.disabled=true;b.onclick=fn;return b;}
   function render(){
-    chips($('services'),data.services.map(function(s){return{v:s.id,t:s.name+' · ฿'+s.price}}),'svc');
-    var taken=Store.taken(dateEl.value),times=[],now=new Date();
-    var isToday=dateEl.value===today.toISOString().slice(0,10);
+    var s=$('services');s.innerHTML='';
+    data.services.forEach(function(v){s.appendChild(btn('chip','<b>'+esc(v.name)+'</b><small>฿'+v.price+' · '+v.mins+' นาที</small>',sel.svc===v.id,false,function(){sel.svc=v.id;render();}));});
+    var dEl=$('days');dEl.innerHTML='';
+    days.forEach(function(d){var k=iso(d);dEl.appendChild(btn('day','<small>'+dn[d.getDay()]+'</small><b>'+d.getDate()+'</b><small>'+mn[d.getMonth()]+'</small>',sel.date===k,false,function(){sel.date=k;sel.time=null;render();}));});
+    var taken=Store.taken(sel.date),now=new Date(),isToday=sel.date===iso(now),tEl=$('times');tEl.innerHTML='';
+    var any=false;
     for(var h=data.shop.open;h<data.shop.close;h++){
-      var t=('0'+h).slice(-2)+':00';
-      times.push({v:t,t:t,off:taken.indexOf(t)>-1||(isToday&&h<=now.getHours())});
+      var t=('0'+h).slice(-2)+':00',off=taken.indexOf(t)>-1||(isToday&&h<=now.getHours());
+      if(!off)any=true;
+      if(sel.time===t&&off)sel.time=null;
+      tEl.appendChild(btn('chip',t,sel.time===t,off,(function(t){return function(){sel.time=t;render();};})(t)));
     }
-    if(sel.time&&times.some(function(x){return x.v===sel.time&&x.off}))sel.time=null;
-    chips($('times'),times,'time');
+    if(!any){tEl.innerHTML='<p style="color:var(--muted);margin:0">วันนี้ไม่มีเวลาว่างแล้ว ลองเลือกวันอื่น</p>';}
+    $('p2').className=sel.svc?'on':'';$('p3').className=sel.svc&&sel.time?'on':'';
+    var sm=$('summary');
+    if(sel.svc&&sel.time){var v=data.services.filter(function(x){return x.id===sel.svc})[0];sm.hidden=false;sm.innerHTML='<b>'+esc(v.name)+'</b><br>'+sel.date+' เวลา '+sel.time+' · ฿'+v.price;}else sm.hidden=true;
   }
-  dateEl.onchange=function(){sel.time=null;render();};
+  function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+  function fail(m){var e=$('err');e.textContent=m;e.style.display='block';}
   $('form').onsubmit=function(e){
-    e.preventDefault();
-    var err=$('err');err.style.display='none';
-    if(!sel.svc||!sel.time){err.textContent='กรุณาเลือกบริการและเวลา';err.style.display='block';return;}
-    var svc=data.services.filter(function(s){return s.id===sel.svc})[0];
-    if(Store.taken(dateEl.value).indexOf(sel.time)>-1){err.textContent='เวลานี้ถูกจองแล้ว กรุณาเลือกเวลาอื่น';err.style.display='block';render();return;}
-    var b=Store.addBooking({service:svc.name,price:svc.price,date:dateEl.value,time:sel.time,name:$('name').value.trim(),phone:$('phone').value.trim()});
-    var txt='จองคิว '+data.shop.name+'\n'+svc.name+'\nวันที่ '+b.date+' เวลา '+b.time+'\nชื่อ '+b.name+' โทร '+b.phone;
-    $('sum').textContent=svc.name+' · '+b.date+' · '+b.time;
+    e.preventDefault();$('err').style.display='none';
+    var name=$('name').value.trim(),phone=$('phone').value.trim();
+    if(!sel.svc)return fail('กรุณาเลือกบริการ');
+    if(!sel.time)return fail('กรุณาเลือกเวลา');
+    if(!name)return fail('กรุณากรอกชื่อ');
+    if(!/^[0-9\-+ ]{9,15}$/.test(phone))return fail('กรุณากรอกเบอร์โทรให้ถูกต้อง (ตัวเลข 9–15 หลัก)');
+    if(Store.taken(sel.date).indexOf(sel.time)>-1){render();return fail('เวลานี้เพิ่งถูกจองไป กรุณาเลือกเวลาอื่น');}
+    var v=data.services.filter(function(x){return x.id===sel.svc})[0];
+    var b=Store.addBooking({service:v.name,price:v.price,date:sel.date,time:sel.time,name:name,phone:phone});
+    var txt='จองคิว '+data.shop.name+'\n'+v.name+' (฿'+v.price+')\nวันที่ '+b.date+' เวลา '+b.time+'\nชื่อ '+b.name+' โทร '+b.phone;
+    $('sum').textContent=v.name+' · '+b.date+' · '+b.time;
     $('lineBtn').href='https://line.me/R/msg/text/?'+encodeURIComponent(txt);
-    $('form').hidden=true;$('done').hidden=false;
+    $('form').hidden=true;$('done').hidden=false;window.scrollTo(0,0);
   };
   render();
 })();
