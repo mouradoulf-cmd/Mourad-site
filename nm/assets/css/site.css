@@ -658,6 +658,8 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 .offer__icon { margin: .6rem -.35rem .4rem; aspect-ratio: 4 / 3; transform: translateZ(30px); transition: transform .7s var(--ease-out); }
 .offer:hover .offer__icon { transform: translateZ(50px) scale(1.04); }
 .offer__icon .ic, .om__art .ic, .guide__icon .ic, .pcard__icon .ic { width: 100%; height: 100%; overflow: visible; }
+.offer__icon.ic3d, .om__art.ic3d { display: block; }
+.offer__icon.ic3d canvas, .om__art.ic3d canvas { display: block; width: 100%; height: 100%; }
 .offer__name, .pcard__name { font-family: var(--font-display); font-size: 1.36rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
 .offer__benefit { margin-top: .55rem; flex: 1; font-size: .94rem; line-height: 1.55; color: var(--muted); }
 .offer__price, .pcard__price { margin-top: 1.4rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: .3rem .6rem; }
@@ -735,12 +737,13 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 .om__media { position: relative; min-height: 15rem; display: grid; place-items: center; padding: 2.5rem 2rem 3.5rem; overflow: hidden; background: radial-gradient(70% 60% at 50% 42%, rgba(123,97,255,.32), transparent 70%), radial-gradient(90% 80% at 50% 100%, rgba(230,194,122,.14), transparent), #0e0c18; }
 .om__media::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(244,242,250,.07) 1px, transparent 1px); background-size: 22px 22px; -webkit-mask-image: radial-gradient(closest-side, #000, transparent); mask-image: radial-gradient(closest-side, #000, transparent); }
 .om__art { position: relative; z-index: 1; width: min(100%, 26rem); aspect-ratio: 4 / 3; }
+.om__art.ic3d { width: min(100%, 32rem); aspect-ratio: 1 / 1; }
 .om__media video { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; }
 .om__soon { position: absolute; bottom: 1rem; left: 50%; z-index: 2; transform: translateX(-50%); display: inline-flex; align-items: center; gap: .45rem; padding: .4rem .85rem; border-radius: 999px; font-size: .76rem; color: var(--gold-soft); white-space: nowrap; background: rgba(7,6,12,.75); border: 1px solid rgba(230,194,122,.28); }
 .om__soon svg { width: 15px; height: 15px; }
 .om__media.has-video .om__soon, .om__media.has-video .om__art { display: none; }
 .om__body { padding: clamp(1.6rem, 3vw, 2.4rem); }
-@media (max-width: 859px) { .om__media { min-height: 0; padding: 1.8rem 1.5rem 3.4rem; } .om__art { width: min(68%, 18rem); } }
+@media (max-width: 859px) { .om__media { min-height: 0; padding: 1.8rem 1.5rem 3.4rem; } .om__art { width: min(68%, 18rem); } .om__art.ic3d { width: min(78%, 22rem); } }
 .om__tier, .om__label, .guide__n, .status__n { font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-variant-numeric: tabular-nums; }
 .om__title { margin-top: .5rem; padding-inline-end: 3rem; font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; }
 .om__benefit { margin-top: .7rem; color: var(--muted); }

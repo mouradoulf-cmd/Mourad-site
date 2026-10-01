@@ -113,7 +113,9 @@
     fillOffer(k);
     var media = $("#omMedia"), art = $("#omArt");
     var old = $("video", media); if (old) old.remove();
-    art.innerHTML = window.NMIcons ? window.NMIcons.svg(k) : "";
+    art.classList.remove("ic3d");
+    if (window.NMIcon3D && window.NMIcon3D.supported) { window.NMIcon3D.mount(art, k); }
+    else { art.innerHTML = window.NMIcons ? window.NMIcons.svg(k) : ""; }
     media.classList.remove("is-playing"); void media.offsetWidth; media.classList.add("is-playing");
     var src = O.videos && O.videos[k];
     media.classList.toggle("has-video", !!src);
