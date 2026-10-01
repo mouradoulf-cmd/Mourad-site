@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>จัดการคิว — จองง่าย</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="nav"><div class="container"><a class="logo" href="index.html">จอง<b>ง่าย</b></a><a class="btn btn--sm" href="book.html" target="_blank" rel="noopener">เปิดหน้าจองของลูกค้า</a></div></header>
+<main class="container page">
+  <div class="stats">
+    <div class="stat"><b id="sNew">0</b><span>รอยืนยัน</span></div>
+    <div class="stat"><b id="sOk">0</b><span>ยืนยันแล้ว</span></div>
+    <div class="stat"><b id="sRev">฿0</b><span>รายได้ที่ยืนยันแล้ว</span></div>
+  </div>
+  <div class="panel"><h2 style="text-align:left;font-size:1.3rem">รายการจอง</h2>
+    <div class="table-wrap"><table><thead><tr><th>วันที่/เวลา</th><th>ลูกค้า</th><th>บริการ</th><th>สถานะ</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+    <div id="empty" class="empty">ยังไม่มีการจอง ลองเปิด "หน้าจองของลูกค้า" แล้วจองสักรายการ</div>
+  </div>
+  <div class="panel"><h2 style="text-align:left;font-size:1.3rem">ตั้งค่าร้าน</h2>
+    <label for="shop">ชื่อร้าน</label><input id="shop">
+    <div style="display:flex;gap:12px"><div style="flex:1"><label for="open">เปิด (ชม.)</label><input id="open" type="number" min="0" max="23"></div>
+    <div style="flex:1"><label for="close">ปิด (ชม.)</label><input id="close" type="number" min="1" max="24"></div></div>
+    <button class="btn btn--sm" style="margin-top:16px" id="saveShop">บันทึก</button>
+    <button class="btn btn--sm btn--ghost" style="margin-top:16px" id="reset">ล้างข้อมูลเดโม</button>
+  </div>
+</main>
+<script src="assets/js/store.js"></script>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+  var label={new:'รอยืนยัน',ok:'ยืนยันแล้ว',no:'ยกเลิก'};
+  function render(){
+    var d=Store.get(),bk=d.bookings.slice().sort(function(a,b){return (a.date+a.time).localeCompare(b.date+b.time)});
+    $('sNew').textContent=bk.filter(function(b){return b.status==='new'}).length;
+    $('sOk').textContent=bk.filter(function(b){return b.status==='ok'}).length;
+    $('sRev').textContent='฿'+bk.filter(function(b){return b.status==='ok'}).reduce(function(s,b){return s+b.price},0).toLocaleString();
+    $('empty').style.display=bk.length?'none':'block';
+    $('rows').innerHTML=bk.map(function(b){
+      var tel='tel:'+encodeURIComponent(b.phone);
+      return '<tr><td>'+esc(b.date)+'<br>'+esc(b.time)+'</td><td>'+esc(b.name)+'<br><a href="'+tel+'" target="_blank" rel="noopener" style="color:var(--green-d)">'+esc(b.phone)+'</a></td><td>'+esc(b.service)+'</td>'
+       +'<td><span class="pill pill--'+b.status+'">'+label[b.status]+'</span></td>'
+       +'<td><div class="row-actions">'+(b.status!=='ok'?'<button class="btn btn--sm" data-id="'+b.id+'" data-st="ok">ยืนยัน</button>':'')+(b.status!=='no'?'<button class="btn btn--sm btn--ghost" data-id="'+b.id+'" data-st="no">ยกเลิก</button>':'')+'</div></td></tr>';
+    }).join('');
+    $('shop').value=d.shop.name;$('open').value=d.shop.open;$('close').value=d.shop.close;
+  }
+  $('rows').onclick=function(e){var t=e.target;if(t.dataset&&t.dataset.id){Store.setStatus(t.dataset.id,t.dataset.st);render();}};
+  $('saveShop').onclick=function(){
+    var d=Store.get(),o=+$('open').value,c=+$('close').value;
+    if(!$('shop').value.trim()||!(o>=0&&c>o&&c<=24)){alert('กรุณาตรวจสอบชื่อร้านและเวลาเปิด–ปิด');return;}
+    d.shop.name=$('shop').value.trim();d.shop.open=o;d.shop.close=c;Store.save(d);render();alert('บันทึกแล้ว');
+  };
+  $('reset').onclick=function(){if(confirm('ล้างข้อมูลเดโมทั้งหมด?')){Store.reset();render();}};
+  window.addEventListener('storage',render);
+  render();
+})();
+</script>
+</body>
+</html>
