@@ -96,15 +96,45 @@
       plaque.position.z = 0.115;
       group.add(plaque);
     },
+    /* A phone holding the real QR code on its screen, with a scan line
+       sweeping over it — returns an update(ts) the render loop calls
+       every frame, since this is the one icon with motion beyond the
+       shared coin spin. */
     qr: function (THREE, group) {
+      var bodyW = 0.92, bodyH = 1.62, screenW = 0.8, screenH = 1.5;
+      var body = new THREE.Mesh(new THREE.BoxGeometry(bodyW, bodyH, 0.09), goldMat(THREE));
+      body.position.z = 0.09;
+      group.add(body);
+
       var tex = new THREE.CanvasTexture(qrCanvas());
       tex.anisotropy = 4;
-      var box = new THREE.BoxGeometry(0.82, 0.82, 0.07);
-      var mats = [inkMat(THREE), inkMat(THREE), inkMat(THREE), inkMat(THREE),
-        new THREE.MeshStandardMaterial({ map: tex, metalness: 0.15, roughness: 0.5 }), inkMat(THREE)];
-      var tile = new THREE.Mesh(box, mats);
-      tile.position.z = 0.1;
-      group.add(tile);
+      var screen = new THREE.Mesh(new THREE.PlaneGeometry(screenW, screenH),
+        new THREE.MeshStandardMaterial({ map: tex, metalness: 0.1, roughness: 0.55 }));
+      screen.position.z = 0.141;
+      group.add(screen);
+
+      var notch = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.045, 0.01), inkMat(THREE));
+      notch.position.set(0, screenH / 2 - 0.08, 0.142);
+      group.add(notch);
+
+      var scanMat = new THREE.MeshBasicMaterial({ color: GOLD, transparent: true, opacity: 0.85 });
+      var scan = new THREE.Mesh(new THREE.PlaneGeometry(screenW, 0.045), scanMat);
+      scan.position.z = 0.145;
+      group.add(scan);
+      var glowMat = new THREE.MeshBasicMaterial({ color: GOLD, transparent: true, opacity: 0.25 });
+      var glow = new THREE.Mesh(new THREE.PlaneGeometry(screenW, 0.22), glowMat);
+      glow.position.z = 0.144;
+      group.add(glow);
+
+      return function (ts) {
+        var period = 2000;
+        var t = (ts % period) / period;               // 0 -> 1 linear, loops
+        var tri = t < 0.5 ? t * 2 : 2 - t * 2;          // 0 -> 1 -> 0 triangle
+        var e = tri * tri * (3 - 2 * tri);              // smootherstep: eases at each turnaround
+        var yPos = (e - 0.5) * (screenH - 0.08);
+        scan.position.y = yPos;
+        glow.position.y = yPos;
+      };
     },
     pack: function (THREE, group) {
       var frame = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.04, 0.06), goldMat(THREE));
@@ -173,13 +203,13 @@
       var root = new THREE.Group();
       root.add(buildCoin(THREE));
       var glyph = new THREE.Group();
-      BUILD[kind](THREE, glyph);
+      var tick = BUILD[kind](THREE, glyph); // some icons (the QR scan line) animate beyond the shared coin spin
       root.add(glyph);
       scene.add(root);
       /* Reduced motion still gets the medallion — just no spin, no
          pop-in: a still frame, lit and tilted like the others. */
       root.scale.setScalar(REDUCE ? 1 : 0.001);
-      if (REDUCE) root.rotation.x = 0.08;
+      if (REDUCE) { root.rotation.x = 0.08; if (tick) tick(0); }
 
       function resize() {
         var w = container.clientWidth, h = container.clientHeight || w;
@@ -206,6 +236,7 @@
         root.scale.setScalar(Math.max(0.001, easeOutBack(t)));
         root.rotation.y += 0.0032;
         root.rotation.x = Math.sin(ts * 0.00018) * 0.06;
+        if (tick) tick(ts);
         renderer.render(scene, camera);
         if (active) raf = requestAnimationFrame(frame);
       }
