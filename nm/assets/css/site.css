@@ -527,7 +527,9 @@ html[dir="rtl"] .qa__body p { padding: 0 0 1.6rem 3rem; }
 html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clamp(2.2rem, 5.5vw, 4.6rem); line-height: 1.25; }
 .finale__sub { margin-top: 1.5rem; max-width: 36rem; color: #cfcbe0; font-size: clamp(1rem, 1.4vw, 1.15rem); }
 .wa-giant { --s: clamp(7rem, 13vw, 9.5rem); position: relative; margin-top: clamp(2.5rem, 5vw, 3.5rem); display: inline-flex; flex-direction: column; align-items: center; gap: 1.1rem; border-radius: 1.5rem; }
-.wa-giant__core { position: relative; z-index: 1; display: grid; place-items: center; width: var(--s); height: var(--s); border-radius: 50%; color: #fff; background: radial-gradient(circle at 35% 30%, #4ee486, #25d366 55%, #1ba853); box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 -10px 24px rgba(0,0,0,.18) inset, 0 34px 80px -20px rgba(37,211,102,.75); transition: transform .5s var(--ease-out); animation: waPulse 2.6s var(--ease-in-out) infinite; }
+.wa-giant__halo { position: absolute; top: calc(var(--s) / 2); left: 50%; width: calc(var(--s) * 2.3); height: calc(var(--s) * 2.3); transform: translate(-50%, -50%); border-radius: 50%; z-index: 0; pointer-events: none; background: radial-gradient(circle, rgba(230,194,122,.4), rgba(123,97,255,.16) 45%, transparent 72%); filter: blur(4px); animation: haloBreathe 4.5s var(--ease-in-out) infinite; }
+@keyframes haloBreathe { 0%, 100% { opacity: .65; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); } }
+.wa-giant__core { position: relative; z-index: 1; display: grid; place-items: center; width: var(--s); height: var(--s); border-radius: 50%; color: #fff; background: radial-gradient(circle at 35% 30%, #4ee486, #25d366 55%, #1ba853); box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 -10px 24px rgba(0,0,0,.18) inset, 0 34px 80px -20px rgba(37,211,102,.75), 0 0 70px -6px rgba(230,194,122,.5); transition: transform .5s var(--ease-out); animation: waPulse 2.6s var(--ease-in-out) infinite; }
 @keyframes waPulse { 50% { transform: scale(1.04); } }
 .wa-giant__core svg { width: 46%; height: 46%; }
 .wa-giant:hover .wa-giant__core { transform: scale(1.08); animation-play-state: paused; }
@@ -973,6 +975,7 @@ html[lang="th"] .status__title, html[lang="ar"] .status__title { line-height: 1.
   .h__aurora i { animation: none; filter: blur(60px); }
   .h__orb i:nth-child(1) { animation-duration: 30s; filter: blur(34px); }
   .finale__aura { animation: none; }
+  .wa-giant__halo { animation: none; }
 }
 
 
