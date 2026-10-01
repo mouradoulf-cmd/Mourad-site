@@ -17,6 +17,7 @@
         l1: "languages, including Thai & Korean", l2: "live sites to explore", v3: "48h", l3: "average delivery", v4: "No", l4: "contracts — pay once, stay free",
         slide1: "Night street", slide2: "Street food", slide3: "Restaurant"
       },
+      grav: { eyebrow: "Visibility", title: "Scattered everywhere. <em>Found in one place.</em>", sub: "Reviews, maps, messages — your business is already online, just not where people are looking. We pull it all into one address." },
       story: {
         eyebrow: "Right now, in Pattaya",
         l1: "Tourists are searching for you on Google <em>right now.</em>",
@@ -135,6 +136,7 @@
         l1: "langues, dont le thaï et le coréen", l2: "sites en ligne à visiter", v3: "48 h", l3: "délai moyen de livraison", v4: "Aucun", l4: "contrat — payez une fois, restez libre",
         slide1: "Rue de nuit", slide2: "Street food", slide3: "Restaurant"
       },
+      grav: { eyebrow: "Visibilité", title: "Dispersé partout. <em>Trouvé en un seul endroit.</em>", sub: "Avis, cartes, messages — votre commerce existe déjà en ligne, juste pas là où vos clients regardent. On rassemble tout en une seule adresse." },
       story: {
         eyebrow: "En ce moment, à Pattaya",
         l1: "Des touristes vous cherchent sur Google <em>en ce moment.</em>",
@@ -253,6 +255,7 @@
         l1: "lingue, tra cui thailandese e coreano", l2: "siti online da visitare", v3: "48 h", l3: "consegna media", v4: "Nessun", l4: "vincolo — paghi una volta, resti libero",
         slide1: "Strada di notte", slide2: "Street food", slide3: "Ristorante"
       },
+      grav: { eyebrow: "Visibilità", title: "Sparso ovunque. <em>Trovato in un solo posto.</em>", sub: "Recensioni, mappe, messaggi — la tua attività è già online, solo non dove i clienti guardano. Raccogliamo tutto in un unico indirizzo." },
       story: {
         eyebrow: "Adesso, a Pattaya",
         l1: "I turisti ti stanno cercando su Google <em>proprio adesso.</em>",
@@ -371,6 +374,7 @@
         l1: "ภาษา รวมภาษาไทยและเกาหลี", l2: "เว็บไซต์ที่ออนไลน์จริง", v3: "48 ชม.", l3: "ส่งงานโดยเฉลี่ย", v4: "ไม่มี", l4: "สัญญา — จ่ายครั้งเดียว อิสระเสมอ",
         slide1: "ถนนยามค่ำคืน", slide2: "สตรีทฟู้ด", slide3: "ร้านอาหาร"
       },
+      grav: { eyebrow: "การมองเห็น", title: "กระจัดกระจายทุกที่ <em>พบได้ในที่เดียว</em>", sub: "รีวิว แผนที่ ข้อความ — ร้านของคุณมีตัวตนออนไลน์อยู่แล้ว เพียงแต่ไม่ได้อยู่ในที่ที่ลูกค้ามองหา เรารวมทุกอย่างไว้ในที่อยู่เดียว" },
       story: {
         eyebrow: "ตอนนี้ ที่พัทยา",
         l1: "นักท่องเที่ยวกำลังค้นหาร้านคุณบน Google <em>อยู่ตอนนี้</em>",
@@ -489,6 +493,7 @@
         l1: "لغات، منها التايلاندية والكورية", l2: "مواقع حيّة يمكنك زيارتها", v3: "48 ساعة", l3: "متوسط مدة التسليم", v4: "بدون", l4: "عقود — ادفع مرة واحدة وابقَ حرًا",
         slide1: "شارع ليلي", slide2: "طعام الشارع", slide3: "مطعم"
       },
+      grav: { eyebrow: "الظهور", title: "متناثر في كل مكان <em>يُوجد في مكان واحد</em>", sub: "التقييمات والخرائط والرسائل — نشاطك موجود بالفعل على الإنترنت، لكن ليس حيث ينظر عملاؤك. نجمع كل شيء في عنوان واحد." },
       story: {
         eyebrow: "الآن، في باتايا",
         l1: "السيّاح يبحثون عنك على Google <em>في هذه اللحظة.</em>",
