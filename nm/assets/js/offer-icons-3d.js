@@ -87,6 +87,11 @@
   function goldMat(THREE) { return new THREE.MeshStandardMaterial({ color: GOLD, metalness: 0.85, roughness: 0.2 }); }
   function inkMat(THREE) { return new THREE.MeshStandardMaterial({ color: INK, metalness: 0.5, roughness: 0.4 }); }
 
+  /* Kinds held still after their entrance pop, instead of spinning —
+     the Google plaque is a flat logo, so a full rotation flashes a
+     blank gold edge for part of every turn. Face-on, well lit, static. */
+  var STILL = { google: true };
+
   var BUILD = {
     google: function (THREE, group) {
       var tex = new THREE.CanvasTexture(googleCanvas(function () { tex.needsUpdate = true; }));
@@ -247,17 +252,22 @@
       if (REDUCE) { renderer.render(scene, camera); return; }
 
       var raf = 0, active = false, entered = false, enterStart = 0;
+      var still = STILL[kind]; // a full 360° spin flashes a flat/thin icon edge-on — google reads better held still
       function easeOutBack(t) { var c1 = 1.4, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); }
       function frame(ts) {
         raf = 0;
         if (!entered) { entered = true; enterStart = ts; }
         var t = Math.min(1, (ts - enterStart) / 700);
         root.scale.setScalar(Math.max(0.001, easeOutBack(t)));
-        root.rotation.y += 0.0032;
-        root.rotation.x = Math.sin(ts * 0.00018) * 0.06;
+        if (still) {
+          root.rotation.x = 0.08;
+        } else {
+          root.rotation.y = Math.sin(ts * 0.00045) * 0.5; // gentle sway, bounded well short of edge-on
+          root.rotation.x = Math.sin(ts * 0.00018) * 0.06;
+        }
         if (tick) tick(ts);
         renderer.render(scene, camera);
-        if (active) raf = requestAnimationFrame(frame);
+        if (active && (!still || t < 1)) raf = requestAnimationFrame(frame);
       }
       if ("IntersectionObserver" in window) {
         new IntersectionObserver(function (es) {
