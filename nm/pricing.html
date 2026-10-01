@@ -74,8 +74,8 @@
 </div>
 
 <main id="main">
-<section class="phero phero--vid" id="top" aria-labelledby="pheroTitle">
-  <div class="phero__bg" aria-hidden="true"><video class="phero__video" autoplay muted loop playsinline preload="metadata" poster="assets/video/page-pricing.jpg" aria-hidden="true"><source src="assets/video/page-pricing.mp4" type="video/mp4"><source src="assets/video/page-pricing.webm" type="video/webm"></video></div>
+<section class="phero phero--img" id="top" aria-labelledby="pheroTitle">
+  <div class="phero__bg" aria-hidden="true"><img src="assets/video/page-pricing.jpg" alt="" decoding="async" fetchpriority="high"></div>
   <div class="phero__shade" aria-hidden="true"></div>
   <div class="phero__glow" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
@@ -345,6 +345,5 @@
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/fx.js" defer></script>
 <script src="assets/js/nm-home.js?v=20260930b" defer></script>
-<script>(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;document.querySelectorAll(".phero__video").forEach(function(v){if(m){v.removeAttribute("autoplay");v.pause();return}var p=v.play();if(p&&p.catch)p.catch(function(){})})})();</script>
 </body>
 </html>

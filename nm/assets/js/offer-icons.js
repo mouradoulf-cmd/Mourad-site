@@ -79,31 +79,10 @@
 
   function build(k) { return typeof SVG[k] === "function" ? SVG[k]() : SVG[k]; }
 
-  /* Offer cards play a short looping 3D clip instead of the line icon. */
-  var VIDEO = { google: 1, qr: 1, pack: 1, ultimate: 1 };
-  var clipIO = null;
-  function clip(k) {
-    var v = document.createElement("video");
-    v.className = "offer__clip"; v.muted = true; v.loop = true; v.playsInline = true; v.preload = "metadata";
-    v.setAttribute("muted", ""); v.setAttribute("playsinline", ""); v.setAttribute("aria-hidden", "true");
-    v.poster = "assets/video/offer-" + k + ".jpg";
-    v.innerHTML = '<source src="assets/video/offer-' + k + '.mp4" type="video/mp4"><source src="assets/video/offer-' + k + '.webm" type="video/webm">';
-    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduce && "IntersectionObserver" in window) {
-      clipIO = clipIO || new IntersectionObserver(function (es) {
-        es.forEach(function (e) { var p; if (e.isIntersecting) { p = e.target.play(); if (p && p.catch) p.catch(function () {}); } else e.target.pause(); });
-      }, { threshold: 0.25 });
-      clipIO.observe(v);
-    }
-    return v;
-  }
-
   function mount(root) {
     (root || document).querySelectorAll("[data-icon]").forEach(function (el) {
       if (el.firstElementChild) return;
-      var k = el.getAttribute("data-icon");
-      if (el.classList.contains("offer__icon") && VIDEO[k]) { el.classList.add("has-clip"); el.appendChild(clip(k)); return; }
-      var svg = build(k);
+      var svg = build(el.getAttribute("data-icon"));
       if (svg) el.innerHTML = svg;
     });
   }

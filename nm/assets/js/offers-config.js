@@ -16,8 +16,8 @@ window.NM_OFFERS = {
   price: { google: 990, qr: 1990, pack: 4990, ultimate: 9990 },
   care: { google: 0, qr: 290, pack: 590, ultimate: 1490 },
   yearlyMonths: 10,
-  videos: { google: "assets/video/offer-google.mp4", qr: "assets/video/offer-qr.mp4", pack: "assets/video/offer-pack.mp4", ultimate: "assets/video/offer-ultimate.mp4" },
-  posters: { google: "assets/video/offer-google.jpg", qr: "assets/video/offer-qr.jpg", pack: "assets/video/offer-pack.jpg", ultimate: "assets/video/offer-ultimate.jpg" },
+  videos: { google: "", qr: "", pack: "", ultimate: "" },
+  posters: { google: "", qr: "", pack: "", ultimate: "" },
   social: { facebook: "", instagram: "", tiktok: "", line: "" },
 
   /* Approximate amounts shown next to the baht price for visitors reading in

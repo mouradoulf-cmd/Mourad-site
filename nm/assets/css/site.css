@@ -983,19 +983,10 @@ html[lang="th"] .status__title, html[lang="ar"] .status__title { line-height: 1.
 .h__visual { display: none; }
 @media (max-width: 768px) { .h__shade { background: linear-gradient(180deg, rgba(3,3,5,.82), rgba(5,5,8,.7) 55%, rgba(3,3,5,.92)); } }
 
-/* Page hero mini videos */
-.phero__video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.phero--vid { isolation: isolate; }
-.phero--vid .phero__bg img { display: none; }
+/* Page hero background on Account/Legal — image gets .phero__bg's Ken Burns rule above */
 .phero__bg--page { position: absolute; top: 0; left: 0; right: 0; height: min(78svh, 620px); z-index: -3; }
 .phero__shade--page { position: absolute; top: 0; left: 0; right: 0; height: min(78svh, 620px); z-index: -2; background: linear-gradient(180deg, rgba(7,6,12,.7) 0%, rgba(7,6,12,.62) 55%, var(--ink) 100%); }
 main.status, main.legal { position: relative; isolation: isolate; }
-@media (prefers-reduced-motion: reduce) { .phero__video { animation: none; } }
-
-/* Offer cards: 3D desk clip instead of the line icon */
-.offer__icon.has-clip { margin: .7rem 0 .5rem; border-radius: 1rem; overflow: hidden; position: relative; box-shadow: inset 0 0 0 1px rgba(244,242,250,.1), 0 14px 34px -14px rgba(0,0,0,.7); }
-.offer__icon.has-clip::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 55%, rgba(7,6,12,.45)); }
-.offer__clip { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- Scroll film: the desk video is scrubbed by scroll ---------- */
 .film { position: relative; height: 440vh; background: var(--ink); }
