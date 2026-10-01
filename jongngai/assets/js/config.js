@@ -1,2 +1,2 @@
-/* ตั้งค่าช่องทางติดต่อ — ใส่ LINE ID ของคุณที่นี่ (เช่น "@jongngai") แล้วปุ่ม "คุยกับเรา" จะเปิดแชท LINE ให้อัตโนมัติ */
-window.JONGNGAI={LINE_ID:''};
+/* Contact channels shown on the landing page. Empty values are hidden. */
+window.JONGNGAI={LINE_ID:'',EMAIL:'folexm10@gmail.com'};

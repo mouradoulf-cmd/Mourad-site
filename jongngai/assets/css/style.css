@@ -129,6 +129,8 @@ h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.25;margin
 .cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .cta h2{color:var(--ink);font-size:clamp(1.6rem,3vw,2.2rem);margin:0}
 .cta p{margin:6px 0 0;color:#4b3a05}
+.cta .cta-mail{flex-basis:100%;margin:0;color:var(--ink)}
+.cta .cta-mail b{user-select:all}
 footer.foot{padding:28px 0;font-size:.9rem;color:var(--muted)}
 .mobile-cta{display:none}
 

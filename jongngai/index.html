@@ -122,6 +122,7 @@
     <a class="btn btn--dark" href="dashboard.html">ลองหน้าร้านฟรี</a>
     <a class="btn btn--line" id="chatBtn" href="#" target="_blank" rel="noopener" hidden>คุยกับเรา</a>
   </div>
+  <p class="cta-mail" id="mailBox" hidden>ติดต่อทางอีเมล: <b id="mailTxt"></b> <button type="button" class="btn btn--sm btn--dark" id="mailCopy">คัดลอก</button> <span id="mailMsg" role="status"></span></p>
 </div></section>
 <footer class="foot"><div class="wrap">© จองง่าย · เดโมสำหรับทดสอบตลาด</div></footer>
 <div class="mobile-cta"><a class="btn" href="book.html">ลองจองคิวแบบลูกค้า</a></div>
@@ -132,6 +133,15 @@
   // contact button appears only when a LINE ID is configured
   var id=(window.JONGNGAI||{}).LINE_ID, cb=document.getElementById('chatBtn');
   if(id){cb.href='https://line.me/R/ti/p/'+encodeURIComponent(id);cb.hidden=false;}
+  var em=(window.JONGNGAI||{}).EMAIL;
+  if(em){
+    document.getElementById('mailTxt').textContent=em;document.getElementById('mailBox').hidden=false;
+    document.getElementById('mailCopy').onclick=function(){
+      var m=document.getElementById('mailMsg'),ok=function(){m.textContent='คัดลอกแล้ว'};
+      (navigator.clipboard?navigator.clipboard.writeText(em):Promise.reject()).then(ok,function(){
+        var r=document.createRange();r.selectNodeContents(document.getElementById('mailTxt'));var sl=getSelection();sl.removeAllRanges();sl.addRange(r);m.textContent='เลือกข้อความแล้ว กดคัดลอกได้เลย';});
+    };
+  }
 
   // interactive appointment book
   var staff=['ช่างนิ่ม','ช่างแอน','ช่างมะลิ'], hours=[10,11,12,13,14,15,16], PRICE=350;
