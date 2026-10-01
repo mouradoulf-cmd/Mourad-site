@@ -136,25 +136,33 @@
         glow.position.y = yPos;
       };
     },
+    /* A wireframe globe with a few lit pins on its surface — the same
+       "found on the map" motif as the hero video's pin-sphere, echoed
+       here in miniature for the Complete Pack (full website) offer. */
     pack: function (THREE, group) {
-      var frame = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.04, 0.06), goldMat(THREE));
-      frame.position.z = 0.08;
-      group.add(frame);
-      var screen = new THREE.Mesh(new THREE.BoxGeometry(1.34, 0.84, 0.03), inkMat(THREE));
-      screen.position.set(0, -0.06, 0.14);
-      group.add(screen);
-      var bar1 = new THREE.Mesh(new THREE.BoxGeometry(0.76, 0.11, 0.025), goldMat(THREE));
-      bar1.position.set(-0.17, 0.16, 0.17);
-      group.add(bar1);
-      var barMat = goldMat(THREE); barMat.transparent = true; barMat.opacity = 0.6;
-      var bar2 = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.08, 0.02), barMat);
-      bar2.position.set(-0.29, -0.06, 0.17);
-      group.add(bar2);
-      var dotGeo = new THREE.SphereGeometry(0.055, 16, 16);
-      [-0.57, -0.38, -0.19].forEach(function (x) {
-        var d = new THREE.Mesh(dotGeo, goldMat(THREE));
-        d.position.set(x, 0.37, 0.17);
-        group.add(d);
+      var sphere = new THREE.SphereGeometry(0.82, 18, 12);
+      var wire = new THREE.LineSegments(
+        new THREE.WireframeGeometry(sphere),
+        new THREE.LineBasicMaterial({ color: GOLD, transparent: true, opacity: 0.55 })
+      );
+      group.add(wire);
+
+      var core = new THREE.Mesh(sphere, new THREE.MeshStandardMaterial({ color: INK, metalness: 0.3, roughness: 0.7, transparent: true, opacity: 0.55 }));
+      group.add(core);
+
+      var pinGeo = new THREE.SphereGeometry(0.065, 14, 14);
+      var pinMat = new THREE.MeshStandardMaterial({ color: GOLD, metalness: 0.6, roughness: 0.25, emissive: 0x6b5424, emissiveIntensity: 0.5 });
+      [[0.35, 0.55], [-2.1, 0.15], [1.2, -0.35], [2.6, 0.5]].forEach(function (ll) {
+        var lat = ll[1], lon = ll[0];
+        var r = 0.82;
+        var p = new THREE.Vector3(
+          r * Math.cos(lat) * Math.cos(lon),
+          r * Math.sin(lat),
+          r * Math.cos(lat) * Math.sin(lon)
+        );
+        var pin = new THREE.Mesh(pinGeo, pinMat);
+        pin.position.copy(p);
+        group.add(pin);
       });
     },
     ultimate: function (THREE, group) {
