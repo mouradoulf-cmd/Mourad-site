@@ -15,7 +15,7 @@
         eyebrow: "Web studio · Pattaya, Thailand",
         price: "Google, QR menu, website — from <b>฿990</b>.",
         ctaOffers: "Discover the offers", ctaWa: "Chat on WhatsApp", scroll: "Scroll",
-        l1: "languages, including Thai & Arabic", l2: "live sites to explore", v3: "48h", l3: "average delivery", v4: "No", l4: "contracts — pay once, stay free",
+        l1: "languages, including Thai & Korean", l2: "live sites to explore", v3: "48h", l3: "average delivery", v4: "No", l4: "contracts — pay once, stay free",
         slide1: "Night street", slide2: "Street food", slide3: "Restaurant"
       },
       story: {
@@ -71,7 +71,7 @@
         pick: "Pick", compareTitle: "Side by side", faqTitle: "Service <em>questions.</em>",
         sq1: "How long does it take?", sa1: "From 48 hours for a Google listing to about a week for a full website. We start as soon as we have your photos and information.",
         sq2: "Do you take the photos?", sa2: "Yes. The professional photos included in each offer are taken by us, at your place.",
-        sq3: "Which languages can my menu and site be in?", sa3: "Up to five — Thai, English, Chinese, Russian, Arabic… whatever your customers speak.",
+        sq3: "Which languages can my menu and site be in?", sa3: "Up to five — Thai, English, Chinese, Russian, Korean… whatever your customers speak.",
         sq4: "Do I need to buy a domain or hosting?", sa4: "No. We take care of hosting and your domain; keeping them running is part of the care plan.",
         sq5: "Can you verify my Google listing?", sa5: "We set everything up and request verification with you. Google then confirms it — usually by phone, SMS or a short video — within a few days."
       },
@@ -134,7 +134,7 @@
         eyebrow: "Studio web · Pattaya, Thaïlande",
         price: "Google, menu QR, site web — dès <b>990 ฿</b>.",
         ctaOffers: "Découvrir les offres", ctaWa: "Discuter sur WhatsApp", scroll: "Défiler",
-        l1: "langues, dont le thaï et l'arabe", l2: "sites en ligne à visiter", v3: "48 h", l3: "délai moyen de livraison", v4: "Aucun", l4: "contrat — payez une fois, restez libre",
+        l1: "langues, dont le thaï et le coréen", l2: "sites en ligne à visiter", v3: "48 h", l3: "délai moyen de livraison", v4: "Aucun", l4: "contrat — payez une fois, restez libre",
         slide1: "Rue de nuit", slide2: "Street food", slide3: "Restaurant"
       },
       story: {
@@ -190,7 +190,7 @@
         pick: "Choisir", compareTitle: "Côte à côte", faqTitle: "Questions sur <em>les services.</em>",
         sq1: "Combien de temps ça prend ?", sa1: "De 48 heures pour une fiche Google à une semaine environ pour un site complet. On commence dès qu'on a vos photos et vos informations.",
         sq2: "C'est vous qui prenez les photos ?", sa2: "Oui. Les photos professionnelles incluses dans chaque offre sont prises par nous, chez vous.",
-        sq3: "Dans quelles langues peuvent être mon menu et mon site ?", sa3: "Jusqu'à cinq — thaï, anglais, chinois, russe, arabe… celles que parlent vos clients.",
+        sq3: "Dans quelles langues peuvent être mon menu et mon site ?", sa3: "Jusqu'à cinq — thaï, anglais, chinois, russe, coréen… celles que parlent vos clients.",
         sq4: "Dois-je acheter un nom de domaine ou un hébergement ?", sa4: "Non. On s'occupe de l'hébergement et du domaine ; leur maintien fait partie du forfait d'entretien.",
         sq5: "Pouvez-vous faire valider ma fiche Google ?", sa5: "On configure tout et on demande la validation avec vous. Google la confirme ensuite — en général par téléphone, SMS ou courte vidéo — en quelques jours."
       },
@@ -253,7 +253,7 @@
         eyebrow: "Web studio · Pattaya, Thailandia",
         price: "Google, menù QR, sito web — da <b>990 ฿</b>.",
         ctaOffers: "Scopri le offerte", ctaWa: "Scrivici su WhatsApp", scroll: "Scorri",
-        l1: "lingue, tra cui thailandese e arabo", l2: "siti online da visitare", v3: "48 h", l3: "consegna media", v4: "Nessun", l4: "vincolo — paghi una volta, resti libero",
+        l1: "lingue, tra cui thailandese e coreano", l2: "siti online da visitare", v3: "48 h", l3: "consegna media", v4: "Nessun", l4: "vincolo — paghi una volta, resti libero",
         slide1: "Strada di notte", slide2: "Street food", slide3: "Ristorante"
       },
       story: {
@@ -309,7 +309,7 @@
         pick: "Scegli", compareTitle: "Fianco a fianco", faqTitle: "Domande <em>sui servizi.</em>",
         sq1: "Quanto tempo ci vuole?", sa1: "Da 48 ore per una scheda Google a circa una settimana per un sito completo. Iniziamo appena riceviamo foto e informazioni.",
         sq2: "Le foto le scattate voi?", sa2: "Sì. Le foto professionali incluse in ogni offerta le scattiamo noi, nel tuo locale.",
-        sq3: "In quali lingue possono essere menù e sito?", sa3: "Fino a cinque — thailandese, inglese, cinese, russo, arabo… quelle dei tuoi clienti.",
+        sq3: "In quali lingue possono essere menù e sito?", sa3: "Fino a cinque — thailandese, inglese, cinese, russo, coreano… quelle dei tuoi clienti.",
         sq4: "Devo comprare dominio o hosting?", sa4: "No. Ci occupiamo noi di hosting e dominio; mantenerli attivi fa parte del piano di assistenza.",
         sq5: "Potete far verificare la mia scheda Google?", sa5: "Configuriamo tutto e chiediamo la verifica insieme a te. Google la conferma poi — di solito per telefono, SMS o breve video — in pochi giorni."
       },
@@ -372,7 +372,7 @@
         eyebrow: "เว็บสตูดิโอ · พัทยา ประเทศไทย",
         price: "Google เมนู QR เว็บไซต์ — เริ่มต้น <b>990 บาท</b>",
         ctaOffers: "ดูแพ็กเกจทั้งหมด", ctaWa: "แชททาง WhatsApp", scroll: "เลื่อนลง",
-        l1: "ภาษา รวมภาษาไทยและอาหรับ", l2: "เว็บไซต์ที่ออนไลน์จริง", v3: "48 ชม.", l3: "ส่งงานโดยเฉลี่ย", v4: "ไม่มี", l4: "สัญญา — จ่ายครั้งเดียว อิสระเสมอ",
+        l1: "ภาษา รวมภาษาไทยและเกาหลี", l2: "เว็บไซต์ที่ออนไลน์จริง", v3: "48 ชม.", l3: "ส่งงานโดยเฉลี่ย", v4: "ไม่มี", l4: "สัญญา — จ่ายครั้งเดียว อิสระเสมอ",
         slide1: "ถนนยามค่ำคืน", slide2: "สตรีทฟู้ด", slide3: "ร้านอาหาร"
       },
       story: {
@@ -428,7 +428,7 @@
         pick: "เลือก", compareTitle: "เปรียบเทียบ", faqTitle: "คำถามเกี่ยวกับ <em>บริการ</em>",
         sq1: "ใช้เวลานานแค่ไหน?", sa1: "ตั้งแต่ 48 ชั่วโมงสำหรับ Google ไปจนถึงประมาณหนึ่งสัปดาห์สำหรับเว็บไซต์เต็มรูปแบบ เราเริ่มทันทีที่ได้รูปและข้อมูลของคุณ",
         sq2: "ทางคุณถ่ายรูปให้ไหม?", sa2: "ใช่ รูปถ่ายมืออาชีพในทุกแพ็กเกจ เราไปถ่ายให้ที่ร้านคุณเอง",
-        sq3: "เมนูและเว็บไซต์ทำได้กี่ภาษา?", sa3: "สูงสุดห้าภาษา — ไทย อังกฤษ จีน รัสเซีย อาหรับ… ตามภาษาของลูกค้าคุณ",
+        sq3: "เมนูและเว็บไซต์ทำได้กี่ภาษา?", sa3: "สูงสุดห้าภาษา — ไทย อังกฤษ จีน รัสเซีย เกาหลี… ตามภาษาของลูกค้าคุณ",
         sq4: "ต้องซื้อโดเมนหรือโฮสติ้งเองไหม?", sa4: "ไม่ต้อง เราดูแลโฮสติ้งและโดเมนให้ การดูแลต่อเนื่องอยู่ในแพ็กดูแลรายเดือน",
         sq5: "ช่วยยืนยันหน้าร้าน Google ให้ได้ไหม?", sa5: "เราตั้งค่าทั้งหมดและขอยืนยันร่วมกับคุณ จากนั้น Google จะยืนยัน — ส่วนใหญ่ทางโทรศัพท์ SMS หรือวิดีโอสั้น — ภายในไม่กี่วัน"
       },
@@ -491,7 +491,7 @@
         eyebrow: "استوديو ويب · باتايا، تايلاند",
         price: "Google، قائمة QR، موقع ويب — ابتداءً من <b>990 بات</b>.",
         ctaOffers: "اكتشف العروض", ctaWa: "تحدّث معنا على واتساب", scroll: "مرّر",
-        l1: "لغات، منها التايلاندية والعربية", l2: "مواقع حيّة يمكنك زيارتها", v3: "48 ساعة", l3: "متوسط مدة التسليم", v4: "بدون", l4: "عقود — ادفع مرة واحدة وابقَ حرًا",
+        l1: "لغات، منها التايلاندية والكورية", l2: "مواقع حيّة يمكنك زيارتها", v3: "48 ساعة", l3: "متوسط مدة التسليم", v4: "بدون", l4: "عقود — ادفع مرة واحدة وابقَ حرًا",
         slide1: "شارع ليلي", slide2: "طعام الشارع", slide3: "مطعم"
       },
       story: {
@@ -547,7 +547,7 @@
         pick: "اختر", compareTitle: "جنبًا إلى جنب", faqTitle: "أسئلة عن <em>الخدمات.</em>",
         sq1: "كم يستغرق ذلك؟", sa1: "من 48 ساعة لصفحة Google إلى نحو أسبوع لموقع كامل. نبدأ فور استلام صورك ومعلوماتك.",
         sq2: "هل تلتقطون الصور بأنفسكم؟", sa2: "نعم. الصور الاحترافية في كل عرض نلتقطها نحن في محلك.",
-        sq3: "بأي لغات يمكن أن تكون قائمتي وموقعي؟", sa3: "حتى خمس لغات — التايلاندية والإنجليزية والصينية والروسية والعربية… لغات زبائنك.",
+        sq3: "بأي لغات يمكن أن تكون قائمتي وموقعي؟", sa3: "حتى خمس لغات — التايلاندية والإنجليزية والصينية والروسية والكورية… لغات زبائنك.",
         sq4: "هل أحتاج إلى شراء نطاق أو استضافة؟", sa4: "لا. نتولى الاستضافة والنطاق، واستمرارهما جزء من خطة العناية.",
         sq5: "هل يمكنكم توثيق صفحتي على Google؟", sa5: "نُعدّ كل شيء ونطلب التوثيق معك. ثم يؤكده Google — عادةً بالهاتف أو الرسائل أو فيديو قصير — خلال أيام."
       },
