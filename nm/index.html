@@ -25,24 +25,6 @@
 <script src="assets/js/offers-config.js?v=20260930b" defer></script>
 </head>
 <body>
-<div class="intro" id="intro" aria-hidden="true">
-  <div class="intro__stage" id="introStage"></div>
-  <p class="intro__word" id="introWord">NM <em>Studio</em></p>
-  <span class="intro__rule" id="introRule"></span>
-</div>
-<script>
-(function () {
-  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var seen = reduce;
-  try { seen = seen || sessionStorage.getItem("nmIntroSeen") === "1"; } catch (e) {}
-  if (seen) {
-    var el = document.getElementById("intro");
-    if (el) el.remove();
-  } else {
-    document.documentElement.classList.add("intro-active");
-  }
-})();
-</script>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 <div class="progress" aria-hidden="true"><span></span></div>
 <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
@@ -629,7 +611,6 @@
 <script src="assets/js/nm-qr.js" defer></script>
 <script src="assets/js/offer-icons.js?v=20260930b" defer></script>
 <script src="assets/js/offer-icons-3d.js" defer></script>
-<script src="assets/js/intro-3d.js" defer></script>
 <script src="assets/js/vendor/gsap.min.js" defer></script>
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/vendor/lenis.min.js" defer></script>
