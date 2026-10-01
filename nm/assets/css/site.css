@@ -416,15 +416,6 @@ html[dir="rtl"] .marquee__track { animation-direction: reverse; }
 .offers__links { margin-top: 2.6rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2.2rem; }
 
 /* ==========================================================================
-   4b · GRAVITY — scroll-morphing particle field (lazy Three.js)
-   ========================================================================== */
-.grav { position: relative; overflow: hidden; isolation: isolate; min-height: 64svh; display: flex; align-items: center; padding: var(--sec) 0; border-top: 1px solid var(--line); background: var(--ink); }
-.grav__stage { position: absolute; inset: 0; z-index: -1; }
-.grav__stage canvas { display: block; width: 100%; height: 100%; }
-.grav .section-head--center { position: relative; }
-@media (max-width: 768px) { .grav { min-height: 52svh; } }
-
-/* ==========================================================================
    5 · WHY US — three values, each with a picture
    ========================================================================== */
 .why { position: relative; padding: var(--sec) 0; border-top: 1px solid var(--line); }
