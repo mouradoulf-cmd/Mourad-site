@@ -102,14 +102,15 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--mut);font-siz
 </div></header>
 
 <section id="studio"><div class="wrap">
-<div class="sh"><h2>Le studio</h2><p>5 étapes, tout se règle ici. Le résultat apparaît en bas.</p></div>
+<div class="sh"><h2>Le studio</h2><p>6 étapes, tout se règle ici. Le résultat apparaît en bas.</p></div>
 <div class="studio">
 <div class="stack">
  <div class="card rv"><div class="step"><i>1</i><h3>Type de vidéo</h3><small id="cntType"></small></div><div class="tabs" id="catTabs"></div><div class="opts" id="typeGrid"></div></div>
  <div class="card rv"><div class="step"><i>2</i><h3>Style visuel</h3><small id="cntSt"></small></div><div class="tabs" id="stTabs"></div><div class="opts" id="styleGrid"></div></div>
  <div class="card rv"><div class="step"><i>3</i><h3>Ton idée</h3></div><textarea id="idea" placeholder="Ex : un bébé panda qui apprend à marcher dans une forêt de bambous, lumière douce du matin"></textarea><div class="chips" id="ideaChips"></div></div>
  <div class="card rv"><div class="step"><i>4</i><h3>Image de départ <small>optionnel</small></h3></div><div class="drop" id="drop">＋ Ajoute une ou plusieurs images à animer<br><small>Sans image : la vidéo est créée à partir du texte</small></div><input type="file" id="file" accept="image/*" multiple hidden><div class="thumbs" id="thumbs"></div></div>
- <div class="card rv"><div class="step"><i>5</i><h3>Réglages</h3></div><div class="row">
+ <div class="card rv"><div class="step"><i>5</i><h3>Modèle vidéo</h3><small id="cntM"></small></div><div class="opts" id="modelGrid"></div><p class="hint" id="modelInfo"></p></div>
+ <div class="card rv"><div class="step"><i>6</i><h3>Réglages</h3></div><div class="row">
   <div><label>Format</label><select id="ratio"><option value="9:16">Vertical 9:16 (TikTok, Reels)</option><option value="16:9">Horizontal 16:9 (YouTube)</option><option value="1:1">Carré 1:1</option></select></div>
   <div><label>Durée</label><select id="dur"><option value="121">5 secondes</option><option value="153" selected>6,4 secondes</option><option value="241">10 secondes</option></select></div>
   <div><label>Cadrage</label><select id="frame"><option value="">Auto</option><option value="wide shot, environment visible">Plan large</option><option value="medium shot">Plan moyen</option><option value="extreme close-up">Gros plan</option><option value="aerial drone shot">Vue de drone</option></select></div>
@@ -119,10 +120,13 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--mut);font-siz
 </div>
 <aside class="side"><div class="card sum">
  <h3 class="dsp">Ta vidéo</h3>
- <dl><dt>Type</dt><dd id="sType">—</dd><dt>Style</dt><dd id="sStyle">—</dd><dt>Format</dt><dd id="sRatio">—</dd><dt>Images</dt><dd id="sImg">0</dd></dl>
- <label>Prompt généré</label><div class="pv" id="pv"></div>
+ <dl><dt>Type</dt><dd id="sType">—</dd><dt>Style</dt><dd id="sStyle">—</dd><dt>Format</dt><dd id="sRatio">—</dd><dt>Modèle</dt><dd id="sModel">—</dd><dt>Images</dt><dd id="sImg">0</dd></dl>
+ <label>Prompt pro <span id="auto" style="color:var(--g)">· auto</span></label><textarea id="pv" style="min-height:170px;font-size:.8rem"></textarea>
+ <label style="margin-top:.7rem">Anti-erreurs (negative prompt)</label><textarea id="neg" style="min-height:70px;font-size:.78rem"></textarea>
+ <button class="chip" type="button" id="reauto" style="margin-top:.5rem">↺ Régénérer automatiquement</button>
  <div style="display:grid;gap:.6rem;margin-top:1rem">
   <button class="btn" id="gen">✨ Créer la vidéo</button>
+  <a class="btn ghost" id="open" target="_blank" rel="noopener" style="display:none">Ouvrir le modèle ↗</a>
   <button class="btn ghost" id="copy">Copier le prompt</button>
   <button class="btn ghost" id="stop" style="display:none">⏹ Arrêter</button>
  </div>
@@ -207,10 +211,39 @@ var STYLES=[
 ['bw','⚫','Noir & blanc','art','Elegant black and white film, high contrast, classic cinema'],
 ['neon','💜','Néon','art','Glowing neon, dark background, vibrant glow, synthwave']];
 var CHIPS=['un bébé panda dans la bambouseraie','une voiture rouge sur la côte au coucher du soleil','un chat astronaute sur la lune','une petite fille et son dragon','un café parisien sous la pluie','des animaux qui chantent à la ferme'];
-var S={cat:'real',type:'cine',stf:'all',style:'real4k',imgs:[],run:false,stop:false};
+var S0=1;var S={cat:'real',type:'cine',stf:'all',style:'real4k',imgs:[],run:false,stop:false};
 var $=function(i){return document.getElementById(i)};
 function key(){try{return(localStorage.getItem(KS)||'').trim()}catch(e){return''}}
 function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('on')},2600)}
+
+var MODELS=[
+['agnes','⚡','Agnes v2.0','Agnes AI','Génération directe depuis ce site avec ta clé',true,'tags','https://platform.agnes-ai.com',10],
+['veo','🔷','Veo 3 / 3.1','Google','Réalisme + son et dialogues synchronisés',false,'cine','https://labs.google/fx/tools/flow',8],
+['sora','🌀','Sora 2','OpenAI','Physique réaliste, scènes longues, son',false,'cine','https://sora.com',12],
+['kling','🎯','Kling 2.x','Kuaishou','Mouvements humains, très bon image-vers-vidéo',false,'tags','https://klingai.com',10],
+['runway','🛫','Runway Gen-4','Runway','Cohérence des personnages, contrôle caméra',false,'short','https://runwayml.com',10],
+['luma','🌅','Ray 2','Luma','Mouvements caméra fluides, cinématique',false,'cine','https://lumalabs.ai',9],
+['hailuo','🌊','Hailuo 02','MiniMax','Physique et action dynamique',false,'tags','https://hailuoai.video',10],
+['seedance','🌱','Seedance','ByteDance','Multi-plans cohérents, rapide',false,'tags','https://dreamina.capcut.com',10],
+['pika','💫','Pika 2.x','Pika','Effets créatifs, formats courts réseaux',false,'short','https://pika.art',5],
+['wan','🧩','Wan 2.x','Alibaba (open source)','Gratuit et open source, sans limite chez soi',false,'tags','https://wan.video',5],
+['firefly','🔥','Firefly Video','Adobe','Sûr pour usage commercial, bon pour B-roll',false,'short','https://firefly.adobe.com',5],
+['mj','🎨','Midjourney Video','Midjourney','Style artistique et images animées',false,'short','https://www.midjourney.com',5],
+['grok','✖️','Grok Imagine','xAI','Rapide, avec audio',false,'short','https://grok.com',6],
+['ltx','🧪','LTX Video','Lightricks','Open source, très rapide',false,'tags','https://ltx.studio',5]];
+S.model='agnes';S.edited=false;
+function curModel(){return MODELS.filter(function(m){return m[0]===S.model})[0]}
+var NEG='extra fingers, extra limbs, deformed hands, distorted face, duplicated characters, blurry, flickering, morphing objects, melting shapes, inconsistent character, text, subtitles, watermark, logo, low quality, jitter';
+var DEF={cine:'a cinematic moment with a clear subject and a simple action',pub:'a premium product slowly revealed',doc:'wildlife in its natural habitat',drone:'a sweeping reveal of a vast landscape',port:'a person looking toward the camera and smiling softly',kid:'friendly children exploring a colorful world',animal:'cute animal friends playing together',rhyme:'adorable round characters singing and dancing in a simple bright scene',sleep:'a sleepy little animal under a starry sky',abc:'bouncing colorful letters and objects'};
+function buildPro(){var t=curType(),st=curStyle(),m=curModel(),f=m[6];
+ var raw=$('idea').value.trim(),subject=raw||DEF[t[0]]||('a '+t[2].toLowerCase()+' scene');
+ var cam=$('frame').value||'smooth cinematic camera, one single continuous shot',mv=$('move').value,ratio=$('ratio').value;
+ var ref=S.imgs.length?'Use the provided image as the first frame and keep the subject, face, outfit and composition strictly identical. ':'';
+ var sec={121:5,153:6,241:10}[$('dur').value];
+ if(f==='cine')return ref+'A '+sec+'-second single continuous shot. Subject and action: '+subject+'. Setting: details that fit the scene. Camera: '+cam+'. Look and lighting: '+t[4]+'; '+st[4]+'. Motion: '+mv+', natural physics, fluid and coherent. Audio: fitting ambient sound and light music, no spoken text unless requested. Format '+ratio+'. Keep the same characters and objects from start to end.';
+ if(f==='short')return ref+subject+'. '+cam+'. '+st[4]+'. '+mv+'. '+ratio+'.';
+ return ref+'Subject: '+subject+'. Action: '+mv+', one clear action only. Camera: '+cam+'. Style: '+st[4]+'. Genre: '+t[4]+'. Quality: sharp details, smooth motion, stable consistent characters, '+sec+' seconds, '+ratio+', 24fps.'}
+function refresh(){if(!S.edited){$('pv').value=buildPro();$('auto').textContent='· auto';}else $('auto').textContent='· modifié'; $('neg').value=$('neg').dataset.u?$('neg').value:NEG}
 function curType(){var c=CATS.filter(function(x){return x.id===S.cat})[0];return c.items.filter(function(i){return i[0]===S.type})[0]||c.items[0]}
 function curStyle(){return STYLES.filter(function(s){return s[0]===S.style})[0]}
 function render(){
@@ -221,19 +254,22 @@ function render(){
  var L=STYLES.filter(function(s){return S.stf==='all'||s[3]===S.stf});
  $('styleGrid').innerHTML=L.map(function(s){return'<button class="opt'+(s[0]===S.style?' sel':'')+'" data-s="'+s[0]+'"><span class="em">'+s[1]+'</span><b>'+s[2]+'</b></button>'}).join('');
  $('cntType').textContent=c.items.length+' types';$('cntSt').textContent=STYLES.length+' styles';
+ $('modelGrid').innerHTML=MODELS.map(function(m){return'<button class="opt'+(m[0]===S.model?' sel':'')+'" data-m="'+m[0]+'"><span class="em">'+m[1]+'</span><b>'+m[2]+'</b><small>'+m[3]+'</small></button>'}).join('');
+ $('cntM').textContent=MODELS.length+' modèles';var cm=curModel();$('modelInfo').textContent=cm[3]+' — '+cm[4]+(cm[5]?'':'. Ce site prépare le prompt optimisé pour ce modèle : copie-le puis colle-le sur sa plateforme.');
  sum()}
-function prompt_(){var t=curType(),s=curStyle(),p=[];
+function promptOld(){var t=curType(),s=curStyle(),p=[];
  if(S.imgs.length)p.push('Animate this exact image as the starting frame. Keep the same subject, face, clothing and composition identical.');
  var idea=$('idea').value.trim();if(idea)p.push('Scene: '+idea);
  p.push(t[4]);p.push('Visual style: '+s[4]);
  if($('frame').value)p.push($('frame').value);p.push($('move').value);
  p.push('Aspect ratio '+$('ratio').value+', 24fps, smooth motion, consistent characters, no text, no watermark');
  return p.join('. ')}
-function sum(){$('sType').textContent=curType()[2];$('sStyle').textContent=curStyle()[2];$('sRatio').textContent=$('ratio').value+' · '+({121:'5',153:'6,4',241:'10'}[$('dur').value])+' s';$('sImg').textContent=S.imgs.length;$('pv').textContent=prompt_();
- $('keyHint').textContent=key()?'Clé API active ✓':'Ajoute ta clé API (bouton en haut) pour lancer la génération.'}
-document.addEventListener('click',function(e){var b=e.target.closest('[data-c],[data-t],[data-f],[data-s]');if(!b)return;
- if(b.dataset.c)S.cat=b.dataset.c;if(b.dataset.t)S.type=b.dataset.t;if(b.dataset.f)S.stf=b.dataset.f;if(b.dataset.s)S.style=b.dataset.s;render()});
-['idea','ratio','dur','frame','move'].forEach(function(i){$(i).addEventListener('input',sum)});
+function prompt_(){return $('pv').value.trim()}
+function sum(){refresh();var cm=curModel();$('sModel').textContent=cm[2];$('gen').textContent=cm[5]?'✨ Créer la vidéo':'📋 Préparer pour '+cm[2];var o=$('open');o.style.display=cm[5]?'none':'inline-flex';o.href=cm[7];o.textContent='Ouvrir '+cm[2]+' ↗';$('sType').textContent=curType()[2];$('sStyle').textContent=curStyle()[2];$('sRatio').textContent=$('ratio').value+' · '+({121:'5',153:'6,4',241:'10'}[$('dur').value])+' s';$('sImg').textContent=S.imgs.length;
+ $('keyHint').textContent=!curModel()[5]?'Ce modèle se lance sur sa plateforme : copie le prompt puis ouvre-la.':key()?'Clé API active ✓':'Ajoute ta clé API (bouton en haut) pour lancer la génération.'}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-c],[data-t],[data-f],[data-s],[data-m]');if(!b)return;
+ if(b.dataset.c)S.cat=b.dataset.c;if(b.dataset.t)S.type=b.dataset.t;if(b.dataset.f)S.stf=b.dataset.f;if(b.dataset.s)S.style=b.dataset.s;if(b.dataset.m)S.model=b.dataset.m;render()});
+['idea','ratio','dur','frame','move'].forEach(function(i){$(i).addEventListener('input',function(){S.edited=false;sum()})});$('pv').addEventListener('input',function(){S.edited=true;$('auto').textContent='· modifié'});$('neg').addEventListener('input',function(){$('neg').dataset.u=1});$('reauto').onclick=function(){S.edited=false;sum();toast('Prompt régénéré')};
 $('ideaChips').innerHTML=CHIPS.map(function(c){return'<button class="chip" type="button">'+c+'</button>'}).join('');
 $('ideaChips').onclick=function(e){if(e.target.classList.contains('chip')){$('idea').value=e.target.textContent;sum()}};
 $('marq').innerHTML=(function(){var a=[];CATS.forEach(function(c){c.items.forEach(function(i){a.push('<span>'+i[1]+' '+i[2]+'</span>')})});return a.concat(a).join('')})();
@@ -249,10 +285,10 @@ $('drop').addEventListener('drop',function(e){add(e.dataTransfer.files)});
 // key dialog
 $('keyBtn').onclick=function(){$('key').value=key();$('dlg').showModal()};$('closeKey').onclick=function(){$('dlg').close()};
 $('saveKey').onclick=function(){var k=$('key').value.trim();try{k?localStorage.setItem(KS,k):localStorage.removeItem(KS)}catch(e){}$('dlg').close();sum();toast(k?'Clé enregistrée ✓':'Clé supprimée')};
-$('copy').onclick=function(){var t=prompt_();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('Prompt copié ✓')},function(){toast('Copie impossible, sélectionne le texte')})};
+$('copy').onclick=function(){var t=prompt_()+'\n\nNegative prompt: '+$('neg').value.trim();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('Prompt copié ✓')},function(){toast('Copie impossible, sélectionne le texte')})};
 // generation
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
-async function make(p,img){var b={model:MODEL,prompt:p,num_frames:parseInt($('dur').value,10),frame_rate:24};if(img)b.image=img;
+async function make(p,img){var b={model:MODEL,prompt:p,negative_prompt:$('neg').value.trim(),num_frames:parseInt($('dur').value,10),frame_rate:24};if(img)b.image=img;
  var r=await fetch(API+'/videos',{method:'POST',headers:{Authorization:'Bearer '+key(),'Content-Type':'application/json'},body:JSON.stringify(b)});
  if(!r.ok)throw new Error('Erreur '+r.status+' '+(await r.text()).slice(0,120));
  var d=await r.json(),id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas d\'identifiant de tâche');return id}
@@ -262,12 +298,12 @@ async function poll(id,cb){for(var i=0;i<120;i++){if(S.stop)throw new Error('Arr
  if(st==='failed'||st==='error')throw new Error('Échec de la génération')}throw new Error('Délai dépassé')}
 function drawQ(L){$('queue').innerHTML=L.map(function(q,i){return'<div class="q '+q.c+'"><span>'+(q.c==='done'?'✅':q.c==='fail'?'⚠️':q.c==='proc'?'⏳':'•')+'</span>Vidéo '+(i+1)+'<span class="s">'+q.t+'</span></div>'}).join('')}
 $('gen').onclick=async function(){
- if(S.run)return;if(!key()){$('keyBtn').click();return}
+ if(S.run)return;if(!curModel()[5]){$('copy').click();return}if(!key()){$('keyBtn').click();return}
  var n=parseInt($('vars').value,10),src=S.imgs.length?S.imgs:[null],jobs=[];
  src.forEach(function(im){for(var k=0;k<n;k++)jobs.push({im:im,c:'',t:'En attente'})});
  S.run=true;S.stop=false;$('gen').disabled=true;$('stop').style.display='block';drawQ(jobs);$('queue').scrollIntoView({behavior:'smooth',block:'center'});
  for(var i=0;i<jobs.length;i++){if(S.stop)break;var j=jobs[i];
-  try{j.c='proc';j.t='Envoi…';drawQ(jobs);var id=await make(prompt_()+(n>1?'. Variation '+(i%n+1):''),j.im&&j.im.u);
+  try{j.c='proc';j.t='Envoi…';drawQ(jobs);var id=await make(prompt_()+(n>1?' Variation '+(i%n+1)+'.':''),j.im&&j.im.u);
    var u=await poll(id,function(t){j.t=t;drawQ(jobs)});j.c='done';j.t='Terminé';drawQ(jobs);
    var d=document.createElement('div');d.className='gi';d.innerHTML='<video controls playsinline loop preload="metadata" src="'+u+'"></video><div><span>Vidéo '+(i+1)+'</span><a href="'+u+'" target="_blank" rel="noopener" download>Télécharger</a></div>';$('gal').appendChild(d)}
   catch(e){j.c='fail';j.t=e.message;drawQ(jobs)}}
