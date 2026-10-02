@@ -581,45 +581,32 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 @media (pointer: coarse) { .footer__col a, .footer__link, .footer__bottom a { display: inline-flex; align-items: center; min-height: 44px; } .footer__col { gap: 0; } .link-arrow { min-height: 44px; } .brand { min-height: 44px; } }
 
 /* ==========================================================================
-   OFFER ILLUSTRATIONS (offer-icons.js)
+   OFFER MARKS — typography, not icons. A short word (or, in the tightest
+   spots, the tier numeral) set in the house gold gradient, with a slow
+   light sweep across it. Replaces the old SVG/WebGL badges: no borrowed
+   brand colors, no logo-shaped object, just lettering that catches light.
    ========================================================================== */
-.ic { color: #1a1512; }
-.ic .ic-halo { opacity: .55; }
-.ic .ic-badge { fill: rgba(18,16,25,.55); stroke: rgba(201,169,97,.4); stroke-width: 1; }
-.ic .ic-glyph { fill: none; stroke: #c9a961; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.ic .ic-glyph-fill { fill: #c9a961; }
-.ic .ic-mod { fill: #c9a961; }
-.ic * { transform-box: fill-box; transform-origin: center; }
-
-.is-playing .ic .ic-in { animation: icIn .7s var(--ease-out) both; animation-delay: calc(var(--i, 0) * .1s); }
-@keyframes icIn { 0% { opacity: 0; transform: translateY(6px) scale(.94); } 100% { opacity: 1; transform: none; } }
-.is-playing .ic .ic-halo { animation: icHaloPulse 5s ease infinite; animation-delay: .7s; }
-@keyframes icHaloPulse { 0%, 100% { opacity: .5; } 50% { opacity: .75; } }
-
-/* Complete Pack — four corners (Google, QR, GPS, website) converge to a
-   burst, then the assembled badge pops in. Runs in place of the generic
-   .ic-in fade; default (not playing) state just shows the final badge. */
-.ic--pack .ic-chip-bg { fill: rgba(18,16,25,.75); stroke: rgba(201,169,97,.5); stroke-width: 1; }
-.ic--pack .ic-glyph-sm { fill: none; stroke: #c9a961; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.ic--pack .ic-corner { opacity: 0; }
-.ic--pack .ic-boom { fill: none; stroke: #c9a961; stroke-width: 2; opacity: 0; }
-.ic--pack .ic-final { opacity: 1; }
-
-.is-playing .ic--pack .ic-corner--tl { animation: icCnTL 5s var(--ease-out) infinite; }
-.is-playing .ic--pack .ic-corner--tr { animation: icCnTR 5s var(--ease-out) infinite; animation-delay: .03s; }
-.is-playing .ic--pack .ic-corner--bl { animation: icCnBL 5s var(--ease-out) infinite; animation-delay: .06s; }
-.is-playing .ic--pack .ic-corner--br { animation: icCnBR 5s var(--ease-out) infinite; animation-delay: .09s; }
-.is-playing .ic--pack .ic-boom { animation: icBoom 5s var(--ease-out) infinite; }
-.is-playing .ic--pack .ic-final { animation: icFinal 5s var(--ease-out) infinite; }
-.is-playing .ic--pack .ic-halo--boom { animation: icHaloBoom 5s ease infinite; }
-
-@keyframes icCnTL { 0% { opacity: 0; transform: translate(0,0) scale(1) rotate(0); } 6% { opacity: 1; } 8%, 36% { opacity: 1; transform: translate(0,0) scale(1) rotate(0); } 46% { opacity: 1; transform: translate(46px,30px) scale(.35) rotate(12deg); } 52% { opacity: 0; transform: translate(46px,30px) scale(.05) rotate(12deg); } 100% { opacity: 0; } }
-@keyframes icCnTR { 0% { opacity: 0; transform: translate(0,0) scale(1) rotate(0); } 6% { opacity: 1; } 8%, 36% { opacity: 1; transform: translate(0,0) scale(1) rotate(0); } 46% { opacity: 1; transform: translate(-46px,30px) scale(.35) rotate(-12deg); } 52% { opacity: 0; transform: translate(-46px,30px) scale(.05) rotate(-12deg); } 100% { opacity: 0; } }
-@keyframes icCnBL { 0% { opacity: 0; transform: translate(0,0) scale(1) rotate(0); } 6% { opacity: 1; } 8%, 36% { opacity: 1; transform: translate(0,0) scale(1) rotate(0); } 46% { opacity: 1; transform: translate(46px,-30px) scale(.35) rotate(-12deg); } 52% { opacity: 0; transform: translate(46px,-30px) scale(.05) rotate(-12deg); } 100% { opacity: 0; } }
-@keyframes icCnBR { 0% { opacity: 0; transform: translate(0,0) scale(1) rotate(0); } 6% { opacity: 1; } 8%, 36% { opacity: 1; transform: translate(0,0) scale(1) rotate(0); } 46% { opacity: 1; transform: translate(-46px,-30px) scale(.35) rotate(12deg); } 52% { opacity: 0; transform: translate(-46px,-30px) scale(.05) rotate(12deg); } 100% { opacity: 0; } }
-@keyframes icBoom { 0%, 44% { opacity: 0; transform: scale(.3); } 48% { opacity: .85; transform: scale(.6); } 60% { opacity: 0; transform: scale(1.7); } 100% { opacity: 0; } }
-@keyframes icFinal { 0%, 48% { opacity: 0; transform: scale(.3); } 56% { opacity: 1; transform: scale(1.1); } 62%, 90% { opacity: 1; transform: scale(1); } 97%, 100% { opacity: 0; transform: scale(.92); } }
-@keyframes icHaloBoom { 0%, 44% { opacity: .4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.25); } 66%, 92% { opacity: .55; transform: scale(1); } 100% { opacity: .4; } }
+.ic-word, .ic-num {
+  display: block; max-width: 100%;
+  font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  letter-spacing: -0.01em; line-height: 1.08; text-wrap: balance;
+  background: linear-gradient(100deg, #8a6324 0%, #f6e1ad 38%, #c9a961 54%, #f6e1ad 70%, #8a6324 100%);
+  background-size: 240% 100%; background-position: 92% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: icShine 7s ease-in-out infinite;
+}
+html[lang="th"] .ic-word, html[lang="ar"] .ic-word,
+html[lang="th"] .ic-num, html[lang="ar"] .ic-num { font-style: normal; font-weight: 600; }
+.ic-word { font-size: 1.7rem; }
+.ic-num { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.om__art .ic-word { font-size: clamp(2.2rem, 7vw, 3.4rem); }
+.pcard__icon .ic-word, .co-offer__icon .ic-word { font-size: 1.1rem; }
+@keyframes icShine {
+  0%, 55% { background-position: 92% 0; }
+  78% { background-position: 8% 0; }
+  100% { background-position: 8% 0; }
+}
+@media (prefers-reduced-motion: reduce) { .ic-word, .ic-num { animation: none; background-position: 30% 0; } }
 
 /* ==========================================================================
    OFFER CARDS — glass, pointer-lit border, gold on the featured one
@@ -655,11 +642,9 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 @keyframes watchPulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.12, 1.45); opacity: 0; } }
 .offer:hover .offer__watch { background: var(--gold); color: #1c1405; }
 .offer:hover .offer__watch svg { color: #1c1405; }
-.offer__icon { margin: .6rem -.35rem .4rem; aspect-ratio: 4 / 3; transform: translateZ(30px); transition: transform .7s var(--ease-out); }
+.offer__icon { margin: .6rem -.35rem .4rem; aspect-ratio: 4 / 3; transform: translateZ(30px); transition: transform .7s var(--ease-out); display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 .5rem; }
 .offer:hover .offer__icon { transform: translateZ(50px) scale(1.04); }
-.offer__icon .ic, .om__art .ic, .guide__icon .ic, .pcard__icon .ic { width: 100%; height: 100%; overflow: visible; }
-.offer__icon.ic3d, .om__art.ic3d { display: block; }
-.offer__icon.ic3d canvas, .om__art.ic3d canvas { display: block; width: 100%; height: 100%; }
+.om__art, .pcard__icon, .guide__icon, .co-offer__icon { display: flex; align-items: center; justify-content: center; text-align: center; }
 .offer__name, .pcard__name { font-family: var(--font-display); font-size: 1.36rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
 .offer__benefit { margin-top: .55rem; flex: 1; font-size: .94rem; line-height: 1.55; color: var(--muted); }
 .offer__price, .pcard__price { margin-top: 1.4rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: .3rem .6rem; }
@@ -737,13 +722,12 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 .om__media { position: relative; min-height: 15rem; display: grid; place-items: center; padding: 2.5rem 2rem 3.5rem; overflow: hidden; background: radial-gradient(70% 60% at 50% 42%, rgba(201,169,97,.32), transparent 70%), radial-gradient(90% 80% at 50% 100%, rgba(201,169,97,.14), transparent), #141210; }
 .om__media::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(245,241,232,.07) 1px, transparent 1px); background-size: 22px 22px; -webkit-mask-image: radial-gradient(closest-side, #000, transparent); mask-image: radial-gradient(closest-side, #000, transparent); }
 .om__art { position: relative; z-index: 1; width: min(100%, 26rem); aspect-ratio: 4 / 3; }
-.om__art.ic3d { width: min(100%, 32rem); aspect-ratio: 1 / 1; }
 .om__media video { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; }
 .om__soon { position: absolute; bottom: 1rem; left: 50%; z-index: 2; transform: translateX(-50%); display: inline-flex; align-items: center; gap: .45rem; padding: .4rem .85rem; border-radius: 999px; font-size: .76rem; color: var(--gold-soft); white-space: nowrap; background: rgba(7,6,12,.75); border: 1px solid rgba(201,169,97,.28); }
 .om__soon svg { width: 15px; height: 15px; }
 .om__media.has-video .om__soon, .om__media.has-video .om__art { display: none; }
 .om__body { padding: clamp(1.6rem, 3vw, 2.4rem); }
-@media (max-width: 859px) { .om__media { min-height: 0; padding: 1.8rem 1.5rem 3.4rem; } .om__art { width: min(68%, 18rem); } .om__art.ic3d { width: min(78%, 22rem); } }
+@media (max-width: 859px) { .om__media { min-height: 0; padding: 1.8rem 1.5rem 3.4rem; } .om__art { width: min(68%, 18rem); } }
 .om__tier, .om__label, .guide__n, .status__n { font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-variant-numeric: tabular-nums; }
 .om__title { margin-top: .5rem; padding-inline-end: 3rem; font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; }
 .om__benefit { margin-top: .7rem; color: var(--muted); }

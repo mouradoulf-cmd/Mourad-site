@@ -40,8 +40,8 @@ its link is set.
 ### Offer videos (15–20 s, ≤ 2 MB each)
 
 Put the MP4 files in `assets/video/` and fill `videos` (and optionally
-`posters`) in `offers-config.js`. Until then each offer shows its animated
-illustration (pure SVG + CSS, `assets/js/offer-icons.js`).
+`posters`) in `offers-config.js`. Until then each offer shows its `.ic-word`
+mark (a gold-gradient word in `site.css`, e.g. "Found." for Google).
 Encode with: `ffmpeg -i in.mov -vf scale=1280:-2 -c:v libx264 -crf 28 -preset slow -an -movflags +faststart out.mp4`.
 
 ## Payments — how it works (no server needed)
