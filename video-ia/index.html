@@ -105,6 +105,15 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--mut);font-siz
 <div class="sh"><h2>Le studio</h2><p>6 étapes, tout se règle ici. Le résultat apparaît en bas.</p></div>
 <div class="studio">
 <div class="stack">
+ <div class="card rv" id="story"><div class="step"><i>★</i><h3>Mon histoire</h3><small id="stBadge">Aucune</small></div>
+  <p class="hint" style="margin:0 0 .8rem">Décris ton personnage une seule fois : il sera gardé identique dans toutes tes vidéos, jusqu'à ce que tu cliques sur « Nouvelle histoire ».</p>
+  <div class="row"><div><label>Titre de l'histoire</label><input type="text" id="stTitle" placeholder="Ex : Mina et son éléphant"></div><div><label>Univers / décor fixe</label><input type="text" id="stWorld" placeholder="Ex : village thaïlandais, rizières, lumière dorée"></div></div>
+  <label style="margin-top:.8rem">Personnage principal (apparence fixe)</label><textarea id="stChar" style="min-height:80px" placeholder="Ex : Mina, fille de 6 ans, longs cheveux noirs en deux tresses, robe jaune, sourire timide ; son éléphanteau gris Boun avec une petite écharpe rouge"></textarea>
+  <div class="row" style="margin-top:.8rem;align-items:end"><div><label>Image de référence du personnage <small>(utilisée automatiquement)</small></label><button class="btn ghost sm" type="button" id="refBtn">＋ Choisir une image</button><input type="file" id="refFile" accept="image/*" hidden></div><div id="refPrev"></div></div>
+  <div class="chips"><span class="chip" style="cursor:default" id="stLock">Style et type : mémorisés avec l'histoire</span><span class="chip" style="cursor:default" id="stEp">Épisode 1</span></div>
+  <div id="stLog" class="hint"></div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem"><button class="btn sm" id="stSave">💾 Enregistrer l'histoire</button><button class="btn ghost sm" id="stNew">🆕 Nouvelle histoire</button></div>
+ </div>
  <div class="card rv"><div class="step"><i>1</i><h3>Type de vidéo</h3><small id="cntType"></small></div><div class="tabs" id="catTabs"></div><div class="opts" id="typeGrid"></div></div>
  <div class="card rv"><div class="step"><i>2</i><h3>Style visuel</h3><small id="cntSt"></small></div><div class="tabs" id="stTabs"></div><div class="opts" id="styleGrid"></div></div>
  <div class="card rv"><div class="step"><i>3</i><h3>Ton idée</h3></div><textarea id="idea" placeholder="Ex : un bébé panda qui apprend à marcher dans une forêt de bambous, lumière douce du matin"></textarea><div class="chips" id="ideaChips"></div></div>
@@ -238,11 +247,11 @@ var DEF={cine:'a cinematic moment with a clear subject and a simple action',pub:
 function buildPro(){var t=curType(),st=curStyle(),m=curModel(),f=m[6];
  var raw=$('idea').value.trim(),subject=raw||DEF[t[0]]||('a '+t[2].toLowerCase()+' scene');
  var cam=$('frame').value||'smooth cinematic camera, one single continuous shot',mv=$('move').value,ratio=$('ratio').value;
- var ref=S.imgs.length?'Use the provided image as the first frame and keep the subject, face, outfit and composition strictly identical. ':'';
+ var ref=(S.imgs.length||(ST&&ST.ref))?'Use the provided image as the first frame and keep the subject, face, outfit and composition strictly identical. ':'';
  var sec={121:5,153:6,241:10}[$('dur').value];
- if(f==='cine')return ref+'A '+sec+'-second single continuous shot. Subject and action: '+subject+'. Setting: details that fit the scene. Camera: '+cam+'. Look and lighting: '+t[4]+'; '+st[4]+'. Motion: '+mv+', natural physics, fluid and coherent. Audio: fitting ambient sound and light music, no spoken text unless requested. Format '+ratio+'. Keep the same characters and objects from start to end.';
- if(f==='short')return ref+subject+'. '+cam+'. '+st[4]+'. '+mv+'. '+ratio+'.';
- return ref+'Subject: '+subject+'. Action: '+mv+', one clear action only. Camera: '+cam+'. Style: '+st[4]+'. Genre: '+t[4]+'. Quality: sharp details, smooth motion, stable consistent characters, '+sec+' seconds, '+ratio+', 24fps.'}
+ if(f==='cine')return stCtx()+ref+'A '+sec+'-second single continuous shot. Subject and action: '+subject+'. Setting: details that fit the scene. Camera: '+cam+'. Look and lighting: '+t[4]+'; '+st[4]+'. Motion: '+mv+', natural physics, fluid and coherent. Audio: fitting ambient sound and light music, no spoken text unless requested. Format '+ratio+'. Keep the same characters and objects from start to end.';
+ if(f==='short')return stCtx()+ref+subject+'. '+cam+'. '+st[4]+'. '+mv+'. '+ratio+'.';
+ return stCtx()+ref+'Subject: '+subject+'. Action: '+mv+', one clear action only. Camera: '+cam+'. Style: '+st[4]+'. Genre: '+t[4]+'. Quality: sharp details, smooth motion, stable consistent characters, '+sec+' seconds, '+ratio+', 24fps.'}
 function refresh(){if(!S.edited){$('pv').value=buildPro();$('auto').textContent='· auto';}else $('auto').textContent='· modifié'; $('neg').value=$('neg').dataset.u?$('neg').value:NEG}
 function curType(){var c=CATS.filter(function(x){return x.id===S.cat})[0];return c.items.filter(function(i){return i[0]===S.type})[0]||c.items[0]}
 function curStyle(){return STYLES.filter(function(s){return s[0]===S.style})[0]}
@@ -285,7 +294,7 @@ $('drop').addEventListener('drop',function(e){add(e.dataTransfer.files)});
 // key dialog
 $('keyBtn').onclick=function(){$('key').value=key();$('dlg').showModal()};$('closeKey').onclick=function(){$('dlg').close()};
 $('saveKey').onclick=function(){var k=$('key').value.trim();try{k?localStorage.setItem(KS,k):localStorage.removeItem(KS)}catch(e){}$('dlg').close();sum();toast(k?'Clé enregistrée ✓':'Clé supprimée')};
-$('copy').onclick=function(){var t=prompt_()+'\n\nNegative prompt: '+$('neg').value.trim();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('Prompt copié ✓')},function(){toast('Copie impossible, sélectionne le texte')})};
+$('copy').onclick=function(){if(ST&&curModel()[5]===false&&this.dataset.ep!==$('pv').value){ST.eps=ST.eps||[];ST.eps.push(($('idea').value.trim()||curType()[2]).slice(0,60));stStore();stUI();this.dataset.ep=$('pv').value}var t=prompt_()+'\n\nNegative prompt: '+$('neg').value.trim();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('Prompt copié ✓')},function(){toast('Copie impossible, sélectionne le texte')})};
 // generation
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
 async function make(p,img){var b={model:MODEL,prompt:p,negative_prompt:$('neg').value.trim(),num_frames:parseInt($('dur').value,10),frame_rate:24};if(img)b.image=img;
@@ -303,15 +312,32 @@ $('gen').onclick=async function(){
  src.forEach(function(im){for(var k=0;k<n;k++)jobs.push({im:im,c:'',t:'En attente'})});
  S.run=true;S.stop=false;$('gen').disabled=true;$('stop').style.display='block';drawQ(jobs);$('queue').scrollIntoView({behavior:'smooth',block:'center'});
  for(var i=0;i<jobs.length;i++){if(S.stop)break;var j=jobs[i];
-  try{j.c='proc';j.t='Envoi…';drawQ(jobs);var id=await make(prompt_()+(n>1?' Variation '+(i%n+1)+'.':''),j.im&&j.im.u);
-   var u=await poll(id,function(t){j.t=t;drawQ(jobs)});j.c='done';j.t='Terminé';drawQ(jobs);
+  try{j.c='proc';j.t='Envoi…';drawQ(jobs);var id=await make(prompt_()+(n>1?' Variation '+(i%n+1)+'.':''),(j.im&&j.im.u)||(ST&&ST.ref)||null);
+   var u=await poll(id,function(t){j.t=t;drawQ(jobs)});j.c='done';j.t='Terminé';drawQ(jobs);if(ST&&i%n===0){ST.eps=ST.eps||[];ST.eps.push(($('idea').value.trim()||curType()[2]).slice(0,60));stStore();stUI()}
    var d=document.createElement('div');d.className='gi';d.innerHTML='<video controls playsinline loop preload="metadata" src="'+u+'"></video><div><span>Vidéo '+(i+1)+'</span><a href="'+u+'" target="_blank" rel="noopener" download>Télécharger</a></div>';$('gal').appendChild(d)}
   catch(e){j.c='fail';j.t=e.message;drawQ(jobs)}}
  S.run=false;$('gen').disabled=false;$('stop').style.display='none';toast('Terminé')};
 $('stop').onclick=function(){S.stop=true;toast('Arrêt demandé')};
 // reveal
 if('IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});document.querySelectorAll('.rv').forEach(function(el){io.observe(el)})}else document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
-render();
+
+// ---------- Story session: same character until "Nouvelle histoire" ----------
+var SK='video_ia_story',ST=null;
+function stLoad(){try{ST=JSON.parse(localStorage.getItem(SK)||'null')}catch(e){ST=null}}
+function stStore(){try{localStorage.setItem(SK,JSON.stringify(ST))}catch(e){toast('Mémoire pleine : image de référence trop lourde')}}
+function stCtx(){if(!ST)return'';var p=[];if(ST.char)p.push('Recurring main character(s), must look exactly identical in every shot (same face, hair, outfit, colors, proportions): '+ST.char);if(ST.world)p.push('Consistent world: '+ST.world);if(ST.eps&&ST.eps.length)p.push('Story so far: '+ST.eps.slice(-3).join(' / ')+'. Continue the same story');return p.join('. ')+(p.length?'. ':'')}
+function stUI(){$('stTitle').value=ST?ST.title:'';$('stWorld').value=ST?ST.world:'';$('stChar').value=ST?ST.char:'';
+ $('refPrev').innerHTML=ST&&ST.ref?'<div class="th" style="width:78px"><img src="'+ST.ref+'" alt=""></div>':'';
+ $('stBadge').textContent=ST?('Active · '+(ST.title||'sans titre')):'Aucune';$('stEp').textContent='Épisode '+((ST&&ST.eps?ST.eps.length:0)+1);
+ $('stLog').innerHTML=ST&&ST.eps&&ST.eps.length?'Déjà fait : '+ST.eps.map(function(e,i){return(i+1)+'. '+e}).join(' · '):''}
+function shrink(u){return new Promise(function(ok){var i=new Image();i.onload=function(){var m=640,k=Math.min(1,m/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.82))};i.onerror=function(){ok(u)};i.src=u})}
+function stSaveNow(){ST=ST||{eps:[]};ST.title=$('stTitle').value.trim();ST.world=$('stWorld').value.trim();ST.char=$('stChar').value.trim();ST.cat=S.cat;ST.type=S.type;ST.style=S.style;ST.model=S.model;stStore();stUI();S.edited=false;sum()}
+$('stSave').onclick=function(){if(!$('stChar').value.trim()&&!(ST&&ST.ref)){toast('Décris ton personnage ou ajoute une image');return}stSaveNow();toast('Histoire enregistrée ✓ le personnage sera gardé')};
+$('refBtn').onclick=function(){$('refFile').click()};
+$('refFile').onchange=async function(e){var f=e.target.files[0];e.target.value='';if(!f)return;var u=await shrink(await rd(f));ST=ST||{eps:[]};ST.ref=u;stSaveNow();toast('Image de référence enregistrée ✓')};
+$('stNew').onclick=function(){if(ST&&!confirm('Commencer une nouvelle histoire ? Le personnage et l\'historique actuels seront effacés.'))return;ST=null;try{localStorage.removeItem(SK)}catch(e){}S.imgs=[];thumbs();$('idea').value='';stUI();S.edited=false;sum();toast('Nouvelle histoire : repartons de zéro')};
+stLoad();if(ST){S.cat=ST.cat||S.cat;S.type=ST.type||S.type;S.style=ST.style||S.style;S.model=ST.model||S.model}
+render();stUI();
 </script>
 </body>
 </html>
