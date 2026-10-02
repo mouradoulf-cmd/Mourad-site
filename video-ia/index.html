@@ -102,7 +102,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--mut);font-siz
 </div></header>
 
 <section id="studio"><div class="wrap">
-<div class="sh"><h2>Le studio</h2><p>6 étapes, tout se règle ici. Le résultat apparaît en bas.</p></div>
+<div class="sh"><h2>Le studio</h2><p>7 étapes, tout se règle ici. Le résultat apparaît en bas.</p></div>
 <div class="studio">
 <div class="stack">
  <div class="card rv" id="story"><div class="step"><i>★</i><h3>Mon histoire</h3><small id="stBadge">Aucune</small></div>
@@ -126,7 +126,17 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--mut);font-siz
   <div><label>Mouvement</label><select id="move"><option value="gentle subtle movement">Doux</option><option value="moderate balanced movement" selected>Modéré</option><option value="strong dynamic energetic movement">Énergique</option></select></div>
   <div><label>Variantes</label><select id="vars"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
  </div></div>
-</div>
+ <div class="card rv" id="serie"><div class="step"><i>7</i><h3>Série automatique</h3><small>jusqu'à 50 vidéos</small></div>
+  <p class="hint" style="margin:0 0 .8rem">Configure ton histoire une fois : le studio écrit tout seul le scénario de la série, un prompt différent par vidéo, avec le même personnage du début à la fin.</p>
+  <div class="row"><div><label>Nombre de vidéos</label><select id="sN"><option>5</option><option>10</option><option selected>20</option><option>30</option><option>50</option></select></div>
+  <div><label>Ambiance de la série</label><select id="sTheme"><option value="adv">Aventure joyeuse</option><option value="calm">Douce / histoire du soir</option><option value="learn">Éducative</option><option value="fun">Comédie</option></select></div>
+  <div><label>Nom du héros</label><input type="text" id="sHero" placeholder="Ex : Mina"></div></div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0"><button class="btn sm" id="sMake">🧠 Écrire le scénario</button><button class="btn ghost sm" id="sAll">📋 Copier tous les prompts</button><button class="btn ghost sm" id="sTxt">⬇️ Télécharger .txt</button></div>
+  <div id="sList" class="stack"></div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem"><button class="btn" id="sRun" style="display:none">🚀 Lancer la série</button><button class="btn ghost" id="sStop" style="display:none">⏹ Arrêter</button></div>
+  <p class="hint" id="sInfo"></p>
+ </div>
+ </div>
 <aside class="side"><div class="card sum">
  <h3 class="dsp">Ta vidéo</h3>
  <dl><dt>Type</dt><dd id="sType">—</dd><dt>Style</dt><dd id="sStyle">—</dd><dt>Format</dt><dd id="sRatio">—</dd><dt>Modèle</dt><dd id="sModel">—</dd><dt>Images</dt><dd id="sImg">0</dd></dl>
@@ -244,8 +254,8 @@ S.model='agnes';S.edited=false;
 function curModel(){return MODELS.filter(function(m){return m[0]===S.model})[0]}
 var NEG='extra fingers, extra limbs, deformed hands, distorted face, duplicated characters, blurry, flickering, morphing objects, melting shapes, inconsistent character, text, subtitles, watermark, logo, low quality, jitter';
 var DEF={cine:'a cinematic moment with a clear subject and a simple action',pub:'a premium product slowly revealed',doc:'wildlife in its natural habitat',drone:'a sweeping reveal of a vast landscape',port:'a person looking toward the camera and smiling softly',kid:'friendly children exploring a colorful world',animal:'cute animal friends playing together',rhyme:'adorable round characters singing and dancing in a simple bright scene',sleep:'a sleepy little animal under a starry sky',abc:'bouncing colorful letters and objects'};
-function buildPro(){var t=curType(),st=curStyle(),m=curModel(),f=m[6];
- var raw=$('idea').value.trim(),subject=raw||DEF[t[0]]||('a '+t[2].toLowerCase()+' scene');
+function buildPro(ov){var t=curType(),st=curStyle(),m=curModel(),f=m[6];
+ var raw=(typeof ov==='string')?ov:$('idea').value.trim(),subject=raw||DEF[t[0]]||('a '+t[2].toLowerCase()+' scene');
  var cam=$('frame').value||'smooth cinematic camera, one single continuous shot',mv=$('move').value,ratio=$('ratio').value;
  var ref=(S.imgs.length||(ST&&ST.ref))?'Use the provided image as the first frame and keep the subject, face, outfit and composition strictly identical. ':'';
  var sec={121:5,153:6,241:10}[$('dur').value];
@@ -274,7 +284,7 @@ function promptOld(){var t=curType(),s=curStyle(),p=[];
  p.push('Aspect ratio '+$('ratio').value+', 24fps, smooth motion, consistent characters, no text, no watermark');
  return p.join('. ')}
 function prompt_(){return $('pv').value.trim()}
-function sum(){refresh();var cm=curModel();$('sModel').textContent=cm[2];$('gen').textContent=cm[5]?'✨ Créer la vidéo':'📋 Préparer pour '+cm[2];var o=$('open');o.style.display=cm[5]?'none':'inline-flex';o.href=cm[7];o.textContent='Ouvrir '+cm[2]+' ↗';$('sType').textContent=curType()[2];$('sStyle').textContent=curStyle()[2];$('sRatio').textContent=$('ratio').value+' · '+({121:'5',153:'6,4',241:'10'}[$('dur').value])+' s';$('sImg').textContent=S.imgs.length;
+function sum(){refresh();if(typeof serDraw==='function')serDraw();var cm=curModel();$('sModel').textContent=cm[2];$('gen').textContent=cm[5]?'✨ Créer la vidéo':'📋 Préparer pour '+cm[2];var o=$('open');o.style.display=cm[5]?'none':'inline-flex';o.href=cm[7];o.textContent='Ouvrir '+cm[2]+' ↗';$('sType').textContent=curType()[2];$('sStyle').textContent=curStyle()[2];$('sRatio').textContent=$('ratio').value+' · '+({121:'5',153:'6,4',241:'10'}[$('dur').value])+' s';$('sImg').textContent=S.imgs.length;
  $('keyHint').textContent=!curModel()[5]?'Ce modèle se lance sur sa plateforme : copie le prompt puis ouvre-la.':key()?'Clé API active ✓':'Ajoute ta clé API (bouton en haut) pour lancer la génération.'}
 document.addEventListener('click',function(e){var b=e.target.closest('[data-c],[data-t],[data-f],[data-s],[data-m]');if(!b)return;
  if(b.dataset.c)S.cat=b.dataset.c;if(b.dataset.t)S.type=b.dataset.t;if(b.dataset.f)S.stf=b.dataset.f;if(b.dataset.s)S.style=b.dataset.s;if(b.dataset.m)S.model=b.dataset.m;render()});
@@ -337,7 +347,51 @@ $('refBtn').onclick=function(){$('refFile').click()};
 $('refFile').onchange=async function(e){var f=e.target.files[0];e.target.value='';if(!f)return;var u=await shrink(await rd(f));ST=ST||{eps:[]};ST.ref=u;stSaveNow();toast('Image de référence enregistrée ✓')};
 $('stNew').onclick=function(){if(ST&&!confirm('Commencer une nouvelle histoire ? Le personnage et l\'historique actuels seront effacés.'))return;ST=null;try{localStorage.removeItem(SK)}catch(e){}S.imgs=[];thumbs();$('idea').value='';stUI();S.edited=false;sum();toast('Nouvelle histoire : repartons de zéro')};
 stLoad();if(ST){S.cat=ST.cat||S.cat;S.type=ST.type||S.type;S.style=ST.style||S.style;S.model=ST.model||S.model}
-render();stUI();
+
+// ---------- Auto series: full scenario, one prompt per video ----------
+var LOCS=[['dans la cuisine','in the family kitchen'],['au bord de la rivière','by a sparkling river'],['dans la forêt','in a lush forest'],['sur la plage','on a sunny beach'],['au marché coloré','at a colorful market'],['dans le jardin','in a blooming garden'],['sur une colline','on a green hill'],['dans une grotte secrète','in a hidden glowing cave'],['au village','in the village square'],['sous la pluie','in gentle rain'],['près d\'une cascade','near a waterfall'],['dans un champ de fleurs','in a flower field'],['sur un bateau','on a little boat'],['dans le grenier','in a cozy attic'],['à l\'école','at a bright school'],['au bord d\'un lac','by a calm lake'],['sous les étoiles','under a starry sky'],['dans un champ de riz','in a green rice field'],['sur un pont de bois','on a wooden bridge'],['dans la neige','in soft snow'],['au sommet d\'une montagne','on a mountain top'],['dans un temple doré','in a golden temple'],['dans la chambre','in a warm bedroom'],['dans un parc de jeux','in a playground']];
+var ACTS=[['{c} découvre un objet mystérieux','{c} discovers a mysterious glowing object'],['{c} rit et joue avec ses amis','{c} laughs and plays with friends'],['{c} aide un petit animal','{c} helps a small animal in need'],['{c} prépare un goûter','{c} prepares a snack with care'],['{c} suit une piste de traces','{c} follows a trail of footprints'],['{c} apprend quelque chose de nouveau','{c} learns something new with curiosity'],['{c} danse de joie','{c} dances with joy'],['{c} partage avec un ami','{c} shares something with a friend'],['{c} construit quelque chose','{c} builds something creative'],['{c} écoute une histoire','{c} listens to a story'],['{c} cherche un trésor','{c} searches for a hidden treasure'],['{c} fait un câlin à son compagnon','{c} hugs its companion tenderly'],['{c} surmonte sa peur','{c} bravely overcomes a fear'],['{c} peint un dessin','{c} paints a colorful picture'],['{c} court dans le vent','{c} runs happily in the wind'],['{c} observe la nature','{c} watches nature in wonder'],['{c} fait un vœu','{c} makes a wish'],['{c} traverse un obstacle','{c} crosses a small obstacle with help'],['{c} retrouve un objet perdu','{c} finds a lost item'],['{c} chante une chanson','{c} sings a happy song'],['{c} plante une graine','{c} plants a seed and watches it grow'],['{c} réconforte un ami triste','{c} comforts a sad friend'],['{c} explore un endroit nouveau','{c} explores a new place'],['{c} sourit au coucher du soleil','{c} smiles at the sunset']];
+var ARC={intro:[['{c} se réveille et commence sa journée','{c} wakes up and starts a bright new day, introducing the setting'],['Présentation de {c} et de son univers','Establishing shot introducing {c} and the world, warm welcoming mood']],
+ quest:[['Une aventure commence','{c} finds a clue that starts a new adventure'],['Une mission se présente','{c} receives a small mission and sets off, determined']],
+ hard:[['Un petit obstacle apparaît','A small obstacle appears and {c} must think of a solution'],['Un moment de doute','{c} feels unsure for a moment, then finds courage']],
+ win:[['La solution est trouvée','{c} solves the problem with kindness and cleverness, relief and joy'],['Le succès est célébré','Everyone celebrates {c}\'s success warmly']],
+ end:[['Retour à la maison, fin douce','{c} returns home at golden hour, peaceful happy ending, gentle farewell'],['Épilogue : tout va bien','Calm epilogue, {c} smiling, everything in harmony, the story rests']]};
+var MOOD={adv:'adventurous and joyful',calm:'very calm, soft, soothing and sleepy',learn:'educational and clear, showing a simple lesson visually',fun:'funny and playful with light comic timing'};
+function heroName(){var h=$('sHero').value.trim();if(h)return h;var c=(ST&&ST.char)||'';var m=c.split(/[,;]/)[0].trim();return m&&m.split(' ').length<=3?m:'the hero'}
+function shuffle(a,seed){a=a.slice();var x=seed;for(var i=a.length-1;i>0;i--){x=(x*9301+49297)%233280;var j=Math.floor(x/233280*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function writeSeries(){var n=parseInt($('sN').value,10),th=$('sTheme').value,h=heroName(),seed=Date.now()%10000,L=shuffle(LOCS,seed),A=shuffle(ACTS,seed+7),out=[];
+ function fill(t){return t.replace(/\{c\}/g,h)}
+ for(var i=0;i<n;i++){var f=i/(n-1||1),ph,k;
+  if(i===0){ph='intro';k=0}else if(i===n-1){ph='end';k=1}else if(f<.12){ph='intro';k=1}else if(f<.25){ph='quest';k=i%2}else if(f>.82){ph='win';k=i%2}else if(Math.abs(f-.62)<.07){ph='hard';k=i%2}else{ph=null}
+  var fr,en;if(ph){fr=ARC[ph][k][0];en=ARC[ph][k][1];var lo=L[i%L.length];fr=fr+' ('+lo[0]+')';en=en+', '+lo[1]}
+  else{var lo=L[i%L.length],ac=A[i%A.length];fr=ac[0].replace('{c}',h)+' '+lo[0];en=ac[1]+', '+lo[1]}
+  out.push({fr:fill(fr),en:fill(en)+'. Mood: '+MOOD[th],on:true,st:''})}
+ return out}
+var SER=[];
+function serSave(){try{localStorage.setItem('video_ia_series',JSON.stringify(SER))}catch(e){}}
+function serDraw(){var l=$('sList');l.innerHTML=SER.map(function(r,i){var ic=r.st==='done'?'✅':r.st==='fail'?'⚠️':r.st==='proc'?'⏳':'•';return'<div class="q '+(r.st||'')+'" style="align-items:flex-start;flex-wrap:wrap"><span>'+ic+'</span><b style="min-width:2rem">'+(i+1)+'</b><textarea data-i="'+i+'" style="flex:1;min-width:200px;min-height:54px;font-size:.82rem">'+r.fr.replace(/</g,'&lt;')+'</textarea><span class="s">'+(r.url?'<a style="color:var(--c)" href="'+r.url+'" target="_blank" rel="noopener">Voir</a>':(r.msg||''))+'</span></div>'}).join('');
+ $('sRun').style.display=SER.length&&curModel()[5]?'inline-flex':'none';
+ $('sInfo').textContent=SER.length?SER.length+' vidéos prévues. Modifie n\'importe quelle ligne avant de lancer.'+(curModel()[5]?'':' Avec ce modèle : copie tous les prompts ou télécharge-les, puis colle-les un par un sur sa plateforme.'):''}
+$('sList').addEventListener('input',function(e){var i=e.target.dataset.i;if(i!==undefined){SER[i].fr=e.target.value;SER[i].en=SER[i].en.split('. Mood:')[0]===SER[i].en?SER[i].en:SER[i].en;SER[i].edited=e.target.value;serSave()}});
+$('sMake').onclick=function(){if(!ST||(!ST.char&&!ST.ref)){toast('Remplis d\'abord « Mon histoire » (personnage)');$('story').scrollIntoView({behavior:'smooth'});return}
+ SER=writeSeries();serSave();serDraw();toast(SER.length+' scènes écrites ✓')};
+function serPrompts(){return SER.map(function(r,i){var idea=r.edited?r.edited:r.en;return'Vidéo '+(i+1)+' — '+r.fr+'\n'+buildPro(idea)+'\nNegative prompt: '+$('neg').value.trim()}).join('\n\n')}
+$('sAll').onclick=function(){if(!SER.length){toast('Écris d\'abord le scénario');return}(navigator.clipboard?navigator.clipboard.writeText(serPrompts()):Promise.reject()).then(function(){toast(SER.length+' prompts copiés ✓')},function(){toast('Copie impossible : utilise le .txt')})};
+$('sTxt').onclick=function(){if(!SER.length){toast('Écris d\'abord le scénario');return}var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([serPrompts()],{type:'text/plain'}));a.download='serie-'+((ST&&ST.title)||'histoire').replace(/\W+/g,'-')+'.txt';a.click()};
+var SRUN=false,SSTOP=false;
+$('sStop').onclick=function(){SSTOP=true;toast('Arrêt après la vidéo en cours')};
+$('sRun').onclick=async function(){if(SRUN||!SER.length)return;if(!key()){$('keyBtn').click();return}
+ SRUN=true;SSTOP=false;$('sRun').disabled=true;$('sStop').style.display='inline-flex';
+ for(var i=0;i<SER.length;i++){if(SSTOP)break;var r=SER[i];if(r.st==='done')continue;
+  try{r.st='proc';r.msg='Envoi…';serDraw();var id=await make(buildPro(r.edited?r.edited:r.en),(ST&&ST.ref)||(S.imgs[0]&&S.imgs[0].u)||null);
+   var u=await poll(id,function(t){r.msg=t;serDraw()});r.st='done';r.url=u;serSave();serDraw();
+   var d=document.createElement('div');d.className='gi';d.innerHTML='<video controls playsinline loop preload="metadata" src="'+u+'"></video><div><span>Vidéo '+(i+1)+'</span><a href="'+u+'" target="_blank" rel="noopener" download>Télécharger</a></div>';$('gal').appendChild(d);
+   if(ST){ST.eps=ST.eps||[];ST.eps.push(r.fr.slice(0,60));stStore();stUI()}}
+  catch(e){r.st='fail';r.msg=e.message.slice(0,60);serDraw();if(/401|403/.test(e.message)){break}}
+  await sleep(3000)}
+ SRUN=false;$('sRun').disabled=false;$('sStop').style.display='none';toast('Série terminée : '+SER.filter(function(r){return r.st==='done'}).length+'/'+SER.length)};
+try{SER=JSON.parse(localStorage.getItem('video_ia_series')||'[]')}catch(e){SER=[]}
+render();stUI();serDraw();
 </script>
 </body>
 </html>
