@@ -213,6 +213,23 @@ select { -webkit-appearance: none; appearance: none; cursor: pointer;
   <div class="api-hint">Clé gratuite sur <a href="https://platform.agnes-ai.com" target="_blank" rel="noopener">platform.agnes-ai.com</a>. Elle reste dans ce téléphone.</div>
 </div>
 
+<!-- SÉRIE -->
+<div class="section open" id="secSerie">
+  <div class="section-header" data-toggle="secSerie"><span class="section-title">📺 Histoire en série <span class="badge">épisodes</span></span><span class="chevron">▼</span></div>
+  <div class="section-body"><div class="section-content">
+    <p class="api-hint" style="margin:0 0 .6rem">Écris UN grand prompt d'histoire. L'IA écrit la bible (personnages, décor, arc), tous les épisodes dans l'ordre, puis crée les vidéos l'une après l'autre. L'histoire est gardée jusqu'à « Changer d'histoire ».</p>
+    <textarea id="serieInput" style="min-height:150px" placeholder="Ex : Mina, 6 ans, vit dans un village thaïlandais avec Boun, son bébé éléphant. Ils découvrent une carte au trésor cachée dans le temple et partent à l'aventure à travers la jungle, les rizières et le marché flottant, poursuivis par un singe voleur. Ton joyeux, émouvant, fin heureuse."></textarea>
+    <div class="api-status-line" id="serieInfo" style="margin-top:.6rem">Aucune histoire en cours</div>
+    <div class="btn-row" style="margin-top:.7rem;margin-bottom:.4rem">
+      <button type="button" class="btn-secondary go" data-serie="10">📺 Générer<br>10 épisodes</button>
+      <button type="button" class="btn-secondary go" data-serie="20">📺 Générer<br>20 épisodes</button>
+      <button type="button" class="btn-secondary go" data-serie="50">📺 Générer<br>50 épisodes</button>
+    </div>
+    <button type="button" class="btn-primary" id="btnSerieResume" style="display:none;margin-top:.4rem">▶ Continuer la série</button>
+    <p class="api-hint">Une vidéo part toutes les 75 s : 10 épisodes ≈ 15 min, 20 ≈ 30 min, 50 ≈ 1 h 15. Garde l'écran allumé.</p>
+  </div></div>
+</div>
+
 <!-- DESCRIPTION -->
 <div class="section open" id="secDesc">
   <div class="section-header" data-toggle="secDesc"><span class="section-title">✍️ Décris ton idée <span class="badge">obligatoire</span></span><span class="chevron">▼</span></div>
@@ -314,7 +331,7 @@ select { -webkit-appearance: none; appearance: none; cursor: pointer;
 </div>
 
 <div class="btn-row">
-  <button type="button" class="btn-secondary" id="btnNew">🆕 Nouveau projet</button>
+  <button type="button" class="btn-secondary" id="btnNew">🆕 Changer d'histoire</button>
 </div>
 </form>
 
@@ -478,7 +495,8 @@ function timing(){try{return JSON.parse(lsGet(TIMING_KEY)||'{}')}catch(e){return
 const IMGSIZE={'9:16':'1024x1792','16:9':'1792x1024','1:1':'1024x1024'};
 const FRAMES={5:121,7:169,10:241};
 function persoText(){return persos.map(p=>p.name+': '+p.desc).join(' | ')}
-function styleText(){return P.style&&STYLES[P.style]?STYLES[P.style]:''}
+function styleText(){return P.style&&STYLES[P.style]?STYLES[P.style]:((P.story&&P.story.visual_style)||'')}
+function worldText(){return P.story&&P.story.world?'Setting of the whole series: '+P.story.world+'. ':''}
 function modeObj(){return MODES.filter(m=>m.id===P.mode)[0]||MODES[0]}
 
 async function stepText(){
@@ -493,7 +511,7 @@ async function stepText(){
 
 function charSheet(){const seen={},o=[];(P.scenario.characters||[]).forEach(c=>{if(c.name&&!seen[c.name]){seen[c.name]=1;o.push(c.name+': '+(c.description||c.desc||''))}});return o.join(' | ')}
 async function makeImage(sc){
- const prompt=(styleText()?styleText()+'. ':'')+(charSheet()?'Characters (keep identical in every image): '+charSheet()+'. ':'')+sc.image_prompt+'. '+(P.fmt==='9:16'?'Vertical 9:16 frame. ':P.fmt==='16:9'?'Horizontal 16:9 frame. ':'Square frame. ')+'No text, no watermark.';
+ const prompt=(styleText()?styleText()+'. ':'')+worldText()+(charSheet()?'Characters (keep identical in every image): '+charSheet()+'. ':'')+sc.image_prompt+'. '+(P.fmt==='9:16'?'Vertical 9:16 frame. ':P.fmt==='16:9'?'Horizontal 16:9 frame. ':'Square frame. ')+'No text, no watermark.';
  const r=await apiCall('POST',API_BASE+'/images/generations',{model:MODEL_IMAGE,prompt,size:IMGSIZE[P.fmt],n:1},'image '+sc.n);
  const d=await r.json();const it=(d.data&&d.data[0])||(d.images&&d.images[0])||d;
  const url=it.url||(it.b64_json?'data:image/png;base64,'+it.b64_json:null)||(typeof it==='string'?it:null);if(!url)throw new Error('Pas d\'image dans la réponse');return url}
@@ -509,7 +527,7 @@ async function stepImages(){
 
 async function gateCreate(){const last=timing().lastCreateAt||0;const need=T.VID_SAFE*1000*TS-(Date.now()-last);if(need>0)await waitS(Math.ceil(need/(1000*TS)),'Prochaine vidéo dans')}
 async function createVideo(i){const sc=P.scenes[i];
- const body={model:MODEL_VIDEO,prompt:sc.video_prompt+'. '+(styleText()?styleText()+'. ':'')+'Keep characters identical to the image. Smooth motion, no text.',image:await toData(sc.imgUrl),num_frames:FRAMES[P.dur]||169,frame_rate:FRAME_RATE};
+ const body={model:MODEL_VIDEO,prompt:sc.video_prompt+'. '+(styleText()?styleText()+'. ':'')+(P.series&&charSheet()?'Characters (keep identical): '+charSheet()+'. ':'')+'Keep characters identical to the image. Smooth motion, no text.',image:await toData(sc.imgUrl),num_frames:FRAMES[P.dur]||169,frame_rate:FRAME_RATE};
  const nx=P.scenes[i+1];if(P.last&&nx&&nx.imgUrl)body.last_frame=await toData(nx.imgUrl);
  const r=await apiCall('POST',API_BASE+'/videos',body,'vidéo '+sc.n);const d=await r.json();const id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas de video_id');return id}
 async function pollVideo(i,fresh){const sc=P.scenes[i];
@@ -524,7 +542,7 @@ async function pollVideo(i,fresh){const sc=P.scenes[i];
  catch(e){if(e.message!=='Arrêt'){sc.vidState='fail';sc.err=e.message;sc.vidId=null;save()}else sc.vidState=sc.vidUrl?'done':'';renderAll()}}
 async function stepVideos(){setPhase('videos','Vidéos : 1 création toutes les '+T.VID_SAFE+' s');const polls=[];
  for(let i=0;i<P.scenes.length;i++){if(S.stop)break;const sc=P.scenes[i];if(sc.vidUrl)continue;let fresh=false;
-  if(!sc.vidId){if(!sc.imgUrl){sc.vidState='fail';sc.err='pas d\'image';continue}
+  if(!sc.vidId){if(!sc.imgUrl){try{sc.imgState='proc';sc.err='';renderQueue();setStatus('Image '+(P.series?'de l\'épisode ':'de la scène ')+sc.n+'…');sc.imgUrl=await makeImage(sc);sc.imgState='done';save()}catch(e){if(e.message==='Arrêt')break;sc.imgState='fail';sc.vidState='fail';sc.err=e.message;renderAll();continue}}
    try{await gateCreate();sc.vidState='proc';renderQueue();setStatus('Envoi de la vidéo '+sc.n+'…');sc.vidId=await createVideo(i);const t=timing();t.lastCreateAt=Date.now();lsSet(TIMING_KEY,JSON.stringify(t));save();fresh=true}
    catch(e){if(e.message==='Arrêt')break;sc.vidState='fail';sc.err=e.message;renderAll();continue}}
   polls.push(pollVideo(i,fresh))}
@@ -532,14 +550,66 @@ async function stepVideos(){setPhase('videos','Vidéos : 1 création toutes les 
 
 async function run(){
  if(S.running)return;if(!getKey()){toast('Ajoute ta clé API','error');$('apiKeyInput').focus();return}
- const idea=$('ideaInput').value.trim();if(!P.scenario&&!idea){toast('Décris ton idée d\'abord','warn');return}
- if(!P.scenario){P.idea=idea;P.mode=P.mode;P.style=$('styleSelect').value;P.n=parseInt($('sceneCount').value,10);P.dur=parseInt($('duration').value,10);P.fmt=$('format').value;P.last=$('optLast').checked}
+ const idea=$('ideaInput').value.trim();if(!P.scenario&&!P.series&&!idea){toast('Décris ton idée d\'abord','warn');return}
+ if(!P.scenario&&!P.series){P.idea=idea;P.mode=P.mode;P.style=$('styleSelect').value;P.n=parseInt($('sceneCount').value,10);P.dur=parseInt($('duration').value,10);P.fmt=$('format').value;P.last=$('optLast').checked}
  S.running=true;S.stop=false;await startWake();updateGenerateBtn();
  window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
- try{if(!P.scenario)await stepText();await stepImages();await stepVideos();
+ try{if(!P.scenario){if(P.series)await stepSeries();else await stepText()}if(!P.series)await stepImages();await stepVideos();
   setPhase('done','Terminé');const ok=P.scenes.filter(s=>s.vidUrl).length;setStatus('✦ '+ok+'/'+P.scenes.length+' vidéos prêtes ✦');toast(ok+'/'+P.scenes.length+' vidéos prêtes');await sleepMs(2500)}
  catch(e){if(e.message==='Arrêt')toast('Arrêté','warn');else toast('Erreur : '+e.message.slice(0,100),'error',5000)}
  finally{S.running=false;window.onbeforeunload=null;stopWake();setStatus(null);updateGenerateBtn();renderAll()}}
+
+
+/* ═══ SÉRIE : un grand prompt → bible + N épisodes cohérents ═══ */
+async function chatJson(system,user,label){
+ const r=await apiCall('POST',API_BASE+'/chat/completions',{model:MODEL_TEXT,messages:[{role:'system',content:system},{role:'user',content:user}],response_format:{type:'json_object'},temperature:.8},label);
+ const d=await r.json();const txt=(d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'';return parseJsonRobust(txt).data}
+async function stepSeries(){
+ const N=P.n;setPhase('text','Bible de l\'histoire…');setStatus('L\'IA écrit la bible de l\'histoire…');
+ const imp=persos.length?' Personnages imposés (à garder tels quels) : '+persoText()+'.':'';
+ const bible=await chatJson('Tu es showrunner d\'une série. Réponds UNIQUEMENT en JSON valide : {"title":"","logline":"","world":"decor, epoque, ambiance, in English","visual_style":"constant visual style, in English","characters":[{"name":"","description":"exact permanent physical appearance and outfit, in English"}],"arc":["acte 1","acte 2","acte 3","acte 4","acte 5"]}. Titre et logline dans la langue du texte de l\'utilisateur.'+imp,'HISTOIRE : '+P.idea+'\nNombre d\'épisodes : '+N,'bible');
+ if(!bible||typeof bible!=='object')throw new Error('Bible illisible');
+ const chars=(Array.isArray(bible.characters)?bible.characters:[]).concat(persos.map(p=>({name:p.name,description:p.desc})));
+ P.scenario={title:bible.title||'Série',logline:bible.logline||'',characters:chars};
+ P.story={world:bible.world||'',visual_style:bible.visual_style||'',arc:bible.arc||[]};
+ const eps=[],B=10;
+ for(let a=1;a<=N;a+=B){const b=Math.min(N,a+B-1);let got=null;
+  for(let t=0;t<3&&!got;t++){if(S.stop)throw new Error('Arrêt');
+   setStatus('Scénario des épisodes '+a+' à '+b+' sur '+N+'…');
+   const prev=eps.slice(-6).map(e=>e.n+'. '+e.title+' — '+e.narration).join('\n');
+   const sys='Tu es showrunner. Réponds UNIQUEMENT en JSON valide : {"episodes":[{"n":1,"title":"titre court","summary":"2 phrases : ce qui se passe et comment l\'épisode finit","image_prompt":"English visual description of the FIRST FRAME, include the exact appearance of each character present and the setting","video_prompt":"English, camera movement and ONE single action"}]}. Écris les épisodes '+a+' à '+b+' sur '+N+'. Ils prolongent EXACTEMENT les épisodes précédents, respectent la bible et l\'arc, gardent les mêmes personnages, lieux et objets. Chaque épisode finit sur un petit suspense'+(b===N?', sauf le dernier qui conclut vraiment l\'histoire':'')+'. Titres et summary dans la langue de l\'utilisateur.';
+   try{const d=await chatJson(sys,'BIBLE : '+JSON.stringify({title:bible.title,world:bible.world,characters:chars,arc:bible.arc})+'\nHISTOIRE DE L\'UTILISATEUR : '+P.idea+'\nÉPISODES PRÉCÉDENTS :\n'+(prev||'(aucun)'),'épisodes '+a+'-'+b);
+    const L=d.episodes||d.scenes;if(Array.isArray(L)&&L.length>=Math.min(b-a+1,3))got=L}catch(e){if(e.message==='Arrêt')throw e}}
+  if(!got)throw new Error('Épisodes '+a+' à '+b+' illisibles, relance : la bible est gardée');
+  got.slice(0,b-a+1).forEach((e,i)=>{const n=a+i;eps.push({n,title:e.title||('Épisode '+n),narration:e.summary||e.narration||'',image_prompt:e.image_prompt||e.video_prompt||P.idea,video_prompt:e.video_prompt||e.action_prompt||e.image_prompt||P.idea,imgUrl:null,imgState:'',vidId:null,vidUrl:null,vidState:'',err:''})});
+  P.scenes=eps.slice();save();renderAll()}
+ P.scenes=eps;save();renderAll()}
+
+/* ═══ ENREGISTRER une vidéo (iPhone : feuille de partage → « Enregistrer la vidéo ») ═══ */
+const blobCache={};
+function prefetchBlob(url){if(blobCache[url])return;blobCache[url]=fetch(url).then(r=>{if(!r.ok)throw new Error('http '+r.status);return r.blob()}).catch(()=>null)}
+function slug(t){return String(t||'video').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'video'}
+async function saveVideo(i){const sc=P.scenes[i];if(!sc||!sc.vidUrl)return;const name=slug(P.scenario&&P.scenario.title)+'-ep'+sc.n+'.mp4';
+ try{prefetchBlob(sc.vidUrl);const blob=await blobCache[sc.vidUrl];if(!blob)throw new Error('cors');
+  const file=new File([blob],name,{type:blob.type||'video/mp4'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:name});return}catch(e){if(e&&e.name==='AbortError')return}}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),60000);toast('Vidéo enregistrée ✓')}
+ catch(e){window.open(sc.vidUrl,'_blank');toast('Vidéo ouverte : appui long dessus puis « Enregistrer »','warn',7000)}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-save]');if(b){saveVideo(+b.dataset.save)}});
+
+/* Boutons série */
+function startSeries(n){
+ if(S.running){toast('Une création est déjà en cours','warn');return}
+ if(P.scenario&&P.scenes.length&&!P.series){toast('Un autre projet est en cours : touche « Changer d\'histoire » d\'abord','warn',4500);return}
+ if(P.series&&P.scenes.length){toast('Une histoire est déjà en cours : touche « Continuer la série » ou « Changer d\'histoire »','warn',4500);return}
+ const idea=$('serieInput').value.trim();if(idea.length<20){toast('Écris un prompt d\'histoire plus détaillé (20 caractères min.)','warn');$('serieInput').focus();return}
+ P.series=true;P.n=n;P.idea=idea;P.mode='histoire';P.style=$('styleSelect').value;P.dur=parseInt($('duration').value,10);P.fmt=$('format').value;P.last=false;P.scenario=null;P.scenes=[];run()}
+document.querySelectorAll('[data-serie]').forEach(b=>b.addEventListener('click',()=>startSeries(parseInt(b.dataset.serie,10))));
+$('btnSerieResume').addEventListener('click',()=>{if(!S.running)run()});
+function renderSerie(){const info=$('serieInfo'),rb=$('btnSerieResume');
+ if(P.series&&P.scenario){const ok=P.scenes.filter(s=>s.vidUrl).length;info.classList.add('ok');info.innerHTML='<span class="status-dot"></span><span>📖 « '+esc(P.scenario.title)+' » — '+ok+'/'+(P.scenes.length||P.n)+' épisodes prêts</span>';rb.style.display=(S.running||ok>=P.scenes.length&&P.scenes.length)?'none':'block'}
+ else{info.classList.remove('ok');info.innerHTML='<span class="status-dot"></span><span>Aucune histoire en cours</span>';rb.style.display='none'}
+ document.querySelectorAll('[data-serie]').forEach(b=>b.disabled=S.running||!getKey())}
 
 /* ═══ Rendu ═══ */
 const IC={'':'○',proc:'◐',done:'●',fail:'✕'};
@@ -548,21 +618,21 @@ function renderQueue(){const q=$('queue');if(!P.scenes.length){q.innerHTML='';re
   return'<div class="queue-item '+cls+'"><span class="q-icon">'+(IC[s.imgState||'']||'○')+' '+(IC[s.vidState||'']||'○')+'</span><span class="q-name">'+s.n+'. '+esc(s.title)+'</span><span class="q-status">'+esc(s.err?s.err.slice(0,36):(s.vidState==='proc'?(s.prog||'vidéo'):(s.imgState==='proc'?'image':'')))+'</span></div>'}).join('')}
 function renderScn(){const b=$('scnBox');if(!P.scenario){b.innerHTML='<div class="empty"><div class="big">📜</div><div>Le scénario apparaîtra ici</div></div>';return}
  b.innerHTML='<b style="font-size:1rem">'+esc(P.scenario.title)+'</b><p class="api-hint">'+esc(P.scenario.logline)+'</p>'+P.scenes.map(s=>'<div class="scn"><b>'+s.n+'. '+esc(s.title)+'</b><p>'+esc(s.narration)+'</p></div>').join('')}
-function renderGal(){const L=P.scenes.filter(s=>s.vidUrl);$('galleryBadge').textContent=L.length;const g=$('gallery');
+function renderGal(){const L=P.scenes.filter(s=>s.vidUrl);L.forEach(s=>prefetchBlob(s.vidUrl));$('galleryBadge').textContent=L.length;const g=$('gallery');
  if(!L.length){g.innerHTML='<div class="empty"><div class="big">🎥</div><div>Tes vidéos apparaîtront ici</div></div>';return}
  const cls=P.fmt==='16:9'?' land':(P.fmt==='1:1'?' sq':'');
- g.innerHTML='<div class="gallery">'+L.map(s=>'<div class="gallery-item'+cls+'"><video controls playsinline muted loop preload="metadata" src="'+esc(s.vidUrl)+'"></video><div class="cap">Scène '+s.n+' · '+esc(s.title)+'</div><a href="'+esc(s.vidUrl)+'" target="_blank" rel="noopener">⬇️ Ouvrir / enregistrer</a></div>').join('')+'</div>'}
-function renderAll(){renderQueue();renderScn();renderGal();updateGenerateBtn()}
-function updateGenerateBtn(){const b=$('btnGenerate'),has=!!getKey();b.disabled=S.running||!has;b.textContent=S.running?'Création en cours…':(!has?'Ajoutez votre clé API':(P.scenario?'▶ Reprendre / continuer':'🎬 Créer les vidéos'));$('btnStop').classList.toggle('visible',S.running)}
+ g.innerHTML='<div class="gallery">'+L.map(s=>'<div class="gallery-item'+cls+'"><video controls playsinline muted loop preload="metadata" src="'+esc(s.vidUrl)+'"></video><div class="cap">'+(P.series?'Épisode ':'Scène ')+s.n+' · '+esc(s.title)+'</div><a href="#" data-save="'+(s.n-1)+'" onclick="return false" style="color:#e5c15a;font-weight:700">💾 Enregistrer la vidéo</a><a href="'+esc(s.vidUrl)+'" target="_blank" rel="noopener">⬇️ Ouvrir / enregistrer</a></div>').join('')+'</div>'}
+function renderAll(){renderQueue();renderScn();renderGal();updateGenerateBtn();renderSerie()}
+function updateGenerateBtn(){const b=$('btnGenerate'),has=!!getKey();b.disabled=S.running||!has;b.textContent=S.running?'Création en cours…':(!has?'Ajoutez votre clé API':(P.scenario?'▶ Reprendre / continuer':'🎬 Créer les vidéos (1 idée)'));$('btnStop').classList.toggle('visible',S.running);if(typeof renderSerie==='function')renderSerie()}
 $('btnGenerate').onclick=run;
 $('btnStop').onclick=()=>{S.stop=true;toast('Arrêt en cours…','warn')};
 let newArm=0;$('btnNew').onclick=()=>{if(S.running){toast('Arrête d\'abord la création','warn');return}
- if(!newArm){newArm=1;$('btnNew').textContent='⚠️ Retoucher pour effacer le projet';setTimeout(()=>{newArm=0;$('btnNew').textContent='🆕 Nouveau projet'},3500);return}
- newArm=0;$('btnNew').textContent='🆕 Nouveau projet';P={idea:'',mode:P.mode,style:'',n:5,dur:7,fmt:'9:16',scenario:null,scenes:[]};lsDel(PROJ_KEY);$('ideaInput').value='';$('phaseBar').classList.remove('visible');renderAll();toast('Nouveau projet')};
+ if(!newArm){newArm=1;$('btnNew').textContent='⚠️ Retoucher pour effacer l\'histoire';setTimeout(()=>{newArm=0;$('btnNew').textContent='🆕 Changer d\'histoire'},3500);return}
+ newArm=0;$('btnNew').textContent='🆕 Changer d\'histoire';P={idea:'',mode:P.mode,style:'',n:5,dur:7,fmt:'9:16',scenario:null,scenes:[],series:false,story:null};$('serieInput').value='';lsDel(PROJ_KEY);$('ideaInput').value='';$('phaseBar').classList.remove('visible');renderAll();toast('Nouvelle histoire : on repart de zéro')};
 
 /* ═══ Démarrage ═══ */
 load();loadPersos();updateApiUI();renderModes();
-if(P.idea)$('ideaInput').value=P.idea;if(P.scenario){$('styleSelect').value=P.style||'';$('sceneCount').value=P.n;$('duration').value=P.dur;$('format').value=P.fmt;$('optLast').checked=P.last!==false;setPhase(P.scenes.every(s=>s.vidUrl)?'done':'videos','Projet repris')}
+if(P.idea)(P.series?$('serieInput'):$('ideaInput')).value=P.idea;if(P.scenario){$('styleSelect').value=P.style||'';$('sceneCount').value=P.n;$('duration').value=P.dur;$('format').value=P.fmt;$('optLast').checked=P.last!==false;setPhase(P.scenes.every(s=>s.vidUrl)?'done':'videos','Projet repris')}
 renderAll();window.__studio={set TS(v){TS=v},parseJsonRobust};
 })();
 </script>
