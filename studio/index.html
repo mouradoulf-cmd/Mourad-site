@@ -267,6 +267,7 @@ select { -webkit-appearance: none; appearance: none; cursor: pointer;
       <select id="duration"><option value="5">5 secondes</option><option value="7" selected>7 secondes</option><option value="10">10 secondes</option></select></div>
     <div class="control-row"><label class="control-label" for="format">Format</label>
       <select id="format"><option value="9:16" selected>📱 9:16 Vertical (TikTok/Reels)</option><option value="16:9">🖥️ 16:9 Horizontal (YouTube)</option><option value="1:1">⬜ 1:1 Carré (Instagram)</option></select></div>
+    <div class="control-row"><label class="control-label" style="display:flex;align-items:center;gap:.6rem;min-height:44px;cursor:pointer"><input type="checkbox" id="optLast" checked style="width:22px;height:22px;accent-color:#e5c15a"> Continuité : dernière image = image de la scène suivante</label></div>
   </div></div>
 </div>
 
@@ -376,26 +377,57 @@ let clrArm=0;$('btnClearPerso').onclick=()=>{if(!persos.length)return;if(!clrArm
 
 /* ═══ Modes, styles, idées ═══ */
 const MODES=[
- {id:'histoire',label:'📖 Histoire complète',desc:'Scénario + images + vidéos',hint:'A complete story with a clear beginning, rising tension and a satisfying ending.'},
- {id:'rapide',label:'⚡ Vidéo rapide',desc:'Description → 1 vidéo',hint:'A single striking shot.',n:1},
- {id:'film',label:'🎬 Court-métrage',desc:'Film multi-scènes',hint:'A cinematic short film with varied shot sizes, establishing shots and close-ups.'},
- {id:'animation',label:'🎨 Animation',desc:'Dessin animé expressif',hint:'An expressive animated cartoon with exaggerated emotions and playful motion.'},
- {id:'action',label:'🥋 Action',desc:'Acrobaties, kung-fu, sport',hint:'High-energy action with dynamic camera moves, acrobatics and impact.'},
- {id:'horreur',label:'👻 Horreur',desc:'Ambiance sombre, tension',hint:'Dark atmosphere, slow dread, suspense and shadows (no gore).'},
- {id:'comedie',label:'😄 Comédie',desc:'Humour, timing',hint:'Comedy with funny situations, visual gags and comic timing.'},
- {id:'romance',label:'💕 Romance',desc:'Regards, émotion',hint:'Romantic mood, tender glances, warm soft light, emotion.'},
- {id:'scifi',label:'🚀 Science-Fiction',desc:'Futur, vaisseaux, IA',hint:'Science fiction with futuristic technology, spaceships, holograms.'},
- {id:'fantasy',label:'🐉 Fantasy',desc:'Magie, créatures',hint:'High fantasy with magic, mythical creatures and epic landscapes.'},
- {id:'pub',label:'📢 Publicité',desc:'Produit, hook, CTA',hint:'A commercial: a strong hook in the first shot, the product shown beautifully, a clear call to action in the last shot.'},
- {id:'clip',label:'🎵 Clip musical',desc:'Rythme, coupes, énergie',hint:'A music video with rhythmic visuals, stylish lighting and expressive performance.'},
- {id:'docu',label:'🌍 Documentaire',desc:'Nature, monde, réalisme',hint:'A documentary with natural light and realistic observational camera work.'},
- {id:'enfants',label:'🧸 Enfants / bébé',desc:'Doux, coloré, simple',hint:'A gentle, colorful children story with simple actions and friendly characters.'}];
-const STYLES={ghibli:'Studio Ghibli hand-painted anime style by Miyazaki, lush nature, warm nostalgic light',pixar:'Pixar-style premium 3D animation, expressive characters, cinematic lighting',manga:'black and white manga, ink lines, screentone shading',anime90:'1990s anime, cel animation, retro color palette, film grain',simpson:'The Simpsons cartoon style, yellow skin, flat colors, thick outlines',southpark:'South Park cut-out paper animation style',claymation:'claymation stop-motion, plasticine texture, handmade charm',watercolor:'delicate watercolor painting, soft bleeding colors, paper texture',oil:'oil painting in motion, thick brush strokes, rich colors',sketch:'pencil sketch drawing, hand-drawn lines, white paper',pixel:'retro pixel art, 16-bit game style',lowpoly:'low poly 3D geometric style, faceted shapes',cel:'cel shaded 3D animation, bold outlines, flat lighting',cinematic:'cinematic film look, anamorphic lens, shallow depth of field, color graded',noir:'film noir, high-contrast black and white, venetian blind shadows',kurosawa:'Akira Kurosawa style, dramatic weather, wide samurai-era compositions',wes:'Wes Anderson style, symmetrical framing, pastel palette, whimsical',kubrick:'Stanley Kubrick style, one-point perspective, cold precise symmetry',villeneuve:'Denis Villeneuve style, monumental scale, muted palette, atmospheric haze',wong:'Wong Kar-wai style, neon-soaked night, motion blur, saturated romantic mood',cyberpunk:'cyberpunk city, neon rain, holograms, dark futuristic',steampunk:'steampunk, brass gears, steam, Victorian machinery',vhs:'VHS tape look, glitch, scanlines, analog distortion',neon:'glowing neon lights on a dark background, vibrant glow',super8:'Super 8 film, warm grain, vintage home movie'};
-const IDEAS=['Un petit renard explore une forêt enchantée','Un robot apprend à aimer la musique','Une serveuse retrouve son père disparu','Un guerrier traverse une tempête de neige','Une pub pour un café artisanal'];
+ {id:'histoire',label:'📖 Histoire complète',desc:'',hint:'A narrative short film telling a coherent story from beginning to end.'},
+ {id:'rapide',label:'⚡ Vidéo rapide',desc:'',hint:'A single standalone cinematic shot.',n:1},
+ {id:'film',label:'🎬 Court-métrage',desc:'',hint:'A cinematic short film with proper beginning, middle and end.'},
+ {id:'animation',label:'🎨 Animation',desc:'',hint:'An animated cartoon with expressive characters and colorful scenes.'},
+ {id:'action',label:'🥋 Action',desc:'',hint:'An action-packed sequence with dynamic movement, acrobatics and impact.'},
+ {id:'horreur',label:'👻 Horreur',desc:'',hint:'A horror scene with dark atmosphere, tension and unsettling mood (no gore).'},
+ {id:'comedie',label:'😄 Comédie',desc:'',hint:'A comedic scene with visual humor and playful timing.'},
+ {id:'romance',label:'💕 Romance',desc:'',hint:'A romantic scene with tender moments, warm light and emotion.'},
+ {id:'scifi',label:'🚀 Science-Fiction',desc:'',hint:'A science-fiction scene with futuristic technology and otherworldly mood.'},
+ {id:'fantasy',label:'🐉 Fantasy',desc:'',hint:'A fantasy scene with magic, mythical creatures and enchanting atmosphere.'},
+ {id:'pub',label:'📢 Publicité',desc:'',hint:'A commercial advertisement showcasing a product with a strong hook, the product shown beautifully, and a clear call to action in the last shot.'},
+ {id:'clip',label:'🎵 Clip musical',desc:'',hint:'A music video clip with rhythmic editing and stylized imagery.'},
+ {id:'documentaire',label:'📚 Documentaire',desc:'',hint:'A documentary scene with natural realism and informative mood.'},
+ {id:'conte',label:'🧚 Conte pour enfants',desc:'',hint:'A gentle children\'s tale with soft colors and innocent wonder.'},
+ {id:'noir',label:'🕵️ Film Noir',desc:'',hint:'A film noir detective scene with shadows, rain and mystery.'},
+ {id:'western',label:'🤠 Western',desc:'',hint:'A western scene with dusty landscapes, tension and frontier mood.'},
+ {id:'cyberpunk',label:'🌆 Cyberpunk',desc:'',hint:'A cyberpunk scene with neon, rain and futuristic cityscape.'},
+ {id:'sport',label:'⚽ Sport',desc:'',hint:'A sports scene with athletic movement, slow motion and intensity.'},
+ {id:'cuisine',label:'🍳 Cuisine',desc:'',hint:'A cooking scene with appetizing food, steam and precise gestures.'},
+ {id:'voyage',label:'✈️ Voyage',desc:'',hint:'A travel scene with beautiful landscapes and cinematic vistas.'}];
+const STYLES={
+ ghibli:'Studio Ghibli anime style, Hayao Miyazaki aesthetic, hand-painted watercolor backgrounds, lush nature, warm light',
+ pixar:'high-quality Pixar 3D animation style, cinematic lighting, expressive characters',
+ manga:'black and white Japanese manga style, stark ink outlines, dramatic screentones',
+ anime90:'1990s retro anime style, grain, saturated colors',
+ simpson:'The Simpsons cartoon style, yellow-skinned characters, thick black outlines',
+ southpark:'South Park animation style, simple geometric shapes, flat colors',
+ claymation:'claymation stop-motion, plasticine texture, fingerprint details',
+ watercolor:'dreamy watercolor painting, soft bleeding edges, paper texture',
+ oil:'classical oil painting, visible impasto brushstrokes, old master technique',
+ sketch:'pencil sketch style, hachures, paper texture',
+ pixel:'8-bit pixel art style, retro gaming aesthetic',
+ lowpoly:'low poly geometric 3D style, faceted surfaces',
+ cel:'cel-shaded 3D cartoon style, clean outlines',
+ cinematic:'cinematic film look, dramatic lighting, film grain, shallow depth of field',
+ noir:'classic film noir, high contrast black and white, chiaroscuro',
+ kurosawa:'Akira Kurosawa style, dramatic weather, samurai stillness, elemental',
+ wes:'Wes Anderson style, perfect symmetry, pastel palette, centered framing',
+ kubrick:'Stanley Kubrick style, one-point perspective, cold symmetry',
+ villeneuve:'Denis Villeneuve style, monumental, muted palette, atmospheric',
+ wong:'Wong Kar-wai style, saturated jewel tones, neon reflections, longing',
+ cyberpunk:'cyberpunk aesthetic, neon pink and cyan lighting, Blade Runner atmosphere',
+ steampunk:'steampunk aesthetic, brass, gears, steam, retro-futuristic',
+ vhs:'VHS tape aesthetic, glitch, scanlines, retro tracking errors',
+ neon:'neon tube lighting, colorful glow, night atmosphere',
+ super8:'Super 8 vintage film, grain, vignette, warm faded colors'};
+const IDEAS=['Un renard curieux explore une forêt enchantée au lever du soleil','Un moine Shaolin enchaîne des saltos dans un temple ancien','Une ville cyberpunk sous la pluie, néons roses et bleus','Un couple se retrouve dans une gare sous la neige','Un vaisseau spatial découvre une planète inconnue','Un chef cuisinier prépare un plat gastronomique','Un dragon survole des montagnes enneigées','Un détective marche dans une rue sombre et pluvieuse','Un enfant et son chien jouent dans un champ de fleurs','Une danseuse étoile sur une scène illuminée'];
 function renderModes(){$('modeChips').innerHTML=MODES.map(m=>'<span class="chip'+(m.id===P.mode?' selected':'')+'" data-mode="'+m.id+'">'+m.label+'</span>').join('');const m=MODES.filter(x=>x.id===P.mode)[0];$('modeDesc').textContent=m?m.desc:''}
 $('modeChips').onclick=e=>{const c=e.target.closest('[data-mode]');if(!c)return;P.mode=c.dataset.mode;renderModes()};
-$('ideaChips').innerHTML=IDEAS.map(t=>'<span class="chip">'+esc(t)+'</span>').join('');
-$('ideaChips').onclick=e=>{if(e.target.classList.contains('chip'))$('ideaInput').value=e.target.textContent};
+$('ideaChips').innerHTML=IDEAS.map(t=>'<span class="chip" data-idea="'+esc(t)+'">'+esc(t.slice(0,40))+'…</span>').join('');
+$('ideaChips').onclick=e=>{const c=e.target.closest('[data-idea]');if(c)$('ideaInput').value=c.dataset.idea};
 document.addEventListener('click',e=>{const h=e.target.closest('[data-toggle]');if(h)$(h.dataset.toggle).classList.toggle('open')});
 $('form').addEventListener('submit',e=>{e.preventDefault();return false});
 $('form').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName!=='TEXTAREA')e.preventDefault()});
@@ -417,7 +449,7 @@ function escapeControlCharsInStrings(s){let o='',q=false,e=false;for(let i=0;i<s
 function firstBalancedEnd(s){let d=0,q=false,e=false;for(let i=0;i<s.length;i++){const c=s[i];if(q){if(e)e=false;else if(c==='\\')e=true;else if(c==='"')q=false;continue}if(c==='"')q=true;else if(c==='{')d++;else if(c==='}'){d--;if(d===0)return i}}return -1}
 function balanceJson(s){const st=[];let q=false,e=false,o='';for(let i=0;i<s.length;i++){const c=s[i];o+=c;if(q){if(e)e=false;else if(c==='\\')e=true;else if(c==='"')q=false;continue}if(c==='"')q=true;else if(c==='{'||c==='[')st.push(c);else if(c==='}'||c===']')st.pop()}if(q)o+='"';o=o.replace(/[,:\s]+$/,'');while(st.length)o+=st.pop()==='{'?'}':']';return o}
 function grab(t,k){const re=new RegExp('"'+k+'"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"','g');const o=[];let m;while((m=re.exec(t)))o.push(m[1].replace(/\\n/g,' ').replace(/\\"/g,'"'));return o}
-function salvageScenario(t){const ti=grab(t,'title'),ip=grab(t,'image_prompt'),vp=grab(t,'video_prompt'),na=grab(t,'narration');const n=Math.max(ip.length,vp.length);if(!n)throw new Error('rien à récupérer');const sc=[];const st=ti.slice(1);for(let i=0;i<n;i++)sc.push({title:st[i]||('Scène '+(i+1)),narration:na[i]||'',image_prompt:ip[i]||vp[i]||'',video_prompt:vp[i]||ip[i]||''});return{title:ti[0]||'Film',scenes:sc}}
+function salvageScenario(t){const ti=grab(t,'title'),ip=grab(t,'image_prompt'),vp=grab(t,'video_prompt').concat(grab(t,'action_prompt')),na=grab(t,'narration');const n=Math.max(ip.length,vp.length);if(!n)throw new Error('rien à récupérer');const sc=[];const st=ti.slice(1);for(let i=0;i<n;i++)sc.push({title:st[i]||('Scène '+(i+1)),narration:na[i]||'',image_prompt:ip[i]||vp[i]||'',video_prompt:vp[i]||ip[i]||''});return{title:ti[0]||'Film',scenes:sc}}
 function parseJsonRobust(text){const raw=stripFences(text);const tries=[
  ['a',()=>JSON.parse(raw)],
  ['b',()=>JSON.parse(escapeControlCharsInStrings(raw))],
@@ -456,7 +488,7 @@ async function stepText(){
  const d=await r.json();const txt=(d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'';
  const pr=parseJsonRobust(txt);const sc=pr.data;if(!Array.isArray(sc.scenes)||!sc.scenes.length)throw new Error('Scénario vide');
  P.scenario={title:sc.title||'Film',logline:sc.logline||'',characters:(Array.isArray(sc.characters)?sc.characters:[]).concat(persos.map(p=>({name:p.name,description:p.desc})))};
- P.scenes=sc.scenes.slice(0,n).map((s,i)=>({n:i+1,title:s.title||('Scène '+(i+1)),narration:s.narration||'',image_prompt:s.image_prompt||s.video_prompt||P.idea,video_prompt:s.video_prompt||s.image_prompt||P.idea,imgUrl:null,imgState:'',vidId:null,vidUrl:null,vidState:'',err:''}));
+ P.scenes=sc.scenes.slice(0,n).map((s,i)=>({n:i+1,title:s.title||('Scène '+(i+1)),narration:s.narration||'',image_prompt:s.image_prompt||s.video_prompt||P.idea,video_prompt:s.video_prompt||s.action_prompt||s.image_prompt||P.idea,imgUrl:null,imgState:'',vidId:null,vidUrl:null,vidState:'',err:''}));
  save();renderAll()}
 
 function charSheet(){const seen={},o=[];(P.scenario.characters||[]).forEach(c=>{if(c.name&&!seen[c.name]){seen[c.name]=1;o.push(c.name+': '+(c.description||c.desc||''))}});return o.join(' | ')}
@@ -478,6 +510,7 @@ async function stepImages(){
 async function gateCreate(){const last=timing().lastCreateAt||0;const need=T.VID_SAFE*1000*TS-(Date.now()-last);if(need>0)await waitS(Math.ceil(need/(1000*TS)),'Prochaine vidéo dans')}
 async function createVideo(i){const sc=P.scenes[i];
  const body={model:MODEL_VIDEO,prompt:sc.video_prompt+'. '+(styleText()?styleText()+'. ':'')+'Keep characters identical to the image. Smooth motion, no text.',image:await toData(sc.imgUrl),num_frames:FRAMES[P.dur]||169,frame_rate:FRAME_RATE};
+ const nx=P.scenes[i+1];if(P.last&&nx&&nx.imgUrl)body.last_frame=await toData(nx.imgUrl);
  const r=await apiCall('POST',API_BASE+'/videos',body,'vidéo '+sc.n);const d=await r.json();const id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas de video_id');return id}
 async function pollVideo(i,fresh){const sc=P.scenes[i];
  try{await waitS(fresh?T.FIRST_POLL:T.POLLS[0],'Vidéo '+sc.n+' : 1er contrôle dans');
@@ -500,7 +533,7 @@ async function stepVideos(){setPhase('videos','Vidéos : 1 création toutes les 
 async function run(){
  if(S.running)return;if(!getKey()){toast('Ajoute ta clé API','error');$('apiKeyInput').focus();return}
  const idea=$('ideaInput').value.trim();if(!P.scenario&&!idea){toast('Décris ton idée d\'abord','warn');return}
- if(!P.scenario){P.idea=idea;P.mode=P.mode;P.style=$('styleSelect').value;P.n=parseInt($('sceneCount').value,10);P.dur=parseInt($('duration').value,10);P.fmt=$('format').value}
+ if(!P.scenario){P.idea=idea;P.mode=P.mode;P.style=$('styleSelect').value;P.n=parseInt($('sceneCount').value,10);P.dur=parseInt($('duration').value,10);P.fmt=$('format').value;P.last=$('optLast').checked}
  S.running=true;S.stop=false;await startWake();updateGenerateBtn();
  window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{if(!P.scenario)await stepText();await stepImages();await stepVideos();
@@ -529,7 +562,7 @@ let newArm=0;$('btnNew').onclick=()=>{if(S.running){toast('Arrête d\'abord la c
 
 /* ═══ Démarrage ═══ */
 load();loadPersos();updateApiUI();renderModes();
-if(P.idea)$('ideaInput').value=P.idea;if(P.scenario){$('styleSelect').value=P.style||'';$('sceneCount').value=P.n;$('duration').value=P.dur;$('format').value=P.fmt;setPhase(P.scenes.every(s=>s.vidUrl)?'done':'videos','Projet repris')}
+if(P.idea)$('ideaInput').value=P.idea;if(P.scenario){$('styleSelect').value=P.style||'';$('sceneCount').value=P.n;$('duration').value=P.dur;$('format').value=P.fmt;$('optLast').checked=P.last!==false;setPhase(P.scenes.every(s=>s.vidUrl)?'done':'videos','Projet repris')}
 renderAll();window.__studio={set TS(v){TS=v},parseJsonRobust};
 })();
 </script>
