@@ -29,12 +29,15 @@
   --gold: #c9a961;
   --gold-soft: #e4cf9a;
   --copper: #b8794f;
-  --copper-deep: #8a6324;
+  --copper-deep: var(--gold-dark);   /* était #8a6324 (3.38:1 sous l'encre dorée) */
   --cyan: #c9a961;                 /* focus / small accents (kept name for call sites) */
   --sun: var(--gold);              /* legacy name used by checkout.css */
-  --grad: linear-gradient(120deg, #c9a961 0%, #8a6324 100%);
-  --grad-btn: linear-gradient(120deg, #d9bd7c 0%, #8a6324 100%);  /* dark ink text passes AA across the whole gradient, see .btn--sun */
-  --grad-gold: linear-gradient(100deg, #f6e1ad 0%, #c9a961 50%, #8a6324 100%);
+  --ink-on-gold: #1c1405;          /* dark ink used on every LIGHT gold surface (badges, veil, avatars): 8.10:1 on --gold, 14.15:1 on #f6e1ad */
+  --gold-dark: #b08640;            /* dark end of every gold gradient. #8a6324 measured only 3.38:1 with dark ink (AA needs 4.5:1); this bronze tone keeps the gradient unmistakably gold and no longer brown. */
+  --btn-ink: #0b0703;              /* ink for the two-stop gold→bronze fills (.btn--sun, .wk-card__veil), where the bronze end is the binding case: 4.55:1 on --gold-dark, 8.12:1 on #d9bd7c */
+  --grad: linear-gradient(120deg, #c9a961 0%, var(--gold-dark) 100%);
+  --grad-btn: linear-gradient(120deg, #d9bd7c 0%, var(--gold-dark) 100%);  /* with --btn-ink this passes AA at BOTH ends: 4.55:1 on --gold-dark, 8.12:1 on #d9bd7c. The old #8a6324 end measured 3.38:1. */
+  --grad-gold: linear-gradient(100deg, #f6e1ad 0%, #c9a961 50%, var(--gold-dark) 100%);
   --brand: var(--grad);
   --glass: linear-gradient(180deg, rgba(245,241,232,.065), rgba(245,241,232,.015));
   --shadow-1: 0 1px 0 rgba(255,255,255,.05) inset, 0 0 0 1px rgba(245,241,232,.06), 0 2px 4px rgba(0,0,0,.3), 0 18px 36px -18px rgba(0,0,0,.75), 0 50px 90px -50px rgba(0,0,0,.95);
@@ -71,7 +74,22 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 ul, ol { list-style: none; }
 ::selection { background: rgba(201,169,97,.45); color: #fff; }
+/* 6 · FOCUS VISIBLE — one ring that stays ≥ 3:1 on dark AND light surfaces.
+   The site has dark sections (--ink #0a0a0b … --surface-2 #1d1b1e) and light ones
+   (#f5f1e8 buttons, the cream chips, the white cards), so a single ring colour is
+   not enough: a gold ring is invisible on gold/cream, and a dark ring is invisible
+   on the night surfaces. Every focusable element therefore gets the gold ring
+   (8.79:1 on --ink, 8.09:1 on --surface, 7.60:1 on --surface-2), and anything that
+   sits on a light surface adds a dark inner ring (16.18:1 on #f5f1e8). */
 :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+.btn--sun:focus-visible, .btn--outline:focus-visible, .btn--glass:focus-visible, .btn--ghost:focus-visible, .btn--block:focus-visible {
+  outline-color: var(--ink);    /* dark inner ring on the light/gold body it is drawn over */
+  box-shadow: 0 0 0 3px var(--gold), 0 0 0 6px var(--ink-on-gold);
+}
+.btn--light:focus-visible, .chip:focus-visible, .pm:focus-visible, .flag-btn:focus-visible, .skip-link:focus-visible {
+  outline-color: var(--ink);    /* light surfaces: 16–18:1 instead of 2:1 */
+  box-shadow: 0 0 0 3px var(--text), 0 0 0 6px var(--ink-on-gold);
+}
 [hidden] { display: none !important; }
 
 .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
@@ -125,11 +143,14 @@ html[dir="rtl"] .btn:hover .btn__arrow { transform: scaleX(-1) translateX(3px); 
 .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: rgba(255,255,255,.1); transform: scaleX(0); transform-origin: 100% 50%; transition: transform .55s var(--ease-out); }
 .btn:hover::before { transform: scaleX(1); transform-origin: 0 50%; }
 .btn__rp { position: absolute; z-index: -1; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: rgba(255,255,255,.4); pointer-events: none; }
-/* primary: gold → bronze with a travelling shine; dark ink text for AA contrast across the whole gradient */
-.btn--sun { color: #1c1405; background: var(--grad-btn); box-shadow: 0 1px 0 rgba(255,255,255,.28) inset, 0 10px 28px -10px rgba(138,99,36,.8), 0 30px 60px -30px rgba(201,169,97,.55); }
+/* 1 · primary: gold → bronze with a travelling shine. --btn-ink clears AA across the
+   WHOLE gradient: 4.55:1 on the bronze end (--gold-dark) and 8.12:1 on the gold end.
+   The old #8a6324 bronze end measured 3.38:1 — the earlier comment here claiming the
+   gradient already passed AA was wrong. */
+.btn--sun { color: var(--btn-ink); background: var(--grad-btn); box-shadow: 0 1px 0 rgba(255,255,255,.28) inset, 0 10px 28px -10px rgba(176,134,64,.8), 0 30px 60px -30px rgba(201,169,97,.55); }
 .btn--sun::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.28) 50%, transparent 70%); transform: translateX(-120%); animation: shine 3.6s var(--ease-in-out) infinite; }
 @keyframes shine { 55%, 100% { transform: translateX(120%); } }
-.btn--sun:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(255,255,255,.32) inset, 0 16px 36px -10px rgba(180,140,70,.95), 0 40px 80px -30px rgba(138,99,36,.85); }
+.btn--sun:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(255,255,255,.32) inset, 0 16px 36px -10px rgba(198,158,88,.95), 0 40px 80px -30px rgba(176,134,64,.85); }
 .btn--glass, .btn--ghost { color: var(--text); border: 1px solid var(--line-strong); background: rgba(245,241,232,.05); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); }
 .btn--glass:hover, .btn--ghost:hover { border-color: rgba(245,241,232,.34); background: rgba(245,241,232,.09); }
 .btn__logo, .btn--glass > svg:first-child, .btn--ghost > svg:first-child { color: #25d366; }
@@ -198,7 +219,9 @@ html[dir="rtl"] .progress span { transform-origin: 100% 50%; }
 @media (min-width: 960px) { .nav { display: flex; } }
 .header__actions { display: flex; align-items: center; gap: .5rem; }
 .lang { position: relative; }
-.lang__btn { display: inline-flex; align-items: center; gap: .45rem; height: 42px; padding: 0 .85rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: .85rem; font-weight: 600; transition: color .2s ease, border-color .2s ease; }
+/* 8 · touch targets: 44×44 minimum. These two live in a 4.5rem bar, so growing
+   42 → 44px changes nothing around them or in the layout. */
+.lang__btn { display: inline-flex; align-items: center; gap: .45rem; height: 44px; padding: 0 .85rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: .85rem; font-weight: 600; transition: color .2s ease, border-color .2s ease; }
 .lang__btn:hover, .lang__btn[aria-expanded="true"] { color: var(--text); border-color: var(--line-strong); }
 .lang__list { position: absolute; top: calc(100% + 8px); inset-inline-end: 0; min-width: 170px; padding: .4rem; border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: rgba(18,16,25,.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 24px 50px -20px rgba(0,0,0,.8); transform-origin: top right; animation: pop .22s var(--ease-out); }
 html[dir="rtl"] .lang__list { transform-origin: top left; }
@@ -206,13 +229,13 @@ html[dir="rtl"] .lang__list { transform-origin: top left; }
 .lang__list button { display: flex; align-items: center; gap: .65rem; width: 100%; text-align: start; padding: .6rem .8rem; border-radius: 8px; font-size: .92rem; color: var(--muted); transition: background-color .2s ease, color .2s ease; }
 .lang__list button:hover, .lang__list button[aria-current="true"] { background: rgba(245,241,232,.07); color: var(--text); }
 .header__cta svg { color: inherit; }
-.burger { display: grid; place-content: center; gap: 6px; width: 42px; height: 42px; border-radius: 999px; border: 1px solid var(--line); }
+.burger { display: grid; place-content: center; gap: 6px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); }
 .burger span { display: block; width: 18px; height: 1.5px; background: var(--text); transition: transform .35s var(--ease-out); }
 .burger[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }
 .burger[aria-expanded="true"] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
 @media (min-width: 960px) { .burger { display: none; } }
 @media (max-width: 559px) { .header__cta { display: none; } }
-.menu { position: fixed; inset: 0; z-index: 190; padding: calc(var(--header-h) + 2rem) var(--gutter) 2rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(7,6,12,.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.menu { position: fixed; inset: 0; z-index: 190; padding: calc(var(--header-h) + 2rem) var(--gutter) max(2rem, var(--wa-float-space)); display: flex; flex-direction: column; justify-content: space-between; background: rgba(7,6,12,.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
 .menu__nav { display: flex; flex-direction: column; }
 .menu__nav a { font-family: var(--font-display); font-size: clamp(2.2rem, 10vw, 3.4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; padding: .35rem 0; border-bottom: 1px solid var(--line); animation: menuIn .6s var(--ease-out) both; }
 .menu__nav a:nth-child(2) { animation-delay: .05s; } .menu__nav a:nth-child(3) { animation-delay: .1s; } .menu__nav a:nth-child(4) { animation-delay: .15s; } .menu__nav a:nth-child(5) { animation-delay: .2s; }
@@ -284,6 +307,10 @@ html[dir="rtl"] .lang__list { transform-origin: top left; }
 .h__title em { display: block; margin-top: .06em; letter-spacing: -0.035em; }
 html[lang="th"] .h__title, html[lang="ar"] .h__title { font-size: clamp(2.6rem, 5.6vw, 5rem); line-height: 1.2; }
 .h__sub { margin-top: 1.6rem; max-width: 30rem; font-size: clamp(1.08rem, 1.5vw, 1.28rem); line-height: 1.55; color: #cfcbe0; text-wrap: pretty; }
+/* The hero copy sits on a looping video, so the scrim cannot guarantee contrast
+   on every frame (measuring a bright frame gave 2.18:1 for .h__sub). The copy
+   therefore carries its own shadow as a fallback, independently of the video. */
+.h__title, .h__sub, .h__pill, .h__proof { text-shadow: 0 2px 14px rgba(3,3,5,.72), 0 1px 3px rgba(3,3,5,.55); }
 .h__ctas { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: .75rem; }
 .h__proof { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; font-size: .9rem; color: var(--muted); }
 .h__proof li { display: inline-flex; align-items: center; gap: .45rem; }
@@ -393,7 +420,7 @@ html[dir="rtl"] .marquee__track { animation-direction: reverse; }
 .dev--card .dev-scale--iph { width: 22%; right: 0; bottom: 6%; }
 .wk-card:hover .dev--card { transform: translateY(2%); }
 .wk-card:hover .mac__view img { transform: scale(1.05); }
-.wk-card__veil { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.2rem; color: #1c1405; background: var(--grad-btn); transform: translateY(101%); transition: transform .6s var(--ease-out); pointer-events: none; }
+.wk-card__veil { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.2rem; color: var(--btn-ink); background: var(--grad-btn); transform: translateY(101%); transition: transform .6s var(--ease-out); pointer-events: none; }
 .wk-card__veil b { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: -0.02em; }
 .wk-card__veil i { font-style: normal; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .wk-card__media:hover .wk-card__veil, .wk-card__media:focus-visible .wk-card__veil { transform: none; }
@@ -510,7 +537,7 @@ html[dir="rtl"] .why-card__ic { margin: -1.9rem 1rem 0 0; }
 .review__quote { font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; line-height: 1.5; color: var(--text); }
 .review__quote::before { content: "\201C"; } .review__quote::after { content: "\201D"; }
 .review__who { display: flex; align-items: center; gap: .7rem; margin-top: auto; }
-.review__avatar { width: 2.6rem; height: 2.6rem; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: #1c1405; background: var(--grad-gold); }
+.review__avatar { width: 2.6rem; height: 2.6rem; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--ink-on-gold); background: var(--grad-gold); }
 .review__name { font-weight: 600; font-size: .92rem; }
 .review__biz { font-size: .82rem; color: var(--muted); }
 
@@ -594,6 +621,12 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 .wa-float svg { width: 28px; height: 28px; }
 .wa-float.is-visible { transform: none; opacity: 1; }
 .wa-float:hover { box-shadow: 0 18px 40px -8px rgba(37,211,102,.9); }
+/* 9 · the floating button is fixed at bottom: 1.25rem + 56px tall, so reserve
+   --wa-float-space at the end of every page: its own height + the same 1.25rem
+   gap + env(safe-area-inset-bottom), so it can never cover the last clickable
+   footer link (or the legal links that follow it) on mobile or desktop. */
+:root { --wa-float-space: calc(3.5rem + max(1.25rem, env(safe-area-inset-bottom))); }
+.footer { padding-bottom: max(clamp(4rem, 8vw, 6rem), var(--wa-float-space)); }
 @media (pointer: coarse) { .footer__col a, .footer__link, .footer__bottom a { display: inline-flex; align-items: center; min-height: 44px; } .footer__col { gap: 0; } .link-arrow { min-height: 44px; } .brand { min-height: 44px; } }
 
 /* ==========================================================================
@@ -609,9 +642,12 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
   display: block; max-width: 100%;
   font-family: var(--font-serif); font-style: italic; font-weight: 400;
   letter-spacing: -0.01em; line-height: 1.08; text-wrap: balance;
-  background: linear-gradient(100deg, #8a6324 0%, #f6e1ad 38%, #c9a961 54%, #f6e1ad 70%, #8a6324 100%);
+  /* 5 · every stop now clears 4.5:1 on the dark media it sits on. Worst case is the
+     bronze end, where the budget is only 4.5:1 because a gradient text clip needs the
+     background to sit between #b08640's 5.63:1 and #c9a961's 8.10:1 ceiling. */
+  background: linear-gradient(100deg, var(--gold-dark) 0%, #f6e1ad 38%, var(--gold) 54%, #f6e1ad 70%, var(--gold-dark) 100%);
   background-size: 240% 100%; background-position: 92% 0;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
   animation: icShine 7s ease-in-out infinite;
 }
 html[lang="th"] .ic-word, html[lang="ar"] .ic-word,
@@ -652,7 +688,7 @@ html[lang="th"] .ic-num, html[lang="ar"] .ic-num { font-style: normal; font-weig
 .offer--featured, .pcard--featured { background: linear-gradient(180deg, rgba(201,169,97,.13), rgba(201,169,97,.06) 50%, rgba(245,241,232,.02)); box-shadow: var(--shadow-1), 0 60px 120px -60px rgba(201,169,97,.45); }
 .offer--featured::after, .pcard--featured::after { background: radial-gradient(240px circle at var(--mx) var(--my), rgba(255,255,255,.95), transparent 60%), linear-gradient(160deg, #f6e1ad, #c9a961 40%, rgba(201,169,97,.75)); opacity: 1; }
 @media (min-width: 1140px) { .offer-grid .offer--featured { translate: 0 -14px; } }
-.offer__badge { position: absolute; top: -13px; inset-inline-start: 1.4rem; z-index: 3; padding: .34rem .85rem; border-radius: 999px; font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #1c1405; background: var(--grad-gold); box-shadow: 0 10px 26px -8px rgba(201,169,97,.75); }
+.offer__badge { position: absolute; top: -13px; inset-inline-start: 1.4rem; z-index: 3; padding: .34rem .85rem; border-radius: 999px; font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-on-gold); background: var(--grad-gold); box-shadow: 0 10px 26px -8px rgba(201,169,97,.75); }
 .offer__top { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
 .offer__tier { font-family: var(--font-display); font-weight: 700; font-size: .85rem; letter-spacing: .06em; color: var(--faint); font-variant-numeric: tabular-nums; }
 .offer__icon { margin: .6rem -.35rem .4rem; aspect-ratio: 4 / 3; transform: translateZ(30px); transition: transform .7s var(--ease-out); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .55rem; padding: 0 .5rem; }
@@ -662,11 +698,15 @@ html[lang="th"] .ic-num, html[lang="ar"] .ic-num { font-style: normal; font-weig
 .offer__name, .pcard__name { font-family: var(--font-display); font-size: 1.36rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
 .offer__benefit { margin-top: .55rem; flex: 1; font-size: .94rem; line-height: 1.55; color: var(--muted); }
 .offer__price, .pcard__price { margin-top: 1.4rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: .3rem .6rem; }
-.offer__price strong, .pcard__price strong, .om__price strong { font-family: var(--font-display); font-weight: 900; letter-spacing: -0.05em; line-height: 1; }
+.offer__price strong, .pcard__price strong, .om__price strong { font-family: var(--font-display); font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
 .offer__price strong { font-size: clamp(2.6rem, 3.4vw, 3.2rem); }
 .offer--featured .offer__price strong, .pcard--featured .pcard__price strong, .cmp thead .is-featured strong { background: var(--grad-gold); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .offer__price span, .pcard__price span { font-size: .78rem; letter-spacing: .02em; color: var(--muted); }
-.offer__approx { margin-top: .3rem; min-height: 1.2em; font-size: .8rem; color: var(--faint); }
+.offer__approx { margin-top: .3rem; min-height: 1.2em; font-size: .84rem; color: var(--muted); }
+/* The price follows the language of the page (see NMPrice in
+   offers-config.js): each baht amount is followed by its rounded equivalent
+   in the reader's currency, so a price list stays readable abroad. */
+.nm-approx { margin-inline-start: .35em; font-size: .8em; font-weight: 500; color: var(--muted); white-space: nowrap; }
 .offer__more { margin-top: 1.2rem; }
 
 /* payment marks — real logos on white chips */
@@ -769,7 +809,10 @@ html[dir="rtl"] .om__list li { transform: translateX(10px); }
 .pv__title { flex: 1; display: inline-flex; align-items: center; gap: .5rem; min-width: 0; font-size: .9rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pv__title b { color: var(--text); font-weight: 600; }
 .seg { display: inline-flex; padding: 3px; border-radius: 999px; border: 1px solid var(--line-strong); }
-.seg__btn { min-height: 34px; padding: 0 .95rem; border-radius: 999px; font-size: .84rem; color: var(--muted); transition: background-color .25s ease, color .25s ease; }
+/* 8 · 44px touch target without moving the control: 5px of padding absorbed by the
+   flex row (.pv__bar is .7rem block-padded and the segment is the tallest item). */
+.seg__btn { position: relative; min-height: 34px; padding: 0 .95rem; border-radius: 999px; font-size: .84rem; color: var(--muted); transition: background-color .25s ease, color .25s ease; }
+.seg__btn::before { content: ""; position: absolute; inset-inline: 0; top: 50%; height: 44px; transform: translateY(-50%); }
 .seg__btn[aria-pressed="true"] { background: var(--text); color: var(--ink); }
 .pv__open { display: none; align-items: center; gap: .35rem; font-size: .84rem; color: var(--muted); }
 .pv__open svg { width: 1rem; height: 1rem; }
@@ -854,7 +897,7 @@ html[lang="th"] .phero__title, html[lang="ar"] .phero__title { line-height: 1.22
 .bill { position: relative; margin-top: 2.2rem; display: inline-grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 999px; border: 1px solid var(--line-strong); background: rgba(7,6,12,.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 .bill__btn { position: relative; z-index: 1; min-height: 44px; padding: 0 1.2rem; border-radius: 999px; font-size: .92rem; font-weight: 600; color: var(--muted); white-space: nowrap; transition: color .35s ease; }
 .bill__btn[aria-pressed="true"] { color: var(--ink); }
-.bill__save { display: inline-block; margin-inline-start: .3rem; padding: .12rem .45rem; border-radius: 999px; font-size: .7rem; font-weight: 700; color: #1c1405; background: var(--gold); }
+.bill__save { display: inline-block; margin-inline-start: .3rem; padding: .12rem .45rem; border-radius: 999px; font-size: .7rem; font-weight: 700; color: var(--ink-on-gold); background: var(--gold); }
 .bill__pill { position: absolute; top: 4px; bottom: 4px; inset-inline-start: 4px; width: calc(50% - 4px); border-radius: 999px; background: var(--text); transition: transform .5s var(--ease-out); }
 .bill[data-mode="yearly"] .bill__pill { transform: translateX(100%); }
 html[dir="rtl"] .bill[data-mode="yearly"] .bill__pill { transform: translateX(-100%); }
@@ -984,6 +1027,10 @@ html[lang="th"] .status__title, html[lang="ar"] .status__title { line-height: 1.
 .h__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,8,.92) 0%, rgba(5,5,8,.55) 42%, rgba(5,5,8,.08) 100%), linear-gradient(0deg, rgba(3,3,5,.8) 0%, rgba(3,3,5,0) 32%), linear-gradient(180deg, rgba(3,3,5,.55) 0%, rgba(3,3,5,0) 25%); }
 .h__aurora { display: none; }
 .h__visual { display: none; }
+/* The hero shows a single column of copy since the looping video replaced the
+   device mockups, but .h__grid still reserved a second 1fr column from 1000px
+   up — a full-height empty column. One column, full width, below and above. */
+@media (min-width: 1000px) { .h__grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 768px) { .h__shade { background: linear-gradient(180deg, rgba(3,3,5,.82), rgba(5,5,8,.7) 55%, rgba(3,3,5,.92)); } }
 
 /* Page hero background on Account/Legal — image gets .phero__bg's Ken Burns rule above */
@@ -992,3 +1039,39 @@ html[lang="th"] .status__title, html[lang="ar"] .status__title { line-height: 1.
 main.status, main.legal { position: relative; isolation: isolate; }
 
 /* ---------- Scroll film: the desk video is scrubbed by scroll ---------- */
+
+/* ==========================================================================
+   7 · FORCED COLORS (Windows High Contrast / contrast themes)
+
+   Gradient-clipped text is painted with `background-clip: text` + a transparent
+   text colour. In forced-colors mode the browser drops the author background but
+   keeps `color: transparent`, so these elements render as completely invisible
+   text. Restore a system colour and drop the gradient here.
+   Note: -webkit-text-fill-color: transparent (set in .ic-word/.ic-num to stop
+   Safari from painting the glyphs twice) also wins over `color`, so it is reset
+   to CanvasText as well.
+   ========================================================================== */
+@media (forced-colors: active) {
+  :root { color-scheme: light dark; }
+  :is(h1, h2, h3, .footer__big) em,
+  .how-step__n span:first-child,
+  .st__num,
+  .ic-word,
+  .ic-num,
+  .offer__badge,
+  .wk-card__veil,
+  .offer--featured .offer__price strong,
+  .pcard--featured .pcard__price strong,
+  .cmp thead .is-featured strong,
+  .co-panel__n {
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    animation: none;
+  }
+  :is(h1, h2, h3, .footer__big) em *,
+  .ic-word *, .ic-num *, .st__num *, .offer__badge *, .wk-card__veil * { color: CanvasText; -webkit-text-fill-color: CanvasText; }
+  .btn--sun { border: 1px solid ButtonText; }   /* keeps the button edge readable on the flat ButtonFace */
+}

@@ -4,7 +4,10 @@
    screen.
    Payments: Stripe Payment Links / PromptPay / bank details come from
    payment-config.js; any method not configured falls back to finishing
-   the payment on WhatsApp. No card data is ever collected on this page. */
+   the payment on WhatsApp. No card data is ever collected on this page.
+   window.NM_PAYMENT_READY (payment-state.js) says whether at least one real
+   method is configured: while it is false the page keeps no Stripe/card
+   promise and hides the promo field. */
 (function () {
   "use strict";
 
@@ -23,6 +26,9 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  // A hidden element cannot take focus: pick the first candidate really on
+  // screen (step 4's promo field is hidden while Stripe is unconfigured).
+  var visible = function (el) { return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length); };
   var t = function (k) { return window.NMI18n.t(k) || ""; };
   var O = window.NM_OFFERS;
   var fmt = function (n) { return window.NMPrice.thb(n); };
@@ -60,9 +66,14 @@
     var q = params.get("offer") || saved.plan;
     var r = q && $('input[name="offer"][value="' + q + '"]', form);
     if (r) r.checked = true;
+    // Care plan: OFF unless the link asks for one. index.html sends
+    // ?offer=pack alone, so the checkout must show the ฿4,990 the button
+    // advertised — not that plus a monthly care plan. pricing.html sends
+    // care=monthly and keeps working.
     var cq = params.get("care") || saved.care;
     var cr = cq && $('input[name="care"][value="' + cq + '"]', form);
     if (cr) cr.checked = true;
+    else { var cn = $('input[name="care"][value="none"]', form); if (cn) cn.checked = true; }
     if (saved.promo && form.elements.promo) form.elements.promo.value = saved.promo;
     ["business", "type", "name", "phone", "email", "notes"].forEach(function (k) { if (saved[k] && form.elements[k]) form.elements[k].value = saved[k]; });
     if (saved.langs) $$('input[name="langs"]', form).forEach(function (c) { c.checked = saved.langs.indexOf(c.value) > -1; });
@@ -148,14 +159,32 @@
     if (m === "meeting") note = t("checkout.nMeet");
     $("#coMethodNote").textContent = note;
 
+    // Per-method honesty: the promise printed under a method only shows when
+    // that method can actually deliver it; otherwise the note above explains
+    // the WhatsApp route. Cards need a Stripe link for the chosen plan,
+    // PromptPay needs an ID, bank transfer needs an IBAN.
+    var canDo = { card: !!cardLink(p), promptpay: !!PAY.promptpay, bank: !!(PAY.bank && PAY.bank.iban) };
+    $$(".co-method").forEach(function (l) {
+      var v = $("input", l).value, sub = $(".co-method__text small", l);
+      if (!(v in canDo)) return;
+      if (sub) sub.hidden = !canDo[v];
+      var logos = $(".co-method__logos", l);
+      if (logos) logos.hidden = !canDo[v];
+    });
+
     var label;
     if (thai) label = t(!PP_ID || DEMO ? "checkout.payOrder" : slip ? "checkout.payNotify" : "checkout.payPaid").replace("{amount}", thbText(p));
     else if (m === "meeting") label = t("checkout.payConfirm");
     else if (m === "card" && cardLink(p)) label = t("checkout.payNow").replace("{amount}", fmt(a.today));
     else label = t("checkout.payOrder").replace("{amount}", fmt(a.today));
     $("#coPayLabel").textContent = label;
-    // Promo codes are redeemed on Stripe's page, so the field only shows for card payments.
-    $("#coPromoField").hidden = !(m === "card" && !thai);
+    // Promo codes are redeemed on Stripe's page: the field only shows for card
+    // payments AND once a Stripe link really exists — otherwise it would
+    // promise a check that happens nowhere. Nothing can redeem a code while
+    // no method is configured, so a restored one is dropped rather than sent
+    // along in the order.
+    if (!window.NM_PAYMENT_READY && form.elements.promo.value) form.elements.promo.value = "";
+    $("#coPromoField").hidden = !(window.NM_PAYMENT_READY && m === "card" && !thai);
   }
 
   function renderReview(p, a) {
@@ -194,6 +223,11 @@
     $("#thaiQrRef").textContent = t("checkout.qrRef") + " " + orderRef;
     $("#thaiQrPayee").textContent = PAY.promptpayName || "NM Studio";
     $("#thaiQrStatusText").textContent = t(slip ? "checkout.qrSlipIn" : "checkout.qrWaiting");
+    // A sample code nobody can pay gets no "waiting for payment" badge and no
+    // validity countdown: the "Sample" stamp and the note below say what
+    // really happens (we send the real QR on WhatsApp).
+    $("#thaiQrStatus").hidden = DEMO;
+    $("#thaiQrTimer").hidden = DEMO;
     var box = $("#thaiQr"), ready = !!PP_ID && !!window.QRCode;
     box.classList.toggle("thaiqr--pending", !ready);
     box.classList.toggle("thaiqr--slip", !!slip);
@@ -211,7 +245,7 @@
     holder.removeAttribute("title");
     $$("img, canvas", holder).forEach(function (el) { el.setAttribute("aria-hidden", "true"); if (el.tagName === "IMG") el.alt = ""; });
     // A new amount is a new code: restart its validity window.
-    if (qrExpiry) startQrTimer();
+    if (qrExpiry && !DEMO) startQrTimer();
   }
 
   // Thai payment pages (Omise, 2C2P, marketplaces) show how long the QR
@@ -351,15 +385,19 @@
       d.classList.toggle("is-current", s === n);
       d.classList.toggle("is-done", s < n);
       if (s < n) d.setAttribute("aria-current", "false"); else if (s === n) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
+      // Finished steps are clickable shortcuts back: make them reachable and
+      // operable with the keyboard too (they are <li>, not <button>).
+      if (s < n) { d.setAttribute("tabindex", "0"); d.setAttribute("role", "button"); }
+      else { d.removeAttribute("tabindex"); d.removeAttribute("role"); }
     });
-    if (n === 3 && window.NM_LANG === "th" && PP_ID && !qrExpiry) startQrTimer();
+    if (n === 3 && window.NM_LANG === "th" && PP_ID && !DEMO && !qrExpiry) startQrTimer();
     if (n === LAST) render();
     var panel = panels[n - 1];
     if (focus !== false) {
       var top = $(".co-steps").getBoundingClientRect().top + window.scrollY - 90;
       if (window.scrollY > top) window.scrollTo({ top: top, behavior: reduce ? "auto" : "smooth" });
-      var first = $("input:not([type=radio]):not([type=checkbox]), input:checked, button", panel);
-      setTimeout(function () { if (first) first.focus({ preventScroll: true }); }, 220);
+      var first = $$("input:not([type=radio]):not([type=checkbox]), input:checked, button", panel).filter(visible)[0];
+      setTimeout(function () { if (first && visible(first)) first.focus({ preventScroll: true }); }, 220);
     }
   }
   form.addEventListener("click", function (e) {
@@ -368,6 +406,11 @@
   });
   dots.forEach(function (d) {
     d.addEventListener("click", function () { var s = Number(d.getAttribute("data-step-dot")); if (s < current) go(s); });
+    d.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      e.preventDefault();
+      var s = Number(d.getAttribute("data-step-dot")); if (s < current) go(s);
+    });
   });
   // Enter in a text field moves forward instead of submitting early.
   form.addEventListener("keydown", function (e) {

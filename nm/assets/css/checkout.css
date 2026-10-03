@@ -76,7 +76,9 @@ html[dir="rtl"] .co-steps__item::after { transform-origin: 100% 50%; }
 .co-plan__price strong { font-size: 1.55rem; font-weight: 500; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 .co-plan__price small { font-size: .75rem; color: var(--muted); }
 .co-plan__month { font-size: .8rem; color: var(--muted); }
-.co-plan__badge { position: absolute; top: -.6rem; inset-inline-end: .8rem; padding: .15rem .55rem; border-radius: 999px; font-size: .64rem; font-weight: 600; color: #ffffff; background: var(--brand); }
+/* 4 · dark ink on the gold badge: white measured 1.82:1 (2.25:1 against the
+   lightest stop of --brand), --ink-on-gold measures 8.10:1. */
+.co-plan__badge { position: absolute; top: -.6rem; inset-inline-end: .8rem; padding: .15rem .55rem; border-radius: 999px; font-size: .64rem; font-weight: 600; color: var(--ink-on-gold); background: var(--brand); }
 [data-price] { unicode-bidi: isolate; direction: ltr; display: inline-block; }
 
 .co-included { margin-top: 1.2rem; padding: 1rem 1.1rem; border-radius: var(--radius-md); background: rgba(255,255,255,.03); border: 1px dashed var(--line-strong); }
@@ -101,6 +103,9 @@ html[dir="rtl"] .field select { background-position: left .9rem center; padding-
 .field select option { background: #11131b; color: var(--text); }
 .field textarea { padding: .8rem 1rem; resize: vertical; min-height: 5.5rem; }
 .field select:focus, .field textarea:focus { outline: none; border-color: var(--cyan); background-color: rgba(255,255,255,.06); box-shadow: 0 0 0 3px rgba(123,97,255,.15); }
+/* 6 · replace the 1.45:1 halo with the shared 2px gold ring: 8.79:1 on --ink,
+   8.09:1 on --surface. Text/select/textarea now match site.css's .field input. */
+.field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; box-shadow: none; }
 .field__label { font-size: .85rem; color: var(--muted); }
 .field label em { font-style: normal; color: var(--faint); }
 .co-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .15rem; }
@@ -364,7 +369,10 @@ html[dir="rtl"] .co-track li::after { left: auto; right: 50%; }
 .co-review > div { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: .3rem 1rem; padding: .85rem 0; border-bottom: 1px solid var(--line); }
 .co-review dt { font-size: .86rem; color: var(--muted); }
 .co-review dd { font-weight: 500; text-align: end; overflow-wrap: anywhere; }
-.co-review__edit { font-size: .8rem; color: var(--gold); text-decoration: underline; text-underline-offset: 3px; min-height: 32px; }
+/* 8 · 32px → 44px touch target: the pseudo-element widens the hit area without
+   adding height to the grid row, so the review table does not shift. */
+.co-review__edit { position: relative; font-size: .8rem; color: var(--gold); text-decoration: underline; text-underline-offset: 3px; min-height: 32px; }
+.co-review__edit::before { content: ""; position: absolute; inset-inline: 0; top: 50%; height: 44px; transform: translateY(-50%); }
 .co-review__total dt { color: var(--text); font-weight: 500; }
 .co-review__total dd { font-size: 1.4rem; letter-spacing: -0.02em; grid-column: 2 / 4; }
 .co-promo { margin-top: 1.2rem; max-width: 22rem; }
@@ -377,3 +385,22 @@ html[dir="rtl"] .co-track li::after { left: auto; right: 50%; }
 .co-care__title { float: left; width: 100%; margin-bottom: .2rem; }
 .co-care__opts, .co-care__none { clear: both; }
 @media (max-width: 420px) { .co-steps__item { font-size: .76rem; gap: .35rem; } }
+
+/* ==========================================================================
+   7 · FORCED COLORS — .co-panel__n is gradient-clipped (background-clip: text
+   + transparent colour) and would render invisible in contrast themes.
+   ========================================================================== */
+@media (forced-colors: active) {
+  .co-plan__badge,
+  .co-panel__n {
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+  }
+  .co-plan__badge { border: 1px solid ButtonText; }
+  /* the plan card's selected state is drawn with a box-shadow ring, which
+     forced-colors drops: keep it on a real border instead. */
+  .co-plan input:checked + .co-plan__card { border-color: Highlight; box-shadow: none; }
+}

@@ -113,12 +113,12 @@
         failEyebrow: "Payment not completed", failTitle: "No charge was made. <em>Let's try again.</em>", failLead: "It happens — a declined card, a 3-D Secure timeout or a closed window. Your order is saved.",
         r1: "Check your card details and the 3-D Secure code from your bank", r2: "Try Apple Pay, Google Pay or another card", r3: "Or pay in seconds with Thai QR PromptPay",
         retry: "Try again", promptpay: "Pay with PromptPay", help: "Still stuck? We'll sort it out together on WhatsApp.",
-        accEyebrow: "My account", accTitle: "Your plan, <em>in your hands.</em>", accLead: "Invoices, card, billing period and cancellation — all in Stripe's secure customer portal.",
+        accEyebrow: "My account", accTitle: "Your plan, <em>in your hands.</em>", accLead: "Invoices, card, billing period and cancellation — handled directly with us on WhatsApp.",
         portal: "Open my customer portal", portalNote: "Enter the email you paid with: Stripe sends you a one-time login link. No password to remember.",
         a1: "Download invoices and receipts (PDF)", a2: "Update your card or payment method", a3: "Switch between monthly and yearly billing", a4: "Cancel your care plan, anytime",
-        noPortal: "Online account management is being set up. Message us on WhatsApp and we'll handle invoices, changes or cancellation right away.",
+        noPortal: "Message us on WhatsApp and we'll handle invoices, changes or cancellation right away.",
         upTitle: "Ready for more?", upBody: "Move up to the Complete Pack or Ultimate whenever your business is ready.", upBtn: "See the offers",
-        legalEyebrow: "Legal", legalTitle: "The fine print, <em>in plain words.</em>", legalNote: "The legal texts below are written in English.", updated: "Last updated: September 2026", toc: "On this page"
+        legalEyebrow: "Legal", legalTitle: "The fine print, <em>in plain words.</em>", legalNote: "The legal texts below are written in English.", updated: "Last updated: 3 October 2026", toc: "On this page"
       },
       trust: { secure: "Secure payment by Stripe", methods: "Card · Apple Pay · Google Pay · PromptPay", noCard: "Card details never touch this site" }
     },
@@ -232,12 +232,12 @@
         failEyebrow: "Paiement non abouti", failTitle: "Rien n'a été débité. <em>On réessaie ?</em>", failLead: "Ça arrive — carte refusée, délai 3-D Secure dépassé ou fenêtre fermée. Votre commande est conservée.",
         r1: "Vérifiez votre carte et le code 3-D Secure envoyé par votre banque", r2: "Essayez Apple Pay, Google Pay ou une autre carte", r3: "Ou payez en quelques secondes par QR thaï PromptPay",
         retry: "Réessayer", promptpay: "Payer par PromptPay", help: "Toujours bloqué ? On règle ça ensemble sur WhatsApp.",
-        accEyebrow: "Mon compte", accTitle: "Votre forfait, <em>entre vos mains.</em>", accLead: "Factures, carte, période de facturation et résiliation — tout dans l'espace client sécurisé de Stripe.",
+        accEyebrow: "Mon compte", accTitle: "Votre forfait, <em>entre vos mains.</em>", accLead: "Factures, carte, période de facturation et résiliation — on s'en occupe directement avec vous sur WhatsApp.",
         portal: "Ouvrir mon espace client", portalNote: "Saisissez l'e-mail utilisé pour payer : Stripe vous envoie un lien de connexion unique. Aucun mot de passe.",
         a1: "Télécharger factures et reçus (PDF)", a2: "Mettre à jour votre carte ou moyen de paiement", a3: "Passer du mensuel à l'annuel (et inversement)", a4: "Résilier votre forfait d'entretien, à tout moment",
-        noPortal: "La gestion de compte en ligne est en cours de mise en place. Écrivez-nous sur WhatsApp : factures, changements ou résiliation, on s'en occupe tout de suite.",
+        noPortal: "Écrivez-nous sur WhatsApp : factures, changements ou résiliation, on s'en occupe tout de suite.",
         upTitle: "Envie d'aller plus loin ?", upBody: "Passez au Pack complet ou à Ultime quand votre commerce est prêt.", upBtn: "Voir les offres",
-        legalEyebrow: "Légal", legalTitle: "Les petites lignes, <em>en clair.</em>", legalNote: "Les textes juridiques ci-dessous sont rédigés en anglais.", updated: "Dernière mise à jour : septembre 2026", toc: "Sur cette page"
+        legalEyebrow: "Légal", legalTitle: "Les petites lignes, <em>en clair.</em>", legalNote: "Les textes juridiques ci-dessous sont rédigés en anglais.", updated: "Dernière mise à jour : 3 octobre 2026", toc: "Sur cette page"
       },
       trust: { secure: "Paiement sécurisé par Stripe", methods: "Carte · Apple Pay · Google Pay · PromptPay", noCard: "Vos données de carte ne passent jamais par ce site" }
     },
@@ -351,12 +351,12 @@
         failEyebrow: "Pagamento non completato", failTitle: "Nessun addebito. <em>Riproviamo.</em>", failLead: "Capita — carta rifiutata, 3-D Secure scaduto o finestra chiusa. Il tuo ordine è salvato.",
         r1: "Controlla i dati della carta e il codice 3-D Secure della banca", r2: "Prova Apple Pay, Google Pay o un'altra carta", r3: "Oppure paga in pochi secondi con QR thailandese PromptPay",
         retry: "Riprova", promptpay: "Paga con PromptPay", help: "Ancora bloccato? Risolviamo insieme su WhatsApp.",
-        accEyebrow: "Il mio account", accTitle: "Il tuo piano, <em>nelle tue mani.</em>", accLead: "Fatture, carta, periodo di fatturazione e disdetta — tutto nel portale clienti sicuro di Stripe.",
+        accEyebrow: "Il mio account", accTitle: "Il tuo piano, <em>nelle tue mani.</em>", accLead: "Fatture, carta, periodo di fatturazione e disdetta — ce ne occupiamo direttamente con te su WhatsApp.",
         portal: "Apri il mio portale clienti", portalNote: "Inserisci l'e-mail con cui hai pagato: Stripe ti invia un link di accesso monouso. Nessuna password.",
         a1: "Scarica fatture e ricevute (PDF)", a2: "Aggiorna la carta o il metodo di pagamento", a3: "Passa dalla fatturazione mensile all'annuale", a4: "Disdici l'assistenza, quando vuoi",
-        noPortal: "La gestione online dell'account è in preparazione. Scrivici su WhatsApp e gestiamo subito fatture, modifiche o disdetta.",
+        noPortal: "Scrivici su WhatsApp e gestiamo subito fatture, modifiche o disdetta.",
         upTitle: "Pronto per di più?", upBody: "Passa al Pacchetto completo o a Ultimate quando il tuo locale è pronto.", upBtn: "Vedi le offerte",
-        legalEyebrow: "Note legali", legalTitle: "Le clausole, <em>in parole semplici.</em>", legalNote: "I testi legali qui sotto sono redatti in inglese.", updated: "Ultimo aggiornamento: settembre 2026", toc: "In questa pagina"
+        legalEyebrow: "Note legali", legalTitle: "Le clausole, <em>in parole semplici.</em>", legalNote: "I testi legali qui sotto sono redatti in inglese.", updated: "Ultimo aggiornamento: 3 ottobre 2026", toc: "In questa pagina"
       },
       trust: { secure: "Pagamento sicuro con Stripe", methods: "Carta · Apple Pay · Google Pay · PromptPay", noCard: "I dati della carta non passano mai da questo sito" }
     },
@@ -470,12 +470,12 @@
         failEyebrow: "การชำระเงินไม่สำเร็จ", failTitle: "ไม่มีการตัดเงิน <em>ลองอีกครั้งนะ</em>", failLead: "เกิดขึ้นได้ — บัตรถูกปฏิเสธ รหัส 3-D Secure หมดเวลา หรือปิดหน้าต่างไป คำสั่งซื้อของคุณยังถูกบันทึกไว้",
         r1: "ตรวจสอบข้อมูลบัตรและรหัส 3-D Secure จากธนาคาร", r2: "ลองใช้ Apple Pay, Google Pay หรือบัตรใบอื่น", r3: "หรือจ่ายภายในไม่กี่วินาทีด้วย QR พร้อมเพย์",
         retry: "ลองอีกครั้ง", promptpay: "จ่ายด้วยพร้อมเพย์", help: "ยังติดปัญหาอยู่? ทักมาทาง WhatsApp เราช่วยจัดการให้",
-        accEyebrow: "บัญชีของฉัน", accTitle: "แพ็กของคุณ <em>คุณควบคุมเอง</em>", accLead: "ใบแจ้งหนี้ บัตร รอบชำระ และการยกเลิก — ทั้งหมดอยู่ในพอร์ทัลลูกค้าที่ปลอดภัยของ Stripe",
+        accEyebrow: "บัญชีของฉัน", accTitle: "แพ็กของคุณ <em>คุณควบคุมเอง</em>", accLead: "ใบแจ้งหนี้ บัตร รอบชำระ และการยกเลิก — เราดูแลให้คุณโดยตรงทาง WhatsApp",
         portal: "เปิดพอร์ทัลลูกค้าของฉัน", portalNote: "กรอกอีเมลที่ใช้ชำระเงิน Stripe จะส่งลิงก์เข้าสู่ระบบแบบใช้ครั้งเดียวให้ ไม่ต้องจำรหัสผ่าน",
         a1: "ดาวน์โหลดใบแจ้งหนี้และใบเสร็จ (PDF)", a2: "อัปเดตบัตรหรือวิธีชำระเงิน", a3: "สลับระหว่างรายเดือนและรายปี", a4: "ยกเลิกแพ็กดูแลได้ทุกเมื่อ",
-        noPortal: "ระบบจัดการบัญชีออนไลน์กำลังเตรียมพร้อม ทักเราทาง WhatsApp แล้วเราจะจัดการใบแจ้งหนี้ การเปลี่ยนแปลง หรือการยกเลิกให้ทันที",
+        noPortal: "ทักเราทาง WhatsApp แล้วเราจะจัดการใบแจ้งหนี้ การเปลี่ยนแปลง หรือการยกเลิกให้ทันที",
         upTitle: "พร้อมไปต่อแล้วหรือยัง?", upBody: "อัปเกรดเป็นแพ็กเกจครบชุดหรืออัลติเมทได้เมื่อร้านพร้อม", upBtn: "ดูแพ็กเกจ",
-        legalEyebrow: "กฎหมาย", legalTitle: "เงื่อนไขทั้งหมด <em>เขียนให้เข้าใจง่าย</em>", legalNote: "ข้อความทางกฎหมายด้านล่างเขียนเป็นภาษาอังกฤษ", updated: "อัปเดตล่าสุด: กันยายน 2026", toc: "ในหน้านี้"
+        legalEyebrow: "กฎหมาย", legalTitle: "เงื่อนไขทั้งหมด <em>เขียนให้เข้าใจง่าย</em>", legalNote: "ข้อความทางกฎหมายด้านล่างเขียนเป็นภาษาอังกฤษ", updated: "อัปเดตล่าสุด: 3 ตุลาคม 2026", toc: "ในหน้านี้"
       },
       trust: { secure: "ชำระเงินอย่างปลอดภัยผ่าน Stripe", methods: "บัตร · Apple Pay · Google Pay · พร้อมเพย์", noCard: "ข้อมูลบัตรไม่ผ่านเว็บไซต์นี้" }
     },
@@ -589,12 +589,12 @@
         failEyebrow: "لم يكتمل الدفع", failTitle: "لم يُخصم أي مبلغ. <em>لنحاول مرة أخرى.</em>", failLead: "يحدث ذلك — بطاقة مرفوضة أو انتهاء مهلة 3-D Secure أو نافذة أُغلقت. طلبك محفوظ.",
         r1: "تحقق من بيانات بطاقتك ورمز 3-D Secure من البنك", r2: "جرّب Apple Pay أو Google Pay أو بطاقة أخرى", r3: "أو ادفع في ثوانٍ عبر رمز QR التايلاندي PromptPay",
         retry: "حاول مرة أخرى", promptpay: "ادفع عبر PromptPay", help: "ما زلت تواجه مشكلة؟ لنحلّها معًا على واتساب.",
-        accEyebrow: "حسابي", accTitle: "خطتك <em>بين يديك.</em>", accLead: "الفواتير والبطاقة وفترة الفوترة والإلغاء — كلها في بوابة العملاء الآمنة من Stripe.",
+        accEyebrow: "حسابي", accTitle: "خطتك <em>بين يديك.</em>", accLead: "الفواتير والبطاقة وفترة الفوترة والإلغاء — نتولى ذلك معك مباشرة عبر واتساب.",
         portal: "افتح بوابة العملاء", portalNote: "أدخل البريد الإلكتروني الذي دفعت به: يرسل لك Stripe رابط دخول لمرة واحدة. بلا كلمة مرور.",
         a1: "تنزيل الفواتير والإيصالات (PDF)", a2: "تحديث البطاقة أو طريقة الدفع", a3: "التبديل بين الفوترة الشهرية والسنوية", a4: "إلغاء خطة العناية في أي وقت",
-        noPortal: "إدارة الحساب عبر الإنترنت قيد الإعداد. راسلنا على واتساب وسنتولى الفواتير أو التغييرات أو الإلغاء فورًا.",
+        noPortal: "راسلنا على واتساب وسنتولى الفواتير أو التغييرات أو الإلغاء فورًا.",
         upTitle: "مستعد للمزيد؟", upBody: "انتقل إلى الباقة الكاملة أو القصوى حين يصبح محلك جاهزًا.", upBtn: "عرض العروض",
-        legalEyebrow: "قانوني", legalTitle: "التفاصيل الدقيقة <em>بكلمات بسيطة.</em>", legalNote: "النصوص القانونية أدناه مكتوبة باللغة الإنجليزية.", updated: "آخر تحديث: سبتمبر 2026", toc: "في هذه الصفحة"
+        legalEyebrow: "قانوني", legalTitle: "التفاصيل الدقيقة <em>بكلمات بسيطة.</em>", legalNote: "النصوص القانونية أدناه مكتوبة باللغة الإنجليزية.", updated: "آخر تحديث: 3 أكتوبر 2026", toc: "في هذه الصفحة"
       },
       trust: { secure: "دفع آمن عبر Stripe", methods: "بطاقة · Apple Pay · Google Pay · PromptPay", noCard: "بيانات بطاقتك لا تمرّ عبر هذا الموقع أبدًا" }
     }
