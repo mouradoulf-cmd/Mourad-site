@@ -50,6 +50,19 @@ img, video { background-color: #0b0916; }
        pointer is used everywhere, which is what a visitor on a laptop expects. */
 .cursor, .cursor-dot, .cursor-trail { display: none !important; }
 
+/* 8. Prices: the reader's own currency is the headline figure, the real baht
+      price travels with it as a small note (see NMPrice in offers-config.js). */
+.nm-baht {
+  display: inline-block;
+  margin-inline-start: .45em;
+  font-size: .40em;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--faint, #8f89a4);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
 /* 7. Long words (Thai, Arabic, URLs) never overflow their container. */
 .h__title, .status__title, .phero__title, .sum__plan b { overflow-wrap: anywhere; }
 
