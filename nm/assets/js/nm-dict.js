@@ -14,7 +14,7 @@
         eyebrow: "Web studio · Pattaya, Thailand",
         price: "Google, QR menu, website — from <b>฿990</b>.",
         ctaOffers: "Discover the offers", ctaWa: "Chat on WhatsApp", scroll: "Scroll",
-        l1: "languages, including Thai & Korean", l2: "live sites to explore", v3: "48h", l3: "average delivery", v4: "No", l4: "contracts — pay once, stay free",
+        l1: "languages — plus any your customers need", l2: "live sites to explore", v3: "48h", l3: "average delivery", v4: "No", l4: "contracts — pay once, stay free",
         slide1: "Night street", slide2: "Street food", slide3: "Restaurant"
       },
       story: {
@@ -133,7 +133,7 @@
         eyebrow: "Studio web · Pattaya, Thaïlande",
         price: "Google, menu QR, site web — dès <b>990 ฿</b>.",
         ctaOffers: "Découvrir les offres", ctaWa: "Discuter sur WhatsApp", scroll: "Défiler",
-        l1: "langues, dont le thaï et le coréen", l2: "sites en ligne à visiter", v3: "48 h", l3: "délai moyen de livraison", v4: "Aucun", l4: "contrat — payez une fois, restez libre",
+        l1: "langues — et toutes celles dont vos clients ont besoin", l2: "sites en ligne à visiter", v3: "48 h", l3: "délai moyen de livraison", v4: "Aucun", l4: "contrat — payez une fois, restez libre",
         slide1: "Rue de nuit", slide2: "Street food", slide3: "Restaurant"
       },
       story: {
@@ -252,7 +252,7 @@
         eyebrow: "Web studio · Pattaya, Thailandia",
         price: "Google, menù QR, sito web — da <b>990 ฿</b>.",
         ctaOffers: "Scopri le offerte", ctaWa: "Scrivici su WhatsApp", scroll: "Scorri",
-        l1: "lingue, tra cui thailandese e coreano", l2: "siti online da visitare", v3: "48 h", l3: "consegna media", v4: "Nessun", l4: "vincolo — paghi una volta, resti libero",
+        l1: "lingue — più tutte quelle di cui i tuoi clienti hanno bisogno", l2: "siti online da visitare", v3: "48 h", l3: "consegna media", v4: "Nessun", l4: "vincolo — paghi una volta, resti libero",
         slide1: "Strada di notte", slide2: "Street food", slide3: "Ristorante"
       },
       story: {
@@ -371,7 +371,7 @@
         eyebrow: "เว็บสตูดิโอ · พัทยา ประเทศไทย",
         price: "Google เมนู QR เว็บไซต์ — เริ่มต้น <b>990 บาท</b>",
         ctaOffers: "ดูแพ็กเกจทั้งหมด", ctaWa: "แชททาง WhatsApp", scroll: "เลื่อนลง",
-        l1: "ภาษา รวมภาษาไทยและเกาหลี", l2: "เว็บไซต์ที่ออนไลน์จริง", v3: "48 ชม.", l3: "ส่งงานโดยเฉลี่ย", v4: "ไม่มี", l4: "สัญญา — จ่ายครั้งเดียว อิสระเสมอ",
+        l1: "ภาษา — และภาษาอื่นที่ลูกค้าคุณต้องการ", l2: "เว็บไซต์ที่ออนไลน์จริง", v3: "48 ชม.", l3: "ส่งงานโดยเฉลี่ย", v4: "ไม่มี", l4: "สัญญา — จ่ายครั้งเดียว อิสระเสมอ",
         slide1: "ถนนยามค่ำคืน", slide2: "สตรีทฟู้ด", slide3: "ร้านอาหาร"
       },
       story: {
@@ -490,7 +490,7 @@
         eyebrow: "استوديو ويب · باتايا، تايلاند",
         price: "Google، قائمة QR، موقع ويب — ابتداءً من <b>990 بات</b>.",
         ctaOffers: "اكتشف العروض", ctaWa: "تحدّث معنا على واتساب", scroll: "مرّر",
-        l1: "لغات، منها التايلاندية والكورية", l2: "مواقع حيّة يمكنك زيارتها", v3: "48 ساعة", l3: "متوسط مدة التسليم", v4: "بدون", l4: "عقود — ادفع مرة واحدة وابقَ حرًا",
+        l1: "لغات — وأي لغة يحتاجها عملاؤك", l2: "مواقع حيّة يمكنك زيارتها", v3: "48 ساعة", l3: "متوسط مدة التسليم", v4: "بدون", l4: "عقود — ادفع مرة واحدة وابقَ حرًا",
         slide1: "شارع ليلي", slide2: "طعام الشارع", slide3: "مطعم"
       },
       story: {

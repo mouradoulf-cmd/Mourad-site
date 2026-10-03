@@ -142,7 +142,7 @@
   var GLYPH = {
     google: '<path d="M24 43s13-11.6 13-22A13 13 0 0 0 11 21c0 10.4 13 22 13 22z"/><circle cx="24" cy="20.5" r="4.5"/>',
     qr: '<path d="M8 17v-6a2 2 0 0 1 2-2h6"/><path d="M40 17v-6a2 2 0 0 0-2-2h-6"/><path d="M8 31v6a2 2 0 0 0 2 2h6"/><path d="M40 31v6a2 2 0 0 1-2 2h-6"/><rect x="17.5" y="17.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="25.5" y="17.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="17.5" y="25.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="25.5" y="25.5" width="5" height="5" fill="currentColor" stroke="none"/>',
-    pack: '<circle cx="24" cy="24" r="15.5"/><ellipse cx="24" cy="24" rx="6.5" ry="15.5"/><path d="M8.7 24h30.6M9.9 17.3h28.2M9.9 30.7h28.2"/>',
+    pack: '<rect x="9" y="9" width="21" height="21" rx="3"/><rect x="18" y="18" width="21" height="21" rx="3"/>',
     ultimate: '<path d="M24 7l3.6 13.4L41 24l-13.4 3.6L24 41l-3.6-13.4L7 24l13.4-3.6z"/>'
   };
   function markSvg(k) {
