@@ -96,6 +96,28 @@
     });
   })();
 
+  /* Reviews — stays hidden (see reviews-config.js) until there are real
+     quotes to show; never backfilled with invented ones. */
+  (function reviews() {
+    var list = window.NM_REVIEWS, section = $("#reviews"), grid = $("#reviewsGrid");
+    if (!list || !list.length || !section || !grid) return;
+    var STAR = '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.8l2.47 5.4 5.93.6-4.47 4 1.27 5.84L10 14.8l-5.2 2.84 1.27-5.84-4.47-4 5.93-.6z"/></svg>';
+    list.forEach(function (r) {
+      var li = document.createElement("li");
+      li.className = "review";
+      var initials = (r.name || "").split(/\s+/).map(function (w) { return w[0] || ""; }).slice(0, 2).join("").toUpperCase();
+      var stars = "";
+      for (var i = 0; i < Math.max(1, Math.min(5, r.rating || 5)); i++) stars += STAR;
+      li.innerHTML =
+        '<div class="review__stars">' + stars + "</div>" +
+        '<p class="review__quote">' + r.quote + "</p>" +
+        '<div class="review__who"><span class="review__avatar" aria-hidden="true">' + initials + "</span>" +
+        '<span><span class="review__name">' + r.name + '</span><br><span class="review__biz">' + r.business + "</span></span></div>";
+      grid.appendChild(li);
+    });
+    section.hidden = false;
+  })();
+
   var lastTrigger = null;
   var CHECK = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 10.5l3 3 7-7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function fillOffer(k) {
@@ -117,6 +139,15 @@
       list.appendChild(li);
     });
   }
+  var GLYPH = {
+    google: '<path d="M24 43s13-11.6 13-22A13 13 0 0 0 11 21c0 10.4 13 22 13 22z"/><circle cx="24" cy="20.5" r="4.5"/>',
+    qr: '<path d="M8 17v-6a2 2 0 0 1 2-2h6"/><path d="M40 17v-6a2 2 0 0 0-2-2h-6"/><path d="M8 31v6a2 2 0 0 0 2 2h6"/><path d="M40 31v6a2 2 0 0 1-2 2h-6"/><rect x="17.5" y="17.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="25.5" y="17.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="17.5" y="25.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="25.5" y="25.5" width="5" height="5" fill="currentColor" stroke="none"/>',
+    pack: '<circle cx="24" cy="24" r="15.5"/><ellipse cx="24" cy="24" rx="6.5" ry="15.5"/><path d="M8.7 24h30.6M9.9 17.3h28.2M9.9 30.7h28.2"/>',
+    ultimate: '<path d="M24 7l3.6 13.4L41 24l-13.4 3.6L24 41l-3.6-13.4L7 24l13.4-3.6z"/>'
+  };
+  function markSvg(k) {
+    return '<svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (GLYPH[k] || "") + "</svg>";
+  }
   function openOffer(k, trigger) {
     if (!offerModal || !O || O.order.indexOf(k) < 0) return;
     lastTrigger = trigger || null;
@@ -124,7 +155,7 @@
     fillOffer(k);
     var media = $("#omMedia"), art = $("#omArt");
     var old = $("video", media); if (old) old.remove();
-    art.innerHTML = '<span class="ic-word">' + t("offers." + k + ".word") + "</span>";
+    art.innerHTML = markSvg(k) + '<span class="ic-word">' + t("offers." + k + ".word") + "</span>";
     media.classList.remove("is-playing"); void media.offsetWidth; media.classList.add("is-playing");
     var src = O.videos && O.videos[k];
     media.classList.toggle("has-video", !!src);

@@ -42,6 +42,7 @@
         r2t: "Live in days, not months", r2b: "Send your photos today — your listing, menu or website goes live within days.",
         r3t: "Edits on WhatsApp, no contract", r3b: "Change a price, a dish or a photo with one message. Pay once, stay because you want to."
       },
+      reviews: { eyebrow: "Reviews", title: "What clients say" },
       calc: {
         eyebrow: "Quick maths", title: "How many customers are you <em>losing?</em>",
         lead: "Move the sliders. Every tourist who can't find you walks into the place next door.",
@@ -160,6 +161,7 @@
         r2t: "En ligne en jours, pas en mois", r2b: "Envoyez vos photos aujourd'hui — votre fiche, votre menu ou votre site est en ligne en quelques jours.",
         r3t: "Modifs sur WhatsApp, sans engagement", r3b: "Un prix, un plat ou une photo à changer ? Un message suffit. Vous payez une fois, vous restez parce que vous le voulez."
       },
+      reviews: { eyebrow: "Avis", title: "Ce que disent nos clients" },
       calc: {
         eyebrow: "Petit calcul", title: "Combien de clients <em>perdez-vous ?</em>",
         lead: "Bougez les curseurs. Chaque touriste qui ne vous trouve pas entre chez le voisin.",
@@ -278,6 +280,7 @@
         r2t: "Online in giorni, non in mesi", r2b: "Mandaci le foto oggi — la tua scheda, il menù o il sito sono online in pochi giorni.",
         r3t: "Modifiche su WhatsApp, zero vincoli", r3b: "Un prezzo, un piatto o una foto da cambiare? Basta un messaggio. Paghi una volta, resti perché lo vuoi."
       },
+      reviews: { eyebrow: "Recensioni", title: "Cosa dicono i clienti" },
       calc: {
         eyebrow: "Due conti", title: "Quanti clienti <em>stai perdendo?</em>",
         lead: "Muovi i cursori. Ogni turista che non ti trova entra nel locale accanto.",
@@ -396,6 +399,7 @@
         r2t: "ออนไลน์ในไม่กี่วัน ไม่ใช่หลายเดือน", r2b: "ส่งรูปมาวันนี้ — หน้าร้าน Google เมนู หรือเว็บไซต์ของคุณออนไลน์ภายในไม่กี่วัน",
         r3t: "แก้ไขผ่าน WhatsApp ไม่มีสัญญา", r3b: "อยากเปลี่ยนราคา เมนู หรือรูป? ส่งข้อความเดียวพอ จ่ายครั้งเดียว อยู่ต่อเพราะคุณพอใจ"
       },
+      reviews: { eyebrow: "รีวิว", title: "ลูกค้าพูดถึงเราว่าอย่างไร" },
       calc: {
         eyebrow: "ลองคำนวณดู", title: "คุณกำลังเสียลูกค้า <em>ไปเท่าไร?</em>",
         lead: "ลองเลื่อนแถบดู นักท่องเที่ยวทุกคนที่หาคุณไม่เจอ จะเดินเข้าร้านข้าง ๆ แทน",
@@ -514,6 +518,7 @@
         r2t: "على الإنترنت في أيام لا أشهر", r2b: "أرسل صورك اليوم — صفحتك أو قائمتك أو موقعك يصبح متاحًا خلال أيام.",
         r3t: "تعديلات عبر واتساب، بلا عقد", r3b: "تريد تغيير سعر أو طبق أو صورة؟ رسالة واحدة تكفي. تدفع مرة واحدة وتبقى لأنك راضٍ."
       },
+      reviews: { eyebrow: "التقييمات", title: "ماذا يقول عملاؤنا" },
       calc: {
         eyebrow: "حساب سريع", title: "كم زبونًا <em>تخسر؟</em>",
         lead: "حرّك المؤشرات. كل سائح لا يجدك يدخل المحل المجاور.",
