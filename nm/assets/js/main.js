@@ -311,6 +311,13 @@
   // Mobile browsers resize the viewport when the address bar hides; don't
   // recalculate every trigger (and jump) for that.
   ST.config({ ignoreMobileResize: true });
+  // Elements GSAP sets to opacity:0 pending a scroll-triggered reveal — a
+  // safety net at the bottom of this file force-shows any of these still
+  // stuck invisible once they're actually on screen (an instant scroll,
+  // e.g. a #hash landing or a fast programmatic jump, can land a trigger
+  // past its "already entered" check before ScrollTrigger has a current
+  // scroll position to evaluate it against, leaving it hidden for good).
+  var revealWatch = [];
 
   // Split a heading into masked words while keeping <em> styling intact;
   // restore the original markup afterwards so the gradient stays seamless.
@@ -414,6 +421,7 @@
   if (stItems.length) {
     gsap.fromTo(stItems, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, stagger: 0.1, ease: "expo.out", clearProps: "transform,opacity",
       scrollTrigger: { trigger: ".st__grid", start: "top 88%", once: true } });
+    revealWatch.push.apply(revealWatch, stItems);
   }
 
   /* Cards with a CSS transform transition (hover lift / tilt) use explicit
@@ -425,6 +433,7 @@
     var from = Object.assign({ y: 70, opacity: 0 }, opts && opts.from);
     els.forEach(function (c) { c.style.transition = "none"; });
     gsap.set(els, from);
+    revealWatch.push.apply(revealWatch, els);
     ST.batch(els, {
       start: "top 90%", once: true,
       onEnter: function (batch) {
@@ -455,6 +464,7 @@
   if (batchEls.length) {
     batchEls.forEach(function (el) { el.style.transition = "none"; });
     gsap.set(batchEls, { y: 36, opacity: 0 });
+    revealWatch.push.apply(revealWatch, batchEls);
     ST.batch(batchEls, {
       start: "top 92%", once: true,
       onEnter: function (els) { gsap.to(els, { y: 0, opacity: 1, duration: 1, stagger: 0.08, ease: "expo.out", clearProps: "transform,opacity,transition" }); }
@@ -468,4 +478,24 @@
 
   window.addEventListener("load", function () { ST.refresh(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
+
+  // Safety net: anything still at opacity:0 once it's actually on screen
+  // gets shown directly, bypassing whatever left its own ScrollTrigger
+  // from firing. A short grace delay lets a normal, on-time reveal happen
+  // first so this never fights it.
+  if (revealWatch.length && "IntersectionObserver" in window) {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        revealObs.unobserve(entry.target);
+        var el = entry.target;
+        setTimeout(function () {
+          if (getComputedStyle(el).opacity === "0") {
+            gsap.to(el, { opacity: 1, y: 0, rotateX: 0, scale: 1, duration: 0.6, ease: "power2.out", clearProps: "transform,opacity,transition" });
+          }
+        }, 600);
+      });
+    }, { rootMargin: "0px 0px -5% 0px" });
+    revealWatch.forEach(function (el) { revealObs.observe(el); });
+  }
 })();
