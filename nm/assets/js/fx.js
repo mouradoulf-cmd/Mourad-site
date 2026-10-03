@@ -67,8 +67,13 @@
 
   if (!fine) return;
 
-  /* ---------- cursor: exact dot, trailing ring (main.js) and a fading light trail ---------- */
-  (function cursorTrail() {
+  /* ---------- custom cursor: deliberately OFF ----------
+     The trailing ring and the canvas light trail repaint on every pointer move.
+     On Windows that cost frames and made the pointer feel laggy, and the native
+     cursor was always visible anyway, so the effect adds risk without adding
+     clarity. The block is left in place, unreachable, so it can be restored by
+     deleting the guard below. */
+  if (false) (function cursorTrail() {
     var ring = $(".cursor");
     var dot = document.createElement("div"); dot.className = "cursor-dot"; dot.setAttribute("aria-hidden", "true");
     var canvas = document.createElement("canvas"); canvas.className = "cursor-trail"; canvas.setAttribute("aria-hidden", "true");

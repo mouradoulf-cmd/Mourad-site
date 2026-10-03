@@ -1,0 +1,158 @@
+/* NM Studio — showcase reel.
+ *
+ * A continuous strip of the real client sites, right under the hero: the fastest
+ * way for a visitor to see that the studio actually ships. It scrolls by itself
+ * on a pointer device, stops when the visitor points at it, and becomes a
+ * normal swipeable rail on touch screens or when motion is reduced. */
+
+.reel {
+  position: relative;
+  padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid rgba(244, 241, 234, .08);
+  background:
+    radial-gradient(60rem 24rem at 78% -20%, rgba(230, 194, 122, .07), transparent 65%),
+    radial-gradient(48rem 22rem at 10% 120%, rgba(123, 97, 255, .08), transparent 65%);
+}
+
+.reel__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.reel__title {
+  margin-top: .75rem;
+  font-family: var(--font-display, "Satoshi", system-ui, sans-serif);
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3.4vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+}
+
+.reel__title em {
+  font-family: var(--font-serif, Georgia, serif);
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(180deg, #f3dfae, #d9b063);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.reel__lead {
+  margin-top: .85rem;
+  max-width: 34rem;
+  color: var(--muted, #b9b3c9);
+  line-height: 1.6;
+}
+
+.reel__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--faint, #8f89a4);
+  white-space: nowrap;
+}
+
+/* edge fade so the strip looks like it continues past the screen */
+.reel__viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.reel__track {
+  display: flex;
+  gap: clamp(1rem, 1.6vw, 1.5rem);
+  width: max-content;
+  padding-block: .5rem;
+  animation: reelScroll 72s linear infinite;
+}
+
+.reel__viewport:hover .reel__track,
+.reel__viewport:focus-within .reel__track { animation-play-state: paused; }
+
+@keyframes reelScroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.reel__item {
+  flex: 0 0 auto;
+  width: clamp(15rem, 27vw, 26rem);
+  text-decoration: none;
+  color: inherit;
+  scroll-snap-align: center;
+}
+
+.reel__frame {
+  display: block;
+  aspect-ratio: 1280 / 800;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0b0916;
+  border: 1px solid rgba(244, 241, 234, .13);
+  box-shadow: 0 26px 50px -30px rgba(0, 0, 0, .95);
+  transition: transform .5s var(--ease-out, cubic-bezier(.22, 1, .36, 1)),
+              border-color .4s ease, box-shadow .5s ease;
+}
+
+.reel__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .8s var(--ease-out, cubic-bezier(.22, 1, .36, 1));
+}
+
+.reel__item:hover .reel__frame,
+.reel__item:focus-visible .reel__frame {
+  transform: translateY(-6px);
+  border-color: rgba(230, 194, 122, .45);
+  box-shadow: 0 34px 60px -28px rgba(0, 0, 0, 1), 0 0 0 1px rgba(230, 194, 122, .18);
+}
+
+.reel__item:hover .reel__frame img { transform: scale(1.03); }
+
+.reel__meta {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  margin-top: .8rem;
+}
+
+.reel__meta b {
+  font-family: var(--font-display, "Satoshi", system-ui, sans-serif);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -.01em;
+}
+
+.reel__meta small { color: var(--faint, #8f89a4); font-size: .82rem; }
+
+/* Touch screens and reduced motion: a normal rail, no automatic movement. */
+@media (max-width: 899px), (prefers-reduced-motion: reduce), (hover: none) {
+  .reel__track {
+    animation: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: auto;
+    padding-inline: 1.25rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .reel__track::-webkit-scrollbar { display: none; }
+  .reel__item--dup { display: none; }
+  .reel__viewport { -webkit-mask-image: none; mask-image: none; }
+}
+
+@media (max-width: 899px) {
+  .reel__head { flex-direction: column; align-items: flex-start; }
+}

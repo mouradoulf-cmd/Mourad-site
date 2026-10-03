@@ -10,6 +10,7 @@
         pricing: { title: "Pricing — pay once, stay free | NM Studio", description: "Clear prices in Thai baht: from ฿990 one-time, with an optional care plan from ฿290 a month. No contract." }
       },
       nav2: { offers: "Offers", services: "Services", pricing: "Pricing", account: "My account", home: "Home", cta: "Chat on WhatsApp" },
+    reel: { eyebrow: "Real work", title: "Seven sites, <em>live right now.</em>", lead: "Open any of them: real businesses, their own photos and their own languages.", hint: "Point at it to stop" },
     cta: { startProject: "Start my project", startShort: "Start a project", quote: "Free quote" },
       hero2: {
         eyebrow: "Web studio · Pattaya, Thailand",
@@ -130,6 +131,7 @@
         pricing: { title: "Tarifs — payez une fois, restez libre | NM Studio", description: "Des prix clairs en bahts : dès 990 ฿ en paiement unique, avec un forfait d'entretien optionnel dès 290 ฿ par mois. Sans engagement." }
       },
       nav2: { offers: "Offres", services: "Services", pricing: "Tarifs", account: "Mon compte", home: "Accueil", cta: "Discuter sur WhatsApp" },
+    reel: { eyebrow: "Du travail réel", title: "Sept sites, <em>en ligne maintenant.</em>", lead: "Ouvrez-les : de vrais commerces, leurs photos, leurs langues.", hint: "Survolez pour arrêter" },
     cta: { startProject: "Démarrer mon projet", startShort: "Démarrer un projet", quote: "Devis gratuit" },
       hero2: {
         eyebrow: "Studio web · Pattaya, Thaïlande",
@@ -250,6 +252,7 @@
         pricing: { title: "Prezzi — paghi una volta, resti libero | NM Studio", description: "Prezzi chiari in baht: da 990 ฿ una tantum, con un piano di assistenza facoltativo da 290 ฿ al mese. Nessun vincolo." }
       },
       nav2: { offers: "Offerte", services: "Servizi", pricing: "Prezzi", account: "Il mio account", home: "Home", cta: "Scrivici su WhatsApp" },
+    reel: { eyebrow: "Lavoro vero", title: "Sette siti, <em>online adesso.</em>", lead: "Après-les : attività vere, con le loro foto e le loro lingue.", hint: "Passa sopra per fermare" },
     cta: { startProject: "Inizia il mio progetto", startShort: "Avvia un progetto", quote: "Preventivo gratuito" },
       hero2: {
         eyebrow: "Web studio · Pattaya, Thailandia",
@@ -370,6 +373,7 @@
         pricing: { title: "ราคา — จ่ายครั้งเดียว ไม่มีสัญญา | NM Studio", description: "ราคาชัดเจนเป็นเงินบาท เริ่มต้น 990 บาท จ่ายครั้งเดียว พร้อมแพ็กดูแลรายเดือนแบบเลือกได้ เริ่ม 290 บาท/เดือน ไม่มีสัญญาผูกมัด" }
       },
       nav2: { offers: "แพ็กเกจ", services: "บริการ", pricing: "ราคา", account: "บัญชีของฉัน", home: "หน้าแรก", cta: "แชททาง WhatsApp" },
+    reel: { eyebrow: "งานจริง", title: "เจ็ดเว็บไซต์ <em>ที่ออนไลน์อยู่ตอนนี้</em>", lead: "ลองเปิดดู: ธุรกิจจริง พร้อมรูปและภาษาของพวกเขาเอง", hint: "ชี้ที่แถบเพื่อหยุด" },
     cta: { startProject: "เริ่มโปรเจกต์ของฉัน", startShort: "เริ่มโปรเจกต์", quote: "ประเมินราคาฟรี" },
       hero2: {
         eyebrow: "เว็บสตูดิโอ · พัทยา ประเทศไทย",
@@ -490,6 +494,7 @@
         pricing: { title: "الأسعار — ادفع مرة واحدة وابقَ حرًا | NM Studio", description: "أسعار واضحة بالبات التايلاندي: ابتداءً من 990 بات دفعة واحدة، مع خطة عناية اختيارية ابتداءً من 290 بات شهريًا. بدون عقد." }
       },
       nav2: { offers: "العروض", services: "الخدمات", pricing: "الأسعار", account: "حسابي", home: "الرئيسية", cta: "تحدّث معنا على واتساب" },
+    reel: { eyebrow: "عمل حقيقي", title: "سبعة مواقع <em>مباشرة الآن.</em>", lead: "افتح أيًّا منها: أعمال حقيقية بصورها ولغاتها.", hint: "مرّر المؤشر لإيقافه" },
     cta: { startProject: "ابدأ مشروعي", startShort: "ابدأ مشروعًا", quote: "عرض سعر مجاني" },
       hero2: {
         eyebrow: "استوديو ويب · باتايا، تايلاند",

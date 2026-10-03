@@ -46,6 +46,10 @@ img, video { background-color: #0b0916; }
   outline-color: var(--ink, #0b0703);
 }
 
+/* 6b. The decorative custom cursor is off (see the guard in fx.js): the native
+       pointer is used everywhere, which is what a visitor on a laptop expects. */
+.cursor, .cursor-dot, .cursor-trail { display: none !important; }
+
 /* 7. Long words (Thai, Arabic, URLs) never overflow their container. */
 .h__title, .status__title, .phero__title, .sum__plan b { overflow-wrap: anywhere; }
 

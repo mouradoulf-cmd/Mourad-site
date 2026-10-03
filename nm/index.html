@@ -32,10 +32,11 @@
      the first paint: preload it so the hero never flashes empty. -->
 <link rel="preload" href="assets/video/hero-poster.avif" as="image" type="image/avif" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/vendor/devices.min.css">
-<link rel="stylesheet" href="assets/css/site.css?v=20261003c">
-<link rel="stylesheet" href="assets/css/craft.css?v=20261003c">
-<script src="assets/js/nm-dict.js?v=20261003c" defer></script>
-<script src="assets/js/offers-config.js?v=20261003c" defer></script>
+<link rel="stylesheet" href="assets/css/site.css?v=20261003d">
+<link rel="stylesheet" href="assets/css/craft.css?v=20261003d">
+<link rel="stylesheet" href="assets/css/reel.css?v=20261003d">
+<script src="assets/js/nm-dict.js?v=20261003d" defer></script>
+<script src="assets/js/offers-config.js?v=20261003d" defer></script>
 <script src="assets/js/reviews-config.js" defer></script>
 </head>
 <body>
@@ -173,6 +174,81 @@
       </div>
     </div>
     <p class="visually-hidden" data-i18n="audience.sr">We work with restaurants, cafés, hair salons, spas and massage salons, bars, street food vendors, hotels, guesthouses, rental shops, beach clubs, gyms, tour agencies, clinics, shops and local companies.</p>
+  </div>
+</section>
+
+<!-- ============ SHOWCASE REEL · the real work, immediately ============ -->
+<section class="reel" id="reel" aria-labelledby="reelTitle">
+  <div class="container">
+    <div class="reel__head">
+      <div>
+        <p class="eyebrow" data-i18n="reel.eyebrow">Real work</p>
+        <h2 class="reel__title" id="reelTitle" data-i18n-html="reel.title">Seven sites, <em>live right now.</em></h2>
+        <p class="reel__lead" data-i18n="reel.lead">Open any of them: real businesses, their own photos and their own languages.</p>
+      </div>
+      <p class="reel__hint" aria-hidden="true" data-i18n="reel.hint">Point at it to stop</p>
+    </div>
+  </div>
+  <div class="reel__viewport">
+    <div class="reel__track">
+      <a class="reel__item" href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener">
+        <span class="reel__frame"><img src="assets/img/work/giulivo-desk.webp" alt="Giulivo — restaurant website" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Giulivo</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item" href="https://mouradoulf-cmd.github.io/Mourad-site/v6-thai-spa/" target="_blank" rel="noopener">
+        <span class="reel__frame"><img src="assets/img/work/malee-desk.webp" alt="Malee — massage and spa website" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Malee</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item" href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" target="_blank" rel="noopener">
+        <span class="reel__frame"><img src="assets/img/work/noir-desk.webp" alt="Noir — hair salon website" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Noir</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item" href="https://mouradoulf-cmd.github.io/Mourad-site/neon-tiger/" target="_blank" rel="noopener">
+        <span class="reel__frame"><img src="assets/img/work/neon-tiger-desk.webp" alt="Neon Tiger — bar website" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Neon Tiger</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item" href="https://mouradoulf-cmd.github.io/Mourad-site/street-food/" target="_blank" rel="noopener">
+        <span class="reel__frame"><img src="assets/img/work/mae-lek-desk.webp" alt="Mae Lek — street food website" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Mae Lek</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item" href="https://mouradoulf-cmd.github.io/Mourad-site/scooter/" target="_blank" rel="noopener">
+        <span class="reel__frame"><img src="assets/img/work/ride-siam-desk.webp" alt="Ride Siam — scooter rental website" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Ride Siam</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item" href="https://mouradoulf-cmd.github.io/Mourad-site/facadiers/" target="_blank" rel="noopener">
+        <span class="reel__frame"><img src="assets/img/work/facadiers-desk.webp" alt="Atelier des Façadiers — company website" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Atelier des Façadiers</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <!-- second set: makes the automatic scroll loop seamlessly (hidden on touch) -->
+      <a class="reel__item reel__item--dup" href="https://mouradoulf-cmd.github.io/Mourad-site/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <span class="reel__frame"><img src="assets/img/work/giulivo-desk.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Giulivo</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item reel__item--dup" href="https://mouradoulf-cmd.github.io/Mourad-site/v6-thai-spa/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <span class="reel__frame"><img src="assets/img/work/malee-desk.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Malee</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item reel__item--dup" href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <span class="reel__frame"><img src="assets/img/work/noir-desk.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Noir</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item reel__item--dup" href="https://mouradoulf-cmd.github.io/Mourad-site/neon-tiger/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <span class="reel__frame"><img src="assets/img/work/neon-tiger-desk.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Neon Tiger</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item reel__item--dup" href="https://mouradoulf-cmd.github.io/Mourad-site/street-food/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <span class="reel__frame"><img src="assets/img/work/mae-lek-desk.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Mae Lek</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item reel__item--dup" href="https://mouradoulf-cmd.github.io/Mourad-site/scooter/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <span class="reel__frame"><img src="assets/img/work/ride-siam-desk.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Ride Siam</b><small aria-hidden="true">↗</small></span>
+      </a>
+      <a class="reel__item reel__item--dup" href="https://mouradoulf-cmd.github.io/Mourad-site/facadiers/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <span class="reel__frame"><img src="assets/img/work/facadiers-desk.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
+        <span class="reel__meta"><b>Atelier des Façadiers</b><small aria-hidden="true">↗</small></span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -640,17 +716,17 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/js/i18n.js?v=20261003c" defer></script>
+<script src="assets/js/i18n.js?v=20261003d" defer></script>
 <script src="assets/js/qrcode.min.js" defer></script>
 <script src="assets/js/nm-qr.js" defer></script><script src="assets/js/vendor/gsap.min.js" defer></script>
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="assets/js/vendor/lenis.min.js" defer></script>
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/safety.js?v=20261003d" defer></script>
 <script src="assets/js/fx.js" defer></script>
-<script src="assets/js/nm-home.js?v=20261003c" defer></script>
-<script src="assets/js/home.js?v=20261003c" defer></script>
+<script src="assets/js/nm-home.js?v=20261003d" defer></script>
+<script src="assets/js/home.js?v=20261003d" defer></script>
 <script src="assets/js/hero-depth.js" defer></script>
-<script src="assets/js/hero-video.js?v=20261003c" defer></script>
+<script src="assets/js/hero-video.js?v=20261003d" defer></script>
 <script src="assets/js/payment-state.js" defer></script>
 </body>
 </html>
