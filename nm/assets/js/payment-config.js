@@ -40,5 +40,8 @@ window.NM_PAYMENTS = {
   // PromptPay ID above is filled in — then it switches off by itself.
   demo: true,
   promptpayName: "",
-  bank: { holder: "", bank: "", iban: "", bic: "" }
+  /* Real bank details: the checkout shows the transfer block (holder, IBAN, copy
+     button, slip upload) as soon as an IBAN is present, and the Thai QR stays off
+     until a PromptPay ID is filled in above. Keep the IBAN grouped by four. */
+  bank: { holder: "MOURAD OULD EL RHALIA", bank: "", iban: "FR76 2823 3000 0126 3448 3447 329", bic: "" }
 };

@@ -15,6 +15,10 @@
     var p = window.NM_PAYMENTS || window.NM_PAYMENT || {};
     var card = p.card || {}, bank = p.bank || {};
     var link = Object.keys(card).some(function (k) { return !!card[k]; });
+    // Card wording (Stripe, the card logos) must depend on a card link or the
+    // customer portal being real — never on "some method is available": a bank
+    // transfer alone must not bring the Stripe badges back.
+    window.NM_PAYMENT_CARD_READY = p.demo !== true && !!(link || p.portal);
     return p.demo !== true && !!(link || p.portal || p.promptpay || bank.iban);
   }
 
@@ -22,7 +26,7 @@
     var ok = ready();
     window.NM_PAYMENT_READY = ok;
     document.documentElement.setAttribute("data-payment", ok ? "live" : "manual");
-    document.querySelectorAll("[data-payment-claim]").forEach(function (el) { el.hidden = !ok; });
+    document.querySelectorAll("[data-payment-claim]").forEach(function (el) { el.hidden = !window.NM_PAYMENT_CARD_READY; });
     document.querySelectorAll("[data-payment-manual]").forEach(function (el) { el.hidden = ok; });
   }
 
