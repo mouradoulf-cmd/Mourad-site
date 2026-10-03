@@ -1,0 +1,589 @@
+/* ==========================================================================
+   NM Studio — showcase3d.css
+   --------------------------------------------------------------------------
+   The 3D carousel of the seven client sites: a cylinder built from seven
+   browser frames, turned with CSS `perspective` + `rotateY` only.
+
+   Contract with showcase3d.js
+   ---------------------------
+   .cs3              : the section.
+   .cs3.is-3d        : set by JS only when the cylinder can actually be drawn
+                       AND the viewport is >= 900px AND motion is allowed.
+                       Without this class the carousel is display:none and the
+                       scroll-snap rail (.cs3__rail) is the visible content.
+   .cs3.is-mode-rail : set by JS whenever the rail is the right answer
+                       (small screen, reduced motion, no preserve-3d, no JS
+                       events). Used for cosmetic tweaks only: the rail is
+                       visible by default so it also works with JS off.
+   .cs3__panel.is-front : the panel currently facing the visitor.
+
+   Everything animated is `transform` or `opacity`. There is no transition on
+   the panels: the single requestAnimationFrame loop in the JS drives every
+   frame, so nothing fights the engine.
+   ========================================================================== */
+
+.cs3 {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: var(--sec) 0;
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(60rem 26rem at 74% -12%, rgba(201, 169, 97, .08), transparent 66%),
+    radial-gradient(52rem 24rem at 8% 118%, rgba(201, 169, 97, .05), transparent 64%);
+}
+
+/* ------------------------------------------------------------------ header */
+
+.cs3__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 4vw, 3.2rem);
+}
+
+.cs3__title {
+  margin-top: .75rem;
+  font-family: var(--font-display, "Satoshi", system-ui, sans-serif);
+  font-weight: 900;
+  font-size: clamp(1.85rem, 3.6vw, 3.15rem);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+}
+
+.cs3__title em {
+  font-family: var(--font-serif, Georgia, serif);
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(180deg, #f3dfae, #d9b063);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cs3__lead {
+  margin-top: .9rem;
+  max-width: 36rem;
+  color: var(--muted, #b3ab9c);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+/* counter + previous/next. Hidden on the rail: there is nothing to step. */
+.cs3__hud {
+  display: none;
+  align-items: center;
+  gap: .55rem;
+}
+
+.cs3.is-3d .cs3__hud { display: flex; }
+
+.cs3__count {
+  margin-inline-end: .35rem;
+  font-size: .82rem;
+  letter-spacing: .14em;
+  color: var(--faint, #8c8477);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cs3__count b { color: var(--gold, #c9a961); font-weight: 600; }
+
+.cs3__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  color: var(--text, #f5f1e8);
+  border: 1px solid var(--line-strong, rgba(245, 241, 232, .16));
+  background: rgba(245, 241, 232, .04);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: transform .35s var(--ease-out, cubic-bezier(.22, 1, .36, 1)),
+              border-color .3s ease, color .3s ease, background-color .3s ease;
+}
+
+.cs3__btn svg { width: 1.15rem; height: 1.15rem; }
+
+.cs3__btn:hover,
+.cs3__btn:focus-visible {
+  color: var(--gold, #c9a961);
+  border-color: rgba(201, 169, 97, .55);
+  background: rgba(201, 169, 97, .1);
+}
+
+.cs3__btn:hover { transform: translateY(-2px); }
+.cs3__btn:active { transform: translateY(0) scale(.96); }
+
+/* -------------------------------------------------------- 3D stage (>=900) */
+
+.cs3__viewport {
+  position: relative;
+  display: none;            /* opened by .is-3d below */
+  margin-inline: auto;
+  width: min(62rem, calc(100% - 2 * var(--gutter, 1.5rem)));
+  /* The apothem is half the panel width; the panel is ~62% of that box, so
+     1/(2*cos(pi/7)) = 0.5567 gives this exact ratio. Keeping the ratio fixed
+     means the JS only has to measure one number and the cylinder keeps its
+     proportions at every width. */
+  height: calc(min(62rem, 100vw - 2 * var(--gutter, 1.5rem)) * .5567 * .78);
+  outline: none;
+}
+
+.cs3.is-3d .cs3__viewport { display: block; }
+
+.cs3__viewport:focus-visible {
+  outline: 2px solid var(--gold, #c9a961);
+  outline-offset: 6px;
+  border-radius: 24px;
+}
+
+/* the perspective. Sized in vw so the depth stays proportional. */
+.cs3__scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: clamp(1100px, 145vw, 2200px);
+  perspective-origin: 50% 42%;
+  cursor: grab;
+}
+
+.cs3__viewport.is-dragging .cs3__scene { cursor: grabbing; }
+
+/* only element that moves per frame — one write, no transition */
+.cs3__track {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--cs3-radius, 430px) * -1)) rotateY(var(--cs3-rot, 0rad));
+}
+/* ------------------------------------------------------------ the panels  */
+
+/* the panel: `auto` here would fall back to the browser's shrink-to-fit and
+   give a random width, so it is always explicit. The JS reads this number
+   back and derives the cylinder radius from it. */
+.cs3__panel {
+  --cs3-w: clamp(15rem, 42vw, 22rem);
+  /* (153/248) aspect of the screenshot + the 26px browser bar, as a ratio of
+     the panel width. The frame is then exactly the panel box, which is what
+     lets the JS treat "half the panel" as "half the frame". */
+  --cs3-h: calc(var(--cs3-w) * .6676);
+  position: absolute;
+  left: 50%;
+  /* `top` points at the middle of the frame; the panel box is then centred on
+     it. The height has to be explicit: an absolutely positioned box with only
+     absolutely positioned children has height 0, and `translateY(-50%)` of
+     0 is a no-op, which would park the frames well below the stage centre. */
+  top: 44%;
+  display: block;
+  width: var(--cs3-w, 23rem);
+  height: var(--cs3-h);
+  margin-left: calc(var(--cs3-w, 23rem) / -2);
+  /* the angle is fixed at 360/7; the JS uses the same value, and only the
+     radius follows the measured panel width */
+  transform: translateY(-50%)
+             rotateY(calc(51.43deg * var(--i, 0)))
+             translateZ(var(--cs3-radius, 430px))
+             scale(var(--cs3-zoom, 1));
+  transform-origin: 50% 50%;
+  /* `opacity` is what fades a panel, and it also creates a stacking context:
+     once it is set, the browser paints the panels in paint order instead of
+     resolving their depth. So the JS also publishes a z-index per panel that
+     follows cos(angle) — the panel facing the visitor is painted last and is
+     therefore never covered by one from the far side of the cylinder. */
+  opacity: 1;
+  z-index: 1;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 14px;
+}
+
+/* Everything inside a panel stays flat. The dimming veil and the gold ring
+   live on inner elements on purpose: putting a `filter` or an `overflow` on
+   the panel itself would flatten the cylinder. */
+.cs3__browser,
+.cs3__meta { transform-style: flat; }
+
+.cs3__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  background: var(--ink, #0a0a0b);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs3__ring {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(201, 169, 97, .18), transparent 62%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs3__panel.is-front .cs3__ring {
+  opacity: 1;
+  border-color: rgba(233, 205, 138, .55);
+}
+
+/* The caption stays inside the link, so the link's accessible name is the
+   site's name. It is counter-rotated by the panel's own angle plus the
+   track's, which keeps the text upright instead of mirrored and puts it in
+   one fixed spot under the frame; and because it hangs off the panel's
+   bottom edge it never covers the screenshot it describes. */
+.cs3__caption {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  margin-top: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+  transform-origin: 50% 50%;
+  transform: rotateY(calc(-51.43deg * var(--i, 0) - var(--cs3-front, 0deg))) translateZ(-10px) scale(.94);
+  /* on hide, wait for the fade to finish before dropping visibility; on show,
+     flip it at once so the fade is visible from its first frame */
+  transition: opacity .45s ease, transform .45s var(--ease-out, cubic-bezier(.22, 1, .36, 1)),
+              visibility 0s linear .45s;
+}
+
+.cs3__panel.is-front .cs3__caption {
+  opacity: 1;
+  visibility: visible;
+  transform: rotateY(calc(-51.43deg * var(--i, 0) - var(--cs3-front, 0deg))) translateZ(-10px) scale(1);
+  transition: opacity .5s ease, transform .6s var(--ease-out, cubic-bezier(.22, 1, .36, 1)),
+              visibility 0s linear 0s;
+}
+
+/* Every surface inside a panel must be flat, or the cylinder turns into a
+   fan: `transform-style` defaults to `flat`, which is exactly what we want. */
+
+/* --- stylised browser chrome ------------------------------------------- */
+
+/* the link fills the panel box; the frame fills the link. Making the painted
+   frame the same rectangle as the layout box is what keeps layout and paint
+   honest with each other, and it is what the JS measures. */
+.cs3__caption {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.cs3__browser {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px 14px 12px 12px;
+  border: 1px solid rgba(245, 241, 232, .13);
+  background: #0b0916;
+  box-shadow: 0 30px 60px -34px rgba(0, 0, 0, 1);
+  transition: border-color .45s ease, box-shadow .45s ease;
+}
+
+/* very light violet tint in the top corner, to match the site's night theme */
+.cs3__browser::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: radial-gradient(24rem 12rem at 88% -18%, rgba(123, 97, 255, .14), transparent 62%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.cs3__panel.is-front .cs3__browser::before {
+  background: radial-gradient(24rem 12rem at 88% -18%, rgba(201, 169, 97, .16), transparent 62%);
+}
+
+.cs3__bar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  height: 26px;
+  padding: 0 .7rem;
+  border-bottom: 1px solid rgba(245, 241, 232, .09);
+  background: linear-gradient(180deg, rgba(245, 241, 232, .07), rgba(245, 241, 232, .02));
+}
+
+.cs3__dots { display: flex; gap: 5px; flex: 0 0 auto; }
+
+.cs3__dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(245, 241, 232, .2);
+}
+
+.cs3__dots i:first-child { background: rgba(201, 169, 97, .62); }
+
+.cs3__url {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 13px;
+  border-radius: 999px;
+  background: rgba(245, 241, 232, .07);
+}
+
+.cs3__shot {
+  display: block;
+  width: 100%;
+  height: auto;               /* the real 1280x800 ratio: nothing to guess */
+  aspect-ratio: 1280 / 800;
+  object-fit: cover;
+  object-position: top center;
+  background: #0b0916;
+}
+
+/* --- caption under each panel ----------------------------------------- */
+
+.cs3__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .6rem;
+  min-height: 24px;
+}
+
+.cs3__meta b {
+  font-family: var(--font-display, "Satoshi", system-ui, sans-serif);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cs3__meta small {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .28rem .6rem;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a961);
+  border: 1px solid rgba(201, 169, 97, .45);
+  background: rgba(201, 169, 97, .1);
+  white-space: nowrap;
+}
+
+.cs3__meta small svg { width: .8rem; height: .8rem; }
+
+/* --- the face that is actually in front -------------------------------- */
+
+.cs3__panel.is-front {
+  --cs3-zoom: 1.06;
+}
+
+.cs3__panel.is-front .cs3__browser {
+  border-color: transparent;   /* the gold ring is drawn by .cs3__ring */
+  box-shadow: 0 40px 70px -32px rgba(0, 0, 0, 1),
+              0 0 60px -14px rgba(201, 169, 97, .38);
+}
+
+.cs3__panel:focus-visible { outline: none; }
+
+.cs3__panel:focus-visible .cs3__browser {
+  box-shadow: 0 0 0 3px var(--gold, #c9a961), 0 0 0 6px var(--ink, #0a0a0b),
+              0 40px 70px -32px rgba(0, 0, 0, 1);
+}
+
+.cs3__panel:focus-visible .cs3__ring { opacity: 1; }
+
+/* --- floor + halo ------------------------------------------------------- */
+
+.cs3__floor {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(46rem, 78%);
+  height: 28%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(201, 169, 97, .2), transparent 74%);
+  opacity: .55;
+  pointer-events: none;
+}
+
+.cs3__glow {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: min(36rem, 78%);
+  aspect-ratio: 16 / 9;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(201, 169, 97, .26), transparent 72%);
+  opacity: .8;
+  pointer-events: none;
+}
+
+.cs3__hint {
+  margin: clamp(1.5rem, 3vw, 2.2rem) auto 0;
+  max-width: 60rem;
+  padding-inline: var(--gutter, 1.5rem);
+  text-align: center;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--faint, #8c8477);
+}
+
+/* --------------------------------------------------- rail (default state) */
+
+.cs3__rail {
+  display: flex;
+  gap: clamp(1rem, 1.6vw, 1.4rem);
+  width: 100%;
+  padding: .5rem var(--gutter, 1.25rem) 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter, 1.25rem);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  list-style: none;
+}
+
+.cs3__rail::-webkit-scrollbar { display: none; }
+
+.cs3__rail > li {
+  flex: 0 0 auto;
+  width: min(20rem, 78vw);
+  scroll-snap-align: center;
+}
+
+.cs3__card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 16px;
+}
+
+.cs3__card .cs3__browser { border-radius: 12px; }
+
+.cs3__card b {
+  display: block;
+  margin-top: .8rem;
+  font-family: var(--font-display, "Satoshi", system-ui, sans-serif);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -.01em;
+}
+
+.cs3__card small {
+  display: block;
+  margin-top: .15rem;
+  font-size: .82rem;
+  color: var(--muted, #b3ab9c);
+}
+
+.cs3__card .cs3__browser { transition: border-color .4s ease, box-shadow .4s ease, transform .5s var(--ease-out, cubic-bezier(.22, 1, .36, 1)); }
+
+.cs3__card:hover .cs3__browser,
+.cs3__card:focus-visible .cs3__browser {
+  transform: translateY(-4px);
+  border-color: rgba(201, 169, 97, .45);
+  box-shadow: 0 34px 60px -30px rgba(0, 0, 0, 1), 0 0 0 1px rgba(201, 169, 97, .18);
+}
+
+.cs3__card:focus-visible { outline: none; }
+
+.cs3__card:focus-visible .cs3__browser {
+  box-shadow: 0 0 0 3px var(--gold, #c9a961), 0 0 0 6px var(--ink, #0a0a0b);
+}
+
+/* the rail's own panels are plain: no veil, no halo */
+.cs3__rail .cs3__veil,
+.cs3__rail .cs3__ring { display: none; }
+
+/* In 3D mode the rail is not painted at all: not just invisible, but out of
+   the layout. That keeps the page height honest and means the seven lazy
+   images behind it are never fetched for nothing (the JS also pins their
+   `sizes` to 1px, because a lazy image that is merely off-screen would still
+   be a full download). The base rule stays `display: flex`, so the rail is
+   visible when JavaScript never runs. */
+.cs3.is-3d .cs3__rail { display: none; }
+
+/* JS present and not in 3D: the rail is *the* component, so drop decorations
+   that only make sense around the cylinder. */
+.cs3.is-mode-rail .cs3__floor,
+.cs3.is-mode-rail .cs3__glow { display: none; }
+
+.cs3.is-mode-rail .cs3__hint { margin-top: 1.2rem; }
+
+/* ------------------------------------------------------------ responsive */
+
+/* Panel width and stage box move together, so the cylinder keeps its
+   proportions at every width. The JS reads the rendered panel width back and
+   derives the radius from it, which is what keeps the front panel exactly on
+   top of the stage centre. */
+@media (min-width: 900px) and (max-width: 1279px) {
+  .cs3__panel { --cs3-w: clamp(15rem, 40vw, 20rem); }
+  .cs3__viewport {
+    width: min(62rem, calc(100% - 2 * var(--gutter, 1.5rem)));
+    height: calc(min(62rem, 100vw - 2 * var(--gutter, 1.5rem)) * .5567 * .90);
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1599px) {
+  .cs3__panel { --cs3-w: clamp(18rem, 27vw, 22rem); }
+  .cs3__viewport {
+    width: min(68rem, calc(100% - 2 * var(--gutter, 1.5rem)));
+    height: min(31rem, calc(min(68rem, 100vw - 2 * var(--gutter, 1.5rem)) * .5567 * .96));
+  }
+}
+
+@media (min-width: 1600px) {
+  .cs3__panel { --cs3-w: 23rem; }
+  .cs3__viewport {
+    width: min(76rem, calc(100% - 2 * var(--gutter, 1.5rem)));
+    height: min(33rem, calc(min(76rem, 100vw - 2 * var(--gutter, 1.5rem)) * .5567 * 1.0));
+  }
+}
+
+/* The stage disappears first, so a viewport that shrinks under 900px while
+   the 3D state is still on never sees a half-turned cylinder. JS then
+   removes .is-3d on the same condition and adds .is-mode-rail. */
+@media (max-width: 899px) {
+  .cs3.is-3d .cs3__viewport { display: none; }
+  .cs3__head { flex-direction: column; align-items: flex-start; }
+}
+
+@media (min-width: 1400px) {
+  .cs3__rail > li { width: min(22rem, 26vw); }
+}
+
+/* ------------------------------------------------- reduced motion & print */
+
+@media (prefers-reduced-motion: reduce) {
+  .cs3__btn,
+  .cs3__card .cs3__browser {
+    transition-duration: .01ms;
+  }
+}
+
+@media print {
+  .cs3 { background: none; padding: 2rem 0; }
+  .cs3__viewport, .cs3__hud, .cs3__hint, .cs3__floor, .cs3__glow { display: none !important; }
+  .cs3__rail { overflow: visible; flex-wrap: wrap; }
+}

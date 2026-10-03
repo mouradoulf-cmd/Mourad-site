@@ -1,32 +1,263 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Plan de site de NM Studio.
-  Convention d'URL identique aux <link rel="canonical"> des pages :
-  https://mouradoulf-cmd.github.io/Mourad-site/nm/ + nom-de-page.html
+  Plan de site de NM Studio (genere par _tools/gen-i18n-pages.mjs).
+  Une entree par page et par langue, chacune listant ses 5 alternatives
+  hreflang plus x-default (l'anglais, servi par les pages sources de la
+  racine nm/, est l'URL par defaut).
   Pages exclues car marquees <meta name="robots" content="noindex"> :
   account.html, checkout.html, success.html, cancel.html, qr-generator.html
-  (business-card/card.html est un gabarit d'impression, non indexable, hors plan).
+  (business-card/card.html est un gabarit d'impression, hors plan).
   lastmod : date de derniere modification du contenu (2026-10-03).
 -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/</loc>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html</loc>
     <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/index.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html"/>
   </url>
   <url>
     <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html</loc>
     <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/services.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/services.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/services.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/services.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/services.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/services.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/services.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/it/services.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/services.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/services.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/services.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/th/services.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/services.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/services.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/services.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/services.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/services.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/services.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/services.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/services.html"/>
   </url>
   <url>
     <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html</loc>
     <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/pricing.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/it/pricing.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/th/pricing.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/pricing.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/pricing.html"/>
   </url>
   <url>
     <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html</loc>
     <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/legal.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/it/legal.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/th/legal.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/legal.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/legal.html"/>
   </url>
   <url>
     <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html</loc>
     <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/start.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/start.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/start.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/start.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/start.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/start.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/start.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/start.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/start.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/start.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/th/start.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/start.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/start.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/start.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+  </url>
+  <url>
+    <loc>https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/start.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/start.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/start.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/start.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html"/>
   </url>
 </urlset>

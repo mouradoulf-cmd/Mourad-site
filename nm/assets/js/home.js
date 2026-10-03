@@ -69,7 +69,10 @@
   (function showcase() {
     var mac = $(".dev--hero .mac__view"), phone = $(".dev--hero .iph__view");
     var nameEl = $("#nowName"), catEl = $("#nowCat"), dots = $$(".h__now-dots i");
-    if (!mac || !phone || !nameEl) return;
+    // `.h__visual` is display:none in site.css, so this mock-up is never
+    // painted; offsetParent is null inside that subtree and the cross-fade
+    // layers below would otherwise download 12 WebP files for nothing.
+    if (!mac || !phone || !nameEl || !mac.offsetParent) return;
     var SITES = [
       { slug: "giulivo", name: "Giulivo", cat: "work.p1cat" },
       { slug: "malee", name: "Malee", cat: "work.p2cat" },

@@ -1023,17 +1023,25 @@ html[lang="th"] .status__title, html[lang="ar"] .status__title { line-height: 1.
 
 
 /* Hero video.
-   The encoded pair is 1600×900 while the hero frame is ~1584 px wide at a
-   1600 px viewport, so the video is shown at (or just below) 1:1 and the
-   browser no longer upscales it. The poster is a <picture> wrapping an
-   <img class="h__poster">, both stretched over .h__bg; hero-video.js
-   cross-fades poster → video over 600 ms on the video's `playing` event.
+   The encoded pair is 1280×720 while the hero frame is ~1584 px wide at a
+   1600 px viewport, so object-fit: cover crops the sides and the browser never
+   upscales it. The poster is a <picture> and a <video>, both stretched over
+   .h__media; hero-video.js cross-fades poster → video over 600 ms on the
+   video's `playing` event.
    opacity: 1 on both sides is the no-JS state and must stay a visible hero. */
+.h__media { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; transform-origin: 50% 50%; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .h__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity .6s var(--ease-out); }
-.h__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity .6s var(--ease-out); }
+/* The <video> is deliberately left without any transform: hero-depth.js moves
+   and zooms .h__media instead. Transforming a video element while it plays
+   forces a re-rasterisation of the video layer on every frame, which is the
+   classic cause of stutter on Intel/AMD GPUs under Windows. translateZ(0) keeps
+   the video on its own composited layer; the permanent `will-change` belongs to
+   the wrapper that actually animates, and hero-depth.js sets it there. */
+.h__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity .6s var(--ease-out); transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .h__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,8,.92) 0%, rgba(5,5,8,.55) 42%, rgba(5,5,8,.08) 100%), linear-gradient(0deg, rgba(3,3,5,.8) 0%, rgba(3,3,5,0) 32%), linear-gradient(180deg, rgba(3,3,5,.55) 0%, rgba(3,3,5,0) 25%); }
 .h__aurora { display: none; }
 .h__visual { display: none; }
+/* Dead markup: home.js must not fetch any image for it (offsetParent guard in showcase()). */
 /* The hero shows a single column of copy since the looping video replaced the
    device mockups, but .h__grid still reserved a second 1fr column from 1000px
    up — a full-height empty column. One column, full width, below and above. */
