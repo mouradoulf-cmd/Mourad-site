@@ -1022,8 +1022,15 @@ html[lang="th"] .status__title, html[lang="ar"] .status__title { line-height: 1.
 }
 
 
-/* Hero video */
-.h__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Hero video.
+   The encoded pair is 1600×900 while the hero frame is ~1584 px wide at a
+   1600 px viewport, so the video is shown at (or just below) 1:1 and the
+   browser no longer upscales it. The poster is a <picture> wrapping an
+   <img class="h__poster">, both stretched over .h__bg; hero-video.js
+   cross-fades poster → video over 600 ms on the video's `playing` event.
+   opacity: 1 on both sides is the no-JS state and must stay a visible hero. */
+.h__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity .6s var(--ease-out); }
+.h__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity .6s var(--ease-out); }
 .h__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,8,.92) 0%, rgba(5,5,8,.55) 42%, rgba(5,5,8,.08) 100%), linear-gradient(0deg, rgba(3,3,5,.8) 0%, rgba(3,3,5,0) 32%), linear-gradient(180deg, rgba(3,3,5,.55) 0%, rgba(3,3,5,0) 25%); }
 .h__aurora { display: none; }
 .h__visual { display: none; }

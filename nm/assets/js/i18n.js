@@ -137,7 +137,7 @@
     fr: {
       meta: {
         title: "NM Studio — Sites web et menus QR pour restaurants et commerces",
-        description: "NM Studio crée des sites web et menus QR rapides et élégants pour restaurants, salons, spas et commerces locaux. Envoyez vos photos, votre site est en ligne en quelques jours. Sans engagement."
+        description: "Sites web, menus QR et fiches Google pour les commerces de Pattaya. Envoyez vos photos, on s'occupe de tout : en ligne en quelques jours, sans contrat."
       },
       a11y: { skip: "Aller au contenu", language: "Langue", menu: "Menu", whatsapp: "Nous écrire sur WhatsApp" },
       nav: { work: "Réalisations", process: "Méthode", pricing: "Tarifs", faq: "FAQ", cta: "Lancer mon projet" },
@@ -265,7 +265,7 @@
     it: {
       meta: {
         title: "NM Studio — Siti web e menù QR per ristoranti e attività locali",
-        description: "NM Studio crea siti web e menù QR veloci ed eleganti per ristoranti, saloni, spa e attività locali. Inviaci le tue foto: sei online in pochi giorni. Senza contratto."
+        description: "Siti web, menù QR e schede Google per le attività di Pattaya. Invia le tue foto: siamo online in pochi giorni, senza contratto."
       },
       a11y: { skip: "Vai al contenuto", language: "Lingua", menu: "Menù", whatsapp: "Scrivici su WhatsApp" },
       nav: { work: "Progetti", process: "Metodo", pricing: "Prezzi", faq: "FAQ", cta: "Inizia un progetto" },
@@ -393,7 +393,7 @@
     th: {
       meta: {
         title: "NM Studio — เว็บไซต์และเมนู QR สำหรับร้านอาหารและธุรกิจท้องถิ่น",
-        description: "NM Studio ออกแบบเว็บไซต์และเมนู QR ที่สวยและรวดเร็ว สำหรับร้านอาหาร ร้านทำผม สปา และธุรกิจท้องถิ่น ส่งรูปมา แล้วเว็บของคุณพร้อมออนไลน์ภายในไม่กี่วัน ไม่มีสัญญาผูกมัด"
+        description: "เว็บไซต์ เมนู QR และโปรไฟล์ Google สำหรับธุรกิจในพัทยา ส่งรูปมา แล้วเราจัดทำให้ ออนไลน์ในไม่กี่วัน ไม่มีสัญญาผูกมัด"
       },
       a11y: { skip: "ข้ามไปยังเนื้อหา", language: "ภาษา", menu: "เมนู", whatsapp: "ส่งข้อความหาเราทาง WhatsApp" },
       nav: { work: "ผลงาน", process: "ขั้นตอน", pricing: "ราคา", faq: "คำถาม", cta: "เริ่มโปรเจกต์" },

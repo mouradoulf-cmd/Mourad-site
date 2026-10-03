@@ -1,0 +1,54 @@
+/* NM Studio — craft layer.
+ *
+ * Small, site-wide finishing touches that do not belong to any single component:
+ * compliant touch targets for standalone links, typographic polish, a dark-theme
+ * scrollbar, a gold text selection and a tinted placeholder behind images so a
+ * slow connection never flashes white. Loaded last, after site.css. */
+
+/* 1. WCAG 2.2 target size (minimum): standalone links reach 24px without
+      changing the visual rhythm of the footer and of the meta lines. */
+.footer a,
+.footer__legal a,
+.legal__meta a,
+.status__help a,
+.cmp a {
+  display: inline-block;
+  min-height: 24px;
+  padding-block: .25rem;
+}
+
+/* 2. Typographic polish: balanced headings, no orphans in short paragraphs. */
+h1, h2, h3 { text-wrap: balance; }
+.sec__lead, .h__sub, .phero__lead, .legal__sec p { text-wrap: pretty; }
+
+/* 3. A gold selection reads as intentional on a dark site. */
+::selection { background: rgba(230, 194, 122, .28); color: #fff; }
+
+/* 4. Scrollbar that belongs to the night palette (Chromium + Firefox). */
+* { scrollbar-width: thin; scrollbar-color: rgba(230, 194, 122, .35) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #07060c; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(230, 194, 122, .45), rgba(123, 97, 255, .35));
+  border: 2px solid #07060c;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(230, 194, 122, .6); }
+
+/* 5. Images and videos get a dark bed (not a light one, so logos with
+      transparency do not show a pale rectangle on the night background). */
+img, video { background-color: #0b0916; }
+.h__video, .h__poster { background-color: #0a0812; }
+
+/* 6. Keep the focus ring visible on every surface, including the light ones. */
+:focus-visible { outline: 2px solid var(--gold, #e6c27a); outline-offset: 3px; }
+.btn--light:focus-visible, .skip-link:focus-visible, .chip:focus-visible {
+  outline-color: var(--ink, #0b0703);
+}
+
+/* 7. Long words (Thai, Arabic, URLs) never overflow their container. */
+.h__title, .status__title, .phero__title, .sum__plan b { overflow-wrap: anywhere; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}

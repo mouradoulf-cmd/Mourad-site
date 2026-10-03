@@ -1,12 +1,12 @@
 {
-  "name": "NM Studio",
+  "name": "NM Studio — websites, QR menus & Google profiles",
   "short_name": "NM Studio",
-  "description": "Websites, QR menus and Google Business Profiles for local businesses in Pattaya.",
+  "description": "Websites, QR menus and Google Business Profiles for restaurants, salons, spas and shops in Pattaya.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "theme_color": "#07060c",
   "background_color": "#07060c",
+  "theme_color": "#07060c",
   "lang": "en",
   "dir": "ltr",
   "icons": [
@@ -17,16 +17,32 @@
       "purpose": "any"
     },
     {
-      "src": "assets/img/favicon-32.png",
-      "sizes": "32x32",
+      "src": "assets/img/icon-192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "assets/img/apple-touch-icon.png",
-      "sizes": "180x180",
+      "src": "assets/img/icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "See the offers",
+      "url": "./pricing.html"
+    },
+    {
+      "name": "Start a project",
+      "url": "./start.html"
     }
   ]
 }
