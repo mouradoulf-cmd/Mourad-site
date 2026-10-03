@@ -142,8 +142,8 @@
   var GLYPH = {
     google: '<path d="M24 43s13-11.6 13-22A13 13 0 0 0 11 21c0 10.4 13 22 13 22z"/><circle cx="24" cy="20.5" r="4.5"/>',
     qr: '<path d="M8 17v-6a2 2 0 0 1 2-2h6"/><path d="M40 17v-6a2 2 0 0 0-2-2h-6"/><path d="M8 31v6a2 2 0 0 0 2 2h6"/><path d="M40 31v6a2 2 0 0 1-2 2h-6"/><rect x="17.5" y="17.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="25.5" y="17.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="17.5" y="25.5" width="5" height="5" fill="currentColor" stroke="none"/><rect x="25.5" y="25.5" width="5" height="5" fill="currentColor" stroke="none"/>',
-    pack: '<rect x="9" y="9" width="21" height="21" rx="3"/><rect x="18" y="18" width="21" height="21" rx="3"/>',
-    ultimate: '<path d="M24 7l3.6 13.4L41 24l-13.4 3.6L24 41l-3.6-13.4L7 24l13.4-3.6z"/>'
+    pack: '<path d="M24 5l15 6v11c0 10-6.5 17.5-15 21-8.5-3.5-15-11-15-21V11z"/><path d="M16.5 24l5.5 5.5 10-11"/>',
+    ultimate: '<path d="M9 18L24 4l15 14-15 26z"/><path d="M9 18h30M18.5 18L24 4l5.5 14M18.5 18L24 44M29.5 18L24 44"/>'
   };
   function markSvg(k) {
     return '<svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (GLYPH[k] || "") + "</svg>";

@@ -595,7 +595,7 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 .footer__bottom { margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .86rem; color: var(--faint); }
 .footer__bottom a:hover { color: var(--text); }
 .footer__clock { display: inline-flex; align-items: center; gap: .5rem; font-variant-numeric: tabular-nums; }
-.wa-float { position: fixed; bottom: max(1.25rem, env(safe-area-inset-bottom)); inset-inline-end: 1.25rem; z-index: 150; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff; box-shadow: 0 14px 34px -10px rgba(37,211,102,.7); transform: translateY(120%) scale(.8); opacity: 0; transition: transform .5s var(--ease-out), opacity .4s ease, box-shadow .3s ease; }
+.wa-float { position: fixed; bottom: max(1.25rem, env(safe-area-inset-bottom)); inset-inline-start: 1.25rem; z-index: 150; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff; box-shadow: 0 14px 34px -10px rgba(37,211,102,.7); transform: translateY(120%) scale(.8); opacity: 0; transition: transform .5s var(--ease-out), opacity .4s ease, box-shadow .3s ease; }
 .wa-float svg { width: 28px; height: 28px; }
 .wa-float.is-visible { transform: none; opacity: 1; }
 .wa-float:hover { box-shadow: 0 18px 40px -8px rgba(37,211,102,.9); }
@@ -662,8 +662,6 @@ html[lang="th"] .ic-num, html[lang="ar"] .ic-num { font-style: normal; font-weig
 .offer__tier { font-family: var(--font-display); font-weight: 700; font-size: .85rem; letter-spacing: .06em; color: var(--faint); font-variant-numeric: tabular-nums; }
 .offer__watch { position: relative; display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .7rem .3rem .45rem; border-radius: 999px; font-size: .66rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gold-soft); background: rgba(201,169,97,.08); border: 1px solid rgba(201,169,97,.28); transition: background-color .3s ease, color .3s ease; }
 .offer__watch svg { width: 14px; height: 14px; color: var(--gold); }
-.offer__watch::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; border: 1px solid var(--gold); opacity: 0; animation: watchPulse 2.6s var(--ease-out) infinite; }
-@keyframes watchPulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.12, 1.45); opacity: 0; } }
 .offer:hover .offer__watch { background: var(--gold); color: #1c1405; }
 .offer:hover .offer__watch svg { color: #1c1405; }
 .offer__icon { margin: .6rem -.35rem .4rem; aspect-ratio: 4 / 3; transform: translateZ(30px); transition: transform .7s var(--ease-out); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .55rem; padding: 0 .5rem; }
