@@ -561,7 +561,7 @@ async function stepVideos(){setPhase('videos','Vidéos : 1 création toutes les 
 
 async function run(){
  if(S.running)return;if(!getKey()){toast('Ajoute ta clé API','error');$('apiKeyInput').focus();return}
- const idea=$('ideaInput').value.trim();if(!P.scenario&&!P.series&&!idea){toast('Décris ton idée d\'abord','warn');return}
+ const idea=$('ideaInput').value.trim();if(!P.scenario&&!P.series&&!idea){if(($('serieInput').value||'').trim().length>=20){toast('Pour ta série : touche « Générer 50 épisodes » (ou 10 / 20) dans « Histoire en série », en haut','warn',6000);$('secSerie').scrollIntoView({behavior:'smooth',block:'start'})}else toast('Décris ton idée d\'abord','warn');return}
  if(!P.scenario&&!P.series){P.idea=idea;P.mode=P.mode;P.style=$('styleSelect').value;P.n=parseInt($('sceneCount').value,10);P.dur=parseInt($('duration').value,10);P.fmt=$('format').value;P.last=$('optLast').checked}
  S.running=true;S.stop=false;await startWake();updateGenerateBtn();
  window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
