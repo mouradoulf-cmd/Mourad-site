@@ -1038,6 +1038,23 @@ html[lang="th"] .status__title, html[lang="ar"] .status__title { line-height: 1.
    the video on its own composited layer; the permanent `will-change` belongs to
    the wrapper that actually animates, and hero-depth.js sets it there. */
 .h__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity .6s var(--ease-out); transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+/* Phones and small tablets — the same breakpoint as the -m video source.
+   Narrow screens get .h__shade as a near-opaque scrim (82–92 % black), so the
+   hero footage was a flat black rectangle: the poster measured RGB 9/9/12 in
+   the top band. The video would have been invisible for exactly the same
+   reason, whatever hero-video.js did, so the media is lifted above that scrim
+   and an equivalent but lighter scrim is drawn inside it. .h__bg is z-index: -1
+   and .h is isolation: isolate, so the media still sits behind .h__grid: the
+   copy, the CTAs and the header keep their stacking order and stay legible.
+   Desktop (≥900 px) is untouched: horizontal scrim, original order, and the
+   .h__media/.h__poster/.h__video rules above apply there exactly as before. */
+@media (max-width: 899px) {
+  .h__media { z-index: 1; }
+  .h__media::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(3,3,5,.8) 0%, rgba(5,5,8,.6) 32%, rgba(5,5,8,.5) 52%, rgba(5,5,8,.56) 72%, rgba(3,3,5,.94) 100%);
+  }
+}
 .h__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,8,.92) 0%, rgba(5,5,8,.55) 42%, rgba(5,5,8,.08) 100%), linear-gradient(0deg, rgba(3,3,5,.8) 0%, rgba(3,3,5,0) 32%), linear-gradient(180deg, rgba(3,3,5,.55) 0%, rgba(3,3,5,0) 25%); }
 .h__aurora { display: none; }
 .h__visual { display: none; }

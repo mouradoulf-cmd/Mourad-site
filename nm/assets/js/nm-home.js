@@ -160,9 +160,11 @@
       }
     }
     var plus = sub ? sub.monthly * (billMode === "yearly" ? O.yearlyMonths : 1) : 0;
-    $("#omCare").textContent = sub
-      ? t("offers.monthlyIncluded") + " · " + P.thb(plus) + " " + (billMode === "yearly" ? t("price2.perYear") : t("price2.perMonth"))
-      : care ? t("offers.careFrom").replace("{price}", P.thb(care)) : t("offers.careNone");
+    // No amount at all when there is no subscription and no care plan: the
+    // dictionary's own wording, never "then 0 / month".
+    $("#omCare").textContent = care > 0
+      ? t("offers.careFrom").replace("{price}", P.thb(care))
+      : t("price2.noCare");
     $("#omOrderLabel").textContent = t("offers.order").replace("{price}", P.thb(price + plus));
     $("#omOrder").href = "checkout.html?offer=" + k;
     var list = $("#omList"); list.innerHTML = "";
@@ -276,7 +278,11 @@
         $$(".bill__btn", bill).forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-bill") === mode)); });
       }
       $$("[data-care]").forEach(function (el) {
-        var k = el.getAttribute("data-care"), m = O.care[k] * (mode === "yearly" ? O.yearlyMonths : 1);
+        var k = el.getAttribute("data-care");
+        // An offer with no care plan (care: 0) prints nothing: its node stays
+        // empty and hidden instead of showing "0 €".
+        if (!O.care[k]) { el.textContent = ""; el.hidden = true; return; }
+        var m = O.care[k] * (mode === "yearly" ? O.yearlyMonths : 1);
         var wrap = el.parentNode;
         function set() {
           el.setAttribute("data-thb", m); el.textContent = P.thb(m);
@@ -287,13 +293,15 @@
         else set();
       });
       // The subscribed offers show the yearly amount (10 months, 2 free) when
-      // the visitor picks yearly — the same rule as the care plan.
-      Object.keys(O.sub || {}).forEach(function (k) {
-        $$('[data-thb-sub="' + k + '"]').forEach(function (el) {
-          el.textContent = P.subPrice(k, el.getAttribute("data-sub-mode") || mode);
-          if (el.hasAttribute("hidden")) el.hidden = false;
-        });
+      // the visitor picks yearly — the same rule as the care plan. A node
+      // whose offer has no subscription is emptied and hidden, never "0 €".
+      $$("[data-thb-sub]").forEach(function (el) {
+        var k = el.getAttribute("data-thb-sub");
+        var text = P.subPrice(k, el.getAttribute("data-sub-mode") || mode);
+        el.textContent = text; el.hidden = !text;
       });
+      // The billing toggle only matters while an offer has an optional plan.
+      if (bill) bill.hidden = !Object.keys(O.care || {}).some(function (k) { return O.care[k] > 0; });
       $$("[data-cta]").forEach(function (a) {
         var k = a.getAttribute("data-cta"), care = O.care[k];
         // the subscribed offers always go to the checkout with their monthly

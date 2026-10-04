@@ -112,10 +112,12 @@ window.NMPrice = (function () {
 
   /* "150 € de mise en place puis 30 €/mois" — built from the t() strings of
      the page, so every language reads its own sentence. Yearly takes
-     10 months (2 free) and says so. */
+     10 months (2 free) and says so.
+     An offer without a subscription (or with a 0 monthly amount) returns an
+     empty string: a missing amount must never print as "0 €". */
   function subPrice(id, mode) {
     var s = sub(id), t = function (k) { return (window.NMI18n && window.NMI18n.t(k)) || ""; };
-    if (!s) return "";
+    if (!s || !s.monthly) return "";
     if (mode === "yearly") {
       return t("price2.subYearly")
         .replace("{setup}", local(s.setup))
@@ -127,26 +129,35 @@ window.NMPrice = (function () {
       .replace("{monthly}", local(s.monthly));
   }
 
-  function render(root) {
-    var doc = root || document;
-    doc.querySelectorAll(".nm-baht, .nm-local").forEach(function (el) { el.remove(); });
-
+  /* One amount per price node, and nothing at all when the offer has no such
+     amount: a 0 (an offer with no care plan, a subscription that does not
+     exist) leaves the node empty and hidden instead of printing "0 €". */
+  function applyAmounts(doc) {
     doc.querySelectorAll("[data-thb]").forEach(function (el) {
       var n = +el.getAttribute("data-thb");
+      if (el.hasAttribute("data-thb-skip-zero")) {
+        el.removeAttribute("data-thb");
+        if (!n) { el.textContent = ""; el.hidden = true; return; }
+      }
       el.textContent = thb(n);
     });
 
     /* Setup + subscription lines on the offer cards, the checkout and the
        comparison table: an offer with a subscription says what is due once
-       and what is due every month. */
+       and what is due every month. A node whose offer has no subscription is
+       emptied and hidden — never "0 €". */
     doc.querySelectorAll("[data-thb-sub]").forEach(function (el) {
-      var id = el.getAttribute("data-thb-sub");
-      el.textContent = subPrice(id, el.getAttribute("data-sub-mode") || "monthly");
+      var text = subPrice(el.getAttribute("data-thb-sub"), el.getAttribute("data-sub-mode") || "monthly");
+      el.textContent = text;
       el.dir = lang() === "ar" ? "rtl" : "ltr";
-      /* The markup ships the sentence hidden: nothing to read until the amount
-         is really in it. */
-      if (el.hasAttribute("hidden")) el.hidden = false;
+      el.hidden = !text;
     });
+  }
+
+  function render(root) {
+    var doc = root || document;
+    doc.querySelectorAll(".nm-baht, .nm-local").forEach(function (el) { el.remove(); });
+    applyAmounts(doc);
 
     /* The old "about 25 EUR" lines are redundant now that the headline price is
        already in the reader's currency: they say nothing more, so they go. */
@@ -158,5 +169,5 @@ window.NMPrice = (function () {
 
   document.addEventListener("nm:lang", function () { render(); });
 
-  return { thb: thb, baht: baht, amount: amount, approx: approx, currency: currency, sub: sub, money: money, local: local, subPrice: subPrice, render: render };
+  return { thb: thb, baht: baht, amount: amount, approx: approx, currency: currency, sub: sub, money: money, local: local, subPrice: subPrice, render: render, applyAmounts: applyAmounts };
 })();

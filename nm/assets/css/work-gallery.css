@@ -147,6 +147,9 @@
   overflow: hidden;
 }
 .wk-card--1 .wk-card__desc { -webkit-line-clamp: 3; }
+/* Le texte arrive avec la traduction : sans JavaScript, la phrase reste vide —
+   elle ne doit alors laisser ni marge ni ligne fantôme. */
+.wk-card__desc:empty { display: none; margin: 0; }
 /* Langues à écriture dense : une ligne de plus pour ne pas tronquer au milieu. */
 html[lang="th"] .wk-card__desc,
 html[lang="ar"] .wk-card__desc { -webkit-line-clamp: 4; }
