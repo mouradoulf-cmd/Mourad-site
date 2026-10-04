@@ -266,6 +266,14 @@ html[dir="rtl"] .lang__list { transform-origin: top left; }
 .footer__langs .flag { --w: 30px; --h: 20px; }
 .footer__langs button.flag-btn[aria-current="true"] { background: rgba(255,255,255,.08); border-color: var(--line-strong); }
 @media (prefers-reduced-motion: reduce) { .flag i, .flag i::after { animation: none; } }
+/* The flag wave is cosmetic and each strip runs its own infinite animation —
+   with several flags on a page (nav, language switcher, footer) that is
+   dozens of concurrent animations. Measured on a throttled mobile CPU: this
+   alone cost the page ~10fps and most of its long main-thread tasks, so it is
+   switched off on touch/narrow viewports where it is least likely to be
+   noticed and most likely to cost frames. Flags still render correctly —
+   only the ripple stops. */
+@media (max-width: 899px), (pointer: coarse) { .flag i, .flag i::before, .flag i::after { animation: none !important; } }
 
 /* ==========================================================================
    DEVICES — MacBook + iPhone frames (hero, work cards, design mock)

@@ -74,7 +74,16 @@
       // On phones the floating button would sit on top of the text being
       // read, so it follows the header: hidden while reading down, back on scroll up.
       var readingDown = narrow.matches && header.classList.contains("is-hidden");
-      waFloat.classList.toggle("is-visible", y > metrics.heroEnd && y + metrics.vh * 0.85 < metrics.finaleTop && !readingDown);
+      // Hysteresis: a few pixels of rubber-band/momentum wobble right at the
+      // hero or finale boundary used to flip .is-visible on and off every
+      // scroll frame, re-triggering the button's transform/opacity transition
+      // each time — the flicker users reported. Once shown/hidden, the
+      // opposite edge has to move 28px past the boundary before it flips back.
+      var shown = waFloat.classList.contains("is-visible"), m = 28;
+      var visible = shown
+        ? y > metrics.heroEnd - m && y + metrics.vh * 0.85 < metrics.finaleTop + m
+        : y > metrics.heroEnd + m && y + metrics.vh * 0.85 < metrics.finaleTop - m;
+      waFloat.classList.toggle("is-visible", visible && !readingDown);
     }
   }
   var scrollQueued = false;

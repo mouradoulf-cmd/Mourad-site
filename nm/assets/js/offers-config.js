@@ -1,13 +1,15 @@
-/* NM Studio — the five offers, their prices, the subscriptions and the
+/* NM Studio — the four offers, their prices, the subscriptions and the
  * optional care plan.
  *
  * Price model since the subscription switch:
  *   · website and pack are "setup + subscription": a one-time setup fee paid
  *     today, then a monthly subscription that is part of the offer (there is
  *     no "no thanks" option for them). Their amounts live in `sub`.
- *   · google, qr and ultimate keep their one-time price (`price`) and their
- *     optional care plan (`care`). The owner has not given new amounts for
- *     those three yet, so nothing about them changes here.
+ *   · google and qr keep their one-time price (`price`) and their optional
+ *     care plan (`care`). The owner has not given new amounts for those two
+ *     yet, so nothing about them changes here.
+ *   · the former "Ultimate + Social" offer is discontinued — removed from
+ *     `order`, `price`, `care`, `sub`, `videos`, `posters` and every page.
  *
  * price  — the one-time amount, expressed in Thai baht (baht is what a
  *          customer is charged in Thailand). For the two subscribed offers it
@@ -21,17 +23,17 @@
  * social — the studio's own pages; each footer icon stays hidden until filled.
  */
 window.NM_OFFERS = {
-  order: ["google", "qr", "website", "pack", "ultimate"],
+  order: ["google", "qr", "website", "pack"],
   featured: "pack",
-  price: { google: 990, qr: 1990, website: 5800, pack: 19000, ultimate: 9990 },
-  care: { google: 0, qr: 290, website: 0, pack: 0, ultimate: 1490 },
+  price: { google: 990, qr: 1990, website: 5800, pack: 13300 },
+  care: { google: 0, qr: 290, website: 0, pack: 0 },
   sub: {
     website: { setup: 5800, monthly: 1140 },
-    pack: { setup: 19000, monthly: 3800 }
+    pack: { setup: 13300, monthly: 3800 }
   },
   yearlyMonths: 10,
-  videos: { google: "", qr: "", website: "", pack: "", ultimate: "" },
-  posters: { google: "", qr: "", website: "", pack: "", ultimate: "" },
+  videos: { google: "", qr: "", website: "", pack: "" },
+  posters: { google: "", qr: "", website: "", pack: "" },
   social: { facebook: "", instagram: "", tiktok: "", line: "" },
 
   /* ONE currency per language, and only that one: a French visitor sees euros
@@ -42,14 +44,14 @@ window.NM_OFFERS = {
   currency: { en: "gbp", fr: "eur", it: "eur", th: "thb", ar: "mad" },
   currencySymbol: { gbp: " £", eur: " €", mad: " DH", thb: " ฿" },
   /* Rounded local amounts, per baht price. The owner's own figures are the
-     ones printed: 150 € setup then 30 € a month for the website, 500 € then
+     ones printed: 150 € setup then 30 € a month for the website, 350 € then
      100 € a month for the Complete Pack — the baht amounts are the euro
      figures taken at ~38 ฿ to the euro, because baht is what is charged in
      Thailand. Yearly = 10 months (two free): 11,400 ฿ and 38,000 ฿. */
   approx: {
-    gbp: { 990: 22, 1990: 45, 4990: 110, 9990: 220, 290: 7, 590: 13, 1490: 33, 2900: 65, 5900: 130, 14900: 330, 5800: 130, 1140: 25, 11400: 250, 19000: 420, 3800: 85, 38000: 840 },
-    eur: { 990: 25, 1990: 50, 4990: 125, 9990: 250, 290: 8, 590: 15, 1490: 39, 2900: 75, 5900: 150, 14900: 390, 5800: 150, 1140: 30, 11400: 300, 19000: 500, 3800: 100, 38000: 1000 },
-    mad: { 990: 270, 1990: 550, 4990: 1400, 9990: 2800, 290: 80, 590: 165, 1490: 420, 2900: 800, 5900: 1650, 14900: 4200, 5800: 1620, 1140: 320, 11400: 3190, 19000: 5320, 3800: 1060, 38000: 10640 }
+    gbp: { 990: 22, 1990: 45, 290: 7, 5800: 130, 1140: 25, 11400: 250, 13300: 295, 3800: 85, 38000: 840 },
+    eur: { 990: 25, 1990: 50, 290: 8, 5800: 150, 1140: 30, 11400: 300, 13300: 350, 3800: 100, 38000: 1000 },
+    mad: { 990: 270, 1990: 550, 290: 80, 5800: 1620, 1140: 320, 11400: 3190, 13300: 3700, 3800: 1060, 38000: 10640 }
   }
 };
 

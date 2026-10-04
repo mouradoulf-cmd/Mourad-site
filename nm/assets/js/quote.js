@@ -44,8 +44,8 @@
       step2: { name: "What you need", title: "What do you want us to build?", sub: "Choose as many as you like. A QR menu and a Google profile are the fastest wins." },
       step3: { name: "Languages", title: "Which languages do your customers speak?", sub: "Tick the ones you hear most. Your menu and your site will speak them too." },
       step4: { name: "Contact", title: "Where do we reach you?", sub: "Only what we need to answer you. Nothing is sent anywhere until you press the button." },
-      opt: { restaurant: "Restaurant", cafe: "Café or bar", salon: "Salon or spa", hotel: "Hotel or guesthouse", shop: "Shop or boutique", rental: "Scooter rental", other: "Something else", google: "Google profile", qr: "QR menu", web: "Website", social: "Social media" },
-      note: { google: "Be found on Maps", qr: "Your menu on every phone", web: "Your home online", social: "Content that keeps posting" },
+      opt: { restaurant: "Restaurant", cafe: "Café or bar", salon: "Salon or spa", hotel: "Hotel or guesthouse", shop: "Shop or boutique", rental: "Scooter rental", other: "Something else", google: "Google profile", qr: "QR menu", web: "Website" },
+      note: { google: "Be found on Maps", qr: "Your menu on every phone", web: "Your home online" },
       lang: { en: "English", fr: "French", it: "Italian", th: "Thai", ar: "Arabic", de: "German", ru: "Russian", zh: "Chinese" },
       f: {
         business: "Business name", area: "Area of Pattaya", first: "Your first name",
@@ -99,8 +99,8 @@
       step2: { name: "Ce qu'il vous faut", title: "Que voulez-vous que nous créions ?", sub: "Choisissez-en autant que vous voulez. Un menu QR et une fiche Google sont les gains les plus rapides." },
       step3: { name: "Les langues", title: "Quelles langues parlent vos clients ?", sub: "Cochez celles que vous entendez le plus. Votre menu et votre site les parleront aussi." },
       step4: { name: "Coordonnées", title: "Comment vous joindre ?", sub: "Seulement le nécessaire pour vous répondre. Rien n'est envoyé avant l'appui sur le bouton." },
-      opt: { restaurant: "Restaurant", cafe: "Café ou bar", salon: "Salon ou spa", hotel: "Hôtel ou guesthouse", shop: "Boutique", rental: "Location de scooters", other: "Autre chose", google: "Fiche Google", qr: "Menu QR", web: "Site web", social: "Réseaux sociaux" },
-      note: { google: "Être trouvé sur Maps", qr: "Votre menu sur chaque téléphone", web: "Votre vitrine en ligne", social: "Du contenu publié pour vous" },
+      opt: { restaurant: "Restaurant", cafe: "Café ou bar", salon: "Salon ou spa", hotel: "Hôtel ou guesthouse", shop: "Boutique", rental: "Location de scooters", other: "Autre chose", google: "Fiche Google", qr: "Menu QR", web: "Site web" },
+      note: { google: "Être trouvé sur Maps", qr: "Votre menu sur chaque téléphone", web: "Votre vitrine en ligne" },
       lang: { en: "Anglais", fr: "Français", it: "Italien", th: "Thaï", ar: "Arabe", de: "Allemand", ru: "Russe", zh: "Chinois" },
       f: {
         business: "Nom du commerce", area: "Quartier de Pattaya", first: "Votre prénom",
@@ -154,8 +154,8 @@
       step2: { name: "Cosa ti serve", title: "Cosa vuoi che creiamo?", sub: "Scegline quanti vuoi. Un menù QR e una scheda Google sono i risultati più rapidi." },
       step3: { name: "Le lingue", title: "Quali lingue parlano i tuoi clienti?", sub: "Spunta quelle che senti di più. Anche il menù e il sito le parleranno." },
       step4: { name: "Contatti", title: "Come ti raggiungiamo?", sub: "Solo l'essenziale per risponderti. Nulla viene inviato finché non premi il pulsante." },
-      opt: { restaurant: "Ristorante", cafe: "Caffè o bar", salon: "Salone o spa", hotel: "Hotel o guesthouse", shop: "Negozio o boutique", rental: "Noleggio scooter", other: "Altro", google: "Scheda Google", qr: "Menù QR", web: "Sito web", social: "Social media" },
-      note: { google: "Farsi trovare su Maps", qr: "Il menù su ogni telefono", web: "La tua vetrina online", social: "Contenuti pubblicati per te" },
+      opt: { restaurant: "Ristorante", cafe: "Caffè o bar", salon: "Salone o spa", hotel: "Hotel o guesthouse", shop: "Negozio o boutique", rental: "Noleggio scooter", other: "Altro", google: "Scheda Google", qr: "Menù QR", web: "Sito web" },
+      note: { google: "Farsi trovare su Maps", qr: "Il menù su ogni telefono", web: "La tua vetrina online" },
       lang: { en: "Inglese", fr: "Francese", it: "Italiano", th: "Thailandese", ar: "Arabo", de: "Tedesco", ru: "Russo", zh: "Cinese" },
       f: {
         business: "Nome dell'attività", area: "Zona di Pattaya", first: "Il tuo nome",
@@ -209,8 +209,8 @@
       step2: { name: "สิ่งที่คุณต้องการ", title: "อยากให้เราทำอะไรให้?", sub: "เลือกได้หลายอย่าง เมนู QR และโปรไฟล์ Google เห็นผลเร็วที่สุด" },
       step3: { name: "ภาษา", title: "ลูกค้าของคุณพูดภาษาใด?", sub: "เลือกภาษาที่ได้ยินบ่อยที่สุด เมนูและเว็บไซต์ของคุณจะพูดภาษาเหล่านั้นด้วย" },
       step4: { name: "ช่องทางติดต่อ", title: "ให้เราติดต่อคุณอย่างไร?", sub: "ถามเท่าที่จำเป็นเท่านั้น ไม่มีการส่งข้อมูลใด ๆ จนกว่าจะกดปุ่ม" },
-      opt: { restaurant: "ร้านอาหาร", cafe: "คาเฟ่หรือบาร์", salon: "ร้านเสริมสวยหรือสปา", hotel: "โรงแรมหรือเกสต์เฮาส์", shop: "ร้านค้าหรือบูติก", rental: "ร้านเช่ามอเตอร์ไซค์", other: "อื่น ๆ", google: "โปรไฟล์ Google", qr: "เมนู QR", web: "เว็บไซต์", social: "โซเชียลมีเดีย" },
-      note: { google: "ให้เจอบน Maps", qr: "เมนูบนมือถือทุกเครื่อง", web: "หน้าร้านออนไลน์ของคุณ", social: "มีคอนเทนต์โพสต์ให้ตลอด" },
+      opt: { restaurant: "ร้านอาหาร", cafe: "คาเฟ่หรือบาร์", salon: "ร้านเสริมสวยหรือสปา", hotel: "โรงแรมหรือเกสต์เฮาส์", shop: "ร้านค้าหรือบูติก", rental: "ร้านเช่ามอเตอร์ไซค์", other: "อื่น ๆ", google: "โปรไฟล์ Google", qr: "เมนู QR", web: "เว็บไซต์" },
+      note: { google: "ให้เจอบน Maps", qr: "เมนูบนมือถือทุกเครื่อง", web: "หน้าร้านออนไลน์ของคุณ" },
       lang: { en: "อังกฤษ", fr: "ฝรั่งเศส", it: "อิตาลี", th: "ไทย", ar: "อาหรับ", de: "เยอรมัน", ru: "รัสเซีย", zh: "จีน" },
       f: {
         business: "ชื่อร้านหรือธุรกิจ", area: "ย่านในพัทยา", first: "ชื่อเล่นของคุณ",
@@ -264,8 +264,8 @@
       step2: { name: "ما تحتاجه", title: "ماذا تريد أن ننشئ؟", sub: "اختر ما تشاء. قائمة QR وملف Google هما الأسرع نتيجة." },
       step3: { name: "اللغات", title: "ما اللغات التي يتحدثها عملاؤك؟", sub: "اختر الأكثر شيوعًا. ستتحدث قائمتك وموقعك بها أيضًا." },
       step4: { name: "بيانات التواصل", title: "كيف نصل إليك؟", sub: "فقط ما نحتاجه للرد عليك. لا يُرسل شيء قبل الضغط على الزر." },
-      opt: { restaurant: "مطعم", cafe: "مقهى أو بار", salon: "صالون أو سبا", hotel: "فندق أو بيت ضيافة", shop: "متجر أو بوتيك", rental: "تأجير دراجات", other: "شيء آخر", google: "ملف Google", qr: "قائمة QR", web: "موقع إلكتروني", social: "شبكات التواصل" },
-      note: { google: "ليجدك الناس على الخرائط", qr: "قائمتك على كل هاتف", web: "واجهتك على الإنترنت", social: "محتوى يُنشر عنك" },
+      opt: { restaurant: "مطعم", cafe: "مقهى أو بار", salon: "صالون أو سبا", hotel: "فندق أو بيت ضيافة", shop: "متجر أو بوتيك", rental: "تأجير دراجات", other: "شيء آخر", google: "ملف Google", qr: "قائمة QR", web: "موقع إلكتروني" },
+      note: { google: "ليجدك الناس على الخرائط", qr: "قائمتك على كل هاتف", web: "واجهتك على الإنترنت" },
       lang: { en: "الإنجليزية", fr: "الفرنسية", it: "الإيطالية", th: "التايلاندية", ar: "العربية", de: "الألمانية", ru: "الروسية", zh: "الصينية" },
       f: {
         business: "اسم النشاط", area: "المنطقة في باتايا", first: "اسمك الأول",
@@ -472,7 +472,6 @@
   function priceMap() {
     var O = window.NM_OFFERS;
     if (!O || !O.price) return null;
-    if (state.needs.indexOf("social") > -1) return "ultimate";
     if (state.needs.indexOf("web") > -1) return (O.sub && O.sub.website) ? "website" : "pack";
     if (state.needs.indexOf("qr") > -1) return "qr";
     if (state.needs.indexOf("google") > -1) return "google";
@@ -480,7 +479,7 @@
   }
 
   function offersFor(needs) {
-    var out = [], map = { google: "google", qr: "qr", web: "website", social: "ultimate" };
+    var out = [], map = { google: "google", qr: "qr", web: "website" };
     needs.forEach(function (n) {
       var id = map[n];
       if (!id) return;

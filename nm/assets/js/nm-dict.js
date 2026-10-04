@@ -6,8 +6,8 @@
   var D = {
     en: {
       meta2: {
-        services: { title: "Services — Google, QR menu & websites | NM Studio", description: "Five offers for Pattaya: Google profile, QR menu, website, Complete Pack, Ultimate. One-time from ฿990, or setup plus subscription." },
-        pricing: { title: "Prices — setup, then a subscription | NM Studio", description: "Thai baht prices: website ฿5,800 then ฿1,140 a month, Complete Pack ฿19,000 then ฿3,800 a month. Google, QR menu and Ultimate paid once." }
+        services: { title: "Services — Google, QR menu & websites | NM Studio", description: "Four offers for Pattaya: Google profile, QR menu, website, Complete Pack. One-time from ฿990, or setup plus subscription." },
+        pricing: { title: "Prices — setup, then a subscription | NM Studio", description: "Thai baht prices: website ฿5,800 then ฿1,140 a month, Complete Pack ฿13,300 then ฿3,800 a month. Google and QR menu paid once." }
       },
       nav2: { offers: "Offers", services: "Services", pricing: "Pricing", account: "My account", home: "Home", cta: "Chat on WhatsApp" },
     reel: { eyebrow: "Real work", title: "Seven sites, <em>live right now.</em>", lead: "Open any of them: real businesses, their own photos and their own languages.", hint: "Point at it to stop" },
@@ -37,8 +37,7 @@
         google: { name: "Google Business Profile", short: "Google", word: "Found.", benefit: "Show up on Google Maps — with photos that make people stop scrolling.", i1: "Google Business Profile created and set up for you", i2: "5 professional photos of your place", i3: "Optimised description, categories and keywords", i4: "Opening hours, map pin, phone and WhatsApp", i5: "A QR code that brings you 5-star reviews", time: "48 hours" },
         qr: { name: "QR Menu", short: "QR menu", word: "Instant.", benefit: "Your menu on every phone, in their language — change it anytime.", i1: "Your full menu online, with photos and prices", i2: "In up to 5 languages", i3: "Print-ready QR codes for every table", i4: "Change dishes and prices whenever you like", i5: "Works on any phone — nothing to download", time: "3 days" },
         website: { name: "Website", short: "Website", word: "Online.", benefit: "A custom website built from your photos, with your menu and your languages — live in days.", i1: "A custom website designed around your business", i2: "10 professional photos of your place", i3: "Your menu and prices, multilingual (up to 5 languages)", i4: "Google Maps, opening hours and WhatsApp booking", i5: "Hosting and your domain, included in the subscription", time: "5–7 days" },
-        pack: { name: "Complete Pack", short: "Complete", word: "Everything.", benefit: "Website, Google and QR menu — everything a tourist looks for, done for you.", i1: "A custom website built from your photos", i2: "Google Business Profile included", i3: "QR menu included", i4: "10 professional photos", i5: "Multilingual, with Google Maps and WhatsApp booking", time: "5–7 days" },
-        ultimate: { name: "Ultimate + Social", short: "Ultimate", word: "Premium.", benefit: "The Complete Pack, plus social media that runs itself — with a new video every month.", i1: "Everything in the Complete Pack", i2: "20 professional photos", i3: "Instagram, Facebook and TikTok set up and managed", i4: "A new short video every month", i5: "Priority support on WhatsApp", time: "7–10 days" }
+        pack: { name: "Complete Pack", short: "Complete", word: "Everything.", benefit: "Website, Google and QR menu — everything a tourist looks for, done for you.", i1: "A custom website built from your photos", i2: "Google Business Profile included", i3: "QR menu included", i4: "10 professional photos", i5: "Multilingual, with Google Maps and WhatsApp booking", time: "5–7 days" }
       },
       why2: {
         eyebrow: "Why NM Studio", title: "Real people. <em>Real results.</em>",
@@ -86,12 +85,12 @@
         subMonthly: "{setup} setup, then {monthly} a month", subYearly: "{setup} setup, then {yearly} a year (10 months — 2 free) — {monthly} a month",
         monthly: "Monthly", yearly: "Yearly", save: "2 months free", care: "Care plan", perMonth: "/ month", perYear: "/ year", then: "then", optional: "optional",
         noCare: "No care plan needed", choose: "Choose {name}", withCare: "Add the care plan", careTitle: "What the subscription covers",
-        c1: "Hosting and your domain", c2: "Unlimited edits on WhatsApp", c3: "Menu, photos and Google listing kept up to date", c4: "Social media and monthly video (Ultimate)",
+        c1: "Hosting and your domain", c2: "Unlimited edits on WhatsApp", c3: "Menu, photos and Google listing kept up to date",
         tableTitle: "Compare <em>everything.</em>", feature: "Feature",
         f1: "Google Business Profile", f2: "Professional photos", f3: "QR menu", f4: "Custom website", f5: "Languages", f6: "Social media managed", f7: "Monthly video", f8: "Priority support", f9: "Delivery", f10: "Care plan", f11: "Subscription",
         upTo5: "up to 5", faqTitle: "Pricing <em>questions.</em>",
-        pq1: "How do the prices work now?", pa1: "The website and the Complete Pack are a set-up fee paid today, then a monthly subscription that starts when your site goes live. Google Business Profile, QR menu and Ultimate + Social are still paid once; their care plan stays optional.",
-        pq2: "What does the subscription or care plan include?", pa2: "Hosting, your domain, unlimited edits on WhatsApp, and keeping your menu, photos and Google listing up to date. On Ultimate it also covers social media management and the monthly video.",
+        pq1: "How do the prices work now?", pa1: "The website and the Complete Pack are a set-up fee paid today, then a monthly subscription that starts when your site goes live. Google Business Profile and QR menu are still paid once; their care plan stays optional.",
+        pq2: "What does the subscription or care plan include?", pa2: "Hosting, your domain, unlimited edits on WhatsApp, and keeping your menu, photos and Google listing up to date.",
         pq3: "Can I start small and upgrade later?", pa3: "Of course. Many clients start with Google or the QR menu and move up when their business is ready.",
         pq4: "How can I pay?", pa4: "By card on Stripe's secure page, by Thai QR PromptPay, by bank transfer, or in cash when we meet. We confirm every order with you on WhatsApp, and you get a receipt.",
         pq5: "Is there a contract?", pa5: "No. A subscription can be cancelled anytime from your account or with a single message, and the one-time offers are paid once."
@@ -125,7 +124,7 @@
         portal: "Open my customer portal", portalNote: "Enter the email you paid with: Stripe sends you a one-time login link. No password to remember.",
         a1: "Download invoices and receipts (PDF)", a2: "Update your card or payment method", a3: "Switch between monthly and yearly billing", a4: "Cancel your care plan, anytime",
         noPortal: "Message us on WhatsApp and we'll handle invoices, changes or cancellation right away.",
-        upTitle: "Ready for more?", upBody: "Move up to the Complete Pack or Ultimate whenever your business is ready.", upBtn: "See the offers",
+        upTitle: "Ready for more?", upBody: "Move up to the Complete Pack whenever your business is ready.", upBtn: "See the offers",
         legalEyebrow: "Legal", legalTitle: "The fine print, <em>in plain words.</em>", legalNote: "The legal texts below are written in English.", updated: "Last updated: 3 October 2026", toc: "On this page"
       },
       trust: { secure: "Secure payment by Stripe", methods: "Card · Apple Pay · Google Pay · PromptPay", noCard: "Card details never touch this site" }
@@ -133,8 +132,8 @@
 
     fr: {
       meta2: {
-        services: { title: "Services — Google, menu QR et sites web | NM Studio", description: "Cinq offres à Pattaya : fiche Google, menu QR, site web, Pack complet, Ultime. Dès 990 ฿, ou mise en place + abonnement." },
-        pricing: { title: "Tarifs — mise en place puis abonnement | NM Studio", description: "Prix en bahts : site web 5 800 ฿ puis 1 140 ฿/mois, Pack complet 19 000 ฿ puis 3 800 ฿/mois. Google, menu QR et Ultime en paiement unique." }
+        services: { title: "Services — Google, menu QR et sites web | NM Studio", description: "Quatre offres à Pattaya : fiche Google, menu QR, site web, Pack complet. Dès 990 ฿, ou mise en place + abonnement." },
+        pricing: { title: "Tarifs — mise en place puis abonnement | NM Studio", description: "Prix en bahts : site web 5 800 ฿ puis 1 140 ฿/mois, Pack complet 13 300 ฿ puis 3 800 ฿/mois. Google et menu QR en paiement unique." }
       },
       nav2: { offers: "Offres", services: "Services", pricing: "Tarifs", account: "Mon compte", home: "Accueil", cta: "Discuter sur WhatsApp" },
     reel: { eyebrow: "Du travail réel", title: "Sept sites, <em>en ligne maintenant.</em>", lead: "Ouvrez-les : de vrais commerces, leurs photos, leurs langues.", hint: "Survolez pour arrêter" },
@@ -164,8 +163,7 @@
         google: { name: "Fiche Google Business", short: "Google", word: "Trouvé.", benefit: "Apparaissez sur Google Maps — avec des photos qui arrêtent le défilement.", i1: "Fiche Google Business créée et configurée pour vous", i2: "5 photos professionnelles de votre établissement", i3: "Description, catégories et mots-clés optimisés", i4: "Horaires, emplacement, téléphone et WhatsApp", i5: "Un QR code qui vous rapporte des avis 5 étoiles", time: "48 heures" },
         qr: { name: "Menu QR", short: "Menu QR", word: "Instantané.", benefit: "Votre menu sur chaque téléphone, dans leur langue — modifiable à tout moment.", i1: "Tout votre menu en ligne, avec photos et prix", i2: "Jusqu'à 5 langues", i3: "QR codes prêts à imprimer pour chaque table", i4: "Changez plats et prix quand vous voulez", i5: "Fonctionne sur tous les téléphones, sans appli", time: "3 jours" },
         website: { name: "Site web", short: "Site web", word: "En ligne.", benefit: "Un site sur mesure construit à partir de vos photos, avec votre menu et vos langues — en ligne en quelques jours.", i1: "Un site conçu autour de votre commerce", i2: "10 photos professionnelles de votre établissement", i3: "Votre menu et vos prix, en plusieurs langues (jusqu'à 5)", i4: "Google Maps, horaires et réservation WhatsApp", i5: "Hébergement et nom de domaine inclus dans l'abonnement", time: "5 à 7 jours" },
-        pack: { name: "Pack complet", short: "Complet", word: "Tout inclus.", benefit: "Site web, Google et menu QR — tout ce qu'un touriste cherche, fait pour vous.", i1: "Un site sur mesure créé à partir de vos photos", i2: "Fiche Google Business incluse", i3: "Menu QR inclus", i4: "10 photos professionnelles", i5: "Multilingue, avec Google Maps et réservation WhatsApp", time: "5 à 7 jours" },
-        ultimate: { name: "Ultime + réseaux", short: "Ultime", word: "Premium.", benefit: "Le Pack complet, plus des réseaux sociaux qui tournent tout seuls — avec une nouvelle vidéo chaque mois.", i1: "Tout le contenu du Pack complet", i2: "20 photos professionnelles", i3: "Instagram, Facebook et TikTok créés et gérés", i4: "Une nouvelle vidéo courte chaque mois", i5: "Support prioritaire sur WhatsApp", time: "7 à 10 jours" }
+        pack: { name: "Pack complet", short: "Complet", word: "Tout inclus.", benefit: "Site web, Google et menu QR — tout ce qu'un touriste cherche, fait pour vous.", i1: "Un site sur mesure créé à partir de vos photos", i2: "Fiche Google Business incluse", i3: "Menu QR inclus", i4: "10 photos professionnelles", i5: "Multilingue, avec Google Maps et réservation WhatsApp", time: "5 à 7 jours" }
       },
       why2: {
         eyebrow: "Pourquoi NM Studio", title: "De vraies personnes. <em>De vrais résultats.</em>",
@@ -213,12 +211,12 @@
         subMonthly: "{setup} de mise en place puis {monthly} par mois", subYearly: "{setup} de mise en place puis {yearly} par an (10 mois — 2 offerts) — soit {monthly} par mois",
         monthly: "Mensuel", yearly: "Annuel", save: "2 mois offerts", care: "Entretien", perMonth: "/ mois", perYear: "/ an", then: "puis", optional: "optionnel",
         noCare: "Aucun entretien nécessaire", choose: "Choisir {name}", withCare: "Ajouter l'entretien", careTitle: "Ce que couvre l'abonnement",
-        c1: "Hébergement et nom de domaine", c2: "Modifications illimitées sur WhatsApp", c3: "Menu, photos et fiche Google toujours à jour", c4: "Réseaux sociaux et vidéo mensuelle (Ultime)",
+        c1: "Hébergement et nom de domaine", c2: "Modifications illimitées sur WhatsApp", c3: "Menu, photos et fiche Google toujours à jour",
         tableTitle: "Tout <em>comparer.</em>", feature: "Fonctionnalité",
         f1: "Fiche Google Business", f2: "Photos professionnelles", f3: "Menu QR", f4: "Site sur mesure", f5: "Langues", f6: "Réseaux sociaux gérés", f7: "Vidéo mensuelle", f8: "Support prioritaire", f9: "Délai", f10: "Entretien", f11: "Abonnement",
         upTo5: "jusqu'à 5", faqTitle: "Questions sur <em>les tarifs.</em>",
-        pq1: "Comment fonctionnent les prix maintenant ?", pa1: "Le site web et le Pack complet, c'est une mise en place payée aujourd'hui, puis un abonnement mensuel qui démarre à la mise en ligne de votre site. La fiche Google, le menu QR et Ultime + réseaux restent en paiement unique, avec un forfait d'entretien optionnel.",
-        pq2: "Que comprennent l'abonnement et le forfait d'entretien ?", pa2: "L'hébergement, votre domaine, les modifications illimitées sur WhatsApp et la mise à jour de votre menu, de vos photos et de votre fiche Google. Avec Ultime, cela couvre aussi la gestion des réseaux sociaux et la vidéo mensuelle.",
+        pq1: "Comment fonctionnent les prix maintenant ?", pa1: "Le site web et le Pack complet, c'est une mise en place payée aujourd'hui, puis un abonnement mensuel qui démarre à la mise en ligne de votre site. La fiche Google et le menu QR restent en paiement unique, avec un forfait d'entretien optionnel.",
+        pq2: "Que comprennent l'abonnement et le forfait d'entretien ?", pa2: "L'hébergement, votre domaine, les modifications illimitées sur WhatsApp et la mise à jour de votre menu, de vos photos et de votre fiche Google.",
         pq3: "Puis-je commencer petit et évoluer ensuite ?", pa3: "Bien sûr. Beaucoup de clients commencent par Google ou le menu QR, puis passent à la suite quand leur commerce est prêt.",
         pq4: "Comment puis-je payer ?", pa4: "Par carte sur la page sécurisée de Stripe, par QR thaï PromptPay, par virement ou en espèces lors de notre rendez-vous. Chaque commande est confirmée avec vous sur WhatsApp, et vous recevez un reçu.",
         pq5: "Y a-t-il un engagement ?", pa5: "Non. Un abonnement se résilie à tout moment depuis votre compte ou d'un simple message, et les offres en paiement unique se paient une seule fois."
@@ -252,7 +250,7 @@
         portal: "Ouvrir mon espace client", portalNote: "Saisissez l'e-mail utilisé pour payer : Stripe vous envoie un lien de connexion unique. Aucun mot de passe.",
         a1: "Télécharger factures et reçus (PDF)", a2: "Mettre à jour votre carte ou moyen de paiement", a3: "Passer du mensuel à l'annuel (et inversement)", a4: "Résilier votre forfait d'entretien, à tout moment",
         noPortal: "Écrivez-nous sur WhatsApp : factures, changements ou résiliation, on s'en occupe tout de suite.",
-        upTitle: "Envie d'aller plus loin ?", upBody: "Passez au Pack complet ou à Ultime quand votre commerce est prêt.", upBtn: "Voir les offres",
+        upTitle: "Envie d'aller plus loin ?", upBody: "Passez au Pack complet quand votre commerce est prêt.", upBtn: "Voir les offres",
         legalEyebrow: "Légal", legalTitle: "Les petites lignes, <em>en clair.</em>", legalNote: "Les textes juridiques ci-dessous sont rédigés en anglais.", updated: "Dernière mise à jour : 3 octobre 2026", toc: "Sur cette page"
       },
       trust: { secure: "Paiement sécurisé par Stripe", methods: "Carte · Apple Pay · Google Pay · PromptPay", noCard: "Vos données de carte ne passent jamais par ce site" }
@@ -260,8 +258,8 @@
 
     it: {
       meta2: {
-        services: { title: "Servizi — Google, menù QR e siti web | NM Studio", description: "Cinque offerte a Pattaya: scheda Google, menù QR, sito web, Pacchetto completo, Ultimate. Da 990 ฿, oppure attivazione + abbonamento." },
-        pricing: { title: "Prezzi — attivazione e poi abbonamento | NM Studio", description: "Prezzi in baht: sito web 5.800 ฿ poi 1.140 ฿/mese, Pacchetto completo 19.000 ฿ poi 3.800 ฿/mese. Google, menù QR e Ultimate una tantum." }
+        services: { title: "Servizi — Google, menù QR e siti web | NM Studio", description: "Quattro offerte a Pattaya: scheda Google, menù QR, sito web, Pacchetto completo. Da 990 ฿, oppure attivazione + abbonamento." },
+        pricing: { title: "Prezzi — attivazione e poi abbonamento | NM Studio", description: "Prezzi in baht: sito web 5.800 ฿ poi 1.140 ฿/mese, Pacchetto completo 13.300 ฿ poi 3.800 ฿/mese. Google e menù QR una tantum." }
       },
       nav2: { offers: "Offerte", services: "Servizi", pricing: "Prezzi", account: "Il mio account", home: "Home", cta: "Scrivici su WhatsApp" },
     reel: { eyebrow: "Lavoro vero", title: "Sette siti, <em>online adesso.</em>", lead: "Après-les : attività vere, con le loro foto e le loro lingue.", hint: "Passa sopra per fermare" },
@@ -291,8 +289,7 @@
         google: { name: "Scheda Google Business", short: "Google", word: "Trovato.", benefit: "Compari su Google Maps — con foto che fanno fermare lo scroll.", i1: "Scheda Google Business creata e configurata per te", i2: "5 foto professionali del tuo locale", i3: "Descrizione, categorie e parole chiave ottimizzate", i4: "Orari, posizione, telefono e WhatsApp", i5: "Un QR code che ti porta recensioni a 5 stelle", time: "48 ore" },
         qr: { name: "Menù QR", short: "Menù QR", word: "Istantaneo.", benefit: "Il tuo menù su ogni telefono, nella loro lingua — modificabile quando vuoi.", i1: "Tutto il menù online, con foto e prezzi", i2: "Fino a 5 lingue", i3: "QR code pronti da stampare per ogni tavolo", i4: "Cambia piatti e prezzi quando vuoi", i5: "Funziona su ogni telefono, niente da scaricare", time: "3 giorni" },
         website: { name: "Sito web", short: "Sito web", word: "Online.", benefit: "Un sito su misura costruito con le tue foto, con il tuo menù e le tue lingue — online in pochi giorni.", i1: "Un sito progettato intorno alla tua attività", i2: "10 foto professionali del tuo locale", i3: "Menù e prezzi in più lingue (fino a 5)", i4: "Google Maps, orari e prenotazione WhatsApp", i5: "Hosting e dominio inclusi nell'abbonamento", time: "5–7 giorni" },
-        pack: { name: "Pacchetto completo", short: "Completo", word: "Tutto incluso.", benefit: "Sito, Google e menù QR — tutto ciò che un turista cerca, fatto per te.", i1: "Un sito su misura creato con le tue foto", i2: "Scheda Google Business inclusa", i3: "Menù QR incluso", i4: "10 foto professionali", i5: "Multilingue, con Google Maps e prenotazione WhatsApp", time: "5–7 giorni" },
-        ultimate: { name: "Ultimate + social", short: "Ultimate", word: "Premium.", benefit: "Il Pacchetto completo, più social media che vanno da soli — con un nuovo video ogni mese.", i1: "Tutto ciò che include il Pacchetto completo", i2: "20 foto professionali", i3: "Instagram, Facebook e TikTok creati e gestiti", i4: "Un nuovo video breve ogni mese", i5: "Assistenza prioritaria su WhatsApp", time: "7–10 giorni" }
+        pack: { name: "Pacchetto completo", short: "Completo", word: "Tutto incluso.", benefit: "Sito, Google e menù QR — tutto ciò che un turista cerca, fatto per te.", i1: "Un sito su misura creato con le tue foto", i2: "Scheda Google Business inclusa", i3: "Menù QR incluso", i4: "10 foto professionali", i5: "Multilingue, con Google Maps e prenotazione WhatsApp", time: "5–7 giorni" }
       },
       why2: {
         eyebrow: "Perché NM Studio", title: "Persone vere. <em>Risultati veri.</em>",
@@ -340,12 +337,12 @@
         subMonthly: "{setup} di attivazione, poi {monthly} al mese", subYearly: "{setup} di attivazione, poi {yearly} all'anno (10 mesi — 2 gratis) — {monthly} al mese",
         monthly: "Mensile", yearly: "Annuale", save: "2 mesi gratis", care: "Assistenza", perMonth: "/ mese", perYear: "/ anno", then: "poi", optional: "facoltativo",
         noCare: "Nessuna assistenza necessaria", choose: "Scegli {name}", withCare: "Aggiungi l'assistenza", careTitle: "Cosa copre l'abbonamento",
-        c1: "Hosting e dominio", c2: "Modifiche illimitate su WhatsApp", c3: "Menù, foto e scheda Google sempre aggiornati", c4: "Social media e video mensile (Ultimate)",
+        c1: "Hosting e dominio", c2: "Modifiche illimitate su WhatsApp", c3: "Menù, foto e scheda Google sempre aggiornati",
         tableTitle: "Confronta <em>tutto.</em>", feature: "Funzione",
         f1: "Scheda Google Business", f2: "Foto professionali", f3: "Menù QR", f4: "Sito su misura", f5: "Lingue", f6: "Social media gestiti", f7: "Video mensile", f8: "Assistenza prioritaria", f9: "Consegna", f10: "Assistenza", f11: "Abbonamento",
         upTo5: "fino a 5", faqTitle: "Domande <em>sui prezzi.</em>",
-        pq1: "Come funzionano adesso i prezzi?", pa1: "Sito web e Pacchetto completo sono un'attivazione pagata oggi, poi un abbonamento mensile che parte quando il sito va online. Scheda Google, menù QR e Ultimate + social restano una tantum, con piano di assistenza facoltativo.",
-        pq2: "Cosa includono abbonamento e assistenza?", pa2: "Hosting, dominio, modifiche illimitate su WhatsApp e l'aggiornamento di menù, foto e scheda Google. Con Ultimate copre anche la gestione dei social e il video mensile.",
+        pq1: "Come funzionano adesso i prezzi?", pa1: "Sito web e Pacchetto completo sono un'attivazione pagata oggi, poi un abbonamento mensile che parte quando il sito va online. Scheda Google e menù QR restano una tantum, con piano di assistenza facoltativo.",
+        pq2: "Cosa includono abbonamento e assistenza?", pa2: "Hosting, dominio, modifiche illimitate su WhatsApp e l'aggiornamento di menù, foto e scheda Google.",
         pq3: "Posso iniziare in piccolo e crescere dopo?", pa3: "Certo. Molti clienti iniziano con Google o il menù QR e passano oltre quando il locale è pronto.",
         pq4: "Come posso pagare?", pa4: "Con carta sulla pagina sicura di Stripe, con QR thailandese PromptPay, con bonifico o in contanti quando ci incontriamo. Confermiamo ogni ordine con te su WhatsApp e ricevi la ricevuta.",
         pq5: "C'è un vincolo?", pa5: "No. Un abbonamento si disdice quando vuoi, dal tuo account o con un messaggio, e le offerte una tantum si pagano una volta sola."
@@ -379,7 +376,7 @@
         portal: "Apri il mio portale clienti", portalNote: "Inserisci l'e-mail con cui hai pagato: Stripe ti invia un link di accesso monouso. Nessuna password.",
         a1: "Scarica fatture e ricevute (PDF)", a2: "Aggiorna la carta o il metodo di pagamento", a3: "Passa dalla fatturazione mensile all'annuale", a4: "Disdici l'assistenza, quando vuoi",
         noPortal: "Scrivici su WhatsApp e gestiamo subito fatture, modifiche o disdetta.",
-        upTitle: "Pronto per di più?", upBody: "Passa al Pacchetto completo o a Ultimate quando il tuo locale è pronto.", upBtn: "Vedi le offerte",
+        upTitle: "Pronto per di più?", upBody: "Passa al Pacchetto completo quando il tuo locale è pronto.", upBtn: "Vedi le offerte",
         legalEyebrow: "Note legali", legalTitle: "Le clausole, <em>in parole semplici.</em>", legalNote: "I testi legali qui sotto sono redatti in inglese.", updated: "Ultimo aggiornamento: 3 ottobre 2026", toc: "In questa pagina"
       },
       trust: { secure: "Pagamento sicuro con Stripe", methods: "Carta · Apple Pay · Google Pay · PromptPay", noCard: "I dati della carta non passano mai da questo sito" }
@@ -387,7 +384,7 @@
 
     th: {
       meta2: {
-        services: { title: "บริการ — Google, เมนู QR และเว็บไซต์ | NM Studio", description: "ห้าแพ็กเกจในพัทยา: Google, เมนู QR, เว็บไซต์, แพ็กครบชุด, Ultimate เริ่ม ฿990 จ่ายครั้งเดียว หรือค่าติดตั้ง + รายเดือน" },
+        services: { title: "บริการ — Google, เมนู QR และเว็บไซต์ | NM Studio", description: "สี่แพ็กเกจในพัทยา: Google, เมนู QR, เว็บไซต์, แพ็กครบชุด เริ่ม ฿990 จ่ายครั้งเดียว หรือค่าติดตั้ง + รายเดือน" },
         pricing: { title: "ราคา — ค่าติดตั้ง แล้วต่อด้วยค่าบริการรายเดือน | NM Studio", description: "ราคาเป็นบาท: เว็บไซต์ 5,800 บาท แล้ว 1,140 บาท/เดือน แพ็กครบชุด 19,000 บาท แล้ว 3,800 บาท/เดือน" }
       },
       nav2: { offers: "แพ็กเกจ", services: "บริการ", pricing: "ราคา", account: "บัญชีของฉัน", home: "หน้าแรก", cta: "แชททาง WhatsApp" },
@@ -418,8 +415,7 @@
         google: { name: "Google Business Profile", short: "Google", word: "เจอง่าย", benefit: "ขึ้นบน Google Maps — พร้อมรูปที่ทำให้คนหยุดเลื่อนดู", i1: "สร้างและตั้งค่า Google Business Profile ให้ครบ", i2: "รูปถ่ายมืออาชีพ 5 รูปของร้านคุณ", i3: "คำอธิบาย หมวดหมู่ และคีย์เวิร์ดที่ปรับแต่งแล้ว", i4: "เวลาเปิด-ปิด หมุดแผนที่ เบอร์โทร และ WhatsApp", i5: "QR code ที่ช่วยให้ได้รีวิว 5 ดาว", time: "48 ชั่วโมง" },
         qr: { name: "เมนู QR", short: "เมนู QR", word: "ทันใจ", benefit: "เมนูของคุณบนมือถือลูกค้าทุกคน เป็นภาษาของเขา — แก้ไขได้ทุกเมื่อ", i1: "เมนูครบทุกรายการออนไลน์ พร้อมรูปและราคา", i2: "สูงสุด 5 ภาษา", i3: "QR code พร้อมพิมพ์สำหรับทุกโต๊ะ", i4: "เปลี่ยนเมนูและราคาได้ตามต้องการ", i5: "ใช้ได้กับมือถือทุกรุ่น ไม่ต้องโหลดแอป", time: "3 วัน" },
         website: { name: "เว็บไซต์", short: "เว็บไซต์", word: "ออนไลน์", benefit: "เว็บไซต์ออกแบบเฉพาะร้านคุณ จากรูปของคุณ พร้อมเมนูและหลายภาษา — ขึ้นออนไลน์ในไม่กี่วัน", i1: "เว็บไซต์ออกแบบให้เข้ากับธุรกิจของคุณ", i2: "รูปถ่ายมืออาชีพ 10 รูปของร้านคุณ", i3: "เมนูและราคาของคุณ หลายภาษา (สูงสุด 5 ภาษา)", i4: "Google Maps เวลาเปิด-ปิด และจองผ่าน WhatsApp", i5: "โฮสติ้งและโดเมน รวมอยู่ในค่าบริการรายเดือน", time: "5–7 วัน" },
-        pack: { name: "แพ็กเกจครบชุด", short: "ครบชุด", word: "ครบจบ", benefit: "เว็บไซต์ Google และเมนู QR — ทุกอย่างที่นักท่องเที่ยวมองหา เราทำให้ครบ", i1: "เว็บไซต์ออกแบบเฉพาะร้าน จากรูปของคุณ", i2: "รวม Google Business Profile", i3: "รวมเมนู QR", i4: "รูปถ่ายมืออาชีพ 10 รูป", i5: "หลายภาษา พร้อม Google Maps และจองผ่าน WhatsApp", time: "5–7 วัน" },
-        ultimate: { name: "อัลติเมท + โซเชียล", short: "อัลติเมท", word: "พรีเมียม", benefit: "แพ็กเกจครบชุด พร้อมโซเชียลมีเดียที่เราดูแลให้ — และวิดีโอใหม่ทุกเดือน", i1: "ทุกอย่างในแพ็กเกจครบชุด", i2: "รูปถ่ายมืออาชีพ 20 รูป", i3: "สร้างและดูแล Instagram, Facebook และ TikTok", i4: "วิดีโอสั้นใหม่ทุกเดือน", i5: "ดูแลลูกค้าก่อนใครทาง WhatsApp", time: "7–10 วัน" }
+        pack: { name: "แพ็กเกจครบชุด", short: "ครบชุด", word: "ครบจบ", benefit: "เว็บไซต์ Google และเมนู QR — ทุกอย่างที่นักท่องเที่ยวมองหา เราทำให้ครบ", i1: "เว็บไซต์ออกแบบเฉพาะร้าน จากรูปของคุณ", i2: "รวม Google Business Profile", i3: "รวมเมนู QR", i4: "รูปถ่ายมืออาชีพ 10 รูป", i5: "หลายภาษา พร้อม Google Maps และจองผ่าน WhatsApp", time: "5–7 วัน" }
       },
       why2: {
         eyebrow: "ทำไมต้อง NM Studio", title: "คนจริง <em>ผลลัพธ์จริง</em>",
@@ -467,12 +463,12 @@
         subMonthly: "ค่าติดตั้ง {setup} แล้วเดือนละ {monthly}", subYearly: "ค่าติดตั้ง {setup} แล้วปีละ {yearly} (10 เดือน — ฟรี 2 เดือน) เฉลี่ยเดือนละ {monthly}",
         monthly: "รายเดือน", yearly: "รายปี", save: "ฟรี 2 เดือน", care: "แพ็กดูแล", perMonth: "/ เดือน", perYear: "/ ปี", then: "จากนั้น", optional: "เลือกได้",
         noCare: "ไม่ต้องมีแพ็กดูแล", choose: "เลือก {name}", withCare: "เพิ่มแพ็กดูแล", careTitle: "ค่าบริการรายเดือนครอบคลุมอะไรบ้าง",
-        c1: "โฮสติ้งและโดเมน", c2: "แก้ไขไม่จำกัดผ่าน WhatsApp", c3: "เมนู รูป และหน้าร้าน Google อัปเดตเสมอ", c4: "โซเชียลมีเดียและวิดีโอรายเดือน (อัลติเมท)",
+        c1: "โฮสติ้งและโดเมน", c2: "แก้ไขไม่จำกัดผ่าน WhatsApp", c3: "เมนู รูป และหน้าร้าน Google อัปเดตเสมอ",
         tableTitle: "เปรียบเทียบ <em>ทั้งหมด</em>", feature: "รายการ",
         f1: "Google Business Profile", f2: "รูปถ่ายมืออาชีพ", f3: "เมนู QR", f4: "เว็บไซต์เฉพาะร้าน", f5: "ภาษา", f6: "ดูแลโซเชียลมีเดีย", f7: "วิดีโอรายเดือน", f8: "ดูแลก่อนใคร", f9: "ระยะเวลา", f10: "แพ็กดูแล", f11: "ค่าบริการรายเดือน",
         upTo5: "สูงสุด 5", faqTitle: "คำถามเกี่ยวกับ <em>ราคา</em>",
-        pq1: "ตอนนี้ราคาคิดอย่างไร?", pa1: "เว็บไซต์และแพ็กเกจครบชุดเป็นค่าติดตั้งที่จ่ายวันนี้ แล้วต่อด้วยค่าบริการรายเดือนที่เริ่มเมื่อเว็บไซต์ออนไลน์ ส่วน Google, เมนู QR และอัลติเมท + โซเชียลยังจ่ายครั้งเดียว โดยมีแพ็กดูแลเป็นทางเลือก",
-        pq2: "ค่าบริการรายเดือนและแพ็กดูแลมีอะไรบ้าง?", pa2: "โฮสติ้ง โดเมน แก้ไขไม่จำกัดผ่าน WhatsApp และอัปเดตเมนู รูป และหน้าร้าน Google ให้เสมอ สำหรับอัลติเมทรวมการดูแลโซเชียลและวิดีโอรายเดือนด้วย",
+        pq1: "ตอนนี้ราคาคิดอย่างไร?", pa1: "เว็บไซต์และแพ็กเกจครบชุดเป็นค่าติดตั้งที่จ่ายวันนี้ แล้วต่อด้วยค่าบริการรายเดือนที่เริ่มเมื่อเว็บไซต์ออนไลน์ ส่วน Google และเมนู QR ยังจ่ายครั้งเดียว โดยมีแพ็กดูแลเป็นทางเลือก",
+        pq2: "ค่าบริการรายเดือนและแพ็กดูแลมีอะไรบ้าง?", pa2: "โฮสติ้ง โดเมน แก้ไขไม่จำกัดผ่าน WhatsApp และอัปเดตเมนู รูป และหน้าร้าน Google ให้เสมอ",
         pq3: "เริ่มจากแพ็กเล็กแล้วอัปเกรดทีหลังได้ไหม?", pa3: "ได้แน่นอน ลูกค้าหลายคนเริ่มจาก Google หรือเมนู QR แล้วค่อยขยับขึ้นเมื่อร้านพร้อม",
         pq4: "ชำระเงินได้อย่างไร?", pa4: "ชำระด้วยบัตรบนหน้าของ Stripe, สแกน QR พร้อมเพย์, โอนผ่านธนาคาร หรือเงินสดเมื่อเราพบกัน เรายืนยันทุกคำสั่งซื้อกับคุณทาง WhatsApp และคุณจะได้รับใบเสร็จ",
         pq5: "มีสัญญาผูกมัดไหม?", pa5: "ไม่มี ค่าบริการรายเดือนยกเลิกได้ทุกเมื่อจากบัญชีของคุณ หรือส่งข้อความหาเราเพียงข้อความเดียว ส่วนแพ็กเกจจ่ายครั้งเดียวก็จ่ายครั้งเดียว"
@@ -506,7 +502,7 @@
         portal: "เปิดพอร์ทัลลูกค้าของฉัน", portalNote: "กรอกอีเมลที่ใช้ชำระเงิน Stripe จะส่งลิงก์เข้าสู่ระบบแบบใช้ครั้งเดียวให้ ไม่ต้องจำรหัสผ่าน",
         a1: "ดาวน์โหลดใบแจ้งหนี้และใบเสร็จ (PDF)", a2: "อัปเดตบัตรหรือวิธีชำระเงิน", a3: "สลับระหว่างรายเดือนและรายปี", a4: "ยกเลิกแพ็กดูแลได้ทุกเมื่อ",
         noPortal: "ทักเราทาง WhatsApp แล้วเราจะจัดการใบแจ้งหนี้ การเปลี่ยนแปลง หรือการยกเลิกให้ทันที",
-        upTitle: "พร้อมไปต่อแล้วหรือยัง?", upBody: "อัปเกรดเป็นแพ็กเกจครบชุดหรืออัลติเมทได้เมื่อร้านพร้อม", upBtn: "ดูแพ็กเกจ",
+        upTitle: "พร้อมไปต่อแล้วหรือยัง?", upBody: "อัปเกรดเป็นแพ็กเกจครบชุดได้เมื่อร้านพร้อม", upBtn: "ดูแพ็กเกจ",
         legalEyebrow: "กฎหมาย", legalTitle: "เงื่อนไขทั้งหมด <em>เขียนให้เข้าใจง่าย</em>", legalNote: "ข้อความทางกฎหมายด้านล่างเขียนเป็นภาษาอังกฤษ", updated: "อัปเดตล่าสุด: 3 ตุลาคม 2026", toc: "ในหน้านี้"
       },
       trust: { secure: "ชำระเงินอย่างปลอดภัยผ่าน Stripe", methods: "บัตร · Apple Pay · Google Pay · พร้อมเพย์", noCard: "ข้อมูลบัตรไม่ผ่านเว็บไซต์นี้" }
@@ -514,7 +510,7 @@
 
     ar: {
       meta2: {
-        services: { title: "الخدمات — Google وقائمة QR والمواقع | NM Studio", description: "خمسة عروض في باتايا: ملف Google، قائمة QR، الموقع، الباقة الكاملة وUltimate. من 990 ฿ دفعة واحدة أو إعداد + اشتراك." },
+        services: { title: "الخدمات — Google وقائمة QR والمواقع | NM Studio", description: "أربعة عروض في باتايا: ملف Google، قائمة QR، الموقع، الباقة الكاملة. من 990 ฿ دفعة واحدة أو إعداد + اشتراك." },
         pricing: { title: "الأسعار — إعداد ثم اشتراك شهري | NM Studio", description: "أسعار بالبات: الموقع إعداد 5,800 ฿ ثم 1,140 ฿ شهريًا، والباقة الكاملة 19,000 ฿ ثم 3,800 ฿ شهريًا." }
       },
       nav2: { offers: "العروض", services: "الخدمات", pricing: "الأسعار", account: "حسابي", home: "الرئيسية", cta: "تحدّث معنا على واتساب" },
@@ -545,8 +541,7 @@
         google: { name: "ملف Google التجاري", short: "Google", word: "ظاهر.", benefit: "اظهر على خرائط Google — بصور تجعل الناس يتوقفون عن التمرير.", i1: "إنشاء ملف Google التجاري وإعداده بالكامل", i2: "5 صور احترافية لمحلك", i3: "وصف وفئات وكلمات مفتاحية محسّنة", i4: "ساعات العمل والموقع على الخريطة والهاتف وواتساب", i5: "رمز QR يجلب لك تقييمات بخمس نجوم", time: "48 ساعة" },
         qr: { name: "قائمة QR", short: "قائمة QR", word: "فوري.", benefit: "قائمتك على كل هاتف وبلغة زبائنك — تعدّلها متى شئت.", i1: "قائمتك كاملة على الإنترنت مع الصور والأسعار", i2: "حتى 5 لغات", i3: "رموز QR جاهزة للطباعة لكل طاولة", i4: "غيّر الأطباق والأسعار متى أردت", i5: "تعمل على أي هاتف — بلا تطبيق", time: "3 أيام" },
         website: { name: "الموقع الإلكتروني", short: "موقع إلكتروني", word: "على الإنترنت.", benefit: "موقع مصمّم خصيصًا من صورك، مع قائمتك ولغاتك — يصبح مباشرًا خلال أيام.", i1: "موقع مصمّم حول نشاطك التجاري", i2: "10 صور احترافية لمحلك", i3: "قائمتك وأسعارك بعدة لغات (حتى 5 لغات)", i4: "خرائط Google وساعات العمل والحجز عبر واتساب", i5: "الاستضافة والنطاق مشمولان في الاشتراك", time: "5–7 أيام" },
-        pack: { name: "الباقة الكاملة", short: "الكاملة", word: "شامل.", benefit: "موقع ويب وGoogle وقائمة QR — كل ما يبحث عنه السائح، ننجزه لك.", i1: "موقع مصمّم خصيصًا من صورك", i2: "ملف Google التجاري ضمن الباقة", i3: "قائمة QR ضمن الباقة", i4: "10 صور احترافية", i5: "متعدد اللغات، مع خرائط Google والحجز عبر واتساب", time: "5–7 أيام" },
-        ultimate: { name: "الباقة القصوى + التواصل", short: "القصوى", word: "متميز.", benefit: "الباقة الكاملة، مع حسابات تواصل اجتماعي ندير لك كل شيء فيها — وفيديو جديد كل شهر.", i1: "كل ما في الباقة الكاملة", i2: "20 صورة احترافية", i3: "إنشاء وإدارة Instagram وFacebook وTikTok", i4: "فيديو قصير جديد كل شهر", i5: "دعم ذو أولوية على واتساب", time: "7–10 أيام" }
+        pack: { name: "الباقة الكاملة", short: "الكاملة", word: "شامل.", benefit: "موقع ويب وGoogle وقائمة QR — كل ما يبحث عنه السائح، ننجزه لك.", i1: "موقع مصمّم خصيصًا من صورك", i2: "ملف Google التجاري ضمن الباقة", i3: "قائمة QR ضمن الباقة", i4: "10 صور احترافية", i5: "متعدد اللغات، مع خرائط Google والحجز عبر واتساب", time: "5–7 أيام" }
       },
       why2: {
         eyebrow: "لماذا NM Studio", title: "أشخاص حقيقيون. <em>نتائج حقيقية.</em>",
@@ -594,12 +589,12 @@
         subMonthly: "إعداد {setup} ثم {monthly} شهريًا", subYearly: "إعداد {setup} ثم {yearly} سنويًا (10 أشهر — شهران مجانًا) — أي {monthly} شهريًا",
         monthly: "شهري", yearly: "سنوي", save: "شهران مجانًا", care: "خطة العناية", perMonth: "/ شهريًا", perYear: "/ سنويًا", then: "ثم", optional: "اختياري",
         noCare: "لا حاجة لخطة عناية", choose: "اختر {name}", withCare: "أضف خطة العناية", careTitle: "ما يشمله الاشتراك",
-        c1: "الاستضافة والنطاق", c2: "تعديلات بلا حدود عبر واتساب", c3: "القائمة والصور وصفحة Google محدّثة دائمًا", c4: "التواصل الاجتماعي والفيديو الشهري (القصوى)",
+        c1: "الاستضافة والنطاق", c2: "تعديلات بلا حدود عبر واتساب", c3: "القائمة والصور وصفحة Google محدّثة دائمًا",
         tableTitle: "قارن <em>كل شيء.</em>", feature: "الميزة",
         f1: "ملف Google التجاري", f2: "صور احترافية", f3: "قائمة QR", f4: "موقع مخصص", f5: "اللغات", f6: "إدارة التواصل الاجتماعي", f7: "فيديو شهري", f8: "دعم ذو أولوية", f9: "مدة التسليم", f10: "خطة العناية", f11: "الاشتراك",
         upTo5: "حتى 5", faqTitle: "أسئلة عن <em>الأسعار.</em>",
-        pq1: "كيف تُحسب الأسعار الآن؟", pa1: "الموقع الإلكتروني والباقة الكاملة: إعداد يُدفع اليوم ثم اشتراك شهري يبدأ عند إطلاق موقعك. أما ملف Google وقائمة QR والباقة القصوى + التواصل فتبقى دفعة واحدة، مع خطة عناية اختيارية.",
-        pq2: "ماذا يشمل الاشتراك أو خطة العناية؟", pa2: "الاستضافة والنطاق والتعديلات بلا حدود عبر واتساب، وتحديث قائمتك وصورك وصفحة Google. وفي الباقة القصوى تشمل أيضًا إدارة التواصل الاجتماعي والفيديو الشهري.",
+        pq1: "كيف تُحسب الأسعار الآن؟", pa1: "الموقع الإلكتروني والباقة الكاملة: إعداد يُدفع اليوم ثم اشتراك شهري يبدأ عند إطلاق موقعك. أما ملف Google وقائمة QR فتبقى دفعة واحدة، مع خطة عناية اختيارية.",
+        pq2: "ماذا يشمل الاشتراك أو خطة العناية؟", pa2: "الاستضافة والنطاق والتعديلات بلا حدود عبر واتساب، وتحديث قائمتك وصورك وصفحة Google.",
         pq3: "هل يمكنني البدء بعرض صغير والترقية لاحقًا؟", pa3: "بالطبع. كثير من العملاء يبدؤون بـ Google أو قائمة QR ثم يرتقون حين يصبح محلهم جاهزًا.",
         pq4: "كيف أدفع؟", pa4: "بالبطاقة على صفحة Stripe الآمنة، أو عبر رمز QR التايلاندي PromptPay، أو بالتحويل البنكي، أو نقدًا عند اللقاء. نؤكد كل طلب معك على واتساب، وتصلك فاتورة.",
         pq5: "هل هناك عقد؟", pa5: "لا. يمكن إلغاء الاشتراك في أي وقت من حسابك أو برسالة واحدة، والعروض ذات الدفعة الواحدة تُدفع مرة واحدة."
@@ -633,7 +628,7 @@
         portal: "افتح بوابة العملاء", portalNote: "أدخل البريد الإلكتروني الذي دفعت به: يرسل لك Stripe رابط دخول لمرة واحدة. بلا كلمة مرور.",
         a1: "تنزيل الفواتير والإيصالات (PDF)", a2: "تحديث البطاقة أو طريقة الدفع", a3: "التبديل بين الفوترة الشهرية والسنوية", a4: "إلغاء خطة العناية في أي وقت",
         noPortal: "راسلنا على واتساب وسنتولى الفواتير أو التغييرات أو الإلغاء فورًا.",
-        upTitle: "مستعد للمزيد؟", upBody: "انتقل إلى الباقة الكاملة أو القصوى حين يصبح محلك جاهزًا.", upBtn: "عرض العروض",
+        upTitle: "مستعد للمزيد؟", upBody: "انتقل إلى الباقة الكاملة حين يصبح محلك جاهزًا.", upBtn: "عرض العروض",
         legalEyebrow: "قانوني", legalTitle: "التفاصيل الدقيقة <em>بكلمات بسيطة.</em>", legalNote: "النصوص القانونية أدناه مكتوبة باللغة الإنجليزية.", updated: "آخر تحديث: 3 أكتوبر 2026", toc: "في هذه الصفحة"
       },
       trust: { secure: "دفع آمن عبر Stripe", methods: "بطاقة · Apple Pay · Google Pay · PromptPay", noCard: "بيانات بطاقتك لا تمرّ عبر هذا الموقع أبدًا" }

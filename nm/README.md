@@ -25,11 +25,18 @@ Everything is in **`assets/js/offers-config.js`**:
 |---|---|---|
 | Google Business Profile | ฿990 | — |
 | QR Menu | ฿1,990 | ฿290 / month |
-| Complete Pack | ฿4,990 | ฿590 / month |
-| Ultimate + Social | ฿9,990 | ฿1,490 / month |
 
-Yearly care plan = 10 months (2 months free). Visitors reading in another
-language see an approximate amount in € (or DH in Arabic), hand-rounded.
+| Offer | Setup fee | Subscription (part of the offer) |
+|---|---|---|
+| Website | ฿5,800 | ฿1,140 / month |
+| Complete Pack | ฿13,300 | ฿3,800 / month |
+
+Website and the Complete Pack are a one-time setup fee paid today, then a
+monthly subscription that starts when the site goes live — there is no "no
+thanks" option for them. Yearly billing (where offered) = 10 months (2 months
+free). Visitors reading in another language see an approximate amount in their
+own currency (£ for English, € for French/Italian, DH for Arabic),
+hand-rounded — Thai visitors see the real baht price.
 
 ### Social links
 
@@ -64,16 +71,19 @@ cancellation ─► Stripe Billing + Customer portal (account.html)
 
 1. Create a Stripe account for your business (country: Thailand), and switch
    the dashboard to **Test mode**.
-2. **Products** → create the 4 offers with a one-time price in THB, and the 3
-   care plans with two recurring prices each (monthly, and yearly = 10×).
-3. **Payment Links** → create one link per combination (10 links):
-   `google, qr, pack, ultimate` (offer only) and `qr_monthly, qr_yearly,
-   pack_monthly, pack_yearly, ultimate_monthly, ultimate_yearly` (offer
-   one-time price + the care recurring price in the same link). In every link:
+2. **Products** → create Google and QR Menu with a one-time price in THB plus
+   their optional care plan (monthly, and yearly = 10×); create Website and
+   Complete Pack as a one-time setup fee plus a mandatory recurring price
+   (monthly, and yearly = 10×).
+3. **Payment Links** → create one link per combination (8 links): `google, qr`
+   (offer only, one-time) and `qr_monthly, qr_yearly, website_monthly,
+   website_yearly, pack_monthly, pack_yearly` (setup fee + the recurring price
+   in the same link — Website and Complete Pack never use a plain, non-`_monthly`
+   key). In every link:
    - allow promotion codes (the checkout's promo field pre-fills them);
    - collect phone number (optional);
    - after payment → redirect to `https://mouradoulf-cmd.github.io/Mourad-site/nm/success.html`.
-4. Paste the 10 URLs into `card` in **`assets/js/payment-config.js`**.
+4. Paste the 8 URLs into `card` in **`assets/js/payment-config.js`**.
 5. **Settings → Billing → Customer portal** → enable invoices history,
    payment-method update, switching between monthly/yearly, and cancellation
    (at period end). Copy the **login link** into `portal`.
