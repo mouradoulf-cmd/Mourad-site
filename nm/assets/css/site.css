@@ -268,12 +268,11 @@ html[dir="rtl"] .lang__list { transform-origin: top left; }
 @media (prefers-reduced-motion: reduce) { .flag i, .flag i::after { animation: none; } }
 /* The flag wave is cosmetic and each strip runs its own infinite animation —
    with several flags on a page (nav, language switcher, footer) that is
-   dozens of concurrent animations. Measured on a throttled mobile CPU: this
-   alone cost the page ~10fps and most of its long main-thread tasks, so it is
-   switched off on touch/narrow viewports where it is least likely to be
-   noticed and most likely to cost frames. Flags still render correctly —
-   only the ripple stops. */
-@media (max-width: 899px), (pointer: coarse) { .flag i, .flag i::before, .flag i::after { animation: none !important; } }
+   dozens of concurrent animations (87 strips measured on this page alone).
+   Measured on a throttled CPU, mobile AND desktop: this alone cost several
+   frames per second and most of the page's long main-thread tasks, so it is
+   off everywhere. Flags still render correctly — only the ripple stops. */
+.flag i, .flag i::before, .flag i::after { animation: none !important; }
 
 /* ==========================================================================
    DEVICES — MacBook + iPhone frames (hero, work cards, design mock)
@@ -583,7 +582,6 @@ html[dir="rtl"] .qa__body p { padding: 0 0 1.6rem 3rem; }
 html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clamp(2.2rem, 5.5vw, 4.6rem); line-height: 1.25; }
 .finale__sub { margin-top: 1.5rem; max-width: 36rem; color: #cfcbe0; font-size: clamp(1rem, 1.4vw, 1.15rem); }
 .wa-giant { --s: clamp(7rem, 13vw, 9.5rem); position: relative; margin-top: clamp(2.5rem, 5vw, 3.5rem); display: inline-flex; flex-direction: column; align-items: center; gap: 1.1rem; border-radius: 1.5rem; }
-.wa-giant__halo { position: absolute; top: calc(var(--s) / 2); left: 50%; width: calc(var(--s) * 2.3); height: calc(var(--s) * 2.3); transform: translate(-50%, -50%); border-radius: 50%; z-index: 0; pointer-events: none; background: radial-gradient(circle, rgba(201,169,97,.32), rgba(201,169,97,.12) 45%, transparent 72%); filter: blur(4px); }
 .wa-giant__core { position: relative; z-index: 1; display: grid; place-items: center; width: var(--s); height: var(--s); border-radius: 50%; color: #fff; background: radial-gradient(circle at 35% 30%, #4ee486, #25d366 55%, #1ba853); box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 -10px 24px rgba(0,0,0,.18) inset, 0 24px 60px -20px rgba(37,211,102,.6), 0 0 50px -10px rgba(201,169,97,.4); transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out); }
 .wa-giant__core svg { width: 46%; height: 46%; }
 .wa-giant:hover .wa-giant__core { transform: scale(1.05); }
@@ -625,10 +623,10 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 .footer__bottom { margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .86rem; color: var(--faint); }
 .footer__bottom a:hover { color: var(--text); }
 .footer__clock { display: inline-flex; align-items: center; gap: .5rem; font-variant-numeric: tabular-nums; }
-.wa-float { position: fixed; bottom: max(1.25rem, env(safe-area-inset-bottom)); inset-inline-start: 1.25rem; z-index: 150; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff; box-shadow: 0 14px 34px -10px rgba(37,211,102,.7); transform: translateY(120%) scale(.8); opacity: 0; transition: transform .5s var(--ease-out), opacity .4s ease, box-shadow .3s ease; }
+.wa-float { position: fixed; bottom: max(1.25rem, env(safe-area-inset-bottom)); inset-inline-start: 1.25rem; z-index: 150; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff; box-shadow: 0 6px 16px -4px rgba(0,0,0,.45); transform: translateY(120%) scale(.8); opacity: 0; transition: transform .5s var(--ease-out), opacity .4s ease, box-shadow .3s ease; }
 .wa-float svg { width: 28px; height: 28px; }
 .wa-float.is-visible { transform: none; opacity: 1; }
-.wa-float:hover { box-shadow: 0 18px 40px -8px rgba(37,211,102,.9); }
+.wa-float:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,.55); }
 /* On touch devices the button's visibility is re-evaluated on every scroll
    frame; an animated transform/opacity there is what reads as a glitch when
    it is re-triggered near a threshold. Make show/hide instant on touch so
@@ -678,9 +676,10 @@ html[lang="th"] .ic-num, html[lang="ar"] .ic-num { font-style: normal; font-weig
 /* The gold-shine sweep repaints a text-clip gradient every frame — it can't
    be GPU-composited the way a transform can. With several .ic-word/.ic-num
    instances animating at once (four offer cards alone), this measured as
-   the single costliest section on a throttled mobile CPU. Off on touch
-   devices; the gradient itself still shows, just without the sweep. */
-@media (max-width: 899px), (pointer: coarse) { .ic-word, .ic-num { animation: none !important; background-position: 30% 0; } }
+   the single costliest section on a throttled CPU, mobile and desktop
+   alike. Off everywhere; the gradient itself still shows, just without the
+   sweep. */
+.ic-word, .ic-num { animation: none !important; background-position: 30% 0; }
 
 /* ==========================================================================
    OFFER CARDS — glass, pointer-lit border, gold on the featured one

@@ -24,7 +24,7 @@
  */
 window.NM_OFFERS = {
   order: ["google", "qr", "website", "pack"],
-  featured: "pack",
+  featured: "website",
   price: { google: 990, qr: 1990, website: 5800, pack: 13300 },
   care: { google: 0, qr: 290, website: 0, pack: 0 },
   sub: {
