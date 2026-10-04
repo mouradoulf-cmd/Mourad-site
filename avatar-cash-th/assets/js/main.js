@@ -114,3 +114,11 @@ function initProgress(){
 $$('[data-print]').forEach(b=>b.addEventListener('click',()=>print()));
 /* hide print/save buttons when the site is shown inside a sandboxed frame (they cannot work there) */
 try{if(window.self!==window.top){$$('[data-print],#dlqr').forEach(b=>b.hidden=true)}}catch(e){$$('[data-print],#dlqr').forEach(b=>b.hidden=true)}
+
+/* videos: language-specific files, autoplay (muted) while visible */
+function setVideos(){const l=(window.I18N&&I18N.lang)||'th';
+  $$('video[data-v]').forEach(v=>{const n=v.dataset.v,src=`assets/video/${n}-${l}.mp4`;
+    if(v.dataset.cur!==src){const was=!v.paused;v.dataset.cur=src;v.poster=`assets/video/${n}-${l}.jpg`;v.src=src;v.load();if(was)v.play().catch(()=>{})}});
+  $$('[data-vt]').forEach(e=>e.textContent=t('vc_'+e.dataset.vt))}
+setVideos();document.addEventListener('langchange',setVideos);
+if('IntersectionObserver' in window){const vo=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{})}else v.pause()}),{threshold:.55});$$('video[data-v]').forEach(v=>vo.observe(v))}

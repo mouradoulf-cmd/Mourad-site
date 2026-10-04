@@ -84,3 +84,8 @@ label.ck{display:flex;gap:10px;align-items:flex-start;cursor:pointer}label.ck in
 .lang button{background:none;border:0;color:var(--mute);font:700 .75rem var(--font);padding:5px 10px;border-radius:99px;cursor:pointer}
 .lang button.on{background:var(--green);color:#04130d}
 nav .wrap{gap:12px}
+
+.vids{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:6px auto 44px}
+.vf{width:min(250px,44vw);text-align:center}
+.vf video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:24px;border:1px solid var(--line);background:#000;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 50px rgba(139,124,255,.18)}
+.vf figcaption{margin-top:10px;color:var(--mute);font-size:.88rem;font-weight:600}
