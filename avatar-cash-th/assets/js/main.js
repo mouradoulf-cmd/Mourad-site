@@ -112,3 +112,5 @@ function initProgress(){
 }
 /* ---------- print button ---------- */
 $$('[data-print]').forEach(b=>b.addEventListener('click',()=>print()));
+/* hide print/save buttons when the site is shown inside a sandboxed frame (they cannot work there) */
+try{if(window.self!==window.top){$$('[data-print],#dlqr').forEach(b=>b.hidden=true)}}catch(e){$$('[data-print],#dlqr').forEach(b=>b.hidden=true)}
