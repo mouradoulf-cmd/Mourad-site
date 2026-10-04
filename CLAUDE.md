@@ -150,6 +150,14 @@ switches displayed prices. Booking builder with a vanilla range calendar
 (2 months desktop / 1 mobile), tiered pricing (7+ days weekly, 28+ monthly),
 extras, delivery and a WhatsApp request; `RSI18n` EN/FR/TH/RU.
 
+## ÔBlanc — café-restaurant demo for a real business (`oblanc/`)
+
+Built for a real café in Mohammédia (Morocco) on the Neon Tiger structure,
+recoloured to its identity (white + navy + blue neon sign, gold prices),
+Fraunces + Manrope. Real address, phone, hours, Google rating and menu
+prices (from menu photos); real photos from its Google listing. FR baked +
+EN/AR (RTL) via `OBI18n` in `assets/js/i18n.js`. Details in `oblanc/README.md`.
+
 ## NM Studio — the studio's own site (`nm/`)
 
 Plain HTML/CSS/JS, no build step. v4 "Night future, touch of gold"
