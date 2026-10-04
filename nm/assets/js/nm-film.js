@@ -18,7 +18,7 @@ en:{watch:'Watch the 1-min video',
  h7:'From photos to <em>live.</em>',steps:[['Day 1','Send your photos'],['Days 2–4','We design your site'],['Launch','You\'re live']],
  h8:'Simple <em>pricing</em>',onetime:'one-time',setup:'setup',mo:'/ month',pop:'Most popular',
  h9:'We come <em>to you.</em>',chips:['We meet you in Pattaya','Unlimited edits on WhatsApp','Live in days'],
- h10:'Ready to be <em>visible?</em>',t10:'Message us on WhatsApp',wa:'Chat on WhatsApp',book:'Book a meeting',price:'See the offers',scan:'Scan to message us on WhatsApp',close:'Close'},
+ h10:'Ready to be <em>visible?</em>',t10:'Message us on WhatsApp',wa:'Chat on WhatsApp',book:'Book a meeting',price:'See the offers',scan:'Scan to message us on WhatsApp',close:'Close',tEyebrow:"Video tour",tTitle:"See it all in <em>77 seconds.</em>",tLead:"No jargon: why customers can't find you, what we build, how it works and what it costs. Pick a chapter or just press play.",tCh:["Why customers can't find you", "Four offers, eight live sites", "QR menu, Google & how it works", "Prices & next step"],tFull:"Watch full screen",tOffers:"See the offers",tHint:"Captions on · no sound needed"},
 fr:{watch:'Voir la vidéo (1 min)',
  say:["Avant de venir, vos clients cherchent en ligne.","Sans site web, vous êtes invisible : vos clients choisissent quelqu'un d'autre.","NM Studio règle ça en quelques jours, avec quatre offres simples.","Huit sites en ligne que vous pouvez ouvrir aujourd'hui, chacun construit autour de son activité.","Un menu QR s'ouvre sur tous les téléphones : toujours à jour, sans réimpression.","Soyez trouvé sur Google et Maps, même par les touristes qui ne sont pas encore arrivés.","C'est simple : vous envoyez vos photos, on conçoit tout, et vous êtes en ligne en quelques jours.","Quatre offres, en bahts. Choisissez celle qui convient à votre activité.","On vient chez vous, les modifications sont illimitées sur WhatsApp, et vous êtes en ligne en quelques jours.","Prêt à être visible ? Écrivez-nous sur WhatsApp."],
  h1:'Ils cherchent <em>d\'abord.</em>',q:'restaurant près de moi',where:'Où est votre établissement ?',
@@ -30,7 +30,7 @@ fr:{watch:'Voir la vidéo (1 min)',
  h7:'De vos photos à <em>la mise en ligne.</em>',steps:[['Jour 1','Envoyez vos photos'],['Jours 2–4','On conçoit votre site'],['Lancement','Vous êtes en ligne']],
  h8:'Des tarifs <em>simples</em>',onetime:'paiement unique',setup:'mise en place',mo:'/ mois',pop:'Le plus choisi',
  h9:'On vient <em>chez vous.</em>',chips:['Rencontre à Pattaya','Modifications illimitées sur WhatsApp','En ligne en quelques jours'],
- h10:'Prêt à être <em>visible ?</em>',t10:'Écrivez-nous sur WhatsApp',wa:'Écrire sur WhatsApp',book:'Prendre rendez-vous',price:'Voir les offres',scan:'Scannez pour nous écrire sur WhatsApp',close:'Fermer'},
+ h10:'Prêt à être <em>visible ?</em>',t10:'Écrivez-nous sur WhatsApp',wa:'Écrire sur WhatsApp',book:'Prendre rendez-vous',price:'Voir les offres',scan:'Scannez pour nous écrire sur WhatsApp',close:'Fermer',tEyebrow:"Visite en vidéo",tTitle:"Tout comprendre en <em>77 secondes.</em>",tLead:"Sans jargon : pourquoi vos clients ne vous trouvent pas, ce que nous construisons, comment ça marche et combien ça coûte. Choisissez un chapitre ou lancez simplement la lecture.",tCh:["Pourquoi vos clients ne vous trouvent pas", "Quatre offres, huit sites en ligne", "Menu QR, Google et déroulé", "Tarifs et prochaine étape"],tFull:"Voir en plein écran",tOffers:"Voir les offres",tHint:"Sous-titres inclus · sans son"},
 it:{watch:'Guarda il video (1 min)',
  say:["Prima di venire, i tuoi clienti cercano online.","Senza sito web sei invisibile: i clienti scelgono qualcun altro.","NM Studio risolve tutto in pochi giorni, con quattro offerte semplici.","Otto siti online che puoi aprire oggi, ognuno costruito attorno alla sua attività.","Un menù QR si apre su ogni telefono: sempre aggiornato, senza ristampe.","Fatti trovare su Google e Maps, anche dai turisti che non sono ancora arrivati.","È semplice: mandi le foto, progettiamo tutto noi, e vai online in pochi giorni.","Quattro offerte, in baht. Scegli quella adatta alla tua attività.","Veniamo da te, le modifiche sono illimitate su WhatsApp, e sei online in pochi giorni.","Pronto a farti vedere? Scrivici su WhatsApp."],
  h1:'Cercano <em>prima.</em>',q:'ristorante vicino a me',where:'Dov\'è la tua attività?',
@@ -42,7 +42,7 @@ it:{watch:'Guarda il video (1 min)',
  h7:'Dalle foto <em>al sito online.</em>',steps:[['Giorno 1','Invia le foto'],['Giorni 2–4','Progettiamo il tuo sito'],['Lancio','Sei online']],
  h8:'Prezzi <em>semplici</em>',onetime:'una tantum',setup:'attivazione',mo:'/ mese',pop:'Il più scelto',
  h9:'Veniamo <em>da te.</em>',chips:['Ti incontriamo a Pattaya','Modifiche illimitate su WhatsApp','Online in pochi giorni'],
- h10:'Pronto a farti <em>vedere?</em>',t10:'Scrivici su WhatsApp',wa:'Scrivici su WhatsApp',book:'Prenota un incontro',price:'Vedi le offerte',scan:'Inquadra per scriverci su WhatsApp',close:'Chiudi'},
+ h10:'Pronto a farti <em>vedere?</em>',t10:'Scrivici su WhatsApp',wa:'Scrivici su WhatsApp',book:'Prenota un incontro',price:'Vedi le offerte',scan:'Inquadra per scriverci su WhatsApp',close:'Chiudi',tEyebrow:"Video tour",tTitle:"Tutto chiaro in <em>77 secondi.</em>",tLead:"Senza gergo: perché i clienti non ti trovano, cosa costruiamo, come funziona e quanto costa. Scegli un capitolo o premi play.",tCh:["Perché i clienti non ti trovano", "Quattro offerte, otto siti online", "Menù QR, Google e come funziona", "Prezzi e prossimo passo"],tFull:"Guarda a schermo intero",tOffers:"Vedi le offerte",tHint:"Sottotitoli inclusi · senza audio"},
 th:{watch:'ดูวิดีโอ 1 นาที',
  say:["ก่อนมาที่ร้าน ลูกค้าค้นหาในอินเทอร์เน็ตก่อน","ไม่มีเว็บไซต์ ก็เหมือนมองไม่เห็นร้านคุณ ลูกค้าจึงไปเลือกร้านอื่น","NM Studio ช่วยคุณได้ในไม่กี่วัน ด้วยแพ็กเกจง่าย ๆ สี่แบบ","เว็บไซต์จริงแปดแห่งที่เปิดดูได้ทันที แต่ละแห่งสร้างให้เหมาะกับธุรกิจของเขา","เมนู QR เปิดได้บนทุกโทรศัพท์ อัปเดตเสมอ ไม่ต้องพิมพ์ใหม่","ให้ลูกค้าเจอคุณบน Google และแผนที่ แม้แต่นักท่องเที่ยวที่ยังไม่ถึงไทย","ง่ายมาก ส่งรูปมา เราออกแบบทุกอย่างให้ แล้วเว็บไซต์ของคุณก็ออนไลน์ในไม่กี่วัน","สี่แพ็กเกจ ราคาเป็นบาท เลือกแบบที่เหมาะกับธุรกิจของคุณ","เราไปหาคุณถึงที่ แก้ไขได้ไม่จำกัดผ่าน WhatsApp และออนไลน์ในไม่กี่วัน","พร้อมให้ลูกค้าเห็นคุณหรือยัง ทักเราทาง WhatsApp ได้เลย"],
  h1:'ลูกค้า<em>ค้นหาก่อน</em>',q:'ร้านอาหารใกล้ฉัน',where:'ธุรกิจของคุณอยู่ตรงไหน?',
@@ -54,7 +54,7 @@ th:{watch:'ดูวิดีโอ 1 นาที',
  h7:'จากรูปถ่าย <em>สู่เว็บไซต์ออนไลน์</em>',steps:[['วันที่ 1','ส่งรูปให้เรา'],['วันที่ 2–4','เราออกแบบเว็บไซต์ให้'],['เปิดตัว','ออนไลน์แล้ว']],
  h8:'ราคา<em>เข้าใจง่าย</em>',onetime:'จ่ายครั้งเดียว',setup:'ค่าติดตั้ง',mo:'/ เดือน',pop:'ยอดนิยม',
  h9:'เรา<em>ไปหาคุณ</em>',chips:['พบกันที่พัทยา','แก้ไขไม่จำกัดผ่าน WhatsApp','ออนไลน์ในไม่กี่วัน'],
- h10:'พร้อมให้ลูกค้า<em>เห็นคุณ</em>',t10:'ทักเราทาง WhatsApp',wa:'แชทผ่าน WhatsApp',book:'นัดพบ',price:'ดูแพ็กเกจ',scan:'สแกนเพื่อทักเราทาง WhatsApp',close:'ปิด'},
+ h10:'พร้อมให้ลูกค้า<em>เห็นคุณ</em>',t10:'ทักเราทาง WhatsApp',wa:'แชทผ่าน WhatsApp',book:'นัดพบ',price:'ดูแพ็กเกจ',scan:'สแกนเพื่อทักเราทาง WhatsApp',close:'ปิด',tEyebrow:"ทัวร์วิดีโอ",tTitle:"เข้าใจทุกอย่างใน <em>77 วินาที</em>",tLead:"ไม่ใช้ศัพท์ยาก: ทำไมลูกค้าหาคุณไม่เจอ เราสร้างอะไรให้ ทำงานอย่างไร และราคาเท่าไร เลือกบทที่สนใจหรือกดเล่นได้เลย",tCh:["ทำไมลูกค้าหาคุณไม่เจอ", "สี่แพ็กเกจ เว็บไซต์จริงแปดแห่ง", "เมนู QR, Google และขั้นตอน", "ราคาและขั้นตอนต่อไป"],tFull:"ดูแบบเต็มจอ",tOffers:"ดูแพ็กเกจ",tHint:"มีคำบรรยาย · ไม่ต้องเปิดเสียง"},
 ar:{watch:'شاهد الفيديو (دقيقة)',
  say:["قبل أن يزوروك، يبحث عملاؤك على الإنترنت.","من دون موقع إلكتروني أنت غير مرئي، والعملاء يختارون غيرك.","نحل هذا في أيام، بأربعة عروض بسيطة.","ثمانية مواقع على الإنترنت يمكنك فتحها اليوم، كل منها مبني حول نشاطه.","قائمة QR تُفتح على كل هاتف: محدّثة دائماً ومن دون إعادة طباعة.","ليجدك الناس على Google والخرائط، حتى السياح قبل وصولهم.","الأمر بسيط: ترسل صورك، نصمم كل شيء، وتصبح على الإنترنت خلال أيام.","أربعة عروض بالبات التايلندي. اختر ما يناسب نشاطك.","نأتي إليك، والتعديلات غير محدودة عبر واتساب، وتصبح على الإنترنت خلال أيام.","جاهز لتكون مرئياً؟ راسلنا على واتساب."],
  h1:'يبحثون <em>أولاً</em>',q:'مطعم قريب مني',where:'أين نشاطك؟',
@@ -66,7 +66,7 @@ ar:{watch:'شاهد الفيديو (دقيقة)',
  h7:'من صورك <em>إلى موقع حي</em>',steps:[['اليوم 1','أرسل صورك'],['الأيام 2–4','نصمم موقعك'],['الإطلاق','أنت على الإنترنت']],
  h8:'أسعار <em>بسيطة</em>',onetime:'مرة واحدة',setup:'تأسيس',mo:'/ شهر',pop:'الأكثر طلباً',
  h9:'نأتي <em>إليك</em>',chips:['نلتقيك في باتايا','تعديلات غير محدودة عبر واتساب','على الإنترنت خلال أيام'],
- h10:'جاهز لتكون <em>مرئياً؟</em>',t10:'راسلنا على واتساب',wa:'تحدث عبر واتساب',book:'احجز لقاءً',price:'شاهد العروض',scan:'امسح الرمز لمراسلتنا على واتساب',close:'إغلاق'}
+ h10:'جاهز لتكون <em>مرئياً؟</em>',t10:'راسلنا على واتساب',wa:'تحدث عبر واتساب',book:'احجز لقاءً',price:'شاهد العروض',scan:'امسح الرمز لمراسلتنا على واتساب',close:'إغلاق',tEyebrow:"جولة بالفيديو",tTitle:"افهم كل شيء في <em>77 ثانية</em>",tLead:"بلا مصطلحات: لماذا لا يجدك العملاء، وماذا نبني، وكيف يعمل، وكم يكلّف. اختر فصلاً أو اضغط تشغيل.",tCh:["لماذا لا يجدك العملاء", "أربعة عروض وثمانية مواقع حية", "قائمة QR وGoogle وطريقة العمل", "الأسعار والخطوة التالية"],tFull:"مشاهدة بملء الشاشة",tOffers:"شاهد العروض",tHint:"ترجمة مدمجة · بلا صوت"}
 };
 /* prices: single source = offers-config.js */
 var DEF={price:{google:990,qr:1990,website:5800,pack:13300},sub:{website:{monthly:1140},pack:{monthly:3800}},approx:{}};
@@ -158,40 +158,84 @@ if(window.NMF_RENDER){
   return;
 }
 /* ---------- in-site overlay ---------- */
-var F=null,t=0,playing=false,last=0,soundOn=true,aud=null,curLang='en',overlay;
-try{if(localStorage.getItem('nmfMuted')==='1')soundOn=false}catch(e){}
+var F=null,t=0,playing=false,last=0,curLang='en',overlay;
 function lang(){var l=(window.NM_LANG||document.documentElement.lang||'en').slice(0,2).toLowerCase();return T[l]?l:'en'}
 function ensure(){
   if(overlay)return;overlay=document.createElement('div');overlay.id='nmfOverlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('data-lenis-prevent','');
-  overlay.innerHTML='<div class="nmf" id="nmfRoot"></div><button id="nmfClose" type="button"></button><div id="nmfCtl"><button id="nmfPlay" type="button" aria-label="Play / pause">❚❚</button><div id="nmfProg"><i></i></div><button id="nmfSound" type="button" aria-label="Sound"></button></div>';
+  overlay.innerHTML='<div class="nmf" id="nmfRoot"></div><button id="nmfClose" type="button"></button><div id="nmfCtl"><button id="nmfPlay" type="button" aria-label="Play / pause">❚❚</button><div id="nmfProg"><i></i></div></div>';
   document.body.appendChild(overlay);loadFonts();
   document.getElementById('nmfClose').onclick=close;
   document.getElementById('nmfPlay').onclick=function(){playing?pause():play()};
-  var sb=document.getElementById('nmfSound');sb.textContent=soundOn?'🔊':'🔇';sb.classList.toggle('on',soundOn);
-  sb.onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊':'🔇';this.classList.toggle('on',soundOn);try{localStorage.setItem('nmfMuted',soundOn?'0':'1')}catch(e){}if(aud){if(soundOn&&playing){aud.currentTime=t;aud.play().catch(function(){})}else aud.pause()}};
-  document.getElementById('nmfProg').addEventListener('click',function(e){var r=this.getBoundingClientRect();t=clamp((e.clientX-r.left)/r.width)*F.total;F.reset();F.render(t);if(aud)aud.currentTime=t});
+  document.getElementById('nmfProg').addEventListener('click',function(e){var r=this.getBoundingClientRect();t=clamp((e.clientX-r.left)/r.width)*F.total;F.reset();F.render(t)});
   overlay.addEventListener('click',function(e){
     if(e.target.closest('[data-nmf-price]')){close();var p=document.getElementById('offers');p&&p.scrollIntoView({behavior:'smooth'})}
     if(e.target.closest('[data-nmf-book]'))close()});
   document.addEventListener('keydown',function(e){if(!overlay.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key===' '&&e.target.tagName!=='A'&&e.target.tagName!=='BUTTON'){e.preventDefault();document.getElementById('nmfPlay').click()}});
 }
-function tick(n){if(!playing)return;var dt=Math.min((n-last)/1000,.1);last=n;t+=dt;if(t>=F.total){t=F.total-.001;playing=false;if(aud)aud.pause();document.getElementById('nmfPlay').textContent='↻'}else if(aud&&soundOn&&Math.abs(aud.currentTime-t)>.25)aud.currentTime=t;F.render(t);if(playing)requestAnimationFrame(tick)}
-function play(){if(t>=F.total-.01){t=0;F.reset()}playing=true;last=performance.now();document.getElementById('nmfPlay').textContent='❚❚';if(aud&&soundOn){aud.currentTime=t;aud.play().catch(function(){})}requestAnimationFrame(tick)}
-function pause(){playing=false;document.getElementById('nmfPlay').textContent='▶';if(aud)aud.pause()}
-function open(){
+function tick(n){if(!playing)return;var dt=Math.min((n-last)/1000,.1);last=n;t+=dt;if(t>=F.total){t=F.total-.001;playing=false;document.getElementById('nmfPlay').textContent='↻'}F.render(t);if(playing)requestAnimationFrame(tick)}
+function play(){if(t>=F.total-.01){t=0;F.reset()}playing=true;last=performance.now();document.getElementById('nmfPlay').textContent='❚❚';requestAnimationFrame(tick)}
+function pause(){playing=false;document.getElementById('nmfPlay').textContent='▶'}
+function open(startAt){
   ensure();curLang=lang();needs().then(function(){
     var root=document.getElementById('nmfRoot');
     F=build(root,curLang,{onScene:function(i,n){overlay.classList.toggle('final',i===n-1)}});
-    if(aud){aud.pause()}aud=new Audio(URLB('../audio/nm-sfx-'+curLang+'.mp3'));aud.preload='auto';
     document.getElementById('nmfClose').textContent='✕ '+T[curLang].close;
     overlay.setAttribute('dir',curLang==='ar'?'rtl':'ltr');overlay.classList.add('open');document.documentElement.style.overflow='hidden';
-    t=0;F.render(0);play();document.getElementById('nmfClose').focus();window.__nmfSeek=function(x){t=x;F.reset();F.render(x)};
+    t=clamp(startAt||0,0,F.total-1);F.reset();F.render(t);play();document.getElementById('nmfClose').focus();window.__nmfSeek=function(x){t=x;F.reset();F.render(x)};
   });
 }
-function close(){pause();if(aud)aud.currentTime=0;if(overlay)overlay.classList.remove('open');document.documentElement.style.overflow=''}
-document.addEventListener('click',function(e){var b=e.target.closest('[data-nmf-open]');if(b){e.preventDefault();open()}});
-function labels(){var L=T[lang()];document.querySelectorAll('[data-nmf-watch]').forEach(function(el){el.textContent=L.watch})}
-labels();document.addEventListener('DOMContentLoaded',labels);document.addEventListener('nm:lang',labels);
-/* keep the label in step with the language switcher (i18n.js changes <html lang>) */
+function close(){pause();if(overlay)overlay.classList.remove('open');document.documentElement.style.overflow=''}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-nmf-open]');if(b){e.preventDefault();open(0)}
+  if(e.target.closest('[data-nmf-price]')){if(overlay&&overlay.classList.contains('open'))close();var p=document.getElementById('offers');p&&p.scrollIntoView({behavior:'smooth'})}});
+
+/* ---------- inline "video tour" section (injected before "Selected work") ---------- */
+var tour=null,tourBusy=false;
+function fmt(x){x=Math.floor(x);return Math.floor(x/60)+':'+('0'+(x%60)).slice(-2)}
+function tourHTML(L,total,starts){
+  var cs=[0,2,4,7],i;
+  return '<div class="container"><div class="tour__grid"><div class="tour__head">'+
+   '<p class="eyebrow">'+L.tEyebrow+' · '+fmt(total)+'</p><h2 class="section-title" id="tourTitle">'+L.tTitle+'</h2><p class="section-lead">'+L.tLead+'</p></div>'+
+   '<div class="tour__list"><ol class="tour__ch">'+cs.map(function(k,n){return '<li><button type="button" data-ch="'+starts[k]+'"><span class="tour__tc">'+fmt(starts[k])+'</span><b>'+L.tCh[n]+'</b></button></li>'}).join('')+'</ol>'+
+   '<div class="tour__actions"><button type="button" class="btn btn--sun btn--lg magnetic" data-tour-full><span>▶ '+L.tFull+'</span></button><a class="btn btn--glass btn--lg" data-nmf-price href="#offers">'+L.tOffers+'</a></div></div>'+
+   '<div class="tour__player"><div class="tour__stage" id="tourStage"><div class="nmf" id="tourRoot"></div>'+
+   '<button type="button" class="tour__pp" aria-label="Play / pause"><i></i></button></div>'+
+   '<div class="tour__ctl"><div class="tour__bar" role="slider" aria-label="Video position"><i></i></div><span class="tour__time">0:00 / '+fmt(total)+'</span></div>'+
+   '<p class="tour__hint">'+L.tHint+'</p></div></div></div>';
+}
+function initTour(){
+  if(tourBusy||(tour&&tour.lang===lang()))return;
+  var work=document.getElementById('work');if(!work)return;tourBusy=true;
+  var sec=document.getElementById('tour');
+  if(!sec){sec=document.createElement('section');sec.id='tour';sec.className='tour';sec.setAttribute('aria-labelledby','tourTitle');work.parentNode.insertBefore(sec,work)}
+  var lg=lang(),L=T[lg];
+  needs().then(function(){
+    var tmp=document.createElement('div');tmp.className='nmf';var probe=build(tmp,lg,{});
+    sec.innerHTML=tourHTML(L,probe.total,probe.starts);
+    var root=document.getElementById('tourRoot'),F2=build(root,lg,{}),st={t:0,playing:false,vis:false,last:0,manual:false};
+    var bar=sec.querySelector('.tour__bar i'),time=sec.querySelector('.tour__time'),pp=sec.querySelector('.tour__pp'),chBtn=sec.querySelectorAll('.tour__ch button');
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function paint(){F2.render(st.t);bar.style.width=(st.t/F2.total*100)+'%';time.textContent=fmt(st.t)+' / '+fmt(F2.total);
+      var cur=0;[0,2,4,7].forEach(function(k,n){if(st.t>=F2.starts[k]-.01)cur=n});chBtn.forEach(function(b,n){b.classList.toggle('on',n===cur)});sec.classList.toggle('is-playing',st.playing)}
+    function loop(n){if(!st.playing)return;var dt=Math.min((n-st.last)/1000,.1);st.last=n;st.t+=dt;if(st.t>=F2.total+2){st.t=0;F2.reset()}paint();requestAnimationFrame(loop)}
+    function play(){if(st.playing)return;st.playing=true;st.last=performance.now();requestAnimationFrame(loop)}
+    function pause(){st.playing=false;paint()}
+    function sync(){if(st.vis&&!document.hidden&&!st.manual&&!reduce)play();else if(!st.vis||document.hidden)pause()}
+    new IntersectionObserver(function(es){st.vis=es[0].intersectionRatio>=.35;sync()},{threshold:[0,.35,.6]}).observe(root);
+    document.addEventListener('visibilitychange',sync);
+    pp.onclick=function(){if(st.playing){st.manual=true;pause()}else{st.manual=false;play()}};
+    document.getElementById('tourStage').addEventListener('click',function(e){if(e.target.closest('a,button'))return;pp.onclick()});
+    sec.querySelector('.tour__bar').addEventListener('click',function(e){var r=this.getBoundingClientRect();var x=(e.clientX-r.left)/r.width;if(lg==='ar')x=1-x;st.t=clamp(x)*(F2.total-.5);F2.reset();paint()});
+    chBtn.forEach(function(b){b.onclick=function(){st.t=+b.dataset.ch;F2.reset();st.manual=false;paint();play();document.getElementById('tourStage').scrollIntoView({behavior:'smooth',block:'center'})}});
+    sec.querySelector('[data-tour-full]').onclick=function(){var at=st.t;pause();open(at)};
+    // show a good still before the first autoplay (and for reduced motion)
+    st.t=reduce?22:0;paint();tour={sec:sec,lang:lg,pause:pause};tourBusy=false;
+    if(reduce){pp.classList.add('is-static')}
+  });
+}
+function refreshTour(){if(tour&&tour.lang!==lang()){tour.pause&&tour.pause();initTour()}}
+function labels(){var L=T[lang()];document.querySelectorAll('[data-nmf-watch]').forEach(function(el){el.textContent=L.watch});refreshTour()}
+labels();document.addEventListener('DOMContentLoaded',function(){labels();initTour()});if(document.readyState!=='loading')initTour();
+document.addEventListener('nm:lang',labels);
+/* keep labels + tour in step with the language switcher (i18n.js changes <html lang>) */
 new MutationObserver(labels).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
