@@ -1,0 +1,266 @@
+/* NM Studio — galerie « réalisations » (#work).
+ *
+ * Couche de finition chargée APRÈS site.css et craft.css : elle ne remplace
+ * aucune règle, elle affine le cadre des sept sites clients — maquettes plus
+ * grandes, ombres étagées, filet or, numérotation lisible, et une action
+ * « Voir le site » franche et confortable au doigt.
+ *
+ * Règles de conduite :
+ *   · seules `transform`, `opacity` et `box-shadow` sont animées ;
+ *   · durées courtes (140–320 ms), aucune animation en boucle, aucun filtre ;
+ *   · tout est neutralisé sous `prefers-reduced-motion: reduce` ;
+ *   · aucune retouche des maquettes : uniquement la taille de leur cadre.
+ */
+
+/* ==========================================================================
+   1 · Grille : une lecture régulière
+   3 en haut (1 vedette + 2), 3 au milieu, 2 en bas. Aucun débordement.
+   ========================================================================== */
+/* La pastille de comptage de l'eyebrow, sans les parenthèses d'origine. */
+.wk__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.9em;
+  padding: .1em .45em .15em;
+  border: 1px solid rgba(201,169,97,.3);
+  border-radius: 999px;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 1080px) {
+  .wk__grid { gap: clamp(1.1rem, 1.8vw, 1.8rem); }
+  .wk-card--1 { grid-column: span 8; }
+  .wk-card--2 { grid-column: span 4; }
+  .wk-card--3, .wk-card--4, .wk-card--5 { grid-column: span 4; }
+  .wk-card--6, .wk-card--7 { grid-column: span 6; }
+  /* Le gabarit du site étant plus large que haut, une fenêtre 2/1 le cadre
+     sans laisser de vide sous la maquette. */
+  .wk-card__media { aspect-ratio: 3 / 2; }
+  .wk-card--1 .wk-card__media { aspect-ratio: 2 / 1; }
+}
+
+/* ==========================================================================
+   2 · La carte : un socle net, une élévation franche au survol
+   ========================================================================== */
+.wk-card {
+  gap: 0;
+  transition: transform .28s var(--ease-out), box-shadow .28s var(--ease-out);
+}
+@media (hover: hover) {
+  .wk-card:hover { transform: translateY(-5px); }
+}
+/* Le clavier obtient exactement la même mise en valeur que la souris. */
+.wk-card:focus-within { transform: translateY(-5px); }
+.wk-card::after { transition: opacity .28s ease; }
+
+/* ==========================================================================
+   3 · L'écran des maquettes : cadre plus grand, fond moins profond, filet or
+   ========================================================================== */
+.wk-card__media {
+  aspect-ratio: 2 / 1;
+  padding: clamp(1rem, 2.1vw, 1.7rem) clamp(.9rem, 1.9vw, 1.5rem) 0;
+  border-radius: calc(var(--radius-lg) - 7px);
+  box-shadow: inset 0 1px 0 rgba(245,241,232,.05), inset 0 -22px 34px -28px rgba(0,0,0,.9);
+  transition: box-shadow .28s var(--ease-out);
+}
+/* Filet or : un liseré haut, très discret, qui s'allume avec la carte. */
+.wk-card__media::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  z-index: 2;
+  background: linear-gradient(90deg, transparent, rgba(201,169,97,.55), transparent);
+  opacity: .55;
+  transition: opacity .3s ease;
+}
+.wk-card:hover .wk-card__media::after,
+.wk-card:focus-within .wk-card__media::after { opacity: 1; }
+
+/* Le cadre des appareils : les maquettes gagnent ~3 % de largeur utile. */
+.wk-card .dev--card { padding: 0 8% 0 0; }
+.wk-card .dev-scale--iph { width: 23%; right: 1px; bottom: 5%; }
+.wk-card .mac__view img {
+  transition: transform .32s var(--ease-out), opacity .32s ease;
+}
+/* Le piqué au survol est porté par l'image (le zoom au défilement, lui, est
+   appliqué par main.js au <picture> parent : les deux ne se combattent plus). */
+@media (hover: hover) {
+  .wk-card:hover .mac__view img { transform: scale(1.035); }
+  .wk-card__media:hover .dev--card { transform: translateY(3.5%); }
+}
+.wk-card:focus-within .mac__view img { transform: scale(1.035); }
+
+/* Bandeau d'action : un peu plus haut, plus lisible, chevron animé. */
+.wk-card__veil { padding: 1.05rem 1.25rem; }
+.wk-card__veil i svg { width: .9rem; height: .9rem; transition: transform .28s var(--ease-out); }
+.wk-card__media:hover .wk-card__veil i svg,
+.wk-card__media:focus-visible .wk-card__veil i svg { transform: translate(2px, -2px); }
+
+/* ==========================================================================
+   4 · Le cartouche : numéro, nom, métier, arguments
+   ========================================================================== */
+.wk-card__meta { position: relative; display: block; padding: 1.3rem .6rem .35rem; }
+.wk-card__meta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: .6rem;
+  width: 2.6rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transition: width .3s var(--ease-out);
+}
+.wk-card:hover .wk-card__meta::before,
+.wk-card:focus-within .wk-card__meta::before { width: 5.2rem; }
+.wk-card--1 .wk-card__meta::before { width: 4rem; }
+
+.wk-card__idx {
+  gap: .55rem;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+/* « 01 / 07 » : on sait où l'on en est dans la sélection. Le total disparaît
+   sous 1080 px, où la place manque et où l'eyebrow annonce déjà « 07 ». */
+.wk-card__num { color: var(--gold); font-variant-numeric: tabular-nums; }
+.wk-card__of { color: var(--faint); font-weight: 400; }
+@media (max-width: 1079px) { .wk-card__of { display: none; } }
+
+.wk-card__name { margin-top: .5rem; letter-spacing: -.02em; line-height: 1.08; }
+.wk-card--1 .wk-card__name { letter-spacing: -.03em; }
+.wk-card__cat { margin-top: .25rem; color: var(--muted); }
+
+/* Le détail : une phrase déjà traduite dans les cinq langues, jamais inventée.
+   Deux lignes suffisent à décider si l'on clique ; le reste est du bavardage. */
+.wk-card__desc {
+  margin-top: .55rem;
+  color: var(--muted);
+  font-size: .875rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.wk-card--1 .wk-card__desc { -webkit-line-clamp: 3; }
+/* Langues à écriture dense : une ligne de plus pour ne pas tronquer au milieu. */
+html[lang="th"] .wk-card__desc,
+html[lang="ar"] .wk-card__desc { -webkit-line-clamp: 4; }
+@supports not (-webkit-line-clamp: 2) {
+  .wk-card__desc { display: block; max-height: 3em; }
+}
+
+/* Deux arguments factuels, repris tels quels des libellés du site. */
+.wk-card__tags { margin-top: .85rem; gap: .4rem; }
+.wk-card__tags li {
+  padding: .3rem .7rem;
+  border-color: rgba(201,169,97,.22);
+  background: rgba(201,169,97,.05);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.wk-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .55rem .65rem;
+  padding-top: 1.25rem;
+}
+/* Deux actions, deux poids : le bouton plein ouvre le site dans un nouvel
+   onglet, le bouton creux ouvre l'aperçu intégré. Tous deux font au moins
+   44 px de haut — la cible au doigt exigée par la consigne. */
+.wk-card__links .link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 44px;
+  padding: .55rem .95rem;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  line-height: 1.1;
+  text-decoration: none;
+  transition: background-color .22s ease, border-color .22s ease, color .22s ease, transform .22s var(--ease-out);
+}
+.wk-card__links .link-arrow svg { width: 1.05rem; height: 1.05rem; flex: 0 0 auto; }
+.wk-card__links .link-arrow:active { transform: translateY(1px); }
+
+.wk-card__links .link-site {
+  color: var(--btn-ink);
+  background: var(--grad-btn);
+  border: 1px solid transparent;
+  box-shadow: 0 10px 22px -14px rgba(201,169,97,.9), 0 1px 0 rgba(255,255,255,.25) inset;
+}
+.wk-card__links .link-site svg { transition: transform .22s var(--ease-out); }
+.wk-card__links .link-site:hover svg,
+.wk-card__links .link-site:focus-visible svg { transform: translate(2px, -2px); }
+
+.wk-card__links .link-preview {
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+  background: rgba(245,241,232,.03);
+}
+.wk-card__links .link-preview:hover,
+.wk-card__links .link-preview:focus-visible {
+  color: var(--text);
+  border-color: rgba(201,169,97,.45);
+  background: rgba(201,169,97,.07);
+}
+
+/* ==========================================================================
+   5 · Réglages par taille d'écran
+   ========================================================================== */
+/* Sous 1080 px : la vedette en pleine largeur, les autres deux par ligne. */
+@media (max-width: 1079px) {
+  .wk-card__media { aspect-ratio: 3 / 2; }
+  .wk-card--1 .wk-card__media { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 699px) {
+  .wk-card__media { aspect-ratio: 4 / 3; }
+  .wk-card__meta { padding-top: 1.35rem; }
+  .wk-card__links { gap: .6rem .7rem; }
+}
+
+/* RTL : le filet et le rembourrage du cartouche suivent le sens de lecture. */
+html[dir="rtl"] .wk-card__meta::before { left: auto; right: .6rem; background: linear-gradient(270deg, var(--gold), transparent); }
+html[dir="rtl"] .wk-card__links .link-site svg { transform: scaleX(-1); }
+html[dir="rtl"] .wk-card__links .link-site:hover svg { transform: scaleX(-1) translate(2px, -2px); }
+
+/* ==========================================================================
+   6 · Mouvement réduit : plus rien ne bouge, tout reste lisible
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .wk-card,
+  .wk-card__media,
+  .wk-card__media::after,
+  .wk-card__meta::before,
+  .wk-card .dev--card,
+  .wk-card .mac__view img,
+  .wk-card__veil,
+  .wk-card__veil i svg,
+  .wk-card__links .link-arrow,
+  .wk-card__links .link-site svg { transition: none !important; }
+  .wk-card:hover,
+  .wk-card:focus-within,
+  .wk-card:hover .dev--card,
+  .wk-card__media:hover .dev--card,
+  .wk-card:hover .mac__view img,
+  .wk-card:focus-within .mac__view img,
+  .wk-card__media:hover .wk-card__veil i svg,
+  .wk-card__links .link-site:hover svg { transform: none; }
+}
+
+/* ==========================================================================
+   7 · Mode contraste forcé : les aplats auteur disparaissent, on garde le contour
+   ========================================================================== */
+@media (forced-colors: active) {
+  .wk-card__media::after,
+  .wk-card__meta::before { background: CanvasText; }
+  .wk-card__links .link-site { border-color: ButtonText; }
+}

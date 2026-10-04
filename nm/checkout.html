@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Checkout — NM Studio</title>
-<meta name="description" content="Order your NM Studio offer: Google listing, QR menu, Complete Pack or Ultimate. Pay securely by card, Apple Pay, Google Pay or PromptPay.">
+<meta name="description" content="Order your NM Studio offer: Google listing, QR menu, website, Complete Pack or Ultimate. Pay the setup fee today and your subscription monthly; card, Apple Pay, Google Pay or PromptPay.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#07060c">
 <meta name="color-scheme" content="dark">
@@ -13,12 +13,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=20261004b">
-<link rel="stylesheet" href="assets/css/craft.css?v=20261004b">
+<link rel="stylesheet" href="assets/css/site.css?v=20261004c">
+<link rel="stylesheet" href="assets/css/craft.css?v=20261004c">
 <link rel="stylesheet" href="assets/css/checkout.css">
 <!-- defer: the page paints on its own markup, these only fill it in -->
-<script src="assets/js/nm-dict.js?v=20261004b" defer></script>
-<script src="assets/js/offers-config.js?v=20261004b" defer></script>
+<script src="assets/js/nm-dict.js?v=20261004c" defer></script>
+<script src="assets/js/offers-config.js?v=20261004c" defer></script>
 </head>
 <body class="co-page" data-meta="checkout.meta">
 <a class="skip-link" href="#coMain" data-i18n="a11y.skip">Skip to content</a>
@@ -77,13 +77,22 @@
               </span>
             </label>
             <label class="co-plan co-offer">
+              <input type="radio" name="offer" value="website">
+              <span class="co-plan__card">
+                <span class="co-offer__icon" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="38" height="30" rx="4"/><path d="M5 18h38M11 14h3M17 14h3"/><path d="M13 25h12M13 31h20"/></svg><span class="ic-word" data-i18n="offers.website.word">Online.</span></span>
+                <span class="co-plan__top"><b data-i18n="offers.website.name">Website</b><span class="co-plan__radio" aria-hidden="true"></span></span>
+                <span class="co-plan__tag" data-i18n="offers.website.benefit">A custom website built from your photos, with your menu and your languages — live in days.</span>
+                <span class="co-plan__price"><strong data-thb="5800">฿5,800</strong> <small data-i18n="offers.setup">setup</small><em data-thb-sub="website" data-i18n="offers.subscribe" hidden></em></span>
+              </span>
+            </label>
+            <label class="co-plan co-offer">
               <input type="radio" name="offer" value="pack" checked>
               <span class="co-plan__card">
                 <span class="co-plan__badge" data-i18n="offers.popular">Most popular</span>
                 <span class="co-offer__icon" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5l15 6v11c0 10-6.5 17.5-15 21-8.5-3.5-15-11-15-21V11z"/><path d="M16.5 24l5.5 5.5 10-11"/></svg><span class="ic-word" data-i18n="offers.pack.word">Everything.</span></span>
                 <span class="co-plan__top"><b data-i18n="offers.pack.name">Complete Pack</b><span class="co-plan__radio" aria-hidden="true"></span></span>
                 <span class="co-plan__tag" data-i18n="offers.pack.benefit">Website, Google and QR menu — everything a tourist looks for, done for you.</span>
-                <span class="co-plan__price"><strong data-thb="4990">฿4,990</strong> <small data-i18n="offers.once">one-time</small></span>
+                <span class="co-plan__price"><strong data-thb="19000">฿19,000</strong> <small data-i18n="offers.setup">setup</small><em data-thb-sub="pack" data-i18n="offers.subscribe" hidden></em></span>
               </span>
             </label>
             <label class="co-plan co-offer">
@@ -99,11 +108,12 @@
           <fieldset class="co-care" id="coCare">
             <legend class="co-care__title"><span data-i18n="co2.careTitle">Add a care plan?</span><small data-i18n="co2.careSub">Hosting, unlimited edits and fresh content. Optional — cancel anytime.</small></legend>
             <div class="co-care__opts">
-              <label class="co-care__opt"><input type="radio" name="care" value="none"><span><b data-i18n="co2.careNone">No thanks</b><small data-i18n="co2.careNoneSub">Just the offer</small></span></label>
-              <label class="co-care__opt"><input type="radio" name="care" value="monthly" checked><span><b data-i18n="co2.careMonthly">Monthly</b><small><span id="careMonthlyPrice">฿590</span> <span data-i18n="price2.perMonth">/ month</span></small></span></label>
-              <label class="co-care__opt"><input type="radio" name="care" value="yearly"><span><b><span data-i18n="co2.careYearly">Yearly</span> <i class="co-care__save" data-i18n="co2.careYearlySub">2 months free</i></b><small><span id="careYearlyPrice">฿5,900</span> <span data-i18n="price2.perYear">/ year</span></small></span></label>
+              <label class="co-care__opt"><input type="radio" name="care" value="none" required><span><b data-i18n="co2.careNone">No thanks</b><small data-i18n="co2.careNoneSub">Just the offer</small></span></label>
+              <label class="co-care__opt"><input type="radio" name="care" value="monthly" checked><span><b data-i18n="co2.careMonthly">Monthly</b><small><span id="careMonthlyPrice">฿290</span> <span data-i18n="price2.perMonth">/ month</span></small></span></label>
+              <label class="co-care__opt"><input type="radio" name="care" value="yearly" required><span><b><span data-i18n="co2.careYearly">Yearly</span> <i class="co-care__save" data-i18n="co2.careYearlySub">2 months free</i></b><small><span id="careYearlyPrice">฿2,900</span> <span data-i18n="price2.perYear">/ year</span></small></span></label>
             </div>
             <p class="co-care__none" id="careGoogle" hidden data-i18n="co2.careGoogle">A Google listing needs no care plan — it's yours to keep.</p>
+            <p class="co-care__none co-care__sub" id="careSub" hidden><b data-i18n="co2.careSubIncluded">Your subscription is part of this offer</b> <span id="careSubMonthly">฿1,140 / month</span> · <span data-i18n="co2.careSubNote">Hosting, edits and support — included in the monthly fee.</span> <small id="careSubNote"></small></p>
           </fieldset>
           <div class="co-included">
             <p class="co-included__title" data-i18n="co2.included">What's included</p>
@@ -288,6 +298,7 @@
           <div class="co-nav">
             <button type="button" class="btn btn--ghost" data-go="3" data-i18n="checkout.backBtn">Back</button>
             <button type="submit" class="btn btn--sun co-pay" id="coPay"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.5" y="9" width="11" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M7 9V6.5a3 3 0 016 0V9" stroke="currentColor" stroke-width="1.7"/></svg><span id="coPayLabel">Pay</span></button>
+            <p class="co-method-note" id="coRedirectNote" hidden data-i18n="checkout.redirectNote">You are being redirected to the secure payment page operated by Stripe — no bank card details ever pass through this site.</p>
           </div>
         </fieldset>
       </form>
@@ -306,8 +317,8 @@
           <span><b id="sumPlanName">Complete Pack</b><small id="sumPlanTag"></small></span>
         </div>
         <dl class="sum__rows">
-          <div><dt data-i18n="co2.sumOffer">Offer · one-time</dt><dd id="sumSetup">—</dd></div>
-          <div><dt data-i18n="co2.sumCare">Care plan · first period</dt><dd id="sumMonthly">—</dd></div>
+          <div><dt id="sumSetupLabel" data-i18n="co2.sumSetup">Setup fee · one-time</dt><dd id="sumSetup">—</dd></div>
+          <div><dt data-i18n="co2.sumCare">Subscription · first period</dt><dd id="sumMonthly">—</dd></div>
         </dl>
         <div class="sum__total"><span data-i18n="checkout.sumToday">Due today</span><strong id="sumToday">—</strong></div>
         <p class="sum__renew" id="sumRenew" hidden></p>
@@ -366,10 +377,10 @@
 
 <!-- Deferred, in this order: config → payment-state (reads it) → strings →
      i18n → QR encoder → checkout flow. -->
-<script src="assets/js/payment-config.js?v=20261004b" defer></script>
-<script src="assets/js/payment-state.js?v=20261004b" defer></script>
+<script src="assets/js/payment-config.js?v=20261004c" defer></script>
+<script src="assets/js/payment-state.js?v=20261004c" defer></script>
 <script src="assets/js/checkout-i18n.js" defer></script>
-<script src="assets/js/i18n.js?v=20261004b" defer></script>
+<script src="assets/js/i18n.js?v=20261004c" defer></script>
 <script src="assets/js/qrcode.min.js" defer></script>
 <script src="assets/js/checkout.js" defer></script>
 </body>

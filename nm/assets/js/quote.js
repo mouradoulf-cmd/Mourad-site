@@ -56,7 +56,10 @@
       nav: { back: "Back", next: "Next step", finish: "See my message" },
       sum: {
         title: "Your request", from: "From", total: "Total",
-        hint: "Paid once · we confirm the final price together on WhatsApp.",
+        month: "/ month", hint: "Paid once · we confirm the final price together on WhatsApp.",
+        hintSub: "The total is what you pay once (setup). Then {price} a month for hosting and updates — we confirm everything together on WhatsApp.",
+        thenMonthly: "+ {price} / month",
+        paidOnce: "Due once (setup)", monthly: "Then every month",
         live: "We reply within minutes", send: "Open WhatsApp with my request",
         copy: "Copy the message", copiedShort: "Copied", copied: "Message copied — paste it into the WhatsApp chat.",
         copyFailed: "Copying failed — select the text below and copy it.",
@@ -108,7 +111,10 @@
       nav: { back: "Retour", next: "Étape suivante", finish: "Voir mon message" },
       sum: {
         title: "Votre demande", from: "À partir de", total: "Total",
-        hint: "Paiement unique · nous confirmons le prix final ensemble sur WhatsApp.",
+        month: "/ mois", hint: "Paiement unique · nous confirmons le prix final ensemble sur WhatsApp.",
+        hintSub: "Le total est ce que vous payez une fois (mise en place). Ensuite {price} par mois pour l'hébergement et les mises à jour — nous confirmons tout ensemble sur WhatsApp.",
+        thenMonthly: "+ {price} / mois",
+        paidOnce: "À payer une fois (mise en place)", monthly: "Puis chaque mois",
         live: "Nous répondons en quelques minutes", send: "Ouvrir WhatsApp avec ma demande",
         copy: "Copier le message", copiedShort: "Copié", copied: "Message copié — collez-le dans la conversation WhatsApp.",
         copyFailed: "La copie a échoué — sélectionnez le texte ci-dessous et copiez-le.",
@@ -160,7 +166,10 @@
       nav: { back: "Indietro", next: "Passo successivo", finish: "Vedi il mio messaggio" },
       sum: {
         title: "La tua richiesta", from: "Da", total: "Totale",
-        hint: "Pagamento unico · confermiamo il prezzo finale insieme su WhatsApp.",
+        month: "/ mese", hint: "Pagamento unico · confermiamo il prezzo finale insieme su WhatsApp.",
+        hintSub: "Il totale è quello che paghi una volta (attivazione). Poi {price} al mese per hosting e aggiornamenti — confermiamo tutto insieme su WhatsApp.",
+        thenMonthly: "+ {price} / mese",
+        paidOnce: "Da pagare una volta (attivazione)", monthly: "Poi ogni mese",
         live: "Rispondiamo in pochi minuti", send: "Apri WhatsApp con la mia richiesta",
         copy: "Copia il messaggio", copiedShort: "Copiato", copied: "Messaggio copiato — incollalo nella chat WhatsApp.",
         copyFailed: "Copia non riuscita — seleziona il testo qui sotto e copialo.",
@@ -212,7 +221,10 @@
       nav: { back: "ย้อนกลับ", next: "ขั้นตอนถัดไป", finish: "ดูข้อความของฉัน" },
       sum: {
         title: "คำขอของคุณ", from: "เริ่มต้นที่", total: "รวม",
-        hint: "จ่ายครั้งเดียว · เรายืนยันราคาสุดท้ายร่วมกันทาง WhatsApp",
+        month: "/ เดือน", hint: "จ่ายครั้งเดียว · เรายืนยันราคาสุดท้ายร่วมกันทาง WhatsApp",
+        hintSub: "ยอดรวมคือค่าติดตั้งที่จ่ายครั้งเดียว จากนั้นเดือนละ {price} สำหรับโฮสติ้งและอัปเดต — เรายืนยันทุกอย่างร่วมกันทาง WhatsApp",
+        thenMonthly: "+ {price} / เดือน",
+        paidOnce: "จ่ายครั้งเดียว (ค่าติดตั้ง)", monthly: "จากนั้นทุกเดือน",
         live: "เราตอบกลับภายในไม่กี่นาที", send: "เปิด WhatsApp พร้อมคำขอของฉัน",
         copy: "คัดลอกข้อความ", copiedShort: "คัดลอกแล้ว", copied: "คัดลอกข้อความแล้ว — วางในแชท WhatsApp ได้เลย",
         copyFailed: "คัดลอกไม่สำเร็จ — เลือกข้อความด้านล่างแล้วคัดลอกเอง",
@@ -264,7 +276,10 @@
       nav: { back: "رجوع", next: "الخطوة التالية", finish: "أعرض رسالتي" },
       sum: {
         title: "طلبك", from: "ابتداءً من", total: "الإجمالي",
-        hint: "دفعة واحدة · نؤكد السعر النهائي معًا على واتساب.",
+        month: "/ شهريًا", hint: "دفعة واحدة · نؤكد السعر النهائي معًا على واتساب.",
+        hintSub: "المجموع هو ما تدفعه مرة واحدة (الإعداد). ثم {price} شهريًا للاستضافة والتحديثات — نؤكد كل شيء معًا على واتساب.",
+        thenMonthly: "+ {price} / شهريًا",
+        paidOnce: "يُدفع مرة واحدة (الإعداد)", monthly: "ثم شهريًا",
         live: "نجيب خلال دقائق", send: "افتح واتساب مع طلبي",
         copy: "انسخ الرسالة", copiedShort: "تم النسخ", copied: "تم نسخ الرسالة — الصقها في محادثة واتساب.",
         copyFailed: "فشل النسخ — حدّد النص بالأسفل وانسخه يدويًا.",
@@ -457,16 +472,31 @@
   function priceMap() {
     var O = window.NM_OFFERS;
     if (!O || !O.price) return null;
-    if (state.needs.indexOf("web") > -1 || state.needs.indexOf("social") > -1) return "pack";
+    if (state.needs.indexOf("social") > -1) return "ultimate";
+    if (state.needs.indexOf("web") > -1) return (O.sub && O.sub.website) ? "website" : "pack";
     if (state.needs.indexOf("qr") > -1) return "qr";
     if (state.needs.indexOf("google") > -1) return "google";
     return null;
   }
 
   function offersFor(needs) {
-    var out = [], map = { google: "google", qr: "qr", web: "pack", social: "ultimate" };
-    needs.forEach(function (n) { if (map[n] && out.indexOf(map[n]) === -1) out.push(map[n]); });
+    var out = [], map = { google: "google", qr: "qr", web: "website", social: "ultimate" };
+    needs.forEach(function (n) {
+      var id = map[n];
+      if (!id) return;
+      // a website alone is its own offer; with Google or the QR menu it is the
+      // Complete Pack, which is the offer that actually bundles them
+      if (id === "website" && (needs.indexOf("google") > -1 || needs.indexOf("qr") > -1)) id = "pack";
+      if (out.indexOf(id) === -1) out.push(id);
+    });
     return out;
+  }
+
+  /* Is this offer "setup + subscription"? Then the summary says what is due
+     once and what comes back every month. */
+  function subscriptionOf(id) {
+    var O = window.NM_OFFERS;
+    return (O && O.sub && O.sub[id]) || null;
   }
 
   function thb(n) {
@@ -478,7 +508,7 @@
     if (window.NMPrice && window.NMPrice.approx) return window.NMPrice.approx(n);
     return "";
   }
-  function offerName(id) { return optLabel(id === "pack" ? "web" : id); }
+  function offerName(id) { return optLabel(id === "pack" || id === "website" ? "web" : id); }
 
   function rows() {
     return [
@@ -529,10 +559,32 @@
           amt.setAttribute("dir", "ltr");
           amt.textContent = thb(price);
           li.appendChild(name); li.appendChild(amt);
+          // A subscribed offer also says what it costs every month.
+          var sub = subscriptionOf(id);
+          if (sub) {
+            var line = document.createElement("small");
+            line.className = "qsum__per";
+            line.setAttribute("dir", "ltr");
+            line.textContent = t("sum.thenMonthly").replace("{price}", thb(sub.monthly));
+            li.appendChild(line);
+          }
           rowsEl.appendChild(li);
         });
         if (!sum) { sum = O.price[map]; ids = [map]; }
         if (totalEl) { totalEl.textContent = thb(sum); totalEl.setAttribute("dir", "ltr"); }
+        // The total is what is due once. With the website or the Complete Pack
+        // in the selection, say what comes back every month as well.
+        var hintEl = $("#sumHint");
+        if (hintEl) {
+          var monthly = ids.reduce(function (n, id) {
+            var s = subscriptionOf(id);
+            return n + (s ? s.monthly : 0);
+          }, 0);
+          hintEl.setAttribute("data-q", monthly ? "sum.hintSub" : "sum.hint");
+          hintEl.textContent = monthly
+            ? t("sum.hintSub").replace("{price}", thb(monthly))
+            : t("sum.hint");
+        }
         if (approxEl) {
           // One offer selected: the plain equivalent of that offer's price.
           // Several: the equivalent of the sum, so it always matches the line above.
@@ -576,17 +628,24 @@
 
     var map = priceMap(), O = window.NM_OFFERS;
     if (map && O && O.price && O.price[map] != null) {
-      var ids = offersFor(state.needs), sum = 0;
+      var ids = offersFor(state.needs), sum = 0, monthly = 0;
       parts.push("");
       parts.push("*" + t("msg.price") + ":*");
       ids.forEach(function (id) {
         var price = O.price[id];
         if (price == null) return;
         sum += price;
-        parts.push("• " + offerName(id) + " — " + thb(price));
+        var sub = subscriptionOf(id);
+        if (sub) monthly += sub.monthly;
+        parts.push("• " + offerName(id) + " — " + thb(price) + (sub ? " + " + thb(sub.monthly) + " " + t("sum.month") : ""));
       });
       if (!sum) { sum = O.price[map]; parts.push("• " + offerName(map) + " — " + thb(sum)); }
       else if (ids.length > 1) parts.push("*" + t("msg.total") + ":* " + thb(sum));
+      // "due once" then "every month" — the same two lines the checkout prints
+      if (monthly) {
+        parts.push("*" + t("sum.paidOnce") + ":* " + thb(sum));
+        parts.push("*" + t("sum.monthly") + ":* " + thb(monthly) + " " + t("sum.month"));
+      }
     }
     parts.push("");
     parts.push(t("msg.foot"));

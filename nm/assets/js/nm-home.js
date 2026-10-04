@@ -18,6 +18,7 @@
   }
 
   if (P) P.render();
+  pickCareLine();
 
   /* ---------- device mockups: scale the fixed-px devices.css frames
      (MacBook Pro / iPhone 14 Pro) to fit their responsive slot ---------- */
@@ -75,6 +76,22 @@
   })();
 
   /* ---------- offers: play illustrations in view, tilt, open the detail dialog ---------- */
+
+  /* The two subscribed offers (website, pack) read "150 € setup, then 30 € a
+     month": setup = NM_OFFERS.sub[id].setup, monthly = .monthly. The billing
+     toggle switches them to the yearly amount (10 months, 2 free). */
+  var billMode = "monthly";
+
+  /* A subscribed card keeps exactly one care line: "Subscription included".
+     The optional care amounts only show on the offers that still have one. */
+  function pickCareLine() {
+    $$("[data-offer]").forEach(function (card) {
+      var k = card.getAttribute("data-offer"), sub = !!(O.sub && O.sub[k]);
+      $$(".pcard__care--sub", card).forEach(function (el) { el.hidden = !sub; });
+      $$(".pcard__care--optional", card).forEach(function (el) { el.hidden = sub; });
+    });
+  }
+
   var offerModal = $("#offerModal");
   (function offerCards() {
     var cards = $$(".offer");
@@ -121,15 +138,32 @@
   var lastTrigger = null;
   var CHECK = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 10.5l3 3 7-7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function fillOffer(k) {
-    var i = O.order.indexOf(k), price = O.price[k], care = O.care[k];
-    $("#omTier").textContent = "0" + (i + 1) + " / 04";
+    var i = O.order.indexOf(k), price = O.price[k], care = O.care[k], sub = O.sub && O.sub[k];
+    $("#omTier").textContent = "0" + (i + 1) + " / 0" + O.order.length;
     $("#omTitle").textContent = t("offers." + k + ".name");
     $("#omBenefit").textContent = t("offers." + k + ".benefit");
     $("#omPrice").textContent = P.thb(price);
     $("#omApprox").textContent = P.approx(price);
     $("#omTime").textContent = t("offers." + k + ".time");
-    $("#omCare").textContent = care ? t("offers.careFrom").replace("{price}", P.thb(care)) : t("offers.careNone");
-    $("#omOrderLabel").textContent = t("offers.order").replace("{price}", P.thb(price));
+    var onceEl = $("#omOnce");
+    if (onceEl) {
+      onceEl.hidden = !!sub;
+      onceEl.setAttribute("data-i18n", "offers.once");
+      onceEl.textContent = sub ? "" : t("offers.once");
+    }
+    var subEl = $("#omSub");
+    if (subEl) {
+      subEl.hidden = !sub;
+      if (sub) {
+        subEl.setAttribute("data-thb-sub", k);
+        subEl.textContent = P.subPrice(k, billMode);
+      }
+    }
+    var plus = sub ? sub.monthly * (billMode === "yearly" ? O.yearlyMonths : 1) : 0;
+    $("#omCare").textContent = sub
+      ? t("offers.monthlyIncluded") + " · " + P.thb(plus) + " " + (billMode === "yearly" ? t("price2.perYear") : t("price2.perMonth"))
+      : care ? t("offers.careFrom").replace("{price}", P.thb(care)) : t("offers.careNone");
+    $("#omOrderLabel").textContent = t("offers.order").replace("{price}", P.thb(price + plus));
     $("#omOrder").href = "checkout.html?offer=" + k;
     var list = $("#omList"); list.innerHTML = "";
     ["i1", "i2", "i3", "i4", "i5"].forEach(function (f, n) {
@@ -236,6 +270,7 @@
     var mode = "monthly";
     try { mode = sessionStorage.getItem("nmBill") || "monthly"; } catch (e) {}
     function render(animate) {
+      billMode = mode;
       if (bill) {
         bill.setAttribute("data-mode", mode);
         $$(".bill__btn", bill).forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-bill") === mode)); });
@@ -251,9 +286,19 @@
         if (animate && !reduce) { wrap.classList.add("is-swapping"); setTimeout(function () { set(); wrap.classList.remove("is-swapping"); }, 220); }
         else set();
       });
+      // The subscribed offers show the yearly amount (10 months, 2 free) when
+      // the visitor picks yearly — the same rule as the care plan.
+      Object.keys(O.sub || {}).forEach(function (k) {
+        $$('[data-thb-sub="' + k + '"]').forEach(function (el) {
+          el.textContent = P.subPrice(k, el.getAttribute("data-sub-mode") || mode);
+          if (el.hasAttribute("hidden")) el.hidden = false;
+        });
+      });
       $$("[data-cta]").forEach(function (a) {
-        var k = a.getAttribute("data-cta");
-        a.href = "checkout.html?offer=" + k + (O.care[k] ? "&care=" + mode : "");
+        var k = a.getAttribute("data-cta"), care = O.care[k];
+        // the subscribed offers always go to the checkout with their monthly
+        // period; a care plan only when the offer has one
+        a.href = "checkout.html?offer=" + k + (care ? "&care=" + mode : (O.sub && O.sub[k] ? "&care=monthly" : ""));
         var l = $(".pcard__cta-label", a); if (l) l.textContent = t("price2.choose").replace("{name}", t("offers." + k + ".short"));
       });
     }

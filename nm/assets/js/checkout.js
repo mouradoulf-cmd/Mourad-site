@@ -41,17 +41,24 @@
 
   /* ---------- state ---------- */
   function planKey() { var r = $('input[name="offer"]:checked', form); return r ? r.value : O.featured; }
+  /* Is this offer "setup + subscription"? Then the monthly part is not a
+     choice: the offer itself is set up once and maintained every month. */
+  function subscribed(plan) { return !!(O.sub && O.sub[plan || planKey()]); }
   function careMode(plan) {
-    if (!O.care[plan || planKey()]) return "none";
+    plan = plan || planKey();
+    if (subscribed(plan)) return "monthly";
+    if (!O.care[plan]) return "none";
     var r = $('input[name="care"]:checked', form); return r ? r.value : "none";
   }
   function method() { var r = $('input[name="method"]:checked', form); return r ? r.value : "card"; }
-  // Due today = the offer, plus the first care-plan period when one is chosen.
+  // Due today = the setup fee, plus the first subscription/care period.
   function amounts(plan) {
     plan = plan || planKey();
-    var mode = careMode(plan), per = O.care[plan] * (mode === "yearly" ? O.yearlyMonths : 1);
+    var mode = careMode(plan);
+    var per = subscribed(plan) ? O.sub[plan].monthly * (mode === "yearly" ? O.yearlyMonths : 1)
+      : O.care[plan] * (mode === "yearly" ? O.yearlyMonths : 1);
     var care = mode === "none" ? 0 : per;
-    return { setup: O.price[plan], care: care, mode: mode, today: O.price[plan] + care, monthly: care };
+    return { setup: O.price[plan], care: care, mode: mode, today: O.price[plan] + care, monthly: care, sub: subscribed(plan) };
   }
   function cardLink(plan) {
     var c = PAY.card || {}, mode = careMode(plan);
@@ -112,17 +119,33 @@
     $("#sumMonthly").textContent = a.care ? fmt(a.care) + " / " + periodLabel(a.mode) : t("co2.sumNone");
     $("#sumToday").textContent = fmt(a.today);
     $("#sumTodayMini").textContent = fmt(a.today);
+    // The setup line is a one-time fee only when the offer is; on the
+    // subscribed offers it is the setup that goes with the monthly part.
+    var setupLabel = $("#sumSetupLabel");
+    if (setupLabel) {
+      var key = a.sub ? "co2.sumSetup" : "co2.sumOffer";
+      setupLabel.setAttribute("data-i18n", key); setupLabel.textContent = t(key);
+    }
     var renew = $("#sumRenew");
     renew.hidden = !a.care;
     if (a.care) renew.textContent = t("co2.renew").replace("{price}", fmt(a.care)).replace("{period}", periodLabel(a.mode));
 
-    // Care plan options follow the chosen offer.
-    var careBox = $("#coCare"), hasCare = !!O.care[p];
-    $(".co-care__opts", careBox).hidden = !hasCare;
-    $("#careGoogle").hidden = hasCare;
+    // Care plan options follow the chosen offer. A subscribed offer has no
+    // "no thanks" and no monthly/yearly choice: its subscription is part of
+    // the offer and the visitor can only be told what it costs.
+    var careBox = $("#coCare"), hasCare = !!O.care[p], sub = subscribed(p);
+    $(".co-care__opts", careBox).hidden = !hasCare || sub;
+    $("#careGoogle").hidden = hasCare || sub;
+    $("#careSub").hidden = !sub;
+    careBox.classList.toggle("co-care--sub", sub);
     if (hasCare) {
       $("#careMonthlyPrice").textContent = fmt(O.care[p]);
       $("#careYearlyPrice").textContent = fmt(O.care[p] * O.yearlyMonths);
+    }
+    if (sub) {
+      var s = O.sub[p];
+      $("#careSubMonthly").textContent = fmt(s.monthly) + " / " + t("co2.month");
+      $("#careSubNote").textContent = t("co2.subYearlyNote").replace("{months}", String(O.yearlyMonths));
     }
     $$(".co-offer").forEach(function (l) { l.classList.toggle("is-playing", $("input", l).checked); });
 
@@ -191,7 +214,7 @@
     var box = $("#coReview"); if (!box) return;
     var mLabel = $('input[name="method"]:checked + .co-method__card b', form);
     var rows = [
-      ["co2.step1", t("offers." + p + ".name") + " · " + fmt(a.setup), 1],
+      [a.sub ? "co2.sumSetup" : "co2.step1", a.sub ? fmt(a.setup) : t("offers." + p + ".name") + " · " + fmt(a.setup), 1],
       ["co2.sumCare", a.care ? fmt(a.care) + " / " + periodLabel(a.mode) : t("co2.sumNone"), 1],
       ["booking.business", form.elements.business.value.trim() || "—", 2],
       ["checkout.email", form.elements.email.value.trim() || "—", 2],
@@ -451,13 +474,19 @@
   }
 
   /* ---------- submit ---------- */
+  // What the customer sends us must say exactly what is due today (the setup
+  // fee plus the first period) and what comes back every month after that.
   function orderMessage(o) {
     return [
       t("checkout.waHead") + " " + o.ref,
       o.slip ? t("checkout.waSlip") : "",
-      t("checkout.waPlan") + ": " + t("offers." + o.plan + ".name") + " — " + fmt(o.setup),
-      t("co2.sumCare") + ": " + (o.care !== "none" ? fmt(o.monthly) + " / " + periodLabel(o.care) : t("co2.sumNone")),
+      t("checkout.waPlan") + ": " + t("offers." + o.plan + ".name"),
+      t("co2.sumSetup") + ": " + fmt(o.setup),
+      o.care !== "none"
+        ? t("co2.sumCare") + ": " + fmt(o.monthly) + " / " + periodLabel(o.care)
+        : t("co2.sumCare") + ": " + t("co2.sumNone"),
       t("checkout.sumToday") + ": " + fmt(o.today),
+      o.care !== "none" && o.sub ? t("checkout.sumMonthly") + ": " + fmt(o.monthly) + " / " + periodLabel(o.care) : "",
       o.promo ? t("co2.promo") + ": " + o.promo : "",
       t("checkout.waMethod") + ": " + o.methodLabel,
       "",
@@ -486,7 +515,7 @@
     var o = Object.assign(d, {
       thai: thaiMode, slip: thaiMode && !!slip,
       ref: orderRef,
-      setup: a.setup, monthly: a.care, today: a.today, currency: "thb",
+      setup: a.setup, monthly: a.care, today: a.today, currency: "thb", sub: a.sub,
       methodLabel: $('input[name="method"]:checked + .co-method__card b', form).textContent,
       typeLabel: form.elements.type.options[form.elements.type.selectedIndex].text
     });
@@ -494,8 +523,12 @@
 
     var link = d.method === "card" && cardLink(d.plan);
     if (link) {
+      // Hosted payment page: the visitor leaves for Stripe's own checkout.
+      // No card data is ever collected here.
       var btn = $("#coPay"); btn.disabled = true; btn.classList.add("is-loading");
       $("#coPayLabel").textContent = t("checkout.redirecting");
+      var note = $("#coRedirectNote");
+      if (note) note.hidden = false;
       var url = link + (link.indexOf("?") > -1 ? "&" : "?") + "prefilled_email=" + encodeURIComponent(d.email) + "&client_reference_id=" + encodeURIComponent(o.ref) +
         (d.promo ? "&prefilled_promo_code=" + encodeURIComponent(d.promo) : "") + (window.NM_LANG ? "&locale=" + encodeURIComponent(window.NM_LANG) : "");
       setTimeout(function () { window.location.href = url; }, 400);
@@ -546,7 +579,7 @@
     }
 
     var recap = $("#doneRecap"); recap.innerHTML = "";
-    [["checkout.waPlan", t("offers." + o.plan + ".name")], ["co2.sumOffer", fmt(o.setup)], ["co2.sumCare", o.care !== "none" ? fmt(o.monthly) + " / " + periodLabel(o.care) : t("co2.sumNone")], ["checkout.sumToday", fmt(o.today)], ["checkout.waMethod", o.methodLabel], ["booking.business", o.business], ["checkout.email", o.email]].forEach(function (r) {
+    [["checkout.waPlan", t("offers." + o.plan + ".name")], ["co2.sumSetup", fmt(o.setup)], ["co2.sumCare", o.care !== "none" ? fmt(o.monthly) + " / " + periodLabel(o.care) : t("co2.sumNone")], ["checkout.sumToday", fmt(o.today)], ["checkout.waMethod", o.methodLabel], ["booking.business", o.business], ["checkout.email", o.email]].forEach(function (r) {
       var div = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
       dt.textContent = t(r[0]); dd.textContent = r[1]; div.appendChild(dt); div.appendChild(dd); recap.appendChild(div);
     });
