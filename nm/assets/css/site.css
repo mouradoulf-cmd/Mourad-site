@@ -470,7 +470,6 @@ html[dir="rtl"] .why-card__ic { margin: -1.9rem 1rem 0 0; }
 .why-card__ic--visit svg { animation: bob 2.4s var(--ease-in-out) infinite; }
 @keyframes bob { 50% { transform: translateY(-3px); } }
 .why-card__hand { transform-origin: 12px 13px; animation: hand 3s steps(12) infinite; }
-.why-card__ic--chat svg { animation: nudge 3s var(--ease-in-out) infinite; }
 @keyframes nudge { 0%, 70%, 100% { transform: rotate(0); } 75% { transform: rotate(-12deg); } 85% { transform: rotate(10deg); } 92% { transform: rotate(-4deg); } }
 .why-card__title { margin: 1.1rem 1rem 0; font-size: clamp(1.3rem, 1.8vw, 1.55rem); line-height: 1.15; }
 .why-card__body { margin: .6rem 1rem 0; color: var(--muted); font-size: .98rem; line-height: 1.55; }
@@ -497,7 +496,6 @@ html[dir="rtl"] .why-card__ic { margin: -1.9rem 1rem 0 0; }
 .how-step__ic { position: relative; display: grid; place-items: center; width: 3.4rem; height: 3.4rem; margin-top: -1.7rem; border-radius: 18px; color: var(--gold); background: rgba(18,16,25,.9); border: 1px solid rgba(201,169,97,.3); box-shadow: 0 16px 30px -12px rgba(0,0,0,.8); }
 .how-step__ic svg { width: 1.6rem; height: 1.6rem; overflow: visible; }
 .how-step__ic--wa { color: #25d366; }
-.how-step__ic--wa svg { animation: nudge 3s var(--ease-in-out) infinite; }
 .how-step__ic--wa i { position: absolute; top: -4px; right: -4px; width: 16px; height: 16px; border-radius: 50%; background: #ff3b5c; box-shadow: 0 0 0 3px var(--surface); animation: badge 3s var(--ease-out) infinite; }
 @keyframes badge { 0%, 20% { transform: scale(0); } 30% { transform: scale(1.2); } 36%, 100% { transform: scale(1); } }
 .how-step__brush { transform-box: fill-box; transform-origin: 20% 90%; animation: brush 2.4s var(--ease-in-out) infinite; }
@@ -1031,13 +1029,19 @@ html[lang="th"] .status__title, html[lang="ar"] .status__title { line-height: 1.
   .marquee__track { animation: none !important; }
 }
 
-/* Phones and tablets: keep the light, drop the costly continuous repaints. */
-@media (max-width: 899px), (pointer: coarse) {
-  .grain { animation: none; }
-  .h__aurora i { animation: none; filter: blur(60px); }
-  .h__orb i:nth-child(1) { animation-duration: 30s; filter: blur(34px); }
-  .finale__aura { animation: none; }
-}
+/* Keep the light, drop the costly continuous repaints: three blurred,
+   half-viewport-wide blobs (.h__aurora) animating transform+scale under an
+   80px blur, a spinning 46px-blur conic gradient (.h__orb), and a spinning
+   90px-blur conic gradient covering most of the finale section
+   (.finale__aura) were each a permanent repaint of a huge filtered layer —
+   measured as real jank on desktop as well as mobile, not just a mobile
+   concern, so this is no longer scoped to small/touch viewports. The
+   gradients themselves still render; only the motion stops. */
+.grain { animation: none; }
+.h__aurora i { animation: none; filter: blur(60px); }
+.h__orb i:nth-child(1) { animation: none; filter: blur(34px); }
+.h__orb i:nth-child(3) { animation: none; }
+.finale__aura { animation: none; }
 
 
 /* Hero video.
