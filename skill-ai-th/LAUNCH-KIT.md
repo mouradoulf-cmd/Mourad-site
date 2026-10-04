@@ -43,3 +43,15 @@ Les ventes dépendent de ton audience. Ordre de grandeur utile pour piloter : vi
 ## 7. Prochaines étapes possibles
 - Vidéos de cours enregistrées (YouTube non répertorié) intégrées dans `members.html`.
 - Page de capture dédiée pub TikTok/Meta, e-mails de relance, upsell (consulting 1:1).
+
+## 8. Versions FR et EN (ajoutées)
+- `fr/` et `en/` : mêmes pages que la version thaï (vente, paiement, cadeau gratuit, salle de cours, conditions, confidentialité), prix en euros (19 / 39 / 29 / 69 €, modifiables dans `CONFIG.EUR`). Sélecteur de langue TH / FR / EN dans la barre de navigation.
+- Paiement FR/EN : PromptPay ne marche qu'en Thaïlande → liens Stripe ou PayPal (`CONFIG.PAY`), à défaut bouton WhatsApp (`CONFIG.WHATSAPP`, `CONFIG.EMAIL`).
+- Les codes d'accès sont les mêmes pour les 3 langues.
+
+## 9. Argument « 30 / 100 / 200 € vs gratuit » — À VÉRIFIER AVANT PUBLICATION
+La section de comparaison dit : les générateurs vidéo IA payants coûtent ~30/100/200 €/mois pour ~30 clips de 10 s ; ta méthode vise jusqu'à ~50 clips/jour avec des outils gratuits. J'ai formulé ça avec des réserves (« tarifs indicatifs », « objectif », « dans la limite des quotas gratuits »).
+- **Vérifie toi-même** que ton workflow (celui d'Agnès) produit vraiment ~50 clips/jour gratuitement et sans enfreindre les conditions d'utilisation des outils. Si ce n'est pas le cas, baisse le chiffre : une promesse fausse = risque légal (pratique commerciale trompeuse) + remboursements.
+- Vérifie aussi que les prix cités pour la concurrence correspondent à des offres réelles ; ajuste les chiffres sinon.
+- N'écris pas « illimité » : aucun outil gratuit n'est réellement illimité.
+- Ajoute dans le Pack 3 le vrai pas-à-pas de ta méthode (c'est ton produit principal) : liste des outils, ordre, limites, astuces.

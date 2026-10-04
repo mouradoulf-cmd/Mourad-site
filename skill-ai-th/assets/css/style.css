@@ -91,3 +91,4 @@ nav .wrap{gap:12px}
 .price s{font-size:1.1rem;color:var(--mute);font-weight:400;margin-right:6px}
 .lock{opacity:.5}
 @media(max-width:860px){.g3p{grid-template-columns:1fr}}
+.plan .badge{white-space:nowrap}
