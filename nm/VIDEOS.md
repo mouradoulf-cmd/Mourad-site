@@ -24,6 +24,6 @@ La dernière scène affiche un QR code qui ouvre la conversation WhatsApp NM Stu
 `nm/video/render.html?lang=en` affiche le film image par image (`window.__nmRender(t)`), voir le script de rendu décrit dans l'historique git du dossier.
 
 ## Bande-son
-Générée par programmation (synthèse, aucun sample ni musique protégée → utilisable librement). Une version par langue car le nombre de lettres tapées change :
+Générée par programmation (synthèse v2 : nappe chaude, piano électrique avec écho, basse douce, kick avec sidechain, clavier mécanique réaliste, pops et carillons ; normalisée à ~-15 LUFS ; synthèse, aucun sample ni musique protégée → utilisable librement). Une version par langue car le nombre de lettres tapées change :
 `assets/audio/nm-soundtrack-{lang}.mp3` — jouée en synchro avec la vidéo dans le site (bouton 🔊/🔇, mémorisé). Les MP4 contiennent la même piste.
 La voix de synthèse a été retirée.
