@@ -99,3 +99,13 @@ Payment/contact are driven by the `CONFIG` block at the top of
 `assets/js/main.js` (LINE OA + PromptPay) — placeholders until the client
 fills them. No fake testimonials/income claims, keep disclaimers. Plain
 HTML/CSS/JS, no build step.
+
+## AI Skill FR — reference for "explainer film" course-sales sites
+
+`ai-skill-fr/` (French only; `skill-ai-th/` is the older TH/FR/EN version with the
+same checkout/members/free pages). One-page site where a big ▶ button opens a
+fullscreen 3D explainer film (`assets/js/film.js`: deterministic `render(t)`
+scenes, CSS 3D, canvas starfield, optional French voice-over via
+`speechSynthesis`, captions, scrubber) that ends on the offers with buy
+buttons. Prices/links/codes live in the `CONFIG` block of `assets/js/main.js`.
+Keep the honesty rules: no income promises, "free" = free tiers with quotas.
