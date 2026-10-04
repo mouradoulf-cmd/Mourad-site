@@ -96,11 +96,13 @@ input[type=color]{width:100%;height:48px;border:1px solid var(--border);border-r
 <div class="section open" id="secSrc">
   <div class="section-header" data-toggle="secSrc"><span class="section-title">🎬 1 · Ta vidéo <span class="badge">obligatoire</span></span><span class="chevron">▼</span></div>
   <div class="section-body"><div class="section-content">
-    <div class="drop" id="drop">📥 Touche ici pour choisir la vidéo téléchargée<br>(TikTok, 1 à 2 minutes)</div>
+    <div class="drop" id="drop">📥 Touche ici pour choisir la vidéo téléchargée<br>(TikTok, jusqu'à 5 minutes)</div>
     <input type="file" id="file" accept="video/*" hidden>
     <video class="srcvid" id="srcvid" muted playsinline controls preload="auto"></video>
     <div class="control-row" style="margin-top:.8rem"><label class="control-label" for="segMode">Découpage en plans</label>
       <select id="segMode"><option value="auto" selected>Automatique (détecte les changements de plan)</option><option value="5">Un plan toutes les 5 secondes</option><option value="7">Un plan toutes les 7 secondes</option><option value="10">Un plan toutes les 10 secondes</option></select></div>
+    <div class="control-row"><label class="control-label" for="target">Durée de la nouvelle vidéo</label>
+      <select id="target"><option value="same" selected>Comme l'original</option><option value="30">30 secondes</option><option value="60">1 minute</option><option value="90">1 min 30</option><option value="120">2 minutes</option><option value="180">3 minutes</option><option value="300">5 minutes</option></select></div>
     <button type="button" class="btn-secondary go" id="btnCut" disabled>✂️ Découper la vidéo en plans</button>
     <div id="segInfo" class="api-hint"></div>
     <div class="control-row" style="margin-top:.8rem"><label class="control-label" for="globalDesc">Décris la vidéo en 2-3 phrases (recommandé)</label>
@@ -312,10 +314,10 @@ function vidPrompt(sg){const sp=$('optSpeak').checked&&sg.line?' One character s
 function seek(v,t){return new Promise(res=>{let done=false;const f=()=>{if(done)return;done=true;v.removeEventListener('seeked',f);res()};v.addEventListener('seeked',f);setTimeout(f,3500);try{v.currentTime=Math.max(0,Math.min(t,(v.duration||t)-0.05))}catch(e){f()}})}
 function grabFrame(v,w){const c=document.createElement('canvas');const k=w/(v.videoWidth||w);c.width=w;c.height=Math.round((v.videoHeight||w)*k);c.getContext('2d').drawImage(v,0,0,c.width,c.height);return c}
 async function cutVideo(){
- if(!VID)return;const v=VID;const D=Math.min(v.duration||0,120);if(!D){toast('Vidéo illisible','error');return}
+ if(!VID)return;const v=VID;const D=Math.min(v.duration||0,300);if(!D){toast('Vidéo illisible','error');return}
  const mode=$('segMode').value;setStatus('Découpage de la vidéo…');$('btnCut').disabled=true;
  let cuts=[0];
- if(mode==='auto'){const step=.5;let prev=null,last=0;for(let t=0;t<D;t+=step){await seek(v,t);const c=document.createElement('canvas');c.width=32;c.height=24;const x=c.getContext('2d');x.drawImage(v,0,0,32,24);const d=x.getImageData(0,0,32,24).data;const g=new Float32Array(768);for(let i=0;i<768;i++)g[i]=(d[i*4]+d[i*4+1]+d[i*4+2])/3;
+ if(mode==='auto'){const step=D>150?1:0.5;let prev=null,last=0;for(let t=0;t<D;t+=step){await seek(v,t);const c=document.createElement('canvas');c.width=32;c.height=24;const x=c.getContext('2d');x.drawImage(v,0,0,32,24);const d=x.getImageData(0,0,32,24).data;const g=new Float32Array(768);for(let i=0;i<768;i++)g[i]=(d[i*4]+d[i*4+1]+d[i*4+2])/3;
    if(prev){let s=0;for(let i=0;i<768;i++)s+=Math.abs(g[i]-prev[i]);s/=768;if(s>22&&t-last>=2){cuts.push(t);last=t}}prev=g;setStatus('Analyse des plans… '+Math.round(100*t/D)+'%')}}
  else{const L=+mode;for(let t=L;t<D-1;t+=L)cuts.push(t)}
  cuts.push(D);
@@ -323,11 +325,13 @@ async function cutVideo(){
  let b=[];for(let i=0;i<cuts.length-1;i++)b.push([cuts[i],cuts[i+1]]);
  const m=[];b.forEach(s=>{if(m.length&&(s[1]-s[0])<3)m[m.length-1][1]=s[1];else m.push(s.slice())});if(m.length>1&&(m[0][1]-m[0][0])<3){m[1][0]=m[0][0];m.shift()}
  const out=[];m.forEach(s=>{const len=s[1]-s[0];const n=Math.max(1,Math.ceil(len/10));for(let k=0;k<n;k++)out.push([s[0]+len*k/n,s[0]+len*(k+1)/n])});
+ const TG=$('target').value;let plan=out.map(o=>({a:o[0],e:o[1],g:o[1]-o[0]}));
+ if(TG!=='same'){const Tt=+TG;const N=Math.max(1,Math.min(60,Math.round(Tt/7)));plan=[];for(let k=0;k<N;k++)plan.push({a:D*k/N,e:D*(k+1)/N,g:Math.max(4,Math.min(10,Tt/N))})}
  P.segs=[];KF={};
- for(let i=0;i<out.length;i++){const[a,e]=out[i];setStatus('Images de référence '+(i+1)+'/'+out.length);await seek(v,a+(e-a)*.35);const big=grabFrame(v,512),th=grabFrame(v,120);KF[i]=big.toDataURL('image/jpeg',.8);
-  P.segs.push({n:i+1,start:+a.toFixed(2),end:+e.toFixed(2),dur:+(e-a).toFixed(2),thumb:th.toDataURL('image/jpeg',.6),desc:'',motion:'',line:'',imgUrl:null,imgState:'',vidId:null,vidUrl:null,vidState:'',err:'',variant:0})}
+ for(let i=0;i<plan.length;i++){const a=plan[i].a,e=plan[i].e;setStatus('Images de référence '+(i+1)+'/'+plan.length);await seek(v,a+(e-a)*.35);const big=grabFrame(v,512),th=grabFrame(v,120);KF[i]=big.toDataURL('image/jpeg',.8);
+  P.segs.push({n:i+1,start:+a.toFixed(2),end:+e.toFixed(2),dur:+plan[i].g.toFixed(1),thumb:th.toDataURL('image/jpeg',.6),desc:'',motion:'',line:'',imgUrl:null,imgState:'',vidId:null,vidUrl:null,vidState:'',err:'',variant:0})}
  P.dur=D;save();renderAll();setStatus(null);$('btnCut').disabled=false;
- $('segInfo').textContent=out.length+' plans trouvés sur '+Math.round(D)+' s'+((v.duration||0)>120?' (vidéo limitée aux 120 premières secondes)':'')+'. Chaque plan sera refait avec l\'IA ('+Math.ceil(out.length*T.VID_SAFE/60)+' min environ).';toast(out.length+' plans trouvés')}
+ const tot=P.segs.reduce((a,x)=>a+x.dur,0);$('segInfo').textContent=P.segs.length+' plans sur '+Math.round(D)+' s de vidéo d\'origine'+((v.duration||0)>300?' (limitée aux 300 premières secondes)':'')+'. Nouvelle vidéo : environ '+Math.round(tot)+' s. Création : '+Math.ceil(P.segs.length*T.VID_SAFE/60)+' min environ.';toast(P.segs.length+' plans')}
 $('drop').onclick=()=>$('file').click();
 $('file').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
  if(S.running){toast('Arrête d\'abord la création','warn');return}
@@ -423,7 +427,7 @@ function renderQueue(){const q=$('queue');if(!P.segs.length){q.innerHTML='';retu
  q.innerHTML=P.segs.map(s=>{const cls=(s.vidState==='fail'||s.imgState==='fail')?'failed':(s.vidState==='done'?'done':(s.vidState==='proc'||s.imgState==='proc'?'processing':'pending'));
   return'<div class="queue-item '+cls+'"><span class="q-icon">'+(IC[s.imgState||'']||'○')+' '+(IC[s.vidState||'']||'○')+'</span><span class="q-name">Plan '+s.n+' · '+s.dur+' s</span><span class="q-status">'+esc(s.err?s.err.slice(0,36):(s.vidState==='proc'?(s.prog||'vidéo'):(s.imgState==='proc'?'image':'')))+'</span></div>'}).join('')}
 function renderSegs(){const l=$('segList');if(!P.segs.length){l.innerHTML='<div class="empty">Les plans apparaîtront ici après le découpage</div>';return}
- l.innerHTML=P.segs.map((s,i)=>'<div class="seg"><img src="'+s.thumb+'" alt=""><div class="info"><div class="t">Plan '+s.n+' · '+s.start+' → '+s.end+' s ('+s.dur+' s)</div><textarea data-d="'+i+'" placeholder="Que voit-on dans ce plan ? (en français ou en anglais)">'+esc(s.desc)+'</textarea><input type="text" data-l="'+i+'" placeholder="Réplique (optionnel)" value="'+esc(s.line)+'"></div></div>').join('')}
+ l.innerHTML=P.segs.map((s,i)=>'<div class="seg"><img src="'+s.thumb+'" alt=""><div class="info"><div class="t">Plan '+s.n+' · source '+s.start+' → '+s.end+' s · nouveau '+s.dur+' s</div><textarea data-d="'+i+'" placeholder="Que voit-on dans ce plan ? (en français ou en anglais)">'+esc(s.desc)+'</textarea><input type="text" data-l="'+i+'" placeholder="Réplique (optionnel)" value="'+esc(s.line)+'"></div></div>').join('')}
 function renderGal(){const L=P.segs.filter(s=>s.vidUrl);$('galBadge').textContent=L.length;const g=$('gallery');
  if(!L.length){g.innerHTML='<div class="empty">Les plans remixés apparaîtront ici</div>';return}L.forEach(s=>prefetch(s.vidUrl));
  g.innerHTML='<div class="gallery">'+L.map(s=>'<div class="gallery-item"><video controls playsinline muted loop preload="metadata" src="'+esc(s.vidUrl)+'"></video><div class="cap">Plan '+s.n+(s.line?' · « '+esc(s.line.slice(0,40))+' »':'')+'</div><a href="#" data-save="'+(s.n-1)+'" onclick="return false" style="color:#e5c15a;font-weight:700">💾 Enregistrer la vidéo</a>'+(s.line?'<a href="#" data-say="'+(s.n-1)+'" onclick="return false">🔊 Écouter la réplique</a>':'')+'<a href="#" data-redo="'+(s.n-1)+'" onclick="return false" style="color:#c85a4a">🔄 Refaire (si défaut)</a></div>').join('')+'</div>'}
@@ -431,7 +435,7 @@ function updButtons(){const has=!!getKey();$('btnCut').disabled=!VID||S.running;
  const b=$('btnGo');b.disabled=S.running||!has||!P.segs.length;b.textContent=S.running?'Remix en cours…':(!has?'Ajoutez votre clé API':(!P.segs.length?'Charge d\'abord une vidéo':(P.segs.some(s=>s.vidUrl)||P.segs.some(s=>s.imgUrl)?'▶ Reprendre / continuer le remix':'🎬 Lancer le remix ('+P.segs.length+' plans)')));$('btnStop').classList.toggle('visible',S.running)}
 function renderAll(){renderQueue();renderSegs();renderGal();updButtons()}
 function save(){lsSet(PROJ,JSON.stringify({name:P.name,dur:P.dur,segs:P.segs,lang:P.lang,g:$('globalDesc').value,o:$('origText').value,opt:readOpts()}))}
-function readOpts(){const ids=['chChange','chGender','chAge','chLook','chOutfit','enPlace','enPlaceCustom','colOn','colPick','enLight','enWeather','enMat','styleSel','camSel','optSpeak','strength','fmt','optSafe','optRef','optLast','rmode','diff'];const o={};ids.forEach(i=>{const e=$(i);o[i]=e.type==='checkbox'?e.checked:e.value});o.pal=selPal;o.ch=selCh;return o}
+function readOpts(){const ids=['chChange','chGender','chAge','chLook','chOutfit','enPlace','enPlaceCustom','colOn','colPick','enLight','enWeather','enMat','styleSel','camSel','optSpeak','strength','fmt','optSafe','optRef','optLast','rmode','diff','target'];const o={};ids.forEach(i=>{const e=$(i);o[i]=e.type==='checkbox'?e.checked:e.value});o.pal=selPal;o.ch=selCh;return o}
 function applyOpts(o){if(!o)return;Object.keys(o).forEach(i=>{const e=$(i);if(!e)return;if(e.type==='checkbox')e.checked=!!o[i];else e.value=o[i]});selPal=o.pal||'';selCh=o.ch||''}
 document.querySelectorAll('input,select,textarea').forEach(e=>{e.addEventListener('change',()=>{if(e.id!=='file'&&e.id!=='apiKeyInput')save()})});
 function renderChips(){$('palChips').innerHTML=PALS.map(p=>'<span class="chip'+(selPal===p[0]?' selected':'')+'" data-pal="'+p[0]+'">'+p[1]+'</span>').join('');$('chStyleChips').innerHTML=CHSTYLES.map(c=>'<span class="chip'+(selCh===c[0]?' selected':'')+'" data-ch="'+c[0]+'">'+c[1]+'</span>').join('');$('langChips').innerHTML=Object.keys(LANGS).map(k=>'<span class="chip'+(P.lang===k?' selected':'')+'" data-lang="'+k+'">'+LANGS[k][0]+' '+LANGS[k][1]+'</span>').join('')}
@@ -459,7 +463,7 @@ document.addEventListener('click',e=>{const q=e.target.closest('[data-q]');if(!q
 $('quickRandom').onclick=()=>{const r=a=>a[Math.floor(Math.random()*a.length)];const c=r(QC),p=r(QP),m=r(QM);applyPreset(Object.assign({},c[1],p[1],m[1]));toast(c[0]+' · '+p[0]+' · '+m[0])};
 
 let newArm=0;$('btnNew').onclick=()=>{if(S.running){toast('Arrête d\'abord','warn');return}if(!newArm){newArm=1;$('btnNew').textContent='⚠️ Retoucher pour effacer ce projet';setTimeout(()=>{newArm=0;$('btnNew').textContent='🆕 Changer de vidéo'},3500);return}
- newArm=0;$('btnNew').textContent='🆕 Changer de vidéo';P={name:'',dur:0,segs:[],lang:P.lang,opt:{}};KF={};VID=null;lsDel(PROJ);$('srcvid').style.display='none';$('srcvid').removeAttribute('src');$('drop').textContent='📥 Touche ici pour choisir la vidéo téléchargée (TikTok, 1 à 2 minutes)';$('globalDesc').value='';$('origText').value='';$('segInfo').textContent='';$('phaseBar').classList.remove('visible');renderAll();toast('Nouveau projet')};
+ newArm=0;$('btnNew').textContent='🆕 Changer de vidéo';P={name:'',dur:0,segs:[],lang:P.lang,opt:{}};KF={};VID=null;lsDel(PROJ);$('srcvid').style.display='none';$('srcvid').removeAttribute('src');$('drop').textContent='📥 Touche ici pour choisir la vidéo téléchargée (TikTok, jusqu\'à 5 minutes)';$('globalDesc').value='';$('origText').value='';$('segInfo').textContent='';$('phaseBar').classList.remove('visible');renderAll();toast('Nouveau projet')};
 
 /* ═══ Démarrage ═══ */
 (function(){try{const o=JSON.parse(lsGet(PROJ)||'null');if(o&&o.segs){P.name=o.name||'';P.dur=o.dur||0;P.segs=o.segs;P.lang=o.lang||'fr';applyOpts(o.opt);$('globalDesc').value=o.g||'';$('origText').value=o.o||'';if(P.name)$('drop').textContent='📁 Projet repris : '+P.name+' (rechoisis la vidéo seulement pour redécouper)'}}catch(e){}})();
