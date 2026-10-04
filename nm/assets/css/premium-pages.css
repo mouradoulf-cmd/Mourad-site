@@ -1,0 +1,495 @@
+/* NM Studio — premium layer for the two sales pages (services.html, pricing.html).
+ *
+ * Loaded AFTER site.css and craft.css, and only by those two pages, so nothing
+ * here can move the home page or the funnel pages. It does four things:
+ *
+ *   1. rhythm  — one spacing scale, one reading width, gold hairlines, a
+ *                three-step shadow ramp, aligned figures;
+ *   2. the comparative table — sticky head, sticky first column, featured
+ *                column, discreet zebra rows, smooth mobile scroll with an
+ *                edge gradient that is pure CSS (no new copy, no markup);
+ *   3. a sticky action bar that recalls the featured offer with its real price
+ *                (window.NMPrice) and keeps clear of the floating WhatsApp
+ *                button (56px + 20px at the bottom-inline-start of the page);
+ *   4. cards and FAQ finishing: calmer lift + gold hairline, animated chevron,
+ *                an "any questions?" call-out, and a start.html CTA at the end.
+ *
+ * No color is introduced that lowers contrast: every gold here is the house
+ * --gold / --gold-soft on near-black, and muted copy keeps its site.css value.
+ * Every motion rule is disabled under prefers-reduced-motion.
+ *
+ * NOTE — the closing CTA links carry data-i18n keys; their visible text is
+ * injected from the dictionary by the small inline script at the end of each
+ * page, so no English string is ever hard-coded in the markup.
+ */
+
+/* ==========================================================================
+   1 · SCALE — one spacing ladder, one shadow ramp, one reading width
+   ========================================================================== */
+:root {
+  --nm-space-1: .5rem;
+  --nm-space-2: .75rem;
+  --nm-space-3: 1rem;
+  --nm-space-4: 1.5rem;
+  --nm-space-5: 2rem;
+  --nm-space-6: 2.75rem;
+  --nm-space-7: clamp(3.5rem, 7vw, 5.5rem);
+  --nm-measure: 68ch;
+  --nm-measure-tight: 46ch;
+  --nm-hairline: linear-gradient(90deg, transparent, rgba(201, 169, 97, .34) 18%, rgba(201, 169, 97, .34) 82%, transparent);
+  --nm-shadow-a: 0 1px 0 rgba(255, 255, 255, .05) inset, 0 0 0 1px rgba(245, 241, 232, .07), 0 6px 16px -10px rgba(0, 0, 0, .6), 0 26px 60px -40px rgba(0, 0, 0, .9);
+  --nm-shadow-b: 0 1px 0 rgba(255, 255, 255, .07) inset, 0 0 0 1px rgba(201, 169, 97, .26), 0 10px 26px -14px rgba(0, 0, 0, .7), 0 46px 90px -50px rgba(201, 169, 97, .42);
+  --nm-shadow-c: 0 1px 0 rgba(255, 255, 255, .09) inset, 0 0 0 1px rgba(201, 169, 97, .38), 0 16px 40px -18px rgba(0, 0, 0, .78), 0 70px 130px -60px rgba(201, 169, 97, .5);
+  --nm-focus: 0 0 0 3px rgba(201, 169, 97, .35);
+}
+
+/* Section head: breathing room and a hairline that reads as a printed rule. */
+.section-head { position: relative; }
+.section-head .section-title { margin-top: .7rem; }
+.phero__lead,
+.section-lead { max-width: var(--nm-measure); margin-inline: auto; }
+.faq__intro .section-lead { margin-inline: 0; }
+.phero__lead { margin-top: var(--nm-space-4); }
+.section-head .section-lead { margin-top: var(--nm-space-4); }
+
+/* Gold hairline closing each block, a touch warmer than the plain --line. */
+.prices,
+.compare,
+.faq,
+.offers--page { position: relative; }
+.prices::after,
+.compare::after,
+.faq::after {
+  content: "";
+  position: absolute;
+  inset-inline: var(--gutter);
+  bottom: 0;
+  height: 1px;
+  background: var(--nm-hairline);
+  pointer-events: none;
+}
+.compare::after { bottom: 0; }
+.carebox,
+.trust,
+.cmp-wrap { border-radius: var(--radius-lg); }
+
+/* ==========================================================================
+   2 · FIGURES — every price lines up, with or without a tabular font
+   ========================================================================== */
+.offer__price strong,
+.pcard__price strong,
+.offer__approx,
+.pcard__approx,
+.pcard__care,
+.pcard__care-price,
+.cmp thead th strong,
+.cmp td,
+.cmp__unit,
+.carebox__list,
+.trust__note,
+.nm-bar__price strong,
+.nm-bar__approx,
+.om__price strong,
+.om__approx {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+.offer__approx,
+.pcard__approx { letter-spacing: .01em; }
+
+/* ==========================================================================
+   3 · OFFER CARDS — a calmer lift, a gold hairline on hover and on focus
+   ========================================================================== */
+.offer,
+.pcard {
+  box-shadow: var(--nm-shadow-a);
+  transition: transform .55s var(--ease-out), box-shadow .55s var(--ease-out), translate .55s var(--ease-out);
+}
+.offer:hover,
+.pcard:hover,
+.offer:focus-within,
+.pcard:focus-within { box-shadow: var(--nm-shadow-b); translate: 0 -4px; }
+.offer--featured,
+.pcard--featured { box-shadow: var(--nm-shadow-a), 0 60px 120px -60px rgba(201, 169, 97, .45); }
+.offer--featured:hover,
+.pcard--featured:hover,
+.offer--featured:focus-within,
+.pcard--featured:focus-within { box-shadow: var(--nm-shadow-c); }
+
+/* The offer name gets a hairline underline that fills in on hover. */
+.offer__name,
+.pcard__name { position: relative; }
+@media (hover: hover) and (pointer: fine) {
+  .offer__name::after,
+  .pcard__name::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    bottom: -.3rem;
+    height: 1px;
+    width: 2.5rem;
+    background: var(--grad);
+    opacity: .55;
+    transform-origin: 0 50%;
+    transition: width .5s var(--ease-out), opacity .4s ease;
+  }
+  .offer:hover .offer__name::after,
+  .pcard:hover .pcard__name::after,
+  .offer:focus-within .offer__name::after,
+  .pcard:focus-within .pcard__name::after { width: 100%; opacity: 1; }
+  html[dir="rtl"] .offer__name::after,
+  html[dir="rtl"] .pcard__name::after { transform-origin: 100% 50%; }
+}
+
+/* "Start my project" — the quiet alternative to the primary button (same
+   behaviour as the quote funnel, restated here because these two pages do
+   not load quote.css). */
+.start-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  width: 100%;
+  min-height: 44px;
+  margin-top: .5rem;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--gold-soft);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: color .25s var(--ease-out), background-color .25s var(--ease-out);
+}
+.start-link::after { content: "→"; font-size: .95em; transition: transform .25s var(--ease-out); }
+html[dir="rtl"] .start-link::after { content: "←"; }
+.start-link:hover { color: var(--text); background: rgba(201, 169, 97, .1); }
+.start-link:hover::after { transform: translateX(3px); }
+html[dir="rtl"] .start-link:hover::after { transform: translateX(-3px); }
+.start-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* Care-plan strip inside a card: same bed, better aligned figures. */
+.pcard__care { border-radius: var(--radius-md); background: rgba(245, 241, 232, .035); }
+
+/* Care-plan slab and trust block: a shade deeper, with the gold rule on top. */
+.carebox {
+  margin-top: var(--nm-space-5);
+  background:
+    radial-gradient(80% 140% at 0% 0%, rgba(201, 169, 97, .12), transparent 62%),
+    rgba(245, 241, 232, .03);
+  box-shadow: var(--nm-shadow-a);
+}
+.carebox__title { margin-top: var(--nm-space-2); }
+.carebox__list { row-gap: var(--nm-space-3); }
+.trust { margin-top: var(--nm-space-6); }
+.trust__marks { gap: var(--nm-space-2); }
+
+/* ==========================================================================
+   4 · COMPARATIVE TABLE — sticky head, sticky first column, featured column
+   ========================================================================== */
+.cmp-wrap {
+  position: relative;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  /* Room for the sticky head so the first row never hides under it. */
+  scroll-padding-block-start: 5.5rem;
+}
+@media (prefers-reduced-motion: reduce) { .cmp-wrap { scroll-behavior: auto; } }
+
+/* The head stays visible while the nine rows scroll under it. */
+.cmp thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  vertical-align: bottom;
+  padding-top: 1.4rem;
+  padding-bottom: 1rem;
+  background: #16151a;
+  background-image: linear-gradient(180deg, rgba(201, 169, 97, .07), rgba(7, 6, 12, .96));
+  box-shadow: inset 0 -1px 0 var(--line-strong);
+}
+.cmp__corner { z-index: 4; }
+.cmp thead th.is-featured { background-image: linear-gradient(180deg, rgba(201, 169, 97, .2), rgba(20, 17, 14, .96)); }
+
+/* First column sticks too, and keeps an opaque bed so the cells slide under. */
+.cmp tbody th {
+  z-index: 2;
+  background: #100e17;
+  box-shadow: inset -1px 0 0 var(--line);
+}
+html[dir="rtl"] .cmp tbody th { box-shadow: inset 1px 0 0 var(--line); }
+.cmp tbody th,
+.cmp__corner { padding-inline-end: 1.2rem; }
+
+/* Discreet zebra rows + a hairline between features. */
+.cmp tbody tr:nth-child(odd) > * { background-color: rgba(245, 241, 232, .022); }
+.cmp tbody tr:nth-child(odd) > th,
+.cmp tbody tr:nth-child(odd) > td { background-color: #12101a; }
+.cmp tbody tr > * { transition: background-color .3s ease; }
+@media (hover: hover) and (pointer: fine) {
+  .cmp tbody tr:hover > td { background-color: rgba(201, 169, 97, .07); }
+  .cmp tbody tr:hover > th { background-color: #16131f; }
+}
+
+/* The featured column: a gold veil, a rail on each side, a lifted header. */
+.cmp .is-featured { background-color: rgba(201, 169, 97, .07); }
+.cmp tbody tr:nth-child(odd) > .is-featured { background-color: rgba(201, 169, 97, .1); }
+.cmp tbody .is-featured { box-shadow: inset 1px 0 0 rgba(201, 169, 97, .2), inset -1px 0 0 rgba(201, 169, 97, .2); }
+.cmp thead .is-featured { box-shadow: inset 0 3px 0 var(--gold), inset 1px 0 0 rgba(201, 169, 97, .3), inset -1px 0 0 rgba(201, 169, 97, .3); }
+.cmp .is-featured strong { letter-spacing: -0.02em; }
+.cmp__yes svg { width: 15px; height: 15px; }
+
+/* Mobile: the table scrolls sideways inside its own rounded frame, with a
+   soft gold edge as the only hint that there is more to the right. Purely
+   decorative — pointer-events none, no text, and it fades out at the end. */
+.cmp-wrap::before,
+.cmp-wrap::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  z-index: 5;
+  width: clamp(1.4rem, 5vw, 3.2rem);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.cmp-wrap::before {
+  inset-inline-start: 1px;
+  border-start-start-radius: var(--radius-lg);
+  border-end-start-radius: var(--radius-lg);
+  background: linear-gradient(90deg, rgba(11, 9, 16, .96), rgba(11, 9, 16, 0));
+}
+.cmp-wrap::after {
+  inset-inline-end: 1px;
+  border-start-end-radius: var(--radius-lg);
+  border-end-end-radius: var(--radius-lg);
+  background: linear-gradient(270deg, rgba(11, 9, 16, .96), rgba(11, 9, 16, 0));
+}
+html[dir="rtl"] .cmp-wrap::before { background: linear-gradient(270deg, rgba(11, 9, 16, .96), rgba(11, 9, 16, 0)); }
+html[dir="rtl"] .cmp-wrap::after { background: linear-gradient(90deg, rgba(11, 9, 16, .96), rgba(11, 9, 16, 0)); }
+/* One class per side, toggled by the same script that runs the bar:
+   is-more-right —— there is more table to the right, is-more-left —— the
+   first column is out of view. At most one of the two is ever visible, so
+   the single-column view is never hemmed in on both sides. */
+.cmp-wrap.is-more-left::before { opacity: 1; }
+.cmp-wrap.is-more-right::after { opacity: 1; }
+@media (max-width: 900px) { .cmp-wrap { border-radius: var(--radius-md); } }
+
+/* ==========================================================================
+   5 · FAQ — rotating chevron, quieter rhythm, "any questions?" call-out
+   ========================================================================== */
+.qa summary { padding-block: 1.35rem; border-radius: var(--radius-sm); }
+@media (hover: hover) and (pointer: fine) {
+  .qa summary:hover { padding-inline: .6rem; }
+}
+.qa summary { transition: color .2s ease, padding-inline .35s var(--ease-out), background-color .35s ease; }
+.qa summary:hover { background: rgba(245, 241, 232, .028); }
+.qa summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* Chevron: one CSS-drawn tick that turns from down to up. site.css animates
+   the <i> box; the height animation of .qa__body is untouched. */
+.qa summary i { width: 36px; height: 36px; border-color: rgba(245, 241, 232, .22); }
+.qa summary i::before,
+.qa summary i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin: 0;
+  background: none;
+  border-inline-end: 1.6px solid currentColor;
+  border-block-end: 1.6px solid currentColor;
+  border-radius: 1px;
+}
+.qa summary i::before { transform: translate(-50%, -70%) rotate(45deg); }
+.qa summary i::after { transform: translate(-50%, -30%) rotate(45deg); opacity: 0; }
+.qa[open] summary i { transform: none; background: rgba(201, 169, 97, .14); border-color: var(--gold); color: var(--gold); }
+.qa[open] summary i::before { transform: translate(-50%, -30%) rotate(-135deg); }
+.qa[open] summary i::after { opacity: 0; }
+.qa summary i { transition: transform .4s var(--ease-out), background-color .35s ease, border-color .35s ease, color .35s ease; }
+
+/* A quiet call-out under the FAQ list, pointing at the same WhatsApp number. */
+.nm-ask {
+  margin-top: var(--nm-space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nm-space-3) var(--nm-space-4);
+  padding: var(--nm-space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(201, 169, 97, .26);
+  background:
+    radial-gradient(120% 160% at 0% 0%, rgba(201, 169, 97, .1), transparent 60%),
+    rgba(245, 241, 232, .025);
+  box-shadow: var(--nm-shadow-a);
+}
+.nm-ask__text { flex: 1 1 16rem; min-width: 0; }
+.nm-ask__text b { display: block; font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.015em; color: var(--text); }
+.nm-ask__text span { display: block; margin-top: .25rem; font-size: .9rem; color: var(--muted); }
+.nm-ask .btn { flex: 0 0 auto; min-height: 44px; }
+
+/* ==========================================================================
+   6 · FINAL CTA — one more door to start.html, above the WhatsApp finale
+   ========================================================================== */
+.nm-finale-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  min-height: 52px;
+  margin-top: var(--nm-space-5);
+  padding: 0 1.6rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--btn-ink);
+  background: var(--grad-btn);
+  box-shadow: 0 18px 40px -18px rgba(201, 169, 97, .6), 0 0 0 1px rgba(246, 225, 173, .3) inset;
+  transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out), filter .3s ease;
+}
+.nm-finale-cta svg { width: 1.05rem; height: 1.05rem; transition: transform .35s var(--ease-out); }
+.nm-finale-cta:hover { transform: translateY(-2px); box-shadow: 0 24px 50px -18px rgba(201, 169, 97, .75), 0 0 0 1px rgba(246, 225, 173, .45) inset; }
+.nm-finale-cta:hover svg { transform: translateX(3px); }
+html[dir="rtl"] .nm-finale-cta svg { transform: scaleX(-1); }
+html[dir="rtl"] .nm-finale-cta:hover svg { transform: scaleX(-1) translateX(3px); }
+.nm-finale-cta:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
+
+/* ==========================================================================
+   7 · STICKY ACTION BAR — appears once the offers are behind the reader
+   --------------------------------------------------------------------------
+   Placement rules, in order of importance:
+     · it sits above the home indicator and 92px clear of the floating
+       WhatsApp button (56px tall, 1.25rem from the bottom-inline-start), so
+       the two never touch;
+     · body.nm-has-bar reserves its height at the end of <main> and inside
+       html's scroll-padding, so it never hides the last line of a page;
+     · it is a region, not a dialog: no focus trap, no scroll lock.
+   ========================================================================== */
+.nm-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 140;
+  padding: .55rem var(--gutter) max(.55rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(201, 169, 97, .28);
+  background: linear-gradient(180deg, rgba(11, 9, 16, .82), rgba(11, 9, 16, .97));
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  box-shadow: 0 -18px 40px -26px rgba(0, 0, 0, .95);
+  transform: translateY(115%);
+  opacity: 0;
+  visibility: hidden;
+  /* Retracting is quicker than arriving, and the state flips as soon as the
+     slide-out has finished, so a scroll back up never leaves it half-drawn. */
+  transition: transform .38s var(--ease-out), opacity .28s ease, visibility 0s linear .38s;
+}
+.nm-bar.is-in {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  transition: transform .55s var(--ease-out), opacity .4s ease, visibility 0s;
+}
+.nm-bar::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: -1px;
+  height: 1px;
+  background: var(--nm-hairline);
+  pointer-events: none;
+}
+.nm-bar__inner {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--nm-space-3) var(--nm-space-4);
+}
+.nm-bar__offer { flex: 1 1 auto; min-width: 0; }
+.nm-bar__eyebrow {
+  display: block;
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.nm-bar__name {
+  display: block;
+  margin-top: .1rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nm-bar__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .3rem .5rem;
+  margin-top: .15rem;
+}
+.nm-bar__price strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.4vw, 1.7rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.nm-bar__once { font-size: .74rem; color: var(--muted); }
+.nm-bar__approx { font-size: .78rem; color: var(--muted); }
+.nm-bar__approx:empty { display: none; }
+.nm-bar__cta { flex: 0 0 auto; min-height: 48px; }
+.nm-bar__cta svg { width: 1.05rem; height: 1.05rem; }
+
+/* Reserved space, both in the flow and for in-page anchors. */
+body.nm-has-bar main { padding-bottom: var(--nm-bar-h, 5.5rem); }
+body.nm-has-bar { scroll-padding-bottom: calc(var(--nm-bar-h, 5.5rem) + .5rem); }
+
+@media (max-width: 639px) {
+  .nm-bar__inner { flex-wrap: nowrap; gap: .6rem; }
+  .nm-bar__name { font-size: .92rem; }
+  .nm-bar__price strong { font-size: 1.25rem; }
+  .nm-bar__once { display: none; }
+  .nm-bar__cta { min-height: 44px; padding-inline: 1rem; }
+  .nm-bar__cta span { font-size: .88rem; }
+}
+@media (max-width: 419px) {
+  .nm-bar__approx { display: none; }
+}
+/* The floating WhatsApp button lives at the bottom-inline-start; when the bar
+   is up on a narrow screen the button keeps its 56px footprint and simply
+   rides above it, so the two never overlap. */
+body.nm-has-bar .wa-float { bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + var(--nm-bar-h, 5.5rem)); }
+body.nm-has-bar .wa-float:not(.is-visible) { bottom: max(1.25rem, env(safe-area-inset-bottom)); }
+
+/* ==========================================================================
+   8 · MOTION PREFERENCES — nothing moves, nothing is hidden
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .nm-bar { transition: none; }
+  .offer,
+  .pcard,
+  .nm-finale-cta,
+  .qa summary,
+  .qa summary i,
+  .cmp tbody tr > * { transition: none; }
+  .offer:hover,
+  .pcard:hover,
+  .offer:focus-within,
+  .pcard:focus-within,
+  .nm-finale-cta:hover { translate: none; transform: none; }
+}

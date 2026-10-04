@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="NM Studio">
+  <title>NM Studio</title>
+  <rect width="32" height="32" rx="7.5" fill="#0d0b16"/>
+  <rect x="0.8" y="0.8" width="30.4" height="30.4" rx="6.9" fill="none" stroke="#e6c27a" stroke-opacity="0.38" stroke-width="1.6"/>
+  <g fill="none" stroke-linecap="round" stroke-width="2.4">
+    <path d="M4.8 12.4c2.9 0 2.9 4.9 5.9 4.9s2.9-4.9 5.4-4.9 2.9 4.9 5.9 4.9 2.9-4.9 5.4-4.9" stroke="#7b61ff"/>
+    <path d="M4.8 19.2c2.9 0 2.9 4.9 5.9 4.9s3-4.9 5.4-4.9 2.9 4.9 5.9 4.9 2.9-4.9 5.4-4.9" stroke="#e6c27a"/>
+  </g>
+</svg>

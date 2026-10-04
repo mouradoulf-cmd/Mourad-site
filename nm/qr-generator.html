@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Générateur de QR code — Outil interne NM Studio</title>
+<meta name="description" content="Outil interne NM Studio : génère un QR code en PNG ou SVG pour la page menu d'un client, prêt à imprimer sur ses tables.">
+<link rel="canonical" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/qr-generator.html">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#07060c">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -85,7 +93,7 @@
     font-size: .92rem;
     font-weight: 700;
     background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
-    color: #0a0a10;
+    color: #0a0c18;
     transition: transform .2s ease, opacity .2s ease;
   }
   .btn:hover{ transform: translateY(-1px); }
@@ -159,8 +167,8 @@
         <div>
           <label>Couleur du code</label>
           <div class="color-field">
-            <input type="color" id="colorDark" value="#0a0a10">
-            <span id="colorDarkLabel">#0A0A10</span>
+            <input type="color" id="colorDark" value="#0a0c18">
+            <span id="colorDarkLabel">#0a0c18</span>
           </div>
         </div>
         <div>
