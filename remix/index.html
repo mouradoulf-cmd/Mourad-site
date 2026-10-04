@@ -331,12 +331,20 @@ function vidPrompt(sg){const sp=$('optSpeak').checked&&sg.line?' One character s
 
 /* ═══ Vidéo source : découpage en plans ═══ */
 function seek(v,t){return new Promise(res=>{let done=false;const f=()=>{if(done)return;done=true;v.removeEventListener('seeked',f);res()};v.addEventListener('seeked',f);setTimeout(f,3500);try{v.currentTime=Math.max(0,Math.min(t,(v.duration||t)-0.05))}catch(e){f()}})}
+function frameReady(v){return new Promise(r=>{let d=false;const f=()=>{if(!d){d=true;r()}};if(v.requestVideoFrameCallback){try{v.requestVideoFrameCallback(f)}catch(e){}}setTimeout(f,140)})}
+async function seekReady(v,t){await seek(v,t);await frameReady(v)}
+function isBlack(v){try{const c=document.createElement('canvas');c.width=32;c.height=24;const x=c.getContext('2d');x.drawImage(v,0,0,32,24);const d=x.getImageData(0,0,32,24).data;let m=0,mx=0;for(let i=0;i<d.length;i+=4){const l=(d[i]+d[i+1]+d[i+2])/3;m+=l;if(l>mx)mx=l}return mx<6}catch(e){return true}}
+async function decodeCheck(v){await seekReady(v,Math.min(0.3,(v.duration||1)/2));if(!isBlack(v))return true;
+ try{v.muted=true;await v.play();await new Promise(r=>setTimeout(r,500));v.pause()}catch(e){}
+ await seekReady(v,Math.min(0.6,(v.duration||1)/2));return !isBlack(v)}
 function grabFrame(v,w){const c=document.createElement('canvas');const k=w/(v.videoWidth||w);c.width=w;c.height=Math.round((v.videoHeight||w)*k);c.getContext('2d').drawImage(v,0,0,c.width,c.height);return c}
 async function cutVideo(){
  if(!VID)return;const v=VID;const D=Math.min(v.duration||0,300);if(!D){toast('Vidéo illisible','error');return}
- const mode=$('segMode').value;setStatus('Découpage de la vidéo…');$('btnCut').disabled=true;
+ setStatus('Lecture de la vidéo…');$('btnCut').disabled=true;
+ if(!(await decodeCheck(v))){setStatus(null);$('btnCut').disabled=false;$('segInfo').textContent='⚠️ Ton téléphone n\'arrive pas à afficher les images de cette vidéo (écran noir). C\'est souvent un format HEVC/.mov. Réenregistre-la en MP4 (H.264), ou envoie-la moi pour que je la convertisse.';toast('Vidéo illisible (écran noir) : voir le message sous le bouton','error',8000);return}
+ const mode=$('segMode').value;setStatus('Découpage de la vidéo…');
  let cuts=[0];
- if(mode==='auto'){const step=D>150?1:0.5;let prev=null,last=0;for(let t=0;t<D;t+=step){await seek(v,t);const c=document.createElement('canvas');c.width=32;c.height=24;const x=c.getContext('2d');x.drawImage(v,0,0,32,24);const d=x.getImageData(0,0,32,24).data;const g=new Float32Array(768);for(let i=0;i<768;i++)g[i]=(d[i*4]+d[i*4+1]+d[i*4+2])/3;
+ if(mode==='auto'){const step=D>150?1:0.5;let prev=null,last=0;for(let t=0;t<D;t+=step){await seekReady(v,t);const c=document.createElement('canvas');c.width=32;c.height=24;const x=c.getContext('2d');x.drawImage(v,0,0,32,24);const d=x.getImageData(0,0,32,24).data;const g=new Float32Array(768);for(let i=0;i<768;i++)g[i]=(d[i*4]+d[i*4+1]+d[i*4+2])/3;
    if(prev){let s=0;for(let i=0;i<768;i++)s+=Math.abs(g[i]-prev[i]);s/=768;if(s>22&&t-last>=2){cuts.push(t);last=t}}prev=g;setStatus('Analyse des plans… '+Math.round(100*t/D)+'%')}}
  else{const L=+mode;for(let t=L;t<D-1;t+=L)cuts.push(t)}
  cuts.push(D);
@@ -347,15 +355,21 @@ async function cutVideo(){
  const TG=$('target').value;let plan=out.map(o=>({a:o[0],e:o[1],g:o[1]-o[0]}));
  if(TG!=='same'){const Tt=+TG;const N=Math.max(1,Math.min(60,Math.round(Tt/7)));plan=[];for(let k=0;k<N;k++)plan.push({a:D*k/N,e:D*(k+1)/N,g:Math.max(4,Math.min(10,Tt/N))})}
  P.segs=[];KF={};
- for(let i=0;i<plan.length;i++){const a=plan[i].a,e=plan[i].e;setStatus('Images de référence '+(i+1)+'/'+plan.length);await seek(v,a+(e-a)*.35);const big=grabFrame(v,512),th=grabFrame(v,120);KF[i]=big.toDataURL('image/jpeg',.8);
+ for(let i=0;i<plan.length;i++){const a=plan[i].a,e=plan[i].e;setStatus('Images de référence '+(i+1)+'/'+plan.length);await seekReady(v,a+(e-a)*.35);const big=grabFrame(v,512),th=grabFrame(v,120);KF[i]=big.toDataURL('image/jpeg',.8);
   P.segs.push({n:i+1,start:+a.toFixed(2),end:+e.toFixed(2),dur:+plan[i].g.toFixed(1),thumb:th.toDataURL('image/jpeg',.6),desc:'',motion:'',line:'',imgUrl:null,imgState:'',vidId:null,vidUrl:null,vidState:'',err:'',variant:0})}
  P.dur=D;save();renderAll();setStatus(null);$('btnCut').disabled=false;
  const tot=P.segs.reduce((a,x)=>a+x.dur,0);$('segInfo').textContent=P.segs.length+' plans sur '+Math.round(D)+' s de vidéo d\'origine'+((v.duration||0)>300?' (limitée aux 300 premières secondes)':'')+'. Nouvelle vidéo : environ '+Math.round(tot)+' s. Création : '+Math.ceil(P.segs.length*T.VID_SAFE/60)+' min environ.';toast(P.segs.length+' plans')}
 $('drop').onclick=()=>$('file').click();
 $('file').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
  if(S.running){toast('Arrête d\'abord la création','warn');return}
- const url=URL.createObjectURL(f);const v=$('srcvid');v.src=url;v.style.display='block';VID=v;P.name=f.name;$('drop').textContent='✅ '+f.name+' — touche pour changer';$('drop2').textContent='✅ '+f.name+' — touche pour changer';
- v.onloadedmetadata=()=>{P.dur=v.duration;$('segInfo').textContent='Durée : '+Math.round(v.duration)+' s. Touche « Découper la vidéo ».';updButtons()};v.load();updButtons()};
+ if(VID&&VID._url){try{URL.revokeObjectURL(VID._url)}catch(x){}}
+ const url=URL.createObjectURL(f);const v=$('srcvid');v._url=url;v.muted=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');v.preload='auto';
+ v.style.display='block';VID=v;P.name=f.name;
+ const label='✅ '+f.name+' — touche pour changer';$('drop').textContent=label;$('drop2').textContent=label;
+ v.onerror=()=>{$('segInfo').textContent='⚠️ Impossible de lire cette vidéo (format non compatible avec ton téléphone). Réenregistre-la en MP4 (H.264) ou envoie-la moi pour que je la convertisse.';toast('Vidéo non lisible : format non compatible','error',8000)};
+ v.onloadedmetadata=()=>{P.dur=v.duration;$('segInfo').textContent='Durée : '+Math.round(v.duration)+' s. Touche « Découper la vidéo ».';try{v.currentTime=0.1}catch(x){}updButtons()};
+ v.onloadeddata=()=>{try{if(v.currentTime<0.05)v.currentTime=0.1}catch(x){}};
+ v.src=url;v.load();updButtons()};
 $('btnCut').onclick=()=>cutVideo();
 
 /* ═══ Storyboard : vision (essai) et texte ═══ */
