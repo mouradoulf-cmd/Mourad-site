@@ -36,11 +36,15 @@ const st=$('.sticky');if(st)addEventListener('scroll',()=>st.classList.toggle('s
 
 /* ---------- fill config into DOM ---------- */
 const lineUrl=`https://line.me/R/ti/p/${encodeURIComponent(CONFIG.LINE_OA)}`;
-$$('[data-pp]').forEach(e=>e.textContent=CONFIG.PROMPTPAY);
-$$('[data-acc]').forEach(e=>e.textContent=CONFIG.ACCOUNT_NAME);
-$$('[data-brand]').forEach(e=>e.textContent=CONFIG.BRAND);
-$$('[data-line]').forEach(a=>{a.href=lineUrl;a.target='_blank';a.rel='noopener'});
-$$('[data-price]').forEach(e=>{const p=CONFIG.PLANS[e.dataset.price];if(p)e.textContent='฿'+p.price.toLocaleString('en-US')});
+const t=(k,v)=>window.I18N?I18N.t(k,v):k;
+function fill(){
+  $$('[data-pp]').forEach(e=>e.textContent=CONFIG.PROMPTPAY);
+  $$('[data-acc]').forEach(e=>e.textContent=CONFIG.ACCOUNT_NAME);
+  $$('[data-brand]').forEach(e=>e.textContent=CONFIG.BRAND);
+  $$('[data-line]').forEach(a=>{a.href=lineUrl;a.target='_blank';a.rel='noopener'});
+  $$('[data-price]').forEach(e=>{const p=CONFIG.PLANS[e.dataset.price];if(p)e.textContent='฿'+p.price.toLocaleString('en-US')});
+}
+fill();document.addEventListener('langchange',fill);
 
 /* ---------- PromptPay EMV payload (มาตรฐาน Thai QR Payment) ---------- */
 function crc16(s){let c=0xFFFF;for(let i=0;i<s.length;i++){c^=s.charCodeAt(i)<<8;for(let j=0;j<8;j++)c=(c&0x8000)?((c<<1)^0x1021)&0xFFFF:(c<<1)&0xFFFF}return c.toString(16).toUpperCase().padStart(4,'0')}
@@ -64,22 +68,22 @@ if(co){
   const render=()=>{
     const p=CONFIG.PLANS[key];
     $$('.pick').forEach(b=>b.classList.toggle('on',b.dataset.k===key));
-    $('#sum').textContent=`${p.name} — ${p.label}`;
+    $('#sum').textContent=`${t('plan_'+key)} — ${t('lbl_'+key)}`;
     $('#amt').textContent='฿'+p.price.toLocaleString('en-US');
     const payload=promptPayPayload(CONFIG.PROMPTPAY,p.price);
     const box=$('#qr');box.innerHTML='';
     if(window.qrcode){const qr=qrcode(0,'M');qr.addData(payload);qr.make();box.innerHTML=qr.createSvgTag({cellSize:6,margin:2,scalable:true})}
-    else box.innerHTML='<p class="note">โหลด QR ไม่ได้ — โอนพร้อมเพย์ตามเบอร์ด้านล่าง</p>';
+    else box.innerHTML='<p class="note">'+t('noqr')+'</p>';
     const card=$('#card'),link=CONFIG.STRIPE[key];
     card.hidden=!link;if(link)card.href=link;
-    const slip=`สวัสดีครับ/ค่ะ โอนเงินแล้ว\nแพ็กเกจ: ${p.name} (฿${p.price})\nชื่อ: ${$('#nm').value||'-'}\nขอรหัสเข้าห้องเรียนด้วยครับ/ค่ะ (แนบสลิปด้านล่าง)`;
+    const slip=t('slip',{plan:t('plan_'+key),price:p.price,name:$('#nm').value||'-'});
     $('#slip').href=`https://line.me/R/oaMessage/${encodeURIComponent(CONFIG.LINE_OA)}/?${encodeURIComponent(slip)}`;
   };
   $$('.pick').forEach(b=>b.addEventListener('click',()=>{key=b.dataset.k;render();track('InitiateCheckout',{value:CONFIG.PLANS[key].price,currency:'THB'})}));
   $('#nm').addEventListener('input',render);
   $('#slip').addEventListener('click',()=>track('Purchase',{value:CONFIG.PLANS[key].price,currency:'THB'}));
   const dl=$('#dlqr');if(dl)dl.addEventListener('click',()=>{const s=$('#qr svg');if(!s)return;const a=document.createElement('a');a.href='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s.outerHTML);a.download='promptpay-qr.svg';a.click()});
-  window.addEventListener('load',render);render();
+  window.addEventListener('load',render);document.addEventListener('langchange',render);render();
 }
 
 /* ---------- lead capture (free guide) ---------- */
@@ -103,7 +107,7 @@ if(gate){
 }
 function initProgress(){
   const boxes=$$('.chk');let s={};try{s=JSON.parse(localStorage.getItem('ac_prog')||'{}')}catch(_){}
-  const upd=()=>{const n=boxes.filter(b=>b.checked).length;$('#pbar').style.width=(n/boxes.length*100)+'%';$('#ptxt').textContent=`ทำแล้ว ${n}/${boxes.length} แบบฝึกหัด`};
+  const upd=()=>{const n=boxes.filter(b=>b.checked).length;$('#pbar').style.width=(n/boxes.length*100)+'%';$('#ptxt').textContent=t('prog',{n:n,m:boxes.length})};document.addEventListener('langchange',upd);
   boxes.forEach((b,i)=>{b.checked=!!s[i];b.addEventListener('change',()=>{s[i]=b.checked;try{localStorage.setItem('ac_prog',JSON.stringify(s))}catch(_){}upd()})});upd();
 }
 /* ---------- print button ---------- */

@@ -80,3 +80,7 @@ label.ck{display:flex;gap:10px;align-items:flex-start;cursor:pointer}label.ck in
 @media(max-width:760px){.co,.bonus,.guar{grid-template-columns:1fr}}
 @media print{nav,.glow,.btn,.sticky,footer,.noprint{display:none!important}body{background:#fff;color:#000}.prompt{background:#f4f4f4;color:#000;border-color:#999}.mem p,.mem li{color:#000}.box{background:#fff;border-color:#999}}
 [hidden]{display:none!important}
+.lang{display:flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:3px}
+.lang button{background:none;border:0;color:var(--mute);font:700 .75rem var(--font);padding:5px 10px;border-radius:99px;cursor:pointer}
+.lang button.on{background:var(--green);color:#04130d}
+nav .wrap{gap:12px}

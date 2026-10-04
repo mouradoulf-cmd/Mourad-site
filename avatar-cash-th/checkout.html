@@ -1,47 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="th">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex">
-<title>ชำระเงิน — Avatar Cash</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="noindex" name="robots"/>
+<title data-i18n="s2">ชำระเงิน — Avatar Cash</title>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="glow"></div>
-<nav><div class="wrap"><a href="index.html" class="logo">Avatar<b>Cash</b></a><a href="index.html" style="color:var(--mute)">← กลับ</a></div></nav>
-<main id="checkout" class="wrap" style="padding:50px 0 80px">
-  <h1 style="font-size:2rem;text-align:center">ชำระเงิน</h1>
-  <p class="sub">สแกน QR → ส่งสลิปทาง LINE → รับรหัสเข้าห้องเรียน</p>
-  <div class="co">
-    <div>
-      <div class="picks">
-        <button class="pick" data-k="life">ตลอดชีพ<small>฿4,990</small></button>
-        <button class="pick" data-k="month">รายเดือน<small>฿990 / เดือน</small></button>
-        <button class="pick" data-k="one">รีวิว 1:1<small>฿1,990</small></button>
-      </div>
-      <input id="nm" placeholder="ชื่อของคุณ (ไม่บังคับ — ใส่ในข้อความ LINE)" style="margin-bottom:18px">
-      <ol class="steps">
-        <li>สแกน QR ด้วยแอปธนาคารใดก็ได้ ยอดเงินใส่ให้อัตโนมัติ</li>
-        <li>บันทึกสลิปการโอน</li>
-        <li>กดปุ่มด้านล่าง ส่งข้อความ + แนบสลิปใน LINE</li>
-        <li>รับรหัสเข้าห้องเรียนที่ <a href="members.html" style="text-decoration:underline">members.html</a></li>
-      </ol>
-      <a id="slip" class="btn" href="#" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-top:14px">โอนแล้ว → ส่งสลิปทาง LINE</a>
-      <a id="card" class="btn ghost" href="#" target="_blank" rel="noopener" hidden style="width:100%;justify-content:center;margin-top:10px">💳 ชำระด้วยบัตรเครดิต/เดบิต</a>
-      <p class="note">🛡️ คืนเงินใน 7 วัน • <a href="terms.html" style="text-decoration:underline">เงื่อนไข</a></p>
-    </div>
-    <div class="card" style="text-align:center">
-      <p style="color:var(--mute)" id="sum"></p>
-      <div class="big" id="amt"></div>
-      <div class="qrbox" id="qr" aria-label="QR พร้อมเพย์"></div>
-      <p class="note">พร้อมเพย์: <b data-pp></b><br>ชื่อบัญชี: <span data-acc></span></p>
-      <button id="dlqr" class="btn ghost sm" type="button" style="margin-top:8px">บันทึก QR</button>
-    </div>
-  </div>
+<nav><div class="wrap"><a class="logo" href="index.html">Avatar<b>Cash</b></a><a data-i18n="s3" href="index.html" style="color:var(--mute)">← กลับ</a></div></nav>
+<main class="wrap" id="checkout" style="padding:50px 0 80px">
+<h1 data-i18n="s4" style="font-size:2rem;text-align:center">ชำระเงิน</h1>
+<p class="sub" data-i18n="s5">สแกน QR → ส่งสลิปทาง LINE → รับรหัสเข้าห้องเรียน</p>
+<div class="co">
+<div>
+<div class="picks">
+<button class="pick" data-i18n="s6" data-k="life">ตลอดชีพ<small>฿4,990</small></button>
+<button class="pick" data-i18n="s7" data-k="month">รายเดือน<small>฿990 / เดือน</small></button>
+<button class="pick" data-i18n="s8" data-k="one">รีวิว 1:1<small>฿1,990</small></button>
+</div>
+<input data-i18n-ph="s1" id="nm" placeholder="ชื่อของคุณ (ไม่บังคับ — ใส่ในข้อความ LINE)" style="margin-bottom:18px"/>
+<ol class="steps">
+<li data-i18n="s9">สแกน QR ด้วยแอปธนาคารใดก็ได้ ยอดเงินใส่ให้อัตโนมัติ</li>
+<li data-i18n="s10">บันทึกสลิปการโอน</li>
+<li data-i18n="s11">กดปุ่มด้านล่าง ส่งข้อความ + แนบสลิปใน LINE</li>
+<li data-i18n="s12">รับรหัสเข้าห้องเรียนที่ <a href="members.html" style="text-decoration:underline">members.html</a></li>
+</ol>
+<a class="btn" data-i18n="s13" href="#" id="slip" rel="noopener" style="width:100%;justify-content:center;margin-top:14px" target="_blank">โอนแล้ว → ส่งสลิปทาง LINE</a>
+<a class="btn ghost" data-i18n="s14" hidden="" href="#" id="card" rel="noopener" style="width:100%;justify-content:center;margin-top:10px" target="_blank">💳 ชำระด้วยบัตรเครดิต/เดบิต</a>
+<p class="note" data-i18n="s15">🛡️ คืนเงินใน 7 วัน • <a href="terms.html" style="text-decoration:underline">เงื่อนไข</a></p>
+</div>
+<div class="card" style="text-align:center">
+<p id="sum" style="color:var(--mute)"></p>
+<div class="big" id="amt"></div>
+<div aria-label="QR พร้อมเพย์" class="qrbox" id="qr"></div>
+<p class="note" data-i18n="s16">พร้อมเพย์: <b data-pp=""></b><br/>ชื่อบัญชี: <span data-acc=""></span></p>
+<button class="btn ghost sm" data-i18n="s17" id="dlqr" style="margin-top:8px" type="button">บันทึก QR</button>
+</div>
+</div>
 </main>
 <script src="assets/js/qrcode.min.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
