@@ -55,3 +55,6 @@ La section de comparaison dit : les générateurs vidéo IA payants coûtent ~30
 - Vérifie aussi que les prix cités pour la concurrence correspondent à des offres réelles ; ajuste les chiffres sinon.
 - N'écris pas « illimité » : aucun outil gratuit n'est réellement illimité.
 - Ajoute dans le Pack 3 le vrai pas-à-pas de ta méthode (c'est ton produit principal) : liste des outils, ordre, limites, astuces.
+
+## 10. Vidéos TikTok + contenu
+9 vidéos prêtes (3 par langue) dans `video/`, intégrées dans la page d'accueil de chaque langue ; plan de contenu complet (30 idées, scripts, légendes, checklist) dans `TIKTOK-CONTENT.md`. Le fichier `video/scenes.js` contient les textes : modifie-les puis régénère (voir `video/player.html`) si tu changes les prix ou les messages.

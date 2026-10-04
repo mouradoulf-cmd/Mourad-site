@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AI Skill — vidéo explicative</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&family=Noto+Sans+Thai:wght@500;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--g:#2ee6a6;--v:#8b7cff;--bg:#07090d;--w:1080px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden;font-family:'Inter','Noto Sans Thai',sans-serif;color:#fff}
+#stage{position:relative;width:1080px;height:1920px;background:var(--bg);overflow:hidden}
+.blob{position:absolute;border-radius:50%}
+.b1{width:1400px;height:1400px;background:radial-gradient(circle,rgba(139,124,255,.5),transparent 65%);top:-500px;left:-450px}
+.b2{width:1300px;height:1300px;background:radial-gradient(circle,rgba(46,230,166,.32),transparent 65%);bottom:-450px;right:-450px}
+@keyframes fl{to{transform:translate(120px,90px) scale(1.15)}}
+.brand{position:absolute;top:90px;left:0;right:0;text-align:center;font-weight:900;font-size:54px;letter-spacing:-.5px}.brand b{color:var(--g)}
+.bar{position:absolute;top:0;left:0;height:12px;background:linear-gradient(90deg,var(--g),var(--v));width:0}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:200px 80px 260px;opacity:0;pointer-events:none}
+
+@keyframes in{from{opacity:0;transform:translateY(60px) scale(.96)}to{opacity:1;transform:none}}
+.k{font-size:44px;font-weight:800;color:var(--g);letter-spacing:.08em;text-transform:uppercase;margin-bottom:34px}
+h1{font-size:112px;line-height:1.12;font-weight:900;letter-spacing:-2px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--g),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:52px;line-height:1.35;color:#c4ccda;margin-top:40px;font-weight:600}
+.items{display:flex;flex-direction:column;gap:26px;margin-top:56px;width:100%}
+.it{background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.14);border-radius:40px;padding:34px 40px;font-size:56px;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:24px;opacity:0;transform:translateX(80px)}
+
+@keyframes pop{to{opacity:1;transform:none}}
+.it small{font-size:38px;color:#aab4c5;font-weight:600}
+.it.x{border-color:rgba(255,120,120,.5)}.it.x b{text-decoration:line-through;text-decoration-thickness:6px;color:#ff9a9a}
+.it.good{border-color:var(--g);background:rgba(46,230,166,.14)}.it.good b{color:var(--g)}
+.it.chk{justify-content:flex-start}.chk::before{content:"✓";color:var(--g);font-weight:900;margin-right:18px}
+.pill{margin-top:60px;background:var(--g);color:#04130d;font-weight:900;font-size:62px;padding:36px 80px;border-radius:999px;box-shadow:0 12px 40px rgba(46,230,166,.4)}
+@keyframes pulse{to{transform:scale(1.06)}}
+.disc{position:absolute;bottom:90px;left:60px;right:60px;text-align:center;font-size:30px;color:#7d8798;font-weight:500}
+</style></head><body>
+<div id="stage"><div class="blob b1"></div><div class="blob b2"></div><div class="brand">AI<b>Skill</b></div><div class="bar" id="bar"></div><div id="scenes"></div><div class="disc" id="disc"></div></div>
+<script src="scenes.js"></script>
+<script>
+const q=new URLSearchParams(location.search);
+const lang=q.get('lang')||'fr',vid=+(q.get('v')||1)-1;
+const data=SCENES[lang],video=data.videos[vid];
+document.documentElement.lang=lang;document.getElementById('disc').textContent=data.disc;
+const box=document.getElementById('scenes');
+video.forEach(s=>{
+  const d=document.createElement('div');d.className='scene';
+  let h='';if(s.k)h+=`<div class="k">${s.k}</div>`;
+  h+=`<h1>${s.h}</h1>`;if(s.sub)h+=`<div class="sub">${s.sub}</div>`;
+  if(s.items)h+=`<div class="items">${s.items.map((it,i)=>{const [a,b,c]=Array.isArray(it)?it:[it];return `<div class="it ${c||''} ${s.list?'chk':''}" style="animation-delay:${.4+i*.55}s"><b>${a}</b>${b?`<small>${b}</small>`:''}</div>`}).join('')}</div>`;
+  if(s.cta)h+=`<div class="pill">${s.cta}</div>`;
+  d.innerHTML=h;box.appendChild(d);s.el=d;
+});
+const total=video.reduce((a,s)=>a+s.t,0);
+window.__total=total;
+const ease=x=>1-Math.pow(1-Math.min(Math.max(x,0),1),3);
+const bar=document.getElementById('bar');
+let starts=[],a0=0;video.forEach(s=>{starts.push(a0);a0+=s.t});
+window.__render=function(t){
+  bar.style.width=Math.min(t/total,1)*100+'%';
+  video.forEach((s,i)=>{
+    const lt=t-starts[i],el=s.el;
+    if(lt<0||lt>=s.t){el.style.opacity=0;return}
+    const e=ease(lt/.5),out=lt>s.t-.25?(s.t-lt)/.25:1;
+    el.style.opacity=e*out;el.style.transform=`translateY(${(1-e)*60}px) scale(${.96+.04*e})`;
+    el.querySelectorAll('.it').forEach((it,j)=>{const p=ease((lt-(.4+j*.55))/.5);it.style.opacity=p;it.style.transform=`translateX(${(1-p)*80}px)`});
+    const pl=el.querySelector('.pill');if(pl)pl.style.transform=`scale(${1+.04*Math.sin(lt*6)})`;
+  });
+};
+window.__ready=document.fonts.ready.then(()=>{window.__render(0);return true});
+if(q.get('live')){let t0;const loop=n=>{if(!t0)t0=n;const t=((n-t0)/1000)%(total+1);window.__render(Math.min(t,total));requestAnimationFrame(loop)};window.__ready.then(()=>requestAnimationFrame(loop))}
+</script></body></html>
