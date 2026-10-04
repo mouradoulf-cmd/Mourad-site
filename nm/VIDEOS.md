@@ -10,7 +10,7 @@ Les textes sont dans `assets/js/nm-film.js` (objet `T`, une entrée par langue) 
 Fichiers : `assets/css/nm-film.css`, `assets/js/nm-film.js`, `assets/js/qrcode-svg.min.js` (pour le QR WhatsApp).
 
 ## Fichiers MP4 (WhatsApp, TikTok, Reels, Facebook)
-Dans `assets/video/explainer/` (vertical 1080×1920, sous-titres incrustés, sans son — ajoute un son de la bibliothèque TikTok / CapCut) :
+Dans `assets/video/explainer/` (vertical 1080×1920, sous-titres incrustés, **avec bande-son** : petite musique + bruitages — clics de clavier quand la recherche se tape, pops, carillons, whoosh ; aucune voix) :
 
 | Fichier | Durée | Usage |
 |---|---|---|
@@ -22,3 +22,8 @@ La dernière scène affiche un QR code qui ouvre la conversation WhatsApp NM Stu
 
 ## Régénérer les vidéos
 `nm/video/render.html?lang=en` affiche le film image par image (`window.__nmRender(t)`), voir le script de rendu décrit dans l'historique git du dossier.
+
+## Bande-son
+Générée par programmation (synthèse, aucun sample ni musique protégée → utilisable librement). Une version par langue car le nombre de lettres tapées change :
+`assets/audio/nm-soundtrack-{lang}.mp3` — jouée en synchro avec la vidéo dans le site (bouton 🔊/🔇, mémorisé). Les MP4 contiennent la même piste.
+La voix de synthèse a été retirée.

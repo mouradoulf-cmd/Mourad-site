@@ -150,36 +150,37 @@ if(window.NMF_RENDER){
   return;
 }
 /* ---------- in-site overlay ---------- */
-var F=null,t=0,playing=false,last=0,voiceOn=false,curLang='en',overlay;
+var F=null,t=0,playing=false,last=0,soundOn=true,aud=null,curLang='en',overlay;
+try{if(localStorage.getItem('nmfMuted')==='1')soundOn=false}catch(e){}
 function lang(){return (typeof currentLang!=='undefined'&&T[currentLang])?currentLang:'en'}
 function ensure(){
   if(overlay)return;overlay=document.createElement('div');overlay.id='nmfOverlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('data-lenis-prevent','');
-  overlay.innerHTML='<div class="nmf" id="nmfRoot"></div><button id="nmfClose" type="button"></button><div id="nmfCtl"><button id="nmfPlay" type="button" aria-label="Play / pause">❚❚</button><div id="nmfProg"><i></i></div><button id="nmfVoice" type="button" aria-label="Voice">🔊</button></div>';
+  overlay.innerHTML='<div class="nmf" id="nmfRoot"></div><button id="nmfClose" type="button"></button><div id="nmfCtl"><button id="nmfPlay" type="button" aria-label="Play / pause">❚❚</button><div id="nmfProg"><i></i></div><button id="nmfSound" type="button" aria-label="Sound"></button></div>';
   document.body.appendChild(overlay);loadFonts();
   document.getElementById('nmfClose').onclick=close;
   document.getElementById('nmfPlay').onclick=function(){playing?pause():play()};
-  document.getElementById('nmfVoice').hidden=!('speechSynthesis' in window);
-  document.getElementById('nmfVoice').onclick=function(){voiceOn=!voiceOn;this.classList.toggle('on',voiceOn);if(voiceOn&&playing)speak(F.idx(t));else if('speechSynthesis' in window)speechSynthesis.cancel()};
-  document.getElementById('nmfProg').addEventListener('click',function(e){var r=this.getBoundingClientRect();t=clamp((e.clientX-r.left)/r.width)*F.total;F.reset();F.render(t);if(playing&&voiceOn)speak(F.idx(t))});
+  var sb=document.getElementById('nmfSound');sb.textContent=soundOn?'🔊':'🔇';sb.classList.toggle('on',soundOn);
+  sb.onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊':'🔇';this.classList.toggle('on',soundOn);try{localStorage.setItem('nmfMuted',soundOn?'0':'1')}catch(e){}if(aud){if(soundOn&&playing){aud.currentTime=t;aud.play().catch(function(){})}else aud.pause()}};
+  document.getElementById('nmfProg').addEventListener('click',function(e){var r=this.getBoundingClientRect();t=clamp((e.clientX-r.left)/r.width)*F.total;F.reset();F.render(t);if(aud)aud.currentTime=t});
   overlay.addEventListener('click',function(e){
     if(e.target.closest('[data-nmf-price]')){close();var p=document.getElementById('pricing');p&&p.scrollIntoView({behavior:'smooth'})}
     if(e.target.closest('[data-nmf-book]')){close();var b=document.getElementById('bookBtn');b&&b.click()}});
   document.addEventListener('keydown',function(e){if(!overlay.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key===' '&&e.target.tagName!=='A'&&e.target.tagName!=='BUTTON'){e.preventDefault();document.getElementById('nmfPlay').click()}});
 }
-function speak(i){if(!voiceOn||!('speechSynthesis' in window))return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(F.say[i]);u.lang={en:'en-US',fr:'fr-FR',it:'it-IT',th:'th-TH',ar:'ar-SA'}[curLang]||'en-US';speechSynthesis.speak(u)}
-function tick(n){if(!playing)return;var dt=Math.min((n-last)/1000,.1);last=n;t+=dt;if(t>=F.total){t=F.total-.001;playing=false;document.getElementById('nmfPlay').textContent='↻'}F.render(t);if(playing)requestAnimationFrame(tick)}
-function play(){if(t>=F.total-.01){t=0;F.reset()}playing=true;last=performance.now();document.getElementById('nmfPlay').textContent='❚❚';if(voiceOn)speak(F.idx(t));requestAnimationFrame(tick)}
-function pause(){playing=false;document.getElementById('nmfPlay').textContent='▶';if('speechSynthesis' in window)speechSynthesis.cancel()}
+function tick(n){if(!playing)return;var dt=Math.min((n-last)/1000,.1);last=n;t+=dt;if(t>=F.total){t=F.total-.001;playing=false;if(aud)aud.pause();document.getElementById('nmfPlay').textContent='↻'}else if(aud&&soundOn&&Math.abs(aud.currentTime-t)>.25)aud.currentTime=t;F.render(t);if(playing)requestAnimationFrame(tick)}
+function play(){if(t>=F.total-.01){t=0;F.reset()}playing=true;last=performance.now();document.getElementById('nmfPlay').textContent='❚❚';if(aud&&soundOn){aud.currentTime=t;aud.play().catch(function(){})}requestAnimationFrame(tick)}
+function pause(){playing=false;document.getElementById('nmfPlay').textContent='▶';if(aud)aud.pause()}
 function open(){
   ensure();curLang=lang();loadScript(QRSRC).then(function(){
     var root=document.getElementById('nmfRoot');
-    F=build(root,curLang,{onScene:function(i,n){overlay.classList.toggle('final',i===n-1);if(playing)speak(i)}});
+    F=build(root,curLang,{onScene:function(i,n){overlay.classList.toggle('final',i===n-1)}});
+    if(aud){aud.pause()}aud=new Audio(URLB('../audio/nm-soundtrack-'+curLang+'.mp3'));aud.preload='auto';
     document.getElementById('nmfClose').textContent='✕ '+T[curLang].close;
     overlay.setAttribute('dir',curLang==='ar'?'rtl':'ltr');overlay.classList.add('open');document.documentElement.style.overflow='hidden';
     t=0;F.render(0);play();document.getElementById('nmfClose').focus();window.__nmfSeek=function(x){t=x;F.reset();F.render(x)};
   });
 }
-function close(){pause();if(overlay)overlay.classList.remove('open');document.documentElement.style.overflow=''}
+function close(){pause();if(aud)aud.currentTime=0;if(overlay)overlay.classList.remove('open');document.documentElement.style.overflow=''}
 document.addEventListener('click',function(e){var b=e.target.closest('[data-nmf-open]');if(b){e.preventDefault();open()}var en=e.target.closest('[data-nmf-enter]');if(en){e.preventDefault();var s=document.getElementById('stats')||document.getElementById('how-it-works');s&&s.scrollIntoView({behavior:'smooth'})}});
 /* hero button labels follow the site language */
 function labels(){var L=T[lang()];document.querySelectorAll('[data-nmf-watch]').forEach(function(el){el.textContent=L.watch});document.querySelectorAll('[data-nmf-enter]').forEach(function(el){el.textContent=L.enter+' ↓'})}
