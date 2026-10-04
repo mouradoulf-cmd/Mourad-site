@@ -88,3 +88,14 @@ Swap those for real client photos once available; everything else
 - Plain HTML/CSS/JS, no build step, same as the other templates.
 - Booking/phone CTAs use `tel:`/`wa.me` links — always add
   `target="_blank" rel="noopener"` to them, same reason as above.
+
+## Avatar Cash TH — reference template for info-product / online-course sites
+
+`avatar-cash-th/` is a Thai-language sales site for an "AI avatar influencer"
+course (copied from a TikTok video's Claude-built "Avatar Cash" idea): dark
+palette with green/violet accents, `Noto Sans Thai`, sales page (`index.html`),
+gated members area with the 5 modules (`members.html`), and `LAUNCH-KIT.md`.
+Payment/contact are driven by the `CONFIG` block at the top of
+`assets/js/main.js` (LINE OA + PromptPay) — placeholders until the client
+fills them. No fake testimonials/income claims, keep disclaimers. Plain
+HTML/CSS/JS, no build step.
