@@ -6,7 +6,8 @@
 <title>NM Studio — Get Found. Get Chosen. Get Paid.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/nm-film.css">
 <script type="importmap">{ "imports": { "lenis": "https://unpkg.com/lenis@1.3.19/dist/lenis.mjs" } }</script>
 <style>
   :root {
@@ -1360,11 +1361,13 @@
       <h1 class="hero__title" data-i18n="hero.heading">Be found. Be chosen.</h1>
       <p class="hero__lead" data-i18n="hero.subline">Websites, QR menus and Google profiles for Pattaya businesses.</p>
       <div class="hero__actions">
+        <button type="button" class="nmf-hero-watch" data-nmf-open><i aria-hidden="true">&#9654;</i><span data-nmf-watch>Watch the 60s video</span></button>
         <a class="hero__wa" href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.48 15l-1.5 5.5 5.63-1.48A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.3 15l-.31-.19-3.3.87.88-3.2-.2-.33A8.1 8.1 0 0 1 12.04 3.8zM8.6 7.5c-.2 0-.5.07-.75.35-.25.27-.98.96-.98 2.34s1 2.71 1.14 2.9c.14.18 1.96 3.05 4.84 4.16 2.4.94 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.19-.54-.33-.28-.14-1.68-.83-1.94-.92-.26-.1-.45-.14-.64.14-.19.28-.73.92-.9 1.1-.16.19-.33.21-.61.07-.28-.14-1.2-.44-2.28-1.4-.84-.75-1.41-1.68-1.58-1.96-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.63-1.55-.87-2.11-.23-.55-.47-.48-.64-.49z"/></svg>
           <span data-i18n="hero.cta">Chat on WhatsApp</span>
         </a>
         <a class="hero__more" href="#pricing" data-i18n="hero.cta2">See pricing</a>
+        <a class="hero__more" href="#stats" data-nmf-enter>Enter the site &darr;</a>
       </div>
       <ul class="hero__proof">
         <li><strong data-i18n="hero.proof1">From ฿990</strong></li>
@@ -3144,5 +3147,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+<script src="assets/js/nm-film.js"></script>
 </body>
 </html>
