@@ -629,6 +629,11 @@ html[lang="th"] .finale__title, html[lang="ar"] .finale__title { font-size: clam
 .wa-float svg { width: 28px; height: 28px; }
 .wa-float.is-visible { transform: none; opacity: 1; }
 .wa-float:hover { box-shadow: 0 18px 40px -8px rgba(37,211,102,.9); }
+/* On touch devices the button's visibility is re-evaluated on every scroll
+   frame; an animated transform/opacity there is what reads as a glitch when
+   it is re-triggered near a threshold. Make show/hide instant on touch so
+   there is nothing left to stutter — the fade stays for mouse users. */
+@media (pointer: coarse) { .wa-float { transition: none; } }
 /* 9 · the floating button is fixed at bottom: 1.25rem + 56px tall, so reserve
    --wa-float-space at the end of every page: its own height + the same 1.25rem
    gap + env(safe-area-inset-bottom), so it can never cover the last clickable
@@ -670,6 +675,12 @@ html[lang="th"] .ic-num, html[lang="ar"] .ic-num { font-style: normal; font-weig
   100% { background-position: 8% 0; }
 }
 @media (prefers-reduced-motion: reduce) { .ic-word, .ic-num { animation: none; background-position: 30% 0; } }
+/* The gold-shine sweep repaints a text-clip gradient every frame — it can't
+   be GPU-composited the way a transform can. With several .ic-word/.ic-num
+   instances animating at once (four offer cards alone), this measured as
+   the single costliest section on a throttled mobile CPU. Off on touch
+   devices; the gradient itself still shows, just without the sweep. */
+@media (max-width: 899px), (pointer: coarse) { .ic-word, .ic-num { animation: none !important; background-position: 30% 0; } }
 
 /* ==========================================================================
    OFFER CARDS — glass, pointer-lit border, gold on the featured one
