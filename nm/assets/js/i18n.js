@@ -55,6 +55,7 @@
         tPrices: "Price list", tReviews: "Reviews", tWhatsapp: "WhatsApp booking", tVideo: "Video hero", tProjects: "Projects", tQuote: "Quote requests",
         p5cat: "Bar & nightlife · Pattaya", p5desc: "A neon-lit site for a pool bar: tonight's event and a live happy-hour countdown, the drinks menu, pool nights and table booking on WhatsApp — in four languages.", tLive: "Live happy hour", tEvents: "Weekly events",
         p6cat: "Street food · Pattaya", p6desc: "A lively, simple site for a street kitchen: a filterable menu, a takeaway bag sent to WhatsApp, a spice meter, tonight's chalkboard special and phrase cards to show the cook.", tOrder: "Takeaway ordering", tSpice: "Spice meter", p7cat: "Scooter rental · Pattaya", p7desc: "A premium rental site: fleet with day, week and month prices, a range calendar with live pricing and extras, hotel delivery and requests on WhatsApp.", tFleet: "Fleet & prices", tCalendar: "Booking calendar",
+        p8cat: "Café, restaurant & ice-cream · Mohammédia", p8desc: "A warm site for an all-day café-restaurant: a live open/closed and \u201cright now\u201d panel, the full menu with real prices, a waiter-ready selection list, and Friday couscous counted down — in French, English and Arabic.", tLivePanel: "Live status panel", t3Lang: "3 languages",
         soon: "Coming soon", soonList: "Hotels · Real estate"
       },
       process: {
@@ -183,6 +184,7 @@
         tPrices: "Grille tarifaire", tReviews: "Avis clients", tWhatsapp: "Réservation WhatsApp", tVideo: "Vidéo d'ouverture", tProjects: "Réalisations", tQuote: "Demande de devis",
         p5cat: "Bar & vie nocturne · Pattaya", p5desc: "Un site aux néons pour un bar billard : la soirée du jour et le happy hour en direct, la carte des boissons, les soirées billard et la réservation de table sur WhatsApp — en quatre langues.", tLive: "Happy hour en direct", tEvents: "Soirées de la semaine",
         p6cat: "Street food · Pattaya", p6desc: "Un site simple et vivant pour une cuisine de rue : carte filtrable, commande à emporter envoyée sur WhatsApp, jauge de piment, spécial du soir à l'ardoise et cartes de phrases à montrer au cuisinier.", tOrder: "Commande à emporter", tSpice: "Jauge de piment", p7cat: "Location de scooters · Pattaya", p7desc: "Un site de location premium : flotte avec prix au jour, à la semaine et au mois, calendrier de dates avec prix en direct et options, livraison à l'hôtel et demande sur WhatsApp.", tFleet: "Flotte & tarifs", tCalendar: "Calendrier de réservation",
+        p8cat: "Café, restaurant & glacier · Mohammédia", p8desc: "Un site chaleureux pour un café-restaurant ouvert toute la journée : panneau en direct ouvert/fermé et « en ce moment », la carte complète avec les vrais prix, une liste de sélection à montrer au serveur, et le couscous du vendredi avec compte à rebours — en français, anglais et arabe.", tLivePanel: "Panneau en direct", t3Lang: "3 langues",
         soon: "Bientôt", soonList: "Hôtels · Immobilier"
       },
       process: {
@@ -311,6 +313,7 @@
         tPrices: "Listino prezzi", tReviews: "Recensioni", tWhatsapp: "Prenotazione WhatsApp", tVideo: "Video in apertura", tProjects: "Progetti", tQuote: "Preventivi",
         p5cat: "Bar e vita notturna · Pattaya", p5desc: "Un sito al neon per un bar con biliardo: l'evento della serata e l'happy hour in diretta, la carta dei drink, le serate di biliardo e la prenotazione del tavolo su WhatsApp — in quattro lingue.", tLive: "Happy hour in diretta", tEvents: "Eventi settimanali",
         p6cat: "Street food · Pattaya", p6desc: "Un sito semplice e vivace per una cucina di strada: menù filtrabile, ordine da asporto inviato su WhatsApp, misuratore di piccantezza, speciale della sera alla lavagna e frasi da mostrare al cuoco.", tOrder: "Ordini da asporto", tSpice: "Livello di piccante", p7cat: "Noleggio scooter · Pattaya", p7desc: "Un sito di noleggio premium: flotta con prezzi al giorno, alla settimana e al mese, calendario con prezzo in diretta ed extra, consegna in hotel e richieste su WhatsApp.", tFleet: "Flotta e prezzi", tCalendar: "Calendario prenotazioni",
+        p8cat: "Caffè, ristorante e gelateria · Mohammédia", p8desc: "Un sito accogliente per un caffè-ristorante aperto tutto il giorno: pannello in diretta aperto/chiuso e \u201cil momento\u201d, il menù completo con i prezzi reali, una lista di selezione da mostrare al cameriere, e il couscous del venerdì con conto alla rovescia — in francese, inglese e arabo.", tLivePanel: "Pannello in diretta", t3Lang: "3 lingue",
         soon: "In arrivo", soonList: "Hotel · Immobiliare"
       },
       process: {
@@ -439,6 +442,7 @@
         tPrices: "ราคาบริการ", tReviews: "รีวิว", tWhatsapp: "จองผ่าน WhatsApp", tVideo: "วิดีโอเปิดหน้า", tProjects: "ผลงาน", tQuote: "ขอใบเสนอราคา",
         p5cat: "บาร์และไนท์ไลฟ์ · พัทยา", p5desc: "เว็บไซต์แสงนีออนสำหรับบาร์พูล: อีเวนต์คืนนี้และนับถอยหลังแฮปปี้อาวร์แบบเรียลไทม์ เมนูเครื่องดื่ม คืนแข่งพูล และจองโต๊ะทาง WhatsApp — สี่ภาษา", tLive: "แฮปปี้อาวร์เรียลไทม์", tEvents: "อีเวนต์ทุกสัปดาห์",
         p6cat: "สตรีทฟู้ด · พัทยา", p6desc: "เว็บไซต์เรียบง่ายแต่มีชีวิตชีวาสำหรับร้านอาหารริมทาง เมนูกรองได้ สั่งกลับบ้านส่งทาง WhatsApp ตัววัดความเผ็ด เมนูพิเศษประจำคืน และการ์ดประโยคไว้ยื่นให้แม่ครัว", tOrder: "สั่งกลับบ้าน", tSpice: "ระดับความเผ็ด", p7cat: "เช่าสกู๊ตเตอร์ · พัทยา", p7desc: "เว็บไซต์เช่ารถพรีเมียม รถพร้อมราคารายวัน รายสัปดาห์ รายเดือน ปฏิทินเลือกวันพร้อมคำนวณราคาและอุปกรณ์เสริม ส่งถึงโรงแรม และส่งคำขอทาง WhatsApp", tFleet: "รถและราคา", tCalendar: "ปฏิทินการจอง",
+        p8cat: "คาเฟ่ ร้านอาหาร และไอศกรีม · โมฮัมเมเดีย", p8desc: "เว็บไซต์อบอุ่นสำหรับคาเฟ่-ร้านอาหารที่เปิดทั้งวัน มีแผงสถานะเปิด/ปิดและ \u201cตอนนี้\u201d แบบเรียลไทม์ เมนูครบพร้อมราคาจริง รายการที่เลือกไว้ยื่นให้พนักงานเสิร์ฟ และนับถอยหลังกูสกูสวันศุกร์ — ภาษาฝรั่งเศส อังกฤษ และอาหรับ", tLivePanel: "แผงสถานะสด", t3Lang: "3 ภาษา",
         soon: "เร็ว ๆ นี้", soonList: "โรงแรม · อสังหาริมทรัพย์"
       },
       process: {
@@ -567,6 +571,7 @@
         tPrices: "قائمة الأسعار", tReviews: "آراء العملاء", tWhatsapp: "حجز عبر واتساب", tVideo: "فيديو افتتاحي", tProjects: "المشاريع", tQuote: "طلب عرض سعر",
         p5cat: "بار وحياة ليلية · باتايا", p5desc: "موقع بأضواء النيون لبار بلياردو: فعالية الليلة وعدّ تنازلي مباشر لساعة التخفيضات، وقائمة المشروبات، وليالي البلياردو، وحجز الطاولات عبر واتساب — بأربع لغات.", tLive: "ساعة التخفيضات مباشرة", tEvents: "فعاليات أسبوعية",
         p6cat: "أكل الشارع · باتايا", p6desc: "موقع بسيط ونابض لمطبخ شارع: قائمة قابلة للتصفية، وطلبات سفري تُرسل عبر واتساب، ومقياس للحرارة، وطبق الليلة على السبورة، وبطاقات عبارات تُعرض على الطاهية.", tOrder: "طلبات سفري", tSpice: "مقياس الحرارة", p7cat: "تأجير سكوتر · باتايا", p7desc: "موقع تأجير فاخر: أسطول بأسعار يومية وأسبوعية وشهرية، وتقويم حجز بسعر مباشر وإضافات، وتوصيل إلى الفندق وطلبات عبر واتساب.", tFleet: "الأسطول والأسعار", tCalendar: "تقويم الحجز",
+        p8cat: "مقهى ومطعم ومثلجات · المحمدية", p8desc: "موقع دافئ لمقهى-مطعم مفتوح طوال اليوم: لوحة مباشرة لحالة الفتح/الإغلاق و«الآن»، القائمة الكاملة بالأسعار الحقيقية، قائمة اختيار جاهزة لعرضها على النادل، وكسكس الجمعة مع عدّ تنازلي — بالفرنسية والإنجليزية والعربية.", tLivePanel: "لوحة الحالة المباشرة", t3Lang: "3 لغات",
         soon: "قريباً", soonList: "فنادق · عقارات"
       },
       process: {
