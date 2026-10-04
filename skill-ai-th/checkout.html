@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/>
+<title>ชำระเงิน — AI Skill</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/style.css"/>
+</head><body>
+<div class="glow"></div>
+<nav><div class="wrap"><a class="logo" href="index.html">AI<b>Skill</b></a><a href="index.html" style="color:var(--mute)">← กลับ</a></div></nav>
+<main class="wrap" id="checkout" style="padding:50px 0 80px">
+<h1 style="font-size:2rem;text-align:center">ชำระเงิน</h1>
+<p class="sub">สแกน QR → ส่งสลิปทาง LINE → รับรหัสเข้าห้องเรียน</p>
+<div class="co">
+<div>
+<div class="picks">
+<button class="pick" data-k="p1">แพ็ก 1<small data-price="p1"></small></button>
+<button class="pick" data-k="p2">แพ็ก 2<small data-price="p2"></small></button>
+<button class="pick" data-k="p3">แพ็ก 3<small data-price="p3"></small></button>
+<button class="pick" data-k="all">ครบ 3 คอร์ส<small data-price="all"></small></button>
+</div>
+<input id="nm" placeholder="ชื่อของคุณ (ไม่บังคับ — ใส่ในข้อความ LINE)" style="margin-bottom:18px"/>
+<ol class="steps">
+<li>สแกน QR ด้วยแอปธนาคารใดก็ได้ ยอดเงินใส่ให้อัตโนมัติ</li>
+<li>บันทึกสลิปการโอน</li>
+<li>กดปุ่มด้านล่าง ส่งข้อความ + แนบสลิปใน LINE</li>
+<li>รับรหัสเข้าเรียนแล้วใส่ที่ <a href="members.html" style="text-decoration:underline">หน้าห้องเรียน</a></li>
+</ol>
+<a class="btn" id="slip" href="#" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-top:14px">โอนแล้ว → ส่งสลิปทาง LINE</a>
+<a class="btn ghost" id="card" hidden href="#" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-top:10px">💳 ชำระด้วยบัตรเครดิต/เดบิต</a>
+<p class="note">🛡️ รับประกัน 7 วัน • <a href="terms.html" style="text-decoration:underline">เงื่อนไข</a></p>
+</div>
+<div class="card" style="text-align:center">
+<p id="sum" style="color:var(--mute)"></p><div class="big" id="amt"></div>
+<div class="qrbox" id="qr" aria-label="QR พร้อมเพย์"></div>
+<p class="note">พร้อมเพย์: <b data-pp></b><br/>ชื่อบัญชี: <span data-acc></span></p>
+<button class="btn ghost sm" id="dlqr" style="margin-top:8px" type="button">บันทึก QR</button>
+</div></div>
+</main>
+<script src="assets/js/qrcode.min.js"></script><script src="assets/js/main.js"></script>
+</body></html>

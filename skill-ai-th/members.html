@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/>
+<title>ห้องเรียน — AI Skill</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700;800&display=swap" rel="stylesheet"/><link rel="stylesheet" href="assets/css/style.css"/></head><body>
+<div class="glow"></div>
+<nav><div class="wrap"><a class="logo" href="index.html">AI<b>Skill</b></a><a data-line href="#" class="btn sm ghost">ถามผ่าน LINE</a></div></nav>
+<div class="gate" id="gate"><h1 style="font-size:1.8rem">ห้องเรียน</h1><p class="sub" style="margin-bottom:20px">ใส่รหัสเข้าเรียนที่ได้รับทาง LINE</p>
+<form id="gf" class="form"><input id="code" placeholder="รหัสเข้าเรียน" required autocomplete="off"/><button class="btn" style="justify-content:center">เข้าห้องเรียน</button><p id="err" hidden class="note" style="color:#ff8a8a">รหัสไม่ถูกต้อง ลองใหม่หรือทักทาง LINE</p></form>
+<p class="note">ยังไม่มีรหัส? <a href="index.html#courses" style="text-decoration:underline">เลือกคอร์ส</a></p></div>
+<div id="content" hidden class="wrap mem">
+<h1 style="font-size:2rem">ห้องเรียนของคุณ</h1>
+<div class="pbar"><i id="pbar"></i></div><p id="ptxt" class="note" style="text-align:left"></p>
+<div class="toc"><a data-tocpack="p1" href="#p1">แพ็ก 1</a><a data-tocpack="p2" href="#p2">แพ็ก 2</a><a data-tocpack="p3" href="#p3">แพ็ก 3</a></div>
+<section data-pack="p1" id="p1" hidden><h2>แพ็ก 1 · เริ่มใช้ AI</h2>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 1: รู้จัก AI แชต: ChatGPT / Claude / Gemini</b></span></label>
+<p>AI แชตคือโปรแกรมที่ตอบคำถามและเขียนข้อความจากสิ่งที่เราพิมพ์ สมัครใช้ได้ฟรี (มีโควตาจำกัดต่อวัน) เปิดสองเจ้าเทียบกันแล้วเลือกตัวที่ถนัด</p><ul><li>สมัครอย่างน้อย 2 เครื่องมือ</li><li>ถามคำถามเดียวกันทั้งสองแล้วเทียบคำตอบ</li><li>ข้อควรระวัง: AI อาจตอบผิดได้ ต้องตรวจข้อเท็จจริงสำคัญเสมอ</li></ul>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 2: สูตรพรอมต์ 4 ส่วน</b></span></label>
+<p>พรอมต์ที่ดีมี 4 ส่วน: <b>บทบาท + งาน + บริบท + รูปแบบคำตอบ</b></p><div class="prompt">คุณคือที่ปรึกษาการตลาดร้านอาหาร (บทบาท)
+ช่วยเขียนโปรโมชันสำหรับวันแม่ (งาน)
+ร้านเราเป็นร้านอาหารไทยในเชียงใหม่ งบน้อย กลุ่มลูกค้าครอบครัว (บริบท)
+ตอบเป็นตาราง 3 ไอเดีย พร้อมข้อความโพสต์ Facebook (รูปแบบ)</div>
+<div class="box"><b>งานท้ายบท:</b> เขียนพรอมต์ 4 ส่วนสำหรับงานจริงของคุณ 1 งาน แล้วลองปรับ 3 รอบจนผลลัพธ์ใช้ได้</div>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 3: ให้ AI ช่วยงานซ้ำ ๆ</b></span></label>
+<p>งานที่ AI ทำได้ดี: สรุปประชุม ร่างอีเมล แปล ตอบแชตลูกค้า จัดตาราง ทำรายการตรวจสอบ</p><div class="prompt">ฉันจะวางข้อความประชุมให้ ช่วยสรุปเป็น: 1) มติ 2) งานที่ต้องทำ+ผู้รับผิดชอบ+กำหนดส่ง 3) เรื่องที่ยังค้าง
+[วางบันทึก]</div>
+<div class="box"><b>งานท้ายบท:</b> เลือกงานที่คุณทำซ้ำทุกสัปดาห์ 1 อย่าง เขียนพรอมต์เก็บไว้ใช้ซ้ำ</div>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 4: สร้างรูปภาพด้วย AI</b></span></label>
+<p>ใช้เครื่องมือสร้างรูปที่มีแพ็กเกจฟรี เขียนพรอมต์บอก: ตัวแบบ ฉาก สไตล์ แสง มุมกล้อง อัตราส่วน</p><div class="prompt">a cozy Thai street food stall at night, warm lights, shallow depth of field, photorealistic, 9:16</div>
+<ul><li>ห้ามใช้รูปหรือชื่อบุคคลจริงโดยไม่ได้รับอนุญาต</li><li>ตรวจเงื่อนไขการใช้เชิงพาณิชย์ของเครื่องมือแต่ละตัว</li></ul>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 5: ใช้ AI อย่างปลอดภัย</b></span></label>
+<ul><li>ไม่ใส่ข้อมูลส่วนตัวหรือความลับธุรกิจลงในแชต</li><li>ตรวจข้อเท็จจริง ตัวเลข และกฎหมายจากแหล่งจริง</li><li>ระบุว่าใช้ AI ช่วย เมื่อแพลตฟอร์มหรือลูกค้าต้องการ</li></ul><div class="box"><b>จบแพ็ก 1:</b> คุณพร้อมไปแพ็ก 2 (ทำเว็บ) หรือแพ็ก 3 (วิดีโอ)</div>
+</section>
+<section data-pack="p2" id="p2" hidden><h2>แพ็ก 2 · ทำเงินด้วย AI (รับทำเว็บไซต์)</h2>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 6: เลือกกลุ่มลูกค้าที่ใช่</b></span></label>
+<p>เริ่มจากธุรกิจท้องถิ่นที่ยังไม่มีเว็บหรือเว็บเก่า: ร้านอาหาร ร้านเสริมสวย คลินิก โรงแรมเล็ก ร้านซ่อม ตรวจสอบจาก Google Maps และ Facebook เพจ</p><ul><li>ทำรายชื่อ 30 ร้านในย่านที่คุณรู้จัก</li><li>ระบุว่าแต่ละร้านขาดอะไร (เว็บ เมนูออนไลน์ ปุ่มจอง แผนที่)</li></ul>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 7: สร้างเว็บไซต์ด้วย AI</b></span></label>
+<p>ให้ AI เขียนเว็บหน้าเดียว (HTML/CSS) แล้วอัปโหลดฟรีที่ GitHub Pages, Netlify หรือ Cloudflare Pages</p><div class="prompt">ช่วยสร้างเว็บไซต์หน้าเดียวภาษาไทยสำหรับร้าน [ชื่อ] ประเภท [ประเภท]
+ส่วนที่ต้องมี: หัวเว็บ, เกี่ยวกับร้าน, เมนู/บริการ+ราคา, รีวิว, เวลาเปิด-ที่อยู่-แผนที่, ปุ่มโทร/LINE
+ใช้ HTML+CSS+JS ไฟล์เดียว ดีไซน์สีโทน [สี] ใช้งานบนมือถือได้ดี ฟอนต์ Noto Sans Thai</div>
+<div class="box"><b>งานท้ายบท:</b> ทำเว็บตัวอย่าง 1 ร้านที่คุณรู้จัก (ใช้เป็นผลงานโชว์)</div>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 8: ทำให้เว็บดูเป็นมืออาชีพ</b></span></label>
+<ul><li>ใช้รูปจริงของร้าน (ขออนุญาตก่อน)</li><li>ปุ่ม LINE / โทร อยู่ในจอแรก</li><li>เช็กการแสดงผลบนมือถือจริง</li><li>ใส่ชื่อร้าน+ย่านในหัวข้อเพื่อ SEO ท้องถิ่น</li></ul>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 9: ทักลูกค้าและปิดงาน</b></span></label>
+<p>แนบเว็บตัวอย่าง ไม่ต้องเขียนยาว</p><div class="prompt">สวัสดีครับ/ค่ะ ผมเห็นร้าน [ชื่อร้าน] มีรีวิวดีมากบน Google แต่ยังไม่เห็นเว็บไซต์ ผมลองทำตัวอย่างหน้าเว็บให้ดูฟรี นี่ครับ: [ลิงก์] สนใจให้ปรับเป็นของร้านจริงไหมครับ?</div>
+<ul><li>ทัก 10 ร้านต่อวัน เก็บผลลงตาราง</li><li>ติดตามผล 1 ครั้งหลังผ่านไป 3 วัน แล้วหยุด ไม่ตื๊อ</li></ul>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 10: ตั้งราคา ใบเสนอราคา และการเก็บเงิน</b></span></label>
+<ul><li>เว็บหน้าเดียวสำหรับร้านเล็ก: เริ่มต้นช่วงหลักพันบาท ปรับตามขอบเขตงานและตลาดในพื้นที่ของคุณ</li><li>มัดจำ 50% ก่อนเริ่ม ส่วนที่เหลือเมื่อส่งมอบ</li><li>เสนอรายเดือนดูแล (แก้ข้อความ/โปรโมชัน) เป็นรายได้ต่อเนื่อง</li><li>ระบุจำนวนรอบแก้งานในใบเสนอราคา</li></ul><div class="box">ราคาจริงขึ้นกับคุณและลูกค้า ไม่มีราคามาตรฐานรับประกัน</div>
+</section>
+<section data-pack="p3" id="p3" hidden><h2>แพ็ก 3 · วิดีโอ AI ลง TikTok</h2>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 11: ภาพรวม: วิดีโอ AI และกติกา TikTok</b></span></label>
+<p>ขั้นตอน: ไอเดีย → สคริปต์ → ภาพ/วิดีโอ → เสียง → ตัดต่อ → โพสต์ ตรวจเงื่อนไขการหารายได้ล่าสุดของ TikTok (เช่น เงื่อนไขผู้ติดตาม/ยอดวิว ซึ่งเปลี่ยนได้) ในศูนย์ช่วยเหลือของ TikTok เอง</p><ul><li>เปิดเผยว่าเป็นเนื้อหาที่สร้างด้วย AI ตามที่แพลตฟอร์มกำหนด</li><li>ห้ามเนื้อหาหลอกลวง ปลอมตัวบุคคลจริง หรือละเมิดลิขสิทธิ์</li></ul>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 12: เครื่องมือวิดีโอ AI ที่ใช้ฟรี</b></span></label>
+<p>หลายเจ้ามีเครดิตฟรีรายวัน/รายเดือน แต่จำกัดจำนวน ความยาว หรือใส่ลายน้ำ แนวทาง: ใช้หลายเครื่องมือสลับกัน เก็บคลิปสั้น 3–8 วินาทีมาต่อกัน และใช้ CapCut ตัดต่อ ตรวจเงื่อนไขการใช้เชิงพาณิชย์ก่อนใช้งานทุกครั้ง</p><div class="box"><b>งานท้ายบท:</b> สร้างบัญชีเครื่องมือ 2–3 ตัว ทดลองทำคลิป 5 วินาที เปรียบเทียบคุณภาพและโควตา</div>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 13: สคริปต์และฮุก</b></span></label>
+<p>3 วินาทีแรกสำคัญที่สุด</p><div class="prompt">เขียนสคริปต์วิดีโอแนวตั้ง 30 วินาทีเรื่อง [หัวข้อ] แบ่งเป็นฉาก 5 ฉาก ฉากละ 5–6 วินาที แต่ละฉากมี: ภาพที่เห็น / เสียงพากย์ / ข้อความบนจอ ฉากแรกต้องเป็นฮุกที่ทำให้อยากดูต่อ</div>
+
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 14: เสียงพากย์และตัดต่อ</b></span></label>
+<ul><li>ใช้เครื่องมือเสียง AI ภาษาไทยที่มีแพ็กเกจฟรี หรืออัดเสียงเอง</li><li>CapCut: ใส่คำบรรยายอัตโนมัติ ตัดช่วงเงียบ ใส่เพลงที่ใช้ได้ถูกลิขสิทธิ์</li><li>ส่งออก 1080×1920 (9:16)</li></ul>
+<label class="ck"><input type="checkbox" class="chk"/><span><b>บทที่ 15: โพสต์สม่ำเสมอและอ่านสถิติ</b></span></label>
+<ul><li>เป้าหมายเริ่มต้น: 1 คลิปต่อวันเป็นเวลา 30 วัน</li><li>ดูอัตราการดูจนจบ และจุดที่คนเลื่อนออก</li><li>ทำซ้ำสิ่งที่ได้ผล ตัดสิ่งที่ไม่ได้ผล</li><li>ช่องทางรายได้ที่ทำได้จริง: ขายสินค้า/คอร์สของตัวเอง, affiliate, รับทำคลิปให้ร้านค้า (ผลลัพธ์ไม่รับประกัน)</li></ul>
+</section>
+
+<div class="box noprint">มีคำถามหรือติดปัญหา? ทักทาง LINE ได้เลย เนื้อหามีการอัปเดตเมื่อเครื่องมือเปลี่ยน</div>
+<button class="btn ghost noprint" data-print type="button">พิมพ์ / บันทึกเป็น PDF</button>
+</div>
+<script src="assets/js/main.js"></script></body></html>
