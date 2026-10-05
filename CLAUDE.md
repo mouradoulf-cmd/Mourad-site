@@ -117,3 +117,12 @@ theme tokens in `:root` of `app.css`; payment + contact config stays in
   only shows when `CONFIG.OFFER_END` is set to a real end date.
 - Videos in `assets/video/` are rendered from `/tmp`-style HTML scenes with
   Playwright + ffmpeg (see git history); outputs are checked in.
+
+## NM Academy — reference template for premium / "futuristic" course-selling sites
+
+`nm-academy/` sells two courses (Plan A: build & resell websites, Plan B: AI video
+monetisation on TikTok/YouTube) under the user's NM Studio brand (same `#04050c` base).
+FR/EN/TH via `assets/js/i18n.js` (`[fr,en,th]` per key, `data-t` in HTML), all settings in
+`assets/js/config.js`, UI sounds in `assets/js/sfx.js` (Web Audio, no music, only after a
+user gesture), effects in `assets/js/fx.js`. Same honesty rules as Avatar Cash: no income
+guarantees, no fake proof, illustrative numbers must be labelled as examples.
