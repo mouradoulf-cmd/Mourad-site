@@ -55,6 +55,7 @@
         s2d: "Step 2 · Days 2 to 4", s2t: "We build everything", s2b: "Design, text, QR menu, Google Maps and every language your customers speak. You approve it, we adjust it.",
         s3d: "Step 3 · Within days", s3t: "You're live and getting found", s3b: "Your site and listing go online. Customers find you, open your menu and message you."
       },
+      results: {"eyebrow": "Why it pays", "title": "More visibility, <em>more customers.</em>", "lead": "What it can look like when tourists finally find you. This is an example: your own numbers will depend on your business.", "example": "Example", "chartTitle": "Customers finding you, month by month", "lift": "target: more customers finding you in 6 months*", "m1": "Month 1", "m6": "Month 6", "t1": "live sites you can open right now", "t2": "to get your Google listing live", "tr": "average rating from {n} client reviews", "note": "* Target shown on a fictional example. It is not a guarantee: results depend on your business and the work you put in.", "cta": "See the offers"},
       faq: { lead: "Another question? Message us on WhatsApp, we usually reply within minutes." }
     },
 
@@ -108,6 +109,7 @@
         s2d: "Étape 2 · Jours 2 à 4", s2t: "On construit tout", s2b: "Design, textes, menu QR, Google Maps et toutes les langues de vos clients. Vous validez, on ajuste.",
         s3d: "Étape 3 · En quelques jours", s3t: "Vous êtes en ligne et on vous trouve", s3b: "Votre site et votre fiche sont publiés. Les clients vous trouvent, ouvrent votre menu et vous écrivent."
       },
+      results: {"eyebrow": "Pourquoi ça rapporte", "title": "Plus de visibilité, <em>plus de clients.</em>", "lead": "Ce que ça peut donner quand les touristes vous trouvent enfin. C'est un exemple : vos chiffres dépendront de votre activité.", "example": "Exemple", "chartTitle": "Clients qui vous trouvent, mois par mois", "lift": "objectif : plus de clients qui vous trouvent en 6 mois*", "m1": "Mois 1", "m6": "Mois 6", "t1": "sites en ligne que vous pouvez ouvrir maintenant", "t2": "pour que votre fiche Google soit en ligne", "tr": "note moyenne sur {n} avis de clients", "note": "* Objectif présenté sur un exemple fictif. Ce n'est pas une garantie : les résultats dépendent de votre activité et de votre implication.", "cta": "Voir les offres"},
       faq: { lead: "Une autre question ? Écrivez-nous sur WhatsApp, on répond en général en quelques minutes." }
     },
 
@@ -161,6 +163,7 @@
         s2d: "Passo 2 · Giorni 2-4", s2t: "Costruiamo tutto noi", s2b: "Design, testi, menù QR, Google Maps e tutte le lingue dei vostri clienti. Voi approvate, noi ritocchiamo.",
         s3d: "Passo 3 · In pochi giorni", s3t: "Siete online e vi trovano", s3b: "Sito e scheda vanno online. I clienti vi trovano, aprono il menù e vi scrivono."
       },
+      results: {"eyebrow": "Perché conviene", "title": "Più visibilità, <em>più clienti.</em>", "lead": "Cosa può succedere quando i turisti vi trovano finalmente. È un esempio: i vostri numeri dipenderanno dalla vostra attività.", "example": "Esempio", "chartTitle": "Clienti che vi trovano, mese per mese", "lift": "obiettivo: più clienti che vi trovano in 6 mesi*", "m1": "Mese 1", "m6": "Mese 6", "t1": "siti online che potete aprire adesso", "t2": "per avere la scheda Google online", "tr": "voto medio su {n} recensioni di clienti", "note": "* Obiettivo mostrato su un esempio fittizio. Non è una garanzia: i risultati dipendono dalla vostra attività e dal vostro impegno.", "cta": "Vedi le offerte"},
       faq: { lead: "Un'altra domanda? Scriveteci su WhatsApp, di solito rispondiamo in pochi minuti." }
     },
 
@@ -214,6 +217,7 @@
         s2d: "ขั้นที่ 2 · วันที่ 2 ถึง 4", s2t: "เราสร้างให้ทุกอย่าง", s2b: "ดีไซน์ ข้อความ เมนู QR Google Maps และทุกภาษาที่ลูกค้าของคุณใช้ คุณตรวจ เราปรับให้",
         s3d: "ขั้นที่ 3 · ภายในไม่กี่วัน", s3t: "ออนไลน์ และลูกค้าหาเจอ", s3b: "เว็บไซต์และโปรไฟล์ของคุณเผยแพร่ ลูกค้าหาเจอ เปิดเมนู และส่งข้อความหาคุณ"
       },
+      results: {"eyebrow": "ทำไมถึงคุ้มค่า", "title": "มองเห็นมากขึ้น <em>ลูกค้ามากขึ้น</em>", "lead": "ภาพตัวอย่างเมื่อนักท่องเที่ยวหาคุณเจอ นี่เป็นเพียงตัวอย่าง ตัวเลขจริงขึ้นกับธุรกิจของคุณ", "example": "ตัวอย่าง", "chartTitle": "ลูกค้าที่หาคุณเจอ รายเดือน", "lift": "เป้าหมาย: ลูกค้าหาคุณเจอเพิ่มขึ้นใน 6 เดือน*", "m1": "เดือน 1", "m6": "เดือน 6", "t1": "เว็บไซต์ที่เปิดดูได้ตอนนี้", "t2": "เพื่อให้โปรไฟล์ Google ออนไลน์", "tr": "คะแนนเฉลี่ยจากรีวิวลูกค้า {n} ราย", "note": "* เป้าหมายที่แสดงบนตัวอย่างสมมติ ไม่ใช่การรับประกัน ผลลัพธ์ขึ้นกับธุรกิจและความตั้งใจของคุณ", "cta": "ดูแพ็กเกจ"},
       faq: { lead: "มีคำถามอื่น? ทักมาทาง WhatsApp ปกติเราตอบภายในไม่กี่นาที" }
     },
 
@@ -267,6 +271,7 @@
         s2d: "الخطوة 2 · من اليوم 2 إلى 4", s2t: "نبني كل شيء", s2b: "التصميم والنصوص وقائمة QR وخرائط جوجل وكل لغات زبائنك. توافق أنت ونعدّل نحن.",
         s3d: "الخطوة 3 · خلال أيام", s3t: "تصبح على الإنترنت ويجدك الزبائن", s3b: "يُنشر موقعك وملفك. يجدك الزبائن ويفتحون قائمتك ويراسلونك."
       },
+      results: {"eyebrow": "لماذا يستحق", "title": "ظهور أكبر، <em>زبائن أكثر.</em>", "lead": "ما قد يحدث عندما يجدك السياح أخيرًا. هذا مثال فقط وأرقامك تعتمد على نشاطك.", "example": "مثال", "chartTitle": "الزبائن الذين يجدونك شهرًا بعد شهر", "lift": "الهدف: زبائن أكثر يجدونك خلال 6 أشهر*", "m1": "الشهر 1", "m6": "الشهر 6", "t1": "مواقع حية يمكنك فتحها الآن", "t2": "لتصبح قائمتك على جوجل جاهزة", "tr": "متوسط التقييم من {n} تقييمات للزبائن", "note": "* هدف معروض على مثال افتراضي، وليس ضمانًا. النتائج تعتمد على نشاطك وجهدك.", "cta": "شاهد العروض"},
       faq: { lead: "سؤال آخر؟ راسلنا على واتساب ونرد عادة خلال دقائق." }
     }
   };

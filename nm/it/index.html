@@ -36,16 +36,16 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://mouradoulf-cmd.github.io/Mourad-site/nm/#studio", "name": "NM Studio", "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/", "image": "https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg", "description": "Websites, Google Business Profiles and QR menus for restaurants, bars, salons and shops in Pattaya.", "areaServed": {"@type": "City", "name": "Pattaya"}, "address": {"@type": "PostalAddress", "addressLocality": "Pattaya", "addressRegion": "Chonburi", "addressCountry": "TH"}, "priceRange": "฿990–฿13,300", "knowsLanguage": ["en", "fr", "it", "th", "ar"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "NM Studio offers", "itemListElement": [{"@type": "Offer", "price": "990", "priceCurrency": "THB", "itemOffered": {"@type": "Service", "name": "Google Business Profile"}}, {"@type": "Offer", "price": "5800", "priceCurrency": "THB", "itemOffered": {"@type": "Service", "name": "Website with QR menu (setup fee, then monthly subscription)"}}, {"@type": "Offer", "price": "13300", "priceCurrency": "THB", "itemOffered": {"@type": "Service", "name": "Complete Pack: website, Google listing and QR menu (setup fee, then monthly subscription)"}}]}}, {"@type": "WebSite", "name": "NM Studio", "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/", "inLanguage": ["en", "fr", "it", "th", "ar"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "I'm not good with technology, is that a problem?", "acceptedAnswer": {"@type": "Answer", "text": "Not at all. You send us your photos and we take care of everything else, design, text, hosting and updates."}}, {"@type": "Question", "name": "How long until my site is online?", "acceptedAnswer": {"@type": "Answer", "text": "A few days after we receive your photos and information, not weeks."}}, {"@type": "Question", "name": "Can I change my photos or menu later?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Edits are unlimited and free. Just send us a message whenever something changes."}}, {"@type": "Question", "name": "How does the QR menu work?", "acceptedAnswer": {"@type": "Answer", "text": "Your customers scan the code with their phone camera. No app needed, and instantly see your latest menu."}}, {"@type": "Question", "name": "I already have Instagram. Why do I need a website?", "acceptedAnswer": {"@type": "Answer", "text": "Instagram depends on an algorithm you don't control. A website is your own storefront: it shows up on Google, it's open 24/7, and it belongs to you."}}, {"@type": "Question", "name": "Is the website really mine?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your name, your photos, your content. We build it for your business, not for us."}}, {"@type": "Question", "name": "What if I want to stop?", "acceptedAnswer": {"@type": "Answer", "text": "There's no commitment. You can cancel anytime, free of charge."}}, {"@type": "Question", "name": "Have you worked with businesses like mine?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, restaurants, salons, spas and companies."}}]}]}</script>
 <link as="font" crossorigin="" href="../assets/fonts/satoshi-900.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="../assets/fonts/inter-latin.woff2" rel="preload" type="font/woff2"/>
-<!-- The hero video is deferred (see assets/js/hero-video.js?v=20261005i), so its poster IS
+<!-- The hero video is deferred (see assets/js/hero-video.js?v=20261005k), so its poster IS
      the first paint: preload it so the hero never flashes empty. -->
 <link as="image" fetchpriority="high" href="../assets/video/hero-poster.avif" rel="preload" type="image/avif"/>
 <link href="../assets/css/vendor/devices.min.css" rel="stylesheet"/>
-<link href="../assets/css/site.css?v=20261005i" rel="stylesheet"/>
-<link href="../assets/css/craft.css?v=20261005i" rel="stylesheet"/>
-<link href="../assets/css/work-gallery.css?v=20261005i" rel="stylesheet"/>
-<script defer="" src="../assets/js/nm-dict.js?v=20261005i"></script>
-<script defer="" src="../assets/js/nm-copy2.js?v=20261005i"></script>
-<script defer="" src="../assets/js/offers-config.js?v=20261005i"></script>
+<link href="../assets/css/site.css?v=20261005k" rel="stylesheet"/>
+<link href="../assets/css/craft.css?v=20261005k" rel="stylesheet"/>
+<link href="../assets/css/work-gallery.css?v=20261005k" rel="stylesheet"/>
+<script defer="" src="../assets/js/nm-dict.js?v=20261005k"></script>
+<script defer="" src="../assets/js/nm-copy2.js?v=20261005k"></script>
+<script defer="" src="../assets/js/offers-config.js?v=20261005k"></script>
 <script defer="" src="../assets/js/reviews-config.js"></script>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
 </head>
@@ -289,7 +289,32 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </section>
 <!-- ============ 4 · OFFERS ============ -->
-<section aria-labelledby="offersTitle" class="offers" id="offers">
+<section aria-labelledby="resTitle" class="res" id="results">
+<div aria-hidden="true" class="res__glow"></div>
+<div class="container">
+<div class="section-head section-head--center">
+<p class="eyebrow" data-i18n="results.eyebrow">Perché conviene</p>
+<h2 class="section-title" data-anim="words" data-i18n-html="results.title" id="resTitle">Più visibilità, <em>più clienti.</em></h2>
+<p class="section-lead" data-i18n="results.lead">Cosa può succedere quando i turisti vi trovano finalmente. È un esempio: i vostri numeri dipenderanno dalla vostra attività.</p>
+</div>
+<div class="res__grid">
+<figure aria-labelledby="resCap" class="res__chart">
+<span class="res__badge" data-i18n="results.example">Esempio</span>
+<p class="res__ctitle" data-i18n="results.chartTitle">Clienti che vi trovano, mese per mese</p>
+<div aria-hidden="true" class="chart3d"><div class="chart3d__scene"><div class="chart3d__stage" data-values="100,106,113,119,125,130"></div></div></div>
+<div aria-hidden="true" class="res__axis"><span data-i18n="results.m1">Mese 1</span><span data-i18n="results.m6">Mese 6</span></div>
+<figcaption id="resCap"><span class="res__big"><b data-count-to="30" data-prefix="+">+0</b><i>%</i></span><span class="res__lift" data-i18n="results.lift">obiettivo: più clienti che vi trovano in 6 mesi*</span></figcaption>
+</figure>
+<div class="res__side">
+<a class="res__tile" href="#work"><span aria-hidden="true" class="res__ic"><svg fill="none" viewBox="0 0 32 32"><rect height="17" rx="2.5" stroke="currentColor" stroke-width="1.6" width="24" x="4" y="6"></rect><path d="M11 27h10M16 23v4" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path><path class="res__tick" d="M10 14l4 4 8-8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><strong class="res__num"><b data-count-to="7" id="resSites">7</b></strong><span data-i18n="results.t1">siti online che potete aprire adesso</span></a>
+<div class="res__tile"><span aria-hidden="true" class="res__ic"><svg fill="none" viewBox="0 0 32 32"><circle cx="16" cy="17" r="11" stroke="currentColor" stroke-width="1.6"></circle><path d="M13 3.5h6M16 3.5V6" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path><path class="res__hand" d="M16 17V10.5" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></span><strong class="res__num"><b data-count-to="48">48</b><small>h</small></strong><span data-i18n="results.t2">per avere la scheda Google online</span></div>
+<div class="res__tile res__tile--rating" hidden="" id="resRating"><span aria-hidden="true" class="res__ic res__ic--star">★</span><strong class="res__num"><b id="resAvg">5</b><small>/5</small></strong><span data-tpl="results.tr" id="resAvgLabel"></span></div>
+</div>
+</div>
+<p class="res__note" data-i18n="results.note">* Obiettivo mostrato su un esempio fittizio. Non è una garanzia: i risultati dipendono dalla vostra attività e dal vostro impegno.</p>
+<p class="res__cta"><a class="btn btn--sun btn--lg magnetic" href="#offers"><span data-i18n="results.cta">Vedi le offerte</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
+</div>
+</section><section aria-labelledby="offersTitle" class="offers" id="offers">
 <div aria-hidden="true" class="offers__glow"></div>
 <div class="container">
 <div class="section-head section-head--center">
@@ -604,17 +629,17 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
-<script defer="" src="../assets/js/i18n.js?v=20261005i"></script>
+<script defer="" src="../assets/js/i18n.js?v=20261005k"></script>
 <script defer="" src="../assets/js/qrcode.min.js"></script>
 <script defer="" src="../assets/js/nm-qr.js"></script><script defer="" src="../assets/js/vendor/gsap.min.js"></script>
 <script defer="" src="../assets/js/vendor/ScrollTrigger.min.js"></script>
-<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-prob.js?v=20261005i"></script>
-<script defer="" src="../assets/js/safety.js?v=20261005i"></script>
+<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-prob.js?v=20261005k"></script><script defer="" src="../assets/js/nm-results.js?v=20261005k"></script>
+<script defer="" src="../assets/js/safety.js?v=20261005k"></script>
 <script defer="" src="../assets/js/fx.js"></script>
-<script defer="" src="../assets/js/nm-home.js?v=20261005i"></script>
-<script defer="" src="../assets/js/home.js?v=20261005i"></script>
-<script defer="" src="../assets/js/hero-depth.js?v=20261005i"></script>
-<script defer="" src="../assets/js/hero-video.js?v=20261005i"></script>
+<script defer="" src="../assets/js/nm-home.js?v=20261005k"></script>
+<script defer="" src="../assets/js/home.js?v=20261005k"></script>
+<script defer="" src="../assets/js/hero-depth.js?v=20261005k"></script>
+<script defer="" src="../assets/js/hero-video.js?v=20261005k"></script>
 <script defer="" src="../assets/js/payment-state.js"></script>
 <script defer="" src="../assets/js/perf.js"></script>
 </body>
