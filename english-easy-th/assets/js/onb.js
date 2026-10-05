@@ -12,10 +12,10 @@ EE.runOnb = function (root, done) {
     root.innerHTML = `<section class="ob">${prog == null ? "" : `<div class="ob__bar"><i style="width:${Math.round(prog * 100)}%"></i></div>`}${inner}</section>`;
   }
   async function type(el, text, t) {
-    el.textContent = ""; el.classList.add("typing");
-    if (fast) { el.textContent = text; el.classList.remove("typing"); return; }
+    el.textContent = ""; el.classList.add("typing"); const sy = el.closest(".ob__say"); sy && sy.classList.add("talk");
+    if (fast) { el.textContent = text; el.classList.remove("typing"); sy && sy.classList.remove("talk"); return; }
     for (let i = 1; i <= text.length; i++) { if (t !== token) return; el.textContent = text.slice(0, i); if (i % 2 === 0) EE.sfx.key(); await sleep(text[i - 1] === " " ? 14 : 26); }
-    el.classList.remove("typing");
+    el.classList.remove("typing"); sy && sy.classList.remove("talk");
   }
   const say = (txt) => `<div class="ob__say"><span class="ob__av">${EE.mascot("happy", 44)}</span><div class="ob__bub" data-t="${esc(txt)}"></div></div>`;
   async function ask(txt, t) { const b = $(".ob__bub"); await type(b, b.dataset.t, t); if (t === token) $(".ob__body") && $(".ob__body").classList.add("show"); }
@@ -83,12 +83,17 @@ EE.runOnb = function (root, done) {
       const X = [20, 100, 200, 300], Y = pts.map(p => 130 - (p / (tot * .85)) * 110);
       const d = `M${X[0]} ${Y[0]} C ${X[0] + 40} ${Y[0]}, ${X[1] - 30} ${Y[1]}, ${X[1]} ${Y[1]} S ${X[2] - 40} ${Y[2]}, ${X[2]} ${Y[2]} S ${X[3] - 40} ${Y[3]}, ${X[3]} ${Y[3]}`;
       shell(`${say(`${nm()} นี่คือเส้นทางของคุณ — ประมาณการหากเรียนตามเป้าหมายทุกวัน`)}<div class="ob__body show"><svg class="ob__chart" viewBox="0 0 330 170" role="img" aria-label="กราฟประมาณการคำศัพท์"><defs><linearGradient id="og" x1="0" x2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset=".55" stop-color="#facc15"/><stop offset="1" stop-color="#4ade80"/></linearGradient><linearGradient id="of" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".45"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><path d="${d} L ${X[3]} 150 L ${X[0]} 150 Z" fill="url(#of)" class="ob__fill"/>${[40,80,120].map(y => `<line x1="14" x2="310" y1="${y}" y2="${y}" stroke="rgba(168,85,247,.18)" stroke-dasharray="3 5"/>`).join("")}<path d="${d}" fill="none" stroke="url(#og)" stroke-width="4" stroke-linecap="round" class="ob__line" pathLength="1" style="filter:drop-shadow(0 0 6px #facc15)"/><circle r="7" fill="#fff" class="ob__trav"><animateMotion dur="2.2s" begin=".4s" fill="freeze" path="${d}"/></circle>${X.map((x, i) => `<circle cx="${x}" cy="${Y[i]}" r="5" fill="${i === 3 ? "#4ade80" : "#c4b5fd"}" class="ob__dot" style="--i:${i}"/><text x="${x}" y="${Y[i] - 12}" text-anchor="middle" fill="#fff" font-size="11" font-weight="800" class="ob__dot" style="--i:${i}">${pts[i] ? "~" + pts[i] : 0}</text>`).join("")}${["วันนี้", "1 เดือน", "3 เดือน", "6 เดือน"].map((l, i) => `<text x="${X[i]}" y="166" text-anchor="middle" fill="#b9a6e0" font-size="10">${l}</text>`).join("")}</svg><p class="fine ob__cap">จำนวนคำศัพท์ที่จะรู้ (ตัวเลขประมาณการ ไม่ใช่การรับประกันผล)</p></div><button class="btn btn--primary btn--lg ob__next">เริ่มเรียนบทแรก →</button>`, 8 / total);
-      ask("", t); $(".ob__next").onclick = () => { EE.sfx.win(); const r = $(".ob__next").getBoundingClientRect(); EE.burst(r.left + r.width / 2, r.top, null); EE.confetti(); $(".ob").classList.add("ob--flash"); S.onboarded = true; EE.save(); setTimeout(done, fast ? 0 : 700); };
+      ask("", t); $(".ob__next").onclick = () => { EE.sfx.win(); const r = $(".ob__next").getBoundingClientRect(); EE.burst(r.left + r.width / 2, r.top, null); go(10); };
+    },
+    function offer() {
+      my(); EE.renderOffer(root, finish, true);
     }
   ];
+  function finish() { EE.confetti(); const o = root.firstChild; if (o && o.classList) o.classList.add("ob--flash"); S.onboarded = true; EE.save(); EE.gl.jump(); setTimeout(done, fast ? 0 : 700); }
+  const modes = ["splash", "welcome", "chat", "chat", "chat", "chat", "chat", "chat", "analyse", "chat", "chat"];
   function go(n) {
     const cur = root.firstChild;
-    const run = () => { step = n; (screens[n])(); window.scrollTo(0, 0); };
+    const run = () => { step = n; EE.gl.mode(modes[n]); if (n === 1) EE.gl.jump(); if (n === 9) EE.gl.pulse(); (screens[n])(); window.scrollTo(0, 0); };
     if (fast || !cur || !cur.classList || n === 0) return run();
     cur.classList.add("ob--out"); setTimeout(run, 260);
   }

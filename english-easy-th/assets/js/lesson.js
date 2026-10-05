@@ -88,9 +88,9 @@ EE.play = function (cfg) {
 
   function result(ok, st, correctText, extraXp) {
     P.answered++;
-    if (ok) { P.right++; const first = !P.retried.has(st); if (first) P.firstTry++; const gain = first ? 10 : 5; P.xp += gain; S.stats.ok++; P.combo=(P.combo||0)+1; EE.sfx.combo(P.combo); if (st.item && !st.item.sentence) EE.clearMistake(st.item); setFooter("ok", "<b>" + PRAISE[Math.floor(Math.random() * PRAISE.length)] + "</b> <span>+" + gain + " XP</span>", "ต่อไป"); }
+    if (ok) { P.right++; const first = !P.retried.has(st); if (first) P.firstTry++; const gain = first ? 10 : 5; P.xp += gain; S.stats.ok++; P.combo=(P.combo||0)+1; EE.sfx.combo(P.combo); EE.fx && (EE.fx.xp(gain, EE.$("#go")), EE.fx.shock(EE.$("#go")), EE.fx.combo(P.combo)); EE.gl.pulse(); if (st.item && !st.item.sentence) EE.clearMistake(st.item); setFooter("ok", "<b>" + PRAISE[Math.floor(Math.random() * PRAISE.length)] + "</b> <span>+" + gain + " XP</span>", "ต่อไป"); }
     else {
-      P.wrong++; P.combo=0; S.stats.ko++; EE.sfx.no(); if (st.item && st.item.en && !st.item.letter) EE.recordMistake(st.item);
+      P.wrong++; P.combo=0; S.stats.ko++; EE.sfx.no(); EE.fx && EE.fx.shake(); if (st.item && st.item.en && !st.item.letter) EE.recordMistake(st.item);
       if (cfg.mode === "lesson") { EE.loseHeart(); heartsUI(); }
       if (!P.retried.has(st)) { P.retried.add(st); P.queue.push(st); }
       setFooter("bad", "<b>คำตอบที่ถูกต้อง</b><span>" + esc(correctText || "") + "</span>", "เข้าใจแล้ว");
@@ -219,7 +219,7 @@ EE.play = function (cfg) {
 /* ---------- entry points ---------- */
 EE.startLesson = function (L) {
   const S = EE.state(); EE.tick();
-  if (S.hearts <= 0 && !S.settings.demo) { EE.toast("หัวใจหมดแล้ว — ฝึกเพื่อรับหัวใจ หรือรอ 30 นาที", "warn"); location.hash = "#/train"; return; }
+  if (S.hearts <= 0 && !EE.noLimit()) { EE.toast("หัวใจหมดแล้ว — ฝึกเพื่อรับหัวใจ หรือรอ 30 นาที", "warn"); location.hash = "#/train"; return; }
   const u = EE.unitById(L.unit);
   EE.play({ mode: "lesson", lesson: L, color: u.color, steps: planLesson(L), onExit: () => { EE.route(); }, onFinish: () => { EE.route(); } });
 };

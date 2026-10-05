@@ -19,7 +19,7 @@ EE.checkBadges = () => BADGES.forEach(b => { if (!S.badges[b[0]] && b[3](S)) { S
 /* ---------- top bar ---------- */
 function topbar() {
   EE.tick(); const ms = EE.heartsLeftMs();
-  $("#st-streak").textContent = S.streak; $("#st-gems").textContent = S.gems; $("#st-hearts").textContent = S.settings.demo ? "∞" : S.hearts;
+  $("#st-streak").textContent = S.streak; $("#st-gems").textContent = S.gems; $("#st-hearts").textContent = EE.noLimit() ? "∞" : S.hearts;
   $("#st-hearts").title = ms ? "หัวใจดวงถัดไปใน " + mmss(ms) : "หัวใจเต็ม";
   $("#st-xp").textContent = S.xp;
 }
@@ -91,7 +91,7 @@ function train() {
   main().innerHTML = `<section class="page"><h1>🎯 ฝึกฝน</h1><p class="lead">ฝึก 10 ข้อ ไม่เสียหัวใจ — เสร็จแล้วรับหัวใจ +1 ❤️</p>
     <div class="cards2"><article class="card big-card"><div class="big-card__e">❗</div><h3>ทบทวนคำที่เคยตอบผิด</h3><p>${mis.length ? "มี <b>" + mis.length + "</b> คำที่ควรทบทวน" : "ยังไม่มีคำที่ตอบผิด เยี่ยมมาก!"}</p><button class="btn btn--primary" id="t-mis" ${mis.length ? "" : "disabled"}>ทบทวนเลย</button></article>
     <article class="card big-card"><div class="big-card__e">🔁</div><h3>ฝึกคำศัพท์ทั่วไป</h3><p>${learned.length >= 4 ? "จากคำที่คุณเรียนแล้ว (" + learned.length + " คำ)" : "สุ่มจากคำศัพท์ทั้งหมด"}</p><button class="btn btn--primary" id="t-gen">เริ่มฝึก</button></article></div>
-    <p class="fine">❤️ ตอนนี้มี ${S.settings.demo ? "∞" : S.hearts}/${EE.MAX_HEARTS}</p></section>`;
+    <p class="fine">❤️ ตอนนี้มี ${EE.noLimit() ? "∞" : S.hearts}/${EE.MAX_HEARTS}</p></section>`;
   $("#t-mis").onclick = () => EE.startTraining(mis.length >= 4 ? mis : mis.concat(pick(pool, 6)), "train");
   $("#t-gen").onclick = () => EE.startTraining(pool, "train");
 }
@@ -159,9 +159,9 @@ function tips() {
 /* ---------- shop ---------- */
 function shop() {
   main().innerHTML = `<section class="page"><h1>🛍️ ร้านค้า</h1><p class="lead">ใช้เพชร 💎 ที่ได้จากการเรียนและเล่นเกม — ไม่ต้องจ่ายเงินจริง</p><div class="gems-box">💎 <b>${S.gems}</b> เพชร</div><div class="cards2">
-    <article class="card big-card"><div class="big-card__e">❤️</div><h3>เติมหัวใจเต็ม</h3><p>หัวใจตอนนี้ ${S.settings.demo ? "∞" : S.hearts}/${EE.MAX_HEARTS}</p><button class="btn btn--gold" id="b-heart" ${S.gems < 30 || S.hearts >= EE.MAX_HEARTS ? "disabled" : ""}>💎 30</button></article>
+    <article class="card big-card"><div class="big-card__e">❤️</div><h3>เติมหัวใจเต็ม</h3><p>หัวใจตอนนี้ ${EE.noLimit() ? "∞" : S.hearts}/${EE.MAX_HEARTS}</p><button class="btn btn--gold" id="b-heart" ${S.gems < 30 || S.hearts >= EE.MAX_HEARTS ? "disabled" : ""}>💎 30</button></article>
     <article class="card big-card"><div class="big-card__e">🧊</div><h3>ตัวป้องกันสตรีค</h3><p>ข้ามไปได้ 1 วันโดยสตรีคไม่ขาด (มี ${S.freeze})</p><button class="btn btn--gold" id="b-freeze" ${S.gems < 50 || S.freeze >= 2 ? "disabled" : ""}>💎 50</button></article></div>
-    <article class="card premium"><h3>⭐ English Easy Plus <span class="tag">เร็ว ๆ นี้</span></h3><p>แผนที่กำลังพัฒนา: หัวใจไม่จำกัด บทเรียนเพิ่ม และบทฝึกพูดแบบมีผู้ช่วยตอบ — ตอนนี้ทุกอย่างในเว็บนี้ใช้ได้ฟรี</p></article></section>`;
+    <article class="card premium"><h3>⭐ ${EE.CONFIG.PRODUCT}</h3><p>${EE.CONFIG.TAGLINE}</p><a class="btn btn--gold" href="#/pro">ดูรายละเอียด →</a></article></section>`;
   const buy = (c, f) => { if (S.gems < c) return; S.gems -= c; f(); EE.sfx.coin(); EE.save(); shop(); };
   $("#b-heart").onclick = () => buy(30, () => { S.hearts = EE.MAX_HEARTS; S.heartTs = 0; EE.toast("หัวใจเต็มแล้ว ❤️", "ok"); });
   $("#b-freeze").onclick = () => buy(50, () => { S.freeze++; EE.toast("ได้ตัวป้องกันสตรีค 🧊", "ok"); });
@@ -187,13 +187,14 @@ function profile() {
 }
 
 /* ---------- router ---------- */
-const ROUTES = { home, alphabet, train, games, word, tips, shop, profile };
+function pro() { EE.renderOffer(main(), () => { location.hash = "#/shop"; }, false); }
+const ROUTES = { home, alphabet, train, games, word, tips, shop, profile, pro };
 EE.route = function () {
   if (EE.stopGame) { EE.stopGame(); EE.stopGame = null; }
   const h = location.hash.replace(/^#\/?/, "") || "home", [a, b] = h.split("/");
   EE.tick(); topbar();
   if (!S.onboarded) { onboarding(); $("#app").classList.add("is-onb"); return; }
-  $("#app").classList.remove("is-onb");
+  $("#app").classList.remove("is-onb"); EE.gl.mode("app");
   const view = a === "game" ? (b === "memory" ? memory : b === "speed" ? speed : games) : (ROUTES[a] || home);
   view(); window.scrollTo(0, 0);
   $$(".nav a").forEach(l => { const on = l.getAttribute("href") === "#/" + (a === "game" ? "games" : a); l.classList.toggle("is-on", on); if (on) l.setAttribute("aria-current", "page"); else l.removeAttribute("aria-current"); });

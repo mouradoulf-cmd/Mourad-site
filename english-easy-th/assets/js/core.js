@@ -20,7 +20,7 @@ const KEY = "ee1";
 const MAX_HEARTS = 5, HEART_MS = 30 * 60 * 1000;
 const def = () => ({ name: "", goal: 20, xp: 0, gems: 20, hearts: MAX_HEARTS, heartTs: 0, streak: 0, best: 0, lastDay: "", freeze: 0,
   done: {}, mistakes: {}, learned: {}, today: { d: dayKey(), xp: 0 }, stats: { ok: 0, ko: 0, lessons: 0, perfect: 0 }, favs: [],
-  settings: { sound: true, slow: false, demo: false }, onboarded: false, badges: {}, bestSpeed: 0, bestMemory: 0 });
+  settings: { sound: true, slow: false, demo: false, music: true }, pro: false, why: "", age: "", level: "", onboarded: false, badges: {}, bestSpeed: 0, bestMemory: 0 });
 let S;
 function load() { try { S = Object.assign(def(), JSON.parse(localStorage.getItem(KEY) || "{}")); S.settings = Object.assign(def().settings, S.settings); S.stats = Object.assign(def().stats, S.stats); } catch (e) { S = def(); } tick(); }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} EE.emit("state"); }
@@ -51,7 +51,8 @@ EE.touchStreak = () => {
   const t = dayKey(); if (S.lastDay === t) return false;
   S.streak = (S.lastDay && dayDiff(S.lastDay, t) === 1) ? S.streak + 1 : 1; S.best = Math.max(S.best, S.streak); S.lastDay = t; return true;
 };
-EE.loseHeart = () => { if (S.hearts > 0) { if (S.hearts === MAX_HEARTS) S.heartTs = Date.now(); S.hearts--; } };
+EE.noLimit = () => !!(S.settings.demo || S.pro);
+EE.loseHeart = () => { if (EE.noLimit()) return; if (S.hearts > 0) { if (S.hearts === MAX_HEARTS) S.heartTs = Date.now(); S.hearts--; } };
 EE.level = () => Math.floor(S.xp / 100) + 1;
 EE.recordMistake = w => { const k = w.en; S.mistakes[k] = (S.mistakes[k] || 0) + 1; };
 EE.clearMistake = w => { const k = w.en; if (S.mistakes[k]) { S.mistakes[k]--; if (S.mistakes[k] <= 0) delete S.mistakes[k]; } };
@@ -59,7 +60,7 @@ EE.clearMistake = w => { const k = w.en; if (S.mistakes[k]) { S.mistakes[k]--; i
 /* lesson progress */
 EE.isDone = id => !!S.done[id];
 EE.unlocked = lesson => {
-  if (S.settings.demo) return true;
+  if (EE.noLimit()) return true;
   const i = EE.LESSONS.indexOf(lesson); return i === 0 || !!S.done[EE.LESSONS[i - 1].id];
 };
 EE.current = () => EE.LESSONS.find(l => !S.done[l.id]) || null;
@@ -117,6 +118,40 @@ EE.sfx = {
   whoosh() { tone(300, .25, "sawtooth", .03, 0, 1200); }
 };
 
+/* ---------- ambient music (generative, WebAudio): soft pad + pentatonic plucks through a delay ---------- */
+EE.music = (() => {
+  let node = null, timer = null, started = false;
+  const PENT = [220, 261.6, 293.7, 329.6, 392, 440, 523.3, 587.3, 659.3], CH = [[110, 164.8, 220, 261.6], [87.3, 130.8, 174.6, 220], [98, 146.8, 196, 246.9], [110, 164.8, 220, 261.6]];
+  function build() {
+    const c = ctx(); if (!c) return null; const master = c.createGain(); master.gain.value = 0; master.connect(c.destination);
+    const lp = c.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 900; lp.connect(master);
+    const dl = c.createDelay(1); dl.delayTime.value = .38; const fb = c.createGain(); fb.gain.value = .42; dl.connect(fb); fb.connect(dl); dl.connect(master);
+    const pad = [];
+    const chord = n => CH[n % CH.length].forEach((f, i) => { if (!pad[i]) { const o = c.createOscillator(), g = c.createGain(); o.type = i % 2 ? "triangle" : "sine"; g.gain.value = 0; o.connect(g); g.connect(lp); o.start(); pad[i] = { o, g }; } pad[i].o.frequency.setTargetAtTime(f, c.currentTime, 1.2); pad[i].g.gain.setTargetAtTime(.2, c.currentTime, 1.5); });
+    let step = 0, bar = 0, idx = 3; chord(0);
+    timer = setInterval(() => {
+      if (!S.settings.music || !S.settings.sound || document.hidden) return;
+      if (step % 16 === 0) chord(bar++);
+      if (step % 2 === 0 || Math.random() < .3) {
+        idx = Math.max(0, Math.min(PENT.length - 1, idx + Math.floor(Math.random() * 5) - 2)); const f = PENT[idx], t = c.currentTime;
+        const o = c.createOscillator(), g = c.createGain(); o.type = "triangle"; o.frequency.value = f; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.35, t + .01); g.gain.exponentialRampToValueAtTime(.001, t + 1.1);
+        o.connect(g); g.connect(lp); g.connect(dl); o.start(t); o.stop(t + 1.2);
+      }
+      step++;
+    }, 340);
+    return { c, master };
+  }
+  const api = {
+    start() { if (!S.settings.music || !S.settings.sound) return; if (!node) node = build(); if (!node) return; started = true; node.c.resume && node.c.resume(); node.master.gain.setTargetAtTime(.075, node.c.currentTime, 1.5); },
+    stop() { if (node) node.master.gain.setTargetAtTime(0, node.c.currentTime, .3); },
+    toggle() { S.settings.music = !S.settings.music; EE.save(); S.settings.music ? api.start() : api.stop(); return S.settings.music; }
+  };
+  const first = () => { api.start(); removeEventListener("pointerdown", first); removeEventListener("keydown", first); };
+  addEventListener("pointerdown", first); addEventListener("keydown", first);
+  document.addEventListener("visibilitychange", () => { if (node) node.master.gain.setTargetAtTime(document.hidden || !S.settings.music ? 0 : .075, node.c.currentTime, .3); });
+  return api;
+})();
+
 /* ---------- confetti (canvas, tiny) ---------- */
 EE.confetti = () => {
   if (reduce) return; const cv = document.createElement("canvas"); cv.className = "confetti"; document.body.appendChild(cv);
@@ -137,10 +172,12 @@ EE.burst = (x, y, col) => {
 /* ---------- mascot (original SVG, 3 moods) ---------- */
 EE.mascot = (mood, size) => {
   const m = mood || "happy", s = size || 96;
-  const eyes = m === "sad" ? '<path d="M34 46q4-5 8 0M58 46q4-5 8 0" stroke="#1f2340" stroke-width="3.5" fill="none" stroke-linecap="round"/>' : '<circle cx="38" cy="46" r="5" fill="#1f2340"/><circle cx="62" cy="46" r="5" fill="#1f2340"/><circle cx="40" cy="44" r="1.6" fill="#fff"/><circle cx="64" cy="44" r="1.6" fill="#fff"/>';
-  const mouth = m === "sad" ? '<path d="M40 66q10-8 20 0" stroke="#1f2340" stroke-width="3.5" fill="none" stroke-linecap="round"/>' : m === "cheer" ? '<path d="M38 60q12 16 24 0z" fill="#1f2340"/><path d="M43 66q7 6 14 0" fill="#ff7675"/>' : '<path d="M40 62q10 10 20 0" stroke="#1f2340" stroke-width="3.5" fill="none" stroke-linecap="round"/>';
+  const eyes = "<g class=\"m-eyes\">" + (m === "sad" ? '<path d="M34 46q4-5 8 0M58 46q4-5 8 0" stroke="#1f2340" stroke-width="3.5" fill="none" stroke-linecap="round"/>' : '<circle cx="38" cy="46" r="5" fill="#1f2340"/><circle cx="62" cy="46" r="5" fill="#1f2340"/><circle cx="40" cy="44" r="1.6" fill="#fff"/><circle cx="64" cy="44" r="1.6" fill="#fff"/>') + "</g>";
+  const mouth0 = m === "sad" ? '<path d="M40 66q10-8 20 0" stroke="#1f2340" stroke-width="3.5" fill="none" stroke-linecap="round"/>' : m === "cheer" ? '<path d="M38 60q12 16 24 0z" fill="#1f2340"/><path d="M43 66q7 6 14 0" fill="#ff7675"/>' : '<path d="M40 62q10 10 20 0" stroke="#1f2340" stroke-width="3.5" fill="none" stroke-linecap="round"/>';
+  const mouth = '<g class="m-mouth">' + mouth0 + "</g>";
   return `<svg class="mascot mascot--${m}" width="${s}" height="${s}" viewBox="0 0 100 100" role="img" aria-label="น้องอีซี่"><path d="M50 8C26 8 10 24 10 46c0 14 7 25 18 32l-5 15 20-11c2 .3 5 .4 7 .4 24 0 40-16 40-36S74 8 50 8z" fill="#6c5ce7"/><path d="M50 14C30 14 16 27 16 46s12 31 34 31 34-12 34-31S70 14 50 14z" fill="#8a7dff"/><ellipse cx="29" cy="58" rx="6" ry="4" fill="#ff9aa9" opacity=".7"/><ellipse cx="71" cy="58" rx="6" ry="4" fill="#ff9aa9" opacity=".7"/>${eyes}${mouth}${m === "cheer" ? '<path d="M18 24l-6-8M82 24l6-8M50 8V0" stroke="#ffc21a" stroke-width="4" stroke-linecap="round"/>' : ""}</svg>`;
 };
 
+EE.gl = EE.gl || { on: false, mode() {}, jump() {}, pulse() {} };
 load();
 })(window.EE = window.EE || {});
