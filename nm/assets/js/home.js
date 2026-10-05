@@ -80,7 +80,6 @@
       { slug: "neon-tiger", name: "Neon Tiger", cat: "work.p5cat" },
       { slug: "mae-lek", name: "Mae Lek", cat: "work.p6cat" },
       { slug: "ride-siam", name: "Ride Siam", cat: "work.p7cat" },
-      { slug: "facadiers", name: "Atelier des Façadiers", cat: "work.p4cat" },
       { slug: "oblanc", name: "ÔBlanc", cat: "work.p8cat" }
     ];
     var SWAP_MS = 4200, index = 0, timer = null, layers = null, visible = true, z = 1;

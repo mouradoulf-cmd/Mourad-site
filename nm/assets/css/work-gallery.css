@@ -34,6 +34,7 @@
   .wk-card--2 { grid-column: span 4; }
   .wk-card--3, .wk-card--4, .wk-card--5 { grid-column: span 4; }
   .wk-card--6, .wk-card--7 { grid-column: span 6; }
+  .wk__grid > .wk-card--6:last-child { grid-column: span 12; }
   /* Le gabarit du site étant plus large que haut, une fenêtre 2/1 le cadre
      sans laisser de vide sous la maquette. */
   .wk-card__media { aspect-ratio: 3 / 2; }
