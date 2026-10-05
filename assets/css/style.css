@@ -1439,3 +1439,9 @@ html:not(.menu-ready) .menu-book__hint { display: none; }
   .hero__scroll { display: none; }                          /* it collided with the CTAs on short phones */
 }
 @media (max-width: 380px) { .lang-link { min-width: 32px; padding: 4px 6px; } }
+
+/* the intro must never block the page: taps pass through it (language switch, menu…),
+   it is shorter, and it is skipped when you move between languages / come back in the same session */
+.preloader { pointer-events: none; }
+.js .preloader { animation-delay: 1.25s; animation-duration: .6s; }
+.intro-seen .preloader, .intro-seen.js .preloader { display: none !important; }

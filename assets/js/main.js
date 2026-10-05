@@ -29,7 +29,7 @@
   /* ---------- Préchargeur : le CSS le congédie seul, on le retire proprement ---------- */
   var preloader = document.getElementById("preloader");
   try { sessionStorage.setItem("giulivoIntroSeen", "1"); } catch (e) { /* stockage refusé */ }
-  if (preloader) setTimeout(function () { if (preloader.parentNode) preloader.parentNode.removeChild(preloader); }, 3200);
+  if (preloader) setTimeout(function () { if (preloader.parentNode) preloader.parentNode.removeChild(preloader); }, 2000);
 
   /* ---------- Un seul écouteur de défilement, une seule écriture ---------- */
   var navbar = document.getElementById("navbar");
