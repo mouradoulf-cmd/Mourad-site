@@ -13,9 +13,9 @@ EE.CONFIG = {
   FREE_UNITS: 12,
   /* Suggested launch prices (Thai market). Change freely. `months` is used to compute the real saving vs the monthly plan. */
   PLANS: [
-    { id: "month", name: "รายเดือน", price: "฿199", per: "/เดือน", note: "ยกเลิกได้ทุกเมื่อ", months: 1 },
-    { id: "year", name: "รายปี", price: "฿1,290", per: "/ปี", note: "เฉลี่ยเดือนละ ฿108", months: 12, best: true },
-    { id: "life", name: "ตลอดชีพ", price: "฿2,490", per: "ครั้งเดียว", note: "จ่ายครั้งเดียว เรียนได้ตลอด", months: 0 }
+    { id: "month", name: "รายเดือน", price: "฿199", amount: 199, per: "/เดือน", note: "ยกเลิกได้ทุกเมื่อ", months: 1 },
+    { id: "year", name: "รายปี", price: "฿1,290", amount: 1290, per: "/ปี", note: "เฉลี่ยเดือนละ ฿108", months: 12, best: true },
+    { id: "life", name: "ตลอดชีพ", price: "฿2,490", amount: 2490, per: "ครั้งเดียว", note: "จ่ายครั้งเดียว เรียนได้ตลอด", months: 0 }
   ],
   FEATURES: [
     ["🎓", "คอร์สเต็มครบ 24 หน่วย", "ปลดล็อกหน่วย 13–24: ร่างกาย ช้อปปิ้ง ไวยากรณ์ อดีต/อนาคต สถานการณ์จริง"],
@@ -23,7 +23,21 @@ EE.CONFIG = {
     ["🔊", "ออกเสียงให้ชัด", "บทเฉพาะสำหรับคนไทย: th, r/l, v/w, สระสั้น–ยาว"],
     ["♾️", "หัวใจไม่จำกัด + ใบรับรอง", "เรียนต่อเนื่อง และรับใบรับรองเมื่อจบคอร์ส"]
   ],
-  BUY_URL: "",
-  LINE: "",
-  CODES: []
+  BUY_URL: "",          /* legacy: single payment link (used only if no CARD_LINKS) */
+  LINE: "",             /* https://lin.ee/xxxx — support / manual payment */
+  /* Access codes you give buyers. String = lifetime access; or { code, plan:"month"|"year"|"life" }. Public file → weak by design. */
+  CODES: [],
+
+  /* ------------ PAYMENT (everything below is read by assets/js/checkout.js — see PAYMENT.md) ------------ */
+  PAYMENT: {
+    TEST_MODE: false,           /* true = shows a "simulate payment" button (for demos/screenshots ONLY, never in production) */
+    PROMPTPAY_ID: "",           /* your PromptPay phone (08xxxxxxxx) or 13-digit national/tax ID → generates a real QR with the amount */
+    PROMPTPAY_NAME: "",         /* account holder name shown under the QR */
+    CARD_LINKS: { month: "", year: "", life: "" },  /* payment-link per plan (Stripe Payment Link, Omise, PayPal.me…). {email} and {ref} are replaced */
+    LINE_ID: "",                /* your LINE OA id, e.g. "@englisheasy" → opens a chat with the order pre-filled */
+    VERIFY_URL: "",             /* optional: your server endpoint that confirms a code/payment (see PAYMENT.md). Empty = local CODES */
+    SUPPORT_EMAIL: "",
+    SELLER: { name: "", address: "", taxId: "" },   /* shown on receipt & legal pages */
+    REFUND_DAYS: 7
+  }
 };

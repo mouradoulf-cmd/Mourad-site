@@ -19,7 +19,7 @@ const dayDiff = (a, b) => Math.round((new Date(b + "T00:00:00") - new Date(a + "
 const KEY = "ee1";
 const MAX_HEARTS = 5, HEART_MS = 30 * 60 * 1000;
 const def = () => ({ name: "", goal: 20, xp: 0, gems: 20, hearts: MAX_HEARTS, heartTs: 0, streak: 0, best: 0, lastDay: "", freeze: 0,
-  unlockTo: 0, interests: [], gender: "", minor: false, placement: null, done: {}, mistakes: {}, learned: {}, today: { d: dayKey(), xp: 0 }, stats: { ok: 0, ko: 0, lessons: 0, perfect: 0 }, favs: [],
+  unlockTo: 0, plan: "", proUntil: 0, orders: [], interests: [], gender: "", minor: false, placement: null, done: {}, mistakes: {}, learned: {}, today: { d: dayKey(), xp: 0 }, stats: { ok: 0, ko: 0, lessons: 0, perfect: 0 }, favs: [],
   settings: { sound: true, slow: false, demo: false, music: true }, pro: false, why: "", age: "", level: "", onboarded: false, badges: {}, bestSpeed: 0, bestMemory: 0 });
 let S;
 function load() { try { S = Object.assign(def(), JSON.parse(localStorage.getItem(KEY) || "{}")); S.settings = Object.assign(def().settings, S.settings); S.stats = Object.assign(def().stats, S.stats); } catch (e) { S = def(); } tick(); }
@@ -59,7 +59,21 @@ EE.clearMistake = w => { const k = w.en; if (S.mistakes[k]) { S.mistakes[k]--; i
 
 /* lesson progress */
 EE.isDone = id => !!S.done[id];
-EE.isPro = () => !!(S.pro || S.settings.demo);
+EE.isPro = () => !!(S.settings.demo || (S.pro && (!S.proUntil || Date.now() < S.proUntil)));
+EE.PLAN_DAYS = { month: 31, year: 366, life: 0 };
+EE.grantPro = (plan, until) => { S.pro = true; S.plan = plan || "life"; S.proUntil = until != null ? until : (EE.PLAN_DAYS[S.plan] ? Date.now() + EE.PLAN_DAYS[S.plan] * 864e5 : 0); EE.save(); };
+/* activate with a code (optionally checked by the seller's server) → {ok, plan} */
+EE.activate = async (code, email, orderId) => {
+  const P = (EE.CONFIG && EE.CONFIG.PAYMENT) || {}; code = String(code || "").trim();
+  if (!code) return { ok: false, msg: "กรุณากรอกรหัส" };
+  if (P.VERIFY_URL) {
+    try { const r = await fetch(P.VERIFY_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, email, orderId }) }); const j = await r.json(); if (j && j.ok) { EE.grantPro(j.plan || "life", j.until); return { ok: true, plan: S.plan }; } return { ok: false, msg: (j && j.msg) || "รหัสไม่ถูกต้อง" }; }
+    catch (e) { return { ok: false, msg: "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ลองใหม่อีกครั้ง" }; }
+  }
+  const hit = ((EE.CONFIG && EE.CONFIG.CODES) || []).map(c => typeof c === "string" ? { code: c, plan: "life" } : c).find(c => String(c.code).toLowerCase() === code.toLowerCase());
+  if (!hit) return { ok: false, msg: "รหัสไม่ถูกต้อง" };
+  EE.grantPro(hit.plan); return { ok: true, plan: hit.plan };
+};
 EE.freeUnits = () => (EE.CONFIG && EE.CONFIG.FREE_UNITS != null) ? EE.CONFIG.FREE_UNITS : 99;
 EE.proLocked = lesson => lesson.ui >= EE.freeUnits() && !EE.isPro();
 EE.unlocked = lesson => {

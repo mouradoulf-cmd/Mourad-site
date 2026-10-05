@@ -140,7 +140,7 @@ EE.runOnb = function (root, done) {
     const byTest = S.placement == null ? 0 : [0, first(2), first(5), first(10), first(14)][S.placement] || 0;
     return Math.max(0, Math.max(byLevel, byTest));
   }
-  function finish() { S.unlockTo = startIndex(); EE.confetti(); const o = root.firstChild; if (o && o.classList) o.classList.add("ob--flash"); S.onboarded = true; EE.save(); EE.gl.jump(); setTimeout(done, fast ? 0 : 700); }
+  function finish(target) { S.unlockTo = startIndex(); EE.confetti(); const o = root.firstChild; if (o && o.classList) o.classList.add("ob--flash"); S.onboarded = true; EE.save(); EE.gl.jump(); setTimeout(() => done(typeof target === "string" ? target : null), fast ? 0 : 700); }
   const MODES = { splash: "splash", welcome: "welcome", analyse: "analyse" };
   function go(n) {
     const c = root.firstChild;
