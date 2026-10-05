@@ -112,10 +112,15 @@ D.addEventListener('keydown',function(e){if(e.key==='Escape')$('#modal').hidden=
 /* ---------- simulator ---------- */
 function sim(){var p=+$('#r1').value,n=+$('#r2').value,m=+$('#r3').value;$('#o1').textContent=fmt(p);$('#o2').textContent=n;$('#o3').textContent=fmt(m);
  var a=p*n,b=m*n*6;$('#x1').textContent=fmt(a.toLocaleString('en-US'));$('#x2').textContent=fmt(b.toLocaleString('en-US'));$('#x3').textContent=fmt((a+b).toLocaleString('en-US'))}
-['r1','r2','r3'].forEach(function(id){$('#'+id).addEventListener('input',function(){sim();sfx('slide')})});sim();
+['r1','r2','r3'].forEach(function(id){$('#'+id).addEventListener('input',function(){sim();if(window.SFX)SFX.slide((+this.value-this.min)/(this.max-this.min))})});sim();
 
 /* ---------- optional real countdown ---------- */
 if(CFG.OFFER_END){var end=new Date(CFG.OFFER_END).getTime(),o=$('#offer');if(end>Date.now()){o.hidden=false;var up=function(){var x=Math.max(0,Math.floor((end-Date.now())/1000)),d=Math.floor(x/86400),h=Math.floor(x%86400/3600),m=Math.floor(x%3600/60),sc=x%60,p=function(n){return String(n).padStart(2,'0')};o.textContent=(d?d+'j ':'')+p(h)+':'+p(m)+':'+p(sc)};up();setInterval(up,1000);nav.style.top='28px'}}
+
+/* ---------- vidéos : fichier selon la langue, lecture muette quand visible ---------- */
+function setVideos(){var l=I18N.lang;$$('video[data-vv]').forEach(function(v){var n=v.getAttribute('data-vv'),src='assets/video/'+n+'-'+l+'.mp4';if(v.getAttribute('data-cur')!==src){var was=!v.paused;v.setAttribute('data-cur',src);v.poster='assets/video/'+n+'-'+l+'.jpg';v.src=src;v.load();if(was)v.play().catch(function(){})}})}
+setVideos();D.addEventListener('langchange',setVideos);
+if('IntersectionObserver' in window){var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting)v.play().catch(function(){});else v.pause()})},{threshold:.6});$$('video[data-vv]').forEach(function(v){vo.observe(v)})}
 
 /* if the gate is skipped (already entered) make sure reveal still works */
 if(!gate||gate.hidden){armReveal()}

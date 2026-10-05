@@ -227,6 +227,13 @@ by_k:["QUI EST DERRIÈRE", "WHO IS BEHIND IT", "ใครอยู่เบื�
 by_t:["Une méthode issue du terrain", "A method from the field", "วิธีการจากการทำงานจริง"],
 by_d:["NM Academy est créée par NM Studio, un studio qui conçoit des sites web pour des entreprises. Tu apprends la façon de travailler du studio : de la recherche de clients jusqu'à la livraison.", "NM Academy is created by NM Studio, a studio that designs websites for businesses. You learn the studio's way of working: from finding clients to delivery.", "NM Academy สร้างโดย NM Studio สตูดิโอที่ออกแบบเว็บไซต์ให้ธุรกิจ คุณจะได้เรียนวิธีทำงานของสตูดิโอ ตั้งแต่การหาลูกค้าจนถึงส่งมอบ"],
 foot_mem:["Espace membres", "Members area", "พื้นที่สมาชิก"],
+vd_t:["Regarde, ça se comprend en 34 secondes", "Watch, it makes sense in 34 seconds", "ดูแล้วเข้าใจใน 34 วินาที"],
+vd_s:["Deux vidéos, une idée : tu dépenses moins en outils, tu produis plus, et tu vends ce que tu sais faire. (Son recommandé.)", "Two videos, one idea: spend less on tools, produce more, and sell what you can do. (Sound recommended.)", "สองวิดีโอ หนึ่งแนวคิด: จ่ายค่าเครื่องมือน้อยลง ผลิตได้มากขึ้น และขายสิ่งที่คุณทำได้ (แนะนำให้เปิดเสียง)"],
+vd_a:["Plan B · Vidéo IA", "Plan B · AI Video", "แผน B · วิดีโอ AI"],
+vd_ad:["Pourquoi payer des centaines d'euros d'abonnements ?", "Why pay hundreds of euros in subscriptions?", "ทำไมต้องจ่ายค่าสมาชิกหลายร้อยยูโร?"],
+vd_w:["Plan A · Sites web", "Plan A · Websites", "แผน A · เว็บไซต์"],
+vd_wd:["Un kit à installer dans ton assistant IA pour aller vite.", "A kit to install in your AI assistant to move fast.", "ชุดเครื่องมือติดตั้งในผู้ช่วย AI ของคุณเพื่อทำงานเร็วขึ้น"],
+vd_n:["Les montants et durées sont des exemples ou des objectifs, selon les outils et les projets. Aucun revenu garanti.", "Amounts and times are examples or targets, depending on tools and projects. No income guaranteed.", "จำนวนเงินและเวลาเป็นตัวอย่างหรือเป้าหมาย ขึ้นกับเครื่องมือและโปรเจกต์ ไม่รับประกันรายได้"],
 lg_back:["← Retour","← Back","← กลับ"]
 };
 var LANGS=['fr','en','th'],IDX={fr:0,en:1,th:2};

@@ -1,0 +1,192 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SO;font-weight:600;src:url(fonts/sora-latin-600-normal.woff2)}
+@font-face{font-family:SO;font-weight:800;src:url(fonts/sora-latin-800-normal.woff2),url(fonts/sora-latin-ext-800-normal.woff2)}
+@font-face{font-family:MA;font-weight:500;src:url(fonts/manrope-latin-500-normal.woff2)}
+@font-face{font-family:MA;font-weight:700;src:url(fonts/manrope-latin-700-normal.woff2)}
+@font-face{font-family:JB;font-weight:400;src:url(fonts/jetbrains-mono-latin-400-normal.woff2)}
+@font-face{font-family:JB;font-weight:600;src:url(fonts/jetbrains-mono-latin-600-normal.woff2)}
+@font-face{font-family:TH;font-weight:500;src:url(fonts/noto-sans-thai-thai-500-normal.woff2);unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:TH;font-weight:700;src:url(fonts/noto-sans-thai-thai-700-normal.woff2);unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:TH;font-weight:800;src:url(fonts/noto-sans-thai-thai-800-normal.woff2);unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+:root{--c1:#00e5ff;--c2:#7b5cff;--c3:#b6ff3b;--mute:#9aa3b8;--red:#ff5c7a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:540px;height:960px;overflow:hidden;background:#04050c;color:#eef0f6;font-family:MA,TH,sans-serif}
+canvas{position:absolute;left:0;top:0}
+#ui{position:absolute;inset:0}
+.a{position:absolute;inset:0;opacity:0}
+.abs{position:absolute}.c{left:0;width:540px;text-align:center}
+.d{font-family:SO,TH,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.14}
+.m{font-family:JB,TH,monospace;letter-spacing:.06em}
+.h1{font-size:42px;padding:0 34px}.h2{font-size:32px;padding:0 34px}
+.sub{font-size:19px;color:var(--mute);padding:0 40px;line-height:1.45}
+.g{background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.w{display:inline-block}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1.5px solid rgba(255,255,255,.14);border-radius:18px;backdrop-filter:blur(6px)}
+.row{display:flex;align-items:center;gap:14px}
+.pill{display:inline-block;border-radius:12px;padding:15px 34px;font-family:SO,TH,sans-serif;font-weight:800;font-size:24px;color:#04050c;background:linear-gradient(135deg,var(--c1),#6ea8ff 55%,var(--c2));box-shadow:0 0 0 1px rgba(0,229,255,.6),0 0 50px rgba(0,229,255,.5)}
+.tag{position:absolute;left:30px;top:34px;font-size:12px;color:var(--c1);border:1px solid rgba(0,229,255,.45);background:rgba(0,229,255,.07);padding:6px 12px;border-radius:99px}
+.tc{position:absolute;right:30px;top:40px;font-size:12px;color:var(--mute)}
+.bar{position:absolute;left:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 0 12px var(--c1)}
+.scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,229,255,.035) 0 1px,transparent 1px 4px)}
+.br{position:absolute;width:22px;height:22px;border:2px solid rgba(0,229,255,.7)}
+.br.tl{left:14px;top:14px;border-right:0;border-bottom:0}.br.tr{right:14px;top:14px;border-left:0;border-bottom:0}.br.bl{left:14px;bottom:14px;border-right:0;border-top:0}.br.brr{right:14px;bottom:14px;border-left:0;border-top:0}
+.trk{height:12px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden;position:relative}
+.trk i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--c1),var(--c2))}
+.note{font-size:12px;color:var(--mute);padding:0 40px;line-height:1.4}
+.term{background:rgba(4,8,20,.85);border:1.5px solid rgba(0,229,255,.35);border-radius:16px;overflow:hidden;box-shadow:0 0 50px rgba(0,229,255,.15)}
+.term .tb{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.1)}.term .tb i{width:10px;height:10px;border-radius:50%;background:#2a3350}.term .tb i:nth-child(1){background:#ff5f57}.term .tb i:nth-child(2){background:#febc2e}.term .tb i:nth-child(3){background:#28c840}
+.term .tl{padding:16px;font-size:14.5px;display:grid;gap:9px;color:var(--c1);min-height:250px;align-content:start}.term .ok{color:var(--c3)}
+.mock{background:#0b1020;border:1.5px solid rgba(0,229,255,.35);border-radius:14px;overflow:hidden}
+.mock .bt{display:flex;gap:6px;align-items:center;padding:8px 12px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08)}.mock .bt i{width:8px;height:8px;border-radius:50%;background:#2a3350}.mock .bt span{margin-left:8px;flex:1;background:rgba(255,255,255,.07);border-radius:99px;padding:2px 10px;font-size:10px;color:var(--mute)}
+.ms{padding:14px;display:grid;gap:10px}.ms .blk{border-radius:8px;opacity:0;transform:translateY(8px)}
+</style></head><body>
+<canvas id="bg" width="540" height="960"></canvas>
+<div id="ui"><div class="scan"></div><i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br brr"></i><div class="tag m" id="tag"></div><div class="tc m" id="tc"></div><div class="bar" id="bar"></div></div>
+<script>
+const Q=new URLSearchParams(location.search),V=Q.get('v')||'ai',LG=Q.get('l')||'fr';
+const S={
+fr:{
+ tag_ai:'NM ACADEMY // PLAN B · VIDÉO IA',tag_web:'NM ACADEMY // PLAN A · SITES WEB',
+ a1_l:'Les abonnements d\'outils vidéo IA…',a1_n:'total cumulé possible, selon les outils et les offres',per:'/ mois',t_img:'IMAGE',t_vid:'VIDÉO',t_voi:'VOIX',
+ a2_h:'…et des limites partout.',r1:'Crédits',r2:'Filigrane',r3:'File d\'attente',on:'ACTIF',min:'min',
+ a3_h:'NM Academy',a3_s:'Une méthode + des outils gratuits ou à crédits offerts',n1:'IMAGE',n2:'VIDÉO',n3:'VOIX',n4:'MONTAGE',goal:'clips par jour : l\'objectif du workflow',
+ a4_h:'Puis tu monétises',c1:'TikTok',c1s:'selon les conditions du programme',c2:'YouTube',c2s:'selon les conditions du programme',c3:'Affiliation',c3s:'tes liens, annoncés clairement',c4:'Clients',c4s:'vidéos pour des entreprises',
+ a5_h:'Ton plan',p1:'Apprends',p2:'Génère',p3:'Publie',p4:'Monétise',
+ cta_ai:'Rejoindre le Plan B',cta_web:'Rejoindre le Plan A',link:'Lien dans la bio ↑',disc:'Aucun revenu garanti. Vérifie les conditions de chaque plateforme.',
+ b1_h:'Un site pro, normalement ?',b1_a:'Agence',b1_aw:'plusieurs semaines',b1_b:'Avec le kit NM',b1_bw:'≈ 10 min',b1_n:'* première maquette, selon le projet, avant relecture',
+ b2_h:'Installe le kit dans ton assistant IA',l1:'nm install kit',l2:'skill · système de design',l3:'skill · textes qui vendent',l4:'skill · SEO local',l5:'skill · mise en ligne',l6:'templates par niche',l7:'kit prêt.',
+ b3_h:'Un brief. Une maquette.',brief:'Restaurant · Lyon · réservations',timer:'première maquette',
+ b4_h:'Puis tu vends',k1:'Scripts de démarchage',k2:'Devis',k3:'Contrat',k4:'Maintenance mensuelle',qx:'Exemple de devis',qa:'790 €',qt:'exemple',b4_n:'Prix libres : adapte-les à ton marché.'},
+en:{
+ tag_ai:'NM ACADEMY // PLAN B · AI VIDEO',tag_web:'NM ACADEMY // PLAN A · WEBSITES',
+ a1_l:'AI video tool subscriptions…',a1_n:'possible combined total, depending on tools and plans',per:'/ month',t_img:'IMAGE',t_vid:'VIDEO',t_voi:'VOICE',
+ a2_h:'…and limits everywhere.',r1:'Credits',r2:'Watermark',r3:'Queue',on:'ON',min:'min',
+ a3_h:'NM Academy',a3_s:'A method + free or free-credit tools',n1:'IMAGE',n2:'VIDEO',n3:'VOICE',n4:'EDIT',goal:'clips a day: the workflow target',
+ a4_h:'Then you monetise',c1:'TikTok',c1s:'subject to programme conditions',c2:'YouTube',c2s:'subject to programme conditions',c3:'Affiliate',c3s:'your links, clearly disclosed',c4:'Clients',c4s:'videos for businesses',
+ a5_h:'Your plan',p1:'Learn',p2:'Generate',p3:'Publish',p4:'Monetise',
+ cta_ai:'Join Plan B',cta_web:'Join Plan A',link:'Link in bio ↑',disc:'No income guaranteed. Check each platform\'s conditions.',
+ b1_h:'A pro website, normally?',b1_a:'Agency',b1_aw:'several weeks',b1_b:'With the NM kit',b1_bw:'≈ 10 min',b1_n:'* first mockup, depending on the project, before review',
+ b2_h:'Install the kit in your AI assistant',l1:'nm install kit',l2:'skill · design system',l3:'skill · copy that sells',l4:'skill · local SEO',l5:'skill · go live',l6:'templates per niche',l7:'kit ready.',
+ b3_h:'One brief. One mockup.',brief:'Restaurant · Lyon · bookings',timer:'first mockup',
+ b4_h:'Then you sell',k1:'Outreach scripts',k2:'Quote',k3:'Contract',k4:'Monthly maintenance',qx:'Example quote',qa:'€790',qt:'example',b4_n:'Prices are yours: adapt them to your market.'},
+th:{
+ tag_ai:'NM ACADEMY // แผน B · วิดีโอ AI',tag_web:'NM ACADEMY // แผน A · เว็บไซต์',
+ a1_l:'ค่าสมาชิกเครื่องมือวิดีโอ AI…',a1_n:'รวมกันอาจสูงถึงนี้ ขึ้นกับเครื่องมือและแพ็กเกจ',per:'/ เดือน',t_img:'ภาพ',t_vid:'วิดีโอ',t_voi:'เสียง',
+ a2_h:'…และมีข้อจำกัดทุกที่',r1:'เครดิต',r2:'ลายน้ำ',r3:'คิวรอ',on:'เปิด',min:'นาที',
+ a3_h:'NM Academy',a3_s:'วิธีการ + เครื่องมือฟรีหรือมีเครดิตฟรี',n1:'ภาพ',n2:'วิดีโอ',n3:'เสียง',n4:'ตัดต่อ',goal:'คลิปต่อวัน: เป้าหมายของเวิร์กโฟลว์',
+ a4_h:'แล้วสร้างรายได้',c1:'TikTok',c1s:'ตามเงื่อนไขของโปรแกรม',c2:'YouTube',c2s:'ตามเงื่อนไขของโปรแกรม',c3:'Affiliate',c3s:'ลิงก์ของคุณ แจ้งชัดเจน',c4:'ลูกค้า',c4s:'วิดีโอให้ธุรกิจ',
+ a5_h:'แผนของคุณ',p1:'เรียนรู้',p2:'สร้าง',p3:'โพสต์',p4:'สร้างรายได้',
+ cta_ai:'เข้าร่วมแผน B',cta_web:'เข้าร่วมแผน A',link:'ลิงก์ในไบโอ ↑',disc:'ไม่รับประกันรายได้ ตรวจสอบเงื่อนไขของแต่ละแพลตฟอร์ม',
+ b1_h:'เว็บไซต์มืออาชีพ ปกติทำอย่างไร?',b1_a:'เอเจนซี่',b1_aw:'หลายสัปดาห์',b1_b:'ด้วยชุด NM',b1_bw:'≈ 10 นาที',b1_n:'* แบบร่างแรก ขึ้นกับโปรเจกต์ ก่อนตรวจทาน',
+ b2_h:'ติดตั้งชุดเครื่องมือในผู้ช่วย AI ของคุณ',l1:'nm install kit',l2:'skill · ระบบดีไซน์',l3:'skill · คำที่ขายได้',l4:'skill · SEO ท้องถิ่น',l5:'skill · ขึ้นออนไลน์',l6:'เทมเพลตตามประเภทธุรกิจ',l7:'ชุดเครื่องมือพร้อม',
+ b3_h:'หนึ่งบรีฟ หนึ่งแบบร่าง',brief:'ร้านอาหาร · ลียง · จองโต๊ะ',timer:'แบบร่างแรก',
+ b4_h:'แล้วคุณก็ขาย',k1:'สคริปต์ติดต่อลูกค้า',k2:'ใบเสนอราคา',k3:'สัญญา',k4:'ค่าดูแลรายเดือน',qx:'ตัวอย่างใบเสนอราคา',qa:'790 €',qt:'ตัวอย่าง',b4_n:'ราคาเป็นของคุณ ปรับให้เข้ากับตลาด'}
+}[LG];
+const DUR=34;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(t,a,b)=>clamp((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3),eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,eb=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const lerp=(a,b,t)=>a+(b-a)*t;
+const bg=document.getElementById('bg').getContext('2d'),ui=document.getElementById('ui');
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const R=rng(5),nodes=Array.from({length:46},()=>({x:R()*540,y:R()*700,vx:(R()-.5)*8,vy:(R()-.5)*8,r:R()*1.4+.6}));
+function drawBg(t){
+ bg.fillStyle='#04050c';bg.fillRect(0,0,540,960);
+ const hz=620,g=bg.createRadialGradient(270,hz,10,270,hz,420);g.addColorStop(0,'rgba(0,229,255,.2)');g.addColorStop(.55,'rgba(123,92,255,.09)');g.addColorStop(1,'rgba(0,0,0,0)');bg.fillStyle=g;bg.fillRect(0,0,540,960);
+ bg.lineWidth=1;for(let i=-12;i<=12;i++){bg.strokeStyle=`rgba(0,229,255,${.2-Math.abs(i)*.012})`;bg.beginPath();bg.moveTo(270+i*26,hz);bg.lineTo(270+i*95,960);bg.stroke()}
+ const off=(t*.45)%1;for(let k=0;k<14;k++){const p=(k+off)/14,y=hz+(960-hz)*Math.pow(p,2.2);bg.strokeStyle=`rgba(0,229,255,${.04+p*.2})`;bg.beginPath();bg.moveTo(0,y);bg.lineTo(540,y);bg.stroke()}
+ const P=nodes.map(n=>({x:(n.x+n.vx*t+5400)%540,y:(n.y+n.vy*t+7000)%700,r:n.r}));
+ P.forEach((n,a)=>{bg.fillStyle='rgba(180,230,255,.65)';bg.beginPath();bg.arc(n.x,n.y,n.r,0,6.3);bg.fill();for(let b=a+1;b<P.length;b++){const m=P[b],dx=n.x-m.x,dy=n.y-m.y,d=dx*dx+dy*dy;if(d<12000){bg.strokeStyle=`rgba(123,92,255,${.2*(1-d/12000)})`;bg.beginPath();bg.moveTo(n.x,n.y);bg.lineTo(m.x,m.y);bg.stroke()}}});
+ const v=bg.createRadialGradient(270,380,200,270,480,620);v.addColorStop(0,'rgba(4,5,12,0)');v.addColorStop(1,'rgba(4,5,12,.7)');bg.fillStyle=v;bg.fillRect(0,0,540,960);
+}
+function el(cls,html,parent,style){const d=document.createElement('div');d.className=cls;d.innerHTML=html||'';if(style)d.style.cssText=style;(parent||ui).appendChild(d);return d}
+function words(txt,cls,parent,style){const d=el('abs c '+cls,'',parent,style);d.innerHTML=txt.split(' ').map(w=>'<span class="w">'+w+'</span>').join(' ');return d}
+function rev(d,lt,s0,gap=.07,dur=.5){[...d.children].forEach((s,i)=>{const p=eo(seg(lt,s0+i*gap,s0+i*gap+dur));s.style.opacity=p;s.style.transform=`translateY(${(1-p)*24}px) scale(${.94+.06*p})`;s.style.filter=`blur(${(1-p)*6}px)`})}
+function pop(d,lt,s0,dur=.5,from=.75){const p=seg(lt,s0,s0+dur);d.style.opacity=clamp(p*3);d.style.transform=`scale(${lerp(from,1,eb(p))})`}
+function slide(d,lt,s0,dx,dy,dur=.55){const p=eo(seg(lt,s0,s0+dur));d.style.opacity=p;d.style.transform=`translate(${(1-p)*dx}px,${(1-p)*dy}px)`}
+function typed(txt,lt,s0,cps){const n=Math.floor(clamp((lt-s0)*cps,0,txt.length));return txt.slice(0,n)}
+let ACTS=[];function act(a,b,build,upd,hold){const root=el('a','',ui);ui.insertBefore(root,$tag);build(root);ACTS.push({a,b,root,upd,hold})}
+const $tag=document.getElementById('tag');
+const ICO={
+ play:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z" fill="#00e5ff"/></svg>',
+ yt:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10 9.5l5 2.5-5 2.5z" fill="#00e5ff"/></svg>',
+ link:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3A4 4 0 0011 18.7l1-1"/></svg>',
+ job:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M9 7V5h6v2M3 12h18"/></svg>',
+ chk:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#04050c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>'};
+
+/* ===================== VIDEO IA ===================== */
+function buildAI(){
+ $tag.textContent=S.tag_ai;
+ let h,cards=[],bigc,note1;
+ act(0,4.8,r=>{h=words(S.a1_l,'d h2',r,'top:130px');[S.t_img,S.t_vid,S.t_voi].forEach((n,i)=>{cards.push(el('abs card row',`<span class="m" style="color:var(--c1);font-size:13px">0${i+1}</span><b class="d" style="font-size:22px;flex:1">${n}</b><span class="m" style="color:var(--mute);font-size:13px">PRO</span><span class="d" style="color:var(--red);font-size:18px">€€</span>`,r,`left:60px;width:420px;top:${250+i*88}px;padding:20px 22px`))});
+  bigc=el('abs c d g','0 €',r,'top:565px;font-size:76px');el('abs c m',S.per,r,'top:662px;color:var(--mute);font-size:20px');note1=el('abs c note',S.a1_n,r,'top:716px')},
+  (lt)=>{rev(h,lt,.15,.09);cards.forEach((c,i)=>slide(c,lt,.8+i*.3,80,0,.5));const p=eo(seg(lt,1.9,3.4));bigc.textContent=p<1?Math.round(300*p)+' €':'200–300 €';bigc.style.transform=`scale(${1+(p<1?0:.04*Math.sin((lt-3.4)*8)*Math.exp(-(lt-3.4)*3))})`;bigc.style.opacity=eo(seg(lt,1.7,2.1));note1.style.opacity=eo(seg(lt,3.2,3.7))});
+ let h2,rows=[];
+ act(4.8,9.4,r=>{h2=words(S.a2_h,'d h2',r,'top:150px');[[S.r1],[S.r2],[S.r3]].forEach((x,i)=>{rows.push(el('abs card',`<div class="row" style="justify-content:space-between"><b class="d" style="font-size:20px">${x[0]}</b><span class="m v" style="font-size:16px;color:var(--red)"></span></div><div class="trk" style="margin-top:14px"><i style="background:linear-gradient(90deg,var(--red),#ff9a5c)"></i></div>`,r,`left:50px;width:440px;top:${290+i*130}px;padding:22px`))})},
+  (lt)=>{rev(h2,lt,.1,.09);rows.forEach((d,i)=>{slide(d,lt,.6+i*.35,0,40,.5);const bar=d.querySelector('i'),v=d.querySelector('.v'),p=eo(seg(lt,1.2+i*.35,2.8+i*.35));
+   if(i===0){bar.style.width=(100*(1-p))+'%';v.textContent=Math.round(100*(1-p))+'%'}else if(i===1){bar.style.width='100%';v.textContent=p>.5?S.on:''}else{bar.style.width=(30+60*Math.abs(Math.sin(lt*4)))+'%';v.textContent=Math.round(12*p)+' '+S.min}})});
+ let t1,t2,nodesE=[],goal,ring;
+ act(9.4,17,r=>{t1=el('abs c d g',S.a3_h,r,'top:120px;font-size:56px');t2=el('abs c sub',S.a3_s,r,'top:200px');
+  [S.n1,S.n2,S.n3,S.n4].forEach((n,i)=>{nodesE.push(el('abs card c m',n,r,`left:${30+i*118}px;width:98px;top:340px;padding:18px 0;font-size:12px;font-weight:600`))});
+  ring=el('abs',`<svg width="230" height="230" viewBox="0 0 230 230"><circle cx="115" cy="115" r="100" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="10"/><circle id="rg" cx="115" cy="115" r="100" fill="none" stroke="url(#gr)" stroke-width="10" stroke-linecap="round" stroke-dasharray="628" stroke-dashoffset="628" transform="rotate(-90 115 115)"/><defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset="1" stop-color="#b6ff3b"/></linearGradient></defs></svg><div class="d" id="gn" style="position:absolute;inset:0;display:grid;place-items:center;font-size:76px">0</div>`,r,'left:155px;top:470px');
+  el('abs c sub',S.goal,r,'top:722px;font-size:17px;color:#cfd6e8')},
+  (lt)=>{t1.style.opacity=eo(seg(lt,.1,.6));t1.style.transform=`translateY(${(1-eo(seg(lt,.1,.6)))*20}px)`;t2.style.opacity=eo(seg(lt,.5,1));
+   nodesE.forEach((n,i)=>{const on=lt>1.1+i*.55;pop(n,lt,.8+i*.18,.4,.8);n.style.borderColor=on?'var(--c1)':'rgba(255,255,255,.14)';n.style.boxShadow=on?'0 0 30px rgba(0,229,255,.45)':'none';n.style.color=on?'#00e5ff':'#eef0f6'});
+   const p=eo(seg(lt,2.6,6));ring.style.opacity=eo(seg(lt,2.4,3));ring.querySelector('#rg').style.strokeDashoffset=628*(1-p);ring.querySelector('#gn').textContent=Math.round(50*p)});
+ let h4,cs=[];
+ act(17,24.5,r=>{h4=words(S.a4_h,'d h2',r,'top:130px');[[ICO.play,S.c1,S.c1s],[ICO.yt,S.c2,S.c2s],[ICO.link,S.c3,S.c3s],[ICO.job,S.c4,S.c4s]].forEach((x,i)=>{cs.push(el('abs card',`${x[0]}<b class="d" style="display:block;font-size:22px;margin:12px 0 4px">${x[1]}</b><span style="color:var(--mute);font-size:13.5px;line-height:1.35;display:block">${x[2]}</span>`,r,`left:${30+(i%2)*240}px;width:225px;top:${250+Math.floor(i/2)*230}px;padding:22px`))});
+  el('abs c note','',r,'top:740px')},
+  (lt)=>{rev(h4,lt,.1,.09);cs.forEach((c,i)=>pop(c,lt,.7+i*.45,.5,.8))});
+ let h5,st=[],line;
+ act(24.5,29.5,r=>{h5=words(S.a5_h,'d h2',r,'top:130px');line=el('abs','',r,'left:84px;top:270px;width:3px;height:430px;background:linear-gradient(var(--c1),var(--c2));border-radius:3px;transform-origin:top;opacity:.6');
+  [S.p1,S.p2,S.p3,S.p4].forEach((n,i)=>{st.push(el('abs row',`<span style="width:46px;height:46px;border-radius:50%;background:#04050c;border:2px solid var(--c1);display:grid;place-items:center;font-family:JB;color:var(--c1);box-shadow:0 0 22px rgba(0,229,255,.45)">0${i+1}</span><b class="d" style="font-size:30px">${n}</b>`,r,`left:62px;top:${262+i*135}px`))})},
+  (lt)=>{rev(h5,lt,.1,.09);line.style.transform=`scaleY(${eo(seg(lt,.5,3.2))})`;st.forEach((s,i)=>slide(s,lt,.5+i*.6,-40,0,.5))});
+ let cw,cb,cl,cd;
+ act(29.5,34,r=>{cw=el('abs c d g','NM ACADEMY',r,'top:330px;font-size:54px');cb=el('abs c',`<span class="pill">${S.cta_ai}</span>`,r,'top:450px');cl=el('abs c m',S.link,r,'top:560px;font-size:16px;color:#eef0f6');cd=el('abs c note',S.disc,r,'top:640px')},
+  (lt,t)=>{cw.style.opacity=eo(seg(lt,.1,.6));cw.style.transform=`scale(${.9+.1*eo(seg(lt,.1,.6))})`;cb.style.opacity=eo(seg(lt,.5,.9));cb.firstChild.style.transform=`scale(${1+.04*Math.sin(t*7)})`;cl.style.opacity=eo(seg(lt,.9,1.3));cd.style.opacity=.7*eo(seg(lt,1.2,1.6))},1);
+}
+
+/* ===================== SITES WEB ===================== */
+function buildWEB(){
+ $tag.textContent=S.tag_web;
+ let h,ba,bb;
+ act(0,5.2,r=>{h=words(S.b1_h,'d h1',r,'top:140px');
+  el('abs',`<div class="m" style="color:var(--mute);font-size:13px;margin-bottom:8px">${S.b1_a}</div><div class="trk" style="height:34px"><i id="ba" style="background:linear-gradient(90deg,#ff5c7a,#ff9a5c)"></i></div><div class="d" style="font-size:22px;margin-top:8px" id="bat">${S.b1_aw}</div>`,r,'left:50px;width:440px;top:330px');
+  el('abs',`<div class="m" style="color:var(--c1);font-size:13px;margin-bottom:8px">${S.b1_b}</div><div class="trk" style="height:34px"><i id="bb" style="box-shadow:0 0 24px var(--c1)"></i></div><div class="d g" style="font-size:34px;margin-top:8px" id="bbt">${S.b1_bw}</div>`,r,'left:50px;width:440px;top:520px');
+  el('abs c note',S.b1_n,r,'top:720px')},
+  (lt)=>{rev(h,lt,.15,.09);const r=document.querySelector('#ba'),b=document.querySelector('#bb');r.style.width=(100*eo(seg(lt,1,4.6)))+'%';b.style.width=(100*eo(seg(lt,2.2,2.9)))+'%';
+   document.querySelector('#ba').parentNode.parentNode.style.opacity=eo(seg(lt,.7,1.1));document.querySelector('#bb').parentNode.parentNode.style.opacity=eo(seg(lt,1.9,2.3));document.querySelector('#bbt').style.transform=`scale(${1+.06*Math.sin(clamp(lt-2.9,0,1)*6.28)})`});
+ let h2,tm,tl;
+ act(5.2,12.2,r=>{h2=words(S.b2_h,'d h2',r,'top:120px');tm=el('abs term',`<div class="tb"><i></i><i></i><i></i></div><div class="tl m" id="tl"></div>`,r,'left:40px;width:460px;top:290px')},
+  (lt)=>{rev(h2,lt,.1,.07);slide(tm,lt,.4,0,40,.5);const rows=[['$ ',S.l1,'c'],['✓ ',S.l2,'ok'],['✓ ',S.l3,'ok'],['✓ ',S.l4,'ok'],['✓ ',S.l5,'ok'],['✓ ',S.l6,'ok'],['★ ',S.l7,'ok']];
+   const el2=document.querySelector('#tl');let out='',t0=1.0;rows.forEach(rw=>{const full=rw[0]+rw[1],n=Math.floor(clamp((lt-t0)*38,0,full.length));if(n>0)out+=`<div class="${rw[2]==='ok'?'ok':''}">${full.slice(0,n)}</div>`;t0+=full.length/38+.28});el2.innerHTML=out});
+ let h3,brief,mock,tmr,blocks;
+ act(12.2,20.4,r=>{h3=words(S.b3_h,'d h2',r,'top:110px');brief=el('abs card m','',r,'left:40px;width:460px;top:210px;padding:16px 18px;font-size:15px;color:var(--c1)');
+  mock=el('abs mock',`<div class="bt"><i></i><i></i><i></i><span class="m">restaurant-lyon.com</span></div><div class="ms"><div class="blk" style="height:34px;background:rgba(255,255,255,.08)"></div><div class="blk" style="height:120px;background:linear-gradient(135deg,var(--c1),var(--c2))"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="blk" style="height:70px;background:rgba(255,255,255,.08)"></div><div class="blk" style="height:70px;background:rgba(255,255,255,.08)"></div><div class="blk" style="height:70px;background:rgba(255,255,255,.08)"></div></div><div class="blk" style="height:42px;background:rgba(182,255,59,.25);border:1px solid rgba(182,255,59,.5)"></div></div>`,r,'left:50px;width:440px;top:300px');
+  tmr=el('abs c',`<div class="d g" id="tmv" style="font-size:54px">00:00</div><div class="m" style="color:var(--mute);font-size:13px;margin-top:2px">${S.timer} *</div>`,r,'top:680px');
+  el('abs c note',S.b1_n,r,'top:790px')},
+  (lt)=>{rev(h3,lt,.1,.09);brief.textContent=typed('› '+S.brief,lt,.5,30);slide(mock,lt,1.3,0,40,.5);const bl=mock.querySelectorAll('.blk');
+   [0,1,2,3,4,5].forEach((i,k)=>{const p=eo(seg(lt,1.9+k*.55,2.4+k*.55));bl[i].style.opacity=p;bl[i].style.transform=`translateY(${(1-p)*8}px)`});
+   const p=seg(lt,1.4,6.6),sec=Math.round(600*eo(p)),mm=String(Math.floor(sec/60)).padStart(2,'0'),ss=String(sec%60).padStart(2,'0');document.querySelector('#tmv').textContent=mm+':'+ss;tmr.style.opacity=eo(seg(lt,1.2,1.7))});
+ let h4,ks=[],qc;
+ act(20.4,28,r=>{h4=words(S.b4_h,'d h1',r,'top:120px');[S.k1,S.k2,S.k3,S.k4].forEach((n,i)=>{ks.push(el('abs card row',`<span style="width:30px;height:30px;border-radius:50%;background:var(--c3);display:grid;place-items:center">${ICO.chk}</span><b class="d" style="font-size:19px">${n}</b>`,r,`left:50px;width:440px;top:${240+i*74}px;padding:14px 18px`))});
+  qc=el('abs card c',`<div class="m" style="color:var(--mute);font-size:12px">${S.qx} <span style="color:var(--c3);border:1px solid var(--c3);border-radius:6px;padding:1px 7px;margin-left:6px">${S.qt}</span></div><div class="d g" style="font-size:60px;margin-top:4px">${S.qa}</div>`,r,'left:80px;width:380px;top:560px;padding:20px');el('abs c note',S.b4_n,r,'top:730px')},
+  (lt)=>{rev(h4,lt,.1,.09);ks.forEach((k,i)=>slide(k,lt,.6+i*.5,60,0,.5));pop(qc,lt,3.2,.6,.8)});
+ let cw,cb,cl,cd;
+ act(28,34,r=>{cw=el('abs c d g','NM ACADEMY',r,'top:330px;font-size:54px');cb=el('abs c',`<span class="pill">${S.cta_web}</span>`,r,'top:450px');cl=el('abs c m',S.link,r,'top:560px;font-size:16px');cd=el('abs c note',S.disc,r,'top:640px')},
+  (lt,t)=>{cw.style.opacity=eo(seg(lt,.1,.6));cw.style.transform=`scale(${.9+.1*eo(seg(lt,.1,.6))})`;cb.style.opacity=eo(seg(lt,.5,.9));cb.firstChild.style.transform=`scale(${1+.04*Math.sin(t*7)})`;cl.style.opacity=eo(seg(lt,.9,1.3));cd.style.opacity=.7*eo(seg(lt,1.2,1.6))},1);
+}
+(V==='ai'?buildAI:buildWEB)();
+ACTS.forEach((A,i)=>{A.fin=i===0?0:.3;A.fout=.3});
+window.render=function(t){
+ drawBg(t);let gl=0;
+ for(const A of ACTS){const vis=t>=A.a&&t<A.b+(A.hold?.001:0),lt=t-A.a;
+  const op=vis?(A.fin?clamp(lt/A.fin):1)*(A.hold?1:clamp((A.b-t)/A.fout)):0;A.root.style.opacity=op;A.root.style.display=vis?'block':'none';
+  if(vis)A.upd(lt,t);if(lt>=0&&lt<.2&&A.a>0)gl=Math.max(gl,1-lt/.2)}
+ ui.style.filter=gl>0?`drop-shadow(${3*gl}px 0 0 rgba(255,60,160,.75)) drop-shadow(${-3*gl}px 0 0 rgba(0,229,255,.75))`:'none';
+ document.getElementById('bar').style.width=(t/DUR*540)+'px';
+ const s=Math.floor(t),f=Math.floor((t%1)*24);document.getElementById('tc').textContent='00:'+String(s).padStart(2,'0')+':'+String(f).padStart(2,'0');
+};
+window.DUR=DUR;document.fonts.ready.then(()=>{window.READY=true;render(0)});
+</script></body></html>
