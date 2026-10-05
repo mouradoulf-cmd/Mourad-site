@@ -143,10 +143,11 @@ if (cfgEl) {
   const hex2 = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
   const mix = (h, t, a) => "#" + hex2(h).map((v, i) => Math.round(v + (hex2(t)[i] - v) * a).toString(16).padStart(2, "0")).join("");
   const lum = h => { const [r, g, b] = hex2(h); return (r * .299 + g * .587 + b * .114) / 255; };
-  const chip = (name, val, label, sub, checked) => `<label class="chip"><input type="radio" name="${name}" value="${val}" ${checked ? "checked" : ""}><span>${label}${sub ? `<small>${sub}</small>` : ""}</span></label>`;
+  const chip = (name, val, label, sub, checked) => `<label class="chip" data-k="${val}"><input type="radio" name="${name}" value="${val}" ${checked ? "checked" : ""}><span>${label}${sub ? `<small>${sub}</small>` : ""}</span></label>`;
   famBox.innerHTML = Object.entries(FAM).map(([k, f]) => chip("fam", k, f.n, f.b, k === st.fam)).join("");
   poseBox.innerHTML = Object.entries(POSE).map(([k, v]) => chip("pose", k, v, "", k === st.pose)).join("");
   function renderSw() {
+    swBox.dataset.name = FAM[st.fam].sw[st.sw][0];
     swBox.innerHTML = FAM[st.fam].sw.map(([n, c], i) => `<label title="${n}"><input type="radio" name="sw" value="${i}" ${i === st.sw ? "checked" : ""} aria-label="${n}"><i style="--c:${c}"></i></label>`).join("");
   }
   function svg() {
@@ -205,7 +206,7 @@ ${p}${tex}${w}
   }
   function paint() {
     const f = FAM[st.fam], s = f.sw[st.sw];
-    view.innerHTML = svg();
+    view.innerHTML = svg(); cfgEl.classList.remove("flash"); void cfgEl.offsetWidth; cfgEl.classList.add("flash"); swBox.dataset.name = s[0];
     document.documentElement.style.setProperty("--panel", s[1]);
     sum.innerHTML = `<div><b>${f.n}</b> — ${f.b}</div><div>${fmt(t("sum_pose","Pose : {pose} · Teinte : {tint}"), { pose: POSE[st.pose], tint: s[0] })} <span class="note">${t("sum_ind","(indicative)")}</span></div><div>${f.inv ? fmt(t("sum_inv","Fixation invisible possible : {inv}"), { inv: f.inv }) : t("sum_vis","Fixation visible : vis, rivets, EPDM.")}</div>`;
     cap.textContent = `${f.n} / ${POSE[st.pose]} / ${s[0]}`;
@@ -346,4 +347,16 @@ if (cur === "fr" && lang) {
     setTimeout(() => document.body.appendChild(d), 1800);
   }
 }
+})();
+
+/* ===== waving flags (strips ripple out of phase, crisp edges) ===== */
+(function () {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll(".flag").forEach(function (f, k) {
+    var w = f.offsetWidth || 24, strips = Math.max(8, Math.round(w / 2)), sw = Math.max(1, Math.round(w / strips));
+    strips = Math.ceil(w / sw);
+    f.style.setProperty("--sw", sw + "px"); f.style.setProperty("--d", (k * -0.37).toFixed(2) + "s");
+    for (var i = 0; i < strips; i++) { var s = document.createElement("i"); s.style.setProperty("--i", i); if (i === strips - 1) s.style.width = (w - sw * i) + "px"; f.appendChild(s); }
+    f.classList.add("is-waving");
+  });
 })();
