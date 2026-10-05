@@ -49,10 +49,43 @@ if (hero && !reduce) {
   for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const i = document.createElement("i"); i.style.setProperty("--d", ((rows - 1 - r) * 60 + c * 45 + Math.random() * 90).toFixed(0) + "ms"); g.appendChild(i); }
   hero.appendChild(g); setTimeout(() => g.remove(), 2600);
 }
-const hs = $$(".hs"), hd = $$(".hero__dots span");
-if (hs.length > 1 && !reduce) {
-  let k = 0; const go = n => { hs[k].classList.remove("on"); hd[k] && hd[k].classList.remove("on"); k = n % hs.length; hs[k].classList.add("on"); hd[k] && hd[k].classList.add("on"); };
-  setInterval(() => { if (!document.hidden) go(k + 1); }, 6500);
+/* hero video: pause control + reduced-motion / save-data fallback to poster */
+const hv = $(".hero__video"), hp = $(".hero__pause");
+if (hv) {
+  const still = reduce || (navigator.connection && navigator.connection.saveData);
+  if (still) { hv.removeAttribute("autoplay"); hv.pause(); hp && (hp.hidden = true); }
+  else { const pl = hv.play(); pl && pl.catch(() => {}); }
+  hp && hp.addEventListener("click", () => { const p = hv.paused; p ? hv.play() : hv.pause(); hp.setAttribute("aria-pressed", String(!p)); hp.setAttribute("aria-label", p ? "Mettre la vidéo en pause" : "Lire la vidéo"); });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) hv.pause(); else if (!still && hp.getAttribute("aria-pressed") !== "true") hv.play().catch(() => {}); });
+}
+
+/* ---------- parallax band ---------- */
+const bandImg = $(".band__img");
+if (bandImg && !reduce) {
+  const band = bandImg.parentElement;
+  const pf = () => { const r = band.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight; bandImg.style.transform = `translate3d(0,${(p * -9).toFixed(2)}%,0)`; };
+  addEventListener("scroll", pf, { passive: true }); pf();
+}
+
+/* ---------- pinned horizontal showcase ---------- */
+const hz = $(".hz");
+if (hz) {
+  const track = $(".hz__track", hz), bar = $(".hz__bar i", hz);
+  const mobileNoPin = reduce;
+  if (mobileNoPin) hz.classList.add("no-hz");
+  else {
+    const size = () => { const dist = Math.max(0, track.scrollWidth - innerWidth); hz.style.height = (innerHeight + dist * 1.15) + "px"; return dist; };
+    let dist = size();
+    const tick = () => { const r = hz.getBoundingClientRect(), p = clamp(-r.top / (hz.offsetHeight - innerHeight)); track.style.transform = `translate3d(${(-p * dist).toFixed(1)}px,0,0)`; bar && hz.style.setProperty("--p", p.toFixed(3)); };
+    addEventListener("scroll", tick, { passive: true }); addEventListener("resize", () => { dist = size(); tick(); }); addEventListener("load", () => { dist = size(); tick(); }); tick();
+  }
+}
+
+/* ---------- cursor label on showcase (additive, native cursor stays) ---------- */
+if (hz && matchMedia("(hover:hover) and (pointer:fine)").matches && !reduce) {
+  const c = document.createElement("div"); c.className = "cursor"; c.setAttribute("aria-hidden", "true"); c.textContent = "Voir"; document.body.appendChild(c);
+  hz.addEventListener("mousemove", e => { c.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0)`; c.classList.toggle("on", !!e.target.closest(".hz__it")); });
+  hz.addEventListener("mouseleave", () => c.classList.remove("on"));
 }
 
 /* ---------- exploded façade (scroll-driven) ---------- */
