@@ -654,7 +654,7 @@
 
   /* Pricing per language — deliberate price points per currency rather than
      a literal FX conversion (which would land on odd numbers). */
-  var CURRENCY = { en: "thb", fr: "thb", it: "thb", th: "thb", ar: "thb" };
+  var CURRENCY = { en: "eur", fr: "eur", it: "eur", th: "thb", ar: "eur" };
   var PRICES = {
     eur: { basicSetup: 50, basicMonthly: 15, proSetup: 100, proMonthly: 30, eliteSetup: 300, eliteMonthly: 100 },
     thb: { basicSetup: 500, basicMonthly: 300, proSetup: 1999, proMonthly: 599, eliteSetup: 7000, eliteMonthly: 2000 },

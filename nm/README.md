@@ -167,3 +167,7 @@ restaurant), 1695606453510 (full restaurant). All colour-graded warm.
 * The key-figures banner was removed; work cards show picture + name only.
 * `reviews-config.js` is empty on purpose: add REAL client reviews there and the section appears. Do not invent any.
 * FR/IT/TH/AR HTML pages are generated from the English page + dictionaries (the language folders used to drift out of sync).
+
+## Currency (v5c)
+
+Euros for EN / FR / IT / AR, baht for TH (`offers-config.js` → `currency`). Euro list: Google listing 150 €, website 800 € setup + 30 €/month, Complete Pack 1,500 € setup + 100 €/month (the monthly euro amounts are carried over from the owner's earlier figures; the two setup prices are the new ones). The euro amounts are keyed by the baht amount in `approx.eur`, so checkout totals stay exact (830 €, 1,100 €, 1,600 €, 2,500 €). Baht prices are unchanged. The generated language pages bake the right currency (`/tmp` helper `genlang.py` is not in the repo; the runtime `NMPrice` produces the same text).

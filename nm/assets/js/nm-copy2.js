@@ -284,3 +284,48 @@
   }
   window.NM_EXTRA_DICT = deep(window.NM_EXTRA_DICT || {}, C);
 })();
+
+/* ---- currency pass: euros for EN / FR / IT / AR, baht for TH (owner's price list) ---- */
+(function () {
+  "use strict";
+  var C = {
+    en: {
+      meta: { description: "NM Studio builds websites, QR menus and Google Business Profiles for restaurants, bars, salons and shops in Pattaya. Live in days, no contract. From €150." },
+      meta2: { services: { description: "Three offers for Pattaya businesses: Google listing, website with QR menu, Complete Pack. Prices in euros." }, pricing: { description: "Prices in euros: Google listing €150 once, website €800 then €30 a month, Complete Pack €1,500 then €100 a month." } },
+      v4: { proof1: "From €150" },
+      hero2: { price: "Website from <b>€800</b> setup, then <b>€30</b> a month. Google listing paid once, <b>€150</b>." },
+      offers: { lead: "Prices in euros. The Google listing is paid once. The website and the Complete Pack are a setup fee plus a monthly subscription, with hosting, edits and updates included." },
+      price2: { lead: "The website and the Complete Pack are a one-time setup fee plus a monthly subscription, hosting, edits and updates included. The Google listing is paid once." }
+    },
+    fr: {
+      meta: { description: "NM Studio crée des sites web, des menus QR et des fiches Google pour les restaurants, bars, salons et boutiques de Pattaya. En ligne en quelques jours, sans contrat. Dès 150 €." },
+      meta2: { services: { description: "Trois offres pour les commerces de Pattaya : fiche Google, site web avec menu QR, Pack complet. Prix en euros." }, pricing: { description: "Prix en euros : fiche Google 150 € une fois, site web 800 € puis 30 € par mois, Pack complet 1 500 € puis 100 € par mois." } },
+      v4: { proof1: "Dès 150 €" },
+      hero2: { price: "Site web dès <b>800 €</b> de mise en place, puis <b>30 €</b> par mois. Fiche Google en paiement unique, <b>150 €</b>." },
+      offers: { lead: "Prix en euros. La fiche Google se paie une seule fois. Le site web et le Pack complet : une mise en place puis un abonnement mensuel, hébergement, modifications et mises à jour compris." },
+      price2: { lead: "Le site web et le Pack complet, c'est une mise en place unique puis un abonnement mensuel, hébergement, modifications et mises à jour inclus. La fiche Google se paie en une seule fois." }
+    },
+    it: {
+      meta: { description: "NM Studio crea siti web, menù QR e schede Google per ristoranti, bar, saloni e negozi di Pattaya. Online in pochi giorni, senza contratto. Da 150 €." },
+      meta2: { services: { description: "Tre offerte per le attività di Pattaya: scheda Google, sito web con menù QR, Pack completo. Prezzi in euro." }, pricing: { description: "Prezzi in euro: scheda Google 150 € una tantum, sito web 800 € poi 30 € al mese, Pack completo 1.500 € poi 100 € al mese." } },
+      v4: { proof1: "Da 150 €" },
+      hero2: { price: "Sito web da <b>800 €</b> di attivazione, poi <b>30 €</b> al mese. Scheda Google una tantum, <b>150 €</b>." },
+      offers: { lead: "Prezzi in euro. La scheda Google si paga una volta sola. Sito web e Pack completo: costo di avvio più abbonamento mensile, con hosting, modifiche e aggiornamenti inclusi." },
+      price2: { lead: "Sito web e Pack completo sono un'attivazione una tantum più un abbonamento mensile, hosting, modifiche e aggiornamenti inclusi. La scheda Google si paga una volta sola." }
+    },
+    th: {
+      hero2: { price: "เว็บไซต์เริ่มต้น <b>฿5,800</b> แล้ว <b>฿1,140</b> ต่อเดือน โปรไฟล์ Google จ่ายครั้งเดียว <b>฿990</b>" },
+      price2: { lead: "เว็บไซต์และแพ็กเกจครบวงจรเป็นค่าเริ่มต้นครั้งเดียวบวกค่าบริการรายเดือน รวมโฮสติ้ง การแก้ไข และการอัปเดต ส่วนโปรไฟล์ Google จ่ายครั้งเดียว" }
+    },
+    ar: {
+      meta: { description: "يصمم NM Studio مواقع إلكترونية وقوائم QR وملفات جوجل للمطاعم والبارات والصالونات والمحلات في باتايا. جاهز خلال أيام وبلا عقود. ابتداءً من 150 €." },
+      meta2: { services: { description: "ثلاثة عروض لمحلات باتايا: ملف جوجل، موقع مع قائمة QR، والباقة الكاملة. الأسعار باليورو." }, pricing: { description: "الأسعار باليورو: ملف جوجل 150 € مرة واحدة، الموقع 800 € ثم 30 € شهريًا، والباقة الكاملة 1500 € ثم 100 € شهريًا." } },
+      v4: { proof1: "ابتداءً من 150 €" },
+      hero2: { price: "الموقع الإلكتروني إعداد يبدأ من <b>800 €</b> ثم <b>30 €</b> شهريًا. ملف جوجل دفعة واحدة <b>150 €</b>." },
+      offers: { lead: "الأسعار باليورو. ملف جوجل يُدفع مرة واحدة. أما الموقع والباقة الكاملة فرسوم تأسيس واشتراك شهري يشمل الاستضافة والتعديلات والتحديثات." },
+      price2: { lead: "الموقع الإلكتروني والباقة الكاملة: إعداد يُدفع مرة واحدة ثم اشتراك شهري، يشمل الاستضافة والتعديلات والتحديثات. أما ملف جوجل فيُدفع مرة واحدة." }
+    }
+  };
+  function deep(t, s) { Object.keys(s).forEach(function (k) { if (s[k] && typeof s[k] === "object") { t[k] = t[k] || {}; deep(t[k], s[k]); } else t[k] = s[k]; }); return t; }
+  window.NM_EXTRA_DICT = deep(window.NM_EXTRA_DICT || {}, C);
+})();

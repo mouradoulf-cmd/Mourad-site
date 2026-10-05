@@ -41,17 +41,19 @@ window.NM_OFFERS = {
      Thai visitor baht (which is the real charge). Amounts are hand-rounded to
      keep round numbers — this is not a live exchange rate. Change the mapping
      or the values here and the whole site follows. */
-  currency: { en: "thb", fr: "thb", it: "thb", th: "thb", ar: "thb" },   /* baht only, in every language: the price you read is the price you pay */
+  currency: { en: "eur", fr: "eur", it: "eur", th: "thb", ar: "eur" },   /* euros for every language except Thai; baht for Thailand */
   currencySymbol: { gbp: " £", eur: " €", mad: " DH", thb: " ฿" },
   /* Rounded local amounts, per baht price. The owner's own figures are the
      ones printed: 150 € setup then 30 € a month for the website, 350 € then
      100 € a month for the Complete Pack — the baht amounts are the euro
      figures taken at ~38 ฿ to the euro, because baht is what is charged in
      Thailand. Yearly = 10 months (two free): 11,400 ฿ and 38,000 ฿. */
+  /* Euro price list (owner's figures): Google listing 150 €, website 800 € setup, Complete Pack 1,500 € setup.
+     Keyed by the baht amount the page asks for, so every total in the checkout is exact:
+     6940 = website setup + 1st month, 17200 = + yearly, 17100 / 51300 = same for the pack. */
   approx: {
-    gbp: { 990: 22, 1990: 45, 290: 7, 5800: 130, 1140: 25, 11400: 250, 13300: 295, 3800: 85, 38000: 840 },
-    eur: { 990: 25, 1990: 50, 290: 8, 5800: 150, 1140: 30, 11400: 300, 13300: 350, 3800: 100, 38000: 1000 },
-    mad: { 990: 270, 1990: 550, 290: 80, 5800: 1620, 1140: 320, 11400: 3190, 13300: 3700, 3800: 1060, 38000: 10640 }
+    eur: { 990: 150, 5800: 800, 13300: 1500, 1140: 30, 3800: 100, 11400: 300, 38000: 1000, 6940: 830, 17200: 1100, 17100: 1600, 51300: 2500, 1990: 50, 290: 8 },
+    gbp: {}, mad: {}
   }
 };
 
@@ -67,7 +69,7 @@ window.NM_OFFERS = {
 window.NMPrice = (function () {
   var O = window.NM_OFFERS;
   function lang() { return window.NM_LANG || document.documentElement.lang || "en"; }
-  function group(n) { return Math.round(n).toLocaleString("en-US"); }
+  function group(n) { var l = lang(); return Math.round(n).toLocaleString(l === "fr" ? "fr-FR" : l === "it" ? "it-IT" : "en-US"); }
   function currency() { return O.currency[lang()] || "eur"; }
 
   function baht(n) { return lang() === "th" ? group(n) + " บาท" : "฿" + group(n); }
@@ -79,7 +81,7 @@ window.NMPrice = (function () {
     var c = currency();
     if (c === "thb") return baht(n);
     var s = (O.currencySymbol[c] || "").trim();
-    return c === "gbp" ? s + group(n) : group(n) + " " + s;
+    return (c === "gbp" || (c === "eur" && lang() === "en")) ? s + group(n) : group(n) + "\u00a0" + s;
   }
 
   /* A stored baht price read in the reader's currency: it goes through the
