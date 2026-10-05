@@ -27,7 +27,7 @@
       if (!e.isIntersecting) return;
       var c = e.target; io.unobserve(c);
       if (c.getAttribute("data-user")) return;
-      setTimeout(function () { if (!c.getAttribute("data-user")) set(c, true); }, 1300 + (seen++ % 3) * 280);   /* let the visitor read the problem first */
+      setTimeout(function () { if (!c.getAttribute("data-user")) set(c, true); }, 4000 + (seen++ % 3) * 300);   /* let the visitor read the problem first */
     });
   }, { rootMargin: "-18% 0px -40% 0px", threshold: 0 });
   cards.forEach(function (c) { io.observe(c); });

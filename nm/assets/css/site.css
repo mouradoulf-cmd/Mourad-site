@@ -1221,3 +1221,20 @@ html[lang="th"] .prob p, html[lang="ar"] .prob p { line-height: 1.8; }
 .wk-card__name { font-size: clamp(1.1rem, 1.6vw, 1.35rem); }
 /* gradient-clipped italic: a text-shadow shows THROUGH transparent fill and turns it dark brown. Use a drop-shadow filter instead. */
 .h__title em, .h__title .h__slogan em { text-shadow: none; filter: drop-shadow(0 2px 12px rgba(3,3,5,.85)); }
+
+
+/* v5b · WhatsApp floating button: a plain, fixed-size app-icon tile (no morphing, no transform tricks) */
+.wa-float { box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: none; width: 58px; height: 58px; min-width: 58px; max-width: 58px; padding: 0; overflow: hidden; border-radius: 17px; background: linear-gradient(180deg, #5cf27a 0%, #25c93f 100%); color: #fff; box-shadow: 0 8px 20px -6px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.18) inset; }
+.wa-float svg { display: block; flex: none; position: static; width: 32px; height: 32px; margin: 0; fill: currentColor; }
+.wa-float svg path { fill: currentColor; }
+/* the "see the fix / back to the problem" control: a real button */
+.prob__flip { padding: .55rem 1.05rem; border: 1px solid rgba(201,169,97,.5); border-radius: 999px; background: rgba(201,169,97,.08); }
+.prob__flip:hover, .prob__flip:focus-visible { background: rgba(201,169,97,.18); }
+.prob--3d .prob__flip { margin-top: auto; }
+
+
+/* v5c · WhatsApp button, final: a plain app-icon tile that is always there. The glyph is a centred background image
+   (no inline SVG layout, no transform/opacity toggling), so it cannot drift or deform on any browser. */
+.wa-float, .wa-float.is-visible { transform: none !important; opacity: 1 !important; transition: none !important; }
+.wa-float { width: 58px; height: 58px; border-radius: 17px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/%3E%3C/svg%3E") center / 32px 32px no-repeat, linear-gradient(180deg, #5cf27a 0%, #25c93f 100%); }
+.wa-float svg { display: none !important; }
