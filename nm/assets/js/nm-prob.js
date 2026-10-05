@@ -20,14 +20,25 @@
     c.addEventListener("click", function () { set(c, !c.classList.contains("is-flipped"), true); });
   });
 
-  /* flip when the card reaches the middle band of the screen (staggered when several enter together) */
+  /* How long does a human need to take in the problem? Visitors skim: the headline plus the first lines of the sentence, at about
+     6 words a second. Thai has no spaces, so count about 6 characters per word. Add a short reaction time and keep it between
+     2.4 s and 3.4 s: long enough to read the problem, short enough that the fix follows right after. */
+  function readMs(card) {
+    var h = card.querySelector(".prob__face--bad h3").textContent.trim(), p = card.querySelector(".prob__face--bad p").textContent.trim();
+    var thai = /[\u0E00-\u0E7F]/.test(h + p), words;
+    if (thai) words = (h.replace(/\s+/g, "").length + Math.min(p.replace(/\s+/g, "").length, 70)) / 6;
+    else words = h.split(/\s+/).length + Math.min(p.split(/\s+/).length, 14);
+    return Math.max(2400, Math.min(3400, 600 + words / 6 * 1000));
+  }
+
+  /* flip when the card reaches the middle band of the screen, after its own reading time */
   var seen = 0;
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (!e.isIntersecting) return;
       var c = e.target; io.unobserve(c);
       if (c.getAttribute("data-user")) return;
-      setTimeout(function () { if (!c.getAttribute("data-user")) set(c, true); }, 4000 + (seen++ % 3) * 300);   /* let the visitor read the problem first */
+      setTimeout(function () { if (!c.getAttribute("data-user")) set(c, true); }, readMs(c) + (seen++ % 3) * 250);
     });
   }, { rootMargin: "-18% 0px -40% 0px", threshold: 0 });
   cards.forEach(function (c) { io.observe(c); });
