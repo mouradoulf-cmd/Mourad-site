@@ -397,8 +397,8 @@ h1,.wotd h2{background:linear-gradient(90deg,#fff,#d8b4fe);-webkit-background-cl
 .talk .ob__av{box-shadow:0 0 0 2px #facc15,0 0 22px #facc15aa}
 /* mus button */
 .mus{position:fixed;right:10px;top:calc(10px + env(safe-area-inset-top));z-index:95;width:40px;height:40px;border-radius:50%;border:1px solid rgba(192,132,252,.5);background:rgba(26,10,46,.7);color:#fff;font-size:1.1rem;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.top{padding-right:58px}
-@media(min-width:900px){.top{padding-right:64px}}
+.top{padding-right:14px}
+
 .ob__holo--s{width:150px;height:150px;margin:0 auto}.ob__holo--s .ob__logo--s{width:90px;height:90px}.ob__holo--s .mascot{width:64px;height:64px}
 /* offer */
 .offer{display:grid;gap:18px;padding-bottom:30px}.offer.ob{padding-top:calc(24px + env(safe-area-inset-top))}

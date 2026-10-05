@@ -20,7 +20,7 @@ const KEY = "ee1";
 const MAX_HEARTS = 5, HEART_MS = 30 * 60 * 1000;
 const def = () => ({ name: "", goal: 20, xp: 0, gems: 20, hearts: MAX_HEARTS, heartTs: 0, streak: 0, best: 0, lastDay: "", freeze: 0,
   unlockTo: 0, plan: "", proUntil: 0, orders: [], interests: [], gender: "", minor: false, placement: null, done: {}, mistakes: {}, learned: {}, today: { d: dayKey(), xp: 0 }, stats: { ok: 0, ko: 0, lessons: 0, perfect: 0 }, favs: [],
-  settings: { sound: true, slow: false, demo: false, music: true }, pro: false, why: "", age: "", level: "", onboarded: false, badges: {}, bestSpeed: 0, bestMemory: 0 });
+  settings: { sound: true, slow: false, demo: false }, pro: false, why: "", age: "", level: "", onboarded: false, badges: {}, bestSpeed: 0, bestMemory: 0 });
 let S;
 function load() { try { S = Object.assign(def(), JSON.parse(localStorage.getItem(KEY) || "{}")); S.settings = Object.assign(def().settings, S.settings); S.stats = Object.assign(def().stats, S.stats); } catch (e) { S = def(); } tick(); }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} EE.emit("state"); }
@@ -136,39 +136,8 @@ EE.sfx = {
   whoosh() { tone(300, .25, "sawtooth", .03, 0, 1200); }
 };
 
-/* ---------- ambient music (generative, WebAudio): soft pad + pentatonic plucks through a delay ---------- */
-EE.music = (() => {
-  let node = null, timer = null, started = false;
-  const PENT = [220, 261.6, 293.7, 329.6, 392, 440, 523.3, 587.3, 659.3], CH = [[110, 164.8, 220, 261.6], [87.3, 130.8, 174.6, 220], [98, 146.8, 196, 246.9], [110, 164.8, 220, 261.6]];
-  function build() {
-    const c = ctx(); if (!c) return null; const master = c.createGain(); master.gain.value = 0; master.connect(c.destination);
-    const lp = c.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 900; lp.connect(master);
-    const dl = c.createDelay(1); dl.delayTime.value = .38; const fb = c.createGain(); fb.gain.value = .42; dl.connect(fb); fb.connect(dl); dl.connect(master);
-    const pad = [];
-    const chord = n => CH[n % CH.length].forEach((f, i) => { if (!pad[i]) { const o = c.createOscillator(), g = c.createGain(); o.type = i % 2 ? "triangle" : "sine"; g.gain.value = 0; o.connect(g); g.connect(lp); o.start(); pad[i] = { o, g }; } pad[i].o.frequency.setTargetAtTime(f, c.currentTime, 1.2); pad[i].g.gain.setTargetAtTime(.2, c.currentTime, 1.5); });
-    let step = 0, bar = 0, idx = 3; chord(0);
-    timer = setInterval(() => {
-      if (!S.settings.music || !S.settings.sound || document.hidden) return;
-      if (step % 16 === 0) chord(bar++);
-      if (step % 2 === 0 || Math.random() < .3) {
-        idx = Math.max(0, Math.min(PENT.length - 1, idx + Math.floor(Math.random() * 5) - 2)); const f = PENT[idx], t = c.currentTime;
-        const o = c.createOscillator(), g = c.createGain(); o.type = "triangle"; o.frequency.value = f; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.35, t + .01); g.gain.exponentialRampToValueAtTime(.001, t + 1.1);
-        o.connect(g); g.connect(lp); g.connect(dl); o.start(t); o.stop(t + 1.2);
-      }
-      step++;
-    }, 340);
-    return { c, master };
-  }
-  const api = {
-    start() { if (!S.settings.music || !S.settings.sound) return; if (!node) node = build(); if (!node) return; started = true; node.c.resume && node.c.resume(); node.master.gain.setTargetAtTime(.075, node.c.currentTime, 1.5); },
-    stop() { if (node) node.master.gain.setTargetAtTime(0, node.c.currentTime, .3); },
-    toggle() { S.settings.music = !S.settings.music; EE.save(); S.settings.music ? api.start() : api.stop(); return S.settings.music; }
-  };
-  const first = () => { api.start(); removeEventListener("pointerdown", first); removeEventListener("keydown", first); };
-  addEventListener("pointerdown", first); addEventListener("keydown", first);
-  document.addEventListener("visibilitychange", () => { if (node) node.master.gain.setTargetAtTime(document.hidden || !S.settings.music ? 0 : .075, node.c.currentTime, .3); });
-  return api;
-})();
+/* ambient music removed on request — kept as a no-op so nothing else breaks */
+EE.music = { start() {}, stop() {}, toggle() { return false; } };
 
 /* ---------- confetti (canvas, tiny) ---------- */
 EE.confetti = () => {
