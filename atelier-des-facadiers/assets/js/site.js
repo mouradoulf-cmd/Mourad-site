@@ -114,10 +114,10 @@ const cfgEl = $("#cfg");
 if (cfgEl) {
   const FAM = {
     fc:   { n: "Fibre-ciment", b: "Equitone · Cedral", f: "matte", inv: "Tergo Design (Equitone)", sw: [["Blanc minéral","#e8e6df"],["Gris perle","#bdbfbf"],["Sable","#cdbb9a"],["Terre cuite","#b4653f"],["Anthracite","#3c4147"],["Vert mousse","#7f8c6a"]] },
-    hpl:  { n: "Stratifié HPL", b: "Fundermax · Trespa · Pura by Trespa", f: "smooth", inv: "Eclip's (Fundermax) · TS200 (Trespa)", sw: [["Noir profond","#15181c"],["Graphite","#3d434a"],["Chêne clair","#c9a46b"],["Bleu ardoise","#3b556b"],["Rouge brique","#9a3d2f"],["Blanc cassé","#ecebe6"]] },
+    hpl:  { n: "Stratifié HPL", b: "Fundermax · Trespa · Pura by Trespa", f: "smooth", inv: "Eclip’s (Fundermax) · TS200 (Trespa)", sw: [["Noir profond","#15181c"],["Graphite","#3d434a"],["Chêne clair","#c9a46b"],["Bleu ardoise","#3b556b"],["Rouge brique","#9a3d2f"],["Blanc cassé","#ecebe6"]] },
     alu:  { n: "Aluminium composite", b: "Stacbond · Alpolic", f: "metal", inv: "Cassettes CH (Stacbond) · M-BASE (Alpolic)", sw: [["Argent","#b7bcc2"],["Anthracite métal","#4b5058"],["Bronze","#7b5b3f"],["Bleu nuit","#1f3550"],["Champagne","#cdbb94"],["Cuivre","#b3653c"]] },
     lr:   { n: "Laine de roche comprimée", b: "Rockpanel", f: "matte", inv: null, sw: [["Gris minéral","#8e9490"],["Anthracite","#353a3f"],["Beige","#c9b9a2"],["Brun","#6b4d3a"],["Vert sapin","#3f5a4a"],["Blanc","#e5e3dc"]] },
-    bois: { n: "Bardage bois", b: "Bardage bois", f: "wood", inv: null, sw: [["Naturel","#c89a63"],["Chêne doré","#b8864a"],["Brun","#6a4a31"],["Gris argenté","#9a968f"],["Noir brûlé","#24201d"],["Cèdre rouge","#9a5b3d"]] },
+    bois: { n: "Bardage bois", b: "Lames de bois", f: "wood", inv: null, sw: [["Naturel","#c89a63"],["Chêne doré","#b8864a"],["Brun","#6a4a31"],["Gris argenté","#9a968f"],["Noir brûlé","#24201d"],["Cèdre rouge","#9a5b3d"]] },
     comp: { n: "Bois composite", b: "Fiberdeck", f: "wood", inv: null, sw: [["Teck","#a37a4b"],["Gris galet","#8c8a86"],["Brun","#5b4333"],["Anthracite","#35383c"],["Sable","#c5b08d"],["Noir","#1b1c1e"]] }
   };
   const POSE = { plan: "Panneaux plans", cassette: "Cassettes", lames: "Bandeaux / lames" };
