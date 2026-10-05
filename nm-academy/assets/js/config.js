@@ -17,5 +17,6 @@ window.CONFIG={
   },
   // Fin d'offre RÉELLE (ISO, ex "2026-12-31T23:59:00+01:00"). Vide = aucun compte à rebours (ne jamais mettre une fausse date)
   OFFER_END:"",
+  MEMBER_CODE:"NM2026",              // code d'accès à l'espace membres (à envoyer après paiement ; à changer)
   REFUND_DAYS:7
 };
