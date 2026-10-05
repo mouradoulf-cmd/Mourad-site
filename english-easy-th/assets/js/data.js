@@ -199,7 +199,8 @@ EE.TIPS = [
   { t: "ขอสิ่งต่าง ๆ อย่างสุภาพ", body: "ใช้ <b>I would like ...</b> (ฉันขอ...) และ <b>Can I have ...?</b> (ขอ...ได้ไหม) แล้วปิดท้ายด้วย <b>please</b>", ex: [["I would like a coffee, please.", "ขอกาแฟหนึ่งแก้วครับ/ค่ะ"], ["Can I have the menu?", "ขอเมนูได้ไหม"]] }
 ];
 
-/* flat helpers */
+/* flat helpers (rebuilt by data2.js after the extra units are appended) */
+EE.rebuild = function () {
 EE.ALL_WORDS = [];
 EE.UNITS.forEach(u => u.lessons.forEach(l => {
   l.unit = u.id;
@@ -209,4 +210,7 @@ EE.LESSONS = [];
 EE.UNITS.forEach((u, ui) => u.lessons.forEach((l, li) => { l.ui = ui; l.li = li; EE.LESSONS.push(l); }));
 EE.lessonById = id => EE.LESSONS.find(l => l.id === id);
 EE.unitById = id => EE.UNITS.find(u => u.id === id);
+
+};
+EE.rebuild();
 })(window.EE = window.EE || {});

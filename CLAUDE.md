@@ -137,9 +137,12 @@ governor). Orange text on light backgrounds must use `--signal-t` (AA). Design r
 justifications, a11y/perf results and before/after in `atelier-des-facadiers/DESIGN.md`.
 Appending `#gl=force` to the home URL forces the 3D scene for debugging.
 
-## English Easy TH — reference for gamified language-learning apps
+## English Easy TH — reference for gamified language-learning / online-course sales apps
 
-`english-easy-th/` is a Thai-language, Duolingo-style English course (original, inspired
-by arab-facile.com): hash-router SPA, `window.EE` namespace, scripts data → core → lesson → views,
-progress in localStorage (`ee1`), speechSynthesis for audio, hearts/streak/gems/badges,
-mini-games, PWA. Content lives in `assets/js/data.js`. No real payments; "Plus" is a placeholder.
+`english-easy-th/` is a Thai-language, Duolingo-style English course (original, inspired by arab-facile.com).
+Plain HTML/CSS/JS SPA (hash router), `window.EE` namespace. Script order: config → data → data2 → data3 → core → lesson → pro → cert → onb → views → fx → gl (ES module, Three.js self-hosted in `assets/vendor/`).
+- **Curriculum**: 24 units / 71 lessons in `assets/js/data*.js` (A1→A2: alphabet → pronunciation for Thai speakers). Lessons can carry a `note` (Thai grammar card). `EE.rebuild()` recomputes flat lists after units are pushed.
+- **Onboarding** (`onb.js`): splash → welcome → chat-style questions (name, gender with polite particles ค่ะ/ครับ, age in two pop-up drawers, goal, interests, level, 4-question placement test, daily goal) → analysis → projected path → offer. Result sets `S.unlockTo`.
+- **Selling**: everything commercial lives in `assets/js/config.js` (prices, `FREE_UNITS`, BUY_URL, LINE, access CODES — client-side, weak by design). Pro = units beyond FREE_UNITS, speaking practice (Web Speech API), unlimited hearts, certificate (`cert.js`). No fake timers/testimonials.
+- **FX**: WebGL hyperspace + holo core (`gl.js`, skipped on software GL / weak devices, `#gl=force` to debug), alive mascot (eyes follow pointer), generative music (`EE.music`), in-lesson XP/combo/shockwave effects (`fx.js`).
+- Progress is localStorage only (`ee1`). Never hide the native cursor. `[hidden]` must stay `display:none!important`.
