@@ -263,3 +263,40 @@ if (form) {
   });
 }
 })();
+
+/* ===== v2.1 details ===== */
+(function () {
+"use strict";
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* scroll progress, back-to-top, mobile action bar */
+const bar = $(".prog i"), tt = $(".totop"), mb = $(".mbar");
+const onS = () => { const h = document.documentElement.scrollHeight - innerHeight; bar && (bar.style.transform = `scaleX(${h > 0 ? Math.min(1, scrollY / h) : 0})`); tt && tt.classList.toggle("on", scrollY > innerHeight * 1.2); mb && mb.classList.toggle("on", scrollY > innerHeight * .6); };
+addEventListener("scroll", onS, { passive: true }); onS();
+tt && tt.addEventListener("click", () => scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }));
+/* split-word heading reveal (hidden state only once the observer exists) */
+if ("IntersectionObserver" in window && !reduce) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .3 });
+  $$(".sec h2, .head h2").forEach(h => {
+    if (h.closest(".hero") || h.closest(".xv")) return;
+    let k = 0;
+    const walk = n => [...n.childNodes].forEach(c => {
+      if (c.nodeType === 3) { const f = document.createDocumentFragment(); c.textContent.split(/(\s+)/).forEach(t => { if (!t) return; if (/^\s+$/.test(t)) f.appendChild(document.createTextNode(" ")); else { const w = document.createElement("span"), i = document.createElement("span"); w.className = "w"; i.textContent = t; i.style.setProperty("--k", k++); w.appendChild(i); f.appendChild(w); } }); c.replaceWith(f); }
+      else if (c.nodeType === 1 && c.tagName !== "BR") walk(c);
+    });
+    walk(h); h.classList.add("sp"); io.observe(h);
+  });
+}
+/* spotlight on cards + magnetic buttons (fine pointers only) */
+if (matchMedia("(hover:hover) and (pointer:fine)").matches && !reduce) {
+  $$(".bc,.card").forEach(c => c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px"); }));
+  $$(".btn").forEach(b => { b.addEventListener("pointermove", e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${((e.clientX - r.left) / r.width - .5) * 8}px,${((e.clientY - r.top) / r.height - .5) * 6 - 2}px)`; }); b.addEventListener("pointerleave", () => b.style.transform = ""); });
+}
+/* soft page transition between local pages */
+if (!reduce) document.addEventListener("click", e => {
+  const a = e.target.closest("a"); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target) return;
+  const h = a.getAttribute("href"); if (!h || /^(#|tel:|mailto:|https?:)/.test(h) || a.pathname === location.pathname) return;
+  e.preventDefault(); document.body.classList.add("leave"); setTimeout(() => location.href = a.href, 200);
+});
+addEventListener("pageshow", e => e.persisted && document.body.classList.remove("leave"));
+})();
