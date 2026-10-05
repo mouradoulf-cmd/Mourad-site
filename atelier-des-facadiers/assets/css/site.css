@@ -514,9 +514,6 @@ h2.h3{font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.15}
 /* 4K → phone: the whole layout scales with the root size above 1920px */
 @media(min-width:1920px){html{font-size:calc(16px + (100vw - 1920px) * .0036)}}
 @media(max-width:360px){html{font-size:15px}}
-/* film grain (static tile, no blend mode = free on the GPU); skipped on small screens */
-@media(min-width:861px){html::before{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}}
-
 /* ---------- entrance loader: 6 cladding panels that lift away ---------- */
 .ldr{display:none}
 html.ldr-on .ldr{display:grid;position:fixed;inset:0;z-index:300;place-items:center}
@@ -617,11 +614,8 @@ body.leave::after{content:"";position:fixed;inset:0;z-index:290;pointer-events:n
  .hero__slides::after{display:none}
  .hero__video{transform:none;object-position:50% 40%}
  .hero__shade{background:linear-gradient(180deg,rgba(10,14,20,.62) 0,rgba(10,14,20,.08) 20%,rgba(10,14,20,.28) 40%,rgba(10,14,20,.86) 66%,rgba(10,14,20,.96) 100%)}
- .hero::after{content:"";position:absolute;z-index:3;pointer-events:none;inset:calc(var(--h) + .1rem) .6rem .6rem;border:1px solid rgba(255,255,255,.2);border-radius:18px;background:
-   linear-gradient(var(--signal),var(--signal)) 0 0/1.4rem 2px no-repeat,linear-gradient(var(--signal),var(--signal)) 0 0/2px 1.4rem no-repeat,
-   linear-gradient(var(--signal),var(--signal)) 100% 0/1.4rem 2px no-repeat,linear-gradient(var(--signal),var(--signal)) 100% 0/2px 1.4rem no-repeat}
- .hero__pause{top:calc(var(--h) + .9rem);bottom:auto;right:calc(var(--gut) + .3rem);width:2.1rem;height:2.1rem}
- .hero__in{padding:0 calc(var(--gut) + .35rem) .8rem;margin-top:auto;flex:none}
+ .hero__pause{top:calc(var(--h) + .8rem);bottom:auto;right:var(--gut);width:2.1rem;height:2.1rem}
+ .hero__in{padding:0 var(--gut) .8rem;margin-top:auto;flex:none}
  .hero__kick{display:none}
  .hero h1{font-size:clamp(2rem,9.6vw,2.9rem);line-height:.95}
  .hero__row{margin-top:.8rem;gap:.8rem}
@@ -629,8 +623,7 @@ body.leave::after{content:"";position:fixed;inset:0;z-index:290;pointer-events:n
  .hero__cta{flex-wrap:nowrap;gap:.55rem}
  .hero__cta .btn{flex:1 1 0;justify-content:center;padding:.8rem .6rem;font-size:.8rem;gap:.4rem;min-width:0}
  .hero__cta .btn::after{display:none}
- .hero__stats{margin:0 .6rem .6rem;border-radius:0 0 18px 18px;background:rgba(10,14,20,.55);border-top:1px solid rgba(255,255,255,.16);flex:none}
- .hero__stats .wrap{padding-inline:calc(var(--gut) - .2rem)}
+ .hero__stats{margin:0;background:rgba(10,14,20,.6);border-top:1px solid rgba(255,255,255,.16);flex:none}
  .hero__stats ul{grid-template-columns:repeat(2,1fr)}
  .hero__stats li{padding:.5rem .5rem .5rem .8rem;border-left:1px solid rgba(255,255,255,.14)!important;border-top:1px solid rgba(255,255,255,.08);gap:.05rem}
  .hero__stats li:nth-child(odd){border-left:0!important;padding-left:0}

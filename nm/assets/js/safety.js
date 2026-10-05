@@ -33,11 +33,12 @@
   if (document.readyState === "complete") later();
   else window.addEventListener("load", later);
 
-  var queued = false;
+  /* Debounced: the safety net only has to act once scrolling settles, not on every frame
+     (it used to force a style + layout flush ~60x/second while scrolling). */
+  var t = 0;
   window.addEventListener("scroll", function () {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(function () { queued = false; repair(); });
+    clearTimeout(t);
+    t = setTimeout(repair, 220);
   }, { passive: true });
 
   window.addEventListener("resize", repair);

@@ -1427,3 +1427,15 @@ html:not(.menu-ready) .menu-book__hint { display: none; }
 
   .reservation__row { flex-direction: column; }
 }
+
+/* ---------- v2 polish: accessibility + small screens ---------- */
+.menu-tabs__indicator { background: #bf5322; }              /* white text on the active tab: AA (4.7:1) */
+.story__badge small { opacity: 1; color: #fff; }
+@media (max-width: 760px) {
+  .navbar__inner { gap: .5rem; }
+  .lang-link { min-width: 36px; min-height: 36px; padding: 4px 8px; font-size: .74rem; }
+  .navbar__lang { padding: 3px; }
+  .hero { min-height: 100svh; }
+  .hero__scroll { display: none; }                          /* it collided with the CTAs on short phones */
+}
+@media (max-width: 380px) { .lang-link { min-width: 32px; padding: 4px 6px; } }
