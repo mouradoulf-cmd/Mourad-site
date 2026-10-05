@@ -111,6 +111,9 @@ EE.sfx = {
   win() { [523, 659, 784, 1047].forEach((f, i) => tone(f, .28, "triangle", .08, i * .11)); },
   coin() { tone(1200, .08, "square", .04); tone(1600, .14, "square", .04, .07); },
   combo(n) { const b = 523 * Math.pow(1.122, Math.min(n || 0, 8)); tone(b, .1, "triangle", .09); tone(b * 1.5, .16, "triangle", .07, .07); },
+  key() { tone(1800 + Math.random() * 500, .025, "square", .012); },
+  pick() { tone(440, .08, "sine", .07); tone(880, .12, "sine", .06, .05); },
+  boot() { tone(120, .6, "sawtooth", .04, 0, 480); tone(480, .5, "sine", .05, .5, 960); },
   whoosh() { tone(300, .25, "sawtooth", .03, 0, 1200); }
 };
 
@@ -121,6 +124,14 @@ EE.confetti = () => {
   const ps = Array.from({ length: 90 }, () => ({ x: W / 2 + (Math.random() - .5) * 120, y: H * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4, s: Math.random() * 8 + 4, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: cols[Math.floor(Math.random() * cols.length)] }));
   let f = 0; (function step() { c.clearRect(0, 0, W, H); ps.forEach(p => { p.vy += .4; p.x += p.vx; p.y += p.vy; p.r += p.vr; c.save(); c.translate(p.x, p.y); c.rotate(p.r); c.fillStyle = p.c; c.fillRect(-p.s / 2, -p.s / 3, p.s, p.s * .6); c.restore(); });
     if (++f < 130) requestAnimationFrame(step); else cv.remove(); })();
+};
+
+/* particle burst at a point (canvas, short) */
+EE.burst = (x, y, col) => {
+  if (reduce) return; const cv = document.createElement("canvas"); cv.className = "confetti"; document.body.appendChild(cv);
+  const c = cv.getContext("2d"), W = cv.width = innerWidth, H = cv.height = innerHeight, cols = col || ["#facc15", "#c084fc", "#38bdf8", "#f472b6", "#fff"];
+  const ps = Array.from({ length: 36 }, () => { const a = Math.random() * 6.283, v = Math.random() * 6 + 2; return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, s: Math.random() * 3 + 1.5, c: cols[Math.floor(Math.random() * cols.length)], l: 1 }; });
+  (function step() { c.clearRect(0, 0, W, H); let alive = 0; ps.forEach(p => { p.x += p.vx; p.y += p.vy; p.vx *= .95; p.vy *= .95; p.l -= .025; if (p.l > 0) { alive++; c.globalAlpha = p.l; c.fillStyle = p.c; c.shadowColor = p.c; c.shadowBlur = 8; c.beginPath(); c.arc(p.x, p.y, p.s, 0, 6.283); c.fill(); } }); alive ? requestAnimationFrame(step) : cv.remove(); })();
 };
 
 /* ---------- mascot (original SVG, 3 moods) ---------- */
