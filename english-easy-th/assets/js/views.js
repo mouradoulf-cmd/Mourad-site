@@ -27,7 +27,7 @@ EE.on("state", topbar);
 
 /* ---------- onboarding ---------- */
 function onboarding() {
-  EE.runOnb(main(), () => { EE.save(); location.hash = "#/home"; EE.route(); });
+  EE.runOnb(main(), (t) => { EE.save(); location.hash = t || "#/home"; EE.route(); });
 }
 
 /* ---------- home: learning path ---------- */
@@ -173,7 +173,7 @@ function profile() {
   const lv = EE.level(), xpIn = S.xp % 100, acc = Math.round(S.stats.ok / Math.max(1, S.stats.ok + S.stats.ko) * 100);
   main().innerHTML = `<section class="page"><div class="prof"><div class="prof__m">${EE.mascot("happy", 100)}</div><div><h1>${esc(S.name || "ผู้เรียน")}</h1><p>ระดับ ${lv} · ${S.xp} XP</p><div class="xpbar" aria-label="ความคืบหน้าระดับ"><i style="width:${xpIn}%"></i></div><button class="linkbtn" id="p-name">เปลี่ยนชื่อ</button></div></div>
     <div class="stats-grid"><div><b>🔥 ${S.streak}</b><span>สตรีค (สูงสุด ${S.best})</span></div><div><b>📘 ${S.stats.lessons}</b><span>บทที่จบ</span></div><div><b>🎯 ${acc}%</b><span>ความแม่นยำ</span></div><div><b>💎 ${S.gems}</b><span>เพชร</span></div></div>
-    <div class="prof__links"><a class="btn btn--gold" href="#/pro">👑 ${EE.isPro() ? "สถานะ Pro" : "อัปเกรดเป็น Pro"}</a><a class="btn btn--ghost" href="#/cert">🎓 ใบรับรอง</a></div><h2 class="sec">เหรียญรางวัล</h2><div class="badges">${BADGES.map(b => `<div class="badge ${S.badges[b[0]] ? "on" : ""}" title="${esc(b[2])}"><span>${b[1]}</span><b>${esc(b[2])}</b></div>`).join("")}</div>
+    ${EE.isPro() ? `<div class="co__note co__note--ok">👑 Pro${S.plan ? " · " + ({ month: "รายเดือน", year: "รายปี", life: "ตลอดชีพ" }[S.plan] || "") : ""}${S.proUntil ? " · ใช้ได้ถึง " + new Date(S.proUntil).toLocaleDateString("th-TH", { day: "numeric", month: "long", year: "numeric" }) : (S.pro ? " · ตลอดชีพ" : "")}</div>` : ""}<div class="prof__links"><a class="btn btn--gold" href="#/pro">👑 ${EE.isPro() ? "สถานะ Pro" : "อัปเกรดเป็น Pro"}</a><a class="btn btn--ghost" href="#/cert">🎓 ใบรับรอง</a></div><h2 class="sec">เหรียญรางวัล</h2><div class="badges">${BADGES.map(b => `<div class="badge ${S.badges[b[0]] ? "on" : ""}" title="${esc(b[2])}"><span>${b[1]}</span><b>${esc(b[2])}</b></div>`).join("")}</div>
     <h2 class="sec">ตั้งค่า</h2><div class="settings"><label class="sw"><input type="checkbox" id="o-sound" ${S.settings.sound ? "checked" : ""}><span>เสียงเอฟเฟกต์</span></label><label class="sw"><input type="checkbox" id="o-slow" ${S.settings.slow ? "checked" : ""}><span>อ่านออกเสียงช้าลง</span></label>
       <label class="sw"><input type="checkbox" id="o-demo" ${S.settings.demo ? "checked" : ""}><span>โหมดเดโม: ปลดล็อกทุกบท & หัวใจไม่จำกัด</span></label>
       <label class="field">เป้าหมายรายวัน<select id="o-goal" class="inp">${[10, 20, 30, 50].map(g => `<option value="${g}" ${S.goal === g ? "selected" : ""}>${g} XP</option>`).join("")}</select></label>
@@ -189,8 +189,10 @@ function profile() {
 
 /* ---------- router ---------- */
 function cert() { EE.certView(main()); }
-function pro() { EE.renderOffer(main(), () => { location.hash = "#/shop"; }, false); }
-const ROUTES = { home, alphabet, train, games, word, tips, shop, profile, pro, cert };
+function pro() { EE.renderOffer(main(), (t) => { location.hash = (typeof t === "string" && t) || "#/shop"; }, false); }
+function checkout() { EE.checkoutView(main(), (location.hash.split("/")[2] || "").split("?")[0]); }
+function legal() { EE.legalView(main(), location.hash.split("/")[1]); }
+const ROUTES = { home, alphabet, train, games, word, tips, shop, profile, pro, cert, checkout, terms: legal, privacy: legal };
 EE.route = function () {
   if (EE.stopGame) { EE.stopGame(); EE.stopGame = null; }
   const h = location.hash.replace(/^#\/?/, "") || "home", [a, b] = h.split("/");
