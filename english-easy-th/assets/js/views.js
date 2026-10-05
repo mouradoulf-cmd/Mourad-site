@@ -27,15 +27,7 @@ EE.on("state", topbar);
 
 /* ---------- onboarding ---------- */
 function onboarding() {
-  main().innerHTML = `<section class="onb"><div class="onb__m">${EE.mascot("cheer", 150)}</div><h1>สวัสดี! ยินดีต้อนรับสู่ <span>English Easy</span></h1>
-    <p class="lead">เรียนภาษาอังกฤษแบบเกม วันละนิด เก่งขึ้นทุกวัน — ฟังเสียง ตอบคำถาม สะสมดาว ได้ทั้งบนมือถือและคอม</p>
-    <label class="field">ให้เรียกคุณว่าอะไร?<input id="onb-name" class="inp" maxlength="20" placeholder="ชื่อเล่น (ไม่ใส่ก็ได้)" autocomplete="nickname"></label>
-    <fieldset class="goals"><legend>เป้าหมายรายวัน</legend>
-      <label class="goal"><input type="radio" name="goal" value="10"><span><b>สบาย ๆ</b>10 XP / วัน (~3 นาที)</span></label>
-      <label class="goal"><input type="radio" name="goal" value="20" checked><span><b>ปกติ</b>20 XP / วัน (~6 นาที)</span></label>
-      <label class="goal"><input type="radio" name="goal" value="50"><span><b>จริงจัง</b>50 XP / วัน (~15 นาที)</span></label></fieldset>
-    <button class="btn btn--primary btn--lg" id="onb-go">เริ่มเรียนเลย</button><p class="fine">ความคืบหน้าถูกเก็บไว้ในเครื่องของคุณ ไม่ต้องสมัครสมาชิก</p></section>`;
-  $("#onb-go").onclick = () => { S.name = $("#onb-name").value.trim(); S.goal = +($("input[name=goal]:checked").value); S.onboarded = true; EE.save(); location.hash = "#/home"; EE.route(); };
+  EE.runOnb(main(), () => { EE.save(); location.hash = "#/home"; EE.route(); });
 }
 
 /* ---------- home: learning path ---------- */
