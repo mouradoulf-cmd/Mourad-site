@@ -353,7 +353,7 @@ if (cur === "fr" && lang) {
 (function () {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   document.querySelectorAll(".flag").forEach(function (f, k) {
-    var w = f.offsetWidth || 24, strips = Math.max(8, Math.round(w / 2)), sw = Math.max(1, Math.round(w / strips));
+    var w = f.offsetWidth || 24, strips = Math.max(7, Math.round(w / 3)), sw = Math.max(1, Math.round(w / strips));
     strips = Math.ceil(w / sw);
     f.style.setProperty("--sw", sw + "px"); f.style.setProperty("--d", (k * -0.37).toFixed(2) + "s");
     for (var i = 0; i < strips; i++) { var s = document.createElement("i"); s.style.setProperty("--i", i); if (i === strips - 1) s.style.width = (w - sw * i) + "px"; f.appendChild(s); }
