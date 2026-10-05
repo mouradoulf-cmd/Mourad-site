@@ -80,12 +80,12 @@
     fr: {
       meta: {
         title: "Démarrer un projet: votre devis en 4 étapes | NM Studio",
-        description: "Quatre étapes rapides et votre demande part sur WhatsApp : activité, besoins, langues de vos clients. Sans engagement."
+        description: "Quatre étapes rapides et votre demande part sur WhatsApp : activité, besoins, langues de vos clients. Sans engagement."
       },
       hero: {
         eyebrow: "Démarrer un projet",
         title: "Quatre étapes. <em>Un message.</em> C'est fait.",
-        lead: "Aucun formulaire à envoyer, aucun compte à créer. Répondez à quatre questions, appuyez sur un bouton : votre demande arrive sur notre WhatsApp, déjà rédigée.",
+        lead: "Aucun formulaire à envoyer, aucun compte à créer. Répondez à quatre questions, appuyez sur un bouton : votre demande arrive sur notre WhatsApp, déjà rédigée.",
         fact1: "Environ 60 secondes", fact2: "Aucun paiement sur cette page", fact3: "Nous répondons en quelques minutes"
       },
       form: {
@@ -95,16 +95,16 @@
         live: "Étape 1 sur 4", sent: "Votre message est prêt ci-dessous. Ouvrez WhatsApp et collez-le.",
         liveStep: "Étape {n} sur 4"
       },
-      step1: { name: "Votre activité", title: "Quel genre d'endroit est-ce ?", sub: "Choisissez le plus proche, cela nous dit ce que vos clients cherchent." },
-      step2: { name: "Ce qu'il vous faut", title: "Que voulez-vous que nous créions ?", sub: "Choisissez-en autant que vous voulez. Un menu QR et une fiche Google sont les gains les plus rapides." },
-      step3: { name: "Les langues", title: "Quelles langues parlent vos clients ?", sub: "Cochez celles que vous entendez le plus. Votre menu et votre site les parleront aussi." },
-      step4: { name: "Coordonnées", title: "Comment vous joindre ?", sub: "Seulement le nécessaire pour vous répondre. Rien n'est envoyé avant l'appui sur le bouton." },
+      step1: { name: "Votre activité", title: "Quel genre d'endroit est-ce ?", sub: "Choisissez le plus proche, cela nous dit ce que vos clients cherchent." },
+      step2: { name: "Ce qu'il vous faut", title: "Que voulez-vous que nous créions ?", sub: "Choisissez-en autant que vous voulez. Un menu QR et une fiche Google sont les gains les plus rapides." },
+      step3: { name: "Les langues", title: "Quelles langues parlent vos clients ?", sub: "Cochez celles que vous entendez le plus. Votre menu et votre site les parleront aussi." },
+      step4: { name: "Coordonnées", title: "Comment vous joindre ?", sub: "Seulement le nécessaire pour vous répondre. Rien n'est envoyé avant l'appui sur le bouton." },
       opt: { restaurant: "Restaurant", cafe: "Café ou bar", salon: "Salon ou spa", hotel: "Hôtel ou guesthouse", shop: "Boutique", rental: "Location de scooters", other: "Autre chose", google: "Fiche Google", qr: "Menu QR", web: "Site web" },
       note: { google: "Être trouvé sur Maps", qr: "Votre menu sur chaque téléphone", web: "Votre vitrine en ligne" },
       lang: { en: "Anglais", fr: "Français", it: "Italien", th: "Thaï", ar: "Arabe", de: "Allemand", ru: "Russe", zh: "Chinois" },
       f: {
         business: "Nom du commerce", area: "Quartier de Pattaya", first: "Votre prénom",
-        wa: "Votre numéro WhatsApp", notes: "Quelque chose à nous dire ?", optional: "(facultatif)"
+        wa: "Votre numéro WhatsApp", notes: "Quelque chose à nous dire ?", optional: "(facultatif)"
       },
       ph: { business: "ex. Malee Restaurant", first: "Malee", wa: "+66 81 234 5678", notes: "Un lien vers votre Instagram, vos horaires, les plats dont vous êtes fier…" },
       area: { none: "Choisir un quartier", central: "Pattaya centre", beach: "Pattaya Beach Road", jomtien: "Jomtien", naklua: "Naklua", pratamnak: "Pratumnak", walking: "Walking Street", other: "Ailleurs" },
@@ -121,7 +121,7 @@
         copyHint: "Notre lien WhatsApp ouvre la discussion. Le message est copié pour que vous n'ayez plus qu'à coller.",
         r1: "Activité", r2: "Ce qu'il vous faut", r3: "Langues", r4: "Prénom", r5: "Quartier", r6: "WhatsApp", r7: "Précisions"
       },
-      sent: { eyebrow: "Votre message", title: "Prêt à envoyer.", sub: "Voici exactement ce que nous recevons. Modifiez une réponse : le message se met à jour.", chars: "caractères" },
+      sent: { eyebrow: "Votre message", title: "Prêt à envoyer.", sub: "Voici exactement ce que nous recevons. Modifiez une réponse : le message se met à jour.", chars: "caractères" },
       empty: "Pas encore rempli", none: "Non précisé",
       err: { type: "Choisissez le type de commerce.", business: "Indiquez le nom de votre commerce.", first: "Indiquez votre prénom.", wa: "Ajoutez votre numéro WhatsApp, au moins 6 chiffres." },
       msg: {

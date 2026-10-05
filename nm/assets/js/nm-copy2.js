@@ -31,7 +31,8 @@
         s2t: "A QR menu in their language", s2b: "Scan, read, order. Up to 5 languages, with photos and prices. A dish to change? One message.",
         p3t: "No website, no trust", p3b: "Visitors check your website before they walk in. Without one, the competitor who has a site gets the booking.",
         s3t: "A website that fills your tables", s3b: "Your photos, your prices, a WhatsApp button on every page. Visitors become customers.",
-        cta: "Fix it with us on WhatsApp"
+        cta: "Fix it with us on WhatsApp",
+        flip: "See the fix", flipBack: "Back to the problem"
       },
       work: { eyebrow: "Our work", title: "7 real sites, <em>live now.</em>", lead: "Tap a site to open it." },
       offers: {
@@ -63,41 +64,42 @@
         description: "NM Studio crée des sites web, des menus QR et des fiches Google pour les restaurants, bars, salons et boutiques de Pattaya. En ligne en quelques jours, sans contrat. Dès ฿990."
       },
       meta2: {
-        services: { description: "Trois offres pour les commerces de Pattaya : fiche Google, site web avec menu QR, Pack complet. Prix en bahts." },
-        pricing: { description: "Prix en bahts : fiche Google ฿990 une fois, site web ฿5,800 puis ฿1,140 par mois, Pack complet ฿13,300 puis ฿3,800 par mois." }
+        services: { description: "Trois offres pour les commerces de Pattaya : fiche Google, site web avec menu QR, Pack complet. Prix en bahts." },
+        pricing: { description: "Prix en bahts : fiche Google ฿990 une fois, site web ฿5,800 puis ฿1,140 par mois, Pack complet ฿13,300 puis ฿3,800 par mois." }
       },
       v4: {
         title: "<span class=\"h__slogan\">Soyez trouvé. <em>Soyez choisi.</em></span> <span class=\"h__kw\">Site web, menu QR et fiche Google pour les commerces de Pattaya</span>",
-        sub: "Restaurants, bars, salons, boutiques : les touristes vous trouvent sur Google, ouvrent votre menu dans leur langue et vous écrivent sur WhatsApp.",
+        sub: "Restaurants, bars, salons, boutiques : les touristes vous trouvent sur Google, ouvrent votre menu dans leur langue et vous écrivent sur WhatsApp.",
         offersTitle: "3 offres. <em>Choisissez la vôtre.</em>",
-        finaleTitle: "Prêt à avoir plus <em>de clients ?</em>"
+        finaleTitle: "Prêt à avoir plus <em>de clients ?</em>"
       },
       prob: {
-        eyebrow: "Ça vous parle ?",
+        eyebrow: "Ça vous parle ?",
         title: "Chaque client qui ne vous trouve pas <em>entre chez le voisin.</em>",
         lead: "Trois problèmes coûtent chaque jour des clients et de l'argent aux commerces de Pattaya. Chacun a une solution simple.",
         problem: "Le problème", fix: "La solution",
         p1t: "Les touristes ne vous trouvent pas", p1b: "Ils cherchent sur Google Maps, pas dans la rue. Sans fiche, avec de mauvais horaires ou des photos sombres, ils choisissent le commerce d'à côté.",
-        s1t: "Une fiche Google qui vous fait choisir", s1b: "On crée et on optimise votre fiche Google : photos, horaires, catégories, WhatsApp. En ligne en 48 h.",
-        p2t: "Votre menu est une photo floue", p2b: "Les menus papier se périment. Les touristes étrangers ne les comprennent pas : ils commandent moins ou partent.",
-        s2t: "Un menu QR dans leur langue", s2b: "Ils scannent, lisent, commandent. Jusqu'à 5 langues, avec photos et prix. Un plat à changer ? Un seul message.",
+        s1t: "Une fiche Google qui vous fait choisir", s1b: "On crée et on optimise votre fiche Google : photos, horaires, catégories, WhatsApp. En ligne en 48 h.",
+        p2t: "Votre menu est une photo floue", p2b: "Les menus papier se périment. Les touristes étrangers ne les comprennent pas : ils commandent moins ou partent.",
+        s2t: "Un menu QR dans leur langue", s2b: "Ils scannent, lisent, commandent. Jusqu'à 5 langues, avec photos et prix. Un plat à changer ? Un seul message.",
         p3t: "Pas de site, pas de confiance", p3b: "Les visiteurs regardent votre site avant d'entrer. Sans site, le concurrent qui en a un prend la réservation.",
         s3t: "Un site qui remplit vos tables", s3b: "Vos photos, vos prix, un bouton WhatsApp sur chaque page. Les visiteurs deviennent des clients.",
-        cta: "On règle ça ensemble sur WhatsApp"
+        cta: "On règle ça ensemble sur WhatsApp",
+        flip: "Voir la solution", flipBack: "Revenir au problème"
       },
       work: { eyebrow: "Nos réalisations", title: "7 vrais sites, <em>en ligne maintenant.</em>", lead: "Touchez un site pour l'ouvrir." },
       offers: {
         title: "3 offres. <em>Choisissez la vôtre.</em>",
-        lead: "Prix en bahts. La fiche Google se paie une seule fois. Le site web et le Pack complet : une mise en place puis un abonnement mensuel, hébergement, modifications et mises à jour compris.",
+        lead: "Prix en bahts. La fiche Google se paie une seule fois. Le site web et le Pack complet : une mise en place puis un abonnement mensuel, hébergement, modifications et mises à jour compris.",
         website: { benefit: "Un site construit à partir de vos photos, avec votre menu, un QR code pour chaque table et la réservation WhatsApp. En ligne en quelques jours.", i3: "Votre menu et vos prix en jusqu'à 5 langues, avec un QR code prêt à imprimer pour chaque table" },
         pack: { benefit: "Site web, fiche Google et menu QR réunis. Tout ce qu'un touriste cherche." }
       },
-      svc: { lead: "Trois offres, un seul objectif : plus de clients qui franchissent votre porte. Choisissez, ou laissez-nous vous aider." },
+      svc: { lead: "Trois offres, un seul objectif : plus de clients qui franchissent votre porte. Choisissez, ou laissez-nous vous aider." },
       why2: {
         title: "Conçu pour vous apporter <em>des clients.</em>",
         r1t: "On vient chez vous", r1b: "On vous rencontre à Pattaya, on prend les photos et on s'occupe de tout. Vous ne touchez jamais à la technique.",
-        r2t: "En ligne en quelques jours, pas en quelques mois", r2b: "Envoyez vos photos aujourd'hui. Votre fiche, votre menu ou votre site est en ligne en quelques jours : on vous trouve plus vite.",
-        r3t: "Un message pour tout changer", r3b: "Un nouveau prix, un nouveau plat, une nouvelle photo : envoyez-le sur WhatsApp, c'est fait. Résiliez l'abonnement quand vous voulez."
+        r2t: "En ligne en quelques jours, pas en quelques mois", r2b: "Envoyez vos photos aujourd'hui. Votre fiche, votre menu ou votre site est en ligne en quelques jours : on vous trouve plus vite.",
+        r3t: "Un message pour tout changer", r3b: "Un nouveau prix, un nouveau plat, une nouvelle photo : envoyez-le sur WhatsApp, c'est fait. Résiliez l'abonnement quand vous voulez."
       },
       process: {
         title: "Trois étapes. <em>En ligne en quelques jours.</em>",
@@ -106,7 +108,7 @@
         s2d: "Étape 2 · Jours 2 à 4", s2t: "On construit tout", s2b: "Design, textes, menu QR, Google Maps et toutes les langues de vos clients. Vous validez, on ajuste.",
         s3d: "Étape 3 · En quelques jours", s3t: "Vous êtes en ligne et on vous trouve", s3b: "Votre site et votre fiche sont publiés. Les clients vous trouvent, ouvrent votre menu et vous écrivent."
       },
-      faq: { lead: "Une autre question ? Écrivez-nous sur WhatsApp, on répond en général en quelques minutes." }
+      faq: { lead: "Une autre question ? Écrivez-nous sur WhatsApp, on répond en général en quelques minutes." }
     },
 
     it: {
@@ -135,7 +137,8 @@
         s2t: "Un menù QR nella loro lingua", s2b: "Inquadrano, leggono, ordinano. Fino a 5 lingue, con foto e prezzi. Un piatto da cambiare? Un solo messaggio.",
         p3t: "Niente sito, niente fiducia", p3b: "I visitatori guardano il vostro sito prima di entrare. Senza, la prenotazione va al concorrente che ce l'ha.",
         s3t: "Un sito che riempie i tavoli", s3b: "Le vostre foto, i vostri prezzi, un pulsante WhatsApp in ogni pagina. I visitatori diventano clienti.",
-        cta: "Risolviamolo insieme su WhatsApp"
+        cta: "Risolviamolo insieme su WhatsApp",
+        flip: "Vedi la soluzione", flipBack: "Torna al problema"
       },
       work: { eyebrow: "I nostri lavori", title: "7 siti veri, <em>online ora.</em>", lead: "Toccate un sito per aprirlo." },
       offers: {
@@ -187,7 +190,8 @@
         s2t: "เมนู QR ในภาษาของลูกค้า", s2b: "สแกน อ่าน สั่ง ได้สูงสุด 5 ภาษา พร้อมรูปและราคา อยากเปลี่ยนเมนู ส่งข้อความเดียวพอ",
         p3t: "ไม่มีเว็บไซต์ ลูกค้าก็ไม่มั่นใจ", p3b: "คนส่วนใหญ่เช็กเว็บไซต์ก่อนเดินเข้าร้าน ถ้าไม่มี การจองจะไปตกที่คู่แข่งที่มีเว็บไซต์",
         s3t: "เว็บไซต์ที่ทำให้โต๊ะเต็ม", s3b: "รูปของคุณ ราคาของคุณ และปุ่ม WhatsApp ทุกหน้า ผู้เข้าชมกลายเป็นลูกค้า",
-        cta: "ให้เราช่วยแก้ ทักทาง WhatsApp"
+        cta: "ให้เราช่วยแก้ ทักทาง WhatsApp",
+        flip: "ดูวิธีแก้", flipBack: "กลับไปที่ปัญหา"
       },
       work: { eyebrow: "ผลงานของเรา", title: "7 เว็บไซต์จริง <em>ออนไลน์อยู่ตอนนี้</em>", lead: "แตะที่เว็บไซต์เพื่อเปิดดู" },
       offers: {
@@ -239,7 +243,8 @@
         s2t: "قائمة QR بلغتهم", s2b: "يمسحون ويقرؤون ويطلبون. حتى 5 لغات مع الصور والأسعار. تغيير طبق؟ رسالة واحدة.",
         p3t: "بلا موقع، بلا ثقة", p3b: "الزوار يتفقدون موقعك قبل أن يدخلوا. وبدونه تذهب الحجوزات إلى منافس لديه موقع.",
         s3t: "موقع يملأ طاولاتك", s3b: "صورك وأسعارك وزر واتساب في كل صفحة. الزوار يتحولون إلى زبائن.",
-        cta: "لنصلحها معًا على واتساب"
+        cta: "لنصلحها معًا على واتساب",
+        flip: "اعرض الحل", flipBack: "العودة إلى المشكلة"
       },
       work: { eyebrow: "أعمالنا", title: "7 مواقع حقيقية، <em>على الإنترنت الآن.</em>", lead: "المس أي موقع لفتحه." },
       offers: {

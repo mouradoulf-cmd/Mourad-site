@@ -132,11 +132,11 @@
 
     fr: {
       meta2: {
-        services: { title: "Services: Google, menu QR et sites web | NM Studio", description: "Quatre offres à Pattaya : fiche Google, menu QR, site web, Pack complet. Dès 990 ฿, ou mise en place + abonnement." },
-        pricing: { title: "Tarifs: mise en place puis abonnement | NM Studio", description: "Prix en bahts : site web 5 800 ฿ puis 1 140 ฿/mois, Pack complet 13 300 ฿ puis 3 800 ฿/mois. Google et menu QR en paiement unique." }
+        services: { title: "Services: Google, menu QR et sites web | NM Studio", description: "Quatre offres à Pattaya : fiche Google, menu QR, site web, Pack complet. Dès 990 ฿, ou mise en place + abonnement." },
+        pricing: { title: "Tarifs: mise en place puis abonnement | NM Studio", description: "Prix en bahts : site web 5 800 ฿ puis 1 140 ฿/mois, Pack complet 13 300 ฿ puis 3 800 ฿/mois. Google et menu QR en paiement unique." }
       },
       nav2: { offers: "Offres", services: "Services", pricing: "Tarifs", account: "Mon compte", home: "Accueil", cta: "Discuter sur WhatsApp" },
-    reel: { eyebrow: "Du travail réel", title: "Sept sites, <em>en ligne maintenant.</em>", lead: "Ouvrez-les : de vrais commerces, leurs photos, leurs langues.", hint: "Survolez pour arrêter" },
+    reel: { eyebrow: "Du travail réel", title: "Sept sites, <em>en ligne maintenant.</em>", lead: "Ouvrez-les : de vrais commerces, leurs photos, leurs langues.", hint: "Survolez pour arrêter" },
     cta: { startProject: "Démarrer mon projet", startShort: "Démarrer un projet", quote: "Devis gratuit" },
       hero2: {
         eyebrow: "Studio web · Pattaya, Thaïlande",
@@ -169,11 +169,11 @@
         eyebrow: "Pourquoi NM Studio", title: "De vraies personnes. <em>De vrais résultats.</em>",
         r1t: "On vient à vous", r1b: "On vous rencontre dans votre commerce, partout à Pattaya, on prend les photos et on s'occupe de tout. Vous ne touchez jamais à la technique.",
         r2t: "En ligne en jours, pas en mois", r2b: "Envoyez vos photos aujourd'hui. Votre fiche, votre menu ou votre site est en ligne en quelques jours.",
-        r3t: "Modifs sur WhatsApp, sans blocage", r3b: "Un prix, un plat ou une photo à changer ? Un message suffit. Le site web et le Pack complet incluent un abonnement mensuel résiliable à tout moment."
+        r3t: "Modifs sur WhatsApp, sans blocage", r3b: "Un prix, un plat ou une photo à changer ? Un message suffit. Le site web et le Pack complet incluent un abonnement mensuel résiliable à tout moment."
       },
       reviews: { eyebrow: "Avis", title: "Ce que disent nos clients" },
       calc: {
-        eyebrow: "Petit calcul", title: "Combien de clients <em>perdez-vous ?</em>",
+        eyebrow: "Petit calcul", title: "Combien de clients <em>perdez-vous ?</em>",
         lead: "Bougez les curseurs. Chaque touriste qui ne vous trouve pas entre chez le voisin.",
         spend: "Dépense moyenne par client", missed: "Clients qui ne vous trouvent pas, par semaine",
         month: "Qui passent à côté de vous chaque mois", pays: "Le Pack complet est rentabilisé en",
@@ -188,21 +188,21 @@
       },
       preview: { btn: "Aperçu en direct", title: "Aperçu en direct", desktop: "Ordinateur", mobile: "Mobile", open: "Ouvrir dans un nouvel onglet", loading: "Chargement du site…", close: "Fermer" },
       audience: { i8: "Hôtels", i9: "Maisons d'hôtes", i10: "Location de voitures et motos", i11: "Beach clubs", i12: "Salles de sport", i13: "Agences de voyage", i14: "Cliniques", i15: "Boutiques", sr: "Nous travaillons avec des restaurants, cafés, salons de coiffure, spas et salons de massage, bars, vendeurs de street food, hôtels, maisons d'hôtes, loueurs, beach clubs, salles de sport, agences de voyage, cliniques, boutiques et entreprises locales." },
-      v4: {"title": "Soyez trouvé. <em>Soyez choisi.</em>", "sub": "Sites web, QR menus et fiches Google pour les commerces de Pattaya.", "proof1": "Dès 990 ฿", "proof2": "Fiche Google en 48 h", "proof3": "Sans contrat", "nowShowing": "À l'écran", "offersTitle": "4 offres. <em>Une pour chaque besoin.</em>", "finaleTitle": "Prêt à être <em>visible ?</em>", "contact": "Contact", "follow": "Suivez-nous", "alt1": "La baie de Pattaya la nuit, vue de la colline", "alt2": "Une cuisinière de street food à son stand, le soir", "alt3": "Un salon de coiffure lumineux et moderne", "alt4": "Quelqu'un envoie des photos depuis son téléphone dans la rue", "alt5": "Un restaurant plein en soirée"},
-      v3: { s1: "Votre site web", s2: "Trouvé sur Google Maps", s3: "Votre menu QR", s4: "Des clients à votre porte", play: "Lire", scanT: "Sur ordinateur ?", scanB: "Scannez avec votre téléphone pour discuter sur WhatsApp.", scroll: "Faites défiler" },
-      finale2: { title: "Prêt à être vu ? <em>Écrivez-nous sur WhatsApp.</em>", replies: "Réponse en général en quelques minutes", wa: "Discuter sur WhatsApp" },
+      v4: {"title": "Soyez trouvé. <em>Soyez choisi.</em>", "sub": "Sites web, QR menus et fiches Google pour les commerces de Pattaya.", "proof1": "Dès 990 ฿", "proof2": "Fiche Google en 48 h", "proof3": "Sans contrat", "nowShowing": "À l'écran", "offersTitle": "4 offres. <em>Une pour chaque besoin.</em>", "finaleTitle": "Prêt à être <em>visible ?</em>", "contact": "Contact", "follow": "Suivez-nous", "alt1": "La baie de Pattaya la nuit, vue de la colline", "alt2": "Une cuisinière de street food à son stand, le soir", "alt3": "Un salon de coiffure lumineux et moderne", "alt4": "Quelqu'un envoie des photos depuis son téléphone dans la rue", "alt5": "Un restaurant plein en soirée"},
+      v3: { s1: "Votre site web", s2: "Trouvé sur Google Maps", s3: "Votre menu QR", s4: "Des clients à votre porte", play: "Lire", scanT: "Sur ordinateur ?", scanB: "Scannez avec votre téléphone pour discuter sur WhatsApp.", scroll: "Faites défiler" },
+      finale2: { title: "Prêt à être vu ? <em>Écrivez-nous sur WhatsApp.</em>", replies: "Réponse en général en quelques minutes", wa: "Discuter sur WhatsApp" },
       footer2: { pages: "Pages", legal: "Légal", notice: "Mentions légales", terms: "CGV", privacy: "Confidentialité", cookies: "Cookies" },
       svc: {
         eyebrow: "Services", title: "Tout ce qu'il faut <em>pour être trouvé.</em>",
-        lead: "Cinq offres, un seul objectif : plus de clients qui passent votre porte. Choisissez-en une, ou laissez-nous vous aider.",
-        guideEyebrow: "Vous hésitez ?", guideTitle: "Quelle offre <em>est faite pour vous ?</em>",
+        lead: "Cinq offres, un seul objectif : plus de clients qui passent votre porte. Choisissez-en une, ou laissez-nous vous aider.",
+        guideEyebrow: "Vous hésitez ?", guideTitle: "Quelle offre <em>est faite pour vous ?</em>",
         g1q: "Vous voulez juste apparaître sur Google Maps", g2q: "Les touristes ne comprennent pas votre menu", g5q: "Vous voulez un site web à vous", g3q: "Vous voulez la formule complète, clé en main", g4q: "Vous voulez aussi confier vos réseaux sociaux",
         pick: "Choisir", compareTitle: "Côte à côte", faqTitle: "Questions sur <em>les services.</em>",
-        sq1: "Combien de temps ça prend ?", sa1: "De 48 heures pour une fiche Google à une semaine environ pour un site complet. On commence dès qu'on a vos photos et vos informations.",
-        sq2: "C'est vous qui prenez les photos ?", sa2: "Oui. Les photos professionnelles incluses dans chaque offre sont prises par nous, chez vous.",
-        sq3: "Dans quelles langues peuvent être mon menu et mon site ?", sa3: "Jusqu'à cinq, thaï, anglais, chinois, russe, coréen… celles que parlent vos clients.",
-        sq4: "Dois-je acheter un nom de domaine ou un hébergement ?", sa4: "Non. Avec le site web et le Pack complet, l'hébergement et votre domaine sont inclus dans l'abonnement mensuel. Pour les autres offres, ils font partie du forfait d'entretien optionnel.",
-        sq5: "Pouvez-vous faire valider ma fiche Google ?", sa5: "On configure tout et on demande la validation avec vous. Google la confirme ensuite, en général par téléphone, SMS ou courte vidéo, en quelques jours."
+        sq1: "Combien de temps ça prend ?", sa1: "De 48 heures pour une fiche Google à une semaine environ pour un site complet. On commence dès qu'on a vos photos et vos informations.",
+        sq2: "C'est vous qui prenez les photos ?", sa2: "Oui. Les photos professionnelles incluses dans chaque offre sont prises par nous, chez vous.",
+        sq3: "Dans quelles langues peuvent être mon menu et mon site ?", sa3: "Jusqu'à cinq, thaï, anglais, chinois, russe, coréen… celles que parlent vos clients.",
+        sq4: "Dois-je acheter un nom de domaine ou un hébergement ?", sa4: "Non. Avec le site web et le Pack complet, l'hébergement et votre domaine sont inclus dans l'abonnement mensuel. Pour les autres offres, ils font partie du forfait d'entretien optionnel.",
+        sq5: "Pouvez-vous faire valider ma fiche Google ?", sa5: "On configure tout et on demande la validation avec vous. Google la confirme ensuite, en général par téléphone, SMS ou courte vidéo, en quelques jours."
       },
       price2: {
         yes: "Inclus", no: "Non inclus", billing: "Facturation de l'abonnement", bestFor: "Idéal pour", g1: "Être trouvé sur Maps", g2: "Des menus lisibles par les touristes", g5: "Un site web à vous", g3: "Toute la présence en ligne", g4: "Des réseaux sociaux en pilote automatique", 
@@ -215,15 +215,15 @@
         tableTitle: "Tout <em>comparer.</em>", feature: "Fonctionnalité",
         f1: "Fiche Google Business", f2: "Photos professionnelles", f3: "Menu QR", f4: "Site sur mesure", f5: "Langues", f6: "Réseaux sociaux gérés", f7: "Vidéo mensuelle", f8: "Support prioritaire", f9: "Délai", f10: "Entretien", f11: "Abonnement",
         upTo5: "jusqu'à 5", faqTitle: "Questions sur <em>les tarifs.</em>",
-        pq1: "Comment fonctionnent les prix maintenant ?", pa1: "Le site web et le Pack complet, c'est une mise en place payée aujourd'hui, puis un abonnement mensuel qui démarre à la mise en ligne de votre site. La fiche Google et le menu QR restent en paiement unique, avec un forfait d'entretien optionnel.",
-        pq2: "Que comprennent l'abonnement et le forfait d'entretien ?", pa2: "L'hébergement, votre domaine, les modifications illimitées sur WhatsApp et la mise à jour de votre menu, de vos photos et de votre fiche Google.",
-        pq3: "Puis-je commencer petit et évoluer ensuite ?", pa3: "Bien sûr. Beaucoup de clients commencent par Google ou le menu QR, puis passent à la suite quand leur commerce est prêt.",
-        pq4: "Comment puis-je payer ?", pa4: "Par carte sur la page sécurisée de Stripe, par QR thaï PromptPay, par virement ou en espèces lors de notre rendez-vous. Chaque commande est confirmée avec vous sur WhatsApp, et vous recevez un reçu.",
-        pq5: "Y a-t-il un engagement ?", pa5: "Non. Un abonnement se résilie à tout moment depuis votre compte ou d'un simple message, et les offres en paiement unique se paient une seule fois."
+        pq1: "Comment fonctionnent les prix maintenant ?", pa1: "Le site web et le Pack complet, c'est une mise en place payée aujourd'hui, puis un abonnement mensuel qui démarre à la mise en ligne de votre site. La fiche Google et le menu QR restent en paiement unique, avec un forfait d'entretien optionnel.",
+        pq2: "Que comprennent l'abonnement et le forfait d'entretien ?", pa2: "L'hébergement, votre domaine, les modifications illimitées sur WhatsApp et la mise à jour de votre menu, de vos photos et de votre fiche Google.",
+        pq3: "Puis-je commencer petit et évoluer ensuite ?", pa3: "Bien sûr. Beaucoup de clients commencent par Google ou le menu QR, puis passent à la suite quand leur commerce est prêt.",
+        pq4: "Comment puis-je payer ?", pa4: "Par carte sur la page sécurisée de Stripe, par QR thaï PromptPay, par virement ou en espèces lors de notre rendez-vous. Chaque commande est confirmée avec vous sur WhatsApp, et vous recevez un reçu.",
+        pq5: "Y a-t-il un engagement ?", pa5: "Non. Un abonnement se résilie à tout moment depuis votre compte ou d'un simple message, et les offres en paiement unique se paient une seule fois."
       },
       co2: {
         lead: "Quatre étapes rapides. Mise en place aujourd'hui, abonnement mensuel, sans engagement.", step1: "Offre", step2: "Coordonnées", step3: "Paiement", step4: "Récapitulatif",
-        offerTitle: "Choisissez votre offre", careTitle: "Ajouter un forfait d'entretien ?", careSub: "Hébergement, modifications illimitées et contenu frais. Optionnel, résiliable à tout moment.",
+        offerTitle: "Choisissez votre offre", careTitle: "Ajouter un forfait d'entretien ?", careSub: "Hébergement, modifications illimitées et contenu frais. Optionnel, résiliable à tout moment.",
         careNone: "Non merci", careNoneSub: "Juste l'offre", careMonthly: "Mensuel", careYearly: "Annuel", careYearlySub: "2 mois offerts",
         careSubIncluded: "L'abonnement fait partie de cette offre", careSubName: "Abonnement · mensuel",
         careSubNote: "Hébergement, modifications et support, inclus dans le montant mensuel.",
@@ -238,20 +238,20 @@
         paid: "Payé aujourd'hui",
         metaSuccess: { title: "Paiement reçu | NM Studio", description: "Votre commande NM Studio est confirmée." },
         metaFail: { title: "Paiement non abouti | NM Studio", description: "Votre paiement n'est pas passé. Rien n'a été débité." },
-        metaAccount: { title: "Mon compte | NM Studio", description: "Gérez votre forfait d'entretien NM Studio : factures, carte, changement de formule et résiliation." },
+        metaAccount: { title: "Mon compte | NM Studio", description: "Gérez votre forfait d'entretien NM Studio : factures, carte, changement de formule et résiliation." },
         metaLegal: { title: "Mentions légales, CGV, confidentialité et cookies | NM Studio", description: "Mentions légales, conditions générales de vente, politique de confidentialité et cookies de NM Studio." },
         okEyebrow: "Paiement reçu", okTitle: "Merci, <em>c'est parti.</em>", okLead: "Stripe vous a envoyé votre reçu par e-mail. On vous écrit très vite sur WhatsApp pour récupérer vos photos et démarrer.",
         order: "Commande", next: "La suite", n1t: "On vous écrit sur WhatsApp", n1b: "En général dans l'heure, pour récupérer vos photos et votre menu.", n2t: "On crée tout", n2b: "Vous recevez un aperçu privé pour relire et demander des modifications.", n3t: "Vous êtes en ligne", n3b: "Votre fiche, votre menu ou votre site est activé, et les clients vous trouvent.",
         wa: "Envoyer ma commande sur WhatsApp", account: "Gérer mon forfait", home: "Retour au site",
-        failEyebrow: "Paiement non abouti", failTitle: "Rien n'a été débité. <em>On réessaie ?</em>", failLead: "Ça arrive, carte refusée, délai 3-D Secure dépassé ou fenêtre fermée. Votre commande est conservée.",
+        failEyebrow: "Paiement non abouti", failTitle: "Rien n'a été débité. <em>On réessaie ?</em>", failLead: "Ça arrive, carte refusée, délai 3-D Secure dépassé ou fenêtre fermée. Votre commande est conservée.",
         r1: "Vérifiez votre carte et le code 3-D Secure envoyé par votre banque", r2: "Essayez Apple Pay, Google Pay ou une autre carte", r3: "Ou payez en quelques secondes par QR thaï PromptPay",
-        retry: "Réessayer", promptpay: "Payer par PromptPay", help: "Toujours bloqué ? On règle ça ensemble sur WhatsApp.",
+        retry: "Réessayer", promptpay: "Payer par PromptPay", help: "Toujours bloqué ? On règle ça ensemble sur WhatsApp.",
         accEyebrow: "Mon compte", accTitle: "Votre forfait, <em>entre vos mains.</em>", accLead: "Factures, carte, période de facturation et résiliation. On s'en occupe directement avec vous sur WhatsApp.",
-        portal: "Ouvrir mon espace client", portalNote: "Saisissez l'e-mail utilisé pour payer : Stripe vous envoie un lien de connexion unique. Aucun mot de passe.",
+        portal: "Ouvrir mon espace client", portalNote: "Saisissez l'e-mail utilisé pour payer : Stripe vous envoie un lien de connexion unique. Aucun mot de passe.",
         a1: "Télécharger factures et reçus (PDF)", a2: "Mettre à jour votre carte ou moyen de paiement", a3: "Passer du mensuel à l'annuel (et inversement)", a4: "Résilier votre forfait d'entretien, à tout moment",
-        noPortal: "Écrivez-nous sur WhatsApp : factures, changements ou résiliation, on s'en occupe tout de suite.",
-        upTitle: "Envie d'aller plus loin ?", upBody: "Passez au Pack complet quand votre commerce est prêt.", upBtn: "Voir les offres",
-        legalEyebrow: "Légal", legalTitle: "Les petites lignes, <em>en clair.</em>", legalNote: "Les textes juridiques ci-dessous sont rédigés en anglais.", updated: "Dernière mise à jour : 3 octobre 2026", toc: "Sur cette page"
+        noPortal: "Écrivez-nous sur WhatsApp : factures, changements ou résiliation, on s'en occupe tout de suite.",
+        upTitle: "Envie d'aller plus loin ?", upBody: "Passez au Pack complet quand votre commerce est prêt.", upBtn: "Voir les offres",
+        legalEyebrow: "Légal", legalTitle: "Les petites lignes, <em>en clair.</em>", legalNote: "Les textes juridiques ci-dessous sont rédigés en anglais.", updated: "Dernière mise à jour : 3 octobre 2026", toc: "Sur cette page"
       },
       trust: { secure: "Paiement sécurisé par Stripe", methods: "Carte · Apple Pay · Google Pay · PromptPay", noCard: "Vos données de carte ne passent jamais par ce site" }
     },
