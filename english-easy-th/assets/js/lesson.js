@@ -33,6 +33,7 @@ const steps = {
 /* ---------- lesson plan ---------- */
 function planLesson(L) {
   const ws = shuffle(L.words || []), ss = shuffle(L.sentences || []), out = [];
+  if (L.note) out.push({ type: "note", note: L.note, lesson: L });
   if (L.words.length) out.push({ type: "intro", words: L.words, lesson: L });
   ws.slice(0, 8).forEach(w => out.push(steps.en2th(w)));
   if (ws.length >= 4 && !ws[0].letter) out.splice(Math.min(4, out.length), 0, steps.match(ws.slice(0, 5)));
@@ -42,6 +43,7 @@ function planLesson(L) {
   const take = ws.length ? Math.min(ss.length, 3) : Math.min(ss.length, 6);
   ss.slice(0, take).forEach(s => { out.push(steps.order(s)); if (!ws.length) { out.push(steps.sentListen(s)); } else out.push(steps.sentChoice(s)); });
   if (ws.length && ss.length === 0) { /* words only: add a typing round */ ws.slice(0, 3).forEach(w => out.push(steps.type(w))); }
+  if (EE.canListen() && EE.isPro() && ss.length && !(ws[0] && ws[0].letter)) out.push({ type: "speak", prompt: "พูดประโยคนี้ออกเสียง", sent: ss[0], answer: ss[0].en });
   return out;
 }
 function planTraining(list, n) {
@@ -49,6 +51,7 @@ function planTraining(list, n) {
   w.forEach((x, i) => { const r = i % 4; out.push(r === 0 ? steps.en2th(x) : r === 1 ? steps.listen(x) : r === 2 ? steps.th2en(x) : steps.type(x)); });
   return out;
 }
+EE.canListen = () => !!(window.SpeechRecognition || window.webkitSpeechRecognition);
 EE.planTraining = planTraining; EE.steps = steps;
 
 /* ---------- player ---------- */
@@ -56,7 +59,7 @@ EE.play = function (cfg) {
   /* cfg: { title, steps, mode:'lesson'|'train'|'review', color, onExit(), onFinish(result) } */
   const S = EE.state();
   const root = $("#player"); root.hidden = false; document.body.classList.add("playing");
-  const plan = cfg.steps.slice(), total = plan.filter(s => s.type !== "intro").length;
+  const plan = cfg.steps.slice(), total = plan.filter(s => s.type !== "intro" && s.type !== "note").length;
   const P = { i: 0, wrong: 0, right: 0, firstTry: 0, queue: plan, retried: new Set(), started: Date.now(), xp: 0, answered: 0, advance: null };
 
   root.innerHTML = `<div class="pl__top"><button class="pl__x" aria-label="ออกจากบทเรียน">✕</button><div class="pl__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"><i></i></div><div class="pl__hearts" aria-label="หัวใจ"></div></div>
@@ -117,6 +120,37 @@ EE.play = function (cfg) {
     stage.innerHTML = `<div class="st st--intro"><h2>คำที่จะได้เรียน</h2><p class="st__sub">แตะที่ไอคอนเพื่อฟังเสียงอ่าน</p><div class="cards">${st.words.map(w =>
       `<div class="card w-card"><span class="w-card__e">${w.emoji || (w.letter ? w.en : "💬")}</span><div class="w-card__t"><b>${esc(w.letter ? w.en + " — " + w.ex : w.en)}</b><span>${esc(w.letter ? w.th + " · " + w.exTh : w.th)}</span></div>${speakBtn(EE.sayOf(w))}</div>`).join("")}</div></div>`;
     bindSpeak(stage);
+  }
+
+  function renderNote(st) {
+    const n = st.note; setFooter("idle", "", "เข้าใจแล้ว"); go.disabled = false; go.onclick = next; go.className = "btn btn--primary pl__go";
+    stage.innerHTML = `<div class="st st--note"><p class="eyebrow">📘 ไวยากรณ์ / เรียนรู้</p><h2>${esc(n.t)}</h2><div class="note__b">${n.body}</div>${n.ex && n.ex.length ? `<div class="note__ex">${n.ex.map(e => `<div class="note__e">${speakBtn(e[0])}<div><b>${esc(e[0])}</b><span>${esc(e[1])}</span></div></div>`).join("")}</div>` : ""}</div>`;
+    bindSpeak(stage);
+  }
+
+  function renderSpeak(st) {
+    setFooter("idle", "", ""); go.hidden = true; let tries = 0;
+    stage.innerHTML = `<div class="st st--speak"><p class="eyebrow">🎤 ฝึกพูด</p><h2 class="st__q">${esc(st.prompt)}</h2><div class="st__big"><span class="st__word st__word--s">${esc(st.sent.en)}</span>${speakBtn(st.sent.en)}</div><p class="st__sub">${esc(st.sent.th)}</p>
+      <div class="mic"><button class="mic__b" id="mic" aria-label="กดเพื่อพูด"><span>🎤</span><i></i><i></i><i></i></button><p class="mic__t" id="mic-t">แตะไมค์แล้วพูดประโยคด้านบน</p></div><button class="linkbtn" id="mic-skip">ข้าม</button></div>`;
+    bindSpeak(stage);
+    const t = $("#mic-t", stage), mic = $("#mic", stage);
+    $("#mic-skip", stage).onclick = () => { P.i++; go.hidden = false; show(); };
+    const Rec = window.SpeechRecognition || window.webkitSpeechRecognition; let rec = null;
+    mic.onclick = () => {
+      if (rec) { try { rec.stop(); } catch (e) {} return; }
+      try { rec = new Rec(); rec.lang = "en-US"; rec.interimResults = false; rec.maxAlternatives = 3; } catch (e) { t.textContent = "อุปกรณ์นี้ใช้ไมค์ไม่ได้ — กดข้ามได้เลย"; return; }
+      mic.classList.add("on"); t.textContent = "กำลังฟัง… พูดได้เลย"; EE.sfx.tap();
+      rec.onresult = ev => {
+        const alts = Array.from(ev.results[0]).map(a => a.transcript), want = norm(st.sent.en).split(" ");
+        let best = 0; alts.forEach(a => { const got = norm(a).split(" "); const hit = want.filter(w => got.indexOf(w) >= 0).length; best = Math.max(best, hit / want.length); });
+        mic.classList.remove("on"); rec = null;
+        if (best >= .7) { P.answered++; P.right++; P.xp += 10; EE.addXp && 0; S.stats.ok++; EE.sfx.win(); EE.fx && EE.fx.shock(mic); EE.burst && EE.burst(innerWidth / 2, innerHeight / 2); EE.save(); progress(); t.innerHTML = "✅ ออกเสียงได้ดีมาก! <small>ได้ยินว่า: “" + esc(alts[0]) + "”</small>"; go.hidden = false; setFooter("ok", "<b>ออกเสียงได้ชัด!</b> <span>+10 XP</span>", "ต่อไป"); go.disabled = false; go.onclick = next; mic.disabled = true; }
+        else { tries++; EE.sfx.no(); t.innerHTML = "ได้ยินว่า: “" + esc(alts[0]) + "” — ลองอีกครั้งนะ 💪"; }
+      };
+      rec.onerror = ev => { mic.classList.remove("on"); rec = null; t.textContent = ev.error === "not-allowed" ? "ยังไม่ได้อนุญาตให้ใช้ไมค์ — กดข้ามได้เลย" : "ไม่ได้ยินเสียง ลองอีกครั้ง หรือกดข้าม"; };
+      rec.onend = () => { mic.classList.remove("on"); rec = null; };
+      try { rec.start(); } catch (e) { rec = null; mic.classList.remove("on"); }
+    };
   }
 
   function renderChoice(st) {
@@ -192,7 +226,7 @@ EE.play = function (cfg) {
     go.hidden = false; go.disabled = true; go.onclick = null;
     if (P.i >= P.queue.length) return finish();
     const st = P.queue[P.i]; stage.scrollTop = 0; stage.classList.remove("enter"); void stage.offsetWidth; stage.classList.add("enter");
-    ({ intro: renderIntro, choice: renderChoice, type: renderType, match: renderMatch, order: renderOrder }[st.type])(st);
+    ({ intro: renderIntro, note: renderNote, speak: renderSpeak, choice: renderChoice, type: renderType, match: renderMatch, order: renderOrder }[st.type])(st);
   }
 
   /* ---------- finish ---------- */

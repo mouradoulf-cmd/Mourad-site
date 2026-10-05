@@ -60,6 +60,7 @@ setInterval(watch, 400);
 
 /* mascot eyes follow the pointer + music button + in-lesson effects */
 addEventListener("pointermove", function (e) { var x = (e.clientX / innerWidth - .5) * 6, y = (e.clientY / innerHeight - .5) * 4; document.documentElement.style.setProperty("--mx", x.toFixed(2) + "px"); document.documentElement.style.setProperty("--my", y.toFixed(2) + "px"); }, { passive: true });
+var bl = document.querySelector(".brand__logo"); if (bl && window.EE && EE.logo) bl.innerHTML = EE.logo(34);
 var mus = document.getElementById("mus");
 if (mus && window.EE) {
   var paint = function () { var st = EE.state().settings, on = st.music && st.sound; mus.textContent = on ? "🎵" : "🔇"; mus.setAttribute("aria-pressed", on ? "true" : "false"); mus.title = on ? "ปิดดนตรี" : "เปิดดนตรี"; };

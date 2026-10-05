@@ -45,11 +45,11 @@ function home() {
     <div class="path">`;
   EE.UNITS.forEach((u, ui) => {
     const lessons = u.lessons, unitDone = lessons.every(l => S.done[l.id]);
-    h += `<div class="unit" style="--uc:${u.color};--ud:${u.dark}"><div class="unit__banner"><div><span class="unit__n">หน่วยที่ ${ui + 1} · ${esc(u.sub)}</span><h2>${u.emoji} ${esc(u.title)}</h2><p>${esc(u.intro)}</p></div>${unitDone ? '<span class="unit__ok">✓ ผ่านแล้ว</span>' : ""}</div><div class="unit__nodes">`;
+    h += `<div class="unit" style="--uc:${u.color};--ud:${u.dark}"><div class="unit__banner"><div><span class="unit__n">หน่วยที่ ${ui + 1} · ${esc(u.sub)}</span><h2>${u.emoji} ${esc(u.title)}</h2><p>${esc(u.intro)}</p></div>${unitDone ? '<span class="unit__ok">✓ ผ่านแล้ว</span>' : (ui >= EE.freeUnits() && !EE.isPro()) ? '<span class="unit__ok unit__pro">👑 PRO</span>' : ""}</div><div class="unit__nodes">`;
     lessons.forEach((l, li) => {
       const done = S.done[l.id], unl = EE.unlocked(l), isCur = cur === l, off = [0, 46, 70, 46, 0, -46, -70, -46][(li + ui * 3) % 8];
-      const st = done ? "done" : isCur ? "cur" : unl ? "open" : "lock";
-      h += `<div class="node-wrap" style="--off:${off}px"><button class="node node--${st}" data-lesson="${l.id}" aria-label="${esc(l.title)}${done ? " — " + done + " ดาว" : unl ? "" : " (ล็อก)"}">${st === "lock" ? "🔒" : st === "done" ? "★" : u.emoji}</button>${isCur ? '<span class="node__start">เริ่ม!</span>' : ""}<span class="node__t">${esc(l.title)}</span>${done ? `<span class="node__s">${"★".repeat(done)}${"☆".repeat(3 - done)}</span>` : ""}</div>`;
+      const proL = EE.proLocked(l), st = done ? "done" : isCur ? "cur" : unl ? "open" : proL ? "pro" : "lock";
+      h += `<div class="node-wrap" style="--off:${off}px"><button class="node node--${st}" data-lesson="${l.id}" aria-label="${esc(l.title)}${done ? " — " + done + " ดาว" : unl ? "" : " (ล็อก)"}">${st === "lock" ? "🔒" : st === "pro" ? "👑" : st === "done" ? "★" : u.emoji}</button>${isCur ? '<span class="node__start">เริ่ม!</span>' : ""}<span class="node__t">${esc(l.title)}</span>${done ? `<span class="node__s">${"★".repeat(done)}${"☆".repeat(3 - done)}</span>` : ""}</div>`;
     });
     h += "</div></div>";
   });
@@ -58,6 +58,7 @@ function home() {
   const gc = $("#go-cur"); if (gc) gc.onclick = () => EE.startLesson(cur);
   $$(".node").forEach(b => b.addEventListener("click", () => {
     const l = EE.lessonById(b.dataset.lesson);
+    if (EE.proLocked(l)) { EE.sfx.coin(); location.hash = "#/pro"; return; }
     if (!EE.unlocked(l)) { EE.toast("เรียนบทก่อนหน้าให้จบก่อนนะ 🔒", "warn"); EE.sfx.no(); return; }
     sheet(l);
   }));
@@ -172,7 +173,7 @@ function profile() {
   const lv = EE.level(), xpIn = S.xp % 100, acc = Math.round(S.stats.ok / Math.max(1, S.stats.ok + S.stats.ko) * 100);
   main().innerHTML = `<section class="page"><div class="prof"><div class="prof__m">${EE.mascot("happy", 100)}</div><div><h1>${esc(S.name || "ผู้เรียน")}</h1><p>ระดับ ${lv} · ${S.xp} XP</p><div class="xpbar" aria-label="ความคืบหน้าระดับ"><i style="width:${xpIn}%"></i></div><button class="linkbtn" id="p-name">เปลี่ยนชื่อ</button></div></div>
     <div class="stats-grid"><div><b>🔥 ${S.streak}</b><span>สตรีค (สูงสุด ${S.best})</span></div><div><b>📘 ${S.stats.lessons}</b><span>บทที่จบ</span></div><div><b>🎯 ${acc}%</b><span>ความแม่นยำ</span></div><div><b>💎 ${S.gems}</b><span>เพชร</span></div></div>
-    <h2 class="sec">เหรียญรางวัล</h2><div class="badges">${BADGES.map(b => `<div class="badge ${S.badges[b[0]] ? "on" : ""}" title="${esc(b[2])}"><span>${b[1]}</span><b>${esc(b[2])}</b></div>`).join("")}</div>
+    <div class="prof__links"><a class="btn btn--gold" href="#/pro">👑 ${EE.isPro() ? "สถานะ Pro" : "อัปเกรดเป็น Pro"}</a><a class="btn btn--ghost" href="#/cert">🎓 ใบรับรอง</a></div><h2 class="sec">เหรียญรางวัล</h2><div class="badges">${BADGES.map(b => `<div class="badge ${S.badges[b[0]] ? "on" : ""}" title="${esc(b[2])}"><span>${b[1]}</span><b>${esc(b[2])}</b></div>`).join("")}</div>
     <h2 class="sec">ตั้งค่า</h2><div class="settings"><label class="sw"><input type="checkbox" id="o-sound" ${S.settings.sound ? "checked" : ""}><span>เสียงเอฟเฟกต์</span></label><label class="sw"><input type="checkbox" id="o-slow" ${S.settings.slow ? "checked" : ""}><span>อ่านออกเสียงช้าลง</span></label>
       <label class="sw"><input type="checkbox" id="o-demo" ${S.settings.demo ? "checked" : ""}><span>โหมดเดโม: ปลดล็อกทุกบท & หัวใจไม่จำกัด</span></label>
       <label class="field">เป้าหมายรายวัน<select id="o-goal" class="inp">${[10, 20, 30, 50].map(g => `<option value="${g}" ${S.goal === g ? "selected" : ""}>${g} XP</option>`).join("")}</select></label>
@@ -187,8 +188,9 @@ function profile() {
 }
 
 /* ---------- router ---------- */
+function cert() { EE.certView(main()); }
 function pro() { EE.renderOffer(main(), () => { location.hash = "#/shop"; }, false); }
-const ROUTES = { home, alphabet, train, games, word, tips, shop, profile, pro };
+const ROUTES = { home, alphabet, train, games, word, tips, shop, profile, pro, cert };
 EE.route = function () {
   if (EE.stopGame) { EE.stopGame(); EE.stopGame = null; }
   const h = location.hash.replace(/^#\/?/, "") || "home", [a, b] = h.split("/");

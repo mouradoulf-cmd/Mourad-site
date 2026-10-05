@@ -19,7 +19,7 @@ const dayDiff = (a, b) => Math.round((new Date(b + "T00:00:00") - new Date(a + "
 const KEY = "ee1";
 const MAX_HEARTS = 5, HEART_MS = 30 * 60 * 1000;
 const def = () => ({ name: "", goal: 20, xp: 0, gems: 20, hearts: MAX_HEARTS, heartTs: 0, streak: 0, best: 0, lastDay: "", freeze: 0,
-  done: {}, mistakes: {}, learned: {}, today: { d: dayKey(), xp: 0 }, stats: { ok: 0, ko: 0, lessons: 0, perfect: 0 }, favs: [],
+  unlockTo: 0, interests: [], gender: "", minor: false, placement: null, done: {}, mistakes: {}, learned: {}, today: { d: dayKey(), xp: 0 }, stats: { ok: 0, ko: 0, lessons: 0, perfect: 0 }, favs: [],
   settings: { sound: true, slow: false, demo: false, music: true }, pro: false, why: "", age: "", level: "", onboarded: false, badges: {}, bestSpeed: 0, bestMemory: 0 });
 let S;
 function load() { try { S = Object.assign(def(), JSON.parse(localStorage.getItem(KEY) || "{}")); S.settings = Object.assign(def().settings, S.settings); S.stats = Object.assign(def().stats, S.stats); } catch (e) { S = def(); } tick(); }
@@ -59,11 +59,15 @@ EE.clearMistake = w => { const k = w.en; if (S.mistakes[k]) { S.mistakes[k]--; i
 
 /* lesson progress */
 EE.isDone = id => !!S.done[id];
+EE.isPro = () => !!(S.pro || S.settings.demo);
+EE.freeUnits = () => (EE.CONFIG && EE.CONFIG.FREE_UNITS != null) ? EE.CONFIG.FREE_UNITS : 99;
+EE.proLocked = lesson => lesson.ui >= EE.freeUnits() && !EE.isPro();
 EE.unlocked = lesson => {
+  if (EE.proLocked(lesson)) return false;
   if (EE.noLimit()) return true;
-  const i = EE.LESSONS.indexOf(lesson); return i === 0 || !!S.done[EE.LESSONS[i - 1].id];
+  const i = EE.LESSONS.indexOf(lesson); return i === 0 || i <= (S.unlockTo || 0) || !!S.done[EE.LESSONS[i - 1].id];
 };
-EE.current = () => EE.LESSONS.find(l => !S.done[l.id]) || null;
+EE.current = () => { const from = S.unlockTo || 0; return EE.LESSONS.find((l, i) => i >= from && !S.done[l.id] && !EE.proLocked(l)) || EE.LESSONS.find(l => !S.done[l.id] && !EE.proLocked(l)) || null; };
 
 /* ---------- toast ---------- */
 EE.toast = (msg, kind) => {
@@ -168,6 +172,10 @@ EE.burst = (x, y, col) => {
   const ps = Array.from({ length: 36 }, () => { const a = Math.random() * 6.283, v = Math.random() * 6 + 2; return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, s: Math.random() * 3 + 1.5, c: cols[Math.floor(Math.random() * cols.length)], l: 1 }; });
   (function step() { c.clearRect(0, 0, W, H); let alive = 0; ps.forEach(p => { p.x += p.vx; p.y += p.vy; p.vx *= .95; p.vy *= .95; p.l -= .025; if (p.l > 0) { alive++; c.globalAlpha = p.l; c.fillStyle = p.c; c.shadowColor = p.c; c.shadowBlur = 8; c.beginPath(); c.arc(p.x, p.y, p.s, 0, 6.283); c.fill(); } }); alive ? requestAnimationFrame(step) : cv.remove(); })();
 };
+
+
+/* brand logo (inline SVG, same artwork as assets/img/logo.svg) */
+EE.logo = (size) => `<svg class="logo" width="${size || 40}" height="${size || 40}" viewBox="0 0 100 100" role="img" aria-label="English Easy"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset=".55" stop-color="#a21caf"/><stop offset="1" stop-color="#ec4899"/></linearGradient><linearGradient id="lh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><path d="M32 6h36c14 0 26 12 26 26v28c0 14-12 26-26 26H40L14 96l6-18C11 73 6 66 6 58V32C6 18 18 6 32 6z" fill="url(#lg)"/><path d="M32 6h36c14 0 26 12 26 26v8H6v-8C6 18 18 6 32 6z" fill="url(#lh)"/><g fill="#fff"><rect x="31" y="27" width="10" height="46" rx="5"/><rect x="31" y="27" width="38" height="10" rx="5"/><rect x="31" y="45" width="28" height="10" rx="5"/><rect x="31" y="63" width="38" height="10" rx="5"/></g><path class="logo__star" d="M76 17l2.6 6.4L85 26l-6.4 2.6L76 35l-2.6-6.4L67 26l6.4-2.6z" fill="#fde047"/></svg>`;
 
 /* ---------- mascot (original SVG, 3 moods) ---------- */
 EE.mascot = (mood, size) => {

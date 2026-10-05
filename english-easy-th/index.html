@@ -12,13 +12,13 @@
 <link rel="apple-touch-icon" href="assets/img/icon-192.png">
 <link rel="preload" href="assets/fonts/noto-sans-thai-thai.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/app.css?v=7">
+<link rel="stylesheet" href="assets/css/app.css?v=9">
 </head>
 <body>
 <a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
 <div id="app">
   <header class="top">
-    <a class="brand" href="#/home" aria-label="English Easy — หน้าหลัก"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8C26 8 10 24 10 46c0 14 7 25 18 32l-5 15 20-11c2 .3 5 .4 7 .4 24 0 40-16 40-36S74 8 50 8z" fill="#6c5ce7"/><text x="50" y="58" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="900" font-size="34" fill="#fff">EZ</text></svg><span>English <b>Easy</b></span></a>
+    <a class="brand" href="#/home" aria-label="English Easy — หน้าหลัก"><span class="brand__logo"></span><span class="brand__t">English<b>Easy</b></span></a>
     <div class="stats" aria-label="สถิติของคุณ">
       <span class="stat" title="สตรีค (วันต่อเนื่อง)">🔥 <span id="st-streak">0</span></span>
       <span class="stat" title="เพชร">💎 <span id="st-gems">0</span></span>
@@ -42,13 +42,16 @@
 <div id="sheet" class="sheet" hidden></div>
 <div id="toasts" aria-live="polite"></div>
 <button id="mus" class="mus" aria-label="ดนตรีพื้นหลัง" aria-pressed="true">🎵</button>
-<script src="assets/js/config.js?v=1"></script>
-<script src="assets/js/data.js?v=1"></script>
-<script src="assets/js/core.js?v=4"></script>
-<script src="assets/js/lesson.js?v=3"></script>
-<script src="assets/js/pro.js?v=1"></script>
-<script src="assets/js/onb.js?v=3"></script>
-<script src="assets/js/views.js?v=3"></script>
+<script src="assets/js/config.js?v=2"></script>
+<script src="assets/js/data.js?v=2"></script>
+<script src="assets/js/data2.js?v=1"></script>
+<script src="assets/js/data3.js?v=1"></script>
+<script src="assets/js/core.js?v=5"></script>
+<script src="assets/js/lesson.js?v=5"></script>
+<script src="assets/js/pro.js?v=2"></script>
+<script src="assets/js/cert.js?v=1"></script>
+<script src="assets/js/onb.js?v=4"></script>
+<script src="assets/js/views.js?v=4"></script>
 <script src="assets/js/fx.js?v=2"></script>
 <script type="module" src="assets/js/gl.js?v=2"></script>
 <script>if("serviceWorker"in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})</script>
