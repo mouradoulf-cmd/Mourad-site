@@ -65,7 +65,14 @@ const hv = $(".hero__video"), hp = $(".hero__pause");
 if (hv) {
   const still = reduce || (navigator.connection && navigator.connection.saveData);
   if (still) { hv.removeAttribute("autoplay"); hv.pause(); hp && (hp.hidden = true); }
-  else { const pl = hv.play(); pl && pl.catch(() => {}); }
+  else {
+    const setBtn = paused => { if (!hp) return; hp.setAttribute("aria-pressed", String(paused)); hp.setAttribute("aria-label", paused ? t("vid_play", "Lire la vidéo") : t("vid_pause", "Mettre la vidéo en pause")); };
+    const go = () => { const pl = hv.play(); if (pl && pl.catch) pl.catch(() => setBtn(true)); };   /* autoplay refused (low-power mode…): show the poster + a play button */
+    hv.muted = true; go();
+    hv.addEventListener("loadeddata", () => { if (hv.paused && hp && hp.getAttribute("aria-pressed") !== "true") go(); }, { once: true });
+    hv.addEventListener("playing", () => setBtn(false));
+    hv.addEventListener("error", () => { if (hp) hp.hidden = true; });   /* unsupported codec: poster stays, no broken UI */
+  }
   hp && hp.addEventListener("click", () => { const p = hv.paused; p ? hv.play() : hv.pause(); hp.setAttribute("aria-pressed", String(!p)); hp.setAttribute("aria-label", p ? t("vid_pause","Mettre la vidéo en pause") : t("vid_play","Lire la vidéo")); });
   let inV = true; if ("IntersectionObserver" in window) new IntersectionObserver(es => { inV = es[0].isIntersecting; if (still || (hp && hp.getAttribute("aria-pressed") === "true")) return; inV ? hv.play().catch(() => {}) : hv.pause(); }, { threshold: .05 }).observe(hv);
   document.addEventListener("visibilitychange", () => { if (document.hidden) hv.pause(); else if (!still && inV && hp.getAttribute("aria-pressed") !== "true") hv.play().catch(() => {}); });
