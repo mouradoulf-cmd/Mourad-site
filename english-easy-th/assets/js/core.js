@@ -109,7 +109,9 @@ EE.sfx = {
   no() { tone(220, .25, "sawtooth", .06, 0, 110); },
   tap() { tone(520, .05, "sine", .05); },
   win() { [523, 659, 784, 1047].forEach((f, i) => tone(f, .28, "triangle", .08, i * .11)); },
-  coin() { tone(1200, .08, "square", .04); tone(1600, .14, "square", .04, .07); }
+  coin() { tone(1200, .08, "square", .04); tone(1600, .14, "square", .04, .07); },
+  combo(n) { const b = 523 * Math.pow(1.122, Math.min(n || 0, 8)); tone(b, .1, "triangle", .09); tone(b * 1.5, .16, "triangle", .07, .07); },
+  whoosh() { tone(300, .25, "sawtooth", .03, 0, 1200); }
 };
 
 /* ---------- confetti (canvas, tiny) ---------- */

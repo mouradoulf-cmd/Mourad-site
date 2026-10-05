@@ -209,3 +209,42 @@ noscript .ns{padding:30px;text-align:center}
 .brand span{white-space:nowrap}
 @media(max-width:480px){.brand span{display:none}.stat{padding:4px 8px;font-size:.85rem}.stats{gap:4px}}
 @media(max-width:480px){.stat.desk-xp{display:none}}
+
+/* ===== Theme "arcade violet" (dark purple + gold, glow, float) ===== */
+:root{--brand:#8b5cf6;--brand-d:#5b2fc4;--brand-l:rgba(139,92,246,.22);--sun:#fbbf24;--sun-d:#ca8a04;--good:#10b981;--good-d:#067a56;--bad:#ef4444;--bad-d:#a61e1e;
+--ink:#f4edff;--mut:#b9a6e0;--line:#3b1d6e;--bg:#1a0a2e;--card:#2d1654;--uc:#8b5cf6;--ud:#5b2fc4;--sh:0 12px 34px -14px rgba(0,0,0,.7)}
+body{background:radial-gradient(1000px 600px at 15% -10%,#3b1d6e 0,transparent 60%),radial-gradient(800px 500px at 100% 100%,#4a1a6b 0,transparent 55%),#1a0a2e;background-attachment:fixed;color:var(--ink)}
+.top{background:rgba(26,10,46,.85);border-color:var(--line)}
+.stat,.mini-stats div,.quick a,.alpha__c,.opt,.mt,.tk,.spk,.vocab__i,.tip,.stats-grid div,.badge,.settings,.res__i,.game-end,.alpha__d,.gems-box,.card,.inp,.goal span,.btn--ghost,.wotd__ex{background:var(--card);border-color:var(--line);color:var(--ink)}
+.nav{background:#1f0d3a;border-color:var(--line)}.nav a.is-on{background:var(--brand-l);border-color:#6d3fd0}
+.btn--ghost{box-shadow:0 4px 0 #1a0a2e;color:#d8c8ff}
+.opt,.mt,.tk,.alpha__c{box-shadow:0 4px 0 #1a0a2e}
+.opt.is-on,.mt.is-on{background:#4a2a8a}.opt.is-good{background:rgba(16,185,129,.22)}.opt.is-bad,.mt.is-bad{background:rgba(239,68,68,.22)}
+.inp.is-good{background:rgba(16,185,129,.2)}.inp.is-bad{background:rgba(239,68,68,.2)}
+.tk--used{background:#1a0a2e}.tip__ex{background:#1f0d3a}
+.player,.sheet__card,.pl__foot{background:#1a0a2e;color:var(--ink)}
+.pl__foot{border-color:var(--line)}.pl__foot:has(.pl__fb--ok){background:#0d3a2c}.pl__foot:has(.pl__fb--bad){background:#4a1420}
+.pl__fb--ok{color:#6ee7b7}.pl__fb--bad{color:#fca5a5}
+.sheet__x{background:var(--card);color:var(--ink)}.sheet h2{color:var(--ink)}
+.hero-card{background:linear-gradient(135deg,#6d28d9,#a855f7 60%,#ec4899);box-shadow:0 0 50px -10px rgba(168,85,247,.6)}
+.hero-card .btn--primary{background:linear-gradient(135deg,#ca8a04,#eab308);color:#fff;box-shadow:0 5px 0 #8a6100,0 0 24px #eab30866}
+.btn--gold{background:linear-gradient(135deg,#ca8a04,#eab308);color:#fff;box-shadow:0 5px 0 #8a6100,0 0 20px #eab30855}
+.node{box-shadow:0 7px 0 var(--ud),0 0 26px -4px rgba(139,92,246,.7)}.node--lock{background:#3b2a5c;box-shadow:0 7px 0 #241540;color:#8f7bbd}
+.node--done{background:linear-gradient(135deg,#ca8a04,#fbbf24);box-shadow:0 7px 0 #8a6100,0 0 26px -4px #fbbf24aa}
+.node__start{background:var(--card);border-color:var(--line);color:#fbbf24}.node__start::after{background:var(--card);border-color:var(--line)}
+.node__t{color:var(--mut)}
+.wotd{background:linear-gradient(135deg,#3b1d6e,#2d1654);border-color:#6d3fd0}.wotd h2{color:#fbbf24}
+.premium{background:#241046}.mascot{filter:drop-shadow(0 0 22px rgba(168,85,247,.55))}
+.mascot,.hero-card__m .mascot{animation:float 3.2s ease-in-out infinite}
+.pl__bar,.xpbar{background:#3b1d6e}
+.brand b,.alpha__c b,.vocab__i b,.res__i b,.eyebrow,.linkbtn{color:#c4a8ff}
+.spk--xl{background:linear-gradient(135deg,#8b5cf6,#ec4899);animation:glow 2s ease-in-out infinite alternate}
+.stars .on{color:#fbbf24;filter:drop-shadow(0 0 10px #fbbf24)}
+.toast{background:#2d1654;border:1px solid #6d3fd0}
+.fine,.lead{color:var(--mut)}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes glow{from{box-shadow:0 6px 0 var(--ud),0 0 14px #ec489955}to{box-shadow:0 6px 0 var(--ud),0 0 38px #ec4899aa}}
+.btn:hover:not(:disabled){filter:brightness(1.1)}.opt:active,.node:active{transform:translateY(4px) scale(.98)}
+.stat span:first-child{display:inline-block}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.stat.pop{animation:pop .5s}
