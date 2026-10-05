@@ -18,8 +18,8 @@ Mono (annotations techniques). Pairing display/texte/mono « ingénierie » ; po
 latin, `font-display: swap`, 1 préchargement critique) : pas de requête tierce, pas de saut de mise en page.
 
 **Micro-détails.** Grille 12 colonnes stricte (titre = col. 1-7, texte = col. 8-12 sur toutes les sections),
-échelle d'espacement unique, bordures fines `1px`, ombres douces, verre léger (header sticky), grain de film
-statique (5 %, sans blend-mode → coût GPU nul, désactivé sous 860 px), dégradés très discrets.
+échelle d'espacement unique, bordures fines `1px`, ombres douces, verre léger (header sticky), dégradés très
+discrets. (Un grain de film plein écran avait été testé puis retiré : il coûtait des images/s au défilement.)
 
 ## 2. Animations — chacune a une justification
 
