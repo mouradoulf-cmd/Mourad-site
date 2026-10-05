@@ -109,3 +109,13 @@ scenes, CSS 3D, canvas starfield, optional French voice-over via
 `speechSynthesis`, captions, scrubber) that ends on the offers with buy
 buttons. Prices/links/codes live in the `CONFIG` block of `assets/js/main.js`.
 Keep the honesty rules: no income promises, "free" = free tiers with quotas.
+
+## Atelier des Façadiers (refonte) — reference for B2B / industry sites with interactive product tools
+
+`atelier-des-facadiers/` is a 7-page French rebuild of atelierdesfacadiers.com
+(real content, photos and contacts from the client's site). Direction "plan
+d'architecte": limestone + ink, logo navy `#244760`, signal orange, Archivo (wide)
++ Instrument Sans + IBM Plex Mono, self-hosted fonts. Signature pieces to reuse:
+scroll-driven 3D exploded product cross-section (`.xv`), product configurator
+rendering an SVG and prefilling the quote form (`#cfg`), photo-slideshow hero with
+panel-reveal. `assets/js/site.js` has a `CONFIG` block for the form target.
