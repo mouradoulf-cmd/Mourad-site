@@ -490,3 +490,117 @@ h1,h2,h3,h4,.eyebrow,.lead,.card p,.est label,.chip span,.bc h3,.hz__it h3,.news
 
 .lang__l .flag i,.lang__l .flag i::after{animation-play-state:paused}.lang.open .lang__l .flag i,.lang.open .lang__l .flag i::after{animation-play-state:running}
 .flag i::after{animation:none;opacity:.8}
+
+/* ==========================================================================
+   v3 — « excellence » layer
+   Principles: one 12-column grid, one spacing scale, one accent (signal),
+   motion only where it carries meaning (installation of panels, depth, focus).
+   ========================================================================== */
+:root{--signal-t:#b93a08;--sp-1:.5rem;--sp-2:1rem;--sp-3:1.5rem;--sp-4:2.5rem;--sp-5:4rem;--sp-6:clamp(4.5rem,9vw,8.5rem)}
+/* AA contrast: orange used as small/large TEXT on light surfaces */
+.eyebrow b,.ph h1 em,.hz__it .mono,.card .mono b,.sec:not(.sec--dark):not(.sec--blue):not(.xv) .eyebrow b{color:var(--signal-t)}
+.sec--dark .eyebrow b,.sec--blue .eyebrow b,.xv .eyebrow b,.hero .eyebrow b,.cfg__sum .eyebrow b{color:var(--signal)}
+.hz__it .mono{color:var(--signal-t)}
+h2.h3{font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.15}
+.ftr h3{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:.9rem;font-weight:500}
+/* 12-column alignment: headline = cols 1-7, lead = cols 8-12 on every split block */
+@media(min-width:861px){
+ .head--split{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(1rem,2vw,2rem);align-items:end}
+ .head--split>:first-child{grid-column:1/8}.head--split>:last-child{grid-column:8/13}
+ .split{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(1rem,2vw,2rem)}
+ .split>:first-child{grid-column:1/7}.split>:last-child{grid-column:7/13}.split--r>:first-child{grid-column:1/7}
+ .cols{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(1rem,2vw,2rem)}.cols>:first-child{grid-column:1/7}.cols>:last-child{grid-column:7/13}
+}
+/* 4K → phone: the whole layout scales with the root size above 1920px */
+@media(min-width:1920px){html{font-size:calc(16px + (100vw - 1920px) * .0036)}}
+@media(max-width:360px){html{font-size:15px}}
+/* film grain (static tile, no blend mode = free on the GPU); skipped on small screens */
+@media(min-width:861px){html::before{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}}
+
+/* ---------- entrance loader: 6 cladding panels that lift away ---------- */
+.ldr{display:none}
+html.ldr-on .ldr{display:grid;position:fixed;inset:0;z-index:300;place-items:center}
+html.ldr-on body{overflow:hidden}
+.ldr__p{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr)}
+.ldr__p i{background:var(--night);border-right:1px solid rgba(255,255,255,.05);transition:transform .95s var(--ease);transition-delay:calc(var(--k)*75ms)}
+.ldr__p i:nth-child(even){background:#0d131b}
+.ldr.out .ldr__p i{transform:translateY(-101%)}
+.ldr__c{position:relative;display:grid;gap:1.4rem;justify-items:center;transition:opacity .35s,transform .5s var(--ease)}
+.ldr__c img{width:11rem;filter:brightness(0) invert(1);opacity:.95}
+.ldr__n{font:800 clamp(3.4rem,11vw,7.5rem)/1 var(--f-display);font-stretch:125%;color:#fff;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.ldr__n::after{content:"%";font-size:.38em;color:var(--signal);margin-left:.15em;vertical-align:.9em}
+.ldr__bar{width:min(18rem,64vw);height:2px;background:rgba(255,255,255,.14);overflow:hidden}.ldr__bar i{display:block;height:100%;background:linear-gradient(90deg,var(--signal),#ffb089);transform-origin:left;transform:scaleX(var(--p,0))}
+.ldr.out .ldr__c{opacity:0;transform:translateY(-14px)}
+html.ldr-on .ldr{animation:ldrFail .01s 5s forwards}@keyframes ldrFail{to{visibility:hidden;pointer-events:none}}
+html.ldr-on .hero *,html.ldr-on .hero{animation-play-state:paused!important}
+
+/* ---------- page transition: one ink panel with an orange leading edge ---------- */
+html.wipe-in body::before{content:"";position:fixed;inset:0;z-index:290;pointer-events:none;background:linear-gradient(180deg,var(--night) calc(100% - 3px),var(--signal) calc(100% - 3px));animation:wipeIn .75s var(--ease) both}
+@keyframes wipeIn{to{transform:translateY(-101%)}}
+body.leave{opacity:1!important;transition:none!important}
+body.leave::after{content:"";position:fixed;inset:0;z-index:290;pointer-events:none;background:var(--night);border-top:3px solid var(--signal);transform:translateY(101%);animation:wipeOut .45s var(--ease) both}
+@keyframes wipeOut{to{transform:none}}
+
+/* ---------- header: hides on scroll-down, returns on scroll-up (reading comfort) ---------- */
+.hdr{transition:transform .5s var(--ease),background .35s,box-shadow .35s,color .35s}
+.hdr.is-hidden{transform:translateY(-110%)}
+.hdr:focus-within{transform:none}
+.hdr.is-solid{background:rgba(241,239,233,.78);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);box-shadow:0 1px 0 var(--line),0 18px 40px -30px rgba(13,17,22,.5)}
+.nav a::after{background:var(--signal)}
+
+/* ---------- sound toggle (off by default) ---------- */
+.snd{width:2.5rem;height:2.5rem;border-radius:50%;border:1px solid currentColor;border-color:color-mix(in srgb,currentColor 35%,transparent);background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+.snd:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
+.snd svg{width:1.05rem;height:1.05rem}.snd .on{display:none}.snd[aria-pressed=true] .on{display:block}.snd[aria-pressed=true] .off{display:none}
+.snd[aria-pressed=true]{border-color:var(--signal);color:var(--signal)}
+
+/* ---------- custom cursor (additive: the native cursor stays) ---------- */
+.cur{position:fixed;left:0;top:0;z-index:280;pointer-events:none;opacity:0;transition:opacity .3s}
+.cur.on{opacity:1}
+.cur__dot{position:absolute;left:-3px;top:-3px;width:6px;height:6px;border-radius:50%;background:var(--signal)}
+.cur__ring{position:absolute;left:0;top:0;width:0;height:0}
+.cur__ring i{position:absolute;left:-1.1rem;top:-1.1rem;width:2.2rem;height:2.2rem;border-radius:50%;border:1.5px solid rgba(255,255,255,.9);mix-blend-mode:difference;transition:transform .35s var(--ease),background .3s,border-color .3s,opacity .3s}
+.cur__t{position:absolute;left:-3rem;top:-.55rem;width:6rem;text-align:center;font:700 .66rem/1.1rem var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .25s}
+.cur[data-s=link] .cur__ring i{transform:scale(1.7);background:rgba(255,90,31,.14);border-color:var(--signal);mix-blend-mode:normal}
+.cur[data-s=media] .cur__ring i{transform:scale(2.9);background:var(--signal);border-color:var(--signal);mix-blend-mode:normal}
+.cur[data-s=media] .cur__t{opacity:1}.cur[data-s=media] .cur__dot{opacity:0}
+.cur[data-s=down] .cur__ring i{transform:scale(.8)}
+.cur[data-s=field] .cur__ring i{transform:scale(.4,1.3);border-radius:2px}
+@media(hover:none),(pointer:coarse){.cur{display:none}}
+
+/* ---------- 3D hover tilt on cards / showcase ---------- */
+.js .tilt.tilt[data-r].in,.tilt.tilt:not([data-r]){transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0))}
+.tilt.is-tilting{transition:transform .12s linear!important}
+.tilt{will-change:auto}.tilt.is-tilting{will-change:transform}
+
+/* ---------- hero WebGL (lazy; the video stays the fallback) ---------- */
+.hero__gl{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.hero__gl.ready{opacity:1}
+.hero__shade{z-index:1}.hero__in,.hero__stats,.hero__pause,.hero__rec,.hero__cue{z-index:4}
+
+/* ---------- fullscreen editorial menu (tablet / phone) ---------- */
+@media(max-width:1020px){
+ .hdr__logo,.hdr__cta{position:relative;z-index:3}
+ .nav{inset:0;max-height:none;height:100dvh;padding:calc(var(--h) + 2.2rem) var(--gut) 2rem;justify-content:flex-start;gap:0;font-size:inherit;counter-reset:nv;background:radial-gradient(120% 70% at 100% 0%,rgba(43,93,220,.28),transparent 60%),radial-gradient(90% 60% at 0% 100%,rgba(255,90,31,.16),transparent 60%),var(--night);clip-path:inset(0 0 100% 0);transform:none;visibility:hidden;transition:clip-path .7s var(--ease),visibility 0s .7s;z-index:2;overflow:auto}
+ .hdr.nav-open .nav{clip-path:inset(0);visibility:visible;transition:clip-path .7s var(--ease),visibility 0s}
+ .nav>a:not(.nav__cta){counter-increment:nv;display:flex;align-items:baseline;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.1);font:800 clamp(2rem,9.5vw,3.6rem)/1.05 var(--f-display);font-stretch:118%;letter-spacing:-.03em;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .7s var(--ease),color .25s;transition-delay:0s}
+ .nav>a:not(.nav__cta)::before{content:"0" counter(nv);font:500 .7rem var(--f-mono);letter-spacing:.14em;color:var(--signal);transform:translateY(-.5em)}
+ .hdr.nav-open .nav>a:not(.nav__cta){opacity:1;transform:none;transition-delay:calc(.12s + var(--i,0)*70ms)}
+ .nav a:nth-child(1){--i:0}.nav a:nth-child(2){--i:1}.nav a:nth-child(3){--i:2}.nav a:nth-child(4){--i:3}.nav a:nth-child(5){--i:4}.nav a:nth-child(6){--i:5}
+ .nav a[aria-current=page]{color:var(--signal)}
+ .nav__cta{margin-top:auto!important;border-radius:999px;padding:1.1rem 1.4rem!important;opacity:0;transform:translateY(16px);transition:opacity .5s .55s,transform .6s var(--ease) .55s}
+ .hdr.nav-open .nav__cta{opacity:1;transform:none}
+ .nav__foot{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.12);opacity:0;transition:opacity .5s .7s}
+ .hdr.nav-open .nav__foot{opacity:1}
+ .nav__foot a{font:500 .85rem var(--f-mono);letter-spacing:.1em;color:#9fb0c7;text-decoration:none;border:0;padding:0}
+ .hdr.is-hidden{transform:none}
+}
+@media(min-width:1021px){.nav__foot{display:none}}
+
+@media(prefers-reduced-motion:reduce){.hdr.is-hidden{transform:none}.cur,.hero__gl{display:none}.tilt{transform:none!important}html.wipe-in body::before,body.leave::after{display:none}}
+/* hero: leave the right third free for the 3D assembly on wide screens */
+@media(min-width:1100px){.hero h1{font-size:clamp(3rem,7.4vw,9.4rem);line-height:.92}.hero__lead{max-width:34rem}}
+
+.news time{color:var(--signal-t)}
+.ftr__word::after{content:"Façadiers"}
+.sec:not(.sec--dark):not(.sec--blue) span[style*="var(--signal)"]{color:var(--signal-t)!important}

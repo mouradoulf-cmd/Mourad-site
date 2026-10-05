@@ -25,6 +25,7 @@ const hdr = $(".hdr");
 if (hdr) {
   const solid = () => hdr.classList.toggle("is-solid", scrollY > 40);
   if (!hdr.classList.contains("hdr--page")) { solid(); onScroll(solid); }
+  let ly = scrollY; onScroll(() => { const y = scrollY, d = y - ly; if (Math.abs(d) < 8) return; hdr.classList.toggle("is-hidden", d > 0 && y > 360 && !hdr.classList.contains("nav-open")); ly = y; });
   const burger = $(".burger", hdr);
   if (burger) {
     burger.addEventListener("click", () => { const o = hdr.classList.toggle("nav-open"); burger.setAttribute("aria-expanded", o); });
@@ -52,7 +53,7 @@ if (cu.length && "IntersectionObserver" in window) {
 
 /* ---------- hero: panel-by-panel cladding reveal ---------- */
 const hero = $(".hero");
-if (hero && !reduce) {
+if (hero && !reduce && !document.documentElement.classList.contains("ldr-on")) {
   const cols = innerWidth < 700 ? 6 : 14, rows = innerWidth < 700 ? 10 : 8;
   const g = document.createElement("div"); g.className = "cladding"; g.setAttribute("aria-hidden", "true");
   g.style.gridTemplateColumns = `repeat(${cols},1fr)`; g.style.gridTemplateRows = `repeat(${rows},1fr)`;
@@ -92,13 +93,6 @@ if (hz) {
     const tick = () => { if (!vis()) return; const r = hz.getBoundingClientRect(), p = clamp(-r.top / (hz.offsetHeight - innerHeight)); track.style.transform = `translate3d(${(-p * dist).toFixed(1)}px,0,0)`; bar && hz.style.setProperty("--p", p.toFixed(3)); };
     onScroll(tick); addEventListener("resize", () => { dist = size(); tick(); }); addEventListener("load", () => { dist = size(); tick(); }); tick();
   }
-}
-
-/* ---------- cursor label on showcase (additive, native cursor stays) ---------- */
-if (hz && matchMedia("(hover:hover) and (pointer:fine)").matches && !reduce) {
-  const c = document.createElement("div"); c.className = "cursor"; c.setAttribute("aria-hidden", "true"); c.textContent = t("cursor","Voir"); document.body.appendChild(c);
-  hz.addEventListener("mousemove", e => { c.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0)`; c.classList.toggle("on", !!e.target.closest(".hz__it")); });
-  hz.addEventListener("mouseleave", () => c.classList.remove("on"));
 }
 
 /* ---------- exploded façade (scroll-driven) ---------- */
@@ -310,12 +304,6 @@ if (matchMedia("(hover:hover) and (pointer:fine)").matches && !reduce) {
   $$(".bc,.card").forEach(c => c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px"); }));
   $$(".btn").forEach(b => { b.addEventListener("pointermove", e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${((e.clientX - r.left) / r.width - .5) * 8}px,${((e.clientY - r.top) / r.height - .5) * 6 - 2}px)`; }); b.addEventListener("pointerleave", () => b.style.transform = ""); });
 }
-/* soft page transition between local pages */
-if (!reduce) document.addEventListener("click", e => {
-  const a = e.target.closest("a"); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target) return;
-  const h = a.getAttribute("href"); if (!h || /^(#|tel:|mailto:|https?:)/.test(h) || a.pathname === location.pathname) return;
-  e.preventDefault(); document.body.classList.add("leave"); setTimeout(() => location.href = a.href, 200);
-});
 addEventListener("pageshow", e => e.persisted && document.body.classList.remove("leave"));
 })();
 
