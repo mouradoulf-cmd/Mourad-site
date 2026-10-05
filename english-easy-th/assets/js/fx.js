@@ -61,12 +61,6 @@ setInterval(watch, 400);
 /* mascot eyes follow the pointer + music button + in-lesson effects */
 addEventListener("pointermove", function (e) { var x = (e.clientX / innerWidth - .5) * 6, y = (e.clientY / innerHeight - .5) * 4; document.documentElement.style.setProperty("--mx", x.toFixed(2) + "px"); document.documentElement.style.setProperty("--my", y.toFixed(2) + "px"); }, { passive: true });
 var bl = document.querySelector(".brand__logo"); if (bl && window.EE && EE.logo) bl.innerHTML = EE.logo(34);
-var mus = document.getElementById("mus");
-if (mus && window.EE) {
-  var paint = function () { var st = EE.state().settings, on = st.music && st.sound; mus.textContent = on ? "🎵" : "🔇"; mus.setAttribute("aria-pressed", on ? "true" : "false"); mus.title = on ? "ปิดดนตรี" : "เปิดดนตรี"; };
-  mus.onclick = function () { var st = EE.state().settings; if (st.music && st.sound) { st.music = false; EE.music.stop(); } else { st.music = true; st.sound = true; EE.music.start(); } EE.save(); paint(); };
-  paint(); EE.on("state", paint);
-}
 EE.fx = {
   xp: function (n, el) { if (reduce || !el) return; var r = el.getBoundingClientRect(), t = document.createElement("div"); t.className = "xpfly"; t.textContent = "+" + n + " XP"; t.style.left = (r.left + r.width / 2) + "px"; t.style.top = (r.top - 10) + "px"; document.body.appendChild(t); setTimeout(function () { t.remove(); }, 1100); },
   shock: function (el, bad) { if (reduce || !el) return; var r = el.getBoundingClientRect(), s = document.createElement("div"); s.className = "shock" + (bad ? " shock--bad" : ""); s.style.left = (r.left + r.width / 2) + "px"; s.style.top = (r.top + r.height / 2) + "px"; document.body.appendChild(s); setTimeout(function () { s.remove(); }, 800); },
