@@ -11,6 +11,8 @@ const CONFIG={
   STRIPE:{ life:"", month:"" },
   // ฟอร์มเก็บอีเมล (สร้างฟรีที่ formspree.io แล้ววาง URL) — เว้นว่างได้
   FORM_ENDPOINT:"",
+  // วันที่สิ้นสุดโปรโมชันจริง (ISO เช่น "2026-12-31T23:59:00+07:00") — เว้นว่าง = ไม่แสดงนับถอยหลัง ห้ามใส่วันที่ปลอม
+  OFFER_END:"",
   PIXEL_ID:"", GA_ID:"",            // Meta Pixel / Google Analytics (ไม่บังคับ)
   PLANS:{
     life :{name:"ตลอดชีพ",  price:4990, label:"฿4,990 จ่ายครั้งเดียว"},
@@ -64,6 +66,7 @@ function promptPayPayload(id,amount){
 const co=$('#checkout');
 if(co){
   const q=new URLSearchParams(location.search);
+  if(q.get('name')){const n=$('#nm');if(n)n.value=q.get('name')}
   let key=CONFIG.PLANS[q.get('plan')]?q.get('plan'):'life';
   const render=()=>{
     const p=CONFIG.PLANS[key];
@@ -76,7 +79,7 @@ if(co){
     else box.innerHTML='<p class="note">'+t('noqr')+'</p>';
     const card=$('#card'),link=CONFIG.STRIPE[key];
     card.hidden=!link;if(link)card.href=link;
-    const slip=t('slip',{plan:t('plan_'+key),price:p.price,name:$('#nm').value||'-'});
+    const slip=t('slip',{plan:t('plan_'+key),price:p.price,name:$('#nm').value||'-'})+(q.get('ctx')?'\n'+q.get('ctx'):'');
     $('#slip').href=`https://line.me/R/oaMessage/${encodeURIComponent(CONFIG.LINE_OA)}/?${encodeURIComponent(slip)}`;
   };
   $$('.pick').forEach(b=>b.addEventListener('click',()=>{key=b.dataset.k;render();track('InitiateCheckout',{value:CONFIG.PLANS[key].price,currency:'THB'})}));

@@ -99,3 +99,21 @@ Payment/contact are driven by the `CONFIG` block at the top of
 `assets/js/main.js` (LINE OA + PromptPay) — placeholders until the client
 fills them. No fake testimonials/income claims, keep disclaimers. Plain
 HTML/CSS/JS, no build step.
+
+## Avatar Cash funnel — reference template for course/info-product funnels
+
+The user supplied two screen recordings of an app-style onboarding funnel
+(arab-facile.com: splash → welcome → mascot chat questions → "analysing your
+profile" → personalised plan → paywall with plan cards and Free/Premium table)
+and asked to reuse that flow for **every** future course/formation.
+Implemented in `avatar-cash-th/start.html`, `assets/css/app.css` and
+`assets/js/funnel.js` (TH/FR/EN copy in the `FN` object, questions in `FLOW`,
+theme tokens in `:root` of `app.css`; payment + contact config stays in
+`assets/js/main.js` `CONFIG`). To make a new course: copy the folder, change
+`FLOW`, `FN`, tokens, plans and the course content.
+- Landing page (`index.html`) CTAs lead to the funnel, not straight to checkout.
+- Do **not** copy the reference's fake social proof ("4,8/5, +20 000 learners"),
+  fake discounts/strike-through prices or a fake countdown. The paywall timer
+  only shows when `CONFIG.OFFER_END` is set to a real end date.
+- Videos in `assets/video/` are rendered from `/tmp`-style HTML scenes with
+  Playwright + ffmpeg (see git history); outputs are checked in.
