@@ -1,417 +1,385 @@
 <!DOCTYPE html>
-<html lang="it" dir="ltr"><head>
-<meta charset="UTF-8">
-<script data-nm-lang-lock="1">/* NM Studio : la langue de l'URL fait foi. Un visiteur du dossier /it/ ne voit jamais une autre langue, et le selecteur du site navigue vers la meme page dans l'autre langue. */
+<html dir="ltr" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><script data-nm-lang-lock="1">/* NM Studio : la langue de l'URL fait foi. Un visiteur du dossier /it/ ne voit jamais une autre langue, et le selecteur du site navigue vers la meme page dans l'autre langue. */
 (function(){try{window.NM_LANG="it";}catch(e){}
 var FOLDERS={"en":"","fr":"fr/","it":"it/","th":"th/","ar":"ar/"};
 try{localStorage.setItem("nmLang","it");}catch(e){}
 var ROUTES={"/nm/fr/index.html":"index.html","/nm/it/index.html":"index.html","/nm/th/index.html":"index.html","/nm/ar/index.html":"index.html","/nm/index.html":"index.html","/nm/fr/services.html":"services.html","/nm/it/services.html":"services.html","/nm/th/services.html":"services.html","/nm/ar/services.html":"services.html","/nm/services.html":"services.html","/nm/fr/pricing.html":"pricing.html","/nm/it/pricing.html":"pricing.html","/nm/th/pricing.html":"pricing.html","/nm/ar/pricing.html":"pricing.html","/nm/pricing.html":"pricing.html","/nm/fr/legal.html":"legal.html","/nm/it/legal.html":"legal.html","/nm/th/legal.html":"legal.html","/nm/ar/legal.html":"legal.html","/nm/legal.html":"legal.html","/nm/fr/start.html":"start.html","/nm/it/start.html":"start.html","/nm/th/start.html":"start.html","/nm/ar/start.html":"start.html","/nm/start.html":"start.html"};
 function folderFor(code){try{var p=location.pathname.replace(/\/+/g,"/");var m=p.match(/\/nm\/(fr|it|th|ar)\/([^\/?#]*)$/);return m?m[2]:p.replace(/^.*\//,"");}catch(e){return"";}}
-function nav(code){try{var f=folderFor();var page=ROUTES["/nm/"+(FOLDERS[code]||"")+f]?f:ROUTES["/nm/"+f];if(!page)page="index.html";location.href=FOLDERS[code]+page;}catch(e){}}
+function nav(code){try{var f=folderFor();var page=ROUTES["/nm/"+(FOLDERS[code]||"")+f]?f:ROUTES["/nm/"+f];if(!page)page="index.html";location.href=location.pathname.replace(/\/nm\/.*$/,"/nm/")+FOLDERS[code]+page;}catch(e){}}
 document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?t.closest("[data-lang]"):null;if(!b)return;var code=b.getAttribute("data-lang");if(code&&code!=="it"){e.preventDefault();e.stopPropagation();nav(code);}},true);
 })();</script>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Avvia un progetto — il tuo preventivo in 4 passi | NM Studio</title>
-<meta name="description" content="Quattro passi rapidi e la tua richiesta è pronta per WhatsApp: attività, cosa ti serve, lingue dei clienti. Senza vincoli.">
-<meta name="robots" content="index,follow">
-<meta name="theme-color" content="#07060c">
-<link rel="canonical" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html">
-<link rel="alternate" hreflang="fr" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/start.html">
-<link rel="alternate" hreflang="it" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html">
-<link rel="alternate" hreflang="th" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/start.html">
-<link rel="alternate" hreflang="ar" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/start.html">
-<link rel="alternate" hreflang="x-default" href="https://mouradoulf-cmd.github.io/Mourad-site/nm/start.html">
-<meta name="color-scheme" content="dark">
-<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="manifest" href="../site.webmanifest">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="NM Studio">
-<meta property="og:title" content="Start a project — your quote in 4 steps | NM Studio">
-<meta property="og:description" content="Four quick steps and your project request is ready for WhatsApp: your business, what you need, your customers' languages. No contract.">
-<meta property="og:url" content="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/start.html">
-<meta property="og:image" content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="NM Studio — websites, QR menus and Google profiles for Pattaya businesses">
-<meta property="og:locale" content="it_IT">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg">
-<link rel="preload" href="../assets/fonts/satoshi-900.woff2" as="font" type="font/woff2" crossorigin="">
-<link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin="">
-<link rel="stylesheet" href="../assets/css/site.css?v=20261004f">
-<link rel="stylesheet" href="../assets/css/craft.css?v=20261004f">
-<link rel="stylesheet" href="../assets/css/quote.css?v=20261004f">
+<title>Start a project: your quote in 4 steps | NM Studio</title>
+<meta content="Four quick steps and your project request is ready for WhatsApp: your business, what you need, your customers' languages. No contract." name="description"/>
+<meta content="index,follow" name="robots"/>
+<meta content="#07060c" name="theme-color"/>
+<meta content="dark" name="color-scheme"/>
+<link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html" rel="canonical"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/index.html" hreflang="fr" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html" hreflang="it" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html" hreflang="th" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html" hreflang="ar" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html" hreflang="en" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html" hreflang="x-default" rel="alternate"/>
+<link href="../assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<meta content="website" property="og:type"/>
+<meta content="NM Studio" property="og:site_name"/>
+<meta content="Start a project: your quote in 4 steps | NM Studio" property="og:title"/>
+<meta content="Four quick steps and your project request lands on our WhatsApp, ready to send: Google profile, QR menu or website, for Pattaya businesses." property="og:description"/>
+<meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html" property="og:url"/>
+<meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg" property="og:image"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="NM Studio | websites, QR menus and Google profiles for Pattaya businesses" property="og:image:alt"/>
+<meta content="it_IT" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg" name="twitter:image"/>
+<link as="font" crossorigin="" href="../assets/fonts/satoshi-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../assets/fonts/inter-latin.woff2" rel="preload" type="font/woff2"/>
+<link href="../assets/css/site.css?v=20261005a" rel="stylesheet"/>
+<link href="../assets/css/craft.css?v=20261005a" rel="stylesheet"/>
+<link href="../assets/css/quote.css?v=20261005a" rel="stylesheet"/>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
 </head>
 <body data-meta="metaStart">
-<a class="skip-link" href="#main" data-i18n="a11y.skip">Vai al contenuto</a>
-<div class="progress" aria-hidden="true"><span></span></div>
-
+<a class="skip-link" data-i18n="a11y.skip" href="#main">Vai al contenuto</a>
+<div aria-hidden="true" class="progress"><span></span></div>
 <header class="header" id="header">
-  <div class="header__inner">
-    <a href="../" class="brand" aria-label="NM Studio">
-      <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".5"></path></svg>
-      <span>NM Studio</span>
-    </a>
-    <nav class="nav" aria-label="Main">
-      <a href="../#offers" data-i18n="nav2.offers">Offerte</a>
-      <a href="../#work" data-i18n="nav.work">Progetti</a>
-      <a href="../services.html" data-i18n="nav2.services">Servizi</a>
-      <a href="../pricing.html" data-i18n="nav2.pricing">Prezzi</a>
-      <a href="../start.html" aria-current="page" class="is-current" data-i18n="cta.startShort">Avvia un progetto</a>
-    </nav>
-    <div class="header__actions">
-      <div class="lang" id="lang">
-        <button type="button" class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-i18n-aria-label="a11y.language" aria-label="Lingua">
-          <span class="flag lang__flag is-waving" data-flag="it" aria-hidden="true" style="--sw: 2px; --d: 0.00s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11; width: 2px;"></i></span>
-          <span class="lang__current">IT</span>
-        </button>
-        <ul class="lang__list" id="langList" hidden="">
-          <li><button type="button" data-lang="en" lang="en" aria-current="false"><span class="flag is-waving" data-flag="en" aria-hidden="true" style="--sw: 2px; --d: -0.37s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11; width: 2px;"></i></span><span>English</span></button></li>
-          <li><button type="button" data-lang="fr" lang="fr" aria-current="false"><span class="flag is-waving" data-flag="fr" aria-hidden="true" style="--sw: 2px; --d: -0.74s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11; width: 2px;"></i></span><span>Français</span></button></li>
-          <li><button type="button" data-lang="it" lang="it" aria-current="true"><span class="flag is-waving" data-flag="it" aria-hidden="true" style="--sw: 2px; --d: -1.11s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11; width: 2px;"></i></span><span>Italiano</span></button></li>
-          <li><button type="button" data-lang="th" lang="th" aria-current="false"><span class="flag is-waving" data-flag="th" aria-hidden="true" style="--sw: 2px; --d: -1.48s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11; width: 2px;"></i></span><span>ไทย</span></button></li>
-          <li><button type="button" data-lang="ar" lang="ar" aria-current="false"><span class="flag is-waving" data-flag="ar" aria-hidden="true" style="--sw: 2px; --d: -1.85s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11; width: 2px;"></i></span><span>العربية</span></button></li>
-        </ul>
-      </div>
-      <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="btn btn--sun btn--sm magnetic header__cta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg><span data-i18n="nav2.cta">Scrivici su WhatsApp</span></a>
-      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" data-i18n-aria-label="a11y.menu" aria-label="Menù"><span></span><span></span></button>
-    </div>
-  </div>
-</header>
-
-<div class="menu" id="menu" hidden="">
-  <nav class="menu__nav" aria-label="Mobile">
-    <a href="../#offers" data-i18n="nav2.offers">Offerte</a>
-    <a href="../#work" data-i18n="nav.work">Progetti</a>
-    <a href="../services.html" data-i18n="nav2.services">Servizi</a>
-    <a href="../pricing.html" data-i18n="nav2.pricing">Prezzi</a>
-    <a href="../start.html" aria-current="page" class="is-current" data-i18n="cta.startShort">Avvia un progetto</a>
-  </nav>
-  <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="btn btn--sun btn--block"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg><span data-i18n="nav2.cta">Scrivici su WhatsApp</span></a>
+<div class="header__inner">
+<a aria-label="NM Studio" class="brand" href=".././">
+<svg aria-hidden="true" class="brand__mark" fill="none" viewbox="0 0 24 24"><path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" opacity=".5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+<span>NM Studio</span>
+</a>
+<nav aria-label="Main" class="nav">
+<a data-i18n="nav2.offers" href=".././#offers">Offerte</a>
+<a data-i18n="nav.work" href=".././#work">Progetti</a>
+<a data-i18n="nav2.services" href="services.html">Servizi</a>
+<a data-i18n="nav2.pricing" href="pricing.html">Prezzi</a>
+<a aria-current="page" class="is-current" data-i18n="cta.startShort" href="start.html">Avvia un progetto</a>
+</nav>
+<div class="header__actions">
+<div class="lang" id="lang">
+<button aria-controls="langList" aria-expanded="false" aria-haspopup="true" aria-label="Lingua" class="lang__btn" data-i18n-aria-label="a11y.language" id="langBtn" type="button">
+<span aria-hidden="true" class="flag lang__flag" data-flag="it"></span>
+<span class="lang__current">IT</span>
+</button>
+<ul class="lang__list" hidden="" id="langList">
+<li><button aria-current="false" data-lang="en" lang="en" type="button"><span aria-hidden="true" class="flag" data-flag="en"></span><span>English</span></button></li>
+<li><button aria-current="false" data-lang="fr" lang="fr" type="button"><span aria-hidden="true" class="flag" data-flag="fr"></span><span>Français</span></button></li>
+<li><button aria-current="true" data-lang="it" lang="it" type="button"><span aria-hidden="true" class="flag" data-flag="it"></span><span>Italiano</span></button></li>
+<li><button aria-current="false" data-lang="th" lang="th" type="button"><span aria-hidden="true" class="flag" data-flag="th"></span><span>ไทย</span></button></li>
+<li><button aria-current="false" data-lang="ar" lang="ar" type="button"><span aria-hidden="true" class="flag" data-flag="ar"></span><span>العربية</span></button></li>
+</ul>
 </div>
-
+<a class="btn btn--sun btn--sm magnetic header__cta" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg><span data-i18n="nav2.cta">Scrivici su WhatsApp</span></a>
+<button aria-controls="menu" aria-expanded="false" aria-label="Menù" class="burger" data-i18n-aria-label="a11y.menu" id="burger" type="button"><span></span><span></span></button>
+</div>
+</div>
+</header>
+<div class="menu" hidden="" id="menu">
+<nav aria-label="Mobile" class="menu__nav">
+<a data-i18n="nav2.offers" href=".././#offers">Offerte</a>
+<a data-i18n="nav.work" href=".././#work">Progetti</a>
+<a data-i18n="nav2.services" href="services.html">Servizi</a>
+<a data-i18n="nav2.pricing" href="pricing.html">Prezzi</a>
+<a aria-current="page" class="is-current" data-i18n="cta.startShort" href="start.html">Avvia un progetto</a>
+</nav>
+<a class="btn btn--sun btn--block" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg><span data-i18n="nav2.cta">Scrivici su WhatsApp</span></a>
+</div>
 <main id="main">
-<section class="qhero" id="top" aria-labelledby="qTitle">
-  <div class="qhero__bg" aria-hidden="true"><img src="../assets/img/work/neon-tiger-desk.webp" alt="" width="1200" height="800" decoding="async" fetchpriority="high"></div>
-  <div class="qhero__shade" aria-hidden="true"></div>
-  <div class="qhero__glow" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="container qhero__inner">
-    <p class="eyebrow" data-q="hero.eyebrow">Avvia un progetto</p>
-    <h1 class="qhero__title" id="qTitle" data-q="hero.title">Quattro passi. <em>Un messaggio.</em> Fatto.</h1>
-    <p class="qhero__lead" data-q="hero.lead">Nessun modulo da inviare, nessun account da creare. Rispondi a quattro domande, premi un pulsante e la tua richiesta arriva sul nostro WhatsApp, già scritta.</p>
-    <ul class="qhero__facts">
-      <li data-q="hero.fact1">Circa 60 secondi</li>
-      <li data-q="hero.fact2">Nessun pagamento in questa pagina</li>
-      <li data-q="hero.fact3">Rispondiamo in pochi minuti</li>
-    </ul>
-  </div>
+<section aria-labelledby="qTitle" class="qhero" id="top">
+<div aria-hidden="true" class="qhero__bg"><img alt="" decoding="async" fetchpriority="high" height="800" src="../assets/img/work/neon-tiger-desk.webp" width="1200"/></div>
+<div aria-hidden="true" class="qhero__shade"></div>
+<div aria-hidden="true" class="qhero__glow"></div>
+<div aria-hidden="true" class="grain"></div>
+<div class="container qhero__inner">
+<p class="eyebrow" data-q="hero.eyebrow">Start a project</p>
+<h1 class="qhero__title" data-q="hero.title" id="qTitle">Four steps. <em>One message.</em> Done.</h1>
+<p class="qhero__lead" data-q="hero.lead">No form to email, no account to create. Answer four quick questions, press one button, and your request lands on our WhatsApp, already written for you.</p>
+<ul class="qhero__facts">
+<li data-q="hero.fact1">About 60 seconds</li>
+<li data-q="hero.fact2">No payment on this page</li>
+<li data-q="hero.fact3">We reply within minutes</li>
+</ul>
+</div>
 </section>
-
-<section class="quote" id="quote" aria-labelledby="qFormTitle">
-  <div class="container">
-    <h2 class="visually-hidden" id="qFormTitle" data-q="form.title">La tua richiesta</h2>
-
-    <div class="quote__bar" id="quoteBar">
-      <p class="quote__barText"><b id="barStep">01</b><span data-q="form.bar">di 4 passi</span></p>
-      <div class="quote__barTrack" aria-hidden="true"><span id="barFill"></span></div>
-    </div>
-
-    <div class="quote__grid">
-      <form class="quote__form" id="quoteForm" novalidate="">
-        <div class="qm" aria-live="polite" hidden="">
-          <span class="qm__dot" aria-hidden="true"></span>
-          <p><b data-q="form.almost">Quasi fatto.</b> <span data-q="form.almostSub">Correggi i campi in rosso e continua.</span></p>
-        </div>
-
-        <nav class="qsteps" aria-label="Steps">
-          <ol class="qsteps__list" id="stepNav">
-            <li><button type="button" class="qstep" data-goto="1" aria-current="step"><b>01</b><span data-q="step1.name">La tua attività</span></button></li>
-            <li><button type="button" class="qstep" data-goto="2" aria-current="false"><b>02</b><span data-q="step2.name">Cosa ti serve</span></button></li>
-            <li><button type="button" class="qstep" data-goto="3" aria-current="false"><b>03</b><span data-q="step3.name">Le lingue</span></button></li>
-            <li><button type="button" class="qstep" data-goto="4" aria-current="false"><b>04</b><span data-q="step4.name">Contatti</span></button></li>
-          </ol>
-        </nav>
-
-        <div class="qpanes" id="quotePanes">
-
-          <fieldset class="qpane is-current" data-step="1" aria-labelledby="qp1T" aria-describedby="e1-type">
-            <legend class="visually-hidden" id="qp1T" data-q="step1.name">La tua attività</legend>
-            <p class="qpane__n" aria-hidden="true">01</p>
-            <h3 class="qpane__title" data-q="step1.title">Che tipo di locale è?</h3>
-            <p class="qpane__sub" data-q="step1.sub">Scegli quello più vicino — ci dice cosa cercano i tuoi clienti.</p>
-            <div class="qgrid" role="radiogroup" aria-labelledby="qp1T">
-              <label class="qcard">
-                <input type="radio" name="type" value="restaurant">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 43V5l13 10-13 8"></path><path d="M33 43V5c5 3 8 8 8 14 0 5-3 8-8 8"></path></svg></span>
-                  <span class="qcard__label" data-q="opt.restaurant">Ristorante</span>
-                </span>
-              </label>
-              <label class="qcard">
-                <input type="radio" name="type" value="cafe">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 13h26v11a13 13 0 0 1-13 13h0a13 13 0 0 1-13-13z"></path><path d="M35 17h4a5 5 0 0 1 0 10h-4"></path><path d="M13 5v3M21 4v4M29 5v3"></path><path d="M7 43h30"></path></svg></span>
-                  <span class="qcard__label" data-q="opt.cafe">Caffè o bar</span>
-                </span>
-              </label>
-              <label class="qcard">
-                <input type="radio" name="type" value="salon">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="6"></circle><circle cx="11" cy="36" r="6"></circle><path d="M15.5 15.5L42 38M15.5 32.5L42 10"></path></svg></span>
-                  <span class="qcard__label" data-q="opt.salon">Salone o spa</span>
-                </span>
-              </label>
-              <label class="qcard">
-                <input type="radio" name="type" value="hotel">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 41h38"></path><path d="M9 41V7h18v34"></path><path d="M27 19h12v22"></path><path d="M15 15h6M15 23h6M15 31h6M33 26h2M33 33h2"></path></svg></span>
-                  <span class="qcard__label" data-q="opt.hotel">Hotel o guesthouse</span>
-                </span>
-              </label>
-              <label class="qcard">
-                <input type="radio" name="type" value="shop">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l2-8h30l2 8"></path><path d="M11 17v24h26V17"></path><path d="M18 41V27h12v14"></path></svg></span>
-                  <span class="qcard__label" data-q="opt.shop">Negozio o boutique</span>
-                </span>
-              </label>
-              <label class="qcard">
-                <input type="radio" name="type" value="rental">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="33" r="7"></circle><circle cx="37" cy="33" r="7"></circle><path d="M11 33l7-13h11l5 8h6M18 20h4"></path></svg></span>
-                  <span class="qcard__label" data-q="opt.rental">Noleggio scooter</span>
-                </span>
-              </label>
-              <label class="qcard qcard--wide">
-                <input type="radio" name="type" value="other">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"></circle><path d="M24 36V22"></path><circle cx="24" cy="15" r="1.6" fill="currentColor"></circle></svg></span>
-                  <span class="qcard__label" data-q="opt.other">Altro</span>
-                </span>
-              </label>
-            </div>
-            <p class="qerr" id="e1-type" role="alert" hidden=""></p>
-          </fieldset>
-
-          <fieldset class="qpane" data-step="2" aria-labelledby="qp2T" aria-describedby="e2-needs" hidden="">
-            <legend class="visually-hidden" id="qp2T" data-q="step2.name">Cosa ti serve</legend>
-            <p class="qpane__n" aria-hidden="true">02</p>
-            <h3 class="qpane__title" data-q="step2.title">Cosa vuoi che creiamo?</h3>
-            <p class="qpane__sub" data-q="step2.sub">Scegline quanti vuoi. Un menù QR e una scheda Google sono i risultati più rapidi.</p>
-            <div class="qgrid">
-              <label class="qcard qcard--check">
-                <input type="checkbox" name="needs" value="google">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 43s13-11.6 13-22A13 13 0 0 0 11 21c0 10.4 13 22 13 22z"></path><circle cx="24" cy="20.5" r="4.5"></circle></svg></span>
-                  <span class="qcard__label" data-q="opt.google" data-note="note.google">Scheda Google</span>
-                </span>
-              </label>
-              <label class="qcard qcard--check">
-                <input type="checkbox" name="needs" value="qr">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17v-6a2 2 0 0 1 2-2h6"></path><path d="M40 17v-6a2 2 0 0 0-2-2h-6"></path><path d="M8 31v6a2 2 0 0 0 2 2h6"></path><path d="M40 31v6a2 2 0 0 1-2 2h-6"></path><rect x="17.5" y="17.5" width="5" height="5" fill="currentColor" stroke="none"></rect><rect x="25.5" y="17.5" width="5" height="5" fill="currentColor" stroke="none"></rect><rect x="17.5" y="25.5" width="5" height="5" fill="currentColor" stroke="none"></rect><rect x="25.5" y="25.5" width="5" height="5" fill="currentColor" stroke="none"></rect></svg></span>
-                  <span class="qcard__label" data-q="opt.qr" data-note="note.qr">Menù QR</span>
-                </span>
-              </label>
-              <label class="qcard qcard--check">
-                <input type="checkbox" name="needs" value="web">
-                <span class="qcard__box">
-                  <span class="qcard__ic" aria-hidden="true"><svg class="ic-glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="38" height="30" rx="4"></rect><path d="M5 18h38M11 14h3M17 14h3"></path><path d="M13 25h12M13 31h20"></path></svg></span>
-                  <span class="qcard__label" data-q="opt.web" data-note="note.web">Sito web</span>
-                </span>
-              </label>
-            </div>
-            <p class="qerr" id="e2-needs" role="alert" hidden=""></p>
-          </fieldset>
-
-          <fieldset class="qpane" data-step="3" aria-labelledby="qp3T" hidden="">
-            <legend class="visually-hidden" id="qp3T" data-q="step3.name">Le lingue</legend>
-            <p class="qpane__n" aria-hidden="true">03</p>
-            <h3 class="qpane__title" data-q="step3.title">Quali lingue parlano i tuoi clienti?</h3>
-            <p class="qpane__sub" data-q="step3.sub">Spunta quelle che senti di più. Anche il menù e il sito le parleranno.</p>
-            <div class="qchips">
-              <label class="qchip"><input type="checkbox" name="langs" value="en"><span class="qchip__box"><span class="qchip__badge" aria-hidden="true">EN</span><span data-q="lang.en">Inglese</span></span></label>
-              <label class="qchip"><input type="checkbox" name="langs" value="fr"><span class="qchip__box"><span class="qchip__badge" aria-hidden="true">FR</span><span data-q="lang.fr">Francese</span></span></label>
-              <label class="qchip"><input type="checkbox" name="langs" value="it"><span class="qchip__box"><span class="qchip__badge" aria-hidden="true">IT</span><span data-q="lang.it">Italiano</span></span></label>
-              <label class="qchip"><input type="checkbox" name="langs" value="th"><span class="qchip__box"><span class="qchip__badge" aria-hidden="true">TH</span><span data-q="lang.th">Thailandese</span></span></label>
-              <label class="qchip"><input type="checkbox" name="langs" value="ar"><span class="qchip__box"><span class="qchip__badge" aria-hidden="true">AR</span><span data-q="lang.ar">Arabo</span></span></label>
-              <label class="qchip"><input type="checkbox" name="langs" value="de"><span class="qchip__box"><span class="qchip__badge" aria-hidden="true">DE</span><span data-q="lang.de">Tedesco</span></span></label>
-              <label class="qchip"><input type="checkbox" name="langs" value="ru"><span class="qchip__box"><span class="qchip__badge" aria-hidden="true">RU</span><span data-q="lang.ru">Russo</span></span></label>
-              <label class="qchip"><input type="checkbox" name="langs" value="zh"><span class="qchip__box"><span class="qchip__badge" aria-hidden="true">中文</span><span data-q="lang.zh">Cinese</span></span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="qpane" data-step="4" aria-labelledby="qp4T" hidden="">
-            <legend class="visually-hidden" id="qp4T" data-q="step4.name">Contatti</legend>
-            <p class="qpane__n" aria-hidden="true">04</p>
-            <h3 class="qpane__title" data-q="step4.title">Come ti raggiungiamo?</h3>
-            <p class="qpane__sub" data-q="step4.sub">Solo l'essenziale per risponderti. Nulla viene inviato finché non premi il pulsante.</p>
-            <div class="field">
-              <label for="qBusiness" data-q="f.business">Nome dell'attività</label>
-              <input id="qBusiness" name="business" type="text" autocomplete="organization" data-need="1" data-q-ph="ph.business" placeholder="es. Malee Restaurant" aria-describedby="qBusinessErr" aria-invalid="false">
-              <span class="field__error" id="qBusinessErr" aria-live="polite"></span>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="qArea" data-q="f.area">Zona di Pattaya</label>
-                <select id="qArea" name="area" autocomplete="address-level2">
-                  <option value="" data-q="area.none">Scegli una zona</option>
-                  <option value="central" data-q="area.central">Pattaya centro</option>
-                  <option value="beach" data-q="area.beach">Pattaya Beach Road</option>
-                  <option value="jomtien" data-q="area.jomtien">Jomtien</option>
-                  <option value="naklua" data-q="area.naklua">Naklua</option>
-                  <option value="pratamnak" data-q="area.pratamnak">Pratumnak</option>
-                  <option value="walking" data-q="area.walking">Walking Street</option>
-                  <option value="other" data-q="area.other">Altrove</option>
-                </select>
-                <span class="field__error" id="qAreaErr" aria-live="polite"></span>
-              </div>
-              <div class="field">
-                <label for="qFirst" data-q="f.first">Il tuo nome</label>
-                <input id="qFirst" name="first" type="text" autocomplete="given-name" data-need="1" data-q-ph="ph.first" placeholder="Malee" aria-describedby="qFirstErr" aria-invalid="false">
-                <span class="field__error" id="qFirstErr" aria-live="polite"></span>
-              </div>
-            </div>
-            <div class="field">
-              <label for="qWa" data-q="f.wa">Il tuo numero WhatsApp</label>
-              <input id="qWa" name="wa" type="tel" inputmode="tel" autocomplete="tel" data-need="1" data-q-ph="ph.wa" placeholder="+66 81 234 5678" aria-describedby="qWaErr" aria-invalid="false">
-              <span class="field__error" id="qWaErr" aria-live="polite"></span>
-            </div>
-            <div class="field">
-              <label for="qNotes" data-q="f.notes">Qualcosa da farci sapere?</label>
-              <textarea id="qNotes" name="notes" rows="3" data-q-ph="ph.notes" placeholder="Un link al tuo Instagram, gli orari, i piatti di cui vai fiero…"></textarea>
-            </div>
-            <p class="qprivacy">
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.5" y="9" width="11" height="8" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M7 9V6.5a3 3 0 016 0V9" stroke="currentColor" stroke-width="1.6"></path></svg>
-              <span data-q="form.privacy">Le tue risposte restano in questa pagina — nulla viene salvato o inviato prima di aprire WhatsApp.</span>
-            </p>
-          </fieldset>
-        </div>
-
-        <p class="quote__live" role="status" aria-live="polite" id="quoteLive" data-q="form.live">Passo 1 di 4</p>
-
-        <div class="qnav">
-          <button type="button" class="btn btn--ghost" id="qPrev" hidden="">
-            <svg class="btn__arrow btn__arrow--back" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16 10H5m0 0l4.5-4.5M5 10l4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            <span data-q="nav.back">Indietro</span>
-          </button>
-          <button type="button" class="btn btn--sun btn--lg magnetic" id="qNext">
-            <span id="qNextLabel" data-q="nav.next">Passo successivo</span>
-            <svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </button>
-        </div>
-      </form>
-
-      <aside class="quote__side" aria-labelledby="sumTitle">
-        <details class="qsum" id="qsumMobile" open="">
-          <summary class="qsum__head">
-            <b id="sumTitleMobile" data-q="sum.title">La tua richiesta</b>
-            <span class="qsum__chev" aria-hidden="true"></span>
-          </summary>
-          <div class="qsum__body">
-            <h2 class="qsum__title" id="sumTitle" data-q="sum.title">La tua richiesta</h2>
-            <ul class="qsum__list" id="sumList"><li class="qsum__row"><span class="qsum__k">Attività</span><b class="qsum__v">Non ancora compilato</b></li><li class="qsum__row"><span class="qsum__k">Cosa ti serve</span><b class="qsum__v">Non ancora compilato</b></li><li class="qsum__row"><span class="qsum__k">Lingue</span><b class="qsum__v">Non ancora compilato</b></li><li class="qsum__row"><span class="qsum__k">Nome</span><b class="qsum__v">Non ancora compilato</b></li><li class="qsum__row"><span class="qsum__k">Zona</span><b class="qsum__v">Non ancora compilato</b></li><li class="qsum__row"><span class="qsum__k">WhatsApp</span><b class="qsum__v" dir="ltr">Non ancora compilato</b></li><li class="qsum__row"><span class="qsum__k">Dettagli</span><b class="qsum__v qsum__v--clamp">Non ancora compilato</b></li></ul>
-            <div class="qsum__price" id="sumPrice" hidden="">
-              <p class="qsum__label" data-q="sum.from">Da</p>
-              <ul class="qsum__rows" id="sumRows"></ul>
-              <p class="qsum__total"><span data-q="sum.total">Totale</span> <b id="sumTotal" dir="ltr">฿0</b> <span class="qsum__approx" id="sumApprox"></span></p>
-              <p class="qsum__hint" data-q="sum.hint">Pagamento unico · confermiamo il prezzo finale insieme su WhatsApp.</p>
-            </div>
-          </div>
-        </details>
-
-        <div class="qwa">
-          <p class="qwa__live"><span class="live-dot" aria-hidden="true"></span><span data-q="sum.live">Rispondiamo in pochi minuti</span></p>
-          <a class="btn btn--sun btn--lg btn--block magnetic" id="qWaSend" href="https://wa.me/qr/PYPOVXTCVM74I1?text=%F0%9F%8E%AF%20Nuovo%20progetto%20%E2%80%94%20NM%20Studio%0A%0A*Tipo%3A*%20Non%20specificato%0A*Cosa%20mi%20serve%3A*%20Non%20specificato%0A*Lingue%20dei%20miei%20clienti%3A*%20Non%20specificato%0A*Il%20mio%20nome%3A*%20Non%20specificato%0A%0AInviato%20dal%20sito%20NM%20Studio." target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
-            <span data-q="sum.send">Apri WhatsApp con la mia richiesta</span>
-          </a>
-          <button type="button" class="btn btn--ghost btn--block" id="qCopy" aria-describedby="quoteLive">
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="7" y="7" width="9" height="9" rx="1.6" stroke="currentColor" stroke-width="1.6"></rect><path d="M13 7V5.6A1.6 1.6 0 0 0 11.4 4H5.6A1.6 1.6 0 0 0 4 5.6v5.8A1.6 1.6 0 0 0 5.6 13H7" stroke="currentColor" stroke-width="1.6"></path></svg>
-            <span id="qCopyLabel" data-q="sum.copy">Copia il messaggio</span>
-          </button>
-          <p class="qwa__hint" data-q="sum.copyHint">Il nostro link WhatsApp apre la chat — il messaggio è copiato, devi solo incollarlo.</p>
-        </div>
-      </aside>
-    </div>
-
-    <div class="qsent" id="qsent" hidden="">
-      <p class="eyebrow" data-q="sent.eyebrow">Il tuo messaggio</p>
-      <h2 class="qsent__title" data-q="sent.title">Pronto da inviare.</h2>
-      <p class="qsent__sub" data-q="sent.sub">Ecco esattamente cosa riceviamo. Cambia una risposta e il messaggio si aggiorna.</p>
-      <pre class="qsent__box" id="qMsg" tabindex="0" aria-label="Message preview">🎯 Nuovo progetto — NM Studio
-
-*Tipo:* Non specificato
-*Cosa mi serve:* Non specificato
-*Lingue dei miei clienti:* Non specificato
-*Il mio nome:* Non specificato
-
-Inviato dal sito NM Studio.</pre>
-      <p class="qsent__count"><b id="qCount">190</b> <span data-q="sent.chars">caratteri</span></p>
-    </div>
-  </div>
+<section aria-labelledby="qFormTitle" class="quote" id="quote">
+<div class="container">
+<h2 class="visually-hidden" data-q="form.title" id="qFormTitle">Your project request</h2>
+<div class="quote__bar" id="quoteBar">
+<p class="quote__barText"><b id="barStep">01</b><span data-q="form.bar">of 4 steps</span></p>
+<div aria-hidden="true" class="quote__barTrack"><span id="barFill"></span></div>
+</div>
+<div class="quote__grid">
+<form class="quote__form" id="quoteForm" novalidate="">
+<div aria-live="polite" class="qm">
+<span aria-hidden="true" class="qm__dot"></span>
+<p><b data-q="form.almost">Almost done.</b> <span data-q="form.almostSub">Fix the fields marked in red and carry on.</span></p>
+</div>
+<nav aria-label="Steps" class="qsteps">
+<ol class="qsteps__list" id="stepNav">
+<li><button aria-current="step" class="qstep" data-goto="1" type="button"><b>01</b><span data-q="step1.name">Your business</span></button></li>
+<li><button class="qstep" data-goto="2" type="button"><b>02</b><span data-q="step2.name">What you need</span></button></li>
+<li><button class="qstep" data-goto="3" type="button"><b>03</b><span data-q="step3.name">Languages</span></button></li>
+<li><button class="qstep" data-goto="4" type="button"><b>04</b><span data-q="step4.name">Contact</span></button></li>
+</ol>
+</nav>
+<div class="qpanes" id="quotePanes">
+<fieldset aria-describedby="e1-type" aria-labelledby="qp1T" class="qpane is-current" data-step="1">
+<legend class="visually-hidden" data-q="step1.name" id="qp1T">Your business</legend>
+<p aria-hidden="true" class="qpane__n">01</p>
+<h3 class="qpane__title" data-q="step1.title">What kind of place is it?</h3>
+<p class="qpane__sub" data-q="step1.sub">Pick the closest one. It tells us what your customers look for.</p>
+<div aria-labelledby="qp1T" class="qgrid" role="radiogroup">
+<label class="qcard">
+<input name="type" type="radio" value="restaurant"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><path d="M11 43V5l13 10-13 8"></path><path d="M33 43V5c5 3 8 8 8 14 0 5-3 8-8 8"></path></svg></span>
+<span class="qcard__label" data-q="opt.restaurant">Restaurant</span>
+</span>
+</label>
+<label class="qcard">
+<input name="type" type="radio" value="cafe"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><path d="M9 13h26v11a13 13 0 0 1-13 13h0a13 13 0 0 1-13-13z"></path><path d="M35 17h4a5 5 0 0 1 0 10h-4"></path><path d="M13 5v3M21 4v4M29 5v3"></path><path d="M7 43h30"></path></svg></span>
+<span class="qcard__label" data-q="opt.cafe">Café or bar</span>
+</span>
+</label>
+<label class="qcard">
+<input name="type" type="radio" value="salon"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><circle cx="11" cy="12" r="6"></circle><circle cx="11" cy="36" r="6"></circle><path d="M15.5 15.5L42 38M15.5 32.5L42 10"></path></svg></span>
+<span class="qcard__label" data-q="opt.salon">Salon or spa</span>
+</span>
+</label>
+<label class="qcard">
+<input name="type" type="radio" value="hotel"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><path d="M5 41h38"></path><path d="M9 41V7h18v34"></path><path d="M27 19h12v22"></path><path d="M15 15h6M15 23h6M15 31h6M33 26h2M33 33h2"></path></svg></span>
+<span class="qcard__label" data-q="opt.hotel">Hotel or guesthouse</span>
+</span>
+</label>
+<label class="qcard">
+<input name="type" type="radio" value="shop"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><path d="M7 17l2-8h30l2 8"></path><path d="M11 17v24h26V17"></path><path d="M18 41V27h12v14"></path></svg></span>
+<span class="qcard__label" data-q="opt.shop">Shop or boutique</span>
+</span>
+</label>
+<label class="qcard">
+<input name="type" type="radio" value="rental"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><circle cx="11" cy="33" r="7"></circle><circle cx="37" cy="33" r="7"></circle><path d="M11 33l7-13h11l5 8h6M18 20h4"></path></svg></span>
+<span class="qcard__label" data-q="opt.rental">Scooter rental</span>
+</span>
+</label>
+<label class="qcard qcard--wide">
+<input name="type" type="radio" value="other"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><circle cx="24" cy="24" r="18"></circle><path d="M24 36V22"></path><circle cx="24" cy="15" fill="currentColor" r="1.6"></circle></svg></span>
+<span class="qcard__label" data-q="opt.other">Something else</span>
+</span>
+</label>
+</div>
+<p class="qerr" hidden="" id="e1-type" role="alert"></p>
+</fieldset>
+<fieldset aria-describedby="e2-needs" aria-labelledby="qp2T" class="qpane" data-step="2" hidden="">
+<legend class="visually-hidden" data-q="step2.name" id="qp2T">What you need</legend>
+<p aria-hidden="true" class="qpane__n">02</p>
+<h3 class="qpane__title" data-q="step2.title">What do you want us to build?</h3>
+<p class="qpane__sub" data-q="step2.sub">Choose as many as you like. A QR menu and a Google profile are the fastest wins.</p>
+<div class="qgrid">
+<label class="qcard qcard--check">
+<input name="needs" type="checkbox" value="google"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><path d="M24 43s13-11.6 13-22A13 13 0 0 0 11 21c0 10.4 13 22 13 22z"></path><circle cx="24" cy="20.5" r="4.5"></circle></svg></span>
+<span class="qcard__label" data-note="note.google" data-q="opt.google">Google profile</span>
+</span>
+</label>
+<label class="qcard qcard--check">
+<input name="needs" type="checkbox" value="qr"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><path d="M8 17v-6a2 2 0 0 1 2-2h6"></path><path d="M40 17v-6a2 2 0 0 0-2-2h-6"></path><path d="M8 31v6a2 2 0 0 0 2 2h6"></path><path d="M40 31v6a2 2 0 0 1-2 2h-6"></path><rect fill="currentColor" height="5" stroke="none" width="5" x="17.5" y="17.5"></rect><rect fill="currentColor" height="5" stroke="none" width="5" x="25.5" y="17.5"></rect><rect fill="currentColor" height="5" stroke="none" width="5" x="17.5" y="25.5"></rect><rect fill="currentColor" height="5" stroke="none" width="5" x="25.5" y="25.5"></rect></svg></span>
+<span class="qcard__label" data-note="note.qr" data-q="opt.qr">QR menu</span>
+</span>
+</label>
+<label class="qcard qcard--check">
+<input name="needs" type="checkbox" value="web"/>
+<span class="qcard__box">
+<span aria-hidden="true" class="qcard__ic"><svg class="ic-glyph" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 48 48"><rect height="30" rx="4" width="38" x="5" y="9"></rect><path d="M5 18h38M11 14h3M17 14h3"></path><path d="M13 25h12M13 31h20"></path></svg></span>
+<span class="qcard__label" data-note="note.web" data-q="opt.web">Website</span>
+</span>
+</label>
+</div>
+<p class="qerr" hidden="" id="e2-needs" role="alert"></p>
+</fieldset>
+<fieldset aria-labelledby="qp3T" class="qpane" data-step="3">
+<legend class="visually-hidden" data-q="step3.name" id="qp3T">Languages</legend>
+<p aria-hidden="true" class="qpane__n">03</p>
+<h3 class="qpane__title" data-q="step3.title">Which languages do your customers speak?</h3>
+<p class="qpane__sub" data-q="step3.sub">Tick the ones you hear most. Your menu and your site will speak them too.</p>
+<div class="qchips">
+<label class="qchip"><input name="langs" type="checkbox" value="en"/><span class="qchip__box"><span aria-hidden="true" class="flag" data-flag="en"></span><span data-q="lang.en">English</span></span></label>
+<label class="qchip"><input name="langs" type="checkbox" value="fr"/><span class="qchip__box"><span aria-hidden="true" class="flag" data-flag="fr"></span><span data-q="lang.fr">French</span></span></label>
+<label class="qchip"><input name="langs" type="checkbox" value="it"/><span class="qchip__box"><span aria-hidden="true" class="flag" data-flag="it"></span><span data-q="lang.it">Italian</span></span></label>
+<label class="qchip"><input name="langs" type="checkbox" value="th"/><span class="qchip__box"><span aria-hidden="true" class="flag" data-flag="th"></span><span data-q="lang.th">Thai</span></span></label>
+<label class="qchip"><input name="langs" type="checkbox" value="ar"/><span class="qchip__box"><span aria-hidden="true" class="flag" data-flag="ar"></span><span data-q="lang.ar">Arabic</span></span></label>
+<label class="qchip"><input name="langs" type="checkbox" value="de"/><span class="qchip__box"><span aria-hidden="true" class="flag" data-flag="de"></span><span data-q="lang.de">German</span></span></label>
+<label class="qchip"><input name="langs" type="checkbox" value="ru"/><span class="qchip__box"><span aria-hidden="true" class="flag" data-flag="ru"></span><span data-q="lang.ru">Russian</span></span></label>
+<label class="qchip"><input name="langs" type="checkbox" value="zh"/><span class="qchip__box"><span aria-hidden="true" class="flag" data-flag="zh"></span><span data-q="lang.zh">Chinese</span></span></label>
+</div>
+</fieldset>
+<fieldset aria-labelledby="qp4T" class="qpane" data-step="4">
+<legend class="visually-hidden" data-q="step4.name" id="qp4T">Contact</legend>
+<p aria-hidden="true" class="qpane__n">04</p>
+<h3 class="qpane__title" data-q="step4.title">Where do we reach you?</h3>
+<p class="qpane__sub" data-q="step4.sub">Only what we need to answer you. Nothing is sent anywhere until you press the button.</p>
+<div class="field">
+<label data-q="f.business" for="qBusiness">Business name</label>
+<input aria-describedby="qBusinessErr" autocomplete="organization" data-need="1" data-q-ph="ph.business" id="qBusiness" name="business" placeholder="e.g. Malee Restaurant" type="text"/>
+<span aria-live="polite" class="field__error" id="qBusinessErr"></span>
+</div>
+<div class="field-row">
+<div class="field">
+<label data-q="f.area" for="qArea">Area of Pattaya</label>
+<select autocomplete="address-level2" id="qArea" name="area">
+<option data-q="area.none" value="">Choose an area</option>
+<option data-q="area.central" value="central">Central Pattaya</option>
+<option data-q="area.beach" value="beach">Pattaya Beach Road</option>
+<option data-q="area.jomtien" value="jomtien">Jomtien</option>
+<option data-q="area.naklua" value="naklua">Naklua</option>
+<option data-q="area.pratamnak" value="pratamnak">Pratumnak</option>
+<option data-q="area.walking" value="walking">Walking Street</option>
+<option data-q="area.other" value="other">Somewhere else</option>
+</select>
+<span aria-live="polite" class="field__error" id="qAreaErr"></span>
+</div>
+<div class="field">
+<label data-q="f.first" for="qFirst">Your first name</label>
+<input aria-describedby="qFirstErr" autocomplete="given-name" data-need="1" data-q-ph="ph.first" id="qFirst" name="first" placeholder="Malee" type="text"/>
+<span aria-live="polite" class="field__error" id="qFirstErr"></span>
+</div>
+</div>
+<div class="field">
+<label data-q="f.wa" for="qWa">WhatsApp number</label>
+<input aria-describedby="qWaErr" autocomplete="tel" data-need="1" data-q-ph="ph.wa" id="qWa" inputmode="tel" name="wa" placeholder="+66 81 234 5678" type="tel"/>
+<span aria-live="polite" class="field__error" id="qWaErr"></span>
+</div>
+<div class="field">
+<label data-q="f.notes" for="qNotes">Anything we should know? <span class="qopt" data-q="f.optional">(optional)</span></label>
+<textarea data-q-ph="ph.notes" id="qNotes" name="notes" placeholder="A link to your Instagram, your opening hours, the dishes you're proud of…" rows="3"></textarea>
+</div>
+<p class="qprivacy">
+<svg aria-hidden="true" fill="none" viewbox="0 0 20 20"><rect height="8" rx="2" stroke="currentColor" stroke-width="1.6" width="11" x="4.5" y="9"></rect><path d="M7 9V6.5a3 3 0 016 0V9" stroke="currentColor" stroke-width="1.6"></path></svg>
+<span data-q="form.privacy">Your answers stay in this page. Nothing is stored or sent until you open WhatsApp.</span>
+</p>
+</fieldset>
+</div>
+<p aria-live="polite" class="quote__live" data-q="form.live" id="quoteLive" role="status">Step 1 of 4</p>
+<div class="qnav">
+<button class="btn btn--ghost" hidden="" id="qPrev" type="button">
+<svg aria-hidden="true" class="btn__arrow btn__arrow--back" fill="none" viewbox="0 0 20 20"><path d="M16 10H5m0 0l4.5-4.5M5 10l4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
+<span data-q="nav.back">Back</span>
+</button>
+<button class="btn btn--sun btn--lg magnetic" id="qNext" type="button">
+<span data-q="nav.next" id="qNextLabel">Next step</span>
+<svg aria-hidden="true" class="btn__arrow" fill="none" viewbox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
+</button>
+</div>
+</form>
+<aside aria-labelledby="sumTitle" class="quote__side">
+<details class="qsum" id="qsumMobile" open="">
+<summary class="qsum__head">
+<b data-q="sum.title" id="sumTitleMobile">Your request</b>
+<span aria-hidden="true" class="qsum__chev"></span>
+</summary>
+<div class="qsum__body">
+<h2 class="qsum__title" data-q="sum.title" id="sumTitle">Your request</h2>
+<ul class="qsum__list" id="sumList"></ul>
+<div class="qsum__price" hidden="" id="sumPrice">
+<p class="qsum__label" data-q="sum.from">From</p>
+<ul class="qsum__rows" id="sumRows"></ul>
+<p class="qsum__total"><span data-q="sum.total">Total</span> <b dir="ltr" id="sumTotal">฿0</b> <span class="qsum__approx" id="sumApprox"></span></p>
+<p class="qsum__hint" data-q="sum.hint" id="sumHint">Paid once · we confirm the final price together on WhatsApp.</p>
+</div>
+</div>
+</details>
+<div class="qwa">
+<p class="qwa__live"><span aria-hidden="true" class="live-dot"></span><span data-q="sum.live">We reply within minutes</span></p>
+<a class="btn btn--sun btn--lg btn--block magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" id="qWaSend" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+<span data-q="sum.send">Open WhatsApp with my request</span>
+</a>
+<button aria-describedby="quoteLive" class="btn btn--ghost btn--block" id="qCopy" type="button">
+<svg aria-hidden="true" fill="none" viewbox="0 0 20 20"><rect height="9" rx="1.6" stroke="currentColor" stroke-width="1.6" width="9" x="7" y="7"></rect><path d="M13 7V5.6A1.6 1.6 0 0 0 11.4 4H5.6A1.6 1.6 0 0 0 4 5.6v5.8A1.6 1.6 0 0 0 5.6 13H7" stroke="currentColor" stroke-width="1.6"></path></svg>
+<span data-q="sum.copy" id="qCopyLabel">Copy the message</span>
+</button>
+<p class="qwa__hint" data-q="sum.copyHint">Our WhatsApp link opens the chat. The message is copied so you can paste and send it in one tap.</p>
+</div>
+</aside>
+</div>
+<div class="qsent" hidden="" id="qsent">
+<p class="eyebrow" data-q="sent.eyebrow">Your message</p>
+<h2 class="qsent__title" data-q="sent.title">Ready to send.</h2>
+<p class="qsent__sub" data-q="sent.sub">This is exactly what we receive. Change anything above and it updates here.</p>
+<pre aria-label="Message preview" class="qsent__box" id="qMsg" tabindex="0"></pre>
+<p class="qsent__count"><b id="qCount">0</b> <span data-q="sent.chars">characters</span></p>
+</div>
+</div>
 </section>
 </main>
-
 <footer class="footer">
-  <div class="container">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <a href="../" class="brand" aria-label="NM Studio">
-          <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".5"></path></svg>
-          <span>NM Studio</span>
-        </a>
-        <p data-i18n="footer.tagline">Siti web e menù QR per ristoranti e attività locali.</p>
-        <ul class="footer__social" aria-label="Seguici" data-i18n-aria-label="v4.follow">
-          <li><a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="social social--wa" aria-label="WhatsApp"><svg class="social__ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg></a></li>
-        </ul>
-      </div>
-      <nav class="footer__col" aria-label="Footer">
-        <p class="footer__label" data-i18n="footer.explore">Esplora</p>
-        <a href="../services.html" data-i18n="nav2.services">Servizi</a>
-        <a href="../pricing.html" data-i18n="nav2.pricing">Prezzi</a>
-        <a href="../start.html" aria-current="page" class="is-current" data-i18n="cta.startProject">Inizia il mio progetto</a>
-        <a href="../#work" data-i18n="nav.work">Progetti</a>
-        <a href="../#offers" data-i18n="nav2.offers">Offerte</a>
-      </nav>
-      <div class="footer__col">
-        <p class="footer__label" data-i18n="v4.contact">Contatti</p>
-        <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="../start.html" data-i18n="footer.book">Prenota un incontro</a>
-        <a href="../account.html" data-i18n="nav2.account">Il mio account</a>
-      </div>
-      <div class="footer__col">
-        <p class="footer__label" data-i18n="footer2.legal">Note legali</p>
-        <a href="../legal.html#notice" data-i18n="footer2.notice">Note legali</a>
-        <a href="../legal.html#terms" data-i18n="footer2.terms">Condizioni di vendita</a>
-        <a href="../legal.html#privacy" data-i18n="footer2.privacy">Privacy</a>
-        <a href="../legal.html#cookies" data-i18n="footer2.cookies">Cookie</a>
-      </div>
-    </div>
-    <div class="footer__langs"><button type="button" class="flag-btn" data-lang="en" lang="en" aria-label="English" title="English" aria-current="false"><span class="flag is-waving" data-flag="en" aria-hidden="true" style="--sw: 2px; --d: -2.22s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11;"></i><i style="--i: 12;"></i><i style="--i: 13;"></i><i style="--i: 14; width: 2px;"></i></span></button><button type="button" class="flag-btn" data-lang="fr" lang="fr" aria-label="Français" title="Français" aria-current="false"><span class="flag is-waving" data-flag="fr" aria-hidden="true" style="--sw: 2px; --d: -2.59s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11;"></i><i style="--i: 12;"></i><i style="--i: 13;"></i><i style="--i: 14; width: 2px;"></i></span></button><button type="button" class="flag-btn" data-lang="it" lang="it" aria-label="Italiano" title="Italiano" aria-current="true"><span class="flag is-waving" data-flag="it" aria-hidden="true" style="--sw: 2px; --d: -2.96s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11;"></i><i style="--i: 12;"></i><i style="--i: 13;"></i><i style="--i: 14; width: 2px;"></i></span></button><button type="button" class="flag-btn" data-lang="th" lang="th" aria-label="ไทย" title="ไทย" aria-current="false"><span class="flag is-waving" data-flag="th" aria-hidden="true" style="--sw: 2px; --d: -3.33s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11;"></i><i style="--i: 12;"></i><i style="--i: 13;"></i><i style="--i: 14; width: 2px;"></i></span></button><button type="button" class="flag-btn" data-lang="ar" lang="ar" aria-label="العربية" title="العربية" aria-current="false"><span class="flag is-waving" data-flag="ar" aria-hidden="true" style="--sw: 2px; --d: -3.70s;"><i style="--i: 0;"></i><i style="--i: 1;"></i><i style="--i: 2;"></i><i style="--i: 3;"></i><i style="--i: 4;"></i><i style="--i: 5;"></i><i style="--i: 6;"></i><i style="--i: 7;"></i><i style="--i: 8;"></i><i style="--i: 9;"></i><i style="--i: 10;"></i><i style="--i: 11;"></i><i style="--i: 12;"></i><i style="--i: 13;"></i><i style="--i: 14; width: 2px;"></i></span></button></div>
-    <div class="footer__bottom">
-      <span data-i18n="footer.rights">© 2026 NM Studio. Fatto per farti trovare.</span>
-      <span class="footer__clock"><span class="live-dot" aria-hidden="true"></span><span data-i18n="footer.local">Pattaya, Thailandia</span> · <time id="localTime">21:54</time></span>
-      <a href="#top"><span data-i18n="footer.backTop">Torna su</span> ↑</a>
-    </div>
-  </div>
-  <a href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener" class="wa-float" data-i18n-aria-label="a11y.whatsapp" aria-label="Scrivici su WhatsApp">
-    <svg class="" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
-  </a>
+<div class="container">
+<div class="footer__top">
+<div class="footer__brand">
+<a aria-label="NM Studio" class="brand" href=".././">
+<svg aria-hidden="true" class="brand__mark" fill="none" viewbox="0 0 24 24"><path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" opacity=".5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+<span>NM Studio</span>
+</a>
+<p data-i18n="footer.tagline">Siti web e menù QR per ristoranti e attività locali.</p>
+<ul aria-label="Seguici" class="footer__social" data-i18n-aria-label="v4.follow">
+<li><a aria-label="WhatsApp" class="social social--wa" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><svg aria-hidden="true" class="social__ic" focusable="false" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"></path></svg></a></li>
+</ul>
+</div>
+<nav aria-label="Footer" class="footer__col">
+<p class="footer__label" data-i18n="footer.explore">Esplora</p>
+<a data-i18n="nav2.services" href="services.html">Servizi</a>
+<a data-i18n="nav2.pricing" href="pricing.html">Prezzi</a>
+<a aria-current="page" class="is-current" data-i18n="cta.startProject" href="start.html">Inizia il mio progetto</a>
+<a data-i18n="nav.work" href=".././#work">Progetti</a>
+<a data-i18n="nav2.offers" href=".././#offers">Offerte</a>
+</nav>
+<div class="footer__col">
+<p class="footer__label" data-i18n="v4.contact">Contatti</p>
+<a href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank">WhatsApp</a>
+<a data-i18n="footer.book" href="start.html">Prenota un incontro</a>
+<a data-i18n="nav2.account" href="../account.html">Il mio account</a>
+</div>
+<div class="footer__col">
+<p class="footer__label" data-i18n="footer2.legal">Note legali</p>
+<a data-i18n="footer2.notice" href="legal.html#notice">Note legali</a>
+<a data-i18n="footer2.terms" href="legal.html#terms">Condizioni di vendita</a>
+<a data-i18n="footer2.privacy" href="legal.html#privacy">Privacy</a>
+<a data-i18n="footer2.cookies" href="legal.html#cookies">Cookie</a>
+</div>
+</div>
+<div class="footer__langs"><button aria-current="false" aria-label="English" class="flag-btn" data-lang="en" lang="en" title="English" type="button"><span aria-hidden="true" class="flag" data-flag="en"></span></button><button aria-current="false" aria-label="Français" class="flag-btn" data-lang="fr" lang="fr" title="Français" type="button"><span aria-hidden="true" class="flag" data-flag="fr"></span></button><button aria-current="true" aria-label="Italiano" class="flag-btn" data-lang="it" lang="it" title="Italiano" type="button"><span aria-hidden="true" class="flag" data-flag="it"></span></button><button aria-current="false" aria-label="ไทย" class="flag-btn" data-lang="th" lang="th" title="ไทย" type="button"><span aria-hidden="true" class="flag" data-flag="th"></span></button><button aria-current="false" aria-label="العربية" class="flag-btn" data-lang="ar" lang="ar" title="العربية" type="button"><span aria-hidden="true" class="flag" data-flag="ar"></span></button></div>
+<div class="footer__bottom">
+<span data-i18n="footer.rights">© 2026 NM Studio. Fatto per farti trovare.</span>
+<span class="footer__clock"><span aria-hidden="true" class="live-dot"></span><span data-i18n="footer.local">Pattaya, Thailandia</span> · <time id="localTime">--:--</time></span>
+<a href="#top"><span data-i18n="footer.backTop">Torna su</span> ↑</a>
+</div>
+</div>
+<a aria-label="Scrivici su WhatsApp" class="wa-float" data-i18n-aria-label="a11y.whatsapp" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank">
+<svg aria-hidden="true" class="" focusable="false" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"></path></svg>
+</a>
 </footer>
-
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script src="../assets/js/quote.js?v=20261004f" defer=""></script>
-<script src="../assets/js/nm-dict.js?v=20261004f" defer=""></script>
-<script src="../assets/js/offers-config.js?v=20261004f" defer=""></script>
-<script src="../assets/js/i18n.js?v=20261004f" defer=""></script>
-
-
-<script src="../assets/js/perf.js" defer></script>
-</body></html>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<script defer="" src="../assets/js/quote.js?v=20261005a"></script>
+<script defer="" src="../assets/js/nm-dict.js?v=20261005a"></script>
+<script defer="" src="../assets/js/nm-copy2.js?v=20261005a"></script>
+<script defer="" src="../assets/js/offers-config.js?v=20261005a"></script>
+<script defer="" src="../assets/js/i18n.js?v=20261005a"></script>
+<script defer="" src="../assets/js/perf.js"></script>
+</body>
+</html>

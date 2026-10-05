@@ -23,7 +23,7 @@
  * social — the studio's own pages; each footer icon stays hidden until filled.
  */
 window.NM_OFFERS = {
-  order: ["google", "qr", "website", "pack"],
+  order: ["google", "website", "pack"],
   featured: "website",
   price: { google: 990, qr: 1990, website: 5800, pack: 13300 },
   care: { google: 0, qr: 290, website: 0, pack: 0 },
@@ -41,7 +41,7 @@ window.NM_OFFERS = {
      Thai visitor baht (which is the real charge). Amounts are hand-rounded to
      keep round numbers — this is not a live exchange rate. Change the mapping
      or the values here and the whole site follows. */
-  currency: { en: "gbp", fr: "eur", it: "eur", th: "thb", ar: "mad" },
+  currency: { en: "thb", fr: "thb", it: "thb", th: "thb", ar: "thb" },   /* baht only, in every language: the price you read is the price you pay */
   currencySymbol: { gbp: " £", eur: " €", mad: " DH", thb: " ฿" },
   /* Rounded local amounts, per baht price. The owner's own figures are the
      ones printed: 150 € setup then 30 € a month for the website, 350 € then

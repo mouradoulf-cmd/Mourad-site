@@ -5,7 +5,7 @@ Plain HTML/CSS/JS, no build step. Hosted on GitHub Pages
 
 | Page | What it does |
 |---|---|
-| `index.html` | Home (v4): 50/50 hero « Be found. Be chosen. » with a MacBook + iPhone cycling through the 8 live sites, key figures + sectors marquee, the 8 demos (device mockups, live preview), the 4 offers (+ detail dialog), why us (3 photos), how it works (3 steps), FAQ (8), « Ready to be visible? » WhatsApp finale, footer |
+| `index.html` | Home (v4): 50/50 hero « Be found. Be chosen. » + keyword H1 with a MacBook + iPhone cycling through the 8 live sites, a "problems → fixes" section (3 problems, 3 solutions), the 8 demos (device mockups, live preview), the 3 offers (+ detail dialog), why us (3 photos), how it works (3 steps), FAQ (8), « Ready to be visible? » WhatsApp finale, footer |
 | `services.html` | The 4 offers in depth, "which offer is right for you", comparison table, service FAQ |
 | `pricing.html` | Prices, care plan with Monthly / Yearly toggle, comparison table, pricing FAQ |
 | `checkout.html` | 4-step checkout: offer + care plan → details → payment → review (promo code) → confirmation |
@@ -23,8 +23,7 @@ Everything is in **`assets/js/offers-config.js`**:
 
 | Offer | One-time | Care plan (optional) |
 |---|---|---|
-| Google Business Profile | ฿990 | — |
-| QR Menu | ฿1,990 | ฿290 / month |
+| Google Business Profile | ฿990 | none |
 
 | Offer | Setup fee | Subscription (part of the offer) |
 |---|---|---|
@@ -157,3 +156,14 @@ hero: 1716638298765 (Bangkok neon street),
 1785011070032-e7c04afab462 (street-food wok), 1667038408487 (lantern
 restaurant). Story: 1779365340849 (visitor with phone), 1779540174821 (empty
 restaurant), 1695606453510 (full restaurant). All colour-graded warm.
+
+
+## v5 (expert feedback pass)
+
+* **3 offers** (Google ฿990, Website ฿5,800 + ฿1,140/month, Complete Pack ฿13,300 + ฿3,800/month). The QR menu is no longer sold alone: it is part of the Website and the Pack.
+* **Baht only** in every language (no more mixed ฿ / €).
+* **H1 carries the keywords** (`v4.title`: slogan + "Website, QR menu and Google listing for Pattaya businesses").
+* **Copy lives in `assets/js/nm-copy2.js`** (EN/FR/IT/TH/AR), loaded after `nm-dict.js`; it overrides the base dictionaries. No em dashes, no filler.
+* The key-figures banner was removed; work cards show picture + name only.
+* `reviews-config.js` is empty on purpose: add REAL client reviews there and the section appears. Do not invent any.
+* FR/IT/TH/AR HTML pages are generated from the English page + dictionaries (the language folders used to drift out of sync).
