@@ -264,7 +264,7 @@ a.card{text-decoration:none}.card:hover{transform:translateY(-4px);border-color:
 @media(max-width:860px){.ftr__top{grid-template-columns:1fr 1fr}}@media(max-width:520px){.ftr__top{grid-template-columns:1fr}}
 /* ---------- inner page head ---------- */
 .ph{padding-top:calc(var(--h) + clamp(3rem,7vw,6rem));padding-bottom:clamp(2.5rem,5vw,4.5rem);position:relative;border-bottom:1px solid var(--line)}
-.ph h1{font-size:clamp(2.6rem,8vw,7.5rem);font-stretch:122%;line-height:.92;letter-spacing:-.035em;margin-top:1.2rem}
+.ph h1{font-size:clamp(2.3rem,8vw,7.5rem);font-stretch:122%;line-height:.92;letter-spacing:-.035em;margin-top:1.2rem}
 .ph h1 em{font-style:normal;color:var(--signal)}
 .ph .lead{margin-top:1.6rem}
 .crumb{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}.crumb a{text-decoration:none}.crumb a:hover{color:var(--ink)}
