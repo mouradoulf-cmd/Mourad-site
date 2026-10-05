@@ -9,7 +9,9 @@ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').mat
 
 /* ---------- copy (TH / FR / EN) ---------- */
 var FN={
-th:{loading:'กำลังโหลด...',wt:'ยินดีต้อนรับสู่ <em>Avatar Cash</em>!',ws:'สร้างอินฟลูเอนเซอร์ AI ของคุณเอง ใช้เวลา 2 นาที เราจะปรับเส้นทางให้เหมาะกับคุณ',start:'เริ่มเลย 🚀',member:'เป็นสมาชิกแล้ว?',enter:'เข้าห้องเรียน',cont:'ต่อไป →',
+th:{say_t:'อวตารของคุณกำลังจะเกิดขึ้น',say_b:'ลองนึกภาพใบหน้านิช {niche} ที่พูดแทนคุณทุกวัน โดยที่คุณไม่ต้องออกกล้อง',q_src:'คุณรู้จัก Avatar Cash จากที่ไหน?',ph_src:'เช่น TikTok เพื่อน Instagram...',src_note:'ไม่บังคับ — ช่วยให้เรารู้ว่าอะไรได้ผล',skip:'ข้าม',
+ q_line:'อีกขั้นเดียว {n}! เพิ่มเพื่อนใน LINE เพื่อรับแผนของคุณและพรอมต์ฟรี 20 ข้อ',line_btn:'เพิ่มเพื่อนใน LINE',line_skip:'ต่อโดยไม่ใช้ LINE',
+ calc1:'กำลังคำนวณโปรแกรมที่เหมาะกับคุณ...',calc2:'กำลังเลือกเครื่องมือและพรอมต์...',calc3:'ใกล้เสร็จแล้ว...',badge:'คืนเงิน 7 วัน',st1:'5 โมดูล',st2:'20 พรอมต์',st3:'แผน 30 วัน',pw_a:'เข้าร่วม',loading:'กำลังโหลด...',wt:'ยินดีต้อนรับสู่ <em>Avatar Cash</em>!',ws:'สร้างอินฟลูเอนเซอร์ AI ของคุณเอง ใช้เวลา 2 นาที เราจะปรับเส้นทางให้เหมาะกับคุณ',start:'เริ่มเลย 🚀',member:'เป็นสมาชิกแล้ว?',enter:'เข้าห้องเรียน',cont:'ต่อไป →',
  q_name:'สวัสดี! คุณชื่ออะไร? เราจะปรับเส้นทางให้เหมาะกับคุณ',ph_name:'ชื่อของคุณ...',
  q_goal:'เยี่ยมเลย {n}! เป้าหมายของคุณคืออะไร?',g1:'รายได้เสริม',g2:'อยากออกจากงานประจำในอนาคต',g3:'สร้างแบรนด์โดยไม่เปิดหน้า',g4:'อวตารสำหรับธุรกิจของฉัน',g5:'อยากรู้เฉยๆ',
  q_age:'{n} อายุเท่าไหร่?',a1:'18–24 ปี',a2:'25–34 ปี',a3:'35–44 ปี',a4:'45–54 ปี',a5:'55 ปีขึ้นไป',age_note:'สำหรับผู้มีอายุ 18 ปีขึ้นไป',
@@ -28,7 +30,9 @@ th:{loading:'กำลังโหลด...',wt:'ยินดีต้อนร�
  pl_life:'ตลอดชีพ',pl_lifes:'จ่ายครั้งเดียว • เท่ากับ 5 เดือนของรายเดือน',pl_month:'รายเดือน',pl_months:'ยกเลิกเมื่อไรก็ได้',pop:'คุ้มที่สุด',per:'ต่อเดือน',once:'ครั้งเดียว',
  ft:'ฟีเจอร์',free:'ฟรี',full:'เต็ม',f1:'พรอมต์ 20 ข้อ',f2:'5 โมดูลเต็ม',f3:'แผน 30 วัน',f4:'คอมมูนิตี้ LINE',f5:'สคริปต์ปิดการขาย',
  pay:'เข้าร่วม — {price}',guar:'🛡 รับประกันคืนเงิน 7 วัน',disc:'ไม่รับประกันรายได้ ผลลัพธ์ขึ้นกับการลงมือทำ',nothanks:'ไม่เป็นไร ขอแค่พรอมต์ฟรี',terms:'เงื่อนไข',back:'กลับ'},
-fr:{loading:'Chargement...',wt:'Bienvenue sur <em>Avatar Cash</em> !',ws:'Crée ton influenceur IA. En 2 minutes, on personnalise ton parcours.',start:'Commencer 🚀',member:'Déjà membre ?',enter:'Entrer',cont:'Continuer →',
+fr:{say_t:'Ton avatar va naître',say_b:'Imagine un visage {niche} qui parle à ta place chaque jour, sans que tu apparaisses à l’écran.',q_src:'Comment as-tu découvert Avatar Cash ?',ph_src:'Ex : TikTok, un ami, Instagram...',src_note:'Facultatif — ça nous aide à savoir ce qui marche',skip:'Passer',
+ q_line:'Plus qu’une étape {n} ! Ajoute-nous sur LINE pour recevoir ton plan et les 20 prompts gratuits.',line_btn:'Ajouter sur LINE',line_skip:'Continuer sans LINE',
+ calc1:'Calcul de ton programme personnalisé...',calc2:'Sélection des outils et des prompts...',calc3:'Presque terminé...',badge:'7 j remboursé',st1:'5 modules',st2:'20 prompts',st3:'Plan 30 jours',pw_a:'Rejoins',loading:'Chargement...',wt:'Bienvenue sur <em>Avatar Cash</em> !',ws:'Crée ton influenceur IA. En 2 minutes, on personnalise ton parcours.',start:'Commencer 🚀',member:'Déjà membre ?',enter:'Entrer',cont:'Continuer →',
  q_name:'Salut ! Comment tu t’appelles ? Je vais personnaliser ton parcours.',ph_name:'Ton prénom...',
  q_goal:'Super {n} ! Quel est ton objectif ?',g1:'Un revenu complémentaire',g2:'Quitter mon travail à terme',g3:'Créer une marque sans montrer mon visage',g4:'Un avatar pour mon entreprise',g5:'Par curiosité',
  q_age:'{n}, quel âge as-tu ?',a1:'18–24 ans',a2:'25–34 ans',a3:'35–44 ans',a4:'45–54 ans',a5:'55 ans et plus',age_note:'Réservé aux personnes de 18 ans et plus',
@@ -47,7 +51,9 @@ fr:{loading:'Chargement...',wt:'Bienvenue sur <em>Avatar Cash</em> !',ws:'Crée 
  pl_life:'À vie',pl_lifes:'Paiement unique • équivaut à 5 mois d’abonnement',pl_month:'Mensuel',pl_months:'Résiliable à tout moment',pop:'Le plus avantageux',per:'par mois',once:'une fois',
  ft:'Fonctionnalités',free:'Gratuit',full:'Complet',f1:'20 prompts',f2:'5 modules complets',f3:'Plan 30 jours',f4:'Communauté LINE',f5:'Scripts de vente',
  pay:'Rejoindre — {price}',guar:'🛡 Remboursé sous 7 jours',disc:'Aucun revenu garanti. Les résultats dépendent de ton action.',nothanks:'Non merci, juste les prompts gratuits',terms:'Conditions',back:'Retour'},
-en:{loading:'Loading...',wt:'Welcome to <em>Avatar Cash</em>!',ws:'Build your own AI influencer. In 2 minutes we personalise your path.',start:'Start 🚀',member:'Already a member?',enter:'Enter',cont:'Continue →',
+en:{say_t:'Your avatar is about to be born',say_b:'Picture a {niche} face that speaks for you every day, without you ever appearing on screen.',q_src:'How did you discover Avatar Cash?',ph_src:'E.g. TikTok, a friend, Instagram...',src_note:'Optional — it helps us know what works',skip:'Skip',
+ q_line:'One more step {n}! Add us on LINE to get your plan and the 20 free prompts.',line_btn:'Add us on LINE',line_skip:'Continue without LINE',
+ calc1:'Calculating your personalised programme...',calc2:'Selecting tools and prompts...',calc3:'Almost done...',badge:'7-day refund',st1:'5 modules',st2:'20 prompts',st3:'30-day plan',pw_a:'Join',loading:'Loading...',wt:'Welcome to <em>Avatar Cash</em>!',ws:'Build your own AI influencer. In 2 minutes we personalise your path.',start:'Start 🚀',member:'Already a member?',enter:'Enter',cont:'Continue →',
  q_name:'Hi! What’s your name? I’ll personalise your path.',ph_name:'Your first name...',
  q_goal:'Great {n}! What’s your goal?',g1:'Extra income',g2:'Eventually leave my job',g3:'Build a brand without showing my face',g4:'An avatar for my business',g5:'Just curious',
  q_age:'{n}, how old are you?',a1:'18–24',a2:'25–34',a3:'35–44',a4:'45–54',a5:'55+',age_note:'For people aged 18 and over',
@@ -78,9 +84,13 @@ var FLOW=[
  {id:'age',type:'choice',q:'q_age',cols:2,note:'age_note',opts:[['a1','🎓'],['a2','💼'],['a3','🏡'],['a4','🌿'],['a5','⭐']]},
  {id:'lvl',type:'choice',q:'q_lvl',opts:[['l1','🐣','l1s'],['l2','🌱','l2s'],['l3','🔥','l3s']]},
  {id:'niche',type:'choice',q:'q_niche',cols:2,opts:[['n1','💄'],['n2','💰'],['n3','🏋️'],['n4','✈️'],['n5','🤖'],['n6','✨']]},
+ {id:'say',type:'say',q:'say_b',title:'say_t'},
  {id:'time',type:'choice',q:'q_time',opts:[['t1','⏱️'],['t2','🕐'],['t3','🚀']]},
- {id:'plat',type:'choice',q:'q_plat',cols:2,opts:[['p1','🎵'],['p2','📸'],['p3','👍'],['p4','▶️']]}
+ {id:'plat',type:'choice',q:'q_plat',cols:2,opts:[['p1','🎵'],['p2','📸'],['p3','👍'],['p4','▶️']]},
+ {id:'src',type:'text',q:'q_src',ph:'ph_src',note:'src_note'},
+ {id:'line',type:'line',q:'q_line'}
 ];
+
 var S={step:'splash',i:0,a:{},plan:'life'};
 try{var sv=JSON.parse(localStorage.getItem('ac_funnel')||'null');if(sv&&sv.a){S.a=sv.a}}catch(e){}
 function save(){try{localStorage.setItem('ac_funnel',JSON.stringify({a:S.a}))}catch(e){}}
@@ -114,89 +124,88 @@ function typeInto(el,text,done){
 function clearTimers(){clearTimeout(S.timer);clearInterval(S.int);cancelAnimationFrame(S.raf)}
 
 /* ---------- screens ---------- */
+function mascotHtml(cls){return'<div class="mascot '+(cls||'')+'"><img src="'+MASCOT+'" alt=""><div class="br"><b></b></div></div>'}
 function splash(){
- clearTimers();mount('<div class="mascot"><img src="'+MASCOT+'" alt=""></div><div class="logo">AVATAR <b>CASH</b></div><div class="loading">'+esc(t('loading'))+'</div>','center');
- S.timer=setTimeout(function(){go(welcome)},reduce?200:2100)}
+ clearTimers();S.step='splash';mount(mascotHtml()+'<div class="logo">AVATAR<br>CASH</div><div class="uline"><i></i></div><div class="loading">'+esc(t('loading'))+'</div>','center');
+ S.timer=setTimeout(function(){go(welcome)},reduce?200:2300)}
 function welcome(){
- S.step='welcome';
- var sc=mount('<div class="mascot" style="width:130px;height:130px"><img src="'+MASCOT+'" alt=""></div><h1>'+t('wt')+'</h1><p class="sub">'+esc(t('ws'))+'</p><div style="width:100%;margin-top:16px"><button class="cta" id="go">'+esc(t('start'))+'</button><p class="note" style="margin-top:12px">'+esc(t('member'))+' <a href="members.html" style="color:#facc15">'+esc(t('enter'))+'</a></p></div>','center');
+ clearTimers();S.step='welcome';
+ mount(mascotHtml('')+'<h1>'+t('wt')+'</h1><p class="sub">'+esc(t('ws'))+'</p><div style="width:100%;margin-top:18px"><button class="cta" id="go">'+esc(t('start'))+'</button><p class="note" style="margin-top:12px">'+esc(t('member'))+' <a href="members.html" style="color:#c9adff;text-decoration:underline">'+esc(t('enter'))+'</a></p></div>','center');
  $('#go').onclick=function(){S.i=0;go(chat)}}
 function chat(){
  clearTimers();var st=FLOW[S.i];S.step='chat';
- var v={n:S.a.name||''},prog=Math.round((S.i+1)/(FLOW.length+1)*100);
- var body='<div class="top"><button class="back" id="bk" aria-label="'+esc(t('back'))+'"'+(S.i===0?' hidden':'')+'>←</button><div class="bar"><i id="pg"></i></div></div>'+
-  '<div class="chat"><img src="'+MASCOT+'" alt=""><div class="bubble" id="bb"></div></div><div id="ans"></div>';
- var sc=mount(body);setTimeout(function(){var p=$('#pg');if(p)p.style.width=prog+'%'},60);
+ var v={n:S.a.name||'',niche:t(S.a.niche||'n6')},prog=Math.round((S.i+1)/(FLOW.length+2)*100);
+ var mid=(st.type==='input'||st.type==='say'||st.type==='text'||st.type==='line')?' mid':'';
+ var big=st.type==='say'?'<div class="big">'+mascotHtml()+'<h2>'+esc(t(st.title))+'</h2></div>':'';
+ mount('<div class="top"><button class="back" id="bk" aria-label="'+esc(t('back'))+'"'+(S.i===0?' hidden':'')+'>←</button><div class="bar"><i id="pg"></i></div></div>'+big+
+  '<div class="'+mid.trim()+'"><div class="chat"><img src="'+MASCOT+'" alt=""><div class="bubble" id="bb"></div></div><div id="ans"></div></div>');
+ setTimeout(function(){var p=$('#pg');if(p)p.style.width=prog+'%'},60);
  var bb=$('#bb'),ans=$('#ans');if(S.noType)bb.dataset.skip='1';
- var q=t(st.q,v);
- typeInto(bb,q,function(){showAns()});
+ typeInto(bb,t(st.q,v),showAns);
+ function foot(inner){return'<div class="foot">'+inner+'</div>'}
  function showAns(){
   if(st.type==='input'){
-   ans.innerHTML='<input class="field" id="in" maxlength="24" autocomplete="given-name" placeholder="'+esc(t('ph_name'))+'" value="'+esc(S.a.name||'')+'"><div class="foot"><button class="cta" id="ct" disabled>'+esc(t('cont'))+'</button></div>';
+   ans.innerHTML='<input class="field" id="in" maxlength="24" autocomplete="given-name" placeholder="'+esc(t('ph_name'))+'" value="'+esc(S.a.name||'')+'">'+foot('<button class="cta" id="ct" disabled>'+esc(t('cont'))+'</button>');
    var inp=$('#in'),ct=$('#ct');function chk(){ct.disabled=!inp.value.trim()}chk();inp.oninput=chk;
    function ok(){var n=inp.value.trim();if(!n)return;S.a.name=n;save();next()}
    ct.onclick=ok;inp.onkeydown=function(e){if(e.key==='Enter')ok()};if(!S.noType)setTimeout(function(){try{inp.focus()}catch(e){}},50);
+  }else if(st.type==='text'){
+   ans.innerHTML='<textarea class="field" id="tx" maxlength="120" placeholder="'+esc(t(st.ph))+'">'+esc(S.a[st.id]||'')+'</textarea><p class="note" style="margin-top:8px">'+esc(t(st.note))+'</p>'+foot('<button class="cta" id="ct">'+esc(t('skip'))+'</button>');
+   var tx=$('#tx'),c2=$('#ct');tx.oninput=function(){c2.textContent=t(tx.value.trim()?'cont':'skip')};c2.onclick=function(){S.a[st.id]=tx.value.trim();save();next()};
+  }else if(st.type==='say'){
+   ans.innerHTML=foot('<button class="cta" id="ct">'+esc(t('cont'))+'</button>');$('#ct').onclick=next;
+  }else if(st.type==='line'){
+   ans.innerHTML=foot('<a class="cta" id="ln" data-line href="#" target="_blank" rel="noopener">💬 '+esc(t('line_btn'))+'</a><button class="link" id="sk">'+esc(t('line_skip'))+'</button>');
+   var la=$('#ln');la.href='https://line.me/R/ti/p/'+encodeURIComponent(CFG.LINE_OA||'');la.onclick=function(){S.a.line=1;save();setTimeout(next,600)};$('#sk').onclick=next;
   }else{
    var h='<div class="opts'+(st.cols===2?' two':'')+'">';
-   st.opts.forEach(function(o,idx){h+='<button class="opt'+(S.a[st.id]===o[0]?' sel':'')+'" data-k="'+o[0]+'" style="animation-delay:'+(idx*70)+'ms"><span class="ico">'+o[1]+'</span><span>'+esc(t(o[0]))+(o[2]?'<small>'+esc(t(o[2]))+'</small>':'')+'</span></button>'});
+   st.opts.forEach(function(o,idx){h+='<button class="opt'+(S.a[st.id]===o[0]?' sel':'')+'" data-k="'+o[0]+'" style="animation-delay:'+(idx*90)+'ms"><span class="ico">'+o[1]+'</span><span>'+esc(t(o[0]))+(o[2]?'<small>'+esc(t(o[2]))+'</small>':'')+'</span></button>'});
    h+='</div>'+(st.note?'<p class="note" style="margin-top:12px">'+esc(t(st.note))+'</p>':'');
    ans.innerHTML=h;
    [].forEach.call(ans.querySelectorAll('.opt'),function(b){b.onclick=function(){
     [].forEach.call(ans.querySelectorAll('.opt'),function(x){x.classList.remove('sel')});b.classList.add('sel');
-    S.a[st.id]=b.getAttribute('data-k');save();setTimeout(next,reduce?0:420)}})}
+    S.a[st.id]=b.getAttribute('data-k');save();setTimeout(next,reduce?0:450)}})}
  }
  $('#bk').onclick=function(){if(S.i>0){S.i--;S.noType=true;go(chat)}};
  function next(){S.noType=false;if(S.i<FLOW.length-1){S.i++;go(chat)}else go(analysis)}
  S.noType=false}
-/* analysis: the avatar assembles from particles while the bars fill */
+/* analysis: mascot + one progress bar + rotating status lines (as in the reference) */
 function analysis(){
  clearTimers();S.step='analysis';
- var sc=mount('<canvas class="cv" id="cv" width="300" height="360"></canvas><div class="steps" id="sts"></div>','center');
- var keys=['ld1','ld2','ld3'];$('#sts').innerHTML=keys.map(function(k,i){return'<div class="st" id="s'+i+'"><span>'+esc(t(k))+'</span><div class="bar"><i></i></div></div>'}).join('');
- var cv=$('#cv'),c=cv.getContext('2d'),sil=D.createElement('canvas');sil.width=300;sil.height=380;var sx=sil.getContext('2d');sx.fillStyle='#000';['shoulders','neck','hairBack','face','bangs'].forEach(function(k){sx.fill(BP[k])});
- var d=sx.getImageData(0,0,300,380).data,pts=[],seed=11;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
- for(var y=0;y<380;y+=5)for(var x=0;x<300;x+=5)if(d[(y*300+x)*4+3]>128)pts.push({x:x+(rnd()-.5)*3,y:y+(rnd()-.5)*3,sx:rnd()*300,sy:rnd()*360,dl:rnd(),ph:rnd()*6.28,sz:1.5+rnd()*1.6});
- function eo(x){x=Math.min(1,Math.max(0,x));return 1-Math.pow(1-x,3)}
- var T0=null,TOTAL=reduce?300:5600;
- function frame(ts){if(!T0)T0=ts;var e=ts-T0,p=Math.min(1,e/TOTAL),asm=Math.min(1,e/(TOTAL*.72)),sol=eo((e-TOTAL*.66)/(TOTAL*.3));
-  c.clearRect(0,0,300,360);c.save();c.translate(0,-10);c.scale(1,1);
-  var gl=c.createRadialGradient(150,190,10,150,190,200);gl.addColorStop(0,'rgba(168,85,247,'+(.5*sol)+')');gl.addColorStop(1,'rgba(168,85,247,0)');c.fillStyle=gl;c.fillRect(0,0,300,380);
-  if(sol>0){c.globalAlpha=sol;solid(c,0);c.globalAlpha=1}
-  if(sol<1){c.globalCompositeOperation='lighter';for(var i=0;i<pts.length;i++){var q=pts[i],a=eo((asm-q.dl*.55)/.45),w=(1-a)*30,px=q.sx+(q.x-q.sx)*a+Math.sin(e/330+q.ph)*w*.2,py=q.sy+(q.y-q.sy)*a+Math.cos(e/380+q.ph)*w*.2,k=q.y/380;
-   c.fillStyle='rgba('+Math.round(250-82*k)+','+Math.round(204-120*k)+','+Math.round(21+226*k)+','+((1-sol)*(.35+.65*a))+')';c.fillRect(px,py,q.sz,q.sz)}c.globalCompositeOperation='source-over'}
-  c.restore();
-  for(var s=0;s<3;s++){var seg=Math.min(1,Math.max(0,p*3-s)),el=$('#s'+s);if(!el)return;el.classList.toggle('on',seg>0);el.classList.toggle('done',seg>=1);el.querySelector('i').style.width=(seg*100)+'%'}
-  if(p<1)S.raf=requestAnimationFrame(frame);else S.timer=setTimeout(function(){go(result)},350)}
- S.raf=requestAnimationFrame(frame)}
+ mount(mascotHtml()+'<div class="calc"><div class="bar" style="width:100%"><i id="pg"></i></div><p id="cp"></p></div>','center');
+ var lines=['calc1','calc2','calc3'],pg=$('#pg'),cp=$('#cp'),T=reduce?400:4200,t0=Date.now(),li=-1;
+ S.int=setInterval(function(){var p=Math.min(1,(Date.now()-t0)/T);pg.style.width=(p*100)+'%';var k=Math.min(2,Math.floor(p*3));if(k!==li){li=k;cp.style.opacity=0;setTimeout(function(){cp.textContent=t(lines[k]);cp.style.opacity=1},reduce?0:160)}
+  if(p>=1){clearInterval(S.int);S.timer=setTimeout(function(){go(result)},400)}},60);
+ cp.style.transition='opacity .3s'}
 function plan(){var a=S.a,niche=t(a.niche||'n6'),plat=t(a.plat||'p1'),lv=a.lvl||'l1',tm=a.time||'t2',g=a.goal||'g1',v={niche:niche,plat:plat};
  return {v:v,items:[t(lv==='l1'?'b1a':'b1b',v),t(tm==='t1'?'b2a':tm==='t2'?'b2b':'b2c',v),t('b3'),t('b4_'+g)]}}
 function result(){
  clearTimers();S.step='result';var a=S.a,pl=plan(),n=a.name||'';
  var chips=['niche','goal','lvl','time','plat'].map(function(k){return a[k]?'<span class="chip">'+esc(t(a[k]))+'</span>':''}).join('');
- var sc=mount('<div class="pw-h"><div class="mascot"><img src="'+MASCOT+'" alt=""></div><h1>'+esc(t('r_t',{n:n}))+'</h1><p class="sub">'+esc(t('r_s'))+'</p></div><div class="card"><div class="chips" style="margin-top:0">'+chips+'</div><ul class="plan-l">'+pl.items.map(function(x,i){return'<li style="animation-delay:'+(250+i*300)+'ms">'+esc(x)+'</li>'}).join('')+'</ul></div><p class="note" style="margin-top:12px">'+esc(t('r_note'))+'</p><div class="foot"><button class="cta gold" id="go">'+esc(t('r_cta'))+'</button></div>');
+ mount('<div class="pw-h" style="margin-top:10px">'+mascotHtml('sm')+'<h1>'+esc(t('r_t',{n:n}))+'</h1><p class="sub">'+esc(t('r_s'))+'</p></div><div class="card"><div class="chips">'+chips+'</div><ul class="plan-l">'+pl.items.map(function(x,i){return'<li style="animation-delay:'+(250+i*300)+'ms">'+esc(x)+'</li>'}).join('')+'</ul></div><p class="note" style="margin-top:12px">'+esc(t('r_note'))+'</p><div class="foot"><button class="cta gold" id="go">'+esc(t('r_cta'))+'</button></div>');
  $('#go').onclick=function(){go(paywall)}}
 function paywall(){
  clearTimers();S.step='paywall';var a=S.a,pl=plan(),P2=CFG.PLANS||{};
  function money(k){return'฿'+(P2[k]?P2[k].price:0).toLocaleString('en-US')}
  var end=CFG.OFFER_END?new Date(CFG.OFFER_END).getTime():0,showT=end&&end>Date.now();
  var rows=['f1','f2','f3','f4','f5'].map(function(k,i){return'<tr><td>'+esc(t(k))+'</td><td class="'+(i===0?'y':'n')+'">'+(i===0?'✓':'—')+'</td><td class="y">✓</td></tr>'}).join('');
- var sc=mount('<div class="pw-h"><div class="mascot"><img src="'+MASCOT+'" alt=""></div><h1>'+t('pw_t')+'</h1><p class="sub">'+esc(t('pw_s',pl.v))+'</p>'+(showT?'<p class="note">'+esc(t('offer'))+'</p><div class="timer" id="tm"></div>':'')+'</div>'+
+ var sc=mount('<div class="pw-h"><div class="mascot"><img src="'+MASCOT+'" alt=""><span class="badge">'+esc(t('badge'))+'</span></div><h1><span>'+esc(t('pw_a'))+'</span><em>Avatar Cash</em></h1><div class="stats"><span><b>5</b> '+esc(t('st1').replace(/^\d+\s*/,''))+'</span><span><b>20</b> '+esc(t('st2').replace(/^\d+\s*/,''))+'</span><span>'+esc(t('st3'))+'</span></div><p class="sub" style="font-size:.78rem">'+esc(t('pw_s',pl.v))+'</p>'+(showT?'<p class="note">'+esc(t('offer'))+'</p><div class="timer" id="tm"></div>':'')+'</div>'+
   '<div class="plans"><button class="pl" data-k="life"><span class="tag">'+esc(t('pop'))+'</span><i class="ck">✓</i><span><span class="nm">'+esc(t('pl_life'))+'</span><span class="sm">'+esc(t('pl_lifes'))+'</span></span><span class="pr">'+money('life')+'<small>'+esc(t('once'))+'</small></span></button>'+
   '<button class="pl" data-k="month"><i class="ck">✓</i><span><span class="nm">'+esc(t('pl_month'))+'</span><span class="sm">'+esc(t('pl_months'))+'</span></span><span class="pr">'+money('month')+'<small>'+esc(t('per'))+'</small></span></button></div>'+
   '<table class="tbl"><tr><th>'+esc(t('ft'))+'</th><th>'+esc(t('free'))+'</th><th class="pm">'+esc(t('full'))+'</th></tr>'+rows+'</table>'+
   '<div class="sticky"><button class="cta gold" id="pay"></button><div class="guar">'+esc(t('guar'))+'</div><p class="note" style="margin-top:6px">'+esc(t('disc'))+' • <a href="terms.html">'+esc(t('terms'))+'</a></p><div style="text-align:center"><a class="link" href="free.html">'+esc(t('nothanks'))+'</a></div></div>');
- function sel(k){S.plan=k;[].forEach.call(sc.querySelectorAll('.pl'),function(b){b.classList.toggle('sel',b.getAttribute('data-k')===k)});$('#pay').textContent=t('pay',{price:money(k)})}
+ function sel(k){S.plan=k;[].forEach.call(sc.querySelectorAll('.pl'),function(b){b.classList.toggle('sel',b.getAttribute('data-k')===k)});$('#pay').textContent='✦ '+t('pay',{price:money(k)})}
  [].forEach.call(sc.querySelectorAll('.pl'),function(b){b.onclick=function(){sel(b.getAttribute('data-k'))}});sel(S.plan);
- $('#pay').onclick=function(){var ctx=[t(a.niche||'n6'),t(a.plat||'p1'),t(a.goal||'g1')].join(' • ');
+ $('#pay').onclick=function(){var ctx=[t(a.niche||'n6'),t(a.plat||'p1'),t(a.goal||'g1')].join(' • ')+(a.src?' • '+a.src:'');
   try{window.fbq&&fbq('track','InitiateCheckout')}catch(e){}
   location.href='checkout.html?plan='+S.plan+'&name='+encodeURIComponent(a.name||'')+'&ctx='+encodeURIComponent(ctx)};
  if(showT){var tm=$('#tm');var upd=function(){var s=Math.max(0,Math.floor((end-Date.now())/1000)),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60,p=function(n){return String(n).padStart(2,'0')};tm.innerHTML='<b>'+p(h)+'</b>:<b>'+p(m)+'</b>:<b>'+p(x)+'</b>'};upd();S.int=setInterval(upd,1000)}}
 
 /* re-render current screen when the language changes (no re-typing) */
 D.addEventListener('langchange',function(){S.noType=true;var m={splash:splash,welcome:welcome,chat:chat,analysis:result,result:result,paywall:paywall}[S.step];if(m)m();S.noType=false});
-/* deep links: ?step=paywall to jump (useful for testing / ads) */
+/* deep links: ?step=paywall|result to jump (useful for testing / ads) */
 var q=new URLSearchParams(location.search).get('step');
-if(q==='paywall'){S.a={name:S.a.name||'Mali',goal:S.a.goal||'g1',lvl:S.a.lvl||'l1',niche:S.a.niche||'n1',time:S.a.time||'t2',plat:S.a.plat||'p1'};paywall()}
-else if(q==='result'){S.a={name:S.a.name||'Mali',goal:S.a.goal||'g1',lvl:S.a.lvl||'l1',niche:S.a.niche||'n1',time:S.a.time||'t2',plat:S.a.plat||'p1'};result()}
-else splash();
+function demo(){S.a={name:S.a.name||'Mali',goal:S.a.goal||'g1',lvl:S.a.lvl||'l1',niche:S.a.niche||'n1',time:S.a.time||'t2',plat:S.a.plat||'p1'}}
+var qi=new URLSearchParams(location.search).get('i');
+if(q==='paywall'){demo();paywall()}else if(q==='result'){demo();result()}else if(q==='analysis'){demo();analysis()}else if(qi!==null){demo();S.i=Math.min(FLOW.length-1,Math.max(0,+qi||0));chat()}else splash();
 })();
