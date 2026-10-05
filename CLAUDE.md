@@ -119,3 +119,12 @@ d'architecte": limestone + ink, logo navy `#244760`, signal orange, Archivo (wid
 scroll-driven 3D exploded product cross-section (`.xv`), product configurator
 rendering an SVG and prefilling the quote form (`#cfg`), photo-slideshow hero with
 panel-reveal. `assets/js/site.js` has a `CONFIG` block for the form target.
+
+**Multilingual (FR/EN/DE/NL/ES):** French pages at the root are the source of truth
+(generated from a Python build — not in the repo); `en/ de/ nl/ es/` hold the same 7 pages
+translated (assets via `../assets/`). Static text is baked per language; dynamic strings
+(configurator, form, errors) live in `assets/js/i18n.js` (`window.I18N[lang]`, French is the
+fallback in `site.js`). Language switcher = `.lang` in the header; the French pages only
+*suggest* the visitor's language (never auto-redirect). Form recap sent to the client stays
+in French. Keep "ça va barder !" and the word "bardillons" untranslated. Editing French copy
+means updating the four translations too.
