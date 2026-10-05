@@ -136,3 +136,10 @@ sound OFF by default) and `assets/js/hero3d.js` (lazy Three.js scene, self-hoste
 governor). Orange text on light backgrounds must use `--signal-t` (AA). Design rationale, motion
 justifications, a11y/perf results and before/after in `atelier-des-facadiers/DESIGN.md`.
 Appending `#gl=force` to the home URL forces the 3D scene for debugging.
+
+## English Easy TH — reference for gamified language-learning apps
+
+`english-easy-th/` is a Thai-language, Duolingo-style English course (original, inspired
+by arab-facile.com): hash-router SPA, `window.EE` namespace, scripts data → core → lesson → views,
+progress in localStorage (`ee1`), speechSynthesis for audio, hearts/streak/gems/badges,
+mini-games, PWA. Content lives in `assets/js/data.js`. No real payments; "Plus" is a placeholder.

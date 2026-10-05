@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>English Easy · เรียนภาษาอังกฤษง่าย ๆ สำหรับคนไทย</title>
+<meta name="description" content="เรียนภาษาอังกฤษฟรีแบบเกม สำหรับคนไทย: ตัวอักษร ABC คำศัพท์ ประโยค ฟังเสียง แบบฝึกหัด สตรีค และมินิเกม ใช้ได้บนมือถือและคอม">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website"><meta property="og:locale" content="th_TH"><meta property="og:title" content="English Easy · เรียนภาษาอังกฤษง่าย ๆ"><meta property="og:description" content="เรียนอังกฤษแบบเกม วันละนิด เก่งขึ้นทุกวัน — ฟรี ไม่ต้องสมัครสมาชิก">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="preload" href="assets/fonts/noto-sans-thai-thai.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/app.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
+<div id="app">
+  <header class="top">
+    <a class="brand" href="#/home" aria-label="English Easy — หน้าหลัก"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8C26 8 10 24 10 46c0 14 7 25 18 32l-5 15 20-11c2 .3 5 .4 7 .4 24 0 40-16 40-36S74 8 50 8z" fill="#6c5ce7"/><text x="50" y="58" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="900" font-size="34" fill="#fff">EZ</text></svg><span>English <b>Easy</b></span></a>
+    <div class="stats" aria-label="สถิติของคุณ">
+      <span class="stat" title="สตรีค (วันต่อเนื่อง)">🔥 <span id="st-streak">0</span></span>
+      <span class="stat" title="เพชร">💎 <span id="st-gems">0</span></span>
+      <span class="stat" title="หัวใจ">❤️ <span id="st-hearts">5</span></span>
+      <span class="stat desk-xp" title="XP รวม">⭐ <span id="st-xp">0</span></span>
+    </div>
+  </header>
+  <nav class="nav" aria-label="เมนูหลัก">
+    <a href="#/home"><span>🏠</span>เรียน</a>
+    <a href="#/alphabet" class="desk"><span>🔤</span>ตัวอักษร</a>
+    <a href="#/train"><span>🎯</span>ฝึก</a>
+    <a href="#/games"><span>🎮</span>เกม</a>
+    <a href="#/word" class="desk"><span>📅</span>คำศัพท์</a>
+    <a href="#/tips" class="desk"><span>💡</span>เคล็ดลับ</a>
+    <a href="#/shop"><span>🛍️</span>ร้านค้า</a>
+    <a href="#/profile"><span>👤</span>โปรไฟล์</a>
+  </nav>
+  <main id="main" tabindex="-1"><noscript><div class="ns">ต้องเปิด JavaScript เพื่อใช้งาน English Easy</div></noscript></main>
+</div>
+<div id="player" class="player" hidden></div>
+<div id="sheet" class="sheet" hidden></div>
+<div id="toasts" aria-live="polite"></div>
+<script src="assets/js/data.js?v=1"></script>
+<script src="assets/js/core.js?v=1"></script>
+<script src="assets/js/lesson.js?v=1"></script>
+<script src="assets/js/views.js?v=1"></script>
+<script>if("serviceWorker"in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})</script>
+</body>
+</html>
