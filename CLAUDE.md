@@ -128,3 +128,11 @@ fallback in `site.js`). Language switcher = `.lang` in the header; the French pa
 *suggest* the visitor's language (never auto-redirect). Form recap sent to the client stays
 in French. Keep "ça va barder !" and the word "bardillons" untranslated. Editing French copy
 means updating the four translations too.
+
+**v3 "excellence" layer (Atelier des Façadiers):** `assets/js/fx.js` (entrance loader, page-wipe
+transition, contextual cursor — additive, native cursor never hidden —, 3D tilt, optional synthesised
+sound OFF by default) and `assets/js/hero3d.js` (lazy Three.js scene, self-hosted in
+`assets/vendor/`, skipped on touch / reduced-motion / software GL / weak devices, with a perf
+governor). Orange text on light backgrounds must use `--signal-t` (AA). Design rationale, motion
+justifications, a11y/perf results and before/after in `atelier-des-facadiers/DESIGN.md`.
+Appending `#gl=force` to the home URL forces the 3D scene for debugging.
