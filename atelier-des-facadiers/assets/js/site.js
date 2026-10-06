@@ -215,7 +215,8 @@ ${p}${tex}${w}
     devis.href = "contact.html?" + u.toString() + "#devis";
     history.replaceState(null, "", "?" + new URLSearchParams({ famille: st.fam, pose: st.pose }).toString() + location.hash);
   }
-  renderSw(); paint();
+  const idleRun = window.requestIdleCallback ? (f => requestIdleCallback(f, { timeout: 1200 })) : (f => setTimeout(f, 200));
+  idleRun(() => { renderSw(); paint(); });
   cfgEl.addEventListener("change", e => {
     const t = e.target;
     if (t.name === "fam") { st.fam = t.value; st.sw = 0; renderSw(); }
@@ -231,7 +232,7 @@ ${p}${tex}${w}
       const tot = S * (1 + chute / 100), n = a ? Math.ceil(tot / a) : 0;
       o1.textContent = n.toLocaleString(LOC); o2.textContent = Math.round(n * a).toLocaleString(LOC);
     };
-    [sI, fI, cI].forEach(i => i.addEventListener("input", calc)); calc();
+    [sI, fI, cI].forEach(i => i.addEventListener("input", calc)); (window.requestIdleCallback ? requestIdleCallback(calc, { timeout: 1200 }) : setTimeout(calc, 200));
     $("#est-devis").addEventListener("click", e => { e.currentTarget.href = devis.href + "&surface=" + encodeURIComponent(sI.value); });
   }
 }
@@ -354,4 +355,11 @@ if (cur === "fr" && lang) {
     for (var i = 0; i < strips; i++) { var s = document.createElement("i"); s.style.setProperty("--i", i); if (i === strips - 1) s.style.width = (w - sw * i) + "px"; f.appendChild(s); }
     f.classList.add("is-waving");
   });
+})();
+
+/* pause the logo marquee while off screen (keeps scroll frames cheap) */
+(function () {
+  if (!("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("is-off", !e.isIntersecting)), { rootMargin: "100px 0px" });
+  document.querySelectorAll(".mq__tr").forEach(t => io.observe(t));
 })();
