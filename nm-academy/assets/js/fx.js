@@ -47,9 +47,10 @@ function typeInto(el,html,speed,done){
 /* ---------- gate + boot ---------- */
 var gate=$('#gate'),entered=false;
 try{entered=sessionStorage.getItem('nm_in')==='1'}catch(e){}
-function enter(sound){
+var entering=false;
+function enter(sound){if(entering)return;entering=true;
  s(function(){sessionStorage.setItem('nm_in','1')});
- if(sound)SFX.set(true);else if(window.SFX)SFX.set(false);
+ if(window.SFX)SFX.unlock();
  refreshSnd();
  var boot=$('#boot'),lines=['b1','b2','b3','b4'].map(function(k){return T(k)}),btns=$('#gbtns');btns.style.visibility='hidden';
  if(window.SFX&&SFX.on)SFX.boot();
@@ -59,7 +60,7 @@ function enter(sound){
   var txt=lines[li++],j=0;(function ch(){j++;row.textContent=txt.slice(0,j);if(j%2===0)sfx('key');if(j<txt.length)setTimeout(ch,reduce?0:22);else setTimeout(next,reduce?0:140)})()}
  next()}
 if(gate&&!entered){gate.hidden=false;D.body.classList.add('locked');
- $('#g-snd').onclick=function(){enter(true)};$('#g-mute').onclick=function(){enter(false)}}
+ $('#g-snd').onclick=function(){enter(true)};D.addEventListener('keydown',function k(e){if(e.key==='Enter'&&!gate.hidden&&!gate.classList.contains('out')&&!entering){enter(true)}})}
 else{if(gate)gate.hidden=true;setTimeout(start,60)}
 
 /* ---------- after entry: hero typing + terminal ---------- */
@@ -118,9 +119,39 @@ function sim(){var p=+$('#r1').value,n=+$('#r2').value,m=+$('#r3').value;$('#o1'
 if(CFG.OFFER_END){var end=new Date(CFG.OFFER_END).getTime(),o=$('#offer');if(end>Date.now()){o.hidden=false;var up=function(){var x=Math.max(0,Math.floor((end-Date.now())/1000)),d=Math.floor(x/86400),h=Math.floor(x%86400/3600),m=Math.floor(x%3600/60),sc=x%60,p=function(n){return String(n).padStart(2,'0')};o.textContent=(d?d+'j ':'')+p(h)+':'+p(m)+':'+p(sc)};up();setInterval(up,1000);nav.style.top='28px'}}
 
 /* ---------- vidéos : fichier selon la langue, lecture muette quand visible ---------- */
-function setVideos(){var l=I18N.lang;$$('video[data-vv]').forEach(function(v){var n=v.getAttribute('data-vv'),src='assets/video/'+n+'-'+l+'.mp4';if(v.getAttribute('data-cur')!==src){var was=!v.paused;v.setAttribute('data-cur',src);v.poster='assets/video/'+n+'-'+l+'.jpg';v.src=src;v.load();if(was)v.play().catch(function(){})}})}
+function setVideos(){var l=I18N.lang;$$('video[data-vv]').forEach(function(v){var n=v.getAttribute('data-vv'),src='assets/video/'+n+'-'+l+'.mp4';if(v.getAttribute('data-cur')!==src){var was=!v.paused;v.setAttribute('data-cur',src);v.poster='assets/video/'+n+'-'+l+'.jpg';v.preload='none';v.src=src;if(was){v.load()}if(was)v.play().catch(function(){})}})}
 setVideos();D.addEventListener('langchange',setVideos);
 if('IntersectionObserver' in window){var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting)v.play().catch(function(){});else v.pause()})},{threshold:.6});$$('video[data-vv]').forEach(function(v){vo.observe(v)})}
+
+
+/* ---------- analytics (facultatif) ---------- */
+(function(){if(CFG.GA_ID){var g=D.createElement('script');g.async=1;g.src='https://www.googletagmanager.com/gtag/js?id='+CFG.GA_ID;D.head.appendChild(g);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',CFG.GA_ID)}
+ if(CFG.PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,D,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.PIXEL_ID);fbq('track','PageView')}})();
+function track(n,d){try{window.fbq&&fbq('track',n,d);window.gtag&&gtag('event',n,d)}catch(e){}}
+D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-buy]');if(a)track('InitiateCheckout',{plan:a.getAttribute('data-buy')});var q=e.target.closest&&e.target.closest('a[href="start.html"]');if(q)track('StartQuiz')});
+
+/* ---------- effet « décodage » des titres (avec frappes) ---------- */
+(function(){var CH='01<>/\\|#$%&@*+=?',tm=new WeakMap();
+ function run(el){var key=el.getAttribute('data-t');if(!key||el.children.length)return;var final=el.textContent,id=(tm.get(el)||0)+1;tm.set(el,id);if(reduce||!final)return;
+  var n=final.length,t0=performance.now(),D0=Math.min(900,260+n*14);
+  (function step(now){if(tm.get(el)!==id)return;var p=Math.min(1,(now-t0)/D0),k=Math.floor(p*n),out='';for(var i=0;i<n;i++){var c=final[i];out+=(i<k||c===' ')?c:CH[Math.floor(Math.random()*CH.length)]}
+   el.textContent=out;if(p<1){if(Math.random()<.5)sfx('tick');requestAnimationFrame(step)}else{el.innerHTML=(window.I18N?I18N.t(key,{d:CFG.REFUND_DAYS||7}):final)}})(t0)}
+ if(!('IntersectionObserver' in window))return;
+ var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);o.unobserve(e.target)}})},{threshold:.6});
+ $$('main h2[data-t], .tag[data-t]').forEach(function(h){o.observe(h)})})();
+
+/* ---------- avis clients (uniquement s'il y en a de vrais dans config.js) ---------- */
+(function(){var T=CFG.TESTIMONIALS||[];if(!T.length)return;var sec=$('#proof'),g=$('#proofgrid');sec.hidden=false;
+ function draw(){var l=I18N.lang;g.innerHTML=T.map(function(x){var tx=(x.text&&(x.text[l]||x.text.en||x.text.fr))||'';return'<article class="card spot rv in"><p>“'+tx.replace(/</g,'&lt;')+'”</p><b class="d" style="display:block;margin-top:12px">'+String(x.name||'').replace(/</g,'&lt;')+'</b><span class="mono" style="color:var(--mute);font-size:.72rem">'+String(x.role||'').replace(/</g,'&lt;')+'</span></article>'}).join('')}
+ draw();D.addEventListener('langchange',draw)})();
+
+/* ---------- cadeau gratuit : e-mail → téléchargement du gabarit ---------- */
+(function(){var f=$('#lead');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var em=$('#lem').value.trim();if(!em)return;
+ function done(){f.hidden=true;$('#lok').hidden=false;sfx('ok');track('Lead')}
+ if(CFG.FORM_ENDPOINT){var fd=new FormData();fd.append('email',em);fd.append('source','nm-academy-gift');fetch(CFG.FORM_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}}).catch(function(){}).then(done)}else{done()}})})();
+
+/* ---------- bouton WhatsApp flottant ---------- */
+(function(){var a=$('#wa');if(!a)return;function u(){a.href='https://wa.me/'+(CFG.WHATSAPP||'')+'?text='+encodeURIComponent(T('wa_msg'))}u();D.addEventListener('langchange',u)})();
 
 /* if the gate is skipped (already entered) make sure reveal still works */
 if(!gate||gate.hidden){armReveal()}

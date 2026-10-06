@@ -6,15 +6,18 @@
 <title>NM Academy — Sites web & Vidéo IA</title>
 <meta name="description" content="Deux formations pratiques : créer et vendre des sites web, et produire des vidéos IA pour la monétisation (TikTok, YouTube). Templates et outils de départ inclus.">
 <meta name="theme-color" content="#04050c">
+<meta property="og:type" content="website"><meta property="og:image" content="assets/og.png"><meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="NM Academy — Sites web & Vidéo IA">
 <meta property="og:description" content="Les compétences que les agences facturent cher. Tu les apprends, tu les vends.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Thai:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Course","name":"Web Agency Blueprint","description":"Créer des sites web professionnels et les vendre à des entreprises.","provider":{"@type":"Organization","name":"NM Academy"},"inLanguage":["fr","en","th"]},{"@type":"Course","name":"AI Video Money Lab","description":"Produire des vidéos IA et découvrir les voies de monétisation TikTok, YouTube, affiliation et clients.","provider":{"@type":"Organization","name":"NM Academy"},"inLanguage":["fr","en","th"]}]}</script>
 <link rel="stylesheet" href="assets/css/academy.css">
 <noscript><style>#gate{display:none!important}.rv{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 </head>
 <body>
+<a class="skip" href="#top" data-t="skip">Aller au contenu</a>
 
 <div id="gate" hidden>
   <div class="gate-in">
@@ -23,8 +26,7 @@
     <div class="g-t" data-t="g_t">Sites web & Vidéo IA</div>
     <pre class="boot mono" id="boot" aria-live="polite"></pre>
     <div class="g-btns" id="gbtns">
-      <button class="btn pri" id="g-snd" data-t="g_snd">Entrer avec le son</button>
-      <button class="btn ghost" id="g-mute" data-t="g_mute">Entrer sans le son</button>
+      <button class="btn pri big" id="g-snd" data-t="g_snd">Entrer</button>
     </div>
     <p class="g-hint mono" data-t="g_hint">Sons discrets : clics et frappes de clavier. Pas de musique.</p>
   </div>
@@ -177,6 +179,11 @@
 
 <section class="sec" id="by"><div class="wrap narrow"><div class="card by rv"><span class="mono" style="color:var(--c1);font-size:.72rem" data-t="by_k">QUI EST DERRIÈRE</span><h2 style="text-align:left" data-t="by_t">Une méthode issue du terrain</h2><p data-t="by_d">…</p></div></div></section>
 
+<section class="sec alt" id="proof" hidden><div class="wrap">
+  <h2 class="rv" data-t="pr_t">Ils ont suivi la formation</h2>
+  <div class="g3" id="proofgrid"></div>
+</div></section>
+
 <section class="sec" id="method"><div class="wrap">
   <h2 class="rv" data-t="m_t">De zéro à ton premier client</h2>
   <p class="lead rv" data-t="m_s">…</p>
@@ -229,7 +236,17 @@
     </article>
   </div>
   <p class="guar mono rv" data-t="p_ref">Satisfait ou remboursé</p>
+  <ul class="trust rv"><li data-t="tr1">Paiement sécurisé</li><li data-t="tr2">Accès après confirmation</li><li data-t="tr3">Support par WhatsApp</li></ul>
 </div></section>
+
+<section class="sec" id="gift"><div class="wrap narrow"><div class="card gift rv">
+  <span class="mono" style="color:var(--c3);font-size:.72rem" data-t="lm_k">CADEAU GRATUIT</span>
+  <h2 style="text-align:left" data-t="lm_t">Reçois le gabarit de site gratuit</h2>
+  <p data-t="lm_s">Un site une page pour commerce local, prêt à personnaliser. Tu le reçois tout de suite et tu vois le niveau du kit avant d'acheter.</p>
+  <form id="lead" class="lead-f"><input type="email" id="lem" required autocomplete="email" data-t-ph="lm_ph" placeholder="ton@email.com"><button class="btn pri" type="submit" data-t="lm_btn">Recevoir le gabarit</button></form>
+  <div id="lok" hidden><p class="ok" data-t="lm_ok">Merci ! Voici ton gabarit :</p><a class="btn ghost" href="kit/starter-site.html" download="starter-site.html" data-t="lm_dl">Télécharger starter-site.html</a></div>
+  <p class="note" style="text-align:left;margin:10px 0 0" data-t="lm_p">Pas de spam. Tu peux te désinscrire à tout moment.</p>
+</div></div></section>
 
 <section class="sec alt" id="faq"><div class="wrap narrow">
   <h2 class="rv" data-t="q_t">Questions fréquentes</h2>
@@ -254,6 +271,7 @@
 
 <a href="#price" class="btn pri sticky" id="stk" data-t="sticky">Choisir ma formation</a>
 
+<a class="wa" id="wa" target="_blank" rel="noopener" href="#" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.4c0 2.4.7 4.7 1.9 6.6L3.4 29l7.2-1.9a12.5 12.5 0 0 0 5.4 1.2C23 28.3 28.5 22.8 28.5 15.9S23 3 16 3zm0 22.9c-1.7 0-3.4-.5-4.9-1.4l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.2 10.2 0 0 1-1.6-5.5C5.7 9.9 10.3 5.4 16 5.4s10.3 4.5 10.3 10.5S21.700 25.900 16 25.900zm5.600-7.600c-.3-.2-1.800-.9-2.100-1s-.5-.2-.7.200-.8 1-.9 1.200-.3.200-.6.100a8.300 8.300 0 0 1-4.100-3.600c-.3-.5.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100 2.100 3.300 5.200 4.500c2 .8 2.800.9 3.800.7.600-.1 1.800-.8 2.100-1.500s.3-1.300.2-1.500-.2-.2-.5-.4z"/></svg><span data-t="wa_t">Une question ?</span></a>
 <div class="modal" id="modal" hidden role="dialog" aria-modal="true">
   <div class="mbox card"><h3 data-t="mo_t">…</h3><p data-t="mo_s">…</p>
     <a class="btn pri full" id="mwa" target="_blank" rel="noopener" href="#"><span data-t="mo_w">WhatsApp</span></a>

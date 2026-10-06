@@ -15,6 +15,9 @@ Site statique FR / EN / TH, sans build. Futuriste : fond animé (grille en persp
 - `LINKS` : liens de paiement (Stripe Payment Links…). Vide = le bouton ouvre WhatsApp / e-mail.
 - `MEMBER_CODE` : code d'accès aux cours (envoie-le après paiement ; change-le régulièrement). Protection légère côté navigateur : pour beaucoup d'élèves, héberge les cours sur une plateforme de cours.
 - `WHATSAPP`, `EMAIL`, `BRAND`, `REFUND_DAYS`.
+- `TESTIMONIALS` : avis clients RÉELS (avec accord). Vide = la section reste cachée.
+- `FORM_ENDPOINT` : formulaire du cadeau gratuit (formspree.io…). Sans lien, les e-mails ne sont pas collectés.
+- `GA_ID` / `PIXEL_ID` : mesure (Google Analytics / Meta Pixel). Si tu actives ça, ajoute un bandeau de consentement cookies.
 - `OFFER_END` : fin d'offre RÉELLE (sinon aucun compte à rebours — jamais de fausse urgence).
 
 ## Mettre en ligne
@@ -26,4 +29,5 @@ Aucun revenu garanti, aucun faux témoignage, aucun faux chiffre : les chiffres 
 monétisation TikTok/YouTube ont des conditions propres : le site renvoie vers les règles officielles.
 
 ## Sons
+Son actif par défaut (un seul bouton « Entrer » qui débloque l'audio) ; l'utilisateur le coupe avec le bouton SON et son choix est mémorisé.
 `assets/js/sfx.js` (Web Audio, synthèse). Activés seulement après un clic (écran d'entrée) ; bouton SON on/off dans la barre.

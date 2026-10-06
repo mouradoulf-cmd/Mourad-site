@@ -4,8 +4,6 @@ var D={
 /* gate + boot */
 g_k:["SYSTÈME PRÊT","SYSTEM READY","ระบบพร้อม"],
 g_t:["Sites web & Vidéo IA","Websites & AI Video","เว็บไซต์ & วิดีโอ AI"],
-g_hint:["Sons discrets : clics et frappes de clavier. Pas de musique.","Subtle sounds: clicks and keystrokes. No music.","เสียงเบาๆ: คลิกและเสียงพิมพ์ ไม่มีเพลง"],
-g_snd:["Entrer avec le son","Enter with sound","เข้าพร้อมเสียง"],
 g_mute:["Entrer sans le son","Enter without sound","เข้าโดยไม่มีเสียง"],
 b1:["> initialisation du système…","> initialising system…","> กำลังเริ่มระบบ…"],
 b2:["> modules chargés : SITES WEB · VIDÉO IA","> modules loaded: WEBSITES · AI VIDEO","> โหลดโมดูล: เว็บไซต์ · วิดีโอ AI"],
@@ -234,6 +232,23 @@ vd_ad:["Pourquoi payer des centaines d'euros d'abonnements ?", "Why pay hundreds
 vd_w:["Plan A · Sites web", "Plan A · Websites", "แผน A · เว็บไซต์"],
 vd_wd:["Un kit à installer dans ton assistant IA pour aller vite.", "A kit to install in your AI assistant to move fast.", "ชุดเครื่องมือติดตั้งในผู้ช่วย AI ของคุณเพื่อทำงานเร็วขึ้น"],
 vd_n:["Les montants et durées sont des exemples ou des objectifs, selon les outils et les projets. Aucun revenu garanti.", "Amounts and times are examples or targets, depending on tools and projects. No income guaranteed.", "จำนวนเงินและเวลาเป็นตัวอย่างหรือเป้าหมาย ขึ้นกับเครื่องมือและโปรเจกต์ ไม่รับประกันรายได้"],
+g_snd:["Entrer", "Enter", "เข้าสู่เว็บไซต์"],
+g_hint:["Design sonore activé. Coupe-le à tout moment avec le bouton SON.", "Sound design on. Mute it any time with the SOUND button.", "เปิดเสียงประกอบแล้ว ปิดได้ทุกเมื่อด้วยปุ่มเสียง"],
+skip:["Aller au contenu", "Skip to content", "ข้ามไปที่เนื้อหา"],
+pr_t:["Ils ont suivi la formation", "They took the course", "พวกเขาเรียนคอร์สนี้"],
+lm_k:["CADEAU GRATUIT", "FREE GIFT", "ของขวัญฟรี"],
+lm_t:["Reçois le gabarit de site gratuit", "Get the free website template", "รับเทมเพลตเว็บไซต์ฟรี"],
+lm_s:["Un site une page pour commerce local, prêt à personnaliser. Tu le reçois tout de suite et tu vois le niveau du kit avant d'acheter.", "A one-page site for a local business, ready to customise. You get it instantly and see the level of the kit before buying.", "เว็บไซต์หน้าเดียวสำหรับธุรกิจท้องถิ่น พร้อมปรับแต่ง รับได้ทันทีและดูคุณภาพชุดเครื่องมือก่อนซื้อ"],
+lm_ph:["ton@email.com", "you@email.com", "อีเมลของคุณ"],
+lm_btn:["Recevoir le gabarit", "Get the template", "รับเทมเพลต"],
+lm_ok:["Merci ! Voici ton gabarit :", "Thanks! Here is your template:", "ขอบคุณ! นี่คือเทมเพลตของคุณ:"],
+lm_dl:["Télécharger starter-site.html", "Download starter-site.html", "ดาวน์โหลด starter-site.html"],
+lm_p:["Pas de spam. Tu peux te désinscrire à tout moment.", "No spam. Unsubscribe any time.", "ไม่มีสแปม ยกเลิกได้ทุกเมื่อ"],
+tr1:["Paiement sécurisé", "Secure payment", "ชำระเงินปลอดภัย"],
+tr2:["Accès après confirmation", "Access after confirmation", "ได้สิทธิ์หลังยืนยัน"],
+tr3:["Support par WhatsApp", "WhatsApp support", "ซัพพอร์ตทาง WhatsApp"],
+wa_t:["Une question ?", "Any questions?", "มีคำถามไหม?"],
+wa_msg:["Bonjour, j'ai une question sur NM Academy.", "Hello, I have a question about NM Academy.", "สวัสดี ฉันมีคำถามเกี่ยวกับ NM Academy"],
 lg_back:["← Retour","← Back","← กลับ"]
 };
 var LANGS=['fr','en','th'],IDX={fr:0,en:1,th:2};

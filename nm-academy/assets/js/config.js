@@ -17,6 +17,12 @@ window.CONFIG={
   },
   // Fin d'offre RÉELLE (ISO, ex "2026-12-31T23:59:00+01:00"). Vide = aucun compte à rebours (ne jamais mettre une fausse date)
   OFFER_END:"",
+  // Avis clients RÉELS uniquement (avec accord de la personne). Vide = la section n'apparaît pas.
+  // Exemple : TESTIMONIALS:[{name:'Léa',role:'Freelance',text:{fr:'…',en:'…',th:'…'}}]
+  TESTIMONIALS:[],
+  // Formulaire du cadeau gratuit (formspree.io ou autre) : sans lien, l'e-mail n'est pas collecté
+  FORM_ENDPOINT:"",
+  GA_ID:"",PIXEL_ID:"",             // Google Analytics / Meta Pixel (facultatif)
   MEMBER_CODE:"NM2026",              // code d'accès à l'espace membres (à envoyer après paiement ; à changer)
   REFUND_DAYS:7
 };

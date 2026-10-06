@@ -3,7 +3,7 @@
    carillons FM, montée de démarrage avec sub. Activé seulement après un geste de l'utilisateur. */
 (function(){
 var ctx=null,on=false,last={},bus=null,rev=null,MUTE_KEY='nm_sfx';
-try{on=localStorage.getItem(MUTE_KEY)==='1'}catch(e){}
+on=true;try{var _s=localStorage.getItem(MUTE_KEY);if(_s!==null)on=_s==='1'}catch(e){}
 var PENT=[1046.5,1174.7,1318.5,1568,1760,2093,2349.3,2637];
 function mk(c){
  var master=c.createGain();master.gain.value=1.3;
@@ -66,6 +66,9 @@ var S={
   os.connect(f);os2.connect(f);f.connect(g);route(a,g,.5,0);os.start(t);os2.start(t);os.stop(t+1.5);os2.stop(t+1.5);
   tone({f:62,f2:32,d:.9,v:.22,type:'sine',lp:240,a:.01,at:1.22});burst({f1:2200,f2:9000,q:.6,d:.5,v:.09,ft:'highpass',send:.6,at:1.22});fm({f:1318.5,d:.9,v:.05,idx:1.6,at:1.26});fm({f:1976,d:1.1,v:.035,idx:1.2,at:1.34})}
 };
+/* déverrouillage : le navigateur n'autorise l'audio qu'après un geste → au premier clic/touche/tap on prépare le contexte */
+S.unlock=function(){if(on)ac()};
+['pointerdown','keydown','touchstart'].forEach(function(ev){addEventListener(ev,function h(){if(on){ac();if(ctx&&ctx.state==='running'){removeEventListener(ev,h)}}},{passive:true})});
 /* pour les tests hors ligne (OfflineAudioContext) */
 S._use=function(c){ctx=c;bus=mk(c);on=true};
 window.SFX=S;

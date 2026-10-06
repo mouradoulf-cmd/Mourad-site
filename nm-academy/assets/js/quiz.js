@@ -65,7 +65,7 @@ function typeInto(el,text,done){if(reduce||S.nt){el.textContent=text;done&&done(
 function orb(c){return'<div class="orb '+(c||'')+'">NM</div>'}
 function welcome(){clear();S.step='welcome';
  mount(orb()+'<h1 class="qh1">'+T('z_wt')+'</h1><p class="qs">'+esc(T('z_ws'))+'</p><div style="width:100%;margin-top:14px"><button class="cta2" id="go">'+esc(T('z_start'))+'</button><p class="qn" style="margin-top:12px">'+esc(T('z_member'))+' <a href="members.html" style="color:var(--c1);text-decoration:underline">'+esc(T('z_enter'))+'</a></p></div>','ctr');
- $('#go').onclick=function(){if(window.SFX&&!SFX.on&&!S.muted)SFX.set(true);rs();sfx('click');S.i=0;out(chat)}}
+ $('#go').onclick=function(){if(window.SFX)SFX.unlock();rs();sfx('click');S.i=0;out(chat)}}
 function chat(){
  clear();var st=FLOW[S.i];S.step='chat';var v={n:S.a.name||''},prog=Math.round((S.i+1)/(FLOW.length+1)*100);
  var mid=st.type==='input'?' qmid':'';
