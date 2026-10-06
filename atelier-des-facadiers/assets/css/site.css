@@ -690,3 +690,7 @@ body.leave::after{content:"";position:fixed;inset:0;z-index:290;pointer-events:n
   .card--nav:hover .ico path,.card--nav:hover .ico rect{animation:none}
   .bc.tilt{transform:none!important}
 }
+
+/* ---- v4d smoothness: the ~15 waving flag strips + other infinite animations forced style recalcs on every scroll frame on phones ---- */
+@media (hover:none){.flag i,.flag i::after{animation:none!important}.hero__rec i,.hero__cue span{animation:none!important}}
+.mq__tr.is-off{animation-play-state:paused}
