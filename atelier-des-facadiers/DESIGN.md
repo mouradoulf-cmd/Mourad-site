@@ -103,3 +103,5 @@ Loaded after site.css / site.js on every page and language; the site is complete
 - Not done on purpose: before/after slider and testimonials (no paired photos / no real quotes supplied; nothing invented).
 
 - v5b: on phones (<=900px) the pinned scroll sections ("Cinq couches" exploded view, horizontal "Réalisations") no longer pin: static exploded view with tap-to-read layers, native swipe carousel. Cut ~1500 px and ~2600 px of empty scrolling.
+
+- v5c: "Cinq couches" is pinned on phones too (sticky, 250svh runway): the picture stays on screen, layers separate by themselves as you scroll and each caption appears, then the page continues. Fixed a regression where premium.css set `position:relative` on the sticky stage (it un-pinned the section on desktop as well).

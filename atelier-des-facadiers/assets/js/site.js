@@ -109,14 +109,7 @@ if (xv) {
   const N = items.length;
   const setOn = k => { items.forEach((li, i) => li.classList.toggle("on", i === k)); layers.forEach(l => l.classList.toggle("on", +l.dataset.n === k)); scene.classList.toggle("has-on", k >= 0); };
   const vis = nearView(xv);
-  /* phones: no pinned scroll runway — a short static exploded view, tap a layer to read it */
-  const mob = matchMedia("(max-width:900px)"); let mobInit = false;
   const upd = () => {
-    if (mob.matches) {
-      if (!mobInit) { mobInit = true; xv.style.setProperty("--ex", ".8"); scene.style.setProperty("--ex", ".8"); setOn(0); }
-      return;
-    }
-    mobInit = false;
     if (reduce) { setOn(N - 1); return; }
     if (!vis()) return;
     const r = xv.getBoundingClientRect(), p = clamp(-r.top / (r.height - innerHeight));
@@ -127,7 +120,6 @@ if (xv) {
   };
   onScroll(upd); addEventListener("resize", upd); upd();
   items.forEach((li, i) => li.addEventListener("click", () => {
-    if (mob.matches) { setOn(i); return; }
     const r = xv.getBoundingClientRect(), top = scrollY + r.top, span = r.height - innerHeight;
     scrollTo({ top: top + (.3 + (i + .5) / N * .7) * span, behavior: reduce ? "auto" : "smooth" });
   }));
