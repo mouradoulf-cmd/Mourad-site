@@ -87,3 +87,5 @@ Voir `docs/avant-apres/` : `comparaison-hero-desktop.png`, `comparaison-cartes.p
 - **Ossature, "Profils en 3D"**: the six profile tiles now drive a real extrusion (TE, cornière, oméga, zed, U, tube), turnable by drag / arrow keys.
 - Justification: visitors compare materials and sections; volume + material answers that better than a flat icon. Motion is tied to a user choice, never decorative.
 - Gating: real GPU only (software GL, reduced motion, data-saver, <4 cores skipped; `#gl=force` to debug). Render loop runs only while visible. If anything fails, pages are unchanged. Texts in 5 languages inside the module; shapes are schematic, no figures claimed.
+
+- v4b: home nav cards (Bardage / Ossature / Documentation) are now photo-led (real project photos, icon chip overlapping the image, slow zoom on hover).
