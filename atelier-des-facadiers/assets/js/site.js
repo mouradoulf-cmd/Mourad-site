@@ -205,9 +205,85 @@ ${p}${tex}${w}
 <text x="${BX + BW + 34}" y="${BY + BH / 2}" font-family="IBM Plex Mono,monospace" font-size="11" fill="#244760" transform="rotate(90 ${BX + BW + 34} ${BY + BH / 2})" text-anchor="middle" letter-spacing="2">${t("elev","ÉLÉVATION — ÉCH. INDICATIVE")}</text>
 </svg>`;
   }
+
+  /* ---- photo engine: a real project photo, panels re-coloured live (luminance-preserving) through a hand-checked mask ---- */
+  const PH = { state: "idle", cur: null, tw: 0 };
+  const phBase = (document.currentScript && document.currentScript.src ? document.currentScript.src : (document.querySelector('script[src*="site.js"]') || {}).src || "").replace(/assets\/js\/site\.js.*$/, "");
+  function loadPhoto() {
+    const W = matchMedia("(max-width:700px)").matches ? 760 : 1000;
+    const ld = u => new Promise((res, rej) => { const i = new Image(); i.decoding = "async"; i.onload = () => res(i); i.onerror = rej; i.src = u; });
+    return Promise.all([ld(phBase + "assets/img/cfg/photo.webp"), ld(phBase + "assets/img/cfg/mask.png")]).then(([ph, mk]) => {
+      const cv = D_.createElement("canvas"); cv.width = cv.height = W;
+      const x = cv.getContext("2d", { willReadFrequently: true });
+      x.drawImage(ph, 0, 0, W, W); const base = x.getImageData(0, 0, W, W);
+      x.clearRect(0, 0, W, W); x.drawImage(mk, 0, 0, W, W); const md = x.getImageData(0, 0, W, W).data;
+      const n = W * W, idx = []; const lr = new Float32Array(n), mw = new Float32Array(n);
+      let sum = 0, cnt = 0;
+      for (let i = 0; i < n; i++) { const a = md[i * 4] / 255; mw[i] = a; if (a > .5) { sum += base.data[i * 4] * .299 + base.data[i * 4 + 1] * .587 + base.data[i * 4 + 2] * .114; cnt++; } }
+      const mean = sum / Math.max(1, cnt);
+      let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+      const colN = new Float32Array(W); for (let c = 0; c < W; c++) colN[c] = rnd();
+      for (let i = 0; i < n; i++) if (mw[i] > .004) {
+        idx.push(i); const o = i * 4;
+        lr[i] = Math.max(.3, Math.min(1.7, (base.data[o] * .299 + base.data[o + 1] * .587 + base.data[o + 2] * .114) / mean));
+      }
+      PH.W = W; PH.base = base; PH.idx = Uint32Array.from(idx); PH.lr = lr; PH.mw = mw; PH.colN = colN;
+      PH.cv = cv; PH.x = x; PH.out = x.createImageData(W, W);
+      const c2 = D_.createElement("canvas"); c2.width = c2.height = W; PH.show = c2;
+    });
+  }
+  const D_ = document;
+  const smooth = (a, b, v) => { const t = Math.max(0, Math.min(1, (v - a) / (b - a))); return t * t * (3 - 2 * t); };
+  function photoRender(rgb) {
+    const { W, base, idx, lr, mw, colN, out } = PH, bd = base.data, od = out.data, f = FAM[st.fam].f, pose = st.pose;
+    od.set(bd);
+    const k = W / 900;
+    for (let j = 0; j < idx.length; j++) {
+      const i = idx[j], px = i % W, py = (i / W) | 0, X = px / k, Y = py / k;
+      let v = lr[i], add = 0;
+      if (pose === "cassette") v = Math.pow(v, 1.22);
+      if (f === "metal") { v = Math.pow(v, 1.3); add = 26 * smooth(.2, 1, (X + (900 - Y)) / 1800) + (colN[px] - .5) * 10; }
+      else if (f === "smooth") { v = Math.pow(v, .92); add = 20 * smooth(.35, 1, (X + (900 - Y)) / 1800); }
+      else if (f === "wood") { const g = Math.sin(px * .9 + colN[px] * 6) * .5 + colN[px] * .5; v *= 1 + .2 * (g - .25) + .06 * Math.sin(py * .05 + px * .01); }
+      if (pose === "bandeau") {
+        const sdt = X < 635 + .14 * (Y - 25) ? Y + .397 * X : Y - 2.2 * X;
+        const ph = ((sdt % 34) + 34) % 34; const edge = Math.min(ph, 34 - ph); v *= 1 - .5 * (1 - smooth(0, 3.2, edge)) ;
+      }
+      const a = mw[i], o = i * 4;
+      const r = rgb[0] * v + add, g2 = rgb[1] * v + add, b = rgb[2] * v + add;
+      od[o] = bd[o] + (Math.max(0, Math.min(255, r)) - bd[o]) * a;
+      od[o + 1] = bd[o + 1] + (Math.max(0, Math.min(255, g2)) - bd[o + 1]) * a;
+      od[o + 2] = bd[o + 2] + (Math.max(0, Math.min(255, b)) - bd[o + 2]) * a;
+    }
+    PH.x.putImageData(out, 0, 0);
+  }
+  function mountPhoto() {
+    const f = FAM[st.fam], s = f.sw[st.sw], target = hex2(s[1]);
+    let cv = view.querySelector("canvas.cfg__photo");
+    if (!cv) { view.innerHTML = ""; cv = D_.createElement("canvas"); cv.className = "cfg__photo"; cv.width = cv.height = PH.W; view.appendChild(cv); PH.ctx = cv.getContext("2d"); PH.cur = null; }
+    cv.setAttribute("role", "img");
+    cv.setAttribute("aria-label", fmt(t("aria_svg", "Aperçu de façade : {fam}, {pose}, teinte {tint}"), { fam: f.n, pose: POSE[st.pose], tint: s[0] }));
+    const from = PH.cur || target, t0 = performance.now(), dur = (PH.cur && !reduce) ? 520 : 0;
+    cancelAnimationFrame(PH.tw);
+    const step = now => {
+      const u = dur ? Math.min(1, (now - t0) / dur) : 1, e = u * u * (3 - 2 * u);
+      const c = [0, 1, 2].map(i => from[i] + (target[i] - from[i]) * e);
+      photoRender(c); PH.ctx.putImageData(PH.out, 0, 0); PH.cur = c;
+      if (u < 1) PH.tw = requestAnimationFrame(step); else PH.cur = target;
+    };
+    PH.tw = requestAnimationFrame(step);
+  }
+  function drawView() {
+    if (PH.state === "fail") { view.innerHTML = svg(); return; }
+    if (PH.state === "ready") { mountPhoto(); return; }
+    if (PH.state === "idle") {
+      PH.state = "loading"; view.innerHTML = '<div class="cfg__ph" aria-hidden="true"></div>';
+      loadPhoto().then(() => { PH.state = "ready"; mountPhoto(); }).catch(() => { PH.state = "fail"; view.innerHTML = svg(); });
+    }
+  }
   function paint() {
     const f = FAM[st.fam], s = f.sw[st.sw];
-    view.innerHTML = svg(); cfgEl.classList.remove("flash"); void cfgEl.offsetWidth; cfgEl.classList.add("flash"); swBox.dataset.name = s[0];
+    drawView(); cfgEl.classList.remove("flash"); void cfgEl.offsetWidth; cfgEl.classList.add("flash"); swBox.dataset.name = s[0];
     document.documentElement.style.setProperty("--panel", s[1]);
     sum.innerHTML = `<div><b>${f.n}</b> — ${f.b}</div><div>${fmt(t("sum_pose","Pose : {pose} · Teinte : {tint}"), { pose: POSE[st.pose], tint: s[0] })} <span class="note">${t("sum_ind","(indicative)")}</span></div><div>${f.inv ? fmt(t("sum_inv","Fixation invisible possible : {inv}"), { inv: f.inv }) : t("sum_vis","Fixation visible : vis, rivets, EPDM.")}</div>`;
     cap.textContent = `${f.n} / ${POSE[st.pose]} / ${s[0]}`;
