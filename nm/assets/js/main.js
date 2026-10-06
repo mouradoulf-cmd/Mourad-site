@@ -60,16 +60,18 @@
     metrics.maxScroll = Math.max(1, document.documentElement.scrollHeight - metrics.vh);
     metrics.finaleTop = finale ? finale.getBoundingClientRect().top + window.scrollY : Infinity;
   }
+  var solidState = null, barVal = -1;
   function onScroll() {
     var y = window.scrollY;
-    header.classList.toggle("is-solid", y > 24);
+    var solid = y > 24;
+    if (solid !== solidState) { solidState = solid; header.classList.toggle("is-solid", solid); }
     var menuOpen = menuEl && !menuEl.hidden;
     // Hide on a deliberate move down past the hero, show on a move up; tiny
     // easing deltas at the end of a smooth scroll leave the state unchanged.
     if (y < metrics.heroEnd || menuOpen || y < lastY - 4) header.classList.remove("is-hidden");
     else if (y > lastY + 4) header.classList.add("is-hidden");
     if (Math.abs(y - lastY) > 4 || y < metrics.heroEnd) lastY = y;
-    if (progressBar) progressBar.style.transform = "scaleX(" + Math.min(1, y / metrics.maxScroll) + ")";
+    if (progressBar) { var bv = Math.round(Math.min(1, y / metrics.maxScroll) * 1000); if (bv !== barVal) { barVal = bv; progressBar.style.transform = "scaleX(" + (bv / 1000) + ")"; } }
     if (waFloat) {
       // On phones the floating button would sit on top of the text being
       // read, so it follows the header: hidden while reading down, back on scroll up.
@@ -455,11 +457,12 @@
   rise(".how-step", { from: { y: 80, scale: 0.96 } });
   rise(".offer", { from: { y: 70, rotateX: 10, transformPerspective: 1200 } });
   // Device screens inside the work cards settle from a slight zoom.
-  $$(".wk-card .mac__view img").forEach(function (img) {
+  var phone = window.matchMedia("(max-width: 760px)").matches;   /* scrubbed image parallax is skipped on phones (one less ticker job per image) */
+  if (!phone) $$(".wk-card .mac__view img").forEach(function (img) {
     gsap.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "none", scrollTrigger: { trigger: img.closest(".wk-card"), start: "top bottom", end: "center center", scrub: true } });
   });
   // Photos in why/how cards drift inside their frame.
-  $$(".why-card__media img, .how-step__media img").forEach(function (img) {
+  if (!phone) $$(".why-card__media img, .how-step__media img").forEach(function (img) {
     gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: img.parentNode, start: "top bottom", end: "bottom top", scrub: true } });
   });
 

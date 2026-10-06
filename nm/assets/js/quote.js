@@ -24,23 +24,23 @@
   var DICT = {
     en: {
       meta: {
-        title: "Start a project — your quote in 4 steps | NM Studio",
+        title: "Start a project: your quote in 4 steps | NM Studio",
         description: "Four quick steps and your project request is ready for WhatsApp: your business, what you need, your customers' languages. No contract."
       },
       hero: {
         eyebrow: "Start a project",
         title: "Four steps. <em>One message.</em> Done.",
-        lead: "No form to email, no account to create. Answer four quick questions, press one button, and your request lands on our WhatsApp — already written for you.",
+        lead: "No form to email, no account to create. Answer four quick questions, press one button, and your request lands on our WhatsApp, already written for you.",
         fact1: "About 60 seconds", fact2: "No payment on this page", fact3: "We reply within minutes"
       },
       form: {
         title: "Your project request", bar: "of 4 steps",
         almost: "Almost done.", almostSub: "Fix the fields marked in red and carry on.",
-        privacy: "Your answers stay in this page — nothing is stored or sent until you open WhatsApp.",
-        live: "Step 1 of 4", sent: "Your message is ready below — open WhatsApp and paste it.",
+        privacy: "Your answers stay in this page. Nothing is stored or sent until you open WhatsApp.",
+        live: "Step 1 of 4", sent: "Your message is ready below. Open WhatsApp and paste it.",
         liveStep: "Step {n} of 4"
       },
-      step1: { name: "Your business", title: "What kind of place is it?", sub: "Pick the closest one — it tells us what your customers look for." },
+      step1: { name: "Your business", title: "What kind of place is it?", sub: "Pick the closest one. It tells us what your customers look for." },
       step2: { name: "What you need", title: "What do you want us to build?", sub: "Choose as many as you like. A QR menu and a Google profile are the fastest wins." },
       step3: { name: "Languages", title: "Which languages do your customers speak?", sub: "Tick the ones you hear most. Your menu and your site will speak them too." },
       step4: { name: "Contact", title: "Where do we reach you?", sub: "Only what we need to answer you. Nothing is sent anywhere until you press the button." },
@@ -57,20 +57,20 @@
       sum: {
         title: "Your request", from: "From", total: "Total",
         month: "/ month", hint: "Paid once · we confirm the final price together on WhatsApp.",
-        hintSub: "The total is what you pay once (setup). Then {price} a month for hosting and updates — we confirm everything together on WhatsApp.",
+        hintSub: "The total is what you pay once (setup). Then {price} a month for hosting and updates. We confirm everything together on WhatsApp.",
         thenMonthly: "+ {price} / month",
         paidOnce: "Due once (setup)", monthly: "Then every month",
         live: "We reply within minutes", send: "Open WhatsApp with my request",
-        copy: "Copy the message", copiedShort: "Copied", copied: "Message copied — paste it into the WhatsApp chat.",
-        copyFailed: "Copying failed — select the text below and copy it.",
-        copyHint: "Our WhatsApp link opens the chat — the message is copied so you can paste and send it in one tap.",
+        copy: "Copy the message", copiedShort: "Copied", copied: "Message copied, paste it into the WhatsApp chat.",
+        copyFailed: "Copying failed, select the text below and copy it.",
+        copyHint: "Our WhatsApp link opens the chat. The message is copied so you can paste and send it in one tap.",
         r1: "Business", r2: "What you need", r3: "Languages", r4: "Name", r5: "Area", r6: "WhatsApp", r7: "Notes"
       },
       sent: { eyebrow: "Your message", title: "Ready to send.", sub: "This is exactly what we receive. Change anything above and it updates here.", chars: "characters" },
       empty: "Not filled in yet", none: "Not specified",
-      err: { type: "Please choose the kind of business.", business: "Please tell us your business name.", first: "Please tell us your first name.", wa: "Please add your WhatsApp number — at least 6 digits." },
+      err: { type: "Please choose the kind of business.", business: "Please tell us your business name.", first: "Please tell us your first name.", wa: "Please add your WhatsApp number, at least 6 digits." },
       msg: {
-        head: "🎯 New project — NM Studio",
+        head: "🎯 New project | NM Studio",
         business: "Business", type: "Type", needs: "What I need", langs: "My customers' languages",
         name: "My name", area: "Area of Pattaya", wa: "My WhatsApp", notes: "Details",
         price: "Estimated price", total: "Total",
@@ -79,32 +79,32 @@
     },
     fr: {
       meta: {
-        title: "Démarrer un projet — votre devis en 4 étapes | NM Studio",
-        description: "Quatre étapes rapides et votre demande part sur WhatsApp : activité, besoins, langues de vos clients. Sans engagement."
+        title: "Démarrer un projet: votre devis en 4 étapes | NM Studio",
+        description: "Quatre étapes rapides et votre demande part sur WhatsApp : activité, besoins, langues de vos clients. Sans engagement."
       },
       hero: {
         eyebrow: "Démarrer un projet",
         title: "Quatre étapes. <em>Un message.</em> C'est fait.",
-        lead: "Aucun formulaire à envoyer, aucun compte à créer. Répondez à quatre questions, appuyez sur un bouton : votre demande arrive sur notre WhatsApp, déjà rédigée.",
+        lead: "Aucun formulaire à envoyer, aucun compte à créer. Répondez à quatre questions, appuyez sur un bouton : votre demande arrive sur notre WhatsApp, déjà rédigée.",
         fact1: "Environ 60 secondes", fact2: "Aucun paiement sur cette page", fact3: "Nous répondons en quelques minutes"
       },
       form: {
         title: "Votre demande de projet", bar: "sur 4 étapes",
         almost: "Presque terminé.", almostSub: "Corrigez les champs en rouge, puis continuez.",
-        privacy: "Vos réponses restent dans cette page — rien n'est enregistré ni envoyé avant l'ouverture de WhatsApp.",
-        live: "Étape 1 sur 4", sent: "Votre message est prêt ci-dessous — ouvrez WhatsApp et collez-le.",
+        privacy: "Vos réponses restent dans cette page, rien n'est enregistré ni envoyé avant l'ouverture de WhatsApp.",
+        live: "Étape 1 sur 4", sent: "Votre message est prêt ci-dessous. Ouvrez WhatsApp et collez-le.",
         liveStep: "Étape {n} sur 4"
       },
-      step1: { name: "Votre activité", title: "Quel genre d'endroit est-ce ?", sub: "Choisissez le plus proche — cela nous dit ce que vos clients cherchent." },
-      step2: { name: "Ce qu'il vous faut", title: "Que voulez-vous que nous créions ?", sub: "Choisissez-en autant que vous voulez. Un menu QR et une fiche Google sont les gains les plus rapides." },
-      step3: { name: "Les langues", title: "Quelles langues parlent vos clients ?", sub: "Cochez celles que vous entendez le plus. Votre menu et votre site les parleront aussi." },
-      step4: { name: "Coordonnées", title: "Comment vous joindre ?", sub: "Seulement le nécessaire pour vous répondre. Rien n'est envoyé avant l'appui sur le bouton." },
+      step1: { name: "Votre activité", title: "Quel genre d'endroit est-ce ?", sub: "Choisissez le plus proche, cela nous dit ce que vos clients cherchent." },
+      step2: { name: "Ce qu'il vous faut", title: "Que voulez-vous que nous créions ?", sub: "Choisissez-en autant que vous voulez. Un menu QR et une fiche Google sont les gains les plus rapides." },
+      step3: { name: "Les langues", title: "Quelles langues parlent vos clients ?", sub: "Cochez celles que vous entendez le plus. Votre menu et votre site les parleront aussi." },
+      step4: { name: "Coordonnées", title: "Comment vous joindre ?", sub: "Seulement le nécessaire pour vous répondre. Rien n'est envoyé avant l'appui sur le bouton." },
       opt: { restaurant: "Restaurant", cafe: "Café ou bar", salon: "Salon ou spa", hotel: "Hôtel ou guesthouse", shop: "Boutique", rental: "Location de scooters", other: "Autre chose", google: "Fiche Google", qr: "Menu QR", web: "Site web" },
       note: { google: "Être trouvé sur Maps", qr: "Votre menu sur chaque téléphone", web: "Votre vitrine en ligne" },
       lang: { en: "Anglais", fr: "Français", it: "Italien", th: "Thaï", ar: "Arabe", de: "Allemand", ru: "Russe", zh: "Chinois" },
       f: {
         business: "Nom du commerce", area: "Quartier de Pattaya", first: "Votre prénom",
-        wa: "Votre numéro WhatsApp", notes: "Quelque chose à nous dire ?", optional: "(facultatif)"
+        wa: "Votre numéro WhatsApp", notes: "Quelque chose à nous dire ?", optional: "(facultatif)"
       },
       ph: { business: "ex. Malee Restaurant", first: "Malee", wa: "+66 81 234 5678", notes: "Un lien vers votre Instagram, vos horaires, les plats dont vous êtes fier…" },
       area: { none: "Choisir un quartier", central: "Pattaya centre", beach: "Pattaya Beach Road", jomtien: "Jomtien", naklua: "Naklua", pratamnak: "Pratumnak", walking: "Walking Street", other: "Ailleurs" },
@@ -112,20 +112,20 @@
       sum: {
         title: "Votre demande", from: "À partir de", total: "Total",
         month: "/ mois", hint: "Paiement unique · nous confirmons le prix final ensemble sur WhatsApp.",
-        hintSub: "Le total est ce que vous payez une fois (mise en place). Ensuite {price} par mois pour l'hébergement et les mises à jour — nous confirmons tout ensemble sur WhatsApp.",
+        hintSub: "Le total est ce que vous payez une fois (mise en place). Ensuite {price} par mois pour l'hébergement et les mises à jour. Nous confirmons tout ensemble sur WhatsApp.",
         thenMonthly: "+ {price} / mois",
         paidOnce: "À payer une fois (mise en place)", monthly: "Puis chaque mois",
         live: "Nous répondons en quelques minutes", send: "Ouvrir WhatsApp avec ma demande",
-        copy: "Copier le message", copiedShort: "Copié", copied: "Message copié — collez-le dans la conversation WhatsApp.",
-        copyFailed: "La copie a échoué — sélectionnez le texte ci-dessous et copiez-le.",
-        copyHint: "Notre lien WhatsApp ouvre la discussion — le message est copié pour que vous n'ayez plus qu'à coller.",
+        copy: "Copier le message", copiedShort: "Copié", copied: "Message copié, collez-le dans la conversation WhatsApp.",
+        copyFailed: "La copie a échoué, sélectionnez le texte ci-dessous et copiez-le.",
+        copyHint: "Notre lien WhatsApp ouvre la discussion. Le message est copié pour que vous n'ayez plus qu'à coller.",
         r1: "Activité", r2: "Ce qu'il vous faut", r3: "Langues", r4: "Prénom", r5: "Quartier", r6: "WhatsApp", r7: "Précisions"
       },
-      sent: { eyebrow: "Votre message", title: "Prêt à envoyer.", sub: "Voici exactement ce que nous recevons. Modifiez une réponse : le message se met à jour.", chars: "caractères" },
+      sent: { eyebrow: "Votre message", title: "Prêt à envoyer.", sub: "Voici exactement ce que nous recevons. Modifiez une réponse : le message se met à jour.", chars: "caractères" },
       empty: "Pas encore rempli", none: "Non précisé",
-      err: { type: "Choisissez le type de commerce.", business: "Indiquez le nom de votre commerce.", first: "Indiquez votre prénom.", wa: "Ajoutez votre numéro WhatsApp — au moins 6 chiffres." },
+      err: { type: "Choisissez le type de commerce.", business: "Indiquez le nom de votre commerce.", first: "Indiquez votre prénom.", wa: "Ajoutez votre numéro WhatsApp, au moins 6 chiffres." },
       msg: {
-        head: "🎯 Nouveau projet — NM Studio",
+        head: "🎯 Nouveau projet | NM Studio",
         business: "Commerce", type: "Type", needs: "Ce qu'il me faut", langs: "Langues de mes clients",
         name: "Mon prénom", area: "Quartier de Pattaya", wa: "Mon WhatsApp", notes: "Précisions",
         price: "Prix estimé", total: "Total",
@@ -134,7 +134,7 @@
     },
     it: {
       meta: {
-        title: "Avvia un progetto — il tuo preventivo in 4 passi | NM Studio",
+        title: "Avvia un progetto: il tuo preventivo in 4 passi | NM Studio",
         description: "Quattro passi rapidi e la tua richiesta è pronta per WhatsApp: attività, cosa ti serve, lingue dei clienti. Senza vincoli."
       },
       hero: {
@@ -146,11 +146,11 @@
       form: {
         title: "La tua richiesta", bar: "di 4 passi",
         almost: "Quasi fatto.", almostSub: "Correggi i campi in rosso e continua.",
-        privacy: "Le tue risposte restano in questa pagina — nulla viene salvato o inviato prima di aprire WhatsApp.",
-        live: "Passo 1 di 4", sent: "Il tuo messaggio è pronto qui sotto — apri WhatsApp e incollalo.",
+        privacy: "Le tue risposte restano in questa pagina, nulla viene salvato o inviato prima di aprire WhatsApp.",
+        live: "Passo 1 di 4", sent: "Il tuo messaggio è pronto qui sotto, apri WhatsApp e incollalo.",
         liveStep: "Passo {n} di 4"
       },
-      step1: { name: "La tua attività", title: "Che tipo di locale è?", sub: "Scegli quello più vicino — ci dice cosa cercano i tuoi clienti." },
+      step1: { name: "La tua attività", title: "Che tipo di locale è?", sub: "Scegli quello più vicino, ci dice cosa cercano i tuoi clienti." },
       step2: { name: "Cosa ti serve", title: "Cosa vuoi che creiamo?", sub: "Scegline quanti vuoi. Un menù QR e una scheda Google sono i risultati più rapidi." },
       step3: { name: "Le lingue", title: "Quali lingue parlano i tuoi clienti?", sub: "Spunta quelle che senti di più. Anche il menù e il sito le parleranno." },
       step4: { name: "Contatti", title: "Come ti raggiungiamo?", sub: "Solo l'essenziale per risponderti. Nulla viene inviato finché non premi il pulsante." },
@@ -167,20 +167,20 @@
       sum: {
         title: "La tua richiesta", from: "Da", total: "Totale",
         month: "/ mese", hint: "Pagamento unico · confermiamo il prezzo finale insieme su WhatsApp.",
-        hintSub: "Il totale è quello che paghi una volta (attivazione). Poi {price} al mese per hosting e aggiornamenti — confermiamo tutto insieme su WhatsApp.",
+        hintSub: "Il totale è quello che paghi una volta (attivazione). Poi {price} al mese per hosting e aggiornamenti, confermiamo tutto insieme su WhatsApp.",
         thenMonthly: "+ {price} / mese",
         paidOnce: "Da pagare una volta (attivazione)", monthly: "Poi ogni mese",
         live: "Rispondiamo in pochi minuti", send: "Apri WhatsApp con la mia richiesta",
-        copy: "Copia il messaggio", copiedShort: "Copiato", copied: "Messaggio copiato — incollalo nella chat WhatsApp.",
-        copyFailed: "Copia non riuscita — seleziona il testo qui sotto e copialo.",
-        copyHint: "Il nostro link WhatsApp apre la chat — il messaggio è copiato, devi solo incollarlo.",
+        copy: "Copia il messaggio", copiedShort: "Copiato", copied: "Messaggio copiato, incollalo nella chat WhatsApp.",
+        copyFailed: "Copia non riuscita, seleziona il testo qui sotto e copialo.",
+        copyHint: "Il nostro link WhatsApp apre la chat. Il messaggio è copiato, devi solo incollarlo.",
         r1: "Attività", r2: "Cosa ti serve", r3: "Lingue", r4: "Nome", r5: "Zona", r6: "WhatsApp", r7: "Dettagli"
       },
       sent: { eyebrow: "Il tuo messaggio", title: "Pronto da inviare.", sub: "Ecco esattamente cosa riceviamo. Cambia una risposta e il messaggio si aggiorna.", chars: "caratteri" },
       empty: "Non ancora compilato", none: "Non specificato",
-      err: { type: "Scegli il tipo di attività.", business: "Indica il nome della tua attività.", first: "Indica il tuo nome.", wa: "Aggiungi il tuo numero WhatsApp — almeno 6 cifre." },
+      err: { type: "Scegli il tipo di attività.", business: "Indica il nome della tua attività.", first: "Indica il tuo nome.", wa: "Aggiungi il tuo numero WhatsApp, almeno 6 cifre." },
       msg: {
-        head: "🎯 Nuovo progetto — NM Studio",
+        head: "🎯 Nuovo progetto | NM Studio",
         business: "Attività", type: "Tipo", needs: "Cosa mi serve", langs: "Lingue dei miei clienti",
         name: "Il mio nome", area: "Zona di Pattaya", wa: "Il mio WhatsApp", notes: "Dettagli",
         price: "Prezzo stimato", total: "Totale",
@@ -189,7 +189,7 @@
     },
     th: {
       meta: {
-        title: "เริ่มโปรเจกต์ — ประเมินราคาใน 4 ขั้นตอน | NM Studio",
+        title: "เริ่มโปรเจกต์: ประเมินราคาใน 4 ขั้นตอน | NM Studio",
         description: "ตอบ 4 ขั้นตอนสั้น ๆ แล้วส่งคำขอทาง WhatsApp: ธุรกิจของคุณ ต้องการอะไร และลูกค้าพูดภาษาใด ไม่มีสัญญา"
       },
       hero: {
@@ -201,11 +201,11 @@
       form: {
         title: "คำขอโปรเจกต์ของคุณ", bar: "จาก 4 ขั้นตอน",
         almost: "เกือบเสร็จแล้ว", almostSub: "แก้ช่องที่ทำเครื่องหมายสีแดงแล้วไปต่อ",
-        privacy: "คำตอบของคุณอยู่ในหน้านี้เท่านั้น — ไม่มีการบันทึกหรือส่งข้อมูลจนกว่าจะเปิด WhatsApp",
-        live: "ขั้นตอนที่ 1 จาก 4", sent: "ข้อความของคุณพร้อมแล้วด้านล่าง — เปิด WhatsApp แล้ววางได้เลย",
+        privacy: "คำตอบของคุณอยู่ในหน้านี้เท่านั้น ไม่มีการบันทึกหรือส่งข้อมูลจนกว่าจะเปิด WhatsApp",
+        live: "ขั้นตอนที่ 1 จาก 4", sent: "ข้อความของคุณพร้อมแล้วด้านล่าง เปิด WhatsApp แล้ววางได้เลย",
         liveStep: "ขั้นตอนที่ {n} จาก 4"
       },
-      step1: { name: "ธุรกิจของคุณ", title: "ร้านของคุณเป็นแบบไหน?", sub: "เลือกอันที่ใกล้ที่สุด — ช่วยให้เรารู้ว่าลูกค้าของคุณมองหาอะไร" },
+      step1: { name: "ธุรกิจของคุณ", title: "ร้านของคุณเป็นแบบไหน?", sub: "เลือกอันที่ใกล้ที่สุด ช่วยให้เรารู้ว่าลูกค้าของคุณมองหาอะไร" },
       step2: { name: "สิ่งที่คุณต้องการ", title: "อยากให้เราทำอะไรให้?", sub: "เลือกได้หลายอย่าง เมนู QR และโปรไฟล์ Google เห็นผลเร็วที่สุด" },
       step3: { name: "ภาษา", title: "ลูกค้าของคุณพูดภาษาใด?", sub: "เลือกภาษาที่ได้ยินบ่อยที่สุด เมนูและเว็บไซต์ของคุณจะพูดภาษาเหล่านั้นด้วย" },
       step4: { name: "ช่องทางติดต่อ", title: "ให้เราติดต่อคุณอย่างไร?", sub: "ถามเท่าที่จำเป็นเท่านั้น ไม่มีการส่งข้อมูลใด ๆ จนกว่าจะกดปุ่ม" },
@@ -222,20 +222,20 @@
       sum: {
         title: "คำขอของคุณ", from: "เริ่มต้นที่", total: "รวม",
         month: "/ เดือน", hint: "จ่ายครั้งเดียว · เรายืนยันราคาสุดท้ายร่วมกันทาง WhatsApp",
-        hintSub: "ยอดรวมคือค่าติดตั้งที่จ่ายครั้งเดียว จากนั้นเดือนละ {price} สำหรับโฮสติ้งและอัปเดต — เรายืนยันทุกอย่างร่วมกันทาง WhatsApp",
+        hintSub: "ยอดรวมคือค่าติดตั้งที่จ่ายครั้งเดียว จากนั้นเดือนละ {price} สำหรับโฮสติ้งและอัปเดต เรายืนยันทุกอย่างร่วมกันทาง WhatsApp",
         thenMonthly: "+ {price} / เดือน",
         paidOnce: "จ่ายครั้งเดียว (ค่าติดตั้ง)", monthly: "จากนั้นทุกเดือน",
         live: "เราตอบกลับภายในไม่กี่นาที", send: "เปิด WhatsApp พร้อมคำขอของฉัน",
-        copy: "คัดลอกข้อความ", copiedShort: "คัดลอกแล้ว", copied: "คัดลอกข้อความแล้ว — วางในแชท WhatsApp ได้เลย",
-        copyFailed: "คัดลอกไม่สำเร็จ — เลือกข้อความด้านล่างแล้วคัดลอกเอง",
-        copyHint: "ลิงก์ WhatsApp ของเราจะเปิดแชทขึ้นมา — ข้อความถูกคัดลอกไว้ให้แล้วเพียงวาง",
+        copy: "คัดลอกข้อความ", copiedShort: "คัดลอกแล้ว", copied: "คัดลอกข้อความแล้ว วางในแชท WhatsApp ได้เลย",
+        copyFailed: "คัดลอกไม่สำเร็จ เลือกข้อความด้านล่างแล้วคัดลอกเอง",
+        copyHint: "ลิงก์ WhatsApp ของเราจะเปิดแชทขึ้นมา ข้อความถูกคัดลอกไว้ให้แล้วเพียงวาง",
         r1: "ธุรกิจ", r2: "สิ่งที่ต้องการ", r3: "ภาษา", r4: "ชื่อ", r5: "ย่าน", r6: "WhatsApp", r7: "รายละเอียด"
       },
       sent: { eyebrow: "ข้อความของคุณ", title: "พร้อมส่งแล้ว", sub: "นี่คือข้อความที่เราจะได้รับจริง ๆ แก้คำตอบด้านบนแล้วข้อความจะอัปเดตทันที", chars: "ตัวอักษร" },
       empty: "ยังไม่ได้กรอก", none: "ไม่ได้ระบุ",
-      err: { type: "กรุณาเลือกประเภทธุรกิจ", business: "กรุณากรอกชื่อธุรกิจของคุณ", first: "กรุณากรอกชื่อเล่นของคุณ", wa: "กรุณากรอกเบอร์ WhatsApp — อย่างน้อย 6 หลัก" },
+      err: { type: "กรุณาเลือกประเภทธุรกิจ", business: "กรุณากรอกชื่อธุรกิจของคุณ", first: "กรุณากรอกชื่อเล่นของคุณ", wa: "กรุณากรอกเบอร์ WhatsApp อย่างน้อย 6 หลัก" },
       msg: {
-        head: "🎯 โปรเจกต์ใหม่ — NM Studio",
+        head: "🎯 โปรเจกต์ใหม่ NM Studio",
         business: "ธุรกิจ", type: "ประเภท", needs: "สิ่งที่ต้องการ", langs: "ภาษาของลูกค้า",
         name: "ชื่อของฉัน", area: "ย่านในพัทยา", wa: "WhatsApp ของฉัน", notes: "รายละเอียด",
         price: "ราคาประเมิน", total: "รวม",
@@ -244,7 +244,7 @@
     },
     ar: {
       meta: {
-        title: "ابدأ مشروعًا — عرض السعر في 4 خطوات | NM Studio",
+        title: "ابدأ مشروعًا: عرض السعر في 4 خطوات | NM Studio",
         description: "أربع خطوات سريعة ويصبح طلبك جاهزًا على واتساب: نشاطك وما تحتاجه ولغات عملائك. بلا التزام."
       },
       hero: {
@@ -256,11 +256,11 @@
       form: {
         title: "طلب مشروعك", bar: "من 4 خطوات",
         almost: "اقتربت من النهاية.", almostSub: "صحّح الحقول المعلّمة بالأحمر ثم تابع.",
-        privacy: "إجاباتك تبقى في هذه الصفحة — لا شيء يُحفظ أو يُرسل قبل فتح واتساب.",
-        live: "الخطوة 1 من 4", sent: "رسالتك جاهزة بالأسفل — افتح واتساب والصقها.",
+        privacy: "إجاباتك تبقى في هذه الصفحة، لا شيء يُحفظ أو يُرسل قبل فتح واتساب.",
+        live: "الخطوة 1 من 4", sent: "رسالتك جاهزة بالأسفل، افتح واتساب والصقها.",
         liveStep: "الخطوة {n} من 4"
       },
-      step1: { name: "نشاطك", title: "ما نوع مكانك؟", sub: "اختر الأقرب — يخبرنا بما يبحث عنه عملاؤك." },
+      step1: { name: "نشاطك", title: "ما نوع مكانك؟", sub: "اختر الأقرب، يخبرنا بما يبحث عنه عملاؤك." },
       step2: { name: "ما تحتاجه", title: "ماذا تريد أن ننشئ؟", sub: "اختر ما تشاء. قائمة QR وملف Google هما الأسرع نتيجة." },
       step3: { name: "اللغات", title: "ما اللغات التي يتحدثها عملاؤك؟", sub: "اختر الأكثر شيوعًا. ستتحدث قائمتك وموقعك بها أيضًا." },
       step4: { name: "بيانات التواصل", title: "كيف نصل إليك؟", sub: "فقط ما نحتاجه للرد عليك. لا يُرسل شيء قبل الضغط على الزر." },
@@ -277,20 +277,20 @@
       sum: {
         title: "طلبك", from: "ابتداءً من", total: "الإجمالي",
         month: "/ شهريًا", hint: "دفعة واحدة · نؤكد السعر النهائي معًا على واتساب.",
-        hintSub: "المجموع هو ما تدفعه مرة واحدة (الإعداد). ثم {price} شهريًا للاستضافة والتحديثات — نؤكد كل شيء معًا على واتساب.",
+        hintSub: "المجموع هو ما تدفعه مرة واحدة (الإعداد). ثم {price} شهريًا للاستضافة والتحديثات، نؤكد كل شيء معًا على واتساب.",
         thenMonthly: "+ {price} / شهريًا",
         paidOnce: "يُدفع مرة واحدة (الإعداد)", monthly: "ثم شهريًا",
         live: "نجيب خلال دقائق", send: "افتح واتساب مع طلبي",
-        copy: "انسخ الرسالة", copiedShort: "تم النسخ", copied: "تم نسخ الرسالة — الصقها في محادثة واتساب.",
-        copyFailed: "فشل النسخ — حدّد النص بالأسفل وانسخه يدويًا.",
-        copyHint: "رابط واتساب يفتح المحادثة — والرسالة منسوخة لتلصقها بلمسة واحدة.",
+        copy: "انسخ الرسالة", copiedShort: "تم النسخ", copied: "تم نسخ الرسالة، الصقها في محادثة واتساب.",
+        copyFailed: "فشل النسخ، حدّد النص بالأسفل وانسخه يدويًا.",
+        copyHint: "رابط واتساب يفتح المحادثة، والرسالة منسوخة لتلصقها بلمسة واحدة.",
         r1: "النشاط", r2: "ما تحتاجه", r3: "اللغات", r4: "الاسم", r5: "المنطقة", r6: "واتساب", r7: "تفاصيل"
       },
       sent: { eyebrow: "رسالتك", title: "جاهزة للإرسال.", sub: "هذه بالضبط الرسالة التي نستلمها. عدّل أي إجابة وستتحدث الرسالة فورًا.", chars: "حرفًا" },
       empty: "لم يُعبأ بعد", none: "غير محدد",
-      err: { type: "اختر نوع النشاط من فضلك.", business: "اكتب اسم نشاطك من فضلك.", first: "اكتب اسمك الأول من فضلك.", wa: "أضف رقم واتساب — 6 أرقام على الأقل." },
+      err: { type: "اختر نوع النشاط من فضلك.", business: "اكتب اسم نشاطك من فضلك.", first: "اكتب اسمك الأول من فضلك.", wa: "أضف رقم واتساب، 6 أرقام على الأقل." },
       msg: {
-        head: "🎯 مشروع جديد — NM Studio",
+        head: "🎯 مشروع جديد، NM Studio",
         business: "النشاط", type: "النوع", needs: "ما أحتاجه", langs: "لغات عملائي",
         name: "اسمي", area: "المنطقة في باتايا", wa: "واتساب", notes: "تفاصيل",
         price: "السعر التقديري", total: "الإجمالي",
@@ -472,20 +472,19 @@
   function priceMap() {
     var O = window.NM_OFFERS;
     if (!O || !O.price) return null;
-    if (state.needs.indexOf("web") > -1) return (O.sub && O.sub.website) ? "website" : "pack";
-    if (state.needs.indexOf("qr") > -1) return "qr";
+    if (state.needs.indexOf("web") > -1 || state.needs.indexOf("qr") > -1) return (O.sub && O.sub.website) ? "website" : "pack";
     if (state.needs.indexOf("google") > -1) return "google";
     return null;
   }
 
   function offersFor(needs) {
-    var out = [], map = { google: "google", qr: "qr", web: "website" };
+    var out = [], map = { google: "google", qr: "website", web: "website" };   /* the QR menu is part of the website offer */
     needs.forEach(function (n) {
       var id = map[n];
       if (!id) return;
       // a website alone is its own offer; with Google or the QR menu it is the
       // Complete Pack, which is the offer that actually bundles them
-      if (id === "website" && (needs.indexOf("google") > -1 || needs.indexOf("qr") > -1)) id = "pack";
+      if (id === "website" && needs.indexOf("google") > -1) id = "pack";
       if (out.indexOf(id) === -1) out.push(id);
     });
     return out;
