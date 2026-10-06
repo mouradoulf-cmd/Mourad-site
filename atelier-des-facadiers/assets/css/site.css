@@ -677,3 +677,16 @@ body.leave::after{content:"";position:fixed;inset:0;z-index:290;pointer-events:n
 .card--nav .link{margin:1rem 1.5rem 1.4rem;width:auto}
 @media(prefers-reduced-motion:reduce){.card--nav:hover .card__ph img{transform:none}}
 .card--nav .link{align-self:stretch;width:auto}
+
+/* ---- v4c touch hardening: phones/tablets get solid backgrounds and no hover-only effects
+   (backdrop blur, spinning conic borders and sticky :hover lifts are what stutter/flicker on iOS) ---- */
+@media (hover:none){
+  .hdr.is-solid,.hdr--page,.hdr,.langbar,.mbar,.menu,.nav{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .hdr.is-solid,.hdr--page{background:rgba(241,239,233,.98)}
+  .card:hover,.card--nav:hover,.bc:hover{transform:none;animation:none!important}
+  .card:hover{background:linear-gradient(var(--paper),var(--paper)) padding-box,linear-gradient(var(--bd),var(--bd)) border-box}
+  .card--nav:hover .card__ph img{transform:scale(1.02);filter:none}
+  .card--nav:hover .ico{transform:none}
+  .card--nav:hover .ico path,.card--nav:hover .ico rect{animation:none}
+  .bc.tilt{transform:none!important}
+}

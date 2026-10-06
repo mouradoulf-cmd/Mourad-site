@@ -339,7 +339,7 @@ if (cur === "fr" && lang) {
     const d = document.createElement("div"); d.className = "langbar"; d.setAttribute("role", "region"); d.setAttribute("lang", nav);
     d.innerHTML = `<span>${T[nav][0]}</span><a href="${a0.getAttribute("href")}" hreflang="${nav}">${T[nav][1]}</a><button type="button" aria-label="×">×</button>`;
     $("button", d).onclick = () => { d.remove(); try { sessionStorage.setItem("adf-lang-x", "1"); } catch (_) {} };
-    setTimeout(() => document.body.appendChild(d), 1800);
+    setTimeout(() => { document.body.appendChild(d); setTimeout(() => d.remove(), 9000); }, 1800);
   }
 }
 })();
