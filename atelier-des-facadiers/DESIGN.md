@@ -101,3 +101,5 @@ Loaded after site.css / site.js on every page and language; the site is complete
 - Photos: soft clip reveal on card images (hidden state only once the observer exists).
 - Fixed: stat figures colliding on mid widths, process steps merging on mobile.
 - Not done on purpose: before/after slider and testimonials (no paired photos / no real quotes supplied; nothing invented).
+
+- v5b: on phones (<=900px) the pinned scroll sections ("Cinq couches" exploded view, horizontal "Réalisations") no longer pin: static exploded view with tap-to-read layers, native swipe carousel. Cut ~1500 px and ~2600 px of empty scrolling.

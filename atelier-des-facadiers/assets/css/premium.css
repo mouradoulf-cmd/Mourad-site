@@ -94,3 +94,4 @@ html.pr-on .rv-img.in{clip-path:inset(0 0 0 0 round var(--r-md));transform:none}
 @media(max-width:900px){.stats{grid-template-columns:1fr 1fr}.stat{padding:1.6rem 1rem 1.6rem 0;border-bottom:1px solid rgba(255,255,255,.12)}.stat+.stat{padding-left:0}.stat:nth-child(even){padding-left:1.2rem}.stat:nth-child(2n){border-right:0}.stat b{font-size:clamp(2rem,9vw,3rem)}}
 .proc li{z-index:1}.proc::before,.proc::after{z-index:0}
 @media(max-width:900px){.proc{gap:1.5rem}.proc li{min-height:2.7rem;padding-top:.5rem;padding-bottom:0}.proc li b{font-size:1rem}}
+@media(max-width:900px){.xv__stage{height:min(40svh,19rem)}.xv__list li{padding:.9rem 1rem}.xv__list li.on p{max-height:12rem}}
