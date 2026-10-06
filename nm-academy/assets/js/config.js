@@ -8,13 +8,15 @@ window.CONFIG={
   WHATSAPP:"33600000000",            // numéro international sans + ni espaces
   EMAIL:"contact@exemple.com",
   // Liens de paiement (Stripe > Payment Links, ou autre) — laisse vide tant que ce n'est pas prêt
-  LINKS:{a:"",b:"",pack:""},
+  LINKS:{a:"",b:"",pack:"",coach:""},
   // Prix d'EXEMPLE : à remplacer par tes vrais prix
   PLANS:{
-    a:{price:49, per:"mo"},      // abonnement mensuel (accès + templates + mises à jour)
-    b:{price:97, per:"once"},    // paiement unique
-    pack:{price:197, per:"once"} // A + B à vie
+    a:{price:29, per:"mo"},       // abonnement mensuel (accès + templates + mises à jour)
+    b:{price:47, per:"once"},     // paiement unique
+    pack:{price:97, per:"once"},   // A + B à vie
+    coach:{price:297, per:"once"}  // accompagnement personnel en visio
   },
+  COACH_MIN:60,                    // durée affichée de la séance visio (minutes)
   // Fin d'offre RÉELLE (ISO, ex "2026-12-31T23:59:00+01:00"). Vide = aucun compte à rebours (ne jamais mettre une fausse date)
   OFFER_END:"",
   // Avis clients RÉELS uniquement (avec accord de la personne). Vide = la section n'apparaît pas.

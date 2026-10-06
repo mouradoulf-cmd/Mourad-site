@@ -1,277 +1,145 @@
 <!doctype html>
-<html lang="fr" data-title="h_t1">
+<html lang="fr" data-title="h2_t1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>NM Academy — Sites web & Vidéo IA</title>
-<meta name="description" content="Deux formations pratiques : créer et vendre des sites web, et produire des vidéos IA pour la monétisation (TikTok, YouTube). Templates et outils de départ inclus.">
+<meta name="description" content="Deux formations pratiques et un accompagnement en visio : créer et vendre des sites web, produire des vidéos IA. Templates, scripts et outils gratuits pour démarrer.">
 <meta name="theme-color" content="#04050c">
 <meta property="og:type" content="website"><meta property="og:image" content="assets/og.png"><meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="NM Academy — Sites web & Vidéo IA">
-<meta property="og:description" content="Les compétences que les agences facturent cher. Tu les apprends, tu les vends.">
+<meta property="og:description" content="Crée des sites web et des vidéos IA. Puis vends-les.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Thai:wght@400;500;700;800&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Course","name":"Web Agency Blueprint","description":"Créer des sites web professionnels et les vendre à des entreprises.","provider":{"@type":"Organization","name":"NM Academy"},"inLanguage":["fr","en","th"]},{"@type":"Course","name":"AI Video Money Lab","description":"Produire des vidéos IA et découvrir les voies de monétisation TikTok, YouTube, affiliation et clients.","provider":{"@type":"Organization","name":"NM Academy"},"inLanguage":["fr","en","th"]}]}</script>
-<link rel="stylesheet" href="assets/css/academy.css">
-<noscript><style>#gate{display:none!important}.rv{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Course","name":"Web Agency Blueprint","description":"Créer des sites web professionnels et les vendre à des entreprises.","provider":{"@type":"Organization","name":"NM Academy"}},{"@type":"Course","name":"AI Video Money Lab","description":"Produire des vidéos IA et découvrir les voies de monétisation TikTok, YouTube, affiliation et clients.","provider":{"@type":"Organization","name":"NM Academy"}}]}</script>
+<link rel="stylesheet" href="assets/css/academy.css"><link rel="stylesheet" href="assets/css/simple.css">
 </head>
 <body>
 <a class="skip" href="#top" data-t="skip">Aller au contenu</a>
-
-<div id="gate" hidden>
-  <div class="gate-in">
-    <div class="g-k mono" data-t="g_k">SYSTÈME PRÊT</div>
-    <div class="g-logo">NM<b>ACADEMY</b></div>
-    <div class="g-t" data-t="g_t">Sites web & Vidéo IA</div>
-    <pre class="boot mono" id="boot" aria-live="polite"></pre>
-    <div class="g-btns" id="gbtns">
-      <button class="btn pri big" id="g-snd" data-t="g_snd">Entrer</button>
-    </div>
-    <p class="g-hint mono" data-t="g_hint">Sons discrets : clics et frappes de clavier. Pas de musique.</p>
-  </div>
-</div>
-
-<canvas id="bg" aria-hidden="true"></canvas>
-<div class="vig" aria-hidden="true"></div>
-<div class="cur" id="cur" aria-hidden="true"></div>
+<div id="intro" aria-hidden="true"><div class="in-logo">NM<b>ACADEMY</b></div><i class="in-line"></i></div>
+<canvas id="bg" aria-hidden="true"></canvas><div class="vig" aria-hidden="true"></div>
 <div class="sprog" id="sp"></div>
 <div class="offer" id="offer" hidden></div>
 
 <header class="nav" id="nav">
   <a href="#top" class="logo">NM<b>ACADEMY</b></a>
-  <nav class="links">
-    <a href="#courses" data-t="n_courses">Formations</a><a href="#method" data-t="n_method">Méthode</a><a href="#sim" data-t="n_sim">Simulateur</a><a href="#price" data-t="n_price">Tarifs</a><a href="#faq" data-t="n_faq">FAQ</a>
-  </nav>
-  <div class="nr"><div class="lang" role="group" aria-label="Language"></div><button class="snd mono" id="snd" type="button">SON</button><a href="#price" class="btn pri sm" data-t="n_cta">Rejoindre</a></div>
+  <nav class="links"><a href="#paths" data-t="n_courses">Formations</a><a href="#price" data-t="n_price">Tarifs</a><a href="#faq" data-t="n_faq">FAQ</a></nav>
+  <div class="nr"><div class="lang" role="group" aria-label="Language"></div><button class="snd mono" id="snd" type="button" aria-label="Son">SON</button><a href="#price" class="btn pri sm" data-t="n_cta">Rejoindre</a></div>
 </header>
 
 <main>
-<section class="hero" id="top">
-  <div class="wrap hero-g">
-    <div class="hero-t">
-      <div class="tag mono rv" data-t="h_tag">ACADÉMIE · SITES WEB & VIDÉO IA</div>
-      <h1 class="rv d1"><span data-t="h_t1">Les compétences que les agences facturent cher.</span> <em data-t="h_t2">Tu les apprends. Tu les vends.</em></h1>
-      <p class="sub rv d2" id="sub" data-t="h_sub">Deux formations 100 % pratiques.</p>
-      <div class="cta rv d3"><a href="#courses" class="btn pri" data-t="h_c1">Choisir ma formation</a><a href="start.html" class="btn ghost" data-t="h_c3">Faire le test (1 min)</a></div>
-      <div class="stats rv d4">
-        <div><b data-count="2">0</b><span data-t="h_s1">formations</span></div>
-        <div><b data-count="13">0</b><span data-t="h_s2">modules pratiques</span></div>
-        <div><b>KIT</b><span data-t="h_s3">kit d'outils inclus</span></div>
-      </div>
-    </div>
-    <div class="hero-v rv d3">
-      <div class="term" id="term">
-        <div class="term-bar"><i></i><i></i><i></i><span class="mono">nm-academy — workflow</span></div>
-        <div class="term-b mono" id="termb"></div>
-        <div class="term-c mono" data-t="term_cap">Illustration du processus.</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- 1. Ce que je propose, tout de suite -->
+<section class="hero2" id="top"><div class="wrap">
+  <div class="tag mono" data-t="h2_tag">SITES WEB · VIDÉO IA · ACCOMPAGNEMENT</div>
+  <h1><span data-t="h2_t1">Crée des sites web et des vidéos IA.</span> <em data-t="h2_t2">Puis vends-les.</em></h1>
+  <p class="sub2" data-t="h2_sub">Deux formations pratiques et un accompagnement en visio.</p>
+  <div class="cta"><a href="#price" class="btn pri big" data-t="h_c1">Choisir ma formation</a><a href="start.html" class="btn ghost big" data-t="h_c3">Faire le test (1 min)</a></div>
 
-<div class="marq" aria-hidden="true"><div class="mt">
-  <span>HTML · CSS · JS</span><span>Cloudflare Pages</span><span>Stripe</span><span>WhatsApp</span><span>Canva</span><span>CapCut</span><span>Kling</span><span>Runway</span><span>Veo</span><span>ElevenLabs</span><span>TikTok</span><span>YouTube</span>
-  <span>HTML · CSS · JS</span><span>Cloudflare Pages</span><span>Stripe</span><span>WhatsApp</span><span>Canva</span><span>CapCut</span><span>Kling</span><span>Runway</span><span>Veo</span><span>ElevenLabs</span><span>TikTok</span><span>YouTube</span>
-</div></div>
-
-<section class="sec vidsec" id="videos"><div class="wrap">
-  <h2 class="rv" data-t="vd_t">Regarde, ça se comprend en 34 secondes</h2>
-  <p class="lead rv" data-t="vd_s">Deux vidéos, une idée : tu paies moins d'outils, tu produis plus, et tu vends ce que tu sais faire. (Son recommandé.)</p>
-  <div class="vgrid">
-    <figure class="vf rv"><video data-vv="ai" controls muted loop playsinline preload="metadata"></video><figcaption><b data-t="vd_a">Plan B · Vidéo IA</b><span data-t="vd_ad">Pourquoi payer des centaines d'euros d'abonnements ?</span></figcaption></figure>
-    <figure class="vf rv d1"><video data-vv="web" controls muted loop playsinline preload="metadata"></video><figcaption><b data-t="vd_w">Plan A · Sites web</b><span data-t="vd_wd">Un kit à installer dans ton assistant IA pour aller vite.</span></figcaption></figure>
+  <div class="paths" id="paths">
+    <a class="path card spot" href="#price" data-pick="a"><span class="mono pk">PLAN A</span><h2 data-t="pt1_t">Créer et vendre des sites web</h2><p data-t="pt1_d">…</p><span class="go" data-t="pt_go">Voir →</span></a>
+    <a class="path card spot" href="#price" data-pick="b"><span class="mono pk v">PLAN B</span><h2 data-t="pt2_t">Produire des vidéos IA</h2><p data-t="pt2_d">…</p><span class="go" data-t="pt_go">Voir →</span></a>
+    <a class="path card spot hot" href="#coach" data-pick="coach"><span class="mono pk g" data-t="pt3_k">EN VISIO</span><h2 data-t="pt3_t">Être accompagné en visio</h2><p data-t="pt3_d">…</p><span class="go" data-t="pt_go">Voir →</span></a>
   </div>
-  <p class="note rv" data-t="vd_n">…</p>
 </div></section>
 
+<!-- 2. Pourquoi acheter -->
 <section class="sec" id="why"><div class="wrap">
-  <h2 class="rv" data-t="v_t">Pourquoi tout payer plein pot ?</h2>
-  <p class="lead rv" data-t="v_s">Une méthode pour démarrer avec peu de budget.</p>
-  <div class="g3">
-    <article class="card spot rv"><span class="ico mono">01</span><h3 data-t="v1t">Outils gratuits</h3><p data-t="v1d">…</p></article>
-    <article class="card spot rv d1"><span class="ico mono">02</span><h3 data-t="v2t">Templates</h3><p data-t="v2d">…</p></article>
-    <article class="card spot rv d2"><span class="ico mono">03</span><h3 data-t="v3t">Premier client</h3><p data-t="v3d">…</p></article>
+  <h2 data-t="w_t">Pourquoi cette formation ?</h2>
+  <div class="cmpbar">
+    <div class="cb bad"><span class="mono" data-t="w_c1">Abonnements d'outils vidéo IA*</span><b data-t="w_c1v">plusieurs centaines d'€ / mois</b></div>
+    <div class="cb good"><span class="mono" data-t="w_c2">Avec NM Academy</span><b data-t="w_c2v">démarre avec des outils gratuits ou à crédits offerts</b></div>
   </div>
-  <p class="note rv" data-t="v_note">Aucune formation ne garantit de revenus.</p>
+  <div class="why">
+    <article><i class="mono">01</i><h3 data-t="w1t">…</h3><p data-t="w1d">…</p></article>
+    <article><i class="mono">02</i><h3 data-t="w2t">…</h3><p data-t="w2d">…</p></article>
+    <article><i class="mono">03</i><h3 data-t="w3t">…</h3><p data-t="w3d">…</p></article>
+    <article><i class="mono">04</i><h3 data-t="w4t">…</h3><p data-t="w4d">…</p></article>
+    <article><i class="mono">05</i><h3 data-t="w5t">…</h3><p data-t="w5d">…</p></article>
+    <article><i class="mono">06</i><h3 data-t="w6t">…</h3><p data-t="w6d">…</p></article>
+  </div>
+  <p class="note" data-t="w_fn">…</p>
 </div></section>
 
-<section class="sec alt" id="courses"><div class="wrap">
-  <h2 class="rv" data-t="c_t">Deux formations.</h2>
-  <p class="lead rv" data-t="c_s">Choisis ton plan.</p>
-  <div class="tabs rv" role="tablist">
-    <button class="tab on" data-p="a" role="tab" data-t="tabA">Plan A · Sites web</button>
-    <button class="tab" data-p="b" role="tab" data-t="tabB">Plan B · Vidéo IA</button>
-  </div>
-
-  <div class="panel on" id="pa">
-    <div class="ph">
-      <span class="pill mono" data-t="a_tag">PLAN A</span>
-      <h3 class="pn">Web Agency Blueprint</h3>
-      <p class="ps" data-t="a_sub">…</p>
-    </div>
-    <div class="mods">
-      <div class="mod"><b class="mono">01</b><div><h4 data-t="a1t">…</h4><p data-t="a1d">…</p></div></div>
-      <div class="mod"><b class="mono">02</b><div><h4 data-t="a2t">…</h4><p data-t="a2d">…</p></div></div>
-      <div class="mod"><b class="mono">03</b><div><h4 data-t="a3t">…</h4><p data-t="a3d">…</p></div></div>
-      <div class="mod"><b class="mono">04</b><div><h4 data-t="a4t">…</h4><p data-t="a4d">…</p></div></div>
-      <div class="mod"><b class="mono">05</b><div><h4 data-t="a5t">…</h4><p data-t="a5d">…</p></div></div>
-      <div class="mod"><b class="mono">06</b><div><h4 data-t="a6t">…</h4><p data-t="a6d">…</p></div></div>
-    </div>
-    <div class="pf">
-      <div class="card"><h4 class="mono" data-t="get_t">Tu reçois</h4><ul><li data-t="ag1">…</li><li data-t="ag2">…</li><li data-t="ag3">…</li><li data-t="ag4">…</li></ul></div>
-      <div class="card"><h4 class="mono" data-t="who_t">Pour qui ?</h4><p data-t="a_who">…</p></div>
-    </div>
-  </div>
-
-  <div class="panel" id="pb">
-    <div class="ph">
-      <span class="pill mono v" data-t="b_tag">PLAN B</span>
-      <h3 class="pn">AI Video Money Lab</h3>
-      <p class="ps" data-t="b_sub">…</p>
-    </div>
-    <div class="mods">
-      <div class="mod"><b class="mono">01</b><div><h4 data-t="b1t">…</h4><p data-t="b1d">…</p></div></div>
-      <div class="mod"><b class="mono">02</b><div><h4 data-t="b2t">…</h4><p data-t="b2d">…</p></div></div>
-      <div class="mod"><b class="mono">03</b><div><h4 data-t="b3t">…</h4><p data-t="b3d">…</p></div></div>
-      <div class="mod"><b class="mono">04</b><div><h4 data-t="b4t">…</h4><p data-t="b4d">…</p></div></div>
-      <div class="mod"><b class="mono">05</b><div><h4 data-t="b5t">…</h4><p data-t="b5d">…</p></div></div>
-      <div class="mod"><b class="mono">06</b><div><h4 data-t="b6t">…</h4><p data-t="b6d">…</p></div></div>
-      <div class="mod"><b class="mono">07</b><div><h4 data-t="b7t">…</h4><p data-t="b7d">…</p></div></div>
-    </div>
-    <div class="pf">
-      <div class="card"><h4 class="mono" data-t="get_t">Tu reçois</h4><ul><li data-t="bg1">…</li><li data-t="bg2">…</li><li data-t="bg3">…</li><li data-t="bg4">…</li></ul></div>
-      <div class="card"><h4 class="mono" data-t="who_t">Pour qui ?</h4><p data-t="b_who">…</p></div>
-    </div>
-    <p class="note" data-t="b_note">…</p>
+<!-- 3. Vidéos (preuve) -->
+<section class="sec alt" id="videos"><div class="wrap">
+  <h2 data-t="vd_t">Regarde, ça se comprend en 34 secondes</h2>
+  <div class="vgrid">
+    <figure class="vf"><video data-vv="ai" controls muted loop playsinline preload="none"></video><figcaption><b data-t="vd_a">Plan B · Vidéo IA</b></figcaption></figure>
+    <figure class="vf"><video data-vv="web" controls muted loop playsinline preload="none"></video><figcaption><b data-t="vd_w">Plan A · Sites web</b></figcaption></figure>
   </div>
 </div></section>
 
-<section class="sec" id="demo"><div class="wrap">
-  <h2 class="rv" data-t="dm_t">Teste le processus en direct</h2>
-  <p class="lead rv" data-t="dm_s">…</p>
-  <div class="demo rv">
-    <div class="dctl card">
-      <label><span data-t="dm_n">Activité</span><select id="dn"><option value="rest" data-t="dn_rest">Restaurant</option><option value="hair" data-t="dn_hair">Coiffeur</option><option value="plumb" data-t="dn_plumb">Plombier</option><option value="coach" data-t="dn_coach">Coach</option></select></label>
-      <label><span data-t="dm_nm">Nom de l'entreprise</span><input id="dnm" maxlength="26" value="Chez Nina" data-t-ph="dm_ph"></label>
-      <div class="dsw"><span data-t="dm_c">Couleur</span><div id="dsw"><button type="button" data-c="#00e5ff" style="background:#00e5ff" aria-label="cyan"></button><button type="button" data-c="#7b5cff" style="background:#7b5cff" aria-label="violet"></button><button type="button" data-c="#ff5c7a" style="background:#ff5c7a" aria-label="rose"></button><button type="button" data-c="#ffb400" style="background:#ffb400" aria-label="ambre"></button><button type="button" data-c="#2ee6a6" style="background:#2ee6a6" aria-label="vert"></button></div></div>
-      <div class="dsw"><span data-t="dm_th">Thème</span><div class="seg" id="dth"><button type="button" data-th="dark" class="on" data-t="dm_dk">Sombre</button><button type="button" data-th="light" data-t="dm_lt">Clair</button></div></div>
-      <p class="note" style="text-align:left;margin:0" data-t="dm_note">…</p>
-    </div>
-    <div class="dview"><div class="brow"><i></i><i></i><i></i><span class="mono" id="durl">chez-nina.com</span></div>
-      <div class="msite" id="ms" data-th="dark">
-        <div class="mn"><b id="mname">Chez Nina</b><span class="mb" id="mcta">Réserver</span></div>
-        <div class="mh"><h3 id="mh">…</h3><p id="mp">…</p><span class="mb" id="mcta2">Réserver</span></div>
-        <div class="mg"><div><b id="ms1">…</b></div><div><b id="ms2">…</b></div><div><b id="ms3">…</b></div></div>
-      </div></div>
-  </div>
-</div></section>
-
-<section class="sec alt" id="cmp"><div class="wrap narrow">
-  <h2 class="rv" data-t="cp_t">Seul, ou avec une méthode ?</h2>
-  <table class="cmp rv"><thead><tr><th></th><th data-t="cp_a">Tout seul</th><th data-t="cp_b">Avec NM Academy</th></tr></thead><tbody>
-   <tr><td data-t="cp_r1">Trouver la méthode</td><td data-t="cp_a1">Des semaines d'essais</td><td data-t="cp_b1">Un plan pas à pas</td></tr>
-   <tr><td data-t="cp_r2">Templates</td><td data-t="cp_a2">À créer toi-même</td><td data-t="cp_b2">Fournis et personnalisables</td></tr>
-   <tr><td data-t="cp_r3">Scripts de vente</td><td data-t="cp_a3">À écrire</td><td data-t="cp_b3">Prêts à copier et adapter</td></tr>
-   <tr><td data-t="cp_r4">Règles des plateformes</td><td data-t="cp_a4">À découvrir par erreur</td><td data-t="cp_b4">Checklist de conformité</td></tr>
-  </tbody></table>
-</div></section>
-
-<section class="sec" id="by"><div class="wrap narrow"><div class="card by rv"><span class="mono" style="color:var(--c1);font-size:.72rem" data-t="by_k">QUI EST DERRIÈRE</span><h2 style="text-align:left" data-t="by_t">Une méthode issue du terrain</h2><p data-t="by_d">…</p></div></div></section>
-
-<section class="sec alt" id="proof" hidden><div class="wrap">
-  <h2 class="rv" data-t="pr_t">Ils ont suivi la formation</h2>
-  <div class="g3" id="proofgrid"></div>
-</div></section>
-
-<section class="sec" id="method"><div class="wrap">
-  <h2 class="rv" data-t="m_t">De zéro à ton premier client</h2>
-  <p class="lead rv" data-t="m_s">…</p>
-  <ol class="steps">
-    <li class="rv"><span class="mono">01</span><h3 data-t="st1t">Rejoins</h3><p data-t="st1d">…</p></li>
-    <li class="rv d1"><span class="mono">02</span><h3 data-t="st2t">Apprends</h3><p data-t="st2d">…</p></li>
-    <li class="rv d2"><span class="mono">03</span><h3 data-t="st3t">Construis</h3><p data-t="st3d">…</p></li>
-    <li class="rv d3"><span class="mono">04</span><h3 data-t="st4t">Vends</h3><p data-t="st4d">…</p></li>
-  </ol>
-</div></section>
-
-<section class="sec alt" id="sim"><div class="wrap narrow">
-  <h2 class="rv" data-t="sim_t">Simulateur d'objectif</h2>
-  <p class="lead rv" data-t="sim_s">…</p>
-  <div class="sim card rv">
-    <label><span data-t="sim_l1">Prix moyen par site</span><output id="o1">800</output><input type="range" id="r1" min="200" max="3000" step="50" value="800"></label>
-    <label><span data-t="sim_l2">Sites vendus par mois</span><output id="o2">3</output><input type="range" id="r2" min="1" max="12" step="1" value="3"></label>
-    <label><span data-t="sim_l3">Maintenance par client / mois</span><output id="o3">30</output><input type="range" id="r3" min="0" max="150" step="5" value="30"></label>
-    <div class="res">
-      <div><span data-t="sim_o1">…</span><b id="x1">0</b></div>
-      <div><span data-t="sim_o2">…</span><b id="x2">0</b></div>
-      <div class="tot"><span data-t="sim_o3">…</span><b id="x3">0</b></div>
-    </div>
-    <p class="note" data-t="sim_n">…</p>
-  </div>
-</div></section>
-
+<!-- 4. Offres -->
 <section class="sec" id="price"><div class="wrap">
-  <h2 class="rv" data-t="p_t">Choisis ton accès</h2>
-  <p class="lead rv" data-t="p_s">…</p>
-  <div class="g3 pr">
-    <article class="card spot plan rv">
+  <h2 data-t="p_t">Choisis ta formation</h2>
+  <p class="lead" data-t="p_s">…</p>
+  <div class="g3 offers">
+    <article class="card plan" data-plan="a">
       <h3 data-t="pa_n">Plan A</h3><p class="pd" data-t="pa_d">…</p>
-      <div class="price"><b data-price="a">49</b><small data-per="a"></small></div>
+      <div class="price"><b data-price="a">29</b><small data-per="a"></small></div>
       <ul><li data-t="pa_1">…</li><li data-t="pa_2">…</li><li data-t="pa_3">…</li><li data-t="pa_4">…</li></ul>
+      <details class="prog"><summary data-t="prog">Voir le programme</summary><ol><li data-t="a1t">…</li><li data-t="a2t">…</li><li data-t="a3t">…</li><li data-t="a4t">…</li><li data-t="a5t">…</li><li data-t="a6t">…</li></ol></details>
       <a class="btn ghost full" data-buy="a" href="#" data-t="p_cta">Rejoindre</a>
     </article>
-    <article class="card spot plan best rv d1">
+    <article class="card plan best" data-plan="pack">
       <span class="badge mono" data-t="pop">LE PLUS COMPLET</span>
       <h3 data-t="pk_n">Pack A + B</h3><p class="pd" data-t="pk_d">…</p>
-      <div class="price"><b data-price="pack">197</b><small data-per="pack"></small></div>
+      <div class="price"><b data-price="pack">97</b><small data-per="pack"></small></div>
       <ul><li data-t="pk_1">…</li><li data-t="pk_2">…</li><li data-t="pk_3">…</li><li data-t="pk_4">…</li></ul>
       <a class="btn pri full" data-buy="pack" href="#" data-t="p_cta">Rejoindre</a>
     </article>
-    <article class="card spot plan rv d2">
+    <article class="card plan" data-plan="b">
       <h3 data-t="pb_n">Plan B</h3><p class="pd" data-t="pb_d">…</p>
-      <div class="price"><b data-price="b">97</b><small data-per="b"></small></div>
+      <div class="price"><b data-price="b">47</b><small data-per="b"></small></div>
       <ul><li data-t="pb_1">…</li><li data-t="pb_2">…</li><li data-t="pb_3">…</li><li data-t="pb_4">…</li></ul>
+      <details class="prog"><summary data-t="prog">Voir le programme</summary><ol><li data-t="b1t">…</li><li data-t="b2t">…</li><li data-t="b3t">…</li><li data-t="b4t">…</li><li data-t="b5t">…</li><li data-t="b6t">…</li><li data-t="b7t">…</li></ol></details>
       <a class="btn ghost full" data-buy="b" href="#" data-t="p_cta">Rejoindre</a>
     </article>
   </div>
-  <p class="guar mono rv" data-t="p_ref">Satisfait ou remboursé</p>
-  <ul class="trust rv"><li data-t="tr1">Paiement sécurisé</li><li data-t="tr2">Accès après confirmation</li><li data-t="tr3">Support par WhatsApp</li></ul>
+
+  <article class="card coach" id="coach" data-plan="coach">
+    <div class="cl">
+      <span class="mono pk g" data-t="pc_tag">ACCOMPAGNEMENT PERSONNEL</span>
+      <h3 data-t="pc_n">Accompagnement 1:1 en visio</h3>
+      <p data-t="pc_d">…</p>
+      <ul><li data-t="pc_1">…</li><li data-t="pc_2">…</li><li data-t="pc_3">…</li><li data-t="pc_4">…</li></ul>
+    </div>
+    <div class="cr"><div class="price"><b data-price="coach">297</b><small data-t="pc_dur">séance en visio</small></div><a class="btn pri full big" data-buy="coach" href="#" data-t="pc_cta">Réserver mon appel</a></div>
+  </article>
+
+  <p class="guar mono" data-t="p_ref">Satisfait ou remboursé</p>
+  <ul class="trust"><li data-t="tr1">Paiement sécurisé</li><li data-t="tr2">Accès après confirmation</li><li data-t="tr3">Support par WhatsApp</li></ul>
 </div></section>
 
-<section class="sec" id="gift"><div class="wrap narrow"><div class="card gift rv">
-  <span class="mono" style="color:var(--c3);font-size:.72rem" data-t="lm_k">CADEAU GRATUIT</span>
-  <h2 style="text-align:left" data-t="lm_t">Reçois le gabarit de site gratuit</h2>
-  <p data-t="lm_s">Un site une page pour commerce local, prêt à personnaliser. Tu le reçois tout de suite et tu vois le niveau du kit avant d'acheter.</p>
-  <form id="lead" class="lead-f"><input type="email" id="lem" required autocomplete="email" data-t-ph="lm_ph" placeholder="ton@email.com"><button class="btn pri" type="submit" data-t="lm_btn">Recevoir le gabarit</button></form>
-  <div id="lok" hidden><p class="ok" data-t="lm_ok">Merci ! Voici ton gabarit :</p><a class="btn ghost" href="kit/starter-site.html" download="starter-site.html" data-t="lm_dl">Télécharger starter-site.html</a></div>
-  <p class="note" style="text-align:left;margin:10px 0 0" data-t="lm_p">Pas de spam. Tu peux te désinscrire à tout moment.</p>
-</div></div></section>
+<!-- 5. Cadeau (compact) -->
+<section class="strip" id="gift"><div class="wrap narrow">
+  <div class="gf"><div><span class="mono" style="color:var(--c3);font-size:.7rem" data-t="lm_k">CADEAU GRATUIT</span><h3 data-t="lm_t">Reçois le gabarit de site gratuit</h3></div>
+  <form id="lead" class="lead-f"><input type="email" id="lem" required autocomplete="email" data-t-ph="lm_ph" placeholder="ton@email.com"><button class="btn pri" type="submit" data-t="lm_btn">Recevoir le gabarit</button></form></div>
+  <div id="lok" hidden><p class="ok" data-t="lm_ok">Merci !</p><a class="btn ghost" href="kit/starter-site.html" download="starter-site.html" data-t="lm_dl">Télécharger</a></div>
+  <p class="note" style="text-align:left;margin:8px 0 0" data-t="lm_p">…</p>
+</div></section>
 
+<!-- 6. FAQ -->
 <section class="sec alt" id="faq"><div class="wrap narrow">
-  <h2 class="rv" data-t="q_t">Questions fréquentes</h2>
+  <h2 data-t="q_t">Questions fréquentes</h2>
   <div class="faq">
     <details><summary data-t="q1">…</summary><p data-t="a1">…</p></details>
     <details><summary data-t="q2">…</summary><p data-t="a2">…</p></details>
     <details><summary data-t="q3">…</summary><p data-t="a3">…</p></details>
     <details><summary data-t="q4">…</summary><p data-t="a4">…</p></details>
-    <details><summary data-t="q5">…</summary><p data-t="a5">…</p></details>
     <details><summary data-t="q6">…</summary><p data-t="a6">…</p></details>
+    <details><summary data-t="q7">…</summary><p data-t="a7">…</p></details>
   </div>
-</div></section>
-
-<section class="sec final"><div class="wrap">
-  <h2 class="rv" data-t="f_t">Prêt ?</h2>
-  <p class="lead rv" data-t="f_s">…</p>
-  <a href="#price" class="btn pri big rv" data-t="h_c1">Choisir ma formation</a>
+  <div class="endcta"><h2 data-t="f_t">Prêt ?</h2><a href="#price" class="btn pri big" data-t="h_c1">Choisir ma formation</a></div>
 </div></section>
 </main>
 
 <footer class="foot"><div class="wrap"><div class="logo">NM<b>ACADEMY</b></div><p data-t="foot_disc">…</p><p><a href="legal.html" data-t="foot_legal">Mentions</a> · <a href="members.html" data-t="foot_mem">Espace membres</a></p></div></footer>
 
 <a href="#price" class="btn pri sticky" id="stk" data-t="sticky">Choisir ma formation</a>
+<a class="wa" id="wa" target="_blank" rel="noopener" href="#" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.4c0 2.4.7 4.7 1.9 6.6L3.4 29l7.2-1.9a12.5 12.5 0 0 0 5.4 1.2C23 28.3 28.5 22.8 28.5 15.9S23 3 16 3zm0 22.9c-1.7 0-3.4-.5-4.9-1.4l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.2 10.2 0 0 1-1.6-5.5C5.7 9.9 10.3 5.4 16 5.4s10.3 4.5 10.3 10.5S21.700 25.900 16 25.900zm5.600-7.600c-.3-.2-1.800-.9-2.100-1s-.5-.2-.7.2-.8 1-.9 1.200-.3.200-.6.100a8.300 8.300 0 0 1-4.100-3.600c-.3-.5.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100 2.100 3.300 5.200 4.500c2 .8 2.800.9 3.800.7.6-.1 1.800-.8 2.100-1.500s.3-1.300.2-1.500-.2-.2-.5-.4z"/></svg><span data-t="wa_t">Une question ?</span></a>
 
-<a class="wa" id="wa" target="_blank" rel="noopener" href="#" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.4c0 2.4.7 4.7 1.9 6.6L3.4 29l7.2-1.9a12.5 12.5 0 0 0 5.4 1.2C23 28.3 28.5 22.8 28.5 15.9S23 3 16 3zm0 22.9c-1.7 0-3.4-.5-4.9-1.4l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.2 10.2 0 0 1-1.6-5.5C5.7 9.9 10.3 5.4 16 5.4s10.3 4.5 10.3 10.5S21.700 25.900 16 25.900zm5.600-7.600c-.3-.2-1.800-.9-2.100-1s-.5-.2-.7.200-.8 1-.9 1.200-.3.200-.6.100a8.300 8.300 0 0 1-4.100-3.600c-.3-.5.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100 2.100 3.300 5.200 4.500c2 .8 2.800.9 3.800.7.600-.1 1.800-.8 2.100-1.500s.3-1.300.2-1.500-.2-.2-.5-.4z"/></svg><span data-t="wa_t">Une question ?</span></a>
 <div class="modal" id="modal" hidden role="dialog" aria-modal="true">
   <div class="mbox card"><h3 data-t="mo_t">…</h3><p data-t="mo_s">…</p>
     <a class="btn pri full" id="mwa" target="_blank" rel="noopener" href="#"><span data-t="mo_w">WhatsApp</span></a>
@@ -282,7 +150,6 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/sfx.js"></script>
 <script src="assets/js/i18n.js"></script>
-<script src="assets/js/fx.js"></script>
-<script src="assets/js/demo.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
 </html>

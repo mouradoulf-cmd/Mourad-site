@@ -1,0 +1,56 @@
+/* NM Academy — accueil simplifié : intro courte, hero + 3 parcours, pourquoi, vidéos, offres, FAQ */
+#intro{position:fixed;inset:0;z-index:200;background:#02030a;display:grid;place-items:center;align-content:center;gap:18px;pointer-events:none;animation:inOut 1.5s cubic-bezier(.6,0,.2,1) forwards}
+.in-logo{font:800 clamp(2rem,8vw,3.2rem)/1 var(--display);letter-spacing:-.03em;animation:inUp .7s .1s both}.in-logo b{color:var(--c1);margin-left:.12em}
+.in-line{display:block;height:2px;width:min(220px,50vw);background:linear-gradient(90deg,transparent,var(--c1),var(--c2),transparent);transform-origin:left;animation:inLine .9s .2s both}
+@keyframes inUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes inLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes inOut{0%,70%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){#intro{display:none}}
+
+.hero2{min-height:100svh;display:grid;align-items:center;padding:120px 0 70px;text-align:center}
+.hero2 .tag{margin-bottom:22px}
+.hero2 h1{font:800 clamp(2.2rem,6vw,4.4rem)/1.06 var(--display);letter-spacing:-.035em;max-width:900px;margin:0 auto 18px}
+.hero2 h1 em{font-style:normal;background:linear-gradient(120deg,var(--c1),var(--c2) 60%,var(--c3));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.sub2{color:var(--mute);font-size:1.12rem;max-width:640px;margin:0 auto}
+.hero2 .cta{justify-content:center;margin:30px 0 48px}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left}
+.path{display:grid;gap:8px;align-content:start;transition:transform .25s,border-color .3s}
+.path:hover{transform:translateY(-4px);border-color:rgba(0,229,255,.5)}
+.path h2{font:700 1.25rem var(--display);margin:2px 0 0}.path p{color:var(--mute);font-size:.95rem}
+.path .go{color:var(--c1);font-weight:700;margin-top:6px}
+.pk{font-size:.68rem;color:var(--c1)}.pk.v{color:#a894ff}.pk.g{color:var(--c3)}
+.path.hot{border-color:rgba(182,255,59,.4)}
+
+.cmpbar{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:34px 0 22px}
+.cb{display:grid;gap:6px;padding:20px 22px;border-radius:16px;border:1px solid var(--line);background:var(--glass)}
+.cb span{font-size:.7rem;color:var(--mute)}.cb b{font:700 1.2rem/1.25 var(--display)}
+.cb.bad b{color:#ff9aa8}.cb.good{border-color:rgba(182,255,59,.45);background:linear-gradient(160deg,rgba(182,255,59,.08),rgba(0,229,255,.04))}.cb.good b{color:var(--c3)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.why article{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:8px;align-content:start}
+.why i{font-style:normal;color:var(--c1);font-size:.78rem}.why h3{font:700 1.1rem var(--display)}.why p{color:var(--mute);font-size:.93rem}
+#why h2,#videos h2,#price h2,#faq h2{font:800 clamp(1.7rem,3.8vw,2.6rem)/1.1 var(--display);letter-spacing:-.03em;text-align:center}
+#videos .vgrid{margin-top:30px}
+
+.offers{margin-top:10px;align-items:stretch}
+.offers .plan{padding-top:30px}
+details.prog{margin:0 0 18px;font-size:.88rem}.prog summary{cursor:pointer;color:var(--c1);font-weight:600;list-style:none}.prog summary::-webkit-details-marker{display:none}
+.prog ol{margin:10px 0 0 18px;display:grid;gap:5px;color:var(--mute)}
+.full{width:100%}
+.coach{margin-top:22px;display:grid;grid-template-columns:1.4fr .6fr;gap:26px;align-items:center;border-color:rgba(182,255,59,.4);background:linear-gradient(160deg,rgba(182,255,59,.07),rgba(0,229,255,.04))}
+.coach h3{font:800 1.5rem var(--display);margin:8px 0}.coach ul{list-style:none;display:grid;gap:8px;margin-top:14px}.coach li{padding-left:24px;position:relative;color:#d5dbec;font-size:.94rem}.coach li::before{content:"✓";position:absolute;left:0;color:var(--c3);font-weight:800}
+.coach .cr{display:grid;gap:14px;text-align:center}.coach .price b{font:800 3rem var(--display);letter-spacing:-.04em}.coach .price small{display:block;color:var(--mute);font-size:.82rem;margin-top:4px}
+
+.strip{padding:34px 0;border-block:1px solid var(--line);background:rgba(255,255,255,.02)}
+.gf{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}.gf h3{font:700 1.2rem var(--display);margin-top:4px}
+#lok{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px}#lok .ok{color:var(--c3);font-weight:700}
+.endcta{text-align:center;margin-top:60px;display:grid;gap:18px;justify-items:center}.endcta h2{margin:0}
+
+@media(max-width:900px){
+ .paths,.why,.cmpbar{grid-template-columns:1fr}
+ .coach{grid-template-columns:1fr}
+ .g3.offers{grid-template-columns:1fr}
+ .links{display:none}
+ .hero2{padding-top:100px}
+ .sticky{display:inline-flex}
+ .gf{flex-direction:column;align-items:stretch}
+}
