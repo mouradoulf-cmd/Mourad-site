@@ -174,7 +174,7 @@ if (labPage) {
   var idle2 = window.requestIdleCallback || function (f) { setTimeout(f, 300); };
   Promise.all([loaderDone, new Promise(function (r) { if (D.readyState === "complete") r(); else addEventListener("load", r, { once: true }); })]).then(function () {
     idle2(function () {
-      import("./lab3d.js?v=2").then(function (m) { m.init(labPage[1]); }).catch(function () { /* page stays as is */ });
+      import("./lab3d.js?v=3").then(function (m) { m.init(labPage[1]); }).catch(function () { /* page stays as is */ });
     }, { timeout: 2500 });
   });
 }
