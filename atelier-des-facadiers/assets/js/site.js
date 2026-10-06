@@ -206,70 +206,92 @@ ${p}${tex}${w}
 </svg>`;
   }
 
-  /* ---- photo engine: a real project photo, panels re-coloured live (luminance-preserving) through a hand-checked mask ---- */
-  const PH = { state: "idle", cur: null, tw: 0 };
-  const phBase = (document.currentScript && document.currentScript.src ? document.currentScript.src : (document.querySelector('script[src*="site.js"]') || {}).src || "").replace(/assets\/js\/site\.js.*$/, "");
+  /* ---- photo engine: a real project photo, panels re-coloured live (luminance-preserving) through a hand-checked mask.
+     Per (family, pose) the surface response is pre-computed once (multiplier + additive sheen); a colour change is then one cheap pass. ---- */
+  const PH = { state: "idle", cur: null, tw: 0, key: "" };
+  const phBase = (((document.currentScript && document.currentScript.src) || (document.querySelector('script[src*="site.js"]') || {}).src || "")).replace(/assets\/js\/site\.js.*$/, "");
+  const D_ = document;
   function loadPhoto() {
-    const W = matchMedia("(max-width:700px)").matches ? 760 : 1000;
+    const cssW = Math.max(320, view.clientWidth || 600), dpr = Math.min(2.5, window.devicePixelRatio || 1);
+    const W = Math.round(Math.max(1000, Math.min(1536, cssW * dpr)));
     const ld = u => new Promise((res, rej) => { const i = new Image(); i.decoding = "async"; i.onload = () => res(i); i.onerror = rej; i.src = u; });
     return Promise.all([ld(phBase + "assets/img/cfg/photo.webp"), ld(phBase + "assets/img/cfg/mask.png")]).then(([ph, mk]) => {
       const cv = D_.createElement("canvas"); cv.width = cv.height = W;
-      const x = cv.getContext("2d", { willReadFrequently: true });
+      const x = cv.getContext("2d", { willReadFrequently: true }); x.imageSmoothingQuality = "high";
       x.drawImage(ph, 0, 0, W, W); const base = x.getImageData(0, 0, W, W);
       x.clearRect(0, 0, W, W); x.drawImage(mk, 0, 0, W, W); const md = x.getImageData(0, 0, W, W).data;
-      const n = W * W, idx = []; const lr = new Float32Array(n), mw = new Float32Array(n);
-      let sum = 0, cnt = 0;
-      for (let i = 0; i < n; i++) { const a = md[i * 4] / 255; mw[i] = a; if (a > .5) { sum += base.data[i * 4] * .299 + base.data[i * 4 + 1] * .587 + base.data[i * 4 + 2] * .114; cnt++; } }
-      const mean = sum / Math.max(1, cnt);
-      let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-      const colN = new Float32Array(W); for (let c = 0; c < W; c++) colN[c] = rnd();
-      for (let i = 0; i < n; i++) if (mw[i] > .004) {
-        idx.push(i); const o = i * 4;
-        lr[i] = Math.max(.3, Math.min(1.7, (base.data[o] * .299 + base.data[o + 1] * .587 + base.data[o + 2] * .114) / mean));
-      }
-      PH.W = W; PH.base = base; PH.idx = Uint32Array.from(idx); PH.lr = lr; PH.mw = mw; PH.colN = colN;
-      PH.cv = cv; PH.x = x; PH.out = x.createImageData(W, W);
-      const c2 = D_.createElement("canvas"); c2.width = c2.height = W; PH.show = c2;
+      const n = W * W, ids = []; let sum = 0, cnt = 0;
+      for (let i = 0; i < n; i++) if (md[i * 4] > 1) { ids.push(i); if (md[i * 4] > 128) { const o = i * 4; sum += base.data[o] * .299 + base.data[o + 1] * .587 + base.data[o + 2] * .114; cnt++; } }
+      const mean = sum / Math.max(1, cnt), idx = Uint32Array.from(ids), m = idx.length;
+      const lr = new Float32Array(m), mw = new Float32Array(m);
+      for (let j = 0; j < m; j++) { const i = idx[j], o = i * 4; lr[j] = Math.max(.3, Math.min(1.7, (base.data[o] * .299 + base.data[o + 1] * .587 + base.data[o + 2] * .114) / mean)); mw[j] = md[o] / 255; }
+      Object.assign(PH, { W, base, idx, lr, mw, m, out: x.createImageData(W, W), VA: new Float32Array(m), AD: new Float32Array(m), BL: new Float32Array(m) });
     });
   }
-  const D_ = document;
   const smooth = (a, b, v) => { const t = Math.max(0, Math.min(1, (v - a) / (b - a))); return t * t * (3 - 2 * t); };
-  function photoRender(rgb) {
-    const { W, base, idx, lr, mw, colN, out } = PH, bd = base.data, od = out.data, f = FAM[st.fam].f, pose = st.pose;
-    od.set(bd);
-    const k = W / 900;
-    for (let j = 0; j < idx.length; j++) {
+  const hash = (a, b) => { let h = (a * 374761393 + b * 668265263) | 0; h = (h ^ (h >>> 13)) * 1274126177 | 0; return ((h ^ (h >>> 16)) >>> 0) / 4294967295; };
+  /* surface response for the current family + pose (VA: brightness multiplier, AD: additive sheen, BL: blue tint of reflections) */
+  function buildSurface() {
+    const { W, idx, lr, VA, AD, BL, m } = PH, fam = st.fam, pose = st.pose, k = W / 900;
+    for (let j = 0; j < m; j++) {
       const i = idx[j], px = i % W, py = (i / W) | 0, X = px / k, Y = py / k;
-      let v = lr[i], add = 0;
-      if (pose === "cassette") v = Math.pow(v, 1.22);
-      if (f === "metal") { v = Math.pow(v, 1.3); add = 26 * smooth(.2, 1, (X + (900 - Y)) / 1800) + (colN[px] - .5) * 10; }
-      else if (f === "smooth") { v = Math.pow(v, .92); add = 20 * smooth(.35, 1, (X + (900 - Y)) / 1800); }
-      else if (f === "wood") { const g = Math.sin(px * .9 + colN[px] * 6) * .5 + colN[px] * .5; v *= 1 + .2 * (g - .25) + .06 * Math.sin(py * .05 + px * .01); }
-      if (pose === "bandeau") {
-        const sdt = X < 635 + .14 * (Y - 25) ? Y + .397 * X : Y - 2.2 * X;
-        const ph = ((sdt % 34) + 34) % 34; const edge = Math.min(ph, 34 - ph); v *= 1 - .5 * (1 - smooth(0, 3.2, edge)) ;
+      const side = X > 635 + .14 * (Y - 25);
+      const hl = side ? Y - 2.2 * X : Y + .397 * X;                       /* constant along the horizontal joints of each face */
+      const vl = side ? X - .12 * Y : X - .14 * Y;                          /* constant along the vertical joints */
+      let v = 1 + (lr[j] - 1) * .72, add = 0, bl = 0;
+      /* ---- material ---- */
+      if (fam === "fc") { v *= 1 + (hash(px >> 1, py >> 1) - .5) * .07; }
+      else if (fam === "hpl") { v = Math.pow(v, .88); const g = smooth(.25, .95, (X + (900 - Y)) / 1800); add = 46 * g * g; bl = 10 * g; }
+      else if (fam === "alu") { v = Math.pow(v, 1.38); const band = .5 + .5 * Math.sin((X + (900 - Y)) * .018); add = 14 + 58 * smooth(.3, 1, band) * smooth(.15, .9, (X + (900 - Y)) / 1500); v *= 1 + (hash(px, 3) - .5) * .12; bl = 8; }
+      else if (fam === "lr") { v *= 1 + (hash(px >> 1, py >> 1) - .5) * .30 + (hash((px >> 3) + 7, (py >> 3) + 3) - .5) * .12; }
+      else if (fam === "bois") { const pw = 44, pi = Math.floor((vl) / pw), fr = ((vl % pw) + pw) % pw; v *= (.84 + .32 * hash(pi, 11)) * (1 + .09 * Math.sin(fr * 1.9 + hash(pi, 5) * 40) + (hash(Math.floor(vl * 1.3), pi) - .5) * .12) * (1 - .5 * (1 - smooth(0, 2.4, Math.min(fr, pw - fr)))); }
+      else if (fam === "comp") { const bh = 26, bi = Math.floor(hl / bh), fr = ((hl % bh) + bh) % bh; v *= (.9 + .2 * hash(bi, 17)) * (1 + .07 * Math.sin(vl * .9 + hash(bi, 2) * 30)) * (1 - .6 * (1 - smooth(0, 2, Math.min(fr, bh - fr)))); }
+      /* ---- pose ---- */
+      if (pose === "plan") { const ci = Math.floor(vl / 120), cj = Math.floor(hl / 70); v *= .94 + .12 * hash(ci * 3 + (side ? 100 : 0), cj); }
+      else if (pose === "cassette") {
+        const sx = side ? 52 : 78, sy = 46, fx = ((vl % sx) + sx) % sx, fy = ((hl % sy) + sy) % sy;
+        const ex = Math.min(fx, sx - fx), ey = Math.min(fy, sy - fy), e = Math.min(ex, ey);
+        v *= (.93 + .14 * hash(Math.floor(vl / sx), Math.floor(hl / sy) + (side ? 50 : 0))) * (1 - .5 * (1 - smooth(0, 3.2, e)));
+        if (fx < 6 || fy < 6) v *= 1.14; add += (fx > sx - 6 || fy > sy - 6) ? -10 : 8;
       }
-      const a = mw[i], o = i * 4;
-      const r = rgb[0] * v + add, g2 = rgb[1] * v + add, b = rgb[2] * v + add;
-      od[o] = bd[o] + (Math.max(0, Math.min(255, r)) - bd[o]) * a;
-      od[o + 1] = bd[o + 1] + (Math.max(0, Math.min(255, g2)) - bd[o + 1]) * a;
-      od[o + 2] = bd[o + 2] + (Math.max(0, Math.min(255, b)) - bd[o + 2]) * a;
+      else if (pose === "lames") {
+        const bh = 30, bi = Math.floor(hl / bh), fr = ((hl % bh) + bh) % bh, e = Math.min(fr, bh - fr);
+        v *= (bi % 2 ? 1.05 : .95) * (1 - .55 * (1 - smooth(0, 3.2, e)));
+      }
+      PH.VA[j] = v; PH.AD[j] = add; PH.BL[j] = bl;
     }
-    PH.x.putImageData(out, 0, 0);
+    PH.key = fam + "|" + pose;
+  }
+  function photoRender(rgb) {
+    const { base, idx, VA, AD, BL, mw, out, m } = PH, bd = base.data, od = out.data;
+    const r0 = rgb[0], g0 = rgb[1], b0 = rgb[2];
+    for (let j = 0; j < m; j++) {
+      const o = idx[j] * 4, v = VA[j], ad = AD[j], a = mw[j];
+      let r = r0 * v + ad, g = g0 * v + ad, b = b0 * v + ad + BL[j];
+      r = r < 0 ? 0 : r > 255 ? 255 : r; g = g < 0 ? 0 : g > 255 ? 255 : g; b = b < 0 ? 0 : b > 255 ? 255 : b;
+      od[o] = bd[o] + (r - bd[o]) * a; od[o + 1] = bd[o + 1] + (g - bd[o + 1]) * a; od[o + 2] = bd[o + 2] + (b - bd[o + 2]) * a; od[o + 3] = 255;
+    }
   }
   function mountPhoto() {
     const f = FAM[st.fam], s = f.sw[st.sw], target = hex2(s[1]);
     let cv = view.querySelector("canvas.cfg__photo");
-    if (!cv) { view.innerHTML = ""; cv = D_.createElement("canvas"); cv.className = "cfg__photo"; cv.width = cv.height = PH.W; view.appendChild(cv); PH.ctx = cv.getContext("2d"); PH.cur = null; }
+    if (!cv) {
+      view.innerHTML = ""; cv = D_.createElement("canvas"); cv.className = "cfg__photo"; cv.width = cv.height = PH.W; view.appendChild(cv);
+      PH.ctx = cv.getContext("2d"); PH.cur = null; PH.out.data.set(PH.base.data);
+      const tag = D_.createElement("div"); tag.className = "cfg__tag"; tag.innerHTML = '<i></i><b></b><span></span>'; view.appendChild(tag); PH.tag = tag;
+    }
     cv.setAttribute("role", "img");
     cv.setAttribute("aria-label", fmt(t("aria_svg", "Aperçu de façade : {fam}, {pose}, teinte {tint}"), { fam: f.n, pose: POSE[st.pose], tint: s[0] }));
-    const from = PH.cur || target, t0 = performance.now(), dur = (PH.cur && !reduce) ? 520 : 0;
+    PH.tag.style.setProperty("--c", s[1]); PH.tag.querySelector("b").textContent = s[0]; PH.tag.querySelector("span").textContent = f.n + " · " + POSE[st.pose];
+    PH.tag.classList.remove("pop"); void PH.tag.offsetWidth; PH.tag.classList.add("pop");
+    if (PH.key !== st.fam + "|" + st.pose) buildSurface();
+    const from = PH.cur || target, t0 = performance.now(), dur = (PH.cur && !reduce) ? 620 : 0;
     cancelAnimationFrame(PH.tw);
     const step = now => {
       const u = dur ? Math.min(1, (now - t0) / dur) : 1, e = u * u * (3 - 2 * u);
       const c = [0, 1, 2].map(i => from[i] + (target[i] - from[i]) * e);
-      photoRender(c); PH.ctx.putImageData(PH.out, 0, 0); PH.cur = c;
-      if (u < 1) PH.tw = requestAnimationFrame(step); else PH.cur = target;
+      photoRender(c); PH.ctx.putImageData(PH.out, 0, 0); PH.cur = u < 1 ? c : target;
+      if (u < 1) PH.tw = requestAnimationFrame(step);
     };
     PH.tw = requestAnimationFrame(step);
   }

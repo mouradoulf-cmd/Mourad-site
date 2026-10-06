@@ -26,7 +26,7 @@ var clamp = function (x, a, b) { return Math.min(b, Math.max(a, x)); };
    loader ends. Volumes stay very low; nothing plays until the visitor opts in. */
 var Snd = (function () {
   var ctx = null, on = false;
-  try { on = localStorage.getItem("adf-snd") === "1"; } catch (e) {}
+  try { localStorage.removeItem("adf-snd"); } catch (e) {}
   function ac() { if (!ctx) { var C = window.AudioContext || window.webkitAudioContext; if (!C) return null; ctx = new C(); } if (ctx.state === "suspended") ctx.resume(); return ctx; }
   function tone(f, d, type, vol, slide) {
     if (!on) return; var c = ac(); if (!c) return;
@@ -46,15 +46,7 @@ var Snd = (function () {
 })();
 window.__snd = Snd;
 
-/* toggle button, injected in the header (aria-label comes from the i18n dictionary) */
-(function () {
-  var box = $(".hdr__cta"); if (!box) return;
-  var b = D.createElement("button"); b.type = "button"; b.className = "snd";
-  b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="off" d="M16 9.5l4 5m0-5l-4 5"/></svg>';
-  var upd = function () { b.setAttribute("aria-pressed", String(Snd.on)); b.setAttribute("aria-label", Snd.on ? t("sound_off", "Couper le son") : t("sound_on", "Activer le son")); };
-  b.addEventListener("click", function () { Snd.set(!Snd.on); upd(); });
-  upd(); var lang = $(".lang", box); box.insertBefore(b, lang || $(".burger", box));
-})();
+/* sound toggle removed on request: the site is silent (Snd stays off, no header button) */
 /* sound hooks: hover tick on interactive elements, snap on press, pick on configurator choices */
 if (fine) D.addEventListener("pointerover", (function () { var last = 0; return function (e) { if (!Snd.on) return; var el = e.target.closest && e.target.closest("a,button,.chip,.sw label"); if (!el) return; var n = performance.now(); if (n - last < 70) return; last = n; Snd.tick(); }; })());
 D.addEventListener("pointerdown", function (e) { if (Snd.on && e.target.closest && e.target.closest("a,button,.chip,.sw label")) Snd.snap(); });
