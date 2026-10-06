@@ -291,6 +291,18 @@ p_s:["Paiement sécurisé. Accès envoyé après confirmation. Satisfait ou remb
 vd_t:["Regarde, ça se comprend en 34 secondes", "Watch, it makes sense in 34 seconds", "ดูแล้วเข้าใจใน 34 วินาที"],
 lm_s:["Un site une page pour commerce local, prêt à personnaliser.", "A one-page site for a local business, ready to customise.", "เว็บไซต์หน้าเดียวสำหรับธุรกิจท้องถิ่น พร้อมปรับแต่ง"],
 lm_ok:["Merci ! Voici ton gabarit :", "Thanks! Here is your template:", "ขอบคุณ! นี่คือเทมเพลตของคุณ:"],
+f_skip:["PASSER", "SKIP", "ข้าม"],
+f_go:["Entrer sur le site", "Enter the site", "เข้าสู่เว็บไซต์"],
+f1a:["Sites web", "Websites", "เว็บไซต์"],
+f1b:["Vidéos IA", "AI videos", "วิดีโอ AI"],
+f1c:["Deux compétences qui se vendent.", "Two skills that sell.", "สองทักษะที่ขายได้"],
+f2k:["LE PROBLÈME", "THE PROBLEM", "ปัญหา"],
+f2a:["Les outils vidéo IA coûtent souvent des centaines d'€ par mois*", "AI video tools often cost hundreds of € a month*", "เครื่องมือวิดีโอ AI มักราคาหลายร้อยยูโรต่อเดือน*"],
+f3k:["ICI", "HERE", "ที่นี่"],
+f3a:["Outils gratuits pour démarrer", "Free tools to get started", "เครื่องมือฟรีสำหรับเริ่มต้น"],
+f3b:["Templates et scripts prêts à copier", "Templates and scripts ready to copy", "เทมเพลตและสคริปต์พร้อมคัดลอก"],
+f3c:["Méthode pas à pas, en vidéo", "Step-by-step method, on video", "วิธีทีละขั้น ผ่านวิดีโอ"],
+f4a:["Choisis ton parcours", "Choose your path", "เลือกเส้นทางของคุณ"],
 lg_back:["← Retour","← Back","← กลับ"]
 };
 var LANGS=['fr','en','th'],IDX={fr:0,en:1,th:2};

@@ -7,8 +7,24 @@ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 D.documentElement.classList.add('js');
 function sfx(n){try{window.SFX&&SFX[n]()}catch(e){}}
 
-/* intro courte (1,5 s, ne bloque rien) */
-var intro=$('#intro');if(intro)setTimeout(function(){intro.remove()},1700);
+/* film d'introduction de 10 s (une fois par session, ignorable) */
+(function(){
+ var f=$('#film');if(!f)return;
+ var seen=false;try{seen=sessionStorage.getItem('nm_film')==='1'}catch(e){}
+ if(reduce||seen||/[?&]nofilm/.test(location.search)){f.remove();return}
+ D.body.classList.add('filming');var done=false,timers=[];
+ function close(){if(done)return;done=true;timers.forEach(clearTimeout);try{sessionStorage.setItem('nm_film','1')}catch(e){}sfx('whoosh');f.classList.add('out');D.body.classList.remove('filming');setTimeout(function(){f.remove()},800)}
+ $('#fskip').onclick=close;$('#fgo').onclick=close;
+ D.addEventListener('keydown',function(e){if(!done&&(e.key==='Escape'||e.key==='Enter'))close()});
+ function at(ms,fn){timers.push(setTimeout(function(){if(!done)fn()},ms))}
+ requestAnimationFrame(function(){requestAnimationFrame(function(){D.documentElement.classList.add('go')})});
+ at(150,function(){sfx('boot')});at(300,function(){sfx('tick')});at(650,function(){sfx('tick')});
+ at(2500,function(){sfx('whoosh')});at(5000,function(){sfx('whoosh')});
+ [5400,6000,6600].forEach(function(t){at(t,function(){sfx('ok')})});
+ at(7500,function(){sfx('whoosh')});[7800,8000,8200].forEach(function(t){at(t,function(){sfx('tick')})});
+ at(8700,function(){sfx('click')});
+ at(11200,close);
+})();
 
 /* fond animé : grille en perspective + noeuds reliés */
 (function(){
