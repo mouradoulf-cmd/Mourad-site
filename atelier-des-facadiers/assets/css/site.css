@@ -141,7 +141,23 @@ p{margin:0;text-wrap:pretty}
 .xv__hint{margin-top:1.4rem;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#6f86a3}
 .xv__bar{position:absolute;left:var(--gut);right:var(--gut);bottom:1.4rem;height:2px;background:rgba(255,255,255,.12)}
 .xv__bar i{position:absolute;inset:0 auto 0 0;background:var(--signal);width:calc(var(--ex,0)*100%)}
-@media(max-width:900px){.xv{height:auto}.xv__grid{grid-template-columns:1fr;gap:.5rem}.xv__stage{order:-1;height:34svh}.xv__scene{width:min(52vw,15rem)}.xv__list li p{font-size:.85rem}.xv__list{margin-top:1rem}.xv__stick{position:relative;height:auto;overflow:visible;align-items:start;padding-block:calc(var(--sec) * .8)}.xv__hint,.xv__bar{display:none}.xv .head h2{font-size:1.8rem}.xv .lead{display:none}}
+@media(max-width:900px){
+  /* phones: pinned (sticky) scroll-driven exploded view. The picture stays on screen, the layers separate by themselves as you scroll, then the page carries on. */
+  .xv{height:250svh}
+  .xv__stick{position:sticky;top:0;height:100svh;overflow:hidden;display:block;padding:calc(var(--h) + .4rem) 0 4.8rem}
+  .xv__stick>.wrap{height:100%}
+  .xv__grid{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:.2rem;height:100%;align-items:stretch}
+  .xv__stage{order:-1;height:auto;min-height:0}
+  .xv__scene{width:min(46vw,13rem);scale:.74;translate:0 14%}
+  .xv__grid>div>.eyebrow{display:none}
+  .xv .head h2,.xv__grid h2{font-size:1.55rem;margin-top:.5rem!important}
+  .xv .lead{display:none}
+  .xv__list{margin-top:.7rem;min-height:6.6rem}
+  .xv__list li:not(.on){display:none}
+  .xv__list li{padding:.7rem .9rem}.xv__list li p{font-size:.84rem;line-height:1.42;max-height:9rem;opacity:1}
+  .xv__hint{margin-top:.5rem;font-size:.62rem}
+  .xv__bar{bottom:4.9rem}
+}
 @media(prefers-reduced-motion:reduce){.xv{height:auto}.xv__stick{position:relative;height:auto;padding-block:var(--sec)}.xv__list li p{max-height:9rem;opacity:1}.xv__scene{--ex:.8}}
 /* ---------- services bento ---------- */
 .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
