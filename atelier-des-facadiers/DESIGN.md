@@ -80,3 +80,10 @@ Voir `docs/avant-apres/` : `comparaison-hero-desktop.png`, `comparaison-cartes.p
 - `hreflang`/sitemap : demandent le domaine définitif.
 - Un vrai modèle 3D (glTF) de la façade ventilée pour la section « exploded » : à envisager si le client fournit ses coupes DWG.
 - Vidéo hero : repartir de l'original sans compression (4K) pour un encodage AV1/HEVC en plus du H.264.
+
+## v4 — useful 3D viewers (`assets/js/lab3d.js`)
+
+- **Bardage, "Matières en 3D"**: a 2×3 façade wall on aluminium rails; picking one of the six families flips the panels (staggered) to that material (procedural textures, no image weight). The six cards stay below.
+- **Ossature, "Profils en 3D"**: the six profile tiles now drive a real extrusion (TE, cornière, oméga, zed, U, tube), turnable by drag / arrow keys.
+- Justification: visitors compare materials and sections; volume + material answers that better than a flat icon. Motion is tied to a user choice, never decorative.
+- Gating: real GPU only (software GL, reduced motion, data-saver, <4 cores skipped; `#gl=force` to debug). Render loop runs only while visible. If anything fails, pages are unchanged. Texts in 5 languages inside the module; shapes are schematic, no figures claimed.
