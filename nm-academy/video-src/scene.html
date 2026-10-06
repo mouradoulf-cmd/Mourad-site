@@ -44,8 +44,10 @@ canvas{position:absolute;left:0;top:0}
 </style></head><body>
 <canvas id="bg" width="540" height="960"></canvas>
 <div id="ui"><div class="scan"></div><i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br brr"></i><div class="tag m" id="tag"></div><div class="tc m" id="tc"></div><div class="bar" id="bar"></div></div>
+<script src="../assets/js/course.js"></script>
 <script>
-const Q=new URLSearchParams(location.search),V=Q.get('v')||'ai',LG=Q.get('l')||'fr';
+const Q=new URLSearchParams(location.search),V=Q.get('v')||'ai',LG0=Q.get('l')||'fr',LG=LG0;
+const LP=Q.get('p')||'a',LM=+(Q.get('m')||0);
 const S={
 fr:{
  tag_ai:'NM ACADEMY // PLAN B · VIDÉO IA',tag_web:'NM ACADEMY // PLAN A · SITES WEB',
@@ -58,7 +60,7 @@ fr:{
  b1_h:'Un site pro, normalement ?',b1_a:'Agence',b1_aw:'plusieurs semaines',b1_b:'Avec le kit NM',b1_bw:'≈ 10 min',b1_n:'* première maquette, selon le projet, avant relecture',
  b2_h:'Installe le kit dans ton assistant IA',l1:'nm install kit',l2:'skill · système de design',l3:'skill · textes qui vendent',l4:'skill · SEO local',l5:'skill · mise en ligne',l6:'templates par niche',l7:'kit prêt.',
  b3_h:'Un brief. Une maquette.',brief:'Restaurant · Lyon · réservations',timer:'première maquette',
- b4_h:'Puis tu vends',k1:'Scripts de démarchage',k2:'Devis',k3:'Contrat',k4:'Maintenance mensuelle',qx:'Exemple de devis',qa:'790 €',qt:'exemple',b4_n:'Prix libres : adapte-les à ton marché.'},
+ les_mod:'MODULE',les_next:'Ta prochaine étape',les_do:'Fais l\'exercice du module, puis coche « Terminé » dans ton espace membres.',les_in:'Dans l\'espace membres',b4_h:'Puis tu vends',k1:'Scripts de démarchage',k2:'Devis',k3:'Contrat',k4:'Maintenance mensuelle',qx:'Exemple de devis',qa:'790 €',qt:'exemple',b4_n:'Prix libres : adapte-les à ton marché.'},
 en:{
  tag_ai:'NM ACADEMY // PLAN B · AI VIDEO',tag_web:'NM ACADEMY // PLAN A · WEBSITES',
  a1_l:'AI video tool subscriptions…',a1_n:'possible combined total, depending on tools and plans',per:'/ month',t_img:'IMAGE',t_vid:'VIDEO',t_voi:'VOICE',
@@ -70,7 +72,7 @@ en:{
  b1_h:'A pro website, normally?',b1_a:'Agency',b1_aw:'several weeks',b1_b:'With the NM kit',b1_bw:'≈ 10 min',b1_n:'* first mockup, depending on the project, before review',
  b2_h:'Install the kit in your AI assistant',l1:'nm install kit',l2:'skill · design system',l3:'skill · copy that sells',l4:'skill · local SEO',l5:'skill · go live',l6:'templates per niche',l7:'kit ready.',
  b3_h:'One brief. One mockup.',brief:'Restaurant · Lyon · bookings',timer:'first mockup',
- b4_h:'Then you sell',k1:'Outreach scripts',k2:'Quote',k3:'Contract',k4:'Monthly maintenance',qx:'Example quote',qa:'€790',qt:'example',b4_n:'Prices are yours: adapt them to your market.'},
+ les_mod:'MODULE',les_next:'Your next step',les_do:'Do the module exercise, then tick "Done" in your members area.',les_in:'In the members area',b4_h:'Then you sell',k1:'Outreach scripts',k2:'Quote',k3:'Contract',k4:'Monthly maintenance',qx:'Example quote',qa:'€790',qt:'example',b4_n:'Prices are yours: adapt them to your market.'},
 th:{
  tag_ai:'NM ACADEMY // แผน B · วิดีโอ AI',tag_web:'NM ACADEMY // แผน A · เว็บไซต์',
  a1_l:'ค่าสมาชิกเครื่องมือวิดีโอ AI…',a1_n:'รวมกันอาจสูงถึงนี้ ขึ้นกับเครื่องมือและแพ็กเกจ',per:'/ เดือน',t_img:'ภาพ',t_vid:'วิดีโอ',t_voi:'เสียง',
@@ -82,9 +84,9 @@ th:{
  b1_h:'เว็บไซต์มืออาชีพ ปกติทำอย่างไร?',b1_a:'เอเจนซี่',b1_aw:'หลายสัปดาห์',b1_b:'ด้วยชุด NM',b1_bw:'≈ 10 นาที',b1_n:'* แบบร่างแรก ขึ้นกับโปรเจกต์ ก่อนตรวจทาน',
  b2_h:'ติดตั้งชุดเครื่องมือในผู้ช่วย AI ของคุณ',l1:'nm install kit',l2:'skill · ระบบดีไซน์',l3:'skill · คำที่ขายได้',l4:'skill · SEO ท้องถิ่น',l5:'skill · ขึ้นออนไลน์',l6:'เทมเพลตตามประเภทธุรกิจ',l7:'ชุดเครื่องมือพร้อม',
  b3_h:'หนึ่งบรีฟ หนึ่งแบบร่าง',brief:'ร้านอาหาร · ลียง · จองโต๊ะ',timer:'แบบร่างแรก',
- b4_h:'แล้วคุณก็ขาย',k1:'สคริปต์ติดต่อลูกค้า',k2:'ใบเสนอราคา',k3:'สัญญา',k4:'ค่าดูแลรายเดือน',qx:'ตัวอย่างใบเสนอราคา',qa:'790 €',qt:'ตัวอย่าง',b4_n:'ราคาเป็นของคุณ ปรับให้เข้ากับตลาด'}
+ les_mod:'โมดูล',les_next:'ขั้นตอนถัดไป',les_do:'ทำแบบฝึกหัดของโมดูล แล้วกด “เสร็จแล้ว” ในพื้นที่สมาชิก',les_in:'ในพื้นที่สมาชิก',b4_h:'แล้วคุณก็ขาย',k1:'สคริปต์ติดต่อลูกค้า',k2:'ใบเสนอราคา',k3:'สัญญา',k4:'ค่าดูแลรายเดือน',qx:'ตัวอย่างใบเสนอราคา',qa:'790 €',qt:'ตัวอย่าง',b4_n:'ราคาเป็นของคุณ ปรับให้เข้ากับตลาด'}
 }[LG];
-const DUR=34;
+const DUR=V==='lesson'?14:34;
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),seg=(t,a,b)=>clamp((t-a)/(b-a));
 const eo=x=>1-Math.pow(1-x,3),eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,eb=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
 const lerp=(a,b,t)=>a+(b-a)*t;
@@ -177,7 +179,24 @@ function buildWEB(){
  act(28,34,r=>{cw=el('abs c d g','NM ACADEMY',r,'top:330px;font-size:54px');cb=el('abs c',`<span class="pill">${S.cta_web}</span>`,r,'top:450px');cl=el('abs c m',S.link,r,'top:560px;font-size:16px');cd=el('abs c note',S.disc,r,'top:640px')},
   (lt,t)=>{cw.style.opacity=eo(seg(lt,.1,.6));cw.style.transform=`scale(${.9+.1*eo(seg(lt,.1,.6))})`;cb.style.opacity=eo(seg(lt,.5,.9));cb.firstChild.style.transform=`scale(${1+.04*Math.sin(t*7)})`;cl.style.opacity=eo(seg(lt,.9,1.3));cd.style.opacity=.7*eo(seg(lt,1.2,1.6))},1);
 }
-(V==='ai'?buildAI:buildWEB)();
+
+/* ===================== LEÇON / MODULE ===================== */
+function buildLesson(){
+ const ix=LG==='fr'?0:1,P=COURSE[LP],M=P.modules[LM],n=M.lessons.length;
+ $tag.textContent='NM ACADEMY // '+(LP==='a'?'PLAN A':'PLAN B')+' · '+S.les_mod+' '+String(LM+1).padStart(2,'0');
+ const short=t=>{const f=t.split(/(?<=[.!?])\s/)[0];return f.length>96?f.slice(0,93).replace(/\s+\S*$/,'')+'…':f};
+ let num,h,sub;
+ act(0,2.4,r=>{num=el('abs c d g',String(LM+1).padStart(2,'0'),r,'top:210px;font-size:150px;line-height:1');h=words(M.t[ix],'d h1',r,'top:420px;font-size:38px')},
+  (lt)=>{num.style.opacity=eo(seg(lt,.05,.5));num.style.transform=`scale(${.8+.2*eo(seg(lt,.05,.6))})`;rev(h,lt,.45,.07)});
+ let cards=[],line;
+ act(2.4,10.8,r=>{const top=170,gap=Math.min(150,(640)/n);line=el('abs','',r,`left:44px;top:${top+30}px;width:3px;height:${gap*(n-1)}px;background:linear-gradient(var(--c1),var(--c2));transform-origin:top;opacity:.7`);
+  M.lessons.forEach((l,i)=>{cards.push(el('abs row',`<span class="m" style="flex:none;width:34px;height:34px;border-radius:50%;background:#04050c;border:2px solid var(--c1);display:grid;place-items:center;font-size:12px;color:var(--c1);box-shadow:0 0 18px rgba(0,229,255,.45)">${i+1}</span><div class="card" style="flex:1;padding:14px 16px"><b class="d" style="font-size:20px;display:block;margin-bottom:6px">${l.t[ix]}</b><span style="color:#b5bdd0;font-size:14px;line-height:1.4;display:block">${short(l.d[ix])}</span></div>`,r,`left:28px;right:28px;top:${top+i*gap}px`))})},
+  (lt)=>{line.style.transform=`scaleY(${eo(seg(lt,.3,.3+n*1.3))})`;cards.forEach((c,i)=>slide(c,lt,.3+i*1.3,50,0,.55))});
+ let a,b,cw;
+ act(10.8,14,r=>{a=el('abs c m',S.les_next,r,'top:300px;font-size:15px;color:var(--c1)');b=el('abs c sub',S.les_do,r,'top:350px;font-size:21px;color:#eef0f6');cw=el('abs c d g','NM ACADEMY',r,'top:560px;font-size:44px');el('abs c m',S.les_in,r,'top:630px;font-size:13px;color:var(--mute)')},
+  (lt)=>{a.style.opacity=eo(seg(lt,.1,.5));b.style.opacity=eo(seg(lt,.3,.8));cw.style.opacity=eo(seg(lt,.7,1.2))},1);
+}
+(V==='lesson'?buildLesson:V==='ai'?buildAI:buildWEB)();
 ACTS.forEach((A,i)=>{A.fin=i===0?0:.3;A.fout=.3});
 window.render=function(t){
  drawBg(t);let gl=0;

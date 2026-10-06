@@ -1,7 +1,7 @@
 """Design sonore des vidéos NM Academy (numpy, sans musique) : drone discret, whooshes aux changements de scène,
 frappes de clavier pendant le terminal, blips de compteur, impacts, carillon final. Usage : python3 sound.py ai|web out.wav"""
 import sys,wave,numpy as np
-sr=44100;D=34.0;N=int(sr*D);rng=np.random.RandomState(7)
+sr=44100;D=14.0 if sys.argv[1]=='lesson' else 34.0;N=int(sr*D);rng=np.random.RandomState(7)
 L=np.zeros(N);R=np.zeros(N)
 def add(sig,t,pan=0.0,gain=1.0):
     i=int(t*sr);
@@ -35,7 +35,9 @@ def drone(g=.05):
     t=np.arange(N)/sr;s=np.sin(2*np.pi*55*t)+.6*np.sin(2*np.pi*110.4*t)+.35*np.sin(2*np.pi*164.9*t)
     s*= (0.7+0.3*np.sin(2*np.pi*.12*t));return s*g
 v=sys.argv[1];out=sys.argv[2]
-if v=='ai':
+if v=='lesson':
+    nl=int(sys.argv[3]);acts=[2.4,10.8];counter=[];typing=[];tick_runs=[(2.7+i*1.3,2.7+i*1.3+.25) for i in range(nl)];cta=11.1
+elif v=='ai':
     acts=[4.8,9.4,17.0,24.5,29.5];counter=[(1.9,3.4)];typing=[];tick_runs=[(4.8+1.2,4.8+3.4),(9.4+2.6,9.4+6.0),(17+.7,17+2.5),(24.5+.5,24.5+3.2)]
     cta=29.5+.5
 else:

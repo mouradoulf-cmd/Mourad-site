@@ -161,3 +161,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .vf{display:grid;gap:14px}.vf video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:22px;border:1px solid rgba(0,229,255,.35);background:#02030a;box-shadow:0 0 70px rgba(0,229,255,.16),0 30px 60px rgba(0,0,0,.5)}
 .vf figcaption{display:grid;gap:3px;text-align:center}.vf figcaption b{font:700 1rem var(--display)}.vf figcaption span{color:var(--mute);font-size:.88rem}
 @media(max-width:700px){.vgrid{grid-template-columns:1fr 1fr;gap:12px}.vf figcaption span{display:none}}
+
+/* vidéos membres */
+.mv{margin-bottom:10px}.mt3{font:700 1rem var(--display);color:var(--c1);margin:22px 0 12px;text-align:left}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.vm{display:grid;gap:8px}.vm video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;border:1px solid rgba(0,229,255,.3);background:#02030a}
+.vm figcaption{font-size:.78rem;color:#cdd4e6;line-height:1.35}.vm figcaption span{color:var(--c1)}
+.mvid{display:flex;justify-content:center;margin-bottom:6px}.mvid video{width:min(260px,100%);aspect-ratio:9/16;object-fit:cover;border-radius:16px;border:1px solid rgba(0,229,255,.35);background:#02030a;box-shadow:0 0 50px rgba(0,229,255,.14)}
+[hidden]{display:none!important}
