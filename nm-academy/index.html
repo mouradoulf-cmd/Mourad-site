@@ -1,146 +1,105 @@
 <!doctype html>
-<html lang="fr" data-title="h2_t1">
+<html lang="fr" data-title="v2_title">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>NM Academy — Sites web & Vidéo IA</title>
-<meta name="description" content="Deux formations pratiques et un accompagnement en visio : créer et vendre des sites web, produire des vidéos IA. Templates, scripts et outils gratuits pour démarrer.">
-<meta name="theme-color" content="#04050c">
+<meta name="description" content="Crée des sites web magnifiques en quelques minutes avec mes skills, et des vidéos IA sans abonnement pour démarrer. Formation pas à pas en FR, EN et TH.">
+<meta name="theme-color" content="#05070f">
 <meta property="og:type" content="website"><meta property="og:image" content="assets/og.png"><meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="NM Academy — Sites web & Vidéo IA">
-<meta property="og:description" content="Crée des sites web et des vidéos IA. Puis vends-les.">
+<meta property="og:description" content="Crée des sites et des vidéos IA qui se vendent.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Thai:wght@400;500;700;800&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Course","name":"Web Agency Blueprint","description":"Créer des sites web professionnels et les vendre à des entreprises.","provider":{"@type":"Organization","name":"NM Academy"}},{"@type":"Course","name":"AI Video Money Lab","description":"Produire des vidéos IA et découvrir les voies de monétisation TikTok, YouTube, affiliation et clients.","provider":{"@type":"Organization","name":"NM Academy"}}]}</script>
-<link rel="stylesheet" href="assets/css/academy.css"><link rel="stylesheet" href="assets/css/simple.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/v2.css">
 </head>
 <body>
 <a class="skip" href="#top" data-t="skip">Aller au contenu</a>
-<div id="film" role="dialog" aria-label="NM Academy" aria-hidden="false">
-  <button id="fskip" class="fskip mono" type="button" data-t="f_skip">PASSER</button>
-  <div class="fs s1"><div class="fbig"><span data-t="f1a">Sites web</span><i>+</i><span data-t="f1b">Vidéos IA</span></div><p data-t="f1c">Deux compétences qui se vendent.</p></div>
-  <div class="fs s2"><p class="fk mono" data-t="f2k">LE PROBLÈME</p><div class="fbig sm" data-t="f2a">Les outils vidéo IA coûtent souvent des centaines d'€ par mois*</div><div class="fbar"><b></b></div></div>
-  <div class="fs s3"><p class="fk mono g" data-t="f3k">ICI</p><ul><li data-t="f3a">Outils gratuits pour démarrer</li><li data-t="f3b">Templates et scripts prêts à copier</li><li data-t="f3c">Méthode pas à pas, en vidéo</li></ul></div>
-  <div class="fs s4"><div class="fcards"><span class="mono">PLAN A</span><span class="mono v">PLAN B</span><span class="mono g">VISIO 1:1</span></div><p class="fbig sm" data-t="f4a">Choisis ton parcours</p><button id="fgo" class="btn pri big" type="button" data-t="f_go">Entrer sur le site</button></div>
-  <div class="ftime"><b></b></div>
-</div><i class="in-line"></i></div>
-<canvas id="bg" aria-hidden="true"></canvas><div class="vig" aria-hidden="true"></div>
-<div class="sprog" id="sp"></div>
-<div class="offer" id="offer" hidden></div>
+<div class="glow" aria-hidden="true"></div>
 
-<header class="nav" id="nav">
-  <a href="#top" class="logo">NM<b>ACADEMY</b></a>
-  <nav class="links"><a href="#videos" data-t="n_ex">Exemples</a><a href="#kit" data-t="n_kit">Contenu</a><a href="#price" data-t="n_price">Tarifs</a><a href="#faq" data-t="n_faq">FAQ</a></nav>
-  <div class="nr"><div class="lang" role="group" aria-label="Language"></div><button class="snd mono" id="snd" type="button" aria-label="Son">SON</button><a href="#price" class="btn pri sm" data-t="n_cta">Rejoindre</a></div>
-</header>
+<header class="nav" id="nav"><div class="wrap">
+  <a href="#top" class="logo">NM <b>ACADEMY</b></a>
+  <nav class="links"><a href="#examples" data-t="n_ex">Exemples</a><a href="#kit" data-t="n_kit">Contenu</a><a href="#programme" data-t="n_prog">Programme</a><a href="#price" data-t="n_price">Tarifs</a><a href="#faq" data-t="n_faq">FAQ</a></nav>
+  <div class="nr"><div class="lang" role="group" aria-label="Language"></div><a href="#price" class="btn white sm" data-t="n_cta">Rejoindre</a></div>
+</div></header>
 
-<main>
-<!-- 1. Ce que je propose, tout de suite -->
-<section class="hero2" id="top"><div class="wrap">
-  <div class="tag mono" data-t="h2_tag">SITES WEB · VIDÉO IA · ACCOMPAGNEMENT</div>
-  <h1><span data-t="h2_t1">Crée des sites web et des vidéos IA.</span> <em data-t="h2_t2">Puis vends-les.</em></h1>
-  <p class="sub2" data-t="h2_sub">Deux formations pratiques et un accompagnement en visio.</p>
-  <div class="cta"><a href="#price" class="btn pri big" data-t="h_c1">Choisir ma formation</a><a href="#videos" class="btn ghost big" data-t="h_c4">Voir les exemples</a></div>
-  <p class="hsmall mono" data-t="h_small">Satisfait ou remboursé · Accès après confirmation</p>
-
+<main id="top">
+<section class="hero"><div class="wrap">
+  <span class="pill"><i></i><span data-t="v2_tag">Sites web &amp; Vidéo IA · FR · EN · TH</span></span>
+  <h1><span data-t="v2_t1">Crée des sites et des vidéos IA</span><span class="b" data-t="v2_t2">qui se vendent.</span></h1>
+  <p class="sub" data-t="h2_sub">…</p>
+  <div class="cta"><a href="#price" class="btn white" data-t="v2_cta">Rejoindre la formation</a><a href="#examples" class="btn ghost" data-t="h_c4">Voir les exemples</a></div>
+  <p class="small" data-t="h_small">…</p>
   <div class="reel" id="reel" aria-label="Exemples">
-    <figure class="rp p0"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-salon.jpg" data-src="assets/video/reel-salon.mp4" aria-hidden="true"></video></div><figcaption><span class="rb mono" data-t="rl_site">SITE WEB</span><b data-t="rl_hair">…</b></figcaption></figure>
-    <figure class="rp p1"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-ai2.jpg" data-src="assets/video/reel-ai2.mp4" aria-hidden="true"></video></div><figcaption><span class="rb ai mono" data-t="rl_ai">VIDÉO IA</span><b data-t="rl_tt">…</b></figcaption></figure>
-    <figure class="rp p2"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-streetfood.jpg" data-src="assets/video/reel-streetfood.mp4" aria-hidden="true"></video></div><figcaption><span class="rb mono" data-t="rl_site">SITE WEB</span><b data-t="rl_sf">…</b></figcaption></figure>
-    <figure class="rp p3"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-restaurant.jpg" data-src="assets/video/reel-restaurant.mp4" aria-hidden="true"></video></div><figcaption><span class="rb mono" data-t="rl_site">SITE WEB</span><b data-t="rl_rest">…</b></figcaption></figure>
-    <figure class="rp p4"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-ai1.jpg" data-src="assets/video/reel-ai1.mp4" aria-hidden="true"></video></div><figcaption><span class="rb ai mono" data-t="rl_ai">VIDÉO IA</span><b data-t="rl_tt">…</b></figcaption></figure>
-    <figure class="rp p5"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-bar.jpg" data-src="assets/video/reel-bar.mp4" aria-hidden="true"></video></div><figcaption><span class="rb mono" data-t="rl_site">SITE WEB</span><b data-t="rl_bar">…</b></figcaption></figure>
-    <figure class="rp p6"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-company.jpg" data-src="assets/video/reel-company.mp4" aria-hidden="true"></video></div><figcaption><span class="rb mono" data-t="rl_site">SITE WEB</span><b data-t="rl_co">…</b></figcaption></figure>
+<figure class="rp p0"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-salon.jpg" data-src="assets/video/reel-salon.mp4" aria-hidden="true"></video></div><figcaption><b data-t="rl_hair">…</b><span data-t="rl_site">…</span></figcaption></figure>
+<figure class="rp p1"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-ai2.jpg" data-src="assets/video/reel-ai2.mp4" aria-hidden="true"></video></div><figcaption><b data-t="rl_tt">…</b><span data-t="rl_ai">…</span></figcaption></figure>
+<figure class="rp p2"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-streetfood.jpg" data-src="assets/video/reel-streetfood.mp4" aria-hidden="true"></video></div><figcaption><b data-t="rl_sf">…</b><span data-t="rl_site">…</span></figcaption></figure>
+<figure class="rp p3"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-restaurant.jpg" data-src="assets/video/reel-restaurant.mp4" aria-hidden="true"></video><span class="chip c1" data-t="ch1">✓ Site en ligne</span><span class="chip c2" data-t="ch2">Créé en quelques minutes</span></div><figcaption><b data-t="rl_rest">…</b><span data-t="rl_site">…</span></figcaption></figure>
+<figure class="rp p4"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-ai1.jpg" data-src="assets/video/reel-ai1.mp4" aria-hidden="true"></video></div><figcaption><b data-t="rl_tt">…</b><span data-t="rl_ai">…</span></figcaption></figure>
+<figure class="rp p5"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-bar.jpg" data-src="assets/video/reel-bar.mp4" aria-hidden="true"></video></div><figcaption><b data-t="rl_bar">…</b><span data-t="rl_site">…</span></figcaption></figure>
+<figure class="rp p6"><div class="rph"><i class="rn"></i><video muted loop playsinline preload="none" poster="assets/video/reel-company.jpg" data-src="assets/video/reel-company.mp4" aria-hidden="true"></video></div><figcaption><b data-t="rl_co">…</b><span data-t="rl_site">…</span></figcaption></figure>
   </div>
-  <p class="reel-cap mono" data-t="rl_cap">Vrais sites et vraies vidéos, créés avec la méthode.</p>
-
-  <div class="facts">
-    <div><b>6</b><span data-t="fx1">types de commerces en exemple</span></div>
-    <div><b>13</b><span data-t="fx2">modules</span></div>
-    <div><b>49</b><span data-t="fx3">leçons</span></div>
-    <div><b>FR · EN · TH</b><span data-t="fx4">3 langues</span></div>
-  </div>
+  <div class="biz"><p data-t="biz_t">Pour tous les commerces</p><ul><li data-t="rl_rest">Restaurant</li><li data-t="rl_sf">Street food</li><li data-t="rl_bar">Bar</li><li data-t="rl_hair">Salon</li><li data-t="rl_co">Entreprise</li><li>TikTok · YouTube</li></ul></div>
 </div></section>
 
-<!-- 3. Vidéos (preuve) -->
-<section class="sec alt" id="videos"><div class="wrap">
-  <h2 data-t="vd_t2">Regarde ce que tu vas savoir faire</h2>
-  <p class="lead" data-t="vd_s2">…</p>
-  <div class="vgrid">
-    <figure class="vf"><video data-vv="ai" controls muted loop playsinline preload="none"></video><figcaption><b data-t="vd_a">Plan B · Vidéo IA</b></figcaption></figure>
-    <figure class="vf"><video data-vv="web" controls muted loop playsinline preload="none"></video><figcaption><b data-t="vd_w">Plan A · Sites web</b></figcaption></figure>
+<section class="sec" id="examples"><div class="wrap">
+  <h2 class="h2 rv" data-t="ex_t">Ce que tu vas savoir faire</h2>
+  <p class="lead rv" data-t="ex_s">…</p>
+  <div class="ex rv">
+    <div class="ext"><span class="kick" data-t="ex1_k">SITE WEB</span><h3 data-t="ex1_t">…</h3><ul><li data-t="ex1_1">…</li><li data-t="ex1_2">…</li><li data-t="ex1_3">…</li></ul><a href="#price" class="btn ghost" data-t="v2_cta">Rejoindre la formation</a></div>
+    <div class="exv"><div class="frame"><video data-vv="web" controls muted loop playsinline preload="none"></video></div></div>
+  </div>
+  <div class="ex rev rv">
+    <div class="ext"><span class="kick" data-t="ex2_k">VIDÉO IA</span><h3 data-t="ex2_t">…</h3><ul><li data-t="ex2_1">…</li><li data-t="ex2_2">…</li><li data-t="ex2_3">…</li></ul><a href="#price" class="btn ghost" data-t="v2_cta">Rejoindre la formation</a></div>
+    <div class="exv"><div class="frame"><video data-vv="ai" controls muted loop playsinline preload="none"></video></div></div>
   </div>
 </div></section>
 
-<!-- 2. Tout ce que tu reçois -->
-<section class="sec" id="kit"><div class="wrap">
-  <h2 class="bigh"><span data-t="k_t1">Tout ce qu'il faut pour le refaire,</span> <em data-t="k_t2">et en créer d'autres.</em></h2>
-  <p class="lead" data-t="k_s">…</p>
-  <div class="kit"><article class="kc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg><h3 data-t="k1t">…</h3><p data-t="k1d">…</p></article><article class="kc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M9 20V9"/></svg><h3 data-t="k2t">…</h3><p data-t="k2d">…</p></article><article class="kc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg><h3 data-t="k3t">…</h3><p data-t="k3d">…</p></article><article class="kc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h10a2 2 0 0 1 2 2v12"/><rect x="4" y="8" width="12" height="12" rx="2"/></svg><h3 data-t="k4t">…</h3><p data-t="k4d">…</p></article><article class="kc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8"/></svg><h3 data-t="k5t">…</h3><p data-t="k5d">…</p></article><article class="kc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><h3 data-t="k6t">…</h3><p data-t="k6d">…</p></article></div>
+<section class="sec alt" id="kit"><div class="wrap">
+  <h2 class="h2 rv"><span data-t="k_t1">Tout ce qu'il faut pour le refaire,</span> <em data-t="k_t2">et en créer d'autres.</em></h2>
+  <p class="lead rv" data-t="k_s">…</p>
+  <div class="kit"><article class="kc rv"><div class="ki"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg></div><h3 data-t="k1t">…</h3><p data-t="k1d">…</p></article><article class="kc rv"><div class="ki"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M9 20V9"/></svg></div><h3 data-t="k2t">…</h3><p data-t="k2d">…</p></article><article class="kc rv"><div class="ki"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg></div><h3 data-t="k3t">…</h3><p data-t="k3d">…</p></article><article class="kc rv"><div class="ki"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h10a2 2 0 0 1 2 2v12"/><rect x="4" y="8" width="12" height="12" rx="2"/></svg></div><h3 data-t="k4t">…</h3><p data-t="k4d">…</p></article><article class="kc rv"><div class="ki"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8"/></svg></div><h3 data-t="k5t">…</h3><p data-t="k5d">…</p></article><article class="kc rv"><div class="ki"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><h3 data-t="k6t">…</h3><p data-t="k6d">…</p></article></div>
 </div></section>
 
-<!-- 3. Pour qui / ce qu'il te faut -->
-<section class="sec alt" id="who"><div class="wrap">
-  <div class="who2">
-    <div><h3 class="mono wk" data-t="wh_t">POUR QUI ?</h3><ul><li data-t="wh1">…</li><li data-t="wh2">…</li><li data-t="wh3">…</li><li data-t="wh4">…</li></ul></div>
-    <div><h3 class="mono wk" data-t="nd_t">CE QU'IL TE FAUT</h3><ul><li data-t="nd1">…</li><li data-t="nd2">…</li><li data-t="nd3">…</li><li data-t="nd4">…</li></ul></div>
+<section class="sec" id="who"><div class="wrap">
+  <div class="who">
+    <div class="rv"><h3 data-t="wh_h">Pour qui ?</h3><ul><li data-t="wh1">…</li><li data-t="wh2">…</li><li data-t="wh3">…</li><li data-t="wh4">…</li></ul></div>
+    <div class="rv"><h3 data-t="nd_h">Ce qu'il te faut</h3><ul><li data-t="nd1">…</li><li data-t="nd2">…</li><li data-t="nd3">…</li><li data-t="nd4">…</li></ul></div>
   </div>
 </div></section>
 
-<!-- 4. Offres -->
+<section class="sec alt" id="programme"><div class="wrap">
+  <h2 class="h2 rv" data-t="pg_t">Le programme</h2>
+  <p class="lead rv" data-t="pg_s">…</p>
+  <div class="prog">
+    <div class="pcol rv"><h3 data-t="pa_n">Plan A · Sites web</h3><p class="pm" data-t="pg_am">6 modules</p><ol><li data-t="a1t">…</li><li data-t="a2t">…</li><li data-t="a3t">…</li><li data-t="a4t">…</li><li data-t="a5t">…</li><li data-t="a6t">…</li></ol></div>
+    <div class="pcol rv"><h3 data-t="pb_n">Plan B · Vidéo IA</h3><p class="pm" data-t="pg_bm">7 modules</p><ol><li data-t="b1t">…</li><li data-t="b2t">…</li><li data-t="b3t">…</li><li data-t="b4t">…</li><li data-t="b5t">…</li><li data-t="b6t">…</li><li data-t="b7t">…</li></ol></div>
+  </div>
+</div></section>
+
 <section class="sec" id="price"><div class="wrap">
-  <h2 data-t="p_t">Choisis ta formation</h2>
-  <p class="lead" data-t="p_s">…</p>
-  <div class="g3 offers">
-    <article class="card plan" data-plan="a">
-      <h3 data-t="pa_n">Plan A</h3><p class="pd" data-t="pa_d">…</p>
-      <div class="price"><b data-price="a">29</b><small data-per="a"></small></div>
-      <ul><li data-t="pa_1">…</li><li data-t="pa_2">…</li><li data-t="pa_3">…</li><li data-t="pa_4">…</li></ul>
-      <details class="prog"><summary data-t="prog">Voir le programme</summary><ol><li data-t="a1t">…</li><li data-t="a2t">…</li><li data-t="a3t">…</li><li data-t="a4t">…</li><li data-t="a5t">…</li><li data-t="a6t">…</li></ol></details>
-      <a class="btn ghost full" data-buy="a" href="#" data-t="p_cta">Rejoindre</a>
-    </article>
-    <article class="card plan best" data-plan="pack">
-      <span class="badge mono" data-t="pop">LE PLUS COMPLET</span>
-      <h3 data-t="pk_n">Pack A + B</h3><p class="pd" data-t="pk_d">…</p>
-      <div class="price"><b data-price="pack">97</b><small data-per="pack"></small></div>
-      <ul><li data-t="pk_1">…</li><li data-t="pk_2">…</li><li data-t="pk_3">…</li><li data-t="pk_4">…</li></ul>
-      <a class="btn pri full" data-buy="pack" href="#" data-t="p_cta">Rejoindre</a>
-    </article>
-    <article class="card plan" data-plan="b">
-      <h3 data-t="pb_n">Plan B</h3><p class="pd" data-t="pb_d">…</p>
-      <div class="price"><b data-price="b">47</b><small data-per="b"></small></div>
-      <ul><li data-t="pb_1">…</li><li data-t="pb_2">…</li><li data-t="pb_3">…</li><li data-t="pb_4">…</li></ul>
-      <details class="prog"><summary data-t="prog">Voir le programme</summary><ol><li data-t="b1t">…</li><li data-t="b2t">…</li><li data-t="b3t">…</li><li data-t="b4t">…</li><li data-t="b5t">…</li><li data-t="b6t">…</li><li data-t="b7t">…</li></ol></details>
-      <a class="btn ghost full" data-buy="b" href="#" data-t="p_cta">Rejoindre</a>
-    </article>
-  </div>
-
-  <article class="card coach" id="coach" data-plan="coach">
-    <div class="cl">
-      <span class="mono pk g" data-t="pc_tag">ACCOMPAGNEMENT PERSONNEL</span>
-      <h3 data-t="pc_n">Accompagnement 1:1 en visio</h3>
-      <p data-t="pc_d">…</p>
-      <ul><li data-t="pc_1">…</li><li data-t="pc_2">…</li><li data-t="pc_3">…</li><li data-t="pc_4">…</li></ul>
-    </div>
-    <div class="cr"><div class="price"><b data-price="coach">297</b><small data-t="pc_dur">séance en visio</small></div><a class="btn pri full big" data-buy="coach" href="#" data-t="pc_cta">Réserver mon appel</a></div>
+  <h2 class="h2 rv" data-t="p_t">Choisis ta formation</h2>
+  <p class="lead rv" data-t="p_s">…</p>
+  <article class="offer rv" data-plan="pack">
+    <span class="tagp" data-t="of_tag">TOUT COMPRIS</span>
+    <h3 data-t="pk_n">Pack A + B</h3><p class="pd" data-t="pk_d">…</p>
+    <div class="price"><span data-price="pack">97</span><small data-per="pack"></small></div>
+    <ul><li data-t="pk_1">…</li><li data-t="k1t">…</li><li data-t="k3t">…</li><li data-t="pk_3">…</li><li data-t="pk_2">…</li></ul>
+    <a class="btn white full" data-buy="pack" href="#" data-t="v2_cta">Rejoindre la formation</a>
+    <p class="small" data-t="p_ref">…</p>
   </article>
-
-  <p class="guar mono" data-t="p_ref">Satisfait ou remboursé</p>
-  <ul class="trust"><li data-t="tr1">Paiement sécurisé</li><li data-t="tr2">Accès après confirmation</li><li data-t="tr3">Support par WhatsApp</li></ul>
+  <div class="opts">
+    <p data-t="of_opts">Ou seulement une partie :</p>
+    <div class="opt"><div><b data-t="pa_n">Plan A</b><span data-t="pa_d">…</span></div><div class="pr"><span data-price="a">29</span><small data-per="a"></small></div><a class="btn ghost sm" data-buy="a" href="#" data-t="p_cta">Rejoindre</a></div>
+    <div class="opt"><div><b data-t="pb_n">Plan B</b><span data-t="pb_d">…</span></div><div class="pr"><span data-price="b">47</span><small data-per="b"></small></div><a class="btn ghost sm" data-buy="b" href="#" data-t="p_cta">Rejoindre</a></div>
+    <div class="opt" id="coach"><div><b data-t="pc_n">Accompagnement 1:1</b><span data-t="pc_d">…</span></div><div class="pr"><span data-price="coach">297</span></div><a class="btn ghost sm" data-buy="coach" href="#" data-t="pc_cta">Réserver</a></div>
+  </div>
 </div></section>
 
-<!-- 5. Cadeau (compact) -->
-<section class="strip" id="gift"><div class="wrap narrow">
-  <div class="gf"><div><span class="mono" style="color:var(--c3);font-size:.7rem" data-t="lm_k">CADEAU GRATUIT</span><h3 data-t="lm_t">Reçois le gabarit de site gratuit</h3></div>
-  <form id="lead" class="lead-f"><input type="email" id="lem" required autocomplete="email" data-t-ph="lm_ph" placeholder="ton@email.com"><button class="btn pri" type="submit" data-t="lm_btn">Recevoir le gabarit</button></form></div>
-  <div id="lok" hidden><p class="ok" data-t="lm_ok">Merci !</p><a class="btn ghost" href="kit/starter-site.html" download="starter-site.html" data-t="lm_dl">Télécharger</a></div>
-  <p class="note" style="text-align:left;margin:8px 0 0" data-t="lm_p">…</p>
-</div></section>
-
-<!-- 6. FAQ -->
-<section class="sec alt" id="faq"><div class="wrap narrow">
-  <h2 data-t="q_t">Questions fréquentes</h2>
+<section class="sec alt" id="faq"><div class="wrap">
+  <h2 class="h2 rv" data-t="q_t">Questions fréquentes</h2>
+  <p class="lead"></p>
   <div class="faq">
     <details><summary data-t="q1">…</summary><p data-t="a1">…</p></details>
     <details><summary data-t="q2">…</summary><p data-t="a2">…</p></details>
@@ -149,26 +108,26 @@
     <details><summary data-t="q6">…</summary><p data-t="a6">…</p></details>
     <details><summary data-t="q7">…</summary><p data-t="a7">…</p></details>
   </div>
-  <div class="endcta"><h2 data-t="f_t">Prêt ?</h2><a href="#price" class="btn pri big" data-t="h_c1">Choisir ma formation</a></div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2 class="h2 rv" data-t="f_t">Prêt ?</h2>
+  <a href="#price" class="btn white" data-t="v2_cta">Rejoindre la formation</a>
 </div></section>
 </main>
 
-<footer class="foot"><div class="wrap"><div class="logo">NM<b>ACADEMY</b></div><p data-t="foot_disc">…</p><p><a href="legal.html" data-t="foot_legal">Mentions</a> · <a href="members.html" data-t="foot_mem">Espace membres</a></p></div></footer>
+<footer class="foot"><div class="wrap"><div class="logo">NM <b>ACADEMY</b></div><p data-t="foot_disc">…</p><p><a href="legal.html" data-t="foot_legal">Mentions</a> · <a href="members.html" data-t="foot_mem">Espace membres</a></p></div></footer>
 
-<a href="#price" class="btn pri sticky" id="stk" data-t="sticky">Choisir ma formation</a>
-<a class="wa" id="wa" target="_blank" rel="noopener" href="#" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.4c0 2.4.7 4.7 1.9 6.6L3.4 29l7.2-1.9a12.5 12.5 0 0 0 5.4 1.2C23 28.3 28.5 22.8 28.5 15.9S23 3 16 3zm0 22.9c-1.7 0-3.4-.5-4.9-1.4l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.2 10.2 0 0 1-1.6-5.5C5.7 9.9 10.3 5.4 16 5.4s10.3 4.5 10.3 10.5S21.700 25.900 16 25.900zm5.600-7.600c-.3-.2-1.800-.9-2.100-1s-.5-.2-.7.2-.8 1-.9 1.200-.3.200-.6.100a8.300 8.300 0 0 1-4.100-3.600c-.3-.5.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100 2.100 3.300 5.200 4.500c2 .8 2.800.9 3.800.7.6-.1 1.800-.8 2.100-1.500s.3-1.300.2-1.500-.2-.2-.5-.4z"/></svg><span data-t="wa_t">Une question ?</span></a>
-
-<div class="modal" id="modal" hidden role="dialog" aria-modal="true">
-  <div class="mbox card"><h3 data-t="mo_t">…</h3><p data-t="mo_s">…</p>
-    <a class="btn pri full" id="mwa" target="_blank" rel="noopener" href="#"><span data-t="mo_w">WhatsApp</span></a>
-    <p class="mono mm" id="mem"></p>
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="mbox"><h3 id="mt" data-t="mo_t">…</h3><p data-t="mo_s">…</p>
+    <a class="btn white full" id="mwa" target="_blank" rel="noopener" href="#"><span data-t="mo_w">WhatsApp</span></a>
+    <p class="mm" id="mem"></p>
     <button class="btn ghost full" id="mcl" type="button" data-t="mo_c">Fermer</button></div>
 </div>
 
 <script src="assets/js/config.js"></script>
-<script src="assets/js/sfx.js"></script>
 <script src="assets/js/i18n.js"></script>
-<script src="assets/js/home.js"></script>
+<script src="assets/js/v2.js"></script>
 <script src="assets/js/reel.js"></script>
 </body>
 </html>
