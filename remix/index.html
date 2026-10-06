@@ -102,7 +102,7 @@ input[type=color]{width:100%;height:48px;border:1px solid var(--border);border-r
     <label class="control-label" style="margin-top:.9rem">3 · Quel décor ?</label><div class="chips" id="simPlace"></div>
     <label class="control-label" style="margin-top:.9rem">4 · Quel style ?</label><div class="chips" id="simStyle"></div>
     <label class="control-label" style="margin-top:.9rem" for="simSim">5 · Ressemblance avec l'original</label>
-    <select id="simSim"><option value="inspired" selected>Proche mais différente (recommandé)</option><option value="faithful">Très proche (mêmes plans)</option></select>
+    <select id="simSim"><option value="exact" selected>🎯 Copie exacte : même vidéo, je change seulement le personnage / le décor</option><option value="inspired">Proche mais différente (recommandé)</option><option value="faithful">Très proche (mêmes plans)</option></select>
     <label class="control-label" style="margin-top:.9rem" for="simDesc">Une phrase sur ta vidéo (aide l'IA)</label>
     <input type="text" id="simDesc" placeholder="Ex : un monsieur construit une petite maison en bois dans la forêt">
     <button type="button" class="btn-primary" id="btnAuto" style="margin-top:1rem">🚀 Tout faire automatiquement</button>
@@ -124,7 +124,7 @@ input[type=color]{width:100%;height:48px;border:1px solid var(--border);border-r
     <button type="button" class="btn-secondary go" id="btnCut" disabled>✂️ Découper la vidéo en plans</button>
     <div id="segInfo" class="api-hint"></div>
     <div class="control-row" style="margin-top:.8rem"><label class="control-label" for="globalDesc">Décris la vidéo en 2-3 phrases (recommandé)</label>
-      <textarea id="globalDesc" placeholder="Ex : Un monsieur dans son atelier construit une table en bois : il scie, ponce, assemble les pieds puis vernit. Ambiance chaleureuse, lumière du jour."></textarea></div>
+      <textarea id="globalDesc" placeholder="Copie exacte : écris seulement ce que tu changes. Ex : remplace l'homme par une jeune femme blonde, fond avec coucher de soleil. (Autres modes : décris la vidéo.) Ex : Un monsieur dans son atelier construit une table en bois : il scie, ponce, assemble les pieds puis vernit. Ambiance chaleureuse, lumière du jour."></textarea></div>
     <label class="control-label" style="margin-top:.6rem" for="origText">Texte / voix d'origine (optionnel)</label>
     <textarea id="origText" placeholder="Colle ici ce que dit la personne dans la vidéo, si tu veux que ce soit adapté à ta langue."></textarea>
     <button type="button" class="btn-secondary" id="btnVision" disabled>🔍 Décrire chaque plan avec l'IA (essai)</button>
@@ -208,7 +208,7 @@ input[type=color]{width:100%;height:48px;border:1px solid var(--border);border-r
   <div class="section-header" data-toggle="secSet"><span class="section-title">⚙️ 6 · Réglages</span><span class="chevron">▼</span></div>
   <div class="section-body"><div class="section-content">
     <div class="control-row"><label class="control-label" for="rmode">Mode du remix</label>
-      <select id="rmode"><option value="inspired" selected>🆕 Inspiré : même idée, mais une version nouvelle et différente (recommandé pour les droits)</option><option value="faithful">🎯 Fidèle : mêmes plans, je change seulement ce que je choisis</option></select></div>
+      <select id="rmode"><option value="exact" selected>🎯 Copie exacte : même vidéo, image par image, je change seulement ce que je choisis</option><option value="inspired">🆕 Inspiré : même idée, mais une version nouvelle et différente (recommandé pour les droits)</option><option value="faithful">🎯 Fidèle : mêmes plans, je change seulement ce que je choisis</option></select></div>
     <div class="control-row"><label class="control-label" for="diff">Degré de différence (mode Inspiré)</label>
       <select id="diff"><option value="medium" selected>Moyen : autre personnage, autre lieu, autres détails</option><option value="strong">Fort : autre histoire autour de la même idée, autre déroulé</option></select></div>
     <div class="control-row"><label class="control-label" for="strength">Force du remix (mode Fidèle)</label>
@@ -257,7 +257,7 @@ let TS=1;
 const KEY='agnes_api_key_studio',PROJ='remix_projet_v1',TIMING='remix_timing_v1';
 const S={running:false,stop:false,wake:null};
 let P={name:'',dur:0,segs:[],lang:'fr',opt:{}};
-let VID=null,KF={}; /* vidéo source en mémoire + images de plans */
+let VID=null,KF={},KS={},KE={}; /* vidéo source en mémoire + images de plans */
 const $=id=>document.getElementById(id);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function lsGet(k){let v=null;try{v=localStorage.getItem(k)}catch(e){}if(v==null){try{v=sessionStorage.getItem(k)}catch(e){}}return v}
@@ -326,8 +326,11 @@ const qualVid=()=>!$('optSafe').checked?'':' Smooth natural motion, stable consi
 const varText=s=>s.variant?' Alternative composition, variation '+s.variant+'.':'';
 const FRAMESFOR=d=>d<=6?121:(d<=8.5?169:241);
 const FMT={'9:16':['1024x1792','vertical 9:16'],'16:9':['1792x1024','horizontal 16:9'],'1:1':['1024x1024','square']};
-function imgPrompt(sg){return styleText()+'. '+charText()+' '+envText()+' Scene: '+sg.desc+'. '+($('camSel').value?'Camera: '+$('camSel').value+'. ':'')+strengthText()+' '+FMT[$('fmt').value][1]+' frame. No text, no watermark.'+qualImg()+varText(sg)}
-function vidPrompt(sg){const sp=$('optSpeak').checked&&sg.line?' One character speaks with lips in sync, in '+LANGS[P.lang][2]+', saying: "'+sg.line+'". Natural voice, no background music.':'';return (sg.motion||sg.desc)+'. '+styleText()+'. '+charText()+' '+envText()+($('camSel').value?' Camera: '+$('camSel').value+'.':'')+' Keep characters identical to the image. Smooth motion, no text.'+sp+qualVid()+varText(sg)}
+const EXACT=()=>$('rmode').value==='exact';
+function changesText(){const c=($('globalDesc').value||'').trim();const x=[];if(c)x.push(c);const ch=charText();if(ch)x.push(ch);const en=envText();if(en)x.push(en);return x.join(' ')}
+function exactImgPrompt(){const c=changesText();return 'Edit this exact photo. Keep EXACTLY the same composition, framing, camera angle, perspective, body positions, pose, action, objects, tools, clothing layout, lighting, colors and background. Do not move, add or remove anything except the requested change. '+(c?'REQUESTED CHANGE (and nothing else): '+c+' ':'No change requested: reproduce the image as faithfully as possible. ')+'Same photographic style and quality as the original. '+FMT[$('fmt').value][1]+' frame. No text, no watermark.'}
+function imgPrompt(sg){if(EXACT())return exactImgPrompt();return styleText()+'. '+charText()+' '+envText()+' Scene: '+sg.desc+'. '+($('camSel').value?'Camera: '+$('camSel').value+'. ':'')+strengthText()+' '+FMT[$('fmt').value][1]+' frame. No text, no watermark.'+qualImg()+varText(sg)}
+function vidPrompt(sg){if(EXACT()){const c=changesText();return 'Animate this exact shot. Reproduce the same action, the same body movements and the same camera movement as the original shot'+(sg.motion?' ('+sg.motion+')':'')+'. Keep the composition, subjects, objects and background identical to the first image and move naturally towards the last image. '+(c?'The only differences from the original are: '+c+' ':'')+'Realistic, smooth, no text, no new elements.'+qualVid()}const sp=$('optSpeak').checked&&sg.line?' One character speaks with lips in sync, in '+LANGS[P.lang][2]+', saying: "'+sg.line+'". Natural voice, no background music.':'';return (sg.motion||sg.desc)+'. '+styleText()+'. '+charText()+' '+envText()+($('camSel').value?' Camera: '+$('camSel').value+'.':'')+' Keep characters identical to the image. Smooth motion, no text.'+sp+qualVid()+varText(sg)}
 
 /* ═══ Vidéo source : découpage en plans ═══ */
 function seek(v,t){return new Promise(res=>{let done=false;const f=()=>{if(done)return;done=true;v.removeEventListener('seeked',f);res()};v.addEventListener('seeked',f);setTimeout(f,3500);try{v.currentTime=Math.max(0,Math.min(t,(v.duration||t)-0.05))}catch(e){f()}})}
@@ -354,9 +357,10 @@ async function cutVideo(){
  const out=[];m.forEach(s=>{const len=s[1]-s[0];const n=Math.max(1,Math.ceil(len/10));for(let k=0;k<n;k++)out.push([s[0]+len*k/n,s[0]+len*(k+1)/n])});
  const TG=$('target').value;let plan=out.map(o=>({a:o[0],e:o[1],g:o[1]-o[0]}));
  if(TG!=='same'){const Tt=+TG;const N=Math.max(1,Math.min(60,Math.round(Tt/7)));plan=[];for(let k=0;k<N;k++)plan.push({a:D*k/N,e:D*(k+1)/N,g:Math.max(4,Math.min(10,Tt/N))})}
- P.segs=[];KF={};
- for(let i=0;i<plan.length;i++){const a=plan[i].a,e=plan[i].e;setStatus('Images de référence '+(i+1)+'/'+plan.length);await seekReady(v,a+(e-a)*.35);const big=grabFrame(v,512),th=grabFrame(v,120);KF[i]=big.toDataURL('image/jpeg',.8);
+ P.segs=[];KF={};KS={};KE={};
+ for(let i=0;i<plan.length;i++){const a=plan[i].a,e=plan[i].e;setStatus('Images de référence '+(i+1)+'/'+plan.length);await seekReady(v,a+(e-a)*.35);const big=grabFrame(v,512),th=grabFrame(v,120);KF[i]=big.toDataURL('image/jpeg',.8);await seekReady(v,a+Math.min(.12,(e-a)*.1));KS[i]=grabFrame(v,768).toDataURL('image/jpeg',.9);await seekReady(v,Math.max(a+.1,e-Math.min(.15,(e-a)*.1)));KE[i]=grabFrame(v,768).toDataURL('image/jpeg',.9);
   P.segs.push({n:i+1,start:+a.toFixed(2),end:+e.toFixed(2),dur:+plan[i].g.toFixed(1),thumb:th.toDataURL('image/jpeg',.6),desc:'',motion:'',line:'',imgUrl:null,imgState:'',vidId:null,vidUrl:null,vidState:'',err:'',variant:0})}
+ if(v.videoWidth&&v.videoHeight){$('fmt').value=v.videoHeight>v.videoWidth*1.15?'9:16':(v.videoWidth>v.videoHeight*1.15?'16:9':'1:1')}
  P.dur=D;save();renderAll();setStatus(null);$('btnCut').disabled=false;
  const tot=P.segs.reduce((a,x)=>a+x.dur,0);$('segInfo').textContent=P.segs.length+' plans sur '+Math.round(D)+' s de vidéo d\'origine'+((v.duration||0)>300?' (limitée aux 300 premières secondes)':'')+'. Nouvelle vidéo : environ '+Math.round(tot)+' s. Création : '+Math.ceil(P.segs.length*T.VID_SAFE/60)+' min environ.';toast(P.segs.length+' plans')}
 $('drop').onclick=()=>$('file').click();
@@ -375,7 +379,7 @@ $('btnCut').onclick=()=>cutVideo();
 /* ═══ Storyboard : vision (essai) et texte ═══ */
 async function chatJson(system,user,label){const r=await apiCall('POST',API_BASE+'/chat/completions',{model:MODEL_TEXT,messages:[{role:'system',content:system},{role:'user',content:user}],response_format:{type:'json_object'},temperature:.7},label);const d=await r.json();return parseJson((d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'')}
 async function visionOne(i){
- const r=await apiCall('POST',API_BASE+'/chat/completions',{model:MODEL_TEXT,messages:[{role:'user',content:[{type:'text',text:'Describe this video frame for a remake. Reply ONLY with JSON {"description":"people, objects, setting, what they do, in English, 2 sentences","motion":"camera movement and action in English, 1 sentence"}'},{type:'image_url',image_url:{url:KF[i]}}]}],response_format:{type:'json_object'}},'vision '+(i+1));
+ const r=await apiCall('POST',API_BASE+'/chat/completions',{model:MODEL_TEXT,messages:[{role:'user',content:[{type:'text',text:'Describe this video frame factually for an exact recreation. Reply ONLY with JSON {"description":"people, objects, setting, what they do, in English, 2 sentences","motion":"the exact action the person is doing and the camera movement, in English, 1 sentence"}'},{type:'image_url',image_url:{url:KF[i]}}]}],response_format:{type:'json_object'}},'vision '+(i+1));
  const d=await r.json();return parseJson((d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'')}
 async function visionAll(silent){if(!getKey()){toast('Ajoute ta clé API','error');return 0}if(!P.segs.length||!KF[0])return 0;
  S.running=true;S.stop=false;updButtons();let ok=0,ko=0;
@@ -398,24 +402,35 @@ $('btnBoard').onclick=()=>storyboard();
 $('segList').addEventListener('input',e=>{const i=e.target.dataset.d,j=e.target.dataset.l;if(i!==undefined){P.segs[i].desc=e.target.value;save()}if(j!==undefined){P.segs[j].line=e.target.value;save()}});
 
 /* ═══ Pipeline : images puis vidéos ═══ */
-async function makeImage(sg,i){
+async function makeImage(sg,i,end){
+ const ex=EXACT(),ref=end?KE[i]:(ex?KS[i]:KF[i]);
  const body={model:MODEL_IMAGE,prompt:imgPrompt(sg),size:FMT[$('fmt').value][0],n:1};
- if($('optRef').checked&&KF[i])body.image=KF[i];
- let r;try{r=await apiCall('POST',API_BASE+'/images/generations',body,'image '+sg.n)}catch(e){if(body.image&&(e.status===400||e.status===422)){delete body.image;r=await apiCall('POST',API_BASE+'/images/generations',body,'image '+sg.n)}else throw e}
+ let r;
+ if(ex){
+  if(!ref)throw new Error('Image d\'origine absente : redécoupe la vidéo');
+  const data=await toData(ref);let last=null,okR=null;
+  /* le modèle image doit RECEVOIR la vraie image ; on essaie les formats courants, sinon on s\'arrête (jamais de recréation de zéro en silence) */
+  const forms=[{image:data},{image:[data]},{image_url:data},{images:[data]},{reference_images:[data]}];
+  for(const f of forms){try{okR=await apiCall('POST',API_BASE+'/images/generations',Object.assign({},body,f),'image '+sg.n);break}catch(e){last=e;if(!(e.status===400||e.status===422))throw e}}
+  if(!okR)throw new Error('Le modèle image refuse l\'image d\'origine ('+(last&&last.message?last.message.slice(0,60):'erreur')+'). Copie exacte impossible avec ce modèle.');
+  r=okR}
+ else{
+  if($('optRef').checked&&KF[i])body.image=KF[i];
+  try{r=await apiCall('POST',API_BASE+'/images/generations',body,'image '+sg.n)}catch(e){if(body.image&&(e.status===400||e.status===422)){delete body.image;r=await apiCall('POST',API_BASE+'/images/generations',body,'image '+sg.n)}else throw e}}
  const d=await r.json();const it=(d.data&&d.data[0])||(d.images&&d.images[0])||d;const url=it.url||(it.b64_json?'data:image/png;base64,'+it.b64_json:null)||(typeof it==='string'?it:null);if(!url)throw new Error('Pas d\'image');return url}
 async function stepImages(){
- const list=P.segs.filter(s=>!s.imgUrl);let done=0;setPhase('images','Images 0/'+list.length);
+ const list=P.segs.filter(s=>!s.imgUrl||(EXACT()&&KE[s.n-1]&&!s.imgEndUrl));let done=0;setPhase('images','Images 0/'+list.length);
  await new Promise(resolve=>{let k=0,act=0,last=0;
   const next=()=>{if(S.stop&&act===0)return resolve();if(k>=list.length&&act===0)return resolve();
    while(act<T.IMG_PAR&&k<list.length&&!S.stop){const sg=list[k++];act++;const delay=Math.max(0,last+T.IMG_INT*TS-Date.now());last=Date.now()+delay;
-    setTimeout(async()=>{try{sg.imgState='proc';renderQueue();sg.imgUrl=await makeImage(sg,sg.n-1);sg.imgState='done';sg.err='';save()}catch(e){sg.imgState='fail';sg.err=e.message}
+    setTimeout(async()=>{try{sg.imgState='proc';renderQueue();if(!sg.imgUrl)sg.imgUrl=await makeImage(sg,sg.n-1);if(EXACT()&&KE[sg.n-1]&&!sg.imgEndUrl)sg.imgEndUrl=await makeImage(sg,sg.n-1,true);sg.imgState='done';sg.err='';save()}catch(e){sg.imgState='fail';sg.err=e.message}
      done++;act--;setPhase('images','Images '+done+'/'+list.length);setStatus('Images '+done+'/'+list.length);renderAll();next()},delay)}};next()});
  if(S.stop)throw new Error('Arrêt')}
 function timing(){try{return JSON.parse(lsGet(TIMING)||'{}')}catch(e){return{}}}
 async function gate(){const need=T.VID_SAFE*1000*TS-(Date.now()-(timing().lastCreateAt||0));if(need>0)await waitS(Math.ceil(need/(1000*TS)),'Prochaine vidéo dans')}
 async function createVideo(i){const sg=P.segs[i];
  const body={model:MODEL_VIDEO,prompt:vidPrompt(sg),image:await toData(sg.imgUrl),num_frames:FRAMESFOR(sg.dur),frame_rate:FRAME_RATE};
- const nx=P.segs[i+1];if($('optLast').checked&&nx&&nx.imgUrl)body.last_frame=await toData(nx.imgUrl);
+ const nx=P.segs[i+1];if(EXACT()){if(sg.imgEndUrl)body.last_frame=await toData(sg.imgEndUrl)}else if($('optLast').checked&&nx&&nx.imgUrl)body.last_frame=await toData(nx.imgUrl);
  const r=await apiCall('POST',API_BASE+'/videos',body,'vidéo '+sg.n);const d=await r.json();const id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas de video_id');return id}
 async function pollVideo(i,fresh){const sg=P.segs[i];
  try{await waitS(fresh?T.FIRST_POLL:T.POLLS[0],'Plan '+sg.n+' : 1er contrôle dans');
@@ -437,7 +452,7 @@ async function stepVideos(){setPhase('videos','Vidéos : 1 création toutes les 
 async function run(){
  if(S.running)return;if(!getKey()){toast('Ajoute ta clé API','error');return}
  if(!P.segs.length){toast('Charge et découpe une vidéo d\'abord','warn');return}
- const empty=P.segs.filter(s=>!(s.desc||'').trim()).length;if(empty){toast(empty+' plan(s) sans description : touche « Écrire le storyboard » ou remplis-les','warn',6000);return}
+ const empty=EXACT()?0:P.segs.filter(s=>!(s.desc||'').trim()).length;if(empty){toast(empty+' plan(s) sans description : touche « Écrire le storyboard » ou remplis-les','warn',6000);return}
  S.running=true;S.stop=false;await startWake();updButtons();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{setPhase('plan','Plan prêt : '+P.segs.length+' plans');await stepImages();await stepVideos();setPhase('done','Terminé');const ok=P.segs.filter(s=>s.vidUrl).length;setStatus('✦ '+ok+'/'+P.segs.length+' plans prêts ✦');toast(ok+'/'+P.segs.length+' plans remixés');await sleepMs(2500)}
  catch(e){if(e.message==='Arrêt')toast('Arrêté','warn');else toast('Erreur : '+e.message.slice(0,100),'error',5000)}
@@ -453,7 +468,7 @@ async function saveVideo(i){const sg=P.segs[i];if(!sg||!sg.vidUrl)return;const n
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),60000);toast('Vidéo enregistrée ✓')}
  catch(e){window.open(sg.vidUrl,'_blank');toast('Vidéo ouverte : appui long dessus puis « Enregistrer »','warn',7000)}}
 function speak(text){if(!text||!('speechSynthesis' in window)){toast('Voix indisponible','warn');return}const go=()=>{try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);const code=LANGS[P.lang][3];u.lang=code;const v=speechSynthesis.getVoices().filter(x=>x.lang&&x.lang.toLowerCase().indexOf(code.slice(0,2))===0)[0];if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}};if(speechSynthesis.getVoices().length)go();else{let d=false;const f=()=>{if(!d){d=true;go()}};speechSynthesis.addEventListener('voiceschanged',f);setTimeout(f,1200)}}
-function redo(i){const sg=P.segs[i];if(!sg)return;if(S.running){toast('Attends la fin de la création','warn');return}sg.variant=(sg.variant||0)+1;sg.imgUrl=null;sg.imgState='';sg.vidId=null;sg.vidUrl=null;sg.vidState='';sg.err='';save();renderAll();toast('Nouvelle version du plan '+sg.n);run()}
+function redo(i){const sg=P.segs[i];if(!sg)return;if(S.running){toast('Attends la fin de la création','warn');return}sg.variant=(sg.variant||0)+1;sg.imgUrl=null;sg.imgEndUrl=null;sg.imgState='';sg.vidId=null;sg.vidUrl=null;sg.vidState='';sg.err='';save();renderAll();toast('Nouvelle version du plan '+sg.n);run()}
 document.addEventListener('click',e=>{const s=e.target.closest('[data-save]');if(s){saveVideo(+s.dataset.save);return}const sy=e.target.closest('[data-say]');if(sy){speak(P.segs[+sy.dataset.say].line);return}const r=e.target.closest('[data-redo]');if(r){redo(+r.dataset.redo)}});
 
 /* ═══ TOUT TÉLÉCHARGER (dans l'ordre) ═══ */
@@ -552,13 +567,13 @@ $('globalDesc').addEventListener('input',()=>{$('simDesc').value=$('globalDesc')
 async function autoAll(){
  if(S.running)return;if(!getKey()){toast('Ajoute ta clé API en haut','error');$('apiKeyInput').focus();return}
  if(!VID&&!P.segs.length){toast('Choisis d\'abord ta vidéo','warn');return}
- if(sim.c<0&&!$('chChange').checked){toast('Choisis qui joue dans ta nouvelle vidéo','warn');return}
+ if(sim.c<0&&!$('chChange').checked&&!($('globalDesc').value||'').trim()){toast('Dis ce que tu veux changer (personnage, décor…)','warn');return}
  $('autoInfo').textContent='Étape 1/4 : découpage de la vidéo…';
  if(!P.segs.length){await cutVideo();if(!P.segs.length)return}
  $('autoInfo').textContent='Étape 2/4 : analyse des plans…';
  if(P.segs.some(s=>!(s.desc||'').trim()))await visionAll(true);
- $('autoInfo').textContent='Étape 3/4 : écriture de la nouvelle version…';
- const needBoard=$('rmode').value==='inspired'||P.segs.some(s=>!(s.desc||'').trim());
+ $('autoInfo').textContent=(EXACT()?'Étape 3/4 : préparation de la copie exacte…':'Étape 3/4 : écriture de la nouvelle version…');
+ const needBoard=!EXACT()&&($('rmode').value==='inspired'||P.segs.some(s=>!(s.desc||'').trim()));
  if(needBoard){const ok=await storyboard();if(!ok){$('autoInfo').textContent='Il manque une phrase qui décrit ta vidéo : écris-la dans le champ ci-dessus puis retouche le bouton.';$('simDesc').focus();return}}
  $('autoInfo').textContent='Étape 4/4 : création des clips, un après l\'autre. Garde l\'écran allumé.';
  await run();$('autoInfo').textContent=P.segs.every(s=>s.vidUrl)?'Terminé ✓ Enregistre les clips dans « Ta vidéo remixée », plus bas.':'Arrêté ou incomplet : retouche le bouton pour continuer là où tu t\'étais arrêté.'}
