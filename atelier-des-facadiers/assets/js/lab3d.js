@@ -28,6 +28,8 @@ const force = /gl=force/.test(location.href);
 function glOk() {
   if (!T) return false;
   if (reduce && !force) return false;
+  /* phones/tablets: the viewers stutter on mobile GPUs, so they are desktop-only (fine pointer, wide screen) */
+  if (!force && !(matchMedia("(pointer:fine)").matches && matchMedia("(min-width:900px)").matches)) return false;
   if (navigator.connection && navigator.connection.saveData) return false;
   if ((navigator.hardwareConcurrency || 8) < 4 && !force) return false;
   try {
