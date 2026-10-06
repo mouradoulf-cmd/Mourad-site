@@ -89,3 +89,15 @@ Voir `docs/avant-apres/` : `comparaison-hero-desktop.png`, `comparaison-cartes.p
 - Gating: real GPU only (software GL, reduced motion, data-saver, <4 cores skipped; `#gl=force` to debug). Render loop runs only while visible. If anything fails, pages are unchanged. Texts in 5 languages inside the module; shapes are schematic, no figures claimed.
 
 - v4b: home nav cards (Bardage / Ossature / Documentation) are now photo-led (real project photos, icon chip overlapping the image, slow zoom on hover).
+
+## v5 — finishing layer (`assets/css/premium.css`, `assets/js/premium.js`)
+
+Loaded after site.css / site.js on every page and language; the site is complete without it.
+- Typography: balanced headings (`text-wrap:balance`), calm paragraphs (`pretty`, 62ch measure), tabular figures for numbers.
+- Buttons: shine sweep, press feedback, 4 px magnetic pull (desktop only); one consistent focus ring everywhere.
+- Surfaces: single radius scale, layered shadows, finer focus states on fields, fine grain on dark sections.
+- Hero: slow pointer + scroll depth on the media (a few px, desktop only, only while visible), warm/cool light wash, gradient on the accent word. The redundant "scroll" cue was removed (it overlapped the CTA).
+- Process: real timeline whose line fills with scroll and lights each step; vertical version on mobile.
+- Photos: soft clip reveal on card images (hidden state only once the observer exists).
+- Fixed: stat figures colliding on mid widths, process steps merging on mobile.
+- Not done on purpose: before/after slider and testimonials (no paired photos / no real quotes supplied; nothing invented).
