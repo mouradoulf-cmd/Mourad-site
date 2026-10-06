@@ -105,3 +105,7 @@ Loaded after site.css / site.js on every page and language; the site is complete
 - v5b: on phones (<=900px) the pinned scroll sections ("Cinq couches" exploded view, horizontal "Réalisations") no longer pin: static exploded view with tap-to-read layers, native swipe carousel. Cut ~1500 px and ~2600 px of empty scrolling.
 
 - v5c: "Cinq couches" is pinned on phones too (sticky, 250svh runway): the picture stays on screen, layers separate by themselves as you scroll and each caption appears, then the page continues. Fixed a regression where premium.css set `position:relative` on the sticky stage (it un-pinned the section on desktop as well).
+
+## v6 — configurator on a real photo
+
+The cartoon elevation is replaced by a real project photo (`assets/img/cfg/photo.webp`, the Gris pierre fibre-cement project). A hand-checked mask (`assets/img/cfg/mask.png`, panels only: windows, blinds, soffit and glazing excluded) lets `site.js` recolour the panels live: luminance of every panel pixel is kept (joints, shading, sun), the chosen tint replaces the hue, and each finish adds its own response (metal: contrast + sheen + brush noise, HPL: soft gloss, wood: grain, cassettes: more relief, bandeaux: perspective-aligned reveal lines). Colour changes tween over ~0.5 s on a canvas (1000 px, 760 px on phones; ~5 ms per frame). If the images fail to load the old SVG is used. On phones the photo is pinned under the header while you pick family / pose / tint. To change the photo: replace both files; the mask is a greyscale PNG of the same size.
