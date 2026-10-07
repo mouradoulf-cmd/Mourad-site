@@ -88,10 +88,11 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
     <div><label class="lab" for="fmt">Format</label><select id="fmt"><option value="16:9" selected>🖥️ 16:9 YouTube</option><option value="9:16">📱 9:16 Shorts</option></select></div>
   </div>
   <div class="row2">
-    <div><label class="lab" for="retries">Refaire si défaut</label><select id="retries"><option value="0">Jamais</option><option value="1" selected>1 fois (recommandé)</option><option value="2">2 fois</option></select></div>
+    <div><label class="lab" for="retries">Refaire si défaut</label><select id="retries"><option value="0">Jamais</option><option value="1">1 fois</option><option value="2" selected>2 fois (recommandé)</option></select></div>
     <div><label class="lab" for="quota">Limite de vidéos par jour</label><select id="quota"><option value="50" selected>50</option><option value="40">40</option><option value="30">30</option><option value="20">20</option><option value="10">10</option></select></div>
   </div>
-  <label class="lab" for="mode">Méthode</label><select id="mode"><option value="sb" selected>🎞 Storyboard d'abord (recommandé) : je vois et je valide TOUTES les images de l'histoire avant de faire les vidéos</option><option value="auto">⚡ Tout automatique : images et vidéos d'un coup</option></select>
+  <label class="lab" for="mode">Méthode</label><select id="mode"><option value="auto" selected>⛓ Chaînage (méthode des studios) : chaque clip démarre sur la dernière image propre du précédent, avec contrôle qualité et refaçon automatique</option><option value="sb">🎞 Storyboard d'abord : je vois et je valide toutes les images avant de faire les vidéos</option></select>
+  <label class="tog"><input type="checkbox" id="optSq" checked><span>🧍 Anti-doublons : les images sont créées en carré puis recadrées (les formats très larges sont une cause fréquente de « deux têtes » / personne en double)</span></label>
   <label class="tog"><input type="checkbox" id="optQA" checked><span>Contrôle qualité automatique : l'IA regarde chaque image et chaque clip, et refait ceux qui ont un défaut (visage déformé, doigts en trop, personnage qui change…)</span></label>
   <label class="tog"><input type="checkbox" id="optReview"><span>Me montrer le scénario avant de créer les vidéos (pour le corriger)</span></label>
   <label class="tog"><input type="checkbox" id="optSpeak" checked><span>🗣 Les personnages PARLENT dans la vidéo, dans la langue choisie (thaï par défaut) : la voix et les lèvres sont créées par le modèle vidéo. Si le résultat n'est pas bon, décoche : les dialogues restent dans les sous-titres et dans le fichier de voix off.</span></label>
@@ -102,6 +103,13 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 <button class="btn main" id="btnGo" type="button" disabled>Ajoute ta clé API</button>
 <button class="btn stop" id="btnStop" type="button">⏹ Arrêter (tu pourras reprendre)</button>
 
+<div class="panel"><div class="ttl">📖 Le workflow de production (ce que fait le site, dans l'ordre)</div>
+<ol style="padding-left:1.1rem;font-size:.82rem;color:var(--dim);line-height:1.6">
+<li><b style="color:var(--ink)">Bible visuelle verrouillée</b> : personnages (description fixe + images de face et de visage), lieux (image de référence), style. Elle ne change jamais.</li>
+<li><b style="color:var(--ink)">Chaînage</b> : le clip 2 démarre sur la dernière image propre du clip 1, et ainsi de suite. Chaque clip finit en pleine action, le suivant reprend le même mouvement.</li>
+<li><b style="color:var(--ink)">Contrôle qualité après chaque image et chaque clip</b> : même personnage ? même lieu ? l'histoire suit ? pas de double tête, pas de déformation ? Sinon seul ce clip est refait, avec les défauts interdits dans la consigne.</li>
+<li><b style="color:var(--ink)">Relecture de l'histoire</b> par l'IA avant la production (lieu, objets, temps, causes et effets).</li>
+<li><b style="color:var(--ink)">Assemblage</b> : fondus enchaînés entre les clips et son continu, dans l'ordre, en une seule vidéo.</li></ol></div>
 <div class="panel" id="prog" style="display:none;margin-top:.8rem">
   <div class="steps"><div class="step" data-p="story">1 · Scénario</div><div class="step" data-p="chars">2 · Personnages</div><div class="step" data-p="keys">3 · Storyboard</div><div class="step" data-p="clips">4 · Vidéos</div><div class="step" data-p="done">5 · Fini</div></div>
   <div class="bar"><i id="barI"></i></div>
@@ -123,6 +131,10 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <div class="ttl">🎬 Ton histoire</div>
   <video class="pl" id="player" controls playsinline></video>
   <div class="hint" id="plInfo"></div>
+  <button class="btn main" id="btnAsm" type="button" style="min-height:50px;font-size:.95rem">🎬 Assembler la vidéo finale (fondus + son continu)</button>
+  <div class="hint" id="asmInfo"></div>
+  <video class="pl" id="asmVid" controls playsinline style="display:none;margin-top:.5rem"></video>
+  <a class="btn gold" id="asmDl" style="display:none;text-align:center;text-decoration:none;line-height:30px">⬇ Télécharger la vidéo finale</a>
   <button class="btn gold" id="btnPlay" type="button">▶ Regarder l'histoire (tous les clips à la suite)</button>
   <button class="btn gold" id="btnZip" type="button">⬇ Tout télécharger (clips numérotés + sous-titres + scénario)</button>
   <div class="hint">Les clips sont numérotés dans l'ordre (001, 002…). Colle-les dans CapCut, DaVinci ou YouTube Studio : l'ordre est déjà bon. Le fichier .srt contient les sous-titres.</div>
@@ -265,8 +277,10 @@ async function compress(u,max,q){try{const i=await loadImg(u);const k=Math.min(1
 async function toData(url,max){if(/^data:/.test(url))return compress(url,max||1280);try{const r=await fetch(url);if(!r.ok)throw 0;return await compress(await blobData(await r.blob()),max||1280)}catch(e){return url}}
 /* planche de référence : les personnages de la scène côte à côte (une seule image de référence) */
 async function board(urls){if(urls.length===1)return urls[0];const ims=await Promise.all(urls.map(loadImg));const h=640,w=ims.map(i=>Math.round(i.width*h/i.height));const c=document.createElement('canvas');c.width=w.reduce((a,b)=>a+b,0);c.height=h;const x=c.getContext('2d');let o=0;ims.forEach((i,k)=>{x.drawImage(i,o,0,w[k],h);o+=w[k]});return c.toDataURL('image/jpeg',.88)}
-async function makeImage(prompt,refs,label){
- const body={model:MODEL_IMAGE,prompt,size:FMT[P.o.fmt][0],n:1};
+async function cropTo(url,fmt){const i=await loadImg(url);const tw=fmt==='9:16'?9:16,th=fmt==='9:16'?16:9;let w=i.width,h=i.height,cw=w,ch=Math.round(w*th/tw);if(fmt==='16:9'){ch=Math.round(w*9/16);cw=w}else{cw=Math.round(h*9/16);ch=h}if(ch>h){ch=h;cw=Math.round(h*tw/th)}const c=document.createElement('canvas');c.width=cw;c.height=ch;c.getContext('2d').drawImage(i,Math.round((w-cw)/2),Math.round((h-ch)*.42),cw,ch,0,0,cw,ch);return c.toDataURL('image/jpeg',.92)}
+async function makeImage(prompt,refs,label,square){
+ const sq=square||P.o.sq;
+ const body={model:MODEL_IMAGE,prompt,size:sq?'1024x1024':FMT[P.o.fmt][0],n:1};
  let r=null;
  if(refs&&refs.length&&S.refOK!==false){
   const ref=await board(refs);const forms=[{image:ref},{image:[ref]},{image_url:ref},{images:[ref]},{reference_images:[ref]}];
@@ -276,13 +290,15 @@ async function makeImage(prompt,refs,label){
   if(!r&&S.refOK==null){S.refOK=false;toast('Le modèle image n\'accepte pas d\'image de référence : les personnages seront décrits en mots à chaque fois (moins stable).','warn',7000)}}
  if(!r)r=await apiCall('POST',API_BASE+'/images/generations',body,label);
  const d=await r.json();const it=(d.data&&d.data[0])||(d.images&&d.images[0])||d;const url=it.url||(it.b64_json?'data:image/png;base64,'+it.b64_json:null)||(typeof it==='string'?it:null);if(!url)throw new Error('Pas d\'image');
+
+ if(sq&&!square){try{return toData(await cropTo(await toData(url,1536),P.o.fmt),1280)}catch(e){}}
  return toData(url,1280)}
 async function thumb(u){return compress(u,420,.6)}
 
 /* ───────── 1. Scénario ───────── */
 const byId=(a,id)=>(a||[]).filter(x=>x.id===id)[0];
 function genre(){return GENRES.filter(g=>g.id===P.o.genre)[0]||GENRES[0]}
-function sysBase(g){return 'You are a professional showrunner and storyboard artist writing a long-form video series for YouTube. Audience: Thai viewers. Genre: '+g.n+'. Tone: '+g.tone+'. Structure: '+g.plan+' Production rules: '+g.rules+' Every scene must be filmable by an AI video model as ONE simple continuous action of '+P.o.dur+' seconds in ONE location with at most 2 characters. The story must progress in every scene and each scene must follow logically from the previous one (cause and effect). Never introduce anything that does not serve the story. Never let objects, creatures or effects act on their own unless the scene action says so.'}
+function sysBase(g){return 'You are a professional showrunner and storyboard artist writing a long-form video series for YouTube. Audience: Thai viewers. Genre: '+g.n+'. Tone: '+g.tone+'. Structure: '+g.plan+' Production rules: '+g.rules+' Every scene must be filmable by an AI video model as ONE simple continuous action of '+P.o.dur+' seconds in ONE location with at most 2 characters. The story must progress in every scene and each scene must follow logically from the previous one (cause and effect). Never introduce anything that does not serve the story. Never let objects, creatures or effects act on their own unless the scene action says so. Every action must still be IN MOTION at the last frame of the clip (never end on a pause or a rest pose) and the next scene continues that same movement.'}
 async function writeBible(){
  const g=genre(),N=P.o.n,L=LANGN[P.o.lang];
  const sys='[TASK:BIBLE] '+sysBase(g)+' Reply ONLY with JSON: {"title":"title in '+L+'","logline":"1-2 sentences in '+L+'","style":"visual style lock in English, 1 sentence, reuse this base: '+g.style+'","characters":[{"id":"c1","name":"name in '+L+' script","role":"role in the story, in English","look":"VERY concrete fixed visual description in English, 30-40 words: age, face, hair color and style, skin tone, outfit with colors, one distinctive accessory"}],"locations":[{"id":"l1","name":"short name","look":"fixed visual description in English, 20-30 words"}],"beats":["one sentence per scene in English, exactly '+N+' items, in story order"]}. Create '+g.n_chars+' main characters (names natural for the story; for Thai stories use Thai names) and 3 to 5 locations. Characters must be visually very distinct from each other.';
@@ -326,32 +342,49 @@ async function makeCharacters(){
   for(let t=0;t<=1+(+P.o.retries);t++){
    const pr=charSheetPrompt(c)+(probs.length?' Avoid: '+probs.join('; ')+'.':'');
    url=await makeImage(pr,null,'personnage '+c.name);
-   const q=await vision('Check this character reference image. It must show exactly ONE person/character matching: "'+c.look+'". Fail if there are several characters, deformed face or hands, extra limbs, text, or a style mismatch ('+P.bible.style+').',[url],'contrôle '+c.name);
+   const q=await vision('Check this character reference image. It must show exactly ONE person/character matching: "'+c.look+'". Fail if there are several characters, deformed face or hands, extra limbs, text, or a style mismatch ('+P.bible.style+'). Also fail if there are two heads, a duplicated, cloned, ghosted or mirrored person or body part, a doubled face, or the same person appearing twice.',[url],'contrôle '+c.name);
    if(!q||q.ok)break;probs=q.problems.slice(0,3);if(t>=+P.o.retries)break}
-  await dbPut('char:'+c.id,url);c.has=true;c.th=await thumb(url);save();renderBible()}}
+  await dbPut('char:'+c.id,url);c.th=await thumb(url);
+  /* 2e angle : portrait de trois quarts (ancrage du visage) */
+  try{const fu=await makeImage(P.bible.style+'. Close-up portrait, head and shoulders, three-quarter view of the same character: '+c.look+'. Plain light grey background, one single person. '+NEG_IMG,[url],'visage '+c.name,true);await dbPut('face:'+c.id,fu)}catch(e){if(e.message==='Arrêt')throw e}
+  c.has=true;save();renderBible()}
+ const used=[...new Set(P.scenes.map(x=>x.loc))];
+ for(let k=0;k<used.length;k++){const l=byId(P.bible.locations,used[k]);if(!l||l.has)continue;phase('chars','Lieu '+(k+1)+'/'+used.length+' : '+l.name,.38);
+  try{const lu=await makeImage(P.bible.style+'. Establishing shot of the location, no people: '+l.look+'. '+NEG_IMG,null,'lieu '+l.name,true);await dbPut('loc:'+l.id,lu)}catch(e){if(e.message==='Arrêt')throw e}
+  l.has=true;save()}}
 
 /* ───────── 3. Clips ───────── */
 function loc(sc){return byId(P.bible.locations,sc.loc)||P.bible.locations[0]}
 function scChars(sc){return sc.chars.map(id=>byId(P.bible.characters,id)).filter(Boolean)}
-function keyPrompt(sc,probs){const cs=scChars(sc);return P.bible.style+'. '+cs.map(c=>c.name+': '+c.look).join(' ')+' Location: '+loc(sc).look+'. Moment: the very first instant of this action — '+sc.action+'. '+sc.shot+', '+(sc.emotion?sc.emotion+' mood, ':'')+FMT[P.o.fmt][1]+' frame. '+(cs.length>1?'Exactly '+cs.length+' people in the frame. ':'Exactly one person in the frame. ')+NEG_IMG+(probs&&probs.length?' Avoid: '+probs.join('; ')+'.':'')}
+const framing=()=>P.o.sq?'Composition for a center crop to '+FMT[P.o.fmt][1]+': the subject is centered with generous margins on all sides. Square source frame.':FMT[P.o.fmt][1]+' frame.';
+function keyPrompt(sc,probs){const cs=scChars(sc);return P.bible.style+'. '+cs.map(c=>c.name+': '+c.look).join(' ')+' Location: '+loc(sc).look+'. Moment: the very first instant of this action — '+sc.action+'. '+sc.shot+', '+(sc.emotion?sc.emotion+' mood, ':'')+framing()+' '+(cs.length>1?'Exactly '+cs.length+' people in the frame. ':'Exactly one person in the frame. ')+NEG_IMG+(probs&&probs.length?' Avoid: '+probs.join('; ')+'.':'')}
 async function keyframe(sc){
- const refs=[];const i=sc.n-1;if(i>0&&P.scenes[i-1].loc===sc.loc){const pk=await dbGet('start:'+P.scenes[i-1].n);if(pk)refs.push(pk)}
- for(const c of scChars(sc)){const d=await dbGet('char:'+c.id);if(d)refs.push(d)}
+ const refs=[];const i=sc.n-1;
+ for(const c of scChars(sc)){const d=await dbGet(scChars(sc).length>1?'char:'+c.id:'char:'+c.id);if(d)refs.push(d);if(scChars(sc).length===1){const f=await dbGet('face:'+c.id);if(f)refs.push(f)}}
+ const lr=await dbGet('loc:'+sc.loc);if(lr)refs.push(lr);
+ if(i>0&&P.scenes[i-1].loc===sc.loc){const pk=await dbGet('start:'+P.scenes[i-1].n);if(pk)refs.push(pk)}
+ refs.splice(4);
  let probs=[],url=null;
  for(let t=0;t<=(+P.o.retries);t++){
   sc.kp=keyPrompt(sc,probs);url=await makeImage(sc.kp,refs,'image scène '+sc.n);
   const cs=scChars(sc);
-  const q=await vision('Inspect this animation frame. Expected: '+cs.map(c=>c.name+' ('+c.look+')').join(' and ')+'; location: '+loc(sc).look+'; action: '+sc.action+'. Fail if: wrong number of people, the characters do not match their descriptions, deformed face/hands/body, extra limbs or fingers, text or watermark, objects melting or floating, or the action is not set up.',[url],'contrôle image '+sc.n);
+  const q=await vision('Inspect this animation frame. Expected: '+cs.map(c=>c.name+' ('+c.look+')').join(' and ')+'; location: '+loc(sc).look+'; action: '+sc.action+'. Fail if: wrong number of people, the characters do not match their descriptions, deformed face/hands/body, extra limbs or fingers, text or watermark, objects melting or floating, or the action is not set up. Also fail if there are two heads, a duplicated, cloned, ghosted or mirrored person or body part, a doubled face, or the same person appearing twice.',[url],'contrôle image '+sc.n);
   if(!q||q.ok){sc.warn='';break}
   probs=q.problems.slice(0,3);sc.warn='image : '+probs.join(', ');if(t>=(+P.o.retries))break}
  return url}
-function lastFrame(blob){return new Promise(ok=>{const v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';const u=URL.createObjectURL(blob);const done=r=>{try{URL.revokeObjectURL(u)}catch(e){}ok(r)};v.onerror=()=>done(null);v.onloadedmetadata=()=>{try{v.currentTime=Math.max(0,(v.duration||1)-.08)}catch(e){done(null)}};v.onseeked=()=>{try{const c=document.createElement('canvas');const k=1280/Math.max(v.videoWidth,v.videoHeight);c.width=Math.round(v.videoWidth*k);c.height=Math.round(v.videoHeight*k);c.getContext('2d').drawImage(v,0,0,c.width,c.height);done(c.toDataURL('image/jpeg',.9))}catch(e){done(null)}};setTimeout(()=>done(null),9000);v.src=u})}
+function lastFrames(blob){return new Promise(ok=>{const v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';const u=URL.createObjectURL(blob);const out=[];let k=0,offs=[];const done=()=>{try{URL.revokeObjectURL(u)}catch(e){}ok(out)};
+ v.onerror=done;v.onloadedmetadata=()=>{const d=v.duration||1;offs=[.1,.3,.6].map(o=>Math.max(0,d-o));try{v.currentTime=offs[0]}catch(e){done()}};
+ v.onseeked=()=>{try{const c=document.createElement('canvas');const kk=1280/Math.max(v.videoWidth,v.videoHeight);c.width=Math.round(v.videoWidth*kk);c.height=Math.round(v.videoHeight*kk);c.getContext('2d').drawImage(v,0,0,c.width,c.height);out.push(c.toDataURL('image/jpeg',.92))}catch(e){return done()}k++;if(k>=offs.length)done();else v.currentTime=offs[k]};
+ setTimeout(done,12000);v.src=u})}
+async function cleanLast(blob,sc){const c=await lastFrames(blob);if(!c.length)return null;
+ for(const f of c){const q=await vision('This is the LAST frame of a video clip that will be used as the starting image of the next shot. Expected: '+scChars(sc).map(x=>x.name+' ('+x.look+')').join(' and ')+' in '+loc(sc).look+'. Fail if it is blurry or smeared, has motion ghosting, a deformed or melted face/hands/body, extra limbs, text, or if there are two heads, a duplicated, cloned or mirrored person, or the wrong number of people.',[f],'image de raccord '+sc.n);if(!q||q.ok)return f}
+ return null}
 function frames(blob){return new Promise(ok=>{const v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';const u=URL.createObjectURL(blob);const out=[];const done=()=>{try{URL.revokeObjectURL(u)}catch(e){}ok(out)};let ts=[],k=0;
  v.onerror=done;v.onloadedmetadata=()=>{const d=v.duration||1;ts=[.15,d/2,Math.max(.2,d-.15)];try{v.currentTime=ts[0]}catch(e){done()}};
  v.onseeked=()=>{try{const c=document.createElement('canvas');const kk=512/Math.max(v.videoWidth,v.videoHeight);c.width=Math.round(v.videoWidth*kk);c.height=Math.round(v.videoHeight*kk);c.getContext('2d').drawImage(v,0,0,c.width,c.height);out.push(c.toDataURL('image/jpeg',.8))}catch(e){return done()}k++;if(k>=ts.length)done();else v.currentTime=ts[k]};
  setTimeout(done,12000);v.src=u})}
 function vidPrompt(sc){const cs=scChars(sc);sc.vp=null;const spk=byId(P.bible.characters,sc.speaker);const sp=$('optSpeak').checked&&sc.line?' In this shot'+(spk?' '+spk.name:' one character')+' speaks aloud in '+LANGN[P.o.lang]+(P.o.lang==='th'?' (ภาษาไทย, clear natural Thai pronunciation)':'')+' with natural lip movement perfectly synchronized to the speech, saying exactly: "'+sc.line+'"'+(sc.roman?' (pronounced: '+sc.roman+')':'')+'. Natural human voice, the other characters stay silent, no background music.':'';
- sc.vp=sc.action+'. Camera: '+sc.camera+', '+sc.shot+'. '+P.bible.style+'. '+cs.map(c=>c.name+': '+c.look).join(' ')+' '+NEG_VID+sp;return sc.vp}
+ sc.vp=sc.action+'. The movement is still in progress at the end of the clip, it never stops or settles'+(sc.link==='continue'&&sc.n>1?', and it continues the movement already in progress in the first frame without any pause':'')+'. Camera: '+sc.camera+', '+sc.shot+'. '+P.bible.style+'. '+cs.map(c=>c.name+': '+c.look).join(' ')+' '+NEG_VID+sp;return sc.vp}
 let createQ=Promise.resolve();
 function enqueue(fn){const p=createQ.then(async()=>{const t=JSON.parse(lsGet(TIMING)||'{}');const need=T.VID_SAFE*1000*TS-(Date.now()-(t.last||0));if(need>0)await waitS(Math.ceil(need/(1000*TS)),'Prochaine vidéo dans');return fn()});createQ=p.catch(()=>{});return p}
 async function createVideo(sc,start){
@@ -382,7 +415,7 @@ async function produce(sc,i,prevPromise){
  /* une scène : image de départ → vidéo → contrôle → (refaire) */
  let start=null,usedLast=false;
  if(P.o.mode==='sb'){start=await dbGet('start:'+sc.n)}
- else if(sc.link==='continue'&&i>0){await prevPromise;const pb=await dbGet('clip:'+P.scenes[i-1].n);if(pb){const lf=await lastFrame(pb);if(lf){start=lf;usedLast=true}}}
+ else if(sc.link==='continue'&&i>0){await prevPromise;const pb=await dbGet('clip:'+P.scenes[i-1].n);if(pb){const lf=await cleanLast(pb,P.scenes[i-1]);if(lf){start=lf;usedLast=true;sc.chained=true}else sc.warn='raccord : dernière image du clip précédent abîmée, image refaite'}}
  if(!start){sc.imgState='proc';render();start=await keyframe(sc);sc.imgState='done'}
  await dbPut('start:'+sc.n,start);sc.thumb=await thumb(start);save();render();
  let probs=[];
@@ -393,7 +426,7 @@ async function produce(sc,i,prevPromise){
   try{blob=await fetchBlob(url)}catch(e){blob=null}
   if(!blob){/* le navigateur n'a pas le droit de copier la vidéo (CORS) : on garde le lien, la vidéo reste lisible et téléchargeable */sc.url=url;sc.vidState='done';sc.err='';sc.warn='lien direct (pas de contrôle qualité automatique)';if(!S.remoteWarned){S.remoteWarned=true;toast('Les vidéos ne peuvent pas être copiées dans le navigateur : elles restent disponibles par lien (bouton ⬇ sur chaque scène). Pas de ZIP automatique.','warn',9000)}save();render();return}
   sc.url='';const fr=await frames(blob);
-  const q=fr.length?await vision('These are 3 frames (start, middle, end) of ONE video clip. Expected: '+scChars(sc).map(c=>c.name+' ('+c.look+')').join(' and ')+'; action: '+sc.action+'. Fail if: a character changes face/outfit/identity between frames, extra or missing people appear, deformed or melting faces/hands/limbs, objects or creatures appear that are not in the action, text/watermark, or the action is not performed.',fr,'contrôle clip '+sc.n):null;
+  const q=fr.length?await vision((usedLast?'Image 0 is the end of the PREVIOUS shot: the first frame of this clip must continue it seamlessly (same place, light, camera, positions). ':'')+'The following images are 3 frames (start, middle, end) of ONE video clip. Expected: '+scChars(sc).map(c=>c.name+' ('+c.look+')').join(' and ')+'; action: '+sc.action+'. Fail if: a character changes face/outfit/identity between frames, extra or missing people appear, deformed or melting faces/hands/limbs, objects or creatures appear that are not in the action, text/watermark, or the action is not performed, or there are two heads / a duplicated, cloned or mirrored person / a doubled face.',(usedLast?[start]:[]).concat(fr),'contrôle clip '+sc.n):null;
   if(!q||q.ok||t>=(+P.o.retries)){await dbPut('clip:'+sc.n,blob);sc.vidState='done';sc.err='';sc.warn=(q&&!q.ok)?'clip : '+q.problems.slice(0,2).join(', '):'';save();render();return}
   sc.warn='refait : '+q.problems.slice(0,2).join(', ')}}
 
@@ -413,7 +446,7 @@ document.addEventListener('click',async e=>{if(S.running)return;
  if(m){const sc=P.scenes[+m.dataset.img];sc.vidState='';sc.imgState='';sc.err='';sc.warn='';sc.thumb='';await dbPut('start:'+sc.n,null);await dbPut('clip:'+sc.n,null);save();render();run()}});
 
 /* ───────── Pipeline ───────── */
-function readOpts(){return{genre:selGenre,idea:$('idea').value.trim(),n:+$('nClips').value,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:$('quota').value,mode:$('mode').value}}
+function readOpts(){return{genre:selGenre,idea:$('idea').value.trim(),n:+$('nClips').value,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:$('quota').value,mode:$('mode').value,sq:$('optSq').checked}}
 async function run(){
  if(S.running)return;if(!getKey()){toast('Ajoute ta clé API','error');return}
  S.running=true;S.stop=false;await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
@@ -484,11 +517,52 @@ async function makeSlideshow(){
  const blob=new Blob(chunks,{type:mime.split(';')[0]});const url=URL.createObjectURL(blob);const sv=$('slideVid');sv.style.display='block';sv.src=url;const a=$('slideDl');a.style.display='block';a.href=url;a.download='diaporama.'+(mime.indexOf('mp4')>-1?'mp4':'webm');
  $('slideInfo').textContent='Diaporama prêt ✓ ('+(blob.size>1e6?(blob.size/1e6).toFixed(1)+' Mo':Math.round(blob.size/1e3)+' Ko')+')';$('btnSlide').disabled=false;S.running=false;stopWake();toast('Diaporama prêt ✓')}
 $('btnSlide').onclick=()=>{if(!S.running)makeSlideshow()};
+/* ───────── Assemblage final : fondus enchaînés + son continu ───────── */
+async function assemble(){
+ const list=[];for(const sc of P.scenes){if(!done(sc))continue;const b=await dbGet('clip:'+sc.n);if(!b){toast('Le clip '+sc.n+' n\'est pas copié dans le navigateur (lien direct) : assemble-le dans CapCut avec les liens.','warn',7000);return}list.push({blob:b,sc})}
+ if(!list.length){toast('Aucun clip prêt','warn');return}
+ const vert=P.o.fmt==='9:16',W=vert?720:1280,H=vert?1280:720;
+ const types=['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm','video/mp4'];const mime=types.filter(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))[0];
+ if(!mime){toast('Ton navigateur ne sait pas enregistrer de vidéo : essaie avec Chrome','error',7000);return}
+ const cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');
+ const AC=window.AudioContext||window.webkitAudioContext;const ac=new AC();await ac.resume();const dest=ac.createMediaStreamDestination();
+ const mk=()=>{const v=document.createElement('video');v.playsInline=true;v.preload='auto';v.crossOrigin='anonymous';const g=ac.createGain();g.gain.value=0;try{ac.createMediaElementSource(v).connect(g);g.connect(dest)}catch(e){}return{v,g,started:false,url:null}};
+ const A=mk(),B=mk();
+ const load=(o,item)=>{if(o.url)URL.revokeObjectURL(o.url);o.url=item?URL.createObjectURL(item.blob):null;o.started=false;o.g.gain.value=0;if(o.url){o.v.src=o.url;o.v.load()}};
+ let idx=0,cur=A,nxt=B;load(cur,list[0]);load(nxt,list[1]);
+ const vs=cv.captureStream(30).getVideoTracks();const stream=new MediaStream([...vs,...dest.stream.getAudioTracks()]);
+ const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:8e6});const chunks=[];rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+ const draw=(v,a)=>{if(!v.videoWidth)return;const k=Math.max(W/v.videoWidth,H/v.videoHeight),w=v.videoWidth*k,h=v.videoHeight*k;x.globalAlpha=a;x.drawImage(v,(W-w)/2,(H-h)/2,w,h);x.globalAlpha=1};
+ $('btnAsm').disabled=true;S.running=true;await startWake();
+ const totalDur=list.length*(+P.o.dur);let t0=performance.now();
+ await new Promise(res=>{
+  rec.onstop=res;rec.start(1000);
+  cur.g.gain.value=1;cur.v.play().catch(()=>{});let fadeT=0,fadeLen=.4;
+  const iv=setInterval(()=>{
+   if(!cur.v.duration||isNaN(cur.v.duration))return;
+   const rem=cur.v.duration-cur.v.currentTime;
+   const link=idx+1<list.length?list[idx+1].sc.link:'';fadeLen=link==='continue'?.12:.45;
+   if(idx+1<list.length&&!nxt.started&&rem<=fadeLen){nxt.started=true;fadeT=performance.now();nxt.v.currentTime=0;nxt.v.play().catch(()=>{})}
+   x.fillStyle='#000';x.fillRect(0,0,W,H);
+   const a=nxt.started?Math.min(1,(performance.now()-fadeT)/(fadeLen*1000)):0;
+   draw(cur.v,1);if(nxt.started){draw(nxt.v,a);cur.g.gain.value=1-a;nxt.g.gain.value=a}
+   /* fondu d'entrée / sortie global */
+   const el=(performance.now()-t0)/1000;if(el<.4){x.fillStyle='rgba(0,0,0,'+(1-el/.4)+')';x.fillRect(0,0,W,H)}
+   if(idx===list.length-1&&rem<.5){x.fillStyle='rgba(0,0,0,'+(1-Math.max(0,rem)/.5)+')';x.fillRect(0,0,W,H);cur.g.gain.value=Math.max(0,rem/.5)}
+   $('asmInfo').textContent='Assemblage… clip '+(idx+1)+' / '+list.length+' ('+Math.round(100*(idx+Math.min(1,cur.v.currentTime/cur.v.duration))/list.length)+' %). Garde cette page ouverte et l\'écran allumé.';
+   if(cur.v.ended||rem<=0.03){
+    idx++;if(idx>=list.length){clearInterval(iv);setTimeout(()=>rec.stop(),400);return}
+    const old=cur;cur=nxt;cur.g.gain.value=1;if(!cur.started){cur.v.play().catch(()=>{});cur.started=true}
+    nxt=old;load(nxt,list[idx+1]||null)}
+  },33)});
+ const blob=new Blob(chunks,{type:mime.split(';')[0]});const url=URL.createObjectURL(blob);const v=$('asmVid');v.style.display='block';v.src=url;const a=$('asmDl');a.style.display='block';a.href=url;a.download='histoire-finale.'+(mime.indexOf('mp4')>-1?'mp4':'webm');
+ $('asmInfo').textContent='Vidéo finale prête ✓ ('+(blob.size>1e6?(blob.size/1e6).toFixed(1)+' Mo':Math.round(blob.size/1e3)+' Ko')+')';$('btnAsm').disabled=false;S.running=false;stopWake();try{ac.close()}catch(e){}toast('Vidéo finale prête ✓')}
+$('btnAsm').onclick=()=>{if(!S.running)assemble()};
 /* ───────── Rapport technique ───────── */
 function report(){const r={app:'story-studio v2',date:new Date().toISOString(),flags:{refOK:S.refOK,refForm:S.refForm,qaVision:S.qaVision},usageToday:usage(),opts:P&&P.o,bible:P&&P.bible,reviewNote:P&&P.reviewNote,scenes:P&&P.scenes.map(s=>({n:s.n,loc:s.loc,chars:s.chars,action:s.action,line:s.line,link:s.link,img:s.imgState,vid:s.vidState,tries:s.tries,err:s.err,warn:s.warn,keyPrompt:s.kp,videoPrompt:s.vp}))};return JSON.stringify(r,null,1)}
 $('btnReport').onclick=async()=>{const t=report();const b=$('reportBox');b.style.display='block';b.value=t;b.select();try{await navigator.clipboard.writeText(t);toast('Rapport copié ✓ Colle-le dans la conversation')}catch(e){toast('Sélectionne tout le texte du cadre et copie-le','warn')}};
 /* ───────── Interface ───────── */
-let selGenre='build';
+let selGenre='drama';
 function drawGenres(){$('genres').innerHTML=GENRES.map(g=>'<div class="genre'+(g.id===selGenre?' sel':'')+'" data-g="'+g.id+'"><b>'+g.e+' '+esc(g.n)+'</b><span>'+esc(g.d)+'</span></div>').join('')}
 $('genres').addEventListener('click',e=>{const g=e.target.closest('[data-g]');if(!g||S.running)return;selGenre=g.dataset.g;drawGenres()});
 function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('apiLine').classList.toggle('ok',has);$('apiLine').textContent=has?'Clé active · '+getKey().slice(0,7)+'…'+getKey().slice(-4):'Aucune clé enregistrée';
