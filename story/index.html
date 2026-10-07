@@ -113,6 +113,9 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 <li><b style="color:var(--ink)">Contrôle qualité après chaque image et chaque clip</b> : même personnage ? même lieu ? l'histoire suit ? pas de double tête, pas de déformation ? Sinon seul ce clip est refait, avec les défauts interdits dans la consigne.</li>
 <li><b style="color:var(--ink)">Relecture de l'histoire</b> par l'IA avant la production (lieu, objets, temps, causes et effets).</li>
 <li><b style="color:var(--ink)">Assemblage</b> : fondus enchaînés entre les clips et son continu, dans l'ordre, en une seule vidéo.</li></ol></details>
+<div class="warnbox" id="errBox" style="display:none"></div>
+<div class="panel" id="logPanel" style="margin-top:.8rem"><div class="ttl">📟 Journal en direct (ce que fait le site, à chaque instant)</div><div id="log" style="font:12px/1.5 ui-monospace,monospace;color:var(--dim);max-height:240px;overflow:auto;white-space:pre-wrap"></div>
+<button class="btn" id="btnTest" type="button" style="min-height:40px;font-size:.8rem">🔧 Tester ma clé API (1 texte + 1 image, sans lancer de vidéo)</button></div>
 <div class="panel" id="prog" style="display:none;margin-top:.8rem">
   <div class="steps"><div class="step" data-p="story">1 · Scénario</div><div class="step" data-p="chars">2 · Personnages</div><div class="step" data-p="keys">3 · Storyboard</div><div class="step" data-p="clips">4 · Vidéos</div><div class="step" data-p="done">5 · Fini</div></div>
   <div class="bar"><i id="barI"></i></div>
@@ -261,22 +264,26 @@ function addUsage(){const u=usage();u.n++;lsSet(USAGE,JSON.stringify(u))}
 /* ───────── UI utilitaires ───────── */
 function toast(m,t,d){const el=$('toast');el.className='toast '+(t||'');$('toastText').textContent=m;void el.offsetWidth;el.classList.add('visible');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('visible'),d||3000)}
 function setStatus(t){const b=$('statusBar');if(t){b.classList.add('on');$('statusText').textContent=t}else b.classList.remove('on')}
-function phase(p,txt,frac){$('prog').style.display='block';const order=['story','chars','keys','clips','done'];const c=order.indexOf(p);document.querySelectorAll('.step').forEach(el=>{el.classList.remove('active','done');const i=order.indexOf(el.dataset.p);if(i<c||p==='done')el.classList.add('done');else if(i===c)el.classList.add('active')});if(txt!=null)$('progTxt').textContent=txt;if(frac!=null)$('barI').style.width=Math.round(frac*100)+'%'}
+let _lp='';function phase(p,txt,frac){if(txt&&txt!==_lp){_lp=txt;log(txt)}$('prog').style.display='block';const order=['story','chars','keys','clips','done'];const c=order.indexOf(p);document.querySelectorAll('.step').forEach(el=>{el.classList.remove('active','done');const i=order.indexOf(el.dataset.p);if(i<c||p==='done')el.classList.add('done');else if(i===c)el.classList.add('active')});if(txt!=null)$('progTxt').textContent=txt;if(frac!=null)$('barI').style.width=Math.round(frac*100)+'%'}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms*TS))}
 async function waitS(sec,label){const end=Date.now()+sec*1000*TS;while(Date.now()<end){if(S.stop)throw new Error('Arrêt');if(label)setStatus(label+' '+Math.max(0,Math.ceil((end-Date.now())/(1000*TS)))+' s');await new Promise(r=>setTimeout(r,Math.min(1000*TS,Math.max(1,end-Date.now()))))}if(S.stop)throw new Error('Arrêt')}
 async function startWake(){try{if('wakeLock' in navigator)S.wake=await navigator.wakeLock.request('screen')}catch(e){}try{const v=$('nosleep');if(!v.srcObject){const c=document.createElement('canvas');c.width=c.height=2;const x=c.getContext('2d');let f=0;setInterval(()=>{x.fillStyle=(f++%2)?'#000':'#010101';x.fillRect(0,0,2,2)},900);v.srcObject=c.captureStream(1)}const p=v.play();if(p&&p.catch)p.catch(()=>{})}catch(e){}}
 function stopWake(){try{if(S.wake){S.wake.release();S.wake=null}}catch(e){}try{$('nosleep').pause()}catch(e){}}
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&S.running)startWake()});
 
+/* ───────── Journal ───────── */
+const LOG=[];
+function log(m,bad){const t=new Date().toTimeString().slice(0,8);LOG.push(t+' '+m);if(LOG.length>200)LOG.shift();const el=document.getElementById('log');if(el){el.textContent=LOG.slice(-60).join('\n');el.scrollTop=el.scrollHeight}}
+function showErr(m){const b=document.getElementById('errBox');if(!b)return;b.style.display=m?'block':'none';b.innerHTML=m?'⚠️ '+esc(m)+'<br><small>Touche « 📋 Copier le rapport technique » tout en bas et colle-le moi.</small>':''}
 /* ───────── API ───────── */
-async function apiCall(method,url,body,label){let a=0,b=0,n=0;
+async function apiCall(method,url,body,label){let a=0,b=0,n=0;if(label&&!/^poll/.test(label))log('→ '+label);
  for(;;){if(S.stop)throw new Error('Arrêt');let r;
   try{r=await fetch(url,{method,headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined})}
   catch(e){if(n>=T.NET.length)throw new Error('Réseau : '+e.message);await waitS(T.NET[n++],'Réseau instable… ');continue}
   if(r.status===429){if(a>=T.B429.length)throw new Error('Trop de requêtes (429)');await waitS(T.B429[a++],'Limite de débit… ');continue}
   if(r.status===503){if(b>=T.B503.length)throw new Error('Serveur occupé (503)');await waitS(T.B503[b++],'Serveur occupé… ');continue}
   if(r.status===401||r.status===403)throw new Error('Clé API refusée (HTTP '+r.status+')');
-  if(!r.ok){const t=await r.text();const e=new Error('HTTP '+r.status+' '+t.slice(0,160));e.status=r.status;throw e}
+  if(!r.ok){const t=await r.text();const e=new Error('HTTP '+r.status+' '+t.slice(0,160));e.status=r.status;log('✗ '+(label||url)+' : HTTP '+r.status+' '+t.slice(0,120));throw e}
   return r}}
 function parseJson(text){let s=String(text||'').trim().replace(/^```(?:json)?/i,'').replace(/```$/,'').trim();const i=s.indexOf('{');if(i>0)s=s.slice(i);
  const tries=[()=>JSON.parse(s),()=>{const j=s.lastIndexOf('}');return JSON.parse(s.slice(0,j+1))},()=>JSON.parse(balance(s))];let last;
@@ -298,7 +305,8 @@ function loadImg(u){return new Promise((ok,ko)=>{const i=new Image();i.onload=()
 async function compress(u,max,q){try{const i=await loadImg(u);const k=Math.min(1,max/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);return c.toDataURL('image/jpeg',q||.85)}catch(e){return u}}
 async function toData(url,max){if(/^data:/.test(url))return compress(url,max||1280);try{const r=await fetch(url);if(!r.ok)throw 0;return await compress(await blobData(await r.blob()),max||1280)}catch(e){return url}}
 /* planche de référence : les personnages de la scène côte à côte (une seule image de référence) */
-async function board(urls){if(urls.length===1)return urls[0];const ims=await Promise.all(urls.map(loadImg));const h=640,w=ims.map(i=>Math.round(i.width*h/i.height));const c=document.createElement('canvas');c.width=w.reduce((a,b)=>a+b,0);c.height=h;const x=c.getContext('2d');let o=0;ims.forEach((i,k)=>{x.drawImage(i,o,0,w[k],h);o+=w[k]});return c.toDataURL('image/jpeg',.88)}
+async function board(urls){if(urls.length===1)return urls[0];try{return await board2(urls)}catch(e){log('référence : planche impossible, 1ère image utilisée');return urls[0]}}
+async function board2(urls){const ims=await Promise.all(urls.map(loadImg));const h=640,w=ims.map(i=>Math.round(i.width*h/i.height));const c=document.createElement('canvas');c.width=w.reduce((a,b)=>a+b,0);c.height=h;const x=c.getContext('2d');let o=0;ims.forEach((i,k)=>{x.drawImage(i,o,0,w[k],h);o+=w[k]});return c.toDataURL('image/jpeg',.88)}
 async function cropTo(url,fmt){const i=await loadImg(url);const tw=fmt==='9:16'?9:16,th=fmt==='9:16'?16:9;let w=i.width,h=i.height,cw=w,ch=Math.round(w*th/tw);if(fmt==='16:9'){ch=Math.round(w*9/16);cw=w}else{cw=Math.round(h*9/16);ch=h}if(ch>h){ch=h;cw=Math.round(h*tw/th)}const c=document.createElement('canvas');c.width=cw;c.height=ch;c.getContext('2d').drawImage(i,Math.round((w-cw)/2),Math.round((h-ch)*.42),cw,ch,0,0,cw,ch);return c.toDataURL('image/jpeg',.92)}
 async function makeImage(prompt,refs,label,square){
  const sq=square||P.o.sq;
@@ -368,9 +376,10 @@ async function makeCharacters(){
   let url=null,probs=[];
   for(let t=0;t<=1+(+P.o.retries);t++){
    const pr=charSheetPrompt(c)+(probs.length?' Avoid: '+probs.join('; ')+'.':'');
-   url=await makeImage(pr,null,'personnage '+c.name);
+   try{url=await makeImage(pr,null,'personnage '+c.name)}catch(e){if(e.message==='Arrêt')throw e;log('✗ personnage '+c.name+' : '+e.message.slice(0,80)+' — on continue sans image de référence');url=null;break}
    const q=await vision('Check this character reference image. It must show exactly ONE person/character matching: "'+c.look+'". Fail if there are several characters, deformed face or hands, extra limbs, text, or a style mismatch ('+P.bible.style+'). Also fail if there are two heads, a duplicated, cloned, ghosted or mirrored person or body part, a doubled face, or the same person appearing twice.',[url],'contrôle '+c.name);
    if(!q||q.ok)break;probs=q.problems.slice(0,3);if(t>=+P.o.retries)break}
+  if(!url){c.has=true;save();renderBible();continue}
   await dbPut('char:'+c.id,url);c.th=await thumb(url);
   /* 2e angle : portrait de trois quarts (ancrage du visage) */
   try{const fu=await makeImage(P.bible.style+'. Close-up portrait, head and shoulders, three-quarter view of the same character: '+c.look+'. Plain light grey background, one single person. '+NEG_IMG,[url],'visage '+c.name,true);await dbPut('face:'+c.id,fu)}catch(e){if(e.message==='Arrêt')throw e}
@@ -393,7 +402,7 @@ async function keyframe(sc){
  refs.splice(4);
  let probs=[],url=null;
  for(let t=0;t<=(+P.o.retries);t++){
-  sc.kp=keyPrompt(sc,probs);url=await makeImage(sc.kp,refs,'image scène '+sc.n);
+  sc.kp=keyPrompt(sc,probs);try{url=await makeImage(sc.kp,refs,'image scène '+sc.n)}catch(e){if(e.message==='Arrêt')throw e;log('image scène '+sc.n+' : échec avec références ('+e.message.slice(0,60)+'), nouvel essai sans référence');url=await makeImage(sc.kp,null,'image scène '+sc.n+' (sans référence)')}
   const cs=scChars(sc);
   const q=await vision('Inspect this animation frame. Expected: '+cs.map(c=>c.name+' ('+c.look+')').join(' and ')+'; location: '+loc(sc).look+'; action: '+sc.action+'. Fail if: wrong number of people, the characters do not match their descriptions, deformed face/hands/body, extra limbs or fingers, text or watermark, objects melting or floating, or the action is not set up. Also fail if there are two heads, a duplicated, cloned, ghosted or mirrored person or body part, a doubled face, or the same person appearing twice.',[url],'contrôle image '+sc.n);
   if(!q||q.ok){sc.warn='';break}
@@ -448,9 +457,9 @@ async function produce(sc,i,prevPromise){
  let probs=[];
  for(let t=0;t<=(+P.o.retries);t++){
   sc.vidState='proc';sc.tries=t+1;render();
-  const id=await enqueue(()=>createVideo(sc,start));
-  let url,blob=null;try{url=await pollVideo(sc,id,true)}catch(e){if(e.message==='Arrêt')throw e;sc.err=e.message;if(t>=(+P.o.retries)){sc.vidState='fail';render();return}continue}
-  try{blob=await fetchBlob(url)}catch(e){blob=null}
+  log('Scène '+sc.n+' : envoi de la vidéo (essai '+(t+1)+')');const id=await enqueue(()=>createVideo(sc,start));log('Scène '+sc.n+' : vidéo lancée (id '+id+')');
+  let url,blob=null;try{url=await pollVideo(sc,id,true)}catch(e){if(e.message==='Arrêt')throw e;sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);if(t>=(+P.o.retries)){sc.vidState='fail';render();return}continue}
+  log('Scène '+sc.n+' : vidéo reçue');try{blob=await fetchBlob(url)}catch(e){blob=null}
   if(!blob){/* le navigateur n'a pas le droit de copier la vidéo (CORS) : on garde le lien, la vidéo reste lisible et téléchargeable */sc.url=url;sc.vidState='done';sc.err='';sc.warn='lien direct (pas de contrôle qualité automatique)';if(!S.remoteWarned){S.remoteWarned=true;toast('Les vidéos ne peuvent pas être copiées dans le navigateur : elles restent disponibles par lien (bouton ⬇ sur chaque scène). Pas de ZIP automatique.','warn',9000)}save();render();return}
   sc.url='';const fr=await frames(blob);
   const q=fr.length?await vision((usedLast?'Image 0 is the end of the PREVIOUS shot: the first frame of this clip must continue it seamlessly (same place, light, camera, positions). ':'')+'The following images are 3 frames (start, middle, end) of ONE video clip. Expected: '+scChars(sc).map(c=>c.name+' ('+c.look+')').join(' and ')+'; action: '+sc.action+'. Fail if: a character changes face/outfit/identity between frames, extra or missing people appear, deformed or melting faces/hands/limbs, objects or creatures appear that are not in the action, text/watermark, or the action is not performed, or there are two heads / a duplicated, cloned or mirrored person / a doubled face.',(usedLast?[start]:[]).concat(fr),'contrôle clip '+sc.n):null;
@@ -476,7 +485,7 @@ document.addEventListener('click',async e=>{if(S.running)return;
 function readOpts(){return{genre:selGenre,idea:$('idea').value.trim(),n:+$('nClips').value,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:$('quota').value,mode:$('mode').value,sq:$('optSq').checked}}
 async function run(){
  if(S.running)return;if(!getKey()){toast('Colle ta clé API Agnes en haut de la page, puis touche « Enregistrer la clé »','error',5000);$('apiPanel').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('apiKeyInput').focus(),500);return}
- S.running=true;S.stop=false;await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
+S.running=true;S.stop=false;showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{
   if(!P||!P.scenes||!P.scenes.length){
    P={id:Date.now(),o:readOpts()};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
@@ -484,7 +493,8 @@ async function run(){
    if($('optReview').checked){phase('story','Scénario prêt : relis et corrige les scènes, puis touche « Lancer la production ».',.35);toast('Scénario prêt ✓ Relis-le puis lance la production');return}}
   else{P.o.quota=$('quota').value;P.o.retries=$('retries').value}
   renderBible();render();
-  await makeCharacters();
+  try{await makeCharacters()}catch(e){if(e.message==='Arrêt')throw e;log('✗ personnages/lieux : '+e.message+' — on continue');}
+  log('Début des clips ('+P.scenes.length+' scènes)');
   if(P.o.mode==='sb'){
    const miss=[];for(const sc of P.scenes){if(!(await dbGet('start:'+sc.n))||!sc.thumb)miss.push(sc)}
    if(miss.length){await storyboard();render();phase('keys','Storyboard prêt ✓ Regarde les images, corrige ce qui ne va pas, puis touche « Animer les images ».',.6);toast('Storyboard prêt ✓ Vérifie que l\'histoire se suit, puis anime','',6000);return}}
@@ -493,7 +503,7 @@ async function run(){
   for(let i=0;i<P.scenes.length;i++){const sc=P.scenes[i];if(done(sc))continue;
    while(active.size>=2&&!S.stop)await Promise.race(active);
    if(S.stop)break;
-   const p=produce(sc,i,prev).catch(e=>{if(e.message==='Arrêt'||e.message==='QUOTA'){if(!fatal||e.message==='QUOTA')fatal=e;S.stop=true}else{sc.vidState='fail';sc.err=e.message;render()}});
+   const p=produce(sc,i,prev).catch(e=>{if(e.message==='Arrêt'||e.message==='QUOTA'){if(!fatal||e.message==='QUOTA')fatal=e;S.stop=true}else{sc.vidState='fail';sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);showErr('Scène '+sc.n+' : '+e.message);render()}});
    active.add(p);p.then(()=>active.delete(p));prev=p}
   await Promise.all([...active]);
   if(fatal)throw fatal;
@@ -501,7 +511,7 @@ async function run(){
   toast(dn===P.scenes.length?'Histoire terminée ✓':dn+' / '+P.scenes.length+' clips prêts');
  }catch(e){
   if(e.message==='QUOTA')toast('Limite de '+P.o.quota+' vidéos atteinte pour aujourd\'hui. Reviens demain : l\'histoire reprendra là où elle s\'est arrêtée.','warn',9000);
-  else if(e.message==='Arrêt')toast('Arrêté — tu peux reprendre','warn');else toast('Erreur : '+e.message.slice(0,120),'error',6000)}
+  else if(e.message==='Arrêt')toast('Arrêté — tu peux reprendre','warn');else{toast('Erreur : '+e.message.slice(0,120),'error',6000);showErr(e.message);log('✗ ERREUR : '+e.message)}}
  finally{S.running=false;S.anim=false;window.onbeforeunload=null;stopWake();setStatus(null);save();upd();render()}}
 
 /* ───────── Lecture / export ───────── */
@@ -585,8 +595,14 @@ async function assemble(){
  const blob=new Blob(chunks,{type:mime.split(';')[0]});const url=URL.createObjectURL(blob);const v=$('asmVid');v.style.display='block';v.src=url;const a=$('asmDl');a.style.display='block';a.href=url;a.download='histoire-finale.'+(mime.indexOf('mp4')>-1?'mp4':'webm');
  $('asmInfo').textContent='Vidéo finale prête ✓ ('+(blob.size>1e6?(blob.size/1e6).toFixed(1)+' Mo':Math.round(blob.size/1e3)+' Ko')+')';$('btnAsm').disabled=false;S.running=false;stopWake();try{ac.close()}catch(e){}toast('Vidéo finale prête ✓')}
 $('btnAsm').onclick=()=>{if(!S.running)assemble()};
+$('btnTest').onclick=async()=>{if(S.running)return;if(!getKey()){toast('Enregistre d\'abord ta clé','error');return}S.running=true;S.stop=false;P=P||{o:readOpts()};showErr('');
+ try{log('TEST 1/2 : texte…');const d=await chat('[TASK:TEST] Reply only with JSON {"ok":true}','ping','test texte');log('✓ texte OK');
+  log('TEST 2/2 : image (1 seule)…');const u=await makeImage('A simple red apple on a white table, studio photo','','test image',true);log('✓ image OK ('+(u&&u.slice(0,5)==='data:'?'copiable':'lien distant — le navigateur ne pourra pas la copier')+')');
+  toast('Test réussi ✓ La clé, le texte et les images fonctionnent','',6000);log('Les vidéos ne sont pas testées (elles comptent dans tes 50 par jour).')}
+ catch(e){log('✗ TEST ÉCHOUÉ : '+e.message);showErr('Test échoué : '+e.message);toast('Test échoué : '+e.message.slice(0,100),'error',7000)}
+ finally{S.running=false;upd()}};
 /* ───────── Rapport technique ───────── */
-function report(){const r={app:'story-studio v2',date:new Date().toISOString(),flags:{refOK:S.refOK,refForm:S.refForm,qaVision:S.qaVision},usageToday:usage(),opts:P&&P.o,bible:P&&P.bible,reviewNote:P&&P.reviewNote,scenes:P&&P.scenes.map(s=>({n:s.n,loc:s.loc,chars:s.chars,action:s.action,line:s.line,link:s.link,img:s.imgState,vid:s.vidState,tries:s.tries,err:s.err,warn:s.warn,keyPrompt:s.kp,videoPrompt:s.vp}))};return JSON.stringify(r,null,1)}
+function report(){const r={log:LOG.slice(-80),app:'story-studio v4',date:new Date().toISOString(),flags:{refOK:S.refOK,refForm:S.refForm,qaVision:S.qaVision},usageToday:usage(),opts:P&&P.o,bible:P&&P.bible,reviewNote:P&&P.reviewNote,scenes:P&&P.scenes.map(s=>({n:s.n,loc:s.loc,chars:s.chars,action:s.action,line:s.line,link:s.link,img:s.imgState,vid:s.vidState,tries:s.tries,err:s.err,warn:s.warn,keyPrompt:s.kp,videoPrompt:s.vp}))};return JSON.stringify(r,null,1)}
 $('btnReport').onclick=async()=>{const t=report();const b=$('reportBox');b.style.display='block';b.value=t;b.select();try{await navigator.clipboard.writeText(t);toast('Rapport copié ✓ Colle-le dans la conversation')}catch(e){toast('Sélectionne tout le texte du cadre et copie-le','warn')}};
 /* ───────── Interface ───────── */
 let selGenre='drama';
