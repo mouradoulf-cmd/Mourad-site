@@ -181,6 +181,11 @@ const LANGN={th:'Thai',fr:'French',en:'English'};
 
 /* ───────── Types d'histoires ───────── */
 const GENRES=[
+ {id:'pixarTh',e:'🎬',n:'Film d\'animation 3D style Pixar / Disney (série longue)',d:'Animation 3D soignée, personnages mignons, lumière de cinéma, histoire sur plusieurs jours',
+  style:'high-end 3D animated feature film look in the style of Pixar and Disney, stylized cute characters with large expressive eyes and smooth appealing shapes, soft subsurface skin and fur shading, rich cinematic lighting with warm golden-hour glow and gentle rim light, shallow depth of field, polished detailed environments, vibrant harmonious color palette, clean render, no noise, not photorealistic, no uncanny faces, correct hands with five fingers',
+  tone:'warm, funny, heartfelt, adventurous, safe for children, a few gentle jokes and one small life lesson, respectful of Thai culture and settings',
+  plan:'A long family animated adventure told in parts: introduce lovable heroes and their goal; each part has its own mini-challenge, a funny moment and ends on a hook; allies and a gentle rival appear; obstacles grow; a big challenge; an emotional, uplifting resolution.',
+  rules:'1 or 2 characters per shot, simple clear everyday actions (walk, run, climb, paddle, look, point, hug, laugh), slow smooth camera, characters large in frame with generous margins, clean uncluttered backgrounds. No scary content, no violence. Keep at most 3 main characters (animals or kids, very distinct silhouettes and colors) and a few locations so everything stays consistent.',n_chars:3},
  {id:'cartoonTh',e:'🐘',n:'Dessin animé thaï (série longue)',d:'Aventure pour enfants en Thaïlande, histoire qui continue sur plusieurs jours',
   style:'bright colorful 2D children cartoon, soft rounded shapes, clean outlines, flat pastel colors with warm tropical light, Thai village, river, temple and jungle settings, consistent character design, simple clean backgrounds',
   tone:'warm, funny, adventurous, kind, safe for children, small moral lessons along the way, respectful of Thai culture',
@@ -244,6 +249,7 @@ const GENRES=[
 ];
 /* ───────── Mémoire des histoires + graines de variété ───────── */
 const SEEDS={
+ pixarTh:['a shy baby elephant, a clever little monkey and a brave village girl who journey along the river to bring a lost lantern back to the temple festival','a young Thai boy and his funny talking tuk-tuk who must win the big village race to save the family noodle shop','a tiny turtle and a talkative crab who sail to find the legendary glowing pearl of the lagoon','three kids and a grumpy but kind water buffalo who rebuild the floating market after a storm'],
  cartoonTh:['three village kids who follow a river to return a lost baby elephant to its herd','a little girl and her pet monkey who search for the missing lanterns before the festival','two brothers and a talking tuk-tuk crossing Thailand to bring a gift to their grandmother','a young fisherman, a turtle and a crab looking for a lost pearl','kids who rebuild a village market washed away by a storm','a tiny dragon-kite that must find its way back to the sky festival'],
  drama:['two rival chefs who must share one tiny restaurant kitchen','a night-shift nurse and a musician who meets her on the same train every night','childhood friends reunited at a wedding where one of them is the groom\'s brother','a translator and a famous actor stuck together during a storm in a mountain hotel','a florist whose ex returns to buy flowers for another woman','two strangers who swap phones by mistake and start answering each other\'s messages','a widowed bookshop owner and a young architect hired to rebuild her shop'],
  animeLove:['a shy student and the new transfer student who shares her umbrella','two members of the school photography club who both love the same hidden spot','a rival pair of kendo club captains forced to organize the festival together','a girl who leaves letters in a library book and a boy who answers them','childhood friends separated by a move who meet again at the cherry blossom festival','two cooks of the school cafeteria festival stall'],
@@ -692,7 +698,7 @@ $('btnTest').onclick=async()=>{if(S.running)return;if(!getKey()){toast('Enregist
 function report(){const r={log:LOG.slice(-80),app:'story-studio v4',date:new Date().toISOString(),flags:{refOK:S.refOK,refForm:S.refForm,qaVision:S.qaVision},usageToday:usage(),opts:P&&P.o,bible:P&&P.bible,reviewNote:P&&P.reviewNote,scenes:P&&P.scenes.map(s=>({n:s.n,loc:s.loc,chars:s.chars,action:s.action,line:s.line,link:s.link,img:s.imgState,vid:s.vidState,tries:s.tries,err:s.err,warn:s.warn,keyPrompt:s.kp,videoPrompt:s.vp}))};return JSON.stringify(r,null,1)}
 $('btnReport').onclick=async()=>{const t=report();const b=$('reportBox');b.style.display='block';b.value=t;b.select();try{await navigator.clipboard.writeText(t);toast('Rapport copié ✓ Colle-le dans la conversation')}catch(e){toast('Sélectionne tout le texte du cadre et copie-le','warn')}};
 /* ───────── Interface ───────── */
-let selGenre='cartoonTh';
+let selGenre='pixarTh';
 function drawGenres(){$('genres').innerHTML=GENRES.map(g=>'<div class="genre'+(g.id===selGenre?' sel':'')+'" data-g="'+g.id+'"><b>'+g.e+' '+esc(g.n)+'</b><span>'+esc(g.d)+'</span></div>').join('')}
 $('genres').addEventListener('click',e=>{const g=e.target.closest('[data-g]');if(!g||S.running)return;selGenre=g.dataset.g;drawGenres()});
 function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('apiLine').classList.toggle('ok',has);$('apiLine').textContent=has?'Clé active · '+getKey().slice(0,7)+'…'+getKey().slice(-4):'Aucune clé enregistrée';
