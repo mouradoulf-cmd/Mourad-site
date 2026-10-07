@@ -303,6 +303,13 @@ f3a:["Outils gratuits pour démarrer", "Free tools to get started", "เคร�
 f3b:["Templates et scripts prêts à copier", "Templates and scripts ready to copy", "เทมเพลตและสคริปต์พร้อมคัดลอก"],
 f3c:["Méthode pas à pas, en vidéo", "Step-by-step method, on video", "วิธีทีละขั้น ผ่านวิดีโอ"],
 f4a:["Choisis ton parcours", "Choose your path", "เลือกเส้นทางของคุณ"],
+hw_t:["Comment ça marche", "How it works", "ทำงานอย่างไร"],
+hw1t:["Tu choisis ton parcours", "You choose your path", "คุณเลือกเส้นทาง"],
+hw1d:["Sites web, vidéos IA, ou les deux. Ou un appel avec moi pour être guidé.", "Websites, AI videos, or both. Or a call with me to be guided.", "เว็บไซต์ วิดีโอ AI หรือทั้งสอง หรือคอลกับฉันเพื่อให้ช่วยนำทาง"],
+hw2t:["Tu reçois ton accès", "You get your access", "คุณได้รับสิทธิ์เข้าถึง"],
+hw2d:["Après confirmation du paiement, je t'envoie le code de l'espace membres sur WhatsApp.", "After payment is confirmed, I send you the members-area code on WhatsApp.", "หลังยืนยันการชำระเงิน ฉันส่งรหัสเข้าสู่พื้นที่สมาชิกให้ทาง WhatsApp"],
+hw3t:["Tu avances pas à pas", "You move step by step", "คุณก้าวไปทีละขั้น"],
+hw3d:["Une vidéo et un plan d'action par module, des templates à copier, et moi en cas de blocage.", "A video and action plan per module, templates to copy, and me if you get stuck.", "วิดีโอและแผนปฏิบัติการทุกโมดูล เทมเพลตให้คัดลอก และฉันช่วยเมื่อคุณติดขัด"],
 lg_back:["← Retour","← Back","← กลับ"]
 };
 var LANGS=['fr','en','th'],IDX={fr:0,en:1,th:2};

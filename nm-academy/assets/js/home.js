@@ -42,6 +42,11 @@ function sfx(n){try{window.SFX&&SFX[n]()}catch(e){}}
  requestAnimationFrame(frame);if(reduce)frame(performance.now());
 })();
 
+/* révélations au scroll (le masquage ne s'active que si l'observateur existe) */
+(function(){if(!('IntersectionObserver' in window)||reduce)return;
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+ $$('.path,.cb,.why article,.vf,.plan,.coach,.steps3 article,.faq details,main h2,.gf,.endcta').forEach(function(el,i){el.classList.add('rv','pre');if(el.parentElement){var k=[].indexOf.call(el.parentElement.children,el);if(k===1)el.classList.add('d1');if(k>=2)el.classList.add('d2')}io.observe(el)})})();
+
 /* barre de progression + sticky + nav */
 var sp=$('#sp'),stk=$('#stk'),nav=$('#nav'),lastY=0;
 addEventListener('scroll',function(){var y=scrollY,h=D.documentElement;sp.style.width=(y/(h.scrollHeight-innerHeight||1)*100)+'%';if(stk)stk.classList.toggle('show',y>700);nav.style.transform=(y>lastY&&y>400)?'translateY(-100%)':'none';lastY=y},{passive:true});

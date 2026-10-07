@@ -1,0 +1,60 @@
+/* NM Academy — couche premium (Ethereal Glass + Bento asymétrique). Chargée en dernier : surcharge academy.css / simple.css */
+:root{--ease:cubic-bezier(.32,.72,0,1);--hair:rgba(255,255,255,.09)}
+body::after{content:"";position:fixed;inset:0;z-index:79;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* nav : pilule flottante */
+.nav{top:14px;left:0;right:0;margin-inline:auto;width:min(1120px,calc(100% - 24px));padding:9px 12px 9px 22px;border-radius:99px;border:1px solid var(--hair);background:rgba(8,10,22,.62);backdrop-filter:blur(22px);box-shadow:0 18px 50px -20px rgba(0,0,0,.7),inset 0 1px 1px rgba(255,255,255,.08);transition:transform .7s var(--ease)}
+.nav .links{margin-left:24px}
+.lang{border-color:var(--hair)}
+
+/* boutons : pilule + flèche dans sa bulle */
+.btn{border-radius:99px;transition:transform .6s var(--ease),box-shadow .6s var(--ease),background .4s var(--ease),border-color .4s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn.pri:not(.sm)::after,.btn.ghost.big::after{content:"↗";flex:none;width:30px;height:30px;margin:-6px -14px -6px 4px;border-radius:50%;display:grid;place-items:center;font-size:.95rem;background:rgba(4,5,12,.16);transition:transform .6s var(--ease)}
+.btn.ghost.big::after{background:rgba(255,255,255,.1)}
+.btn.pri:not(.sm):hover::after,.btn.ghost.big:hover::after{transform:translate(3px,-2px) scale(1.08)}
+.btn.pri.full::after{margin-right:-14px}
+
+/* cartes : double enveloppe (coque + noyau) */
+.card,.why article,.cb,.faq details,.vf video{border:1px solid var(--hair);box-shadow:0 0 0 6px rgba(255,255,255,.025),0 0 0 7px rgba(255,255,255,.06),inset 0 1px 1px rgba(255,255,255,.1),0 40px 80px -50px rgba(0,0,0,.8)}
+.card,.why article,.cb{border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02))}
+.faq details{border-radius:20px;box-shadow:0 0 0 4px rgba(255,255,255,.02),0 0 0 5px rgba(255,255,255,.05),inset 0 1px 1px rgba(255,255,255,.08)}
+.card,.path,.plan{transition:transform .7s var(--ease),border-color .5s var(--ease)}
+.plan.best{box-shadow:0 0 90px rgba(0,229,255,.16),0 0 0 6px rgba(0,229,255,.05)}
+
+/* rythme : respiration généreuse */
+.sec{padding:clamp(80px,12vw,150px) 0}
+.hero2{padding-top:clamp(110px,14vw,150px)}
+.hero2 h1{font-size:clamp(2.4rem,6.6vw,5rem)}
+#why h2,#videos h2,#price h2,#faq h2,#how h2{margin-bottom:clamp(26px,4vw,48px)}
+#price .lead{margin-top:-24px}
+.tag{border-radius:99px;letter-spacing:.2em;font-size:.66rem;backdrop-filter:none}
+
+/* bento asymétrique pour les 6 raisons */
+.why{grid-template-columns:repeat(12,1fr);gap:20px}
+.why article{grid-column:span 4;padding:30px}
+.why article:nth-child(1){grid-column:span 7;background:linear-gradient(150deg,rgba(0,229,255,.1),rgba(123,92,255,.07) 60%,rgba(255,255,255,.02))}
+.why article:nth-child(1) h3{font-size:1.5rem}
+.why article:nth-child(2){grid-column:span 5}
+.why article:nth-child(6){grid-column:span 12;border-color:rgba(182,255,59,.35);background:linear-gradient(120deg,rgba(182,255,59,.09),rgba(0,229,255,.03))}
+.why i{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--hair);background:rgba(255,255,255,.04)}
+
+/* comment ça marche */
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.steps3 article{counter-increment:s;padding:32px 28px;display:grid;gap:10px;align-content:start;position:relative;overflow:hidden}
+.steps3 article::before{content:counter(s,decimal-leading-zero);font:800 4.2rem/1 var(--display);letter-spacing:-.05em;background:linear-gradient(180deg,rgba(0,229,255,.55),rgba(0,229,255,0));-webkit-background-clip:text;background-clip:text;color:transparent}
+.steps3 h3{font:700 1.2rem var(--display)}.steps3 p{color:var(--mute);font-size:.95rem}
+
+/* révélations au scroll (IntersectionObserver) */
+.js .rv.pre{opacity:0;transform:translateY(40px) scale(.985);filter:blur(10px)}
+.js .rv{transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+.d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}
+
+@media(max-width:900px){
+ .why{grid-template-columns:1fr}.why article,.why article:nth-child(n){grid-column:auto}
+ .steps3{grid-template-columns:1fr}
+ .nav{padding-left:16px;top:10px}
+ .card,.why article,.cb{box-shadow:0 0 0 4px rgba(255,255,255,.025),0 0 0 5px rgba(255,255,255,.06),inset 0 1px 1px rgba(255,255,255,.1)}
+}
+@media(prefers-reduced-motion:reduce){.js .rv.pre{opacity:1;transform:none;filter:none}}
