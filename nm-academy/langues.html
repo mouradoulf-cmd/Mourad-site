@@ -17,7 +17,10 @@ body{background:radial-gradient(80% 60% at 30% 20%,#2a1d6b,transparent 70%),radi
 #gl{position:fixed;inset:0;width:100%;height:100%;z-index:0}
 .veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(90% 70% at 50% 45%,transparent 40%,rgba(5,7,20,.55))}
 .grain{position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-main{position:relative;z-index:2;min-height:100svh;display:grid;align-content:center;justify-items:center;gap:clamp(26px,5vh,48px);padding:max(28px,env(safe-area-inset-top)) 20px max(28px,env(safe-area-inset-bottom));text-align:center}
+main{perspective:1300px;perspective-origin:50% 45%;position:relative;z-index:2;min-height:100svh;display:grid;align-content:center;justify-items:center;gap:clamp(26px,5vh,48px);padding:max(28px,env(safe-area-inset-top)) 20px max(28px,env(safe-area-inset-bottom));text-align:center}
+.stage{display:grid;justify-items:center;gap:clamp(26px,5vh,48px);width:100%;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
+.tag{translate:0 0 30px}h1{translate:0 0 110px}.hello{translate:0 0 50px}.cards{transform-style:preserve-3d;translate:0 0 60px}.foot{translate:0 0 20px}
+h1{text-shadow:0 30px 60px rgba(90,70,255,.35)}
 .in{opacity:0;transform:translateY(26px) scale(.985);filter:blur(12px);animation:in 1.4s var(--ease) forwards;animation-delay:var(--d,0s)}
 @keyframes in{to{opacity:1;transform:none;filter:none}}
 .tag{font-size:.74rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#cdd4f5;display:inline-flex;align-items:center;gap:14px}
@@ -64,7 +67,7 @@ main.out{transform:scale(1.08);opacity:0;filter:blur(8px);transition:all .9s cub
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
 <div class="veil"></div><div class="grain"></div>
-<main id="m">
+<main id="m"><div class="stage" id="st">
  <div class="tag in" style="--d:.2s">Sites web · Vidéo IA</div>
  <h1 class="in" style="--d:.45s" aria-label="NM Academy">NM <b>Academy</b></h1>
  <div class="hello in" style="--d:.8s" id="hello" aria-hidden="true"><span class="on">Choisis ta langue</span><span>Choose your language</span><span>เลือกภาษาของคุณ</span></div>
@@ -74,7 +77,7 @@ main.out{transform:scale(1.08);opacity:0;filter:blur(8px);transition:all .9s cub
   <a class="card th in" style="--d:1.35s;--b:-4s" href="vente.html?lang=th" data-c="#ffb84a"><span class="orb">ไทย</span><span class="name">ภาษาไทย</span><span class="go"><span>เข้าสู่เว็บไซต์</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
  </nav>
  <p class="foot in" style="--d:1.7s">NM Studio · Une compétence réelle, pas du rêve.</p>
-</main>
+</div></main>
 <div id="fade"></div>
 <script>
 (function(){
@@ -125,21 +128,14 @@ main.out{transform:scale(1.08);opacity:0;filter:blur(8px);transition:all .9s cub
  'col=mix(col,c3,smoothstep(.45,.95,w.x)*.55);'+
  'col=mix(col,c4,smoothstep(.55,1.,w.y*f*1.6)*.35);'+
  'float rb=smoothstep(.0,.03,.03-abs(f-.52+sin(uv.x*1.6+T*.08)*.04));'+
- 'col+=rb*vec3(.35,.5,.9)*.18;return col;}'+
+ 'col+=rb*vec3(.35,.5,.9)*.18;'+
+ 'vec2 q2=uv*2.1+(M-.5)*.75+vec2(t*1.8,t*.7);float nf=fbm(q2+fbm(q2*.7+t));'+
+ 'float r2=smoothstep(.05,.0,abs(nf-.5));col+=r2*mix(vec3(.45,.65,1.),K,.5)*.2;'+
+ 'vec2 q3=uv*3.4+(M-.5)*1.3+vec2(-t*2.6,t);float n3=fbm(q3+fbm(q3*.6));'+
+ 'col+=smoothstep(.04,.0,abs(n3-.52))*vec3(.8,.85,1.)*.1;'+
+ 'col+=vec3(.5,.6,1.)*pow(max(0.,1.-abs(uv.x*.9+uv.y*.5-sin(T*.05)*.5)*2.2),3.)*.06;return col;}'+
  'void main(){vec2 uv=(gl_FragCoord.xy-.5*R)/min(R.x,R.y);'+
  'vec3 col=bg(uv);'+
- // floating glass sphere: refraction, fresnel rim, soft specular, slow drift
- 'vec2 c=vec2(sin(T*.07)*.05+(M.x-.5)*.08,.06+cos(T*.09)*.03+(M.y-.5)*.05);float rad=.34;'+
- 'vec2 d=uv-c;float r=length(d)/rad;'+
- 'if(r<1.){float z=sqrt(1.-r*r);vec3 nr=vec3(d/rad,z);'+
- 'vec2 off=nr.xy*.16*(1.-z*.4);'+
- 'vec3 refr=vec3(bg(uv-off*1.0).r,bg(uv-off*1.08).g,bg(uv-off*1.16).b);'+
- 'float fr=pow(1.-z,2.6);'+
- 'vec3 L=normalize(vec3(-.5,.65,.6));float sp=pow(max(dot(reflect(-L,nr),vec3(0,0,1)),0.),48.);'+
- 'float sp2=pow(max(dot(nr,normalize(vec3(.4,-.5,.7))),0.),14.)*.12;'+
- 'vec3 g=refr*1.08+vec3(.55,.7,1.)*fr*.55+vec3(1.)*sp*.55+vec3(.6,.8,1.)*sp2;'+
- 'col=mix(col,g,smoothstep(1.,.985,r)*.92);}'+
- 'col+=smoothstep(1.06,1.,r)*smoothstep(.96,1.,r)*vec3(.5,.62,1.)*.12;'+
  'col+=B*vec3(.5,.55,.9)*smoothstep(1.,0.,length(uv));'+
  'col*=1.-.35*dot(uv,uv);'+
  'gl_FragColor=vec4(col,1.);}';
@@ -166,6 +162,10 @@ main.out{transform:scale(1.08);opacity:0;filter:blur(8px);transition:all .9s cub
   gl.drawArrays(gl.TRIANGLES,0,3);
   if(!calm)requestAnimationFrame(fr);
  }
+ var stg=document.getElementById('st'),ex=0,ey=0,tx=0,ty=0,cl=matchMedia('(prefers-reduced-motion:reduce)').matches,pt=0;
+ addEventListener('pointermove',function(e){tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2;pt=performance.now()},{passive:true});
+ addEventListener('deviceorientation',function(e){if(e.gamma==null)return;tx=Math.max(-1,Math.min(1,e.gamma/25));ty=Math.max(-1,Math.min(1,(e.beta-45)/25));pt=performance.now()},{passive:true});
+ (function sw(now){if(!cl){var idle=now-pt>2500,T=now/1000;var gx=idle?Math.sin(T*.35)*.55:tx,gy=idle?Math.cos(T*.28)*.4:ty;ex+=(gx-ex)*.04;ey+=(gy-ey)*.04;stg.style.setProperty('--ry',(ex*9)+'deg');stg.style.setProperty('--rx',(-ey*6)+'deg');requestAnimationFrame(sw)}})(performance.now());
  window.__tint=function(a){kt=a||[.2,.3,.8]};
  requestAnimationFrame(fr);
 })();
