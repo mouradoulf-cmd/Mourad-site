@@ -328,3 +328,6 @@ footer p+p{margin-top:8px}footer a{color:var(--mute)}
 .vframe{position:relative}
 .vopen{position:absolute;inset:8px;border-radius:27px;display:grid;place-items:center;background:rgba(7,10,36,.55);color:#fff;font-size:3rem;text-decoration:none}
 .vopen[hidden]{display:none}
+
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0}
+.chips li{font:700 .82rem var(--sans);padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff}

@@ -38,10 +38,13 @@ function renderProof(){var box=$('#temoins'),real=CFG.TESTIMONIALS||[],l=I18N.la
 function splitH1(){var h=$('#h1');if(!h)return;h.classList.remove('go','fade');
  if(reduce)return;
  if(I18N.lang==='th'||!HAS_IO){h.classList.add('fade');requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('go')})});return}
- var out=[],i=0;
- [].forEach.call(h.childNodes,function(n){var hl=n.nodeType===1&&n.classList.contains('hl'),txt=n.textContent;
-  txt.split(/\s+/).filter(Boolean).forEach(function(w){out.push('<span class="w"><span class="wi'+(hl?' hl':'')+'" style="transition-delay:'+(i++*55)+'ms">'+esc(w)+'</span></span>')})});
- h.innerHTML=out.join(' ');
+ var toks=[],i=0,gap=false;
+ [].forEach.call(h.childNodes,function(n){var hl=n.nodeType===1&&n.classList.contains('hl'),txt=n.textContent,parts=txt.split(/\s+/).filter(Boolean);
+  parts.forEach(function(w,k){var sp=k===0?(toks.length===0?false:(gap||/^\s/.test(txt))):true;toks.push({w:w,hl:hl,sp:sp,d:i++*55})});
+  if(parts.length)gap=/\s$/.test(txt)});
+ var out=toks.map(function(t){return(t.sp?' ':'')+'<span class="w"><span class="wi'+(t.hl?' hl':'')+'" style="transition-delay:'+t.d+'ms">'+esc(t.w)+'</span></span>'});
+ h.innerHTML=out.join('');
+
  requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('go')})})}
 
 /* ---------- vitrine : ordinateur + téléphone, 2 vrais sites thaïlandais qui défilent lentement ---------- */
