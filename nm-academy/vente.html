@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NM Academy Vente</title>
+<meta name="description" content="Un plan en 6 étapes pour créer ton premier site pro et ta première vidéo IA, et trouver tes premiers clients. Satisfait ou remboursé sous 14 jours.">
+<meta name="theme-color" content="#faf8f4">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Réglages visuels : une seule couleur d'action ===== */
+:root{
+ --bg:#faf8f4;--bg2:#f3efe8;--ink:#15181d;--mute:#5d646e;--line:#e4dfd5;--card:#fff;
+ --accent:#1b5e47;--accent-d:#134536;--accent-soft:rgba(27,94,71,.08);
+ --serif:'Fraunces',Georgia,'Times New Roman',serif;--sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+ --ease:cubic-bezier(.32,.72,0,1)
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 1.125rem/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{width:min(720px,100% - 40px);margin-inline:auto}
+section{padding:clamp(72px,14vw,140px) 0;position:relative}
+section.alt{background:var(--bg2)}
+.eyebrow{font:600 .78rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.12}
+h1{font-size:clamp(2.15rem,8.4vw,4.3rem)}
+h2{font-size:clamp(1.8rem,6.2vw,3rem);margin-bottom:clamp(28px,5vw,44px)}
+h3{font-size:1.35rem;margin-bottom:8px}
+p+p{margin-top:14px}
+.sub{font-size:clamp(1.1rem,3.6vw,1.35rem);color:var(--mute);margin-top:22px;max-width:34em}
+
+/* bouton d'action : gros, un seul style */
+.cta{display:flex;align-items:center;justify-content:center;gap:12px;min-height:62px;padding:0 34px;border-radius:99px;background:var(--accent);color:#fff;font:700 1.125rem var(--sans);text-decoration:none;border:0;cursor:pointer;width:100%;box-shadow:0 14px 34px -14px rgba(27,94,71,.65);transition:transform .5s var(--ease),background .3s,box-shadow .5s var(--ease)}
+.cta:hover{background:var(--accent-d);transform:translateY(-2px)}
+.cta:active{transform:scale(.98)}
+.cta span{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.18);margin-right:-14px;transition:transform .5s var(--ease)}
+.cta:hover span{transform:translateX(3px)}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+@media(min-width:640px){.cta{display:inline-flex;width:auto;min-width:340px}.price-box .cta{display:flex;width:100%}.final .cta{display:inline-flex}}
+.note{font-size:.95rem;color:var(--mute);margin-top:16px}
+
+/* 1. héro */
+.hero{min-height:100svh;display:grid;align-items:center;padding:56px 0 64px;overflow:hidden}
+.hero .wrap{position:relative;z-index:2}
+.hero .cta{margin-top:34px}
+.proof{display:flex;gap:10px;align-items:center;margin-top:22px;font-size:.98rem;color:var(--mute)}
+.proof i{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+
+/* objet 3D : plaques empilées qui tournent lentement (CSS pur, aucune librairie) */
+.scene{position:absolute;right:-70px;top:6%;width:340px;height:340px;perspective:1100px;z-index:1;opacity:.55;pointer-events:none;display:none}
+.supports3d .scene{display:block}
+.stack{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(calc(58deg + var(--sy,0)*10deg)) rotateZ(0deg);animation:spin 70s linear infinite;will-change:transform}
+.stack.off{animation-play-state:paused}
+.plate{position:absolute;left:50%;top:50%;width:230px;height:230px;margin:-115px 0 0 -115px;border-radius:34px;border:1.5px solid rgba(27,94,71,.38);background:linear-gradient(135deg,rgba(27,94,71,.09),rgba(27,94,71,.015));transform:translateZ(calc(var(--i)*34px - 70px))}
+.plate:nth-child(2){width:200px;height:200px;margin:-100px 0 0 -100px}
+.plate:nth-child(3){width:170px;height:170px;margin:-85px 0 0 -85px}
+.plate:nth-child(4){width:140px;height:140px;margin:-70px 0 0 -70px}
+.plate:nth-child(5){width:110px;height:110px;margin:-55px 0 0 -55px;background:rgba(27,94,71,.14)}
+@keyframes spin{to{transform:rotateX(calc(58deg + var(--sy,0)*10deg)) rotateZ(360deg)}}
+@media(max-width:700px){.scene{right:50%;margin-right:-150px;top:-30px;width:300px;height:300px;opacity:.38}}
+@media(min-width:1000px){.hero .wrap{margin-left:max(40px,calc(50% - 560px));width:min(640px,100% - 80px)}.scene{right:4%;top:14%;width:460px;height:460px}.plate{transform:translateZ(calc(var(--i)*46px - 90px))}}
+@media(prefers-reduced-motion:reduce){.stack{animation:none}}
+
+/* listes courtes */
+.list{list-style:none;display:grid;gap:14px;padding:0}
+.list li{padding-left:34px;position:relative}
+.list.pain li::before{content:"";position:absolute;left:4px;top:.72em;width:14px;height:2px;background:var(--mute)}
+.list.gain li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:7px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg)}
+.lead-s{font-family:var(--serif);font-size:clamp(1.3rem,4.6vw,1.8rem);line-height:1.3;margin-top:30px}
+
+/* cartes (bénéfices, témoignages, étapes) */
+.cards{display:grid;gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;transition:transform .6s var(--ease),box-shadow .6s var(--ease);transform-style:preserve-3d;box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 24px 50px -36px rgba(20,30,40,.35)}
+.card p{color:var(--mute);font-size:1rem}
+.card.ph{border-style:dashed;background:transparent;box-shadow:none}
+.card.ph b{display:block;font:600 .75rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.card q{font-family:var(--serif);font-size:1.25rem;line-height:1.35;quotes:none;display:block}
+.card cite{display:block;font:600 .9rem var(--sans);font-style:normal;margin-top:14px}
+@media(min-width:760px){.cards.two{grid-template-columns:1fr 1fr}.wrap.wide{width:min(1040px,100% - 48px)}}
+
+/* programme */
+.steps{list-style:none;padding:0;display:grid;gap:0;counter-reset:s;border-top:1px solid var(--line)}
+.steps li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:6px 14px;padding:24px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);grid-row:span 2;font:500 2rem/1 var(--serif);color:var(--accent)}
+.steps b{font:600 1.15rem/1.3 var(--serif)}
+.steps small{color:var(--mute);font-size:1rem}
+.dur{margin-top:30px;padding:20px 24px;border-radius:20px;background:var(--accent-soft);color:var(--accent-d);font-weight:600}
+
+/* prix */
+.price-box{background:var(--card);border:1px solid var(--line);border-radius:32px;padding:clamp(28px,6vw,48px);box-shadow:0 40px 80px -50px rgba(20,30,40,.45);text-align:center}
+.price{font:500 clamp(3.4rem,14vw,5.5rem)/1 var(--serif);letter-spacing:-.04em}
+.price small{font:500 1rem var(--sans);color:var(--mute);letter-spacing:0;display:block;margin-top:10px}
+.price-box .list{text-align:left;margin:30px 0}
+.price-box .cta{width:100%}
+.guar{display:flex;gap:14px;align-items:flex-start;text-align:left;margin-top:26px;padding:18px 20px;border-radius:18px;background:var(--accent-soft);font-size:1rem}
+.guar b{display:block;font-family:var(--serif);font-size:1.15rem;margin-bottom:2px}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:22px 40px 22px 0;font:600 1.1rem/1.4 var(--sans);position:relative;min-height:56px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:18px;font:400 1.8rem/1 var(--serif);color:var(--accent);transition:transform .4s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 24px;color:var(--mute);margin:0}
+
+/* final */
+.final{text-align:center}
+.final h2{margin-bottom:22px}
+.final .sub{margin-inline:auto}
+.final .cta{margin-top:32px}
+.urg{margin-top:18px;font-weight:600;color:var(--accent-d)}
+footer{padding:36px 0 110px;text-align:center;font-size:.85rem;color:var(--mute)}
+footer a{color:var(--mute)}
+
+/* barre d'action mobile (n'apparaît qu'après le héro) */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(250,248,244,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .6s var(--ease)}
+.bar.show{transform:none}
+.bar .cta{min-height:56px}
+@media(min-width:900px){.bar{display:none}}
+
+/* apparitions douces au scroll (visibles par défaut si JS absent) */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- 1. HÉRO -->
+<header class="hero" id="top">
+  <div class="scene" aria-hidden="true"><div class="stack" id="stack"><i class="plate" style="--i:0"></i><i class="plate" style="--i:1"></i><i class="plate" style="--i:2"></i><i class="plate" style="--i:3"></i><i class="plate" style="--i:4"></i></div></div>
+  <div class="wrap">
+    <span class="eyebrow">NM Academy · Sites web &amp; vidéos IA</span>
+    <h1>Crée tes premiers sites et tes premières vidéos IA à facturer en 30 jours, même si tu pars de zéro.</h1>
+    <p class="sub">Pour celles et ceux qui veulent un vrai savoir-faire à vendre : un plan pas à pas, des modèles prêts à copier et des outils pour démarrer sans abonnement coûteux.</p>
+    <a class="cta js-cta" href="#" target="_blank" rel="noopener">Je m’inscris <span aria-hidden="true">→</span></a>
+    <p class="proof" id="proof"><i></i><span id="proofTxt">Accès immédiat · Satisfait ou remboursé sous 14 jours</span></p>
+  </div>
+</header>
+
+<main>
+<!-- 2. PROBLÈME -->
+<section class="alt" id="probleme"><div class="wrap">
+  <h2 class="rv">Tu veux te lancer. Mais ça ressemble à ça, non&nbsp;?</h2>
+  <ul class="list pain rv">
+    <li>Tu regardes des vidéos tous les soirs et tu n’as toujours rien de concret à montrer.</li>
+    <li>Tu ne sais pas par où commencer : sites ? vidéos IA ? les deux ?</li>
+    <li>Les outils coûtent cher, et tu as peur de payer sans résultat.</li>
+    <li>Tu ne sais pas comment trouver un premier client, ni quoi lui dire.</li>
+  </ul>
+  <p class="lead-s rv">Le problème n’est pas ton niveau. Il te manque un plan clair, dans le bon ordre.</p>
+</div></section>
+
+<!-- 3. TRANSFORMATION -->
+<section id="solution"><div class="wrap">
+  <span class="eyebrow rv">La formation</span>
+  <h2 class="rv">Un parcours qui te mène d’« aucune idée » à « ma première offre prête ».</h2>
+  <p class="rv" style="margin-bottom:34px;color:var(--mute)">Ce n’est pas un cours à regarder. C’est un plan à suivre, avec un résultat à chaque étape.</p>
+  <ul class="list gain rv">
+    <li><b>À la fin, tu sauras</b> créer un site professionnel pour un commerce local, à partir d’un modèle.</li>
+    <li><b>Tu auras</b> ta première vidéo IA, produite en démarrant avec des offres gratuites ou à crédits offerts.</li>
+    <li><b>Tu sauras</b> chiffrer, faire signer et te faire payer, avec devis et contrat prêts.</li>
+    <li><b>Tu pourras enfin</b> contacter tes premiers clients avec des messages qui marchent.</li>
+  </ul>
+  <p class="note rv">Aucun revenu n’est garanti : tes résultats dépendent de ton travail et de ton marché.</p>
+</div></section>
+
+<!-- 4. PREUVE SOCIALE -->
+<section class="alt" id="preuves"><div class="wrap wide">
+  <h2 class="rv">Ce qu’en disent les premiers élèves</h2>
+  <div class="cards two" id="temoins">
+    <article class="card ph tilt rv"><b>Placeholder</b><q>[Témoignage étudiant 1 : résultat chiffré + avant / après]</q><cite>[Prénom, activité]</cite></article>
+    <article class="card ph tilt rv"><b>Placeholder</b><q>[Témoignage étudiant 2 : résultat chiffré + avant / après]</q><cite>[Prénom, activité]</cite></article>
+    <article class="card ph tilt rv"><b>Placeholder</b><q>[Témoignage étudiant 3 : résultat chiffré + avant / après]</q><cite>[Prénom, activité]</cite></article>
+    <article class="card ph tilt rv"><b>Placeholder</b><q>[Témoignage étudiant 4 : résultat chiffré + avant / après]</q><cite>[Prénom, activité]</cite></article>
+  </div>
+</div></section>
+
+<!-- 5. PROGRAMME -->
+<section id="programme"><div class="wrap">
+  <h2 class="rv">Ton plan en 6 étapes</h2>
+  <ol class="steps rv">
+    <li><b>Étape 1 : Choisir ce que tu vends et à qui</b><small>Sites, vidéos IA ou les deux : tu repars avec une offre claire.</small></li>
+    <li><b>Étape 2 : Créer ton premier site professionnel</b><small>À partir du modèle fourni, adapté à un vrai commerce.</small></li>
+    <li><b>Étape 3 : Produire ta première vidéo IA</b><small>Outils gratuits ou à crédits offerts, scripts prêts à copier.</small></li>
+    <li><b>Étape 4 : Trouver tes premiers clients</b><small>Où les chercher et quoi leur écrire, mot pour mot.</small></li>
+    <li><b>Étape 5 : Chiffrer, signer, te faire payer</b><small>Devis, contrat et facturation, sans erreur de débutant.</small></li>
+    <li><b>Étape 6 : Publier et monétiser sur TikTok et YouTube</b><small>Les règles des plateformes expliquées, pour éviter les erreurs qui coûtent cher.</small></li>
+  </ol>
+  <p class="dur rv">13 modules, 49 leçons, une vidéo par module. Mais surtout des exercices concrets à faire.</p>
+</div></section>
+
+<!-- 6. PRIX ET GARANTIE -->
+<section class="alt" id="prix"><div class="wrap">
+  <div class="price-box rv">
+    <span class="eyebrow">Pack complet · Sites web + Vidéos IA</span>
+    <div class="price" id="price">97&nbsp;€<small id="priceSub">paiement unique · accès à vie</small></div>
+    <ul class="list gain">
+      <li>Les 6 étapes, 13 modules, 49 leçons</li>
+      <li>Modèle de site, scripts, devis et contrat</li>
+      <li>Mises à jour incluses</li>
+      <li>Support par WhatsApp</li>
+    </ul>
+    <a class="cta js-cta" href="#" target="_blank" rel="noopener">Je m’inscris <span aria-hidden="true">→</span></a>
+    <p class="note" id="instal"></p>
+    <div class="guar"><div><b>Satisfait ou remboursé sous 14 jours</b>Tu essaies. Si ça ne te convient pas, tu écris, et tu es remboursé.</div></div>
+  </div>
+</div></section>
+
+<!-- 7. FAQ -->
+<section id="faq"><div class="wrap">
+  <h2 class="rv">Les questions qu’on me pose</h2>
+  <div class="rv">
+    <details><summary>Je n’ai pas le temps.</summary><p>Chaque étape tient en petites séances. Compte quelques heures par semaine. Si tu n’as vraiment aucun créneau, ce n’est pas le bon moment, et c’est mieux de le savoir avant d’acheter.</p></details>
+    <details><summary>C’est pour les débutants&nbsp;?</summary><p>Oui. Tu n’as pas besoin de savoir coder. Il te faut un ordinateur, une connexion internet et l’envie de pratiquer.</p></details>
+    <details><summary>Les outils sont-ils vraiment gratuits&nbsp;?</summary><p>Tu démarres avec des offres gratuites ou à crédits offerts. Certaines ont des limites. Si tu veux produire beaucoup, il faudra peut-être payer un jour, et je te dis quand cela vaut le coup.</p></details>
+    <details><summary>En combien de temps aurai-je des résultats&nbsp;?</summary><p>Le plan est prévu pour 30 jours si tu suis les étapes. Mais je ne promets aucun revenu : cela dépend de ton rythme, de ton marché et de ta régularité.</p></details>
+    <details><summary>Y a-t-il un support&nbsp;?</summary><p>Oui, par WhatsApp. Tu peux aussi réserver un appel en visio avec moi pour être guidé pas à pas (offre à part).</p></details>
+    <details><summary>Et si ça ne me plaît pas&nbsp;?</summary><p>Tu as 14 jours pour demander le remboursement, sans justification compliquée.</p></details>
+    <details><summary>Comment je reçois mon accès&nbsp;?</summary><p>Après la confirmation du paiement, tu reçois ton code d’accès à l’espace membres, et tu peux commencer tout de suite.</p></details>
+  </div>
+</div></section>
+
+<!-- 8. APPEL FINAL -->
+<section class="alt final" id="final"><div class="wrap">
+  <h2 class="rv">Dans 30 jours, tu peux avoir ta première offre prête. Ou toujours la même question.</h2>
+  <p class="sub rv">Tu choisis. Et tu es couvert par la garantie de 14 jours.</p>
+  <a class="cta js-cta rv" href="#" target="_blank" rel="noopener">Je m’inscris <span aria-hidden="true">→</span></a>
+  <p class="urg rv" id="urg">Accès immédiat : tu peux commencer dès ce soir.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap"><p>NM Academy · Contenu éducatif, aucun revenu garanti. <a href="legal.html" target="_blank" rel="noopener">Mentions légales</a></p></div></footer>
+
+<div class="bar" id="bar"><a class="cta js-cta" href="#" target="_blank" rel="noopener">Je m’inscris <span aria-hidden="true">→</span></a></div>
+
+<script>
+/* ===== RÉGLAGES (modifie uniquement ce bloc) ===== */
+var SALE={
+  PRICE:97,                 // prix du pack, en euros
+  INSTALLMENTS:3,           // paiement en plusieurs fois (0 = ne pas afficher). À activer aussi dans ta plateforme de paiement.
+  LINK:"",                  // lien de paiement (Stripe, PayPal…). Vide = ouvre WhatsApp.
+  WHATSAPP:"33600000000",   // numéro international, sans + ni espaces
+  STUDENTS:0,               // nombre RÉEL d'élèves formés (0 = la ligne n'est pas affichée)
+  RATING:"",                // ex "4,8/5 sur Trustpilot" — uniquement si c'est réel
+  DEADLINE:"",              // fin d'inscriptions RÉELLE, ex "2026-12-31" (vide = aucune date affichée)
+  TESTIMONIALS:[]           // [{name:"Prénom, activité", result:"Résultat chiffré", text:"…"}] — uniquement de vrais élèves
+};
+(function(){
+ 'use strict';
+ var D=document,$=function(s){return D.querySelector(s)},$$=function(s){return[].slice.call(D.querySelectorAll(s))};
+ D.documentElement.classList.add('js');
+ var eur=function(n){return(Math.round(n*100)/100).toLocaleString('fr-FR',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2})+' €'};
+
+ /* contenu piloté par les réglages */
+ $('#price').firstChild.nodeValue=eur(SALE.PRICE);
+ if(SALE.INSTALLMENTS>1)$('#instal').textContent='ou en '+SALE.INSTALLMENTS+' fois : '+SALE.INSTALLMENTS+' × '+eur(SALE.PRICE/SALE.INSTALLMENTS)+' (le montant exact est confirmé au paiement)';
+ var p=[];if(SALE.STUDENTS>0)p.push('Déjà '+SALE.STUDENTS+' personnes formées');if(SALE.RATING)p.push('Note '+SALE.RATING);
+ if(p.length)$('#proofTxt').textContent=p.join(' · ');
+ if(SALE.DEADLINE){var d=new Date(SALE.DEADLINE+'T12:00:00');if(d>new Date())$('#urg').textContent='Les inscriptions ferment le '+d.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})+'.'}
+ if(SALE.TESTIMONIALS.length){var h='';SALE.TESTIMONIALS.slice(0,4).forEach(function(t){var e=function(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};h+='<article class="card tilt rv in"><b style="display:block;font:600 .9rem var(--sans);color:var(--accent);margin-bottom:10px">'+e(t.result)+'</b><q>'+e(t.text)+'</q><cite>'+e(t.name)+'</cite></article>'});$('#temoins').innerHTML=h}
+
+ /* boutons : paiement si le lien existe, sinon WhatsApp */
+ var href=SALE.LINK||('https://wa.me/'+SALE.WHATSAPP+'?text='+encodeURIComponent('Bonjour, je veux m’inscrire à la formation NM Academy.'));
+ $$('.js-cta').forEach(function(a){a.href=href});
+
+ /* 3D : seulement si supportée et si l'utilisateur n'a pas demandé moins d'animations */
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var ok=window.CSS&&CSS.supports&&CSS.supports('transform-style','preserve-3d')&&CSS.supports('perspective','1px');
+ var stack=$('#stack'),hero=$('#top');
+ if(ok&&!reduce){
+  D.documentElement.classList.add('supports3d');
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){stack.classList.toggle('off',!es[0].isIntersecting)}).observe(hero)}
+  var tick=false;addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){tick=false;if(scrollY<innerHeight*1.2)stack.style.setProperty('--sy',(scrollY/innerHeight).toFixed(3))})},{passive:true});
+ }else if(ok){D.documentElement.classList.add('supports3d')}
+
+ /* inclinaison très légère des cartes (souris uniquement) */
+ if(ok&&!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+  $$('.tilt').forEach(function(c){
+   c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateX('+(-y*4).toFixed(2)+'deg) rotateY('+(x*5).toFixed(2)+'deg)'});
+   c.addEventListener('pointerleave',function(){c.style.transform=''})})}
+
+ /* apparitions douces (le masquage ne s'active que si l'observateur existe) */
+ if('IntersectionObserver' in window&&!reduce){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  $$('.rv').forEach(function(el){io.observe(el)});
+ }else{$$('.rv').forEach(function(el){el.classList.add('in')})}
+
+ /* barre d'action mobile : visible après le héro, cachée sur l'appel final */
+ var bar=$('#bar'),fin=$('#final'),pastHero=false,onFinal=false;
+ function sb(){bar.classList.toggle('show',pastHero&&!onFinal)}
+ if('IntersectionObserver' in window){
+  new IntersectionObserver(function(es){pastHero=!es[0].isIntersecting&&es[0].boundingClientRect.top<0;sb()}).observe(hero);
+  new IntersectionObserver(function(es){onFinal=es[0].isIntersecting;sb()},{threshold:.35}).observe(fin);
+ }
+})();
+</script>
+</body>
+</html>
