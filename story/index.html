@@ -74,6 +74,8 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 <div class="panel">
   <div class="ttl">1 · Quel type d'histoire ?</div>
   <div class="genres" id="genres"></div>
+  <label class="tog"><input type="checkbox" id="optMem" checked><span>🧠 Mémoire : ne pas refaire une histoire que j'ai déjà créée (autre titre, autres personnages, autre lieu, autre intrigue)</span></label>
+  <div class="hint" id="memInfo"></div><button class="btn" id="btnMemClear" type="button" style="min-height:40px;font-size:.78rem">Effacer la mémoire des histoires</button>
   <label class="lab" for="idea">Une idée ? (facultatif — sinon l'IA invente)</label>
   <textarea id="idea" placeholder="Ex : deux voisins qui se détestent et qui finissent par tomber amoureux pendant un festival au village"></textarea>
 </div>
@@ -81,7 +83,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 <div class="panel">
   <div class="ttl">2 · Réglages</div>
   <div class="row2">
-    <div><label class="lab" for="nClips">Nombre de clips</label><select id="nClips"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50" selected>50</option></select></div>
+    <div><label class="lab" for="nClips">Nombre de clips</label><select id="nClips"><option value="3">3 (test rapide)</option><option value="6">6 (test)</option><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50" selected>50</option></select></div>
     <div><label class="lab" for="dur">Durée d'un clip</label><select id="dur"><option value="5" selected>5 s (recommandé : plus fiable)</option><option value="8">8 s</option><option value="10">10 s</option></select></div>
   </div>
   <div class="row2">
@@ -217,6 +219,25 @@ const GENRES=[
   plan:'Friends in their home, a problem, a clever idea, a setback, teamwork, a happy end.',
   rules:'Animals walk on four legs or simple standing poses. 1 or 2 animals per shot. Nothing scary.',n_chars:3}
 ];
+/* ───────── Mémoire des histoires + graines de variété ───────── */
+const SEEDS={
+ drama:['two rival chefs who must share one tiny restaurant kitchen','a night-shift nurse and a musician who meets her on the same train every night','childhood friends reunited at a wedding where one of them is the groom\'s brother','a translator and a famous actor stuck together during a storm in a mountain hotel','a florist whose ex returns to buy flowers for another woman','two strangers who swap phones by mistake and start answering each other\'s messages','a widowed bookshop owner and a young architect hired to rebuild her shop'],
+ animeLove:['a shy student and the new transfer student who shares her umbrella','two members of the school photography club who both love the same hidden spot','a rival pair of kendo club captains forced to organize the festival together','a girl who leaves letters in a library book and a boy who answers them','childhood friends separated by a move who meet again at the cherry blossom festival','two cooks of the school cafeteria festival stall'],
+ cartoon:['a little elephant who is afraid of the dark','a kitten who wants to learn to swim','three friends who build a rocket from a cardboard box','a baby dragon who cannot make fire yet and hides it','a lost robot toy looking for its owner','a rainy day when the rain refuses to stop'],
+ anime:['a young courier who discovers a sleeping spirit in a parcel','an apprentice swordsmith and a runaway princess','a sky-pirate crew searching for a floating island','a mountain village boy who finds a map in a river','a girl who can hear the voices of old machines'],
+ fantasy:['a young baker who must deliver bread to a hermit wizard across a haunted forest','a knight with no sword and a talking lantern','a village of lanterns that go out one by one','a princess who wants to become a cartographer','a fisherman who finds a door at the bottom of a lake'],
+ comedyTh:['a tuk-tuk driver who accidentally takes a famous chef to the wrong market','two noodle stall neighbours competing for the same festival prize','a grandmother\'s secret recipe that everyone in the village tries to copy','a village temple fair where everything goes wrong in a funny way','a young man pretending to be a rich businessman to impress a fruit seller'],
+ folk:['a poor rice farmer and a river spirit who tests his honesty','a wise old fisherman and a greedy merchant','a girl who shares her last mango with a stranger','a monkey who promised to guard the king\'s garden','two brothers and a magic bamboo'],
+ mystery:['the missing key of a night market stall','a lighthouse whose lamp turns off every Friday','a museum guard who finds one painting changed each morning','a bakery where a recipe book disappears','a postman delivering a letter to a person who does not exist'],
+ scifi:['a lone repair robot on an abandoned space station that receives a message','a girl who finds a small alien in her garden shed','a farmer on a distant planet with a talking harvesting machine','a ship\'s cook who discovers the crew is asleep','a boy and a robot crossing a flooded city'],
+ animals:['a fox who wants to be a baker and a bear who loves honey cakes','a duckling who thinks it is a boat','a little crab who collects shells for a rainy day','a sleepy owl and a loud rooster sharing a tree','a mouse librarian and the lion who cannot read'],
+ build:['an ancient hollow tree in a flooded forest','a cliff ledge high in the Alps','a lava-tube cave under a volcano','an abandoned lighthouse on a rock in the sea','the inside of a giant frozen waterfall','a gap between two skyscrapers','a huge baobab tree in a savanna','a canyon wall in the desert']
+};
+const MEM='story_memory_v1';
+function memGet(){try{return JSON.parse(lsGet(MEM)||'[]')}catch(e){return []}}
+function memAdd(x){const m=memGet();m.push(x);lsSet(MEM,JSON.stringify(m.slice(-60)))}
+function memUi(){const m=memGet();$('memInfo').textContent=m.length?m.length+' histoire(s) en mémoire. Dernières : '+m.slice(-3).map(x=>'« '+x.title+' »').reverse().join(', '):'Aucune histoire en mémoire pour l\'instant.'}
+function pickSeed(g){const all=SEEDS[g]||[];if(!all.length)return null;const m=memGet().filter(x=>x.g===g&&x.seed!=null).map(x=>x.seed);let free=all.map((_,i)=>i).filter(i=>m.indexOf(i)<0);if(!free.length)free=all.map((_,i)=>i);const i=free[Math.floor(Math.random()*free.length)];return{i,t:all[i]}}
 const NEG_IMG='No text, no captions, no watermark, no extra fingers, no extra limbs, no distorted or melted face, no duplicated people, no floating objects, no blurry shapes.';
 const NEG_VID='Smooth natural motion. Exactly one action happens, nothing else. No new characters or objects appear. The characters keep an identical face, hair, clothes and proportions. No morphing, no sudden cut, no text, no watermark.';
 
@@ -303,13 +324,18 @@ function sysBase(g){return 'You are a professional showrunner and storyboard art
 async function writeBible(){
  const g=genre(),N=P.o.n,L=LANGN[P.o.lang];
  const sys='[TASK:BIBLE] '+sysBase(g)+' Reply ONLY with JSON: {"title":"title in '+L+'","logline":"1-2 sentences in '+L+'","style":"visual style lock in English, 1 sentence, reuse this base: '+g.style+'","characters":[{"id":"c1","name":"name in '+L+' script","role":"role in the story, in English","look":"VERY concrete fixed visual description in English, 30-40 words: age, face, hair color and style, skin tone, outfit with colors, one distinctive accessory"}],"locations":[{"id":"l1","name":"short name","look":"fixed visual description in English, 20-30 words"}],"beats":["one sentence per scene in English, exactly '+N+' items, in story order"]}. Create '+g.n_chars+' main characters (names natural for the story; for Thai stories use Thai names) and 3 to 5 locations. Characters must be visually very distinct from each other.';
- let j=null;for(let t=0;t<2&&!j;t++){const d=await chat(sys,'Number of scenes: '+N+'. '+(P.o.idea?'Story idea from the creator: '+P.o.idea:'Invent an original, emotionally engaging story.'),'scénario');if(Array.isArray(d.beats)&&d.beats.length>=Math.min(N,5)&&Array.isArray(d.characters)&&d.characters.length)j=d}
+ let seedInfo=null,avoid='';
+ if(!P.o.idea){seedInfo=pickSeed(P.o.genre)}
+ if($('optMem').checked){const m=memGet();const same=m.filter(x=>x.g===P.o.genre).slice(-8),other=m.filter(x=>x.g!==P.o.genre).slice(-3);const all=same.concat(other);if(all.length)avoid=' IMPORTANT: this creator already made these stories, yours must be clearly DIFFERENT (different title, different character names and looks, different setting, different plot and ending): '+all.map(x=>'"'+x.title+'" ('+x.logline.slice(0,90)+'; characters: '+x.chars.join(', ')+'; places: '+x.locs.join(', ')+')').join(' | ')+'.'}
+ const premise=P.o.idea?'Story idea from the creator: '+P.o.idea:(seedInfo?'Starting premise to develop in your own original way: '+seedInfo.t+'.':'Invent an original, emotionally engaging story.');
+ P.seed=seedInfo?seedInfo.i:null;
+ let j=null;for(let t=0;t<2&&!j;t++){const d=await chat(sys,'Number of scenes: '+N+'. '+premise+avoid+' Variation code: '+Math.random().toString(36).slice(2,8)+'.','scénario');if(Array.isArray(d.beats)&&d.beats.length>=Math.min(N,5)&&Array.isArray(d.characters)&&d.characters.length)j=d}
  if(!j)throw new Error('Le scénario n\'a pas pu être écrit (réessaie)');
  j.characters=j.characters.slice(0,5).map((c,i)=>({id:String(c.id||'c'+(i+1)),name:String(c.name||'Personnage '+(i+1)),role:String(c.role||''),look:String(c.look||'')}));
  j.locations=(j.locations&&j.locations.length?j.locations:[{id:'l1',name:'Lieu',look:'a simple place'}]).slice(0,6).map((l,i)=>({id:String(l.id||'l'+(i+1)),name:String(l.name||'Lieu'),look:String(l.look||'')}));
  j.beats=j.beats.slice(0,N).map(String);
  P.bible={title:String(j.title||'Histoire'),logline:String(j.logline||''),style:String(j.style||g.style),characters:j.characters,locations:j.locations};
- P.beats=j.beats;P.o.n=j.beats.length}
+ P.beats=j.beats;P.o.n=j.beats.length;memAdd({g:P.o.genre,title:P.bible.title,logline:P.bible.logline,chars:P.bible.characters.map(c=>c.name),locs:P.bible.locations.map(l=>l.name),seed:P.seed,date:new Date().toISOString().slice(0,10)});memUi()}
 async function expandScenes(){
  const g=genre(),L=LANGN[P.o.lang],B=P.bible,N=P.beats.length;P.scenes=[];
  const compact={title:B.title,logline:B.logline,characters:B.characters.map(c=>({id:c.id,name:c.name,role:c.role})),locations:B.locations.map(l=>({id:l.id,name:l.name}))};
@@ -572,10 +598,10 @@ function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('
  $('btnStop').classList.toggle('on',S.running);const u=usage();$('quotaHint').textContent='Vidéos créées aujourd\'hui : '+u.n+' (chaque nouvel essai compte). Avec « Refaire si défaut », prévois 10 à 30 % de vidéos en plus.'}
 $('apiSave').onclick=()=>{const v=$('apiKeyInput').value.trim();if(v)lsSet(KEY,v);else lsDel(KEY);upd();toast(v?'Clé enregistrée':'Clé supprimée')};
 $('btnGo').onclick=run;$('btnStop').onclick=()=>{S.stop=true;toast('Arrêt en cours…','warn')};
-$('mode').onchange=upd;$('btnPlay').onclick=playAll;$('btnZip').onclick=zipAll;
+$('mode').onchange=upd;$('btnMemClear').onclick=()=>{if(confirm('Effacer la mémoire des histoires déjà créées ?')){lsDel(MEM);memUi();toast('Mémoire effacée')}};$('btnPlay').onclick=playAll;$('btnZip').onclick=zipAll;
 $('btnNew').onclick=async()=>{if(S.running){toast('Arrête d\'abord la création','warn');return}if(P&&!confirm('Effacer l\'histoire actuelle et tous ses clips ?'))return;P=null;lsDel(PROJ);await dbClear();$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';upd();toast('Prêt pour une nouvelle histoire')};
 load();if(P&&P.o){selGenre=P.o.genre||selGenre;['nClips:n','dur:dur','lang:lang','fmt:fmt','retries:retries','quota:quota'].forEach(p=>{const[a,b]=p.split(':');if(P.o[b]!=null)$(a).value=P.o[b]})}
-drawGenres();upd();renderBible();render();
+drawGenres();upd();memUi();renderBible();render();
 if(P&&P.scenes&&P.scenes.length){$('prog').style.display='block';const dn=clipDone();phase(dn===P.scenes.length?'done':'clips','Projet repris : '+dn+' / '+P.scenes.length+' clips prêts',dn/P.scenes.length)}
 })();
 </script>
