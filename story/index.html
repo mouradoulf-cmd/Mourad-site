@@ -52,8 +52,9 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--blue)}
 video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 .toast{position:fixed;top:calc(1rem + env(safe-area-inset-top));left:50%;transform:translateX(-50%) translateY(-140px);background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--ok);border-radius:var(--r);padding:.7rem 1rem;font-size:.84rem;z-index:99;opacity:0;transition:.3s;max-width:92vw}
 .toast.visible{transform:translateX(-50%) translateY(0);opacity:1}.toast.error{border-left-color:var(--err)}.toast.warn{border-left-color:var(--warn)}
-#statusBar{position:fixed;left:0;right:0;bottom:0;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(18,18,28,.96);border-top:1px solid var(--border);font-size:.8rem;display:none;z-index:50}#statusBar.on{display:block}
+#statusBar{position:fixed;left:.5rem;right:.5rem;bottom:calc(84px + env(safe-area-inset-bottom));border:1px solid var(--border);border-radius:var(--r);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(18,18,28,.96);border-top:1px solid var(--border);font-size:.8rem;display:none;z-index:50}#statusBar.on{display:block}
 .warnbox{background:rgba(212,160,23,.1);border:1px solid var(--warn);border-radius:var(--r);padding:.6rem .8rem;font-size:.78rem;color:var(--yellow);margin-top:.6rem}
+.gobar{position:sticky;bottom:0;z-index:40;margin:0 -.8rem;padding:1.2rem .8rem calc(.7rem + env(safe-area-inset-bottom));background:linear-gradient(rgba(10,10,18,0),var(--bg) 40%)}.gobar .btn{margin-top:.4rem}
 </style>
 </head>
 <body>
@@ -100,16 +101,16 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <div class="hint" id="quotaHint"></div>
 </div>
 
-<button class="btn main" id="btnGo" type="button" disabled>Ajoute ta clé API</button>
-<button class="btn stop" id="btnStop" type="button">⏹ Arrêter (tu pourras reprendre)</button>
+<div class="gobar"><button class="btn main" id="btnGo" type="button">🎬 Créer l'histoire et les vidéos</button>
+<button class="btn stop" id="btnStop" type="button">⏹ Arrêter (tu pourras reprendre)</button></div>
 
-<div class="panel"><div class="ttl">📖 Le workflow de production (ce que fait le site, dans l'ordre)</div>
+<details class="panel"><summary class="ttl" style="cursor:pointer;margin:0">📖 Le workflow de production (touche pour lire)</summary><div style="height:.6rem"></div>
 <ol style="padding-left:1.1rem;font-size:.82rem;color:var(--dim);line-height:1.6">
 <li><b style="color:var(--ink)">Bible visuelle verrouillée</b> : personnages (description fixe + images de face et de visage), lieux (image de référence), style. Elle ne change jamais.</li>
 <li><b style="color:var(--ink)">Chaînage</b> : le clip 2 démarre sur la dernière image propre du clip 1, et ainsi de suite. Chaque clip finit en pleine action, le suivant reprend le même mouvement.</li>
 <li><b style="color:var(--ink)">Contrôle qualité après chaque image et chaque clip</b> : même personnage ? même lieu ? l'histoire suit ? pas de double tête, pas de déformation ? Sinon seul ce clip est refait, avec les défauts interdits dans la consigne.</li>
 <li><b style="color:var(--ink)">Relecture de l'histoire</b> par l'IA avant la production (lieu, objets, temps, causes et effets).</li>
-<li><b style="color:var(--ink)">Assemblage</b> : fondus enchaînés entre les clips et son continu, dans l'ordre, en une seule vidéo.</li></ol></div>
+<li><b style="color:var(--ink)">Assemblage</b> : fondus enchaînés entre les clips et son continu, dans l'ordre, en une seule vidéo.</li></ol></details>
 <div class="panel" id="prog" style="display:none;margin-top:.8rem">
   <div class="steps"><div class="step" data-p="story">1 · Scénario</div><div class="step" data-p="chars">2 · Personnages</div><div class="step" data-p="keys">3 · Storyboard</div><div class="step" data-p="clips">4 · Vidéos</div><div class="step" data-p="done">5 · Fini</div></div>
   <div class="bar"><i id="barI"></i></div>
@@ -448,7 +449,7 @@ document.addEventListener('click',async e=>{if(S.running)return;
 /* ───────── Pipeline ───────── */
 function readOpts(){return{genre:selGenre,idea:$('idea').value.trim(),n:+$('nClips').value,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:$('quota').value,mode:$('mode').value,sq:$('optSq').checked}}
 async function run(){
- if(S.running)return;if(!getKey()){toast('Ajoute ta clé API','error');return}
+ if(S.running)return;if(!getKey()){toast('Colle ta clé API Agnes en haut de la page, puis touche « Enregistrer la clé »','error',5000);$('apiPanel').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('apiKeyInput').focus(),500);return}
  S.running=true;S.stop=false;await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{
   if(!P||!P.scenes||!P.scenes.length){
@@ -566,8 +567,8 @@ let selGenre='drama';
 function drawGenres(){$('genres').innerHTML=GENRES.map(g=>'<div class="genre'+(g.id===selGenre?' sel':'')+'" data-g="'+g.id+'"><b>'+g.e+' '+esc(g.n)+'</b><span>'+esc(g.d)+'</span></div>').join('')}
 $('genres').addEventListener('click',e=>{const g=e.target.closest('[data-g]');if(!g||S.running)return;selGenre=g.dataset.g;drawGenres()});
 function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('apiLine').classList.toggle('ok',has);$('apiLine').textContent=has?'Clé active · '+getKey().slice(0,7)+'…'+getKey().slice(-4):'Aucune clé enregistrée';
- const b=$('btnGo');b.disabled=S.running||!has;const hasP=P&&P.scenes&&P.scenes.length;
- const sbm=hasP&&P.o.mode==='sb',allImg=hasP&&P.scenes.every(x=>x.thumb);b.textContent=S.running?'Création en cours…':(!has?'Ajoute ta clé API':(hasP?(clipDone()?'▶ Reprendre les vidéos ('+clipDone()+'/'+P.scenes.length+' prêtes)':(sbm?(allImg?'🎬 Animer les images en vidéos ('+P.scenes.length+' clips)':'▶ Terminer le storyboard'):'▶ Lancer la production des clips')):($('mode').value==='sb'?'🎞 Créer l\'histoire et le storyboard (sans vidéos)':'🎬 Créer l\'histoire et les vidéos')));
+ const b=$('btnGo');b.disabled=S.running;const hasP=P&&P.scenes&&P.scenes.length;
+ const sbm=hasP&&P.o.mode==='sb',allImg=hasP&&P.scenes.every(x=>x.thumb);b.textContent=S.running?'Création en cours…':(!has?'🔑 Ajoute ta clé API pour commencer':(hasP?(clipDone()?'▶ Reprendre les vidéos ('+clipDone()+'/'+P.scenes.length+' prêtes)':(sbm?(allImg?'🎬 Animer les images en vidéos ('+P.scenes.length+' clips)':'▶ Terminer le storyboard'):'▶ Lancer la production des clips')):($('mode').value==='sb'?'🎞 Créer l\'histoire et le storyboard (sans vidéos)':'🎬 Créer l\'histoire et les vidéos')));
  $('btnStop').classList.toggle('on',S.running);const u=usage();$('quotaHint').textContent='Vidéos créées aujourd\'hui : '+u.n+' (chaque nouvel essai compte). Avec « Refaire si défaut », prévois 10 à 30 % de vidéos en plus.'}
 $('apiSave').onclick=()=>{const v=$('apiKeyInput').value.trim();if(v)lsSet(KEY,v);else lsDel(KEY);upd();toast(v?'Clé enregistrée':'Clé supprimée')};
 $('btnGo').onclick=run;$('btnStop').onclick=()=>{S.stop=true;toast('Arrêt en cours…','warn')};
