@@ -4,8 +4,8 @@
 var D=document,$=function(s){return D.querySelector(s)},$$=function(s){return[].slice.call(D.querySelectorAll(s))};
 var CFG=window.CONFIG||{PLANS:{}},T=function(k,v){return window.I18N?I18N.t(k,v):k};
 var nav=$('#nav');
-function onScroll(){nav.classList.toggle('solid',scrollY>10)}
-addEventListener('scroll',onScroll,{passive:true});onScroll();
+var sen=D.getElementById('topsentinel');
+if(sen&&'IntersectionObserver' in window){new IntersectionObserver(function(es){nav.classList.toggle('solid',!es[0].isIntersecting)}).observe(sen)}else{nav.classList.add('solid')}
 
 function fmt(n){var cur=CFG.CURRENCY||'€';return (window.I18N&&I18N.lang==='en')?cur+n:n+' '+cur}
 function money(){['a','b','pack','coach'].forEach(function(k){var p=CFG.PLANS&&CFG.PLANS[k];if(!p)return;
