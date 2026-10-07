@@ -559,8 +559,7 @@ S.running=true;S.stop=false;showErr('');log('— Démarrage —');await startWak
    P={id:Date.now(),o:readOpts(),scenes:[],partStart:0,ep:SHOW?SHOW.eps.length+1:1};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
    await writeBible();renderBible();phase('story','Écriture des scènes…',.1);if(P.series){await startPart(0)}else{await expandScenes();await reviewStory()}save();render();
    if($('optReview').checked){phase('story','Scénario prêt : relis et corrige les scènes, puis touche « Lancer la production ».',.35);toast('Scénario prêt ✓ Relis-le puis lance la production');return}}
-  else if(P.series&&partComplete()&&P.series.cur+1<P.series.parts.length){P.o.quota=$('quota').value;P.o.retries=$('retries').value;await startPart(P.series.cur+1);render();
-   if($('optReview').checked){phase('story','Partie '+(P.series.cur+1)+' prête : relis les scènes puis touche « Lancer la production ».',.35);toast('Partie '+(P.series.cur+1)+' écrite ✓');return}}
+  else if(P.series&&partComplete()&&P.series.cur+1<P.series.parts.length){P.o.quota=$('quota').value;P.o.retries=$('retries').value;await startPart(P.series.cur+1);render();toast('Partie '+(P.series.cur+1)+' écrite ✓')}
   else{P.o.quota=$('quota').value;P.o.retries=$('retries').value}
   renderBible();render();
   try{await makeCharacters()}catch(e){if(e.message==='Arrêt')throw e;log('✗ personnages/lieux : '+e.message+' — on continue');}
