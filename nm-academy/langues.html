@@ -78,6 +78,10 @@ main.out{transform:scale(1.08);opacity:0;filter:blur(8px);transition:all .9s cub
 <div id="fade"></div>
 <script>
 (function(){
+ var TINT={fr:[.1,.35,1.],en:[1.,.2,.6],th:[1.,.62,.15]};
+ [].forEach.call(document.querySelectorAll('.card'),function(c){var l=c.className.match(/\b(fr|en|th)\b/)[1];
+  ['pointerenter','focus'].forEach(function(e){c.addEventListener(e,function(){window.__tint&&window.__tint(TINT[l])})});
+  ['pointerleave','blur'].forEach(function(e){c.addEventListener(e,function(){window.__tint&&window.__tint()})})});
  // rotating greeting, slow cross-fade
  var hs=[].slice.call(document.querySelectorAll('#hello span')),hi=0;
  setInterval(function(){hs[hi].className='';hi=(hi+1)%hs.length;hs[hi].className='on'},3200);
@@ -109,20 +113,33 @@ main.out{transform:scale(1.08);opacity:0;filter:blur(8px);transition:all .9s cub
  var cv=document.getElementById('gl'),gl=cv.getContext('webgl',{antialias:false,alpha:false,powerPreference:'high-performance'});
  if(!gl)return;
  var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
- var fs='precision mediump float;uniform vec2 R;uniform float T;uniform vec2 M;uniform float B;'+
+ var fs='precision mediump float;uniform vec2 R;uniform float T;uniform vec2 M;uniform float B;uniform vec3 K;'+
  'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}'+
  'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}'+
  'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p=p*2.02+vec2(1.7,9.2);a*=.5;}return v;}'+
- 'void main(){vec2 uv=(gl_FragCoord.xy-.5*R)/min(R.x,R.y);float t=T*.045;'+
- 'vec2 q=uv*1.15+(M-.5)*.18;'+
+ 'vec3 bg(vec2 uv){float t=T*.045;vec2 q=uv*1.15+(M-.5)*.18;'+
  'vec2 w=vec2(fbm(q+vec2(0.,t)),fbm(q+vec2(5.2,1.3)-t));'+
  'float f=fbm(q+2.2*w+vec2(t*.6,-t*.4));'+
- 'vec3 c1=vec3(.03,.035,.11),c2=vec3(.23,.16,.62),c3=vec3(.05,.55,.78),c4=vec3(.9,.28,.62);'+
+ 'vec3 c1=vec3(.03,.035,.11),c2=mix(vec3(.23,.16,.62),K*.55,.5),c3=mix(vec3(.05,.55,.78),K,.45),c4=mix(vec3(.9,.28,.62),K,.3);'+
  'vec3 col=mix(c1,c2,smoothstep(.25,.7,f));'+
  'col=mix(col,c3,smoothstep(.45,.95,w.x)*.55);'+
  'col=mix(col,c4,smoothstep(.55,1.,w.y*f*1.6)*.35);'+
- 'float ribbon=smoothstep(.0,.03,.03-abs(f-.52+sin(uv.x*1.6+T*.08)*.04));'+
- 'col+=ribbon*vec3(.35,.5,.9)*.18;'+
+ 'float rb=smoothstep(.0,.03,.03-abs(f-.52+sin(uv.x*1.6+T*.08)*.04));'+
+ 'col+=rb*vec3(.35,.5,.9)*.18;return col;}'+
+ 'void main(){vec2 uv=(gl_FragCoord.xy-.5*R)/min(R.x,R.y);'+
+ 'vec3 col=bg(uv);'+
+ // floating glass sphere: refraction, fresnel rim, soft specular, slow drift
+ 'vec2 c=vec2(sin(T*.07)*.05+(M.x-.5)*.08,.06+cos(T*.09)*.03+(M.y-.5)*.05);float rad=.34;'+
+ 'vec2 d=uv-c;float r=length(d)/rad;'+
+ 'if(r<1.){float z=sqrt(1.-r*r);vec3 nr=vec3(d/rad,z);'+
+ 'vec2 off=nr.xy*.16*(1.-z*.4);'+
+ 'vec3 refr=vec3(bg(uv-off*1.0).r,bg(uv-off*1.08).g,bg(uv-off*1.16).b);'+
+ 'float fr=pow(1.-z,2.6);'+
+ 'vec3 L=normalize(vec3(-.5,.65,.6));float sp=pow(max(dot(reflect(-L,nr),vec3(0,0,1)),0.),48.);'+
+ 'float sp2=pow(max(dot(nr,normalize(vec3(.4,-.5,.7))),0.),14.)*.12;'+
+ 'vec3 g=refr*1.08+vec3(.55,.7,1.)*fr*.55+vec3(1.)*sp*.55+vec3(.6,.8,1.)*sp2;'+
+ 'col=mix(col,g,smoothstep(1.,.985,r)*.92);}'+
+ 'col+=smoothstep(1.06,1.,r)*smoothstep(.96,1.,r)*vec3(.5,.62,1.)*.12;'+
  'col+=B*vec3(.5,.55,.9)*smoothstep(1.,0.,length(uv));'+
  'col*=1.-.35*dot(uv,uv);'+
  'gl_FragColor=vec4(col,1.);}';
@@ -132,12 +149,12 @@ main.out{transform:scale(1.08);opacity:0;filter:blur(8px);transition:all .9s cub
  gl.useProgram(pr);
  var bf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
  var lp=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(lp);gl.vertexAttribPointer(lp,2,gl.FLOAT,false,0,0);
- var uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uM=gl.getUniformLocation(pr,'M'),uB=gl.getUniformLocation(pr,'B');
+ var uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uM=gl.getUniformLocation(pr,'M'),uB=gl.getUniformLocation(pr,'B'),uK=gl.getUniformLocation(pr,'K');
  // render at reduced resolution: the image is soft anyway, so it stays smooth on phones
  var sc=Math.min(devicePixelRatio||1,1.5)*(innerWidth<700?.55:.6);
  function rs(){cv.width=Math.max(2,innerWidth*sc|0);cv.height=Math.max(2,innerHeight*sc|0);gl.viewport(0,0,cv.width,cv.height)}
  rs();addEventListener('resize',rs);
- var mx=.5,my=.5,sx=.5,sy=.5,bs=0,calm=matchMedia('(prefers-reduced-motion:reduce)').matches,t0=performance.now(),vis=true;
+ var mx=.5,my=.5,sx=.5,sy=.5,bs=0,kc=[.2,.3,.8],kt=[.2,.3,.8],calm=matchMedia('(prefers-reduced-motion:reduce)').matches,t0=performance.now(),vis=true;
  addEventListener('pointermove',function(e){mx=e.clientX/innerWidth;my=1-e.clientY/innerHeight},{passive:true});
  addEventListener('deviceorientation',function(e){if(e.gamma==null)return;mx=.5+Math.max(-1,Math.min(1,e.gamma/40))*.5;my=.5-Math.max(-1,Math.min(1,(e.beta-45)/40))*.5},{passive:true});
  document.addEventListener('visibilitychange',function(){vis=!document.hidden;if(vis)requestAnimationFrame(fr)});
@@ -145,10 +162,11 @@ main.out{transform:scale(1.08);opacity:0;filter:blur(8px);transition:all .9s cub
   if(!vis)return;
   sx+=(mx-sx)*.03;sy+=(my-sy)*.03;
   bs+=(((window.__boost||0))-bs)*.05;
-  gl.uniform2f(uR,cv.width,cv.height);gl.uniform1f(uT,calm?20:(now-t0)/1000+20);gl.uniform2f(uM,sx,sy);gl.uniform1f(uB,bs);
+  gl.uniform2f(uR,cv.width,cv.height);gl.uniform1f(uT,calm?20:(now-t0)/1000+20);gl.uniform2f(uM,sx,sy);for(var k=0;k<3;k++)kc[k]+=(kt[k]-kc[k])*.035;gl.uniform3f(uK,kc[0],kc[1],kc[2]);gl.uniform1f(uB,bs);
   gl.drawArrays(gl.TRIANGLES,0,3);
   if(!calm)requestAnimationFrame(fr);
  }
+ window.__tint=function(a){kt=a||[.2,.3,.8]};
  requestAnimationFrame(fr);
 })();
 </script>
