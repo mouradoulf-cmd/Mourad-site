@@ -49,26 +49,30 @@ function splitH1(){var h=$('#h1');if(!h)return;h.classList.remove('go','fade');
 
  requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('go')})})}
 
-/* ---------- vitrine : ordinateur + téléphone, 2 vrais sites thaïlandais qui défilent lentement ---------- */
+/* ---------- vitrine : ordinateur + téléphone, vrais sites thaïlandais en vidéo (une scène à la fois) ---------- */
+function blobSrc(v){if(v.dataset.ready||v.dataset.busy)return;v.dataset.busy='1';var src=v.dataset.src;
+ fetch(src).then(function(r){if(!r.ok)throw 0;return r.blob()}).then(function(b){v.src=URL.createObjectURL(b);v.dataset.ready='1';v.load()}).catch(function(){v.src=src;v.dataset.ready='1';v.load()})}
 (function(){var st=$('#stage');if(!st)return;
- var lap=$$('.lscreen .sc',st),pho=$$('.pscreen .sc',st),cap=$('#cap'),LAB=[['Giulivo','rl_rest'],['One Love','rl_bar']],cur=0,anims=[],timer=null,visible=true,SCROLL=13000,HOLD=2200;
+ var lap=$$('.lscreen video.sc',st),pho=$$('.pscreen video.sc',st),cap=$('#cap'),LAB=[['Malee','pf_m_t'],['ÔBlanc','pf_o_t'],['One Love','pf_l_t']],cur=0,timer=null,visible=true,DUR=12600;
  function setCap(i){cap.innerHTML='<b>'+LAB[i][0]+'</b> · '+esc(T(LAB[i][1]))}
- function run(img,box,delay){var dist=img.offsetHeight-box.offsetHeight;if(dist<=0)return null;
-  img.style.transform='translateY(0)';
-  return img.animate([{transform:'translateY(0)',offset:0},{transform:'translateY(0)',offset:.06},{transform:'translateY(-'+dist+'px)',offset:1}],{duration:SCROLL,delay:delay||0,easing:'cubic-bezier(.45,.05,.4,.95)',fill:'forwards'})}
- function show(i){anims.forEach(function(a){a&&a.cancel()});anims=[];cur=i;setCap(i);
-  lap.concat(pho).forEach(function(im,k){im.classList.toggle('on',(k%2)===i)});
-  if(reduce)return;
-  var l=lap[i],p=pho[i];
-  [l,p].forEach(function(im){if(im.complete||im.naturalWidth)go(im);else im.addEventListener('load',function(){go(im)},{once:true})});
-  function go(im){var box=im.parentElement;var a=run(im,box,im===p?500:0);a&&anims.push(a)}}
- function loop(){clearInterval(timer);if(reduce||!visible)return;timer=setInterval(function(){show((cur+1)%2)},SCROLL+HOLD+1200)}
- show(0);loop();
- if(HAS_IO)new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible){anims.forEach(function(a){a&&a.play()});loop()}else{clearInterval(timer);anims.forEach(function(a){a&&a.pause()})}},{threshold:.15}).observe(st);
- /* légère parallaxe à la souris (rien sur mobile) */
+ function scene(i){cur=i;setCap(i);[lap,pho].forEach(function(set){set.forEach(function(v,k){v.classList.toggle('on',k===i);if(k!==i)v.pause()})});
+  var nxt=(i+1)%lap.length;lap[nxt]&&blobSrc(lap[nxt]);pho[nxt]&&blobSrc(pho[nxt]);
+  [lap[i],pho[i]].forEach(function(v){blobSrc(v);try{v.currentTime=0}catch(e){}var go=function(){if(visible&&!reduce)v.play().catch(function(){})};if(v.readyState>=2)go();else v.addEventListener('canplay',go,{once:true})})}
+ function loop(){clearInterval(timer);if(reduce)return;timer=setInterval(function(){if(visible)scene((cur+1)%lap.length)},DUR)}
+ scene(0);loop();
+ if(HAS_IO)new IntersectionObserver(function(es){visible=es[0].isIntersecting;var vs=[lap[cur],pho[cur]];if(visible){vs.forEach(function(v){v.play().catch(function(){})})}else vs.forEach(function(v){v.pause()})},{threshold:.15}).observe(st);
  if(fine&&!reduce){st.style.transition='transform .8s cubic-bezier(.32,.72,0,1)';st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;st.style.transform='perspective(1400px) rotateY('+(x*5).toFixed(2)+'deg) rotateX('+(-y*4).toFixed(2)+'deg)'});st.addEventListener('pointerleave',function(){st.style.transform=''})}
  D.addEventListener('langchange',function(){setCap(cur)});
 })();
+
+/* ---------- réalisations : vidéos qui jouent quand la carte est visible ; le démo s'ouvre en thaï ---------- */
+(function(){var cards=$$('.pcard');if(!cards.length)return;
+ var vids=$$('.pcard video');
+ if(HAS_IO&&!reduce){
+  var near=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)blobSrc(e.target)})},{rootMargin:'400px 0px'});
+  var play=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting&&v.dataset.ready)v.play().catch(function(){});else v.pause()})},{threshold:.4});
+  vids.forEach(function(v){near.observe(v);play.observe(v);v.addEventListener('loadeddata',function(){var r=v.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)v.play().catch(function(){})})})}
+ cards.forEach(function(c){c.addEventListener('click',function(){try{localStorage.setItem('mlLang','th');localStorage.setItem('obLang','th')}catch(e){}})})})();
 
 /* ---------- inclinaison très légère des cartes (souris uniquement) ---------- */
 var tiltBound=new WeakSet();
