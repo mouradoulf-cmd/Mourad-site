@@ -3,7 +3,7 @@
 (function(){
 var C={
 s_cta:["Je m'inscris","Sign me up","สมัครเลย"],
-s_h1:["Crée tes premiers sites et tes premières vidéos IA à facturer en 30 jours, même si tu pars de zéro.","Build your first websites and AI videos to sell, in 30 days, even if you start from zero.","สร้างเว็บไซต์และวิดีโอ AI ชิ้นแรกที่ขายได้ ภายใน 30 วัน แม้คุณจะเริ่มจากศูนย์"],
+s_h1:["Crée tes premiers sites et tes premières vidéos IA <span class=\"hl\">à facturer en 30 jours</span>, même si tu pars de zéro.","Build your first websites and AI videos <span class=\"hl\">to sell, in 30 days</span>, even if you start from zero.","สร้างเว็บไซต์และวิดีโอ AI ชิ้นแรก <span class=\"hl\">ที่ขายได้ ภายใน 30 วัน</span> แม้คุณจะเริ่มจากศูนย์"],
 s_sub:["Pour celles et ceux qui veulent un vrai savoir-faire à vendre : un plan pas à pas, des modèles prêts à copier et des outils pour démarrer sans abonnement coûteux.","For anyone who wants a real, sellable skill: a step-by-step plan, ready-to-copy templates and tools to start without costly subscriptions.","สำหรับคนที่อยากได้ทักษะที่ขายได้จริง: แผนทีละขั้น เทมเพลตพร้อมคัดลอก และเครื่องมือที่เริ่มได้โดยไม่ต้องจ่ายค่าสมาชิกแพง"],
 s_proof0:["Accès immédiat · Satisfait ou remboursé sous {d} jours","Instant access · {d}-day money-back guarantee","เข้าเรียนได้ทันที · รับประกันคืนเงินภายใน {d} วัน"],
 s_students:["Déjà {n} personnes formées","{n} people already trained","มีผู้เรียนแล้ว {n} คน"],

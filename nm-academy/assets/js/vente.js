@@ -36,26 +36,33 @@ function renderProof(){var box=$('#temoins'),real=CFG.TESTIMONIALS||[],l=I18N.la
 
 /* ---------- titre : mots qui se révèlent (sauf thaï, sans espaces) ---------- */
 function splitH1(){var h=$('#h1');if(!h)return;h.classList.remove('go','fade');
- if(reduce){return}
+ if(reduce)return;
  if(I18N.lang==='th'||!HAS_IO){h.classList.add('fade');requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('go')})});return}
- var words=h.textContent.trim().split(/\s+/);h.innerHTML=words.map(function(w,i){return'<span class="w"><span class="wi" style="transition-delay:'+(i*55)+'ms">'+esc(w)+'</span></span>'}).join(' ');
+ var out=[],i=0;
+ [].forEach.call(h.childNodes,function(n){var hl=n.nodeType===1&&n.classList.contains('hl'),txt=n.textContent;
+  txt.split(/\s+/).filter(Boolean).forEach(function(w){out.push('<span class="w"><span class="wi'+(hl?' hl':'')+'" style="transition-delay:'+(i++*55)+'ms">'+esc(w)+'</span></span>')})});
+ h.innerHTML=out.join(' ');
  requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('go')})})}
 
-/* ---------- 3D discrète : seulement si supportée et motion autorisée ---------- */
-var stack=$('#stack'),hero=$('#hero');
-var ok=window.CSS&&CSS.supports&&CSS.supports('transform-style','preserve-3d')&&CSS.supports('perspective','1px');
-if(ok){D.documentElement.classList.add('supports3d');
- if(!reduce){
-  if(HAS_IO)new IntersectionObserver(function(es){stack.classList.toggle('off',!es[0].isIntersecting)}).observe(hero);
-  var tk=false;addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;if(scrollY<innerHeight*1.4)stack.style.setProperty('--sy',(scrollY/innerHeight).toFixed(3))})},{passive:true})}}
-
-/* ---------- téléphone : exemples réels en boucle (chargés à la demande) ---------- */
-(function(){var ph=$('#phone');if(!ph)return;var vs=$$('video',ph),caps=['rl_rest','rl_hair','rl_sf','rl_tt'],cap=$('#cap'),cur=0,timer=null,visible=true;
- function show(i){vs.forEach(function(v,k){var on=k===i;v.classList.toggle('on',on);if(on){if(!v.src&&v.dataset.src){v.preload='auto';v.src=v.dataset.src}v.play().catch(function(){})}else v.pause()});cap.setAttribute('data-t',caps[i]);cap.textContent=T(caps[i]);cur=i}
- vs[0].classList.add('on');
- function loop(){clearInterval(timer);if(reduce||!visible)return;timer=setInterval(function(){show((cur+1)%vs.length)},4200)}
- if(HAS_IO){new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible){show(cur);loop()}else{clearInterval(timer);vs.forEach(function(v){v.pause()})}},{threshold:.25}).observe(ph)}
- if(fine&&!reduce){var w=ph.parentElement;w.addEventListener('pointermove',function(e){var r=w.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;ph.style.transform='rotateY('+(-10+x*10).toFixed(1)+'deg) rotateX('+(3-y*8).toFixed(1)+'deg)'});w.addEventListener('pointerleave',function(){ph.style.transform=''})}
+/* ---------- vitrine : ordinateur + téléphone, 2 vrais sites thaïlandais qui défilent lentement ---------- */
+(function(){var st=$('#stage');if(!st)return;
+ var lap=$$('.lscreen .sc',st),pho=$$('.pscreen .sc',st),cap=$('#cap'),LAB=[['Giulivo','rl_rest'],['One Love','rl_bar']],cur=0,anims=[],timer=null,visible=true,SCROLL=13000,HOLD=2200;
+ function setCap(i){cap.innerHTML='<b>'+LAB[i][0]+'</b> · '+esc(T(LAB[i][1]))}
+ function run(img,box,delay){var dist=img.offsetHeight-box.offsetHeight;if(dist<=0)return null;
+  img.style.transform='translateY(0)';
+  return img.animate([{transform:'translateY(0)',offset:0},{transform:'translateY(0)',offset:.06},{transform:'translateY(-'+dist+'px)',offset:1}],{duration:SCROLL,delay:delay||0,easing:'cubic-bezier(.45,.05,.4,.95)',fill:'forwards'})}
+ function show(i){anims.forEach(function(a){a&&a.cancel()});anims=[];cur=i;setCap(i);
+  lap.concat(pho).forEach(function(im,k){im.classList.toggle('on',(k%2)===i)});
+  if(reduce)return;
+  var l=lap[i],p=pho[i];
+  [l,p].forEach(function(im){if(im.complete||im.naturalWidth)go(im);else im.addEventListener('load',function(){go(im)},{once:true})});
+  function go(im){var box=im.parentElement;var a=run(im,box,im===p?500:0);a&&anims.push(a)}}
+ function loop(){clearInterval(timer);if(reduce||!visible)return;timer=setInterval(function(){show((cur+1)%2)},SCROLL+HOLD+1200)}
+ show(0);loop();
+ if(HAS_IO)new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible){anims.forEach(function(a){a&&a.play()});loop()}else{clearInterval(timer);anims.forEach(function(a){a&&a.pause()})}},{threshold:.15}).observe(st);
+ /* légère parallaxe à la souris (rien sur mobile) */
+ if(fine&&!reduce){st.style.transition='transform .8s cubic-bezier(.32,.72,0,1)';st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;st.style.transform='perspective(1400px) rotateY('+(x*5).toFixed(2)+'deg) rotateX('+(-y*4).toFixed(2)+'deg)'});st.addEventListener('pointerleave',function(){st.style.transform=''})}
+ D.addEventListener('langchange',function(){setCap(cur)});
 })();
 
 /* ---------- inclinaison très légère des cartes (souris uniquement) ---------- */
