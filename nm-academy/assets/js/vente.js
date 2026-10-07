@@ -92,9 +92,20 @@ if(HAS_IO){
  new IntersectionObserver(function(es){past=!es[0].isIntersecting&&es[0].boundingClientRect.top<0;sb()}).observe(hero);
  new IntersectionObserver(function(es){onFinal=es[0].isIntersecting;sb()},{threshold:.3}).observe(fin)}
 
-/* ---------- vidéos de démonstration : fichier selon la langue, lecture quand visible ---------- */
-function setVideos(){var l=I18N.lang;$$('video[data-vv]').forEach(function(v){var n=v.getAttribute('data-vv'),src='assets/video/'+n+'-'+l+'.mp4';if(v.getAttribute('data-cur')!==src){var was=!v.paused;v.setAttribute('data-cur',src);v.poster='assets/video/'+n+'-'+l+'.jpg';v.preload='none';v.src=src;if(was){v.load();v.play().catch(function(){})}}})}
-if(HAS_IO){var vo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.play().catch(function(){});else e.target.pause()})},{threshold:.6});$$('video[data-vv]').forEach(function(v){vo.observe(v)})}
+/* ---------- vidéos de démonstration ----------
+   Le fichier est téléchargé en entier (blob) quand la section approche : lecture fiable sur iPhone / webview,
+   même si le serveur ne gère pas les requêtes partielles (Range). Repli : lien direct vers la vidéo. */
+function srcOf(v){return'assets/video/'+v.getAttribute('data-vv')+'-'+I18N.lang+'.mp4'}
+function fetchVideo(v){var src=srcOf(v);if(v.dataset.loaded===src)return;v.dataset.loaded=src;
+ fetch(src).then(function(r){if(!r.ok)throw 0;return r.blob()}).then(function(b){if(v.dataset.cur!==src)return;v.src=URL.createObjectURL(b);v.load();if(v.dataset.vis==='1')v.play().catch(function(){})})
+ .catch(function(){if(v.dataset.cur!==src)return;v.src=src;v.load();if(v.dataset.vis==='1')v.play().catch(function(){})})}
+function setVideos(){$$('video[data-vv]').forEach(function(v){var src=srcOf(v);if(v.dataset.cur===src)return;v.dataset.cur=src;v.dataset.loaded='';v.poster=src.replace('.mp4','.jpg');v.removeAttribute('src');v.load();
+ var a=v.parentElement.querySelector('.vopen');if(a){a.href=src;a.hidden=true}if(v.dataset.near==='1')fetchVideo(v)})}
+$$('video[data-vv]').forEach(function(v){v.setAttribute('webkit-playsinline','');v.addEventListener('error',function(){var a=v.parentElement.querySelector('.vopen');if(a&&v.getAttribute('src'))a.hidden=false})});
+if(HAS_IO){
+ var near=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.dataset.near='1';fetchVideo(e.target)}})},{rootMargin:'500px 0px'});
+ var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;v.dataset.vis=e.isIntersecting?'1':'0';if(e.isIntersecting){if(v.getAttribute('src'))v.play().catch(function(){})}else v.pause()})},{threshold:.6});
+ $$('video[data-vv]').forEach(function(v){near.observe(v);vo.observe(v)})}else{$$('video[data-vv]').forEach(function(v){v.dataset.near='1';fetchVideo(v)})}
 
 /* ---------- son (discret, activé par défaut, coupable) ---------- */
 function snd(){var b=$('#snd'),on=window.SFX&&SFX.on;b.classList.toggle('on',!!on);b.textContent=T(on?'snd_on':'snd_off')}

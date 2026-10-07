@@ -11,9 +11,9 @@ window.CONFIG={
   LINKS:{a:"",b:"",pack:"",coach:""},
   // Prix d'EXEMPLE : à remplacer par tes vrais prix
   PLANS:{
-    a:{price:29, per:"mo"},       // abonnement mensuel (accès + templates + mises à jour)
-    b:{price:47, per:"once"},     // paiement unique
-    pack:{price:97, per:"once"},   // A + B à vie
+    a:{price:100, per:"once"},    // Plan A : sites web (paiement unique)
+    b:{price:150, per:"once"},    // Plan B : vidéo IA (paiement unique)
+    pack:{price:200, per:"once"},  // A + B à vie (250 € séparément)
     coach:{price:297, per:"once"}  // accompagnement personnel en visio
   },
   COACH_MIN:60,                    // durée affichée de la séance visio (minutes)
