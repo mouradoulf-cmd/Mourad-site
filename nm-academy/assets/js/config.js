@@ -26,5 +26,9 @@ window.CONFIG={
   FORM_ENDPOINT:"",
   GA_ID:"",PIXEL_ID:"",             // Google Analytics / Meta Pixel (facultatif)
   MEMBER_CODE:"NM2026",              // code d'accès à l'espace membres (à envoyer après paiement ; à changer)
-  REFUND_DAYS:7
+  REFUND_DAYS:14,                    // jours de remboursement (affiché partout sur le site : tiens-le vraiment)
+  // Preuve sociale : uniquement des chiffres RÉELS. 0 / vide = la ligne n'est pas affichée.
+  STUDENTS:0,                        // nombre d'élèves formés
+  RATING:"",                         // ex : "4,8/5 sur Trustpilot"
+  INSTALLMENTS:3                     // paiement en plusieurs fois affiché sur le Pack (0 = masqué) : à activer aussi chez ton prestataire de paiement
 };
