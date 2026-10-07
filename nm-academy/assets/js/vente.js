@@ -53,7 +53,7 @@ function splitH1(){var h=$('#h1');if(!h)return;h.classList.remove('go','fade');
 function blobSrc(v){if(v.dataset.ready||v.dataset.busy)return;v.dataset.busy='1';var src=v.dataset.src;
  fetch(src).then(function(r){if(!r.ok)throw 0;return r.blob()}).then(function(b){v.src=URL.createObjectURL(b);v.dataset.ready='1';v.load()}).catch(function(){v.src=src;v.dataset.ready='1';v.load()})}
 (function(){var st=$('#stage');if(!st)return;
- var lap=$$('.lscreen video.sc',st),pho=$$('.pscreen video.sc',st),cap=$('#cap'),LAB=[['Malee','pf_m_t'],['Monsoon','pf_n_t'],['ÔBlanc','pf_o_t'],['One Love','pf_l_t']],cur=0,timer=null,visible=true,DUR=12600;
+ var lap=$$('.lscreen video.sc',st),pho=$$('.pscreen video.sc',st),cap=$('#cap'),LAB=[['Monsoon','pf_n_t'],['One Love','pf_l_t'],['ÔBlanc','pf_o_t']],cur=0,timer=null,visible=true,DUR=12600;
  function setCap(i){cap.innerHTML='<b>'+LAB[i][0]+'</b> · '+esc(T(LAB[i][1]))}
  function show(set,i){var v=set[i];if(!v)return;blobSrc(v);
   var go=function(){set.forEach(function(x,k){x.classList.toggle('on',k===i);if(k!==i)x.pause()});var ps=v.closest&&v.closest('.pscreen');if(ps&&v.dataset.bar){ps.style.setProperty('--bar',v.dataset.bar);ps.style.setProperty('--ink',v.dataset.ink);ps.style.setProperty('--hb',v.dataset.hb)}try{v.currentTime=0}catch(e){}if(visible&&!reduce)v.play().catch(function(){})};
