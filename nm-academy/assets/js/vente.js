@@ -55,9 +55,10 @@ function blobSrc(v){if(v.dataset.ready||v.dataset.busy)return;v.dataset.busy='1'
 (function(){var st=$('#stage');if(!st)return;
  var lap=$$('.lscreen video.sc',st),pho=$$('.pscreen video.sc',st),cap=$('#cap'),LAB=[['Malee','pf_m_t'],['ÔBlanc','pf_o_t'],['One Love','pf_l_t']],cur=0,timer=null,visible=true,DUR=12600;
  function setCap(i){cap.innerHTML='<b>'+LAB[i][0]+'</b> · '+esc(T(LAB[i][1]))}
- function scene(i){cur=i;setCap(i);[lap,pho].forEach(function(set){set.forEach(function(v,k){v.classList.toggle('on',k===i);if(k!==i)v.pause()})});
-  var nxt=(i+1)%lap.length;lap[nxt]&&blobSrc(lap[nxt]);pho[nxt]&&blobSrc(pho[nxt]);
-  [lap[i],pho[i]].forEach(function(v){blobSrc(v);try{v.currentTime=0}catch(e){}var go=function(){if(visible&&!reduce)v.play().catch(function(){})};if(v.readyState>=2)go();else v.addEventListener('canplay',go,{once:true})})}
+ function show(set,i){var v=set[i];if(!v)return;blobSrc(v);
+  var go=function(){set.forEach(function(x,k){x.classList.toggle('on',k===i);if(k!==i)x.pause()});try{v.currentTime=0}catch(e){}if(visible&&!reduce)v.play().catch(function(){})};
+  if(v.readyState>=3)go();else v.addEventListener('canplay',go,{once:true})}
+ function scene(i){cur=i;setCap(i);var nxt=(i+1)%lap.length;if(lap[nxt])blobSrc(lap[nxt]);if(pho[nxt])blobSrc(pho[nxt]);show(lap,i);show(pho,i)}
  function loop(){clearInterval(timer);if(reduce)return;timer=setInterval(function(){if(visible)scene((cur+1)%lap.length)},DUR)}
  scene(0);loop();
  if(HAS_IO)new IntersectionObserver(function(es){visible=es[0].isIntersecting;var vs=[lap[cur],pho[cur]];if(visible){vs.forEach(function(v){v.play().catch(function(){})})}else vs.forEach(function(v){v.pause()})},{threshold:.15}).observe(st);
