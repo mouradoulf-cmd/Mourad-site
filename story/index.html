@@ -99,7 +99,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
     <div><label class="lab" for="fmt">Format</label><select id="fmt"><option value="16:9" selected>🖥️ 16:9 YouTube</option><option value="9:16">📱 9:16 Shorts</option></select></div>
   </div>
   <div class="row2">
-    <div><label class="lab" for="retries">Refaire si défaut</label><select id="retries"><option value="0">Jamais</option><option value="1">1 fois</option><option value="2" selected>2 fois (recommandé)</option></select></div>
+    <div><label class="lab" for="retries">Refaire si défaut</label><select id="retries"><option value="0">Jamais</option><option value="1">1 fois</option><option value="2">2 fois</option><option value="3" selected>3 fois (qualité max, plus de vidéos utilisées)</option></select></div>
     <div><label class="lab" for="quota">Limite de vidéos par jour</label><select id="quota"><option value="50" selected>50</option><option value="40">40</option><option value="30">30</option><option value="20">20</option><option value="10">10</option></select></div>
   </div>
   <label class="lab" for="mode">Méthode</label><select id="mode"><option value="auto" selected>⛓ Chaînage (méthode des studios) : chaque clip démarre sur la dernière image propre du précédent, avec contrôle qualité et refaçon automatique</option><option value="sb">🎞 Storyboard d'abord : je vois et je valide toutes les images avant de faire les vidéos</option></select>
@@ -151,6 +151,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <div class="hint" id="asmInfo"></div>
   <video class="pl" id="asmVid" controls playsinline style="display:none;margin-top:.5rem"></video>
   <a class="btn gold" id="asmDl" style="display:none;text-align:center;text-decoration:none;line-height:30px">⬇ Télécharger la vidéo finale</a>
+  <button class="btn main" id="btnRev" type="button" style="min-height:52px">🔍 Revue rapide : valider chaque clip (✅ bon / 🔁 à refaire)</button>
   <button class="btn gold" id="btnPlay" type="button">▶ Regarder l'histoire (tous les clips à la suite)</button>
   <button class="btn main" id="btnDlAll" type="button" style="min-height:52px">⬇ Télécharger les VIDÉOS (tous les clips, dans l'ordre)</button>
   <div class="hint" id="dlHint"></div>
@@ -164,6 +165,18 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 <textarea id="reportBox" style="display:none;margin-top:.5rem;min-height:140px;font-size:12px" readonly></textarea>
 <button class="btn" id="btnNew" type="button" style="margin-top:1.2rem">🆕 Nouvelle SÉRIE (efface tout : histoire, personnages, épisodes)</button>
 
+<div id="rev" style="display:none;position:fixed;inset:0;z-index:90;background:#07070b;overflow:auto;padding:max(1rem,env(safe-area-inset-top)) 1rem 1rem">
+ <div style="max-width:560px;margin:0 auto">
+  <div id="revHead" style="font-weight:700;margin-bottom:.5rem"></div>
+  <video id="revV" controls playsinline loop style="width:100%;border-radius:12px;background:#000;max-height:60vh"></video>
+  <div id="revTxt" class="hint" style="margin:.6rem 0"></div>
+  <div style="display:flex;gap:.5rem;position:sticky;bottom:0;padding:.6rem 0;background:#07070b">
+   <button class="btn" id="revPrev" type="button" style="flex:0 0 auto">◀</button>
+   <button class="btn" id="revBad" type="button" style="flex:1;border-color:#e0605a">🔁 À refaire</button>
+   <button class="btn main" id="revOk" type="button" style="flex:1">✅ Bon</button>
+  </div>
+  <button class="btn" id="revClose" type="button" style="margin-top:.4rem">Fermer la revue</button>
+ </div></div>
 <script>
 (function(){
 "use strict";
@@ -645,6 +658,20 @@ async function dlAll(){const dn=P.scenes.filter(done);if(!dn.length)return;const
  for(let i=0;i<blobs.length;i++){saveBlob(blobs[i].b,pad(blobs[i].sc.n)+'.mp4');await new Promise(r=>setTimeout(r,600))}
  toast(blobs.length+' vidéo(s) téléchargée(s) ✓','',5000)}
 $('btnDlAll').onclick=dlAll;
+let rv={list:[],i:0,u:null};
+async function revShow(){const L=rv.list;if(!L.length){revEnd();return}if(rv.i<0)rv.i=0;if(rv.i>=L.length){revEnd();return}
+ const sc=L[rv.i];if(rv.u){URL.revokeObjectURL(rv.u);rv.u=null}const b=await clipBlob(sc);let src=sc.url;if(b){rv.u=URL.createObjectURL(b);src=rv.u}
+ const v=$('revV');v.src=src||'';v.muted=true;v.play().catch(()=>{});
+ $('revHead').textContent='Clip '+sc.n+' · '+(rv.i+1)+' / '+L.length+(sc.redo?' · marqué « à refaire »':sc.ok?' · validé ✓':'');
+ $('revTxt').textContent=sc.action+(sc.line?' — « '+sc.line+' »':'')+'  Cherche : visage/vêtements qui changent, membre en trop, objet qui apparaît, mouvement saccadé.'}
+function revEnd(){const bad=P.scenes.filter(x=>x.redo);$('revV').pause();$('revHead').textContent='Revue terminée : '+bad.length+' clip(s) à refaire';
+ $('revTxt').innerHTML=bad.length?'Clips : '+bad.map(x=>x.n).join(', ')+'.<br><button class="btn main" id="revGo" type="button" style="margin-top:.6rem">🔁 Refaire ces '+bad.length+' clips maintenant</button>':'Tout est bon ✅';
+ const g=$('revGo');if(g)g.onclick=()=>{bad.forEach(sc=>{sc.redo=false;sc.ok=false;sc.vidState='';sc.err='';sc.warn='';sc.url='';sc.thumb=sc.thumb});save();$('rev').style.display='none';render();run()}}
+$('btnRev').onclick=()=>{if(!P)return;rv.list=P.scenes.filter(x=>done(x)&&!x.ok);if(!rv.list.length)rv.list=P.scenes.filter(done);rv.i=0;$('rev').style.display='block';revShow()};
+$('revOk').onclick=()=>{const sc=rv.list[rv.i];if(sc){sc.ok=true;sc.redo=false;save()}rv.i++;revShow()};
+$('revBad').onclick=()=>{const sc=rv.list[rv.i];if(sc){sc.redo=true;sc.ok=false;save()}rv.i++;revShow()};
+$('revPrev').onclick=()=>{rv.i=Math.max(0,rv.i-1);revShow()};
+$('revClose').onclick=()=>{$('revV').pause();$('rev').style.display='none';render()};
 $('btnLinks').onclick=async()=>{if(!P)return;const dn=P.scenes.filter(done);if(!dn.length){toast('Aucun clip prêt','warn');return}const t=(P.bible.title||'histoire')+'\n'+dn.map(x=>pad(x.n)+' '+(x.url||'')).join('\n')+'\n';try{await navigator.clipboard.writeText(t);toast('Liens copiés ✓ ('+dn.length+')','',4000)}catch(e){}saveBlob(new Blob([t],{type:'text/plain'}),'liens-videos.txt')};
 $('btnDocs').onclick=()=>{[['sous-titres.srt',srt()],['scenario.txt',script()],['voix-off.txt',voiceOver()]].forEach(([n,t],i)=>setTimeout(()=>saveBlob(new Blob([t],{type:'text/plain'}),n),i*500));toast('Fichiers texte téléchargés')};
 /* ───────── Assemblage final : fondus enchaînés + son continu ───────── */
