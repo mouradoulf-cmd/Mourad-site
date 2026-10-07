@@ -403,3 +403,5 @@ footer p+p{margin-top:8px}footer a{color:var(--mute)}
 .lscreen video.sc,.pscreen video.sc{will-change:opacity}
 .stage{padding-top:70px}
 @media(max-width:899px){.stage{padding-top:76px}}
+
+@media(min-width:900px){.pf3.pf4{grid-template-columns:1fr 1fr;gap:40px 34px}}
