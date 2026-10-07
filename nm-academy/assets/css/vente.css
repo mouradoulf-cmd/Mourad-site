@@ -405,3 +405,10 @@ footer p+p{margin-top:8px}footer a{color:var(--mute)}
 @media(max-width:899px){.stage{padding-top:76px}}
 
 @media(min-width:900px){.pf3.pf4{grid-template-columns:1fr 1fr;gap:40px 34px}}
+
+/* zone de statut de l'iPhone : prend la couleur du haut du site affiché */
+.pscreen{background:var(--bar,#111);transition:background .45s ease}
+.pscreen video.sc{top:7.4%!important;height:92.6%!important}
+.sbar{color:var(--ink,#fff)!important;text-shadow:none!important}
+.sbar svg{filter:none!important}
+.hbar{background:var(--hb,rgba(255,255,255,.85))!important;box-shadow:none!important}
