@@ -130,6 +130,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <div class="hint" id="progTxt"></div>
 </div>
 
+<div class="panel" id="epPanel" style="display:none"></div>
 <div class="panel" id="serPanel" style="display:none"></div>
 <div class="panel bible" id="bible" style="display:none"></div>
 <div class="panel" id="scenesPanel" style="display:none"><div class="ttl">Scènes</div><div id="scenes"></div></div>
@@ -161,7 +162,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 </div>
 <button class="btn" id="btnReport" type="button" style="margin-top:1.2rem">📋 Copier le rapport technique (si ça ne marche pas, colle-le moi)</button>
 <textarea id="reportBox" style="display:none;margin-top:.5rem;min-height:140px;font-size:12px" readonly></textarea>
-<button class="btn" id="btnNew" type="button" style="margin-top:1.2rem">🆕 Nouvelle histoire (efface l'actuelle)</button>
+<button class="btn" id="btnNew" type="button" style="margin-top:1.2rem">🆕 Nouvelle SÉRIE (efface tout : histoire, personnages, épisodes)</button>
 
 <script>
 (function(){
@@ -276,6 +277,10 @@ async function dbGet(k){if(mem[k])return mem[k];try{const d=await idb();return a
 async function dbClear(){mem={};try{const d=await idb();await new Promise(ok=>{const t=d.transaction('f','readwrite');t.objectStore('f').clear();t.oncomplete=ok;t.onerror=ok})}catch(e){}}
 let mem={};
 let P=null;
+const SHOWK='story_show_v1';let SHOW=null;
+const todayS=()=>new Date().toISOString().slice(0,10);
+function loadShow(){try{const o=JSON.parse(lsGet(SHOWK)||'null');if(o&&o.eps)SHOW=o}catch(e){}}
+function saveShow(){try{lsSet(SHOWK,JSON.stringify(SHOW))}catch(e){}}
 function save(){try{const q=JSON.parse(JSON.stringify(P));lsSet(PROJ,JSON.stringify(q))}catch(e){}}
 function load(){try{const o=JSON.parse(lsGet(PROJ)||'null');if(o&&o.scenes)P=o}catch(e){}}
 function usage(){let u={};try{u=JSON.parse(lsGet(USAGE)||'{}')}catch(e){}const d=new Date().toISOString().slice(0,10);if(u.d!==d)u={d,n:0};return u}
@@ -352,15 +357,20 @@ function sysBase(g){return 'You are a professional showrunner and storyboard art
 async function writeBible(){
 const g=genre(),N=P.o.n,L=LANGN[P.o.lang],SER=P.o.series,K=SER?Math.ceil(SER.total/SER.perDay):0;
  const sys='[TASK:BIBLE] '+sysBase(g)+(SER?' This is a LONG-FORM story of about '+Math.round(SER.total*(+P.o.dur)/60)+' minutes released in '+K+' parts (one per day), so it needs a rich plot: a clear goal, rising action, small twists, new places and allies, and every part must end on a hook. The last part resolves everything. ':'')+' Reply ONLY with JSON: {"title":"title in '+L+'","logline":"1-2 sentences in '+L+'","style":"visual style lock in English, 1 sentence, reuse this base: '+g.style+'","characters":[{"id":"c1","name":"name in '+L+' script","role":"role in the story, in English","look":"VERY concrete fixed visual description in English, 30-40 words: age, face, hair color and style, skin tone, outfit with colors, one distinctive accessory"}],"locations":[{"id":"l1","name":"short name","look":"fixed visual description in English, 20-30 words"}],"beats":["one sentence per scene in English, exactly '+N+' items, in story order"],"parts":[{"title":"short part title in '+L+'","summary":"what happens in this part, 3-5 sentences, English","hook":"the very last moment of the part, English"}]}. '+(SER?'IGNORE beats (leave it as an empty array) and write exactly '+K+' parts. ':'Leave parts as an empty array. ')+' Create '+g.n_chars+' main characters (names natural for the story; for Thai stories use Thai names) and 3 to 5 locations. Characters must be visually very distinct from each other.';
+ const EPm=!!(P.ep>1&&SHOW&&SHOW.chars&&SHOW.chars.length);
+ let sysF=sys;
+ if(EPm){const fix=SHOW.chars.map(c=>({id:c.id,name:c.name,role:c.role,look:c.look})),locs=SHOW.locs.map(l=>({id:l.id,name:l.name}));
+  sysF='[TASK:BIBLE] '+sysBase(g)+' This is EPISODE '+P.ep+' of an existing cartoon series called "'+SHOW.name+'". The main characters are FIXED and already designed, do NOT change them: '+JSON.stringify(fix)+'. Known locations (reuse ids when the story goes there): '+JSON.stringify(locs)+'.'+(SER?' The episode lasts about '+Math.round(SER.total*(+P.o.dur)/60)+' minutes and is released in '+K+' parts (one per day): a clear goal, rising action, funny moments, new places, every part ends on a hook, the last part resolves the episode.':'')+' Reply ONLY with JSON: {"title":"episode title in '+L+'","logline":"1-2 sentences in '+L+'","style":"'+SHOW.style.replace(/"/g,"'")+'","characters":[],"locations":[{"id":"e'+P.ep+'l1","name":"NEW location only","look":"fixed visual description in English, 20-30 words"}],"beats":["one sentence per scene in English, exactly '+N+' items"],"parts":[{"title":"short part title in '+L+'","summary":"3-5 sentences, English","hook":"last moment of the part, English"}]}. '+(SER?'IGNORE beats (empty array) and write exactly '+K+' parts. ':'Leave parts as an empty array. ')+'Add at most 3 NEW locations (use ids starting with e'+P.ep+'l). Use the known characters only (plus at most 2 short-lived side characters described in the action, not as main cast).'}
  let seedInfo=null,avoid='';
  if(!P.o.idea){seedInfo=pickSeed(P.o.genre)}
- if($('optMem').checked){const m=memGet();const same=m.filter(x=>x.g===P.o.genre).slice(-8),other=m.filter(x=>x.g!==P.o.genre).slice(-3);const all=same.concat(other);if(all.length)avoid=' IMPORTANT: this creator already made these stories, yours must be clearly DIFFERENT (different title, different character names and looks, different setting, different plot and ending): '+all.map(x=>'"'+x.title+'" ('+x.logline.slice(0,90)+'; characters: '+x.chars.join(', ')+'; places: '+x.locs.join(', ')+')').join(' | ')+'.'}
+ if($('optMem').checked&&!EPm){const m=memGet();const same=m.filter(x=>x.g===P.o.genre).slice(-8),other=m.filter(x=>x.g!==P.o.genre).slice(-3);const all=same.concat(other);if(all.length)avoid=' IMPORTANT: this creator already made these stories, yours must be clearly DIFFERENT (different title, different character names and looks, different setting, different plot and ending): '+all.map(x=>'"'+x.title+'" ('+x.logline.slice(0,90)+'; characters: '+x.chars.join(', ')+'; places: '+x.locs.join(', ')+')').join(' | ')+'.'}
  const premise=P.o.idea?'Story idea from the creator: '+P.o.idea:(seedInfo?'Starting premise to develop in your own original way: '+seedInfo.t+'.':'Invent an original, emotionally engaging story.');
  P.seed=seedInfo?seedInfo.i:null;
- let j=null;for(let t=0;t<2&&!j;t++){const d=await chat(sys,'Number of scenes: '+N+'. '+premise+avoid+' Variation code: '+Math.random().toString(36).slice(2,8)+'.','scénario');if(((SER&&Array.isArray(d.parts)&&d.parts.length>=2)||(!SER&&Array.isArray(d.beats)&&d.beats.length>=Math.min(N,5)))&&Array.isArray(d.characters)&&d.characters.length)j=d}
+ let j=null;for(let t=0;t<2&&!j;t++){const d=await chat(sysF,'Number of scenes: '+N+'. '+premise+avoid+' Variation code: '+Math.random().toString(36).slice(2,8)+'.','scénario');if(((SER&&Array.isArray(d.parts)&&d.parts.length>=2)||(!SER&&Array.isArray(d.beats)&&d.beats.length>=Math.min(N,5)))&&(EPm||(Array.isArray(d.characters)&&d.characters.length)))j=d}
  if(!j)throw new Error('Le scénario n\'a pas pu être écrit (réessaie)');
- j.characters=j.characters.slice(0,5).map((c,i)=>({id:String(c.id||'c'+(i+1)),name:String(c.name||'Personnage '+(i+1)),role:String(c.role||''),look:String(c.look||'')}));
- j.locations=(j.locations&&j.locations.length?j.locations:[{id:'l1',name:'Lieu',look:'a simple place'}]).slice(0,6).map((l,i)=>({id:String(l.id||'l'+(i+1)),name:String(l.name||'Lieu'),look:String(l.look||'')}));
+if(EPm){j.characters=JSON.parse(JSON.stringify(SHOW.chars));const nl=(Array.isArray(j.locations)?j.locations:[]).slice(0,3).map((l,i)=>({id:String(l.id||'e'+P.ep+'l'+(i+1)),name:String(l.name||'Lieu'),look:String(l.look||'')})).filter(l=>!SHOW.locs.some(o=>o.id===l.id));j.locations=JSON.parse(JSON.stringify(SHOW.locs)).concat(nl);j.style=SHOW.style}
+ else j.characters=j.characters.slice(0,5).map((c,i)=>({id:String(c.id||'c'+(i+1)),name:String(c.name||'Personnage '+(i+1)),role:String(c.role||''),look:String(c.look||'')}));
+if(!EPm)j.locations=(j.locations&&j.locations.length?j.locations:[{id:'l1',name:'Lieu',look:'a simple place'}]).slice(0,6).map((l,i)=>({id:String(l.id||'l'+(i+1)),name:String(l.name||'Lieu'),look:String(l.look||'')}));
  j.beats=SER?[]:j.beats.slice(0,N).map(String);
  if(SER){P.series={total:SER.total,perDay:SER.perDay,cur:0,parts:j.parts.slice(0,K).map((x,i)=>({title:String(x.title||'Partie '+(i+1)),summary:String(x.summary||''),hook:String(x.hook||'')}))};while(P.series.parts.length<K)P.series.parts.push({title:'Partie '+(P.series.parts.length+1),summary:'Continue the story towards its resolution.',hook:''})}
  P.bible={title:String(j.title||'Histoire'),logline:String(j.logline||''),style:String(j.style||g.style),characters:j.characters,locations:j.locations};
@@ -497,21 +507,37 @@ async function produce(sc,i,prevPromise){
   log('Scène '+sc.n+' : envoi de la vidéo (essai '+(t+1)+')');const id=await enqueue(()=>createVideo(sc,start));log('Scène '+sc.n+' : vidéo lancée (id '+id+')');
   let url,blob=null;try{url=await pollVideo(sc,id,true)}catch(e){if(e.message==='Arrêt')throw e;sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);if(t>=(+P.o.retries)){sc.vidState='fail';render();return}continue}
   log('Scène '+sc.n+' : vidéo reçue');try{blob=await fetchBlob(url)}catch(e){blob=null}
-  if(!blob){/* le navigateur n'a pas le droit de copier la vidéo (CORS) : on garde le lien, la vidéo reste lisible et téléchargeable */sc.url=url;sc.vidState='done';sc.err='';sc.warn='lien direct (pas de contrôle qualité automatique)';if(!S.remoteWarned){S.remoteWarned=true;toast('Les vidéos ne peuvent pas être copiées dans le navigateur : elles restent disponibles par lien (bouton ⬇ sur chaque scène). Pas de ZIP automatique.','warn',9000)}save();render();return}
+  if(!blob){/* le navigateur n'a pas le droit de copier la vidéo (CORS) : on garde le lien, la vidéo reste lisible et téléchargeable */sc.url=url;sc.vidState='done';sc.day=todayS();sc.err='';sc.warn='lien direct (pas de contrôle qualité automatique)';if(!S.remoteWarned){S.remoteWarned=true;toast('Les vidéos ne peuvent pas être copiées dans le navigateur : elles restent disponibles par lien (bouton ⬇ sur chaque scène). Pas de ZIP automatique.','warn',9000)}save();render();return}
   sc.url='';const fr=await frames(blob);
   const q=fr.length?await vision((usedLast?'Image 0 is the end of the PREVIOUS shot: the first frame of this clip must continue it seamlessly (same place, light, camera, positions). ':'')+'The following images are 3 frames (start, middle, end) of ONE video clip. Expected: '+scChars(sc).map(c=>c.name+' ('+c.look+')').join(' and ')+'; action: '+sc.action+'. Fail if: a character changes face/outfit/identity between frames, extra or missing people appear, deformed or melting faces/hands/limbs, objects or creatures appear that are not in the action, text/watermark, or the action is not performed, or there are two heads / a duplicated, cloned or mirrored person / a doubled face.',(usedLast?[start]:[]).concat(fr),'contrôle clip '+sc.n):null;
-  if(!q||q.ok||t>=(+P.o.retries)){await dbPut('clip:'+sc.n,blob);sc.vidState='done';sc.err='';sc.warn=(q&&!q.ok)?'clip : '+q.problems.slice(0,2).join(', '):'';save();render();return}
+  if(!q||q.ok||t>=(+P.o.retries)){await dbPut('clip:'+sc.n,blob);sc.vidState='done';sc.day=todayS();sc.err='';sc.warn=(q&&!q.ok)?'clip : '+q.problems.slice(0,2).join(', '):'';save();render();return}
   sc.warn='refait : '+q.problems.slice(0,2).join(', ')}}
 
 /* ───────── Rendu ───────── */
 function renderBible(){const B=P&&P.bible;if(!B){$('bible').style.display='none';return}$('bible').style.display='block';
  $('bible').innerHTML='<h3>'+esc(B.title)+'</h3><p>'+esc(B.logline)+'</p><div class="chars">'+B.characters.map(c=>'<div class="char">'+(c.th?'<img src="'+c.th+'" alt="">':'')+'<b>'+esc(c.name)+'</b><br>'+esc(c.role)+'</div>').join('')+'</div>'}
 function badge(sc){if(sc.vidState==='done')return '<span class="badge ok">prêt</span>'+(sc.warn?'<span class="badge warn" title="'+esc(sc.warn)+'">⚠︎</span>':'');if(sc.vidState==='fail')return '<span class="badge bad">échec</span>';if(sc.vidState==='proc')return '<span class="badge run">'+(sc.tries>1?'essai '+sc.tries:'en cours')+'</span>';if(sc.imgState==='proc')return '<span class="badge run">image</span>';return '<span class="badge">en attente</span>'}
+const epDone=()=>!!(P&&P.scenes&&P.scenes.length&&P.scenes.every(done)&&(!P.series||P.series.cur+1>=P.series.parts.length));
+function dayNo(){if(!P)return 1;const days=[...new Set(P.scenes.filter(done).map(x=>x.day).filter(Boolean))].sort(),i=days.indexOf(todayS());return i>=0?i+1:days.length+1}
+function epUi(){const bx=$('epPanel');if(!P&&!(SHOW&&SHOW.eps.length)){bx.style.display='none';return}
+ const ep=P?(P.ep||1):(SHOW.eps.length+1),name=(SHOW&&SHOW.name)||(P&&P.bible&&P.bible.title)||'';
+ let h='<h3 style="margin:0 0 .4rem">🎬 Série « '+esc(name)+' » — Épisode '+ep+(P?' · Jour '+dayNo():'')+'</h3>';
+ if(SHOW&&SHOW.eps.length)h+='<div class="hint">Épisodes terminés : '+SHOW.eps.map((e,i)=>'<button class="btn" type="button" data-epl="'+i+'" style="display:inline-block;width:auto;min-height:34px;padding:.2rem .7rem;margin:.15rem">🔗 Ép. '+e.n+' : '+esc(e.title)+' ('+e.clips.length+' clips)</button>').join('')+'</div>';
+ if(P&&epDone())h+='<div style="margin-top:.6rem"><label class="lab" for="epIdea">Idée de l\'épisode '+(ep+1)+' (mêmes personnages, nouvelle aventure)</label><input id="epIdea" type="text" placeholder="ex : ils vont à l\'école / ils vont à la pêche" style="width:100%"><button class="btn main" id="btnEpNext" type="button" style="margin-top:.5rem;min-height:48px">🎞 Créer l\'épisode '+(ep+1)+'</button><div class="hint">Avant de passer à la suite, le site télécharge la liste des liens de cet épisode (envoie-la moi pour le montage).</div></div>';
+ else if(P)h+='<div class="hint">Termine l\'épisode pour débloquer le suivant. Chaque jour : même bouton « Lancer » ; le site écrit Jour 2, Jour 3… et garde personnages, style et histoire.</div>';
+ bx.style.display='block';bx.innerHTML=h}
+function linksText(title,arr){return title+'\n'+arr.map(x=>pad(x.n)+' '+(x.url||'')).join('\n')+'\n'}
+function archiveEp(){const B=P.bible;if(!SHOW)SHOW={name:B.title,style:B.style,chars:[],locs:[],eps:[]};SHOW.chars=B.characters;SHOW.locs=B.locations;SHOW.style=B.style;SHOW.eps.push({n:P.ep||1,title:B.title,logline:B.logline,date:todayS(),clips:P.scenes.filter(done).map(x=>({n:x.n,url:x.url||''}))});saveShow()}
+document.addEventListener('click',async e=>{const l=e.target.closest('[data-epl]');if(l){const x=SHOW.eps[+l.dataset.epl];saveBlob(new Blob([linksText(x.title,x.clips)],{type:'text/plain'}),'episode-'+x.n+'-liens-videos.txt');return}
+ if(e.target.closest('#btnEpNext')){if(S.running)return;const idea=($('epIdea').value||'').trim();if(!idea){toast('Écris d\'abord l\'idée de l\'épisode','warn');$('epIdea').focus();return}
+  const dn=P.scenes.filter(done);saveBlob(new Blob([linksText(P.bible.title,dn)],{type:'text/plain'}),'episode-'+(P.ep||1)+'-liens-videos.txt');
+  archiveEp();for(const sc of P.scenes){await dbPut('start:'+sc.n,null);await dbPut('clip:'+sc.n,null)}
+  P=null;lsDel(PROJ);$('idea').value=idea;$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';epUi();serUi();upd();toast('Épisode précédent archivé ✓ Création du suivant…');run()}});
 function serUi(){const bx=$('serPanel');if(!P||!P.series){bx.style.display='none';return}const SR=P.series,dn=clipDone(),T=SR.total,dur=+P.o.dur,min=Math.round(dn*dur/60*10)/10,day=usage().n;
- bx.style.display='block';bx.innerHTML='<h3 style="margin:0 0 .4rem">📺 Série : partie '+(SR.cur+1)+' / '+SR.parts.length+' — '+esc(SR.parts[SR.cur].title)+'</h3><div class="hint">'+dn+' / '+T+' clips prêts ≈ '+min+' min sur '+Math.round(T*dur/60)+' min · aujourd\'hui '+day+' vidéos créées. Reviens demain : le même bouton écrit et produit la partie suivante avec les mêmes personnages. <b>Ne vide pas les données du navigateur</b> entre les jours.</div><details style="margin-top:.5rem"><summary>Plan de toute l\'histoire</summary>'+SR.parts.map((p,i)=>'<p style="margin:.4rem 0"><b>'+(i+1)+'. '+esc(p.title)+'</b>'+(i<=SR.cur?' ✓':'')+'<br>'+esc(p.summary)+'</p>').join('')+'</details>'}
+ bx.style.display='block';bx.innerHTML='<h3 style="margin:0 0 .4rem">📺 Série : partie '+(SR.cur+1)+' / '+SR.parts.length+' — '+esc(SR.parts[SR.cur].title)+' · Jour '+dayNo()+'</h3><div class="hint">'+dn+' / '+T+' clips prêts ≈ '+min+' min sur '+Math.round(T*dur/60)+' min · aujourd\'hui '+day+' vidéos créées. Reviens demain : le même bouton écrit et produit la partie suivante avec les mêmes personnages. <b>Ne vide pas les données du navigateur</b> entre les jours.</div><details style="margin-top:.5rem"><summary>Plan de toute l\'histoire</summary>'+SR.parts.map((p,i)=>'<p style="margin:.4rem 0"><b>'+(i+1)+'. '+esc(p.title)+'</b>'+(i<=SR.cur?' ✓':'')+'<br>'+esc(p.summary)+'</p>').join('')+'</details>'}
 function planUi(){try{const L_=lenParse(),d=+$('dur').value;$('planInfo').innerHTML=L_.series?'= '+L_.total+' clips de '+d+' s ≈ <b>'+Math.ceil(L_.total/L_.perDay)+' jours</b> à '+L_.perDay+' clips/jour':'= '+L_.total+' clips, une seule session'}catch(e){}}
 ['len','dur','perDay'].forEach(i=>$(i).addEventListener('change',planUi));
-function render(){serUi();if(!P||!P.scenes||!P.scenes.length){$('scenesPanel').style.display='none';$('slidePanel').style.display='none';return}
+function render(){serUi();epUi();if(!P||!P.scenes||!P.scenes.length){$('scenesPanel').style.display='none';$('slidePanel').style.display='none';return}
  $('scenesPanel').style.display='block';const v=P.o.fmt==='9:16';
  $('scenes').innerHTML=(P.reviewNote?'<div class="hint" style="margin:0 0 .6rem">🔎 Relecture de cohérence : '+esc(P.reviewNote)+'</div>':'')+P.scenes.map((s,i2)=>{const i=i2;const cs=scChars(s).map(c=>c.name).join(' + ');return '<div class="sc'+(v?' v':'')+'"><img class="th" src="'+(s.thumb||'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')+'" alt=""><div class="in"><div class="n">SCÈNE '+s.n+' / '+P.scenes.length+badge(s)+'</div><div class="hint" style="margin:.1rem 0">📍 '+esc(loc(s).name)+' · 👤 '+esc(cs)+'</div><textarea data-a="'+i+'" '+(S.running?'disabled':'')+'>'+esc(s.action)+'</textarea>'+'<div class="ln">🗣 '+esc((byId(P.bible.characters,s.speaker)||{name:'(personne)'}).name)+' :</div><input type="text" data-line="'+i2+'" value="'+esc(s.line)+'" placeholder="Dialogue (laisse vide si personne ne parle)" '+(S.running?'disabled':'')+'>'+(s.roman?'<div class="hint" style="margin:.1rem 0">'+esc(s.roman)+'</div>':'')+(s.err&&s.vidState!=='done'?'<div class="hint" style="color:var(--err)">'+esc(s.err)+'</div>':'')+(s.warn?'<div class="hint" style="color:var(--warn)">⚠︎ '+esc(s.warn)+'</div>':'')+(s.url?'<a class="hint" style="color:var(--blue)" href="'+esc(s.url)+'" target="_blank" rel="noopener" download>⬇ ouvrir / télécharger le clip '+s.n+'</a><br>':'')+'<button data-img="'+i+'" '+(S.running?'disabled':'')+'>↻ nouvelle image</button>'+(s.thumb?'<button data-redo="'+i+'" '+(S.running?'disabled':'')+'>↻ refaire la vidéo</button>':'')+'</div></div>'}).join('');
  const dn=clipDone(),N=P.scenes.length;$('result').style.display=dn?'block':'none';$('plInfo').textContent=dn+' / '+N+' clips prêts';$('slidePanel').style.display=P.scenes.some(x=>x.thumb)?'block':'none';if(dn)renderDl();
@@ -530,7 +556,7 @@ async function run(){
 S.running=true;S.stop=false;showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{
   if(!P||!P.scenes||!P.scenes.length){
-   P={id:Date.now(),o:readOpts(),scenes:[],partStart:0};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
+   P={id:Date.now(),o:readOpts(),scenes:[],partStart:0,ep:SHOW?SHOW.eps.length+1:1};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
    await writeBible();renderBible();phase('story','Écriture des scènes…',.1);if(P.series){await startPart(0)}else{await expandScenes();await reviewStory()}save();render();
    if($('optReview').checked){phase('story','Scénario prêt : relis et corrige les scènes, puis touche « Lancer la production ».',.35);toast('Scénario prêt ✓ Relis-le puis lance la production');return}}
   else if(P.series&&partComplete()&&P.series.cur+1<P.series.parts.length){P.o.quota=$('quota').value;P.o.retries=$('retries').value;await startPart(P.series.cur+1);render();
@@ -677,8 +703,8 @@ function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('
 $('apiSave').onclick=()=>{const v=$('apiKeyInput').value.trim();if(v)lsSet(KEY,v);else lsDel(KEY);upd();toast(v?'Clé enregistrée':'Clé supprimée')};
 $('btnGo').onclick=run;$('btnStop').onclick=()=>{S.stop=true;toast('Arrêt en cours…','warn')};
 $('mode').onchange=upd;$('btnMemClear').onclick=()=>{if(confirm('Effacer la mémoire des histoires déjà créées ?')){lsDel(MEM);memUi();toast('Mémoire effacée')}};$('btnPlay').onclick=playAll;$('btnZip').onclick=zipAll;
-$('btnNew').onclick=async()=>{if(S.running){toast('Arrête d\'abord la création','warn');return}if(P&&!confirm('Effacer l\'histoire actuelle et tous ses clips ?'))return;P=null;lsDel(PROJ);await dbClear();$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';upd();toast('Prêt pour une nouvelle histoire')};
-load();if(P&&P.o){selGenre=P.o.genre||selGenre;['len:lenv','talk:talk','perDay:perDay','dur:dur','lang:lang','fmt:fmt','retries:retries','quota:quota'].forEach(p=>{const[a,b]=p.split(':');if(P.o[b]!=null)$(a).value=P.o[b]})}
+$('btnNew').onclick=async()=>{if(S.running){toast('Arrête d\'abord la création','warn');return}if((P||SHOW)&&!confirm('Effacer toute la série (histoire, personnages, épisodes) ?'))return;P=null;SHOW=null;lsDel(SHOWK);lsDel(PROJ);await dbClear();$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';upd();toast('Prêt pour une nouvelle histoire')};
+loadShow();load();if(P&&P.o){selGenre=P.o.genre||selGenre;['len:lenv','talk:talk','perDay:perDay','dur:dur','lang:lang','fmt:fmt','retries:retries','quota:quota'].forEach(p=>{const[a,b]=p.split(':');if(P.o[b]!=null)$(a).value=P.o[b]})}
 drawGenres();planUi();upd();memUi();renderBible();render();
 if(P&&P.scenes&&P.scenes.length){$('prog').style.display='block';const dn=clipDone();phase(dn===P.scenes.length?'done':'clips','Projet repris : '+dn+' / '+P.scenes.length+' clips prêts',dn/P.scenes.length)}
 })();
