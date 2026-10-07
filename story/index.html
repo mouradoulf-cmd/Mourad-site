@@ -83,8 +83,12 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 <div class="panel">
   <div class="ttl">2 · Réglages</div>
   <div class="row2">
-    <div><label class="lab" for="nClips">Nombre de clips</label><select id="nClips"><option value="3">3 (test rapide)</option><option value="6">6 (test)</option><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50" selected>50</option></select></div>
-    <div><label class="lab" for="dur">Durée d'un clip</label><select id="dur"><option value="5" selected>5 s (recommandé : plus fiable)</option><option value="8">8 s</option><option value="10">10 s</option></select></div>
+    <div><label class="lab" for="len">Longueur de l'histoire</label><select id="len"><option value="c3">Test : 3 clips</option><option value="c6">Test : 6 clips</option><option value="c10">Court : 10 clips</option><option value="c20">Court : 20 clips</option><option value="c50">50 clips (une journée)</option><option value="m10">Série : 10 minutes (sur plusieurs jours)</option><option value="m20">Série : 20 minutes</option><option value="m30" selected>Série : 30 minutes</option><option value="m45">Série : 45 minutes</option><option value="m60">Série : 1 heure</option></select></div>
+    <div><label class="lab" for="dur">Durée d'un clip</label><select id="dur"><option value="5">5 s (plus fiable, mais 2× plus de clips)</option><option value="8">8 s</option><option value="10" selected>10 s (50 clips = 500 s par jour)</option></select></div>
+  </div>
+  <div class="row2">
+    <div><label class="lab" for="perDay">Clips à produire par jour</label><select id="perDay"><option value="3">3 (test)</option><option value="20">20</option><option value="30">30</option><option value="40" selected>40 (garde de la marge pour les refaçons)</option><option value="50">50</option></select></div>
+    <div class="hint" id="planInfo" style="margin-top:1.6rem"></div>
   </div>
   <div class="row2">
     <div><label class="lab" for="lang">Langue des dialogues</label><select id="lang"><option value="th" selected>🇹🇭 Thaï</option><option value="fr">🇫🇷 Français</option><option value="en">🇬🇧 Anglais</option></select></div>
@@ -98,7 +102,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <label class="tog"><input type="checkbox" id="optSq" checked><span>🧍 Anti-doublons : les images sont créées en carré puis recadrées (les formats très larges sont une cause fréquente de « deux têtes » / personne en double)</span></label>
   <label class="tog"><input type="checkbox" id="optQA" checked><span>Contrôle qualité automatique : l'IA regarde chaque image et chaque clip, et refait ceux qui ont un défaut (visage déformé, doigts en trop, personnage qui change…)</span></label>
   <label class="tog"><input type="checkbox" id="optReview"><span>Me montrer le scénario avant de créer les vidéos (pour le corriger)</span></label>
-  <label class="tog"><input type="checkbox" id="optSpeak" checked><span>🗣 Les personnages PARLENT dans la vidéo, dans la langue choisie (thaï par défaut) : la voix et les lèvres sont créées par le modèle vidéo. Si le résultat n'est pas bon, décoche : les dialogues restent dans les sous-titres et dans le fichier de voix off.</span></label>
+  <label class="tog"><input type="checkbox" id="optSpeak"><span>🗣 Les personnages PARLENT dans la vidéo (déconseillé : le modèle parle parfois anglais ou bugue). Laisse décoché : les dialogues thaï sont dans les sous-titres et dans le fichier de voix off pour CapCut.</span></label>
   <label class="tog"><input type="checkbox" id="optVoice"><span>🔊 Pendant « Regarder l'histoire », lire aussi les dialogues à voix haute avec la voix thaï de ton téléphone (utile si un clip est muet)</span></label>
   <div class="hint" id="quotaHint"></div>
 </div>
@@ -122,6 +126,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <div class="hint" id="progTxt"></div>
 </div>
 
+<div class="panel" id="serPanel" style="display:none"></div>
 <div class="panel bible" id="bible" style="display:none"></div>
 <div class="panel" id="scenesPanel" style="display:none"><div class="ttl">Scènes</div><div id="scenes"></div></div>
 
@@ -144,7 +149,8 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <button class="btn gold" id="btnPlay" type="button">▶ Regarder l'histoire (tous les clips à la suite)</button>
   <button class="btn main" id="btnDlAll" type="button" style="min-height:52px">⬇ Télécharger les VIDÉOS (tous les clips, dans l'ordre)</button>
   <div class="hint" id="dlHint"></div>
-  <div id="dlList" style="margin-top:.5rem"></div>
+  <div id="dlList" style="margin-top:.5rem;max-height:320px;overflow:auto"></div>
+  <button class="btn gold" id="btnLinks" type="button">🔗 Liste des liens de TOUS les clips (fichier .txt : envoie-le moi, je fais le montage)</button>
   <button class="btn gold" id="btnZip" type="button">📦 ZIP : clips numérotés + sous-titres + scénario</button>
   <button class="btn" id="btnDocs" type="button">📄 Seulement les textes : sous-titres (.srt), scénario, voix off</button>
   <div class="hint">Les clips sont numérotés dans l'ordre (001, 002…). Colle-les dans CapCut, DaVinci ou YouTube Studio : l'ordre est déjà bon. Le fichier .srt contient les sous-titres.</div>
@@ -170,6 +176,11 @@ const LANGN={th:'Thai',fr:'French',en:'English'};
 
 /* ───────── Types d'histoires ───────── */
 const GENRES=[
+ {id:'cartoonTh',e:'🐘',n:'Dessin animé thaï (série longue)',d:'Aventure pour enfants en Thaïlande, histoire qui continue sur plusieurs jours',
+  style:'bright colorful 2D children cartoon, soft rounded shapes, clean outlines, flat pastel colors with warm tropical light, Thai village, river, temple and jungle settings, consistent character design, simple clean backgrounds',
+  tone:'warm, funny, adventurous, kind, safe for children, small moral lessons along the way, respectful of Thai culture',
+  plan:'A long adventure told in parts: introduce a small group of friends and their goal; every part has its own mini-challenge and ends on a hook; they meet allies and a gentle antagonist; obstacles grow; a big challenge; a heartfelt resolution that completes the goal.',
+  rules:'1 or 2 characters per shot, simple everyday actions (walk, run, climb, paddle, look, point, hug, laugh), slow camera. No scary content, no violence. Keep at most 3 main characters and a few locations so everything stays consistent.',n_chars:3},
  {id:'build',e:'🏗️',n:'Construction impossible (style TikTok)',d:'Un artisan construit une maison dans un lieu incroyable, étape par étape, sans paroles',
   style:'photorealistic cinematic real footage look, natural light, sharp detail, real materials, vertical smartphone video feel, consistent worker and consistent location',
   tone:'satisfying, calm, ASMR-like craftsmanship, no dialogue',
@@ -228,6 +239,7 @@ const GENRES=[
 ];
 /* ───────── Mémoire des histoires + graines de variété ───────── */
 const SEEDS={
+ cartoonTh:['three village kids who follow a river to return a lost baby elephant to its herd','a little girl and her pet monkey who search for the missing lanterns before the festival','two brothers and a talking tuk-tuk crossing Thailand to bring a gift to their grandmother','a young fisherman, a turtle and a crab looking for a lost pearl','kids who rebuild a village market washed away by a storm','a tiny dragon-kite that must find its way back to the sky festival'],
  drama:['two rival chefs who must share one tiny restaurant kitchen','a night-shift nurse and a musician who meets her on the same train every night','childhood friends reunited at a wedding where one of them is the groom\'s brother','a translator and a famous actor stuck together during a storm in a mountain hotel','a florist whose ex returns to buy flowers for another woman','two strangers who swap phones by mistake and start answering each other\'s messages','a widowed bookshop owner and a young architect hired to rebuild her shop'],
  animeLove:['a shy student and the new transfer student who shares her umbrella','two members of the school photography club who both love the same hidden spot','a rival pair of kendo club captains forced to organize the festival together','a girl who leaves letters in a library book and a boy who answers them','childhood friends separated by a move who meet again at the cherry blossom festival','two cooks of the school cafeteria festival stall'],
  cartoon:['a little elephant who is afraid of the dark','a kitten who wants to learn to swim','three friends who build a rocket from a cardboard box','a baby dragon who cannot make fire yet and hides it','a lost robot toy looking for its owner','a rainy day when the rain refuses to stop'],
@@ -334,40 +346,56 @@ const byId=(a,id)=>(a||[]).filter(x=>x.id===id)[0];
 function genre(){return GENRES.filter(g=>g.id===P.o.genre)[0]||GENRES[0]}
 function sysBase(g){return 'You are a professional showrunner and storyboard artist writing a long-form video series for YouTube. Audience: Thai viewers. Genre: '+g.n+'. Tone: '+g.tone+'. Structure: '+g.plan+' Production rules: '+g.rules+' Every scene must be filmable by an AI video model as ONE simple continuous action of '+P.o.dur+' seconds in ONE location with at most 2 characters. The story must progress in every scene and each scene must follow logically from the previous one (cause and effect). Never introduce anything that does not serve the story. Never let objects, creatures or effects act on their own unless the scene action says so. Every action must still be IN MOTION at the last frame of the clip (never end on a pause or a rest pose) and the next scene continues that same movement.'}
 async function writeBible(){
- const g=genre(),N=P.o.n,L=LANGN[P.o.lang];
- const sys='[TASK:BIBLE] '+sysBase(g)+' Reply ONLY with JSON: {"title":"title in '+L+'","logline":"1-2 sentences in '+L+'","style":"visual style lock in English, 1 sentence, reuse this base: '+g.style+'","characters":[{"id":"c1","name":"name in '+L+' script","role":"role in the story, in English","look":"VERY concrete fixed visual description in English, 30-40 words: age, face, hair color and style, skin tone, outfit with colors, one distinctive accessory"}],"locations":[{"id":"l1","name":"short name","look":"fixed visual description in English, 20-30 words"}],"beats":["one sentence per scene in English, exactly '+N+' items, in story order"]}. Create '+g.n_chars+' main characters (names natural for the story; for Thai stories use Thai names) and 3 to 5 locations. Characters must be visually very distinct from each other.';
+const g=genre(),N=P.o.n,L=LANGN[P.o.lang],SER=P.o.series,K=SER?Math.ceil(SER.total/SER.perDay):0;
+ const sys='[TASK:BIBLE] '+sysBase(g)+(SER?' This is a LONG-FORM story of about '+Math.round(SER.total*(+P.o.dur)/60)+' minutes released in '+K+' parts (one per day), so it needs a rich plot: a clear goal, rising action, small twists, new places and allies, and every part must end on a hook. The last part resolves everything. ':'')+' Reply ONLY with JSON: {"title":"title in '+L+'","logline":"1-2 sentences in '+L+'","style":"visual style lock in English, 1 sentence, reuse this base: '+g.style+'","characters":[{"id":"c1","name":"name in '+L+' script","role":"role in the story, in English","look":"VERY concrete fixed visual description in English, 30-40 words: age, face, hair color and style, skin tone, outfit with colors, one distinctive accessory"}],"locations":[{"id":"l1","name":"short name","look":"fixed visual description in English, 20-30 words"}],"beats":["one sentence per scene in English, exactly '+N+' items, in story order"],"parts":[{"title":"short part title in '+L+'","summary":"what happens in this part, 3-5 sentences, English","hook":"the very last moment of the part, English"}]}. '+(SER?'IGNORE beats (leave it as an empty array) and write exactly '+K+' parts. ':'Leave parts as an empty array. ')+' Create '+g.n_chars+' main characters (names natural for the story; for Thai stories use Thai names) and 3 to 5 locations. Characters must be visually very distinct from each other.';
  let seedInfo=null,avoid='';
  if(!P.o.idea){seedInfo=pickSeed(P.o.genre)}
  if($('optMem').checked){const m=memGet();const same=m.filter(x=>x.g===P.o.genre).slice(-8),other=m.filter(x=>x.g!==P.o.genre).slice(-3);const all=same.concat(other);if(all.length)avoid=' IMPORTANT: this creator already made these stories, yours must be clearly DIFFERENT (different title, different character names and looks, different setting, different plot and ending): '+all.map(x=>'"'+x.title+'" ('+x.logline.slice(0,90)+'; characters: '+x.chars.join(', ')+'; places: '+x.locs.join(', ')+')').join(' | ')+'.'}
  const premise=P.o.idea?'Story idea from the creator: '+P.o.idea:(seedInfo?'Starting premise to develop in your own original way: '+seedInfo.t+'.':'Invent an original, emotionally engaging story.');
  P.seed=seedInfo?seedInfo.i:null;
- let j=null;for(let t=0;t<2&&!j;t++){const d=await chat(sys,'Number of scenes: '+N+'. '+premise+avoid+' Variation code: '+Math.random().toString(36).slice(2,8)+'.','scénario');if(Array.isArray(d.beats)&&d.beats.length>=Math.min(N,5)&&Array.isArray(d.characters)&&d.characters.length)j=d}
+ let j=null;for(let t=0;t<2&&!j;t++){const d=await chat(sys,'Number of scenes: '+N+'. '+premise+avoid+' Variation code: '+Math.random().toString(36).slice(2,8)+'.','scénario');if(((SER&&Array.isArray(d.parts)&&d.parts.length>=2)||(!SER&&Array.isArray(d.beats)&&d.beats.length>=Math.min(N,5)))&&Array.isArray(d.characters)&&d.characters.length)j=d}
  if(!j)throw new Error('Le scénario n\'a pas pu être écrit (réessaie)');
  j.characters=j.characters.slice(0,5).map((c,i)=>({id:String(c.id||'c'+(i+1)),name:String(c.name||'Personnage '+(i+1)),role:String(c.role||''),look:String(c.look||'')}));
  j.locations=(j.locations&&j.locations.length?j.locations:[{id:'l1',name:'Lieu',look:'a simple place'}]).slice(0,6).map((l,i)=>({id:String(l.id||'l'+(i+1)),name:String(l.name||'Lieu'),look:String(l.look||'')}));
- j.beats=j.beats.slice(0,N).map(String);
+ j.beats=SER?[]:j.beats.slice(0,N).map(String);
+ if(SER){P.series={total:SER.total,perDay:SER.perDay,cur:0,parts:j.parts.slice(0,K).map((x,i)=>({title:String(x.title||'Partie '+(i+1)),summary:String(x.summary||''),hook:String(x.hook||'')}))};while(P.series.parts.length<K)P.series.parts.push({title:'Partie '+(P.series.parts.length+1),summary:'Continue the story towards its resolution.',hook:''})}
  P.bible={title:String(j.title||'Histoire'),logline:String(j.logline||''),style:String(j.style||g.style),characters:j.characters,locations:j.locations};
- P.beats=j.beats;P.o.n=j.beats.length;memAdd({g:P.o.genre,title:P.bible.title,logline:P.bible.logline,chars:P.bible.characters.map(c=>c.name),locs:P.bible.locations.map(l=>l.name),seed:P.seed,date:new Date().toISOString().slice(0,10)});memUi()}
+ P.beats=j.beats;if(!SER)P.o.n=j.beats.length;memAdd({g:P.o.genre,title:P.bible.title,logline:P.bible.logline,chars:P.bible.characters.map(c=>c.name),locs:P.bible.locations.map(l=>l.name),seed:P.seed,date:new Date().toISOString().slice(0,10)});memUi()}
+async function writeBeats(k){
+ const g=genre(),B=P.bible,SR=P.series,K=SR.parts.length,M=Math.min(SR.perDay,SR.total-k*SR.perDay),pt=SR.parts[k];
+ phase('story','Partie '+(k+1)+' / '+K+' : « '+pt.title+' » — écriture des scènes…',.08);
+ const compact={title:B.title,logline:B.logline,characters:B.characters.map(c=>({id:c.id,name:c.name,role:c.role})),locations:B.locations.map(l=>({id:l.id,name:l.name}))};
+ const whole=SR.parts.map((x,i)=>'Part '+(i+1)+' "'+x.title+'": '+x.summary+' [hook: '+x.hook+']').join('\n');
+ const recent=P.scenes.slice(-10).map(x=>x.n+': '+x.summary).join(' | ');
+ const sys='[TASK:BEATS] '+sysBase(g)+' You write the shot-by-shot beats of ONE part of a long cartoon. Reply ONLY with JSON {"beats":["one sentence per scene, English, exactly '+M+' items, in order"]}. '+(k===0?'This is the beginning: introduce the world and the heroes and their goal. ':'The part must start exactly where the previous scene ended, with the same characters and place unless a trip is shown. ')+'Develop the part summary in order, keep every earlier fact true, never repeat an earlier scene, and end exactly on the part hook'+(k===K-1?', then fully resolve the story with a satisfying ending':'')+'.';
+ const user='Story: '+JSON.stringify(compact)+'\nWhole plot:\n'+whole+'\nLast scenes so far: '+(recent||'none')+'\nWrite part '+(k+1)+' of '+K+' ("'+pt.title+'"): '+pt.summary+' Hook: '+pt.hook+'. Number of scenes: '+M+'.';
+ let d=null;for(let t=0;t<2&&!d;t++){const x=await chat(sys,user,'partie '+(k+1));if(Array.isArray(x.beats)&&x.beats.length>=Math.ceil(M*.7))d=x}
+ if(!d)throw new Error('La partie '+(k+1)+' n\'a pas pu être écrite (réessaie)');
+ const b=d.beats.map(String).slice(0,M);while(b.length<M)b.push('The story moves forward towards the next part.');
+ P.beats=b;P.series.cur=k}
+async function startPart(k){P.partStart=P.scenes.length;await writeBeats(k);await expandScenes();await reviewStory();save()}
+const partComplete=()=>P.scenes.slice(P.partStart||0).every(done);
 async function expandScenes(){
- const g=genre(),L=LANGN[P.o.lang],B=P.bible,N=P.beats.length;P.scenes=[];
+ const g=genre(),L=LANGN[P.o.lang],B=P.bible,N=P.beats.length,base=P.scenes.length;
  const compact={title:B.title,logline:B.logline,characters:B.characters.map(c=>({id:c.id,name:c.name,role:c.role})),locations:B.locations.map(l=>({id:l.id,name:l.name}))};
  for(let s=0;s<N;s+=8){
   const e=Math.min(N,s+8);phase('story','Écriture des scènes '+(s+1)+'–'+e+' sur '+N+'…',.1+.2*s/N);
-  const prev=P.scenes.slice(-3).map(x=>x.n+': '+x.summary).join(' | ');
+  const prev=P.scenes.slice(-8).map(x=>x.n+': '+x.summary).join(' | ');
   const sys='[TASK:SCENES] '+sysBase(g)+' Expand the given beats into precise shot descriptions. Reply ONLY with JSON {"scenes":[{"n":number,"loc":"location id","chars":["character ids visible in the shot, max 2"],"action":"ONE simple physical action visible on screen, English, max 25 words, describing what the character(s) do from start to end of the clip","shot":"close-up | medium shot | wide shot","camera":"static | slow push-in | slow pan left | slow pan right","emotion":"one word","line":"short spoken line in '+L+', max 8 words, natural everyday speech, or empty string","speaker":"id of the character who says the line (must be in chars), or empty","roman":"the line written in Latin letters (romanization of the pronunciation), or empty","link":"continue if the shot is the direct continuation of the previous shot in the same place with the same characters, otherwise cut","summary":"what happens, English, max 18 words"}]}. Return exactly one scene per beat, with the same n.'+(g.silent?' This genre is silent: "line" MUST be an empty string and "speaker" and "roman" empty.':'');
-  const user='Story: '+JSON.stringify(compact)+'\nPrevious scenes: '+(prev||'none')+'\nBeats to expand:\n'+P.beats.slice(s,e).map((b,i)=>(s+i+1)+'. '+b).join('\n');
-  let d=null;for(let t=0;t<2&&!d;t++){const x=await chat(sys,user,'scènes '+(s+1));if(Array.isArray(x.scenes)&&x.scenes.length)d=x}
+  const user='Story: '+JSON.stringify(compact)+'\nPrevious scenes: '+(prev||'none')+'\nBeats to expand:\n'+P.beats.slice(s,e).map((b,i)=>(base+s+i+1)+'. '+b).join('\n');
+  let d=null;for(let t=0;t<2&&!d;t++){const x=await chat(sys,user,'scènes '+(base+s+1));if(Array.isArray(x.scenes)&&x.scenes.length)d=x}
   if(!d)throw new Error('Les scènes '+(s+1)+'–'+e+' n\'ont pas pu être écrites');
-  for(let i=s;i<e;i++){const x=d.scenes.filter(q=>+q.n===i+1)[0]||d.scenes[i-s]||{};
+  for(let i=s;i<e;i++){const x=d.scenes.filter(q=>+q.n===base+i+1)[0]||d.scenes[i-s]||{};
    const ids=(Array.isArray(x.chars)?x.chars:[]).map(String).filter(id=>byId(B.characters,id)).slice(0,2);
-   P.scenes.push({n:i+1,loc:byId(B.locations,x.loc)?x.loc:B.locations[0].id,chars:ids.length?ids:[B.characters[0].id],action:String(x.action||P.beats[i]).split(/\s+/).slice(0,32).join(' '),shot:String(x.shot||'medium shot'),camera:String(x.camera||'static'),emotion:String(x.emotion||''),line:g.silent?'':String(x.line||'').slice(0,120),roman:String(x.roman||'').slice(0,160),speaker:(byId(B.characters,x.speaker)&&ids.indexOf(String(x.speaker))>-1)?String(x.speaker):(x.line&&!g.silent?ids[0]||'':''),link:(x.link==='continue'&&i>0)?'continue':'cut',summary:String(x.summary||P.beats[i]),imgState:'',vidState:'',tries:0,err:'',warn:'',thumb:''})}
+   P.scenes.push({n:base+i+1,loc:byId(B.locations,x.loc)?x.loc:B.locations[0].id,chars:ids.length?ids:[B.characters[0].id],action:String(x.action||P.beats[i]).split(/\s+/).slice(0,32).join(' '),shot:String(x.shot||'medium shot'),camera:String(x.camera||'static'),emotion:String(x.emotion||''),line:g.silent?'':String(x.line||'').slice(0,120),roman:String(x.roman||'').slice(0,160),speaker:(byId(B.characters,x.speaker)&&ids.indexOf(String(x.speaker))>-1)?String(x.speaker):(x.line&&!g.silent?ids[0]||'':''),link:(x.link==='continue'&&i>0)?'continue':'cut',summary:String(x.summary||P.beats[i]),imgState:'',vidState:'',tries:0,err:'',warn:'',thumb:''})}
  }
- P.scenes[0].link='cut';save()}
+ if(base===0)P.scenes[0].link='cut';save()}
 
 async function reviewStory(){
  const L=LANGN[P.o.lang],g=genre();phase('story','Relecture : l\'IA vérifie que l\'histoire se suit…',.3);
  const sys='[TASK:REVIEW] '+sysBase(g)+' You are a strict script supervisor. Read ALL scenes in order and fix continuity problems: a scene must start exactly where the previous one ended (same place unless a travel is shown, same time of day, same objects in the same hands, same clothes), characters must not appear before being introduced nor vanish without reason, cause and effect must be clear, the ending must resolve the story. Keep each action ONE simple visible action (max 25 words, English). Reply ONLY with JSON {"fixes":[{"n":number,"action":"corrected action","line":"corrected spoken line in '+L+' or empty","roman":"romanization or empty","loc":"location id","chars":["ids"]}],"notes":"one sentence"}. Include only scenes that need a fix (can be none).';
- const comp=P.scenes.map(x=>x.n+' ['+x.loc+'|'+x.chars.join('+')+'] '+x.action+(x.line?' — "'+x.line+'"':'')).join('\n');
+
+ const from=Math.max(0,(P.partStart||0)-8);const comp=P.scenes.slice(from).map(x=>x.n+' ['+x.loc+'|'+x.chars.join('+')+'] '+x.action+(x.line?' — "'+x.line+'"':'')).join('\n');
  try{const d=await chat(sys,'Characters: '+P.bible.characters.map(c=>c.id+'='+c.name).join(', ')+'. Locations: '+P.bible.locations.map(l=>l.id+'='+l.name).join(', ')+'.\nScenes:\n'+comp,'relecture');
   let k=0;(d.fixes||[]).forEach(f=>{const sc=P.scenes[(+f.n)-1];if(!sc||!f.action)return;sc.action=String(f.action).split(/\s+/).slice(0,32).join(' ');if(f.line!=null&&!g.silent){sc.line=String(f.line).slice(0,120);if(f.roman!=null)sc.roman=String(f.roman).slice(0,160)}if(byId(P.bible.locations,f.loc))sc.loc=f.loc;const ids=(Array.isArray(f.chars)?f.chars:[]).map(String).filter(id=>byId(P.bible.characters,id)).slice(0,2);if(ids.length)sc.chars=ids;k++});
   P.reviewNote=(k?k+' scène(s) corrigée(s) : ':'')+String(d.notes||'');save()}catch(e){if(e.message==='Arrêt')throw e}}
@@ -424,7 +452,7 @@ function frames(blob){return new Promise(ok=>{const v=document.createElement('vi
  v.onseeked=()=>{try{const c=document.createElement('canvas');const kk=512/Math.max(v.videoWidth,v.videoHeight);c.width=Math.round(v.videoWidth*kk);c.height=Math.round(v.videoHeight*kk);c.getContext('2d').drawImage(v,0,0,c.width,c.height);out.push(c.toDataURL('image/jpeg',.8))}catch(e){return done()}k++;if(k>=ts.length)done();else v.currentTime=ts[k]};
  setTimeout(done,12000);v.src=u})}
 function vidPrompt(sc){const cs=scChars(sc);sc.vp=null;const spk=byId(P.bible.characters,sc.speaker);const sp=$('optSpeak').checked&&sc.line?' In this shot'+(spk?' '+spk.name:' one character')+' speaks aloud in '+LANGN[P.o.lang]+(P.o.lang==='th'?' (ภาษาไทย, clear natural Thai pronunciation)':'')+' with natural lip movement perfectly synchronized to the speech, saying exactly: "'+sc.line+'"'+(sc.roman?' (pronounced: '+sc.roman+')':'')+'. Natural human voice, the other characters stay silent, no background music.':'';
- sc.vp=sc.action+'. The movement is still in progress at the end of the clip, it never stops or settles'+(sc.link==='continue'&&sc.n>1?', and it continues the movement already in progress in the first frame without any pause':'')+'. Camera: '+sc.camera+', '+sc.shot+'. '+P.bible.style+'. '+cs.map(c=>c.name+': '+c.look).join(' ')+' '+NEG_VID+sp;return sc.vp}
+ sc.vp=sc.action+'. The movement is still in progress at the end of the clip, it never stops or settles'+(sc.link==='continue'&&sc.n>1?', and it continues the movement already in progress in the first frame without any pause':'')+'. Camera: '+sc.camera+', '+sc.shot+'. '+P.bible.style+'. '+cs.map(c=>c.name+': '+c.look).join(' ')+' '+NEG_VID+sp+($('optSpeak').checked?'':' No one speaks, mouths stay closed, no dialogue and no spoken words in any language, no English speech, no text on screen.');return sc.vp}
 let createQ=Promise.resolve();
 function enqueue(fn){const p=createQ.then(async()=>{const t=JSON.parse(lsGet(TIMING)||'{}');const need=T.VID_SAFE*1000*TS-(Date.now()-(t.last||0));if(need>0)await waitS(Math.ceil(need/(1000*TS)),'Prochaine vidéo dans');return fn()});createQ=p.catch(()=>{});return p}
 async function createVideo(sc,start){
@@ -474,7 +502,11 @@ async function produce(sc,i,prevPromise){
 function renderBible(){const B=P&&P.bible;if(!B){$('bible').style.display='none';return}$('bible').style.display='block';
  $('bible').innerHTML='<h3>'+esc(B.title)+'</h3><p>'+esc(B.logline)+'</p><div class="chars">'+B.characters.map(c=>'<div class="char">'+(c.th?'<img src="'+c.th+'" alt="">':'')+'<b>'+esc(c.name)+'</b><br>'+esc(c.role)+'</div>').join('')+'</div>'}
 function badge(sc){if(sc.vidState==='done')return '<span class="badge ok">prêt</span>'+(sc.warn?'<span class="badge warn" title="'+esc(sc.warn)+'">⚠︎</span>':'');if(sc.vidState==='fail')return '<span class="badge bad">échec</span>';if(sc.vidState==='proc')return '<span class="badge run">'+(sc.tries>1?'essai '+sc.tries:'en cours')+'</span>';if(sc.imgState==='proc')return '<span class="badge run">image</span>';return '<span class="badge">en attente</span>'}
-function render(){if(!P||!P.scenes||!P.scenes.length){$('scenesPanel').style.display='none';$('slidePanel').style.display='none';return}
+function serUi(){const bx=$('serPanel');if(!P||!P.series){bx.style.display='none';return}const SR=P.series,dn=clipDone(),T=SR.total,dur=+P.o.dur,min=Math.round(dn*dur/60*10)/10,day=usage().n;
+ bx.style.display='block';bx.innerHTML='<h3 style="margin:0 0 .4rem">📺 Série : partie '+(SR.cur+1)+' / '+SR.parts.length+' — '+esc(SR.parts[SR.cur].title)+'</h3><div class="hint">'+dn+' / '+T+' clips prêts ≈ '+min+' min sur '+Math.round(T*dur/60)+' min · aujourd\'hui '+day+' vidéos créées. Reviens demain : le même bouton écrit et produit la partie suivante avec les mêmes personnages. <b>Ne vide pas les données du navigateur</b> entre les jours.</div><details style="margin-top:.5rem"><summary>Plan de toute l\'histoire</summary>'+SR.parts.map((p,i)=>'<p style="margin:.4rem 0"><b>'+(i+1)+'. '+esc(p.title)+'</b>'+(i<=SR.cur?' ✓':'')+'<br>'+esc(p.summary)+'</p>').join('')+'</details>'}
+function planUi(){try{const L_=lenParse(),d=+$('dur').value;$('planInfo').innerHTML=L_.series?'= '+L_.total+' clips de '+d+' s ≈ <b>'+Math.ceil(L_.total/L_.perDay)+' jours</b> à '+L_.perDay+' clips/jour':'= '+L_.total+' clips, une seule session'}catch(e){}}
+['len','dur','perDay'].forEach(i=>$(i).addEventListener('change',planUi));
+function render(){serUi();if(!P||!P.scenes||!P.scenes.length){$('scenesPanel').style.display='none';$('slidePanel').style.display='none';return}
  $('scenesPanel').style.display='block';const v=P.o.fmt==='9:16';
  $('scenes').innerHTML=(P.reviewNote?'<div class="hint" style="margin:0 0 .6rem">🔎 Relecture de cohérence : '+esc(P.reviewNote)+'</div>':'')+P.scenes.map((s,i2)=>{const i=i2;const cs=scChars(s).map(c=>c.name).join(' + ');return '<div class="sc'+(v?' v':'')+'"><img class="th" src="'+(s.thumb||'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')+'" alt=""><div class="in"><div class="n">SCÈNE '+s.n+' / '+P.scenes.length+badge(s)+'</div><div class="hint" style="margin:.1rem 0">📍 '+esc(loc(s).name)+' · 👤 '+esc(cs)+'</div><textarea data-a="'+i+'" '+(S.running?'disabled':'')+'>'+esc(s.action)+'</textarea>'+'<div class="ln">🗣 '+esc((byId(P.bible.characters,s.speaker)||{name:'(personne)'}).name)+' :</div><input type="text" data-line="'+i2+'" value="'+esc(s.line)+'" placeholder="Dialogue (laisse vide si personne ne parle)" '+(S.running?'disabled':'')+'>'+(s.roman?'<div class="hint" style="margin:.1rem 0">'+esc(s.roman)+'</div>':'')+(s.err&&s.vidState!=='done'?'<div class="hint" style="color:var(--err)">'+esc(s.err)+'</div>':'')+(s.warn?'<div class="hint" style="color:var(--warn)">⚠︎ '+esc(s.warn)+'</div>':'')+(s.url?'<a class="hint" style="color:var(--blue)" href="'+esc(s.url)+'" target="_blank" rel="noopener" download>⬇ ouvrir / télécharger le clip '+s.n+'</a><br>':'')+'<button data-img="'+i+'" '+(S.running?'disabled':'')+'>↻ nouvelle image</button>'+(s.thumb?'<button data-redo="'+i+'" '+(S.running?'disabled':'')+'>↻ refaire la vidéo</button>':'')+'</div></div>'}).join('');
  const dn=clipDone(),N=P.scenes.length;$('result').style.display=dn?'block':'none';$('plInfo').textContent=dn+' / '+N+' clips prêts';$('slidePanel').style.display=P.scenes.some(x=>x.thumb)?'block':'none';if(dn)renderDl();
@@ -486,15 +518,18 @@ document.addEventListener('click',async e=>{if(S.running)return;
  if(m){const sc=P.scenes[+m.dataset.img];sc.vidState='';sc.imgState='';sc.err='';sc.warn='';sc.thumb='';await dbPut('start:'+sc.n,null);await dbPut('clip:'+sc.n,null);save();render();run()}});
 
 /* ───────── Pipeline ───────── */
-function readOpts(){return{genre:selGenre,idea:$('idea').value.trim(),n:+$('nClips').value,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:$('quota').value,mode:$('mode').value,sq:$('optSq').checked}}
+function lenParse(){const v=$('len').value,d=+$('dur').value,perDay=+$('perDay').value;if(v[0]==='m'){const total=Math.ceil(+v.slice(1)*60/d);return{series:total>perDay,total,perDay:Math.min(perDay,total)}}const n=+v.slice(1);return{series:false,total:n,perDay:n}}
+function readOpts(){const L_=lenParse();return{lenv:$('len').value,perDay:$('perDay').value,series:L_.series?{total:L_.total,perDay:L_.perDay}:null,genre:selGenre,idea:$('idea').value.trim(),n:L_.series?L_.perDay:L_.total,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:$('quota').value,mode:$('mode').value,sq:$('optSq').checked}}
 async function run(){
  if(S.running)return;if(!getKey()){toast('Colle ta clé API Agnes en haut de la page, puis touche « Enregistrer la clé »','error',5000);$('apiPanel').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('apiKeyInput').focus(),500);return}
 S.running=true;S.stop=false;showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{
   if(!P||!P.scenes||!P.scenes.length){
-   P={id:Date.now(),o:readOpts()};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
-   await writeBible();renderBible();phase('story','Écriture des scènes…',.1);await expandScenes();await reviewStory();save();render();
+   P={id:Date.now(),o:readOpts(),scenes:[],partStart:0};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
+   await writeBible();renderBible();phase('story','Écriture des scènes…',.1);if(P.series){await startPart(0)}else{await expandScenes();await reviewStory()}save();render();
    if($('optReview').checked){phase('story','Scénario prêt : relis et corrige les scènes, puis touche « Lancer la production ».',.35);toast('Scénario prêt ✓ Relis-le puis lance la production');return}}
+  else if(P.series&&partComplete()&&P.series.cur+1<P.series.parts.length){P.o.quota=$('quota').value;P.o.retries=$('retries').value;await startPart(P.series.cur+1);render();
+   if($('optReview').checked){phase('story','Partie '+(P.series.cur+1)+' prête : relis les scènes puis touche « Lancer la production ».',.35);toast('Partie '+(P.series.cur+1)+' écrite ✓');return}}
   else{P.o.quota=$('quota').value;P.o.retries=$('retries').value}
   renderBible();render();
   try{await makeCharacters()}catch(e){if(e.message==='Arrêt')throw e;log('✗ personnages/lieux : '+e.message+' — on continue');}
@@ -574,6 +609,7 @@ async function dlAll(){const dn=P.scenes.filter(done);if(!dn.length)return;const
  for(let i=0;i<blobs.length;i++){saveBlob(blobs[i].b,pad(blobs[i].sc.n)+'.mp4');await new Promise(r=>setTimeout(r,600))}
  toast(blobs.length+' vidéo(s) téléchargée(s) ✓','',5000)}
 $('btnDlAll').onclick=dlAll;
+$('btnLinks').onclick=async()=>{if(!P)return;const dn=P.scenes.filter(done);if(!dn.length){toast('Aucun clip prêt','warn');return}const t=(P.bible.title||'histoire')+'\n'+dn.map(x=>pad(x.n)+' '+(x.url||'')).join('\n')+'\n';try{await navigator.clipboard.writeText(t);toast('Liens copiés ✓ ('+dn.length+')','',4000)}catch(e){}saveBlob(new Blob([t],{type:'text/plain'}),'liens-videos.txt')};
 $('btnDocs').onclick=()=>{[['sous-titres.srt',srt()],['scenario.txt',script()],['voix-off.txt',voiceOver()]].forEach(([n,t],i)=>setTimeout(()=>saveBlob(new Blob([t],{type:'text/plain'}),n),i*500));toast('Fichiers texte téléchargés')};
 /* ───────── Assemblage final : fondus enchaînés + son continu ───────── */
 async function assemble(){
@@ -626,19 +662,19 @@ $('btnTest').onclick=async()=>{if(S.running)return;if(!getKey()){toast('Enregist
 function report(){const r={log:LOG.slice(-80),app:'story-studio v4',date:new Date().toISOString(),flags:{refOK:S.refOK,refForm:S.refForm,qaVision:S.qaVision},usageToday:usage(),opts:P&&P.o,bible:P&&P.bible,reviewNote:P&&P.reviewNote,scenes:P&&P.scenes.map(s=>({n:s.n,loc:s.loc,chars:s.chars,action:s.action,line:s.line,link:s.link,img:s.imgState,vid:s.vidState,tries:s.tries,err:s.err,warn:s.warn,keyPrompt:s.kp,videoPrompt:s.vp}))};return JSON.stringify(r,null,1)}
 $('btnReport').onclick=async()=>{const t=report();const b=$('reportBox');b.style.display='block';b.value=t;b.select();try{await navigator.clipboard.writeText(t);toast('Rapport copié ✓ Colle-le dans la conversation')}catch(e){toast('Sélectionne tout le texte du cadre et copie-le','warn')}};
 /* ───────── Interface ───────── */
-let selGenre='drama';
+let selGenre='cartoonTh';
 function drawGenres(){$('genres').innerHTML=GENRES.map(g=>'<div class="genre'+(g.id===selGenre?' sel':'')+'" data-g="'+g.id+'"><b>'+g.e+' '+esc(g.n)+'</b><span>'+esc(g.d)+'</span></div>').join('')}
 $('genres').addEventListener('click',e=>{const g=e.target.closest('[data-g]');if(!g||S.running)return;selGenre=g.dataset.g;drawGenres()});
 function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('apiLine').classList.toggle('ok',has);$('apiLine').textContent=has?'Clé active · '+getKey().slice(0,7)+'…'+getKey().slice(-4):'Aucune clé enregistrée';
  const b=$('btnGo');b.disabled=S.running;const hasP=P&&P.scenes&&P.scenes.length;
- const sbm=hasP&&P.o.mode==='sb',allImg=hasP&&P.scenes.every(x=>x.thumb);b.textContent=S.running?'Création en cours…':(!has?'🔑 Ajoute ta clé API pour commencer':(hasP?(clipDone()?'▶ Reprendre les vidéos ('+clipDone()+'/'+P.scenes.length+' prêtes)':(sbm?(allImg?'🎬 Animer les images en vidéos ('+P.scenes.length+' clips)':'▶ Terminer le storyboard'):'▶ Lancer la production des clips')):($('mode').value==='sb'?'🎞 Créer l\'histoire et le storyboard (sans vidéos)':'🎬 Créer l\'histoire et les vidéos')));
+ const sbm=hasP&&P.o.mode==='sb',allImg=hasP&&P.scenes.every(x=>x.thumb);const serNext=hasP&&P.series&&partComplete()&&P.series.cur+1<P.series.parts.length,serEnd=hasP&&P.series&&partComplete()&&P.series.cur+1>=P.series.parts.length;b.textContent=S.running?'Création en cours…':(!has?'🔑 Ajoute ta clé API pour commencer':(serNext?'▶ Partie '+(P.series.cur+2)+' / '+P.series.parts.length+' : écrire la suite et produire':(serEnd?'✅ Histoire terminée — tu peux la télécharger':(hasP?(clipDone()?'▶ Reprendre les vidéos ('+clipDone()+'/'+P.scenes.length+' prêtes)':(sbm?(allImg?'🎬 Animer les images en vidéos ('+P.scenes.length+' clips)':'▶ Terminer le storyboard'):'▶ Lancer la production des clips')):($('mode').value==='sb'?'🎞 Créer l\'histoire et le storyboard (sans vidéos)':'🎬 Créer l\'histoire et les vidéos')))));
  $('btnStop').classList.toggle('on',S.running);const u=usage();$('quotaHint').textContent='Vidéos créées aujourd\'hui : '+u.n+' (chaque nouvel essai compte). Avec « Refaire si défaut », prévois 10 à 30 % de vidéos en plus.'}
 $('apiSave').onclick=()=>{const v=$('apiKeyInput').value.trim();if(v)lsSet(KEY,v);else lsDel(KEY);upd();toast(v?'Clé enregistrée':'Clé supprimée')};
 $('btnGo').onclick=run;$('btnStop').onclick=()=>{S.stop=true;toast('Arrêt en cours…','warn')};
 $('mode').onchange=upd;$('btnMemClear').onclick=()=>{if(confirm('Effacer la mémoire des histoires déjà créées ?')){lsDel(MEM);memUi();toast('Mémoire effacée')}};$('btnPlay').onclick=playAll;$('btnZip').onclick=zipAll;
 $('btnNew').onclick=async()=>{if(S.running){toast('Arrête d\'abord la création','warn');return}if(P&&!confirm('Effacer l\'histoire actuelle et tous ses clips ?'))return;P=null;lsDel(PROJ);await dbClear();$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';upd();toast('Prêt pour une nouvelle histoire')};
-load();if(P&&P.o){selGenre=P.o.genre||selGenre;['nClips:n','dur:dur','lang:lang','fmt:fmt','retries:retries','quota:quota'].forEach(p=>{const[a,b]=p.split(':');if(P.o[b]!=null)$(a).value=P.o[b]})}
-drawGenres();upd();memUi();renderBible();render();
+load();if(P&&P.o){selGenre=P.o.genre||selGenre;['len:lenv','perDay:perDay','dur:dur','lang:lang','fmt:fmt','retries:retries','quota:quota'].forEach(p=>{const[a,b]=p.split(':');if(P.o[b]!=null)$(a).value=P.o[b]})}
+drawGenres();planUi();upd();memUi();renderBible();render();
 if(P&&P.scenes&&P.scenes.length){$('prog').style.display='block';const dn=clipDone();phase(dn===P.scenes.length?'done':'clips','Projet repris : '+dn+' / '+P.scenes.length+' clips prêts',dn/P.scenes.length)}
 })();
 </script>
