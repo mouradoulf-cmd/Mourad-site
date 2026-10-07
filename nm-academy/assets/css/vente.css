@@ -87,14 +87,29 @@ a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible{o
 .devices{position:relative;animation:float 8s ease-in-out infinite;transition:transform .8s var(--ease)}
 @keyframes float{50%{transform:translateY(-8px)}}
 .laptop{position:relative;width:88%}
-.lid{position:relative;border-radius:2.6% 2.6% 0 0 / 3.6% 3.6% 0 0;padding:2.6% 2.6% 3.4%;background:linear-gradient(160deg,#2a2f5c,#10143a);box-shadow:0 0 0 1px rgba(255,255,255,.14) inset,0 40px 70px -30px rgba(0,0,0,.8)}
-.cam{position:absolute;top:1.2%;left:50%;width:.9%;aspect-ratio:1;margin-left:-.45%;border-radius:50%;background:#050720}
+.lid{position:relative;border-radius:2.4% 2.4% 0 0 / 3.4% 3.4% 0 0;padding:2.2% 2.2% 3%;background:#060609;box-shadow:0 0 0 .35% #aeb2c9,0 0 0 .55% rgba(255,255,255,.25),0 40px 70px -30px rgba(0,0,0,.85)}
+.cam{position:absolute;z-index:2;top:2.2%;left:50%;width:9%;height:2.6%;margin-left:-4.5%;border-radius:0 0 .9vw .9vw / 0 0 70% 70%;background:#060609}
+.cam::after{content:"";position:absolute;left:50%;top:32%;width:6%;aspect-ratio:1;margin-left:-3%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#26325c,#0a0d1c 70%)}
 .lscreen{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:.6% / 1%;background:#111}
 .lbase{height:clamp(8px,2.2vw,15px);width:112%;margin-left:-6%;border-radius:0 0 16px 16px / 0 0 60% 60%;background:linear-gradient(180deg,#d9dcf5,#9aa0d0);box-shadow:0 22px 30px -16px rgba(0,0,0,.8);position:relative}
 .lbase::after{content:"";position:absolute;left:50%;top:0;width:16%;height:55%;margin-left:-8%;border-radius:0 0 12px 12px;background:rgba(40,46,100,.35)}
-.phone2{position:absolute;right:0;bottom:-2%;width:27%;aspect-ratio:9/19.2;border-radius:15% / 7%;padding:2.4%;background:linear-gradient(160deg,#2a2f5c,#0c0f30);box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 40px 60px -26px rgba(0,0,0,.85),0 0 0 4px rgba(7,10,36,.6)}
-.pscreen{position:relative;width:100%;height:100%;border-radius:13% / 6%;overflow:hidden;background:#111}
-.island{position:absolute;top:3.3%;left:50%;width:30%;height:2.6%;margin-left:-15%;border-radius:99px;background:#050720}
+/* iPhone : cadre titane, boutons latéraux, Dynamic Island, barre d'état, reflet */
+.phone2{position:absolute;right:-1%;bottom:-3%;width:26%;aspect-ratio:9/19.5;border-radius:14.5% / 6.7%;padding:2.3%;container-type:inline-size;
+ background:linear-gradient(145deg,#c8cad6 0%,#6d7087 16%,#2a2c3d 40%,#15162a 62%,#7b7e96 86%,#d3d5e2 100%);
+ box-shadow:0 0 0 .4cqw rgba(255,255,255,.18) inset,0 0 0 1px rgba(0,0,0,.6),0 46px 60px -22px rgba(0,0,0,.9),0 18px 30px -10px rgba(0,0,0,.6)}
+.phone2::before{content:"";position:absolute;inset:1.6%;border-radius:13.2% / 6%;background:#050507;box-shadow:0 0 0 .35cqw rgba(255,255,255,.07)}
+.pscreen{position:relative;z-index:1;width:100%;height:100%;border-radius:12% / 5.5%;overflow:hidden;background:#111}
+.sb{position:absolute;z-index:0;width:1.8%;border-radius:2px;background:linear-gradient(90deg,#4b4e66,#b4b7cb 60%,#6d7087)}
+.sb.a{left:-1.1%;top:15.5%;height:3.2%}
+.sb.v1{left:-1.1%;top:22%;height:6.4%}
+.sb.v2{left:-1.1%;top:30.2%;height:6.4%}
+.sb.p{right:-1.1%;top:26%;height:10.4%;background:linear-gradient(270deg,#4b4e66,#b4b7cb 60%,#6d7087)}
+.island{position:absolute;z-index:3;top:2.4%;left:50%;width:29%;height:3.1%;margin-left:-14.5%;border-radius:99px;background:#000;box-shadow:0 0 0 .3cqw rgba(255,255,255,.04)}
+.island::after{content:"";position:absolute;right:11%;top:50%;width:13%;aspect-ratio:1;margin-top:-6.5%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2b3b66,#0a0d1c 70%)}
+.sbar{position:absolute;z-index:3;left:0;right:0;top:1.7%;display:flex;justify-content:space-between;align-items:center;padding:0 9%;color:#fff;font:700 5.4cqw var(--sans);text-shadow:0 1px 4px rgba(0,0,0,.6);pointer-events:none}
+.sbar svg{width:23cqw;height:auto;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}
+.hbar{position:absolute;z-index:3;bottom:1.6%;left:50%;width:34%;height:.9%;margin-left:-17%;border-radius:99px;background:rgba(255,255,255,.85);box-shadow:0 0 6px rgba(0,0,0,.5)}
+.glare{position:absolute;z-index:2;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,.04) 28%,transparent 42%);pointer-events:none}
 .sc{position:absolute;left:0;top:0;width:100%;height:auto;opacity:0;transition:opacity 1.2s var(--ease);will-change:transform;display:block}
 .sc.on{opacity:1}
 .cap{margin-top:22px;text-align:center;font:700 .78rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
