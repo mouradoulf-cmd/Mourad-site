@@ -4,15 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>NM Academy Vente</title>
-<meta name="description" content="Un plan en 6 étapes pour créer ton premier site pro et ta première vidéo IA, et trouver tes premiers clients. Formation en français, anglais et thaï.">
+<meta name="description" content="Gagne de l'argent en créant des sites web et des vidéos IA, même sans expérience. Un site se vend 300 à 800 €. Formation en français, anglais et thaï.">
 <meta name="theme-color" content="#070a24">
-<meta property="og:type" content="website"><meta property="og:title" content="NM Academy"><meta property="og:image" content="assets/og.png">
+<meta property="og:type" content="website"><meta property="og:title" content="NM Academy — Sites web & vidéos IA"><meta property="og:description" content="Pour tout le monde, sans diplôme ni expérience. Mes skills, mon application, un plan pas à pas."><meta name="twitter:card" content="summary_large_image"><meta property="og:image" content="assets/og.png">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;600;700&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/vente.css">
 </head>
 <body>
+<div class="prog" id="prog" aria-hidden="true"></div>
 
 <!-- barre fine : logo, langue, son, petit bouton (aucun menu) -->
 <div class="top" id="top-bar">
@@ -56,6 +57,15 @@
   </div>
   <div class="marq" aria-hidden="true"><div class="mt"><span data-t="rl_rest">Restaurant</span><span data-t="rl_sf">Street food</span><span data-t="rl_bar">Bar</span><span data-t="rl_hair">Salon</span><span data-t="rl_co">Entreprise</span><span>TikTok</span><span>YouTube</span><span data-t="rl_rest">Restaurant</span><span data-t="rl_sf">Street food</span><span data-t="rl_bar">Bar</span><span data-t="rl_hair">Salon</span><span data-t="rl_co">Entreprise</span><span>TikTok</span><span>YouTube</span></div></div>
 </header>
+
+<!-- chiffres réels -->
+<section class="statband" id="chiffres" aria-label="NM Academy"><div class="wrap wide"><ul>
+  <li><b data-count="13">13</b><span data-t="st_mod">modules</span></li>
+  <li><b data-count="49">49</b><span data-t="st_les">leçons</span></li>
+  <li><b data-count="6">6</b><span data-t="st_step">étapes</span></li>
+  <li><b data-count="3">3</b><span data-t="st_lang">langues</span></li>
+  <li><b id="stDays" data-count="14">14</b><span data-t="st_gar">jours de garantie</span></li>
+</ul></div></section>
 
 <main>
 <!-- 2. PROBLÈME -->
@@ -104,6 +114,23 @@
     <p class="note center rv" data-t="sk_cap">…</p>
   </div>
 </div></section>
+
+<!-- 3b. RÉALISATIONS -->
+<section id="portfolio"><div class="wrap wide">
+  <span class="eyebrow rv" data-t="pf_k">Mes réalisations</span>
+  <h2 class="rv" data-t="pf_t">…</h2>
+  <p class="intro rv" data-t="pf_s">…</p>
+</div>
+<div class="pfscroll rv" id="pfscroll"><ul class="pfrow">
+  <li class="pfc"><div class="bw"><div class="bb"><i></i><i></i><i></i></div><img src="assets/showcase/pf-giulivo.jpg" alt="Giulivo" loading="lazy" width="1600" height="1000"></div><p><b>Giulivo</b><span data-t="rl_rest">Restaurant</span></p></li>
+  <li class="pfc"><div class="bw"><div class="bb"><i></i><i></i><i></i></div><img src="assets/showcase/pf-noir.jpg" alt="Noir" loading="lazy" width="1600" height="1000"></div><p><b>Noir</b><span data-t="rl_hair">Salon</span></p></li>
+  <li class="pfc"><div class="bw"><div class="bb"><i></i><i></i><i></i></div><img src="assets/showcase/pf-monsoon.jpg" alt="Monsoon" loading="lazy" width="1600" height="1000"></div><p><b>Monsoon</b><span data-t="rl_bar">Bar</span></p></li>
+  <li class="pfc"><div class="bw"><div class="bb"><i></i><i></i><i></i></div><img src="assets/showcase/pf-facadiers.jpg" alt="Façadiers" loading="lazy" width="1600" height="1000"></div><p><b>Façadiers</b><span data-t="rl_co">Entreprise</span></p></li>
+  <li class="pfc"><div class="bw"><div class="bb"><i></i><i></i><i></i></div><img src="assets/showcase/pf-basilico.jpg" alt="Basilico" loading="lazy" width="1600" height="1000"></div><p><b>Basilico</b><span data-t="rl_rest">Restaurant</span></p></li>
+  <li class="pfc"><div class="bw"><div class="bb"><i></i><i></i><i></i></div><img src="assets/showcase/pf-onelove.jpg" alt="One Love" loading="lazy" width="1600" height="1000"></div><p><b>One Love</b><span data-t="rl_bar">Bar</span></p></li>
+</ul></div>
+<p class="note center rv" data-t="pf_n">…</p>
+</section>
 
 <!-- 3c. PLAN B : APPLICATION VIDÉO -->
 <section id="app"><i class="orb"></i><div class="wrap wide appg">
@@ -188,6 +215,7 @@
     <span class="eyebrow" data-t="of_tag">TOUT COMPRIS</span>
     <h3 data-t="pk_n">Pack A + B</h3>
     <div class="price"><span data-price="pack">97</span><small data-per="pack"></small></div>
+    <p class="save" id="save" hidden></p>
     <ul class="list gain-l"><li data-t="pk_1">…</li><li data-t="pk_2">…</li><li data-t="pk_3">…</li><li data-t="pk_4">…</li></ul>
     <a class="cta" data-buy="pack" href="#" target="_blank" rel="noopener"><span data-t="s_cta">Je m'inscris</span><i aria-hidden="true">→</i></a>
     <p class="note" id="instal"></p>
@@ -241,7 +269,7 @@
 </div></section>
 </main>
 
-<footer><div class="wrap"><p data-t="foot_disc">…</p><p><a href="legal.html" target="_blank" rel="noopener" data-t="foot_legal">Mentions</a> · <a href="members.html" target="_blank" rel="noopener" data-t="s_mem">Espace membres</a></p></div></footer>
+<footer><div class="wrap"><div class="brand big">NM <b>Academy</b></div><p data-t="foot_disc">…</p><p><a href="legal.html" target="_blank" rel="noopener" data-t="foot_legal">Mentions</a> · <a href="members.html" target="_blank" rel="noopener" data-t="s_mem">Espace membres</a></p><p class="fine">© <span id="yr">2026</span> NM Academy</p></div></footer>
 
 <div class="bar" id="bar"><a class="cta" data-buy="pack" href="#" target="_blank" rel="noopener"><span data-t="s_cta">Je m'inscris</span><i aria-hidden="true">→</i></a></div>
 

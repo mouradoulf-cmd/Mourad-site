@@ -22,6 +22,8 @@ function render(){
  var wa=$('#wa');if(wa)wa.href='https://wa.me/'+(CFG.WHATSAPP||'')+'?text='+encodeURIComponent(T('wa_msg'));
  var n=CFG.INSTALLMENTS,pk=(CFG.PLANS||{}).pack,ins=$('#instal');
  if(ins)ins.textContent=(n>1&&pk)?T('s_o_instal',{n:n,a:eur(pk.price/n)}):'';
+ var A=(CFG.PLANS||{}).a,B=(CFG.PLANS||{}).b,sv=$('#save');if(sv&&A&&B&&pk){var d=A.price+B.price-pk.price;if(d>0){sv.hidden=false;sv.textContent=T('s_save',{s:eur(d)})}else sv.hidden=true}
+ var yr=$('#yr');if(yr)yr.textContent=new Date().getFullYear();var sd=$('#stDays');if(sd){sd.textContent=DAYS;sd.setAttribute('data-count',DAYS)}
  var parts=[];if(CFG.STUDENTS>0)parts.push(T('s_students',{n:CFG.STUDENTS}));if(CFG.RATING)parts.push(T('s_rating',{r:CFG.RATING}));
  if(parts.length){var pt=$('#proofTxt');pt.removeAttribute('data-t');pt.textContent=parts.join(' · ')}
  var urg=$('#urg'),end=CFG.OFFER_END&&new Date(CFG.OFFER_END);
@@ -29,7 +31,7 @@ function render(){
 }
 /* témoignages : vrais (config.js) ou emplacements explicites */
 function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function renderProof(){var box=$('#temoins'),real=CFG.TESTIMONIALS||[],l=I18N.lang,h='';
+function renderProof(){var box=$('#temoins'),real=CFG.TESTIMONIALS||[],l=I18N.lang,h='';var sec=$('#preuves');if(sec)sec.hidden=!real.length&&!CFG.SHOW_PLACEHOLDERS;
  if(real.length){real.slice(0,4).forEach(function(x){var tx=(x.text&&(x.text[l]||x.text.fr||x.text.en))||'';h+='<article class="card tilt rv in">'+(x.result?'<em class="k">'+esc(x.result)+'</em>':'')+'<q>'+esc(tx)+'</q><cite>'+esc(x.name)+(x.role?' · '+esc(x.role):'')+'</cite></article>'})}
  else{for(var i=1;i<=4;i++)h+='<article class="card ph tilt rv in"><em class="k">'+esc(T('s_ph_k'))+'</em><q>'+esc(T('s_ph',{n:i}))+'</q><cite>'+esc(T('s_ph_n'))+'</cite></article>'}
  box.innerHTML=h;bindTilt()}
@@ -125,6 +127,23 @@ D.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest(
  if(CFG.PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,D,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.PIXEL_ID);fbq('track','PageView')}})();
 function track(n,d){try{window.fbq&&fbq('track',n,d);window.gtag&&gtag('event',n,d)}catch(e){}}
 D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-buy]');if(a)track('InitiateCheckout',{plan:a.getAttribute('data-buy')})});
+
+/* ---------- finitions : progression, chiffres qui comptent, bouton magnétique, données structurées ---------- */
+(function(){
+ var pg=$('#prog'),tk=false;
+ if(pg)addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;var h=D.documentElement;pg.style.transform='scaleX('+Math.min(1,scrollY/Math.max(1,h.scrollHeight-innerHeight)).toFixed(4)+')'})},{passive:true});
+ /* chiffres : comptent une fois, quand ils apparaissent */
+ var bs=$$('.statband b');
+ function count(b){var to=+b.getAttribute('data-count'),t0=null;if(reduce){b.textContent=to;return}b.textContent='0';(function st(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1300);b.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(st)})(performance.now())}
+ if(HAS_IO&&bs.length){var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){count(e.target);cio.unobserve(e.target)}})},{threshold:.6});bs.forEach(function(b){cio.observe(b)})}
+ /* bouton magnétique (souris uniquement) */
+ if(fine&&!reduce)$$('.cta').forEach(function(b){b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.08).toFixed(1)+'px,'+((e.clientY-r.top-r.height/2)*.16).toFixed(1)+'px)'});b.addEventListener('pointerleave',function(){b.style.transform=''})});
+ /* données structurées pour Google (prix lus dans config.js) */
+ try{var P=CFG.PLANS||{},mk=function(n,d,k){return{'@type':'Course','name':n,'description':d,'provider':{'@type':'Organization','name':CFG.BRAND||'NM Academy'},'offers':{'@type':'Offer','price':String(P[k].price),'priceCurrency':'EUR','availability':'https://schema.org/InStock'}}};
+  var s=D.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[mk('Sites web : créer et vendre','Créer des sites web professionnels pour des commerces et les vendre.','a'),mk('Vidéos IA','Créer des vidéos IA et les monétiser.','b')]});D.head.appendChild(s)}catch(e){}
+ /* garde-fou : bouton sans lien de paiement ni vrai numéro WhatsApp */
+ if(!(CFG.LINKS&&CFG.LINKS.pack)&&(!CFG.WHATSAPP||/^33600000000$/.test(CFG.WHATSAPP)))try{console.warn('[NM Academy] Renseigne LINKS.pack (paiement) ou un vrai WHATSAPP dans assets/js/config.js : les boutons « Je m\'inscris » n\'ont pas encore de destination réelle.')}catch(e){}
+})();
 
 /* ---------- init + changement de langue ---------- */
 function all(){render();renderProof();snd();setVideos();splitH1()}

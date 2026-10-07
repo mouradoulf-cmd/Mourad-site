@@ -106,8 +106,8 @@ a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible{o
 .sb.p{right:-1.1%;top:26%;height:10.4%;background:linear-gradient(270deg,#4b4e66,#b4b7cb 60%,#6d7087)}
 .island{position:absolute;z-index:3;top:2.4%;left:50%;width:29%;height:3.1%;margin-left:-14.5%;border-radius:99px;background:#000;box-shadow:0 0 0 .3cqw rgba(255,255,255,.04)}
 .island::after{content:"";position:absolute;right:11%;top:50%;width:13%;aspect-ratio:1;margin-top:-6.5%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2b3b66,#0a0d1c 70%)}
-.sbar{position:absolute;z-index:3;left:0;right:0;top:1.7%;display:flex;justify-content:space-between;align-items:center;padding:0 9%;color:#fff;font:700 5.4cqw var(--sans);text-shadow:0 1px 4px rgba(0,0,0,.6);pointer-events:none}
-.sbar svg{width:23cqw;height:auto;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}
+.sbar{position:absolute;z-index:3;left:0;right:0;top:1.7%;display:flex;justify-content:space-between;align-items:center;padding:0 9%;color:#fff;font:700 9px var(--sans);font-size:5.4cqw;text-shadow:0 1px 4px rgba(0,0,0,.6);pointer-events:none}
+.sbar svg{width:34px;width:23cqw;height:auto;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}
 .hbar{position:absolute;z-index:3;bottom:1.6%;left:50%;width:34%;height:.9%;margin-left:-17%;border-radius:99px;background:rgba(255,255,255,.85);box-shadow:0 0 6px rgba(0,0,0,.5)}
 .glare{position:absolute;z-index:2;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,.04) 28%,transparent 42%);pointer-events:none}
 .sc{position:absolute;left:0;top:0;width:100%;height:auto;opacity:0;transition:opacity 1.2s var(--ease);will-change:transform;display:block}
@@ -331,3 +331,29 @@ footer p+p{margin-top:8px}footer a{color:var(--mute)}
 
 .chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0}
 .chips li{font:700 .82rem var(--sans);padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff}
+
+/* barre de progression */
+.prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:linear-gradient(90deg,var(--gold),var(--m),var(--v));transform-origin:left;transform:scaleX(0);box-shadow:0 0 12px rgba(255,79,163,.7)}
+/* chiffres */
+.statband{padding:0;background:rgba(5,7,32,.7);border-bottom:1px solid var(--line);overflow:visible}
+.statband ul{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:22px 0}
+.statband li{display:grid;justify-items:center;gap:2px;text-align:center}
+.statband b{font:600 clamp(1.5rem,6vw,2.4rem)/1 var(--serif);background:linear-gradient(100deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.statband span{font:600 clamp(.62rem,2.4vw,.82rem)/1.25 var(--sans);color:var(--mute);letter-spacing:.04em}
+/* réalisations : carrousel horizontal */
+#portfolio{background:var(--bg)}
+.pfscroll{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:34px 20px 8px;scrollbar-width:none}
+.pfscroll::-webkit-scrollbar{display:none}
+.pfrow{list-style:none;display:flex;gap:18px;width:max-content;margin-inline:auto;padding:0 max(0px,calc((100vw - 1100px)/2))}
+.pfc{scroll-snap-align:center;width:min(78vw,420px);display:grid;gap:14px;transition:transform .7s var(--ease)}
+.pfc:hover{transform:translateY(-6px)}
+.bw{border-radius:18px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.16);box-shadow:0 40px 60px -34px rgba(139,92,255,.6)}
+.bb{display:flex;gap:6px;padding:10px 12px;background:rgba(255,255,255,.07)}.bb i{width:9px;height:9px;border-radius:50%;background:#3a4070}.bb i:nth-child(1){background:#ff5f57}.bb i:nth-child(2){background:#febc2e}.bb i:nth-child(3){background:#28c840}
+.bw img{display:block;width:100%;height:auto}
+.pfc p{display:flex;justify-content:space-between;align-items:baseline;padding:0 4px}.pfc b{font:600 1.15rem var(--serif)}.pfc span{font-size:.85rem;color:var(--gold);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+/* économie, pied de page */
+.save{display:inline-block;margin:6px auto 0;padding:7px 16px;border-radius:99px;font:700 .85rem var(--sans);color:#052e16;background:#86efac}
+.save[hidden]{display:none}
+.brand.big{font-size:1.5rem;margin-bottom:14px;display:inline-block}
+.fine{opacity:.7}
+.cta{will-change:transform}
