@@ -94,6 +94,16 @@ else $$('.rv').forEach(function(el){el.classList.add('in')});
  if(reduce){st.style.setProperty('--p',1);lis.forEach(function(l){l.classList.add('on')});return}
  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd()})();
 
+/* ---------- message d'approche : les bulles apparaissent l'une après l'autre ; bouton « copier » ---------- */
+(function(){var body=$('#chatBody');if(!body)return;var b=[$('#bub1'),$('#bub2'),$('#bub3')],done=false,timers=[];
+ function reveal(){if(done)return;done=true;if(reduce){b.forEach(function(x){x.classList.add('in')});return}
+  [0,1500,3000].forEach(function(t,i){timers.push(setTimeout(function(){b[i].classList.add('in')},t))})}
+ if(HAS_IO)new IntersectionObserver(function(es){if(es[0].isIntersecting)reveal()},{threshold:.35}).observe(body);else{done=true;b.forEach(function(x){x.classList.add('in')})}
+ var cp=$('#copyMsg');if(cp)cp.addEventListener('click',function(){var tx=($('#bub1').textContent||'').trim();var ok=function(){var old=cp.textContent;cp.textContent=T('pt_copied');sfx('ok');setTimeout(function(){cp.textContent=T('pt_copy')},1800)};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(tx).then(ok,function(){fallback()});else fallback();
+  function fallback(){try{var ta=D.createElement('textarea');ta.value=tx;ta.style.position='fixed';ta.style.opacity='0';D.body.appendChild(ta);ta.select();D.execCommand('copy');ta.remove();ok()}catch(e){}}})
+})();
+
 /* ---------- barre fine + barre d'action mobile ---------- */
 var topb=$('#top-bar'),bar=$('#bar'),fin=$('#final'),past=false,onFinal=false;
 function sb(){bar.classList.toggle('show',past&&!onFinal)}
