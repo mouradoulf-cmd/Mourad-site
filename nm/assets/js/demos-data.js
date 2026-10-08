@@ -14,38 +14,7 @@ window.NM_DEMOS = [
 ];
 
 window.NM_LINKS = [
-  { space: "site", group: "Mon site NM Studio", items: [
-    { name: "NM Studio · Français", path: "nm/fr/", note: "Le site à montrer aux clients" },
-    { name: "NM Studio · English", path: "nm/" },
-    { name: "NM Studio · ไทย", path: "nm/th/" },
-    { name: "NM Studio · Italiano", path: "nm/it/" },
-    { name: "NM Studio · العربية", path: "nm/ar/" },
-    { name: "Tarifs", path: "nm/fr/pricing.html" },
-    { name: "Page de paiement", path: "nm/checkout.html" }
-  ] },
-  { space: "site", group: "Mes outils", items: [
-    { name: "Maquette pro", path: "nm/maquette.html", note: "Maquette rapide avec photos" },
-    { name: "Statistiques", path: "nm/stats.html", note: "Visiteurs par jour" },
-    { name: "Générateur de QR codes", path: "nm/qr-generator.html" },
-    { name: "Carte de visite", path: "nm/business-card/card.html" },
-    { name: "Espace client (abonnement)", path: "nm/account.html" }
-  ] },
-  { space: "site", group: "Sites clients", items: [
-    { name: "Atelier des Façadiers (refonte, 5 langues)", path: "atelier-des-facadiers/", note: "Maquette pour le client façadier" },
-    { name: "ÔBlanc (café-restaurant, Mohammédia)", path: "oblanc/", note: "Démo de prospection, infos/photos réelles — 8e site dans le portfolio NM Studio" }
-  ] },
-  { space: "video", group: "Mes studios vidéo IA", items: [
-    { name: "Studio Vidéo IA", path: "video-ia/", note: "Créer des vidéos IA" },
-    { name: "Short Drama IA", path: "drama-ia/" },
-    { name: "Story Studio", path: "story/" },
-    { name: "Studio Universel", path: "studio/" },
-    { name: "Remix Studio", path: "remix/" },
-    { name: "Cast & Render 3D", path: "cast-and-render/" }
-  ] },
-  { space: "formation", group: "NM Academy", items: [
-    { name: "NM Academy (à jour)", path: "https://claude.ai/artifact/8nSXmvuVbzfwtwMEkdeBjh", note: "Ma formation · page de vente, formations, réalisations, tarifs, inscription" }
-  ] },
-  { space: "formation", group: "Autres formations", items: [
-    { name: "English Easy (TH)", path: "english-easy-th/", note: "Anglais facile pour les Thaïs" }
+  { space: "video", group: "Mon site", items: [
+    { name: "Story Studio", path: "story/", note: "Dessin animé en plusieurs épisodes" }
   ] }
 ];
