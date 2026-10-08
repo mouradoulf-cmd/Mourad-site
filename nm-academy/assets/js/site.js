@@ -71,6 +71,62 @@ function videos(){
 function vsrc(){$$('video[data-vv]').forEach(function(v){var s='assets/video/'+v.getAttribute('data-vv')+'-'+I18N.lang;v.poster=s+'.jpg';v.setAttribute('data-src',s+'.mp4');if(v._l){v._l=0;v.removeAttribute('src');}})}
 /* --- les démos s'ouvrent dans la bonne langue --- */
 function demos(){D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-site]');if(!a)return;try{['mlLang','obLang','ntLang','giulivoLang'].forEach(function(k){localStorage.setItem(k,'th')})}catch(_){}})}
+
+/* --- inclinaison 3D douce des cartes (souris) --- */
+function tilt3d(){
+ var fine=matchMedia('(hover:hover) and (pointer:fine)').matches,rd=matchMedia('(prefers-reduced-motion:reduce)').matches;if(!fine||rd)return;
+ $$('.cc,.pc,.big-band').forEach(function(c){c.classList.add('t3');
+  c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--gx',x*100+'%');c.style.setProperty('--gy',y*100+'%');c.style.transform='perspective(1000px) rotateY('+((x-.5)*8).toFixed(2)+'deg) rotateX('+((.5-y)*8).toFixed(2)+'deg) translateY(-6px)'});
+  c.addEventListener('pointerleave',function(){c.style.transform=''})});
+}
+/* --- parcours 3D : les étapes arrivent vers toi pendant que tu défiles --- */
+function journey(){
+ var jr=$('#jr');if(!jr)return;
+ var cards=$$('.jc',jr),fr=$$('.jf',jr),bar=$('#jrBar'),cnt=$('#jrCnt'),scene=$('#jrScene'),N=cards.length,tk=false;
+ var rd=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ if(rd){jr.classList.add('flat');return}
+ function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+ function upd(){tk=false;
+  var r=jr.getBoundingClientRect(),vh=innerHeight,p=clamp(-r.top/(r.height-vh),0,1)*(N-1);
+  var mob=innerWidth<700,D=mob?420:560,P=mob?640:900;
+  cards.forEach(function(c,i){var d=i-p,z,o,y=0,ry=0,rx=0;
+   if(d>=0){z=-d*D;o=clamp(1.45-d*1.15,0,1);y=d*18;ry=d*-5}
+   else{z=-d*P;o=clamp(1+d*4.2,0,1);y=d*70;rx=d*-5}
+   c.style.opacity=o.toFixed(3);c.style.transform='translate(-50%,-50%) translate3d(0,'+y.toFixed(1)+'px,'+z.toFixed(0)+'px) rotateY('+ry.toFixed(2)+'deg) rotateX('+rx.toFixed(2)+'deg)';
+   c.style.pointerEvents=Math.abs(d)<.5?'auto':'none';c.classList.toggle('on',Math.abs(d)<.5);c.style.zIndex=String(100-Math.round(Math.abs(d)*10))});
+  fr.forEach(function(f,k){var L=fr.length,span=L*D*.7,z=(((k*D*.7-p*D*.7)%span)+span)%span-span+D*.2,a=clamp(1-Math.abs(z+span*.5)/(span*.5),0,1);f.style.transform='translate(-50%,-50%) translateZ('+z.toFixed(0)+'px)';f.style.opacity=(a*.5).toFixed(3)});
+  var cur=clamp(Math.round(p),0,N-1);cnt.textContent='0'+(cur+1)+' / 0'+N;bar.style.transform='scaleX('+(p/(N-1)).toFixed(4)+')';
+  jr.style.setProperty('--hue',(p/(N-1)).toFixed(3))}
+ addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();
+}
+/* --- galerie 3D des réalisations (coverflow) --- */
+function cover(){
+ var st=$('#cfs');if(!st)return;
+ var its=$$('.cf-i',st),N=its.length,cur=0,auto=null,user=false,rd=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ var dots=$('#cfdots');dots.innerHTML=its.map(function(_,i){return'<button type="button" aria-label="'+(i+1)+'"></button>'}).join('');var db=$$('button',dots);
+ function sig(i){var o=((i-cur)%N+N)%N;if(o>N/2)o-=N;return o}
+ function blob(v){if(v._l)return;v._l=1;var s=v.getAttribute('data-cs');fetch(s).then(function(r){return r.blob()}).then(function(b){v.src=URL.createObjectURL(b);if(v._p)v.play().catch(function(){})}).catch(function(){v.src=s;if(v._p)v.play().catch(function(){})})}
+ function info(){var it=its[cur];$('#cfn').textContent=it.dataset.n;$('#cfk').textContent=T(it.dataset.tk);$('#cfd').textContent=T(it.dataset.tk+'_d');$('#cfo').href=it.dataset.href;$$('button',dots).forEach(function(b,i){b.classList.toggle('on',i===cur)})}
+ function layout(){var mob=innerWidth<700;
+  its.forEach(function(it,i){var o=sig(i),a=Math.abs(o);
+   var tx=o*(mob?46:56),tz=-a*(mob?240:300),ry=-o*(mob?30:36),sc=1-a*.07;
+   it.style.transform='translate(-50%,-50%) translateX('+tx+'%) translateZ('+tz+'px) rotateY('+ry+'deg) scale('+sc+')';
+   it.style.opacity=a>1?0:(1-a*.5).toFixed(2);it.style.zIndex=10-a;it.style.pointerEvents=a>1?'none':'auto';it.classList.toggle('on',o===0);
+   $$('video',it).forEach(function(v){v._p=(o===0);if(a<=1)blob(v);if(o===0){try{v.play().catch(function(){})}catch(e){}}else v.pause()})});
+  info()}
+ function go(n){cur=((n%N)+N)%N;layout()}
+ function stop(){user=true;clearInterval(auto)}
+ its.forEach(function(it,i){it.addEventListener('click',function(e){if(sig(i)!==0){e.preventDefault();stop();go(i)}else{try{['mlLang','obLang','ntLang','giulivoLang'].forEach(function(k){localStorage.setItem(k,'th')})}catch(_){}}})});
+ $('#cfp').onclick=function(){stop();go(cur-1)};$('#cfx').onclick=function(){stop();go(cur+1)};
+ db.forEach(function(b,i){b.onclick=function(){stop();go(i)}});
+ D.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){stop();go(cur-1)}else if(e.key==='ArrowRight'){stop();go(cur+1)}});
+ var sx=null;st.addEventListener('pointerdown',function(e){sx=e.clientX});
+ addEventListener('pointerup',function(e){if(sx==null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50){stop();go(cur+(dx<0?1:-1))}});
+ addEventListener('resize',layout);D.addEventListener('langchange',info);
+ layout();
+ if(!rd)auto=setInterval(function(){if(!user&&!D.hidden)go(cur+1)},7000);
+}
+
 /* --- message type à copier --- */
 function copy(){var b=$('#copyMsg');if(!b)return;b.addEventListener('click',function(){var t=[$('#bub1'),$('#bub3')].map(function(x){return x.textContent}).join('\n\n');(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).catch(function(){var r=D.createElement('textarea');r.value=t;D.body.appendChild(r);r.select();try{D.execCommand('copy')}catch(_){}r.remove()});var o=b.textContent;b.textContent='✓';setTimeout(function(){b.textContent=T('pt_copy')},1500)})}
 /* --- contact --- */
@@ -106,7 +162,7 @@ function pay(){
 }
 function all(){prices();vsrc();videos();pay();}
 D.addEventListener('DOMContentLoaded',function(){
- nav();foot();I18N.apply();prices();reveal();vsrc();videos();demos();copy();contact();pay();
+ nav();foot();I18N.apply();prices();reveal();vsrc();videos();demos();copy();contact();pay();tilt3d();journey();cover();
  var yr=$('#yr');if(yr)yr.textContent=new Date().getFullYear();
 });
 D.addEventListener('langchange',function(){prices();vsrc();videos()});

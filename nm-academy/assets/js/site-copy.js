@@ -18,6 +18,11 @@ x_back:["← Toutes les formations","← All courses","← คอร์สทั
 x_more:["Voir le détail","See details","ดูรายละเอียด"],
 x_pay_cta:["Choisir cette formation","Choose this course","เลือกคอร์สนี้"],
 
+x_jr_k:["Le parcours","The journey","เส้นทางการเรียน"],
+x_jr_h:["Fais défiler pour avancer","Scroll to move forward","เลื่อนเพื่อไปต่อ"],
+x_all_work:["Voir la galerie 3D des réalisations →","See the 3D portfolio gallery →","ดูแกลเลอรี่ผลงานแบบ 3D →"],
+x_tap:["Touche pour ouvrir","Tap to open","แตะเพื่อเปิด"],
+
 /* formations */
 x_fm_k:["Les formations","The courses","คอร์สเรียน"],
 x_fm_h:["Deux compétences réelles. Choisis celle qui te ressemble.","Two real skills. Pick the one that fits you.","ทักษะจริงสองอย่าง เลือกอย่างที่เหมาะกับคุณ"],

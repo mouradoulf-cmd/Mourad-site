@@ -162,3 +162,82 @@ section.s{padding:clamp(40px,7vw,80px) 0}
 @media(prefers-reduced-motion:reduce){.cc,.wc,.pl{transition:none}.drawer,.drawer nav a{transition:none}}
 .sfoot{text-align:left}
 @media(max-width:759px){.sfoot{text-align:center}}
+
+/* ===== fond animé commun (voile pour garder le texte lisible) ===== */
+body.pg{background:transparent}
+body.pg::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(5,7,20,.25),rgba(5,7,20,.6))}
+
+/* ===== reflet qui suit la souris sur les cartes ===== */
+.t3{position:relative}
+.t3::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(320px circle at var(--gx,50%) var(--gy,0),rgba(255,255,255,.13),transparent 62%);opacity:0;transition:opacity .4s}
+.t3:hover::after{opacity:1}
+
+/* ===== PARCOURS 3D (page d'accueil) ===== */
+.jr-sec{padding:0;overflow:visible;background:linear-gradient(180deg,var(--bg),#060826 40%,var(--bg))}
+.jr{height:520vh;position:relative}
+.jr-st{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;padding:96px 0 28px;
+ background:radial-gradient(60% 50% at 50% 55%,hsla(calc(225 + var(--hue,0)*100),90%,60%,.2),transparent 70%)}
+.jr-head{text-align:center;padding-inline:20px;position:relative;z-index:5}
+.jr-head h2{margin:0;font-size:clamp(1.6rem,5vw,2.6rem)}
+.jr-scene{position:relative;width:100%;perspective:1100px;perspective-origin:50% 45%;transform-style:preserve-3d}
+.jf{position:absolute;left:50%;top:50%;width:min(940px,92vw);aspect-ratio:16/9;border-radius:36px;border:1.5px solid rgba(139,170,255,.55);box-shadow:0 0 40px rgba(106,141,255,.25),inset 0 0 40px rgba(255,99,171,.1);opacity:0;pointer-events:none;will-change:transform,opacity}
+.jc{position:absolute;left:50%;top:50%;width:min(560px,86vw);padding:clamp(24px,4vw,40px);border-radius:30px;display:grid;gap:14px;text-align:left;will-change:transform,opacity;
+ background:linear-gradient(160deg,#1d2467,#10153f 70%);border:1px solid rgba(255,255,255,.2);
+ box-shadow:0 50px 90px -40px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.22)}
+.jc.on{border-color:rgba(255,255,255,.45);box-shadow:0 60px 110px -40px rgba(106,141,255,.7),0 0 0 1px rgba(255,99,171,.25),inset 0 1px 0 rgba(255,255,255,.3)}
+.jn{font:700 clamp(3rem,10vw,5.6rem)/1 var(--serif);letter-spacing:-.04em;background:linear-gradient(120deg,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.jc b{font:600 clamp(1.25rem,3.6vw,1.7rem)/1.25 var(--serif)}
+.jc small{display:flex;flex-wrap:wrap;gap:8px}
+.jc small span{padding:7px 14px;border-radius:99px;font:500 .88rem var(--sans);color:#dfe3ff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.jr-ui{display:grid;grid-template-columns:minmax(120px,320px) auto;gap:14px;align-items:center;justify-content:center;padding-inline:20px;position:relative;z-index:5}
+.jr-bar{height:4px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden}
+.jr-bar i{display:block;height:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),var(--gold2))}
+#jrCnt{font:700 .86rem var(--sans);letter-spacing:.1em;color:var(--mute)}
+.jr-hint{grid-column:1/-1;text-align:center;font-size:.8rem;color:#7f88aa;letter-spacing:.06em}
+.jr.flat{height:auto}.jr.flat .jr-st{position:static;height:auto;display:block;padding:80px 20px}
+.jr.flat .jr-scene{display:grid;gap:14px;perspective:none;max-width:640px;margin:30px auto 0}
+.jr.flat .jc,.jr.flat .jf{position:static}.jr.flat .jc{width:auto;transform:none!important;opacity:1!important}.jr.flat .jf,.jr.flat .jr-ui{display:none}
+
+/* ===== COVERFLOW 3D (réalisations) ===== */
+.cf{padding:clamp(10px,3vw,30px) 0 clamp(40px,6vw,70px);overflow:hidden}
+.cf-stage{position:relative;height:clamp(300px,52vw,520px);perspective:1500px;perspective-origin:50% 40%;transform-style:preserve-3d;touch-action:pan-y}
+.cf-i{position:absolute;left:50%;top:50%;width:min(720px,76vw);transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .6s;will-change:transform;text-decoration:none;cursor:pointer;transform-style:preserve-3d}
+.lap{filter:drop-shadow(0 40px 50px rgba(0,0,0,.6))}
+.lid{aspect-ratio:16/10;border-radius:16px 16px 4px 4px;border:9px solid #0c0e1a;border-bottom-width:11px;background:#000;overflow:hidden;position:relative;box-shadow:0 0 0 1.5px rgba(255,255,255,.2)}
+.lid video,.phn video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;background:#000}
+.lbs{height:16px;margin:0 -4%;border-radius:2px 2px 18px 18px;background:linear-gradient(180deg,#cfd5ee,#8a92b8);position:relative}
+.lbs::after{content:"";position:absolute;left:50%;top:0;width:16%;height:6px;transform:translateX(-50%);border-radius:0 0 8px 8px;background:#6d7499}
+.phn{position:absolute;right:-5%;bottom:-8%;width:23%;aspect-ratio:9/19;border-radius:clamp(14px,2.4vw,26px);border:clamp(3px,.6vw,6px) solid #11131d;overflow:hidden;background:#000;box-shadow:0 24px 44px -12px rgba(0,0,0,.8),0 0 0 1.5px rgba(255,255,255,.25);transform:translateZ(70px)}
+.cf-i.on .lid{box-shadow:0 0 0 1.5px rgba(255,255,255,.35),0 0 80px rgba(106,141,255,.45)}
+.cf-info{text-align:center;display:grid;gap:10px;justify-items:center;padding:clamp(24px,4vw,40px) 20px 0;max-width:620px;margin-inline:auto}
+.cf-info small{font:700 .78rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+.cf-info h2{margin:0;font-size:clamp(1.8rem,5vw,2.8rem)}
+.cf-info p{color:var(--mute);margin:0}
+.cf-info .cta{width:auto;min-height:54px;font-size:1rem;margin-top:8px}.cf-info .cta::before{display:none}
+.cf-nav{display:flex;align-items:center;gap:16px;margin-top:14px}
+.cf-nav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;font-size:1.1rem;cursor:pointer;transition:background .3s,transform .4s var(--ease)}
+.cf-nav button:hover{background:rgba(255,255,255,.14);transform:scale(1.06)}
+.cf-dots{display:flex;gap:10px}
+.cf-dots button{width:10px;height:10px;border-radius:50%;padding:0;border:0;background:rgba(255,255,255,.25);transition:all .5s var(--ease)}
+.cf-dots button.on{width:30px;border-radius:6px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.cf-dots button:hover{transform:none}
+
+/* ===== TARIFS de la page d'accueil : trois cartes côte à côte (ordinateur) ===== */
+@media(min-width:1000px){
+ #prix .wrap{width:min(1140px,100% - 48px);display:grid;grid-template-columns:1fr 1.18fr 1fr;gap:22px;align-items:stretch}
+ #prix h2{grid-column:1/-1}
+ #prix .opts-t,#prix .opts-t+.opts{}
+ #prix .opts-t{display:none}
+ #prix .opts{display:contents}
+ #prix .opt:nth-child(1){grid-column:1;grid-row:2}
+ #prix .opt:nth-child(2){grid-column:3;grid-row:2}
+ #prix .price-box{grid-column:2;grid-row:2;margin-top:0;transform:translateY(-14px)}
+ #prix .opt{align-self:center;grid-template-columns:1fr;align-content:center;text-align:center;padding:34px 26px;gap:16px;border-radius:30px;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03))}
+ #prix .opt b{font-size:1.5rem}
+ #prix .opt .pr{font-size:2.6rem}
+ #prix .opt .btn2{width:100%}
+ #prix .coach{grid-column:1/-1;grid-row:3;margin-top:8px}
+ #prix .note.center{grid-column:1/-1;grid-row:4}
+}
+
+@media(max-width:899px){.jr-st{padding-bottom:92px}}
