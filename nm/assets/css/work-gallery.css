@@ -283,3 +283,15 @@ html[dir="rtl"] .wk-card__links .link-site:hover svg { transform: scaleX(-1) tra
   .wk-card__meta::before { background: CanvasText; }
   .wk-card__links .link-site { border-color: ButtonText; }
 }
+
+/* Business type next to the site name: small, refined, never louder than the name */
+.wk-card__kind { display: inline-block; margin-inline-start: .55em; vertical-align: .12em; white-space: nowrap;
+  font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: .58em; letter-spacing: 0;
+  color: var(--gold-soft); opacity: .85; }
+.wk-card__kind::before { content: ""; display: inline-block; width: .9em; height: 1px; margin-inline-end: .45em; vertical-align: .3em; background: currentColor; opacity: .6; }
+.wk-card--1 .wk-card__kind { font-size: .42em; }
+html[lang="th"] .wk-card__kind, html[lang="ar"] .wk-card__kind { font-family: var(--font-sans); font-style: normal; font-size: .52em; }
+@media (max-width: 699px) {
+  .wk-card:not(.wk-card--1) .wk-card__kind { display: block; margin: .3rem 0 0; font-size: .8rem; white-space: normal; }
+  .wk-card:not(.wk-card--1) .wk-card__kind::before { display: none; }
+}
