@@ -36,23 +36,23 @@
       form: {
         title: "Your project request", bar: "of 4 steps",
         almost: "Almost done.", almostSub: "Fix the fields marked in red and carry on.",
-        privacy: "Your answers stay in this page. Nothing is stored or sent until you open WhatsApp.",
+        privacy: "Your answers stay on this page. Nothing is stored or sent until you open WhatsApp.",
         live: "Step 1 of 4", sent: "Your message is ready below. Open WhatsApp and paste it.",
         liveStep: "Step {n} of 4"
       },
       step1: { name: "Your business", title: "What kind of place is it?", sub: "Pick the closest one. It tells us what your customers look for." },
       step2: { name: "What you need", title: "What do you want us to build?", sub: "Choose as many as you like. A QR menu and a Google profile are the fastest wins." },
       step3: { name: "Languages", title: "Which languages do your customers speak?", sub: "Tick the ones you hear most. Your menu and your site will speak them too." },
-      step4: { name: "Contact", title: "Where do we reach you?", sub: "Only what we need to answer you. Nothing is sent anywhere until you press the button." },
+      step4: { name: "Contact", title: "Where can we reach you?", sub: "Only what we need to answer you. Nothing is sent anywhere until you press the button." },
       opt: { restaurant: "Restaurant", cafe: "Café or bar", salon: "Salon or spa", hotel: "Hotel or guesthouse", shop: "Shop or boutique", rental: "Scooter rental", other: "Something else", google: "Google profile", qr: "QR menu", web: "Website" },
       note: { google: "Be found on Maps", qr: "Your menu on every phone", web: "Your home online" },
       lang: { en: "English", fr: "French", it: "Italian", th: "Thai", ar: "Arabic", de: "German", ru: "Russian", zh: "Chinese" },
       f: {
-        business: "Business name", area: "Area of Pattaya", first: "Your first name",
+        business: "Business name", area: "Where is your business?", first: "Your first name",
         wa: "WhatsApp number", notes: "Anything we should know?", optional: "(optional)"
       },
       ph: { business: "e.g. Malee Restaurant", first: "Malee", wa: "+66 81 234 5678", notes: "A link to your Instagram, your opening hours, the dishes you're proud of…" },
-      area: { none: "Choose an area", central: "Central Pattaya", beach: "Pattaya Beach Road", jomtien: "Jomtien", naklua: "Naklua", pratamnak: "Pratumnak", walking: "Walking Street", other: "Somewhere else" },
+      area: { none: "Choose", th: "Thailand", fr: "France", eu: "Elsewhere in Europe", me: "Middle East", other: "Elsewhere" },
       nav: { back: "Back", next: "Next step", finish: "See my message" },
       sum: {
         title: "Your request", from: "From", total: "Total",
@@ -64,7 +64,7 @@
         copy: "Copy the message", copiedShort: "Copied", copied: "Message copied, paste it into the WhatsApp chat.",
         copyFailed: "Copying failed, select the text below and copy it.",
         copyHint: "Our WhatsApp link opens the chat. The message is copied so you can paste and send it in one tap.",
-        r1: "Business", r2: "What you need", r3: "Languages", r4: "Name", r5: "Area", r6: "WhatsApp", r7: "Notes"
+        r1: "Business", r2: "What you need", r3: "Languages", r4: "Name", r5: "Country", r6: "WhatsApp", r7: "Notes"
       },
       sent: { eyebrow: "Your message", title: "Ready to send.", sub: "This is exactly what we receive. Change anything above and it updates here.", chars: "characters" },
       empty: "Not filled in yet", none: "Not specified",
@@ -72,14 +72,14 @@
       msg: {
         head: "🎯 New project | NM Studio",
         business: "Business", type: "Type", needs: "What I need", langs: "My customers' languages",
-        name: "My name", area: "Area of Pattaya", wa: "My WhatsApp", notes: "Details",
+        name: "My name", area: "Country", wa: "My WhatsApp", notes: "Details",
         price: "Estimated price", total: "Total",
         foot: "Sent from the NM Studio website."
       }
     },
     fr: {
       meta: {
-        title: "Démarrer un projet: votre devis en 4 étapes | NM Studio",
+        title: "Démarrer un projet : votre devis en 4 étapes | NM Studio",
         description: "Quatre étapes rapides et votre demande part sur WhatsApp : activité, besoins, langues de vos clients. Sans engagement."
       },
       hero: {
@@ -91,23 +91,23 @@
       form: {
         title: "Votre demande de projet", bar: "sur 4 étapes",
         almost: "Presque terminé.", almostSub: "Corrigez les champs en rouge, puis continuez.",
-        privacy: "Vos réponses restent dans cette page, rien n'est enregistré ni envoyé avant l'ouverture de WhatsApp.",
+        privacy: "Vos réponses restent dans cette page : rien n'est enregistré ni envoyé avant l'ouverture de WhatsApp.",
         live: "Étape 1 sur 4", sent: "Votre message est prêt ci-dessous. Ouvrez WhatsApp et collez-le.",
         liveStep: "Étape {n} sur 4"
       },
-      step1: { name: "Votre activité", title: "Quel genre d'endroit est-ce ?", sub: "Choisissez le plus proche, cela nous dit ce que vos clients cherchent." },
+      step1: { name: "Votre activité", title: "Quel genre d'endroit est-ce ?", sub: "Choisissez le plus proche : cela nous indique ce que vos clients recherchent." },
       step2: { name: "Ce qu'il vous faut", title: "Que voulez-vous que nous créions ?", sub: "Choisissez-en autant que vous voulez. Un menu QR et une fiche Google sont les gains les plus rapides." },
       step3: { name: "Les langues", title: "Quelles langues parlent vos clients ?", sub: "Cochez celles que vous entendez le plus. Votre menu et votre site les parleront aussi." },
       step4: { name: "Coordonnées", title: "Comment vous joindre ?", sub: "Seulement le nécessaire pour vous répondre. Rien n'est envoyé avant l'appui sur le bouton." },
-      opt: { restaurant: "Restaurant", cafe: "Café ou bar", salon: "Salon ou spa", hotel: "Hôtel ou guesthouse", shop: "Boutique", rental: "Location de scooters", other: "Autre chose", google: "Fiche Google", qr: "Menu QR", web: "Site web" },
+      opt: { restaurant: "Restaurant", cafe: "Café ou bar", salon: "Salon ou spa", hotel: "Hôtel ou maison d'hôtes", shop: "Boutique", rental: "Location de scooters", other: "Autre chose", google: "Fiche Google", qr: "Menu QR", web: "Site web" },
       note: { google: "Être trouvé sur Maps", qr: "Votre menu sur chaque téléphone", web: "Votre vitrine en ligne" },
       lang: { en: "Anglais", fr: "Français", it: "Italien", th: "Thaï", ar: "Arabe", de: "Allemand", ru: "Russe", zh: "Chinois" },
       f: {
-        business: "Nom du commerce", area: "Quartier de Pattaya", first: "Votre prénom",
+        business: "Nom du commerce", area: "Où se trouve votre commerce ?", first: "Votre prénom",
         wa: "Votre numéro WhatsApp", notes: "Quelque chose à nous dire ?", optional: "(facultatif)"
       },
       ph: { business: "ex. Malee Restaurant", first: "Malee", wa: "+66 81 234 5678", notes: "Un lien vers votre Instagram, vos horaires, les plats dont vous êtes fier…" },
-      area: { none: "Choisir un quartier", central: "Pattaya centre", beach: "Pattaya Beach Road", jomtien: "Jomtien", naklua: "Naklua", pratamnak: "Pratumnak", walking: "Walking Street", other: "Ailleurs" },
+      area: { none: "Choisir", th: "Thaïlande", fr: "France", eu: "Ailleurs en Europe", me: "Moyen-Orient", other: "Ailleurs" },
       nav: { back: "Retour", next: "Étape suivante", finish: "Voir mon message" },
       sum: {
         title: "Votre demande", from: "À partir de", total: "Total",
@@ -117,17 +117,17 @@
         paidOnce: "À payer une fois (mise en place)", monthly: "Puis chaque mois",
         live: "Nous répondons en quelques minutes", send: "Ouvrir WhatsApp avec ma demande",
         copy: "Copier le message", copiedShort: "Copié", copied: "Message copié, collez-le dans la conversation WhatsApp.",
-        copyFailed: "La copie a échoué, sélectionnez le texte ci-dessous et copiez-le.",
+        copyFailed: "La copie a échoué : sélectionnez le texte ci-dessous et copiez-le.",
         copyHint: "Notre lien WhatsApp ouvre la discussion. Le message est copié pour que vous n'ayez plus qu'à coller.",
-        r1: "Activité", r2: "Ce qu'il vous faut", r3: "Langues", r4: "Prénom", r5: "Quartier", r6: "WhatsApp", r7: "Précisions"
+        r1: "Activité", r2: "Ce qu'il vous faut", r3: "Langues", r4: "Prénom", r5: "Pays", r6: "WhatsApp", r7: "Précisions"
       },
       sent: { eyebrow: "Votre message", title: "Prêt à envoyer.", sub: "Voici exactement ce que nous recevons. Modifiez une réponse : le message se met à jour.", chars: "caractères" },
       empty: "Pas encore rempli", none: "Non précisé",
-      err: { type: "Choisissez le type de commerce.", business: "Indiquez le nom de votre commerce.", first: "Indiquez votre prénom.", wa: "Ajoutez votre numéro WhatsApp, au moins 6 chiffres." },
+      err: { type: "Choisissez le type de commerce.", business: "Indiquez le nom de votre commerce.", first: "Indiquez votre prénom.", wa: "Ajoutez votre numéro WhatsApp (au moins 6 chiffres)." },
       msg: {
         head: "🎯 Nouveau projet | NM Studio",
         business: "Commerce", type: "Type", needs: "Ce qu'il me faut", langs: "Langues de mes clients",
-        name: "Mon prénom", area: "Quartier de Pattaya", wa: "Mon WhatsApp", notes: "Précisions",
+        name: "Mon prénom", area: "Pays", wa: "Mon WhatsApp", notes: "Précisions",
         price: "Prix estimé", total: "Total",
         foot: "Envoyé depuis le site NM Studio."
       }
@@ -150,7 +150,7 @@
         live: "Passo 1 di 4", sent: "Il tuo messaggio è pronto qui sotto, apri WhatsApp e incollalo.",
         liveStep: "Passo {n} di 4"
       },
-      step1: { name: "La tua attività", title: "Che tipo di locale è?", sub: "Scegli quello più vicino, ci dice cosa cercano i tuoi clienti." },
+      step1: { name: "La tua attività", title: "Che tipo di locale è?", sub: "Scegli quello più simile: ci dice cosa cercano i tuoi clienti." },
       step2: { name: "Cosa ti serve", title: "Cosa vuoi che creiamo?", sub: "Scegline quanti vuoi. Un menù QR e una scheda Google sono i risultati più rapidi." },
       step3: { name: "Le lingue", title: "Quali lingue parlano i tuoi clienti?", sub: "Spunta quelle che senti di più. Anche il menù e il sito le parleranno." },
       step4: { name: "Contatti", title: "Come ti raggiungiamo?", sub: "Solo l'essenziale per risponderti. Nulla viene inviato finché non premi il pulsante." },
@@ -158,11 +158,11 @@
       note: { google: "Farsi trovare su Maps", qr: "Il menù su ogni telefono", web: "La tua vetrina online" },
       lang: { en: "Inglese", fr: "Francese", it: "Italiano", th: "Thailandese", ar: "Arabo", de: "Tedesco", ru: "Russo", zh: "Cinese" },
       f: {
-        business: "Nome dell'attività", area: "Zona di Pattaya", first: "Il tuo nome",
+        business: "Nome dell'attività", area: "Dove si trova la tua attività?", first: "Il tuo nome",
         wa: "Il tuo numero WhatsApp", notes: "Qualcosa da farci sapere?", optional: "(facoltativo)"
       },
       ph: { business: "es. Malee Restaurant", first: "Malee", wa: "+66 81 234 5678", notes: "Un link al tuo Instagram, gli orari, i piatti di cui vai fiero…" },
-      area: { none: "Scegli una zona", central: "Pattaya centro", beach: "Pattaya Beach Road", jomtien: "Jomtien", naklua: "Naklua", pratamnak: "Pratumnak", walking: "Walking Street", other: "Altrove" },
+      area: { none: "Scegli", th: "Thailandia", fr: "Francia", eu: "Altrove in Europa", me: "Medio Oriente", other: "Altrove" },
       nav: { back: "Indietro", next: "Passo successivo", finish: "Vedi il mio messaggio" },
       sum: {
         title: "La tua richiesta", from: "Da", total: "Totale",
@@ -174,7 +174,7 @@
         copy: "Copia il messaggio", copiedShort: "Copiato", copied: "Messaggio copiato, incollalo nella chat WhatsApp.",
         copyFailed: "Copia non riuscita, seleziona il testo qui sotto e copialo.",
         copyHint: "Il nostro link WhatsApp apre la chat. Il messaggio è copiato, devi solo incollarlo.",
-        r1: "Attività", r2: "Cosa ti serve", r3: "Lingue", r4: "Nome", r5: "Zona", r6: "WhatsApp", r7: "Dettagli"
+        r1: "Attività", r2: "Cosa ti serve", r3: "Lingue", r4: "Nome", r5: "Paese", r6: "WhatsApp", r7: "Dettagli"
       },
       sent: { eyebrow: "Il tuo messaggio", title: "Pronto da inviare.", sub: "Ecco esattamente cosa riceviamo. Cambia una risposta e il messaggio si aggiorna.", chars: "caratteri" },
       empty: "Non ancora compilato", none: "Non specificato",
@@ -182,7 +182,7 @@
       msg: {
         head: "🎯 Nuovo progetto | NM Studio",
         business: "Attività", type: "Tipo", needs: "Cosa mi serve", langs: "Lingue dei miei clienti",
-        name: "Il mio nome", area: "Zona di Pattaya", wa: "Il mio WhatsApp", notes: "Dettagli",
+        name: "Il mio nome", area: "Paese", wa: "Il mio WhatsApp", notes: "Dettagli",
         price: "Prezzo stimato", total: "Totale",
         foot: "Inviato dal sito NM Studio."
       }
@@ -213,11 +213,11 @@
       note: { google: "ให้เจอบน Maps", qr: "เมนูบนมือถือทุกเครื่อง", web: "หน้าร้านออนไลน์ของคุณ" },
       lang: { en: "อังกฤษ", fr: "ฝรั่งเศส", it: "อิตาลี", th: "ไทย", ar: "อาหรับ", de: "เยอรมัน", ru: "รัสเซีย", zh: "จีน" },
       f: {
-        business: "ชื่อร้านหรือธุรกิจ", area: "ย่านในพัทยา", first: "ชื่อเล่นของคุณ",
+        business: "ชื่อร้านหรือธุรกิจ", area: "ร้านของคุณอยู่ที่ไหน?", first: "ชื่อเล่นของคุณ",
         wa: "เบอร์ WhatsApp ของคุณ", notes: "มีอะไรอยากบอกเราไหม?", optional: "(ไม่บังคับ)"
       },
       ph: { business: "เช่น ร้านมาลี", first: "มาลี", wa: "+66 81 234 5678", notes: "ลิงก์ Instagram เวลาทำการ หรือเมนูที่คุณภูมิใจ…" },
-      area: { none: "เลือกย่าน", central: "พัทยากลาง", beach: "ถนนเลียบหาดพัทยา", jomtien: "จอมเทียน", naklua: "นาเกลือ", pratamnak: "พระตำหนัก", walking: "Walking Street", other: "ที่อื่น" },
+      area: { none: "เลือก", th: "ประเทศไทย", fr: "ฝรั่งเศส", eu: "ประเทศอื่นในยุโรป", me: "ตะวันออกกลาง", other: "ที่อื่น" },
       nav: { back: "ย้อนกลับ", next: "ขั้นตอนถัดไป", finish: "ดูข้อความของฉัน" },
       sum: {
         title: "คำขอของคุณ", from: "เริ่มต้นที่", total: "รวม",
@@ -228,8 +228,8 @@
         live: "เราตอบกลับภายในไม่กี่นาที", send: "เปิด WhatsApp พร้อมคำขอของฉัน",
         copy: "คัดลอกข้อความ", copiedShort: "คัดลอกแล้ว", copied: "คัดลอกข้อความแล้ว วางในแชท WhatsApp ได้เลย",
         copyFailed: "คัดลอกไม่สำเร็จ เลือกข้อความด้านล่างแล้วคัดลอกเอง",
-        copyHint: "ลิงก์ WhatsApp ของเราจะเปิดแชทขึ้นมา ข้อความถูกคัดลอกไว้ให้แล้วเพียงวาง",
-        r1: "ธุรกิจ", r2: "สิ่งที่ต้องการ", r3: "ภาษา", r4: "ชื่อ", r5: "ย่าน", r6: "WhatsApp", r7: "รายละเอียด"
+        copyHint: "ลิงก์ WhatsApp ของเราจะเปิดแชทขึ้นมา ข้อความถูกคัดลอกไว้ให้แล้ว แค่วางแล้วกดส่ง",
+        r1: "ธุรกิจ", r2: "สิ่งที่ต้องการ", r3: "ภาษา", r4: "ชื่อ", r5: "ประเทศ", r6: "WhatsApp", r7: "รายละเอียด"
       },
       sent: { eyebrow: "ข้อความของคุณ", title: "พร้อมส่งแล้ว", sub: "นี่คือข้อความที่เราจะได้รับจริง ๆ แก้คำตอบด้านบนแล้วข้อความจะอัปเดตทันที", chars: "ตัวอักษร" },
       empty: "ยังไม่ได้กรอก", none: "ไม่ได้ระบุ",
@@ -237,7 +237,7 @@
       msg: {
         head: "🎯 โปรเจกต์ใหม่ NM Studio",
         business: "ธุรกิจ", type: "ประเภท", needs: "สิ่งที่ต้องการ", langs: "ภาษาของลูกค้า",
-        name: "ชื่อของฉัน", area: "ย่านในพัทยา", wa: "WhatsApp ของฉัน", notes: "รายละเอียด",
+        name: "ชื่อของฉัน", area: "ประเทศ", wa: "WhatsApp ของฉัน", notes: "รายละเอียด",
         price: "ราคาประเมิน", total: "รวม",
         foot: "ส่งจากเว็บไซต์ NM Studio"
       }
@@ -268,12 +268,12 @@
       note: { google: "ليجدك الناس على الخرائط", qr: "قائمتك على كل هاتف", web: "واجهتك على الإنترنت" },
       lang: { en: "الإنجليزية", fr: "الفرنسية", it: "الإيطالية", th: "التايلاندية", ar: "العربية", de: "الألمانية", ru: "الروسية", zh: "الصينية" },
       f: {
-        business: "اسم النشاط", area: "المنطقة في باتايا", first: "اسمك الأول",
+        business: "اسم النشاط", area: "أين يقع نشاطك؟", first: "اسمك الأول",
         wa: "رقم واتساب", notes: "هل هناك ما يجب أن نعرفه؟", optional: "(اختياري)"
       },
       ph: { business: "مثال: مطعم مالي", first: "مالي", wa: "+66 81 234 5678", notes: "رابط إنستغرام، ساعات العمل، الأطباق التي تفتخر بها…" },
-      area: { none: "اختر منطقة", central: "وسط باتايا", beach: "شارع شاطئ باتايا", jomtien: "جومتين", naklua: "ناكوا", pratamnak: "براتومنك", walking: "ووكينغ ستريت", other: "مكان آخر" },
-      nav: { back: "رجوع", next: "الخطوة التالية", finish: "أعرض رسالتي" },
+      area: { none: "اختر", th: "تايلاند", fr: "فرنسا", eu: "مكان آخر في أوروبا", me: "الشرق الأوسط", other: "مكان آخر" },
+      nav: { back: "رجوع", next: "الخطوة التالية", finish: "اعرض رسالتي" },
       sum: {
         title: "طلبك", from: "ابتداءً من", total: "الإجمالي",
         month: "/ شهريًا", hint: "دفعة واحدة · نؤكد السعر النهائي معًا على واتساب.",
@@ -284,15 +284,15 @@
         copy: "انسخ الرسالة", copiedShort: "تم النسخ", copied: "تم نسخ الرسالة، الصقها في محادثة واتساب.",
         copyFailed: "فشل النسخ، حدّد النص بالأسفل وانسخه يدويًا.",
         copyHint: "رابط واتساب يفتح المحادثة، والرسالة منسوخة لتلصقها بلمسة واحدة.",
-        r1: "النشاط", r2: "ما تحتاجه", r3: "اللغات", r4: "الاسم", r5: "المنطقة", r6: "واتساب", r7: "تفاصيل"
+        r1: "النشاط", r2: "ما تحتاجه", r3: "اللغات", r4: "الاسم", r5: "البلد", r6: "واتساب", r7: "تفاصيل"
       },
-      sent: { eyebrow: "رسالتك", title: "جاهزة للإرسال.", sub: "هذه بالضبط الرسالة التي نستلمها. عدّل أي إجابة وستتحدث الرسالة فورًا.", chars: "حرفًا" },
+      sent: { eyebrow: "رسالتك", title: "جاهزة للإرسال.", sub: "هذه بالضبط الرسالة التي نستلمها. عدّل أي إجابة وستُحدَّث الرسالة فورًا.", chars: "حرفًا" },
       empty: "لم يُعبأ بعد", none: "غير محدد",
       err: { type: "اختر نوع النشاط من فضلك.", business: "اكتب اسم نشاطك من فضلك.", first: "اكتب اسمك الأول من فضلك.", wa: "أضف رقم واتساب، 6 أرقام على الأقل." },
       msg: {
         head: "🎯 مشروع جديد، NM Studio",
         business: "النشاط", type: "النوع", needs: "ما أحتاجه", langs: "لغات عملائي",
-        name: "اسمي", area: "المنطقة في باتايا", wa: "واتساب", notes: "تفاصيل",
+        name: "اسمي", area: "البلد", wa: "واتساب", notes: "تفاصيل",
         price: "السعر التقديري", total: "الإجمالي",
         foot: "أُرسلت من موقع NM Studio."
       }
@@ -354,7 +354,14 @@
     root.lang = lang;
     root.dir = lang === "ar" ? "rtl" : "ltr";
 
-    $$("[data-q]").forEach(function (el) { el.innerHTML = t(el.getAttribute("data-q")); });
+    $$("[data-q]").forEach(function (el) {
+      // a label that holds its own translated child (e.g. "(optional)") only gets its leading text replaced, so the child stays
+      if (el.querySelector("[data-q]")) {
+        var first = el.firstChild;
+        if (first && first.nodeType === 3) first.textContent = t(el.getAttribute("data-q")) + " ";
+        else el.insertBefore(document.createTextNode(t(el.getAttribute("data-q")) + " "), el.firstChild);
+      } else el.innerHTML = t(el.getAttribute("data-q"));
+    });
     $$("[data-q-ph]").forEach(function (el) { el.setAttribute("placeholder", t(el.getAttribute("data-q-ph"))); });
     $$("[data-q-aria]").forEach(function (el) { el.setAttribute("aria-label", t(el.getAttribute("data-q-aria"))); });
 

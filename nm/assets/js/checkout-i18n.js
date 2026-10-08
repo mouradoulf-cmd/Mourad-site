@@ -53,11 +53,11 @@
     waHead: "New NM Studio order", waPlan: "Plan", waMethod: "Payment"
   } },
   fr: { checkout: {
-    secureNoteQr: "Connexion chiffrée · Paiement Thai QR PromptPay",
-    qrWaiting: "En attente du paiement", qrSlipIn: "Reçu joint, confirmez ci-dessous", qrDemo: "Exemple", qrExpired: "QR expiré", qrRenew: "Nouveau QR", qrValid: "QR valable", qr4: "Joignez le reçu du virement ci-dessous", qrCopy: "Copier le numéro PromptPay", qrCopied: "Numéro PromptPay copié", qrSaved: "QR enregistré. Ouvrez votre appli bancaire et choisissez-le dans vos photos", qrRef: "Commande", slipTitle: "Joindre le reçu du virement", slipSub: "Une capture de votre appli bancaire. Nous le vérifions et confirmons dans l'heure.", slipOk: "Reçu joint", slipRemove: "Retirer le reçu", slipBad: "Veuillez choisir une image.", payNotify: "Confirmer le paiement {amount}", trOrder: "Commande passée", trPaid: "Paiement envoyé", trCheck: "Vérification du reçu · dans l'heure", trStart: "Début du design", leadSlipSent: "Paiement noté. Touchez ci-dessous pour envoyer votre reçu et votre commande sur WhatsApp, confirmation dans l'heure.", doneWaSlip: "Envoyer mon reçu sur WhatsApp", slipHint: "N'oubliez pas de joindre votre reçu dans la discussion WhatsApp.", waSlip: "Reçu du virement : joint",
+    secureNoteQr: "Connexion chiffrée · Paiement par QR thaï PromptPay",
+    qrWaiting: "En attente du paiement", qrSlipIn: "Reçu joint, confirmez ci-dessous", qrDemo: "Exemple", qrExpired: "QR expiré", qrRenew: "Nouveau QR", qrValid: "QR valable encore", qr4: "Joignez le reçu du virement ci-dessous", qrCopy: "Copier le numéro PromptPay", qrCopied: "Numéro PromptPay copié", qrSaved: "QR enregistré. Ouvrez votre appli bancaire et choisissez-le dans vos photos", qrRef: "Commande", slipTitle: "Joindre le reçu du virement", slipSub: "Une capture de votre appli bancaire. Nous la vérifions et confirmons dans l'heure.", slipOk: "Reçu joint", slipRemove: "Retirer le reçu", slipBad: "Veuillez choisir une image.", payNotify: "Confirmer le paiement {amount}", trOrder: "Commande passée", trPaid: "Paiement envoyé", trCheck: "Vérification du reçu · dans l'heure", trStart: "Début du design", leadSlipSent: "Paiement noté. Touchez ci-dessous pour envoyer votre reçu et votre commande sur WhatsApp. Confirmation dans l'heure.", doneWaSlip: "Envoyer mon reçu sur WhatsApp", slipHint: "N'oubliez pas de joindre votre reçu dans la discussion WhatsApp.", waSlip: "Reçu du virement : joint",
     payTitleQr: "Payer par QR thaï",
     qrTo: "À", qr1: "Ouvrez votre appli bancaire", qr2: "Touchez Scanner, ou enregistrez le QR et choisissez-le dans vos photos", qr3: "Vérifiez le montant et confirmez", qrSave: "Enregistrer le QR", qrBanks: "Compatible avec toutes les applis bancaires thaïes", qrPending: "Votre QR PromptPay avec le montant exact vous sera envoyé sur WhatsApp dès votre confirmation.", payPaid: "J'ai payé {amount}", leadSlip: "Merci ! Envoyez-nous le reçu de votre virement sur WhatsApp et nous démarrons tout de suite.",
-    meta: { title: "Paiement | NM Studio", description: "Démarrez votre formule NM Studio : choisissez votre formule, renseignez vos informations et payez en toute sécurité." },
+    meta: { title: "Paiement | NM Studio", description: "Démarrez votre projet NM Studio : choisissez votre formule, renseignez vos informations et payez en toute sécurité." },
     secure: "Paiement sécurisé", back: "Retour aux tarifs",
     title: "Mettons votre site <em>en ligne.</em>", lead: "Trois étapes rapides. Sans engagement, résiliable à tout moment.",
     step1: "Formule", step2: "Informations", step3: "Paiement",
@@ -69,7 +69,7 @@
     emailInvalid: "Merci d'indiquer une adresse e-mail valide.", phoneInvalid: "Merci d'indiquer un numéro complet, avec l'indicatif.",
     payTitle: "Moyen de paiement",
     mCard: "Carte, Apple Pay ou Google Pay", mCardSub: "Traité par Stripe. Nous ne voyons jamais vos données de carte.",
-    mPromptSub: "Scannez avec n'importe quelle appli bancaire thaïe, instantané.",
+    mPromptSub: "Scannez avec n'importe quelle appli bancaire thaïe : paiement instantané.",
     mBank: "Virement bancaire", mBankSub: "Coordonnées bancaires affichées après confirmation.",
     mMeet: "Payer lors du rendez-vous", mMeetSub: "En espèces ou par virement, quand on se rencontre.",
     nCardLive: "Vous serez redirigé vers la page sécurisée de Stripe pour payer {amount}.",
@@ -80,7 +80,7 @@
     nMeet: "Rien à payer maintenant. Vous réglez la mise en place lors de notre rendez-vous.",
     terms: "Je comprends que l'abonnement mensuel commence une fois mon site en ligne, et que je peux résilier à tout moment, gratuitement.",
     termsRequired: "Merci de cocher cette case pour continuer.",
-    payNow: "Payer {amount}", payOrder: "Confirmer la commande · {amount}", payConfirm: "Confirmer ma commande", redirecting: "Redirection vers le paiement sécurisé…", redirectNote: "Vous allez être redirigé vers la page de paiement sécurisée opérée par Stripe, aucune donnée bancaire ne transite par ce site.",
+    payNow: "Payer {amount}", payOrder: "Confirmer la commande · {amount}", payConfirm: "Confirmer ma commande", redirecting: "Redirection vers le paiement sécurisé…", redirectNote: "Vous allez être redirigé vers la page de paiement sécurisée opérée par Stripe : aucune donnée bancaire ne transite par ce site.",
     summary: "Récapitulatif", sumSetup: "Mise en place (unique)", sumMonthly: "Abonnement mensuel", sumFirst: "Première mensualité", sumFirstWhen: "à la mise en ligne",
     sumToday: "À payer aujourd'hui", sumMonthly: "Abonnement mensuel", month: "mois",
     trust1: "Sans engagement, résiliable à tout moment", trust2: "Modifications illimitées incluses", trust3: "Vous validez le design avant la mise en ligne",
@@ -89,7 +89,7 @@
     leadCard: "Votre commande est confirmée. Nous vous envoyons votre lien de paiement par carte sur WhatsApp. Envoyez-nous votre commande ci-dessous.",
     leadPrompt: "Votre commande est confirmée. Scannez le code PromptPay ci-dessous avec votre appli bancaire, puis envoyez-nous votre commande sur WhatsApp.",
     leadBank: "Votre commande est confirmée. Virez le montant ci-dessous avec votre référence, puis envoyez-nous votre commande sur WhatsApp.",
-    leadManual: "Votre commande est confirmée. Envoyez-la-nous sur WhatsApp, nous répondons avec les informations de paiement en quelques minutes.",
+    leadManual: "Votre commande est confirmée. Envoyez-la-nous sur WhatsApp : nous vous répondons avec les informations de paiement en quelques minutes.",
     leadMeet: "Votre commande est confirmée. Envoyez-la-nous sur WhatsApp et nous fixons un rendez-vous.",
     leadPaid: "Paiement reçu, merci. Nous vous écrivons très vite sur WhatsApp pour démarrer.",
     ppNote: "Ouvrez votre appli bancaire, choisissez Scanner et visez le code. Le montant est déjà renseigné.",
@@ -102,7 +102,7 @@
     waHead: "Nouvelle commande NM Studio", waPlan: "Formule", waMethod: "Paiement"
   } },
   it: { checkout: {
-    secureNoteQr: "Connessione cifrata · Pagamento Thai QR PromptPay",
+    secureNoteQr: "Connessione cifrata · Pagamento con QR thailandese PromptPay",
     qrWaiting: "In attesa del pagamento", qrSlipIn: "Ricevuta allegata, conferma qui sotto", qrDemo: "Esempio", qrExpired: "QR scaduto", qrRenew: "Nuovo QR", qrValid: "QR valido per", qr4: "Allega la ricevuta del bonifico qui sotto", qrCopy: "Copia il numero PromptPay", qrCopied: "Numero PromptPay copiato", qrSaved: "QR salvato, apri la tua app bancaria e sceglilo dalla galleria", qrRef: "Ordine", slipTitle: "Allega la ricevuta del bonifico", slipSub: "Uno screenshot dalla tua app bancaria. La controlliamo e confermiamo entro un'ora.", slipOk: "Ricevuta allegata", slipRemove: "Rimuovi ricevuta", slipBad: "Scegli un file immagine.", payNotify: "Conferma pagamento {amount}", trOrder: "Ordine effettuato", trPaid: "Pagamento inviato", trCheck: "Verifica ricevuta · entro un'ora", trStart: "Inizia il design", leadSlipSent: "Pagamento registrato. Tocca qui sotto per inviare ricevuta e ordine su WhatsApp, confermiamo entro un'ora.", doneWaSlip: "Invia la ricevuta su WhatsApp", slipHint: "Non dimenticare di allegare la ricevuta nella chat WhatsApp.", waSlip: "Ricevuta bonifico: allegata",
     payTitleQr: "Paga con QR thailandese",
     qrTo: "A", qr1: "Apri la tua app bancaria", qr2: "Tocca Scansiona, oppure salva il QR e sceglilo dalla galleria", qr3: "Controlla l'importo e conferma", qrSave: "Salva il QR", qrBanks: "Funziona con tutte le app bancarie thailandesi", qrPending: "Il tuo QR PromptPay con l'importo esatto ti verrà inviato su WhatsApp appena confermi.", payPaid: "Ho pagato {amount}", leadSlip: "Grazie! Inviaci la ricevuta del bonifico su WhatsApp e iniziamo subito.",
@@ -152,17 +152,17 @@
   } },
   th: { checkout: {
     secureNoteQr: "การเชื่อมต่อเข้ารหัส · ชำระผ่าน Thai QR พร้อมเพย์",
-    qrWaiting: "รอการชำระเงิน", qrSlipIn: "แนบสลิปแล้ว กดยืนยันด้านล่าง", qrDemo: "ตัวอย่าง", qrExpired: "QR หมดอายุแล้ว", qrRenew: "สร้าง QR ใหม่", qrValid: "QR มีอายุ", qr4: "แนบสลิปการโอนด้านล่าง", qrCopy: "คัดลอกเลขพร้อมเพย์", qrCopied: "คัดลอกเลขพร้อมเพย์แล้ว", qrSaved: "บันทึก QR แล้ว เปิดแอปธนาคารแล้วเลือกจากอัลบั้มรูป", qrRef: "คำสั่งซื้อ", slipTitle: "แนบสลิปการโอน", slipSub: "ภาพหน้าจอจากแอปธนาคาร เราตรวจสอบและยืนยันภายใน 1 ชั่วโมง", slipOk: "แนบสลิปแล้ว", slipRemove: "ลบสลิป", slipBad: "กรุณาเลือกไฟล์รูปภาพ", payNotify: "ยืนยันการชำระเงิน {amount}", trOrder: "สั่งซื้อแล้ว", trPaid: "ชำระเงินแล้ว", trCheck: "ตรวจสอบสลิป · ภายใน 1 ชม.", trStart: "เริ่มออกแบบ", leadSlipSent: "รับแจ้งการชำระเงินแล้วค่ะ กดปุ่มด้านล่างเพื่อส่งสลิปและคำสั่งซื้อทาง WhatsApp เรายืนยันภายใน 1 ชั่วโมง", doneWaSlip: "ส่งสลิปทาง WhatsApp", slipHint: "อย่าลืมแนบสลิปในแชท WhatsApp นะคะ", waSlip: "สลิปการโอน: แนบมาด้วย",
+    qrWaiting: "รอการชำระเงิน", qrSlipIn: "แนบสลิปแล้ว กดยืนยันด้านล่าง", qrDemo: "ตัวอย่าง", qrExpired: "QR หมดอายุแล้ว", qrRenew: "สร้าง QR ใหม่", qrValid: "QR มีอายุ", qr4: "แนบสลิปการโอนด้านล่าง", qrCopy: "คัดลอกเลขพร้อมเพย์", qrCopied: "คัดลอกเลขพร้อมเพย์แล้ว", qrSaved: "บันทึก QR แล้ว เปิดแอปธนาคารแล้วเลือกจากอัลบั้มรูป", qrRef: "คำสั่งซื้อ", slipTitle: "แนบสลิปการโอน", slipSub: "ภาพหน้าจอจากแอปธนาคาร เราตรวจสอบและยืนยันภายใน 1 ชั่วโมง", slipOk: "แนบสลิปแล้ว", slipRemove: "ลบสลิป", slipBad: "กรุณาเลือกไฟล์รูปภาพ", payNotify: "ยืนยันการชำระเงิน {amount}", trOrder: "สั่งซื้อแล้ว", trPaid: "ชำระเงินแล้ว", trCheck: "ตรวจสอบสลิป · ภายใน 1 ชม.", trStart: "เริ่มออกแบบ", leadSlipSent: "รับแจ้งการชำระเงินแล้ว กดปุ่มด้านล่างเพื่อส่งสลิปและคำสั่งซื้อทาง WhatsApp เรายืนยันภายใน 1 ชั่วโมง", doneWaSlip: "ส่งสลิปทาง WhatsApp", slipHint: "อย่าลืมแนบสลิปในแชท WhatsApp ด้วย", waSlip: "สลิปการโอน: แนบมาด้วย",
     payTitleQr: "ชำระเงินด้วย QR พร้อมเพย์",
-    qrTo: "ผู้รับ", qr1: "เปิดแอปธนาคารของคุณ", qr2: "กดสแกน หรือบันทึก QR แล้วเลือกจากอัลบั้มรูป", qr3: "ตรวจสอบยอดเงินแล้วยืนยัน", qrSave: "บันทึก QR ลงเครื่อง", qrBanks: "ใช้ได้กับแอปธนาคารไทยทุกแอป", qrPending: "เราจะส่ง QR พร้อมเพย์พร้อมยอดเงินให้ทาง WhatsApp ทันทีที่คุณยืนยัน", payPaid: "ชำระแล้ว {amount}", leadSlip: "ขอบคุณค่ะ! ส่งสลิปการโอนให้เราทาง WhatsApp แล้วเราจะเริ่มงานทันที",
-    meta: { title: "ชำระเงิน NM Studio", description: "เริ่มแพ็กเกจ NM Studio: เลือกแพ็กเกจ กรอกข้อมูล และชำระเงินอย่างปลอดภัย" },
+    qrTo: "ผู้รับ", qr1: "เปิดแอปธนาคารของคุณ", qr2: "กดสแกน หรือบันทึก QR แล้วเลือกจากอัลบั้มรูป", qr3: "ตรวจสอบยอดเงินแล้วยืนยัน", qrSave: "บันทึก QR ลงเครื่อง", qrBanks: "ใช้ได้กับแอปธนาคารไทยทุกแอป", qrPending: "เราจะส่ง QR พร้อมเพย์พร้อมยอดเงินให้ทาง WhatsApp ทันทีที่คุณยืนยัน", payPaid: "ชำระแล้ว {amount}", leadSlip: "ขอบคุณ! ส่งสลิปการโอนให้เราทาง WhatsApp แล้วเราจะเริ่มงานทันที",
+    meta: { title: "ชำระเงิน | NM Studio", description: "เริ่มแพ็กเกจ NM Studio: เลือกแพ็กเกจ กรอกข้อมูล และชำระเงินอย่างปลอดภัย" },
     secure: "ชำระเงินอย่างปลอดภัย", back: "กลับไปหน้าราคา",
     title: "มาทำให้เว็บของคุณ <em>ออนไลน์กันเลย</em>", lead: "สามขั้นตอนง่าย ๆ ไม่มีสัญญา ยกเลิกได้ทุกเมื่อ",
     step1: "แพ็กเกจ", step2: "ข้อมูล", step3: "ชำระเงิน",
     planTitle: "เลือกแพ็กเกจของคุณ", included: "สิ่งที่รวมอยู่ในแพ็กเกจ", continue: "ถัดไป", backBtn: "ย้อนกลับ",
     detailsTitle: "ข้อมูลของคุณ", type: "ประเภทธุรกิจ",
     typeRestaurant: "ร้านอาหาร", typeCafe: "คาเฟ่หรือบาร์", typeSalon: "ร้านทำผมหรือความงาม", typeSpa: "สปาหรือร้านนวด", typeCompany: "บริษัท", typeOther: "อื่น ๆ",
-    name: "ชื่อของคุณ", phone: "หมายเลข WhatsApp", email: "อีเมล สำหรับใบเสร็จ", langs: "ภาษาของเว็บไซต์",
+    name: "ชื่อของคุณ", phone: "หมายเลข WhatsApp", email: "อีเมลสำหรับรับใบเสร็จ", langs: "ภาษาของเว็บไซต์",
     notes: "มีอะไรที่เราควรรู้ไหม?", optional: "(ไม่บังคับ)", notesPh: "เว็บไซต์เดิม, Instagram, สีที่ชอบ…",
     emailInvalid: "กรุณากรอกอีเมลให้ถูกต้อง", phoneInvalid: "กรุณากรอกเบอร์โทรให้ครบ พร้อมรหัสประเทศ",
     payTitle: "วิธีชำระเงิน",
@@ -246,6 +246,108 @@
     next2t: "نصمم موقعك", next2b: "تحصل على رابط معاينة خاص للمراجعة وطلب التعديلات.",
     next3t: "موقعك متاح", next3b: "يتم تفعيل موقعك وقائمة QR وصفحتك على Google.",
     doneWa: "أرسل طلبي عبر واتساب", donePrint: "طباعة الملخص", doneHome: "العودة إلى الموقع",
-    waHead: "طلب جديد من NM Studio", waPlan: "الباقة", waMethod: "الدفع"
+    waHead: "طلب جديد لدى NM Studio", waPlan: "الباقة", waMethod: "الدفع"
   } }
+});
+
+/* Automatic monthly payment (subscribed offers) */
+(function (D) {
+  function merge(a, b) { Object.keys(b).forEach(function (k) { if (b[k] && typeof b[k] === "object" && !Array.isArray(b[k])) { a[k] = a[k] || {}; merge(a[k], b[k]); } else if (!(k in a)) a[k] = b[k]; }); return a; }
+  window.NM_EXTRA_DICT = merge(window.NM_EXTRA_DICT || {}, D);
+})({
+ "en": {
+  "checkout": {
+   "autoK": "Automatic monthly payment",
+   "autoT": "Add your card once. <em>Then it all runs by itself.</em>",
+   "autoB": "You enter your card a single time, on a secure payment page. Every month your subscription is charged automatically: nothing to remember, no transfer to redo, and your site stays online.",
+   "autoPay": "Monthly payment, automatic",
+   "a1": "Today",
+   "a1b": "{amount} · setup + first month",
+   "a2": "Every month",
+   "a2b": "{monthly} charged automatically, receipt by email",
+   "a3": "Whenever you like",
+   "a3b": "Cancel in one click, no fees",
+   "autoCards": "Visa, Mastercard, Revolut, Wise, Thai and European cards",
+   "autoSafe": "Encrypted payment by Stripe. We never see your card number.",
+   "autoWa": "Once you confirm, we send your secure payment link on WhatsApp. You add your card there, once.",
+   "autoName": "YOUR NAME",
+   "autoMonth": "month"
+  }
+ },
+ "fr": {
+  "checkout": {
+   "autoK": "Prélèvement automatique",
+   "autoT": "Votre carte une seule fois. <em>Ensuite, tout se fait tout seul.</em>",
+   "autoB": "Vous entrez votre carte une seule fois, sur une page de paiement sécurisée. Chaque mois, l'abonnement est prélevé automatiquement : rien à retenir, aucun virement à refaire, et votre site reste en ligne.",
+   "autoPay": "Paiement mensuel automatique",
+   "a1": "Aujourd'hui",
+   "a1b": "{amount} · mise en place + 1er mois",
+   "a2": "Chaque mois",
+   "a2b": "{monthly} prélevés automatiquement, reçu par email",
+   "a3": "Quand vous voulez",
+   "a3b": "Résiliation en 1 clic, sans frais",
+   "autoCards": "Visa, Mastercard, Revolut, Wise, cartes thaïes et européennes",
+   "autoSafe": "Paiement chiffré par Stripe. Nous ne voyons jamais votre numéro de carte.",
+   "autoWa": "Après votre confirmation, nous vous envoyons votre lien de paiement sécurisé sur WhatsApp. Vous y enregistrez votre carte, une seule fois.",
+   "autoName": "VOTRE NOM",
+   "autoMonth": "mois"
+  }
+ },
+ "it": {
+  "checkout": {
+   "autoK": "Addebito automatico mensile",
+   "autoT": "La tua carta una sola volta. <em>Poi fa tutto da sé.</em>",
+   "autoB": "Inserisci la carta una sola volta, su una pagina di pagamento sicura. Ogni mese l'abbonamento viene addebitato automaticamente: niente da ricordare, nessun bonifico da rifare, e il tuo sito resta online.",
+   "autoPay": "Pagamento mensile automatico",
+   "a1": "Oggi",
+   "a1b": "{amount} · attivazione + primo mese",
+   "a2": "Ogni mese",
+   "a2b": "{monthly} addebitati automaticamente, ricevuta via email",
+   "a3": "Quando vuoi",
+   "a3b": "Disdetta in un clic, senza costi",
+   "autoCards": "Visa, Mastercard, Revolut, Wise, carte thailandesi ed europee",
+   "autoSafe": "Pagamento crittografato da Stripe. Non vediamo mai il numero della tua carta.",
+   "autoWa": "Dopo la conferma ti inviamo su WhatsApp il link di pagamento sicuro. Lì registri la carta, una sola volta.",
+   "autoName": "IL TUO NOME",
+   "autoMonth": "mese"
+  }
+ },
+ "th": {
+  "checkout": {
+   "autoK": "ตัดบัตรอัตโนมัติรายเดือน",
+   "autoT": "ผูกบัตรครั้งเดียว <em>ที่เหลือระบบจัดการให้เอง</em>",
+   "autoB": "กรอกข้อมูลบัตรเพียงครั้งเดียวบนหน้าชำระเงินที่ปลอดภัย จากนั้นระบบจะตัดค่าบริการรายเดือนให้อัตโนมัติ ไม่ต้องจำ ไม่ต้องโอนใหม่ทุกเดือน และเว็บไซต์ของคุณออนไลน์ต่อเนื่อง",
+   "autoPay": "ชำระรายเดือนอัตโนมัติ",
+   "a1": "วันนี้",
+   "a1b": "{amount} · ค่าติดตั้ง + เดือนแรก",
+   "a2": "ทุกเดือน",
+   "a2b": "ตัดบัตรอัตโนมัติ {monthly} พร้อมใบเสร็จทางอีเมล",
+   "a3": "เมื่อไหร่ก็ได้",
+   "a3b": "ยกเลิกได้ในคลิกเดียว ไม่มีค่าธรรมเนียม",
+   "autoCards": "Visa, Mastercard, Revolut, Wise บัตรธนาคารไทยและยุโรป",
+   "autoSafe": "ชำระเงินแบบเข้ารหัสโดย Stripe เราไม่เห็นเลขบัตรของคุณ",
+   "autoWa": "หลังยืนยัน เราจะส่งลิงก์ชำระเงินที่ปลอดภัยให้ทาง WhatsApp คุณผูกบัตรที่นั่นเพียงครั้งเดียว",
+   "autoName": "ชื่อของคุณ",
+   "autoMonth": "เดือน"
+  }
+ },
+ "ar": {
+  "checkout": {
+   "autoK": "دفع شهري تلقائي",
+   "autoT": "أدخل بطاقتك مرة واحدة. <em>والباقي يتم تلقائيًا.</em>",
+   "autoB": "تُدخل بطاقتك مرة واحدة فقط في صفحة دفع آمنة. وكل شهر يُخصم الاشتراك تلقائيًا: لا شيء تتذكره، ولا تحويل تعيده، ويبقى موقعك متاحًا على الإنترنت.",
+   "autoPay": "دفع شهري تلقائي",
+   "a1": "اليوم",
+   "a1b": "{amount} · الإعداد + الشهر الأول",
+   "a2": "كل شهر",
+   "a2b": "يُخصم {monthly} تلقائيًا، مع إيصال بالبريد الإلكتروني",
+   "a3": "متى شئت",
+   "a3b": "إلغاء بنقرة واحدة، بلا رسوم",
+   "autoCards": "Visa وMastercard وRevolut وWise والبطاقات التايلاندية والأوروبية",
+   "autoSafe": "دفع مشفّر عبر Stripe. لا نرى رقم بطاقتك أبدًا.",
+   "autoWa": "بعد تأكيدك نرسل لك رابط الدفع الآمن عبر واتساب. تسجّل بطاقتك هناك مرة واحدة فقط.",
+   "autoName": "اسمك",
+   "autoMonth": "شهر"
+  }
+ }
 });

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Maquette express | NM Studio</title>
+<link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/site.css?v=20261008v" rel="stylesheet"/>
+<style>
+  body { min-height: 100vh; background: radial-gradient(60rem 30rem at 50% -10%, rgba(201,169,97,.12), transparent 70%), var(--ink); }
+  .mx { width: min(100% - 2rem, 40rem); margin: 0 auto; padding: clamp(2rem, 6vw, 4rem) 0 4rem; }
+  .mx h1 { margin: .6rem 0 0; font-size: clamp(2rem, 7vw, 3rem); line-height: 1.02; }
+  .mx h1 em { display: block; }
+  .mx__lead { margin: .9rem 0 1.8rem; color: var(--muted); line-height: 1.6; }
+  .mx__card { padding: 1.4rem; border-radius: var(--radius-lg); background: linear-gradient(150deg, rgba(255,255,255,.055), rgba(255,255,255,.015)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .mx label { display: block; margin: 0 0 .35rem; font-size: .8rem; font-weight: 600; color: var(--muted); }
+  .mx input, .mx select, .mx textarea { width: 100%; padding: .85rem 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(10,10,11,.6);
+    color: var(--text); font: 500 1rem/1.4 var(--font-sans); outline: none; }
+  .mx input:focus, .mx select:focus, .mx textarea:focus { border-color: rgba(228,207,154,.6); box-shadow: 0 0 0 3px rgba(201,169,97,.18); }
+  .mx select option { background: #141214; }
+  .mx .f { margin-bottom: 1rem; }
+  .mx__tpl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  .mx__tpl label { margin: 0; display: flex; flex-direction: column; gap: .15rem; padding: .7rem .8rem; border-radius: 12px; cursor: pointer; color: var(--text); font-size: .95rem;
+    background: rgba(255,255,255,.03); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+  .mx__tpl label small { color: var(--gold-soft); font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: .85rem; }
+  .mx__tpl input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .mx__tpl input:checked + label { box-shadow: inset 0 0 0 2px var(--gold); background: rgba(201,169,97,.1); }
+  .mx__tpl input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .mx__out { margin-top: 1.4rem; display: none; }
+  .mx__out.is-on { display: block; }
+  .mx__link { word-break: break-all; padding: .9rem 1rem; border-radius: 12px; background: rgba(201,169,97,.08); box-shadow: inset 0 0 0 1px rgba(228,207,154,.3); color: var(--gold-soft); font-size: .92rem; }
+  .mx__btns { display: grid; gap: .6rem; margin-top: .8rem; }
+  @media (min-width: 520px) { .mx__btns { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .mx__btns .btn { width: 100%; justify-content: center; }
+  .mx textarea { min-height: 7.5rem; margin-top: .8rem; resize: vertical; }
+  .mx__tip { margin-top: 1.4rem; color: var(--muted); font-size: .88rem; line-height: 1.6; }
+</style>
+</head>
+<body>
+<main class="mx">
+  <p class="eyebrow">Outil interne NM Studio</p>
+  <h1>Maquette <em>express.</em></h1>
+  <p class="mx__lead">Tape le nom du commerce, choisis le modèle le plus proche, et envoie au prospect un lien vers « son » site. Le nom s'affiche partout, avec une petite étiquette « Maquette gratuite pour … · par NM Studio ».</p>
+
+  <form class="mx__card" id="mx" autocomplete="off">
+    <div class="f"><label for="mxName">Nom du commerce</label><input id="mxName" placeholder="ex. Chez Paul" required/></div>
+    <div class="f"><label>Modèle le plus proche</label>
+      <div class="mx__tpl" id="mxTpl"></div>
+    </div>
+    <div class="f"><label for="mxLang">Langue du message</label>
+      <select id="mxLang"><option value="fr">Français</option><option value="en">English</option><option value="th">ไทย</option><option value="it">Italiano</option><option value="ar">العربية</option></select>
+    </div>
+    <div class="f"><label for="mxFirst">Prénom du commerçant (facultatif)</label><input id="mxFirst" placeholder="ex. Paul"/></div>
+    <button class="btn btn--sun btn--lg" style="width:100%;justify-content:center" type="submit">Créer la maquette</button>
+
+    <div class="mx__out" id="mxOut">
+      <p class="mx__link" id="mxLink"></p>
+      <textarea id="mxMsg" aria-label="Message à envoyer"></textarea>
+      <div class="mx__btns">
+        <a class="btn btn--glass" id="mxOpen" href="#" rel="noopener" target="_blank">Voir la maquette</a>
+        <button class="btn btn--glass" id="mxCopy" type="button">Copier le message</button>
+        <a class="btn btn--sun" id="mxWa" href="#" rel="noopener" target="_blank">Envoyer sur WhatsApp</a>
+      </div>
+    </div>
+  </form>
+  <p class="mx__tip">Astuce : avant d'envoyer, ouvre la maquette et fais une capture d'écran sur ton iPhone. Un message avec l'image de « son » site reçoit beaucoup plus de réponses qu'un simple lien. Cette page n'est pas indexée par Google.</p>
+</main>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<script>
+(function () {
+  "use strict";
+  var ROOT = location.href.replace(/\/nm\/.*$/, "/");   // .../Mourad-site/
+  var T = [
+    { id: "", label: "Giulivo", kind: "Restaurant" },
+    { id: "street-food/", label: "Mae Lek", kind: "Street food, snack" },
+    { id: "oblanc/", label: "ÔBlanc", kind: "Café, brunch" },
+    { id: "neon-tiger/", label: "Neon Tiger", kind: "Pub, bar" },
+    { id: "noir/", label: "Noir", kind: "Coiffeur, beauté" },
+    { id: "v6-thai-spa/", label: "Malee", kind: "Spa, massage" },
+    { id: "scooter/", label: "Ride Siam", kind: "Location, services" },
+    { id: "atelier-des-facadiers/", label: "Atelier des Façadiers", kind: "Entreprise, artisan" }
+  ];
+  var box = document.getElementById("mxTpl");
+  T.forEach(function (t, i) {
+    var id = "tpl" + i;
+    box.insertAdjacentHTML("beforeend", '<input type="radio" name="tpl" id="' + id + '" value="' + i + '"' + (i === 0 ? " checked" : "") + '><label for="' + id + '">' + t.label + "<small>" + t.kind + "</small></label>");
+  });
+  var MSG = {
+    fr: "Bonjour{first}, j'ai préparé une idée de site pour {name} : {link}\nC'est juste une maquette, gratuite et sans engagement. Ça vous plaît ? Je peux l'adapter à vos photos et à votre menu.\nMourad, NM Studio",
+    en: "Hello{first}, I made a website idea for {name}: {link}\nIt is just a free mock-up, no commitment. Do you like it? I can adapt it with your photos and your menu.\nMourad, NM Studio",
+    th: "สวัสดีครับ{first} ผมทำตัวอย่างเว็บไซต์สำหรับ {name} ไว้ให้ดูครับ: {link}\nเป็นแบบร่างฟรี ไม่มีข้อผูกมัด ชอบไหมครับ? ผมปรับให้ใช้รูปและเมนูของร้านได้เลยครับ\nMourad, NM Studio",
+    it: "Buongiorno{first}, ho preparato un'idea di sito per {name}: {link}\nÈ solo una bozza gratuita, senza impegno. Vi piace? Posso adattarla con le vostre foto e il vostro menù.\nMourad, NM Studio",
+    ar: "مرحبًا{first}، جهزت فكرة موقع لـ {name}: {link}\nإنه مجرد نموذج مجاني بلا أي التزام. هل أعجبك؟ يمكنني تعديله بصورك وقائمتك.\nMourad, NM Studio"
+  };
+  var out = document.getElementById("mxOut"), linkEl = document.getElementById("mxLink"), msgEl = document.getElementById("mxMsg");
+  var openA = document.getElementById("mxOpen"), waA = document.getElementById("mxWa"), toast = document.getElementById("toast");
+  function show(m) { toast.textContent = m; toast.classList.add("is-visible"); setTimeout(function () { toast.classList.remove("is-visible"); }, 3500); }
+  document.getElementById("mx").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = document.getElementById("mxName").value.trim(); if (!name) return;
+    var t = T[+document.querySelector('input[name="tpl"]:checked').value];
+    var link = ROOT + t.id + "?n=" + encodeURIComponent(name);
+    var first = document.getElementById("mxFirst").value.trim(), lang = document.getElementById("mxLang").value;
+    var msg = MSG[lang].replace("{name}", name).replace("{link}", link).replace("{first}", first ? (lang === "th" ? "คุณ" + first : " " + first) : "");
+    linkEl.textContent = link; msgEl.value = msg; openA.href = link;
+    waA.href = "https://wa.me/?text=" + encodeURIComponent(msg);
+    out.classList.add("is-on");
+  });
+  document.getElementById("mxCopy").addEventListener("click", function () {
+    var v = msgEl.value;
+    (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(function () { show("Message copié"); }, function () { msgEl.select(); document.execCommand("copy"); show("Message copié"); });
+  });
+})();
+</script>
+</body>
+</html>

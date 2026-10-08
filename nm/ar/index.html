@@ -11,8 +11,8 @@ function folderFor(code){try{var p=location.pathname.replace(/\/+/g,"/");var m=p
 function nav(code){try{var f=folderFor();var page=ROUTES["/nm/"+(FOLDERS[code]||"")+f]?f:ROUTES["/nm/"+f];if(!page)page="index.html";location.href=location.pathname.replace(/\/nm\/.*$/,"/nm/")+FOLDERS[code]+page;}catch(e){}}
 document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?t.closest("[data-lang]"):null;if(!b)return;var code=b.getAttribute("data-lang");if(code&&code!=="ar"){e.preventDefault();e.stopPropagation();nav(code);}},true);
 })();</script>
-<title>موقع إلكتروني وقائمة QR وملف جوجل للمحلات في باتايا | NM Studio</title>
-<meta content="يصمم NM Studio مواقع إلكترونية وقوائم QR وملفات جوجل للمطاعم والبارات والصالونات والمحلات في باتايا. جاهز خلال أيام وبلا عقود. ابتداءً من 150 €." name="description"/>
+<title>موقع إلكتروني وقائمة QR وملف جوجل للمطاعم والمحلات | NM Studio</title>
+<meta content="يصمم NM Studio مواقع إلكترونية وقوائم QR وملفات جوجل للمطاعم والبارات والصالونات والمحلات. جاهز خلال أيام وبلا عقود. ابتداءً من 150 €." name="description"/>
 <meta content="#07060c" name="theme-color"/>
 <meta content="dark" name="color-scheme"/>
 <link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html" rel="canonical"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/fr/index.html" hreflang="fr" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/it/index.html" hreflang="it" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html" hreflang="th" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html" hreflang="ar" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html" hreflang="en" rel="alternate"/><link href="https://mouradoulf-cmd.github.io/Mourad-site/nm/index.html" hreflang="x-default" rel="alternate"/>
@@ -22,30 +22,35 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <link href="../site.webmanifest" rel="manifest"/>
 <meta content="website" property="og:type"/>
 <meta content="NM Studio" property="og:site_name"/>
-<meta content="موقع إلكتروني وقائمة QR وملف جوجل للمحلات في باتايا | NM Studio" property="og:title"/>
-<meta content="يصمم NM Studio مواقع إلكترونية وقوائم QR وملفات جوجل للمطاعم والبارات والصالونات والمحلات في باتايا. جاهز خلال أيام وبلا عقود. ابتداءً من 150 €." property="og:description"/>
+<meta content="موقع إلكتروني وقائمة QR وملف جوجل للمطاعم والمحلات | NM Studio" property="og:title"/>
+<meta content="يصمم NM Studio مواقع إلكترونية وقوائم QR وملفات جوجل للمطاعم والبارات والصالونات والمحلات. جاهز خلال أيام وبلا عقود. ابتداءً من 150 €." property="og:description"/>
 <meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/ar/index.html" property="og:url"/>
 <meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg" property="og:image"/>
 <meta content="image/jpeg" property="og:image:type"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="NM Studio | websites, QR menus and Google profiles for Pattaya businesses" property="og:image:alt"/>
+<meta content="NM Studio | مواقع إلكترونية وقوائم QR وملفات Google للمطاعم والمحلات المحلية" property="og:image:alt"/>
 <meta content="ar_AR" property="og:locale"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg" name="twitter:image"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://mouradoulf-cmd.github.io/Mourad-site/nm/#studio", "name": "NM Studio", "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/", "image": "https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg", "description": "Websites, Google Business Profiles and QR menus for restaurants, bars, salons and shops in Pattaya.", "areaServed": {"@type": "City", "name": "Pattaya"}, "address": {"@type": "PostalAddress", "addressLocality": "Pattaya", "addressRegion": "Chonburi", "addressCountry": "TH"}, "priceRange": "€150–€1,500", "knowsLanguage": ["en", "fr", "it", "th", "ar"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "NM Studio offers", "itemListElement": [{"@type": "Offer", "price": "150", "priceCurrency": "EUR", "itemOffered": {"@type": "Service", "name": "Google Business Profile"}}, {"@type": "Offer", "price": "800", "priceCurrency": "EUR", "itemOffered": {"@type": "Service", "name": "Website with QR menu (setup fee, then monthly subscription)"}}, {"@type": "Offer", "price": "1500", "priceCurrency": "EUR", "itemOffered": {"@type": "Service", "name": "Complete Pack: website, Google listing and QR menu (setup fee, then monthly subscription)"}}]}}, {"@type": "WebSite", "name": "NM Studio", "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/", "inLanguage": ["en", "fr", "it", "th", "ar"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "I'm not good with technology, is that a problem?", "acceptedAnswer": {"@type": "Answer", "text": "Not at all. You send us your photos and we take care of everything else, design, text, hosting and updates."}}, {"@type": "Question", "name": "How long until my site is online?", "acceptedAnswer": {"@type": "Answer", "text": "A few days after we receive your photos and information, not weeks."}}, {"@type": "Question", "name": "Can I change my photos or menu later?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Edits are unlimited and free. Just send us a message whenever something changes."}}, {"@type": "Question", "name": "How does the QR menu work?", "acceptedAnswer": {"@type": "Answer", "text": "Your customers scan the code with their phone camera. No app needed, and instantly see your latest menu."}}, {"@type": "Question", "name": "I already have Instagram. Why do I need a website?", "acceptedAnswer": {"@type": "Answer", "text": "Instagram depends on an algorithm you don't control. A website is your own storefront: it shows up on Google, it's open 24/7, and it belongs to you."}}, {"@type": "Question", "name": "Is the website really mine?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your name, your photos, your content. We build it for your business, not for us."}}, {"@type": "Question", "name": "What if I want to stop?", "acceptedAnswer": {"@type": "Answer", "text": "There's no commitment. You can cancel anytime, free of charge."}}, {"@type": "Question", "name": "Have you worked with businesses like mine?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, restaurants, salons, spas and companies."}}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://mouradoulf-cmd.github.io/Mourad-site/nm/#studio", "name": "NM Studio", "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/", "image": "https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg", "description": "مواقع إلكترونية وملفات Google التجارية وقوائم QR للمطاعم والبارات والصالونات والمحلات.", "areaServed": {"@type": "Place", "name": "Worldwide"}, "address": {"@type": "PostalAddress", "addressLocality": "Pattaya", "addressRegion": "Chonburi", "addressCountry": "TH"}, "priceRange": "€150–€1,500", "knowsLanguage": ["en", "fr", "it", "th", "ar"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "NM Studio offers", "itemListElement": [{"@type": "Offer", "price": "150", "priceCurrency": "EUR", "itemOffered": {"@type": "Service", "name": "Google Business Profile"}}, {"@type": "Offer", "price": "800", "priceCurrency": "EUR", "itemOffered": {"@type": "Service", "name": "Website with QR menu (setup fee, then monthly subscription)"}}, {"@type": "Offer", "price": "1500", "priceCurrency": "EUR", "itemOffered": {"@type": "Service", "name": "Complete Pack: website, Google listing and QR menu (setup fee, then monthly subscription)"}}]}}, {"@type": "WebSite", "name": "NM Studio", "url": "https://mouradoulf-cmd.github.io/Mourad-site/nm/", "inLanguage": ["en", "fr", "it", "th", "ar"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "لست بارعاً في التكنولوجيا، هل هذه مشكلة؟", "acceptedAnswer": {"@type": "Answer", "text": "إطلاقاً. ترسل لنا صورك ونتكفل نحن بكل شيء آخر، التصميم والنصوص والاستضافة والتحديثات."}}, {"@type": "Question", "name": "كم يستغرق حتى يصبح موقعي متاحاً؟", "acceptedAnswer": {"@type": "Answer", "text": "بضعة أيام بعد استلام صورك ومعلوماتك، لا أسابيع."}}, {"@type": "Question", "name": "هل يمكنني تغيير الصور أو القائمة لاحقاً؟", "acceptedAnswer": {"@type": "Answer", "text": "نعم. التعديلات غير محدودة ومجانية، فقط أرسل لنا رسالة عند أي تغيير."}}, {"@type": "Question", "name": "كيف تعمل قائمة QR؟", "acceptedAnswer": {"@type": "Answer", "text": "يمسح زبائنك الرمز بكاميرا الهاتف، دون أي تطبيق، ويرون قائمتك المحدّثة فوراً."}}, {"@type": "Question", "name": "لدي إنستغرام بالفعل. لماذا أحتاج موقعاً؟", "acceptedAnswer": {"@type": "Answer", "text": "إنستغرام يعتمد على خوارزمية لا تتحكم بها. الموقع هو واجهة محلك الخاصة: يظهر على Google، ومتاح على مدار الساعة، وملك لك."}}, {"@type": "Question", "name": "هل الموقع ملكي حقاً؟", "acceptedAnswer": {"@type": "Answer", "text": "نعم، اسمك وصورك ومحتواك. نبنيه لعملك، لا لنا."}}, {"@type": "Question", "name": "ماذا لو أردت التوقف؟", "acceptedAnswer": {"@type": "Answer", "text": "بلا أي التزام. يمكنك الإلغاء في أي وقت، مجاناً."}}, {"@type": "Question", "name": "هل عملتم مع أنشطة مثل نشاطي؟", "acceptedAnswer": {"@type": "Answer", "text": "نعم، مطاعم وصالونات ومراكز سبا وشركات."}}]}]}</script>
 <link as="font" crossorigin="" href="../assets/fonts/satoshi-900.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="../assets/fonts/inter-latin.woff2" rel="preload" type="font/woff2"/>
 <!-- The hero video is deferred (see assets/js/hero-video.js?v=20261006a), so its poster IS
      the first paint: preload it so the hero never flashes empty. -->
 <link as="image" fetchpriority="high" href="../assets/video/hero-poster.avif" rel="preload" type="image/avif"/>
 <link href="../assets/css/vendor/devices.min.css" rel="stylesheet"/>
-<link href="../assets/css/site.css?v=20261006a" rel="stylesheet"/>
-<link href="../assets/css/craft.css?v=20261006a" rel="stylesheet"/>
-<link href="../assets/css/work-gallery.css?v=20261006a" rel="stylesheet"/>
-<script defer="" src="../assets/js/nm-dict.js?v=20261006a"></script>
-<script defer="" src="../assets/js/nm-copy2.js?v=20261006a"></script>
-<script defer="" src="../assets/js/offers-config.js?v=20261006a"></script>
+<link href="../assets/css/site.css?v=20261008v" rel="stylesheet"/>
+<link href="../assets/css/craft.css?v=20261008v" rel="stylesheet"/>
+<link href="../assets/css/work-gallery.css?v=20261008v" rel="stylesheet"/>
+<link href="../assets/css/film.css?v=20261008v" rel="stylesheet"/>
+<link href="../assets/css/polish.css?v=20261008v" rel="stylesheet"/>
+<link href="../assets/css/grow.css?v=20261008z" rel="stylesheet"/>
+<script defer="" src="../assets/js/nm-dict.js?v=20261008y"></script>
+<script defer="" src="../assets/js/nm-copy2.js?v=20261008v"></script>
+<script defer="" src="../assets/js/nm-copy3.js?v=20261008z"></script>
+<script defer="" src="../assets/js/contact-config.js?v=20261008z"></script>
+<script defer="" src="../assets/js/offers-config.js?v=20261008v"></script>
 <script defer="" src="../assets/js/reviews-config.js"></script>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
 </head>
@@ -59,7 +64,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <svg aria-hidden="true" class="brand__mark" fill="none" viewBox="0 0 24 24"><path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" opacity=".5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
 <span>NM Studio</span>
 </a>
-<nav aria-label="Main" class="nav">
+<nav aria-label="التنقل الرئيسي" class="nav">
 <a data-i18n="nav2.offers" href="#offers">العروض</a>
 <a data-i18n="nav.work" href="#work">أعمالنا</a>
 <a data-i18n="nav2.services" href="services.html">الخدمات</a>
@@ -86,7 +91,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </header>
 <div class="menu" hidden="" id="menu">
-<nav aria-label="Mobile" class="menu__nav">
+<nav aria-label="قائمة الهاتف" class="menu__nav">
 <a data-i18n="nav2.offers" href="#offers">العروض</a>
 <a data-i18n="nav.work" href="#work">أعمالنا</a>
 <a data-i18n="nav2.services" href="services.html">الخدمات</a>
@@ -120,9 +125,9 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
              H.264 first on purpose: Windows, macOS, iOS and Android decode it
              on the GPU, while VP9 often falls back to software decoding and
              judders. -->
-<source data-src="../assets/video/hero-m.mp4?v=20261004d" media="(max-width: 899px)" type="video/mp4">
-<source data-src="../assets/video/hero.mp4?v=20261004d" media="(min-width: 900px)" type="video/mp4">
-<source data-src="../assets/video/hero.webm?v=20261004d" media="(min-width: 900px)" type="video/webm">
+<source data-src="../assets/video/hero-m.mp4?v=20261008v" media="(max-width: 899px)" type="video/mp4">
+<source data-src="../assets/video/hero.mp4?v=20261008v" media="(min-width: 900px)" type="video/mp4">
+<source data-src="../assets/video/hero.webm?v=20261008v" media="(min-width: 900px)" type="video/webm">
 </source></source></source></video>
 </div>
 <div class="h__shade"></div>
@@ -130,12 +135,12 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 <div class="container h__grid">
 <div class="h__copy">
-<p class="h__pill"><span aria-hidden="true" class="live-dot"></span><span data-i18n="hero2.eyebrow">استوديو ويب · باتايا، تايلاند</span></p>
-<h1 class="h__title" data-i18n-html="v4.title" id="heroTitle"><span class="h__slogan">كن حاضرًا. <em>كن الخيار الأول.</em></span> <span class="h__kw">موقع إلكتروني وقائمة QR وملف جوجل للمحلات في باتايا</span></h1>
-<p class="h__sub" data-i18n="v4.sub">مطاعم وبارات وصالونات ومحلات: يجدك السياح على جوجل ويفتحون قائمتك بلغتهم ويراسلونك على واتساب.</p>
+<p class="h__pill"><span aria-hidden="true" class="live-dot"></span><span data-i18n="hero2.eyebrow">وكالة ويب واستوديو تصميم</span></p>
+<h1 class="h__title" data-i18n-html="v4.title" id="heroTitle"><span class="h__slogan">كن حاضرًا. <em>كن الخيار الأول.</em></span> <span class="h__kw">موقع إلكتروني وقائمة QR وملف جوجل للمطاعم والمحلات</span></h1>
+<p class="h__sub" data-i18n="v4.sub">مطاعم وبارات وصالونات ومحلات: يجدك الزبائن على جوجل ويفتحون قائمتك بلغتهم ويراسلونك على واتساب.</p>
 <div class="h__ctas">
-<a class="btn btn--sun btn--lg magnetic" href="#offers"><span data-i18n="hero2.ctaOffers">اكتشف العروض</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
-<a class="btn btn--glass btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><svg aria-hidden="true" class="btn__logo" focusable="false" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"></path></svg><span>WhatsApp</span></a>
+<a class="btn btn--sun btn--lg magnetic" href="#free"><span data-i18n="free.hero">احصل على نموذج مجاني</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
+<a class="btn btn--glass btn--lg magnetic" href="#offers"><span data-i18n="hero2.ctaOffers">اكتشف العروض</span></a>
 </div>
 <ul class="h__proof">
 <li><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M5 10.5l3 3 7-7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span data-i18n="v4.proof1">ابتداءً من 150 €</span></li>
@@ -158,38 +163,47 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </section>
 <!-- ============ 2 · KEY FIGURES + SECTORS ============ -->
 <!-- ============ 3 · WORK ============ -->
-<section aria-labelledby="probTitle" class="prob" id="problems">
+<section aria-labelledby="probTitle" class="prob prob--film" id="problems">
 <div class="container">
 <div class="section-head section-head--center">
 <p class="eyebrow" data-i18n="prob.eyebrow">هل يبدو هذا مألوفًا؟</p>
 <h2 class="section-title" data-anim="words" data-i18n-html="prob.title" id="probTitle">كل زبون لا يجدك <em>يدخل المحل المجاور.</em></h2>
-<p class="section-lead" data-i18n="prob.lead">ثلاث مشاكل تكلّف محلات باتايا زبائن ومالًا كل يوم. ولكل منها حل بسيط.</p>
 </div>
-<ol class="prob__grid"><li class="prob__item" data-anim="card">
-<div class="prob__tilt"><div class="prob__card" data-flip="">
-<div class="prob__face prob__face--bad"><svg aria-hidden="true" class="prob__scene" viewBox="0 0 220 112"><g class="sc-grid" opacity=".18" stroke="currentColor" stroke-width=".6"><path d="M0 28h220M0 56h220M0 84h220M44 0v112M88 0v112M132 0v112M176 0v112"></path></g><rect fill="none" height="22" opacity=".45" rx="11" stroke="currentColor" width="168" x="26" y="10"></rect><circle cx="42" cy="21" fill="none" opacity=".55" r="5" stroke="currentColor"></circle><path d="M46 25l4 4" opacity=".55" stroke="currentColor"></path><rect fill="currentColor" height="6" opacity=".22" rx="3" width="70" x="62" y="18"></rect><g class="sc-lost"><path d="M110 92c-14-14-20-22-20-32a20 20 0 0140 0c0 10-6 18-20 32z" fill="none" opacity=".6" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.6"></path><text fill="currentColor" font-size="20" font-weight="800" opacity=".7" text-anchor="middle" x="110" y="68">?</text></g></svg><span class="prob__tag prob__tag--bad" data-i18n="prob.problem">المشكلة</span><span aria-hidden="true" class="prob__num">01</span><h3 data-i18n="prob.p1t">السياح لا يجدونك</h3><p data-i18n="prob.p1b">يبحثون في خرائط جوجل، لا في الشارع. بلا ملف، أو بمواعيد خاطئة وصور مظلمة، يختارون المحل المجاور.</p><button aria-pressed="false" class="prob__flip" type="button"><span data-i18n="prob.flip">اعرض الحل</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10a6 6 0 0110.5-4M16 10a6 6 0 01-10.5 4M14.5 3v3h-3M5.5 17v-3h3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button></div>
-<div class="prob__face prob__face--fix"><svg aria-hidden="true" class="prob__scene" viewBox="0 0 220 112"><g class="sc-grid" opacity=".18" stroke="currentColor" stroke-width=".6"><path d="M0 28h220M0 56h220M0 84h220M44 0v112M88 0v112M132 0v112M176 0v112"></path></g><g class="sc-ripple" fill="none" stroke="#c9a961"><circle cx="110" cy="92" r="6"></circle><circle cx="110" cy="92" r="6"></circle></g><g class="sc-pin"><path d="M110 92c-14-14-20-22-20-32a20 20 0 0140 0c0 10-6 18-20 32z" fill="#c9a961"></path><circle cx="110" cy="60" fill="#1c1405" r="8"></circle></g><g class="sc-stars" fill="#e4cf9a"><path d="M150 26l2.6 5.3 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"></path><path d="M174 26l2.6 5.3 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"></path><path d="M198 26l2.6 5.3 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"></path></g><g class="sc-open"><rect fill="#1d3b27" height="18" rx="9" width="52" x="22" y="26"></rect><circle cx="34" cy="35" fill="#25d366" r="3.5"></circle><rect fill="#bdf0cf" height="5" rx="2.5" width="24" x="42" y="32.5"></rect></g></svg><span class="prob__tag prob__tag--ok" data-i18n="prob.fix">الحل</span><h3 data-i18n="prob.s1t">ملف جوجل يجعلهم يختارونك</h3><p data-i18n="prob.s1b">ننشئ ملفك على جوجل ونحسّنه: الصور والمواعيد والتصنيفات وواتساب. جاهز خلال 48 ساعة.</p><button aria-pressed="true" class="prob__flip prob__flip--back" type="button"><span data-i18n="prob.flipBack">العودة إلى المشكلة</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10a6 6 0 0110.5-4M16 10a6 6 0 01-10.5 4M14.5 3v3h-3M5.5 17v-3h3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button></div>
-</div></div>
-</li><li class="prob__item" data-anim="card">
-<div class="prob__tilt"><div class="prob__card" data-flip="">
-<div class="prob__face prob__face--bad"><svg aria-hidden="true" class="prob__scene" viewBox="0 0 220 112"><g class="sc-blur"><rect fill="none" height="100" opacity=".4" rx="6" stroke="currentColor" width="96" x="62" y="6"></rect><g fill="currentColor" opacity=".5"><rect height="6" rx="3" width="52" x="74" y="18"></rect><rect height="4" rx="2" width="72" x="74" y="34"></rect><rect height="4" rx="2" width="64" x="74" y="44"></rect><rect height="4" rx="2" width="70" x="74" y="54"></rect><rect height="4" rx="2" width="56" x="74" y="70"></rect><rect height="4" rx="2" width="68" x="74" y="80"></rect></g></g><text class="sc-q" fill="currentColor" font-size="22" font-weight="800" opacity=".6" x="176" y="30">?</text></svg><span class="prob__tag prob__tag--bad" data-i18n="prob.problem">المشكلة</span><span aria-hidden="true" class="prob__num">02</span><h3 data-i18n="prob.p2t">قائمتك صورة غير واضحة</h3><p data-i18n="prob.p2b">القوائم الورقية تتقادم، والسياح الأجانب لا يفهمونها، فيطلبون أقل أو يغادرون.</p><button aria-pressed="false" class="prob__flip" type="button"><span data-i18n="prob.flip">اعرض الحل</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10a6 6 0 0110.5-4M16 10a6 6 0 01-10.5 4M14.5 3v3h-3M5.5 17v-3h3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button></div>
-<div class="prob__face prob__face--fix"><svg aria-hidden="true" class="prob__scene" viewBox="0 0 220 112"><rect fill="#17151a" height="104" rx="10" stroke="#c9a961" stroke-width="1.5" width="68" x="76" y="4"></rect><g fill="#e4cf9a"><rect height="14" rx="2" width="14" x="90" y="22"></rect><rect height="14" rx="2" width="14" x="116" y="22"></rect><rect height="14" rx="2" width="14" x="90" y="48"></rect><rect height="6" width="6" x="108" y="40"></rect><rect height="4" width="12" x="118" y="52"></rect><rect height="4" width="22" x="108" y="64"></rect><rect height="4" width="14" x="90" y="72"></rect></g><rect class="sc-scan" fill="#fff" height="2.5" rx="1.2" width="56" x="82" y="20"></rect><g class="sc-chips" font-size="9" font-weight="800"><g><rect fill="#c9a961" height="18" rx="9" width="32" x="14" y="20"></rect><text fill="#1c1405" text-anchor="middle" x="30" y="32.5">EN</text></g><g><rect fill="#c9a961" height="18" rx="9" width="32" x="174" y="34"></rect><text fill="#1c1405" text-anchor="middle" x="190" y="46.5">ไทย</text></g><g><rect fill="#c9a961" height="18" rx="9" width="32" x="16" y="62"></rect><text fill="#1c1405" text-anchor="middle" x="32" y="74.5">中文</text></g><g><rect fill="#c9a961" height="18" rx="9" width="34" x="172" y="76"></rect><text fill="#1c1405" text-anchor="middle" x="189" y="88.5">РУС</text></g></g></svg><span class="prob__tag prob__tag--ok" data-i18n="prob.fix">الحل</span><h3 data-i18n="prob.s2t">قائمة QR بلغتهم</h3><p data-i18n="prob.s2b">يمسحون ويقرؤون ويطلبون. حتى 5 لغات مع الصور والأسعار. تغيير طبق؟ رسالة واحدة.</p><button aria-pressed="true" class="prob__flip prob__flip--back" type="button"><span data-i18n="prob.flipBack">العودة إلى المشكلة</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10a6 6 0 0110.5-4M16 10a6 6 0 01-10.5 4M14.5 3v3h-3M5.5 17v-3h3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button></div>
-</div></div>
-</li><li class="prob__item" data-anim="card">
-<div class="prob__tilt"><div class="prob__card" data-flip="">
-<div class="prob__face prob__face--bad"><svg aria-hidden="true" class="prob__scene" viewBox="0 0 220 112"><rect fill="none" height="96" opacity=".45" rx="8" stroke="currentColor" width="160" x="30" y="8"></rect><path d="M30 26h160" opacity=".45" stroke="currentColor"></path><circle cx="42" cy="17" fill="currentColor" opacity=".5" r="2.5"></circle><circle cx="52" cy="17" fill="currentColor" opacity=".5" r="2.5"></circle><circle cx="62" cy="17" fill="currentColor" opacity=".5" r="2.5"></circle><rect fill="none" height="56" opacity=".4" rx="4" stroke="currentColor" stroke-dasharray="4 5" width="140" x="40" y="36"></rect><text class="sc-404" fill="currentColor" font-size="22" font-weight="800" opacity=".55" text-anchor="middle" x="110" y="72">404</text></svg><span class="prob__tag prob__tag--bad" data-i18n="prob.problem">المشكلة</span><span aria-hidden="true" class="prob__num">03</span><h3 data-i18n="prob.p3t">بلا موقع، بلا ثقة</h3><p data-i18n="prob.p3b">الزوار يتفقدون موقعك قبل أن يدخلوا. وبدونه تذهب الحجوزات إلى منافس لديه موقع.</p><button aria-pressed="false" class="prob__flip" type="button"><span data-i18n="prob.flip">اعرض الحل</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10a6 6 0 0110.5-4M16 10a6 6 0 01-10.5 4M14.5 3v3h-3M5.5 17v-3h3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button></div>
-<div class="prob__face prob__face--fix"><svg aria-hidden="true" class="prob__scene" viewBox="0 0 220 112"><rect fill="#17151a" height="96" rx="8" stroke="#c9a961" stroke-width="1.5" width="160" x="30" y="8"></rect><path d="M30 26h160" opacity=".5" stroke="#c9a961"></path><circle cx="42" cy="17" fill="#c9a961" r="2.5"></circle><circle cx="52" cy="17" fill="#c9a961" opacity=".6" r="2.5"></circle><circle cx="62" cy="17" fill="#c9a961" opacity=".3" r="2.5"></circle><rect class="sc-block" fill="#c9a961" height="34" opacity=".28" rx="4" width="140" x="40" y="34"></rect><rect class="sc-l1" fill="#e4cf9a" height="5" rx="2.5" width="86" x="40" y="76"></rect><rect class="sc-l2" fill="currentColor" height="5" opacity=".4" rx="2.5" width="60" x="40" y="87"></rect><g class="sc-wa"><circle cx="160" cy="84" fill="#25d366" r="12"></circle><path d="M155 84l3.5 3.5 7-7.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></g></svg><span class="prob__tag prob__tag--ok" data-i18n="prob.fix">الحل</span><h3 data-i18n="prob.s3t">موقع يملأ طاولاتك</h3><p data-i18n="prob.s3b">صورك وأسعارك وزر واتساب في كل صفحة. الزوار يتحولون إلى زبائن.</p><button aria-pressed="true" class="prob__flip prob__flip--back" type="button"><span data-i18n="prob.flipBack">العودة إلى المشكلة</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10a6 6 0 0110.5-4M16 10a6 6 0 01-10.5 4M14.5 3v3h-3M5.5 17v-3h3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button></div>
-</div></div>
-</li></ol>
-<p class="prob__cta"><a class="btn btn--sun btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><span data-i18n="prob.cta">لنصلحها معًا على واتساب</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
+<div class="film">
+<div class="film__stage">
+<div aria-hidden="true" class="film__halo"></div>
+<div class="film__phone">
+<div class="film__screen">
+<video class="film__video" muted playsinline loop preload="none" poster="../assets/video/film-poster.webp" width="720" height="1280" aria-label="فيلم قصير: مطعم بلا موقع إلكتروني" data-i18n-aria-label="prob.video"><source data-src="../assets/video/film.mp4" type="video/mp4"></video>
+<div aria-hidden="true" class="film__island"></div>
+<div aria-hidden="true" class="film__shade"></div>
+<p aria-hidden="true" class="film__cap"></p>
+<div aria-hidden="true" class="film__bar"><i></i></div>
+<button class="film__big" type="button" aria-label="شغّل الفيلم" data-i18n-aria-label="prob.watch"><span><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M6 4.2v11.6L15.5 10z" fill="currentColor"/></svg></span></button>
+<div class="film__ctrls">
+<button class="film__btn" type="button" aria-pressed="false" data-film-sound=""><svg class="ic-off" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M3.5 7.5h3l4-3.5v12l-4-3.5h-3z" fill="currentColor"/><path d="M13.5 7.5l4 5m0-5l-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><svg class="ic-on" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M3.5 7.5h3l4-3.5v12l-4-3.5h-3z" fill="currentColor"/><path d="M13.5 7a4 4 0 010 6M15.6 5a7 7 0 010 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span data-i18n="prob.soundOn">الصوت</span></button>
+<button class="film__btn film__btn--icon" type="button" aria-label="إيقاف" data-i18n-aria-label="prob.pause" data-film-play=""><svg class="ic-off" aria-hidden="true" viewBox="0 0 20 20"><path d="M6 4.2v11.6L15.5 10z" fill="currentColor"/></svg><svg class="ic-on" aria-hidden="true" viewBox="0 0 20 20"><path d="M6 4.5h2.6v11H6zM11.4 4.5H14v11h-2.6z" fill="currentColor"/></svg></button>
+</div>
+</div>
+<span aria-hidden="true" class="film__sheen"></span>
+</div>
+</div>
+<div class="film__punch">
+<p class="film__headline" data-i18n-html="prob.punchT">زبائنك يبحثون عنك الآن. <em>اجعلهم يجدونك.</em></p>
+<p class="film__punchb" data-i18n="prob.punchB">اليوم، يكتب كل زبون «مطعم قريب مني» على جوجل قبل أن يختار. كن أول مكان يراه، والقائمة التي يفهمها، والطاولة التي يحجزها.</p>
+<p class="film__punchl" data-i18n="prob.punchL">زبائن أكثر. رقم أعمال أكبر. ولا شيء عليك إدارته.</p>
+<p class="prob__cta film__cta"><a class="btn btn--sun btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><span data-i18n="prob.cta">لنصلحها معًا على واتساب</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
+</div>
+<ol class="film__cues" hidden=""><li data-s="0" data-e="11.4" data-i18n="prob.cap0">السابعة مساءً. الشارع مزدحم. وطاولاتها فارغة.</li><li data-s="11.4" data-e="20.1" data-i18n="prob.cap1">إنهم جائعون. يبحثون في جوجل. ومطعمها غير موجود.</li><li data-s="20.1" data-e="27.6" data-i18n="prob.cap2">يدخلون رغم ذلك. القائمة بالتايلاندية فقط. فيطلبون أقل القليل.</li><li data-s="27.6" data-e="31.5" data-i18n="prob.cap3">غدًا سيحجزون عند الجار. لديه موقع.</li><li data-s="31.5" data-e="37.9" data-i18n="prob.cap4">المطعم نفسه. هذه المرة وجدوه على جوجل.</li><li data-s="37.9" data-e="41.5" data-i18n="prob.cap5">موقع، قائمة QR، ملف جوجل. نتولّى كل شيء، كل شهر.</li></ol>
+</div>
 </div>
 </section>
 <section aria-labelledby="workTitle" class="wk" id="work">
 <div class="container">
 <div class="section-head section-head--split">
 <div>
-<p class="eyebrow"><span data-i18n="work.eyebrow">أعمالنا</span> <span class="count wk__count">07</span></p>
-<h2 class="section-title" data-anim="words" data-i18n-html="work.title" id="workTitle">7 مواقع حقيقية، <em>على الإنترنت الآن.</em></h2>
+<p class="eyebrow"><span data-i18n="work.eyebrow">أعمالنا</span> <span class="count wk__count">08</span></p>
+<h2 class="section-title" data-anim="words" data-i18n-html="work.title" id="workTitle">8 مواقع حقيقية، <em>على الإنترنت الآن.</em></h2>
 </div>
 <p class="section-lead" data-i18n="work.lead">المس أي موقع لفتحه.</p>
 </div>
@@ -200,7 +214,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span aria-hidden="true" class="wk-card__veil"><b>Giulivo</b><i><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></i></span>
 </a>
 <div class="wk-card__meta">
-<h3 class="wk-card__name">Giulivo</h3>
+<h3 class="wk-card__name">Giulivo <span class="wk-card__kind" data-i18n="work.k1">مطعم إيطالي</span></h3>
 <div class="wk-card__links">
 <a class="link-arrow link-site" href="https://mouradoulf-cmd.github.io/Mourad-site/" rel="noopener" target="_blank"><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <button class="link-arrow link-preview" data-name="Giulivo" data-preview="../../" type="button"><span data-i18n="work.cursor">افتح</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="10" rx="1.8" stroke="currentColor" stroke-width="1.5" width="15" x="2.5" y="4"></rect><path d="M7 17h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg></button>
@@ -213,7 +227,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span aria-hidden="true" class="wk-card__veil"><b>Malee</b><i><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></i></span>
 </a>
 <div class="wk-card__meta">
-<h3 class="wk-card__name">Malee</h3>
+<h3 class="wk-card__name">Malee <span class="wk-card__kind" data-i18n="work.k2">سبا وتدليك</span></h3>
 <div class="wk-card__links">
 <a class="link-arrow link-site" href="https://mouradoulf-cmd.github.io/Mourad-site/v6-thai-spa/" rel="noopener" target="_blank"><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <button class="link-arrow link-preview" data-name="Malee" data-preview="../../v6-thai-spa/" type="button"><span data-i18n="work.cursor">افتح</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="10" rx="1.8" stroke="currentColor" stroke-width="1.5" width="15" x="2.5" y="4"></rect><path d="M7 17h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg></button>
@@ -226,7 +240,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span aria-hidden="true" class="wk-card__veil"><b>Noir</b><i><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></i></span>
 </a>
 <div class="wk-card__meta">
-<h3 class="wk-card__name">Noir</h3>
+<h3 class="wk-card__name">Noir <span class="wk-card__kind" data-i18n="work.k3">صالون حلاقة</span></h3>
 <div class="wk-card__links">
 <a class="link-arrow link-site" href="https://mouradoulf-cmd.github.io/Mourad-site/noir/" rel="noopener" target="_blank"><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <button class="link-arrow link-preview" data-name="Noir" data-preview="../../noir/" type="button"><span data-i18n="work.cursor">افتح</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="10" rx="1.8" stroke="currentColor" stroke-width="1.5" width="15" x="2.5" y="4"></rect><path d="M7 17h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg></button>
@@ -235,11 +249,11 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </article>
 <article class="wk-card wk-card--4" data-anim="card">
 <a aria-label="زيارة الموقع" class="wk-card__media" data-cursor="" data-i18n-aria-label="work.visit" href="https://mouradoulf-cmd.github.io/Mourad-site/atelier-des-facadiers/" rel="noopener" target="_blank">
-<div class="dev dev--card"><div class="dev-scale dev-scale--mac"><div class="device device-macbook-pro device-spacegray"><div class="device-frame"><div class="mac__view device-screen"><picture><source sizes="(max-width: 430px) 280px, (max-width: 700px) 68vw, (max-width: 1079px) 33vw, (max-width: 1679px) 16vw, 12vw" srcset="../assets/img/work/atelier-desk-520.avif 520w, ../assets/img/work/atelier-desk-780.avif 780w, ../assets/img/work/atelier-desk-1040.avif 1040w, ../assets/img/work/atelier-desk.webp.avif 1280w" type="image/avif"><source sizes="(max-width: 430px) 280px, (max-width: 700px) 68vw, (max-width: 1079px) 33vw, (max-width: 1679px) 16vw, 12vw" srcset="../assets/img/work/atelier-desk.webp 1280w" type="image/webp"><img alt="موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار." data-i18n-alt="موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار." decoding="async" height="800" loading="lazy" src="../assets/img/work/atelier-desk.jpg" width="1280"/></source></source></picture></div></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div></div></div><div class="dev-scale dev-scale--iph"><div class="device device-iphone-14-pro device-black"><div class="device-frame"><div class="iph__view device-screen"><picture><source sizes="(max-width: 430px) 60px, (max-width: 700px) 17vw, (max-width: 1079px) 8vw, (max-width: 1679px) 7vw, 6vw" srcset="../assets/img/work/atelier-mob-120.avif 120w, ../assets/img/work/atelier-mob-240.avif 240w, ../assets/img/work/atelier-mob-360.avif 360w, ../assets/img/work/atelier-mob.webp.avif 585w" type="image/avif"><source sizes="(max-width: 430px) 60px, (max-width: 700px) 17vw, (max-width: 1079px) 8vw, (max-width: 1679px) 7vw, 6vw" srcset="../assets/img/work/atelier-mob-360.webp 360w, ../assets/img/work/atelier-mob.webp 585w" type="image/webp"><img alt="موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار." data-i18n-alt="موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار." decoding="async" height="1170" loading="lazy" src="../assets/img/work/atelier-mob.jpg" width="585"/></source></source></picture></div></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div></div></div></div>
+<div class="dev dev--card"><div class="dev-scale dev-scale--mac"><div class="device device-macbook-pro device-spacegray"><div class="device-frame"><div class="mac__view device-screen"><picture><source sizes="(max-width: 430px) 280px, (max-width: 700px) 68vw, (max-width: 1079px) 33vw, (max-width: 1679px) 16vw, 12vw" srcset="../assets/img/work/atelier-desk-520.avif 520w, ../assets/img/work/atelier-desk-780.avif 780w, ../assets/img/work/atelier-desk-1040.avif 1040w, ../assets/img/work/atelier-desk.webp.avif 1280w" type="image/avif"><source sizes="(max-width: 430px) 280px, (max-width: 700px) 68vw, (max-width: 1079px) 33vw, (max-width: 1679px) 16vw, 12vw" srcset="../assets/img/work/atelier-desk.webp 1280w" type="image/webp"><img alt="موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار." data-i18n-alt="work.p4desc" decoding="async" height="800" loading="lazy" src="../assets/img/work/atelier-desk.jpg" width="1280"/></source></source></picture></div></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div></div></div><div class="dev-scale dev-scale--iph"><div class="device device-iphone-14-pro device-black"><div class="device-frame"><div class="iph__view device-screen"><picture><source sizes="(max-width: 430px) 60px, (max-width: 700px) 17vw, (max-width: 1079px) 8vw, (max-width: 1679px) 7vw, 6vw" srcset="../assets/img/work/atelier-mob-120.avif 120w, ../assets/img/work/atelier-mob-240.avif 240w, ../assets/img/work/atelier-mob-360.avif 360w, ../assets/img/work/atelier-mob.webp.avif 585w" type="image/avif"><source sizes="(max-width: 430px) 60px, (max-width: 700px) 17vw, (max-width: 1079px) 8vw, (max-width: 1679px) 7vw, 6vw" srcset="../assets/img/work/atelier-mob-360.webp 360w, ../assets/img/work/atelier-mob.webp 585w" type="image/webp"><img alt="موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار." data-i18n-alt="work.p4desc" decoding="async" height="1170" loading="lazy" src="../assets/img/work/atelier-mob.jpg" width="585"/></source></source></picture></div></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div></div></div></div>
 <span aria-hidden="true" class="wk-card__veil"><b>Atelier des Façadiers</b><i><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></i></span>
 </a>
 <div class="wk-card__meta">
-<h3 class="wk-card__name">Atelier des Façadiers</h3>
+<h3 class="wk-card__name">Atelier des Façadiers <span class="wk-card__kind" data-i18n="work.k4">شركة تكسية واجهات</span></h3>
 <div class="wk-card__links">
 <a class="link-arrow link-site" href="https://mouradoulf-cmd.github.io/Mourad-site/atelier-des-facadiers/" rel="noopener" target="_blank"><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <button class="link-arrow link-preview" data-name="Atelier des Façadiers" data-preview="../../atelier-des-facadiers/" type="button"><span data-i18n="work.cursor">افتح</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="10" rx="1.8" stroke="currentColor" stroke-width="1.5" width="15" x="2.5" y="4"></rect><path d="M7 17h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg></button>
@@ -252,7 +266,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span aria-hidden="true" class="wk-card__veil"><b>Neon Tiger</b><i><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></i></span>
 </a>
 <div class="wk-card__meta">
-<h3 class="wk-card__name">Neon Tiger</h3>
+<h3 class="wk-card__name">Neon Tiger <span class="wk-card__kind" data-i18n="work.k5">بار وحانة</span></h3>
 <div class="wk-card__links">
 <a class="link-arrow link-site" href="https://mouradoulf-cmd.github.io/Mourad-site/neon-tiger/" rel="noopener" target="_blank"><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <button class="link-arrow link-preview" data-name="Neon Tiger" data-preview="../../neon-tiger/" type="button"><span data-i18n="work.cursor">افتح</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="10" rx="1.8" stroke="currentColor" stroke-width="1.5" width="15" x="2.5" y="4"></rect><path d="M7 17h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg></button>
@@ -265,7 +279,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span aria-hidden="true" class="wk-card__veil"><b>Mae Lek</b><i><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></i></span>
 </a>
 <div class="wk-card__meta">
-<h3 class="wk-card__name">Mae Lek</h3>
+<h3 class="wk-card__name">Mae Lek <span class="wk-card__kind" data-i18n="work.k6">طعام الشارع</span></h3>
 <div class="wk-card__links">
 <a class="link-arrow link-site" href="https://mouradoulf-cmd.github.io/Mourad-site/street-food/" rel="noopener" target="_blank"><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <button class="link-arrow link-preview" data-name="Mae Lek" data-preview="../../street-food/" type="button"><span data-i18n="work.cursor">افتح</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="10" rx="1.8" stroke="currentColor" stroke-width="1.5" width="15" x="2.5" y="4"></rect><path d="M7 17h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg></button>
@@ -278,7 +292,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span aria-hidden="true" class="wk-card__veil"><b>Ride Siam</b><i><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></i></span>
 </a>
 <div class="wk-card__meta">
-<h3 class="wk-card__name">Ride Siam</h3>
+<h3 class="wk-card__name">Ride Siam <span class="wk-card__kind" data-i18n="work.k7">تأجير سكوتر</span></h3>
 <div class="wk-card__links">
 <a class="link-arrow link-site" href="https://mouradoulf-cmd.github.io/Mourad-site/scooter/" rel="noopener" target="_blank"><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <button class="link-arrow link-preview" data-name="Ride Siam" data-preview="../../scooter/" type="button"><span data-i18n="work.cursor">افتح</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="10" rx="1.8" stroke="currentColor" stroke-width="1.5" width="15" x="2.5" y="4"></rect><path d="M7 17h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg></button>
@@ -291,7 +305,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span aria-hidden="true" class="wk-card__veil"><b>ÔBlanc</b><i><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></i></span>
 </a>
 <div class="wk-card__meta">
-<h3 class="wk-card__name">ÔBlanc</h3>
+<h3 class="wk-card__name">ÔBlanc <span class="wk-card__kind" data-i18n="work.k8">مقهى وبرانش</span></h3>
 <div class="wk-card__links">
 <a class="link-arrow link-site" href="https://mouradoulf-cmd.github.io/Mourad-site/oblanc/" rel="noopener" target="_blank"><span data-i18n="work.visit">زيارة الموقع</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M6 14L14 6m0 0H7.5M14 6v6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <button class="link-arrow link-preview" data-name="ÔBlanc" data-preview="../../oblanc/" type="button"><span data-i18n="work.cursor">افتح</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="10" rx="1.8" stroke="currentColor" stroke-width="1.5" width="15" x="2.5" y="4"></rect><path d="M7 17h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg></button>
@@ -302,32 +316,28 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </section>
 <!-- ============ 4 · OFFERS ============ -->
-<section aria-labelledby="resTitle" class="res" id="results">
-<div aria-hidden="true" class="res__glow"></div>
+<section aria-labelledby="freeTitle" class="free" id="free">
 <div class="container">
 <div class="section-head section-head--center">
-<p class="eyebrow" data-i18n="results.eyebrow">لماذا يستحق</p>
-<h2 class="section-title" data-anim="words" data-i18n-html="results.title" id="resTitle">ظهور أكبر، <em>زبائن أكثر.</em></h2>
-<p class="section-lead" data-i18n="results.lead">ما قد يحدث عندما يجدك السياح أخيرًا. هذا مثال فقط وأرقامك تعتمد على نشاطك.</p>
+<p class="free__badge"><span aria-hidden="true" class="free__spark"></span><span data-i18n="free.badge">مجاني 100%</span></p>
+<h2 class="section-title" data-anim="words" data-i18n-html="free.title" id="freeTitle">احصل على موقعك <em>مجانًا.</em></h2>
+<p class="section-lead" data-i18n="free.lead">النموذج مجاني وبلا التزام. يُنشر موقعك على الإنترنت فور اشتراكك، ويبقى متاحًا طالما الاشتراك فعّال.</p>
 </div>
-<div class="res__grid">
-<figure aria-labelledby="resCap" class="res__chart">
-<span class="res__badge" data-i18n="results.example">مثال</span>
-<p class="res__ctitle" data-i18n="results.chartTitle">الزبائن الذين يجدونك شهرًا بعد شهر</p>
-<div aria-hidden="true" class="chart3d"><div class="chart3d__scene"><div class="chart3d__stage" data-values="100,106,113,119,125,130"></div></div></div>
-<div aria-hidden="true" class="res__axis"><span data-i18n="results.m1">الشهر 1</span><span data-i18n="results.m6">الشهر 6</span></div>
-<figcaption id="resCap"><span class="res__big"><b data-count-to="30" data-prefix="+">+0</b><i>%</i></span><span class="res__lift" data-i18n="results.lift">الهدف: زبائن أكثر يجدونك خلال 6 أشهر*</span></figcaption>
-</figure>
-<div class="res__side">
-<a class="res__tile" href="#work"><span aria-hidden="true" class="res__ic"><svg fill="none" viewBox="0 0 32 32"><rect height="17" rx="2.5" stroke="currentColor" stroke-width="1.6" width="24" x="4" y="6"></rect><path d="M11 27h10M16 23v4" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path><path class="res__tick" d="M10 14l4 4 8-8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><strong class="res__num"><b data-count-to="7" id="resSites">7</b></strong><span data-i18n="results.t1">مواقع حية يمكنك فتحها الآن</span></a>
-<div class="res__tile"><span aria-hidden="true" class="res__ic"><svg fill="none" viewBox="0 0 32 32"><circle cx="16" cy="17" r="11" stroke="currentColor" stroke-width="1.6"></circle><path d="M13 3.5h6M16 3.5V6" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path><path class="res__hand" d="M16 17V10.5" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></span><strong class="res__num"><b data-count-to="48">48</b><small>h</small></strong><span data-i18n="results.t2">لتصبح قائمتك على جوجل جاهزة</span></div>
-<div class="res__tile res__tile--rating" hidden="" id="resRating"><span aria-hidden="true" class="res__ic res__ic--star">★</span><strong class="res__num"><b id="resAvg">5</b><small>/5</small></strong><span data-tpl="results.tr" id="resAvgLabel"></span></div>
+<ol class="free__steps">
+<li><span class="free__n">1</span><b data-i18n="free.s1">اطلب نموذجك</b><span data-i18n="free.s1b">مجانًا، في دقيقة واحدة</span></li>
+<li><span class="free__n">2</span><b data-i18n="free.s2">استلم موقعك</b><span data-i18n="free.s2b">خلال 48 ساعة، باسم محلك. ما زال مجانيًا وبلا التزام</span></li>
+<li><span class="free__n free__n--go">3</span><b data-i18n="free.s3">أعجبك؟ اشترك</b><span data-i18n="free.s3b">رسوم إعداد ثم اشتراك شهري. ننشر موقعك على الإنترنت ونرسل لك الرابط بالبريد الإلكتروني</span></li>
+<li><span class="free__n free__n--go">4</span><b data-i18n="free.s4">موقعك يبقى على الإنترنت كل شهر</b><span data-i18n="free.s4b">يُخصم تلقائيًا كل شهر بالبطاقة أو Apple Pay أو Google Pay: لا شيء تتذكره. الاستضافة والتحديثات والتعديلات مشمولة. يمكنك الإلغاء في أي وقت</span></li>
+</ol>
+<div class="free__grid">
+<article class="free__card free__card--m"><span class="free__chip" data-i18n="free.chip">مجاني</span><p class="free__k" data-i18n="free.m_k">نموذج مجاني</p><h3 data-i18n="free.m_t">موقعك المستقبلي خلال 48 ساعة</h3><p class="free__b" data-i18n="free.m_b">أخبرنا باسم محلك، وسنرسل لك نموذجًا لموقعك باسمك وأسلوبك. ثم تقرر أنت، دون أي ضغط.</p><form class="free__form" data-free="m" novalidate=""><div class="free__field"><label for="fmName" data-i18n="free.f_name">اسم المحل</label><input autocomplete="organization" id="fmName" name="business" required="" type="text"/></div><div class="free__row"><div class="free__field"><label for="fmType" data-i18n="free.f_type">نوع النشاط</label><select id="fmType" name="type"><option value="" data-i18n="free.t_choose">اختر</option><option value="rest" data-i18n="free.t_rest">مطعم</option><option value="bar" data-i18n="free.t_bar">بار أو حانة</option><option value="cafe" data-i18n="free.t_cafe">مقهى</option><option value="beauty" data-i18n="free.t_beauty">صالون أو سبا</option><option value="shop" data-i18n="free.t_shop">متجر</option><option value="company" data-i18n="free.t_company">شركة</option><option value="other" data-i18n="free.t_other">آخر</option></select></div><div class="free__field"><label for="fmCity" data-i18n="free.f_city">المدينة</label><input autocomplete="address-level2" id="fmCity" name="city" type="text"/></div></div><div class="free__field"><label for="fmFirst" data-i18n="free.f_first">اسمك الأول</label><input autocomplete="given-name" id="fmFirst" name="first" type="text"/></div><p aria-live="polite" class="free__err"></p><button class="btn btn--sun btn--lg" type="submit"><span data-i18n="free.m_btn">أريد نموذجي المجاني</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button></form></article>
+<article class="free__card"><span class="free__chip" data-i18n="free.chip">مجاني</span><p class="free__k" data-i18n="free.a_k">فحص مجاني</p><h3 data-i18n="free.a_t">ملفك على جوجل، تحت المراجعة</h3><p class="free__b" data-i18n="free.a_b">نراجع ملفك على جوجل كما يراه الزبون: الصور، ومواعيد العمل، والتقييمات، والفئات. تحصل على 3 نصائح عملية، حتى لو لم تعمل معنا أبدًا.</p><form class="free__form" data-free="a" novalidate=""><div class="free__field"><label for="faName" data-i18n="free.f_name">اسم المحل</label><input autocomplete="organization" id="faName" name="business" required="" type="text"/></div><div class="free__field"><label for="faMaps" data-i18n="free.f_maps">المدينة أو رابط خرائط جوجل</label><input id="faMaps" name="maps" type="text"/></div><div class="free__field"><label for="faFirst" data-i18n="free.f_first">اسمك الأول</label><input autocomplete="given-name" id="faFirst" name="first" type="text"/></div><p aria-live="polite" class="free__err"></p><button class="btn btn--outline btn--lg" type="submit"><span data-i18n="free.a_btn">أريد الفحص المجاني</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button></form></article>
 </div>
+<div class="bk" id="book"><aside class="bk__side"><div class="bk__host"><span aria-hidden="true" class="bk__avatar"><span data-founder-name="">M</span><i></i></span><div><p class="bk__k" data-i18n="book.k">مكالمة فيديو</p><p class="bk__hostname" data-founder-fill="" data-i18n="book.host">مع Mourad، المؤسس</p></div></div><h3 data-i18n="book.t">تفضّل الحديث أولًا؟ احجز 20 دقيقة</h3><ul class="bk__meta"><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10.5l5-3v9l-5-3"/></svg><span data-i18n="book.call">مكالمة فيديو</span></li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span data-i18n="book.dur">20 دقيقة</span></li><li class="bk__free" data-i18n="free.chip">مجاني</li></ul><ul class="bk__gets"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="book.b1">نراجع معًا محلك وملفك على جوجل</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="book.b2">تشاهد أمثلة مواقع لنشاطك</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="book.b3">تخرج بخطة واضحة، حتى دون أن تطلب</span></li></ul><p class="bk__clock"><span aria-hidden="true" class="bk__pulse"></span><span class="bk__clocktxt"></span></p></aside><div class="bk__main"><p class="bk__step"><b>1</b><span data-i18n="book.step1">اختر يومًا</span></p><div class="book__days" role="group" aria-label="الموعد"></div><p class="bk__step"><b>2</b><span data-i18n="book.step2">اختر وقتًا</span><em data-i18n="book.tz">بتوقيت تايلاند</em></p><div class="book__slots" role="group" aria-label="الموعد"></div><p class="book__tz"><span class="book__local"></span></p><div aria-live="polite" class="bk__sum"><span aria-hidden="true" class="bk__sumic"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10.5l5-3v9l-5-3"/></svg></span><div><p class="bk__sumk" data-i18n="book.sum">موعدك</p><p class="bk__sumv" data-i18n="book.sumNone">اختر يومًا ووقتًا</p></div></div><p class="bk__step"><b>3</b><span data-i18n="book.step3">بياناتك</span></p><form class="book__form" data-book="" novalidate=""><div class="free__row"><div class="free__field"><label for="fbName" data-i18n="free.f_name">اسم المحل</label><input autocomplete="organization" id="fbName" name="business" type="text"/></div><div class="free__field"><label for="fbFirst" data-i18n="free.f_first">اسمك الأول</label><input autocomplete="given-name" id="fbFirst" name="first" type="text"/></div></div><p aria-live="polite" class="free__err"></p><button class="btn btn--sun btn--lg bk__go" type="submit"><span data-i18n="book.confirm">تأكيد موعدي</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button></form></div></div>
+<p class="free__note"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.4a.5.5 0 000-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8 11.9 11.9 0 004.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span data-i18n="free.note">نرد عليك عبر واتساب، عادةً في اليوم نفسه.</span></p>
 </div>
-<p class="res__note" data-i18n="results.note">* هدف معروض على مثال افتراضي، وليس ضمانًا. النتائج تعتمد على نشاطك وجهدك.</p>
-<p class="res__cta"><a class="btn btn--sun btn--lg magnetic" href="#offers"><span data-i18n="results.cta">شاهد العروض</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
-</div>
-</section><section aria-labelledby="offersTitle" class="offers" id="offers">
+</section>
+<section aria-labelledby="offersTitle" class="offers" id="offers">
 <div aria-hidden="true" class="offers__glow"></div>
 <div class="container">
 <div class="section-head section-head--center">
@@ -351,7 +361,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <h3 class="offer__name" data-i18n="offers.website.name">الموقع الإلكتروني</h3>
 <p class="offer__benefit" data-i18n="offers.website.benefit">موقع مبني من صورك مع قائمتك ورمز QR لكل طاولة وحجز عبر واتساب. جاهز خلال أيام.</p>
 <div class="offer__price"><strong data-thb="5800">800 €</strong><span data-i18n="offers.setup">إعداد</span></div>
-<em class="offer__sub" data-i18n="offers.subscribe" data-thb-sub="website" hidden="" style="flex-basis:100%">إعداد 800 € ثم 30 € شهريًا</em>
+<em class="offer__sub" data-sub-mode="then" data-thb-sub="website" hidden="" style="flex-basis:100%">إعداد 800 € ثم 30 € شهريًا</em>
 <button class="btn btn--sun btn--block offer__more" data-offer-open="website" type="button"><span data-i18n="offers.details">عرض التفاصيل</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button>
 </article>
 <article class="offer" data-anim="rise" data-offer="pack">
@@ -360,7 +370,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <h3 class="offer__name" data-i18n="offers.pack.name">الباقة الكاملة</h3>
 <p class="offer__benefit" data-i18n="offers.pack.benefit">موقع وملف جوجل وقائمة QR معًا. كل ما يبحث عنه السائح.</p>
 <div class="offer__price"><strong data-thb="13300">1,500 €</strong><span data-i18n="offers.setup">إعداد</span></div>
-<em class="offer__sub" data-i18n="offers.subscribe" data-thb-sub="pack" hidden="" style="flex-basis:100%">إعداد 1,500 € ثم 100 € شهريًا</em>
+<em class="offer__sub" data-sub-mode="then" data-thb-sub="pack" hidden="" style="flex-basis:100%">إعداد 1,500 € ثم 100 € شهريًا</em>
 <button class="btn btn--sun btn--block offer__more" data-offer-open="pack" type="button"><span data-i18n="offers.details">عرض التفاصيل</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button>
 </article>
 </div>
@@ -382,36 +392,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </section>
 <!-- ============ 5 · WHY US ============ -->
-<section aria-labelledby="whyTitle" class="why" id="why">
-<div class="container">
-<div class="section-head section-head--split">
-<div>
-<p class="eyebrow" data-i18n="why2.eyebrow">لماذا NM Studio</p>
-<h2 class="section-title" data-anim="words" data-i18n-html="why2.title" id="whyTitle">صُمّم ليجلب لك <em>الزبائن.</em></h2>
-</div>
-</div>
-<div class="why__grid">
-<article class="why-card" data-anim="card">
-<figure class="why-card__media"><picture><source media="(max-width: 700px)" sizes="94vw" srcset="../assets/img/v4/why-pattaya-560.webp.avif 560w" type="image/avif"><source sizes="(max-width: 899px) 94vw, 26vw" srcset="../assets/img/v4/why-pattaya-560.webp.avif 560w, ../assets/img/v4/why-pattaya-960.webp.avif 900w" type="image/avif"><source media="(max-width: 700px)" sizes="94vw" srcset="../assets/img/v4/why-pattaya-560.webp 560w" type="image/webp"><source sizes="(max-width: 899px) 94vw, 26vw" srcset="../assets/img/v4/why-pattaya-560.webp 560w, ../assets/img/v4/why-pattaya-960.webp 900w" type="image/webp"><img alt="خليج باتايا ليلًا من أعلى التل" data-i18n-alt="v4.alt1" decoding="async" height="1126" loading="lazy" src="../assets/img/v4/why-pattaya-960.jpg" width="900"/></source></source></source></source></picture></figure>
-<span aria-hidden="true" class="why-card__ic why-card__ic--visit"><svg fill="none" viewBox="0 0 24 24"><path d="M12 21s7-6.6 7-11.8A7 7 0 005 9.2C5 14.4 12 21 12 21z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path><circle cx="12" cy="9.5" r="2.6" stroke="currentColor" stroke-width="1.6"></circle></svg><i></i></span>
-<h3 class="why-card__title" data-i18n="why2.r1t">نأتي إلى محلك</h3>
-<p class="why-card__body" data-i18n="why2.r1b">نلتقيك في باتايا، نلتقط الصور ونتولى كل شيء. لا تلمس الجانب التقني أبدًا.</p>
-</article>
-<article class="why-card" data-anim="card">
-<figure class="why-card__media"><picture><source media="(max-width: 700px)" sizes="94vw" srcset="../assets/img/v4/why-street-560.webp.avif 560w" type="image/avif"><source sizes="(max-width: 899px) 94vw, 26vw" srcset="../assets/img/v4/why-street-560.webp.avif 560w, ../assets/img/v4/why-street-960.webp.avif 960w" type="image/avif"><source media="(max-width: 700px)" sizes="94vw" srcset="../assets/img/v4/why-street-560.webp 560w" type="image/webp"><source sizes="(max-width: 899px) 94vw, 26vw" srcset="../assets/img/v4/why-street-560.webp 560w, ../assets/img/v4/why-street-960.webp 960w" type="image/webp"><img alt="طاهية طعام شارع في كشكها ليلًا" data-i18n-alt="v4.alt2" decoding="async" height="758" loading="lazy" src="../assets/img/v4/why-street-960.jpg" width="960"/></source></source></source></source></picture></figure>
-<span aria-hidden="true" class="why-card__ic why-card__ic--fast"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5" stroke="currentColor" stroke-width="1.6"></circle><path d="M9.5 2.8h5" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path><path class="why-card__hand" d="M12 13V9" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span>
-<h3 class="why-card__title" data-i18n="why2.r2t">جاهز خلال أيام لا أشهر</h3>
-<p class="why-card__body" data-i18n="why2.r2b">أرسل صورك اليوم. ملفك أو قائمتك أو موقعك يصبح على الإنترنت خلال أيام، فيجدك الزبائن أسرع.</p>
-</article>
-<article class="why-card" data-anim="card">
-<figure class="why-card__media"><picture><source media="(max-width: 700px)" sizes="94vw" srcset="../assets/img/v4/why-salon-560.webp.avif 560w" type="image/avif"><source sizes="(max-width: 899px) 94vw, 26vw" srcset="../assets/img/v4/why-salon-560.webp.avif 560w, ../assets/img/v4/why-salon-960.webp.avif 960w" type="image/avif"><source media="(max-width: 700px)" sizes="94vw" srcset="../assets/img/v4/why-salon-560.webp 560w" type="image/webp"><source sizes="(max-width: 899px) 94vw, 26vw" srcset="../assets/img/v4/why-salon-560.webp 560w, ../assets/img/v4/why-salon-960.webp 960w" type="image/webp"><img alt="صالون تجميل عصري ومضيء" data-i18n-alt="v4.alt3" decoding="async" height="666" loading="lazy" src="../assets/img/v4/why-salon-960.jpg" width="960"/></source></source></source></source></picture></figure>
-<span aria-hidden="true" class="why-card__ic why-card__ic--chat"><svg aria-hidden="true" class="btn__logo" focusable="false" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"></path></svg></span>
-<h3 class="why-card__title" data-i18n="why2.r3t">رسالة واحدة لتغيير أي شيء</h3>
-<p class="why-card__body" data-i18n="why2.r3b">سعر جديد أو طبق جديد أو صورة جديدة: أرسلها على واتساب وننجزها. ألغِ الاشتراك متى شئت.</p>
-</article>
-</div>
-</div>
-</section>
+
 <!-- ============ 6 · HOW IT WORKS ============ -->
 <section aria-labelledby="howTitle" class="how" id="how">
 <div aria-hidden="true" class="how__glow"></div>
@@ -459,9 +440,9 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </ol>
 </div>
 </section>
- ============ 7 · REVIEWS ============
+<!-- ============ 7 · REVIEWS ============
      Hidden until assets/js/reviews-config.js has real entries. See the
-     file's own comment. Never filled with invented quotes. 
+     file's own comment. Never filled with invented quotes. -->
 <section aria-labelledby="reviewsTitle" class="reviews" hidden="" id="reviews">
 <div class="container">
 <div class="section-head section-head--center">
@@ -472,6 +453,45 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </section>
 <!-- ============ 8 · FAQ ============ -->
+<section aria-labelledby="founderTitle" class="founder" id="studio-founder">
+<div class="container">
+<div class="founder__wrap">
+<div aria-hidden="true" class="founder__photo"><span data-founder-name="">M</span></div>
+<div class="founder__text">
+<p class="eyebrow" data-i18n="founder.eyebrow">من وراء NM Studio</p>
+<h2 class="section-title" data-anim="words" data-i18n-html="founder.title" id="founderTitle">شخص حقيقي، <em>لا مركز اتصال.</em></h2>
+<p class="founder__body" data-founder-fill="" data-i18n="founder.body">اسمي Mourad. أصمم المواقع وقوائم QR وملفات جوجل بنفسي، وأنا من يرد عليك عبر واتساب. شخص واحد تتعامل معه، من أول رسالة حتى إطلاق الموقع، وبعده أيضًا.</p>
+<ul class="founder__points"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p1">ردود مباشرة عبر واتساب</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p2">توافق على كل شيء قبل النشر</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p3">يمكنك إلغاء الاشتراك في أي وقت</span></li></ul>
+<p class="founder__sign" data-founder-fill="" data-i18n="founder.sign">Mourad، مؤسس NM Studio</p>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="refTitle" class="ref" id="parrainage">
+<div class="container">
+<div class="ref__card">
+<div class="ref__intro">
+<p class="ref__k"><span aria-hidden="true" class="ref__ic"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><rect height="5" rx="1.2" stroke="currentColor" stroke-width="1.7" width="18" x="3" y="8"></rect><path d="M5 13v7h14v-7M12 8v12M12 8c-1.5-3.5-5.5-3.5-5.5-1 0 1.4 2.5 1 5.5 1zm0 0c1.5-3.5 5.5-3.5 5.5-1 0 1.4-2.5 1-5.5 1z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></span><span data-i18n="ref.k">الإحالة</span></p>
+<h2 class="section-title ref__title" data-i18n-html="ref.t" data-ref-fill="" id="refTitle">رشّح محلًا تجاريًا. <em>واحصل على شهر مجاني.</em></h2>
+<p class="ref__lead" data-i18n="ref.b" data-ref-fill="">تعرف مطعمًا أو صالونًا أو متجرًا يستحق أن يظهر على Google؟ رشّحه لنا. فور اشتراكه تحصل على شهر مجاني، وهو أيضًا.</p>
+<ol class="ref__steps">
+<li><span class="ref__n">1</span><b data-i18n="ref.s1">أعطنا اسمه</b><span data-i18n="ref.s1b">في 30 ثانية، أدناه</span></li>
+<li><span class="ref__n">2</span><b data-i18n="ref.s2">نجهّز له نموذجه المجاني</b><span data-i18n="ref.s2b">ونخبره أنه من طرفك</span></li>
+<li class="ref__win"><span class="ref__n">3</span><b data-i18n="ref.s3" data-ref-fill="">يشترك: شهر مجاني لكل منكما</b><span data-i18n="ref.s3b">يُخصم من دفعتك القادمة</span></li>
+</ol>
+</div>
+<form class="free__form ref__form" data-ref="" novalidate="">
+<p class="ref__gift" aria-hidden="true"><b data-ref-gift="">شهر مجاني</b><span data-i18n="ref.chip">لكل منكما</span></p>
+<div class="free__field"><label data-i18n="ref.f_biz" for="rfBiz">المحل المرشَّح</label><input autocomplete="off" id="rfBiz" name="biz" required="" type="text"/></div>
+<div class="free__row"><div class="free__field"><label data-i18n="ref.f_city" for="rfCity">المدينة أو الحي</label><input id="rfCity" name="city" type="text"/></div><div class="free__field"><label data-i18n="ref.f_contact" for="rfContact">هاتفه أو صفحته (اختياري)</label><input id="rfContact" name="contact" type="text"/></div></div>
+<div class="free__row"><div class="free__field"><label data-i18n="ref.f_you" for="rfYou">اسمك الأول</label><input autocomplete="given-name" id="rfYou" name="you" type="text"/></div><div class="free__field"><label data-i18n="ref.f_yourBiz" for="rfYourBiz">محلك (إن كنت عميلًا)</label><input autocomplete="organization" id="rfYourBiz" name="yourBiz" type="text"/></div></div>
+<p aria-live="polite" class="free__err"></p>
+<button class="btn btn--sun btn--lg" type="submit"><span data-i18n="ref.btn">رشّح هذا المحل</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button>
+<p class="ref__fine" data-i18n="ref.fine" data-ref-fill="">بلا حدود: كل محل ترشّحه ويشترك يمنحك شهر مجاني. لست عميلًا بعد؟ هديتك بانتظارك عند اشتراكك.</p>
+</form>
+</div>
+</div>
+</section>
 <section aria-labelledby="faqTitle" class="faq" id="faq">
 <div class="container faq__grid">
 <div class="faq__intro">
@@ -527,7 +547,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <li hidden=""><a aria-label="Facebook" class="social" data-social="facebook" href="#" rel="noopener" target="_blank"><svg aria-hidden="true" class="social__ic" focusable="false" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" fill="currentColor"></path></svg></a></li><li hidden=""><a aria-label="Instagram" class="social" data-social="instagram" href="#" rel="noopener" target="_blank"><svg aria-hidden="true" class="social__ic" focusable="false" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077" fill="currentColor"></path></svg></a></li><li hidden=""><a aria-label="TikTok" class="social" data-social="tiktok" href="#" rel="noopener" target="_blank"><svg aria-hidden="true" class="social__ic" focusable="false" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="currentColor"></path></svg></a></li><li hidden=""><a aria-label="LINE" class="social" data-social="line" href="#" rel="noopener" target="_blank"><svg aria-hidden="true" class="social__ic" focusable="false" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" fill="currentColor"></path></svg></a></li>
 </ul>
 </div>
-<nav aria-label="Footer" class="footer__col">
+<nav aria-label="روابط التذييل" class="footer__col">
 <p class="footer__label" data-i18n="footer.explore">استكشف</p>
 <a data-i18n="nav2.services" href="services.html">الخدمات</a>
 <a data-i18n="nav2.pricing" href="pricing.html">الأسعار</a>
@@ -552,10 +572,11 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <div class="footer__langs"><button aria-current="false" aria-label="English" class="flag-btn" data-lang="en" lang="en" title="English" type="button"><span aria-hidden="true" class="flag" data-flag="en"></span></button><button aria-current="false" aria-label="Français" class="flag-btn" data-lang="fr" lang="fr" title="Français" type="button"><span aria-hidden="true" class="flag" data-flag="fr"></span></button><button aria-current="false" aria-label="Italiano" class="flag-btn" data-lang="it" lang="it" title="Italiano" type="button"><span aria-hidden="true" class="flag" data-flag="it"></span></button><button aria-current="false" aria-label="ไทย" class="flag-btn" data-lang="th" lang="th" title="ไทย" type="button"><span aria-hidden="true" class="flag" data-flag="th"></span></button><button aria-current="true" aria-label="العربية" class="flag-btn" data-lang="ar" lang="ar" title="العربية" type="button"><span aria-hidden="true" class="flag" data-flag="ar"></span></button></div>
 <div class="footer__bottom">
 <span data-i18n="footer.rights">© 2026 NM Studio. صُمم ليجدك الزبائن.</span>
-<span class="footer__clock"><span aria-hidden="true" class="live-dot"></span><span data-i18n="footer.local">باتايا، تايلاند</span> · <time id="localTime">--:--</time></span>
+<span class="footer__clock"><span aria-hidden="true" class="live-dot"></span><span data-i18n="footer.local">عبر الإنترنت، في كل مكان</span> · <time id="localTime">--:--</time></span>
 <a href="#top"><span data-i18n="footer.backTop">العودة للأعلى</span> ↑</a>
 </div>
 </div>
+<a aria-label="راسلنا على LINE" class="line-float" data-i18n-aria-label="ref.line" hidden="" href="#" rel="noopener" target="_blank"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3C6.48 3 2 6.63 2 11.1c0 4 3.55 7.36 8.35 8 .33.07.77.22.88.5.1.25.07.65.03.9l-.14.86c-.04.25-.2 1 .88.54 1.08-.45 5.8-3.42 7.92-5.85C21.38 14.47 22 12.86 22 11.1 22 6.63 17.52 3 12 3zM8.1 13.5H6.12a.53.53 0 01-.53-.53V9.03a.53.53 0 011.06 0v3.41H8.1a.53.53 0 010 1.06zm2.05-.53a.53.53 0 01-1.06 0V9.03a.53.53 0 011.06 0zm4.75 0a.53.53 0 01-.95.32l-2.03-2.76v2.44a.53.53 0 01-1.06 0V9.03a.53.53 0 01.95-.32l2.03 2.76V9.03a.53.53 0 011.06 0zm3.2-2.5a.53.53 0 010 1.06h-1.45v.94h1.45a.53.53 0 010 1.06h-1.98a.53.53 0 01-.53-.53V9.03c0-.29.24-.53.53-.53h1.98a.53.53 0 010 1.06h-1.45v.94z"/></svg></a>
 <a aria-label="راسلنا على واتساب" class="wa-float" data-i18n-aria-label="a11y.whatsapp" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank">
 <svg aria-hidden="true" class="" focusable="false" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"></path></svg>
 </a>
@@ -606,7 +627,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 <div class="om__body">
 <p class="om__tier" id="omTier">03</p>
-<h2 class="om__title" id="omTitle">Complete Pack</h2>
+<h2 class="om__title" id="omTitle">الباقة الكاملة</h2>
 <p class="om__benefit" id="omBenefit"></p>
 <p class="om__price"><strong id="omPrice"> </strong> <span data-i18n="offers.once" id="omOnce">دفعة واحدة</span> <span class="om__approx" id="omApprox"></span></p>
 <p class="om__sub" hidden="" id="omSub"></p>
@@ -617,7 +638,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <div><dt data-i18n="offers.care">خطة عناية اختيارية</dt><dd id="omCare"></dd></div>
 </dl>
 <div class="om__ctas">
-<a class="btn btn--sun btn--lg btn--block" href="../checkout.html?offer=pack" id="omOrder"><span id="omOrderLabel">Order now</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
+<a class="btn btn--sun btn--lg btn--block" href="../checkout.html?offer=pack" id="omOrder"><span id="omOrderLabel">اطلب الآن</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a>
 <a class="btn btn--ghost btn--lg btn--block" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg><span data-i18n="offers.chat">تحدّث معنا على واتساب</span></a>
 </div>
 <p class="om__trust" data-payment-claim=""><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><rect height="8" rx="2" stroke="currentColor" stroke-width="1.6" width="11" x="4.5" y="9"></rect><path d="M7 9V6.5a3 3 0 016 0V9" stroke="currentColor" stroke-width="1.6"></path></svg><span data-i18n="trust.secure">دفع آمن عبر Stripe</span> · <span data-i18n="trust.methods">بطاقة · Apple Pay · Google Pay · PromptPay</span></p>
@@ -636,24 +657,26 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <button aria-label="إغلاق" class="dialog-close" data-close="" data-i18n-aria-label="preview.close" type="button"><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path></svg></button>
 </div>
 <div class="pv__stage" data-mode="desktop" id="pvStage">
-<div class="pv__viewport" id="pvViewport"><iframe id="pvFrame" tabindex="-1" title="Live preview"></iframe></div>
+<div class="pv__viewport" id="pvViewport"><iframe id="pvFrame" tabindex="-1" title="معاينة مباشرة"></iframe></div>
 <p class="pv__loading" data-i18n="preview.loading">جارٍ تحميل الموقع…</p>
 </div>
 </div>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
-<script defer="" src="../assets/js/i18n.js?v=20261006a"></script>
+<script defer="" src="../assets/js/i18n.js?v=20261008v"></script>
+<script defer="" src="../assets/js/nm-grow.js?v=20261008z"></script>
 <script defer="" src="../assets/js/qrcode.min.js"></script>
 <script defer="" src="../assets/js/nm-qr.js"></script><script defer="" src="../assets/js/vendor/gsap.min.js"></script>
 <script defer="" src="../assets/js/vendor/ScrollTrigger.min.js"></script>
-<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-prob.js?v=20261006a"></script><script defer="" src="../assets/js/nm-results.js?v=20261006a"></script>
-<script defer="" src="../assets/js/safety.js?v=20261006a"></script>
+<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-film.js?v=20261008v"></script>
+<script defer="" src="../assets/js/safety.js?v=20261008v"></script>
 <script defer="" src="../assets/js/fx.js"></script>
-<script defer="" src="../assets/js/nm-home.js?v=20261006a"></script>
-<script defer="" src="../assets/js/home.js?v=20261006a"></script>
-<script defer="" src="../assets/js/hero-depth.js?v=20261006a"></script>
-<script defer="" src="../assets/js/hero-video.js?v=20261006a"></script>
+<script defer="" src="../assets/js/nm-home.js?v=20261008v"></script>
+<script defer="" src="../assets/js/home.js?v=20261008v"></script>
+<script defer="" src="../assets/js/hero-depth.js?v=20261008v"></script>
+<script defer="" src="../assets/js/hero-video.js?v=20261008v"></script>
 <script defer="" src="../assets/js/payment-state.js"></script>
 <script defer="" src="../assets/js/perf.js"></script>
+<script defer="" src="../assets/js/nm-stats.js?v=20261008v"></script>
 </body>
 </html>
