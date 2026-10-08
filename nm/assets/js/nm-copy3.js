@@ -8,7 +8,7 @@
         hero: "Get a free mock-up",
         eyebrow: "Free, no commitment",
         title: "Get your website <em>for free.</em>",
-        lead: "See your future website before spending a cent. Love it? We put it online with the monthly plan. If not, you pay nothing.",
+        lead: "The mock-up is free, with no commitment. Your website goes live as soon as you subscribe, and it stays online for as long as your subscription is active.",
         m_k: "Free mock-up", m_t: "Your future website in 48 hours",
         m_b: "Tell us the name of your business. We send you a mock-up of your site, with your name and your style. Then you decide, no pressure.",
         a_k: "Free check", a_t: "Your Google listing, reviewed",
@@ -21,7 +21,7 @@
         copied: "Message copied: paste it in WhatsApp and send.",
         msgM: "Hello NM Studio, I would like a free mock-up of my website.", msgA: "Hello NM Studio, I would like a free check of my Google listing.",
         l_name: "Business", l_type: "Type", l_city: "City", l_first: "First name", l_maps: "City or Maps",
-        badge: "100% FREE", chip: "Free", s1: "Ask for your mock-up", s1b: "Free, takes 1 minute", s2: "Receive your website", s2b: "In 48 hours, with your name", s3: "Love it? We put it online", s3b: "With the monthly plan. If not, you pay nothing"
+        badge: "100% FREE", chip: "Free", s1: "Ask for your mock-up", s1b: "Free, takes 1 minute", s2: "Receive your website", s2b: "In 48 hours, with your name. Still free, no commitment", s3: "Love it? Subscribe", s3b: "Setup fee, then a monthly plan. We put your site online and email you the link", s4: "Your site stays online, every month", s4b: "Renews automatically while your subscription is active. Hosting, updates and changes included. Cancel anytime"
       },
       book: {
         k: "Video call", t: "Rather talk it through? Book 20 minutes", b: "A free video call to see together what your business needs. Pick a free slot.", tz: "Thailand time", local: "your time: {t}", taken: "Booked", pick: "Pick a slot first", btn: "Book this slot", sel: "Selected: {s}", msg: "Hello NM Studio, I would like to book a free video call.", l_slot: "Slot", none: "No free slot in the coming days: message us on WhatsApp.", copied: "Booking request copied: paste it in WhatsApp and send.",
@@ -40,7 +40,7 @@
         hero: "Ma maquette gratuite",
         eyebrow: "Gratuit, sans engagement",
         title: "Recevez votre site <em>gratuitement.</em>",
-        lead: "Voyez votre futur site avant de dépenser un euro. Il vous plaît ? On le met en ligne avec l'abonnement. Sinon, vous ne payez rien.",
+        lead: "La maquette est gratuite et sans engagement. Votre site est mis en ligne dès que vous souscrivez l'abonnement, et il reste en ligne tant que l'abonnement est actif.",
         m_k: "Maquette offerte", m_t: "Votre futur site en 48 h",
         m_b: "Donnez-nous le nom de votre commerce. On vous envoie une maquette de votre site, avec votre nom et votre style. Vous décidez ensuite, sans pression.",
         a_k: "Audit offert", a_t: "Votre fiche Google, vérifiée",
@@ -53,7 +53,7 @@
         copied: "Message copié : collez-le dans WhatsApp et envoyez.",
         msgM: "Bonjour NM Studio, je voudrais une maquette gratuite de mon site.", msgA: "Bonjour NM Studio, je voudrais un audit gratuit de ma fiche Google.",
         l_name: "Commerce", l_type: "Type", l_city: "Ville", l_first: "Prénom", l_maps: "Ville ou Maps",
-        badge: "100 % GRATUIT", chip: "Gratuit", s1: "Vous demandez votre maquette", s1b: "Gratuit, en 1 minute", s2: "Vous recevez votre site", s2b: "En 48 h, avec votre nom", s3: "Il vous plaît ? On le met en ligne", s3b: "Avec l'abonnement. Sinon, vous ne payez rien"
+        badge: "100 % GRATUIT", chip: "Gratuit", s1: "Vous demandez votre maquette", s1b: "Gratuit, en 1 minute", s2: "Vous recevez votre site", s2b: "En 48 h, à votre nom. Toujours gratuit, sans engagement", s3: "Il vous plaît ? Vous souscrivez l'abonnement", s3b: "Mise en place puis mensualité. On met votre site en ligne et vous recevez le lien par email", s4: "Votre site reste en ligne, chaque mois", s4b: "Renouvellement automatique tant que l'abonnement est actif. Hébergement, mises à jour et modifications inclus. Résiliable à tout moment"
       },
       book: {
         k: "Rendez-vous visio", t: "Préférez en parler ? Réservez 20 minutes", b: "Un appel vidéo gratuit pour voir ensemble ce dont votre commerce a besoin. Choisissez un créneau libre.", tz: "Heure de Thaïlande", local: "chez vous : {t}", taken: "Réservé", pick: "Choisissez d'abord un créneau", btn: "Réserver ce créneau", sel: "Créneau choisi : {s}", msg: "Bonjour NM Studio, je voudrais réserver un appel vidéo gratuit.", l_slot: "Créneau", none: "Plus de créneau libre ces jours-ci : écrivez-nous sur WhatsApp.", copied: "Demande copiée : collez-la dans WhatsApp et envoyez.",
@@ -72,7 +72,7 @@
         hero: "La mia bozza gratuita",
         eyebrow: "Gratis, senza impegno",
         title: "Ricevete il vostro sito <em>gratis.</em>",
-        lead: "Guardate il vostro futuro sito prima di spendere un euro. Vi piace? Lo mettiamo online con l'abbonamento. Altrimenti non pagate nulla.",
+        lead: "La bozza è gratuita e senza impegno. Il vostro sito va online appena sottoscrivete l'abbonamento, e resta online finché l'abbonamento è attivo.",
         m_k: "Bozza gratuita", m_t: "Il vostro futuro sito in 48 ore",
         m_b: "Diteci il nome della vostra attività. Vi mandiamo una bozza del sito, con il vostro nome e il vostro stile. Poi decidete voi, senza pressioni.",
         a_k: "Verifica gratuita", a_t: "La vostra scheda Google, controllata",
@@ -85,7 +85,7 @@
         copied: "Messaggio copiato: incollatelo su WhatsApp e inviate.",
         msgM: "Buongiorno NM Studio, vorrei una bozza gratuita del mio sito.", msgA: "Buongiorno NM Studio, vorrei una verifica gratuita della mia scheda Google.",
         l_name: "Attività", l_type: "Tipo", l_city: "Città", l_first: "Nome", l_maps: "Città o Maps",
-        badge: "100% GRATIS", chip: "Gratis", s1: "Chiedete la vostra bozza", s1b: "Gratis, in 1 minuto", s2: "Ricevete il vostro sito", s2b: "In 48 ore, con il vostro nome", s3: "Vi piace? Lo mettiamo online", s3b: "Con l'abbonamento. Altrimenti non pagate nulla"
+        badge: "100% GRATIS", chip: "Gratis", s1: "Chiedete la vostra bozza", s1b: "Gratis, in 1 minuto", s2: "Ricevete il vostro sito", s2b: "In 48 ore, con il vostro nome. Sempre gratis, senza impegno", s3: "Vi piace? Sottoscrivete l'abbonamento", s3b: "Attivazione poi canone mensile. Mettiamo online il sito e vi inviamo il link via email", s4: "Il sito resta online, ogni mese", s4b: "Rinnovo automatico finché l'abbonamento è attivo. Hosting, aggiornamenti e modifiche inclusi. Disdicibile in qualsiasi momento"
       },
       book: {
         k: "Videochiamata", t: "Preferite parlarne? Prenotate 20 minuti", b: "Una videochiamata gratuita per capire insieme di cosa ha bisogno la vostra attività. Scegliete uno slot libero.", tz: "Ora della Thailandia", local: "da voi: {t}", taken: "Prenotato", pick: "Scegliete prima uno slot", btn: "Prenota questo slot", sel: "Slot scelto: {s}", msg: "Buongiorno NM Studio, vorrei prenotare una videochiamata gratuita.", l_slot: "Slot", none: "Nessuno slot libero nei prossimi giorni: scriveteci su WhatsApp.", copied: "Richiesta copiata: incollatela su WhatsApp e inviate.",
@@ -104,7 +104,7 @@
         hero: "รับแบบร่างฟรี",
         eyebrow: "ฟรี ไม่มีข้อผูกมัด",
         title: "รับเว็บไซต์ของคุณ <em>ฟรี</em>",
-        lead: "ดูเว็บไซต์ของคุณก่อนจ่ายแม้แต่บาทเดียว ถ้าชอบ เราเปิดใช้งานให้พร้อมแพ็กเกจรายเดือน ถ้าไม่ชอบ คุณไม่ต้องจ่ายอะไรเลย",
+        lead: "แบบร่างฟรี ไม่มีข้อผูกมัด เว็บไซต์ของคุณจะออนไลน์ทันทีที่คุณสมัครแพ็กเกจรายเดือน และจะออนไลน์ต่อไปตราบเท่าที่แพ็กเกจยังใช้งานอยู่",
         m_k: "แบบร่างฟรี", m_t: "เว็บไซต์ของคุณภายใน 48 ชั่วโมง",
         m_b: "บอกชื่อร้านของคุณมา เราจะส่งแบบร่างเว็บไซต์ที่มีชื่อร้านและสไตล์ของคุณให้ดู แล้วคุณค่อยตัดสินใจ ไม่มีการกดดัน",
         a_k: "ตรวจฟรี", a_t: "ตรวจโปรไฟล์ Google ของคุณ",
@@ -117,7 +117,7 @@
         copied: "คัดลอกข้อความแล้ว วางใน WhatsApp แล้วกดส่ง",
         msgM: "สวัสดีครับ NM Studio อยากได้แบบร่างเว็บไซต์ฟรีครับ", msgA: "สวัสดีครับ NM Studio อยากให้ช่วยตรวจโปรไฟล์ Google ฟรีครับ",
         l_name: "ร้าน", l_type: "ประเภท", l_city: "เมือง", l_first: "ชื่อ", l_maps: "เมือง หรือ Maps",
-        badge: "ฟรี 100%", chip: "ฟรี", s1: "ขอแบบร่างของคุณ", s1b: "ฟรี ใช้เวลาแค่ 1 นาที", s2: "รับเว็บไซต์ของคุณ", s2b: "ภายใน 48 ชั่วโมง พร้อมชื่อร้านคุณ", s3: "ชอบไหม? เราเปิดออนไลน์ให้", s3b: "พร้อมแพ็กเกจรายเดือน ถ้าไม่ชอบ ไม่ต้องจ่ายอะไรเลย"
+        badge: "ฟรี 100%", chip: "ฟรี", s1: "ขอแบบร่างของคุณ", s1b: "ฟรี ใช้เวลาแค่ 1 นาที", s2: "รับเว็บไซต์ของคุณ", s2b: "ภายใน 48 ชั่วโมง พร้อมชื่อร้านคุณ ยังฟรีและไม่มีข้อผูกมัด", s3: "ชอบไหม? สมัครแพ็กเกจรายเดือน", s3b: "ค่าติดตั้ง แล้วต่อด้วยค่าบริการรายเดือน เราเปิดเว็บไซต์ให้ออนไลน์ และส่งลิงก์ให้ทางอีเมล", s4: "เว็บไซต์ออนไลน์ต่อเนื่องทุกเดือน", s4b: "ต่ออายุอัตโนมัติตราบเท่าที่แพ็กเกจยังใช้งานอยู่ รวมโฮสติ้ง การอัปเดต และการแก้ไข ยกเลิกได้ทุกเมื่อ"
       },
       book: {
         k: "นัดคุยทางวิดีโอ", t: "อยากคุยก่อนไหม? จองเวลา 20 นาที", b: "วิดีโอคอลฟรี เพื่อดูด้วยกันว่าร้านของคุณต้องการอะไร เลือกช่วงเวลาที่ว่างได้เลย", tz: "เวลาประเทศไทย", local: "เวลาของคุณ: {t}", taken: "จองแล้ว", pick: "กรุณาเลือกช่วงเวลาก่อน", btn: "จองช่วงเวลานี้", sel: "เวลาที่เลือก: {s}", msg: "สวัสดีครับ NM Studio อยากจองวิดีโอคอลฟรีครับ", l_slot: "ช่วงเวลา", none: "ช่วงนี้ไม่มีเวลาว่าง ทักหาเราทาง WhatsApp ได้เลย", copied: "คัดลอกคำขอจองแล้ว วางใน WhatsApp แล้วกดส่ง",
@@ -136,7 +136,7 @@
         hero: "احصل على نموذج مجاني",
         eyebrow: "مجانًا، بلا التزام",
         title: "احصل على موقعك <em>مجانًا.</em>",
-        lead: "شاهد موقعك المستقبلي قبل أن تدفع أي شيء. أعجبك؟ ننشره على الإنترنت مع الاشتراك الشهري. وإن لم يعجبك، لا تدفع شيئًا.",
+        lead: "النموذج مجاني وبلا التزام. يُنشر موقعك على الإنترنت فور اشتراكك، ويبقى متاحًا طالما الاشتراك فعّال.",
         m_k: "نموذج مجاني", m_t: "موقعك المستقبلي خلال 48 ساعة",
         m_b: "أخبرنا باسم محلك، وسنرسل لك نموذجًا لموقعك باسمك وأسلوبك. ثم تقرر أنت، دون أي ضغط.",
         a_k: "فحص مجاني", a_t: "ملفك على جوجل، تحت المراجعة",
@@ -149,7 +149,7 @@
         copied: "تم نسخ الرسالة: الصقها في واتساب ثم أرسلها.",
         msgM: "مرحبًا NM Studio، أود الحصول على نموذج مجاني لموقعي.", msgA: "مرحبًا NM Studio، أود فحصًا مجانيًا لملفي على جوجل.",
         l_name: "المحل", l_type: "النوع", l_city: "المدينة", l_first: "الاسم", l_maps: "المدينة أو الخرائط",
-        badge: "مجاني 100%", chip: "مجاني", s1: "اطلب نموذجك", s1b: "مجانًا، في دقيقة واحدة", s2: "استلم موقعك", s2b: "خلال 48 ساعة، باسم محلك", s3: "أعجبك؟ ننشره على الإنترنت", s3b: "مع الاشتراك الشهري. وإلا، لا تدفع شيئًا"
+        badge: "مجاني 100%", chip: "مجاني", s1: "اطلب نموذجك", s1b: "مجانًا، في دقيقة واحدة", s2: "استلم موقعك", s2b: "خلال 48 ساعة، باسم محلك. ما زال مجانيًا وبلا التزام", s3: "أعجبك؟ اشترك", s3b: "رسوم إعداد ثم اشتراك شهري. ننشر موقعك على الإنترنت ونرسل لك الرابط بالبريد الإلكتروني", s4: "موقعك يبقى على الإنترنت كل شهر", s4b: "يتجدد تلقائيًا طالما الاشتراك فعّال. الاستضافة والتحديثات والتعديلات مشمولة. يمكنك الإلغاء في أي وقت"
       },
       book: {
         k: "مكالمة فيديو", t: "تفضّل الحديث أولًا؟ احجز 20 دقيقة", b: "مكالمة فيديو مجانية لنرى معًا ما يحتاجه محلك. اختر موعدًا متاحًا.", tz: "بتوقيت تايلاند", local: "بتوقيتك: {t}", taken: "محجوز", pick: "اختر موعدًا أولًا", btn: "احجز هذا الموعد", sel: "الموعد المختار: {s}", msg: "مرحبًا NM Studio، أود حجز مكالمة فيديو مجانية.", l_slot: "الموعد", none: "لا مواعيد متاحة في الأيام القادمة: راسلنا عبر واتساب.", copied: "تم نسخ طلب الحجز: الصقه في واتساب ثم أرسله.",

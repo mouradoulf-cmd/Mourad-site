@@ -175,3 +175,12 @@ html[lang="th"] .bk__meta .bk__free, html[lang="ar"] .bk__meta .bk__free { lette
 .bk .book__day[aria-pressed="true"] { background: var(--grad-btn); border-color: transparent; color: var(--btn-ink, #0b0703); }
 .bk .book__day[aria-pressed="true"] small, .bk .book__day[aria-pressed="true"] span { color: rgba(11,7,3,.72); }
 .bk__step em { white-space: nowrap; }
+/* 4 steps: free (green) then subscription (gold) */
+.free__steps { max-width: 72rem; }
+@media (min-width: 640px) { .free__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .free__steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.free__steps li { align-items: start; }
+.free__steps li:nth-child(n+3) { background: rgba(201,169,97,.06); box-shadow: inset 0 0 0 1px rgba(228,207,154,.18); }
+.free__steps li { grid-template-rows: auto 1fr; align-content: start; row-gap: .3rem; }
+.free__steps li > span:last-child { align-self: start; }
+.free__n { align-self: start; }
