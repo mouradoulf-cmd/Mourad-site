@@ -249,3 +249,105 @@
     waHead: "طلب جديد لدى NM Studio", waPlan: "الباقة", waMethod: "الدفع"
   } }
 });
+
+/* Automatic monthly payment (subscribed offers) */
+(function (D) {
+  function merge(a, b) { Object.keys(b).forEach(function (k) { if (b[k] && typeof b[k] === "object" && !Array.isArray(b[k])) { a[k] = a[k] || {}; merge(a[k], b[k]); } else if (!(k in a)) a[k] = b[k]; }); return a; }
+  window.NM_EXTRA_DICT = merge(window.NM_EXTRA_DICT || {}, D);
+})({
+ "en": {
+  "checkout": {
+   "autoK": "Automatic monthly payment",
+   "autoT": "Add your card once. <em>Then it all runs by itself.</em>",
+   "autoB": "You enter your card a single time, on a secure payment page. Every month your subscription is charged automatically: nothing to remember, no transfer to redo, and your site stays online.",
+   "autoPay": "Monthly payment, automatic",
+   "a1": "Today",
+   "a1b": "{amount} · setup + first month",
+   "a2": "Every month",
+   "a2b": "{monthly} charged automatically, receipt by email",
+   "a3": "Whenever you like",
+   "a3b": "Cancel in one click, no fees",
+   "autoCards": "Visa, Mastercard, Revolut, Wise, Thai and European cards",
+   "autoSafe": "Encrypted payment by Stripe. We never see your card number.",
+   "autoWa": "Once you confirm, we send your secure payment link on WhatsApp. You add your card there, once.",
+   "autoName": "YOUR NAME",
+   "autoMonth": "month"
+  }
+ },
+ "fr": {
+  "checkout": {
+   "autoK": "Prélèvement automatique",
+   "autoT": "Votre carte une seule fois. <em>Ensuite, tout se fait tout seul.</em>",
+   "autoB": "Vous entrez votre carte une seule fois, sur une page de paiement sécurisée. Chaque mois, l'abonnement est prélevé automatiquement : rien à retenir, aucun virement à refaire, et votre site reste en ligne.",
+   "autoPay": "Paiement mensuel automatique",
+   "a1": "Aujourd'hui",
+   "a1b": "{amount} · mise en place + 1er mois",
+   "a2": "Chaque mois",
+   "a2b": "{monthly} prélevés automatiquement, reçu par email",
+   "a3": "Quand vous voulez",
+   "a3b": "Résiliation en 1 clic, sans frais",
+   "autoCards": "Visa, Mastercard, Revolut, Wise, cartes thaïes et européennes",
+   "autoSafe": "Paiement chiffré par Stripe. Nous ne voyons jamais votre numéro de carte.",
+   "autoWa": "Après votre confirmation, nous vous envoyons votre lien de paiement sécurisé sur WhatsApp. Vous y enregistrez votre carte, une seule fois.",
+   "autoName": "VOTRE NOM",
+   "autoMonth": "mois"
+  }
+ },
+ "it": {
+  "checkout": {
+   "autoK": "Addebito automatico mensile",
+   "autoT": "La tua carta una sola volta. <em>Poi fa tutto da sé.</em>",
+   "autoB": "Inserisci la carta una sola volta, su una pagina di pagamento sicura. Ogni mese l'abbonamento viene addebitato automaticamente: niente da ricordare, nessun bonifico da rifare, e il tuo sito resta online.",
+   "autoPay": "Pagamento mensile automatico",
+   "a1": "Oggi",
+   "a1b": "{amount} · attivazione + primo mese",
+   "a2": "Ogni mese",
+   "a2b": "{monthly} addebitati automaticamente, ricevuta via email",
+   "a3": "Quando vuoi",
+   "a3b": "Disdetta in un clic, senza costi",
+   "autoCards": "Visa, Mastercard, Revolut, Wise, carte thailandesi ed europee",
+   "autoSafe": "Pagamento crittografato da Stripe. Non vediamo mai il numero della tua carta.",
+   "autoWa": "Dopo la conferma ti inviamo su WhatsApp il link di pagamento sicuro. Lì registri la carta, una sola volta.",
+   "autoName": "IL TUO NOME",
+   "autoMonth": "mese"
+  }
+ },
+ "th": {
+  "checkout": {
+   "autoK": "ตัดบัตรอัตโนมัติรายเดือน",
+   "autoT": "ผูกบัตรครั้งเดียว <em>ที่เหลือระบบจัดการให้เอง</em>",
+   "autoB": "กรอกข้อมูลบัตรเพียงครั้งเดียวบนหน้าชำระเงินที่ปลอดภัย จากนั้นระบบจะตัดค่าบริการรายเดือนให้อัตโนมัติ ไม่ต้องจำ ไม่ต้องโอนใหม่ทุกเดือน และเว็บไซต์ของคุณออนไลน์ต่อเนื่อง",
+   "autoPay": "ชำระรายเดือนอัตโนมัติ",
+   "a1": "วันนี้",
+   "a1b": "{amount} · ค่าติดตั้ง + เดือนแรก",
+   "a2": "ทุกเดือน",
+   "a2b": "ตัดบัตรอัตโนมัติ {monthly} พร้อมใบเสร็จทางอีเมล",
+   "a3": "เมื่อไหร่ก็ได้",
+   "a3b": "ยกเลิกได้ในคลิกเดียว ไม่มีค่าธรรมเนียม",
+   "autoCards": "Visa, Mastercard, Revolut, Wise บัตรธนาคารไทยและยุโรป",
+   "autoSafe": "ชำระเงินแบบเข้ารหัสโดย Stripe เราไม่เห็นเลขบัตรของคุณ",
+   "autoWa": "หลังยืนยัน เราจะส่งลิงก์ชำระเงินที่ปลอดภัยให้ทาง WhatsApp คุณผูกบัตรที่นั่นเพียงครั้งเดียว",
+   "autoName": "ชื่อของคุณ",
+   "autoMonth": "เดือน"
+  }
+ },
+ "ar": {
+  "checkout": {
+   "autoK": "دفع شهري تلقائي",
+   "autoT": "أدخل بطاقتك مرة واحدة. <em>والباقي يتم تلقائيًا.</em>",
+   "autoB": "تُدخل بطاقتك مرة واحدة فقط في صفحة دفع آمنة. وكل شهر يُخصم الاشتراك تلقائيًا: لا شيء تتذكره، ولا تحويل تعيده، ويبقى موقعك متاحًا على الإنترنت.",
+   "autoPay": "دفع شهري تلقائي",
+   "a1": "اليوم",
+   "a1b": "{amount} · الإعداد + الشهر الأول",
+   "a2": "كل شهر",
+   "a2b": "يُخصم {monthly} تلقائيًا، مع إيصال بالبريد الإلكتروني",
+   "a3": "متى شئت",
+   "a3b": "إلغاء بنقرة واحدة، بلا رسوم",
+   "autoCards": "Visa وMastercard وRevolut وWise والبطاقات التايلاندية والأوروبية",
+   "autoSafe": "دفع مشفّر عبر Stripe. لا نرى رقم بطاقتك أبدًا.",
+   "autoWa": "بعد تأكيدك نرسل لك رابط الدفع الآمن عبر واتساب. تسجّل بطاقتك هناك مرة واحدة فقط.",
+   "autoName": "اسمك",
+   "autoMonth": "شهر"
+  }
+ }
+});

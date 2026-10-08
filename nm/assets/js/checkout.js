@@ -160,6 +160,20 @@
     });
     renderReview(p, a);
 
+    // Subscribed offers (website, pack) are paid by automatic monthly card
+    // debit only: the card is saved once on Stripe's page and charged every
+    // month, so nobody has to remember to pay. One-time offers keep every method.
+    var subP = subscribed(p);
+    $$(".co-method").forEach(function (l) { l.hidden = subP && $("input", l).value !== "card"; });
+    if (subP && method() !== "card") $('input[name="method"][value="card"]', form).checked = true;
+    var auto = $("#coAuto");
+    auto.hidden = !subP;
+    if (subP) {
+      $("#coAutoA1").textContent = t("checkout.a1b").replace("{amount}", fmt(a.today));
+      $("#coAutoA2").textContent = t("checkout.a2b").replace("{monthly}", fmt(a.care));
+      $("#coCardAmt").textContent = fmt(a.care) + " / " + t("checkout.autoMonth");
+    }
+
     // PromptPay is a Thai method: listed first for Thai visitors.
     var methods = $("#coMethods"), pp = $('input[value="promptpay"]', methods).closest(".co-method");
     if (window.NM_LANG === "th") methods.insertBefore(pp, methods.firstElementChild);
@@ -167,16 +181,16 @@
 
     // Thai visitors pay the way everyone does in Thailand: one Thai QR
     // Payment (PromptPay) code with the amount, no method list.
-    var thai = window.NM_LANG === "th";
+    var thai = window.NM_LANG === "th" && !subP;
     form.classList.toggle("co-form--thai", thai);
     var sec = $(".sum__secure span"), secKey = thai ? "checkout.secureNoteQr" : "checkout.secureNote";
     sec.setAttribute("data-i18n", secKey); sec.textContent = t(secKey);
     $("#thaiQr").hidden = !thai;
-    $("#coPayTitle").textContent = t(thai ? "checkout.payTitleQr" : "checkout.payTitle");
+    $("#coPayTitle").textContent = t(subP ? "checkout.autoPay" : thai ? "checkout.payTitleQr" : "checkout.payTitle");
     if (thai) { var ppRadio = $('input[name="method"][value="promptpay"]', form); if (!ppRadio.checked) ppRadio.checked = true; renderThaiQr(); }
 
     var m = method(), note = "";
-    if (m === "card") note = cardLink(p) ? t("checkout.nCardLive").replace("{amount}", fmt(a.today)) : t("checkout.nCardManual");
+    if (m === "card") note = cardLink(p) ? t("checkout.nCardLive").replace("{amount}", fmt(a.today)) : t(subP ? "checkout.autoWa" : "checkout.nCardManual");
     if (m === "promptpay") note = PAY.promptpay ? t("checkout.nPromptLive") : t("checkout.nManual");
     if (m === "bank") note = PAY.bank && PAY.bank.iban ? t("checkout.nBankLive") : t("checkout.nManual");
     if (m === "meeting") note = t("checkout.nMeet");
@@ -218,7 +232,7 @@
       ["co2.sumCare", a.care ? fmt(a.care) + " / " + periodLabel(a.mode) : t("co2.sumNone"), 1],
       ["booking.business", form.elements.business.value.trim() || "—", 2],
       ["checkout.email", form.elements.email.value.trim() || "—", 2],
-      ["co2.method", window.NM_LANG === "th" ? "PromptPay" : (mLabel ? mLabel.textContent : "—"), 3],
+      ["co2.method", a.sub ? t("checkout.autoK") + " · " + (mLabel ? mLabel.textContent : "") : window.NM_LANG === "th" ? "PromptPay" : (mLabel ? mLabel.textContent : "—"), 3],
       ["checkout.sumToday", fmt(a.today), 0]
     ];
     box.innerHTML = "";
@@ -511,12 +525,12 @@
     $("#coTermsErr").textContent = "";
 
     var d = collect(), a = amounts(d.plan);
-    var thaiMode = window.NM_LANG === "th";
+    var thaiMode = window.NM_LANG === "th" && !a.sub;
     var o = Object.assign(d, {
       thai: thaiMode, slip: thaiMode && !!slip,
       ref: orderRef,
       setup: a.setup, monthly: a.care, today: a.today, currency: "thb", sub: a.sub,
-      methodLabel: $('input[name="method"]:checked + .co-method__card b', form).textContent,
+      methodLabel: (a.sub ? t("checkout.autoK") + " · " : "") + $('input[name="method"]:checked + .co-method__card b', form).textContent,
       typeLabel: form.elements.type.options[form.elements.type.selectedIndex].text
     });
     try { sessionStorage.setItem(STORE + "Order", JSON.stringify(o)); } catch (err) {}
@@ -610,6 +624,17 @@
   if (params.get("paid") === "1") {
     try { var stored = JSON.parse(sessionStorage.getItem(STORE + "Order") || "null"); if (stored) { showDone(stored); $("#doneLead").textContent = t("checkout.leadPaid"); } } catch (e) {}
   }
+
+  // The decorative card follows the finger / pointer a little (no-op when reduced motion is on).
+  (function tiltCard() {
+    var card = $("#coCardVis"); if (!card || reduce) return;
+    var stage = card.parentNode;
+    stage.addEventListener("pointermove", function (e) {
+      var r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      card.style.setProperty("--cry", (x * 26).toFixed(1) + "deg"); card.style.setProperty("--crx", (-y * 18).toFixed(1) + "deg");
+    });
+    stage.addEventListener("pointerleave", function () { card.style.removeProperty("--cry"); card.style.removeProperty("--crx"); });
+  })();
 
   render();
   go(1, false);

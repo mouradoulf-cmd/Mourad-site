@@ -104,7 +104,7 @@
         subYearlyNote: "Or pay {months} months a year instead of 12 and get 2 months free.",
         careGoogle: "A Google listing needs no care plan. It's yours to keep.",
         reviewTitle: "Review & pay", promo: "Promo code", promoPh: "e.g. WELCOME10", promoNote: "Codes are checked on Stripe's secure page, before you pay.",
-        sumSetup: "Setup fee · one-time", sumOffer: "Offer · one-time", sumCare: "Subscription · first period", sumNone: "None", renew: "Then {price} / {period}, starting when your site goes live.", month: "month", year: "year",
+        sumSetup: "Setup fee · one-time", sumOffer: "Offer · one-time", sumCare: "Subscription · first period", sumNone: "None", renew: "Then {price} / {period}, charged automatically. Cancel anytime.", month: "month", year: "year",
         terms: "I agree to the terms of sale. A subscription or care plan renews automatically and can be cancelled anytime, free of charge.", termsLink: "Read the terms",
         backOffers: "Back to offers", included: "What's included", edit: "Edit", method: "Payment method"
       },
@@ -230,7 +230,7 @@
         subYearlyNote: "Ou payez {months} mois par an au lieu de 12, avec 2 mois offerts.",
         careGoogle: "Une fiche Google n'a pas besoin d'entretien. Elle vous appartient.",
         reviewTitle: "Vérifier et payer", promo: "Code promo", promoPh: "ex. WELCOME10", promoNote: "Les codes sont vérifiés sur la page sécurisée de Stripe, avant le paiement.",
-        sumSetup: "Mise en place · unique", sumOffer: "Offre · paiement unique", sumCare: "Abonnement · première période", sumNone: "Aucun", renew: "Puis {price} / {period}, à partir de la mise en ligne de votre site.", month: "mois", year: "an",
+        sumSetup: "Mise en place · unique", sumOffer: "Offre · paiement unique", sumCare: "Abonnement · première période", sumNone: "Aucun", renew: "Puis {price} / {period}, prélevés automatiquement. Résiliable à tout moment.", month: "mois", year: "an",
         terms: "J'accepte les conditions de vente. Un abonnement ou un forfait d'entretien se renouvelle automatiquement et se résilie à tout moment, gratuitement.", termsLink: "Lire les CGV",
         backOffers: "Retour aux offres", included: "Ce qui est inclus", edit: "Modifier", method: "Moyen de paiement"
       },
@@ -356,7 +356,7 @@
         subYearlyNote: "Oppure paghi {months} mesi all'anno invece di 12 e ne hai 2 gratis.",
         careGoogle: "Una scheda Google non ha bisogno di assistenza, è tua.",
         reviewTitle: "Controlla e paga", promo: "Codice promo", promoPh: "es. WELCOME10", promoNote: "I codici vengono verificati sulla pagina sicura di Stripe, prima del pagamento.",
-        sumSetup: "Attivazione · una tantum", sumOffer: "Offerta · una tantum", sumCare: "Abbonamento · primo periodo", sumNone: "Nessuna", renew: "Poi {price} / {period}, da quando il sito va online.", month: "mese", year: "anno",
+        sumSetup: "Attivazione · una tantum", sumOffer: "Offerta · una tantum", sumCare: "Abbonamento · primo periodo", sumNone: "Nessuna", renew: "Poi {price} / {period}, addebitati automaticamente. Disdicibile in qualsiasi momento.", month: "mese", year: "anno",
         terms: "Accetto le condizioni di vendita. Un abbonamento o un piano di assistenza si rinnova automaticamente e si disdice quando vuoi, gratuitamente.", termsLink: "Leggi le condizioni",
         backOffers: "Torna alle offerte", included: "Cosa è incluso", edit: "Modifica", method: "Metodo di pagamento"
       },
@@ -482,7 +482,7 @@
         subYearlyNote: "หรือจ่าย {months} เดือนต่อปีแทน 12 เดือน รับฟรี 2 เดือน",
         careGoogle: "หน้าร้าน Google ไม่ต้องมีแพ็กดูแล เป็นของคุณตลอดไป",
         reviewTitle: "ตรวจสอบและชำระเงิน", promo: "โค้ดส่วนลด", promoPh: "เช่น WELCOME10", promoNote: "โค้ดจะถูกตรวจสอบบนหน้าชำระเงินที่ปลอดภัยของ Stripe ก่อนชำระเงิน",
-        sumSetup: "ค่าติดตั้ง · ครั้งเดียว", sumOffer: "แพ็กเกจ · จ่ายครั้งเดียว", sumCare: "ค่าบริการรายเดือน · งวดแรก", sumNone: "ไม่มี", renew: "จากนั้น {price} / {period} เริ่มเมื่อเว็บไซต์ออนไลน์", month: "เดือน", year: "ปี",
+        sumSetup: "ค่าติดตั้ง · ครั้งเดียว", sumOffer: "แพ็กเกจ · จ่ายครั้งเดียว", sumCare: "ค่าบริการรายเดือน · งวดแรก", sumNone: "ไม่มี", renew: "จากนั้น {price} / {period} ตัดบัตรอัตโนมัติ ยกเลิกได้ทุกเมื่อ", month: "เดือน", year: "ปี",
         terms: "ฉันยอมรับเงื่อนไขการขาย ค่าบริการรายเดือนหรือแพ็กดูแลต่ออายุอัตโนมัติ และยกเลิกได้ทุกเมื่อโดยไม่มีค่าใช้จ่าย", termsLink: "อ่านเงื่อนไข",
         backOffers: "กลับไปที่แพ็กเกจ", included: "สิ่งที่ได้รับ", edit: "แก้ไข", method: "วิธีชำระเงิน"
       },
@@ -608,7 +608,7 @@
         subYearlyNote: "أو ادفع {months} أشهر في السنة بدل 12، مع شهرين مجانًا.",
         careGoogle: "صفحة Google لا تحتاج إلى خطة عناية، إنها ملكك.",
         reviewTitle: "راجع وادفع", promo: "رمز الخصم", promoPh: "مثال: WELCOME10", promoNote: "يتم التحقق من الرموز على صفحة Stripe الآمنة قبل الدفع.",
-        sumSetup: "الإعداد · مرة واحدة", sumOffer: "العرض · دفعة واحدة", sumCare: "الاشتراك · الفترة الأولى", sumNone: "لا شيء", renew: "ثم {price} / {period}، بدءًا من إطلاق موقعك.", month: "شهر", year: "سنة",
+        sumSetup: "الإعداد · مرة واحدة", sumOffer: "العرض · دفعة واحدة", sumCare: "الاشتراك · الفترة الأولى", sumNone: "لا شيء", renew: "ثم {price} / {period} تُخصم تلقائيًا. يمكنك الإلغاء في أي وقت.", month: "شهر", year: "سنة",
         terms: "أوافق على شروط البيع. يتجدد الاشتراك أو خطة العناية تلقائيًا ويمكن إلغاؤه في أي وقت مجانًا.", termsLink: "اقرأ الشروط",
         backOffers: "العودة إلى العروض", included: "ما الذي يتضمنه", edit: "تعديل", method: "طريقة الدفع"
       },
