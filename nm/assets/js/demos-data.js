@@ -1,19 +1,20 @@
-/* NM Studio: the list behind demos.html (private). One line per business demo, any order (the page sorts A-Z).
- *   slug   — folder of the demo: the site lives at /Mourad-site/demos/<slug>/
- *   name   — business name as shown       type — Restaurant, Coiffeur, Spa...      city — town / area
- *   date   — "YYYY-MM-DD" the demo was made
- *   status — "prete" (ready) | "envoyee" (sent) | "discussion" | "client" | "non" (not interested)
- *   phone  — optional, WhatsApp of the business owner (digits, with country code), for the "WhatsApp" button
- *   note   — optional, anything worth remembering
- * Example:
- *   { slug: "chez-paolo", name: "Chez Paolo", type: "Restaurant", city: "Hua Hin", date: "2026-10-12", status: "envoyee", phone: "", note: "Rappeler jeudi" },
+/* NM Studio — data behind "Mon espace" (demos.html, private). Claude keeps this file up to date in every
+ * conversation on this repo: any new demo, page or project goes here, and NM_UPDATED gets today's date.
+ *
+ * NM_DEMOS — one line per client demo (the site lives at /Mourad-site/demos/<slug>/), any order (sorted A-Z):
+ *   { slug: "chez-paolo", name: "Chez Paolo", type: "Restaurant", city: "Hua Hin", date: "2026-10-12",
+ *     status: "prete" | "envoyee" | "discussion" | "client" | "non", phone: "", note: "" }
+ * NM_LINKS — every link, grouped; `space` puts the group in one of the three spaces:
+ *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
+ *   or a full https:// URL for something hosted elsewhere.
  */
+window.NM_UPDATED = "2026-10-08";
+
 window.NM_DEMOS = [
 ];
 
-/* Every link the owner uses, grouped. Paths are relative to the site root (…/Mourad-site/). Claude keeps this up to date. */
 window.NM_LINKS = [
-  { group: "Mon site NM Studio", items: [
+  { space: "site", group: "Mon site NM Studio", items: [
     { name: "NM Studio · Français", path: "nm/fr/", note: "Le site à montrer aux clients" },
     { name: "NM Studio · English", path: "nm/" },
     { name: "NM Studio · ไทย", path: "nm/th/" },
@@ -22,25 +23,27 @@ window.NM_LINKS = [
     { name: "Tarifs", path: "nm/fr/pricing.html" },
     { name: "Page de paiement", path: "nm/checkout.html" }
   ] },
-  { group: "Ma formation", items: [
-    { name: "NM Academy", path: "nm-academy/", note: "Page de vente" },
-    { name: "NM Academy · inscription", path: "nm-academy/start.html" },
-    { name: "NM Academy · espace élèves", path: "nm-academy/members.html" }
-  ] },
-  { group: "Mes outils", items: [
+  { space: "site", group: "Mes outils", items: [
     { name: "Maquette pro", path: "nm/maquette.html", note: "Maquette rapide avec photos" },
     { name: "Statistiques", path: "nm/stats.html", note: "Visiteurs par jour" },
     { name: "Générateur de QR codes", path: "nm/qr-generator.html" },
     { name: "Carte de visite", path: "nm/business-card/card.html" },
     { name: "Espace client (abonnement)", path: "nm/account.html" }
   ] },
-  { group: "Mes autres projets", items: [
-    { name: "Studio Vidéo IA", path: "video-ia/" },
+  { space: "video", group: "Mes studios vidéo IA", items: [
+    { name: "Studio Vidéo IA", path: "video-ia/", note: "Créer des vidéos IA" },
     { name: "Short Drama IA", path: "drama-ia/" },
     { name: "Story Studio", path: "story/" },
     { name: "Studio Universel", path: "studio/" },
     { name: "Remix Studio", path: "remix/" },
-    { name: "English Easy (TH)", path: "english-easy-th/" },
     { name: "Cast & Render 3D", path: "cast-and-render/" }
+  ] },
+  { space: "formation", group: "NM Academy", items: [
+    { name: "NM Academy", path: "nm-academy/", note: "Ma formation · page de vente" },
+    { name: "Inscription", path: "nm-academy/start.html" },
+    { name: "Espace élèves", path: "nm-academy/members.html" }
+  ] },
+  { space: "formation", group: "Autres formations", items: [
+    { name: "English Easy (TH)", path: "english-easy-th/", note: "Anglais facile pour les Thaïs" }
   ] }
 ];
