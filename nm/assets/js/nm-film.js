@@ -1,6 +1,7 @@
-/* NM Studio: the "problems" film. A muted, looping video inside a 3D iPhone; captions and the chapter list follow the video.
+/* NM Studio: the "problems" film. A muted, looping video inside a 3D iPhone; captions, the 4-step bar and the chapter card follow it.
    - the video file only loads when the section gets close, and only plays while it is on screen
-   - reduced motion or data saver: no autoplay, a play button instead
+   - reduced motion or data saver: no autoplay, a play button instead, no 3D
+   - 3D with a job: the phone stands up to face you as you scroll to it; the chapter card turns in when the step changes
    - captions come from the hidden .film__cues list, so the language switcher (data-i18n) translates them too
    - to swap the film: replace assets/video/film.mp4 and adjust data-s / data-e (cues) and data-t (chapters) in the HTML */
 (function () {
@@ -10,14 +11,19 @@
   var video = root.querySelector(".film__video"), cap = root.querySelector(".film__cap"), bar = root.querySelector(".film__bar i");
   var playBtn = root.querySelector("[data-film-play]"), soundBtn = root.querySelector("[data-film-sound]"), big = root.querySelector(".film__big");
   var phone = root.querySelector(".film__phone"), stage = root.querySelector(".film__stage");
+  var steps = [].slice.call(root.querySelectorAll(".film__step"));
   var cues = [].slice.call(root.querySelectorAll(".film__cues li")).map(function (li) {
     return { s: parseFloat(li.getAttribute("data-s")), e: parseFloat(li.getAttribute("data-e")), el: li };
   });
   var chs = [].slice.call(root.querySelectorAll(".film__ch")).map(function (li) { return { t: parseFloat(li.getAttribute("data-t")), el: li }; });
+  if (!video || !chs.length) return;
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var saveData = !!(navigator.connection && navigator.connection.saveData);
+  var rtl = document.documentElement.dir === "rtl";
   var auto = !reduce && !saveData, userPaused = false, visible = false, loaded = false, raf = 0, curCue = -1, curCh = -1;
+
+  root.classList.add("film--js");
 
   function load() {
     if (loaded) return; loaded = true;
@@ -25,16 +31,20 @@
     if (src) { src.src = src.getAttribute("data-src"); src.removeAttribute("data-src"); }
     video.preload = "auto"; video.load();
   }
-  function setPaused(p) {
-    root.classList.toggle("is-paused", p);
-    if (playBtn) playBtn.classList.toggle("is-on", !p);
-  }
-  function play() {
-    load();
-    var pr = video.play();
-    if (pr && pr.catch) pr.catch(function () { setPaused(true); });
-  }
+  function setPaused(p) { root.classList.toggle("is-paused", p); if (playBtn) playBtn.classList.toggle("is-on", !p); }
+  function play() { load(); var pr = video.play(); if (pr && pr.catch) pr.catch(function () { setPaused(true); }); }
 
+  function show(i) {
+    if (i === curCh) return;
+    var prev = curCh; curCh = i;
+    chs.forEach(function (c, k) {
+      c.el.classList.toggle("is-on", k === i);
+      c.el.classList.toggle("is-out", k === prev);
+      c.el.setAttribute("aria-hidden", k === i ? "false" : "true");
+      if ("inert" in c.el) c.el.inert = k !== i;
+    });
+    steps.forEach(function (s, k) { s.classList.toggle("is-on", k === i); s.setAttribute("aria-current", k === i ? "step" : "false"); if (k !== i) s.style.setProperty("--p", k < i ? 1 : 0); });
+  }
   function chapterIndex(t) { var i = 0; chs.forEach(function (c, k) { if (t >= c.t) i = k; }); return i; }
   function render() {
     var t = video.currentTime || 0, d = video.duration || 0;
@@ -45,19 +55,9 @@
       curCue = ci; cap.classList.add("is-swap");
       setTimeout(function () { cap.textContent = curCue >= 0 ? cues[curCue].el.textContent.trim() : ""; cap.classList.remove("is-swap"); }, reduce ? 0 : 200);
     }
-    var hi = chapterIndex(t);
-    if (hi !== curCh) { curCh = hi; chs.forEach(function (c, k) { c.el.classList.toggle("is-on", k === hi); if (k !== hi) c.el.style.setProperty("--p", k < hi ? 1 : 0); }); follow(hi); }
+    var hi = chapterIndex(t); show(hi);
     var end = hi + 1 < chs.length ? chs[hi + 1].t : (d || chs[hi].t + 1);
-    chs[hi].el.style.setProperty("--p", Math.max(0, Math.min(1, (t - chs[hi].t) / (end - chs[hi].t))).toFixed(3));
-  }
-  // mobile: the chapter strip scrolls by itself to the chapter playing, unless the visitor just swiped it
-  var strip = root.querySelector(".film__chapters"), touched = 0;
-  ["pointerdown", "touchstart", "wheel"].forEach(function (ev) { strip.addEventListener(ev, function () { touched = Date.now(); }, { passive: true }); });
-  function follow(i) {
-    if (!visible || strip.scrollWidth <= strip.clientWidth + 4 || Date.now() - touched < 5000) return;
-    var li = chs[i].el, rtl = document.documentElement.dir === "rtl";
-    var x = rtl ? -(strip.scrollWidth - li.offsetLeft - li.offsetWidth - parseFloat(getComputedStyle(strip).paddingLeft)) : li.offsetLeft - parseFloat(getComputedStyle(strip).paddingLeft);
-    strip.scrollTo({ left: x, behavior: reduce ? "auto" : "smooth" });
+    if (steps[hi]) steps[hi].style.setProperty("--p", Math.max(0, Math.min(1, (t - chs[hi].t) / (end - chs[hi].t))).toFixed(3));
   }
   function loop() { render(); raf = !video.paused && visible ? requestAnimationFrame(loop) : 0; }
 
@@ -76,22 +76,19 @@
     if (video.paused) { userPaused = false; play(); }
   });
 
-  chs.forEach(function (c) {
-    c.el.addEventListener("click", function () {
-      load();
-      var go = function () { video.currentTime = c.t + 0.05; userPaused = false; play(); render(); };
-      if (video.readyState >= 1) go(); else video.addEventListener("loadedmetadata", go, { once: true });
-    });
-  });
+  function seek(i) {
+    load(); show(i);
+    var go = function () { video.currentTime = chs[i].t + 0.05; userPaused = false; play(); render(); };
+    if (video.readyState >= 1) go(); else video.addEventListener("loadedmetadata", go, { once: true });
+  }
+  steps.forEach(function (s, i) { s.addEventListener("click", function () { seek(i); }); });
 
-  // initial state: first chapter + first caption, so the section reads well before the video starts
-  chs[0] && chs[0].el.classList.add("is-on"); curCh = 0;
+  // start on step 1 with its caption, so the section reads well before the film starts
+  show(0);
   if (cues[0]) { cap.textContent = cues[0].el.textContent.trim(); curCue = 0; }
   setPaused(!auto);
 
   if (!("IntersectionObserver" in window)) { load(); if (auto) play(); return; }
-
-  // load when close, play only while really visible
   new IntersectionObserver(function (es) { if (es[0].isIntersecting) load(); }, { rootMargin: "600px 0px" }).observe(stage);
   new IntersectionObserver(function (es) {
     visible = es[0].isIntersecting;
@@ -99,32 +96,36 @@
     else if (!visible && !video.paused) video.pause();
   }, { threshold: 0.35 }).observe(phone);
 
-  // entry: only armed once we know the observer works, so the section is never stuck hidden
-  if (!reduce) {
-    root.classList.add("film--armed");
-    var io = new IntersectionObserver(function (es) {
-      if (es[0].isIntersecting) { root.classList.add("is-in"); io.disconnect(); }
-    }, { threshold: 0.15 });
-    io.observe(root);
-    setTimeout(function () { root.classList.add("is-in"); }, 4000);
-  }
+  if (reduce) return;
 
-  // gentle tilt and moving light that follow the mouse (desktop only)
-  if (!reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    var tr = 0, rtl = document.documentElement.dir === "rtl";
+  /* 3D 1: the phone lies back and stands up to face you as it reaches the middle of the screen.
+     Scroll work only runs while the stage is near the viewport. */
+  var baseRy = rtl ? 12 : -12, tiltX = 0, tiltY = 0, standing = 0, near = false, tick = 0;
+  function apply() {
+    tick = 0;
+    var r = stage.getBoundingClientRect(), vh = window.innerHeight;
+    var p = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.75)));   // 0 when the stage enters, 1 once its top is a quarter up the screen
+    standing = 1 - Math.pow(1 - p, 3);
+    var rx = 4 + (1 - standing) * 38 + tiltX, ry = baseRy * (0.4 + 0.6 * standing) + tiltY;
+    phone.style.setProperty("--rx", rx.toFixed(2) + "deg");
+    phone.style.setProperty("--ry", ry.toFixed(2) + "deg");
+  }
+  function req() { if (!tick) tick = requestAnimationFrame(apply); }
+  new IntersectionObserver(function (es) {
+    near = es[0].isIntersecting;
+    if (near) { window.addEventListener("scroll", req, { passive: true }); req(); }
+    else window.removeEventListener("scroll", req);
+  }, { rootMargin: "200px 0px" }).observe(stage);
+  window.addEventListener("resize", req, { passive: true });
+  apply();
+
+  /* desktop: the phone follows the mouse a little, and the light on the glass moves with it */
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     stage.addEventListener("pointermove", function (e) {
-      if (tr) return;
-      tr = requestAnimationFrame(function () {
-        tr = 0; var r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-        root.classList.add("is-tilting");
-        phone.style.setProperty("--ry", ((rtl ? 11 : -11) + (x - 0.5) * 14).toFixed(2) + "deg");
-        phone.style.setProperty("--rx", (3 + (0.5 - y) * 8).toFixed(2) + "deg");
-        phone.style.setProperty("--sx", (100 - x * 80).toFixed(1) + "%");
-      });
+      var r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      tiltY = (x - 0.5) * 14; tiltX = (0.5 - y) * 8;
+      phone.style.setProperty("--sx", (100 - x * 80).toFixed(1) + "%"); req();
     });
-    stage.addEventListener("pointerleave", function () {
-      root.classList.remove("is-tilting");
-      phone.style.removeProperty("--ry"); phone.style.removeProperty("--rx"); phone.style.removeProperty("--sx");
-    });
+    stage.addEventListener("pointerleave", function () { tiltX = tiltY = 0; phone.style.removeProperty("--sx"); req(); });
   }
 })();
