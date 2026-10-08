@@ -150,4 +150,10 @@ real business — remove the template's sample reviews/star counts or label them
 `nm/assets/js/demos-data.js`: `NM_DEMOS` (client demos) and `NM_LINKS` (groups with `space: "site" | "video" |
 "formation"`). Whenever you publish a new page, project, demo or course in any conversation, add it to the right
 space there and set `NM_UPDATED` to today's date — without being asked. When the owner says "ajoute ça dans
-Vidéo IA / Formation / Site web", add the link to that space. The page fetches the data file fresh on every open.
+Vidéo IA / Formation / Site web", add the link to that space.
+Pick the space by what the work is about — never dump everything in "Site web":
+- **Vidéo IA** (`space: "video"`): AI video studios/tools, video projects, generated films, TikTok/YouTube video work.
+- **Formation** (`space: "formation"`): courses and their pages (NM Academy, Avatar Cash, English Easy, members areas, funnels).
+- **Site web** (`space: "site"`): NM Studio site, client demos (`NM_DEMOS`), website tools and templates.
+At the end of any task that publishes or changes a page, tell the owner in one line which space it is in
+("c'est dans Mon espace → Vidéo IA") along with the URL. The page fetches the data file fresh on every open.
