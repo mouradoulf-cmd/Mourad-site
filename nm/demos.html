@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<meta content="#0a0a0b" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="Mes démos" name="apple-mobile-web-app-title"/>
+<title>Mes démos | NM Studio</title>
+<link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="assets/css/site.css?v=20261008v" rel="stylesheet"/>
+<style>
+  body { min-height: 100vh; background: radial-gradient(60rem 30rem at 50% -10%, rgba(201,169,97,.12), transparent 70%), var(--ink); }
+  .dm { width: min(100% - 2rem, 44rem); margin: 0 auto; padding: clamp(1.6rem, 5vw, 3.5rem) 0 5rem; }
+  .dm__tools { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .dm__tools a { padding: .4rem .8rem; border-radius: 999px; font-size: .8rem; font-weight: 600; color: var(--muted); background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+  .dm__tools a[aria-current="page"] { color: #1c1405; background: var(--gold); box-shadow: none; }
+  .dm h1 { margin: .5rem 0 0; font-size: clamp(2rem, 7vw, 3rem); line-height: 1.02; }
+  .dm__lead { margin: .7rem 0 1.4rem; color: var(--muted); line-height: 1.6; }
+  .dm__search { position: sticky; top: 0; z-index: 5; padding: .7rem 0; background: linear-gradient(var(--ink) 75%, transparent); }
+  .dm__search input { width: 100%; padding: .9rem 1rem .9rem 2.6rem; border-radius: 14px; border: 1px solid rgba(255,255,255,.12); background: rgba(20,18,20,.9) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23a89e91' stroke-width='1.8'%3E%3Ccircle cx='8.5' cy='8.5' r='5.5'/%3E%3Cpath d='M13 13l4 4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat .85rem 50% / 1.1rem;
+    color: var(--text); font: 500 1rem/1.3 var(--font-sans); outline: none; }
+  .dm__search input:focus { border-color: rgba(228,207,154,.6); }
+  .dm__filters { display: flex; gap: .4rem; overflow-x: auto; padding: .2rem 0 .8rem; scrollbar-width: none; }
+  .dm__filters::-webkit-scrollbar { display: none; }
+  .dm__f { all: unset; flex: none; cursor: pointer; padding: .45rem .75rem; border-radius: 999px; font-size: .82rem; font-weight: 600; color: var(--muted); background: rgba(255,255,255,.04); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+  .dm__f[aria-pressed="true"] { color: var(--text); box-shadow: inset 0 0 0 2px var(--gold); background: rgba(201,169,97,.1); }
+  .dm__f span { opacity: .7; margin-left: .3rem; }
+  .dm__az { display: flex; flex-wrap: wrap; gap: .25rem; margin: 0 0 1rem; }
+  .dm__az a { min-width: 1.9rem; padding: .3rem .1rem; text-align: center; border-radius: 8px; font-size: .78rem; font-weight: 700; color: var(--gold-soft); background: rgba(201,169,97,.08); }
+  .dm__letter { position: sticky; top: 4.6rem; z-index: 2; margin: 1.2rem 0 .5rem; font-family: var(--font-serif); font-style: italic; font-size: 1.6rem; color: var(--gold); }
+  .dm__card { padding: .9rem; border-radius: 16px; margin-bottom: .55rem; background: linear-gradient(150deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .dm__top { display: flex; align-items: flex-start; justify-content: space-between; gap: .6rem; }
+  .dm__card h2 { margin: 0; font-size: 1.12rem; line-height: 1.25; }
+  .dm__meta { margin: .2rem 0 0; color: var(--muted); font-size: .8rem; }
+  .dm__note { margin: .45rem 0 0; color: var(--gold-soft); font-size: .82rem; }
+  .dm__st { all: unset; flex: none; cursor: pointer; padding: .35rem .65rem; border-radius: 999px; font-size: .74rem; font-weight: 700; white-space: nowrap; }
+  .st-prete { color: #d9cfc2; background: rgba(255,255,255,.1); }
+  .st-envoyee { color: #0b1a2e; background: #7cc4ff; }
+  .st-discussion { color: #2a1a00; background: #f6c453; }
+  .st-client { color: #062313; background: #4ade80; }
+  .st-non { color: #f3c4c4; background: rgba(239,68,68,.22); }
+  .dm__btns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; margin-top: .75rem; }
+  .dm__btns a, .dm__btns button { all: unset; cursor: pointer; text-align: center; padding: .55rem .2rem; border-radius: 10px; font-size: .8rem; font-weight: 600; background: rgba(255,255,255,.06); }
+  .dm__btns a:first-child { background: var(--gold); color: #1c1405; }
+  .dm__empty { padding: 1.4rem; border-radius: 16px; text-align: center; color: var(--muted); line-height: 1.6; background: rgba(255,255,255,.03); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .dm__empty b { color: var(--text); }
+  .dm__sec { margin: 2.2rem 0 .8rem; font-size: 1.1rem; }
+  .dm__tpl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  .dm__tpl a { padding: .75rem .85rem; border-radius: 14px; background: rgba(255,255,255,.03); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .dm__tpl b { display: block; }
+  .dm__tpl small { color: var(--gold-soft); font-family: var(--font-serif); font-style: italic; }
+  .dm__tip { margin-top: 1.6rem; color: var(--muted); font-size: .85rem; line-height: 1.6; }
+  .qr { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 1.5rem; background: rgba(5,5,6,.88); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .qr[hidden] { display: none; }
+  .qr__card { width: min(100%, 22rem); padding: 1.4rem; border-radius: 22px; text-align: center; background: #fff; color: #111; }
+  .qr__card h2 { margin: 0 0 .2rem; font-size: 1.25rem; color: #111; }
+  .qr__card p { margin: 0 0 1rem; font-size: .85rem; color: #555; }
+  .qr__code { display: grid; place-items: center; }
+  .qr__code img, .qr__code canvas { width: 100% !important; height: auto !important; max-width: 17rem; }
+  .qr__close { all: unset; cursor: pointer; margin-top: 1rem; padding: .7rem 1.4rem; border-radius: 999px; font-weight: 700; background: #111; color: #fff; }
+</style>
+</head>
+<body>
+<main class="dm">
+  <nav class="dm__tools" aria-label="Outils"><a aria-current="page" href="demos.html">Mes démos</a><a href="maquette.html">Maquette</a><a href="stats.html">Statistiques</a></nav>
+  <p class="eyebrow">Espace privé NM Studio</p>
+  <h1>Mes démos</h1>
+  <p class="dm__lead">Tous les sites démo préparés pour tes commerçants, de A à Z. Touche le statut pour le changer.</p>
+
+  <div class="dm__search"><input aria-label="Rechercher un commerce" autocomplete="off" id="q" placeholder="Rechercher un nom, une ville, un type…" type="search"/></div>
+  <div class="dm__filters" id="filters" role="group" aria-label="Filtrer par statut"></div>
+  <div class="dm__az" id="az"></div>
+  <div id="list"></div>
+
+  <h2 class="dm__sec">Modèles</h2>
+  <div class="dm__tpl" id="tpl"></div>
+  <p class="dm__tip">Astuce : dans Safari, touche Partager puis « Sur l'écran d'accueil » : cette page devient une appli « Mes démos » sur ton iPhone. Elle n'est pas sur Google. Le statut que tu changes ici est gardé sur ce téléphone ; dis-le-moi aussi pour que je le note dans la liste.</p>
+</main>
+
+<div class="qr" hidden id="qr" role="dialog" aria-modal="true" aria-labelledby="qrName">
+  <div class="qr__card"><h2 id="qrName"></h2><p>Scannez pour voir votre site</p><div class="qr__code" id="qrCode"></div><button class="qr__close" id="qrClose" type="button">Fermer</button></div>
+</div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+
+<script src="assets/js/demos-data.js?v=1"></script>
+<script src="assets/js/qrcode.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var ROOT = location.href.replace(/\/nm\/.*$/, "/");
+  var ST = [["prete", "Prête"], ["envoyee", "Envoyée"], ["discussion", "En discussion"], ["client", "Client ✅"], ["non", "Pas intéressé"]];
+  var label = {}; ST.forEach(function (s) { label[s[0]] = s[1]; });
+  var KEY = "nmDemoStatus", local = {};
+  try { local = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(local)); } catch (e) {} }
+  var demos = (window.NM_DEMOS || []).filter(function (d) { return d && d.slug && d.name; }).map(function (d) {
+    return Object.assign({}, d, { status: local[d.slug] || d.status || "prete" });
+  });
+  var norm = function (s) { return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); };
+  demos.sort(function (a, b) { return norm(a.name).localeCompare(norm(b.name)); });
+  var filter = "", query = "";
+  var toastEl = document.getElementById("toast");
+  function toast(m) { toastEl.textContent = m; toastEl.classList.add("is-visible"); clearTimeout(toast.t); toast.t = setTimeout(function () { toastEl.classList.remove("is-visible"); }, 2500); }
+  function url(d) { return ROOT + "demos/" + d.slug + "/"; }
+  function letter(d) { var c = norm(d.name).charAt(0).toUpperCase(); return /[A-Z]/.test(c) ? c : "#"; }
+  function fmtDate(s) { if (!s) return ""; var p = s.split("-"); return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : s; }
+
+  function filters() {
+    var box = document.getElementById("filters"); box.innerHTML = "";
+    [["", "Tous"]].concat(ST).forEach(function (s) {
+      var n = demos.filter(function (d) { return !s[0] || d.status === s[0]; }).length;
+      var b = document.createElement("button"); b.type = "button"; b.className = "dm__f"; b.setAttribute("aria-pressed", String(filter === s[0]));
+      b.textContent = s[1]; var c = document.createElement("span"); c.textContent = n; b.appendChild(c);
+      b.onclick = function () { filter = s[0]; render(); };
+      box.appendChild(b);
+    });
+  }
+  function render() {
+    filters();
+    var list = document.getElementById("list"), az = document.getElementById("az"); list.innerHTML = ""; az.innerHTML = "";
+    if (!demos.length) {
+      list.innerHTML = '<div class="dm__empty"><b>Aucune démo pour l’instant.</b><br>Envoie-moi le nom, les photos et l’URL d’un commerce : je prépare son site et il apparaîtra ici, rangé par ordre alphabétique.</div>';
+      return;
+    }
+    var q = norm(query), shown = demos.filter(function (d) {
+      return (!filter || d.status === filter) && (!q || norm([d.name, d.type, d.city, d.note].join(" ")).indexOf(q) > -1);
+    });
+    if (!shown.length) { list.innerHTML = '<div class="dm__empty">Aucun résultat.</div>'; return; }
+    var cur = "";
+    shown.forEach(function (d) {
+      var L = letter(d);
+      if (L !== cur) {
+        cur = L;
+        var h = document.createElement("p"); h.className = "dm__letter"; h.id = "l-" + L; h.textContent = L; list.appendChild(h);
+        var a = document.createElement("a"); a.href = "#l-" + L; a.textContent = L; az.appendChild(a);
+      }
+      var c = document.createElement("article"); c.className = "dm__card";
+      var top = document.createElement("div"); top.className = "dm__top";
+      var t = document.createElement("div"), h2 = document.createElement("h2"), m = document.createElement("p");
+      h2.textContent = d.name; m.className = "dm__meta"; m.textContent = [d.type, d.city, fmtDate(d.date)].filter(Boolean).join(" · ");
+      t.appendChild(h2); t.appendChild(m);
+      if (d.note) { var n = document.createElement("p"); n.className = "dm__note"; n.textContent = "📝 " + d.note; t.appendChild(n); }
+      var st = document.createElement("button"); st.type = "button"; st.className = "dm__st st-" + d.status; st.textContent = label[d.status] || d.status;
+      st.setAttribute("aria-label", "Statut : " + st.textContent + ". Toucher pour changer");
+      st.onclick = function () {
+        var i = ST.findIndex(function (s) { return s[0] === d.status; });
+        d.status = ST[(i + 1) % ST.length][0]; local[d.slug] = d.status; save(); render(); toast(d.name + " : " + label[d.status]);
+      };
+      top.appendChild(t); top.appendChild(st); c.appendChild(top);
+      var btns = document.createElement("div"); btns.className = "dm__btns";
+      var o = document.createElement("a"); o.href = url(d); o.target = "_blank"; o.rel = "noopener"; o.textContent = "Ouvrir";
+      var qr = document.createElement("button"); qr.type = "button"; qr.textContent = "QR code"; qr.onclick = function () { showQr(d); };
+      var msg = "Bonjour ! Voici l'idée de site que j'ai préparée pour " + d.name + " : " + url(d) + "\nC'est gratuit et sans engagement. Ça vous plaît ?\nMourad, NM Studio";
+      var wa = document.createElement("a"); wa.target = "_blank"; wa.rel = "noopener"; wa.textContent = "WhatsApp";
+      wa.href = (d.phone ? "https://wa.me/" + String(d.phone).replace(/\D/g, "") : "https://wa.me/") + "?text=" + encodeURIComponent(msg);
+      var cp = document.createElement("button"); cp.type = "button"; cp.textContent = "Copier";
+      cp.onclick = function () { (navigator.clipboard ? navigator.clipboard.writeText(url(d)) : Promise.reject()).then(function () { toast("Lien copié"); }, function () { prompt("Lien :", url(d)); }); };
+      btns.appendChild(o); btns.appendChild(qr); btns.appendChild(wa); btns.appendChild(cp); c.appendChild(btns);
+      list.appendChild(c);
+    });
+  }
+  var qrBox = document.getElementById("qr"), qrCode = document.getElementById("qrCode");
+  function showQr(d) {
+    document.getElementById("qrName").textContent = d.name; qrCode.innerHTML = "";
+    if (window.QRCode) new window.QRCode(qrCode, { text: url(d), width: 512, height: 512, colorDark: "#111111", colorLight: "#ffffff", correctLevel: window.QRCode.CorrectLevel.M });
+    qrBox.hidden = false; document.getElementById("qrClose").focus();
+  }
+  document.getElementById("qrClose").onclick = function () { qrBox.hidden = true; };
+  qrBox.addEventListener("click", function (e) { if (e.target === qrBox) qrBox.hidden = true; });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") qrBox.hidden = true; });
+  document.getElementById("q").addEventListener("input", function (e) { query = e.target.value; render(); });
+
+  var T = [["", "Giulivo", "Restaurant"], ["street-food/", "Mae Lek", "Street food"], ["oblanc/", "ÔBlanc", "Café, brunch"], ["neon-tiger/", "Neon Tiger", "Pub, bar"],
+    ["noir/", "Noir", "Coiffeur, beauté"], ["v6-thai-spa/", "Malee", "Spa, massage"], ["scooter/", "Ride Siam", "Location"], ["atelier-des-facadiers/", "Atelier des Façadiers", "Entreprise"]];
+  var tb = document.getElementById("tpl");
+  T.forEach(function (x) { var a = document.createElement("a"); a.href = ROOT + x[0]; a.target = "_blank"; a.rel = "noopener"; a.innerHTML = "<b></b><small></small>"; a.firstChild.textContent = x[1]; a.lastChild.textContent = x[2]; tb.appendChild(a); });
+  render();
+})();
+</script>
+</body>
+</html>
