@@ -43,10 +43,10 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <link href="../assets/css/site.css?v=20261006a" rel="stylesheet"/>
 <link href="../assets/css/craft.css?v=20261006a" rel="stylesheet"/>
 <link href="../assets/css/work-gallery.css?v=20261008d" rel="stylesheet"/>
-<link href="../assets/css/film.css?v=20261008d" rel="stylesheet"/>
+<link href="../assets/css/film.css?v=20261008g" rel="stylesheet"/>
 <link href="../assets/css/polish.css?v=20261008d" rel="stylesheet"/>
 <script defer="" src="../assets/js/nm-dict.js?v=20261006ab"></script>
-<script defer="" src="../assets/js/nm-copy2.js?v=20261008c"></script>
+<script defer="" src="../assets/js/nm-copy2.js?v=20261008e"></script>
 <script defer="" src="../assets/js/offers-config.js?v=20261008d"></script>
 <script defer="" src="../assets/js/reviews-config.js"></script>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
@@ -165,7 +165,6 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <div class="section-head section-head--center">
 <p class="eyebrow" data-i18n="prob.eyebrow">هل يبدو هذا مألوفًا؟</p>
 <h2 class="section-title" data-anim="words" data-i18n-html="prob.title" id="probTitle">كل زبون لا يجدك <em>يدخل المحل المجاور.</em></h2>
-<p class="section-lead" data-i18n="prob.lead">ثلاث مشاكل تكلّف محلات باتايا زبائن ومالًا كل يوم. ولكل منها حل بسيط.</p>
 </div>
 <div class="film">
 <div class="film__stage">
@@ -186,16 +185,14 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span aria-hidden="true" class="film__sheen"></span>
 </div>
 </div>
-<ol class="film__steps" aria-label="الفيلم خطوة بخطوة" data-i18n-aria-label="prob.steps"><li><button class="film__step" type="button"><span aria-hidden="true" class="film__track"><i></i></span><span class="film__lab"><b>01</b><span data-i18n="prob.st1">جوجل</span></span></button></li><li><button class="film__step" type="button"><span aria-hidden="true" class="film__track"><i></i></span><span class="film__lab"><b>02</b><span data-i18n="prob.st2">القائمة</span></span></button></li><li><button class="film__step" type="button"><span aria-hidden="true" class="film__track"><i></i></span><span class="film__lab"><b>03</b><span data-i18n="prob.st3">الموقع</span></span></button></li><li><button class="film__step" type="button"><span aria-hidden="true" class="film__track"><i></i></span><span class="film__lab"><b>&#10003;</b><span data-i18n="prob.st4">الحل</span></span></button></li></ol>
-<ol class="film__chapters">
-<li class="film__ch" data-t="0"><div class="film__top"><span class="film__num">01</span><p class="film__k" data-i18n="prob.problem">المشكلة</p></div><h3><button type="button" data-i18n="prob.p1t">السياح لا يجدونك</button></h3><p class="film__b" data-i18n="prob.p1b">يبحثون في خرائط جوجل، لا في الشارع. بلا ملف، أو بمواعيد خاطئة وصور مظلمة، يختارون المحل المجاور.</p></li>
-<li class="film__ch" data-t="20.1"><div class="film__top"><span class="film__num">02</span><p class="film__k" data-i18n="prob.problem">المشكلة</p></div><h3><button type="button" data-i18n="prob.p2t">قائمتك صورة غير واضحة</button></h3><p class="film__b" data-i18n="prob.p2b">القوائم الورقية تتقادم، والسياح الأجانب لا يفهمونها، فيطلبون أقل أو يغادرون.</p></li>
-<li class="film__ch" data-t="27.6"><div class="film__top"><span class="film__num">03</span><p class="film__k" data-i18n="prob.problem">المشكلة</p></div><h3><button type="button" data-i18n="prob.p3t">بلا موقع، بلا ثقة</button></h3><p class="film__b" data-i18n="prob.p3b">الزوار يتفقدون موقعك قبل أن يدخلوا. وبدونه تذهب الحجوزات إلى منافس لديه موقع.</p></li>
-<li class="film__ch film__ch--fix" data-t="31.5"><div class="film__top"><span class="film__num"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="film__k" data-i18n="prob.fix">الحل</p></div><h3><button type="button" data-i18n="prob.fixT">يجدونك، يفهمونك، يحجزون</button></h3><p class="film__b" data-i18n="prob.fixB">اشتراك شهري، لا شيء عليك إدارته. نصمّم ونستضيف ونحدّث. وأنت تهتم بمطعمك.</p><ul class="film__fixes"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s1t">ملف جوجل يجعلهم يختارونك</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s2t">قائمة QR بلغتهم</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s3t">موقع يملأ طاولاتك</b></span></li></ul></li>
-</ol>
+<div class="film__punch">
+<p class="film__headline" data-i18n-html="prob.punchT">زبائنك يبحثون عنك الآن. <em>اجعلهم يجدونك.</em></p>
+<p class="film__punchb" data-i18n="prob.punchB">في باتايا، يكتب كل سائح «مطعم» على جوجل قبل أن يختار. كن أول مكان يراه، والقائمة التي يفهمها، والطاولة التي يحجزها.</p>
+<p class="film__punchl" data-i18n="prob.punchL">زبائن أكثر. دخل أكثر. ولا شيء عليك إدارته.</p>
+<p class="prob__cta film__cta"><a class="btn btn--sun btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><span data-i18n="prob.cta">لنصلحها معًا على واتساب</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
+</div>
 <ol class="film__cues" hidden=""><li data-s="0" data-e="11.4" data-i18n="prob.cap0">السابعة مساءً. الشارع مزدحم. وطاولاتها فارغة.</li><li data-s="11.4" data-e="20.1" data-i18n="prob.cap1">إنهم جائعون. يبحثون في جوجل. ومطعمها غير موجود.</li><li data-s="20.1" data-e="27.6" data-i18n="prob.cap2">يدخلون رغم ذلك. القائمة بالتايلاندية فقط. فيطلبون أقل القليل.</li><li data-s="27.6" data-e="31.5" data-i18n="prob.cap3">غدًا سيحجزون عند الجار. لديه موقع.</li><li data-s="31.5" data-e="37.9" data-i18n="prob.cap4">المطعم نفسه. هذه المرة وجدوه على جوجل.</li><li data-s="37.9" data-e="41.5" data-i18n="prob.cap5">موقع، قائمة QR، ملف جوجل. نتولّى كل شيء، كل شهر.</li></ol>
 </div>
-<p class="prob__cta"><a class="btn btn--sun btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><span data-i18n="prob.cta">لنصلحها معًا على واتساب</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
 </div>
 </section>
 <section aria-labelledby="workTitle" class="wk" id="work">
@@ -606,7 +603,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <script defer="" src="../assets/js/qrcode.min.js"></script>
 <script defer="" src="../assets/js/nm-qr.js"></script><script defer="" src="../assets/js/vendor/gsap.min.js"></script>
 <script defer="" src="../assets/js/vendor/ScrollTrigger.min.js"></script>
-<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-film.js?v=20261008d"></script>
+<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-film.js?v=20261008e"></script>
 <script defer="" src="../assets/js/safety.js?v=20261006a"></script>
 <script defer="" src="../assets/js/fx.js"></script>
 <script defer="" src="../assets/js/nm-home.js?v=20261006a"></script>

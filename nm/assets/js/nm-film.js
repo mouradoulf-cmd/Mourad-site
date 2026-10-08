@@ -16,7 +16,7 @@
     return { s: parseFloat(li.getAttribute("data-s")), e: parseFloat(li.getAttribute("data-e")), el: li };
   });
   var chs = [].slice.call(root.querySelectorAll(".film__ch")).map(function (li) { return { t: parseFloat(li.getAttribute("data-t")), el: li }; });
-  if (!video || !chs.length) return;
+  if (!video) return;
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var saveData = !!(navigator.connection && navigator.connection.saveData);
@@ -35,7 +35,7 @@
   function play() { load(); var pr = video.play(); if (pr && pr.catch) pr.catch(function () { setPaused(true); }); }
 
   function show(i) {
-    if (i === curCh) return;
+    if (!chs.length || i === curCh) return;
     var prev = curCh; curCh = i;
     chs.forEach(function (c, k) {
       c.el.classList.toggle("is-on", k === i);
@@ -61,6 +61,7 @@
       curCue = ci; cap.classList.add("is-swap");
       setTimeout(function () { cap.textContent = curCue >= 0 ? cues[curCue].el.textContent.trim() : ""; cap.classList.remove("is-swap"); }, reduce ? 0 : 200);
     }
+    if (!chs.length) return;
     var hi = chapterIndex(t); show(hi);
     var end = hi + 1 < chs.length ? chs[hi + 1].t : (d || chs[hi].t + 1);
     if (steps[hi]) steps[hi].style.setProperty("--p", Math.max(0, Math.min(1, (t - chs[hi].t) / (end - chs[hi].t))).toFixed(3));
@@ -103,6 +104,15 @@
   }, { threshold: 0.35 }).observe(phone);
 
   if (reduce) return;
+
+  // the line under the film rises in once it is on screen (hidden state only set now that the observer is known to work)
+  var punch = root.querySelector(".film__punch");
+  if (punch) {
+    root.classList.add("film--reveal");
+    var pio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { root.classList.add("is-in"); pio.disconnect(); } }, { threshold: 0.25 });
+    pio.observe(punch);
+    setTimeout(function () { root.classList.add("is-in"); }, 6000);
+  }
 
   /* 3D 1: the phone lies back and stands up to face you as it reaches the middle of the screen.
      Scroll work only runs while the stage is near the viewport. */
