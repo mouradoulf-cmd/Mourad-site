@@ -126,3 +126,13 @@ FR/EN/TH via `assets/js/i18n.js` (`[fr,en,th]` per key, `data-t` in HTML), all s
 `assets/js/config.js`, UI sounds in `assets/js/sfx.js` (Web Audio, no music, only after a
 user gesture), effects in `assets/js/fx.js`. Same honesty rules as Avatar Cash: no income
 guarantees, no fake proof, illustrative numbers must be labelled as examples.
+
+## NM Studio client demos (prospecting workflow)
+
+The user scouts a business and sends name, type, city, photos and an old-site / Google Maps URL. Build a
+personalised demo from the closest template (Giulivo, Noir, Mae Lek, ÔBlanc, Neon Tiger, Malee, Ride Siam,
+Façadiers): copy it to `demos/<slug>/` on the published branch `claude/thai-app-mnw166`, swap in their photos,
+name, copy and an adjusted palette, add `<meta name="robots" content="noindex">` and the "maquette gratuite"
+label, then add one line to `nm/assets/js/demos-data.js` (slug, name, type, city, date, status). The private
+page `nm/demos.html` lists them A–Z with status, QR code and WhatsApp share. Never invent reviews/ratings for a
+real business — remove the template's sample reviews/star counts or label them clearly as placeholders.
