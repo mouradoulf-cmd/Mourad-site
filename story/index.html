@@ -64,11 +64,11 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 <video id="nosleep" muted playsinline style="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none"></video>
 
 <div class="panel" id="apiPanel">
-  <div class="ttl">🔑 Clé API Agnes</div>
-  <input type="password" id="apiKeyInput" placeholder="Colle ta clé API Agnes (sk-...)" autocomplete="off" spellcheck="false" autocapitalize="off">
-  <button class="btn gold" id="apiSave" type="button">Enregistrer la clé</button>
+  <div class="ttl">🔑 Clés API Agnes (jusqu'à 8 comptes)</div>
+  <textarea id="apiKeyInput" rows="4" placeholder="Colle tes clés API Agnes, UNE PAR LIGNE (sk-...)" autocomplete="off" spellcheck="false" autocapitalize="off" style="width:100%;box-sizing:border-box;font-family:monospace"></textarea>
+  <button class="btn gold" id="apiSave" type="button">Enregistrer les clés</button>
   <div class="status" id="apiLine">Aucune clé enregistrée</div>
-  <div class="hint">La clé reste dans ce navigateur, elle est la même que pour Remix Studio.</div>
+  <div class="hint">Les clés restent dans ce navigateur. Quand une clé atteint sa limite du jour, le site passe tout seul à la suivante et les clés travaillent en parallèle : plus tu as de clés, plus tu avances vite. Respecte les conditions d'utilisation d'Agnes.</div>
 </div>
 
 <div class="panel">
@@ -91,7 +91,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
     <div class="hint" style="margin-top:1.6rem">Phrases de 2 à 6 mots maximum : plus fiable pour la bouche et la voix.</div>
   </div>
   <div class="row2">
-    <div><label class="lab" for="perDay">Clips à produire par jour</label><select id="perDay"><option value="3">3 (test)</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="80" selected>80 (garde ~20 vidéos de marge pour les refaçons)</option><option value="100">100 (tout le quota, sans marge)</option></select></div>
+    <div><label class="lab" for="perDay">Clips par partie (le site enchaîne les parties tant qu\'il reste des clés)</label><select id="perDay"><option value="3">3 (test)</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="80" selected>80 (garde ~20 vidéos de marge pour les refaçons)</option><option value="100">100 (tout le quota, sans marge)</option><option value="200">200 (plusieurs clés)</option><option value="300">300 (plusieurs clés)</option></select></div>
     <div class="hint" id="planInfo" style="margin-top:1.6rem"></div>
   </div>
   <div class="row2">
@@ -190,7 +190,7 @@ const MODEL_TEXT='agnes-2.5-flash',MODEL_IMAGE='agnes-image-2.1-flash',MODEL_VID
 const T={VID_SAFE:75,IMG_INT:3400,FIRST_POLL:80,POLLS:[8,8,12,12,20,20,25],MAX_POLL:100,B429:[10,20,35,50,75,100,150],B503:[5,10,15,20,30,45],NET:[3,5,8,12,20,30]};
 let TS=1;
 const KEY='agnes_api_key_studio',PROJ='story_project_v1',USAGE='story_usage_v1',TIMING='story_timing_v1';
-const S={running:false,stop:false,wake:null,qaVision:null,refOK:null};
+const S={pend:{},running:false,stop:false,wake:null,qaVision:null,refOK:null};
 const FMT={'16:9':['1792x1024','horizontal 16:9 widescreen'],'9:16':['1024x1792','vertical 9:16']};
 const FRAMESFOR=d=>d<=6?121:(d<=8.5?169:241);
 const LANGN={th:'Thai',fr:'French',en:'English'};
@@ -291,7 +291,12 @@ const NEG_VID='Smooth natural motion. Exactly one action happens, nothing else. 
 function lsGet(k){let v=null;try{v=localStorage.getItem(k)}catch(e){}if(v==null){try{v=sessionStorage.getItem(k)}catch(e){}}return v}
 function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}try{sessionStorage.setItem(k,v)}catch(e){}}
 function lsDel(k){try{localStorage.removeItem(k)}catch(e){}try{sessionStorage.removeItem(k)}catch(e){}}
-const getKey=()=>(lsGet(KEY)||'').trim();
+const KEYS='story_keys_v1';
+function keyList(){let a=[];try{a=JSON.parse(lsGet(KEYS)||'[]')}catch(e){}if(!Array.isArray(a))a=[];a=a.map(x=>String(x||'').trim()).filter(Boolean);const k=(lsGet(KEY)||'').trim();if(k&&a.indexOf(k)<0)a.unshift(k);return a.filter((x,i)=>a.indexOf(x)===i).slice(0,8)}
+const keyTag=k=>k.slice(0,7)+'…'+k.slice(-4);
+const badKeys={};
+const goodKeys=()=>keyList().filter(k=>!badKeys[k]);
+const getKey=()=>goodKeys()[0]||keyList()[0]||'';
 let _db=null;
 function idb(){return _db||(_db=new Promise((ok,ko)=>{try{const r=indexedDB.open('story_studio',1);r.onupgradeneeded=()=>r.result.createObjectStore('f');r.onsuccess=()=>ok(r.result);r.onerror=()=>ko(r.error)}catch(e){ko(e)}}))}
 async function dbPut(k,v){try{const d=await idb();return await new Promise(ok=>{const t=d.transaction('f','readwrite');t.objectStore('f').put(v,k);t.oncomplete=()=>ok(true);t.onerror=()=>ok(false)})}catch(e){mem[k]=v;return false}}
@@ -305,8 +310,10 @@ function loadShow(){try{const o=JSON.parse(lsGet(SHOWK)||'null');if(o&&o.eps)SHO
 function saveShow(){try{lsSet(SHOWK,JSON.stringify(SHOW))}catch(e){}}
 function save(){try{const q=JSON.parse(JSON.stringify(P));lsSet(PROJ,JSON.stringify(q))}catch(e){}}
 function load(){try{const o=JSON.parse(lsGet(PROJ)||'null');if(o&&o.scenes)P=o}catch(e){}}
-function usage(){let u={};try{u=JSON.parse(lsGet(USAGE)||'{}')}catch(e){}const d=new Date().toISOString().slice(0,10);if(u.d!==d)u={d,n:0};return u}
-function addUsage(){const u=usage();u.n++;lsSet(USAGE,JSON.stringify(u))}
+function usageAll(){let u={};try{u=JSON.parse(lsGet(USAGE)||'{}')}catch(e){}const d=new Date().toISOString().slice(0,10);if(u.d!==d||!u.m)u={d,m:{}};return u}
+function usageOf(k){return usageAll().m[k]||0}
+function usage(){const u=usageAll();let n=0;Object.keys(u.m).forEach(k=>n+=u.m[k]);return{d:u.d,n,m:u.m}}
+function addUsage(k){const u=usageAll();k=k||getKey();u.m[k]=(u.m[k]||0)+1;lsSet(USAGE,JSON.stringify(u))}
 
 /* ───────── UI utilitaires ───────── */
 function toast(m,t,d){const el=$('toast');el.className='toast '+(t||'');$('toastText').textContent=m;void el.offsetWidth;el.classList.add('visible');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('visible'),d||3000)}
@@ -323,14 +330,14 @@ const LOG=[];
 function log(m,bad){const t=new Date().toTimeString().slice(0,8);LOG.push(t+' '+m);if(LOG.length>200)LOG.shift();const el=document.getElementById('log');if(el){el.textContent=LOG.slice(-60).join('\n');el.scrollTop=el.scrollHeight}}
 function showErr(m){const b=document.getElementById('errBox');if(!b)return;b.style.display=m?'block':'none';b.innerHTML=m?'⚠️ '+esc(m)+'<br><small>Touche « 📋 Copier le rapport technique » tout en bas et colle-le moi.</small>':''}
 /* ───────── API ───────── */
-async function apiCall(method,url,body,label){let a=0,b=0,n=0;if(label&&!/^poll/.test(label))log('→ '+label);
+async function apiCall(method,url,body,label,kk){let a=0,b=0,n=0;if(label&&!/^poll/.test(label))log('→ '+label);
  for(;;){if(S.stop)throw new Error('Arrêt');let r;
-  try{r=await fetch(url,{method,headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined})}
+  try{r=await fetch(url,{method,headers:{'Authorization':'Bearer '+(kk||getKey()),'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined})}
   catch(e){if(n>=T.NET.length)throw new Error('Réseau : '+e.message);await waitS(T.NET[n++],'Réseau instable… ');continue}
   if(r.status===429){if(a>=T.B429.length)throw new Error('Trop de requêtes (429)');await waitS(T.B429[a++],'Limite de débit… ');continue}
   if(r.status===503){if(b>=T.B503.length)throw new Error('Serveur occupé (503)');await waitS(T.B503[b++],'Serveur occupé… ');continue}
-  if(r.status===401||r.status===403)throw new Error('Clé API refusée (HTTP '+r.status+')');
-  if(!r.ok){const t=await r.text();const e=new Error('HTTP '+r.status+' '+t.slice(0,160));e.status=r.status;log('✗ '+(label||url)+' : HTTP '+r.status+' '+t.slice(0,120));throw e}
+  if(r.status===401||r.status===403||r.status===402){const e=new Error('Clé API refusée (HTTP '+r.status+')');e.keyBad=true;if(kk)throw e;const cur=getKey();badKeys[cur]=true;log('✗ clé '+keyTag(cur)+' refusée (HTTP '+r.status+')');if(goodKeys().length)continue;throw e}
+  if(!r.ok){const t=await r.text();if(/quota|credit|balance|insufficient|exceed/i.test(t)&&r.status!==500){const e=new Error('Quota de la clé atteint : '+t.slice(0,100));e.keyBad=true;if(kk)throw e;const cur=getKey();badKeys[cur]=true;log('✗ clé '+keyTag(cur)+' : quota atteint');if(goodKeys().length)continue;throw e}const e=new Error('HTTP '+r.status+' '+t.slice(0,160));e.status=r.status;log('✗ '+(label||url)+' : HTTP '+r.status+' '+t.slice(0,120));throw e}
   return r}}
 function parseJson(text){let s=String(text||'').trim().replace(/^```(?:json)?/i,'').replace(/```$/,'').trim();const i=s.indexOf('{');if(i>0)s=s.slice(i);
  const tries=[()=>JSON.parse(s),()=>{const j=s.lastIndexOf('}');return JSON.parse(s.slice(0,j+1))},()=>JSON.parse(balance(s))];let last;
@@ -490,17 +497,24 @@ function frames(blob){return new Promise(ok=>{const v=document.createElement('vi
  setTimeout(done,12000);v.src=u})}
 function vidPrompt(sc){const cs=scChars(sc);sc.vp=null;const spk=byId(P.bible.characters,sc.speaker);const sp=$('optSpeak').checked&&sc.line?' In this shot'+(spk?' '+spk.name:' one character')+' speaks aloud in '+LANGN[P.o.lang]+(P.o.lang==='th'?' (ภาษาไทย, clear natural Thai pronunciation)':'')+' with natural lip movement perfectly synchronized to the speech, saying exactly: "'+sc.line+'"'+(sc.roman?' (pronounced: '+sc.roman+')':'')+'. Natural human voice, the other characters stay silent, no background music.':'';
  sc.vp=sc.action+'. The movement is still in progress at the end of the clip, it never stops or settles'+(sc.link==='continue'&&sc.n>1?', and it continues the movement already in progress in the first frame without any pause':'')+'. Camera: '+sc.camera+', '+sc.shot+'. '+P.bible.style+'. '+cs.map(c=>c.name+': '+c.look).join(' ')+' '+NEG_VID+sp+($('optSpeak').checked&&sc.line?'':' No one speaks, mouths stay closed, no dialogue and no spoken words in any language, no English speech, no text on screen.');return sc.vp}
-let createQ=Promise.resolve();
-function enqueue(fn){const p=createQ.then(async()=>{const t=JSON.parse(lsGet(TIMING)||'{}');const need=T.VID_SAFE*1000*TS-(Date.now()-(t.last||0));if(need>0)await waitS(Math.ceil(need/(1000*TS)),'Prochaine vidéo dans');return fn()});createQ=p.catch(()=>{});return p}
-async function createVideo(sc,start){
- if(usage().n>=+P.o.quota){const e=new Error('QUOTA');throw e}
+const Q={};
+function keyTimes(){try{return JSON.parse(lsGet(TIMING)||'{}')}catch(e){return{}}}
+function pickKey(){const q=+P.o.quota,ks=goodKeys().map(k=>({k,n:usageOf(k)+(S.pend[k]||0)})).filter(x=>x.n<q);ks.sort((x,y)=>x.n-y.n);return ks.length?ks[0].k:null}
+const keysLeft=()=>goodKeys().some(k=>usageOf(k)<+P.o.quota);
+function enqueueVideo(sc,start){const k=pickKey();if(!k)return Promise.reject(new Error('QUOTA'));S.pend[k]=(S.pend[k]||0)+1;
+ const p=(Q[k]||Promise.resolve()).then(async()=>{const need=T.VID_SAFE*1000*TS-(Date.now()-(keyTimes()[k]||0));if(need>0)await waitS(Math.ceil(need/(1000*TS)),'Prochaine vidéo dans');return createVideo(sc,start,k)}).finally(()=>{S.pend[k]=Math.max(0,(S.pend[k]||1)-1)});
+ Q[k]=p.catch(()=>{});return p}
+async function createAny(sc,start){for(let i=0;i<10;i++){try{return await enqueueVideo(sc,start)}catch(e){if(e.keyBad){const k=e.keyUsed;if(k){badKeys[k]=true;log('✗ clé '+keyTag(k)+' inutilisable : '+e.message.slice(0,60)+' — on passe à la suivante')}continue}throw e}}throw new Error('QUOTA')}
+async function createVideo(sc,start,k){
+ if(usageOf(k)>=+P.o.quota){const e=new Error('QUOTA');throw e}
  const body={model:MODEL_VIDEO,prompt:vidPrompt(sc),image:await toData(start,1280),num_frames:FRAMESFOR(+P.o.dur),frame_rate:FRAME_RATE};
- const r=await apiCall('POST',API_BASE+'/videos',body,'vidéo '+sc.n);const d=await r.json();const id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas de video_id');
- addUsage();lsSet(TIMING,JSON.stringify({last:Date.now()}));return id}
+ let r;try{r=await apiCall('POST',API_BASE+'/videos',body,'vidéo '+sc.n+' (clé '+(keyList().indexOf(k)+1)+')',k)}catch(e){if(e.keyBad)e.keyUsed=k;throw e}
+ const d=await r.json();const id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas de video_id');
+ sc.key=k;addUsage(k);const t=keyTimes();t[k]=Date.now();lsSet(TIMING,JSON.stringify(t));return id}
 async function pollVideo(sc,id,first){
  await waitS(first?T.FIRST_POLL:T.POLLS[0],'Scène '+sc.n+' : 1er contrôle dans');
  for(let k=0;k<T.MAX_POLL;k++){if(S.stop)throw new Error('Arrêt');
-  const r=await apiCall('GET',POLL_BASE+'?video_id='+encodeURIComponent(id)+'&model_name='+encodeURIComponent(MODEL_VIDEO),null,'poll '+sc.n);const d=await r.json();const st=String(d.status||'').toLowerCase();
+  const r=await apiCall('GET',POLL_BASE+'?video_id='+encodeURIComponent(id)+'&model_name='+encodeURIComponent(MODEL_VIDEO),null,'poll '+sc.n,sc.key||undefined);const d=await r.json();const st=String(d.status||'').toLowerCase();
   if(['completed','succeeded','done','success'].indexOf(st)>-1){const url=(d.metadata&&d.metadata.url)||d.url||(d.output&&d.output.url);if(!url)throw new Error('Terminé sans URL');return url}
   if(st==='failed'||st==='error'||st==='cancelled')throw new Error('Génération échouée ('+st+')');
   await waitS(T.POLLS[Math.min(k,T.POLLS.length-1)],'Scène '+sc.n+' : en cours, prochain contrôle dans')}
@@ -518,6 +532,7 @@ async function storyboard(){
   save();render();k++}}
 async function produce(sc,i,prevPromise){
  /* une scène : image de départ → vidéo → contrôle → (refaire) */
+ if(!pickKey())throw new Error('QUOTA');
  let start=null,usedLast=false;
  if(P.o.mode==='sb'){start=await dbGet('start:'+sc.n)}
  else if(sc.link==='continue'&&i>0){await prevPromise;const pb=await dbGet('clip:'+P.scenes[i-1].n);if(pb){const lf=await cleanLast(pb,P.scenes[i-1]);if(lf){start=lf;usedLast=true;sc.chained=true}else sc.warn='raccord : dernière image du clip précédent abîmée, image refaite'}}
@@ -526,7 +541,7 @@ async function produce(sc,i,prevPromise){
  let probs=[];
  for(let t=0;t<=(+P.o.retries);t++){
   sc.vidState='proc';sc.tries=t+1;render();
-  log('Scène '+sc.n+' : envoi de la vidéo (essai '+(t+1)+')');const id=await enqueue(()=>createVideo(sc,start));log('Scène '+sc.n+' : vidéo lancée (id '+id+')');
+  log('Scène '+sc.n+' : envoi de la vidéo (essai '+(t+1)+')');const id=await createAny(sc,start);log('Scène '+sc.n+' : vidéo lancée (id '+id+')');
   let url,blob=null;try{url=await pollVideo(sc,id,true)}catch(e){if(e.message==='Arrêt')throw e;sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);if(t>=(+P.o.retries)){sc.vidState='fail';render();return}continue}
   log('Scène '+sc.n+' : vidéo reçue');try{blob=await fetchBlob(url)}catch(e){blob=null}
   if(!blob){/* le navigateur n'a pas le droit de copier la vidéo (CORS) : on garde le lien, la vidéo reste lisible et téléchargeable */sc.url=url;sc.vidState='done';sc.day=todayS();sc.err='';sc.warn='lien direct (pas de contrôle qualité automatique)';if(!S.remoteWarned){S.remoteWarned=true;toast('Les vidéos ne peuvent pas être copiées dans le navigateur : elles restent disponibles par lien (bouton ⬇ sur chaque scène). Pas de ZIP automatique.','warn',9000)}save();render();return}
@@ -557,8 +572,8 @@ document.addEventListener('click',async e=>{const l=e.target.closest('[data-epl]
   P=null;lsDel(PROJ);$('idea').value=idea;$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';epUi();serUi();upd();toast('Épisode précédent archivé ✓ Création du suivant…');run()}});
 function serUi(){const bx=$('serPanel');if(!P||!P.series){bx.style.display='none';return}const SR=P.series,dn=clipDone(),T=SR.total,dur=+P.o.dur,min=Math.round(dn*dur/60*10)/10,day=usage().n;
  bx.style.display='block';bx.innerHTML='<h3 style="margin:0 0 .4rem">📺 Série : partie '+(SR.cur+1)+' / '+SR.parts.length+' — '+esc(SR.parts[SR.cur].title)+' · Jour '+dayNo()+'</h3><div class="hint">'+dn+' / '+T+' clips prêts ≈ '+min+' min sur '+Math.round(T*dur/60)+' min · aujourd\'hui '+day+' vidéos créées. Reviens demain : le même bouton écrit et produit la partie suivante avec les mêmes personnages. <b>Ne vide pas les données du navigateur</b> entre les jours.</div><details style="margin-top:.5rem"><summary>Plan de toute l\'histoire</summary>'+SR.parts.map((p,i)=>'<p style="margin:.4rem 0"><b>'+(i+1)+'. '+esc(p.title)+'</b>'+(i<=SR.cur?' ✓':'')+'<br>'+esc(p.summary)+'</p>').join('')+'</details>'}
-function planUi(){try{const L_=lenParse(),d=+$('dur').value;$('planInfo').innerHTML=L_.series?'= '+L_.total+' clips de '+d+' s ≈ <b>'+Math.ceil(L_.total/L_.perDay)+' jours</b> à '+L_.perDay+' clips/jour':'= '+L_.total+' clips, une seule session'}catch(e){}}
-['len','dur','perDay'].forEach(i=>$(i).addEventListener('change',planUi));
+function planUi(){try{const L_=lenParse(),d=+$('dur').value;const nk=Math.max(1,keyList().length),cap=(+$('quota').value||100)*nk;$('planInfo').innerHTML=L_.series?'= '+L_.total+' clips de '+d+' s ≈ <b>'+Math.ceil(L_.total/cap)+' jour(s)</b> avec '+nk+' clé(s) ('+cap+' vidéos/jour max, refaçons comprises)':'= '+L_.total+' clips, une seule session'}catch(e){}}
+['len','dur','perDay','quota'].forEach(i=>$(i).addEventListener('change',planUi));
 function redoneUi(){const bx=$('redoneBox');if(!bx)return;if(document.activeElement&&document.activeElement.id==='dlNums')return;const L=P&&P.scenes?P.scenes.filter(x=>x.redoAt&&done(x)):[];
  bx.style.display=(P&&P.scenes&&P.scenes.some(done))?'block':'none';
  bx.innerHTML='<b>⬇ Télécharger des clips refaits</b><div class="hint" style="margin:.3rem 0">'+(L.length?'✅ '+L.length+' clip(s) refait(s) détecté(s) : '+L.map(x=>pad(x.n)).join(', ')+'. ':'')+'Écris les numéros (ex : 37, 28, 36, 4) ou laisse vide pour prendre les clips refaits.</div><input id="dlNums" type="text" inputmode="numeric" placeholder="ex : 37, 28, 36, 4" style="width:100%;box-sizing:border-box"><button class="btn main" id="btnRedone" type="button" style="margin-top:.5rem;min-height:50px;width:100%">⬇ Télécharger les clips refaits (liens + fichier)</button>'}
@@ -585,7 +600,7 @@ function lenParse(){const v=$('len').value,d=+$('dur').value,perDay=+$('perDay')
 function readOpts(){const L_=lenParse();return{lenv:$('len').value,talk:$('talk').value,perDay:$('perDay').value,series:L_.series?{total:L_.total,perDay:L_.perDay}:null,genre:selGenre,idea:$('idea').value.trim(),n:L_.series?L_.perDay:L_.total,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:$('quota').value,mode:$('mode').value,sq:$('optSq').checked}}
 async function run(){
  if(S.running)return;if(!getKey()){toast('Colle ta clé API Agnes en haut de la page, puis touche « Enregistrer la clé »','error',5000);$('apiPanel').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('apiKeyInput').focus(),500);return}
-S.running=true;S.stop=false;showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
+S.running=true;S.stop=false;S.quotaHit=false;Object.keys(badKeys).forEach(k=>delete badKeys[k]);showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{
   if(!P||!P.scenes||!P.scenes.length){
    P={id:Date.now(),o:readOpts(),scenes:[],partStart:0,ep:SHOW?SHOW.eps.length+1:1};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
@@ -602,18 +617,19 @@ S.running=true;S.stop=false;showErr('');log('— Démarrage —');await startWak
   S.anim=true;phase('clips','Création des clips…',.6);
   let prev=Promise.resolve(),fatal=null;const active=new Set();
   for(let i=0;i<P.scenes.length;i++){const sc=P.scenes[i];if(done(sc))continue;
-   while(active.size>=2&&!S.stop)await Promise.race(active);
-   if(S.stop)break;
-   const p=produce(sc,i,prev).catch(e=>{if(e.message==='Arrêt'||e.message==='QUOTA'){if(!fatal||e.message==='QUOTA')fatal=e;S.stop=true}else{sc.vidState='fail';sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);showErr('Scène '+sc.n+' : '+e.message);render()}});
+   while(active.size>=Math.max(2,Math.min(8,2*goodKeys().length))&&!S.stop&&!S.quotaHit)await Promise.race(active);
+   if(S.stop||S.quotaHit)break;
+   const p=produce(sc,i,prev).catch(e=>{if(e.message==='QUOTA'){fatal=e;S.quotaHit=true;sc.vidState='';render()}else if(e.message==='Arrêt'){if(!fatal)fatal=e;S.stop=true}else{sc.vidState='fail';sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);showErr('Scène '+sc.n+' : '+e.message);render()}});
    active.add(p);p.then(()=>active.delete(p));prev=p}
   await Promise.all([...active]);
   if(fatal)throw fatal;
   const dn=clipDone();phase(dn===P.scenes.length?'done':'clips',dn+' / '+P.scenes.length+' clips prêts',dn/P.scenes.length);
   toast(dn===P.scenes.length?'Histoire terminée ✓':dn+' / '+P.scenes.length+' clips prêts');
+  if(P.series&&partComplete()&&P.series.cur+1<P.series.parts.length&&keysLeft()&&!S.stop)S.autoNext=true;
  }catch(e){
-  if(e.message==='QUOTA')toast('Limite de '+P.o.quota+' vidéos atteinte pour aujourd\'hui. Reviens demain : l\'histoire reprendra là où elle s\'est arrêtée.','warn',9000);
+  if(e.message==='QUOTA')toast('Toutes tes clés ont atteint la limite de '+P.o.quota+' vidéos aujourd\'hui (ajoute une autre clé ou reviens demain) : l\'histoire reprendra là où elle s\'est arrêtée.','warn',9000);
   else if(e.message==='Arrêt')toast('Arrêté — tu peux reprendre','warn');else{toast('Erreur : '+e.message.slice(0,120),'error',6000);showErr(e.message);log('✗ ERREUR : '+e.message)}}
- finally{S.running=false;S.anim=false;window.onbeforeunload=null;stopWake();setStatus(null);save();upd();render()}}
+ finally{S.running=false;S.anim=false;window.onbeforeunload=null;stopWake();setStatus(null);save();upd();render();if(S.autoNext){S.autoNext=false;log('Partie suivante automatique (il reste des clés disponibles)');setTimeout(run,800)}}}
 
 /* ───────── Lecture / export ───────── */
 async function playAll(){const urls=[];for(const sc of P.scenes){if(!done(sc))continue;const b=await dbGet('clip:'+sc.n);if(b)urls.push({u:URL.createObjectURL(b),sc});else if(sc.url)urls.push({u:sc.url,sc})}
@@ -746,11 +762,11 @@ $('btnReport').onclick=async()=>{const t=report();const b=$('reportBox');b.style
 let selGenre='pixarTh';
 function drawGenres(){$('genres').innerHTML=GENRES.map(g=>'<div class="genre'+(g.id===selGenre?' sel':'')+'" data-g="'+g.id+'"><b>'+g.e+' '+esc(g.n)+'</b><span>'+esc(g.d)+'</span></div>').join('')}
 $('genres').addEventListener('click',e=>{const g=e.target.closest('[data-g]');if(!g||S.running)return;selGenre=g.dataset.g;drawGenres()});
-function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('apiLine').classList.toggle('ok',has);$('apiLine').textContent=has?'Clé active · '+getKey().slice(0,7)+'…'+getKey().slice(-4):'Aucune clé enregistrée';
+function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('apiLine').classList.toggle('ok',has);$('apiLine').textContent=has?keyList().length+' clé(s) : '+keyList().map((k,i)=>(i+1)+'. '+keyTag(k)+' ('+usageOf(k)+' aujourd\'hui)').join(' · '):'Aucune clé enregistrée';
  const b=$('btnGo');b.disabled=S.running;const hasP=P&&P.scenes&&P.scenes.length;
  const sbm=hasP&&P.o.mode==='sb',allImg=hasP&&P.scenes.every(x=>x.thumb);const serNext=hasP&&P.series&&partComplete()&&P.series.cur+1<P.series.parts.length,serEnd=hasP&&P.series&&partComplete()&&P.series.cur+1>=P.series.parts.length;b.textContent=S.running?'Création en cours…':(!has?'🔑 Ajoute ta clé API pour commencer':(serNext?'▶ Partie '+(P.series.cur+2)+' / '+P.series.parts.length+' : écrire la suite et produire':(serEnd?'✅ Histoire terminée — tu peux la télécharger':(hasP?(clipDone()?'▶ Reprendre les vidéos ('+clipDone()+'/'+P.scenes.length+' prêtes)':(sbm?(allImg?'🎬 Animer les images en vidéos ('+P.scenes.length+' clips)':'▶ Terminer le storyboard'):'▶ Lancer la production des clips')):($('mode').value==='sb'?'🎞 Créer l\'histoire et le storyboard (sans vidéos)':'🎬 Créer l\'histoire et les vidéos')))));
- $('btnStop').classList.toggle('on',S.running);const u=usage();$('quotaHint').textContent='Vidéos créées aujourd\'hui : '+u.n+' (chaque nouvel essai compte). Avec « Refaire si défaut », prévois 10 à 30 % de vidéos en plus.'}
-$('apiSave').onclick=()=>{const v=$('apiKeyInput').value.trim();if(v)lsSet(KEY,v);else lsDel(KEY);upd();toast(v?'Clé enregistrée':'Clé supprimée')};
+ $('btnStop').classList.toggle('on',S.running);const u=usage();$('quotaHint').textContent='Vidéos créées aujourd\'hui : '+u.n+' sur '+keyList().length+' clé(s), limite '+(P&&P.o?P.o.quota:'')+' par clé (chaque nouvel essai compte). Avec « Refaire si défaut », prévois 10 à 30 % de vidéos en plus.'}
+$('apiSave').onclick=()=>{const arr=($('apiKeyInput').value||'').split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean);const uniq=arr.filter((x,i)=>arr.indexOf(x)===i).slice(0,8);if(uniq.length){lsSet(KEYS,JSON.stringify(uniq));lsSet(KEY,uniq[0])}else{lsDel(KEYS);lsDel(KEY)}Object.keys(badKeys).forEach(k=>delete badKeys[k]);$('apiKeyInput').value='';upd();planUi();toast(uniq.length?uniq.length+' clé(s) enregistrée(s) ✓':'Clés supprimées')};
 $('btnGo').onclick=run;$('btnStop').onclick=()=>{S.stop=true;toast('Arrêt en cours…','warn')};
 $('mode').onchange=upd;$('btnMemClear').onclick=()=>{if(confirm('Effacer la mémoire des histoires déjà créées ?')){lsDel(MEM);memUi();toast('Mémoire effacée')}};$('btnPlay').onclick=playAll;$('btnZip').onclick=zipAll;
 $('btnNew').onclick=async()=>{if(S.running){toast('Arrête d\'abord la création','warn');return}if((P||SHOW)&&!confirm('Effacer toute la série (histoire, personnages, épisodes) ?'))return;P=null;SHOW=null;lsDel(SHOWK);lsDel(PROJ);await dbClear();$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';upd();toast('Prêt pour une nouvelle histoire')};
