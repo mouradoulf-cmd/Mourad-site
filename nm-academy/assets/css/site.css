@@ -241,3 +241,12 @@ body.pg::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none
 }
 
 @media(max-width:899px){.jr-st{padding-bottom:92px}}
+
+/* page d'inscription : en-tête compact pour voir tout de suite le choix de la formation */
+.ph-hero.compact{padding:clamp(18px,4vw,34px) 0 6px}
+.ph-hero.compact h1{font-size:clamp(1.7rem,5vw,2.6rem)}
+.ph-hero.compact .eyebrow{margin-bottom:10px}
+.pstep{list-style:none;padding:0;margin:18px auto 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.pstep li{font:600 .8rem var(--sans);padding:7px 14px;border-radius:99px;color:var(--mute);background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.pstep li.on{color:#fff;background:linear-gradient(135deg,rgba(106,141,255,.4),rgba(255,99,171,.3));border-color:rgba(255,255,255,.3)}
+body.pg main{padding-top:84px}

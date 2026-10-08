@@ -2,6 +2,12 @@
 (function(){
 var D=document,CFG=window.CONFIG||{},$=function(s,r){return(r||D).querySelector(s)},$$=function(s,r){return[].slice.call((r||D).querySelectorAll(s))};
 D.documentElement.classList.add('js');
+/* chaque page s'ouvre en haut (sauf lien avec #ancre) : plus de restauration de défilement venue de la page précédente */
+try{history.scrollRestoration='manual'}catch(e){}
+(function(){if(location.hash)return;var h=D.documentElement;h.style.scrollBehavior='auto';scrollTo(0,0);
+ function top0(){if(!location.hash){scrollTo(0,0)}}
+ addEventListener('DOMContentLoaded',top0);addEventListener('load',function(){top0();setTimeout(function(){top0();h.style.scrollBehavior=''},120)});
+ addEventListener('pageshow',function(e){if(e.persisted)top0()})})();
 var T=function(k,v){return I18N.t(k,v)};
 var PAGES=[['vente.html','x_home'],['formations.html','x_courses'],['realisations.html','x_work'],['tarifs.html','x_price'],['contact.html','x_contact']];
 var NAMES={a:'pa_n',b:'pb_n',pack:'pk_n',coach:'pc_n'};
