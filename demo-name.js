@@ -38,7 +38,7 @@
   function label() {
     if (document.getElementById("nmDemoLabel")) return;
     var lang = (document.documentElement.lang || "en").slice(0, 2);
-    var txt = { fr: "Maquette pour ", it: "Bozza per ", th: "แบบร่างสำหรับ ", ar: "نموذج لـ ", de: "Entwurf für " }[lang] || "Mock-up for ";
+    var txt = { fr: "Maquette gratuite pour ", it: "Bozza gratuita per ", th: "แบบร่างฟรีสำหรับ ", ar: "نموذج مجاني لـ ", de: "Kostenloser Entwurf für " }[lang] || "Free mock-up for ";
     var by = { fr: " · par NM Studio", it: " · di NM Studio", th: " · โดย NM Studio", ar: " · من NM Studio", de: " · von NM Studio" }[lang] || " · by NM Studio";
     var el = document.createElement("div"); el.id = "nmDemoLabel"; el.setAttribute("role", "note");
     el.style.cssText = "position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:2147483000;max-width:calc(100% - 24px);" +
