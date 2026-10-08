@@ -7,6 +7,9 @@
  * founderName    — the first name shown in "Who is behind NM Studio".
  * founderPhoto   — path to a square photo, e.g. "assets/img/founder.jpg" (from the nm/ folder). Empty: a monogram.
  * analyticsToken — Cloudflare Web Analytics token (free, no cookies). Empty: no analytics at all.
+ * lineLink       — your LINE Official Account link, e.g. "https://lin.ee/AbCdEf" or "https://line.me/R/ti/p/@nmstudio".
+ *                  Empty: no LINE button. Set: a green LINE button appears above WhatsApp (and in the footer).
+ * referralMonths — free months given to BOTH the referrer and the referred business when it subscribes (1 or 2…).
  */
 window.NM_CONTACT = {
   whatsappNumber: "",
@@ -14,6 +17,8 @@ window.NM_CONTACT = {
   founderName: "Mourad",
   founderPhoto: "",
   analyticsToken: "",
+  lineLink: "",
+  referralMonths: 1,
 
   /* Video-call booking (Thailand time). Only real data here: your real opening hours and the slots really taken.
      days: 1 = Monday ... 7 = Sunday.  booked: "YYYY-MM-DD HH:MM", e.g. "2026-10-12 15:00".  closed: whole days off, "YYYY-MM-DD". */

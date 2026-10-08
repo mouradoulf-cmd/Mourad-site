@@ -138,6 +138,47 @@
     setInterval(render, 5 * 60e3);
   })();
 
+  /* ---------- referral: "{gift}" follows referralMonths, form goes to WhatsApp ---------- */
+  (function referral() {
+    var box = document.getElementById("parrainage"); if (!box) return;
+    var n = Math.max(1, parseInt(C.referralMonths, 10) || 1);
+    function gift() { return t(n === 1 ? "ref.gift1" : n === 2 ? "ref.gift2" : "ref.giftN").replace("{n}", n); }
+    function fill() {
+      var g = gift(); if (!g) return;
+      [].slice.call(box.querySelectorAll("[data-ref-fill]")).forEach(function (el) {
+        var key = el.getAttribute("data-i18n-html") || el.getAttribute("data-i18n"), v = t(key); if (!v) return;
+        if (el.hasAttribute("data-i18n-html")) el.innerHTML = v.split("{gift}").join(g); else el.textContent = v.split("{gift}").join(g);
+      });
+      [].slice.call(box.querySelectorAll("[data-ref-gift]")).forEach(function (el) { el.textContent = g; });
+    }
+    fill(); window.addEventListener("load", fill); document.addEventListener("nm:lang", function () { setTimeout(fill, 0); });
+    var form = box.querySelector("form[data-ref]"), err = form.querySelector(".free__err");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var biz = form.elements.biz.value.trim();
+      if (!biz) { err.textContent = t("ref.req"); form.elements.biz.focus(); return; }
+      err.textContent = "";
+      var lines = [t("ref.msg"), "", "*" + t("ref.l_biz") + ":* " + biz];
+      [["city", "l_city"], ["contact", "l_contact"], ["you", "l_you"], ["yourBiz", "l_yourBiz"]].forEach(function (f) {
+        var v = form.elements[f[0]].value.trim(); if (v) lines.push("*" + t("ref." + f[1]) + ":* " + v);
+      });
+      var msg = lines.join("\n");
+      try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: "ref" } })); } catch (e2) {}
+      var num = String(C.whatsappNumber || "").replace(/\D/g, "");
+      if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
+      var copied = copy(msg);
+      window.open(C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1", "_blank", "noopener");
+      copied.then(function () { toast(t("ref.copied")); });
+    });
+  })();
+
+  /* ---------- LINE: floating button + footer link, only once a LINE link is set ---------- */
+  if (C.lineLink) {
+    [].slice.call(document.querySelectorAll(".line-float")).forEach(function (a) { a.href = C.lineLink; a.hidden = false; });
+    var waFoot = document.querySelector('.footer__col a[href*="wa.me"]');
+    if (waFoot) { var la = document.createElement("a"); la.href = C.lineLink; la.target = "_blank"; la.rel = "noopener"; la.textContent = "LINE"; waFoot.parentNode.insertBefore(la, waFoot.nextSibling); }
+  }
+
   /* ---------- founder: name and photo from the settings ---------- */
   var founderName = C.founderName || "Mourad";
   function fillName() {
