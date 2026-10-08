@@ -45,7 +45,7 @@
         realClient: "Real client", concept: "Concept", visit: "Visit live site", cursor: "Visit",
         p1cat: "Restaurant · Tuscany",
         p1desc: "A warm, photo-led site for a family trattoria: the full menu, reservations, and a QR menu on every table, in Italian, English, German and Thai.",
-        p2cat: "Massage & spa · Pattaya",
+        p2cat: "Massage & spa",
         p2desc: "A premium spa site with real photography: treatments priced live by duration, a “how do you feel?” recommender, a gift-card builder and WhatsApp booking, in four languages.",
         p3cat: "Hair salon · Bangkok",
         p3desc: "A fashion-magazine feel for a hair and beauty studio: a clear price list, client reviews and one-tap booking on WhatsApp.",
@@ -53,8 +53,8 @@
         p4desc: "A confident corporate site for a cladding supplier: a video hero, services, partner brands, projects and quote requests.",
         tMulti: "4 languages", tQr: "QR menu", tBooking: "Online booking", tTreat: "Treatment picker", tMobile: "Mobile-first",
         tPrices: "Price list", tReviews: "Reviews", tWhatsapp: "WhatsApp booking", tVideo: "Video hero", tProjects: "Projects", tQuote: "Quote requests",
-        p5cat: "Bar & nightlife · Pattaya", p5desc: "A neon-lit site for a pool bar: tonight's event and a live happy-hour countdown, the drinks menu, pool nights and table booking on WhatsApp, in four languages.", tLive: "Live happy hour", tEvents: "Weekly events",
-        p6cat: "Street food · Pattaya", p6desc: "A lively, simple site for a street kitchen: a filterable menu, a takeaway bag sent to WhatsApp, a spice meter, tonight's chalkboard special and phrase cards to show the cook.", tOrder: "Takeaway ordering", tSpice: "Spice meter", p7cat: "Scooter rental · Pattaya", p7desc: "A premium rental site: fleet with day, week and month prices, a range calendar with live pricing and extras, hotel delivery and requests on WhatsApp.", tFleet: "Fleet & prices", tCalendar: "Booking calendar",
+        p5cat: "Bar & nightlife", p5desc: "A neon-lit site for a pool bar: tonight's event and a live happy-hour countdown, the drinks menu, pool nights and table booking on WhatsApp, in four languages.", tLive: "Live happy hour", tEvents: "Weekly events",
+        p6cat: "Street food", p6desc: "A lively, simple site for a street kitchen: a filterable menu, a takeaway bag sent to WhatsApp, a spice meter, tonight's chalkboard special and phrase cards to show the cook.", tOrder: "Takeaway ordering", tSpice: "Spice meter", p7cat: "Scooter rental", p7desc: "A premium rental site: fleet with day, week and month prices, a range calendar with live pricing and extras, hotel delivery and requests on WhatsApp.", tFleet: "Fleet & prices", tCalendar: "Booking calendar",
         p8cat: "Café, restaurant & ice-cream · Mohammédia", p8desc: "A warm site for an all-day café-restaurant: a live open/closed and \u201cright now\u201d panel, the full menu with real prices, a waiter-ready selection list, and Friday couscous counted down, in French, English and Arabic.", tLivePanel: "Live status panel", t3Lang: "3 languages",
         soon: "Coming soon", soonList: "Hotels · Real estate"
       },
@@ -118,7 +118,7 @@
         book: "Book a meeting", whatsapp: "Message us on WhatsApp"
       },
       footer: {
-        local: "Pattaya, Thailand",
+        local: "Online, worldwide",
         tagline: "Websites and QR menus for restaurants and local businesses.",
         explore: "Explore", contact: "Contact", book: "Book a meeting", language: "Language",
         rights: "© 2026 NM Studio. Built to get you found.", backTop: "Back to top"
@@ -138,7 +138,7 @@
     fr: {
       meta: {
         title: "NM Studio | Sites web et menus QR pour restaurants et commerces",
-        description: "Sites web, menus QR et fiches Google pour les commerces de Pattaya. Envoyez vos photos, on s'occupe de tout : en ligne en quelques jours, sans contrat."
+        description: "Sites web, menus QR et fiches Google pour les restaurants et commerces. Envoyez vos photos, on s'occupe de tout : en ligne en quelques jours, sans contrat."
       },
       a11y: { skip: "Aller au contenu", language: "Langue", menu: "Menu", whatsapp: "Nous écrire sur WhatsApp" },
       nav: { work: "Réalisations", process: "Méthode", pricing: "Tarifs", faq: "FAQ", cta: "Lancer mon projet" },
@@ -174,7 +174,7 @@
         realClient: "Client réel", concept: "Concept", visit: "Voir le site", cursor: "Voir",
         p1cat: "Restaurant · Toscane",
         p1desc: "Un site chaleureux, porté par la photo, pour une trattoria familiale : la carte complète, les réservations et un menu QR sur chaque table, en italien, anglais, allemand et thaï.",
-        p2cat: "Massage & spa · Pattaya",
+        p2cat: "Massage & spa",
         p2desc: "Un site de spa premium aux vraies photos : soins au prix mis à jour selon la durée, un conseiller « comment vous sentez-vous ? », des cartes cadeaux et la réservation WhatsApp, en quatre langues.",
         p3cat: "Salon de coiffure · Bangkok",
         p3desc: "L'élégance d'un magazine de mode pour un salon de coiffure et beauté : grille tarifaire claire, avis clients et réservation en un geste sur WhatsApp.",
@@ -182,8 +182,8 @@
         p4desc: "Un site d'entreprise affirmé pour un fournisseur de bardage : vidéo en ouverture, services, marques partenaires, réalisations et demandes de devis.",
         tMulti: "4 langues", tQr: "Menu QR", tBooking: "Réservation en ligne", tTreat: "Choix des soins", tMobile: "Pensé mobile",
         tPrices: "Grille tarifaire", tReviews: "Avis clients", tWhatsapp: "Réservation WhatsApp", tVideo: "Vidéo d'ouverture", tProjects: "Réalisations", tQuote: "Demande de devis",
-        p5cat: "Bar & vie nocturne · Pattaya", p5desc: "Un site aux néons pour un bar billard : la soirée du jour et le happy hour en direct, la carte des boissons, les soirées billard et la réservation de table sur WhatsApp, en quatre langues.", tLive: "Happy hour en direct", tEvents: "Soirées de la semaine",
-        p6cat: "Street food · Pattaya", p6desc: "Un site simple et vivant pour une cuisine de rue : carte filtrable, commande à emporter envoyée sur WhatsApp, jauge de piment, spécial du soir à l'ardoise et cartes de phrases à montrer au cuisinier.", tOrder: "Commande à emporter", tSpice: "Jauge de piment", p7cat: "Location de scooters · Pattaya", p7desc: "Un site de location premium : flotte avec prix au jour, à la semaine et au mois, calendrier de dates avec prix en direct et options, livraison à l'hôtel et demande sur WhatsApp.", tFleet: "Flotte & tarifs", tCalendar: "Calendrier de réservation",
+        p5cat: "Bar & vie nocturne", p5desc: "Un site aux néons pour un bar billard : la soirée du jour et le happy hour en direct, la carte des boissons, les soirées billard et la réservation de table sur WhatsApp, en quatre langues.", tLive: "Happy hour en direct", tEvents: "Soirées de la semaine",
+        p6cat: "Street food", p6desc: "Un site simple et vivant pour une cuisine de rue : carte filtrable, commande à emporter envoyée sur WhatsApp, jauge de piment, spécial du soir à l'ardoise et cartes de phrases à montrer au cuisinier.", tOrder: "Commande à emporter", tSpice: "Jauge de piment", p7cat: "Location de scooters", p7desc: "Un site de location premium : flotte avec prix au jour, à la semaine et au mois, calendrier de dates avec prix en direct et options, livraison à l'hôtel et demande sur WhatsApp.", tFleet: "Flotte & tarifs", tCalendar: "Calendrier de réservation",
         p8cat: "Café, restaurant & glacier · Mohammédia", p8desc: "Un site chaleureux pour un café-restaurant ouvert toute la journée : panneau en direct ouvert/fermé et « en ce moment », la carte complète avec les vrais prix, une liste de sélection à montrer au serveur, et le couscous du vendredi avec compte à rebours, en français, anglais et arabe.", tLivePanel: "Panneau en direct", t3Lang: "3 langues",
         soon: "Bientôt", soonList: "Hôtels · Immobilier"
       },
@@ -247,7 +247,7 @@
         book: "Prendre rendez-vous", whatsapp: "Nous écrire sur WhatsApp"
       },
       footer: {
-        local: "Pattaya, Thaïlande",
+        local: "En ligne, partout",
         tagline: "Sites web et menus QR pour restaurants et commerces locaux.",
         explore: "Explorer", contact: "Contact", book: "Prendre rendez-vous", language: "Langue",
         rights: "© 2026 NM Studio. Conçu pour être trouvé.", backTop: "Haut de page"
@@ -267,7 +267,7 @@
     it: {
       meta: {
         title: "NM Studio | Siti web e menù QR per ristoranti e attività locali",
-        description: "Siti web, menù QR e schede Google per le attività di Pattaya. Invia le tue foto: siamo online in pochi giorni, senza contratto."
+        description: "Siti web, menù QR e schede Google per ristoranti e attività locali. Invia le tue foto: siamo online in pochi giorni, senza contratto."
       },
       a11y: { skip: "Vai al contenuto", language: "Lingua", menu: "Menù", whatsapp: "Scrivici su WhatsApp" },
       nav: { work: "Progetti", process: "Metodo", pricing: "Prezzi", faq: "FAQ", cta: "Inizia un progetto" },
@@ -303,7 +303,7 @@
         realClient: "Cliente reale", concept: "Concept", visit: "Visita il sito", cursor: "Apri",
         p1cat: "Ristorante · Toscana",
         p1desc: "Un sito caldo e fotografico per una trattoria di famiglia: il menù completo, le prenotazioni e un menù QR su ogni tavolo, in italiano, inglese, tedesco e thai.",
-        p2cat: "Massaggi e spa · Pattaya",
+        p2cat: "Massaggi e spa",
         p2desc: "Un sito spa premium con vere fotografie: trattamenti con prezzo aggiornato in base alla durata, un consulente “come ti senti?”, buoni regalo e prenotazione su WhatsApp, in quattro lingue.",
         p3cat: "Parrucchiere · Bangkok",
         p3desc: "L'eleganza di una rivista di moda per un salone di bellezza: listino chiaro, recensioni dei clienti e prenotazione con un tocco su WhatsApp.",
@@ -311,8 +311,8 @@
         p4desc: "Un sito aziendale deciso per un fornitore di rivestimenti: video in apertura, servizi, marchi partner, progetti e richieste di preventivo.",
         tMulti: "4 lingue", tQr: "Menù QR", tBooking: "Prenotazione online", tTreat: "Scelta trattamenti", tMobile: "Pensato per mobile",
         tPrices: "Listino prezzi", tReviews: "Recensioni", tWhatsapp: "Prenotazione WhatsApp", tVideo: "Video in apertura", tProjects: "Progetti", tQuote: "Preventivi",
-        p5cat: "Bar e vita notturna · Pattaya", p5desc: "Un sito al neon per un bar con biliardo: l'evento della serata e l'happy hour in diretta, la carta dei drink, le serate di biliardo e la prenotazione del tavolo su WhatsApp, in quattro lingue.", tLive: "Happy hour in diretta", tEvents: "Eventi settimanali",
-        p6cat: "Street food · Pattaya", p6desc: "Un sito semplice e vivace per una cucina di strada: menù filtrabile, ordine da asporto inviato su WhatsApp, misuratore di piccantezza, speciale della sera alla lavagna e frasi da mostrare al cuoco.", tOrder: "Ordini da asporto", tSpice: "Livello di piccante", p7cat: "Noleggio scooter · Pattaya", p7desc: "Un sito di noleggio premium: flotta con prezzi al giorno, alla settimana e al mese, calendario con prezzo in diretta ed extra, consegna in hotel e richieste su WhatsApp.", tFleet: "Flotta e prezzi", tCalendar: "Calendario prenotazioni",
+        p5cat: "Bar e vita notturna", p5desc: "Un sito al neon per un bar con biliardo: l'evento della serata e l'happy hour in diretta, la carta dei drink, le serate di biliardo e la prenotazione del tavolo su WhatsApp, in quattro lingue.", tLive: "Happy hour in diretta", tEvents: "Eventi settimanali",
+        p6cat: "Street food", p6desc: "Un sito semplice e vivace per una cucina di strada: menù filtrabile, ordine da asporto inviato su WhatsApp, misuratore di piccantezza, speciale della sera alla lavagna e frasi da mostrare al cuoco.", tOrder: "Ordini da asporto", tSpice: "Livello di piccante", p7cat: "Noleggio scooter", p7desc: "Un sito di noleggio premium: flotta con prezzi al giorno, alla settimana e al mese, calendario con prezzo in diretta ed extra, consegna in hotel e richieste su WhatsApp.", tFleet: "Flotta e prezzi", tCalendar: "Calendario prenotazioni",
         p8cat: "Caffè, ristorante e gelateria · Mohammédia", p8desc: "Un sito accogliente per un caffè-ristorante aperto tutto il giorno: pannello in diretta aperto/chiuso e \u201cil momento\u201d, il menù completo con i prezzi reali, una lista di selezione da mostrare al cameriere, e il couscous del venerdì con conto alla rovescia, in francese, inglese e arabo.", tLivePanel: "Pannello in diretta", t3Lang: "3 lingue",
         soon: "In arrivo", soonList: "Hotel · Immobiliare"
       },
@@ -376,7 +376,7 @@
         book: "Prenota un incontro", whatsapp: "Scrivici su WhatsApp"
       },
       footer: {
-        local: "Pattaya, Thailandia",
+        local: "Online, ovunque",
         tagline: "Siti web e menù QR per ristoranti e attività locali.",
         explore: "Esplora", contact: "Contatti", book: "Prenota un incontro", language: "Lingua",
         rights: "© 2026 NM Studio. Fatto per farti trovare.", backTop: "Torna su"
@@ -396,7 +396,7 @@
     th: {
       meta: {
         title: "NM Studio | เว็บไซต์และเมนู QR สำหรับร้านอาหารและธุรกิจท้องถิ่น",
-        description: "เว็บไซต์ เมนู QR และโปรไฟล์ Google สำหรับธุรกิจในพัทยา ส่งรูปมา แล้วเราจัดทำให้ ออนไลน์ในไม่กี่วัน ไม่มีสัญญาผูกมัด"
+        description: "เว็บไซต์ เมนู QR และโปรไฟล์ Google สำหรับร้านอาหารและธุรกิจท้องถิ่น ส่งรูปมา แล้วเราจัดทำให้ ออนไลน์ในไม่กี่วัน ไม่มีสัญญาผูกมัด"
       },
       a11y: { skip: "ข้ามไปยังเนื้อหา", language: "ภาษา", menu: "เมนู", whatsapp: "ส่งข้อความหาเราทาง WhatsApp" },
       nav: { work: "ผลงาน", process: "ขั้นตอน", pricing: "ราคา", faq: "คำถาม", cta: "เริ่มโปรเจกต์" },
@@ -432,7 +432,7 @@
         realClient: "ลูกค้าจริง", concept: "คอนเซปต์", visit: "เข้าชมเว็บไซต์", cursor: "เปิดดู",
         p1cat: "ร้านอาหาร · ทัสคานี",
         p1desc: "เว็บไซต์อบอุ่นที่เล่าเรื่องด้วยภาพสำหรับร้านอาหารครอบครัว: เมนูครบ การจองโต๊ะ และเมนู QR บนทุกโต๊ะ ในภาษาอิตาลี อังกฤษ เยอรมัน และไทย",
-        p2cat: "นวดและสปา · พัทยา",
+        p2cat: "นวดและสปา",
         p2desc: "เว็บไซต์สปาพรีเมียมพร้อมภาพถ่ายสวยงาม ราคาทรีตเมนต์เปลี่ยนตามระยะเวลา ระบบแนะนำ “วันนี้รู้สึกอย่างไร” สร้างบัตรของขวัญ และจองทาง WhatsApp สี่ภาษา",
         p3cat: "ร้านทำผม · กรุงเทพฯ",
         p3desc: "ความหรูแบบนิตยสารแฟชั่นสำหรับร้านทำผมและความงาม: ราคาบริการชัดเจน รีวิวจากลูกค้า และจองได้ในแตะเดียวผ่าน WhatsApp",
@@ -440,8 +440,8 @@
         p4desc: "เว็บไซต์องค์กรที่มั่นใจสำหรับผู้จำหน่ายวัสดุผนังภายนอก: วิดีโอเปิดหน้า บริการ แบรนด์พาร์ทเนอร์ ผลงาน และการขอใบเสนอราคา",
         tMulti: "4 ภาษา", tQr: "เมนู QR", tBooking: "จองออนไลน์", tTreat: "เลือกทรีตเมนต์", tMobile: "ออกแบบเพื่อมือถือ",
         tPrices: "ราคาบริการ", tReviews: "รีวิว", tWhatsapp: "จองผ่าน WhatsApp", tVideo: "วิดีโอเปิดหน้า", tProjects: "ผลงาน", tQuote: "ขอใบเสนอราคา",
-        p5cat: "บาร์และไนท์ไลฟ์ · พัทยา", p5desc: "เว็บไซต์แสงนีออนสำหรับบาร์พูล: อีเวนต์คืนนี้และนับถอยหลังแฮปปี้อาวร์แบบเรียลไทม์ เมนูเครื่องดื่ม คืนแข่งพูล และจองโต๊ะทาง WhatsApp สี่ภาษา", tLive: "แฮปปี้อาวร์เรียลไทม์", tEvents: "อีเวนต์ทุกสัปดาห์",
-        p6cat: "สตรีทฟู้ด · พัทยา", p6desc: "เว็บไซต์เรียบง่ายแต่มีชีวิตชีวาสำหรับร้านอาหารริมทาง เมนูกรองได้ สั่งกลับบ้านส่งทาง WhatsApp ตัววัดความเผ็ด เมนูพิเศษประจำคืน และการ์ดประโยคไว้ยื่นให้แม่ครัว", tOrder: "สั่งกลับบ้าน", tSpice: "ระดับความเผ็ด", p7cat: "เช่าสกู๊ตเตอร์ · พัทยา", p7desc: "เว็บไซต์เช่ารถพรีเมียม รถพร้อมราคารายวัน รายสัปดาห์ รายเดือน ปฏิทินเลือกวันพร้อมคำนวณราคาและอุปกรณ์เสริม ส่งถึงโรงแรม และส่งคำขอทาง WhatsApp", tFleet: "รถและราคา", tCalendar: "ปฏิทินการจอง",
+        p5cat: "บาร์และไนท์ไลฟ์", p5desc: "เว็บไซต์แสงนีออนสำหรับบาร์พูล: อีเวนต์คืนนี้และนับถอยหลังแฮปปี้อาวร์แบบเรียลไทม์ เมนูเครื่องดื่ม คืนแข่งพูล และจองโต๊ะทาง WhatsApp สี่ภาษา", tLive: "แฮปปี้อาวร์เรียลไทม์", tEvents: "อีเวนต์ทุกสัปดาห์",
+        p6cat: "สตรีทฟู้ด", p6desc: "เว็บไซต์เรียบง่ายแต่มีชีวิตชีวาสำหรับร้านอาหารริมทาง เมนูกรองได้ สั่งกลับบ้านส่งทาง WhatsApp ตัววัดความเผ็ด เมนูพิเศษประจำคืน และการ์ดประโยคไว้ยื่นให้แม่ครัว", tOrder: "สั่งกลับบ้าน", tSpice: "ระดับความเผ็ด", p7cat: "เช่าสกู๊ตเตอร์", p7desc: "เว็บไซต์เช่ารถพรีเมียม รถพร้อมราคารายวัน รายสัปดาห์ รายเดือน ปฏิทินเลือกวันพร้อมคำนวณราคาและอุปกรณ์เสริม ส่งถึงโรงแรม และส่งคำขอทาง WhatsApp", tFleet: "รถและราคา", tCalendar: "ปฏิทินการจอง",
         p8cat: "คาเฟ่ ร้านอาหาร และไอศกรีม · โมฮัมเมเดีย", p8desc: "เว็บไซต์อบอุ่นสำหรับคาเฟ่-ร้านอาหารที่เปิดทั้งวัน มีแผงสถานะเปิด/ปิดและ \u201cตอนนี้\u201d แบบเรียลไทม์ เมนูครบพร้อมราคาจริง รายการที่เลือกไว้ยื่นให้พนักงานเสิร์ฟ และนับถอยหลังกูสกูสวันศุกร์ ภาษาฝรั่งเศส อังกฤษ และอาหรับ", tLivePanel: "แผงสถานะสด", t3Lang: "3 ภาษา",
         soon: "เร็ว ๆ นี้", soonList: "โรงแรม · อสังหาริมทรัพย์"
       },
@@ -505,7 +505,7 @@
         book: "นัดพบ", whatsapp: "ส่งข้อความทาง WhatsApp"
       },
       footer: {
-        local: "พัทยา ประเทศไทย",
+        local: "ออนไลน์ ทุกที่",
         tagline: "เว็บไซต์และเมนู QR สำหรับร้านอาหารและธุรกิจท้องถิ่น",
         explore: "สำรวจ", contact: "ติดต่อ", book: "นัดพบ", language: "ภาษา",
         rights: "© 2026 NM Studio. สร้างมาเพื่อให้คุณถูกค้นเจอ", backTop: "กลับขึ้นด้านบน"
@@ -561,7 +561,7 @@
         realClient: "عميل حقيقي", concept: "نموذج", visit: "زيارة الموقع", cursor: "افتح",
         p1cat: "مطعم · توسكانا",
         p1desc: "موقع دافئ تقوده الصور لمطعم عائلي: القائمة كاملة، والحجوزات، وقائمة QR على كل طاولة، بالإيطالية والإنجليزية والألمانية والتايلاندية.",
-        p2cat: "تدليك وسبا · باتايا",
+        p2cat: "تدليك وسبا",
         p2desc: "موقع سبا فاخر بصور حقيقية: أسعار العلاجات تتغيّر حسب المدة، ومساعد «كيف تشعر اليوم؟»، وبطاقات هدايا، وحجز عبر واتساب، بأربع لغات.",
         p3cat: "صالون شعر · بانكوك",
         p3desc: "أناقة مجلات الموضة لصالون شعر وتجميل: قائمة أسعار واضحة، وآراء العملاء، وحجز بلمسة واحدة عبر واتساب.",
@@ -569,8 +569,8 @@
         p4desc: "موقع مؤسسي واثق لمورد مواد الواجهات: فيديو افتتاحي، والخدمات، والعلامات الشريكة، والمشاريع، وطلبات عروض الأسعار.",
         tMulti: "4 لغات", tQr: "قائمة QR", tBooking: "حجز عبر الإنترنت", tTreat: "اختيار العلاجات", tMobile: "مصمم للهاتف",
         tPrices: "قائمة الأسعار", tReviews: "آراء العملاء", tWhatsapp: "حجز عبر واتساب", tVideo: "فيديو افتتاحي", tProjects: "المشاريع", tQuote: "طلب عرض سعر",
-        p5cat: "بار وحياة ليلية · باتايا", p5desc: "موقع بأضواء النيون لبار بلياردو: فعالية الليلة وعدّ تنازلي مباشر لساعة التخفيضات، وقائمة المشروبات، وليالي البلياردو، وحجز الطاولات عبر واتساب، بأربع لغات.", tLive: "ساعة التخفيضات مباشرة", tEvents: "فعاليات أسبوعية",
-        p6cat: "أكل الشارع · باتايا", p6desc: "موقع بسيط ونابض لمطبخ شارع: قائمة قابلة للتصفية، وطلبات سفري تُرسل عبر واتساب، ومقياس للحرارة، وطبق الليلة على السبورة، وبطاقات عبارات تُعرض على الطاهية.", tOrder: "طلبات سفري", tSpice: "مقياس الحرارة", p7cat: "تأجير سكوتر · باتايا", p7desc: "موقع تأجير فاخر: أسطول بأسعار يومية وأسبوعية وشهرية، وتقويم حجز بسعر مباشر وإضافات، وتوصيل إلى الفندق وطلبات عبر واتساب.", tFleet: "الأسطول والأسعار", tCalendar: "تقويم الحجز",
+        p5cat: "بار وحياة ليلية", p5desc: "موقع بأضواء النيون لبار بلياردو: فعالية الليلة وعدّ تنازلي مباشر لساعة التخفيضات، وقائمة المشروبات، وليالي البلياردو، وحجز الطاولات عبر واتساب، بأربع لغات.", tLive: "ساعة التخفيضات مباشرة", tEvents: "فعاليات أسبوعية",
+        p6cat: "أكل الشارع", p6desc: "موقع بسيط ونابض لمطبخ شارع: قائمة قابلة للتصفية، وطلبات سفري تُرسل عبر واتساب، ومقياس للحرارة، وطبق الليلة على السبورة، وبطاقات عبارات تُعرض على الطاهية.", tOrder: "طلبات سفري", tSpice: "مقياس الحرارة", p7cat: "تأجير سكوتر", p7desc: "موقع تأجير فاخر: أسطول بأسعار يومية وأسبوعية وشهرية، وتقويم حجز بسعر مباشر وإضافات، وتوصيل إلى الفندق وطلبات عبر واتساب.", tFleet: "الأسطول والأسعار", tCalendar: "تقويم الحجز",
         p8cat: "مقهى ومطعم ومثلجات · المحمدية", p8desc: "موقع دافئ لمقهى-مطعم مفتوح طوال اليوم: لوحة مباشرة لحالة الفتح/الإغلاق و«الآن»، القائمة الكاملة بالأسعار الحقيقية، قائمة اختيار جاهزة لعرضها على النادل، وكسكس الجمعة مع عدّ تنازلي، بالفرنسية والإنجليزية والعربية.", tLivePanel: "لوحة الحالة المباشرة", t3Lang: "3 لغات",
         soon: "قريباً", soonList: "فنادق · عقارات"
       },
@@ -634,7 +634,7 @@
         book: "احجز موعداً", whatsapp: "راسلنا على واتساب"
       },
       footer: {
-        local: "باتايا، تايلاند",
+        local: "عبر الإنترنت، في كل مكان",
         tagline: "مواقع إلكترونية وقوائم QR للمطاعم والمحلات المحلية.",
         explore: "استكشف", contact: "تواصل", book: "احجز موعداً", language: "اللغة",
         rights: "© 2026 NM Studio. صُمم ليجدك الزبائن.", backTop: "العودة للأعلى"

@@ -105,13 +105,37 @@
 
   if (reduce) return;
 
-  // the line under the film rises in once it is on screen (hidden state only set now that the observer is known to work)
+  /* the line under the film writes itself once it is on screen: words of the headline, then the gold line, then the closing
+     promise one sentence at a time. Text is split into spans only now, and only the visible text nodes (a language switch
+     later simply shows the new text without the effect). */
   var punch = root.querySelector(".film__punch");
   if (punch) {
+    var head = punch.querySelector(".film__headline"), line = punch.querySelector(".film__punchl"), n = 0;
+    if (head) [].slice.call(head.childNodes).forEach(function (node) {
+      if (node.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          var w = document.createElement("span"); w.className = "w"; w.textContent = part; w.style.setProperty("--i", n++); frag.appendChild(w);
+        });
+        head.replaceChild(frag, node);
+      } else if (node.nodeName === "EM") { node.style.setProperty("--i", n + 2); }
+    });
+    if (line) {
+      var parts = line.textContent.trim().match(/[^.。!?]+[.。!?]?/g) || [line.textContent];
+      if (parts.length < 2) parts = line.textContent.trim().split(/\s+/);   // Thai: no full stops, phrases are separated by spaces
+      if (parts.length > 1) {
+        line.textContent = "";
+        parts.forEach(function (p, i) { var sp = document.createElement("span"); sp.className = "s"; sp.textContent = p.trim(); sp.style.setProperty("--i", i); line.appendChild(sp); });
+      }
+    }
     root.classList.add("film--reveal");
-    var pio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { root.classList.add("is-in"); pio.disconnect(); } }, { threshold: 0.25 });
-    pio.observe(punch);
-    setTimeout(function () { root.classList.add("is-in"); }, 6000);
+    // two frames later, so the hidden state is painted first and the text really animates in (even if already on screen)
+    var go = function () { requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add("is-in"); }); }); };
+    var pio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { go(); pio.disconnect(); } }, { threshold: 0.3 });
+    requestAnimationFrame(function () { pio.observe(punch); });
+    setTimeout(function () { root.classList.add("is-in"); }, 8000);
   }
 
   /* 3D 1: the phone lies back and stands up to face you as it reaches the middle of the screen.

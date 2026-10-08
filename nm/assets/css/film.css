@@ -29,12 +29,25 @@ html[lang="th"] .film__headline em, html[lang="ar"] .film__headline em { font-st
 .film .film__cta { margin: 1.8rem 0 0; }
 @media (max-width: 999px) { .film__cta, .film__cta .btn { width: 100%; } .film__cta .btn { justify-content: center; } }
 
-/* entry: the three lines rise in one after the other (armed by JS only) */
-.film--reveal .film__punch > * { opacity: 0; translate: 0 18px; transition: opacity .8s ease, translate .9s cubic-bezier(.2,.75,.2,1); }
-.film--reveal.is-in .film__punch > * { opacity: 1; translate: 0 0; }
-.film--reveal.is-in .film__punch > :nth-child(2) { transition-delay: .12s; }
-.film--reveal.is-in .film__punch > :nth-child(3) { transition-delay: .24s; }
-.film--reveal.is-in .film__punch > :nth-child(4) { transition-delay: .36s; }
+/* entry (armed by JS only): the headline writes itself word by word, sharpening from a blur; the gold line follows and keeps
+   a slow light running through it; the closing promise lands one sentence at a time. Plays once. */
+/* hidden state: no transition, so it applies instantly; the transitions live on the .is-in state only */
+.film--reveal .film__punchb, .film--reveal .film__cta { opacity: 0; translate: 0 16px; }
+.film--reveal.is-in .film__punchb, .film--reveal.is-in .film__cta { opacity: 1; translate: 0 0; transition: opacity .8s ease .55s, translate .9s cubic-bezier(.2,.75,.2,1) .55s; }
+.film--reveal.is-in .film__cta { transition-delay: 1.6s; }
+.film__headline .w, .film__headline em, .film__punchl .s { display: inline-block; }
+.film--reveal .film__headline .w, .film--reveal .film__headline em, .film--reveal .film__punchl .s { opacity: 0; filter: blur(10px); transform: translateY(.4em); }
+.film--reveal .film__punchl .s { transform: translateY(.3em) scale(.96); }
+.film--reveal.is-in .film__headline .w, .film--reveal.is-in .film__headline em, .film--reveal.is-in .film__punchl .s { opacity: 1; filter: blur(0); transform: none;
+  transition: opacity .7s ease, filter .8s ease, transform .9s cubic-bezier(.2,.75,.2,1); transition-delay: calc(var(--i, 0) * 75ms); }
+.film--reveal.is-in .film__punchl .s { transition-delay: calc(1.05s + var(--i, 0) * 220ms); }
+/* the light that runs through the gold words */
+.film .film__headline em, .film__punchl .s:last-child {
+  background: linear-gradient(100deg, #b08640 0%, #e4cf9a 22%, #fff4d6 42%, #e4cf9a 60%, #c9a961 80%, #b08640 100%);
+  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: filmShine 6s linear infinite; }
+@keyframes filmShine { from { background-position: 110% 0; } to { background-position: -110% 0; } }
+.film__punchl .s + .s { margin-inline-start: .35em; }
 
 /* ---------- stage + phone ---------- */
 .film__stage { position: relative; display: flex; justify-content: center; perspective: 1400px; padding: .5rem 0 1rem; }
@@ -91,5 +104,5 @@ html[lang="th"] .film__headline em, html[lang="ar"] .film__headline em { font-st
 @media (prefers-reduced-motion: reduce) {
   .film__phone { --rx: 0deg !important; --ry: 0deg !important; }
   .film__cap { transition: none !important; }
-  .film--reveal .film__punch > * { opacity: 1 !important; translate: none !important; }
+  .film .film__headline em, .film__punchl .s:last-child { animation: none; background-position: 40% 0; }
 }

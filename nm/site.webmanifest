@@ -1,7 +1,7 @@
 {
   "name": "NM Studio — websites, QR menus & Google profiles",
   "short_name": "NM Studio",
-  "description": "Websites, QR menus and Google Business Profiles for restaurants, salons, spas and shops in Pattaya.",
+  "description": "Websites, QR menus and Google Business Profiles for restaurants, salons, spas and shops.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

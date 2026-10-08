@@ -6,21 +6,21 @@
   var D = {
     en: {
       meta2: {
-        services: { title: "Services: Google, QR menu & websites | NM Studio", description: "Four offers for Pattaya: Google profile, QR menu, website, Complete Pack. One-time from ฿990, or setup plus subscription." },
+        services: { title: "Services: Google, QR menu & websites | NM Studio", description: "Four offers: Google profile, QR menu, website, Complete Pack. One-time from ฿990, or setup plus subscription." },
         pricing: { title: "Prices: setup, then a subscription | NM Studio", description: "Thai baht prices: website ฿5,800 then ฿1,140 a month, Complete Pack ฿13,300 then ฿3,800 a month. Google and QR menu paid once." }
       },
       nav2: { offers: "Offers", services: "Services", pricing: "Pricing", account: "My account", home: "Home", cta: "Chat on WhatsApp" },
     reel: { eyebrow: "Real work", title: "Eight sites, <em>live right now.</em>", lead: "Open any of them: real businesses, their own photos and their own languages.", hint: "Point at it to stop" },
     cta: { startProject: "Start my project", startShort: "Start a project", quote: "Free quote" },
       hero2: {
-        eyebrow: "Web studio · Pattaya, Thailand",
+        eyebrow: "Web studio · Premium websites",
         price: "Website from <b>฿5,800</b> setup, then <b>฿1,140</b> a month. Google and QR menu paid once, from <b>฿990</b>.",
         ctaOffers: "Discover the offers", ctaWa: "Chat on WhatsApp", scroll: "Scroll",
         l1: "languages, plus any your customers need", l2: "live sites to explore", v3: "48h", l3: "for a Google listing", v4: "No", l4: "lock-in, cancel your subscription anytime",
         slide1: "Night street", slide2: "Street food", slide3: "Restaurant"
       },
       story: {
-        eyebrow: "Right now, in Pattaya",
+        eyebrow: "Right now, near you",
         l1: "Tourists are searching for you on Google <em>right now.</em>",
         l2: "Without a listing, <em>they don't find you.</em>",
         l3: "Here's how we fix that, <em>in days.</em>",
@@ -41,7 +41,7 @@
       },
       why2: {
         eyebrow: "Why NM Studio", title: "Real people. <em>Real results.</em>",
-        r1t: "We come to you", r1b: "We meet you at your shop anywhere in Pattaya, take the photos and handle everything. You never touch the tech.",
+        r1t: "We come to you", r1b: "We meet you at your shop or by video call and handle everything. You never touch the tech.",
         r2t: "Live in days, not months", r2b: "Send your photos today. Your listing, menu or website goes live within days.",
         r3t: "Edits on WhatsApp, no lock-in", r3b: "Change a price, a dish or a photo with one message. The website and the Complete Pack include a monthly subscription you can cancel anytime."
       },
@@ -54,15 +54,15 @@
         days: "{n} days", day: "1 day", note: "An estimate based on your own numbers, not a promise.", cta: "Stop losing them"
       },
       visit: {
-        eyebrow: "We come to you", title: "Anywhere in Pattaya. <em>Free visit.</em>",
-        lead: "Naklua, Central Pattaya, Pratumnak or Jomtien. We come to your shop, show you what your site could look like and take the photos on the spot.",
+        eyebrow: "We come to you", title: "In person or by video. <em>Free.</em>",
+        lead: "At your shop or on a video call. We show you what your site could look like before you decide.",
         cta: "Book a free visit", pin: "On our way", sea: "Gulf of Thailand",
         naklua: "Naklua", central: "Central Pattaya", walking: "Walking Street", pratumnak: "Pratumnak", jomtien: "Jomtien", east: "East Pattaya",
-        mapAlt: "Stylised map of Pattaya showing the areas we visit, from Naklua to Jomtien"
+        mapAlt: "Stylised map of the areas we cover"
       },
       preview: { btn: "Live preview", title: "Live preview", desktop: "Desktop", mobile: "Mobile", open: "Open in a new tab", loading: "Loading the live site…", close: "Close" },
       audience: { i8: "Hotels", i9: "Guesthouses", i10: "Car & bike rentals", i11: "Beach clubs", i12: "Gyms", i13: "Tour agencies", i14: "Clinics", i15: "Shops", sr: "We work with restaurants, cafés, hair salons, spas and massage salons, bars, street food vendors, hotels, guesthouses, rental shops, beach clubs, gyms, tour agencies, clinics, shops and local companies." },
-      v4: {"title": "Be found. <em>Be chosen.</em>", "sub": "Websites, QR menus and Google profiles for Pattaya businesses.", "proof1": "From ฿990", "proof2": "Google listing in 48h", "proof3": "No contract", "nowShowing": "Now showing", "offersTitle": "4 offers. <em>One for every need.</em>", "finaleTitle": "Ready to be <em>visible?</em>", "contact": "Contact", "follow": "Follow us", "alt1": "Pattaya bay at night, seen from the hill", "alt2": "A street-food cook at her stall at night", "alt3": "A bright, modern hair salon", "alt4": "Someone sending photos from their phone in the street", "alt5": "A full restaurant in the evening"},
+      v4: {"title": "Be found. <em>Be chosen.</em>", "sub": "Websites, QR menus and Google profiles for restaurants and local businesses.", "proof1": "From ฿990", "proof2": "Google listing in 48h", "proof3": "No contract", "nowShowing": "Now showing", "offersTitle": "4 offers. <em>One for every need.</em>", "finaleTitle": "Ready to be <em>visible?</em>", "contact": "Contact", "follow": "Follow us", "alt1": "A seaside city at night, seen from the hill", "alt2": "A street-food cook at her stall at night", "alt3": "A bright, modern hair salon", "alt4": "Someone sending photos from their phone in the street", "alt5": "A full restaurant in the evening"},
       v3: { s1: "Your website", s2: "Found on Google Maps", s3: "Your QR menu", s4: "Customers at your door", play: "Play", scanT: "On a computer?", scanB: "Scan with your phone to chat on WhatsApp.", scroll: "Scroll to explore" },
       finale2: { title: "Ready to be seen? <em>Message us on WhatsApp.</em>", replies: "We usually reply within minutes", wa: "Chat on WhatsApp" },
       footer2: { pages: "Pages", legal: "Legal", notice: "Legal notice", terms: "Terms of sale", privacy: "Privacy", cookies: "Cookies" },
@@ -103,7 +103,7 @@
         careSubNote: "Hosting, edits and support, included in the monthly fee.",
         subYearlyNote: "Or pay {months} months a year instead of 12 and get 2 months free.",
         careGoogle: "A Google listing needs no care plan. It's yours to keep.",
-        reviewTitle: "Review & pay", promo: "Promo code", promoPh: "e.g. PATTAYA10", promoNote: "Codes are checked on Stripe's secure page, before you pay.",
+        reviewTitle: "Review & pay", promo: "Promo code", promoPh: "e.g. WELCOME10", promoNote: "Codes are checked on Stripe's secure page, before you pay.",
         sumSetup: "Setup fee · one-time", sumOffer: "Offer · one-time", sumCare: "Subscription · first period", sumNone: "None", renew: "Then {price} / {period}, starting when your site goes live.", month: "month", year: "year",
         terms: "I agree to the terms of sale. A subscription or care plan renews automatically and can be cancelled anytime, free of charge.", termsLink: "Read the terms",
         backOffers: "Back to offers", included: "What's included", edit: "Edit", method: "Payment method"
@@ -132,21 +132,21 @@
 
     fr: {
       meta2: {
-        services: { title: "Services: Google, menu QR et sites web | NM Studio", description: "Quatre offres à Pattaya : fiche Google, menu QR, site web, Pack complet. Dès 990 ฿, ou mise en place + abonnement." },
+        services: { title: "Services: Google, menu QR et sites web | NM Studio", description: "Quatre offres : fiche Google, menu QR, site web, Pack complet. Dès 990 ฿, ou mise en place + abonnement." },
         pricing: { title: "Tarifs: mise en place puis abonnement | NM Studio", description: "Prix en bahts : site web 5 800 ฿ puis 1 140 ฿/mois, Pack complet 13 300 ฿ puis 3 800 ฿/mois. Google et menu QR en paiement unique." }
       },
       nav2: { offers: "Offres", services: "Services", pricing: "Tarifs", account: "Mon compte", home: "Accueil", cta: "Discuter sur WhatsApp" },
     reel: { eyebrow: "Du travail réel", title: "Huit sites, <em>en ligne maintenant.</em>", lead: "Ouvrez-les : de vrais commerces, leurs photos, leurs langues.", hint: "Survolez pour arrêter" },
     cta: { startProject: "Démarrer mon projet", startShort: "Démarrer un projet", quote: "Devis gratuit" },
       hero2: {
-        eyebrow: "Studio web · Pattaya, Thaïlande",
+        eyebrow: "Studio web · Sites premium",
         price: "Site web à partir de <b>5 800 ฿</b> de mise en place, puis <b>3 800 ฿</b> par mois. Fiche Google et menu QR en paiement unique, dès <b>990 ฿</b>.",
         ctaOffers: "Découvrir les offres", ctaWa: "Discuter sur WhatsApp", scroll: "Défiler",
         l1: "langues, et toutes celles dont vos clients ont besoin", l2: "sites en ligne à visiter", v3: "48 h", l3: "pour une fiche Google", v4: "Aucun", l4: "blocage, résiliez votre abonnement quand vous voulez",
         slide1: "Rue de nuit", slide2: "Street food", slide3: "Restaurant"
       },
       story: {
-        eyebrow: "En ce moment, à Pattaya",
+        eyebrow: "En ce moment, près de chez vous",
         l1: "Des touristes vous cherchent sur Google <em>en ce moment.</em>",
         l2: "Sans fiche, <em>ils ne vous trouvent pas.</em>",
         l3: "Voici comment on règle ça, <em>en quelques jours.</em>",
@@ -167,7 +167,7 @@
       },
       why2: {
         eyebrow: "Pourquoi NM Studio", title: "De vraies personnes. <em>De vrais résultats.</em>",
-        r1t: "On vient à vous", r1b: "On vous rencontre dans votre commerce, partout à Pattaya, on prend les photos et on s'occupe de tout. Vous ne touchez jamais à la technique.",
+        r1t: "On vient à vous", r1b: "On vous rencontre dans votre commerce ou en visio, et on s'occupe de tout. Vous ne touchez jamais à la technique.",
         r2t: "En ligne en jours, pas en mois", r2b: "Envoyez vos photos aujourd'hui. Votre fiche, votre menu ou votre site est en ligne en quelques jours.",
         r3t: "Modifs sur WhatsApp, sans blocage", r3b: "Un prix, un plat ou une photo à changer ? Un message suffit. Le site web et le Pack complet incluent un abonnement mensuel résiliable à tout moment."
       },
@@ -180,15 +180,15 @@
         days: "{n} jours", day: "1 jour", note: "Une estimation à partir de vos propres chiffres, pas une promesse.", cta: "Ne plus les perdre"
       },
       visit: {
-        eyebrow: "On vient à vous", title: "Partout à Pattaya. <em>Visite gratuite.</em>",
-        lead: "Naklua, Pattaya centre, Pratumnak ou Jomtien. On vient dans votre commerce, on vous montre à quoi pourrait ressembler votre site et on prend les photos sur place.",
+        eyebrow: "On vient à vous", title: "Sur place ou en visio. <em>Gratuit.</em>",
+        lead: "Dans votre commerce ou en visio. On vous montre à quoi pourrait ressembler votre site avant que vous décidiez.",
         cta: "Réserver une visite gratuite", pin: "En route", sea: "Golfe de Thaïlande",
         naklua: "Naklua", central: "Pattaya centre", walking: "Walking Street", pratumnak: "Pratumnak", jomtien: "Jomtien", east: "Pattaya Est",
-        mapAlt: "Carte stylisée de Pattaya montrant les quartiers où nous nous déplaçons, de Naklua à Jomtien"
+        mapAlt: "Carte stylisée des zones que nous couvrons"
       },
       preview: { btn: "Aperçu en direct", title: "Aperçu en direct", desktop: "Ordinateur", mobile: "Mobile", open: "Ouvrir dans un nouvel onglet", loading: "Chargement du site…", close: "Fermer" },
       audience: { i8: "Hôtels", i9: "Maisons d'hôtes", i10: "Location de voitures et motos", i11: "Beach clubs", i12: "Salles de sport", i13: "Agences de voyage", i14: "Cliniques", i15: "Boutiques", sr: "Nous travaillons avec des restaurants, cafés, salons de coiffure, spas et salons de massage, bars, vendeurs de street food, hôtels, maisons d'hôtes, loueurs, beach clubs, salles de sport, agences de voyage, cliniques, boutiques et entreprises locales." },
-      v4: {"title": "Soyez trouvé. <em>Soyez choisi.</em>", "sub": "Sites web, QR menus et fiches Google pour les commerces de Pattaya.", "proof1": "Dès 990 ฿", "proof2": "Fiche Google en 48 h", "proof3": "Sans contrat", "nowShowing": "À l'écran", "offersTitle": "4 offres. <em>Une pour chaque besoin.</em>", "finaleTitle": "Prêt à être <em>visible ?</em>", "contact": "Contact", "follow": "Suivez-nous", "alt1": "La baie de Pattaya la nuit, vue de la colline", "alt2": "Une cuisinière de street food à son stand, le soir", "alt3": "Un salon de coiffure lumineux et moderne", "alt4": "Quelqu'un envoie des photos depuis son téléphone dans la rue", "alt5": "Un restaurant plein en soirée"},
+      v4: {"title": "Soyez trouvé. <em>Soyez choisi.</em>", "sub": "Sites web, QR menus et fiches Google pour les restaurants et commerces.", "proof1": "Dès 990 ฿", "proof2": "Fiche Google en 48 h", "proof3": "Sans contrat", "nowShowing": "À l'écran", "offersTitle": "4 offres. <em>Une pour chaque besoin.</em>", "finaleTitle": "Prêt à être <em>visible ?</em>", "contact": "Contact", "follow": "Suivez-nous", "alt1": "Une ville en bord de mer la nuit, vue de la colline", "alt2": "Une cuisinière de street food à son stand, le soir", "alt3": "Un salon de coiffure lumineux et moderne", "alt4": "Quelqu'un envoie des photos depuis son téléphone dans la rue", "alt5": "Un restaurant plein en soirée"},
       v3: { s1: "Votre site web", s2: "Trouvé sur Google Maps", s3: "Votre menu QR", s4: "Des clients à votre porte", play: "Lire", scanT: "Sur ordinateur ?", scanB: "Scannez avec votre téléphone pour discuter sur WhatsApp.", scroll: "Faites défiler" },
       finale2: { title: "Prêt à être vu ? <em>Écrivez-nous sur WhatsApp.</em>", replies: "Réponse en général en quelques minutes", wa: "Discuter sur WhatsApp" },
       footer2: { pages: "Pages", legal: "Légal", notice: "Mentions légales", terms: "CGV", privacy: "Confidentialité", cookies: "Cookies" },
@@ -229,7 +229,7 @@
         careSubNote: "Hébergement, modifications et support, inclus dans le montant mensuel.",
         subYearlyNote: "Ou payez {months} mois par an au lieu de 12, avec 2 mois offerts.",
         careGoogle: "Une fiche Google n'a pas besoin d'entretien. Elle vous appartient.",
-        reviewTitle: "Vérifier et payer", promo: "Code promo", promoPh: "ex. PATTAYA10", promoNote: "Les codes sont vérifiés sur la page sécurisée de Stripe, avant le paiement.",
+        reviewTitle: "Vérifier et payer", promo: "Code promo", promoPh: "ex. WELCOME10", promoNote: "Les codes sont vérifiés sur la page sécurisée de Stripe, avant le paiement.",
         sumSetup: "Mise en place · unique", sumOffer: "Offre · paiement unique", sumCare: "Abonnement · première période", sumNone: "Aucun", renew: "Puis {price} / {period}, à partir de la mise en ligne de votre site.", month: "mois", year: "an",
         terms: "J'accepte les conditions de vente. Un abonnement ou un forfait d'entretien se renouvelle automatiquement et se résilie à tout moment, gratuitement.", termsLink: "Lire les CGV",
         backOffers: "Retour aux offres", included: "Ce qui est inclus", edit: "Modifier", method: "Moyen de paiement"
@@ -258,21 +258,21 @@
 
     it: {
       meta2: {
-        services: { title: "Servizi: Google, menù QR e siti web | NM Studio", description: "Quattro offerte a Pattaya: scheda Google, menù QR, sito web, Pacchetto completo. Da 990 ฿, oppure attivazione + abbonamento." },
+        services: { title: "Servizi: Google, menù QR e siti web | NM Studio", description: "Quattro offerte: scheda Google, menù QR, sito web, Pacchetto completo. Da 990 ฿, oppure attivazione + abbonamento." },
         pricing: { title: "Prezzi: attivazione e poi abbonamento | NM Studio", description: "Prezzi in baht: sito web 5.800 ฿ poi 1.140 ฿/mese, Pacchetto completo 13.300 ฿ poi 3.800 ฿/mese. Google e menù QR una tantum." }
       },
       nav2: { offers: "Offerte", services: "Servizi", pricing: "Prezzi", account: "Il mio account", home: "Home", cta: "Scrivici su WhatsApp" },
     reel: { eyebrow: "Lavoro vero", title: "Otto siti, <em>online adesso.</em>", lead: "Après-les : attività vere, con le loro foto e le loro lingue.", hint: "Passa sopra per fermare" },
     cta: { startProject: "Inizia il mio progetto", startShort: "Avvia un progetto", quote: "Preventivo gratuito" },
       hero2: {
-        eyebrow: "Web studio · Pattaya, Thailandia",
+        eyebrow: "Web studio · Premium websitesia",
         price: "Sito web da <b>5.800 ฿</b> di attivazione, poi <b>3.800 ฿</b> al mese. Scheda Google e menù QR una tantum, da <b>990 ฿</b>.",
         ctaOffers: "Scopri le offerte", ctaWa: "Scrivici su WhatsApp", scroll: "Scorri",
         l1: "lingue, più tutte quelle di cui i tuoi clienti hanno bisogno", l2: "siti online da visitare", v3: "48 h", l3: "per una scheda Google", v4: "Nessun", l4: "vincolo, disdici l'abbonamento quando vuoi",
         slide1: "Strada di notte", slide2: "Street food", slide3: "Ristorante"
       },
       story: {
-        eyebrow: "Adesso, a Pattaya",
+        eyebrow: "Adesso, vicino a te",
         l1: "I turisti ti stanno cercando su Google <em>proprio adesso.</em>",
         l2: "Senza una scheda, <em>non ti trovano.</em>",
         l3: "Ecco come lo risolviamo, <em>in pochi giorni.</em>",
@@ -293,7 +293,7 @@
       },
       why2: {
         eyebrow: "Perché NM Studio", title: "Persone vere. <em>Risultati veri.</em>",
-        r1t: "Veniamo da te", r1b: "Ti incontriamo nel tuo locale, ovunque a Pattaya, scattiamo le foto e pensiamo a tutto. Non tocchi mai la tecnologia.",
+        r1t: "Veniamo da te", r1b: "Ti incontriamo nel tuo locale o in videochiamata e pensiamo a tutto. Non tocchi mai la tecnologia.",
         r2t: "Online in giorni, non in mesi", r2b: "Mandaci le foto oggi. La tua scheda, il menù o il sito sono online in pochi giorni.",
         r3t: "Modifiche su WhatsApp, zero vincoli", r3b: "Un prezzo, un piatto o una foto da cambiare? Basta un messaggio. Sito web e Pacchetto completo includono un abbonamento mensile che disdici quando vuoi."
       },
@@ -306,15 +306,15 @@
         days: "{n} giorni", day: "1 giorno", note: "Una stima basata sui tuoi numeri, non una promessa.", cta: "Smetti di perderli"
       },
       visit: {
-        eyebrow: "Veniamo da te", title: "Ovunque a Pattaya. <em>Visita gratuita.</em>",
-        lead: "Naklua, Pattaya centro, Pratumnak o Jomtien, veniamo nel tuo locale, ti mostriamo come potrebbe essere il tuo sito e scattiamo le foto sul posto.",
+        eyebrow: "Veniamo da te", title: "Di persona o in video. <em>Gratis.</em>",
+        lead: "Nel tuo locale o in videochiamata: ti mostriamo come potrebbe essere il tuo sito prima che tu decida.",
         cta: "Prenota una visita gratuita", pin: "Stiamo arrivando", sea: "Golfo di Thailandia",
         naklua: "Naklua", central: "Pattaya centro", walking: "Walking Street", pratumnak: "Pratumnak", jomtien: "Jomtien", east: "Pattaya Est",
-        mapAlt: "Mappa stilizzata di Pattaya con le zone che visitiamo, da Naklua a Jomtien"
+        mapAlt: "Mappa stilizzata delle zone che copriamo"
       },
       preview: { btn: "Anteprima dal vivo", title: "Anteprima dal vivo", desktop: "Desktop", mobile: "Mobile", open: "Apri in una nuova scheda", loading: "Caricamento del sito…", close: "Chiudi" },
       audience: { i8: "Hotel", i9: "Guesthouse", i10: "Noleggio auto e moto", i11: "Beach club", i12: "Palestre", i13: "Agenzie di viaggio", i14: "Cliniche", i15: "Negozi", sr: "Lavoriamo con ristoranti, caffè, parrucchieri, spa e centri massaggi, bar, street food, hotel, guesthouse, noleggi, beach club, palestre, agenzie di viaggio, cliniche, negozi e aziende locali." },
-      v4: {"title": "Fatti trovare. <em>Fatti scegliere.</em>", "sub": "Siti web, menù QR e schede Google per le attività di Pattaya.", "proof1": "Da 990 ฿", "proof2": "Scheda Google in 48 ore", "proof3": "Senza contratto", "nowShowing": "In onda", "offersTitle": "4 offerte. <em>Una per ogni esigenza.</em>", "finaleTitle": "Pronto a farti <em>vedere?</em>", "contact": "Contatti", "follow": "Seguici", "alt1": "La baia di Pattaya di notte, vista dalla collina", "alt2": "Una cuoca di street food al suo banco, di sera", "alt3": "Un salone di parrucchiere luminoso e moderno", "alt4": "Una persona invia foto dal telefono per strada", "alt5": "Un ristorante pieno la sera"},
+      v4: {"title": "Fatti trovare. <em>Fatti scegliere.</em>", "sub": "Siti web, menù QR e schede Google per ristoranti e attività locali.", "proof1": "Da 990 ฿", "proof2": "Scheda Google in 48 ore", "proof3": "Senza contratto", "nowShowing": "In onda", "offersTitle": "4 offerte. <em>Una per ogni esigenza.</em>", "finaleTitle": "Pronto a farti <em>vedere?</em>", "contact": "Contatti", "follow": "Seguici", "alt1": "Una città sul mare di notte, vista dalla collina", "alt2": "Una cuoca di street food al suo banco, di sera", "alt3": "Un salone di parrucchiere luminoso e moderno", "alt4": "Una persona invia foto dal telefono per strada", "alt5": "Un ristorante pieno la sera"},
       v3: { s1: "Il tuo sito web", s2: "Trovato su Google Maps", s3: "Il tuo menu QR", s4: "Clienti alla tua porta", play: "Guarda", scanT: "Sei al computer?", scanB: "Inquadra con il telefono per scriverci su WhatsApp.", scroll: "Scorri" },
       finale2: { title: "Pronto a farti vedere? <em>Scrivici su WhatsApp.</em>", replies: "Di solito rispondiamo in pochi minuti", wa: "Scrivici su WhatsApp" },
       footer2: { pages: "Pagine", legal: "Note legali", notice: "Note legali", terms: "Condizioni di vendita", privacy: "Privacy", cookies: "Cookie" },
@@ -355,7 +355,7 @@
         careSubNote: "Hosting, modifiche e assistenza, inclusi nel canone mensile.",
         subYearlyNote: "Oppure paghi {months} mesi all'anno invece di 12 e ne hai 2 gratis.",
         careGoogle: "Una scheda Google non ha bisogno di assistenza, è tua.",
-        reviewTitle: "Controlla e paga", promo: "Codice promo", promoPh: "es. PATTAYA10", promoNote: "I codici vengono verificati sulla pagina sicura di Stripe, prima del pagamento.",
+        reviewTitle: "Controlla e paga", promo: "Codice promo", promoPh: "es. WELCOME10", promoNote: "I codici vengono verificati sulla pagina sicura di Stripe, prima del pagamento.",
         sumSetup: "Attivazione · una tantum", sumOffer: "Offerta · una tantum", sumCare: "Abbonamento · primo periodo", sumNone: "Nessuna", renew: "Poi {price} / {period}, da quando il sito va online.", month: "mese", year: "anno",
         terms: "Accetto le condizioni di vendita. Un abbonamento o un piano di assistenza si rinnova automaticamente e si disdice quando vuoi, gratuitamente.", termsLink: "Leggi le condizioni",
         backOffers: "Torna alle offerte", included: "Cosa è incluso", edit: "Modifica", method: "Metodo di pagamento"
@@ -384,21 +384,21 @@
 
     th: {
       meta2: {
-        services: { title: "บริการ: Google, เมนู QR และเว็บไซต์ | NM Studio", description: "สี่แพ็กเกจในพัทยา: Google, เมนู QR, เว็บไซต์, แพ็กครบชุด เริ่ม ฿990 จ่ายครั้งเดียว หรือค่าติดตั้ง + รายเดือน" },
+        services: { title: "บริการ: Google, เมนู QR และเว็บไซต์ | NM Studio", description: "สี่แพ็กเกจ: Google, เมนู QR, เว็บไซต์, แพ็กครบชุด เริ่ม ฿990 จ่ายครั้งเดียว หรือค่าติดตั้ง + รายเดือน" },
         pricing: { title: "ราคา: ค่าติดตั้ง แล้วต่อด้วยค่าบริการรายเดือน | NM Studio", description: "ราคาเป็นบาท: เว็บไซต์ 5,800 บาท แล้ว 1,140 บาท/เดือน แพ็กครบชุด 19,000 บาท แล้ว 3,800 บาท/เดือน" }
       },
       nav2: { offers: "แพ็กเกจ", services: "บริการ", pricing: "ราคา", account: "บัญชีของฉัน", home: "หน้าแรก", cta: "แชททาง WhatsApp" },
     reel: { eyebrow: "งานจริง", title: "แปดเว็บไซต์ <em>ที่ออนไลน์อยู่ตอนนี้</em>", lead: "ลองเปิดดู: ธุรกิจจริง พร้อมรูปและภาษาของพวกเขาเอง", hint: "ชี้ที่แถบเพื่อหยุด" },
     cta: { startProject: "เริ่มโปรเจกต์ของฉัน", startShort: "เริ่มโปรเจกต์", quote: "ประเมินราคาฟรี" },
       hero2: {
-        eyebrow: "เว็บสตูดิโอ · พัทยา ประเทศไทย",
+        eyebrow: "เว็บสตูดิโอ · เว็บไซต์ระดับพรีเมียม",
         price: "เว็บไซต์ค่าติดตั้งเริ่มต้น <b>5,800 บาท</b> แล้วเดือนละ <b>1,140 บาท</b> ส่วน Google และเมนู QR จ่ายครั้งเดียว เริ่มต้น <b>990 บาท</b>",
         ctaOffers: "ดูแพ็กเกจทั้งหมด", ctaWa: "แชททาง WhatsApp", scroll: "เลื่อนลง",
         l1: "ภาษา และภาษาอื่นที่ลูกค้าคุณต้องการ", l2: "เว็บไซต์ที่ออนไลน์จริง", v3: "48 ชม.", l3: "สำหรับโปรไฟล์ Google", v4: "ไม่มี", l4: "สัญญาผูกมัด ยกเลิกค่าบริการรายเดือนได้ทุกเมื่อ",
         slide1: "ถนนยามค่ำคืน", slide2: "สตรีทฟู้ด", slide3: "ร้านอาหาร"
       },
       story: {
-        eyebrow: "ตอนนี้ ที่พัทยา",
+        eyebrow: "ตอนนี้ ใกล้ตัวคุณ",
         l1: "นักท่องเที่ยวกำลังค้นหาร้านคุณบน Google <em>อยู่ตอนนี้</em>",
         l2: "ถ้าไม่มีหน้าร้านบน Google <em>เขาก็หาคุณไม่เจอ</em>",
         l3: "นี่คือวิธีที่เราแก้ปัญหา <em>ภายในไม่กี่วัน</em>",
@@ -419,7 +419,7 @@
       },
       why2: {
         eyebrow: "ทำไมต้อง NM Studio", title: "คนจริง <em>ผลลัพธ์จริง</em>",
-        r1t: "เราไปหาคุณถึงร้าน", r1b: "เราไปพบคุณที่ร้าน ทุกที่ในพัทยา ถ่ายรูปและจัดการให้ทั้งหมด คุณไม่ต้องยุ่งกับเรื่องเทคนิคเลย",
+        r1t: "เราไปหาคุณถึงร้าน", r1b: "เราพบคุณที่ร้านหรือทางวิดีโอคอล และจัดการให้ทั้งหมด คุณไม่ต้องยุ่งกับเรื่องเทคนิคเลย",
         r2t: "ออนไลน์ในไม่กี่วัน ไม่ใช่หลายเดือน", r2b: "ส่งรูปมาวันนี้ หน้าร้าน Google เมนู หรือเว็บไซต์ของคุณออนไลน์ภายในไม่กี่วัน",
         r3t: "แก้ไขผ่าน WhatsApp ไม่มีสัญญาผูกมัด", r3b: "อยากเปลี่ยนราคา เมนู หรือรูป? ส่งข้อความเดียวพอ เว็บไซต์และแพ็กเกจครบชุดมีค่าบริการรายเดือนที่ยกเลิกได้ทุกเมื่อ"
       },
@@ -432,15 +432,15 @@
         days: "{n} วัน", day: "1 วัน", note: "เป็นการประมาณจากตัวเลขของคุณเอง ไม่ใช่การรับประกัน", cta: "หยุดเสียลูกค้า"
       },
       visit: {
-        eyebrow: "เราไปหาคุณ", title: "ทุกที่ในพัทยา <em>เข้าพบฟรี</em>",
-        lead: "นาเกลือ พัทยากลาง พระตำหนัก หรือจอมเทียน เราไปที่ร้านคุณ ให้ดูว่าเว็บไซต์จะออกมาเป็นอย่างไร และถ่ายรูปให้ตรงนั้นเลย",
+        eyebrow: "เราไปหาคุณ", title: "พบกันที่ร้านหรือทางวิดีโอ <em>ฟรี</em>",
+        lead: "ที่ร้านของคุณหรือทางวิดีโอคอล เราให้คุณดูว่าเว็บไซต์จะออกมาเป็นอย่างไรก่อนตัดสินใจ",
         cta: "นัดเข้าพบฟรี", pin: "กำลังไป", sea: "อ่าวไทย",
         naklua: "นาเกลือ", central: "พัทยากลาง", walking: "วอล์กกิ้งสตรีท", pratumnak: "พระตำหนัก", jomtien: "จอมเทียน", east: "พัทยาตะวันออก",
-        mapAlt: "แผนที่พัทยาแบบย่อ แสดงพื้นที่ที่เราเข้าไปให้บริการ ตั้งแต่นาเกลือถึงจอมเทียน"
+        mapAlt: "แผนที่แบบย่อของพื้นที่ที่เราให้บริการ"
       },
       preview: { btn: "ดูตัวอย่างสด", title: "ตัวอย่างสด", desktop: "คอมพิวเตอร์", mobile: "มือถือ", open: "เปิดในแท็บใหม่", loading: "กำลังโหลดเว็บไซต์…", close: "ปิด" },
       audience: { i8: "โรงแรม", i9: "เกสต์เฮาส์", i10: "เช่ารถและมอเตอร์ไซค์", i11: "บีชคลับ", i12: "ฟิตเนส", i13: "บริษัททัวร์", i14: "คลินิก", i15: "ร้านค้า", sr: "เราทำงานกับร้านอาหาร คาเฟ่ ร้านทำผม สปาและร้านนวด บาร์ ร้านสตรีทฟู้ด โรงแรม เกสต์เฮาส์ ร้านเช่ารถ บีชคลับ ฟิตเนส บริษัททัวร์ คลินิก ร้านค้า และธุรกิจท้องถิ่น" },
-      v4: {"title": "ให้ลูกค้าหาเจอ <em>และเลือกคุณ</em>", "sub": "เว็บไซต์ เมนู QR และโปรไฟล์ Google สำหรับธุรกิจในพัทยา", "proof1": "เริ่มต้น 990 บาท", "proof2": "Google ภายใน 48 ชม.", "proof3": "ไม่มีสัญญาผูกมัด", "nowShowing": "กำลังแสดง", "offersTitle": "4 แพ็กเกจ <em>ตอบทุกความต้องการ</em>", "finaleTitle": "พร้อมให้ลูกค้า<em>มองเห็นคุณ</em>หรือยัง?", "contact": "ติดต่อ", "follow": "ติดตามเรา", "alt1": "อ่าวพัทยายามค่ำคืน มองจากเนินเขา", "alt2": "แม่ค้าสตรีทฟู้ดที่ร้านของเธอยามค่ำ", "alt3": "ร้านทำผมสว่างและทันสมัย", "alt4": "คนกำลังส่งรูปจากมือถือบนถนน", "alt5": "ร้านอาหารที่ลูกค้าเต็มร้านยามเย็น"},
+      v4: {"title": "ให้ลูกค้าหาเจอ <em>และเลือกคุณ</em>", "sub": "เว็บไซต์ เมนู QR และโปรไฟล์ Google สำหรับร้านอาหารและธุรกิจท้องถิ่น", "proof1": "เริ่มต้น 990 บาท", "proof2": "Google ภายใน 48 ชม.", "proof3": "ไม่มีสัญญาผูกมัด", "nowShowing": "กำลังแสดง", "offersTitle": "4 แพ็กเกจ <em>ตอบทุกความต้องการ</em>", "finaleTitle": "พร้อมให้ลูกค้า<em>มองเห็นคุณ</em>หรือยัง?", "contact": "ติดต่อ", "follow": "ติดตามเรา", "alt1": "เมืองริมทะเลยามค่ำคืน มองจากเนินเขา", "alt2": "แม่ค้าสตรีทฟู้ดที่ร้านของเธอยามค่ำ", "alt3": "ร้านทำผมสว่างและทันสมัย", "alt4": "คนกำลังส่งรูปจากมือถือบนถนน", "alt5": "ร้านอาหารที่ลูกค้าเต็มร้านยามเย็น"},
       v3: { s1: "เว็บไซต์ของคุณ", s2: "เจอบน Google Maps", s3: "เมนู QR ของคุณ", s4: "ลูกค้ามาถึงหน้าร้าน", play: "เล่น", scanT: "ใช้คอมพิวเตอร์อยู่ใช่ไหม?", scanB: "สแกนด้วยมือถือเพื่อแชทกับเราทาง WhatsApp", scroll: "เลื่อนเพื่อดู" },
       finale2: { title: "พร้อมให้ลูกค้าเห็นคุณหรือยัง? <em>ทักเราทาง WhatsApp</em>", replies: "ปกติเราตอบภายในไม่กี่นาที", wa: "แชททาง WhatsApp" },
       footer2: { pages: "หน้าต่าง ๆ", legal: "กฎหมาย", notice: "ข้อมูลทางกฎหมาย", terms: "เงื่อนไขการขาย", privacy: "ความเป็นส่วนตัว", cookies: "คุกกี้" },
@@ -481,7 +481,7 @@
         careSubNote: "โฮสติ้ง การแก้ไข และการดูแล รวมอยู่ในค่าบริการรายเดือนแล้ว",
         subYearlyNote: "หรือจ่าย {months} เดือนต่อปีแทน 12 เดือน รับฟรี 2 เดือน",
         careGoogle: "หน้าร้าน Google ไม่ต้องมีแพ็กดูแล เป็นของคุณตลอดไป",
-        reviewTitle: "ตรวจสอบและชำระเงิน", promo: "โค้ดส่วนลด", promoPh: "เช่น PATTAYA10", promoNote: "โค้ดจะถูกตรวจสอบบนหน้าชำระเงินที่ปลอดภัยของ Stripe ก่อนชำระเงิน",
+        reviewTitle: "ตรวจสอบและชำระเงิน", promo: "โค้ดส่วนลด", promoPh: "เช่น WELCOME10", promoNote: "โค้ดจะถูกตรวจสอบบนหน้าชำระเงินที่ปลอดภัยของ Stripe ก่อนชำระเงิน",
         sumSetup: "ค่าติดตั้ง · ครั้งเดียว", sumOffer: "แพ็กเกจ · จ่ายครั้งเดียว", sumCare: "ค่าบริการรายเดือน · งวดแรก", sumNone: "ไม่มี", renew: "จากนั้น {price} / {period} เริ่มเมื่อเว็บไซต์ออนไลน์", month: "เดือน", year: "ปี",
         terms: "ฉันยอมรับเงื่อนไขการขาย ค่าบริการรายเดือนหรือแพ็กดูแลต่ออายุอัตโนมัติ และยกเลิกได้ทุกเมื่อโดยไม่มีค่าใช้จ่าย", termsLink: "อ่านเงื่อนไข",
         backOffers: "กลับไปที่แพ็กเกจ", included: "สิ่งที่ได้รับ", edit: "แก้ไข", method: "วิธีชำระเงิน"
@@ -510,21 +510,21 @@
 
     ar: {
       meta2: {
-        services: { title: "الخدمات: Google وقائمة QR والمواقع | NM Studio", description: "أربعة عروض في باتايا: ملف Google، قائمة QR، الموقع، الباقة الكاملة. من 990 ฿ دفعة واحدة أو إعداد + اشتراك." },
+        services: { title: "الخدمات: Google وقائمة QR والمواقع | NM Studio", description: "أربعة عروض: ملف Google، قائمة QR، الموقع، الباقة الكاملة. من 990 ฿ دفعة واحدة أو إعداد + اشتراك." },
         pricing: { title: "الأسعار: إعداد ثم اشتراك شهري | NM Studio", description: "أسعار بالبات: الموقع إعداد 5,800 ฿ ثم 1,140 ฿ شهريًا، والباقة الكاملة 19,000 ฿ ثم 3,800 ฿ شهريًا." }
       },
       nav2: { offers: "العروض", services: "الخدمات", pricing: "الأسعار", account: "حسابي", home: "الرئيسية", cta: "تحدّث معنا على واتساب" },
     reel: { eyebrow: "عمل حقيقي", title: "ثمانية مواقع <em>مباشرة الآن.</em>", lead: "افتح أيًّا منها: أعمال حقيقية بصورها ولغاتها.", hint: "مرّر المؤشر لإيقافه" },
     cta: { startProject: "ابدأ مشروعي", startShort: "ابدأ مشروعًا", quote: "عرض سعر مجاني" },
       hero2: {
-        eyebrow: "استوديو ويب · باتايا، تايلاند",
+        eyebrow: "استوديو ويب · مواقع راقية",
         price: "الموقع الإلكتروني إعداد يبدأ من <b>5,800 ฿</b> ثم <b>1,140 ฿</b> شهريًا. أما Google وقائمة QR فدفعة واحدة ابتداءً من <b>990 ฿</b>.",
         ctaOffers: "اكتشف العروض", ctaWa: "تحدّث معنا على واتساب", scroll: "مرّر",
         l1: "لغات، وأي لغة يحتاجها عملاؤك", l2: "مواقع حيّة يمكنك زيارتها", v3: "48 ساعة", l3: "لملف Google", v4: "بدون", l4: "التزام، يمكنك إلغاء الاشتراك متى شئت",
         slide1: "شارع ليلي", slide2: "طعام الشارع", slide3: "مطعم"
       },
       story: {
-        eyebrow: "الآن، في باتايا",
+        eyebrow: "الآن، بالقرب منك",
         l1: "السيّاح يبحثون عنك على Google <em>في هذه اللحظة.</em>",
         l2: "من دون صفحة على Google، <em>لن يجدوك.</em>",
         l3: "وهكذا نحلّ ذلك، <em>في أيام قليلة.</em>",
@@ -545,7 +545,7 @@
       },
       why2: {
         eyebrow: "لماذا NM Studio", title: "أشخاص حقيقيون. <em>نتائج حقيقية.</em>",
-        r1t: "نأتي إليك", r1b: "نلتقيك في محلك في أي مكان في باتايا، نلتقط الصور ونتولى كل شيء. لن تتعامل مع التقنية أبدًا.",
+        r1t: "نأتي إليك", r1b: "نلتقيك في محلك أو عبر مكالمة فيديو، ونتولى كل شيء. لن تتعامل مع التقنية أبدًا.",
         r2t: "على الإنترنت في أيام لا أشهر", r2b: "أرسل صورك اليوم، صفحتك أو قائمتك أو موقعك يصبح متاحًا خلال أيام.",
         r3t: "تعديلات عبر واتساب، بلا التزام", r3b: "تريد تغيير سعر أو طبق أو صورة؟ رسالة واحدة تكفي. الموقع الإلكتروني والباقة الكاملة يشملان اشتراكًا شهريًا يمكنك إلغاؤه متى شئت."
       },
@@ -558,15 +558,15 @@
         days: "{n} يومًا", day: "يوم واحد", note: "تقدير مبني على أرقامك أنت، وليس وعدًا.", cta: "توقّف عن خسارتهم"
       },
       visit: {
-        eyebrow: "نأتي إليك", title: "في أي مكان في باتايا. <em>زيارة مجانية.</em>",
-        lead: "ناكلوا أو وسط باتايا أو براتومناك أو جومتيان، نأتي إلى محلك، ونريك كيف يمكن أن يبدو موقعك، ونلتقط الصور في المكان.",
+        eyebrow: "نأتي إليك", title: "حضوريًا أو عبر الفيديو. <em>مجانًا.</em>",
+        lead: "في محلك أو عبر مكالمة فيديو، نريك كيف يمكن أن يبدو موقعك قبل أن تقرر.",
         cta: "احجز زيارة مجانية", pin: "في الطريق إليك", sea: "خليج تايلاند",
         naklua: "ناكلوا", central: "وسط باتايا", walking: "ووكينغ ستريت", pratumnak: "براتومناك", jomtien: "جومتيان", east: "شرق باتايا",
-        mapAlt: "خريطة مبسطة لباتايا تُظهر المناطق التي نزورها من ناكلوا إلى جومتيان"
+        mapAlt: "خريطة مبسطة للمناطق التي نغطيها"
       },
       preview: { btn: "معاينة مباشرة", title: "معاينة مباشرة", desktop: "حاسوب", mobile: "هاتف", open: "افتح في علامة تبويب جديدة", loading: "جارٍ تحميل الموقع…", close: "إغلاق" },
       audience: { i8: "فنادق", i9: "بيوت ضيافة", i10: "تأجير السيارات والدراجات", i11: "نوادي الشاطئ", i12: "صالات رياضية", i13: "وكالات سياحية", i14: "عيادات", i15: "متاجر", sr: "نعمل مع المطاعم والمقاهي وصالونات الحلاقة والتجميل والسبا ومراكز التدليك والحانات وباعة طعام الشارع والفنادق وبيوت الضيافة ومحلات التأجير ونوادي الشاطئ والصالات الرياضية والوكالات السياحية والعيادات والمتاجر والشركات المحلية." },
-      v4: {"title": "كن حاضرًا. <em>كن الخيار الأول.</em>", "sub": "مواقع إلكترونية وقوائم QR وملفات Google للأعمال في باتايا.", "proof1": "ابتداءً من 990 ฿", "proof2": "ملف Google خلال 48 ساعة", "proof3": "بدون عقد", "nowShowing": "يُعرض الآن", "offersTitle": "4 عروض. <em>عرض لكل حاجة.</em>", "finaleTitle": "مستعد لأن <em>تكون مرئيًا؟</em>", "contact": "تواصل", "follow": "تابعنا", "alt1": "خليج باتايا ليلًا من أعلى التل", "alt2": "طاهية طعام شارع في كشكها ليلًا", "alt3": "صالون تجميل عصري ومضيء", "alt4": "شخص يرسل صورًا من هاتفه في الشارع", "alt5": "مطعم ممتلئ بالزبائن مساءً"},
+      v4: {"title": "كن حاضرًا. <em>كن الخيار الأول.</em>", "sub": "مواقع إلكترونية وقوائم QR وملفات Google للمطاعم والمحلات.", "proof1": "ابتداءً من 990 ฿", "proof2": "ملف Google خلال 48 ساعة", "proof3": "بدون عقد", "nowShowing": "يُعرض الآن", "offersTitle": "4 عروض. <em>عرض لكل حاجة.</em>", "finaleTitle": "مستعد لأن <em>تكون مرئيًا؟</em>", "contact": "تواصل", "follow": "تابعنا", "alt1": "مدينة ساحلية ليلًا من أعلى التل", "alt2": "طاهية طعام شارع في كشكها ليلًا", "alt3": "صالون تجميل عصري ومضيء", "alt4": "شخص يرسل صورًا من هاتفه في الشارع", "alt5": "مطعم ممتلئ بالزبائن مساءً"},
       v3: { s1: "موقعك الإلكتروني", s2: "ظاهر على خرائط Google", s3: "قائمة QR الخاصة بك", s4: "زبائن عند بابك", play: "تشغيل", scanT: "على الكمبيوتر؟", scanB: "امسح الرمز بهاتفك لمراسلتنا على واتساب.", scroll: "مرّر للاستكشاف" },
       finale2: { title: "مستعد لأن يراك الزبائن؟ <em>راسلنا على واتساب.</em>", replies: "نردّ عادةً خلال دقائق", wa: "تحدّث معنا على واتساب" },
       footer2: { pages: "الصفحات", legal: "قانوني", notice: "الإشعار القانوني", terms: "شروط البيع", privacy: "الخصوصية", cookies: "ملفات تعريف الارتباط" },
@@ -607,7 +607,7 @@
         careSubNote: "الاستضافة والتعديلات والدعم، مشمولة في المبلغ الشهري.",
         subYearlyNote: "أو ادفع {months} أشهر في السنة بدل 12، مع شهرين مجانًا.",
         careGoogle: "صفحة Google لا تحتاج إلى خطة عناية، إنها ملكك.",
-        reviewTitle: "راجع وادفع", promo: "رمز الخصم", promoPh: "مثال: PATTAYA10", promoNote: "يتم التحقق من الرموز على صفحة Stripe الآمنة قبل الدفع.",
+        reviewTitle: "راجع وادفع", promo: "رمز الخصم", promoPh: "مثال: WELCOME10", promoNote: "يتم التحقق من الرموز على صفحة Stripe الآمنة قبل الدفع.",
         sumSetup: "الإعداد · مرة واحدة", sumOffer: "العرض · دفعة واحدة", sumCare: "الاشتراك · الفترة الأولى", sumNone: "لا شيء", renew: "ثم {price} / {period}، بدءًا من إطلاق موقعك.", month: "شهر", year: "سنة",
         terms: "أوافق على شروط البيع. يتجدد الاشتراك أو خطة العناية تلقائيًا ويمكن إلغاؤه في أي وقت مجانًا.", termsLink: "اقرأ الشروط",
         backOffers: "العودة إلى العروض", included: "ما الذي يتضمنه", edit: "تعديل", method: "طريقة الدفع"

@@ -24,21 +24,21 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <meta content="website" property="og:type"/>
 <meta content="NM Studio" property="og:site_name"/>
 <meta content="Start a project: your quote in 4 steps | NM Studio" property="og:title"/>
-<meta content="Four quick steps and your project request lands on our WhatsApp, ready to send: Google profile, QR menu or website, for Pattaya businesses." property="og:description"/>
+<meta content="Four quick steps and your project request lands on our WhatsApp, ready to send: Google profile, QR menu or website, for restaurants and local businesses." property="og:description"/>
 <meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html" property="og:url"/>
 <meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg" property="og:image"/>
 <meta content="image/jpeg" property="og:image:type"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="NM Studio | websites, QR menus and Google profiles for Pattaya businesses" property="og:image:alt"/>
+<meta content="NM Studio | websites, QR menus and Google profiles for restaurants and local businesses" property="og:image:alt"/>
 <meta content="th_TH" property="og:locale"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg" name="twitter:image"/>
 <link as="font" crossorigin="" href="../assets/fonts/satoshi-900.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="../assets/fonts/inter-latin.woff2" rel="preload" type="font/woff2"/>
-<link href="../assets/css/site.css?v=20261006a" rel="stylesheet"/>
-<link href="../assets/css/craft.css?v=20261006a" rel="stylesheet"/>
-<link href="../assets/css/quote.css?v=20261006a" rel="stylesheet"/>
+<link href="../assets/css/site.css?v=20261008h" rel="stylesheet"/>
+<link href="../assets/css/craft.css?v=20261008h" rel="stylesheet"/>
+<link href="../assets/css/quote.css?v=20261008h" rel="stylesheet"/>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
 </head>
 <body data-meta="metaStart">
@@ -241,17 +241,8 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 <div class="field-row">
 <div class="field">
-<label data-q="f.area" for="qArea">Area of Pattaya</label>
-<select autocomplete="address-level2" id="qArea" name="area">
-<option data-q="area.none" value="">Choose an area</option>
-<option data-q="area.central" value="central">Central Pattaya</option>
-<option data-q="area.beach" value="beach">Pattaya Beach Road</option>
-<option data-q="area.jomtien" value="jomtien">Jomtien</option>
-<option data-q="area.naklua" value="naklua">Naklua</option>
-<option data-q="area.pratamnak" value="pratamnak">Pratumnak</option>
-<option data-q="area.walking" value="walking">Walking Street</option>
-<option data-q="area.other" value="other">Somewhere else</option>
-</select>
+<label data-q="f.area" for="qArea">Where is your business?</label>
+<select autocomplete="country-name" id="qArea" name="area"><option data-q="area.none" value="">เลือก</option><option data-q="area.th" value="th">ประเทศไทย</option><option data-q="area.fr" value="fr">ฝรั่งเศส</option><option data-q="area.eu" value="eu">ประเทศอื่นในยุโรป</option><option data-q="area.me" value="me">ตะวันออกกลาง</option><option data-q="area.other" value="other">ที่อื่น</option></select>
 <span aria-live="polite" class="field__error" id="qAreaErr"></span>
 </div>
 <div class="field">
@@ -366,7 +357,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <div class="footer__langs"><button aria-current="false" aria-label="English" class="flag-btn" data-lang="en" lang="en" title="English" type="button"><span aria-hidden="true" class="flag" data-flag="en"></span></button><button aria-current="false" aria-label="Français" class="flag-btn" data-lang="fr" lang="fr" title="Français" type="button"><span aria-hidden="true" class="flag" data-flag="fr"></span></button><button aria-current="false" aria-label="Italiano" class="flag-btn" data-lang="it" lang="it" title="Italiano" type="button"><span aria-hidden="true" class="flag" data-flag="it"></span></button><button aria-current="true" aria-label="ไทย" class="flag-btn" data-lang="th" lang="th" title="ไทย" type="button"><span aria-hidden="true" class="flag" data-flag="th"></span></button><button aria-current="false" aria-label="العربية" class="flag-btn" data-lang="ar" lang="ar" title="العربية" type="button"><span aria-hidden="true" class="flag" data-flag="ar"></span></button></div>
 <div class="footer__bottom">
 <span data-i18n="footer.rights">© 2026 NM Studio. สร้างมาเพื่อให้คุณถูกค้นเจอ</span>
-<span class="footer__clock"><span aria-hidden="true" class="live-dot"></span><span data-i18n="footer.local">พัทยา ประเทศไทย</span> · <time id="localTime">--:--</time></span>
+<span class="footer__clock"><span aria-hidden="true" class="live-dot"></span><span data-i18n="footer.local">ออนไลน์ ทุกที่</span> · <time id="localTime">--:--</time></span>
 <a href="#top"><span data-i18n="footer.backTop">กลับขึ้นด้านบน</span> ↑</a>
 </div>
 </div>
@@ -375,11 +366,11 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </a>
 </footer>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
-<script defer="" src="../assets/js/quote.js?v=20261006a"></script>
-<script defer="" src="../assets/js/nm-dict.js?v=20261006a"></script>
-<script defer="" src="../assets/js/nm-copy2.js?v=20261006a"></script>
-<script defer="" src="../assets/js/offers-config.js?v=20261006a"></script>
-<script defer="" src="../assets/js/i18n.js?v=20261006a"></script>
+<script defer="" src="../assets/js/quote.js?v=20261008h"></script>
+<script defer="" src="../assets/js/nm-dict.js?v=20261008h"></script>
+<script defer="" src="../assets/js/nm-copy2.js?v=20261008h"></script>
+<script defer="" src="../assets/js/offers-config.js?v=20261008h"></script>
+<script defer="" src="../assets/js/i18n.js?v=20261008h"></script>
 <script defer="" src="../assets/js/perf.js"></script>
 </body>
 </html>
