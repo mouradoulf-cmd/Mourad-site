@@ -251,7 +251,7 @@
         a1: "Télécharger factures et reçus (PDF)", a2: "Mettre à jour votre carte ou moyen de paiement", a3: "Passer du mensuel à l'annuel (et inversement)", a4: "Résilier votre forfait d'entretien, à tout moment",
         noPortal: "Écrivez-nous sur WhatsApp : factures, changements ou résiliation, on s'en occupe tout de suite.",
         upTitle: "Envie d'aller plus loin ?", upBody: "Passez au Pack complet quand votre commerce est prêt.", upBtn: "Voir les offres",
-        legalEyebrow: "Légal", legalTitle: "Les petites lignes, <em>en clair.</em>", legalNote: "Les textes juridiques ci-dessous sont rédigés en anglais.", updated: "Dernière mise à jour : 3 octobre 2026", toc: "Sur cette page"
+        legalEyebrow: "Légal", legalTitle: "Les petites lignes, <em>en clair.</em>", legalNote: "Version française. En cas de doute, la version anglaise fait foi.", updated: "Dernière mise à jour : 3 octobre 2026", toc: "Sur cette page"
       },
       trust: { secure: "Paiement sécurisé par Stripe", methods: "Carte · Apple Pay · Google Pay · PromptPay", noCard: "Vos données de carte ne passent jamais par ce site" }
     },
@@ -377,7 +377,7 @@
         a1: "Scarica fatture e ricevute (PDF)", a2: "Aggiorna la carta o il metodo di pagamento", a3: "Passa dalla fatturazione mensile all'annuale", a4: "Disdici l'assistenza, quando vuoi",
         noPortal: "Scrivici su WhatsApp e gestiamo subito fatture, modifiche o disdetta.",
         upTitle: "Pronto per di più?", upBody: "Passa al Pacchetto completo quando il tuo locale è pronto.", upBtn: "Vedi le offerte",
-        legalEyebrow: "Note legali", legalTitle: "Le clausole, <em>in parole semplici.</em>", legalNote: "I testi legali qui sotto sono redatti in inglese.", updated: "Ultimo aggiornamento: 3 ottobre 2026", toc: "In questa pagina"
+        legalEyebrow: "Note legali", legalTitle: "Le clausole, <em>in parole semplici.</em>", legalNote: "Versione italiana. In caso di dubbio, fa fede la versione inglese.", updated: "Ultimo aggiornamento: 3 ottobre 2026", toc: "In questa pagina"
       },
       trust: { secure: "Pagamento sicuro con Stripe", methods: "Carta · Apple Pay · Google Pay · PromptPay", noCard: "I dati della carta non passano mai da questo sito" }
     },
@@ -503,7 +503,7 @@
         a1: "ดาวน์โหลดใบแจ้งหนี้และใบเสร็จ (PDF)", a2: "อัปเดตบัตรหรือวิธีชำระเงิน", a3: "สลับระหว่างรายเดือนและรายปี", a4: "ยกเลิกแพ็กดูแลได้ทุกเมื่อ",
         noPortal: "ทักเราทาง WhatsApp แล้วเราจะจัดการใบแจ้งหนี้ การเปลี่ยนแปลง หรือการยกเลิกให้ทันที",
         upTitle: "พร้อมไปต่อแล้วหรือยัง?", upBody: "อัปเกรดเป็นแพ็กเกจครบชุดได้เมื่อร้านพร้อม", upBtn: "ดูแพ็กเกจ",
-        legalEyebrow: "กฎหมาย", legalTitle: "เงื่อนไขทั้งหมด <em>เขียนให้เข้าใจง่าย</em>", legalNote: "ข้อความทางกฎหมายด้านล่างเขียนเป็นภาษาอังกฤษ", updated: "อัปเดตล่าสุด: 3 ตุลาคม 2026", toc: "ในหน้านี้"
+        legalEyebrow: "กฎหมาย", legalTitle: "เงื่อนไขทั้งหมด <em>เขียนให้เข้าใจง่าย</em>", legalNote: "ฉบับภาษาไทย หากมีข้อสงสัย ให้ถือฉบับภาษาอังกฤษเป็นหลัก", updated: "อัปเดตล่าสุด: 3 ตุลาคม 2026", toc: "ในหน้านี้"
       },
       trust: { secure: "ชำระเงินอย่างปลอดภัยผ่าน Stripe", methods: "บัตร · Apple Pay · Google Pay · พร้อมเพย์", noCard: "ข้อมูลบัตรไม่ผ่านเว็บไซต์นี้" }
     },
@@ -629,7 +629,7 @@
         a1: "تنزيل الفواتير والإيصالات (PDF)", a2: "تحديث البطاقة أو طريقة الدفع", a3: "التبديل بين الفوترة الشهرية والسنوية", a4: "إلغاء خطة العناية في أي وقت",
         noPortal: "راسلنا على واتساب وسنتولى الفواتير أو التغييرات أو الإلغاء فورًا.",
         upTitle: "مستعد للمزيد؟", upBody: "انتقل إلى الباقة الكاملة حين يصبح محلك جاهزًا.", upBtn: "عرض العروض",
-        legalEyebrow: "قانوني", legalTitle: "التفاصيل الدقيقة <em>بكلمات بسيطة.</em>", legalNote: "النصوص القانونية أدناه مكتوبة باللغة الإنجليزية.", updated: "آخر تحديث: 3 أكتوبر 2026", toc: "في هذه الصفحة"
+        legalEyebrow: "قانوني", legalTitle: "التفاصيل الدقيقة <em>بكلمات بسيطة.</em>", legalNote: "النسخة العربية. في حال وجود أي اختلاف، تعتمد النسخة الإنجليزية.", updated: "آخر تحديث: 3 أكتوبر 2026", toc: "في هذه الصفحة"
       },
       trust: { secure: "دفع آمن عبر Stripe", methods: "بطاقة · Apple Pay · Google Pay · PromptPay", noCard: "بيانات بطاقتك لا تمرّ عبر هذا الموقع أبدًا" }
     }
