@@ -32,7 +32,8 @@
         p3t: "No website, no trust", p3b: "Visitors check your website before they walk in. Without one, the competitor who has a site gets the booking.",
         s3t: "A website that fills your tables", s3b: "Your photos, your prices, a WhatsApp button on every page. Visitors become customers.",
         cta: "Fix it with us on WhatsApp",
-        flip: "See the fix", flipBack: "Back to the problem"
+        flip: "See the fix", flipBack: "Back to the problem",
+        cap0: "Every evening, tourists walk right past the door.", cap1: "But they choose on Google, not in the street.", cap2: "A menu they can't read means a smaller order.", cap3: "No website, no trust.", cap4: "We fix it: Google listing, QR menu, website.", fixT: "Found, understood, booked", fixB: "Live in days. You send the photos, we do the rest.", soundOn: "Sound", soundOff: "Sound", play: "Play", pause: "Pause", video: "Short film: a Pattaya restaurant without a website", watch: "Play the film"
       },
       work: { eyebrow: "Our work", title: "7 real sites, <em>live now.</em>", lead: "Tap a site to open it." },
       offers: {
@@ -86,7 +87,8 @@
         p3t: "Pas de site, pas de confiance", p3b: "Les visiteurs regardent votre site avant d'entrer. Sans site, le concurrent qui en a un prend la réservation.",
         s3t: "Un site qui remplit vos tables", s3b: "Vos photos, vos prix, un bouton WhatsApp sur chaque page. Les visiteurs deviennent des clients.",
         cta: "On règle ça ensemble sur WhatsApp",
-        flip: "Voir la solution", flipBack: "Revenir au problème"
+        flip: "Voir la solution", flipBack: "Revenir au problème",
+        cap0: "Chaque soir, les touristes passent devant la porte.", cap1: "Mais ils choisissent sur Google, pas dans la rue.", cap2: "Un menu qu'ils ne comprennent pas, c'est une commande en moins.", cap3: "Sans site, pas de confiance.", cap4: "On règle ça : fiche Google, menu QR, site web.", fixT: "Trouvé, compris, réservé", fixB: "En ligne en quelques jours. Vous envoyez les photos, on fait le reste.", soundOn: "Son", soundOff: "Son", play: "Lecture", pause: "Pause", video: "Court film : un restaurant de Pattaya sans site web", watch: "Lancer le film"
       },
       work: { eyebrow: "Nos réalisations", title: "7 vrais sites, <em>en ligne maintenant.</em>", lead: "Touchez un site pour l'ouvrir." },
       offers: {
@@ -140,7 +142,8 @@
         p3t: "Niente sito, niente fiducia", p3b: "I visitatori guardano il vostro sito prima di entrare. Senza, la prenotazione va al concorrente che ce l'ha.",
         s3t: "Un sito che riempie i tavoli", s3b: "Le vostre foto, i vostri prezzi, un pulsante WhatsApp in ogni pagina. I visitatori diventano clienti.",
         cta: "Risolviamolo insieme su WhatsApp",
-        flip: "Vedi la soluzione", flipBack: "Torna al problema"
+        flip: "Vedi la soluzione", flipBack: "Torna al problema",
+        cap0: "Ogni sera, i turisti passano davanti alla porta.", cap1: "Ma scelgono su Google, non per strada.", cap2: "Un menù che non capiscono è un ordine in meno.", cap3: "Senza sito, niente fiducia.", cap4: "Ci pensiamo noi: scheda Google, menù QR, sito web.", fixT: "Trovato, capito, prenotato", fixB: "Online in pochi giorni. Tu invii le foto, noi facciamo il resto.", soundOn: "Audio", soundOff: "Audio", play: "Riproduci", pause: "Pausa", video: "Breve film: un ristorante di Pattaya senza sito web", watch: "Guarda il film"
       },
       work: { eyebrow: "I nostri lavori", title: "7 siti veri, <em>online ora.</em>", lead: "Toccate un sito per aprirlo." },
       offers: {
@@ -194,7 +197,8 @@
         p3t: "ไม่มีเว็บไซต์ ลูกค้าก็ไม่มั่นใจ", p3b: "คนส่วนใหญ่เช็กเว็บไซต์ก่อนเดินเข้าร้าน ถ้าไม่มี การจองจะไปตกที่คู่แข่งที่มีเว็บไซต์",
         s3t: "เว็บไซต์ที่ทำให้โต๊ะเต็ม", s3b: "รูปของคุณ ราคาของคุณ และปุ่ม WhatsApp ทุกหน้า ผู้เข้าชมกลายเป็นลูกค้า",
         cta: "ให้เราช่วยแก้ ทักทาง WhatsApp",
-        flip: "ดูวิธีแก้", flipBack: "กลับไปที่ปัญหา"
+        flip: "ดูวิธีแก้", flipBack: "กลับไปที่ปัญหา",
+        cap0: "ทุกเย็น นักท่องเที่ยวเดินผ่านหน้าร้านไป", cap1: "แต่พวกเขาเลือกร้านจาก Google ไม่ใช่จากถนน", cap2: "เมนูที่อ่านไม่ออก คือยอดสั่งที่หายไป", cap3: "ไม่มีเว็บไซต์ ก็ไม่มีความน่าเชื่อถือ", cap4: "เราช่วยได้: โปรไฟล์ Google เมนู QR และเว็บไซต์", fixT: "ถูกค้นเจอ เข้าใจง่าย ได้การจอง", fixB: "ออนไลน์ได้ในไม่กี่วัน คุณส่งรูปมา ที่เหลือเราจัดการให้", soundOn: "เสียง", soundOff: "เสียง", play: "เล่น", pause: "หยุด", video: "หนังสั้น: ร้านอาหารในพัทยาที่ไม่มีเว็บไซต์", watch: "เล่นวิดีโอ"
       },
       work: { eyebrow: "ผลงานของเรา", title: "7 เว็บไซต์จริง <em>ออนไลน์อยู่ตอนนี้</em>", lead: "แตะที่เว็บไซต์เพื่อเปิดดู" },
       offers: {
@@ -248,7 +252,8 @@
         p3t: "بلا موقع، بلا ثقة", p3b: "الزوار يتفقدون موقعك قبل أن يدخلوا. وبدونه تذهب الحجوزات إلى منافس لديه موقع.",
         s3t: "موقع يملأ طاولاتك", s3b: "صورك وأسعارك وزر واتساب في كل صفحة. الزوار يتحولون إلى زبائن.",
         cta: "لنصلحها معًا على واتساب",
-        flip: "اعرض الحل", flipBack: "العودة إلى المشكلة"
+        flip: "اعرض الحل", flipBack: "العودة إلى المشكلة",
+        cap0: "كل مساء، يمرّ السياح أمام الباب.", cap1: "لكنهم يختارون عبر جوجل، لا من الشارع.", cap2: "قائمة لا يفهمونها تعني طلبًا أقل.", cap3: "بدون موقع، لا ثقة.", cap4: "نحن نحلّ ذلك: ملف جوجل، قائمة QR، موقع إلكتروني.", fixT: "يجدونك، يفهمونك، يحجزون", fixB: "جاهز خلال أيام. أنت ترسل الصور، ونحن نتكفّل بالباقي.", soundOn: "الصوت", soundOff: "الصوت", play: "تشغيل", pause: "إيقاف", video: "فيلم قصير: مطعم في باتايا بلا موقع إلكتروني", watch: "شغّل الفيلم"
       },
       work: { eyebrow: "أعمالنا", title: "7 مواقع حقيقية، <em>على الإنترنت الآن.</em>", lead: "المس أي موقع لفتحه." },
       offers: {
