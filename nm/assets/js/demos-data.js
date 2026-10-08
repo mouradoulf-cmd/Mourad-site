@@ -30,6 +30,9 @@ window.NM_LINKS = [
     { name: "Carte de visite", path: "nm/business-card/card.html" },
     { name: "Espace client (abonnement)", path: "nm/account.html" }
   ] },
+  { space: "site", group: "Sites clients", items: [
+    { name: "Atelier des Façadiers (refonte, 5 langues)", path: "atelier-des-facadiers/", note: "Maquette pour le client façadier" }
+  ] },
   { space: "video", group: "Mes studios vidéo IA", items: [
     { name: "Studio Vidéo IA", path: "video-ia/", note: "Créer des vidéos IA" },
     { name: "Short Drama IA", path: "drama-ia/" },
