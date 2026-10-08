@@ -43,6 +43,7 @@
         if (v) lines.push("*" + t("free." + f[1]) + ":* " + v);
       });
       var msg = lines.join("\n");
+      try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: kind } })); } catch (e2) {}
       var num = String(C.whatsappNumber || "").replace(/\D/g, "");
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       // No number configured: copy the message, then open the WhatsApp link (a new tab opened right away keeps the gesture)

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Statistiques | NM Studio</title>
+<link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/css/site.css?v=20261008q" rel="stylesheet"/>
+<style>
+  body { min-height: 100vh; background: radial-gradient(60rem 30rem at 50% -10%, rgba(201,169,97,.12), transparent 70%), var(--ink); }
+  .st2 { width: min(100% - 2rem, 46rem); margin: 0 auto; padding: clamp(2rem, 6vw, 4rem) 0 4rem; }
+  .st2 h1 { margin: .6rem 0 0; font-size: clamp(2rem, 7vw, 3rem); line-height: 1.02; }
+  .st2__lead { margin: .8rem 0 1.6rem; color: var(--muted); line-height: 1.6; }
+  .st2__kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+  .st2__kpi { padding: 1rem; border-radius: 18px; background: linear-gradient(150deg, rgba(255,255,255,.055), rgba(255,255,255,.015)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .st2__kpi--gold { background: linear-gradient(150deg, rgba(201,169,97,.14), rgba(201,169,97,.03)); box-shadow: inset 0 0 0 1px rgba(228,207,154,.3); }
+  .st2__kpi b { display: block; font-family: var(--font-display); font-size: clamp(1.8rem, 6vw, 2.6rem); font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+  .st2__kpi span { display: block; margin-top: .45rem; color: var(--muted); font-size: .8rem; line-height: 1.35; }
+  .st2__kpi small { display: block; margin-top: .25rem; color: var(--gold-soft); font-size: .78rem; }
+  .st2__box { margin-top: 1rem; padding: 1.2rem; border-radius: 18px; background: rgba(255,255,255,.03); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .st2__box h2 { margin: 0 0 .9rem; font-size: 1.05rem; letter-spacing: -.01em; }
+  .st2__legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: .8rem; color: var(--muted); font-size: .8rem; }
+  .st2__legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 3px; margin-right: .35rem; vertical-align: -1px; }
+  .st2__chart { margin-top: 1.6rem; display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: .3rem; align-items: end; height: 10rem; }
+  .st2__col { display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; gap: 2px; height: 100%; position: relative; }
+  .st2__bar { border-radius: 4px 4px 2px 2px; min-height: 2px; }
+  .st2__bar--v { background: var(--grad-gold); }
+  .st2__bar--c { background: #25d366; }
+  .st2__col em { position: absolute; top: -1.2rem; left: 0; right: 0; text-align: center; font-style: normal; font-size: .68rem; color: var(--text); font-variant-numeric: tabular-nums; }
+  .st2__days { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: .3rem; margin-top: .4rem; }
+  .st2__days span { text-align: center; font-size: .62rem; color: var(--muted); }
+  .st2__row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
+  .st2__row .btn { flex: 1 1 12rem; justify-content: center; }
+  .st2__note { margin-top: 1.2rem; color: var(--muted); font-size: .85rem; line-height: 1.6; }
+  .st2__state { margin-top: .6rem; color: var(--gold-soft); font-size: .85rem; min-height: 1.2em; }
+</style>
+</head>
+<body>
+<main class="st2">
+  <p class="eyebrow">Espace privé NM Studio</p>
+  <h1>Statistiques</h1>
+  <p class="st2__lead">Visiteurs du site et clients potentiels, jour par jour (heure de Thaïlande). Les chiffres se mettent à jour à chaque ouverture de cette page.</p>
+
+  <div class="st2__kpis">
+    <div class="st2__kpi st2__kpi--gold"><b id="kV">–</b><span>visiteurs aujourd'hui</span><small id="kV7">–</small></div>
+    <div class="st2__kpi"><b id="kC">–</b><span>clics WhatsApp aujourd'hui</span><small id="kC7">–</small></div>
+    <div class="st2__kpi"><b id="kL">–</b><span>demandes de maquette ou d'audit aujourd'hui</span><small id="kL7">–</small></div>
+  </div>
+
+  <div class="st2__box">
+    <h2>Les 14 derniers jours</h2>
+    <div class="st2__legend"><span><i style="background:#d9bd7c"></i>Visiteurs</span><span><i style="background:#25d366"></i>Contacts (WhatsApp + demandes)</span></div>
+    <div class="st2__chart" id="chart"></div>
+    <div class="st2__days" id="days"></div>
+  </div>
+
+  <p class="st2__state" id="state" aria-live="polite"></p>
+  <div class="st2__row">
+    <button class="btn btn--sun" id="refresh" type="button">Actualiser</button>
+    <button class="btn btn--glass" id="me" type="button">Ne pas compter mes visites</button>
+  </div>
+  <p class="st2__note">Un « visiteur » = un téléphone ou un ordinateur, compté une seule fois par jour. Aucun cookie, aucune donnée personnelle : seulement des nombres. Appuie une fois sur « Ne pas compter mes visites » sur chacun de tes appareils pour ne pas te compter toi-même. Garde cette page pour toi : elle n'est pas sur Google.</p>
+</main>
+<script>
+(function () {
+  "use strict";
+  var NS = "mouradoulf-nmstudio", GET = "https://abacus.jasoncameron.dev/get/" + NS + "/";
+  function dayStr(offset) { return new Date(Date.now() + 7 * 3600e3 - offset * 864e5).toISOString().slice(0, 10).replace(/-/g, ""); }
+  function get(key) {
+    return fetch(GET + key, { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : { value: 0 }; })
+      .then(function (j) { return +(j && j.value) || 0; }).catch(function () { return null; });
+  }
+  var meBtn = document.getElementById("me"), state = document.getElementById("state");
+  function meLabel() { var on = false; try { on = localStorage.getItem("nmOwner") === "1"; } catch (e) {} meBtn.textContent = on ? "✓ Cet appareil n'est pas compté" : "Ne pas compter mes visites"; }
+  meBtn.onclick = function () { try { localStorage.setItem("nmOwner", localStorage.getItem("nmOwner") === "1" ? "0" : "1"); } catch (e) {} meLabel(); };
+  meLabel();
+
+  function load() {
+    state.textContent = "Chargement…";
+    var jobs = [];
+    for (var i = 13; i >= 0; i--) (function (d) { jobs.push(Promise.all([get("v-" + d), get("wa-" + d), get("lead-" + d)]).then(function (r) { return { d: d, v: r[0], w: r[1], l: r[2] }; })); })(dayStr(i));
+    Promise.all(jobs).then(function (rows) {
+      if (rows.every(function (r) { return r.v === null; })) { state.textContent = "Le compteur ne répond pas pour le moment. Réessaie dans quelques minutes."; return; }
+      var t = rows[rows.length - 1], last7 = rows.slice(-7), n = function (x) { return x || 0; };
+      var sum = function (k) { return last7.reduce(function (s, r) { return s + n(r[k]); }, 0); };
+      document.getElementById("kV").textContent = n(t.v);
+      document.getElementById("kC").textContent = n(t.w);
+      document.getElementById("kL").textContent = n(t.l);
+      document.getElementById("kV7").textContent = sum("v") + " sur 7 jours";
+      document.getElementById("kC7").textContent = sum("w") + " sur 7 jours";
+      document.getElementById("kL7").textContent = sum("l") + " sur 7 jours";
+      var max = Math.max(1, Math.max.apply(null, rows.map(function (r) { return n(r.v) + n(r.w) + n(r.l); })));
+      var chart = document.getElementById("chart"), days = document.getElementById("days"); chart.innerHTML = ""; days.innerHTML = "";
+      rows.forEach(function (r) {
+        var c = n(r.w) + n(r.l), col = document.createElement("div"); col.className = "st2__col";
+        col.innerHTML = '<em>' + (n(r.v) || "") + '</em><div class="st2__bar st2__bar--c" style="height:' + (c / max * 100) + '%"></div><div class="st2__bar st2__bar--v" style="height:' + (n(r.v) / max * 100) + '%"></div>';
+        col.title = r.d.slice(6) + "/" + r.d.slice(4, 6) + " : " + n(r.v) + " visiteurs, " + c + " contacts";
+        chart.appendChild(col);
+        var s = document.createElement("span"); s.textContent = r.d.slice(6); days.appendChild(s);
+      });
+      state.textContent = "Mis à jour à " + new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    });
+  }
+  document.getElementById("refresh").onclick = load;
+  load();
+})();
+</script>
+</body>
+</html>
