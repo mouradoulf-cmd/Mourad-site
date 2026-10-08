@@ -49,3 +49,29 @@
 .founder .founder__sign { margin: 1.6rem 0 0; font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; color: var(--gold-soft); }
 html[lang="th"] .founder .founder__sign, html[lang="ar"] .founder .founder__sign { font-family: var(--font-sans); font-style: normal; }
 @media (max-width: 859px) { .founder__text { text-align: center; } .founder__points { justify-items: center; } .founder .founder__body { margin-inline: auto; } }
+
+/* ---------- "free" made unmissable: big green badge, 3 steps, chip on each card ---------- */
+.free { --free: #2bd97a; --free-deep: #12a95a; }
+.free__badge { position: relative; display: inline-flex; align-items: center; gap: .6rem; margin: 0 auto 1.2rem; padding: .7rem 1.4rem .7rem 1.1rem; border-radius: 999px;
+  font: 900 clamp(1.05rem, 2.4vw, 1.4rem)/1 var(--font-display); letter-spacing: .06em; color: #04140b;
+  background: linear-gradient(120deg, #6ff0a8 0%, var(--free) 45%, var(--free-deep) 100%);
+  box-shadow: 0 0 0 6px rgba(43,217,122,.14), 0 18px 50px -12px rgba(43,217,122,.65); overflow: hidden; }
+.free__badge::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.55) 45%, transparent 60%);
+  background-size: 250% 100%; animation: freeShine 3.8s ease-in-out infinite; }
+@keyframes freeShine { 0% { background-position: 130% 0; } 60%, 100% { background-position: -130% 0; } }
+.free__spark { width: .65rem; height: .65rem; border-radius: 50%; background: #04140b; box-shadow: 0 0 0 3px rgba(4,20,11,.18); }
+html[lang="th"] .free__badge, html[lang="ar"] .free__badge { letter-spacing: 0; font-family: var(--font-sans); }
+.free .section-title em { background: linear-gradient(100deg, #9cf5c3 0%, var(--free) 50%, #0f9a52 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.free__steps { list-style: none; margin: clamp(1.6rem, 3vw, 2.4rem) auto 0; padding: 0; max-width: 58rem; display: grid; gap: .7rem; counter-reset: s; }
+@media (min-width: 760px) { .free__steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.free__steps li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .1rem .8rem; align-items: center; padding: .9rem 1rem; border-radius: 16px;
+  background: rgba(255,255,255,.035); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.free__steps b { font-size: .98rem; line-height: 1.3; }
+.free__steps li > span:last-child { grid-column: 2; color: var(--muted); font-size: .85rem; line-height: 1.4; }
+.free__n { grid-row: 1 / span 2; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; font: 800 .95rem/1 var(--font-sans);
+  color: #04140b; background: var(--free); box-shadow: 0 0 0 4px rgba(43,217,122,.14); }
+.free__n--go { color: var(--btn-ink, #0b0703); background: var(--grad-btn); box-shadow: 0 0 0 4px rgba(201,169,97,.16); }
+.free__chip { position: absolute; top: 1.1rem; inset-inline-end: 1.1rem; padding: .38rem .8rem; border-radius: 999px; font: 800 .78rem/1 var(--font-sans); letter-spacing: .08em; text-transform: uppercase;
+  color: #04140b; background: var(--free); box-shadow: 0 8px 20px -8px rgba(43,217,122,.7); }
+html[lang="th"] .free__chip, html[lang="ar"] .free__chip { letter-spacing: 0; text-transform: none; }
+@media (prefers-reduced-motion: reduce) { .free__badge::after { animation: none; } }

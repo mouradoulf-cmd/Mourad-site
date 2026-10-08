@@ -7,8 +7,8 @@
       free: {
         hero: "Get a free mock-up",
         eyebrow: "Free, no commitment",
-        title: "See your website <em>before you pay.</em>",
-        lead: "Two ways to start without spending anything.",
+        title: "Get your website <em>for free.</em>",
+        lead: "See your future website before spending a cent. Love it? We put it online with the monthly plan. If not, you pay nothing.",
         m_k: "Free mock-up", m_t: "Your future website in 48 hours",
         m_b: "Tell us the name of your business. We send you a mock-up of your site, with your name and your style. Then you decide, no pressure.",
         a_k: "Free check", a_t: "Your Google listing, reviewed",
@@ -20,7 +20,8 @@
         req: "Please fill in the name of your business.",
         copied: "Message copied: paste it in WhatsApp and send.",
         msgM: "Hello NM Studio, I would like a free mock-up of my website.", msgA: "Hello NM Studio, I would like a free check of my Google listing.",
-        l_name: "Business", l_type: "Type", l_city: "City", l_first: "First name", l_maps: "City or Maps"
+        l_name: "Business", l_type: "Type", l_city: "City", l_first: "First name", l_maps: "City or Maps",
+        badge: "100% FREE", chip: "Free", s1: "Ask for your mock-up", s1b: "Free, takes 1 minute", s2: "Receive your website", s2b: "In 48 hours, with your name", s3: "Love it? We put it online", s3b: "With the monthly plan. If not, you pay nothing"
       },
       founder: {
         eyebrow: "Who is behind NM Studio",
@@ -34,8 +35,8 @@
       free: {
         hero: "Ma maquette gratuite",
         eyebrow: "Gratuit, sans engagement",
-        title: "Voyez votre site <em>avant de payer.</em>",
-        lead: "Deux façons de commencer, sans rien sortir de votre poche.",
+        title: "Recevez votre site <em>gratuitement.</em>",
+        lead: "Voyez votre futur site avant de dépenser un euro. Il vous plaît ? On le met en ligne avec l'abonnement. Sinon, vous ne payez rien.",
         m_k: "Maquette offerte", m_t: "Votre futur site en 48 h",
         m_b: "Donnez-nous le nom de votre commerce. On vous envoie une maquette de votre site, avec votre nom et votre style. Vous décidez ensuite, sans pression.",
         a_k: "Audit offert", a_t: "Votre fiche Google, vérifiée",
@@ -47,7 +48,8 @@
         req: "Indiquez le nom de votre commerce.",
         copied: "Message copié : collez-le dans WhatsApp et envoyez.",
         msgM: "Bonjour NM Studio, je voudrais une maquette gratuite de mon site.", msgA: "Bonjour NM Studio, je voudrais un audit gratuit de ma fiche Google.",
-        l_name: "Commerce", l_type: "Type", l_city: "Ville", l_first: "Prénom", l_maps: "Ville ou Maps"
+        l_name: "Commerce", l_type: "Type", l_city: "Ville", l_first: "Prénom", l_maps: "Ville ou Maps",
+        badge: "100 % GRATUIT", chip: "Gratuit", s1: "Vous demandez votre maquette", s1b: "Gratuit, en 1 minute", s2: "Vous recevez votre site", s2b: "En 48 h, avec votre nom", s3: "Il vous plaît ? On le met en ligne", s3b: "Avec l'abonnement. Sinon, vous ne payez rien"
       },
       founder: {
         eyebrow: "Qui est derrière NM Studio",
@@ -61,8 +63,8 @@
       free: {
         hero: "La mia bozza gratuita",
         eyebrow: "Gratis, senza impegno",
-        title: "Guardate il vostro sito <em>prima di pagare.</em>",
-        lead: "Due modi per iniziare senza spendere nulla.",
+        title: "Ricevete il vostro sito <em>gratis.</em>",
+        lead: "Guardate il vostro futuro sito prima di spendere un euro. Vi piace? Lo mettiamo online con l'abbonamento. Altrimenti non pagate nulla.",
         m_k: "Bozza gratuita", m_t: "Il vostro futuro sito in 48 ore",
         m_b: "Diteci il nome della vostra attività. Vi mandiamo una bozza del sito, con il vostro nome e il vostro stile. Poi decidete voi, senza pressioni.",
         a_k: "Verifica gratuita", a_t: "La vostra scheda Google, controllata",
@@ -74,7 +76,8 @@
         req: "Indicate il nome della vostra attività.",
         copied: "Messaggio copiato: incollatelo su WhatsApp e inviate.",
         msgM: "Buongiorno NM Studio, vorrei una bozza gratuita del mio sito.", msgA: "Buongiorno NM Studio, vorrei una verifica gratuita della mia scheda Google.",
-        l_name: "Attività", l_type: "Tipo", l_city: "Città", l_first: "Nome", l_maps: "Città o Maps"
+        l_name: "Attività", l_type: "Tipo", l_city: "Città", l_first: "Nome", l_maps: "Città o Maps",
+        badge: "100% GRATIS", chip: "Gratis", s1: "Chiedete la vostra bozza", s1b: "Gratis, in 1 minuto", s2: "Ricevete il vostro sito", s2b: "In 48 ore, con il vostro nome", s3: "Vi piace? Lo mettiamo online", s3b: "Con l'abbonamento. Altrimenti non pagate nulla"
       },
       founder: {
         eyebrow: "Chi c'è dietro NM Studio",
@@ -88,8 +91,8 @@
       free: {
         hero: "รับแบบร่างฟรี",
         eyebrow: "ฟรี ไม่มีข้อผูกมัด",
-        title: "ดูเว็บไซต์ของคุณ <em>ก่อนจ่ายเงิน</em>",
-        lead: "สองวิธีเริ่มต้นโดยไม่ต้องเสียเงินสักบาท",
+        title: "รับเว็บไซต์ของคุณ <em>ฟรี</em>",
+        lead: "ดูเว็บไซต์ของคุณก่อนจ่ายแม้แต่บาทเดียว ถ้าชอบ เราเปิดใช้งานให้พร้อมแพ็กเกจรายเดือน ถ้าไม่ชอบ คุณไม่ต้องจ่ายอะไรเลย",
         m_k: "แบบร่างฟรี", m_t: "เว็บไซต์ของคุณภายใน 48 ชั่วโมง",
         m_b: "บอกชื่อร้านของคุณมา เราจะส่งแบบร่างเว็บไซต์ที่มีชื่อร้านและสไตล์ของคุณให้ดู แล้วคุณค่อยตัดสินใจ ไม่มีการกดดัน",
         a_k: "ตรวจฟรี", a_t: "ตรวจโปรไฟล์ Google ของคุณ",
@@ -101,7 +104,8 @@
         req: "กรุณากรอกชื่อร้านของคุณ",
         copied: "คัดลอกข้อความแล้ว วางใน WhatsApp แล้วกดส่ง",
         msgM: "สวัสดีครับ NM Studio อยากได้แบบร่างเว็บไซต์ฟรีครับ", msgA: "สวัสดีครับ NM Studio อยากให้ช่วยตรวจโปรไฟล์ Google ฟรีครับ",
-        l_name: "ร้าน", l_type: "ประเภท", l_city: "เมือง", l_first: "ชื่อ", l_maps: "เมือง หรือ Maps"
+        l_name: "ร้าน", l_type: "ประเภท", l_city: "เมือง", l_first: "ชื่อ", l_maps: "เมือง หรือ Maps",
+        badge: "ฟรี 100%", chip: "ฟรี", s1: "ขอแบบร่างของคุณ", s1b: "ฟรี ใช้เวลาแค่ 1 นาที", s2: "รับเว็บไซต์ของคุณ", s2b: "ภายใน 48 ชั่วโมง พร้อมชื่อร้านคุณ", s3: "ชอบไหม? เราเปิดออนไลน์ให้", s3b: "พร้อมแพ็กเกจรายเดือน ถ้าไม่ชอบ ไม่ต้องจ่ายอะไรเลย"
       },
       founder: {
         eyebrow: "ใครอยู่เบื้องหลัง NM Studio",
@@ -115,8 +119,8 @@
       free: {
         hero: "احصل على نموذج مجاني",
         eyebrow: "مجانًا، بلا التزام",
-        title: "شاهد موقعك <em>قبل أن تدفع.</em>",
-        lead: "طريقتان للبدء دون أن تدفع شيئًا.",
+        title: "احصل على موقعك <em>مجانًا.</em>",
+        lead: "شاهد موقعك المستقبلي قبل أن تدفع أي شيء. أعجبك؟ ننشره على الإنترنت مع الاشتراك الشهري. وإن لم يعجبك، لا تدفع شيئًا.",
         m_k: "نموذج مجاني", m_t: "موقعك المستقبلي خلال 48 ساعة",
         m_b: "أخبرنا باسم محلك، وسنرسل لك نموذجًا لموقعك باسمك وأسلوبك. ثم تقرر أنت، دون أي ضغط.",
         a_k: "فحص مجاني", a_t: "ملفك على جوجل، تحت المراجعة",
@@ -128,7 +132,8 @@
         req: "يرجى كتابة اسم محلك.",
         copied: "تم نسخ الرسالة: الصقها في واتساب ثم أرسلها.",
         msgM: "مرحبًا NM Studio، أود الحصول على نموذج مجاني لموقعي.", msgA: "مرحبًا NM Studio، أود فحصًا مجانيًا لملفي على جوجل.",
-        l_name: "المحل", l_type: "النوع", l_city: "المدينة", l_first: "الاسم", l_maps: "المدينة أو الخرائط"
+        l_name: "المحل", l_type: "النوع", l_city: "المدينة", l_first: "الاسم", l_maps: "المدينة أو الخرائط",
+        badge: "مجاني 100%", chip: "مجاني", s1: "اطلب نموذجك", s1b: "مجانًا، في دقيقة واحدة", s2: "استلم موقعك", s2b: "خلال 48 ساعة، باسم محلك", s3: "أعجبك؟ ننشره على الإنترنت", s3b: "مع الاشتراك الشهري. وإلا، لا تدفع شيئًا"
       },
       founder: {
         eyebrow: "من وراء NM Studio",
