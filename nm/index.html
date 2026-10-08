@@ -35,9 +35,9 @@
 <link href="assets/css/site.css?v=20261006a" rel="stylesheet"/>
 <link href="assets/css/craft.css?v=20261006a" rel="stylesheet"/>
 <link href="assets/css/work-gallery.css?v=20261006a" rel="stylesheet"/>
-<link href="assets/css/film.css?v=20261008a" rel="stylesheet"/>
-<script defer="" src="assets/js/nm-dict.js?v=20261006a"></script>
-<script defer="" src="assets/js/nm-copy2.js?v=20261008a"></script>
+<link href="assets/css/film.css?v=20261008b" rel="stylesheet"/>
+<script defer="" src="assets/js/nm-dict.js?v=20261006ab"></script>
+<script defer="" src="assets/js/nm-copy2.js?v=20261008b"></script>
 <script defer="" src="assets/js/offers-config.js?v=20261006a"></script>
 <script defer="" src="assets/js/reviews-config.js"></script>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
@@ -161,7 +161,7 @@
 <div class="film">
 <div class="film__stage">
 <div aria-hidden="true" class="film__halo"></div>
-<div class="film__phone">
+<div class="film__float"><div class="film__phone">
 <div class="film__screen">
 <video class="film__video" muted playsinline loop preload="none" poster="assets/video/film-poster.jpg" width="720" height="1280" aria-label="Short film: a Pattaya restaurant without a website" data-i18n-aria-label="prob.video"><source data-src="assets/video/film.mp4" type="video/mp4"></video>
 <div aria-hidden="true" class="film__island"></div>
@@ -175,16 +175,16 @@
 </div>
 </div>
 <span aria-hidden="true" class="film__sheen"></span>
-</div>
-<div aria-hidden="true" class="film__floor"></div>
+</div></div>
+<div aria-hidden="true" class="film__ring"></div>
 </div>
 <ol class="film__chapters">
-<li class="film__ch" data-t="0"><span class="film__num">01</span><p class="film__k" data-i18n="prob.problem">The problem</p><h3><button type="button" data-i18n="prob.p1t">Tourists can't find you</button></h3><p data-i18n="prob.p1b">They search on Google Maps, not in the street. No listing, wrong hours or dark photos, and they pick the place next door.</p></li>
-<li class="film__ch" data-t="20.1"><span class="film__num">02</span><p class="film__k" data-i18n="prob.problem">The problem</p><h3><button type="button" data-i18n="prob.p2t">Your menu is a blurry photo</button></h3><p data-i18n="prob.p2b">Paper menus go out of date. Foreign visitors can't read them, so they order less or leave.</p></li>
-<li class="film__ch" data-t="27.6"><span class="film__num">03</span><p class="film__k" data-i18n="prob.problem">The problem</p><h3><button type="button" data-i18n="prob.p3t">No website, no trust</button></h3><p data-i18n="prob.p3b">Visitors check your website before they walk in. Without one, the competitor who has a site gets the booking.</p></li>
-<li class="film__ch film__ch--fix" data-t="31.5"><span class="film__num"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="film__k" data-i18n="prob.fix">The fix</p><h3><button type="button" data-i18n="prob.fixT">Found, understood, booked</button></h3><p data-i18n="prob.fixB">Live in days. You send the photos, we do the rest.</p><ul class="film__fixes"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s1t">A Google listing that gets you chosen</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s2t">A QR menu in their language</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s3t">A website that fills your tables</b></span></li></ul></li>
+<li class="film__ch" data-t="0"><div class="film__top"><span class="film__num">01</span><p class="film__k" data-i18n="prob.problem">The problem</p></div><h3><button type="button" data-i18n="prob.p1t">Tourists can't find you</button></h3><p class="film__b" data-i18n="prob.p1b">They search on Google Maps, not in the street. No listing, wrong hours or dark photos, and they pick the place next door.</p></li>
+<li class="film__ch" data-t="20.1"><div class="film__top"><span class="film__num">02</span><p class="film__k" data-i18n="prob.problem">The problem</p></div><h3><button type="button" data-i18n="prob.p2t">Your menu is a blurry photo</button></h3><p class="film__b" data-i18n="prob.p2b">Paper menus go out of date. Foreign visitors can't read them, so they order less or leave.</p></li>
+<li class="film__ch" data-t="27.6"><div class="film__top"><span class="film__num">03</span><p class="film__k" data-i18n="prob.problem">The problem</p></div><h3><button type="button" data-i18n="prob.p3t">No website, no trust</button></h3><p class="film__b" data-i18n="prob.p3b">Visitors check your website before they walk in. Without one, the competitor who has a site gets the booking.</p></li>
+<li class="film__ch film__ch--fix" data-t="31.5"><div class="film__top"><span class="film__num"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="film__k" data-i18n="prob.fix">The fix</p></div><h3><button type="button" data-i18n="prob.fixT">Found, understood, booked</button></h3><p class="film__b" data-i18n="prob.fixB">One monthly plan, nothing to manage. We build it, host it and keep it updated. You run the restaurant.</p><ul class="film__fixes"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s1t">A Google listing that gets you chosen</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s2t">A QR menu in their language</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s3t">A website that fills your tables</b></span></li></ul></li>
 </ol>
-<ol class="film__cues" hidden=""><li data-s="0" data-e="11.4" data-i18n="prob.cap0">Every evening, tourists walk right past the door.</li><li data-s="11.4" data-e="20.1" data-i18n="prob.cap1">But they choose on Google, not in the street.</li><li data-s="20.1" data-e="27.6" data-i18n="prob.cap2">A menu they can't read means a smaller order.</li><li data-s="27.6" data-e="31.5" data-i18n="prob.cap3">No website, no trust.</li><li data-s="31.5" data-e="41.5" data-i18n="prob.cap4">We fix it: Google listing, QR menu, website.</li></ol>
+<ol class="film__cues" hidden=""><li data-s="0" data-e="11.4" data-i18n="prob.cap0">7 pm. The street is packed. Her tables are empty.</li><li data-s="11.4" data-e="20.1" data-i18n="prob.cap1">They're hungry. They search Google. Her restaurant isn't there.</li><li data-s="20.1" data-e="27.6" data-i18n="prob.cap2">They walk in anyway. The menu is Thai only. They order the bare minimum.</li><li data-s="27.6" data-e="31.5" data-i18n="prob.cap3">Tomorrow they'll book next door. He has a website.</li><li data-s="31.5" data-e="37.9" data-i18n="prob.cap4">Same restaurant. This time, they found it on Google.</li><li data-s="37.9" data-e="41.5" data-i18n="prob.cap5">Website, QR menu, Google listing. We take care of it, every month.</li></ol>
 </div>
 <p class="prob__cta"><a class="btn btn--sun btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><span data-i18n="prob.cta">Fix it with us on WhatsApp</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
 </div>
@@ -194,7 +194,7 @@
 <div class="section-head section-head--split">
 <div>
 <p class="eyebrow"><span data-i18n="work.eyebrow">Our work</span> <span class="count wk__count">07</span></p>
-<h2 class="section-title" data-anim="words" data-i18n-html="work.title" id="workTitle">7 real sites, <em>live now.</em></h2>
+<h2 class="section-title" data-anim="words" data-i18n-html="work.title" id="workTitle">8 real sites, <em>live now.</em></h2>
 </div>
 <p class="section-lead" data-i18n="work.lead">Tap a site to open it.</p>
 </div>
@@ -651,7 +651,7 @@
 <script defer="" src="assets/js/qrcode.min.js"></script>
 <script defer="" src="assets/js/nm-qr.js"></script><script defer="" src="assets/js/vendor/gsap.min.js"></script>
 <script defer="" src="assets/js/vendor/ScrollTrigger.min.js"></script>
-<script defer="" src="assets/js/main.js"></script><script defer="" src="assets/js/nm-film.js?v=20261008a"></script><script defer="" src="assets/js/nm-results.js?v=20261006a"></script>
+<script defer="" src="assets/js/main.js"></script><script defer="" src="assets/js/nm-film.js?v=20261008b"></script><script defer="" src="assets/js/nm-results.js?v=20261006a"></script>
 <script defer="" src="assets/js/safety.js?v=20261006a"></script>
 <script defer="" src="assets/js/fx.js"></script>
 <script defer="" src="assets/js/nm-home.js?v=20261006a"></script>

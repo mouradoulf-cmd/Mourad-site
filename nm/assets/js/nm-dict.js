@@ -10,7 +10,7 @@
         pricing: { title: "Prices: setup, then a subscription | NM Studio", description: "Thai baht prices: website ฿5,800 then ฿1,140 a month, Complete Pack ฿13,300 then ฿3,800 a month. Google and QR menu paid once." }
       },
       nav2: { offers: "Offers", services: "Services", pricing: "Pricing", account: "My account", home: "Home", cta: "Chat on WhatsApp" },
-    reel: { eyebrow: "Real work", title: "Seven sites, <em>live right now.</em>", lead: "Open any of them: real businesses, their own photos and their own languages.", hint: "Point at it to stop" },
+    reel: { eyebrow: "Real work", title: "Eight sites, <em>live right now.</em>", lead: "Open any of them: real businesses, their own photos and their own languages.", hint: "Point at it to stop" },
     cta: { startProject: "Start my project", startShort: "Start a project", quote: "Free quote" },
       hero2: {
         eyebrow: "Web studio · Pattaya, Thailand",
@@ -136,7 +136,7 @@
         pricing: { title: "Tarifs: mise en place puis abonnement | NM Studio", description: "Prix en bahts : site web 5 800 ฿ puis 1 140 ฿/mois, Pack complet 13 300 ฿ puis 3 800 ฿/mois. Google et menu QR en paiement unique." }
       },
       nav2: { offers: "Offres", services: "Services", pricing: "Tarifs", account: "Mon compte", home: "Accueil", cta: "Discuter sur WhatsApp" },
-    reel: { eyebrow: "Du travail réel", title: "Sept sites, <em>en ligne maintenant.</em>", lead: "Ouvrez-les : de vrais commerces, leurs photos, leurs langues.", hint: "Survolez pour arrêter" },
+    reel: { eyebrow: "Du travail réel", title: "Huit sites, <em>en ligne maintenant.</em>", lead: "Ouvrez-les : de vrais commerces, leurs photos, leurs langues.", hint: "Survolez pour arrêter" },
     cta: { startProject: "Démarrer mon projet", startShort: "Démarrer un projet", quote: "Devis gratuit" },
       hero2: {
         eyebrow: "Studio web · Pattaya, Thaïlande",
@@ -262,7 +262,7 @@
         pricing: { title: "Prezzi: attivazione e poi abbonamento | NM Studio", description: "Prezzi in baht: sito web 5.800 ฿ poi 1.140 ฿/mese, Pacchetto completo 13.300 ฿ poi 3.800 ฿/mese. Google e menù QR una tantum." }
       },
       nav2: { offers: "Offerte", services: "Servizi", pricing: "Prezzi", account: "Il mio account", home: "Home", cta: "Scrivici su WhatsApp" },
-    reel: { eyebrow: "Lavoro vero", title: "Sette siti, <em>online adesso.</em>", lead: "Après-les : attività vere, con le loro foto e le loro lingue.", hint: "Passa sopra per fermare" },
+    reel: { eyebrow: "Lavoro vero", title: "Otto siti, <em>online adesso.</em>", lead: "Après-les : attività vere, con le loro foto e le loro lingue.", hint: "Passa sopra per fermare" },
     cta: { startProject: "Inizia il mio progetto", startShort: "Avvia un progetto", quote: "Preventivo gratuito" },
       hero2: {
         eyebrow: "Web studio · Pattaya, Thailandia",
@@ -388,7 +388,7 @@
         pricing: { title: "ราคา: ค่าติดตั้ง แล้วต่อด้วยค่าบริการรายเดือน | NM Studio", description: "ราคาเป็นบาท: เว็บไซต์ 5,800 บาท แล้ว 1,140 บาท/เดือน แพ็กครบชุด 19,000 บาท แล้ว 3,800 บาท/เดือน" }
       },
       nav2: { offers: "แพ็กเกจ", services: "บริการ", pricing: "ราคา", account: "บัญชีของฉัน", home: "หน้าแรก", cta: "แชททาง WhatsApp" },
-    reel: { eyebrow: "งานจริง", title: "เจ็ดเว็บไซต์ <em>ที่ออนไลน์อยู่ตอนนี้</em>", lead: "ลองเปิดดู: ธุรกิจจริง พร้อมรูปและภาษาของพวกเขาเอง", hint: "ชี้ที่แถบเพื่อหยุด" },
+    reel: { eyebrow: "งานจริง", title: "แปดเว็บไซต์ <em>ที่ออนไลน์อยู่ตอนนี้</em>", lead: "ลองเปิดดู: ธุรกิจจริง พร้อมรูปและภาษาของพวกเขาเอง", hint: "ชี้ที่แถบเพื่อหยุด" },
     cta: { startProject: "เริ่มโปรเจกต์ของฉัน", startShort: "เริ่มโปรเจกต์", quote: "ประเมินราคาฟรี" },
       hero2: {
         eyebrow: "เว็บสตูดิโอ · พัทยา ประเทศไทย",
@@ -514,7 +514,7 @@
         pricing: { title: "الأسعار: إعداد ثم اشتراك شهري | NM Studio", description: "أسعار بالبات: الموقع إعداد 5,800 ฿ ثم 1,140 ฿ شهريًا، والباقة الكاملة 19,000 ฿ ثم 3,800 ฿ شهريًا." }
       },
       nav2: { offers: "العروض", services: "الخدمات", pricing: "الأسعار", account: "حسابي", home: "الرئيسية", cta: "تحدّث معنا على واتساب" },
-    reel: { eyebrow: "عمل حقيقي", title: "سبعة مواقع <em>مباشرة الآن.</em>", lead: "افتح أيًّا منها: أعمال حقيقية بصورها ولغاتها.", hint: "مرّر المؤشر لإيقافه" },
+    reel: { eyebrow: "عمل حقيقي", title: "ثمانية مواقع <em>مباشرة الآن.</em>", lead: "افتح أيًّا منها: أعمال حقيقية بصورها ولغاتها.", hint: "مرّر المؤشر لإيقافه" },
     cta: { startProject: "ابدأ مشروعي", startShort: "ابدأ مشروعًا", quote: "عرض سعر مجاني" },
       hero2: {
         eyebrow: "استوديو ويب · باتايا، تايلاند",

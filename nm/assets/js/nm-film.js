@@ -46,9 +46,18 @@
       setTimeout(function () { cap.textContent = curCue >= 0 ? cues[curCue].el.textContent.trim() : ""; cap.classList.remove("is-swap"); }, reduce ? 0 : 200);
     }
     var hi = chapterIndex(t);
-    if (hi !== curCh) { curCh = hi; chs.forEach(function (c, k) { c.el.classList.toggle("is-on", k === hi); if (k !== hi) c.el.style.setProperty("--p", k < hi ? 1 : 0); }); }
+    if (hi !== curCh) { curCh = hi; chs.forEach(function (c, k) { c.el.classList.toggle("is-on", k === hi); if (k !== hi) c.el.style.setProperty("--p", k < hi ? 1 : 0); }); follow(hi); }
     var end = hi + 1 < chs.length ? chs[hi + 1].t : (d || chs[hi].t + 1);
     chs[hi].el.style.setProperty("--p", Math.max(0, Math.min(1, (t - chs[hi].t) / (end - chs[hi].t))).toFixed(3));
+  }
+  // mobile: the chapter strip scrolls by itself to the chapter playing, unless the visitor just swiped it
+  var strip = root.querySelector(".film__chapters"), touched = 0;
+  ["pointerdown", "touchstart", "wheel"].forEach(function (ev) { strip.addEventListener(ev, function () { touched = Date.now(); }, { passive: true }); });
+  function follow(i) {
+    if (!visible || strip.scrollWidth <= strip.clientWidth + 4 || Date.now() - touched < 5000) return;
+    var li = chs[i].el, rtl = document.documentElement.dir === "rtl";
+    var x = rtl ? -(strip.scrollWidth - li.offsetLeft - li.offsetWidth - parseFloat(getComputedStyle(strip).paddingLeft)) : li.offsetLeft - parseFloat(getComputedStyle(strip).paddingLeft);
+    strip.scrollTo({ left: x, behavior: reduce ? "auto" : "smooth" });
   }
   function loop() { render(); raf = !video.paused && visible ? requestAnimationFrame(loop) : 0; }
 

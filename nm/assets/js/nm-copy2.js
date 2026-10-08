@@ -33,9 +33,9 @@
         s3t: "A website that fills your tables", s3b: "Your photos, your prices, a WhatsApp button on every page. Visitors become customers.",
         cta: "Fix it with us on WhatsApp",
         flip: "See the fix", flipBack: "Back to the problem",
-        cap0: "Every evening, tourists walk right past the door.", cap1: "But they choose on Google, not in the street.", cap2: "A menu they can't read means a smaller order.", cap3: "No website, no trust.", cap4: "We fix it: Google listing, QR menu, website.", fixT: "Found, understood, booked", fixB: "Live in days. You send the photos, we do the rest.", soundOn: "Sound", soundOff: "Sound", play: "Play", pause: "Pause", video: "Short film: a Pattaya restaurant without a website", watch: "Play the film"
+        cap0: "7 pm. The street is packed. Her tables are empty.", cap1: "They're hungry. They search Google. Her restaurant isn't there.", cap2: "They walk in anyway. The menu is Thai only. They order the bare minimum.", cap3: "Tomorrow they'll book next door. He has a website.", cap4: "Same restaurant. This time, they found it on Google.", cap5: "Website, QR menu, Google listing. We take care of it, every month.", fixT: "Found, understood, booked", fixB: "One monthly plan, nothing to manage. We build it, host it and keep it updated. You run the restaurant.", soundOn: "Sound", soundOff: "Sound", play: "Play", pause: "Pause", video: "Short film: a Pattaya restaurant without a website", watch: "Play the film"
       },
-      work: { eyebrow: "Our work", title: "7 real sites, <em>live now.</em>", lead: "Tap a site to open it." },
+      work: { eyebrow: "Our work", title: "8 real sites, <em>live now.</em>", lead: "Tap a site to open it." },
       offers: {
         title: "3 offers. <em>Pick yours.</em>",
         lead: "Prices in Thai baht. The Google listing is paid once. The website and the Complete Pack are a setup fee plus a monthly subscription, with hosting, edits and updates included.",
@@ -88,9 +88,9 @@
         s3t: "Un site qui remplit vos tables", s3b: "Vos photos, vos prix, un bouton WhatsApp sur chaque page. Les visiteurs deviennent des clients.",
         cta: "On règle ça ensemble sur WhatsApp",
         flip: "Voir la solution", flipBack: "Revenir au problème",
-        cap0: "Chaque soir, les touristes passent devant la porte.", cap1: "Mais ils choisissent sur Google, pas dans la rue.", cap2: "Un menu qu'ils ne comprennent pas, c'est une commande en moins.", cap3: "Sans site, pas de confiance.", cap4: "On règle ça : fiche Google, menu QR, site web.", fixT: "Trouvé, compris, réservé", fixB: "En ligne en quelques jours. Vous envoyez les photos, on fait le reste.", soundOn: "Son", soundOff: "Son", play: "Lecture", pause: "Pause", video: "Court film : un restaurant de Pattaya sans site web", watch: "Lancer le film"
+        cap0: "19 h. La rue est pleine. Sa salle est vide.", cap1: "Ils ont faim. Ils cherchent sur Google. Son restaurant n'y est pas.", cap2: "Ils entrent quand même. Menu en thaï uniquement. Ils commandent le minimum.", cap3: "Demain, ils réserveront chez le voisin. Lui a un site.", cap4: "Même restaurant. Cette fois, ils l'ont trouvé sur Google.", cap5: "Site, menu QR, fiche Google. On s'en occupe, tous les mois.", fixT: "Trouvé, compris, réservé", fixB: "Un abonnement, rien à gérer. On crée, on héberge, on met à jour. Vous, vous tenez votre restaurant.", soundOn: "Son", soundOff: "Son", play: "Lecture", pause: "Pause", video: "Court film : un restaurant de Pattaya sans site web", watch: "Lancer le film"
       },
-      work: { eyebrow: "Nos réalisations", title: "7 vrais sites, <em>en ligne maintenant.</em>", lead: "Touchez un site pour l'ouvrir." },
+      work: { eyebrow: "Nos réalisations", title: "8 vrais sites, <em>en ligne maintenant.</em>", lead: "Touchez un site pour l'ouvrir." },
       offers: {
         title: "3 offres. <em>Choisissez la vôtre.</em>",
         lead: "Prix en bahts. La fiche Google se paie une seule fois. Le site web et le Pack complet : une mise en place puis un abonnement mensuel, hébergement, modifications et mises à jour compris.",
@@ -143,9 +143,9 @@
         s3t: "Un sito che riempie i tavoli", s3b: "Le vostre foto, i vostri prezzi, un pulsante WhatsApp in ogni pagina. I visitatori diventano clienti.",
         cta: "Risolviamolo insieme su WhatsApp",
         flip: "Vedi la soluzione", flipBack: "Torna al problema",
-        cap0: "Ogni sera, i turisti passano davanti alla porta.", cap1: "Ma scelgono su Google, non per strada.", cap2: "Un menù che non capiscono è un ordine in meno.", cap3: "Senza sito, niente fiducia.", cap4: "Ci pensiamo noi: scheda Google, menù QR, sito web.", fixT: "Trovato, capito, prenotato", fixB: "Online in pochi giorni. Tu invii le foto, noi facciamo il resto.", soundOn: "Audio", soundOff: "Audio", play: "Riproduci", pause: "Pausa", video: "Breve film: un ristorante di Pattaya senza sito web", watch: "Guarda il film"
+        cap0: "Ore 19. La strada è piena. I suoi tavoli sono vuoti.", cap1: "Hanno fame. Cercano su Google. Il suo ristorante non c'è.", cap2: "Entrano lo stesso. Menù solo in thai. Ordinano il minimo.", cap3: "Domani prenoteranno dal vicino. Lui ha un sito.", cap4: "Stesso ristorante. Questa volta l'hanno trovato su Google.", cap5: "Sito, menù QR, scheda Google. Ce ne occupiamo noi, ogni mese.", fixT: "Trovato, capito, prenotato", fixB: "Un abbonamento, niente da gestire. Lo creiamo, lo ospitiamo, lo aggiorniamo. Tu pensi al ristorante.", soundOn: "Audio", soundOff: "Audio", play: "Riproduci", pause: "Pausa", video: "Breve film: un ristorante di Pattaya senza sito web", watch: "Guarda il film"
       },
-      work: { eyebrow: "I nostri lavori", title: "7 siti veri, <em>online ora.</em>", lead: "Toccate un sito per aprirlo." },
+      work: { eyebrow: "I nostri lavori", title: "8 siti veri, <em>online ora.</em>", lead: "Toccate un sito per aprirlo." },
       offers: {
         title: "3 offerte. <em>Scegliete la vostra.</em>",
         lead: "Prezzi in baht. La scheda Google si paga una volta sola. Sito web e Pack completo: costo di avvio più abbonamento mensile, con hosting, modifiche e aggiornamenti inclusi.",
@@ -198,9 +198,9 @@
         s3t: "เว็บไซต์ที่ทำให้โต๊ะเต็ม", s3b: "รูปของคุณ ราคาของคุณ และปุ่ม WhatsApp ทุกหน้า ผู้เข้าชมกลายเป็นลูกค้า",
         cta: "ให้เราช่วยแก้ ทักทาง WhatsApp",
         flip: "ดูวิธีแก้", flipBack: "กลับไปที่ปัญหา",
-        cap0: "ทุกเย็น นักท่องเที่ยวเดินผ่านหน้าร้านไป", cap1: "แต่พวกเขาเลือกร้านจาก Google ไม่ใช่จากถนน", cap2: "เมนูที่อ่านไม่ออก คือยอดสั่งที่หายไป", cap3: "ไม่มีเว็บไซต์ ก็ไม่มีความน่าเชื่อถือ", cap4: "เราช่วยได้: โปรไฟล์ Google เมนู QR และเว็บไซต์", fixT: "ถูกค้นเจอ เข้าใจง่าย ได้การจอง", fixB: "ออนไลน์ได้ในไม่กี่วัน คุณส่งรูปมา ที่เหลือเราจัดการให้", soundOn: "เสียง", soundOff: "เสียง", play: "เล่น", pause: "หยุด", video: "หนังสั้น: ร้านอาหารในพัทยาที่ไม่มีเว็บไซต์", watch: "เล่นวิดีโอ"
+        cap0: "หนึ่งทุ่ม ถนนคนแน่น แต่ร้านเธอว่าง", cap1: "พวกเขาหิว ค้นหาใน Google แต่ไม่เจอร้านของเธอ", cap2: "สุดท้ายก็เดินเข้ามา เมนูมีแต่ภาษาไทย เลยสั่งแค่นิดเดียว", cap3: "พรุ่งนี้พวกเขาจะไปจองร้านข้างๆ เพราะร้านนั้นมีเว็บไซต์", cap4: "ร้านเดิม แต่ครั้งนี้ พวกเขาเจอร้านบน Google", cap5: "เว็บไซต์ เมนู QR โปรไฟล์ Google เราดูแลให้ทุกเดือน", fixT: "ถูกค้นเจอ เข้าใจง่าย ได้การจอง", fixB: "จ่ายรายเดือน ไม่ต้องดูแลเอง เราสร้าง โฮสต์ และอัปเดตให้ คุณแค่ดูแลร้าน", soundOn: "เสียง", soundOff: "เสียง", play: "เล่น", pause: "หยุด", video: "หนังสั้น: ร้านอาหารในพัทยาที่ไม่มีเว็บไซต์", watch: "เล่นวิดีโอ"
       },
-      work: { eyebrow: "ผลงานของเรา", title: "7 เว็บไซต์จริง <em>ออนไลน์อยู่ตอนนี้</em>", lead: "แตะที่เว็บไซต์เพื่อเปิดดู" },
+      work: { eyebrow: "ผลงานของเรา", title: "8 เว็บไซต์จริง <em>ออนไลน์อยู่ตอนนี้</em>", lead: "แตะที่เว็บไซต์เพื่อเปิดดู" },
       offers: {
         title: "3 แพ็กเกจ <em>เลือกแบบที่ใช่</em>",
         lead: "ราคาเป็นเงินบาท โปรไฟล์ Google จ่ายครั้งเดียว ส่วนเว็บไซต์และแพ็กเกจครบวงจรเป็นค่าเริ่มต้นบวกค่าบริการรายเดือน รวมโฮสติ้ง การแก้ไข และการอัปเดต",
@@ -253,9 +253,9 @@
         s3t: "موقع يملأ طاولاتك", s3b: "صورك وأسعارك وزر واتساب في كل صفحة. الزوار يتحولون إلى زبائن.",
         cta: "لنصلحها معًا على واتساب",
         flip: "اعرض الحل", flipBack: "العودة إلى المشكلة",
-        cap0: "كل مساء، يمرّ السياح أمام الباب.", cap1: "لكنهم يختارون عبر جوجل، لا من الشارع.", cap2: "قائمة لا يفهمونها تعني طلبًا أقل.", cap3: "بدون موقع، لا ثقة.", cap4: "نحن نحلّ ذلك: ملف جوجل، قائمة QR، موقع إلكتروني.", fixT: "يجدونك، يفهمونك، يحجزون", fixB: "جاهز خلال أيام. أنت ترسل الصور، ونحن نتكفّل بالباقي.", soundOn: "الصوت", soundOff: "الصوت", play: "تشغيل", pause: "إيقاف", video: "فيلم قصير: مطعم في باتايا بلا موقع إلكتروني", watch: "شغّل الفيلم"
+        cap0: "السابعة مساءً. الشارع مزدحم. وطاولاتها فارغة.", cap1: "إنهم جائعون. يبحثون في جوجل. ومطعمها غير موجود.", cap2: "يدخلون رغم ذلك. القائمة بالتايلاندية فقط. فيطلبون أقل القليل.", cap3: "غدًا سيحجزون عند الجار. لديه موقع.", cap4: "المطعم نفسه. هذه المرة وجدوه على جوجل.", cap5: "موقع، قائمة QR، ملف جوجل. نتولّى كل شيء، كل شهر.", fixT: "يجدونك، يفهمونك، يحجزون", fixB: "اشتراك شهري، لا شيء عليك إدارته. نصمّم ونستضيف ونحدّث. وأنت تهتم بمطعمك.", soundOn: "الصوت", soundOff: "الصوت", play: "تشغيل", pause: "إيقاف", video: "فيلم قصير: مطعم في باتايا بلا موقع إلكتروني", watch: "شغّل الفيلم"
       },
-      work: { eyebrow: "أعمالنا", title: "7 مواقع حقيقية، <em>على الإنترنت الآن.</em>", lead: "المس أي موقع لفتحه." },
+      work: { eyebrow: "أعمالنا", title: "8 مواقع حقيقية، <em>على الإنترنت الآن.</em>", lead: "المس أي موقع لفتحه." },
       offers: {
         title: "3 عروض. <em>اختر عرضك.</em>",
         lead: "الأسعار بالبات التايلاندي. ملف جوجل يُدفع مرة واحدة. أما الموقع والباقة الكاملة فرسوم تأسيس واشتراك شهري يشمل الاستضافة والتعديلات والتحديثات.",

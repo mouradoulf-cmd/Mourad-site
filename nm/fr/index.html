@@ -43,9 +43,9 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <link href="../assets/css/site.css?v=20261006a" rel="stylesheet"/>
 <link href="../assets/css/craft.css?v=20261006a" rel="stylesheet"/>
 <link href="../assets/css/work-gallery.css?v=20261006a" rel="stylesheet"/>
-<link href="../assets/css/film.css?v=20261008a" rel="stylesheet"/>
-<script defer="" src="../assets/js/nm-dict.js?v=20261006a"></script>
-<script defer="" src="../assets/js/nm-copy2.js?v=20261008a"></script>
+<link href="../assets/css/film.css?v=20261008b" rel="stylesheet"/>
+<script defer="" src="../assets/js/nm-dict.js?v=20261006ab"></script>
+<script defer="" src="../assets/js/nm-copy2.js?v=20261008b"></script>
 <script defer="" src="../assets/js/offers-config.js?v=20261006a"></script>
 <script defer="" src="../assets/js/reviews-config.js"></script>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
@@ -169,7 +169,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <div class="film">
 <div class="film__stage">
 <div aria-hidden="true" class="film__halo"></div>
-<div class="film__phone">
+<div class="film__float"><div class="film__phone">
 <div class="film__screen">
 <video class="film__video" muted playsinline loop preload="none" poster="../assets/video/film-poster.jpg" width="720" height="1280" aria-label="Court film : un restaurant de Pattaya sans site web" data-i18n-aria-label="prob.video"><source data-src="../assets/video/film.mp4" type="video/mp4"></video>
 <div aria-hidden="true" class="film__island"></div>
@@ -183,16 +183,16 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </div>
 <span aria-hidden="true" class="film__sheen"></span>
-</div>
-<div aria-hidden="true" class="film__floor"></div>
+</div></div>
+<div aria-hidden="true" class="film__ring"></div>
 </div>
 <ol class="film__chapters">
-<li class="film__ch" data-t="0"><span class="film__num">01</span><p class="film__k" data-i18n="prob.problem">Le problème</p><h3><button type="button" data-i18n="prob.p1t">Les touristes ne vous trouvent pas</button></h3><p data-i18n="prob.p1b">Ils cherchent sur Google Maps, pas dans la rue. Sans fiche, avec de mauvais horaires ou des photos sombres, ils choisissent le commerce d'à côté.</p></li>
-<li class="film__ch" data-t="20.1"><span class="film__num">02</span><p class="film__k" data-i18n="prob.problem">Le problème</p><h3><button type="button" data-i18n="prob.p2t">Votre menu est une photo floue</button></h3><p data-i18n="prob.p2b">Les menus papier se périment. Les touristes étrangers ne les comprennent pas : ils commandent moins ou partent.</p></li>
-<li class="film__ch" data-t="27.6"><span class="film__num">03</span><p class="film__k" data-i18n="prob.problem">Le problème</p><h3><button type="button" data-i18n="prob.p3t">Pas de site, pas de confiance</button></h3><p data-i18n="prob.p3b">Les visiteurs regardent votre site avant d'entrer. Sans site, le concurrent qui en a un prend la réservation.</p></li>
-<li class="film__ch film__ch--fix" data-t="31.5"><span class="film__num"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="film__k" data-i18n="prob.fix">La solution</p><h3><button type="button" data-i18n="prob.fixT">Trouvé, compris, réservé</button></h3><p data-i18n="prob.fixB">En ligne en quelques jours. Vous envoyez les photos, on fait le reste.</p><ul class="film__fixes"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s1t">Une fiche Google qui vous fait choisir</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s2t">Un menu QR dans leur langue</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s3t">Un site qui remplit vos tables</b></span></li></ul></li>
+<li class="film__ch" data-t="0"><div class="film__top"><span class="film__num">01</span><p class="film__k" data-i18n="prob.problem">Le problème</p></div><h3><button type="button" data-i18n="prob.p1t">Les touristes ne vous trouvent pas</button></h3><p class="film__b" data-i18n="prob.p1b">Ils cherchent sur Google Maps, pas dans la rue. Sans fiche, avec de mauvais horaires ou des photos sombres, ils choisissent le commerce d'à côté.</p></li>
+<li class="film__ch" data-t="20.1"><div class="film__top"><span class="film__num">02</span><p class="film__k" data-i18n="prob.problem">Le problème</p></div><h3><button type="button" data-i18n="prob.p2t">Votre menu est une photo floue</button></h3><p class="film__b" data-i18n="prob.p2b">Les menus papier se périment. Les touristes étrangers ne les comprennent pas : ils commandent moins ou partent.</p></li>
+<li class="film__ch" data-t="27.6"><div class="film__top"><span class="film__num">03</span><p class="film__k" data-i18n="prob.problem">Le problème</p></div><h3><button type="button" data-i18n="prob.p3t">Pas de site, pas de confiance</button></h3><p class="film__b" data-i18n="prob.p3b">Les visiteurs regardent votre site avant d'entrer. Sans site, le concurrent qui en a un prend la réservation.</p></li>
+<li class="film__ch film__ch--fix" data-t="31.5"><div class="film__top"><span class="film__num"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="film__k" data-i18n="prob.fix">La solution</p></div><h3><button type="button" data-i18n="prob.fixT">Trouvé, compris, réservé</button></h3><p class="film__b" data-i18n="prob.fixB">Un abonnement, rien à gérer. On crée, on héberge, on met à jour. Vous, vous tenez votre restaurant.</p><ul class="film__fixes"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s1t">Une fiche Google qui vous fait choisir</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s2t">Un menu QR dans leur langue</b></span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-i18n="prob.s3t">Un site qui remplit vos tables</b></span></li></ul></li>
 </ol>
-<ol class="film__cues" hidden=""><li data-s="0" data-e="11.4" data-i18n="prob.cap0">Chaque soir, les touristes passent devant la porte.</li><li data-s="11.4" data-e="20.1" data-i18n="prob.cap1">Mais ils choisissent sur Google, pas dans la rue.</li><li data-s="20.1" data-e="27.6" data-i18n="prob.cap2">Un menu qu'ils ne comprennent pas, c'est une commande en moins.</li><li data-s="27.6" data-e="31.5" data-i18n="prob.cap3">Sans site, pas de confiance.</li><li data-s="31.5" data-e="41.5" data-i18n="prob.cap4">On règle ça : fiche Google, menu QR, site web.</li></ol>
+<ol class="film__cues" hidden=""><li data-s="0" data-e="11.4" data-i18n="prob.cap0">19 h. La rue est pleine. Sa salle est vide.</li><li data-s="11.4" data-e="20.1" data-i18n="prob.cap1">Ils ont faim. Ils cherchent sur Google. Son restaurant n'y est pas.</li><li data-s="20.1" data-e="27.6" data-i18n="prob.cap2">Ils entrent quand même. Menu en thaï uniquement. Ils commandent le minimum.</li><li data-s="27.6" data-e="31.5" data-i18n="prob.cap3">Demain, ils réserveront chez le voisin. Lui a un site.</li><li data-s="31.5" data-e="37.9" data-i18n="prob.cap4">Même restaurant. Cette fois, ils l'ont trouvé sur Google.</li><li data-s="37.9" data-e="41.5" data-i18n="prob.cap5">Site, menu QR, fiche Google. On s'en occupe, tous les mois.</li></ol>
 </div>
 <p class="prob__cta"><a class="btn btn--sun btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><span data-i18n="prob.cta">On règle ça ensemble sur WhatsApp</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
 </div>
@@ -202,7 +202,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <div class="section-head section-head--split">
 <div>
 <p class="eyebrow"><span data-i18n="work.eyebrow">Nos réalisations</span> <span class="count wk__count">07</span></p>
-<h2 class="section-title" data-anim="words" data-i18n-html="work.title" id="workTitle">7 vrais sites, <em>en ligne maintenant.</em></h2>
+<h2 class="section-title" data-anim="words" data-i18n-html="work.title" id="workTitle">8 vrais sites, <em>en ligne maintenant.</em></h2>
 </div>
 <p class="section-lead" data-i18n="work.lead">Touchez un site pour l'ouvrir.</p>
 </div>
@@ -659,7 +659,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <script defer="" src="../assets/js/qrcode.min.js"></script>
 <script defer="" src="../assets/js/nm-qr.js"></script><script defer="" src="../assets/js/vendor/gsap.min.js"></script>
 <script defer="" src="../assets/js/vendor/ScrollTrigger.min.js"></script>
-<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-film.js?v=20261008a"></script><script defer="" src="../assets/js/nm-results.js?v=20261006a"></script>
+<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-film.js?v=20261008b"></script><script defer="" src="../assets/js/nm-results.js?v=20261006a"></script>
 <script defer="" src="../assets/js/safety.js?v=20261006a"></script>
 <script defer="" src="../assets/js/fx.js"></script>
 <script defer="" src="../assets/js/nm-home.js?v=20261006a"></script>
