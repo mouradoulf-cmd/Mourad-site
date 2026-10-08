@@ -9,8 +9,12 @@ loaded from Google Fonts only when Arabic is selected.
 
 Real business data (from its Google listing and the house menu photos):
 numéro 04, boulevard Hassan II, Résidence Sun Palace 01, 28820 Mohammédia ·
-05 23 32 44 54 · 06:00–00:00 · delivery · 4.0 on Google (≈1,400 reviews) ·
-Friday couscous 69 dhs. Menu items and prices are copied from photos of the
+05 23 32 44 54 · 06:00–00:00 · delivery · 4.0 on Google (1,423 reviews),
+3.5 on Tripadvisor (25) · Google highlights: terrace, excellent cocktails,
+good for watching sport · Facebook facebook.com/oblanc.restaurant ·
+Instagram @oblanc___ · GPS 33.7043942, -7.3691879 · Friday couscous 69 dhs.
+Review quotes are real public excerpts (Google / Tripadvisor), quoted as
+written; full opening hours per day are not published — only 06:00–00:00. Menu items and prices are copied from photos of the
 menu (several versions exist — check with the owner before going live).
 
 - i18n: FR baked into the HTML; EN + AR (RTL) in `assets/js/i18n.js`,
