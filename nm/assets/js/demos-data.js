@@ -31,7 +31,8 @@ window.NM_LINKS = [
     { name: "Espace client (abonnement)", path: "nm/account.html" }
   ] },
   { space: "site", group: "Sites clients", items: [
-    { name: "Atelier des Façadiers (refonte, 5 langues)", path: "atelier-des-facadiers/", note: "Maquette pour le client façadier" }
+    { name: "Atelier des Façadiers (refonte, 5 langues)", path: "atelier-des-facadiers/", note: "Maquette pour le client façadier" },
+    { name: "ÔBlanc (café-restaurant, Mohammédia)", path: "oblanc/", note: "Démo de prospection, infos/photos réelles — 8e site dans le portfolio NM Studio" }
   ] },
   { space: "video", group: "Mes studios vidéo IA", items: [
     { name: "Studio Vidéo IA", path: "video-ia/", note: "Créer des vidéos IA" },
