@@ -151,6 +151,8 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <div class="hint" id="asmInfo"></div>
   <video class="pl" id="asmVid" controls playsinline style="display:none;margin-top:.5rem"></video>
   <a class="btn gold" id="asmDl" style="display:none;text-align:center;text-decoration:none;line-height:30px">⬇ Télécharger la vidéo finale</a>
+<div class="redobox" style="margin:.6rem 0;padding:.7rem;border:1px solid #e0605a;border-radius:12px"><label class="lab" style="display:block;margin-bottom:.3rem">✍️ Écris les numéros des clips à refaire</label><input class="redoNums" type="text" inputmode="numeric" placeholder="ex : 37, 28, 36, 4" style="width:100%;box-sizing:border-box"><button class="btn main redoGo" type="button" style="margin-top:.5rem;min-height:50px;width:100%">🔁 Refaire ces clips</button></div>
+  <div id="redoneBox" style="display:none;margin:.6rem 0;padding:.7rem;border:1px solid #4cb87a;border-radius:12px"></div>
   <button class="btn main" id="btnRev" type="button" style="min-height:52px">🔍 Revue rapide : valider chaque clip (✅ bon / 🔁 à refaire)</button>
   <button class="btn gold" id="btnPlay" type="button">▶ Regarder l'histoire (tous les clips à la suite)</button>
   <button class="btn main" id="btnDlAll" type="button" style="min-height:52px">⬇ Télécharger les VIDÉOS (tous les clips, dans l'ordre)</button>
@@ -167,6 +169,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 
 <div id="rev" style="display:none;position:fixed;inset:0;z-index:90;background:#07070b;overflow:auto;padding:max(1rem,env(safe-area-inset-top)) 1rem 1rem">
  <div style="max-width:560px;margin:0 auto">
+  <div class="redobox" style="margin:.6rem 0;padding:.7rem;border:1px solid #e0605a;border-radius:12px"><label class="lab" style="display:block;margin-bottom:.3rem">✍️ Écris les numéros des clips à refaire</label><input class="redoNums" type="text" inputmode="numeric" placeholder="ex : 37, 28, 36, 4" style="width:100%;box-sizing:border-box"><button class="btn main redoGo" type="button" style="margin-top:.5rem;min-height:50px;width:100%">🔁 Refaire ces clips</button></div>
   <div id="revHead" style="font-weight:700;margin-bottom:.5rem"></div>
   <video id="revV" controls playsinline loop style="width:100%;border-radius:12px;background:#000;max-height:60vh"></video>
   <div id="revTxt" class="hint" style="margin:.6rem 0"></div>
@@ -556,7 +559,14 @@ function serUi(){const bx=$('serPanel');if(!P||!P.series){bx.style.display='none
  bx.style.display='block';bx.innerHTML='<h3 style="margin:0 0 .4rem">📺 Série : partie '+(SR.cur+1)+' / '+SR.parts.length+' — '+esc(SR.parts[SR.cur].title)+' · Jour '+dayNo()+'</h3><div class="hint">'+dn+' / '+T+' clips prêts ≈ '+min+' min sur '+Math.round(T*dur/60)+' min · aujourd\'hui '+day+' vidéos créées. Reviens demain : le même bouton écrit et produit la partie suivante avec les mêmes personnages. <b>Ne vide pas les données du navigateur</b> entre les jours.</div><details style="margin-top:.5rem"><summary>Plan de toute l\'histoire</summary>'+SR.parts.map((p,i)=>'<p style="margin:.4rem 0"><b>'+(i+1)+'. '+esc(p.title)+'</b>'+(i<=SR.cur?' ✓':'')+'<br>'+esc(p.summary)+'</p>').join('')+'</details>'}
 function planUi(){try{const L_=lenParse(),d=+$('dur').value;$('planInfo').innerHTML=L_.series?'= '+L_.total+' clips de '+d+' s ≈ <b>'+Math.ceil(L_.total/L_.perDay)+' jours</b> à '+L_.perDay+' clips/jour':'= '+L_.total+' clips, une seule session'}catch(e){}}
 ['len','dur','perDay'].forEach(i=>$(i).addEventListener('change',planUi));
-function render(){serUi();epUi();if(!P||!P.scenes||!P.scenes.length){$('scenesPanel').style.display='none';$('slidePanel').style.display='none';return}
+function redoneUi(){const bx=$('redoneBox');if(!bx)return;const L=P&&P.scenes?P.scenes.filter(x=>x.redoAt&&done(x)):[];if(!L.length){bx.style.display='none';return}
+ bx.style.display='block';bx.innerHTML='<b>✅ '+L.length+' clip(s) refait(s) prêt(s)</b><button class="btn main" id="btnRedone" type="button" style="margin-top:.5rem;min-height:50px;width:100%">⬇ Télécharger les derniers clips refaits</button><div class="hint" style="margin-top:.4rem">Clips : '+L.map(x=>pad(x.n)).join(', ')+'. Envoie-moi le fichier : je remplace ces clips dans le montage.</div>'}
+document.addEventListener('click',async e=>{if(!e.target.closest('#btnRedone')||!P)return;const L=P.scenes.filter(x=>x.redoAt&&done(x));if(!L.length)return;
+ const t=(P.bible.title||'histoire')+' — clips refaits\n'+L.map(x=>pad(x.n)+' '+(x.url||'')).join('\n')+'\n';try{await navigator.clipboard.writeText(t)}catch(er){}
+ saveBlob(new Blob([t],{type:'text/plain'}),'clips-refaits-liens.txt');
+ for(const sc of L){const b=await clipBlob(sc);if(b){saveBlob(b,pad(sc.n)+'.mp4');await new Promise(r=>setTimeout(r,500))}}
+ toast('Liens des '+L.length+' clips refaits copiés + fichier téléchargé ✓','',6000)});
+function render(){serUi();epUi();redoneUi();if(!P||!P.scenes||!P.scenes.length){$('scenesPanel').style.display='none';$('slidePanel').style.display='none';return}
  $('scenesPanel').style.display='block';const v=P.o.fmt==='9:16';
  $('scenes').innerHTML=(P.reviewNote?'<div class="hint" style="margin:0 0 .6rem">🔎 Relecture de cohérence : '+esc(P.reviewNote)+'</div>':'')+P.scenes.map((s,i2)=>{const i=i2;const cs=scChars(s).map(c=>c.name).join(' + ');return '<div class="sc'+(v?' v':'')+'"><img class="th" src="'+(s.thumb||'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')+'" alt=""><div class="in"><div class="n">SCÈNE '+s.n+' / '+P.scenes.length+badge(s)+'</div><div class="hint" style="margin:.1rem 0">📍 '+esc(loc(s).name)+' · 👤 '+esc(cs)+'</div><textarea data-a="'+i+'" '+(S.running?'disabled':'')+'>'+esc(s.action)+'</textarea>'+'<div class="ln">🗣 '+esc((byId(P.bible.characters,s.speaker)||{name:'(personne)'}).name)+' :</div><input type="text" data-line="'+i2+'" value="'+esc(s.line)+'" placeholder="Dialogue (laisse vide si personne ne parle)" '+(S.running?'disabled':'')+'>'+(s.roman?'<div class="hint" style="margin:.1rem 0">'+esc(s.roman)+'</div>':'')+(s.err&&s.vidState!=='done'?'<div class="hint" style="color:var(--err)">'+esc(s.err)+'</div>':'')+(s.warn?'<div class="hint" style="color:var(--warn)">⚠︎ '+esc(s.warn)+'</div>':'')+(s.url?'<a class="hint" style="color:var(--blue)" href="'+esc(s.url)+'" target="_blank" rel="noopener" download>⬇ ouvrir / télécharger le clip '+s.n+'</a><br>':'')+'<button data-img="'+i+'" '+(S.running?'disabled':'')+'>↻ nouvelle image</button>'+(s.thumb?'<button data-redo="'+i+'" '+(S.running?'disabled':'')+'>↻ refaire la vidéo</button>':'')+'</div></div>'}).join('');
  const dn=clipDone(),N=P.scenes.length;$('result').style.display=dn?'block':'none';$('plInfo').textContent=dn+' / '+N+' clips prêts';$('slidePanel').style.display=P.scenes.some(x=>x.thumb)?'block':'none';if(dn)renderDl();
@@ -564,7 +574,7 @@ function render(){serUi();epUi();if(!P||!P.scenes||!P.scenes.length){$('scenesPa
 $('scenes').addEventListener('input',e=>{const i=e.target.dataset.a;if(i!==undefined){P.scenes[i].action=e.target.value;save()}const l=e.target.dataset.line;if(l!==undefined){P.scenes[l].line=e.target.value;P.scenes[l].roman='';if(e.target.value&&!P.scenes[l].speaker)P.scenes[l].speaker=P.scenes[l].chars[0];save()}});
 document.addEventListener('click',async e=>{if(S.running)return;
  const r=e.target.closest('[data-redo]'),m=e.target.closest('[data-img]');
- if(r){const sc=P.scenes[+r.dataset.redo];sc.vidState='';sc.err='';sc.warn='';save();render();P.o.mode==='sb'&&(P.stage='animate');run();return}
+ if(r){const sc=P.scenes[+r.dataset.redo];sc.redoAt=Date.now();sc.vidState='';sc.err='';sc.warn='';save();render();P.o.mode==='sb'&&(P.stage='animate');run();return}
  if(m){const sc=P.scenes[+m.dataset.img];sc.vidState='';sc.imgState='';sc.err='';sc.warn='';sc.thumb='';await dbPut('start:'+sc.n,null);await dbPut('clip:'+sc.n,null);save();render();run()}});
 
 /* ───────── Pipeline ───────── */
@@ -666,7 +676,12 @@ async function revShow(){const L=rv.list;if(!L.length){revEnd();return}if(rv.i<0
  $('revTxt').textContent=sc.action+(sc.line?' — « '+sc.line+' »':'')+'  Cherche : visage/vêtements qui changent, membre en trop, objet qui apparaît, mouvement saccadé.'}
 function revEnd(){const bad=P.scenes.filter(x=>x.redo);$('revV').pause();$('revHead').textContent='Revue terminée : '+bad.length+' clip(s) à refaire';
  $('revTxt').innerHTML=bad.length?'Clips : '+bad.map(x=>x.n).join(', ')+'.<br><button class="btn main" id="revGo" type="button" style="margin-top:.6rem">🔁 Refaire ces '+bad.length+' clips maintenant</button>':'Tout est bon ✅';
- const g=$('revGo');if(g)g.onclick=()=>{bad.forEach(sc=>{sc.redo=false;sc.ok=false;sc.vidState='';sc.err='';sc.warn='';sc.url='';sc.thumb=sc.thumb});save();$('rev').style.display='none';render();run()}}
+ const g=$('revGo');if(g)g.onclick=()=>{bad.forEach(sc=>{sc.redoAt=Date.now();sc.redo=false;sc.ok=false;sc.vidState='';sc.err='';sc.warn='';sc.url='';sc.thumb=sc.thumb});save();$('rev').style.display='none';render();run()}}
+document.addEventListener('click',e=>{const g=e.target.closest('.redoGo');if(!g)return;if(S.running){toast('Une création est en cours : attends la fin ou arrête-la','warn');return}if(!P)return;const box=g.closest('.redobox'),inp=box.querySelector('.redoNums');
+ const nums=[...new Set((inp.value.match(/\d+/g)||[]).map(Number))],bad=[];const sel=[];nums.forEach(n=>{const sc=P.scenes.filter(x=>x.n===n)[0];if(sc)sel.push(sc);else bad.push(n)});
+ if(!sel.length){toast('Aucun numéro valide (clips 1 à '+P.scenes.length+')','warn',5000);return}
+ if(!confirm('Refaire '+sel.length+' clip(s) : '+sel.map(x=>x.n).join(', ')+' ?'+(bad.length?'\n(numéros inconnus ignorés : '+bad.join(', ')+')':'')+'\nÇa utilise '+sel.length+' vidéo(s) de ton quota du jour.'))return;
+ sel.forEach(sc=>{sc.redoAt=Date.now();sc.redo=false;sc.ok=false;sc.vidState='';sc.err='';sc.warn='';sc.url='';sc.thumb=''});save();inp.value='';$('rev').style.display='none';render();run()});
 $('btnRev').onclick=()=>{if(!P)return;rv.list=P.scenes.filter(x=>done(x)&&!x.ok);if(!rv.list.length)rv.list=P.scenes.filter(done);rv.i=0;$('rev').style.display='block';revShow()};
 $('revOk').onclick=()=>{const sc=rv.list[rv.i];if(sc){sc.ok=true;sc.redo=false;save()}rv.i++;revShow()};
 $('revBad').onclick=()=>{const sc=rv.list[rv.i];if(sc){sc.redo=true;sc.ok=false;save()}rv.i++;revShow()};
