@@ -106,3 +106,18 @@ Prix : environ 10 à 15 € par an. Hébergement gratuit sur Cloudflare Pages, j
 - [ ] Créer ta **fiche Google NM Studio**
 - [ ] Ajouter ton **SIRET** dans les mentions légales dès qu'il existe
 - [ ] Prospecter : **10 commerces par jour** avec la Maquette express
+
+---
+
+## 8. Ton agenda de rendez-vous visio
+
+Sur le site, dans la section gratuite : le client choisit un jour et une heure, la demande arrive sur ton WhatsApp.
+Tout se règle dans `nm/assets/js/contact-config.js`, partie `booking` (heure de Thaïlande) :
+
+- `days` : tes jours de travail (1 = lundi … 7 = dimanche)
+- `hours` : tes heures de rendez-vous
+- `booked` : **les créneaux vraiment pris**, par exemple `"2026-10-12 15:00"` → ils s'affichent « Réservé »
+- `closed` : tes jours de congé, par exemple `"2026-10-20"`
+
+Règle d'or : uniquement de vrais rendez-vous. Quand ton agenda se remplit pour de vrai, tout le monde le voit.
+Envoie-moi simplement « réservé jeudi 15 h » et je le mets à jour.
