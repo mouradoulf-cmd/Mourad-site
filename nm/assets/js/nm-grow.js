@@ -53,6 +53,78 @@
     });
   });
 
+  /* ---------- video-call booking (slots in Thailand time, real availability from contact-config.js) ---------- */
+  (function booking() {
+    var box = document.getElementById("book"), cfg = C.booking;
+    if (!box || !cfg) return;
+    var daysEl = box.querySelector(".book__days"), slotsEl = box.querySelector(".book__slots"), localEl = box.querySelector(".book__local");
+    var form = box.querySelector("form[data-book]"), err = form.querySelector(".free__err");
+    var TZ = 7 * 3600e3, booked = {}, closed = {}, sel = null, curDay = null;
+    (cfg.booked || []).forEach(function (k) { booked[k.trim()] = 1; });
+    (cfg.closed || []).forEach(function (k) { closed[k.trim()] = 1; });
+    function lang() { return document.documentElement.lang || "en"; }
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    function thDate(ms) { return new Date(ms + TZ); }                       // read with getUTC* = Thailand wall clock
+    function slotMs(ymd, hm) { var p = ymd.split("-"), h = hm.split(":"); return Date.UTC(+p[0], +p[1] - 1, +p[2], +h[0], +h[1]) - TZ; }
+    function fmt(ms, o) { try { return new Intl.DateTimeFormat(lang(), Object.assign({ timeZone: "Asia/Bangkok" }, o)).format(ms); } catch (e) { return ""; } }
+    function localFmt(ms) { try { return new Intl.DateTimeFormat(lang(), { hour: "2-digit", minute: "2-digit", weekday: "short" }).format(ms); } catch (e) { return ""; } }
+    var sameZone = (-new Date().getTimezoneOffset()) === 420;
+
+    function days() {
+      var out = [], now = Date.now(), base = thDate(now);
+      for (var i = 0; i < (cfg.daysAhead || 10); i++) {
+        var d = new Date(Date.UTC(base.getUTCFullYear(), base.getUTCMonth(), base.getUTCDate() + i));
+        var ymd = d.getUTCFullYear() + "-" + pad(d.getUTCMonth() + 1) + "-" + pad(d.getUTCDate()), wd = d.getUTCDay() || 7;
+        if ((cfg.days || []).indexOf(wd) < 0 || closed[ymd]) continue;
+        var slots = (cfg.hours || []).map(function (hm) {
+          var ms = slotMs(ymd, hm); return { ymd: ymd, hm: hm, ms: ms, taken: !!booked[ymd + " " + hm], past: ms < now + 2 * 3600e3 };
+        }).filter(function (x) { return !x.past; });
+        if (slots.length) out.push({ ymd: ymd, ms: slotMs(ymd, "12:00"), slots: slots, free: slots.filter(function (x) { return !x.taken; }).length });
+      }
+      return out;
+    }
+    function render() {
+      var list = days(); daysEl.innerHTML = ""; slotsEl.innerHTML = "";
+      if (!list.some(function (d) { return d.free; })) { slotsEl.innerHTML = '<p class="book__none">' + t("book.none") + "</p>"; return; }
+      if (!curDay || !list.some(function (d) { return d.ymd === curDay && d.free; })) curDay = (list.filter(function (d) { return d.free; })[0] || list[0]).ymd;
+      list.forEach(function (d) {
+        var b = document.createElement("button"); b.type = "button"; b.className = "book__day"; b.disabled = !d.free;
+        b.setAttribute("aria-pressed", String(d.ymd === curDay));
+        b.innerHTML = "<span>" + fmt(d.ms, { weekday: "short" }) + "</span><b>" + fmt(d.ms, { day: "numeric" }) + "</b><small>" + fmt(d.ms, { month: "short" }) + "</small>";
+        b.onclick = function () { curDay = d.ymd; sel = null; render(); };
+        daysEl.appendChild(b);
+      });
+      var day = list.filter(function (d) { return d.ymd === curDay; })[0];
+      day.slots.forEach(function (x) {
+        var b = document.createElement("button"); b.type = "button"; b.className = "book__slot"; b.disabled = x.taken;
+        b.setAttribute("aria-pressed", String(!!(sel && sel.ms === x.ms)));
+        b.innerHTML = x.hm + (x.taken ? "<small>" + t("book.taken") + "</small>" : "");
+        b.onclick = function () { sel = x; err.textContent = ""; render(); };
+        slotsEl.appendChild(b);
+      });
+      localEl.textContent = sel && !sameZone ? t("book.local").replace("{t}", localFmt(sel.ms)) : "";
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!sel) { err.textContent = t("book.pick"); return; }
+      var name = form.elements.business.value.trim(), first = form.elements.first.value.trim();
+      var when = fmt(sel.ms, { weekday: "long", day: "numeric", month: "long" }) + " · " + sel.hm + " (" + t("book.tz") + ")";
+      var lines = [t("book.msg"), "", "*" + t("book.l_slot") + ":* " + when];
+      if (name) lines.push("*" + t("free.l_name") + ":* " + name);
+      if (first) lines.push("*" + t("free.l_first") + ":* " + first);
+      var msg = lines.join("\n");
+      try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: "book" } })); } catch (e2) {}
+      var num = String(C.whatsappNumber || "").replace(/\D/g, "");
+      if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
+      var copied = copy(msg);
+      window.open(C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1", "_blank", "noopener");
+      copied.then(function () { toast(t("book.copied")); });
+    });
+    render();
+    document.addEventListener("nm:lang", function () { setTimeout(render, 0); });
+    setInterval(render, 5 * 60e3);
+  })();
+
   /* ---------- founder: name and photo from the settings ---------- */
   var founderName = C.founderName || "Mourad";
   function fillName() {

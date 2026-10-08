@@ -13,5 +13,16 @@ window.NM_CONTACT = {
   whatsappLink: "https://wa.me/qr/PYPOVXTCVM74I1",
   founderName: "Mourad",
   founderPhoto: "",
-  analyticsToken: ""
+  analyticsToken: "",
+
+  /* Video-call booking (Thailand time). Only real data here: your real opening hours and the slots really taken.
+     days: 1 = Monday ... 7 = Sunday.  booked: "YYYY-MM-DD HH:MM", e.g. "2026-10-12 15:00".  closed: whole days off, "YYYY-MM-DD". */
+  booking: {
+    days: [1, 2, 3, 4, 5, 6],
+    hours: ["10:00", "11:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+    minutes: 20,
+    daysAhead: 10,
+    booked: [],
+    closed: []
+  }
 };
