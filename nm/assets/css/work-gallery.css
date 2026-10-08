@@ -230,6 +230,22 @@ html[lang="ar"] .wk-card__desc { -webkit-line-clamp: 4; }
   .wk-card__links { gap: .6rem .7rem; }
 }
 
+/* Phones: two sites per row (the flagship stays full width) so the eight sites read as one gallery, not a long scroll. */
+@media (max-width: 699px) {
+  .wk__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+  .wk__grid > .wk-card { grid-column: span 1; }
+  .wk__grid > .wk-card--1 { grid-column: 1 / -1; }
+  .wk-card:not(.wk-card--1) .wk-card__media { aspect-ratio: 1 / 1; }
+  .wk-card:not(.wk-card--1) .wk-card__meta { padding: .75rem .35rem .2rem; }
+  .wk-card:not(.wk-card--1) .wk-card__meta::before { display: none; }
+  .wk-card:not(.wk-card--1) .wk-card__name { margin-top: 0; font-size: 1rem; }
+  .wk-card:not(.wk-card--1) .wk-card__desc { display: none; }
+  .wk-card:not(.wk-card--1) { padding: .5rem; }
+  .wk-card:not(.wk-card--1) .wk-card__media { padding: .8rem .8rem 0; }
+  .wk__grid > .wk-card--8 { grid-column: 1 / -1; }
+  .wk__grid > .wk-card--8 .wk-card__media { aspect-ratio: 16 / 9; padding: 1.2rem 1.4rem 0; }
+}
+
 /* RTL : le filet et le rembourrage du cartouche suivent le sens de lecture. */
 html[dir="rtl"] .wk-card__meta::before { left: auto; right: .6rem; background: linear-gradient(270deg, var(--gold), transparent); }
 html[dir="rtl"] .wk-card__links .link-site svg { transform: scaleX(-1); }

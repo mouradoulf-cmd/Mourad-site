@@ -1,0 +1,6 @@
+/* NM Studio home polish: tighter mobile rhythm, no empty space inside cards. Loaded last. */
+@media (max-width: 639px) {
+  /* offer cards: the icon block was a 4:3 box, i.e. a large empty band on a full-width phone card */
+  .offer-grid .offer__icon { aspect-ratio: auto; margin: .5rem -.35rem .3rem; padding: 1rem 0 .6rem; }
+  .offer-grid .offer__icon svg { width: 2.4rem; height: 2.4rem; }
+}

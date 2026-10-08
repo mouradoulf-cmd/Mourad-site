@@ -122,6 +122,8 @@ window.NMPrice = (function () {
   function subPrice(id, mode) {
     var s = sub(id), t = function (k) { return (window.NMI18n && window.NMI18n.t(k)) || ""; };
     if (!s || !s.monthly) return "";
+    // "then": the setup is already printed next to it (home offer cards), so only say what follows each month
+    if (mode === "then") return t("offers.subscribe").replace("{price}", local(s.monthly));
     if (mode === "yearly") {
       return t("price2.subYearly")
         .replace("{setup}", local(s.setup))

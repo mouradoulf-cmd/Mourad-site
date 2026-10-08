@@ -43,8 +43,14 @@
       c.el.setAttribute("aria-hidden", k === i ? "false" : "true");
       if ("inert" in c.el) c.el.inert = k !== i;
     });
+    fit();
     steps.forEach(function (s, k) { s.classList.toggle("is-on", k === i); s.setAttribute("aria-current", k === i ? "step" : "false"); if (k !== i) s.style.setProperty("--p", k < i ? 1 : 0); });
   }
+  // the card area takes the height of the card shown, so there is never an empty band under a short chapter
+  var panel = root.querySelector(".film__chapters");
+  function fit() { if (curCh >= 0 && panel) panel.style.height = chs[curCh].el.offsetHeight + "px"; }
+  window.addEventListener("resize", fit, { passive: true });
+  if (window.ResizeObserver) { var ro = new ResizeObserver(fit); chs.forEach(function (c) { ro.observe(c.el); }); }
   function chapterIndex(t) { var i = 0; chs.forEach(function (c, k) { if (t >= c.t) i = k; }); return i; }
   function render() {
     var t = video.currentTime || 0, d = video.duration || 0;

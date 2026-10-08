@@ -99,7 +99,7 @@
 .film__fixes svg { flex: none; width: 1.1rem; height: 1.1rem; margin-top: .14rem; color: var(--gold); }
 
 /* one-card mode (JS on): every card sits in the same cell, only the step playing is shown; the next one turns in */
-.film--js .film__chapters { grid-template-areas: "card"; }
+.film--js .film__chapters { grid-template-areas: "card"; align-items: start; transition: height .55s cubic-bezier(.2,.75,.2,1); }
 .film--js .film__ch { grid-area: card; opacity: 0; visibility: hidden; transform-origin: 50% 0; transform: rotateX(-28deg) translateY(-8px);
   transition: opacity .45s ease, transform .7s cubic-bezier(.2,.75,.2,1), visibility 0s linear .7s; }
 .film--js .film__ch.is-on { opacity: 1; visibility: visible; transform: none; transition: opacity .45s ease .12s, transform .8s cubic-bezier(.2,.75,.2,1) .12s, visibility 0s; }
