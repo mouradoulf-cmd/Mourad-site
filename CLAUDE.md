@@ -165,8 +165,8 @@ Plain HTML/CSS/JS, no build step. v4 "Night future, touch of gold"
 blue `#4f7bff` light, gold `#e6c27a` details, one stylesheet
 `assets/css/site.css`. Satoshi (display) + Fraunces italic gold key word +
 Inter, self-hosted. Home order: 50/50 hero « Be found. Be chosen. » (MacBook
-+ iPhone cycling the 7 live demos, gold dust, orb), key figures + sectors
-marquee, the 7 demos in device mockups (live preview `.pv`), 4 offers +
++ iPhone cycling the 8 live demos, gold dust, orb), key figures + sectors
+marquee, the 8 demos in device mockups (live preview `.pv`), 4 offers +
 morphing dialog `.om`, why us (3 photos), how it works (3 steps), FAQ (8),
 « Ready to be visible? » giant WhatsApp finale, footer. No testimonials
 until real ones exist. Every logo must be the real brand mark (Simple Icons

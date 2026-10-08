@@ -1,5 +1,5 @@
 /* NM Studio — home page only: gold dust in the hero light, the hero devices
-   cycling through the seven live sites, pointer depth on the stage, the
+   cycling through the eight live sites, pointer depth on the stage, the
    pointer-lit work cards, key-figure icons and the "how it works" line.
    Every block skips quietly if its markup is missing; nothing moves with
    prefers-reduced-motion. */
@@ -65,13 +65,14 @@
     document.addEventListener("visibilitychange", function () { play(visible && !document.hidden); });
   })();
 
-  /* ---------- hero: the MacBook + iPhone cycle through the seven live sites ---------- */
+  /* ---------- hero: the MacBook + iPhone cycle through the eight live sites ---------- */
   (function showcase() {
     var mac = $(".dev--hero .mac__view"), phone = $(".dev--hero .iph__view");
     var nameEl = $("#nowName"), catEl = $("#nowCat"), dots = $$(".h__now-dots i");
     if (!mac || !phone || !nameEl) return;
     var SITES = [
       { slug: "giulivo", name: "Giulivo", cat: "work.p1cat" },
+      { slug: "oblanc", name: "ÔBlanc", cat: "work.p8cat" },
       { slug: "malee", name: "Malee", cat: "work.p2cat" },
       { slug: "noir", name: "Noir", cat: "work.p3cat" },
       { slug: "neon-tiger", name: "Neon Tiger", cat: "work.p5cat" },

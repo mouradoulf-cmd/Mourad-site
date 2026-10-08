@@ -375,11 +375,11 @@ html[dir="rtl"] .marquee__track { animation-direction: reverse; }
 .wk { position: relative; padding: var(--sec) 0; }
 .wk__grid { display: grid; gap: clamp(1rem, 2vw, 1.4rem); grid-template-columns: repeat(12, minmax(0, 1fr)); }
 .wk-card { grid-column: span 12; }
-@media (min-width: 700px) { .wk-card { grid-column: span 6; } .wk-card--1 { grid-column: span 12; } }
+@media (min-width: 700px) { .wk-card { grid-column: span 6; } .wk-card--1, .wk-card--8 { grid-column: span 12; } }
 @media (min-width: 1080px) {
   .wk-card--1 { grid-column: span 8; } .wk-card--2 { grid-column: span 4; }
   .wk-card--3, .wk-card--4, .wk-card--5 { grid-column: span 4; }
-  .wk-card--6, .wk-card--7 { grid-column: span 6; }
+  .wk-card--6, .wk-card--7, .wk-card--8 { grid-column: span 4; }
 }
 .wk-card { --mx: 50%; --my: 20%; position: relative; display: flex; flex-direction: column; padding: clamp(.8rem, 1.4vw, 1.1rem); border-radius: var(--radius-lg); background: var(--glass); box-shadow: var(--shadow-1); transition: box-shadow .6s var(--ease-out), transform .6s var(--ease-out); transform-style: preserve-3d; }
 .wk-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; background: radial-gradient(260px circle at var(--mx) var(--my), rgba(230,194,122,.9), rgba(123,97,255,.4) 40%, transparent 65%), linear-gradient(180deg, rgba(244,242,250,.14), rgba(244,242,250,.04)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); opacity: .7; transition: opacity .4s ease; }

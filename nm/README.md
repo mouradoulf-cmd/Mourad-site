@@ -5,7 +5,7 @@ Plain HTML/CSS/JS, no build step. Hosted on GitHub Pages
 
 | Page | What it does |
 |---|---|
-| `index.html` | Home (v4): 50/50 hero « Be found. Be chosen. » with a MacBook + iPhone cycling through the 7 live sites, key figures + sectors marquee, the 7 demos (device mockups, live preview), the 4 offers (+ detail dialog), why us (3 photos), how it works (3 steps), FAQ (8), « Ready to be visible? » WhatsApp finale, footer |
+| `index.html` | Home (v4): 50/50 hero « Be found. Be chosen. » with a MacBook + iPhone cycling through the 8 live sites, key figures + sectors marquee, the 8 demos (device mockups, live preview), the 4 offers (+ detail dialog), why us (3 photos), how it works (3 steps), FAQ (8), « Ready to be visible? » WhatsApp finale, footer |
 | `services.html` | The 4 offers in depth, "which offer is right for you", comparison table, service FAQ |
 | `pricing.html` | Prices, care plan with Monthly / Yearly toggle, comparison table, pricing FAQ |
 | `checkout.html` | 4-step checkout: offer + care plan → details → payment → review (promo code) → confirmation |
@@ -127,7 +127,7 @@ receipts, invoices and dunning emails.
   shared partials: when editing header/footer/offer cards, update every page.
 - Motion: `main.js` (GSAP + ScrollTrigger + Lenis: hero entrance word by word,
   heading word reveals, card rises, image drift, finale), `home.js` (gold dust
-  canvas, hero devices cross-fading through the 7 sites every 4.2 s, pointer
+  canvas, hero devices cross-fading through the 8 sites every 4.2 s, pointer
   depth on the stage, pointer-lit tilting work cards, "how it works" line,
   animated key-figure icons), `fx.js` (cursor dot + ring + light trail — the
   native cursor is kept — ripple, magnetic buttons, scroll-driven marquee,
