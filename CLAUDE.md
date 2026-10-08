@@ -140,3 +140,14 @@ the owner never has to ask for URLs. Before handing over a demo, test it yoursel
 no console errors, no horizontal overflow, all photos load, brand name replaced everywhere) and fix issues
 without waiting to be asked; then give the owner the hub link plus the demo link. Never invent reviews/ratings for a
 real business — remove the template's sample reviews/star counts or label them clearly as placeholders.
+
+
+## "Mon espace" — the owner's private hub (keep it up to date in EVERY conversation)
+
+`nm/demos.html` on the published branch `claude/thai-app-mnw166` is the owner's home-screen app
+(https://mouradoulf-cmd.github.io/Mourad-site/nm/demos.html). Home screen = three spaces: **Site web**
+(client demos A–Z + NM Studio links + tools + templates), **Vidéo IA**, **Formation**. All content comes from
+`nm/assets/js/demos-data.js`: `NM_DEMOS` (client demos) and `NM_LINKS` (groups with `space: "site" | "video" |
+"formation"`). Whenever you publish a new page, project, demo or course in any conversation, add it to the right
+space there and set `NM_UPDATED` to today's date — without being asked. When the owner says "ajoute ça dans
+Vidéo IA / Formation / Site web", add the link to that space. The page fetches the data file fresh on every open.
