@@ -84,14 +84,14 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <div class="ttl">2 · Réglages</div>
   <div class="row2">
     <div><label class="lab" for="len">Longueur de l'histoire</label><select id="len"><option value="c3">Test : 3 clips</option><option value="c6">Test : 6 clips</option><option value="c10">Court : 10 clips</option><option value="c20">Court : 20 clips</option><option value="c50">50 clips (une journée)</option><option value="m10">Série : 10 minutes (sur plusieurs jours)</option><option value="m20">Série : 20 minutes</option><option value="m30" selected>Série : 30 minutes</option><option value="m45">Série : 45 minutes</option><option value="m60">Série : 1 heure</option></select></div>
-    <div><label class="lab" for="dur">Durée d'un clip</label><select id="dur"><option value="5">5 s (plus fiable, mais 2× plus de clips)</option><option value="8">8 s</option><option value="10" selected>10 s (50 clips = 500 s par jour)</option></select></div>
+    <div><label class="lab" for="dur">Durée d'un clip</label><select id="dur"><option value="5" selected>5 s (100 clips = 500 s par jour, plus fiable)</option><option value="8">8 s</option><option value="10">10 s (50 clips = 500 s par jour)</option></select></div>
   </div>
   <div class="row2">
     <div><label class="lab" for="talk">Fréquence des paroles</label><select id="talk"><option value="4" selected>Rare : 1 clip sur 4 (recommandé)</option><option value="2">Parfois : 1 clip sur 2</option><option value="1">Souvent : tous les clips</option><option value="9">Presque jamais : 1 clip sur 9</option></select></div>
     <div class="hint" style="margin-top:1.6rem">Phrases de 2 à 6 mots maximum : plus fiable pour la bouche et la voix.</div>
   </div>
   <div class="row2">
-    <div><label class="lab" for="perDay">Clips à produire par jour</label><select id="perDay"><option value="3">3 (test)</option><option value="20">20</option><option value="30">30</option><option value="40" selected>40 (garde de la marge pour les refaçons)</option><option value="50">50</option></select></div>
+    <div><label class="lab" for="perDay">Clips à produire par jour</label><select id="perDay"><option value="3">3 (test)</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="80" selected>80 (garde ~20 vidéos de marge pour les refaçons)</option><option value="100">100 (tout le quota, sans marge)</option></select></div>
     <div class="hint" id="planInfo" style="margin-top:1.6rem"></div>
   </div>
   <div class="row2">
@@ -100,7 +100,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   </div>
   <div class="row2">
     <div><label class="lab" for="retries">Refaire si défaut</label><select id="retries"><option value="0">Jamais</option><option value="1">1 fois</option><option value="2">2 fois</option><option value="3" selected>3 fois (qualité max, plus de vidéos utilisées)</option></select></div>
-    <div><label class="lab" for="quota">Limite de vidéos par jour</label><select id="quota"><option value="50" selected>50</option><option value="40">40</option><option value="30">30</option><option value="20">20</option><option value="10">10</option></select></div>
+    <div><label class="lab" for="quota">Limite de vidéos par jour</label><select id="quota"><option value="100" selected>100 (5 s : 500 s par jour)</option><option value="80">80</option><option value="50">50</option><option value="40">40</option><option value="30">30</option><option value="20">20</option><option value="10">10</option></select></div>
   </div>
   <label class="lab" for="mode">Méthode</label><select id="mode"><option value="auto" selected>⛓ Chaînage (méthode des studios) : chaque clip démarre sur la dernière image propre du précédent, avec contrôle qualité et refaçon automatique</option><option value="sb">🎞 Storyboard d'abord : je vois et je valide toutes les images avant de faire les vidéos</option></select>
   <label class="tog"><input type="checkbox" id="optSq" checked><span>🧍 Anti-doublons : les images sont créées en carré puis recadrées (les formats très larges sont une cause fréquente de « deux têtes » / personne en double)</span></label>
