@@ -18,16 +18,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#07060b;--fg:#f7f3ea;--mute:#b4ab9c;--faint:#8a8273;--ease:cubic-bezier(.22,1,.36,1);
- --c:#f0be5e;--glass:linear-gradient(160deg,rgba(255,255,255,.11),rgba(255,255,255,.03));--edge:rgba(255,255,255,.14);
+ --c:#f0be5e;--glass:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.025));--edge:rgba(255,255,255,.14);
  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}
 html,body{min-height:100%;overflow-x:clip;-webkit-tap-highlight-color:transparent}
-body{background:radial-gradient(80% 60% at 25% 15%,#3a2410,transparent 70%),radial-gradient(70% 60% at 85% 85%,#3b0f2a,transparent 70%),var(--bg);color:var(--fg);font:15px/1.5 'Manrope',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(80% 60% at 25% 15%,#1c1108,transparent 70%),radial-gradient(70% 60% at 85% 85%,#1c0713,transparent 70%),var(--bg);color:var(--fg);font:15px/1.5 'Manrope',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
 #gl{position:fixed;inset:0;width:100%;height:100%;z-index:0}
-.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(90% 70% at 50% 45%,transparent 40%,rgba(7,6,11,.6))}
-.grain{position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(90% 70% at 50% 45%,transparent 35%,rgba(5,4,8,.78))}
+.grain{position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 .serif{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400}
 
 /* ============ HOME ============ */
@@ -516,13 +516,13 @@ button{font:inherit;color:inherit}
     "float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p=p*2.02+vec2(1.7,9.2);a*=.5;}return v;}" +
     "vec3 bg(vec2 uv){float t=T*.045;vec2 q=uv*1.15+(M-.5)*.18;" +
     "vec2 w=vec2(fbm(q+vec2(0.,t)),fbm(q+vec2(5.2,1.3)-t));float f=fbm(q+2.2*w+vec2(t*.6,-t*.4));" +
-    "vec3 c1=vec3(.04,.03,.05),c2=mix(vec3(.30,.16,.06),K*.5,.5),c3=mix(vec3(.85,.55,.22),K,.45),c4=mix(vec3(.80,.22,.42),K,.3);" +
+    "vec3 c1=vec3(.018,.014,.022),c2=mix(vec3(.14,.075,.03),K*.28,.5),c3=mix(vec3(.46,.29,.11),K*.62,.45),c4=mix(vec3(.40,.10,.21),K*.5,.3);" +
     "vec3 col=mix(c1,c2,smoothstep(.25,.7,f));col=mix(col,c3,smoothstep(.45,.95,w.x)*.5);col=mix(col,c4,smoothstep(.5,1.,w.y*f*1.6)*.42);" +
     "float rb=smoothstep(.0,.03,.03-abs(f-.52+sin(uv.x*1.6+T*.08)*.04));col+=rb*vec3(.9,.7,.4)*.16;" +
     "vec2 q2=uv*2.1+(M-.5)*.75+vec2(t*1.8,t*.7);float nf=fbm(q2+fbm(q2*.7+t));col+=smoothstep(.05,.0,abs(nf-.5))*mix(vec3(1.,.8,.5),K,.5)*.18;" +
     "vec2 q3=uv*3.4+(M-.5)*1.3+vec2(-t*2.6,t);float n3=fbm(q3+fbm(q3*.6));col+=smoothstep(.04,.0,abs(n3-.52))*vec3(1.,.95,.85)*.08;" +
     "col+=vec3(1.,.8,.55)*pow(max(0.,1.-abs(uv.x*.9+uv.y*.5-sin(T*.05)*.5)*2.2),3.)*.05;return col;}" +
-    "void main(){vec2 uv=(gl_FragCoord.xy-.5*R)/min(R.x,R.y);vec3 col=bg(uv);col+=B*vec3(.9,.75,.5)*smoothstep(1.,0.,length(uv));col*=1.-.38*dot(uv,uv);gl_FragColor=vec4(col,1.);}";
+    "void main(){vec2 uv=(gl_FragCoord.xy-.5*R)/min(R.x,R.y);vec3 col=bg(uv);col+=B*vec3(.9,.75,.5)*smoothstep(1.,0.,length(uv));col*=.78*(1.-.45*dot(uv,uv));gl_FragColor=vec4(col,1.);}";
   function sh(t, s) { var o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); return o; }
   var pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr);
   if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
@@ -530,7 +530,7 @@ button{font:inherit;color:inherit}
   var bf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
   var lp = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 0, 0);
   var uR = gl.getUniformLocation(pr, "R"), uT = gl.getUniformLocation(pr, "T"), uM = gl.getUniformLocation(pr, "M"), uB = gl.getUniformLocation(pr, "B"), uK = gl.getUniformLocation(pr, "K");
-  var sc = Math.min(devicePixelRatio || 1, 1.5) * (innerWidth < 700 ? .55 : .6);
+  var sc = Math.min(devicePixelRatio || 1, 2) * (innerWidth < 700 ? .95 : .85);
   function rs() { cv.width = Math.max(2, innerWidth * sc | 0); cv.height = Math.max(2, innerHeight * sc | 0); gl.viewport(0, 0, cv.width, cv.height); }
   rs(); addEventListener("resize", rs);
   var BASE = [.95, .62, .3], mx = .5, my = .5, sx = .5, sy = .5, bs = 0, kc = BASE.slice(), kt = BASE.slice(), calm = matchMedia("(prefers-reduced-motion:reduce)").matches, t0 = performance.now(), vis = true;
