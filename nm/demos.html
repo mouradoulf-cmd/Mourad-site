@@ -6,8 +6,8 @@
 <meta content="noindex, nofollow" name="robots"/>
 <meta content="#0a0a0b" name="theme-color"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
-<meta content="Mes démos" name="apple-mobile-web-app-title"/>
-<title>Mes démos | NM Studio</title>
+<meta content="Mon espace NM" name="apple-mobile-web-app-title"/>
+<title>Mon espace | NM Studio</title>
 <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="assets/css/site.css?v=20261008v" rel="stylesheet"/>
@@ -61,23 +61,39 @@
   .qr__code { display: grid; place-items: center; }
   .qr__code img, .qr__code canvas { width: 100% !important; height: auto !important; max-width: 17rem; }
   .qr__close { all: unset; cursor: pointer; margin-top: 1rem; padding: .7rem 1.4rem; border-radius: 999px; font-weight: 700; background: #111; color: #fff; }
+  .dm__jump { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: .4rem; }
+  .dm__jump a { padding: .8rem; border-radius: 14px; text-align: center; font-weight: 600; font-size: .92rem; background: rgba(201,169,97,.1); box-shadow: inset 0 0 0 1px rgba(228,207,154,.25); }
+  .dm__jump b { margin-left: .3rem; padding: .1rem .45rem; border-radius: 999px; font-size: .75rem; color: #1c1405; background: var(--gold); }
+  .dm__sec--top { margin-top: 1.4rem; }
+  .ln__g { margin: 1.1rem 0 .45rem; font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+  .ln { display: flex; align-items: center; gap: .6rem; padding: .7rem .8rem; border-radius: 14px; margin-bottom: .4rem; background: rgba(255,255,255,.03); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .ln div { flex: 1; min-width: 0; }
+  .ln b { display: block; font-size: .95rem; }
+  .ln small { color: var(--muted); font-size: .76rem; }
+  .ln a, .ln button { all: unset; cursor: pointer; flex: none; padding: .45rem .7rem; border-radius: 999px; font-size: .78rem; font-weight: 700; background: rgba(255,255,255,.07); }
+  .ln a { background: var(--gold); color: #1c1405; }
+  .dm__new { margin-left: .4rem; padding: .1rem .45rem; border-radius: 999px; font-size: .68rem; font-weight: 800; vertical-align: 2px; color: #062313; background: #4ade80; }
 </style>
 </head>
 <body>
 <main class="dm">
-  <nav class="dm__tools" aria-label="Outils"><a aria-current="page" href="demos.html">Mes démos</a><a href="maquette.html">Maquette</a><a href="stats.html">Statistiques</a></nav>
+  <nav class="dm__tools" aria-label="Outils"><a aria-current="page" href="demos.html">Mon espace</a><a href="maquette.html">Maquette</a><a href="stats.html">Statistiques</a></nav>
   <p class="eyebrow">Espace privé NM Studio</p>
-  <h1>Mes démos</h1>
-  <p class="dm__lead">Tous les sites démo préparés pour tes commerçants, de A à Z. Touche le statut pour le changer.</p>
+  <h1>Mon espace</h1>
+  <p class="dm__lead">Tous tes liens et toutes tes démos, toujours à jour. Plus besoin de demander : tout est ici.</p>
+  <div class="dm__jump"><a href="#demos">🗂️ Mes démos <b id="nDemos">0</b></a><a href="#liens">🔗 Mes liens</a></div>
+  <h2 class="dm__sec dm__sec--top" id="demos">Mes démos</h2>
 
   <div class="dm__search"><input aria-label="Rechercher un commerce" autocomplete="off" id="q" placeholder="Rechercher un nom, une ville, un type…" type="search"/></div>
   <div class="dm__filters" id="filters" role="group" aria-label="Filtrer par statut"></div>
   <div class="dm__az" id="az"></div>
   <div id="list"></div>
 
+  <h2 class="dm__sec" id="liens">Mes liens</h2>
+  <div id="links"></div>
   <h2 class="dm__sec">Modèles</h2>
   <div class="dm__tpl" id="tpl"></div>
-  <p class="dm__tip">Astuce : dans Safari, touche Partager puis « Sur l'écran d'accueil » : cette page devient une appli « Mes démos » sur ton iPhone. Elle n'est pas sur Google. Le statut que tu changes ici est gardé sur ce téléphone ; dis-le-moi aussi pour que je le note dans la liste.</p>
+  <p class="dm__tip">Astuce : dans Safari, touche Partager puis « Sur l'écran d'accueil » : cette page devient une appli « Mon espace NM » sur ton iPhone. Elle n'est pas sur Google. Le statut que tu changes ici est gardé sur ce téléphone ; dis-le-moi aussi pour que je le note dans la liste.</p>
 </main>
 
 <div class="qr" hidden id="qr" role="dialog" aria-modal="true" aria-labelledby="qrName">
@@ -85,7 +101,7 @@
 </div>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
 
-<script src="assets/js/demos-data.js?v=1"></script>
+<script src="assets/js/demos-data.js?v=2"></script>
 <script src="assets/js/qrcode.min.js"></script>
 <script>
 (function () {
@@ -140,7 +156,9 @@
       var c = document.createElement("article"); c.className = "dm__card";
       var top = document.createElement("div"); top.className = "dm__top";
       var t = document.createElement("div"), h2 = document.createElement("h2"), m = document.createElement("p");
-      h2.textContent = d.name; m.className = "dm__meta"; m.textContent = [d.type, d.city, fmtDate(d.date)].filter(Boolean).join(" · ");
+      h2.textContent = d.name;
+      if (d.date && Date.now() - new Date(d.date + "T00:00:00").getTime() < 3 * 864e5) { var nw = document.createElement("span"); nw.className = "dm__new"; nw.textContent = "NOUVEAU"; h2.appendChild(nw); }
+      m.className = "dm__meta"; m.textContent = [d.type, d.city, fmtDate(d.date)].filter(Boolean).join(" · ");
       t.appendChild(h2); t.appendChild(m);
       if (d.note) { var n = document.createElement("p"); n.className = "dm__note"; n.textContent = "📝 " + d.note; t.appendChild(n); }
       var st = document.createElement("button"); st.type = "button"; st.className = "dm__st st-" + d.status; st.textContent = label[d.status] || d.status;
@@ -177,6 +195,20 @@
     ["noir/", "Noir", "Coiffeur, beauté"], ["v6-thai-spa/", "Malee", "Spa, massage"], ["scooter/", "Ride Siam", "Location"], ["atelier-des-facadiers/", "Atelier des Façadiers", "Entreprise"]];
   var tb = document.getElementById("tpl");
   T.forEach(function (x) { var a = document.createElement("a"); a.href = ROOT + x[0]; a.target = "_blank"; a.rel = "noopener"; a.innerHTML = "<b></b><small></small>"; a.firstChild.textContent = x[1]; a.lastChild.textContent = x[2]; tb.appendChild(a); });
+  document.getElementById("nDemos").textContent = demos.length;
+  var lb = document.getElementById("links");
+  (window.NM_LINKS || []).forEach(function (g) {
+    var h = document.createElement("p"); h.className = "ln__g"; h.textContent = g.group; lb.appendChild(h);
+    g.items.forEach(function (it) {
+      var u = ROOT + it.path, row = document.createElement("div"); row.className = "ln";
+      var t = document.createElement("div"), b = document.createElement("b"); b.textContent = it.name; t.appendChild(b);
+      if (it.note) { var sm = document.createElement("small"); sm.textContent = it.note; t.appendChild(sm); }
+      var a = document.createElement("a"); a.href = u; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Ouvrir";
+      var c = document.createElement("button"); c.type = "button"; c.textContent = "Copier";
+      c.onclick = function () { (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { toast("Lien copié"); }, function () { prompt("Lien :", u); }); };
+      row.appendChild(t); row.appendChild(a); row.appendChild(c); lb.appendChild(row);
+    });
+  });
   render();
 })();
 </script>
