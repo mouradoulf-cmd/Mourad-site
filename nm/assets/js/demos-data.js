@@ -43,9 +43,7 @@ window.NM_LINKS = [
     { name: "Cast & Render 3D", path: "cast-and-render/" }
   ] },
   { space: "formation", group: "NM Academy", items: [
-    { name: "NM Academy", path: "nm-academy/", note: "Ma formation · page de vente" },
-    { name: "Inscription", path: "nm-academy/start.html" },
-    { name: "Espace élèves", path: "nm-academy/members.html" }
+    { name: "NM Academy (à jour)", path: "https://claude.ai/artifact/8nSXmvuVbzfwtwMEkdeBjh", note: "Ma formation · page de vente, formations, réalisations, tarifs, inscription" }
   ] },
   { space: "formation", group: "Autres formations", items: [
     { name: "English Easy (TH)", path: "english-easy-th/", note: "Anglais facile pour les Thaïs" }
