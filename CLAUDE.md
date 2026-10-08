@@ -134,5 +134,9 @@ personalised demo from the closest template (Giulivo, Noir, Mae Lek, ÔBlanc, Ne
 Façadiers): copy it to `demos/<slug>/` on the published branch `claude/thai-app-mnw166`, swap in their photos,
 name, copy and an adjusted palette, add `<meta name="robots" content="noindex">` and the "maquette gratuite"
 label, then add one line to `nm/assets/js/demos-data.js` (slug, name, type, city, date, status). The private
-page `nm/demos.html` lists them A–Z with status, QR code and WhatsApp share. Never invent reviews/ratings for a
+page `nm/demos.html` ("Mon espace") lists them A–Z with status, QR code and WhatsApp share, and also holds
+every link the owner uses (`window.NM_LINKS` in the same data file) — add any new public page/project there so
+the owner never has to ask for URLs. Before handing over a demo, test it yourself (Playwright, mobile + desktop,
+no console errors, no horizontal overflow, all photos load, brand name replaced everywhere) and fix issues
+without waiting to be asked; then give the owner the hub link plus the demo link. Never invent reviews/ratings for a
 real business — remove the template's sample reviews/star counts or label them clearly as placeholders.
