@@ -16,7 +16,7 @@
       },
       v4: {
         title: "<span class=\"h__slogan\">Be found. <em>Be chosen.</em></span> <span class=\"h__kw\">Website, QR menu and Google listing for restaurants and local businesses</span>",
-        sub: "Restaurants, bars, salons and shops: tourists find you on Google, open your menu in their language and message you on WhatsApp.",
+        sub: "Restaurants, bars, salons and shops: customers find you on Google, open your menu in their language and message you on WhatsApp.",
         offersTitle: "3 offers. <em>Pick yours.</em>",
         finaleTitle: "Ready for more <em>customers?</em>"
       },
@@ -52,7 +52,7 @@
       process: {
         title: "Three steps. <em>Online in days.</em>",
         lead: "No meetings to prepare, no jargon. You run your business, we handle the rest.",
-        s1d: "Step 1 · Today", s1t: "Send your photos", s1b: "Photos, menu and opening hours, straight on WhatsApp. That's all we need.",
+        s1d: "Step 1 · Today", s1t: "Send your photos", s1b: "Photos, menu and opening hours, sent straight to us on WhatsApp. That's all we need.",
         s2d: "Step 2 · Days 2 to 4", s2t: "We build everything", s2b: "Design, text, QR menu, Google Maps and every language your customers speak. You approve it, we adjust it.",
         s3d: "Step 3 · Within days", s3t: "You're live and getting found", s3b: "Your site and listing go online. Customers find you, open your menu and message you."
       },
@@ -71,7 +71,7 @@
       },
       v4: {
         title: "<span class=\"h__slogan\">Soyez trouvé. <em>Soyez choisi.</em></span> <span class=\"h__kw\">Site web, menu QR et fiche Google pour les restaurants et commerces</span>",
-        sub: "Restaurants, bars, salons, boutiques : les touristes vous trouvent sur Google, ouvrent votre menu dans leur langue et vous écrivent sur WhatsApp.",
+        sub: "Restaurants, bars, salons, boutiques : vos clients vous trouvent sur Google, ouvrent votre menu dans leur langue et vous écrivent sur WhatsApp.",
         offersTitle: "3 offres. <em>Choisissez la vôtre.</em>",
         finaleTitle: "Prêt à avoir plus <em>de clients ?</em>"
       },
@@ -88,13 +88,13 @@
         s3t: "Un site qui remplit vos tables", s3b: "Vos photos, vos prix, un bouton WhatsApp sur chaque page. Les visiteurs deviennent des clients.",
         cta: "On règle ça ensemble sur WhatsApp",
         flip: "Voir la solution", flipBack: "Revenir au problème",
-        punchT: "Vos clients vous cherchent déjà. <em>Faites qu'ils vous trouvent.</em>", punchB: "Aujourd'hui, chaque client tape « restaurant près de moi » sur Google avant de choisir. Soyez la première adresse qu'il voit, le menu qu'il comprend, la table qu'il réserve.", punchL: "Plus de clients. Plus de chiffre. Rien à gérer.", st1: "Google", st2: "Menu", st3: "Site web", st4: "Solution", steps: "Le film, étape par étape", cap0: "19 h. La rue est pleine. Sa salle est vide.", cap1: "Ils ont faim. Ils cherchent sur Google. Son restaurant n'y est pas.", cap2: "Ils entrent quand même. Menu en thaï uniquement. Ils commandent le minimum.", cap3: "Demain, ils réserveront chez le voisin. Lui a un site.", cap4: "Même restaurant. Cette fois, ils l'ont trouvé sur Google.", cap5: "Site, menu QR, fiche Google. On s'en occupe, tous les mois.", fixT: "Trouvé, compris, réservé", fixB: "Un abonnement, rien à gérer. On crée, on héberge, on met à jour. Vous, vous tenez votre restaurant.", soundOn: "Son", soundOff: "Son", play: "Lecture", pause: "Pause", video: "Court film : un restaurant sans site web", watch: "Lancer le film"
+        punchT: "Vos clients vous cherchent déjà. <em>Faites qu'ils vous trouvent.</em>", punchB: "Aujourd'hui, chaque client tape « restaurant près de moi » sur Google avant de choisir. Soyez la première adresse qu'il voit, le menu qu'il comprend, la table qu'il réserve.", punchL: "Plus de clients. Plus de chiffre d'affaires. Rien à gérer.", st1: "Google", st2: "Menu", st3: "Site web", st4: "Solution", steps: "Le film, étape par étape", cap0: "19 h. La rue est pleine. Sa salle est vide.", cap1: "Ils ont faim. Ils cherchent sur Google. Son restaurant n'y est pas.", cap2: "Ils entrent quand même. Menu en thaï uniquement. Ils commandent le minimum.", cap3: "Demain, ils réserveront chez le voisin. Lui a un site.", cap4: "Même restaurant. Cette fois, ils l'ont trouvé sur Google.", cap5: "Site, menu QR, fiche Google. On s'en occupe, tous les mois.", fixT: "Trouvé, compris, réservé", fixB: "Un abonnement, rien à gérer. On crée, on héberge, on met à jour. Vous, vous tenez votre restaurant.", soundOn: "Son", soundOff: "Son", play: "Lecture", pause: "Pause", video: "Court film : un restaurant sans site web", watch: "Lancer le film"
       },
       work: { eyebrow: "Nos réalisations", title: "8 vrais sites, <em>en ligne maintenant.</em>", lead: "Touchez un site pour l'ouvrir." },
       offers: {
         title: "3 offres. <em>Choisissez la vôtre.</em>",
         lead: "Prix en bahts. La fiche Google se paie une seule fois. Le site web et le Pack complet : une mise en place puis un abonnement mensuel, hébergement, modifications et mises à jour compris.",
-        website: { benefit: "Un site construit à partir de vos photos, avec votre menu, un QR code pour chaque table et la réservation WhatsApp. En ligne en quelques jours.", i3: "Votre menu et vos prix en jusqu'à 5 langues, avec un QR code prêt à imprimer pour chaque table" },
+        website: { benefit: "Un site construit à partir de vos photos, avec votre menu, un QR code pour chaque table et la réservation WhatsApp. En ligne en quelques jours.", i3: "Votre menu et vos prix en 5 langues maximum, avec un QR code prêt à imprimer pour chaque table" },
         pack: { benefit: "Site web, fiche Google et menu QR réunis. Tout ce qu'un touriste cherche." }
       },
       svc: { lead: "Trois offres, un seul objectif : plus de clients qui franchissent votre porte. Choisissez, ou laissez-nous vous aider." },
@@ -121,12 +121,12 @@
         description: "NM Studio crea siti web, menù QR e schede Google per ristoranti, bar, saloni e negozi. Online in pochi giorni, senza contratto. Da ฿990."
       },
       meta2: {
-        services: { description: "Tre offerte per ristoranti e attività locali: scheda Google, sito web con menù QR, Pack completo. Prezzi in baht." },
-        pricing: { description: "Prezzi in baht: scheda Google ฿990 una tantum, sito web ฿5,800 poi ฿1,140 al mese, Pack completo ฿13,300 poi ฿3,800 al mese." }
+        services: { description: "Tre offerte per ristoranti e attività locali: scheda Google, sito web con menù QR, Pacchetto completo. Prezzi in baht." },
+        pricing: { description: "Prezzi in baht: scheda Google ฿990 una tantum, sito web ฿5,800 poi ฿1,140 al mese, Pacchetto completo ฿13,300 poi ฿3,800 al mese." }
       },
       v4: {
         title: "<span class=\"h__slogan\">Fatti trovare. <em>Fatti scegliere.</em></span> <span class=\"h__kw\">Sito web, menù QR e scheda Google per ristoranti e attività locali</span>",
-        sub: "Ristoranti, bar, saloni e negozi: i turisti vi trovano su Google, aprono il menù nella loro lingua e vi scrivono su WhatsApp.",
+        sub: "Ristoranti, bar, saloni e negozi: i clienti vi trovano su Google, aprono il menù nella loro lingua e vi scrivono su WhatsApp.",
         offersTitle: "3 offerte. <em>Scegliete la vostra.</em>",
         finaleTitle: "Pronti ad avere più <em>clienti?</em>"
       },
@@ -143,13 +143,13 @@
         s3t: "Un sito che riempie i tavoli", s3b: "Le vostre foto, i vostri prezzi, un pulsante WhatsApp in ogni pagina. I visitatori diventano clienti.",
         cta: "Risolviamolo insieme su WhatsApp",
         flip: "Vedi la soluzione", flipBack: "Torna al problema",
-        punchT: "I tuoi clienti ti stanno già cercando. <em>Fai in modo che ti trovino.</em>", punchB: "Oggi ogni cliente scrive «ristorante vicino a me» su Google prima di scegliere. Sii il primo posto che vede, il menù che capisce, il tavolo che prenota.", punchL: "Più clienti. Più incassi. Niente da gestire.", st1: "Google", st2: "Menù", st3: "Sito", st4: "Soluzione", steps: "Il film, passo dopo passo", cap0: "Ore 19. La strada è piena. I suoi tavoli sono vuoti.", cap1: "Hanno fame. Cercano su Google. Il suo ristorante non c'è.", cap2: "Entrano lo stesso. Menù solo in thai. Ordinano il minimo.", cap3: "Domani prenoteranno dal vicino. Lui ha un sito.", cap4: "Stesso ristorante. Questa volta l'hanno trovato su Google.", cap5: "Sito, menù QR, scheda Google. Ce ne occupiamo noi, ogni mese.", fixT: "Trovato, capito, prenotato", fixB: "Un abbonamento, niente da gestire. Lo creiamo, lo ospitiamo, lo aggiorniamo. Tu pensi al ristorante.", soundOn: "Audio", soundOff: "Audio", play: "Riproduci", pause: "Pausa", video: "Breve film: un ristorante senza sito web", watch: "Guarda il film"
+        punchT: "I vostri clienti vi stanno già cercando. <em>Fate in modo che vi trovino.</em>", punchB: "Oggi ogni cliente scrive «ristorante vicino a me» su Google prima di scegliere. Siate il primo posto che vede, il menù che capisce, il tavolo che prenota.", punchL: "Più clienti. Più fatturato. Niente da gestire.", st1: "Google", st2: "Menù", st3: "Sito", st4: "Soluzione", steps: "Il film, passo dopo passo", cap0: "Ore 19. La strada è piena. I suoi tavoli sono vuoti.", cap1: "Hanno fame. Cercano su Google. Il suo ristorante non c'è.", cap2: "Entrano lo stesso. Menù solo in thai. Ordinano il minimo.", cap3: "Domani prenoteranno dal vicino. Lui ha un sito.", cap4: "Stesso ristorante. Questa volta l'hanno trovato su Google.", cap5: "Sito, menù QR, scheda Google. Ce ne occupiamo noi, ogni mese.", fixT: "Trovato, capito, prenotato", fixB: "Un abbonamento, niente da gestire. Lo creiamo, lo ospitiamo, lo aggiorniamo. Voi pensate al ristorante.", soundOn: "Audio", soundOff: "Audio", play: "Riproduci", pause: "Pausa", video: "Breve film: un ristorante senza sito web", watch: "Guarda il film"
       },
       work: { eyebrow: "I nostri lavori", title: "8 siti veri, <em>online ora.</em>", lead: "Toccate un sito per aprirlo." },
       offers: {
         title: "3 offerte. <em>Scegliete la vostra.</em>",
-        lead: "Prezzi in baht. La scheda Google si paga una volta sola. Sito web e Pack completo: costo di avvio più abbonamento mensile, con hosting, modifiche e aggiornamenti inclusi.",
-        website: { benefit: "Un sito costruito dalle vostre foto, con il menù, un QR code per ogni tavolo e la prenotazione su WhatsApp. Online in pochi giorni.", i3: "Menù e prezzi in fino a 5 lingue, con un QR code pronto da stampare per ogni tavolo" },
+        lead: "Prezzi in baht. La scheda Google si paga una volta sola. Sito web e Pacchetto completo: costo di avvio più abbonamento mensile, con hosting, modifiche e aggiornamenti inclusi.",
+        website: { benefit: "Un sito costruito con le vostre foto, con il menù, un QR code per ogni tavolo e la prenotazione su WhatsApp. Online in pochi giorni.", i3: "Menù e prezzi in un massimo di 5 lingue, con un QR code pronto da stampare per ogni tavolo" },
         pack: { benefit: "Sito web, scheda Google e menù QR insieme. Tutto ciò che cerca un turista." }
       },
       svc: { lead: "Tre offerte, un solo obiettivo: più clienti che varcano la vostra porta. Scegliete, o lasciate che vi aiutiamo." },
@@ -176,12 +176,12 @@
         description: "NM Studio ทำเว็บไซต์ เมนู QR และ Google Business Profile ให้ร้านอาหาร บาร์ ร้านเสริมสวย และร้านค้า ออนไลน์ในไม่กี่วัน ไม่มีสัญญาผูกมัด เริ่มต้น ฿990"
       },
       meta2: {
-        services: { description: "3 แพ็กเกจสำหรับร้านอาหารและธุรกิจท้องถิ่น: โปรไฟล์ Google, เว็บไซต์พร้อมเมนู QR และแพ็กเกจครบวงจร ราคาเป็นเงินบาท" },
-        pricing: { description: "ราคาเป็นเงินบาท: โปรไฟล์ Google ฿990 จ่ายครั้งเดียว เว็บไซต์ ฿5,800 แล้ว ฿1,140 ต่อเดือน แพ็กเกจครบวงจร ฿13,300 แล้ว ฿3,800 ต่อเดือน" }
+        services: { description: "3 แพ็กเกจสำหรับร้านอาหารและธุรกิจท้องถิ่น: โปรไฟล์ Google, เว็บไซต์พร้อมเมนู QR และแพ็กเกจครบชุด ราคาเป็นเงินบาท" },
+        pricing: { description: "ราคาเป็นเงินบาท: โปรไฟล์ Google ฿990 จ่ายครั้งเดียว เว็บไซต์ ฿5,800 แล้ว ฿1,140 ต่อเดือน แพ็กเกจครบชุด ฿13,300 แล้ว ฿3,800 ต่อเดือน" }
       },
       v4: {
         title: "<span class=\"h__slogan\">ให้ลูกค้าหาเจอ <em>และเลือกคุณ</em></span> <span class=\"h__kw\">เว็บไซต์ เมนู QR และ Google Business Profile สำหรับร้านอาหารและธุรกิจท้องถิ่น</span>",
-        sub: "ร้านอาหาร บาร์ ร้านเสริมสวย และร้านค้า: นักท่องเที่ยวหาเจอบน Google เปิดเมนูในภาษาของเขา และทักหาคุณทาง WhatsApp",
+        sub: "ร้านอาหาร บาร์ ร้านเสริมสวย และร้านค้า: ลูกค้าหาเจอบน Google เปิดเมนูในภาษาของเขา และทักหาคุณทาง WhatsApp",
         offersTitle: "3 แพ็กเกจ <em>เลือกแบบที่ใช่</em>",
         finaleTitle: "พร้อมมี<em>ลูกค้าเพิ่ม</em>หรือยัง?"
       },
@@ -190,7 +190,7 @@
         title: "ทุกครั้งที่ลูกค้าหาคุณไม่เจอ <em>เขาเดินเข้าร้านข้าง ๆ แทน</em>",
         lead: "ร้านค้าเสียลูกค้าและรายได้ทุกวันเพราะ 3 ปัญหานี้ แต่ละข้อมีวิธีแก้ที่ง่ายมาก",
         problem: "ปัญหา", fix: "วิธีแก้",
-        p1t: "นักท่องเที่ยวหาคุณไม่เจอ", p1b: "เขาค้นหาใน Google Maps ไม่ได้เดินหาตามถนน ถ้าไม่มีข้อมูลร้าน เวลาเปิดปิดผิด หรือรูปมืด เขาก็เลือกร้านข้าง ๆ",
+        p1t: "นักท่องเที่ยวหาคุณไม่เจอ", p1b: "เขาค้นหาใน Google Maps ไม่ใช่เดินหาตามถนน ถ้าไม่มีข้อมูลร้าน เวลาเปิดปิดผิด หรือรูปมืด เขาก็เลือกร้านข้าง ๆ",
         s1t: "โปรไฟล์ Google ที่ทำให้ลูกค้าเลือกคุณ", s1b: "เราสร้างและปรับแต่ง Google Business Profile ให้ ทั้งรูป เวลาเปิดปิด หมวดหมู่ และ WhatsApp เสร็จใน 48 ชั่วโมง",
         p2t: "เมนูของคุณเป็นรูปเบลอ", p2b: "เมนูกระดาษล้าสมัยเร็ว นักท่องเที่ยวต่างชาติอ่านไม่ออก จึงสั่งน้อยลงหรือเดินออกไป",
         s2t: "เมนู QR ในภาษาของลูกค้า", s2b: "สแกน อ่าน สั่ง ได้สูงสุด 5 ภาษา พร้อมรูปและราคา อยากเปลี่ยนเมนู ส่งข้อความเดียวพอ",
@@ -198,12 +198,12 @@
         s3t: "เว็บไซต์ที่ทำให้โต๊ะเต็ม", s3b: "รูปของคุณ ราคาของคุณ และปุ่ม WhatsApp ทุกหน้า ผู้เข้าชมกลายเป็นลูกค้า",
         cta: "ให้เราช่วยแก้ ทักทาง WhatsApp",
         flip: "ดูวิธีแก้", flipBack: "กลับไปที่ปัญหา",
-        punchT: "ลูกค้ากำลังตามหาคุณอยู่แล้ว <em>ทำให้เขาเจอคุณ</em>", punchB: "วันนี้ ลูกค้าทุกคนพิมพ์คำว่า “ร้านอาหารใกล้ฉัน” ใน Google ก่อนตัดสินใจ ให้ร้านคุณเป็นร้านแรกที่เขาเห็น เป็นเมนูที่เขาอ่านเข้าใจ และเป็นโต๊ะที่เขาจอง", punchL: "ลูกค้ามากขึ้น รายได้มากขึ้น ไม่ต้องดูแลอะไรเอง", st1: "Google", st2: "เมนู", st3: "เว็บไซต์", st4: "ทางออก", steps: "วิดีโอทีละขั้นตอน", cap0: "หนึ่งทุ่ม ถนนคนแน่น แต่ร้านเธอว่าง", cap1: "พวกเขาหิว ค้นหาใน Google แต่ไม่เจอร้านของเธอ", cap2: "สุดท้ายก็เดินเข้ามา เมนูมีแต่ภาษาไทย เลยสั่งแค่นิดเดียว", cap3: "พรุ่งนี้พวกเขาจะไปจองร้านข้างๆ เพราะร้านนั้นมีเว็บไซต์", cap4: "ร้านเดิม แต่ครั้งนี้ พวกเขาเจอร้านบน Google", cap5: "เว็บไซต์ เมนู QR โปรไฟล์ Google เราดูแลให้ทุกเดือน", fixT: "ถูกค้นเจอ เข้าใจง่าย ได้การจอง", fixB: "จ่ายรายเดือน ไม่ต้องดูแลเอง เราสร้าง โฮสต์ และอัปเดตให้ คุณแค่ดูแลร้าน", soundOn: "เสียง", soundOff: "เสียง", play: "เล่น", pause: "หยุด", video: "หนังสั้น: ร้านอาหารที่ไม่มีเว็บไซต์", watch: "เล่นวิดีโอ"
+        punchT: "ลูกค้ากำลังตามหาคุณอยู่แล้ว <em>ทำให้เขาเจอคุณ</em>", punchB: "วันนี้ ลูกค้าทุกคนพิมพ์คำว่า “ร้านอาหารใกล้ฉัน” ใน Google ก่อนตัดสินใจ ให้ร้านคุณเป็นร้านแรกที่เขาเห็น เป็นเมนูที่เขาอ่านเข้าใจ และเป็นโต๊ะที่เขาจอง", punchL: "ลูกค้ามากขึ้น ยอดขายมากขึ้น ไม่ต้องดูแลอะไรเอง", st1: "Google", st2: "เมนู", st3: "เว็บไซต์", st4: "ทางออก", steps: "วิดีโอทีละขั้นตอน", cap0: "หนึ่งทุ่ม ถนนคนแน่น แต่ร้านเธอว่าง", cap1: "พวกเขาหิว ค้นหาใน Google แต่ไม่เจอร้านของเธอ", cap2: "สุดท้ายก็เดินเข้ามา เมนูมีแต่ภาษาไทย เลยสั่งแค่นิดเดียว", cap3: "พรุ่งนี้พวกเขาจะไปจองร้านข้าง ๆ เพราะร้านนั้นมีเว็บไซต์", cap4: "ร้านเดิม แต่ครั้งนี้ พวกเขาเจอร้านบน Google", cap5: "เว็บไซต์ เมนู QR โปรไฟล์ Google เราดูแลให้ทุกเดือน", fixT: "ถูกค้นเจอ เข้าใจง่าย ได้การจอง", fixB: "จ่ายรายเดือน ไม่ต้องดูแลเอง เราสร้าง โฮสต์ และอัปเดตให้ คุณแค่ดูแลร้าน", soundOn: "เสียง", soundOff: "เสียง", play: "เล่น", pause: "หยุด", video: "หนังสั้น: ร้านอาหารที่ไม่มีเว็บไซต์", watch: "เล่นวิดีโอ"
       },
       work: { eyebrow: "ผลงานของเรา", title: "8 เว็บไซต์จริง <em>ออนไลน์อยู่ตอนนี้</em>", lead: "แตะที่เว็บไซต์เพื่อเปิดดู" },
       offers: {
         title: "3 แพ็กเกจ <em>เลือกแบบที่ใช่</em>",
-        lead: "ราคาเป็นเงินบาท โปรไฟล์ Google จ่ายครั้งเดียว ส่วนเว็บไซต์และแพ็กเกจครบวงจรเป็นค่าเริ่มต้นบวกค่าบริการรายเดือน รวมโฮสติ้ง การแก้ไข และการอัปเดต",
+        lead: "ราคาเป็นเงินบาท โปรไฟล์ Google จ่ายครั้งเดียว ส่วนเว็บไซต์และแพ็กเกจครบชุดเป็นค่าติดตั้งครั้งเดียวบวกค่าบริการรายเดือน รวมโฮสติ้ง การแก้ไข และการอัปเดต",
         website: { benefit: "เว็บไซต์ที่ทำจากรูปของคุณ พร้อมเมนู QR code ประจำโต๊ะ และการจองผ่าน WhatsApp ออนไลน์ในไม่กี่วัน", i3: "เมนูและราคาได้สูงสุด 5 ภาษา พร้อม QR code สำหรับพิมพ์วางทุกโต๊ะ" },
         pack: { benefit: "เว็บไซต์ โปรไฟล์ Google และเมนู QR ครบในแพ็กเกจเดียว ทุกอย่างที่นักท่องเที่ยวมองหา" }
       },
@@ -219,7 +219,7 @@
         lead: "ไม่ต้องเตรียมประชุม ไม่มีศัพท์เทคนิค คุณทำธุรกิจ ที่เหลือเราจัดการ",
         s1d: "ขั้นที่ 1 · วันนี้", s1t: "ส่งรูปมา", s1b: "รูป เมนู และเวลาเปิดปิด ส่งทาง WhatsApp ได้เลย แค่นี้เราก็เริ่มได้",
         s2d: "ขั้นที่ 2 · วันที่ 2 ถึง 4", s2t: "เราสร้างให้ทุกอย่าง", s2b: "ดีไซน์ ข้อความ เมนู QR Google Maps และทุกภาษาที่ลูกค้าของคุณใช้ คุณตรวจ เราปรับให้",
-        s3d: "ขั้นที่ 3 · ภายในไม่กี่วัน", s3t: "ออนไลน์ และลูกค้าหาเจอ", s3b: "เว็บไซต์และโปรไฟล์ของคุณเผยแพร่ ลูกค้าหาเจอ เปิดเมนู และส่งข้อความหาคุณ"
+        s3d: "ขั้นที่ 3 · ภายในไม่กี่วัน", s3t: "ออนไลน์ และลูกค้าหาเจอ", s3b: "เว็บไซต์และโปรไฟล์ของคุณเผยแพร่แล้ว ลูกค้าหาเจอ เปิดเมนู และส่งข้อความหาคุณ"
       },
       results: {"eyebrow": "ทำไมถึงคุ้มค่า", "title": "มองเห็นมากขึ้น <em>ลูกค้ามากขึ้น</em>", "lead": "ภาพตัวอย่างเมื่อนักท่องเที่ยวหาคุณเจอ นี่เป็นเพียงตัวอย่าง ตัวเลขจริงขึ้นกับธุรกิจของคุณ", "example": "ตัวอย่าง", "chartTitle": "ลูกค้าที่หาคุณเจอ รายเดือน", "lift": "เป้าหมาย: ลูกค้าหาคุณเจอเพิ่มขึ้นใน 6 เดือน*", "m1": "เดือน 1", "m6": "เดือน 6", "t1": "เว็บไซต์ที่เปิดดูได้ตอนนี้", "t2": "เพื่อให้โปรไฟล์ Google ออนไลน์", "tr": "คะแนนเฉลี่ยจากรีวิวลูกค้า {n} ราย", "note": "* เป้าหมายที่แสดงบนตัวอย่างสมมติ ไม่ใช่การรับประกัน ผลลัพธ์ขึ้นกับธุรกิจและความตั้งใจของคุณ", "cta": "ดูแพ็กเกจ"},
       faq: { lead: "มีคำถามอื่น? ทักมาทาง WhatsApp ปกติเราตอบภายในไม่กี่นาที" }
@@ -236,7 +236,7 @@
       },
       v4: {
         title: "<span class=\"h__slogan\">كن حاضرًا. <em>كن الخيار الأول.</em></span> <span class=\"h__kw\">موقع إلكتروني وقائمة QR وملف جوجل للمطاعم والمحلات</span>",
-        sub: "مطاعم وبارات وصالونات ومحلات: يجدك السياح على جوجل ويفتحون قائمتك بلغتهم ويراسلونك على واتساب.",
+        sub: "مطاعم وبارات وصالونات ومحلات: يجدك الزبائن على جوجل ويفتحون قائمتك بلغتهم ويراسلونك على واتساب.",
         offersTitle: "3 عروض. <em>اختر عرضك.</em>",
         finaleTitle: "مستعد لزبائن <em>أكثر؟</em>"
       },
@@ -253,12 +253,12 @@
         s3t: "موقع يملأ طاولاتك", s3b: "صورك وأسعارك وزر واتساب في كل صفحة. الزوار يتحولون إلى زبائن.",
         cta: "لنصلحها معًا على واتساب",
         flip: "اعرض الحل", flipBack: "العودة إلى المشكلة",
-        punchT: "زبائنك يبحثون عنك الآن. <em>اجعلهم يجدونك.</em>", punchB: "اليوم، يكتب كل زبون «مطعم قريب مني» على جوجل قبل أن يختار. كن أول مكان يراه، والقائمة التي يفهمها، والطاولة التي يحجزها.", punchL: "زبائن أكثر. دخل أكثر. ولا شيء عليك إدارته.", st1: "جوجل", st2: "القائمة", st3: "الموقع", st4: "الحل", steps: "الفيلم خطوة بخطوة", cap0: "السابعة مساءً. الشارع مزدحم. وطاولاتها فارغة.", cap1: "إنهم جائعون. يبحثون في جوجل. ومطعمها غير موجود.", cap2: "يدخلون رغم ذلك. القائمة بالتايلاندية فقط. فيطلبون أقل القليل.", cap3: "غدًا سيحجزون عند الجار. لديه موقع.", cap4: "المطعم نفسه. هذه المرة وجدوه على جوجل.", cap5: "موقع، قائمة QR، ملف جوجل. نتولّى كل شيء، كل شهر.", fixT: "يجدونك، يفهمونك، يحجزون", fixB: "اشتراك شهري، لا شيء عليك إدارته. نصمّم ونستضيف ونحدّث. وأنت تهتم بمطعمك.", soundOn: "الصوت", soundOff: "الصوت", play: "تشغيل", pause: "إيقاف", video: "فيلم قصير: مطعم بلا موقع إلكتروني", watch: "شغّل الفيلم"
+        punchT: "زبائنك يبحثون عنك الآن. <em>اجعلهم يجدونك.</em>", punchB: "اليوم، يكتب كل زبون «مطعم قريب مني» على جوجل قبل أن يختار. كن أول مكان يراه، والقائمة التي يفهمها، والطاولة التي يحجزها.", punchL: "زبائن أكثر. إيرادات أعلى. ولا شيء عليك إدارته.", st1: "جوجل", st2: "القائمة", st3: "الموقع", st4: "الحل", steps: "الفيلم خطوة بخطوة", cap0: "السابعة مساءً. الشارع مزدحم. وطاولاتها فارغة.", cap1: "إنهم جائعون. يبحثون في جوجل. ومطعمها غير موجود.", cap2: "يدخلون رغم ذلك. القائمة بالتايلاندية فقط. فيطلبون أقل القليل.", cap3: "غدًا سيحجزون عند الجار. لديه موقع.", cap4: "المطعم نفسه. هذه المرة وجدوه على جوجل.", cap5: "موقع، قائمة QR، ملف جوجل. نتولّى كل شيء، كل شهر.", fixT: "يجدونك، يفهمونك، يحجزون", fixB: "اشتراك شهري، لا شيء عليك إدارته. نصمّم ونستضيف ونحدّث. وأنت تهتم بمطعمك.", soundOn: "الصوت", soundOff: "الصوت", play: "تشغيل", pause: "إيقاف", video: "فيلم قصير: مطعم بلا موقع إلكتروني", watch: "شغّل الفيلم"
       },
       work: { eyebrow: "أعمالنا", title: "8 مواقع حقيقية، <em>على الإنترنت الآن.</em>", lead: "المس أي موقع لفتحه." },
       offers: {
         title: "3 عروض. <em>اختر عرضك.</em>",
-        lead: "الأسعار بالبات التايلاندي. ملف جوجل يُدفع مرة واحدة. أما الموقع والباقة الكاملة فرسوم تأسيس واشتراك شهري يشمل الاستضافة والتعديلات والتحديثات.",
+        lead: "الأسعار بالبات التايلاندي. ملف جوجل يُدفع مرة واحدة. أما الموقع والباقة الكاملة فرسوم إعداد واشتراك شهري يشمل الاستضافة والتعديلات والتحديثات.",
         website: { benefit: "موقع مبني من صورك مع قائمتك ورمز QR لكل طاولة وحجز عبر واتساب. جاهز خلال أيام.", i3: "قائمتك وأسعارك حتى 5 لغات مع رمز QR جاهز للطباعة لكل طاولة" },
         pack: { benefit: "موقع وملف جوجل وقائمة QR معًا. كل ما يبحث عنه السائح." }
       },
@@ -276,7 +276,7 @@
         s2d: "الخطوة 2 · من اليوم 2 إلى 4", s2t: "نبني كل شيء", s2b: "التصميم والنصوص وقائمة QR وخرائط جوجل وكل لغات زبائنك. توافق أنت ونعدّل نحن.",
         s3d: "الخطوة 3 · خلال أيام", s3t: "تصبح على الإنترنت ويجدك الزبائن", s3b: "يُنشر موقعك وملفك. يجدك الزبائن ويفتحون قائمتك ويراسلونك."
       },
-      results: {"eyebrow": "لماذا يستحق", "title": "ظهور أكبر، <em>زبائن أكثر.</em>", "lead": "ما قد يحدث عندما يجدك السياح أخيرًا. هذا مثال فقط وأرقامك تعتمد على نشاطك.", "example": "مثال", "chartTitle": "الزبائن الذين يجدونك شهرًا بعد شهر", "lift": "الهدف: زبائن أكثر يجدونك خلال 6 أشهر*", "m1": "الشهر 1", "m6": "الشهر 6", "t1": "مواقع حية يمكنك فتحها الآن", "t2": "لتصبح قائمتك على جوجل جاهزة", "tr": "متوسط التقييم من {n} تقييمات للزبائن", "note": "* هدف معروض على مثال افتراضي، وليس ضمانًا. النتائج تعتمد على نشاطك وجهدك.", "cta": "شاهد العروض"},
+      results: {"eyebrow": "لماذا يستحق ذلك", "title": "ظهور أكبر، <em>زبائن أكثر.</em>", "lead": "ما قد يحدث عندما يجدك السياح أخيرًا. هذا مثال فقط وأرقامك تعتمد على نشاطك.", "example": "مثال", "chartTitle": "الزبائن الذين يجدونك شهرًا بعد شهر", "lift": "الهدف: زبائن أكثر يجدونك خلال 6 أشهر*", "m1": "الشهر 1", "m6": "الشهر 6", "t1": "مواقع حية يمكنك فتحها الآن", "t2": "ليصبح ملفك على جوجل جاهزًا", "tr": "متوسط التقييم من {n} تقييمات للزبائن", "note": "* هدف معروض على مثال افتراضي، وليس ضمانًا. النتائج تعتمد على نشاطك وجهدك.", "cta": "شاهد العروض"},
       faq: { lead: "سؤال آخر؟ راسلنا على واتساب ونرد عادة خلال دقائق." }
     }
   };
@@ -312,22 +312,22 @@
     },
     it: {
       meta: { description: "NM Studio crea siti web, menù QR e schede Google per ristoranti, bar, saloni e negozi. Online in pochi giorni, senza contratto. Da 150 €." },
-      meta2: { services: { description: "Tre offerte per ristoranti e attività locali: scheda Google, sito web con menù QR, Pack completo. Prezzi in euro." }, pricing: { description: "Prezzi in euro: scheda Google 150 € una tantum, sito web 800 € poi 30 € al mese, Pack completo 1.500 € poi 100 € al mese." } },
+      meta2: { services: { description: "Tre offerte per ristoranti e attività locali: scheda Google, sito web con menù QR, Pacchetto completo. Prezzi in euro." }, pricing: { description: "Prezzi in euro: scheda Google 150 € una tantum, sito web 800 € poi 30 € al mese, Pacchetto completo 1.500 € poi 100 € al mese." } },
       v4: { proof1: "Da 150 €" },
       hero2: { price: "Sito web da <b>800 €</b> di attivazione, poi <b>30 €</b> al mese. Scheda Google una tantum, <b>150 €</b>." },
-      offers: { lead: "Prezzi in euro. La scheda Google si paga una volta sola. Sito web e Pack completo: costo di avvio più abbonamento mensile, con hosting, modifiche e aggiornamenti inclusi." },
-      price2: { lead: "Sito web e Pack completo sono un'attivazione una tantum più un abbonamento mensile, hosting, modifiche e aggiornamenti inclusi. La scheda Google si paga una volta sola." }
+      offers: { lead: "Prezzi in euro. La scheda Google si paga una volta sola. Sito web e Pacchetto completo: costo di avvio più abbonamento mensile, con hosting, modifiche e aggiornamenti inclusi." },
+      price2: { lead: "Sito web e Pacchetto completo sono un'attivazione una tantum più un abbonamento mensile, hosting, modifiche e aggiornamenti inclusi. La scheda Google si paga una volta sola." }
     },
     th: {
       hero2: { price: "เว็บไซต์เริ่มต้น <b>฿5,800</b> แล้ว <b>฿1,140</b> ต่อเดือน โปรไฟล์ Google จ่ายครั้งเดียว <b>฿990</b>" },
-      price2: { lead: "เว็บไซต์และแพ็กเกจครบวงจรเป็นค่าเริ่มต้นครั้งเดียวบวกค่าบริการรายเดือน รวมโฮสติ้ง การแก้ไข และการอัปเดต ส่วนโปรไฟล์ Google จ่ายครั้งเดียว" }
+      price2: { lead: "เว็บไซต์และแพ็กเกจครบชุดเป็นค่าติดตั้งครั้งเดียวบวกค่าบริการรายเดือน รวมโฮสติ้ง การแก้ไข และการอัปเดต ส่วนโปรไฟล์ Google จ่ายครั้งเดียว" }
     },
     ar: {
       meta: { description: "يصمم NM Studio مواقع إلكترونية وقوائم QR وملفات جوجل للمطاعم والبارات والصالونات والمحلات. جاهز خلال أيام وبلا عقود. ابتداءً من 150 €." },
-      meta2: { services: { description: "ثلاثة عروض للمحلات: ملف جوجل، موقع مع قائمة QR، والباقة الكاملة. الأسعار باليورو." }, pricing: { description: "الأسعار باليورو: ملف جوجل 150 € مرة واحدة، الموقع 800 € ثم 30 € شهريًا، والباقة الكاملة 1500 € ثم 100 € شهريًا." } },
+      meta2: { services: { description: "ثلاثة عروض للمحلات: ملف جوجل، موقع مع قائمة QR، والباقة الكاملة. الأسعار باليورو." }, pricing: { description: "الأسعار باليورو: ملف جوجل 150 € مرة واحدة، الموقع 800 € ثم 30 € شهريًا، والباقة الكاملة 1,500 € ثم 100 € شهريًا." } },
       v4: { proof1: "ابتداءً من 150 €" },
       hero2: { price: "الموقع الإلكتروني إعداد يبدأ من <b>800 €</b> ثم <b>30 €</b> شهريًا. ملف جوجل دفعة واحدة <b>150 €</b>." },
-      offers: { lead: "الأسعار باليورو. ملف جوجل يُدفع مرة واحدة. أما الموقع والباقة الكاملة فرسوم تأسيس واشتراك شهري يشمل الاستضافة والتعديلات والتحديثات." },
+      offers: { lead: "الأسعار باليورو. ملف جوجل يُدفع مرة واحدة. أما الموقع والباقة الكاملة فرسوم إعداد واشتراك شهري يشمل الاستضافة والتعديلات والتحديثات." },
       price2: { lead: "الموقع الإلكتروني والباقة الكاملة: إعداد يُدفع مرة واحدة ثم اشتراك شهري، يشمل الاستضافة والتعديلات والتحديثات. أما ملف جوجل فيُدفع مرة واحدة." }
     }
   };

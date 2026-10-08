@@ -13,7 +13,7 @@
     reel: { eyebrow: "Real work", title: "Eight sites, <em>live right now.</em>", lead: "Open any of them: real businesses, their own photos and their own languages.", hint: "Point at it to stop" },
     cta: { startProject: "Start my project", startShort: "Start a project", quote: "Free quote" },
       hero2: {
-        eyebrow: "Web studio · Premium websites",
+        eyebrow: "Web agency & design studio",
         price: "Website from <b>฿5,800</b> setup, then <b>฿1,140</b> a month. Google and QR menu paid once, from <b>฿990</b>.",
         ctaOffers: "Discover the offers", ctaWa: "Chat on WhatsApp", scroll: "Scroll",
         l1: "languages, plus any your customers need", l2: "live sites to explore", v3: "48h", l3: "for a Google listing", v4: "No", l4: "lock-in, cancel your subscription anytime",
@@ -89,7 +89,7 @@
         tableTitle: "Compare <em>everything.</em>", feature: "Feature",
         f1: "Google Business Profile", f2: "Professional photos", f3: "QR menu", f4: "Custom website", f5: "Languages", f6: "Social media managed", f7: "Monthly video", f8: "Priority support", f9: "Delivery", f10: "Care plan", f11: "Subscription",
         upTo5: "up to 5", faqTitle: "Pricing <em>questions.</em>",
-        pq1: "How do the prices work now?", pa1: "The website and the Complete Pack are a set-up fee paid today, then a monthly subscription that starts when your site goes live. Google Business Profile and QR menu are still paid once; their care plan stays optional.",
+        pq1: "How do the prices work now?", pa1: "The website and the Complete Pack are a setup fee paid today, then a monthly subscription that starts when your site goes live. The Google Business Profile is paid once, with no monthly fee.",
         pq2: "What does the subscription or care plan include?", pa2: "Hosting, your domain, unlimited edits on WhatsApp, and keeping your menu, photos and Google listing up to date.",
         pq3: "Can I start small and upgrade later?", pa3: "Of course. Many clients start with Google or the QR menu and move up when their business is ready.",
         pq4: "How can I pay?", pa4: "By card on Stripe's secure page, by Thai QR PromptPay, by bank transfer, or in cash when we meet. We confirm every order with you on WhatsApp, and you get a receipt.",
@@ -132,17 +132,17 @@
 
     fr: {
       meta2: {
-        services: { title: "Services: Google, menu QR et sites web | NM Studio", description: "Quatre offres : fiche Google, menu QR, site web, Pack complet. Dès 990 ฿, ou mise en place + abonnement." },
-        pricing: { title: "Tarifs: mise en place puis abonnement | NM Studio", description: "Prix en bahts : site web 5 800 ฿ puis 1 140 ฿/mois, Pack complet 13 300 ฿ puis 3 800 ฿/mois. Google et menu QR en paiement unique." }
+        services: { title: "Services : Google, menu QR et sites web | NM Studio", description: "Quatre offres : fiche Google, menu QR, site web, Pack complet. Dès 990 ฿, ou mise en place + abonnement." },
+        pricing: { title: "Tarifs : mise en place puis abonnement | NM Studio", description: "Prix en bahts : site web 5 800 ฿ puis 1 140 ฿/mois, Pack complet 13 300 ฿ puis 3 800 ฿/mois. Google et menu QR en paiement unique." }
       },
       nav2: { offers: "Offres", services: "Services", pricing: "Tarifs", account: "Mon compte", home: "Accueil", cta: "Discuter sur WhatsApp" },
     reel: { eyebrow: "Du travail réel", title: "Huit sites, <em>en ligne maintenant.</em>", lead: "Ouvrez-les : de vrais commerces, leurs photos, leurs langues.", hint: "Survolez pour arrêter" },
     cta: { startProject: "Démarrer mon projet", startShort: "Démarrer un projet", quote: "Devis gratuit" },
       hero2: {
-        eyebrow: "Studio web · Sites premium",
+        eyebrow: "Agence web & studio de création",
         price: "Site web à partir de <b>5 800 ฿</b> de mise en place, puis <b>3 800 ฿</b> par mois. Fiche Google et menu QR en paiement unique, dès <b>990 ฿</b>.",
         ctaOffers: "Découvrir les offres", ctaWa: "Discuter sur WhatsApp", scroll: "Défiler",
-        l1: "langues, et toutes celles dont vos clients ont besoin", l2: "sites en ligne à visiter", v3: "48 h", l3: "pour une fiche Google", v4: "Aucun", l4: "blocage, résiliez votre abonnement quand vous voulez",
+        l1: "langues, et toutes celles dont vos clients ont besoin", l2: "sites en ligne à visiter", v3: "48 h", l3: "pour une fiche Google", v4: "Aucun", l4: "engagement, résiliez votre abonnement quand vous voulez",
         slide1: "Rue de nuit", slide2: "Street food", slide3: "Restaurant"
       },
       story: {
@@ -160,10 +160,10 @@
         order: "Commander · {price}", chat: "Discuter sur WhatsApp", includes: "Ce qui est inclus", delivery: "Délai",
         care: "Forfait d'entretien optionnel", careNone: "Aucun abonnement. La fiche vous appartient.", careFrom: "{price} / mois · résiliable à tout moment",
         pricingLink: "Voir les tarifs et l'entretien", compare: "Comparer les offres", close: "Fermer", soon: "Vidéo bientôt disponible",
-        google: { name: "Fiche Google Business", short: "Google", word: "Trouvé.", benefit: "Apparaissez sur Google Maps, avec des photos qui arrêtent le défilement.", i1: "Fiche Google Business créée et configurée pour vous", i2: "5 photos professionnelles de votre établissement", i3: "Description, catégories et mots-clés optimisés", i4: "Horaires, emplacement, téléphone et WhatsApp", i5: "Un QR code qui vous rapporte des avis 5 étoiles", time: "48 heures" },
+        google: { name: "Fiche Google Business", short: "Google", word: "Trouvé.", benefit: "Apparaissez sur Google Maps, avec des photos qui donnent envie de s'arrêter.", i1: "Fiche Google Business créée et configurée pour vous", i2: "5 photos professionnelles de votre établissement", i3: "Description, catégories et mots-clés optimisés", i4: "Horaires, emplacement, téléphone et WhatsApp", i5: "Un QR code qui vous rapporte des avis 5 étoiles", time: "48 heures" },
         qr: { name: "Menu QR", short: "Menu QR", word: "Instantané.", benefit: "Votre menu sur chaque téléphone, dans leur langue, modifiable à tout moment.", i1: "Tout votre menu en ligne, avec photos et prix", i2: "Jusqu'à 5 langues", i3: "QR codes prêts à imprimer pour chaque table", i4: "Changez plats et prix quand vous voulez", i5: "Fonctionne sur tous les téléphones, sans appli", time: "3 jours" },
         website: { name: "Site web", short: "Site web", word: "En ligne.", benefit: "Un site sur mesure construit à partir de vos photos, avec votre menu et vos langues, en ligne en quelques jours.", i1: "Un site conçu autour de votre commerce", i2: "10 photos professionnelles de votre établissement", i3: "Votre menu et vos prix, en plusieurs langues (jusqu'à 5)", i4: "Google Maps, horaires et réservation WhatsApp", i5: "Hébergement et nom de domaine inclus dans l'abonnement", time: "5 à 7 jours" },
-        pack: { name: "Pack complet", short: "Complet", word: "Tout inclus.", benefit: "Site web, Google et menu QR. Tout ce qu'un touriste cherche, fait pour vous.", i1: "Un site sur mesure créé à partir de vos photos", i2: "Fiche Google Business incluse", i3: "Menu QR inclus", i4: "10 photos professionnelles", i5: "Multilingue, avec Google Maps et réservation WhatsApp", time: "5 à 7 jours" }
+        pack: { name: "Pack complet", short: "Pack complet", word: "Tout inclus.", benefit: "Site web, Google et menu QR. Tout ce qu'un touriste cherche, fait pour vous.", i1: "Un site sur mesure créé à partir de vos photos", i2: "Fiche Google Business incluse", i3: "Menu QR inclus", i4: "10 photos professionnelles", i5: "Multilingue, avec Google Maps et réservation WhatsApp", time: "5 à 7 jours" }
       },
       why2: {
         eyebrow: "Pourquoi NM Studio", title: "De vraies personnes. <em>De vrais résultats.</em>",
@@ -200,7 +200,7 @@
         pick: "Choisir", compareTitle: "Côte à côte", faqTitle: "Questions sur <em>les services.</em>",
         sq1: "Combien de temps ça prend ?", sa1: "De 48 heures pour une fiche Google à une semaine environ pour un site complet. On commence dès qu'on a vos photos et vos informations.",
         sq2: "C'est vous qui prenez les photos ?", sa2: "Oui. Les photos professionnelles incluses dans chaque offre sont prises par nous, chez vous.",
-        sq3: "Dans quelles langues peuvent être mon menu et mon site ?", sa3: "Jusqu'à cinq, thaï, anglais, chinois, russe, coréen… celles que parlent vos clients.",
+        sq3: "Dans quelles langues peuvent être mon menu et mon site ?", sa3: "Jusqu'à cinq : thaï, anglais, chinois, russe, coréen… celles que parlent vos clients.",
         sq4: "Dois-je acheter un nom de domaine ou un hébergement ?", sa4: "Non. Avec le site web et le Pack complet, l'hébergement et votre domaine sont inclus dans l'abonnement mensuel. Pour les autres offres, ils font partie du forfait d'entretien optionnel.",
         sq5: "Pouvez-vous faire valider ma fiche Google ?", sa5: "On configure tout et on demande la validation avec vous. Google la confirme ensuite, en général par téléphone, SMS ou courte vidéo, en quelques jours."
       },
@@ -243,7 +243,7 @@
         okEyebrow: "Paiement reçu", okTitle: "Merci, <em>c'est parti.</em>", okLead: "Stripe vous a envoyé votre reçu par e-mail. On vous écrit très vite sur WhatsApp pour récupérer vos photos et démarrer.",
         order: "Commande", next: "La suite", n1t: "On vous écrit sur WhatsApp", n1b: "En général dans l'heure, pour récupérer vos photos et votre menu.", n2t: "On crée tout", n2b: "Vous recevez un aperçu privé pour relire et demander des modifications.", n3t: "Vous êtes en ligne", n3b: "Votre fiche, votre menu ou votre site est activé, et les clients vous trouvent.",
         wa: "Envoyer ma commande sur WhatsApp", account: "Gérer mon forfait", home: "Retour au site",
-        failEyebrow: "Paiement non abouti", failTitle: "Rien n'a été débité. <em>On réessaie ?</em>", failLead: "Ça arrive, carte refusée, délai 3-D Secure dépassé ou fenêtre fermée. Votre commande est conservée.",
+        failEyebrow: "Paiement non abouti", failTitle: "Rien n'a été débité. <em>On réessaie ?</em>", failLead: "Ça arrive : carte refusée, délai 3-D Secure dépassé ou fenêtre fermée. Votre commande est conservée.",
         r1: "Vérifiez votre carte et le code 3-D Secure envoyé par votre banque", r2: "Essayez Apple Pay, Google Pay ou une autre carte", r3: "Ou payez en quelques secondes par QR thaï PromptPay",
         retry: "Réessayer", promptpay: "Payer par PromptPay", help: "Toujours bloqué ? On règle ça ensemble sur WhatsApp.",
         accEyebrow: "Mon compte", accTitle: "Votre forfait, <em>entre vos mains.</em>", accLead: "Factures, carte, période de facturation et résiliation. On s'en occupe directement avec vous sur WhatsApp.",
@@ -262,10 +262,10 @@
         pricing: { title: "Prezzi: attivazione e poi abbonamento | NM Studio", description: "Prezzi in baht: sito web 5.800 ฿ poi 1.140 ฿/mese, Pacchetto completo 13.300 ฿ poi 3.800 ฿/mese. Google e menù QR una tantum." }
       },
       nav2: { offers: "Offerte", services: "Servizi", pricing: "Prezzi", account: "Il mio account", home: "Home", cta: "Scrivici su WhatsApp" },
-    reel: { eyebrow: "Lavoro vero", title: "Otto siti, <em>online adesso.</em>", lead: "Après-les : attività vere, con le loro foto e le loro lingue.", hint: "Passa sopra per fermare" },
+    reel: { eyebrow: "Lavoro vero", title: "Otto siti, <em>online adesso.</em>", lead: "Aprili: attività vere, con le loro foto e le loro lingue.", hint: "Passa sopra per fermare" },
     cta: { startProject: "Inizia il mio progetto", startShort: "Avvia un progetto", quote: "Preventivo gratuito" },
       hero2: {
-        eyebrow: "Web studio · Premium websitesia",
+        eyebrow: "Web agency & studio di design",
         price: "Sito web da <b>5.800 ฿</b> di attivazione, poi <b>3.800 ฿</b> al mese. Scheda Google e menù QR una tantum, da <b>990 ฿</b>.",
         ctaOffers: "Scopri le offerte", ctaWa: "Scrivici su WhatsApp", scroll: "Scorri",
         l1: "lingue, più tutte quelle di cui i tuoi clienti hanno bisogno", l2: "siti online da visitare", v3: "48 h", l3: "per una scheda Google", v4: "Nessun", l4: "vincolo, disdici l'abbonamento quando vuoi",
@@ -315,7 +315,7 @@
       preview: { btn: "Anteprima dal vivo", title: "Anteprima dal vivo", desktop: "Desktop", mobile: "Mobile", open: "Apri in una nuova scheda", loading: "Caricamento del sito…", close: "Chiudi" },
       audience: { i8: "Hotel", i9: "Guesthouse", i10: "Noleggio auto e moto", i11: "Beach club", i12: "Palestre", i13: "Agenzie di viaggio", i14: "Cliniche", i15: "Negozi", sr: "Lavoriamo con ristoranti, caffè, parrucchieri, spa e centri massaggi, bar, street food, hotel, guesthouse, noleggi, beach club, palestre, agenzie di viaggio, cliniche, negozi e aziende locali." },
       v4: {"title": "Fatti trovare. <em>Fatti scegliere.</em>", "sub": "Siti web, menù QR e schede Google per ristoranti e attività locali.", "proof1": "Da 990 ฿", "proof2": "Scheda Google in 48 ore", "proof3": "Senza contratto", "nowShowing": "In onda", "offersTitle": "4 offerte. <em>Una per ogni esigenza.</em>", "finaleTitle": "Pronto a farti <em>vedere?</em>", "contact": "Contatti", "follow": "Seguici", "alt1": "Una città sul mare di notte, vista dalla collina", "alt2": "Una cuoca di street food al suo banco, di sera", "alt3": "Un salone di parrucchiere luminoso e moderno", "alt4": "Una persona invia foto dal telefono per strada", "alt5": "Un ristorante pieno la sera"},
-      v3: { s1: "Il tuo sito web", s2: "Trovato su Google Maps", s3: "Il tuo menu QR", s4: "Clienti alla tua porta", play: "Guarda", scanT: "Sei al computer?", scanB: "Inquadra con il telefono per scriverci su WhatsApp.", scroll: "Scorri" },
+      v3: { s1: "Il tuo sito web", s2: "Trovato su Google Maps", s3: "Il tuo menù QR", s4: "Clienti alla tua porta", play: "Guarda", scanT: "Sei al computer?", scanB: "Inquadra con il telefono per scriverci su WhatsApp.", scroll: "Scorri" },
       finale2: { title: "Pronto a farti vedere? <em>Scrivici su WhatsApp.</em>", replies: "Di solito rispondiamo in pochi minuti", wa: "Scrivici su WhatsApp" },
       footer2: { pages: "Pagine", legal: "Note legali", notice: "Note legali", terms: "Condizioni di vendita", privacy: "Privacy", cookies: "Cookie" },
       svc: {
@@ -326,7 +326,7 @@
         pick: "Scegli", compareTitle: "Fianco a fianco", faqTitle: "Domande <em>sui servizi.</em>",
         sq1: "Quanto tempo ci vuole?", sa1: "Da 48 ore per una scheda Google a circa una settimana per un sito completo. Iniziamo appena riceviamo foto e informazioni.",
         sq2: "Le foto le scattate voi?", sa2: "Sì. Le foto professionali incluse in ogni offerta le scattiamo noi, nel tuo locale.",
-        sq3: "In quali lingue possono essere menù e sito?", sa3: "Fino a cinque, thailandese, inglese, cinese, russo, coreano… quelle dei tuoi clienti.",
+        sq3: "In quali lingue possono essere menù e sito?", sa3: "Fino a cinque: thailandese, inglese, cinese, russo, coreano… quelle dei tuoi clienti.",
         sq4: "Devo comprare dominio o hosting?", sa4: "No. Con il sito web e il Pacchetto completo, hosting e dominio sono inclusi nell'abbonamento mensile. Per le altre offerte fanno parte del piano di assistenza facoltativo.",
         sq5: "Potete far verificare la mia scheda Google?", sa5: "Configuriamo tutto e chiediamo la verifica insieme a te. Google la conferma poi, di solito per telefono, SMS o breve video, in pochi giorni."
       },
@@ -343,7 +343,7 @@
         upTo5: "fino a 5", faqTitle: "Domande <em>sui prezzi.</em>",
         pq1: "Come funzionano adesso i prezzi?", pa1: "Sito web e Pacchetto completo sono un'attivazione pagata oggi, poi un abbonamento mensile che parte quando il sito va online. Scheda Google e menù QR restano una tantum, con piano di assistenza facoltativo.",
         pq2: "Cosa includono abbonamento e assistenza?", pa2: "Hosting, dominio, modifiche illimitate su WhatsApp e l'aggiornamento di menù, foto e scheda Google.",
-        pq3: "Posso iniziare in piccolo e crescere dopo?", pa3: "Certo. Molti clienti iniziano con Google o il menù QR e passano oltre quando il locale è pronto.",
+        pq3: "Posso iniziare in piccolo e crescere dopo?", pa3: "Certo. Molti clienti iniziano con Google o il menù QR e fanno il passo successivo quando il locale è pronto.",
         pq4: "Come posso pagare?", pa4: "Con carta sulla pagina sicura di Stripe, con QR thailandese PromptPay, con bonifico o in contanti quando ci incontriamo. Confermiamo ogni ordine con te su WhatsApp e ricevi la ricevuta.",
         pq5: "C'è un vincolo?", pa5: "No. Un abbonamento si disdice quando vuoi, dal tuo account o con un messaggio, e le offerte una tantum si pagano una volta sola."
       },
@@ -369,14 +369,14 @@
         okEyebrow: "Pagamento ricevuto", okTitle: "Grazie, <em>ci siamo.</em>", okLead: "Stripe ti ha inviato la ricevuta via e-mail. Ti scriviamo a breve su WhatsApp per raccogliere le foto e iniziare.",
         order: "Ordine", next: "Cosa succede ora", n1t: "Ti scriviamo su WhatsApp", n1b: "Di solito entro un'ora, per raccogliere foto e menù.", n2t: "Creiamo tutto", n2b: "Ricevi un'anteprima privata da rivedere e correggere.", n3t: "Sei online", n3b: "La scheda, il menù o il sito vengono attivati, e i clienti iniziano a trovarti.",
         wa: "Invia il mio ordine su WhatsApp", account: "Gestisci il mio piano", home: "Torna al sito",
-        failEyebrow: "Pagamento non completato", failTitle: "Nessun addebito. <em>Riproviamo.</em>", failLead: "Capita, carta rifiutata, 3-D Secure scaduto o finestra chiusa. Il tuo ordine è salvato.",
+        failEyebrow: "Pagamento non completato", failTitle: "Nessun addebito. <em>Riproviamo.</em>", failLead: "Capita: carta rifiutata, 3-D Secure scaduto o finestra chiusa. Il tuo ordine è salvato.",
         r1: "Controlla i dati della carta e il codice 3-D Secure della banca", r2: "Prova Apple Pay, Google Pay o un'altra carta", r3: "Oppure paga in pochi secondi con QR thailandese PromptPay",
         retry: "Riprova", promptpay: "Paga con PromptPay", help: "Ancora bloccato? Risolviamo insieme su WhatsApp.",
         accEyebrow: "Il mio account", accTitle: "Il tuo piano, <em>nelle tue mani.</em>", accLead: "Fatture, carta, periodo di fatturazione e disdetta. Ce ne occupiamo direttamente con te su WhatsApp.",
         portal: "Apri il mio portale clienti", portalNote: "Inserisci l'e-mail con cui hai pagato: Stripe ti invia un link di accesso monouso. Nessuna password.",
         a1: "Scarica fatture e ricevute (PDF)", a2: "Aggiorna la carta o il metodo di pagamento", a3: "Passa dalla fatturazione mensile all'annuale", a4: "Disdici l'assistenza, quando vuoi",
         noPortal: "Scrivici su WhatsApp e gestiamo subito fatture, modifiche o disdetta.",
-        upTitle: "Pronto per di più?", upBody: "Passa al Pacchetto completo quando il tuo locale è pronto.", upBtn: "Vedi le offerte",
+        upTitle: "Pronto a fare di più?", upBody: "Passa al Pacchetto completo quando il tuo locale è pronto.", upBtn: "Vedi le offerte",
         legalEyebrow: "Note legali", legalTitle: "Le clausole, <em>in parole semplici.</em>", legalNote: "Versione italiana. In caso di dubbio, fa fede la versione inglese.", updated: "Ultimo aggiornamento: 3 ottobre 2026", toc: "In questa pagina"
       },
       trust: { secure: "Pagamento sicuro con Stripe", methods: "Carta · Apple Pay · Google Pay · PromptPay", noCard: "I dati della carta non passano mai da questo sito" }
@@ -385,13 +385,13 @@
     th: {
       meta2: {
         services: { title: "บริการ: Google, เมนู QR และเว็บไซต์ | NM Studio", description: "สี่แพ็กเกจ: Google, เมนู QR, เว็บไซต์, แพ็กครบชุด เริ่ม ฿990 จ่ายครั้งเดียว หรือค่าติดตั้ง + รายเดือน" },
-        pricing: { title: "ราคา: ค่าติดตั้ง แล้วต่อด้วยค่าบริการรายเดือน | NM Studio", description: "ราคาเป็นบาท: เว็บไซต์ 5,800 บาท แล้ว 1,140 บาท/เดือน แพ็กครบชุด 19,000 บาท แล้ว 3,800 บาท/เดือน" }
+        pricing: { title: "ราคา: ค่าติดตั้ง แล้วต่อด้วยค่าบริการรายเดือน | NM Studio", description: "ราคาเป็นบาท: เว็บไซต์ 5,800 บาท แล้ว 1,140 บาท/เดือน แพ็กครบชุด 13,300 บาท แล้ว 3,800 บาท/เดือน" }
       },
       nav2: { offers: "แพ็กเกจ", services: "บริการ", pricing: "ราคา", account: "บัญชีของฉัน", home: "หน้าแรก", cta: "แชททาง WhatsApp" },
     reel: { eyebrow: "งานจริง", title: "แปดเว็บไซต์ <em>ที่ออนไลน์อยู่ตอนนี้</em>", lead: "ลองเปิดดู: ธุรกิจจริง พร้อมรูปและภาษาของพวกเขาเอง", hint: "ชี้ที่แถบเพื่อหยุด" },
     cta: { startProject: "เริ่มโปรเจกต์ของฉัน", startShort: "เริ่มโปรเจกต์", quote: "ประเมินราคาฟรี" },
       hero2: {
-        eyebrow: "เว็บสตูดิโอ · เว็บไซต์ระดับพรีเมียม",
+        eyebrow: "เว็บเอเจนซี่และสตูดิโอออกแบบ",
         price: "เว็บไซต์ค่าติดตั้งเริ่มต้น <b>5,800 บาท</b> แล้วเดือนละ <b>1,140 บาท</b> ส่วน Google และเมนู QR จ่ายครั้งเดียว เริ่มต้น <b>990 บาท</b>",
         ctaOffers: "ดูแพ็กเกจทั้งหมด", ctaWa: "แชททาง WhatsApp", scroll: "เลื่อนลง",
         l1: "ภาษา และภาษาอื่นที่ลูกค้าคุณต้องการ", l2: "เว็บไซต์ที่ออนไลน์จริง", v3: "48 ชม.", l3: "สำหรับโปรไฟล์ Google", v4: "ไม่มี", l4: "สัญญาผูกมัด ยกเลิกค่าบริการรายเดือนได้ทุกเมื่อ",
@@ -488,10 +488,10 @@
       },
       pay: {
         paid: "ชำระวันนี้",
-        metaSuccess: { title: "ได้รับชำระเงินแล้ว NM Studio", description: "คำสั่งซื้อ NM Studio ของคุณได้รับการยืนยันแล้ว" },
-        metaFail: { title: "การชำระเงินไม่สำเร็จ NM Studio", description: "การชำระเงินไม่สำเร็จ ไม่มีการตัดเงิน" },
-        metaAccount: { title: "บัญชีของฉัน NM Studio", description: "จัดการแพ็กดูแลของ NM Studio: ใบแจ้งหนี้ บัตร เปลี่ยนแพ็ก และยกเลิก" },
-        metaLegal: { title: "ข้อมูลทางกฎหมาย เงื่อนไข ความเป็นส่วนตัว และคุกกี้ NM Studio", description: "ข้อมูลทางกฎหมาย เงื่อนไขการขาย นโยบายความเป็นส่วนตัว และนโยบายคุกกี้ของ NM Studio" },
+        metaSuccess: { title: "ได้รับชำระเงินแล้ว | NM Studio", description: "คำสั่งซื้อ NM Studio ของคุณได้รับการยืนยันแล้ว" },
+        metaFail: { title: "การชำระเงินไม่สำเร็จ | NM Studio", description: "การชำระเงินไม่สำเร็จ ไม่มีการตัดเงิน" },
+        metaAccount: { title: "บัญชีของฉัน | NM Studio", description: "จัดการแพ็กดูแลของ NM Studio: ใบแจ้งหนี้ บัตร เปลี่ยนแพ็ก และยกเลิก" },
+        metaLegal: { title: "ข้อมูลทางกฎหมาย เงื่อนไข ความเป็นส่วนตัว และคุกกี้ | NM Studio", description: "ข้อมูลทางกฎหมาย เงื่อนไขการขาย นโยบายความเป็นส่วนตัว และนโยบายคุกกี้ของ NM Studio" },
         okEyebrow: "ได้รับชำระเงินแล้ว", okTitle: "ขอบคุณ <em>เริ่มกันเลย</em>", okLead: "Stripe ส่งใบเสร็จไปที่อีเมลของคุณแล้ว เราจะทักคุณทาง WhatsApp เร็ว ๆ นี้ เพื่อขอรูปและเริ่มงาน",
         order: "คำสั่งซื้อ", next: "ขั้นตอนต่อไป", n1t: "เราทักคุณทาง WhatsApp", n1b: "ปกติภายในหนึ่งชั่วโมง เพื่อขอรูปและเมนูของคุณ", n2t: "เราสร้างทุกอย่างให้", n2b: "คุณจะได้ลิงก์ตัวอย่างส่วนตัวเพื่อตรวจและขอแก้ไข", n3t: "ออนไลน์แล้ว", n3b: "หน้าร้าน เมนู หรือเว็บไซต์ของคุณเปิดใช้งาน และลูกค้าเริ่มหาคุณเจอ",
         wa: "ส่งคำสั่งซื้อทาง WhatsApp", account: "จัดการแพ็กของฉัน", home: "กลับไปที่เว็บไซต์",
@@ -517,7 +517,7 @@
     reel: { eyebrow: "عمل حقيقي", title: "ثمانية مواقع <em>مباشرة الآن.</em>", lead: "افتح أيًّا منها: أعمال حقيقية بصورها ولغاتها.", hint: "مرّر المؤشر لإيقافه" },
     cta: { startProject: "ابدأ مشروعي", startShort: "ابدأ مشروعًا", quote: "عرض سعر مجاني" },
       hero2: {
-        eyebrow: "استوديو ويب · مواقع راقية",
+        eyebrow: "وكالة ويب واستوديو تصميم",
         price: "الموقع الإلكتروني إعداد يبدأ من <b>5,800 ฿</b> ثم <b>1,140 ฿</b> شهريًا. أما Google وقائمة QR فدفعة واحدة ابتداءً من <b>990 ฿</b>.",
         ctaOffers: "اكتشف العروض", ctaWa: "تحدّث معنا على واتساب", scroll: "مرّر",
         l1: "لغات، وأي لغة يحتاجها عملاؤك", l2: "مواقع حيّة يمكنك زيارتها", v3: "48 ساعة", l3: "لملف Google", v4: "بدون", l4: "التزام، يمكنك إلغاء الاشتراك متى شئت",
@@ -621,7 +621,7 @@
         okEyebrow: "تم استلام الدفع", okTitle: "شكرًا لك، <em>لقد بدأنا.</em>", okLead: "أرسل Stripe الإيصال إلى بريدك الإلكتروني. سنراسلك قريبًا على واتساب لاستلام صورك والبدء.",
         order: "الطلب", next: "ما التالي", n1t: "نراسلك على واتساب", n1b: "عادةً خلال ساعة، لاستلام صورك وقائمتك.", n2t: "ننشئ كل شيء", n2b: "تصلك معاينة خاصة لتراجعها وتطلب التعديلات.", n3t: "أنت على الإنترنت", n3b: "تُفعَّل صفحتك أو قائمتك أو موقعك، ويبدأ الزبائن في العثور عليك.",
         wa: "أرسل طلبي على واتساب", account: "إدارة خطتي", home: "العودة إلى الموقع",
-        failEyebrow: "لم يكتمل الدفع", failTitle: "لم يُخصم أي مبلغ. <em>لنحاول مرة أخرى.</em>", failLead: "يحدث ذلك، بطاقة مرفوضة أو انتهاء مهلة 3-D Secure أو نافذة أُغلقت. طلبك محفوظ.",
+        failEyebrow: "لم يكتمل الدفع", failTitle: "لم يُخصم أي مبلغ. <em>لنحاول مرة أخرى.</em>", failLead: "يحدث هذا أحيانًا: بطاقة مرفوضة أو انتهاء مهلة 3-D Secure أو نافذة أُغلقت. طلبك محفوظ.",
         r1: "تحقق من بيانات بطاقتك ورمز 3-D Secure من البنك", r2: "جرّب Apple Pay أو Google Pay أو بطاقة أخرى", r3: "أو ادفع في ثوانٍ عبر رمز QR التايلاندي PromptPay",
         retry: "حاول مرة أخرى", promptpay: "ادفع عبر PromptPay", help: "ما زلت تواجه مشكلة؟ لنحلّها معًا على واتساب.",
         accEyebrow: "حسابي", accTitle: "خطتك <em>بين يديك.</em>", accLead: "الفواتير والبطاقة وفترة الفوترة والإلغاء، نتولى ذلك معك مباشرة عبر واتساب.",

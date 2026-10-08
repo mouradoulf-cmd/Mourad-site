@@ -36,14 +36,14 @@
       form: {
         title: "Your project request", bar: "of 4 steps",
         almost: "Almost done.", almostSub: "Fix the fields marked in red and carry on.",
-        privacy: "Your answers stay in this page. Nothing is stored or sent until you open WhatsApp.",
+        privacy: "Your answers stay on this page. Nothing is stored or sent until you open WhatsApp.",
         live: "Step 1 of 4", sent: "Your message is ready below. Open WhatsApp and paste it.",
         liveStep: "Step {n} of 4"
       },
       step1: { name: "Your business", title: "What kind of place is it?", sub: "Pick the closest one. It tells us what your customers look for." },
       step2: { name: "What you need", title: "What do you want us to build?", sub: "Choose as many as you like. A QR menu and a Google profile are the fastest wins." },
       step3: { name: "Languages", title: "Which languages do your customers speak?", sub: "Tick the ones you hear most. Your menu and your site will speak them too." },
-      step4: { name: "Contact", title: "Where do we reach you?", sub: "Only what we need to answer you. Nothing is sent anywhere until you press the button." },
+      step4: { name: "Contact", title: "Where can we reach you?", sub: "Only what we need to answer you. Nothing is sent anywhere until you press the button." },
       opt: { restaurant: "Restaurant", cafe: "Café or bar", salon: "Salon or spa", hotel: "Hotel or guesthouse", shop: "Shop or boutique", rental: "Scooter rental", other: "Something else", google: "Google profile", qr: "QR menu", web: "Website" },
       note: { google: "Be found on Maps", qr: "Your menu on every phone", web: "Your home online" },
       lang: { en: "English", fr: "French", it: "Italian", th: "Thai", ar: "Arabic", de: "German", ru: "Russian", zh: "Chinese" },
@@ -79,7 +79,7 @@
     },
     fr: {
       meta: {
-        title: "Démarrer un projet: votre devis en 4 étapes | NM Studio",
+        title: "Démarrer un projet : votre devis en 4 étapes | NM Studio",
         description: "Quatre étapes rapides et votre demande part sur WhatsApp : activité, besoins, langues de vos clients. Sans engagement."
       },
       hero: {
@@ -91,19 +91,19 @@
       form: {
         title: "Votre demande de projet", bar: "sur 4 étapes",
         almost: "Presque terminé.", almostSub: "Corrigez les champs en rouge, puis continuez.",
-        privacy: "Vos réponses restent dans cette page, rien n'est enregistré ni envoyé avant l'ouverture de WhatsApp.",
+        privacy: "Vos réponses restent dans cette page : rien n'est enregistré ni envoyé avant l'ouverture de WhatsApp.",
         live: "Étape 1 sur 4", sent: "Votre message est prêt ci-dessous. Ouvrez WhatsApp et collez-le.",
         liveStep: "Étape {n} sur 4"
       },
-      step1: { name: "Votre activité", title: "Quel genre d'endroit est-ce ?", sub: "Choisissez le plus proche, cela nous dit ce que vos clients cherchent." },
+      step1: { name: "Votre activité", title: "Quel genre d'endroit est-ce ?", sub: "Choisissez le plus proche : cela nous indique ce que vos clients recherchent." },
       step2: { name: "Ce qu'il vous faut", title: "Que voulez-vous que nous créions ?", sub: "Choisissez-en autant que vous voulez. Un menu QR et une fiche Google sont les gains les plus rapides." },
       step3: { name: "Les langues", title: "Quelles langues parlent vos clients ?", sub: "Cochez celles que vous entendez le plus. Votre menu et votre site les parleront aussi." },
       step4: { name: "Coordonnées", title: "Comment vous joindre ?", sub: "Seulement le nécessaire pour vous répondre. Rien n'est envoyé avant l'appui sur le bouton." },
-      opt: { restaurant: "Restaurant", cafe: "Café ou bar", salon: "Salon ou spa", hotel: "Hôtel ou guesthouse", shop: "Boutique", rental: "Location de scooters", other: "Autre chose", google: "Fiche Google", qr: "Menu QR", web: "Site web" },
+      opt: { restaurant: "Restaurant", cafe: "Café ou bar", salon: "Salon ou spa", hotel: "Hôtel ou maison d'hôtes", shop: "Boutique", rental: "Location de scooters", other: "Autre chose", google: "Fiche Google", qr: "Menu QR", web: "Site web" },
       note: { google: "Être trouvé sur Maps", qr: "Votre menu sur chaque téléphone", web: "Votre vitrine en ligne" },
       lang: { en: "Anglais", fr: "Français", it: "Italien", th: "Thaï", ar: "Arabe", de: "Allemand", ru: "Russe", zh: "Chinois" },
       f: {
-        business: "Nom du commerce", area: "Où se trouve votre commerce ?", first: "Votre prénom",
+        business: "Nom du commerce", area: "Où se trouve votre commerce ?", first: "Votre prénom",
         wa: "Votre numéro WhatsApp", notes: "Quelque chose à nous dire ?", optional: "(facultatif)"
       },
       ph: { business: "ex. Malee Restaurant", first: "Malee", wa: "+66 81 234 5678", notes: "Un lien vers votre Instagram, vos horaires, les plats dont vous êtes fier…" },
@@ -117,13 +117,13 @@
         paidOnce: "À payer une fois (mise en place)", monthly: "Puis chaque mois",
         live: "Nous répondons en quelques minutes", send: "Ouvrir WhatsApp avec ma demande",
         copy: "Copier le message", copiedShort: "Copié", copied: "Message copié, collez-le dans la conversation WhatsApp.",
-        copyFailed: "La copie a échoué, sélectionnez le texte ci-dessous et copiez-le.",
+        copyFailed: "La copie a échoué : sélectionnez le texte ci-dessous et copiez-le.",
         copyHint: "Notre lien WhatsApp ouvre la discussion. Le message est copié pour que vous n'ayez plus qu'à coller.",
         r1: "Activité", r2: "Ce qu'il vous faut", r3: "Langues", r4: "Prénom", r5: "Pays", r6: "WhatsApp", r7: "Précisions"
       },
       sent: { eyebrow: "Votre message", title: "Prêt à envoyer.", sub: "Voici exactement ce que nous recevons. Modifiez une réponse : le message se met à jour.", chars: "caractères" },
       empty: "Pas encore rempli", none: "Non précisé",
-      err: { type: "Choisissez le type de commerce.", business: "Indiquez le nom de votre commerce.", first: "Indiquez votre prénom.", wa: "Ajoutez votre numéro WhatsApp, au moins 6 chiffres." },
+      err: { type: "Choisissez le type de commerce.", business: "Indiquez le nom de votre commerce.", first: "Indiquez votre prénom.", wa: "Ajoutez votre numéro WhatsApp (au moins 6 chiffres)." },
       msg: {
         head: "🎯 Nouveau projet | NM Studio",
         business: "Commerce", type: "Type", needs: "Ce qu'il me faut", langs: "Langues de mes clients",
@@ -150,7 +150,7 @@
         live: "Passo 1 di 4", sent: "Il tuo messaggio è pronto qui sotto, apri WhatsApp e incollalo.",
         liveStep: "Passo {n} di 4"
       },
-      step1: { name: "La tua attività", title: "Che tipo di locale è?", sub: "Scegli quello più vicino, ci dice cosa cercano i tuoi clienti." },
+      step1: { name: "La tua attività", title: "Che tipo di locale è?", sub: "Scegli quello più simile: ci dice cosa cercano i tuoi clienti." },
       step2: { name: "Cosa ti serve", title: "Cosa vuoi che creiamo?", sub: "Scegline quanti vuoi. Un menù QR e una scheda Google sono i risultati più rapidi." },
       step3: { name: "Le lingue", title: "Quali lingue parlano i tuoi clienti?", sub: "Spunta quelle che senti di più. Anche il menù e il sito le parleranno." },
       step4: { name: "Contatti", title: "Come ti raggiungiamo?", sub: "Solo l'essenziale per risponderti. Nulla viene inviato finché non premi il pulsante." },
@@ -228,7 +228,7 @@
         live: "เราตอบกลับภายในไม่กี่นาที", send: "เปิด WhatsApp พร้อมคำขอของฉัน",
         copy: "คัดลอกข้อความ", copiedShort: "คัดลอกแล้ว", copied: "คัดลอกข้อความแล้ว วางในแชท WhatsApp ได้เลย",
         copyFailed: "คัดลอกไม่สำเร็จ เลือกข้อความด้านล่างแล้วคัดลอกเอง",
-        copyHint: "ลิงก์ WhatsApp ของเราจะเปิดแชทขึ้นมา ข้อความถูกคัดลอกไว้ให้แล้วเพียงวาง",
+        copyHint: "ลิงก์ WhatsApp ของเราจะเปิดแชทขึ้นมา ข้อความถูกคัดลอกไว้ให้แล้ว แค่วางแล้วกดส่ง",
         r1: "ธุรกิจ", r2: "สิ่งที่ต้องการ", r3: "ภาษา", r4: "ชื่อ", r5: "ประเทศ", r6: "WhatsApp", r7: "รายละเอียด"
       },
       sent: { eyebrow: "ข้อความของคุณ", title: "พร้อมส่งแล้ว", sub: "นี่คือข้อความที่เราจะได้รับจริง ๆ แก้คำตอบด้านบนแล้วข้อความจะอัปเดตทันที", chars: "ตัวอักษร" },
@@ -273,7 +273,7 @@
       },
       ph: { business: "مثال: مطعم مالي", first: "مالي", wa: "+66 81 234 5678", notes: "رابط إنستغرام، ساعات العمل، الأطباق التي تفتخر بها…" },
       area: { none: "اختر", th: "تايلاند", fr: "فرنسا", eu: "مكان آخر في أوروبا", me: "الشرق الأوسط", other: "مكان آخر" },
-      nav: { back: "رجوع", next: "الخطوة التالية", finish: "أعرض رسالتي" },
+      nav: { back: "رجوع", next: "الخطوة التالية", finish: "اعرض رسالتي" },
       sum: {
         title: "طلبك", from: "ابتداءً من", total: "الإجمالي",
         month: "/ شهريًا", hint: "دفعة واحدة · نؤكد السعر النهائي معًا على واتساب.",
@@ -286,7 +286,7 @@
         copyHint: "رابط واتساب يفتح المحادثة، والرسالة منسوخة لتلصقها بلمسة واحدة.",
         r1: "النشاط", r2: "ما تحتاجه", r3: "اللغات", r4: "الاسم", r5: "البلد", r6: "واتساب", r7: "تفاصيل"
       },
-      sent: { eyebrow: "رسالتك", title: "جاهزة للإرسال.", sub: "هذه بالضبط الرسالة التي نستلمها. عدّل أي إجابة وستتحدث الرسالة فورًا.", chars: "حرفًا" },
+      sent: { eyebrow: "رسالتك", title: "جاهزة للإرسال.", sub: "هذه بالضبط الرسالة التي نستلمها. عدّل أي إجابة وستُحدَّث الرسالة فورًا.", chars: "حرفًا" },
       empty: "لم يُعبأ بعد", none: "غير محدد",
       err: { type: "اختر نوع النشاط من فضلك.", business: "اكتب اسم نشاطك من فضلك.", first: "اكتب اسمك الأول من فضلك.", wa: "أضف رقم واتساب، 6 أرقام على الأقل." },
       msg: {
@@ -354,7 +354,14 @@
     root.lang = lang;
     root.dir = lang === "ar" ? "rtl" : "ltr";
 
-    $$("[data-q]").forEach(function (el) { el.innerHTML = t(el.getAttribute("data-q")); });
+    $$("[data-q]").forEach(function (el) {
+      // a label that holds its own translated child (e.g. "(optional)") only gets its leading text replaced, so the child stays
+      if (el.querySelector("[data-q]")) {
+        var first = el.firstChild;
+        if (first && first.nodeType === 3) first.textContent = t(el.getAttribute("data-q")) + " ";
+        else el.insertBefore(document.createTextNode(t(el.getAttribute("data-q")) + " "), el.firstChild);
+      } else el.innerHTML = t(el.getAttribute("data-q"));
+    });
     $$("[data-q-ph]").forEach(function (el) { el.setAttribute("placeholder", t(el.getAttribute("data-q-ph"))); });
     $$("[data-q-aria]").forEach(function (el) { el.setAttribute("aria-label", t(el.getAttribute("data-q-aria"))); });
 

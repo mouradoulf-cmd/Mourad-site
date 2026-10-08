@@ -101,10 +101,10 @@
         title: "Everything you <em>want to know.</em>",
         lead: "Still unsure about something? Ask us directly. We usually reply within minutes.",
         ask: "Ask on WhatsApp",
-        q1: "I'm not good with technology, is that a problem?", a1: "Not at all. You send us your photos and we take care of everything else, design, text, hosting and updates.",
+        q1: "I'm not good with technology, is that a problem?", a1: "Not at all. You send us your photos and we take care of everything else: design, text, hosting and updates.",
         q2: "How long until my site is online?", a2: "A few days after we receive your photos and information, not weeks.",
         q3: "Can I change my photos or menu later?", a3: "Yes. Edits are unlimited and free. Just send us a message whenever something changes.",
-        q4: "How does the QR menu work?", a4: "Your customers scan the code with their phone camera. No app needed, and instantly see your latest menu.",
+        q4: "How does the QR menu work?", a4: "Your customers scan the code with their phone camera and instantly see your latest menu. No app needed.",
         q5: "I already have Instagram. Why do I need a website?", a5: "Instagram depends on an algorithm you don't control. A website is your own storefront: it shows up on Google, it's open 24/7, and it belongs to you.",
         q6: "Is the website really mine?", a6: "Yes. Your name, your photos, your content. We build it for your business, not for us.",
         q7: "What if I want to stop?", a7: "There's no commitment. You can cancel anytime, free of charge.",
@@ -165,7 +165,7 @@
         r3t: "Un menu toujours à jour",
         r3b: "Un seul QR code sur la table, toujours à jour. Changez un prix ou un plat en quelques minutes, plus jamais de réimpression."
       },
-      diff: {"eyebrow": "La différence", "title": "Le même commerce. <em>Deux premières impressions opposées.</em>", "query": "Restaurant italien près de moi", "you": "Votre restaurant", "meta": "Restaurant · 0,2 km", "directions": "Itinéraire", "call": "Appeler", "noSite": "Pas de site", "noMenu": "Pas de menu · pas de prix · aucune photo des plats", "keepScrolling": "Ils continuent de chercher…", "book": "Réserver une table", "badBadge": "Client perdu", "goodBadge": "Nouveau client", "s1t": "Ils cherchent", "s1b": "Nouvelle ville, téléphone en main : « restaurant italien près de moi ». Des dizaines d'épingles s'affichent. La vôtre en fait partie.", "s2t": "Sans site web", "s2b": "Une épingle, quelques photos floues, pas de menu, pas de prix. Impossible de savoir si c'est pour eux, alors ils passent au suivant.", "s3t": "Avec NM Studio", "s3b": "Vos photos, votre menu dans leur langue, l'itinéraire et la réservation en un geste. Ils vous choisissent, avant même d'être arrivés."},
+      diff: {"eyebrow": "La différence", "title": "Le même commerce. <em>Deux premières impressions opposées.</em>", "query": "Restaurant italien près de moi", "you": "Votre restaurant", "meta": "Restaurant · 0,2 km", "directions": "Itinéraire", "call": "Appeler", "noSite": "Pas de site", "noMenu": "Pas de menu · pas de prix · aucune photo des plats", "keepScrolling": "Ils continuent de chercher…", "book": "Réserver une table", "badBadge": "Client perdu", "goodBadge": "Nouveau client", "s1t": "Ils cherchent", "s1b": "Nouvelle ville, téléphone en main : « restaurant italien près de moi ». Des dizaines d'épingles s'affichent. La vôtre en fait partie.", "s2t": "Sans site web", "s2b": "Une épingle, quelques photos floues, pas de menu, pas de prix. Impossible de savoir si c'est pour eux, alors ils passent au suivant.", "s3t": "Avec NM Studio", "s3b": "Vos photos, votre menu dans leur langue, l'itinéraire et la réservation en un geste. Ils vous choisissent, avant même d'être arrivés."},
       tryit: {"eyebrow": "Essayez maintenant", "title": "Ne nous croyez pas sur parole. <em>Scannez.</em>", "body": "Sortez votre téléphone et visez le code avec l'appareil photo. C'est un vrai menu QR que nous avons créé, exactement ce que vos clients voient à table.", "open": "Ouvrir le menu en ligne", "qrAlt": "QR code qui ouvre le vrai menu QR de Giulivo", "caption": "Giulivo · menu QR en ligne"},
       work: {
         eyebrow: "Réalisations",
@@ -175,7 +175,7 @@
         p1cat: "Restaurant · Toscane",
         p1desc: "Un site chaleureux, porté par la photo, pour une trattoria familiale : la carte complète, les réservations et un menu QR sur chaque table, en italien, anglais, allemand et thaï.",
         p2cat: "Massage & spa",
-        p2desc: "Un site de spa premium aux vraies photos : soins au prix mis à jour selon la durée, un conseiller « comment vous sentez-vous ? », des cartes cadeaux et la réservation WhatsApp, en quatre langues.",
+        p2desc: "Un site de spa premium aux vraies photos : tarifs des soins calculés selon la durée, un conseiller « comment vous sentez-vous ? », des cartes cadeaux et la réservation WhatsApp, en quatre langues.",
         p3cat: "Salon de coiffure · Bangkok",
         p3desc: "L'élégance d'un magazine de mode pour un salon de coiffure et beauté : grille tarifaire claire, avis clients et réservation en un geste sur WhatsApp.",
         p4cat: "Fournisseur B2B · France",
@@ -184,7 +184,7 @@
         tPrices: "Grille tarifaire", tReviews: "Avis clients", tWhatsapp: "Réservation WhatsApp", tVideo: "Vidéo d'ouverture", tProjects: "Réalisations", tQuote: "Demande de devis",
         p5cat: "Bar & vie nocturne", p5desc: "Un site aux néons pour un bar billard : la soirée du jour et le happy hour en direct, la carte des boissons, les soirées billard et la réservation de table sur WhatsApp, en quatre langues.", tLive: "Happy hour en direct", tEvents: "Soirées de la semaine",
         p6cat: "Street food", p6desc: "Un site simple et vivant pour une cuisine de rue : carte filtrable, commande à emporter envoyée sur WhatsApp, jauge de piment, spécial du soir à l'ardoise et cartes de phrases à montrer au cuisinier.", tOrder: "Commande à emporter", tSpice: "Jauge de piment", p7cat: "Location de scooters", p7desc: "Un site de location premium : flotte avec prix au jour, à la semaine et au mois, calendrier de dates avec prix en direct et options, livraison à l'hôtel et demande sur WhatsApp.", tFleet: "Flotte & tarifs", tCalendar: "Calendrier de réservation",
-        p8cat: "Café, restaurant & glacier · Mohammédia", p8desc: "Un site chaleureux pour un café-restaurant ouvert toute la journée : panneau en direct ouvert/fermé et « en ce moment », la carte complète avec les vrais prix, une liste de sélection à montrer au serveur, et le couscous du vendredi avec compte à rebours, en français, anglais et arabe.", tLivePanel: "Panneau en direct", t3Lang: "3 langues",
+        p8cat: "Café, restaurant & glacier · Mohammédia", p8desc: "Un site chaleureux pour un café-restaurant ouvert toute la journée : panneau en direct ouvert/fermé et « en ce moment », la carte complète avec les vrais prix, une liste de sélection à montrer au serveur, et le couscous du vendredi avec compte à rebours, en français, anglais et arabe.", tLivePanel: "Panneau en direct", t3Lang: "3 langues",
         soon: "Bientôt", soonList: "Hôtels · Immobilier"
       },
       process: {
@@ -221,23 +221,23 @@
         lead: "Chaque formule inclut un menu QR. Commencez petit et évoluez quand votre activité est prête.",
         setup: "mise en place unique", monthly: "par mois", popular: "Le plus choisi",
         note: "Sans engagement ni frais cachés. Résiliable à tout moment, gratuitement.",
-        basic: { title: "Basic", tagline: "Votre menu, à un scan.", f1: "Menu QR code, toujours à jour", f2: "Modifications du menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic", demo: "Voir un vrai menu QR →" },
-        pro: { title: "Pro", tagline: "Votre site web, clé en main.", f1: "Tout le contenu de Basic", f2: "Un site sur mesure, créé à partir de vos photos", f3: "Multilingue, avec Google Maps et WhatsApp", f4: "En ligne en quelques jours, pas en mois", cta: "Choisir Pro" },
-        elite: { title: "Elite", tagline: "La formule complète, zéro effort.", f1: "Tout le contenu de Pro", f2: "Réseaux sociaux créés et gérés", f3: "Support prioritaire", cta: "Choisir Elite" }
+        basic: { title: "Basic", tagline: "Votre menu, à un scan.", f1: "Menu QR, toujours à jour", f2: "Modifications du menu illimitées", f3: "Fonctionne sur tous les téléphones, sans appli", cta: "Choisir Basic", demo: "Voir un vrai menu QR →" },
+        pro: { title: "Pro", tagline: "Votre site web, clé en main.", f1: "Tout ce qu'inclut Basic", f2: "Un site sur mesure, créé à partir de vos photos", f3: "Multilingue, avec Google Maps et WhatsApp", f4: "En ligne en quelques jours, pas en mois", cta: "Choisir Pro" },
+        elite: { title: "Elite", tagline: "La formule complète, zéro effort.", f1: "Tout ce qu'inclut Pro", f2: "Réseaux sociaux créés et gérés", f3: "Support prioritaire", cta: "Choisir Elite" }
       },
       faq: {
         eyebrow: "Questions",
         title: "Tout ce que vous <em>voulez savoir.</em>",
         lead: "Un doute ? Posez-nous directement la question. Nous répondons généralement en quelques minutes.",
         ask: "Poser une question sur WhatsApp",
-        q1: "Je ne suis pas à l'aise avec l'informatique, c'est un problème ?", a1: "Pas du tout. Vous nous envoyez vos photos, nous nous occupons de tout le reste, design, textes, hébergement et mises à jour.",
+        q1: "Je ne suis pas à l'aise avec l'informatique, c'est un problème ?", a1: "Pas du tout. Vous nous envoyez vos photos, nous nous occupons de tout le reste : design, textes, hébergement et mises à jour.",
         q2: "Combien de temps avant que mon site soit en ligne ?", a2: "Quelques jours après réception de vos photos et informations, pas des semaines.",
         q3: "Puis-je changer mes photos ou mon menu plus tard ?", a3: "Oui. Les modifications sont illimitées et gratuites. Envoyez-nous simplement un message.",
         q4: "Comment fonctionne le menu QR ?", a4: "Vos clients scannent le code avec l'appareil photo de leur téléphone, sans appli, et voient immédiatement votre menu à jour.",
         q5: "J'ai déjà Instagram. Pourquoi un site web ?", a5: "Instagram dépend d'un algorithme que vous ne contrôlez pas. Un site, c'est votre propre vitrine : visible sur Google, ouverte 24h/24, et elle vous appartient.",
         q6: "Le site m'appartient vraiment ?", a6: "Oui. Votre nom, vos photos, votre contenu. Nous le créons pour votre activité, pas pour nous.",
         q7: "Et si je veux arrêter ?", a7: "Aucun engagement. Vous pouvez résilier à tout moment, gratuitement.",
-        q8: "Avez-vous déjà travaillé avec des commerces comme le mien ?", a8: "Oui, restaurants, salons, spas et entreprises.", a8link: "Voir les sites en ligne →"
+        q8: "Avez-vous déjà travaillé avec des commerces comme le mien ?", a8: "Oui : restaurants, salons, spas et entreprises.", a8link: "Voir les sites en ligne →"
       },
       finale: {
         orbit: "LANCER MON PROJET · LANCER MON PROJET · ",
@@ -257,7 +257,7 @@
         lead: "Dites-nous où et quand. Nous venons vous voir pour en parler, sans engagement.",
         business: "Nom de votre commerce", businessPh: "ex. Giulivo", phone: "Numéro de téléphone", date: "Date souhaitée", time: "Heure souhaitée",
         submit: "Envoyer sur WhatsApp", close: "Fermer",
-        hint: "Votre message est copié automatiquement, collez-le simplement dans la conversation WhatsApp qui s'ouvre.",
+        hint: "Votre message est copié automatiquement : collez-le simplement dans la conversation WhatsApp qui s'ouvre.",
         required: "Merci de remplir ce champ.", pastDate: "Choisissez aujourd'hui ou une date ultérieure.",
         toast: "Message copié, collez-le dans WhatsApp pour l'envoyer.",
         waMessage: "Bonjour ! Je souhaite prendre rendez-vous.\nCommerce : {business}\nTéléphone : {phone}\nDate souhaitée : {date} à {time}"
@@ -267,7 +267,7 @@
     it: {
       meta: {
         title: "NM Studio | Siti web e menù QR per ristoranti e attività locali",
-        description: "Siti web, menù QR e schede Google per ristoranti e attività locali. Invia le tue foto: siamo online in pochi giorni, senza contratto."
+        description: "Siti web, menù QR e schede Google per ristoranti e attività locali. Invia le tue foto: sei online in pochi giorni, senza contratto."
       },
       a11y: { skip: "Vai al contenuto", language: "Lingua", menu: "Menù", whatsapp: "Scrivici su WhatsApp" },
       nav: { work: "Progetti", process: "Metodo", pricing: "Prezzi", faq: "FAQ", cta: "Inizia un progetto" },
@@ -359,7 +359,7 @@
         title: "Tutto quello che <em>vuoi sapere.</em>",
         lead: "Hai ancora un dubbio? Chiedici direttamente, di solito rispondiamo in pochi minuti.",
         ask: "Chiedi su WhatsApp",
-        q1: "Non sono pratico di tecnologia: è un problema?", a1: "Per niente. Ci invii le tue foto e pensiamo noi a tutto il resto, design, testi, hosting e aggiornamenti.",
+        q1: "Non sono pratico di tecnologia: è un problema?", a1: "Per niente. Ci invii le tue foto e pensiamo noi a tutto il resto: design, testi, hosting e aggiornamenti.",
         q2: "Quanto tempo serve per andare online?", a2: "Pochi giorni dopo aver ricevuto le tue foto e informazioni, non settimane.",
         q3: "Posso cambiare foto o menù in seguito?", a3: "Sì. Le modifiche sono illimitate e gratuite, basta mandarci un messaggio.",
         q4: "Come funziona il menù QR?", a4: "I tuoi clienti inquadrano il codice con la fotocamera del telefono, senza app, e vedono subito il tuo menù aggiornato.",
@@ -478,7 +478,7 @@
         title: "แพ็กเกจเรียบง่าย <em>ไม่มีค่าใช้จ่ายแอบแฝง</em>",
         lead: "ทุกแพ็กเกจรวมเมนู QR เริ่มจากเล็ก ๆ แล้วอัปเกรดได้เมื่อธุรกิจของคุณพร้อม",
         setup: "ค่าติดตั้งครั้งเดียว", monthly: "ต่อเดือน", popular: "ยอดนิยม",
-        note: "ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง ยกเลิกได้ทุกเมื่อ ฟรี",
+        note: "ไม่มีสัญญา ไม่มีค่าใช้จ่ายแอบแฝง ยกเลิกได้ทุกเมื่อโดยไม่เสียค่าใช้จ่าย",
         basic: { title: "Basic", tagline: "เมนูของคุณ แค่สแกนเดียว", f1: "เมนู QR โค้ด อัปเดตอยู่เสมอ", f2: "แก้ไขเมนูได้ไม่จำกัด", f3: "ใช้ได้กับทุกโทรศัพท์ ไม่ต้องโหลดแอป", cta: "เลือก Basic", demo: "ดูตัวอย่างเมนู QR จริง →" },
         pro: { title: "Pro", tagline: "เว็บไซต์ของคุณเอง เราทำให้ครบ", f1: "ทุกอย่างในแพ็กเกจ Basic", f2: "เว็บไซต์ออกแบบเฉพาะจากรูปของคุณ", f3: "หลายภาษา พร้อม Google Maps และ WhatsApp", f4: "ออนไลน์ในไม่กี่วัน ไม่ใช่หลายเดือน", cta: "เลือก Pro" },
         elite: { title: "Elite", tagline: "แพ็กเกจครบวงจร ไม่ต้องทำอะไรเลย", f1: "ทุกอย่างในแพ็กเกจ Pro", f2: "ตั้งค่าและดูแลโซเชียลมีเดียให้", f3: "บริการช่วยเหลือแบบเร่งด่วน", cta: "เลือก Elite" }
@@ -539,7 +539,7 @@
         chipQr: "قائمة QR مشمولة"
       },
       audience: {
-        i1: "مطاعم", i2: "مقاهٍ", i3: "صالونات حلاقة", i4: "سبا ومراكز تدليك", i5: "بارات", i6: "أكل الشارع", i7: "شركات محلية",
+        i1: "مطاعم", i2: "مقاهٍ", i3: "صالونات حلاقة", i4: "سبا ومراكز تدليك", i5: "بارات", i6: "طعام الشارع", i7: "شركات محلية",
         sr: "نعمل مع المطاعم والمقاهي وصالونات الحلاقة ومراكز السبا والتدليك والبارات وباعة أكل الشارع والشركات المحلية."
       },
       why: {
@@ -570,7 +570,7 @@
         tMulti: "4 لغات", tQr: "قائمة QR", tBooking: "حجز عبر الإنترنت", tTreat: "اختيار العلاجات", tMobile: "مصمم للهاتف",
         tPrices: "قائمة الأسعار", tReviews: "آراء العملاء", tWhatsapp: "حجز عبر واتساب", tVideo: "فيديو افتتاحي", tProjects: "المشاريع", tQuote: "طلب عرض سعر",
         p5cat: "بار وحياة ليلية", p5desc: "موقع بأضواء النيون لبار بلياردو: فعالية الليلة وعدّ تنازلي مباشر لساعة التخفيضات، وقائمة المشروبات، وليالي البلياردو، وحجز الطاولات عبر واتساب، بأربع لغات.", tLive: "ساعة التخفيضات مباشرة", tEvents: "فعاليات أسبوعية",
-        p6cat: "أكل الشارع", p6desc: "موقع بسيط ونابض لمطبخ شارع: قائمة قابلة للتصفية، وطلبات سفري تُرسل عبر واتساب، ومقياس للحرارة، وطبق الليلة على السبورة، وبطاقات عبارات تُعرض على الطاهية.", tOrder: "طلبات سفري", tSpice: "مقياس الحرارة", p7cat: "تأجير سكوتر", p7desc: "موقع تأجير فاخر: أسطول بأسعار يومية وأسبوعية وشهرية، وتقويم حجز بسعر مباشر وإضافات، وتوصيل إلى الفندق وطلبات عبر واتساب.", tFleet: "الأسطول والأسعار", tCalendar: "تقويم الحجز",
+        p6cat: "طعام الشارع", p6desc: "موقع بسيط ونابض لمطبخ شارع: قائمة قابلة للتصفية، وطلبات سفري تُرسل عبر واتساب، ومقياس لدرجة الحدّة، وطبق الليلة على السبورة، وبطاقات عبارات تُعرض على الطاهية.", tOrder: "طلبات سفري", tSpice: "درجة الحدّة", p7cat: "تأجير سكوتر", p7desc: "موقع تأجير فاخر: أسطول بأسعار يومية وأسبوعية وشهرية، وتقويم حجز بسعر مباشر وإضافات، وتوصيل إلى الفندق وطلبات عبر واتساب.", tFleet: "الأسطول والأسعار", tCalendar: "تقويم الحجز",
         p8cat: "مقهى ومطعم ومثلجات · المحمدية", p8desc: "موقع دافئ لمقهى-مطعم مفتوح طوال اليوم: لوحة مباشرة لحالة الفتح/الإغلاق و«الآن»، القائمة الكاملة بالأسعار الحقيقية، قائمة اختيار جاهزة لعرضها على النادل، وكسكس الجمعة مع عدّ تنازلي، بالفرنسية والإنجليزية والعربية.", tLivePanel: "لوحة الحالة المباشرة", t3Lang: "3 لغات",
         soon: "قريباً", soonList: "فنادق · عقارات"
       },
