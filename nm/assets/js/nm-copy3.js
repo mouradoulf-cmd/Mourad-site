@@ -24,7 +24,8 @@
         badge: "100% FREE", chip: "Free", s1: "Ask for your mock-up", s1b: "Free, takes 1 minute", s2: "Receive your website", s2b: "In 48 hours, with your name", s3: "Love it? We put it online", s3b: "With the monthly plan. If not, you pay nothing"
       },
       book: {
-        k: "Video call", t: "Rather talk it through? Book 20 minutes", b: "A free video call to see together what your business needs. Pick a free slot.", tz: "Thailand time", local: "your time: {t}", taken: "Booked", pick: "Pick a slot first", btn: "Book this slot", sel: "Selected: {s}", msg: "Hello NM Studio, I would like to book a free video call.", l_slot: "Slot", none: "No free slot in the coming days: message us on WhatsApp.", copied: "Booking request copied: paste it in WhatsApp and send."
+        k: "Video call", t: "Rather talk it through? Book 20 minutes", b: "A free video call to see together what your business needs. Pick a free slot.", tz: "Thailand time", local: "your time: {t}", taken: "Booked", pick: "Pick a slot first", btn: "Book this slot", sel: "Selected: {s}", msg: "Hello NM Studio, I would like to book a free video call.", l_slot: "Slot", none: "No free slot in the coming days: message us on WhatsApp.", copied: "Booking request copied: paste it in WhatsApp and send.",
+        call: "Video call", dur: "20 min", b1: "We look at your business and your Google listing together", b2: "You see website examples for your type of business", b3: "You leave with a clear plan, even if you don't order", clock: "It is {t} in Thailand", step1: "Choose a day", step2: "Choose a time", step3: "Your details", sum: "Your appointment", sumNone: "Pick a day and a time", confirm: "Confirm my appointment", host: "with {name}, founder"
       },
       founder: {
         eyebrow: "Who is behind NM Studio",
@@ -55,7 +56,8 @@
         badge: "100 % GRATUIT", chip: "Gratuit", s1: "Vous demandez votre maquette", s1b: "Gratuit, en 1 minute", s2: "Vous recevez votre site", s2b: "En 48 h, avec votre nom", s3: "Il vous plaît ? On le met en ligne", s3b: "Avec l'abonnement. Sinon, vous ne payez rien"
       },
       book: {
-        k: "Rendez-vous visio", t: "Préférez en parler ? Réservez 20 minutes", b: "Un appel vidéo gratuit pour voir ensemble ce dont votre commerce a besoin. Choisissez un créneau libre.", tz: "Heure de Thaïlande", local: "chez vous : {t}", taken: "Réservé", pick: "Choisissez d'abord un créneau", btn: "Réserver ce créneau", sel: "Créneau choisi : {s}", msg: "Bonjour NM Studio, je voudrais réserver un appel vidéo gratuit.", l_slot: "Créneau", none: "Plus de créneau libre ces jours-ci : écrivez-nous sur WhatsApp.", copied: "Demande copiée : collez-la dans WhatsApp et envoyez."
+        k: "Rendez-vous visio", t: "Préférez en parler ? Réservez 20 minutes", b: "Un appel vidéo gratuit pour voir ensemble ce dont votre commerce a besoin. Choisissez un créneau libre.", tz: "Heure de Thaïlande", local: "chez vous : {t}", taken: "Réservé", pick: "Choisissez d'abord un créneau", btn: "Réserver ce créneau", sel: "Créneau choisi : {s}", msg: "Bonjour NM Studio, je voudrais réserver un appel vidéo gratuit.", l_slot: "Créneau", none: "Plus de créneau libre ces jours-ci : écrivez-nous sur WhatsApp.", copied: "Demande copiée : collez-la dans WhatsApp et envoyez.",
+        call: "Appel vidéo", dur: "20 min", b1: "On regarde ensemble votre commerce et votre fiche Google", b2: "Vous voyez des exemples de sites pour votre activité", b3: "Vous repartez avec un plan clair, même sans commander", clock: "Il est {t} en Thaïlande", step1: "Choisissez un jour", step2: "Choisissez une heure", step3: "Vos coordonnées", sum: "Votre rendez-vous", sumNone: "Choisissez un jour et une heure", confirm: "Confirmer mon rendez-vous", host: "avec {name}, fondateur"
       },
       founder: {
         eyebrow: "Qui est derrière NM Studio",
@@ -86,7 +88,8 @@
         badge: "100% GRATIS", chip: "Gratis", s1: "Chiedete la vostra bozza", s1b: "Gratis, in 1 minuto", s2: "Ricevete il vostro sito", s2b: "In 48 ore, con il vostro nome", s3: "Vi piace? Lo mettiamo online", s3b: "Con l'abbonamento. Altrimenti non pagate nulla"
       },
       book: {
-        k: "Videochiamata", t: "Preferite parlarne? Prenotate 20 minuti", b: "Una videochiamata gratuita per capire insieme di cosa ha bisogno la vostra attività. Scegliete uno slot libero.", tz: "Ora della Thailandia", local: "da voi: {t}", taken: "Prenotato", pick: "Scegliete prima uno slot", btn: "Prenota questo slot", sel: "Slot scelto: {s}", msg: "Buongiorno NM Studio, vorrei prenotare una videochiamata gratuita.", l_slot: "Slot", none: "Nessuno slot libero nei prossimi giorni: scriveteci su WhatsApp.", copied: "Richiesta copiata: incollatela su WhatsApp e inviate."
+        k: "Videochiamata", t: "Preferite parlarne? Prenotate 20 minuti", b: "Una videochiamata gratuita per capire insieme di cosa ha bisogno la vostra attività. Scegliete uno slot libero.", tz: "Ora della Thailandia", local: "da voi: {t}", taken: "Prenotato", pick: "Scegliete prima uno slot", btn: "Prenota questo slot", sel: "Slot scelto: {s}", msg: "Buongiorno NM Studio, vorrei prenotare una videochiamata gratuita.", l_slot: "Slot", none: "Nessuno slot libero nei prossimi giorni: scriveteci su WhatsApp.", copied: "Richiesta copiata: incollatela su WhatsApp e inviate.",
+        call: "Videochiamata", dur: "20 min", b1: "Guardiamo insieme la vostra attività e la vostra scheda Google", b2: "Vedete esempi di siti per il vostro settore", b3: "Ripartite con un piano chiaro, anche senza ordinare", clock: "Sono le {t} in Thailandia", step1: "Scegliete un giorno", step2: "Scegliete un orario", step3: "I vostri dati", sum: "Il vostro appuntamento", sumNone: "Scegliete un giorno e un orario", confirm: "Conferma l'appuntamento", host: "con {name}, fondatore"
       },
       founder: {
         eyebrow: "Chi c'è dietro NM Studio",
@@ -117,7 +120,8 @@
         badge: "ฟรี 100%", chip: "ฟรี", s1: "ขอแบบร่างของคุณ", s1b: "ฟรี ใช้เวลาแค่ 1 นาที", s2: "รับเว็บไซต์ของคุณ", s2b: "ภายใน 48 ชั่วโมง พร้อมชื่อร้านคุณ", s3: "ชอบไหม? เราเปิดออนไลน์ให้", s3b: "พร้อมแพ็กเกจรายเดือน ถ้าไม่ชอบ ไม่ต้องจ่ายอะไรเลย"
       },
       book: {
-        k: "นัดคุยทางวิดีโอ", t: "อยากคุยก่อนไหม? จองเวลา 20 นาที", b: "วิดีโอคอลฟรี เพื่อดูด้วยกันว่าร้านของคุณต้องการอะไร เลือกช่วงเวลาที่ว่างได้เลย", tz: "เวลาประเทศไทย", local: "เวลาของคุณ: {t}", taken: "จองแล้ว", pick: "กรุณาเลือกช่วงเวลาก่อน", btn: "จองช่วงเวลานี้", sel: "เวลาที่เลือก: {s}", msg: "สวัสดีครับ NM Studio อยากจองวิดีโอคอลฟรีครับ", l_slot: "ช่วงเวลา", none: "ช่วงนี้ไม่มีเวลาว่าง ทักหาเราทาง WhatsApp ได้เลย", copied: "คัดลอกคำขอจองแล้ว วางใน WhatsApp แล้วกดส่ง"
+        k: "นัดคุยทางวิดีโอ", t: "อยากคุยก่อนไหม? จองเวลา 20 นาที", b: "วิดีโอคอลฟรี เพื่อดูด้วยกันว่าร้านของคุณต้องการอะไร เลือกช่วงเวลาที่ว่างได้เลย", tz: "เวลาประเทศไทย", local: "เวลาของคุณ: {t}", taken: "จองแล้ว", pick: "กรุณาเลือกช่วงเวลาก่อน", btn: "จองช่วงเวลานี้", sel: "เวลาที่เลือก: {s}", msg: "สวัสดีครับ NM Studio อยากจองวิดีโอคอลฟรีครับ", l_slot: "ช่วงเวลา", none: "ช่วงนี้ไม่มีเวลาว่าง ทักหาเราทาง WhatsApp ได้เลย", copied: "คัดลอกคำขอจองแล้ว วางใน WhatsApp แล้วกดส่ง",
+        call: "วิดีโอคอล", dur: "20 นาที", b1: "เราดูร้านและโปรไฟล์ Google ของคุณไปด้วยกัน", b2: "คุณได้เห็นตัวอย่างเว็บไซต์สำหรับธุรกิจแบบคุณ", b3: "คุณได้แผนที่ชัดเจนกลับไป แม้จะยังไม่สั่ง", clock: "ตอนนี้ {t} ที่ประเทศไทย", step1: "เลือกวัน", step2: "เลือกเวลา", step3: "ข้อมูลของคุณ", sum: "นัดหมายของคุณ", sumNone: "เลือกวันและเวลา", confirm: "ยืนยันการนัดหมาย", host: "กับ {name} ผู้ก่อตั้ง"
       },
       founder: {
         eyebrow: "ใครอยู่เบื้องหลัง NM Studio",
@@ -148,7 +152,8 @@
         badge: "مجاني 100%", chip: "مجاني", s1: "اطلب نموذجك", s1b: "مجانًا، في دقيقة واحدة", s2: "استلم موقعك", s2b: "خلال 48 ساعة، باسم محلك", s3: "أعجبك؟ ننشره على الإنترنت", s3b: "مع الاشتراك الشهري. وإلا، لا تدفع شيئًا"
       },
       book: {
-        k: "مكالمة فيديو", t: "تفضّل الحديث أولًا؟ احجز 20 دقيقة", b: "مكالمة فيديو مجانية لنرى معًا ما يحتاجه محلك. اختر موعدًا متاحًا.", tz: "بتوقيت تايلاند", local: "بتوقيتك: {t}", taken: "محجوز", pick: "اختر موعدًا أولًا", btn: "احجز هذا الموعد", sel: "الموعد المختار: {s}", msg: "مرحبًا NM Studio، أود حجز مكالمة فيديو مجانية.", l_slot: "الموعد", none: "لا مواعيد متاحة في الأيام القادمة: راسلنا عبر واتساب.", copied: "تم نسخ طلب الحجز: الصقه في واتساب ثم أرسله."
+        k: "مكالمة فيديو", t: "تفضّل الحديث أولًا؟ احجز 20 دقيقة", b: "مكالمة فيديو مجانية لنرى معًا ما يحتاجه محلك. اختر موعدًا متاحًا.", tz: "بتوقيت تايلاند", local: "بتوقيتك: {t}", taken: "محجوز", pick: "اختر موعدًا أولًا", btn: "احجز هذا الموعد", sel: "الموعد المختار: {s}", msg: "مرحبًا NM Studio، أود حجز مكالمة فيديو مجانية.", l_slot: "الموعد", none: "لا مواعيد متاحة في الأيام القادمة: راسلنا عبر واتساب.", copied: "تم نسخ طلب الحجز: الصقه في واتساب ثم أرسله.",
+        call: "مكالمة فيديو", dur: "20 دقيقة", b1: "نراجع معًا محلك وملفك على جوجل", b2: "تشاهد أمثلة مواقع لنشاطك", b3: "تخرج بخطة واضحة، حتى دون أن تطلب", clock: "الساعة الآن {t} في تايلاند", step1: "اختر يومًا", step2: "اختر وقتًا", step3: "بياناتك", sum: "موعدك", sumNone: "اختر يومًا ووقتًا", confirm: "تأكيد موعدي", host: "مع {name}، المؤسس"
       },
       founder: {
         eyebrow: "من وراء NM Studio",

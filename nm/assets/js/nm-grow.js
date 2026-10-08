@@ -90,20 +90,33 @@
       list.forEach(function (d) {
         var b = document.createElement("button"); b.type = "button"; b.className = "book__day"; b.disabled = !d.free;
         b.setAttribute("aria-pressed", String(d.ymd === curDay));
-        b.innerHTML = "<span>" + fmt(d.ms, { weekday: "short" }) + "</span><b>" + fmt(d.ms, { day: "numeric" }) + "</b><small>" + fmt(d.ms, { month: "short" }) + "</small>";
+        b.innerHTML = "<span>" + fmt(d.ms, { weekday: "short" }) + "</span><b>" + fmt(d.ms, { day: "numeric" }) + "</b><small>" + fmt(d.ms, { month: "short" }) + "</small>" + (d.free ? "<i></i>" : "");
         b.onclick = function () { curDay = d.ymd; sel = null; render(); };
         daysEl.appendChild(b);
       });
       var day = list.filter(function (d) { return d.ymd === curDay; })[0];
-      day.slots.forEach(function (x) {
-        var b = document.createElement("button"); b.type = "button"; b.className = "book__slot"; b.disabled = x.taken;
+      day.slots.forEach(function (x, n) {
+        var b = document.createElement("button"); b.type = "button"; b.className = "book__slot"; b.disabled = x.taken; b.style.setProperty("--i", n);
         b.setAttribute("aria-pressed", String(!!(sel && sel.ms === x.ms)));
         b.innerHTML = x.hm + (x.taken ? "<small>" + t("book.taken") + "</small>" : "");
-        b.onclick = function () { sel = x; err.textContent = ""; render(); };
+        b.onclick = function () {   // select without rebuilding the grid, so the entrance animation does not replay
+          sel = x; err.textContent = "";
+          [].slice.call(slotsEl.querySelectorAll(".book__slot")).forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+          summary();
+        };
         slotsEl.appendChild(b);
       });
-      localEl.textContent = sel && !sameZone ? t("book.local").replace("{t}", localFmt(sel.ms)) : "";
+      summary();
     }
+    var sumBox = box.querySelector(".bk__sum"), sumV = box.querySelector(".bk__sumv"), clockEl = box.querySelector(".bk__clocktxt");
+    function summary() {
+      localEl.textContent = sel && !sameZone ? t("book.local").replace("{t}", localFmt(sel.ms)) : "";
+      if (!sumBox) return;
+      if (sel) { sumV.textContent = fmt(sel.ms, { weekday: "long", day: "numeric", month: "long" }) + " · " + sel.hm + " · " + t("book.dur"); sumBox.classList.remove("is-set"); void sumBox.offsetWidth; sumBox.classList.add("is-set"); }
+      else { sumV.textContent = t("book.sumNone"); sumBox.classList.remove("is-set"); }
+    }
+    function clock() { if (clockEl) clockEl.textContent = t("book.clock").replace("{t}", fmt(Date.now(), { hour: "2-digit", minute: "2-digit" })); }
+    clock(); setInterval(clock, 30e3); document.addEventListener("nm:lang", function () { setTimeout(clock, 0); });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!sel) { err.textContent = t("book.pick"); return; }

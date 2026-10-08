@@ -40,17 +40,17 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
      the first paint: preload it so the hero never flashes empty. -->
 <link as="image" fetchpriority="high" href="../assets/video/hero-poster.avif" rel="preload" type="image/avif"/>
 <link href="../assets/css/vendor/devices.min.css" rel="stylesheet"/>
-<link href="../assets/css/site.css?v=20261008s" rel="stylesheet"/>
-<link href="../assets/css/craft.css?v=20261008s" rel="stylesheet"/>
-<link href="../assets/css/work-gallery.css?v=20261008s" rel="stylesheet"/>
-<link href="../assets/css/film.css?v=20261008s" rel="stylesheet"/>
-<link href="../assets/css/polish.css?v=20261008s" rel="stylesheet"/>
-<link href="../assets/css/grow.css?v=20261008s" rel="stylesheet"/>
-<script defer="" src="../assets/js/nm-dict.js?v=20261008s"></script>
-<script defer="" src="../assets/js/nm-copy2.js?v=20261008s"></script>
-<script defer="" src="../assets/js/nm-copy3.js?v=20261008s"></script>
-<script defer="" src="../assets/js/contact-config.js?v=20261008s"></script>
-<script defer="" src="../assets/js/offers-config.js?v=20261008s"></script>
+<link href="../assets/css/site.css?v=20261008t" rel="stylesheet"/>
+<link href="../assets/css/craft.css?v=20261008t" rel="stylesheet"/>
+<link href="../assets/css/work-gallery.css?v=20261008t" rel="stylesheet"/>
+<link href="../assets/css/film.css?v=20261008t" rel="stylesheet"/>
+<link href="../assets/css/polish.css?v=20261008t" rel="stylesheet"/>
+<link href="../assets/css/grow.css?v=20261008u" rel="stylesheet"/>
+<script defer="" src="../assets/js/nm-dict.js?v=20261008t"></script>
+<script defer="" src="../assets/js/nm-copy2.js?v=20261008t"></script>
+<script defer="" src="../assets/js/nm-copy3.js?v=20261008t"></script>
+<script defer="" src="../assets/js/contact-config.js?v=20261008t"></script>
+<script defer="" src="../assets/js/offers-config.js?v=20261008t"></script>
 <script defer="" src="../assets/js/reviews-config.js"></script>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
 </head>
@@ -125,9 +125,9 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
              H.264 first on purpose: Windows, macOS, iOS and Android decode it
              on the GPU, while VP9 often falls back to software decoding and
              judders. -->
-<source data-src="../assets/video/hero-m.mp4?v=20261008s" media="(max-width: 899px)" type="video/mp4">
-<source data-src="../assets/video/hero.mp4?v=20261008s" media="(min-width: 900px)" type="video/mp4">
-<source data-src="../assets/video/hero.webm?v=20261008s" media="(min-width: 900px)" type="video/webm">
+<source data-src="../assets/video/hero-m.mp4?v=20261008t" media="(max-width: 899px)" type="video/mp4">
+<source data-src="../assets/video/hero.mp4?v=20261008t" media="(min-width: 900px)" type="video/mp4">
+<source data-src="../assets/video/hero.webm?v=20261008t" media="(min-width: 900px)" type="video/webm">
 </source></source></source></video>
 </div>
 <div class="h__shade"></div>
@@ -332,7 +332,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <article class="free__card free__card--m"><span class="free__chip" data-i18n="free.chip">ฟรี</span><p class="free__k" data-i18n="free.m_k">แบบร่างฟรี</p><h3 data-i18n="free.m_t">เว็บไซต์ของคุณภายใน 48 ชั่วโมง</h3><p class="free__b" data-i18n="free.m_b">บอกชื่อร้านของคุณมา เราจะส่งแบบร่างเว็บไซต์ที่มีชื่อร้านและสไตล์ของคุณให้ดู แล้วคุณค่อยตัดสินใจ ไม่มีการกดดัน</p><form class="free__form" data-free="m" novalidate=""><div class="free__field"><label for="fmName" data-i18n="free.f_name">ชื่อร้าน</label><input autocomplete="organization" id="fmName" name="business" required="" type="text"/></div><div class="free__row"><div class="free__field"><label for="fmType" data-i18n="free.f_type">ประเภทร้าน</label><select id="fmType" name="type"><option value="" data-i18n="free.t_choose">เลือก</option><option value="rest" data-i18n="free.t_rest">ร้านอาหาร</option><option value="bar" data-i18n="free.t_bar">บาร์หรือผับ</option><option value="cafe" data-i18n="free.t_cafe">คาเฟ่</option><option value="beauty" data-i18n="free.t_beauty">ร้านเสริมสวยหรือสปา</option><option value="shop" data-i18n="free.t_shop">ร้านค้า</option><option value="company" data-i18n="free.t_company">บริษัท</option><option value="other" data-i18n="free.t_other">อื่น ๆ</option></select></div><div class="free__field"><label for="fmCity" data-i18n="free.f_city">เมือง</label><input autocomplete="address-level2" id="fmCity" name="city" type="text"/></div></div><div class="free__field"><label for="fmFirst" data-i18n="free.f_first">ชื่อของคุณ</label><input autocomplete="given-name" id="fmFirst" name="first" type="text"/></div><p aria-live="polite" class="free__err"></p><button class="btn btn--sun btn--lg" type="submit"><span data-i18n="free.m_btn">รับแบบร่างของฉัน</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button></form></article>
 <article class="free__card"><span class="free__chip" data-i18n="free.chip">ฟรี</span><p class="free__k" data-i18n="free.a_k">ตรวจฟรี</p><h3 data-i18n="free.a_t">ตรวจโปรไฟล์ Google ของคุณ</h3><p class="free__b" data-i18n="free.a_b">เราดูโปรไฟล์ Google ของคุณแบบที่ลูกค้าเห็น ทั้งรูป เวลาเปิดปิด รีวิว และหมวดหมู่ คุณจะได้คำแนะนำที่ใช้ได้จริง 3 ข้อ แม้จะไม่ได้ใช้บริการเราก็ตาม</p><form class="free__form" data-free="a" novalidate=""><div class="free__field"><label for="faName" data-i18n="free.f_name">ชื่อร้าน</label><input autocomplete="organization" id="faName" name="business" required="" type="text"/></div><div class="free__field"><label for="faMaps" data-i18n="free.f_maps">เมือง หรือลิงก์ Google Maps</label><input id="faMaps" name="maps" type="text"/></div><div class="free__field"><label for="faFirst" data-i18n="free.f_first">ชื่อของคุณ</label><input autocomplete="given-name" id="faFirst" name="first" type="text"/></div><p aria-live="polite" class="free__err"></p><button class="btn btn--outline btn--lg" type="submit"><span data-i18n="free.a_btn">รับผลตรวจของฉัน</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button></form></article>
 </div>
-<div class="book" id="book"><div class="book__head"><p class="free__k" data-i18n="book.k">นัดคุยทางวิดีโอ</p><h3 data-i18n="book.t">อยากคุยก่อนไหม? จองเวลา 20 นาที</h3><p class="free__b" data-i18n="book.b">วิดีโอคอลฟรี เพื่อดูด้วยกันว่าร้านของคุณต้องการอะไร เลือกช่วงเวลาที่ว่างได้เลย</p></div><div class="book__days" role="group" aria-label="ช่วงเวลา"></div><div class="book__slots" role="group" aria-label="ช่วงเวลา"></div><p class="book__tz"><span data-i18n="book.tz">เวลาประเทศไทย</span><span class="book__local"></span></p><form class="book__form" data-book="" novalidate=""><div class="free__row"><div class="free__field"><label for="fbName" data-i18n="free.f_name">ชื่อร้าน</label><input autocomplete="organization" id="fbName" name="business" type="text"/></div><div class="free__field"><label for="fbFirst" data-i18n="free.f_first">ชื่อของคุณ</label><input autocomplete="given-name" id="fbFirst" name="first" type="text"/></div></div><p aria-live="polite" class="free__err"></p><button class="btn btn--sun btn--lg" type="submit"><span data-i18n="book.btn">จองช่วงเวลานี้</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button></form></div>
+<div class="bk" id="book"><aside class="bk__side"><div class="bk__host"><span aria-hidden="true" class="bk__avatar"><span data-founder-name="">M</span><i></i></span><div><p class="bk__k" data-i18n="book.k">นัดคุยทางวิดีโอ</p><p class="bk__hostname" data-founder-fill="" data-i18n="book.host">กับ Mourad ผู้ก่อตั้ง</p></div></div><h3 data-i18n="book.t">อยากคุยก่อนไหม? จองเวลา 20 นาที</h3><ul class="bk__meta"><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10.5l5-3v9l-5-3"/></svg><span data-i18n="book.call">วิดีโอคอล</span></li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span data-i18n="book.dur">20 นาที</span></li><li class="bk__free" data-i18n="free.chip">ฟรี</li></ul><ul class="bk__gets"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="book.b1">เราดูร้านและโปรไฟล์ Google ของคุณไปด้วยกัน</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="book.b2">คุณได้เห็นตัวอย่างเว็บไซต์สำหรับธุรกิจแบบคุณ</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="book.b3">คุณได้แผนที่ชัดเจนกลับไป แม้จะยังไม่สั่ง</span></li></ul><p class="bk__clock"><span aria-hidden="true" class="bk__pulse"></span><span class="bk__clocktxt"></span></p></aside><div class="bk__main"><p class="bk__step"><b>1</b><span data-i18n="book.step1">เลือกวัน</span></p><div class="book__days" role="group" aria-label="ช่วงเวลา"></div><p class="bk__step"><b>2</b><span data-i18n="book.step2">เลือกเวลา</span><em data-i18n="book.tz">เวลาประเทศไทย</em></p><div class="book__slots" role="group" aria-label="ช่วงเวลา"></div><p class="book__tz"><span class="book__local"></span></p><div aria-live="polite" class="bk__sum"><span aria-hidden="true" class="bk__sumic"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10.5l5-3v9l-5-3"/></svg></span><div><p class="bk__sumk" data-i18n="book.sum">นัดหมายของคุณ</p><p class="bk__sumv" data-i18n="book.sumNone">เลือกวันและเวลา</p></div></div><p class="bk__step"><b>3</b><span data-i18n="book.step3">ข้อมูลของคุณ</span></p><form class="book__form" data-book="" novalidate=""><div class="free__row"><div class="free__field"><label for="fbName" data-i18n="free.f_name">ชื่อร้าน</label><input autocomplete="organization" id="fbName" name="business" type="text"/></div><div class="free__field"><label for="fbFirst" data-i18n="free.f_first">ชื่อของคุณ</label><input autocomplete="given-name" id="fbFirst" name="first" type="text"/></div></div><p aria-live="polite" class="free__err"></p><button class="btn btn--sun btn--lg bk__go" type="submit"><span data-i18n="book.confirm">ยืนยันการนัดหมาย</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></button></form></div></div>
 <p class="free__note"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.4a.5.5 0 000-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8 11.9 11.9 0 004.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span data-i18n="free.note">เราตอบทาง WhatsApp ปกติภายในวันเดียวกัน</span></p>
 </div>
 </section>
@@ -636,20 +636,20 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
-<script defer="" src="../assets/js/i18n.js?v=20261008s"></script>
-<script defer="" src="../assets/js/nm-grow.js?v=20261008s"></script>
+<script defer="" src="../assets/js/i18n.js?v=20261008t"></script>
+<script defer="" src="../assets/js/nm-grow.js?v=20261008t"></script>
 <script defer="" src="../assets/js/qrcode.min.js"></script>
 <script defer="" src="../assets/js/nm-qr.js"></script><script defer="" src="../assets/js/vendor/gsap.min.js"></script>
 <script defer="" src="../assets/js/vendor/ScrollTrigger.min.js"></script>
-<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-film.js?v=20261008s"></script>
-<script defer="" src="../assets/js/safety.js?v=20261008s"></script>
+<script defer="" src="../assets/js/main.js"></script><script defer="" src="../assets/js/nm-film.js?v=20261008t"></script>
+<script defer="" src="../assets/js/safety.js?v=20261008t"></script>
 <script defer="" src="../assets/js/fx.js"></script>
-<script defer="" src="../assets/js/nm-home.js?v=20261008s"></script>
-<script defer="" src="../assets/js/home.js?v=20261008s"></script>
-<script defer="" src="../assets/js/hero-depth.js?v=20261008s"></script>
-<script defer="" src="../assets/js/hero-video.js?v=20261008s"></script>
+<script defer="" src="../assets/js/nm-home.js?v=20261008t"></script>
+<script defer="" src="../assets/js/home.js?v=20261008t"></script>
+<script defer="" src="../assets/js/hero-depth.js?v=20261008t"></script>
+<script defer="" src="../assets/js/hero-video.js?v=20261008t"></script>
 <script defer="" src="../assets/js/payment-state.js"></script>
 <script defer="" src="../assets/js/perf.js"></script>
-<script defer="" src="../assets/js/nm-stats.js?v=20261008s"></script>
+<script defer="" src="../assets/js/nm-stats.js?v=20261008t"></script>
 </body>
 </html>
