@@ -18,7 +18,7 @@ function render(){
   var b=$('[data-price="'+k+'"]'),m=$('[data-per="'+k+'"]');if(b)b.textContent=eur(p.price);
   if(m)m.textContent=T(k==='pack'?'s_o_life':(p.per==='mo'?'per_mo':'per_once'))});
  $$('[data-buy]').forEach(function(a){var k=a.getAttribute('data-buy'),l=CFG.LINKS&&CFG.LINKS[k];
-  a.href=l||('https://wa.me/'+(CFG.WHATSAPP||'')+'?text='+encodeURIComponent(T('mo_msg',{p:T(NAMES[k])})))});
+  a.href='paiement.html?plan='+k;a.removeAttribute('target');a.removeAttribute('rel')});
  var wa=$('#wa');if(wa)wa.href='https://wa.me/'+(CFG.WHATSAPP||'')+'?text='+encodeURIComponent(T('wa_msg'));
  var n=CFG.INSTALLMENTS,pk=(CFG.PLANS||{}).pack,ins=$('#instal');
  if(ins)ins.textContent=(n>1&&pk)?T('s_o_instal',{n:n,a:eur(pk.price/n)}):'';

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr" data-title="x_pay_k">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NM Academy</title>
+<meta name="description" content="Inscription à NM Academy : choisis ta formation et réserve ta place.">
+<meta name="theme-color" content="#070a24">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;600;700&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/vente.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="pg">
+<div class="top"><a class="brand" href="vente.html">NM <b>Academy</b></a><div class="tr"><div class="lang" role="group" aria-label="Language"></div></div></div>
+<main>
+
+<header class="ph-hero"><div class="wrap">
+  <span class="eyebrow" data-t="x_pay_k"></span>
+  <h1 data-t="x_pay_h"></h1>
+  <p class="intro" data-t="x_pay_p"></p>
+</div></header>
+<section class="s"><div class="payg wrap wide">
+  <div style="display:grid;gap:22px">
+    <div class="rv"><h3 class="stl" style="font-size:1.2rem" data-t="x_pay_1"></h3>
+    <div class="pls" id="plans">
+      <label class="pl" data-k="pack"><input type="radio" name="plan" value="pack"><div><b data-t="pk_n"></b><span data-t="pk_d"></span></div><span class="pp"></span></label>
+      <label class="pl" data-k="a"><input type="radio" name="plan" value="a"><div><b data-t="pa_n"></b><span data-t="pa_d"></span></div><span class="pp"></span></label>
+      <label class="pl" data-k="b"><input type="radio" name="plan" value="b"><div><b data-t="pb_n"></b><span data-t="pb_d"></span></div><span class="pp"></span></label>
+      <label class="pl" data-k="coach"><input type="radio" name="plan" value="coach"><div><b data-t="pc_n"></b><span data-t="pc_dur"></span></div><span class="pp"></span></label>
+    </div></div>
+    <form class="gl fm rv" id="payf" novalidate>
+      <h3 class="stl" style="font-size:1.2rem;margin:0" data-t="x_pay_2"></h3>
+      <label><span data-t="x_pay_name"></span><input id="pn" type="text" autocomplete="given-name" maxlength="60" required></label>
+      <label><span data-t="x_pay_mail"></span><input id="pm" type="email" autocomplete="email" maxlength="120"></label>
+      <p class="err" id="perr" role="alert"></p>
+      <p class="hint" data-t="x_pay_sec"></p>
+    </form>
+  </div>
+  <aside class="gl sum rv">
+    <h3 style="margin:0;font-size:1.2rem" data-t="x_pay_3"></h3>
+    <div><b id="totn" style="font-size:1.05rem"></b><p class="note" style="margin:4px 0 0" data-t="x_pay_once"></p></div>
+    <div class="tot"><span data-t="x_pay_total"></span><b id="tot"></b></div>
+    <div class="soon" id="soon"><b data-t="x_pay_soon_t"></b><span data-t="x_pay_soon_d"></span></div>
+    <button class="cta" id="paybtn" type="submit" form="payf"><span data-t="x_pay_reserve"></span><i aria-hidden="true">→</i></button>
+    <div class="guar" style="margin:0"><div><b data-t="s_gu_t"></b><span data-t="s_gu_d"></span></div></div>
+    <div class="mini-links"><a href="contact.html" data-t="x_pay_q"></a><a href="legal.html" data-t="foot_legal"></a></div>
+  </aside>
+</div></section>
+
+</main>
+<footer id="sfoot"></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/vente-copy.js"></script>
+<script src="assets/js/site-copy.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
