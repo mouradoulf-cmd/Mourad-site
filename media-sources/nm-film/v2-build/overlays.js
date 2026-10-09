@@ -14,9 +14,12 @@ const L = {
       '…pas de photos, pas de site : <em>ils passent leur chemin</em>.',
       'Et sur place ? Un menu <em>qu’ils ne comprennent pas</em>.',
       'Ils hésitent, commandent peu… <em>ou repartent</em>.',
-      'Avec NM Studio : <em>site web, menu QR</em> et fiche Google.',
-      'Ils voient tout, <em>dans leur langue</em>.',
-      'Et votre salle <em>se remplit</em>.'
+      'Le soir, ils trouvent <em>son nouveau site</em>…',
+      '…avec <em>les photos de tous les plats</em>.',
+      'À table : <em>le menu QR</em>, dans leur langue.',
+      'Et la salle <em>se remplit</em>.',
+      'Site web, menu QR, fiche Google : <em>NM Studio</em>.',
+      'Plus de clients, <em>chaque soir</em>.'
     ],
     bad: { title: 'Restaurant', sub: 'Restaurant thaï', items: ['Aucune photo', 'Pas de site web', 'Pas de menu'] },
     good: { title: 'Menu', items: ['Photos des plats', 'Menu en 5 langues', 'Réservation WhatsApp'] },
@@ -30,9 +33,12 @@ const L = {
       '…no photos, no website: <em>they walk on by</em>.',
       'And inside? A menu <em>they can’t read</em>.',
       'They hesitate, order little… <em>or leave</em>.',
-      'With NM Studio: <em>website, QR menu</em> and Google listing.',
-      'They see everything, <em>in their language</em>.',
-      'And your tables <em>fill up</em>.'
+      'That evening, they find <em>her new website</em>…',
+      '…with <em>photos of every dish</em>.',
+      'At the table: <em>a QR menu</em>, in their language.',
+      'And the tables <em>fill up</em>.',
+      'Website, QR menu, Google listing: <em>NM Studio</em>.',
+      'More customers, <em>every night</em>.'
     ],
     bad: { title: 'Restaurant', sub: 'Thai restaurant', items: ['No photos', 'No website', 'No menu'] },
     good: { title: 'Menu', items: ['Photos of every dish', 'Menu in 5 languages', 'WhatsApp booking'] },
@@ -46,9 +52,12 @@ const L = {
       '…ไม่มีรูป ไม่มีเว็บไซต์ <em>เขาก็เดินผ่านไป</em>',
       'เข้ามาในร้าน? เจอเมนู<em>ที่อ่านไม่เข้าใจ</em>',
       'ลังเล สั่งน้อย… <em>หรือเดินออกไป</em>',
-      'กับ NM Studio: <em>เว็บไซต์ เมนู QR</em> และ Google',
-      'เห็นทุกอย่าง <em>เป็นภาษาของเขา</em>',
-      'แล้วร้านคุณก็<em>เต็ม</em>'
+      'ตอนเย็น เขาเจอ<em>เว็บไซต์ใหม่ของร้าน</em>…',
+      '…พร้อม<em>รูปอาหารทุกจาน</em>',
+      'ที่โต๊ะ: <em>เมนู QR</em> เป็นภาษาของเขา',
+      'แล้วร้านก็<em>เต็ม</em>',
+      'เว็บไซต์ เมนู QR และ Google: <em>NM Studio</em>',
+      'ลูกค้ามากขึ้น <em>ทุกคืน</em>'
     ],
     bad: { title: 'ร้านอาหาร', sub: 'ร้านอาหารไทย', items: ['ไม่มีรูปภาพ', 'ไม่มีเว็บไซต์', 'ไม่มีเมนู'] },
     good: { title: 'เมนู', items: ['รูปอาหารทุกจาน', 'เมนู 5 ภาษา', 'จองผ่าน WhatsApp'] },
