@@ -231,3 +231,8 @@ body.nm-has-bar .line-float { bottom: calc(max(1.25rem, env(safe-area-inset-bott
 .founder--anim.is-in .founder__text > :nth-child(3) { transition-delay: .12s; }
 .founder--anim.is-in .founder__text > :nth-child(4) { transition-delay: .18s; }
 .founder--anim.is-in .founder__text > :nth-child(5) { transition-delay: .24s; }
+
+/* founder points: one clean left-aligned column (centred as a block on phones), icons in line with the text */
+.founder__points { justify-items: start; text-align: start; }
+.founder__points li { text-align: start; }
+@media (max-width: 859px) { .founder__points { width: fit-content; max-width: 100%; margin-inline: auto; justify-items: start; } }

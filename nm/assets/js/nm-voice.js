@@ -294,8 +294,47 @@
   }
  }
 };
+  /* professional founder section for FR / EN / IT / AR (Thai keeps the story with his wife) */
+  var C4 = {
+ "fr": {
+  "founder": {
+   "title": "La qualité d'une agence, <em>la proximité en plus.</em>",
+   "body": "Je suis {name}, fondateur de NM Studio. Je conçois personnellement chaque site, chaque menu QR et chaque fiche Google, et je reste votre contact direct, du premier échange jusqu'au suivi après la mise en ligne. Vous bénéficiez de la qualité d'une agence, avec la disponibilité et l'écoute d'un partenaire de proximité.",
+   "p1": "Rendez-vous sur place ou en visioconférence",
+   "p2": "Un contact direct et réactif sur WhatsApp",
+   "p3": "Sans engagement, résiliable à tout moment"
+  }
+ },
+ "en": {
+  "founder": {
+   "title": "Agency-grade quality, <em>with a personal touch.</em>",
+   "body": "I'm {name}, founder of NM Studio. I personally design every website, QR menu and Google listing, and I remain your direct contact, from our first conversation to the follow-up after launch. You get the quality of an agency, with the availability and attentiveness of a local partner.",
+   "p1": "Meetings in person or by video call",
+   "p2": "A direct, responsive contact on WhatsApp",
+   "p3": "No commitment, cancel anytime"
+  }
+ },
+ "it": {
+  "founder": {
+   "title": "La qualità di un'agenzia, <em>con la vicinanza in più.</em>",
+   "body": "Sono {name}, fondatore di NM Studio. Progetto personalmente ogni sito, ogni menù QR e ogni scheda Google, e resto il vostro referente diretto, dal primo contatto fino all'assistenza dopo la pubblicazione. Avete la qualità di un'agenzia, con la disponibilità e l'ascolto di un partner vicino a voi.",
+   "p1": "Incontri di persona o in videochiamata",
+   "p2": "Un contatto diretto e reattivo su WhatsApp",
+   "p3": "Senza vincoli, disdetta in qualsiasi momento"
+  }
+ },
+ "ar": {
+  "founder": {
+   "title": "جودة وكالة متخصصة، <em>مع قربٍ أكبر منك.</em>",
+   "body": "أنا {name}، مؤسس NM Studio. أصمّم بنفسي كل موقع وكل قائمة QR وكل ملف على جوجل، وأبقى جهة تواصلك المباشرة، من أول حديث بيننا حتى المتابعة بعد الإطلاق. تحصل على جودة الوكالات، مع حرص شريك قريب منك واستعداده للإصغاء إليك.",
+   "p1": "مواعيد حضورية أو عبر مكالمة فيديو",
+   "p2": "تواصل مباشر وسريع عبر واتساب",
+   "p3": "بلا التزام، ويمكنك الإلغاء في أي وقت"
+  }
+ }
+};
   function deep(t, s) { Object.keys(s).forEach(function (k) { if (s[k] && typeof s[k] === "object") { t[k] = t[k] || {}; deep(t[k], s[k]); } else t[k] = s[k]; }); return t; }
-  deep(C, C2); deep(C.th, C3.th);   // the wife story is for Thai readers only
+  deep(C, C2); deep(C.th, C3.th); ['en','fr','it','ar'].forEach(function (l) { deep(C[l], C4[l]); });   // the wife story is for Thai readers only
   window.NM_EXTRA_DICT = deep(window.NM_EXTRA_DICT || {}, C);
   if (typeof module !== "undefined") module.exports = C;
 })();
