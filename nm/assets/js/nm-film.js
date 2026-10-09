@@ -1,6 +1,7 @@
 /* NM Studio: the "problems" film. A muted video (sound on request) inside a 3D iPhone; captions, the 4-step bar and the chapter card follow it.
    - the video file only loads when the section gets close, and only plays while it is on screen
-   - reduced motion or data saver: no autoplay, a play button instead, no 3D
+   - the film always starts by itself (muted) when it scrolls into view, the owner wants no play button to tap;
+     only data saver keeps the play button. Reduced motion still switches off the 3D and the text effects
    - 3D with a job: the phone stands up to face you as you scroll to it; the chapter card turns in when the step changes
    - captions come from the hidden .film__cues list, so the language switcher (data-i18n) translates them too
    - to swap the film: replace assets/video/film.mp4 and adjust data-s / data-e (cues) and data-t (chapters) in the HTML */
@@ -22,7 +23,7 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var saveData = !!(navigator.connection && navigator.connection.saveData);
   var rtl = document.documentElement.dir === "rtl";
-  var auto = !reduce && !saveData, userPaused = false, visible = false, loaded = false, raf = 0, curCue = -1, curCh = -1;
+  var auto = !saveData, userPaused = false, visible = false, loaded = false, raf = 0, curCue = -1, curCh = -1;
 
   root.classList.add("film--js");
 
@@ -33,7 +34,21 @@
     video.preload = "auto"; video.load();
   }
   function setPaused(p) { root.classList.toggle("is-paused", p); if (playBtn) playBtn.classList.toggle("is-on", !p); }
-  function play() { load(); var pr = video.play(); if (pr && pr.catch) pr.catch(function () { setPaused(true); }); }
+  // iOS only autoplays a muted, inline video: make sure both are set on the element itself before every attempt
+  video.muted = true; video.defaultMuted = true; video.setAttribute("muted", ""); video.setAttribute("playsinline", ""); video.playsInline = true;
+  var blocked = false;
+  function play() {
+    load();
+    var pr = video.play();
+    if (pr && pr.then) pr.then(function () { blocked = false; }, function () { blocked = true; setPaused(true); });
+  }
+  // the first attempt can come before any data has arrived: try again as soon as the film can play
+  function retry() { if (visible && auto && !userPaused && video.paused && !video.ended) play(); }
+  video.addEventListener("loadeddata", retry);
+  video.addEventListener("canplay", retry);
+  // a browser that refused autoplay (power saving) gets it on the visitor's first touch anywhere on the page
+  function onTouch() { if (blocked) retry(); }
+  ["touchend", "click", "keydown"].forEach(function (ev) { document.addEventListener(ev, onTouch, { passive: true }); });
 
   function show(i) {
     if (!chs.length || i === curCh) return;

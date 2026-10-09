@@ -39,7 +39,7 @@
  * download starts, so the video's bytes and its decode never compete with the
  * paint the visitor is looking at, and it is paused the moment the hero leaves
  * the viewport. The guardrails still decide for the visitor: `saveData`,
- * `slow-2g`/`2g`/`3g` and `prefers-reduced-motion` all keep the poster, which
+ * `slow-2g`/`2g`/`3g` keep the poster, which
  * is the correct and intended outcome there.
  *
  * Resource budget: the video is paused when the hero leaves the viewport
@@ -54,8 +54,9 @@
   var video = document.querySelector(".h__video");
   if (!video) return;
 
-  // Respect the visitor's motion preference: never autoplay for them.
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // The muted hero video plays for everyone (the owner's choice), reduced motion included; only data saver
+  // and slow connections below keep the still image.
+  video.muted = true; video.defaultMuted = true; video.setAttribute("muted", ""); video.playsInline = true;
   // Skip metered or slow connections (Connection API is absent on Safari/FF,
   // in which case we simply keep the video).
   var conn = navigator.connection;
