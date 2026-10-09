@@ -11,8 +11,8 @@ function folderFor(code){try{var p=location.pathname.replace(/\/+/g,"/");var m=p
 function nav(code){try{var f=folderFor();var page=ROUTES["/nm/"+(FOLDERS[code]||"")+f]?f:ROUTES["/nm/"+f];if(!page)page="index.html";location.href=location.pathname.replace(/\/nm\/.*$/,"/nm/")+FOLDERS[code]+page;}catch(e){}}
 document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?t.closest("[data-lang]"):null;if(!b)return;var code=b.getAttribute("data-lang");if(code&&code!=="th"){e.preventDefault();e.stopPropagation();nav(code);}},true);
 })();</script>
-<title>ราคา: ค่าติดตั้ง แล้วต่อด้วยค่าบริการรายเดือน | NM Studio</title>
-<meta content="ราคาเป็นเงินบาท: โปรไฟล์ Google ฿990 จ่ายครั้งเดียว เว็บไซต์ ฿5,800 แล้ว ฿1,140 ต่อเดือน แพ็กเกจครบชุด ฿13,300 แล้ว ฿3,800 ต่อเดือน" name="description"/>
+<title>ราคาสำหรับร้านในประเทศไทย เริ่มต้น 299 บาท | NM Studio</title>
+<meta content="เมนูแปลภาษา 299 บาท โปรไฟล์ Google 790 บาท แพ็กเกจครบชุด 2,990 บาท รวมปีแรก ไม่มีค่ารายเดือน ดูแบบร่างฟรีก่อนตัดสินใจ" name="description"/>
 <meta content="index,follow" name="robots"/>
 <meta content="#07060c" name="theme-color"/>
 <meta content="dark" name="color-scheme"/>
@@ -24,7 +24,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <meta content="website" property="og:type"/>
 <meta content="NM Studio" property="og:site_name"/>
 <meta content="ราคา: ค่าติดตั้ง แล้วต่อด้วยค่าบริการรายเดือน | NM Studio" property="og:title"/>
-<meta content="ราคาเป็นเงินบาท: โปรไฟล์ Google ฿990 จ่ายครั้งเดียว เว็บไซต์ ฿5,800 แล้ว ฿1,140 ต่อเดือน แพ็กเกจครบชุด ฿13,300 แล้ว ฿3,800 ต่อเดือน" property="og:description"/>
+<meta content="เมนูแปลภาษา 299 บาท โปรไฟล์ Google 790 บาท แพ็กเกจครบชุด 2,990 บาท รวมปีแรก ไม่มีค่ารายเดือน ดูแบบร่างฟรีก่อนตัดสินใจ" property="og:description"/>
 <meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/th/pricing.html" property="og:url"/>
 <meta content="https://mouradoulf-cmd.github.io/Mourad-site/nm/assets/img/og-share.jpg" property="og:image"/>
 <meta content="image/jpeg" property="og:image:type"/>
@@ -44,6 +44,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <script defer="" src="../assets/js/nm-copy2.js?v=20261008v"></script>
 <script defer="" src="../assets/js/offers-config.js?v=20261008v"></script>
 <script>try{if(sessionStorage.getItem("nm-wipe")){document.documentElement.classList.add("nm-wipe-in");sessionStorage.removeItem("nm-wipe")}}catch(e){}</script><style>html.nm-wipe-in body::before{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:linear-gradient(180deg,#07070a calc(100% - 3px),#c9a961 calc(100% - 3px));animation:nmWipeIn .7s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeIn{to{transform:translateY(-101%)}}body.nm-leave::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:none;background:#07070a;border-top:3px solid #c9a961;transform:translateY(101%);animation:nmWipeOut .42s cubic-bezier(.22,1,.36,1) both}@keyframes nmWipeOut{to{transform:none}}@media(prefers-reduced-motion:reduce){html.nm-wipe-in body::before,body.nm-leave::after{display:none}}</style>
+<link href="../assets/css/thai-offers.css?v=20261009t" rel="stylesheet"/>
 </head>
 <body data-meta="meta2.pricing">
 <a class="skip-link" data-i18n="a11y.skip" href="#main">ข้ามไปยังเนื้อหา</a>
@@ -334,7 +335,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
-<script defer="" src="../assets/js/i18n.js?v=20261008v"></script>
+<script defer="" src="../assets/js/thai-copy.js?v=20261009t"></script><script defer="" src="../assets/js/i18n.js?v=20261008v"></script>
 <script defer="" src="../assets/js/qrcode.min.js"></script>
 <script defer="" src="../assets/js/nm-qr.js"></script><script defer="" src="../assets/js/vendor/gsap.min.js"></script>
 <script defer="" src="../assets/js/vendor/ScrollTrigger.min.js"></script>
@@ -346,5 +347,6 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <script defer="" src="../assets/js/payment-state.js"></script>
 <script defer="" src="../assets/js/perf.js"></script>
 <script defer="" src="../assets/js/nm-stats.js?v=20261008v"></script>
+<script defer="" src="../assets/js/thai-offers.js?v=20261009t"></script>
 </body>
 </html>
