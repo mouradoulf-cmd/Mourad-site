@@ -15,7 +15,7 @@ window.NM_CONTACT = {
   whatsappNumber: "",
   whatsappLink: "https://wa.me/qr/PYPOVXTCVM74I1",
   founderName: "Mourad",
-  founderPhoto: "",
+  founderPhoto: "assets/img/founder.jpg",
   analyticsToken: "",
   lineLink: "",
   referralMonths: 1,
