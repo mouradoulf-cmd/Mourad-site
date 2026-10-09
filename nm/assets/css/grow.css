@@ -218,3 +218,6 @@ html[lang="th"] .ref__k, html[lang="ar"] .ref__k { letter-spacing: 0; font-size:
 .line-float[hidden] { display: none; }
 .line-float svg { width: 34px; height: 34px; }
 body.nm-has-bar .line-float { bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + var(--nm-bar-h, 5.5rem) + 70px); }
+/* with a real photo: a larger portrait frame (head, suit and tie) instead of the round monogram */
+.founder__photo.has-photo { width: clamp(14rem, 28vw, 19rem); aspect-ratio: 4 / 5; border-radius: 28px; }
+.founder__photo.has-photo img { object-position: 50% 30%; }
