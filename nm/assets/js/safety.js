@@ -10,7 +10,10 @@
   "use strict";
 
   function repair() {
-    var els = document.querySelectorAll("[data-anim], .reveal, .offer, .pcard, .why-card, .how-step, .wk-card");
+    // the founder entrance is a CSS class: switch it on if the section is on screen and still waiting
+    var f = document.querySelector(".founder--anim:not(.is-in)");
+    if (f) { var fr = f.getBoundingClientRect(); if (fr.top < window.innerHeight - 40 && fr.bottom > 40) f.classList.add("is-in"); }
+    var els = document.querySelectorAll("[data-anim], .reveal, .offer, .pcard, .why-card, .how-step, .wk-card, .section-lead, .section-head .eyebrow, .phero .eyebrow, .phero__lead, .st__item");
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var r = el.getBoundingClientRect();

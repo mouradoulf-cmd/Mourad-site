@@ -52,6 +52,17 @@
     open(name, t);
   }, true);
 
+  // the floating WhatsApp button steps aside while the final call (big WhatsApp button) or the footer is visible
+  var wa = document.querySelector(".wa-float"), ends = [document.getElementById("contact"), document.querySelector(".footer")].filter(Boolean);
+  if (wa && ends.length && "IntersectionObserver" in window) {
+    var seen = new Set();
+    var eio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+      wa.classList.toggle("is-tucked", seen.size > 0);
+    }, { threshold: 0.15 });
+    ends.forEach(function (el) { eio.observe(el); });
+  }
+
   var h = location.hash.slice(1);
   if (sheets[h]) setTimeout(function () { open(h); }, 250);
 })();

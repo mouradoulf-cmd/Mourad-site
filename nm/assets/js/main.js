@@ -394,7 +394,7 @@
       .from(".h__chip .chip", { scale: 0.6, opacity: 0, y: 20, duration: 1, stagger: 0.14, ease: "back.out(1.7)" }, 1.1)
       .from(".h__now", { opacity: 0, y: 10, duration: 0.8 }, 1.4);
     // Scrolling away: the copy drifts up and fades, the stage sinks slower.
-    gsap.to(".h__copy", { yPercent: -12, opacity: 0.25, ease: "none", scrollTrigger: { trigger: ".h", start: "30% top", end: "bottom top", scrub: true } });
+    // (the copy no longer fades out on scroll: it stays readable until it leaves the screen)
     gsap.to(".h__visual", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".h", start: "top top", end: "bottom top", scrub: true } });
   } else tl.kill();
 
@@ -488,7 +488,8 @@
     gsap.fromTo(img, { yPercent: -6, scale: 1.12 }, { yPercent: 8, scale: 1.12, ease: "none", scrollTrigger: { trigger: img.closest("section"), start: "top top", end: "bottom top", scrub: true } });
   });
 
-  window.addEventListener("load", function () { ST.refresh(); });
+  window.addEventListener("load", function () { ST.refresh(); setTimeout(function () { ST.refresh(); }, 1500); });
+  document.addEventListener("nm:lang", function () { setTimeout(function () { ST.refresh(); }, 300); });   // the Thai offers block changes the page height
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
 
   // Safety net: anything still at opacity:0 once it's actually on screen

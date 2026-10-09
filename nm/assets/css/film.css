@@ -34,7 +34,7 @@ html[lang="th"] .film__headline em, html[lang="ar"] .film__headline em { font-st
 /* hidden state: no transition, so it applies instantly; the transitions live on the .is-in state only */
 .film--reveal .film__punchb, .film--reveal .film__cta { opacity: 0; translate: 0 16px; }
 .film--reveal.is-in .film__punchb, .film--reveal.is-in .film__cta { opacity: 1; translate: 0 0; transition: opacity .8s ease .55s, translate .9s cubic-bezier(.2,.75,.2,1) .55s; }
-.film--reveal.is-in .film__cta { transition-delay: 1.6s; }
+.film--reveal.is-in .film__cta { transition-delay: .9s; }
 .film__headline .w, .film__headline em, .film__punchl .s { display: inline-block; }
 .film--reveal .film__headline .w, .film--reveal .film__headline em, .film--reveal .film__punchl .s { opacity: 0; filter: blur(10px); transform: translateY(.4em); }
 .film--reveal .film__punchl .s { transform: translateY(.3em) scale(.96); }

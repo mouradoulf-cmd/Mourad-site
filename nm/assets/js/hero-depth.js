@@ -1,5 +1,5 @@
 /* NM Studio — hero depth: the hero media drifts and zooms as you scroll away,
-   the copy lifts and fades; on desktop the copy also leans gently toward the
+   the copy stays put and readable; on desktop the copy also leans gently toward the
    pointer.
 
    The transform is applied to the .h__media wrapper, NEVER to the <video>.
@@ -20,7 +20,9 @@
     ticking = false;
     var y = Math.min(window.scrollY, window.innerHeight * 1.2), k = y / window.innerHeight;
     media.style.transform = "translate3d(" + (mx * -14).toFixed(1) + "px," + (y * 0.12 + my * -10).toFixed(1) + "px,0) scale(" + (1.04 + k * 0.08).toFixed(3) + ")";
-    if (copy) { copy.style.transform = "translate3d(" + (mx * 10).toFixed(1) + "px," + (-y * 0.12 + my * 6).toFixed(1) + "px,0)"; copy.style.opacity = Math.max(0, 1 - k * 1.25).toFixed(3); }
+    // the copy only leans toward the pointer: it no longer fades or drifts on scroll, so the buttons and the
+    // founder's signature stay fully readable for as long as they are on screen (phones show them low in the hero)
+    if (copy) copy.style.transform = "translate3d(" + (mx * 10).toFixed(1) + "px," + (my * 6).toFixed(1) + "px,0)";
   }
   function req() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
   // Compositor hint only on the element that really animates, and only once:
