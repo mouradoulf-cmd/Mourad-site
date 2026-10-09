@@ -63,6 +63,11 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 <div id="statusBar"><span id="statusText"></span></div>
 <video id="nosleep" muted playsinline style="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none"></video>
 
+<div class="panel" id="allPanel" style="border:2px solid #e8a04a">
+  <button class="btn main" id="btnAll" type="button" style="min-height:64px;font-size:1.15rem;width:100%">🚀 GENERATE EVERYTHING — AUTOMATIC (30 min)</button>
+  <div class="hint" style="margin-top:.5rem">One tap: uses ALL your API keys, writes the whole story, makes about 360 clips of 5 s (30 minutes), switches keys by itself, continues the next parts by itself and saves the download files. Paste your keys below first. Keep this tab open and the PC awake.</div>
+</div>
+
 <div class="panel" id="apiPanel">
   <div class="ttl">🔑 Clés API Agnes (jusqu'à 8 comptes)</div>
   <textarea id="apiKeyInput" rows="4" placeholder="Colle tes clés API Agnes, UNE PAR LIGNE (sk-...)" autocomplete="off" spellcheck="false" autocapitalize="off" style="width:100%;box-sizing:border-box;font-family:monospace"></textarea>
@@ -793,6 +798,10 @@ function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('
  $('btnStop').classList.toggle('on',S.running);const u=usage();$('quotaHint').textContent='Vidéos créées aujourd\'hui : '+u.n+' sur '+keyList().length+' clé(s), limite '+(P&&P.o?P.o.quota:'')+' par clé (chaque nouvel essai compte). Avec « Refaire si défaut », prévois 10 à 30 % de vidéos en plus.'}
 $('apiClear').onclick=()=>{if(confirm('Effacer toutes les clés enregistrées ?')){lsDel(KEYS);lsDel(KEY);upd();planUi();toast('Clés effacées')}};
 $('apiSave').onclick=()=>{const arr=($('apiKeyInput').value||'').split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean);const merged=arr.concat(keyList());const uniq=merged.filter((x,i)=>merged.indexOf(x)===i).slice(0,8);if(arr.length){lsSet(KEYS,JSON.stringify(uniq))}else{toast('Colle au moins une clé (ou touche « Effacer toutes les clés »)','warn');return}Object.keys(badKeys).forEach(k=>delete badKeys[k]);$('apiKeyInput').value='';upd();planUi();toast(uniq.length+' clé(s) en tout ✓ (les anciennes sont gardées)')};
+$('btnAll').onclick=async()=>{if(S.running){toast('Already running','warn');return}if(!getKey()){toast('Paste your API keys below first, then tap Save keys','error',6000);$('apiPanel').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('apiKeyInput').focus(),500);return}
+ if(P&&P.scenes&&P.scenes.length){const fin=P.scenes.every(done)&&(!P.series||P.series.cur+1>=P.series.parts.length);if(fin){if(!confirm('The current story is finished. Start a NEW 30-minute story? (Download your clips first!)'))return;P=null;lsDel(PROJ);await dbClear()}}
+ const set=(i,v)=>{const e=$(i);if(e)e.value=v};set('len','m30');set('dur','5');set('perDay','100');set('quota','100');set('retries','3');set('talk','4');$('optAuto').checked=true;$('optReview').checked=false;planUi();
+ if(!P)toast('Starting: '+$('planInfo').textContent.replace(/<[^>]+>/g,''),'',6000);run()};
 $('btnGo').onclick=run;$('btnStop').onclick=()=>{S.stop=true;S.userStop=true;toast('Arrêt en cours…','warn')};
 $('mode').onchange=upd;$('btnMemClear').onclick=()=>{if(confirm('Effacer la mémoire des histoires déjà créées ?')){lsDel(MEM);memUi();toast('Mémoire effacée')}};$('btnPlay').onclick=playAll;$('btnZip').onclick=zipAll;
 $('btnNew').onclick=async()=>{if(S.running){toast('Arrête d\'abord la création','warn');return}if((P||SHOW)&&!confirm('Effacer toute la série (histoire, personnages, épisodes) ?'))return;P=null;SHOW=null;lsDel(SHOWK);lsDel(PROJ);await dbClear();$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';upd();toast('Prêt pour une nouvelle histoire')};
