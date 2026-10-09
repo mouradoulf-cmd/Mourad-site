@@ -156,6 +156,7 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <video class="pl" id="asmVid" controls playsinline style="display:none;margin-top:.5rem"></video>
   <a class="btn gold" id="asmDl" style="display:none;text-align:center;text-decoration:none;line-height:30px">⬇ Télécharger la vidéo finale</a>
 <div class="redobox" style="margin:.6rem 0;padding:.7rem;border:1px solid #e0605a;border-radius:12px"><label class="lab" style="display:block;margin-bottom:.3rem">✍️ Écris les numéros des clips à refaire</label><input class="redoNums" type="text" inputmode="numeric" placeholder="ex : 37, 28, 36, 4" style="width:100%;box-sizing:border-box"><button class="btn main redoGo" type="button" style="margin-top:.5rem;min-height:50px;width:100%">🔁 Refaire ces clips</button></div>
+  <div id="dlParts" style="display:none;margin:.6rem 0;padding:.7rem;border:1px solid #6aa7ff;border-radius:12px"></div>
   <div id="redoneBox" style="margin:.6rem 0;padding:.7rem;border:1px solid #4cb87a;border-radius:12px"></div>
   <button class="btn main" id="btnRev" type="button" style="min-height:52px">🔍 Revue rapide : valider chaque clip (✅ bon / 🔁 à refaire)</button>
   <button class="btn gold" id="btnPlay" type="button">▶ Regarder l'histoire (tous les clips à la suite)</button>
@@ -420,7 +421,7 @@ async function writeBeats(k){
  if(!d)throw new Error('La partie '+(k+1)+' n\'a pas pu être écrite (réessaie)');
  const b=d.beats.map(String).slice(0,M);while(b.length<M)b.push('The story moves forward towards the next part.');
  P.beats=b;P.series.cur=k}
-async function startPart(k){P.partStart=P.scenes.length;await writeBeats(k);await expandScenes();await reviewStory();save()}
+async function startPart(k){P.partStart=P.scenes.length;await writeBeats(k);await expandScenes();P.scenes.slice(P.partStart).forEach(x=>{x.part=k});await reviewStory();save()}
 const partComplete=()=>P.scenes.slice(P.partStart||0).every(done);
 async function expandScenes(){
  const g=genre(),L=LANGN[P.o.lang],B=P.bible,N=P.beats.length,base=P.scenes.length;
@@ -574,7 +575,14 @@ document.addEventListener('click',async e=>{const l=e.target.closest('[data-epl]
   const dn=P.scenes.filter(done);saveBlob(new Blob([linksText(P.bible.title,dn)],{type:'text/plain'}),'episode-'+(P.ep||1)+'-liens-videos.txt');
   archiveEp();for(const sc of P.scenes){await dbPut('start:'+sc.n,null);await dbPut('clip:'+sc.n,null)}
   P=null;lsDel(PROJ);$('idea').value=idea;$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';epUi();serUi();upd();toast('Épisode précédent archivé ✓ Création du suivant…');run()}});
-function serUi(){const bx=$('serPanel');if(!P||!P.series){bx.style.display='none';return}const SR=P.series,dn=clipDone(),T=SR.total,dur=+P.o.dur,min=Math.round(dn*dur/60*10)/10,day=usage().n;
+const partOf=sc=>sc.part!=null?sc.part:(P.series?Math.floor((sc.n-1)/P.series.perDay):0);
+function batText(title,list){const q=u=>String(u).replace(/"/g,'');return '@echo off\r\nchcp 65001 >nul\r\nsetlocal\r\nset D=%~dp0videos\r\nif not exist "%D%" mkdir "%D%"\r\necho Telechargement de '+list.length+' clips dans %D%\r\n'+list.map(x=>'curl.exe -L -s --retry 3 -o "%D%\\'+pad(x.n)+'.mp4" "'+q(x.url)+'" && echo '+pad(x.n)+' ok').join('\r\n')+'\r\necho.\r\necho TERMINE : les clips sont dans %D%\r\npause\r\n'}
+async function saveBat(name,list){await saveText(name,batText(P.bible.title,list))}
+function dlUi(){const bx=$('dlParts');if(!bx)return;const dn=P&&P.scenes?P.scenes.filter(x=>done(x)&&x.url):[];if(!dn.length){bx.style.display='none';return}
+ bx.style.display='block';const parts=P.series?[...new Set(dn.map(partOf))].sort((a,b)=>a-b):[];
+ bx.innerHTML='<b>⬇ Télécharger les vidéos (PC Windows)</b><div class="hint" style="margin:.3rem 0">Chaque bouton télécharge un petit fichier <b>.bat</b>. Double-clique dessus : Windows télécharge tous les clips (001.mp4, 002.mp4…) dans un dossier à côté du fichier. Ça marche pendant que le site continue les parties suivantes.</div>'+parts.map(k=>{const l=dn.filter(x=>partOf(x)===k);return '<button class="btn" type="button" data-bat="'+k+'" style="margin:.2rem 0">⬇ Partie '+(k+1)+' ('+l.length+' clips)</button>'}).join('')+'<button class="btn main" type="button" data-bat="all" style="margin:.2rem 0;min-height:50px">⬇ TOUT (partie 1 à '+(parts.length||1)+' : '+dn.length+' clips)</button>'}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-bat]');if(!b||!P)return;const dn=P.scenes.filter(x=>done(x)&&x.url);const k=b.dataset.bat;const l=k==='all'?dn:dn.filter(x=>partOf(x)===+k);if(!l.length)return;saveBat(k==='all'?'telecharger-TOUT.bat':'telecharger-partie-'+(+k+1)+'.bat',l);toast('Fichier .bat téléchargé : double-clique dessus','',5000)});
+function serUi(){dlUi();const bx=$('serPanel');if(!P||!P.series){bx.style.display='none';return}const SR=P.series,dn=clipDone(),T=SR.total,dur=+P.o.dur,min=Math.round(dn*dur/60*10)/10,day=usage().n;
  bx.style.display='block';bx.innerHTML='<h3 style="margin:0 0 .4rem">📺 Série : partie '+(SR.cur+1)+' / '+SR.parts.length+' — '+esc(SR.parts[SR.cur].title)+' · Jour '+dayNo()+'</h3><div class="hint">'+dn+' / '+T+' clips prêts ≈ '+min+' min sur '+Math.round(T*dur/60)+' min · aujourd\'hui '+day+' vidéos créées. Reviens demain : le même bouton écrit et produit la partie suivante avec les mêmes personnages. <b>Ne vide pas les données du navigateur</b> entre les jours.</div><details style="margin-top:.5rem"><summary>Plan de toute l\'histoire</summary>'+SR.parts.map((p,i)=>'<p style="margin:.4rem 0"><b>'+(i+1)+'. '+esc(p.title)+'</b>'+(i<=SR.cur?' ✓':'')+'<br>'+esc(p.summary)+'</p>').join('')+'</details>'}
 function planUi(){try{const L_=lenParse(),d=+$('dur').value;const nk=Math.max(1,keyList().length),cap=(+$('quota').value||100)*nk;$('planInfo').innerHTML=L_.series?'= '+L_.total+' clips de '+d+' s ≈ <b>'+Math.ceil(L_.total/cap)+' jour(s)</b> avec '+nk+' clé(s) ('+cap+' vidéos/jour max, refaçons comprises)':'= '+L_.total+' clips, une seule session'}catch(e){}}
 ['len','dur','perDay','quota'].forEach(i=>$(i).addEventListener('change',planUi));
@@ -686,7 +694,7 @@ $('btnSlide').onclick=()=>{if(!S.running)makeSlideshow()};
 let DIR=null;
 async function dirOk(){try{if(!DIR)return false;let p=await DIR.queryPermission({mode:'readwrite'});if(p!=='granted')p=await DIR.requestPermission({mode:'readwrite'});return p==='granted'}catch(e){return false}}
 async function saveText(name,text){if(await dirOk()){try{const f=await DIR.getFileHandle(name,{create:true});const w=await f.createWritable();await w.write(text);await w.close();log('💾 '+name+' enregistré dans le dossier');return true}catch(e){log('✗ dossier : '+e.message)}}try{saveBlob(new Blob([text],{type:'text/plain'}),name)}catch(e){}return false}
-async function autoSaveLinks(tag){if(!P||!P.scenes)return;const dn=P.scenes.filter(done);if(!dn.length)return;const t=(P.bible.title||'histoire')+'\n'+dn.map(x=>pad(x.n)+' '+(x.url||'')).join('\n')+'\n';await saveText('liens-videos.txt',t);if(tag)await saveText('liens-'+tag+'.txt',t)}
+async function autoSaveLinks(tag){if(!P||!P.scenes)return;const dn=P.scenes.filter(done);if(!dn.length)return;const t=(P.bible.title||'histoire')+'\n'+dn.map(x=>pad(x.n)+' '+(x.url||'')).join('\n')+'\n';await saveText('liens-videos.txt',t);if(tag)await saveText('liens-'+tag+'.txt',t);const dl=dn.filter(x=>x.url);if(dl.length){await saveBat('telecharger-TOUT.bat',dl);if(P.series)for(const k of [...new Set(dl.map(partOf))])await saveBat('telecharger-partie-'+(k+1)+'.bat',dl.filter(x=>partOf(x)===k))}}
 $('btnDir').onclick=async()=>{if(!window.showDirectoryPicker){toast('Cette fonction demande Chrome ou Edge sur PC','warn',5000);return}try{DIR=await window.showDirectoryPicker({mode:'readwrite'});await dbPut('dir',DIR);$('btnDir').textContent='📁 Dossier : '+DIR.name+' ✓';toast('Dossier choisi ✓')}catch(e){}};
 (async()=>{try{const d=await dbGet('dir');if(d&&d.name){DIR=d;$('btnDir').textContent='📁 Dossier : '+d.name+' (touche pour réautoriser)'}}catch(e){}})();
 document.addEventListener('visibilitychange',()=>{if(S.running&&document.visibilityState==='visible')startWake()});
