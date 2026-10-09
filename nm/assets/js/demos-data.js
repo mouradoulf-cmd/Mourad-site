@@ -8,12 +8,23 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-10-08";
+window.NM_UPDATED = "2026-10-09";
 
 window.NM_DEMOS = [
 ];
 
 window.NM_LINKS = [
+  { space: "site", group: "NM Studio", items: [
+    { name: "NM Studio · Français", path: "nm/fr/", note: "Le site à montrer aux clients" },
+    { name: "NM Studio · English", path: "nm/" },
+    { name: "NM Studio · ไทย", path: "nm/th/" },
+    { name: "NM Studio · Italiano", path: "nm/it/" },
+    { name: "NM Studio · العربية", path: "nm/ar/" },
+    { name: "Tarifs", path: "nm/fr/pricing.html" }
+  ] },
+  { space: "formation", group: "NM Academy", items: [
+    { name: "NM Academy (à jour)", path: "https://claude.ai/artifact/8nSXmvuVbzfwtwMEkdeBjh", note: "La formation : page de vente, formations, réalisations, tarifs, inscription" }
+  ] },
   { space: "video", group: "Mon site", items: [
     { name: "Story Studio", path: "story/", note: "Dessin animé en plusieurs épisodes" }
   ] }
