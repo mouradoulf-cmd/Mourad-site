@@ -242,7 +242,16 @@
       }
     }
   };
+  /* the final call to action, in the first person; Thai booking line with "ผม" */
+  var C2 = {
+    en: { finale: { sub: "Tell me about your business. I'll come and see you, show you what your website could look like, and put it online within days." } },
+    fr: { finale: { sub: "Parlez-moi de votre commerce. Je viens vous voir, je vous montre à quoi pourrait ressembler votre site, et je le mets en ligne en quelques jours." } },
+    it: { finale: { sub: "Raccontatemi della vostra attività. Vengo a trovarvi, vi mostro come potrebbe essere il vostro sito e lo metto online in pochi giorni." } },
+    th: { finale: { sub: "เล่าเรื่องร้านของคุณให้ผมฟัง ผมจะไปหาคุณ ให้ดูว่าเว็บไซต์ของคุณจะออกมาเป็นแบบไหน แล้วทำให้ออนไลน์ในไม่กี่วัน" }, book: { b1: "ผมกับคุณดูร้านและโปรไฟล์ Google ไปด้วยกัน" } },
+    ar: { finale: { sub: "حدّثني عن محلّك. سآتي لزيارتك، وأريك كيف يمكن أن يبدو موقعك، ثم أطلقه خلال أيام." } }
+  };
   function deep(t, s) { Object.keys(s).forEach(function (k) { if (s[k] && typeof s[k] === "object") { t[k] = t[k] || {}; deep(t[k], s[k]); } else t[k] = s[k]; }); return t; }
+  deep(C, C2);
   window.NM_EXTRA_DICT = deep(window.NM_EXTRA_DICT || {}, C);
   if (typeof module !== "undefined") module.exports = C;
 })();
