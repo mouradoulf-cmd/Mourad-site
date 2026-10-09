@@ -105,6 +105,9 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
   <label class="lab" for="mode">Méthode</label><select id="mode"><option value="auto" selected>⛓ Chaînage (méthode des studios) : chaque clip démarre sur la dernière image propre du précédent, avec contrôle qualité et refaçon automatique</option><option value="sb">🎞 Storyboard d'abord : je vois et je valide toutes les images avant de faire les vidéos</option></select>
   <label class="tog"><input type="checkbox" id="optSq" checked><span>🧍 Anti-doublons : les images sont créées en carré puis recadrées (les formats très larges sont une cause fréquente de « deux têtes » / personne en double)</span></label>
   <label class="tog"><input type="checkbox" id="optQA" checked><span>Contrôle qualité automatique : l'IA regarde chaque image et chaque clip, et refait ceux qui ont un défaut (visage déformé, doigts en trop, personnage qui change…)</span></label>
+  <label class="tog"><input type="checkbox" id="optAuto" checked><span>🤖 <b>Mode tout automatique (PC allumé)</b> : le site enchaîne tout seul les parties jusqu'à la durée choisie, change de clé quand une est pleine, reprend après une erreur et enregistre la liste des liens après chaque partie. Il saute la relecture du scénario.</span></label>
+  <div class="hint" style="margin:.2rem 0 .5rem">Sur PC (Chrome ou Edge) : choisis un dossier pour que les listes de liens s'y enregistrent toutes seules.</div>
+  <button class="btn" id="btnDir" type="button">📁 Choisir le dossier de sauvegarde (PC)</button>
   <label class="tog"><input type="checkbox" id="optReview"><span>Me montrer le scénario avant de créer les vidéos (pour le corriger)</span></label>
   <label class="tog"><input type="checkbox" id="optSpeak" checked><span>🗣 Les personnages PARLENT dans la vidéo (en thaï), mais seulement sur quelques clips, avec des phrases très courtes. Les autres clips restent muets (musique/ambiance à ajouter au montage). Règle la fréquence juste en dessous.</span></label>
   <label class="tog"><input type="checkbox" id="optVoice"><span>🔊 Pendant « Regarder l'histoire », lire aussi les dialogues à voix haute avec la voix thaï de ton téléphone (utile si un clip est muet)</span></label>
@@ -600,12 +603,12 @@ function lenParse(){const v=$('len').value,d=+$('dur').value,perDay=+$('perDay')
 function readOpts(){const L_=lenParse();return{lenv:$('len').value,talk:$('talk').value,perDay:$('perDay').value,series:L_.series?{total:L_.total,perDay:L_.perDay}:null,genre:selGenre,idea:$('idea').value.trim(),n:L_.series?L_.perDay:L_.total,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:$('quota').value,mode:$('mode').value,sq:$('optSq').checked}}
 async function run(){
  if(S.running)return;if(!getKey()){toast('Colle ta clé API Agnes en haut de la page, puis touche « Enregistrer la clé »','error',5000);$('apiPanel').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('apiKeyInput').focus(),500);return}
-S.running=true;S.stop=false;S.quotaHit=false;Object.keys(badKeys).forEach(k=>delete badKeys[k]);showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
+S.running=true;S.stop=false;S.autoNext=false;S.userStop=false;S.quotaHit=false;Object.keys(badKeys).forEach(k=>delete badKeys[k]);showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{
   if(!P||!P.scenes||!P.scenes.length){
    P={id:Date.now(),o:readOpts(),scenes:[],partStart:0,ep:SHOW?SHOW.eps.length+1:1};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
    await writeBible();renderBible();phase('story','Écriture des scènes…',.1);if(P.series){await startPart(0)}else{await expandScenes();await reviewStory()}save();render();
-   if($('optReview').checked){phase('story','Scénario prêt : relis et corrige les scènes, puis touche « Lancer la production ».',.35);toast('Scénario prêt ✓ Relis-le puis lance la production');return}}
+   if($('optReview').checked&&!$('optAuto').checked){phase('story','Scénario prêt : relis et corrige les scènes, puis touche « Lancer la production ».',.35);toast('Scénario prêt ✓ Relis-le puis lance la production');return}}
   else if(P.series&&partComplete()&&P.series.cur+1<P.series.parts.length){P.o.quota=$('quota').value;P.o.retries=$('retries').value;await startPart(P.series.cur+1);render();toast('Partie '+(P.series.cur+1)+' écrite ✓')}
   else{P.o.quota=$('quota').value;P.o.retries=$('retries').value}
   renderBible();render();
@@ -629,7 +632,13 @@ S.running=true;S.stop=false;S.quotaHit=false;Object.keys(badKeys).forEach(k=>del
  }catch(e){
   if(e.message==='QUOTA')toast('Toutes tes clés ont atteint la limite de '+P.o.quota+' vidéos aujourd\'hui (ajoute une autre clé ou reviens demain) : l\'histoire reprendra là où elle s\'est arrêtée.','warn',9000);
   else if(e.message==='Arrêt')toast('Arrêté — tu peux reprendre','warn');else{toast('Erreur : '+e.message.slice(0,120),'error',6000);showErr(e.message);log('✗ ERREUR : '+e.message)}}
- finally{S.running=false;S.anim=false;window.onbeforeunload=null;stopWake();setStatus(null);save();upd();render();if(S.autoNext){S.autoNext=false;log('Partie suivante automatique (il reste des clés disponibles)');setTimeout(run,800)}}}
+ finally{S.running=false;S.anim=false;window.onbeforeunload=null;stopWake();setStatus(null);save();upd();render();
+  try{if(P&&P.scenes){const dn=P.scenes.filter(done).length,N=P.scenes.length,fin=dn===N&&(!P.series||P.series.cur+1>=P.series.parts.length);
+   if($('optAuto').checked&&dn)autoSaveLinks(fin?'FINI':'partie'+(P.series?P.series.cur+1:1));
+   if(fin){document.title='✅ TERMINÉ — Story Studio';S.autoTry=0}
+   else if($('optAuto').checked&&!S.userStop&&getKey()){
+    if(S.autoNext){S.autoNext=false;S.autoTry=0;log('Partie suivante automatique (il reste des clés disponibles)');setTimeout(run,800)}
+    else if(!S.quotaHit&&P.scenes.some(x=>!done(x))&&(S.autoTry=(S.autoTry||0)+1)<=8&&keysLeft()){log('🔁 Reprise automatique dans 60 s (essai '+S.autoTry+'/8)');setTimeout(()=>{if(!S.running&&!S.userStop)run()},60000)}}}}catch(e){}}}
 
 /* ───────── Lecture / export ───────── */
 async function playAll(){const urls=[];for(const sc of P.scenes){if(!done(sc))continue;const b=await dbGet('clip:'+sc.n);if(b)urls.push({u:URL.createObjectURL(b),sc});else if(sc.url)urls.push({u:sc.url,sc})}
@@ -673,6 +682,13 @@ async function makeSlideshow(){
  $('slideInfo').textContent='Diaporama prêt ✓ ('+(blob.size>1e6?(blob.size/1e6).toFixed(1)+' Mo':Math.round(blob.size/1e3)+' Ko')+')';$('btnSlide').disabled=false;S.running=false;stopWake();toast('Diaporama prêt ✓')}
 $('btnSlide').onclick=()=>{if(!S.running)makeSlideshow()};
 /* ───────── Téléchargement des vidéos ───────── */
+let DIR=null;
+async function dirOk(){try{if(!DIR)return false;let p=await DIR.queryPermission({mode:'readwrite'});if(p!=='granted')p=await DIR.requestPermission({mode:'readwrite'});return p==='granted'}catch(e){return false}}
+async function saveText(name,text){if(await dirOk()){try{const f=await DIR.getFileHandle(name,{create:true});const w=await f.createWritable();await w.write(text);await w.close();log('💾 '+name+' enregistré dans le dossier');return true}catch(e){log('✗ dossier : '+e.message)}}try{saveBlob(new Blob([text],{type:'text/plain'}),name)}catch(e){}return false}
+async function autoSaveLinks(tag){if(!P||!P.scenes)return;const dn=P.scenes.filter(done);if(!dn.length)return;const t=(P.bible.title||'histoire')+'\n'+dn.map(x=>pad(x.n)+' '+(x.url||'')).join('\n')+'\n';await saveText('liens-videos.txt',t);if(tag)await saveText('liens-'+tag+'.txt',t)}
+$('btnDir').onclick=async()=>{if(!window.showDirectoryPicker){toast('Cette fonction demande Chrome ou Edge sur PC','warn',5000);return}try{DIR=await window.showDirectoryPicker({mode:'readwrite'});await dbPut('dir',DIR);$('btnDir').textContent='📁 Dossier : '+DIR.name+' ✓';toast('Dossier choisi ✓')}catch(e){}};
+(async()=>{try{const d=await dbGet('dir');if(d&&d.name){DIR=d;$('btnDir').textContent='📁 Dossier : '+d.name+' (touche pour réautoriser)'}}catch(e){}})();
+document.addEventListener('visibilitychange',()=>{if(S.running&&document.visibilityState==='visible')startWake()});
 function saveBlob(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),60000)}
 async function clipBlob(sc){const b=await dbGet('clip:'+sc.n);return b||null}
 async function renderDl(){const box=$('dlList');if(!box||!P)return;const dn=P.scenes.filter(done);if(!dn.length){box.innerHTML='';return}
@@ -767,7 +783,7 @@ function upd(){const has=!!getKey();$('apiPanel').classList.toggle('ok',has);$('
  const sbm=hasP&&P.o.mode==='sb',allImg=hasP&&P.scenes.every(x=>x.thumb);const serNext=hasP&&P.series&&partComplete()&&P.series.cur+1<P.series.parts.length,serEnd=hasP&&P.series&&partComplete()&&P.series.cur+1>=P.series.parts.length;b.textContent=S.running?'Création en cours…':(!has?'🔑 Ajoute ta clé API pour commencer':(serNext?'▶ Partie '+(P.series.cur+2)+' / '+P.series.parts.length+' : écrire la suite et produire':(serEnd?'✅ Histoire terminée — tu peux la télécharger':(hasP?(clipDone()?'▶ Reprendre les vidéos ('+clipDone()+'/'+P.scenes.length+' prêtes)':(sbm?(allImg?'🎬 Animer les images en vidéos ('+P.scenes.length+' clips)':'▶ Terminer le storyboard'):'▶ Lancer la production des clips')):($('mode').value==='sb'?'🎞 Créer l\'histoire et le storyboard (sans vidéos)':'🎬 Créer l\'histoire et les vidéos')))));
  $('btnStop').classList.toggle('on',S.running);const u=usage();$('quotaHint').textContent='Vidéos créées aujourd\'hui : '+u.n+' sur '+keyList().length+' clé(s), limite '+(P&&P.o?P.o.quota:'')+' par clé (chaque nouvel essai compte). Avec « Refaire si défaut », prévois 10 à 30 % de vidéos en plus.'}
 $('apiSave').onclick=()=>{const arr=($('apiKeyInput').value||'').split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean);const uniq=arr.filter((x,i)=>arr.indexOf(x)===i).slice(0,8);if(uniq.length){lsSet(KEYS,JSON.stringify(uniq));lsSet(KEY,uniq[0])}else{lsDel(KEYS);lsDel(KEY)}Object.keys(badKeys).forEach(k=>delete badKeys[k]);$('apiKeyInput').value='';upd();planUi();toast(uniq.length?uniq.length+' clé(s) enregistrée(s) ✓':'Clés supprimées')};
-$('btnGo').onclick=run;$('btnStop').onclick=()=>{S.stop=true;toast('Arrêt en cours…','warn')};
+$('btnGo').onclick=run;$('btnStop').onclick=()=>{S.stop=true;S.userStop=true;toast('Arrêt en cours…','warn')};
 $('mode').onchange=upd;$('btnMemClear').onclick=()=>{if(confirm('Effacer la mémoire des histoires déjà créées ?')){lsDel(MEM);memUi();toast('Mémoire effacée')}};$('btnPlay').onclick=playAll;$('btnZip').onclick=zipAll;
 $('btnNew').onclick=async()=>{if(S.running){toast('Arrête d\'abord la création','warn');return}if((P||SHOW)&&!confirm('Effacer toute la série (histoire, personnages, épisodes) ?'))return;P=null;SHOW=null;lsDel(SHOWK);lsDel(PROJ);await dbClear();$('prog').style.display='none';$('bible').style.display='none';$('scenesPanel').style.display='none';$('result').style.display='none';upd();toast('Prêt pour une nouvelle histoire')};
 loadShow();load();if(P&&P.o){selGenre=P.o.genre||selGenre;['len:lenv','talk:talk','perDay:perDay','dur:dur','lang:lang','fmt:fmt','retries:retries','quota:quota'].forEach(p=>{const[a,b]=p.split(':');if(P.o[b]!=null)$(a).value=P.o[b]})}
