@@ -27,5 +27,10 @@ window.NM_LINKS = [
   ] },
   { space: "video", group: "Mon site", items: [
     { name: "Story Studio", path: "story/", note: "Dessin animé en plusieurs épisodes" }
+  ] },
+  { space: "video", group: "Pub NM Studio", items: [
+    { name: "Pub NM Studio · Français", path: "nm/assets/video/pub/nm-studio-pub-fr.mp4", note: "Version TikTok / Reels avec sous-titres" },
+    { name: "Pub NM Studio · English", path: "nm/assets/video/pub/nm-studio-pub-en.mp4" },
+    { name: "Pub NM Studio · ไทย", path: "nm/assets/video/pub/nm-studio-pub-th.mp4" }
   ] }
 ];
