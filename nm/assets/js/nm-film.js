@@ -1,4 +1,4 @@
-/* NM Studio: the "problems" film. A muted, looping video inside a 3D iPhone; captions, the 4-step bar and the chapter card follow it.
+/* NM Studio: the "problems" film. A muted video (sound on request) inside a 3D iPhone; captions, the 4-step bar and the chapter card follow it.
    - the video file only loads when the section gets close, and only plays while it is on screen
    - reduced motion or data saver: no autoplay, a play button instead, no 3D
    - 3D with a job: the phone stands up to face you as you scroll to it; the chapter card turns in when the step changes
@@ -15,6 +15,7 @@
   var cues = [].slice.call(root.querySelectorAll(".film__cues li")).map(function (li) {
     return { s: parseFloat(li.getAttribute("data-s")), e: parseFloat(li.getAttribute("data-e")), el: li };
   });
+  var endBox = root.querySelector(".film__end"), replayBtn = root.querySelector("[data-film-replay]"), isEnd = false;
   var chs = [].slice.call(root.querySelectorAll(".film__ch")).map(function (li) { return { t: parseFloat(li.getAttribute("data-t")), el: li }; });
   if (!video) return;
 
@@ -54,6 +55,7 @@
   function chapterIndex(t) { var i = 0; chs.forEach(function (c, k) { if (t >= c.t) i = k; }); return i; }
   function render() {
     var t = video.currentTime || 0, d = video.duration || 0;
+    setEnd(t >= endAt || video.ended);
     if (bar && d) bar.style.setProperty("--p", (t / d).toFixed(4));
     var ci = -1;
     for (var k = 0; k < cues.length; k++) if (t >= cues[k].s && t < cues[k].e) { ci = k; break; }
@@ -66,14 +68,24 @@
     var end = hi + 1 < chs.length ? chs[hi + 1].t : (d || chs[hi].t + 1);
     if (steps[hi]) steps[hi].style.setProperty("--p", Math.max(0, Math.min(1, (t - chs[hi].t) / (end - chs[hi].t))).toFixed(3));
   }
+  // the last seconds (from data-end) and the end of the film show the end panel; its links only become focusable then
+  function setEnd(on) {
+    if (on === isEnd || !endBox) return; isEnd = on;
+    root.classList.toggle("is-end", on); endBox.setAttribute("aria-hidden", on ? "false" : "true");
+    [].forEach.call(endBox.querySelectorAll("a,button"), function (el) { el.tabIndex = on ? 0 : -1; });
+  }
+  var endAt = parseFloat(video.getAttribute("data-end")) || Infinity;
   function loop() { render(); raf = !video.paused && visible ? requestAnimationFrame(loop) : 0; }
 
   video.addEventListener("play", function () { setPaused(false); if (!raf) raf = requestAnimationFrame(loop); });
   video.addEventListener("pause", function () { setPaused(true); });
   video.addEventListener("timeupdate", function () { if (!raf) render(); });
   video.addEventListener("loadedmetadata", render);
+  video.addEventListener("ended", function () { setEnd(true); if (bar) bar.style.setProperty("--p", "1"); });
+  function replay() { userPaused = false; setEnd(false); video.currentTime = 0; play(); }
+  if (replayBtn) replayBtn.addEventListener("click", replay);
 
-  function toggle() { if (video.paused) { userPaused = false; play(); } else { userPaused = true; video.pause(); } }
+  function toggle() { if (video.ended) { replay(); return; } if (video.paused) { userPaused = false; play(); } else { userPaused = true; video.pause(); } }
   video.addEventListener("click", toggle);
   if (big) big.addEventListener("click", function () { userPaused = false; play(); });
   if (playBtn) playBtn.addEventListener("click", toggle);
@@ -99,7 +111,7 @@
   new IntersectionObserver(function (es) { if (es[0].isIntersecting) load(); }, { rootMargin: "600px 0px" }).observe(stage);
   new IntersectionObserver(function (es) {
     visible = es[0].isIntersecting;
-    if (visible && auto && !userPaused) play();
+    if (visible && auto && !userPaused && !video.ended) play();
     else if (!visible && !video.paused) video.pause();
   }, { threshold: 0.35 }).observe(phone);
 

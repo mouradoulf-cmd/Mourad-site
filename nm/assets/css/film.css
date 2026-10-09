@@ -106,3 +106,17 @@ html[lang="th"] .film__headline em, html[lang="ar"] .film__headline em { font-st
   .film__cap { transition: none !important; }
   .film .film__headline em, .film__punchl .s:last-child { animation: none; background-position: 40% 0; }
 }
+
+/* end of the film: the last seconds show the promise, the free mock-up button and "watch again" (the film no longer loops) */
+.film__end { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: .85rem;
+  padding: 0 9% 3.4rem; text-align: center; opacity: 0; visibility: hidden; transform: translateY(10px);
+  background: linear-gradient(180deg, transparent 30%, rgba(3,10,8,.82) 72%); transition: opacity .5s ease, transform .5s ease, visibility 0s .5s; }
+.film.is-end .film__end { opacity: 1; visibility: visible; transform: none; transition: opacity .5s ease, transform .5s ease, visibility 0s; }
+.film.is-end .film__cap, .film.is-end .film__big { opacity: 0; pointer-events: none; }
+.film.is-end .film__big { display: none; }
+.film__endt { margin: 0; color: #fff; font-weight: 700; font-size: clamp(.95rem, 1.2vw, 1.06rem); line-height: 1.35; text-wrap: balance; text-shadow: 0 2px 14px rgba(0,0,0,.7); }
+.film__endbtn { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0 1.25rem; border-radius: 999px;
+  background: var(--grad-gold, #e6c27a); color: #14100a; font: 700 .9rem/1.1 var(--font-sans); text-decoration: none; box-shadow: 0 10px 30px -10px rgba(230,194,122,.7); }
+.film__endbtn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.film__replay { min-height: 2rem; }
+@media (prefers-reduced-motion: reduce) { .film__end { transition: none; transform: none; } }
