@@ -192,6 +192,7 @@
   window.addEventListener("load", fillName);
   if (C.founderPhoto) {
     [].slice.call(document.querySelectorAll(".founder__photo")).forEach(function (box) {
+      if (box.querySelector("img")) return;   // the photo is already in the page (baked into the HTML)
       var img = new Image(); img.alt = ""; img.decoding = "async"; img.loading = "lazy";
       img.onload = function () { box.classList.add("has-photo"); };
       img.src = /^(https?:)?\//.test(C.founderPhoto) ? C.founderPhoto : base + C.founderPhoto;
