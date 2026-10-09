@@ -40,7 +40,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
      the first paint: preload it so the hero never flashes empty. -->
 <link as="image" fetchpriority="high" href="../assets/video/hero-poster.avif" rel="preload" type="image/avif"/>
 <link href="../assets/css/vendor/devices.min.css" rel="stylesheet"/>
-<link href="../assets/css/site.css?v=20261009y" rel="stylesheet"/>
+<link href="../assets/css/site.css?v=20261009a2" rel="stylesheet"/>
 <link href="../assets/css/craft.css?v=20261008v" rel="stylesheet"/>
 <link href="../assets/css/work-gallery.css?v=20261008v" rel="stylesheet"/>
 <link href="../assets/css/film.css?v=20261009c" rel="stylesheet"/>
@@ -66,6 +66,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span>NM Studio</span>
 </a>
 <nav aria-label="Principale" class="nav">
+<a data-i18n="about.nav" href="#studio-founder">Chi siamo</a>
 <a data-i18n="nav2.offers" href="#offers">Offerte</a>
 <a data-i18n="nav.work" href="#work">Progetti</a>
 <a data-i18n="nav2.services" href="services.html">Servizi</a>
@@ -93,6 +94,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </header>
 <div class="menu" hidden="" id="menu">
 <nav aria-label="Menù mobile" class="menu__nav">
+<a data-i18n="about.nav" href="#studio-founder">Chi siamo</a>
 <a data-i18n="nav2.offers" href="#offers">Offerte</a>
 <a data-i18n="nav.work" href="#work">Progetti</a>
 <a data-i18n="nav2.services" href="services.html">Servizi</a>
@@ -148,6 +150,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <li><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M5 10.5l3 3 7-7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span data-i18n="v4.proof2">Scheda Google in 48 ore</span></li>
 <li><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M5 10.5l3 3 7-7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span data-i18n="v4.proof3">Senza contratto</span></li>
 </ul>
+<a class="h__me" href="#studio-founder"><span aria-hidden="true" class="h__me-face"><img alt="" decoding="async" height="160" src="../assets/img/founder-sm.jpg?v=1" width="160"/><i></i></span><span class="h__me-txt"><span data-i18n="about.sig">Mourad, il vostro contatto diretto</span><span class="h__me-link"><span data-i18n="about.read">Leggi la mia storia</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></span></span></a>
 </div>
 <div class="h__visual">
 <div aria-hidden="true" class="h__stage" id="stage">
@@ -196,6 +199,20 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <p class="prob__cta film__cta"><a class="btn btn--sun btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><span data-i18n="prob.cta">Risolviamolo insieme su WhatsApp</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
 </div>
 <ol class="film__cues" hidden=""><li data-s="0" data-e="9.4" data-i18n="prob.cap0">Ore 19. Fuori la strada è piena. Da voi, i tavoli restano vuoti. Vi suona familiare?</li><li data-s="9.4" data-e="18.1" data-i18n="prob.cap1">I turisti cercano su Google dove mangiare. Il vostro ristorante non compare da nessuna parte.</li><li data-s="18.1" data-e="28.1" data-i18n="prob.cap2">Chi entra non capisce il vostro menù. Ordina il minimo, oppure se ne va.</li><li data-s="28.1" data-e="39" data-i18n="prob.cap3">Immaginate: la sera trovano il vostro sito. Tutti i piatti in foto. Hanno già scelto.</li><li data-s="39" data-e="48.9" data-i18n="prob.cap4">Il giorno dopo tornano. Menù QR nella loro lingua. La vostra sala è piena.</li><li data-s="48.9" data-e="59" data-i18n="prob.cap5">Sito web, menù QR, scheda Google: ci pensiamo noi, ogni mese. Voi pensate a cucinare.</li></ol>
+</div>
+</div>
+</section>
+<section aria-labelledby="founderTitle" class="founder" id="studio-founder">
+<div class="container">
+<div class="founder__wrap">
+<div aria-hidden="true" class="founder__photo has-photo"><span data-founder-name="">M</span><img alt="" decoding="async" height="800" loading="lazy" src="../assets/img/founder.jpg?v=2" width="640"/></div>
+<div class="founder__text">
+<p class="eyebrow" data-i18n="founder.eyebrow">Chi c'è dietro NM Studio</p>
+<h2 class="section-title" data-anim="words" data-i18n-html="founder.title" id="founderTitle">Sono uno di voi, <em>non una grande azienda.</em></h2>
+<p class="founder__body" data-founder-fill="" data-i18n="founder.body">Mi chiamo Mourad. Niente call center, niente paroloni: sono io che vengo a trovarvi, creo il vostro sito, il menù e la scheda Google, e vi rispondo su WhatsApp. Avete i risultati di una grande agenzia, con una persona semplice e vicina, che ama conoscere gente e si prende il tempo di ascoltarvi.</p>
+<ul class="founder__points"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p1">Vengo da voi, o ci sentiamo in video</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p2">Vi rispondo io, su WhatsApp</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p3">Abbonamento disdicibile in qualsiasi momento</span></li></ul>
+<p class="founder__sign" data-founder-fill="" data-i18n="founder.sign">Mourad, fondatore di NM Studio</p>
+</div>
 </div>
 </div>
 </section>
@@ -454,20 +471,6 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </section>
 <!-- ============ 8 · FAQ ============ -->
-<section aria-labelledby="founderTitle" class="founder" id="studio-founder">
-<div class="container">
-<div class="founder__wrap">
-<div aria-hidden="true" class="founder__photo has-photo"><span data-founder-name="">M</span><img alt="" decoding="async" height="800" loading="lazy" src="../assets/img/founder.jpg?v=2" width="640"/></div>
-<div class="founder__text">
-<p class="eyebrow" data-i18n="founder.eyebrow">Chi c'è dietro NM Studio</p>
-<h2 class="section-title" data-anim="words" data-i18n-html="founder.title" id="founderTitle">Sono uno di voi, <em>non una grande azienda.</em></h2>
-<p class="founder__body" data-founder-fill="" data-i18n="founder.body">Mi chiamo Mourad. Niente call center, niente paroloni: sono io che vengo a trovarvi, creo il vostro sito, il menù e la scheda Google, e vi rispondo su WhatsApp. Avete i risultati di una grande agenzia, con una persona semplice e vicina, che ama conoscere gente e si prende il tempo di ascoltarvi.</p>
-<ul class="founder__points"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p1">Vengo da voi, o ci sentiamo in video</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p2">Vi rispondo io, su WhatsApp</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p3">Abbonamento disdicibile in qualsiasi momento</span></li></ul>
-<p class="founder__sign" data-founder-fill="" data-i18n="founder.sign">Mourad, fondatore di NM Studio</p>
-</div>
-</div>
-</div>
-</section>
 <section aria-labelledby="refTitle" class="ref" id="parrainage">
 <div class="container">
 <div class="ref__card">
@@ -665,7 +668,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
-<script defer="" src="../assets/js/thai-copy.js?v=20261009u"></script><script defer="" src="../assets/js/nm-voice.js?v=20261009z"></script><script defer="" src="../assets/js/i18n.js?v=20261008v"></script>
+<script defer="" src="../assets/js/thai-copy.js?v=20261009u"></script><script defer="" src="../assets/js/nm-voice.js?v=20261009a2"></script><script defer="" src="../assets/js/i18n.js?v=20261008v"></script>
 <script defer="" src="../assets/js/nm-grow.js?v=20261009w"></script>
 <script defer="" src="../assets/js/qrcode.min.js"></script>
 <script defer="" src="../assets/js/nm-qr.js"></script><script defer="" src="../assets/js/vendor/gsap.min.js"></script>

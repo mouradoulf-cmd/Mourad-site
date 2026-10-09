@@ -40,7 +40,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
      the first paint: preload it so the hero never flashes empty. -->
 <link as="image" fetchpriority="high" href="../assets/video/hero-poster.avif" rel="preload" type="image/avif"/>
 <link href="../assets/css/vendor/devices.min.css" rel="stylesheet"/>
-<link href="../assets/css/site.css?v=20261009y" rel="stylesheet"/>
+<link href="../assets/css/site.css?v=20261009a2" rel="stylesheet"/>
 <link href="../assets/css/craft.css?v=20261008v" rel="stylesheet"/>
 <link href="../assets/css/work-gallery.css?v=20261008v" rel="stylesheet"/>
 <link href="../assets/css/film.css?v=20261009c" rel="stylesheet"/>
@@ -66,6 +66,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <span>NM Studio</span>
 </a>
 <nav aria-label="เมนูหลัก" class="nav">
+<a data-i18n="about.nav" href="#studio-founder">เกี่ยวกับเรา</a>
 <a data-i18n="nav2.offers" href="#offers">แพ็กเกจ</a>
 <a data-i18n="nav.work" href="#work">ผลงาน</a>
 <a data-i18n="nav2.services" href="services.html">บริการ</a>
@@ -93,6 +94,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </header>
 <div class="menu" hidden="" id="menu">
 <nav aria-label="เมนูบนมือถือ" class="menu__nav">
+<a data-i18n="about.nav" href="#studio-founder">เกี่ยวกับเรา</a>
 <a data-i18n="nav2.offers" href="#offers">แพ็กเกจ</a>
 <a data-i18n="nav.work" href="#work">ผลงาน</a>
 <a data-i18n="nav2.services" href="services.html">บริการ</a>
@@ -148,6 +150,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <li><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M5 10.5l3 3 7-7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span data-i18n="v4.proof2">Google ภายใน 48 ชม.</span></li>
 <li><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M5 10.5l3 3 7-7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span data-i18n="v4.proof3">ไม่มีสัญญาผูกมัด</span></li>
 </ul>
+<a class="h__me" href="#studio-founder"><span aria-hidden="true" class="h__me-face"><img alt="" decoding="async" height="160" src="../assets/img/founder-sm.jpg?v=1" width="160"/><i></i></span><span class="h__me-txt"><span data-i18n="about.sig">Mourad ติดต่อผมได้โดยตรง</span><span class="h__me-link"><span data-i18n="about.read">อ่านเรื่องของเรา</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></span></span></a>
 </div>
 <div class="h__visual">
 <div aria-hidden="true" class="h__stage" id="stage">
@@ -196,6 +199,20 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <p class="prob__cta film__cta"><a class="btn btn--sun btn--lg magnetic" href="https://wa.me/qr/PYPOVXTCVM74I1" rel="noopener" target="_blank"><span data-i18n="prob.cta">ให้เราช่วยแก้ ทักทาง WhatsApp</span><svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></a></p>
 </div>
 <ol class="film__cues" hidden=""><li data-s="0" data-e="9.4" data-i18n="prob.cap0">หนึ่งทุ่ม ถนนหน้าร้านคนเต็ม แต่โต๊ะในร้านคุณกลับว่าง คุ้นๆ ไหม?</li><li data-s="9.4" data-e="18.1" data-i18n="prob.cap1">นักท่องเที่ยวค้นหาร้านอาหารใน Google แต่ไม่เจอร้านของคุณเลย</li><li data-s="18.1" data-e="28.1" data-i18n="prob.cap2">คนที่เดินเข้ามาอ่านเมนูไม่ออก เลยสั่งแค่นิดหน่อย หรือไม่ก็เดินออกไป</li><li data-s="28.1" data-e="39" data-i18n="prob.cap3">ลองนึกภาพ ตอนเย็นเขาเจอเว็บไซต์ของคุณ เห็นรูปอาหารทุกจาน และเลือกเมนูไว้แล้ว</li><li data-s="39" data-e="48.9" data-i18n="prob.cap4">วันรุ่งขึ้นเขากลับมา สแกนเมนู QR เป็นภาษาของตัวเอง ร้านของคุณเต็ม</li><li data-s="48.9" data-e="59" data-i18n="prob.cap5">เว็บไซต์ เมนู QR โปรไฟล์ Google เราดูแลให้ทุกเดือน คุณแค่ทำอาหาร</li></ol>
+</div>
+</div>
+</section>
+<section aria-labelledby="founderTitle" class="founder" id="studio-founder">
+<div class="container">
+<div class="founder__wrap">
+<div aria-hidden="true" class="founder__photo has-photo"><span data-founder-name="">M</span><img alt="" decoding="async" height="800" loading="lazy" src="../assets/img/founder.jpg?v=2" width="640"/></div>
+<div class="founder__text">
+<p class="eyebrow" data-i18n="founder.eyebrow">ใครอยู่เบื้องหลัง NM Studio</p>
+<h2 class="section-title" data-anim="words" data-i18n-html="founder.title" id="founderTitle">ทีมเล็ก ๆ ผมกับภรรยา <em>ไม่ใช่บริษัทใหญ่</em></h2>
+<p class="founder__body" data-founder-fill="" data-i18n="founder.body">สวัสดีครับ ผมชื่อ Mourad หลายปีที่ผ่านมา ผมฝึกฝนการทำเว็บไซต์ เมนู และโปรไฟล์ Google ที่ช่วยให้ร้านได้ลูกค้าจริง จากนั้นผมมาเมืองไทย ได้พบภรรยาของผมที่นี่ และเราก็แต่งงานกัน วันนี้เราทำงานด้วยกัน ภรรยาผมเป็นคนไทย เราจึงเข้าใจทั้งเจ้าของร้านคนไทยและลูกค้าชาวต่างชาติ เราไม่ได้อยากรวย เราแค่อยากมีลูกค้าประจำที่มีความสุข เพื่อให้เราได้อยู่และทำงานที่นี่ด้วยกันต่อไป คุณพอใจ เราก็มีความสุข เติบโตไปด้วยกันนะครับ</p>
+<ul class="founder__points"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p1">เราตอบคุณเองทาง WhatsApp</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p2">ผมไปหาคุณถึงร้าน หรือคุยทางวิดีโอคอล</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p3">ยกเลิกค่าบริการรายเดือนได้ทุกเมื่อ</span></li></ul>
+<p class="founder__sign" data-founder-fill="" data-i18n="founder.sign">Mourad ผู้ก่อตั้ง NM Studio</p>
+</div>
 </div>
 </div>
 </section>
@@ -454,20 +471,6 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </section>
 <!-- ============ 8 · FAQ ============ -->
-<section aria-labelledby="founderTitle" class="founder" id="studio-founder">
-<div class="container">
-<div class="founder__wrap">
-<div aria-hidden="true" class="founder__photo has-photo"><span data-founder-name="">M</span><img alt="" decoding="async" height="800" loading="lazy" src="../assets/img/founder.jpg?v=2" width="640"/></div>
-<div class="founder__text">
-<p class="eyebrow" data-i18n="founder.eyebrow">ใครอยู่เบื้องหลัง NM Studio</p>
-<h2 class="section-title" data-anim="words" data-i18n-html="founder.title" id="founderTitle">ทีมเล็ก ๆ ผมกับภรรยา <em>ไม่ใช่บริษัทใหญ่</em></h2>
-<p class="founder__body" data-founder-fill="" data-i18n="founder.body">สวัสดีครับ ผมชื่อ Mourad หลายปีที่ผ่านมา ผมฝึกฝนการทำเว็บไซต์ เมนู และโปรไฟล์ Google ที่ช่วยให้ร้านได้ลูกค้าจริง จากนั้นผมมาเมืองไทย ได้พบภรรยาของผมที่นี่ และเราก็แต่งงานกัน วันนี้เราทำงานด้วยกัน ภรรยาผมเป็นคนไทย เราจึงเข้าใจทั้งเจ้าของร้านคนไทยและลูกค้าชาวต่างชาติ เราไม่ได้อยากรวย เราแค่อยากมีลูกค้าประจำที่มีความสุข เพื่อให้เราได้อยู่และทำงานที่นี่ด้วยกันต่อไป คุณพอใจ เราก็มีความสุข เติบโตไปด้วยกันนะครับ</p>
-<ul class="founder__points"><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p1">เราตอบคุณเองทาง WhatsApp</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p2">ผมไปหาคุณถึงร้าน หรือคุยทางวิดีโอคอล</span></li><li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="founder.p3">ยกเลิกค่าบริการรายเดือนได้ทุกเมื่อ</span></li></ul>
-<p class="founder__sign" data-founder-fill="" data-i18n="founder.sign">Mourad ผู้ก่อตั้ง NM Studio</p>
-</div>
-</div>
-</div>
-</section>
 <section aria-labelledby="refTitle" class="ref" id="parrainage">
 <div class="container">
 <div class="ref__card">
@@ -665,7 +668,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 </div>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
-<script defer="" src="../assets/js/thai-copy.js?v=20261009u"></script><script defer="" src="../assets/js/nm-voice.js?v=20261009z"></script><script defer="" src="../assets/js/i18n.js?v=20261008v"></script>
+<script defer="" src="../assets/js/thai-copy.js?v=20261009u"></script><script defer="" src="../assets/js/nm-voice.js?v=20261009a2"></script><script defer="" src="../assets/js/i18n.js?v=20261008v"></script>
 <script defer="" src="../assets/js/nm-grow.js?v=20261009w"></script>
 <script defer="" src="../assets/js/qrcode.min.js"></script>
 <script defer="" src="../assets/js/nm-qr.js"></script><script defer="" src="../assets/js/vendor/gsap.min.js"></script>

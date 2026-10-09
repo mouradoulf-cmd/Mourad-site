@@ -244,11 +244,11 @@
   };
   /* the final call to action, in the first person; Thai booking line with "ผม" */
   var C2 = {
-    en: { finale: { sub: "Tell me about your business. I'll come and see you, show you what your website could look like, and put it online within days." } },
-    fr: { finale: { sub: "Parlez-moi de votre commerce. Je viens vous voir, je vous montre à quoi pourrait ressembler votre site, et je le mets en ligne en quelques jours." } },
-    it: { finale: { sub: "Raccontatemi della vostra attività. Vengo a trovarvi, vi mostro come potrebbe essere il vostro sito e lo metto online in pochi giorni." } },
-    th: { finale: { sub: "เล่าเรื่องร้านของคุณให้ผมฟัง ผมจะไปหาคุณ ให้ดูว่าเว็บไซต์ของคุณจะออกมาเป็นแบบไหน แล้วทำให้ออนไลน์ในไม่กี่วัน" }, book: { b1: "ผมกับคุณดูร้านและโปรไฟล์ Google ไปด้วยกัน" } },
-    ar: { finale: { sub: "حدّثني عن محلّك. سآتي لزيارتك، وأريك كيف يمكن أن يبدو موقعك، ثم أطلقه خلال أيام." } }
+    en: { about: { nav: "About us", sig: "Mourad, your direct contact", read: "Read my story" }, finale: { sub: "Tell me about your business. I'll come and see you, show you what your website could look like, and put it online within days." } },
+    fr: { about: { nav: "Qui sommes-nous", sig: "Mourad, votre contact direct", read: "Lire mon histoire" }, finale: { sub: "Parlez-moi de votre commerce. Je viens vous voir, je vous montre à quoi pourrait ressembler votre site, et je le mets en ligne en quelques jours." } },
+    it: { about: { nav: "Chi siamo", sig: "Mourad, il vostro contatto diretto", read: "Leggi la mia storia" }, finale: { sub: "Raccontatemi della vostra attività. Vengo a trovarvi, vi mostro come potrebbe essere il vostro sito e lo metto online in pochi giorni." } },
+    th: { about: { nav: "เกี่ยวกับเรา", sig: "Mourad ติดต่อผมได้โดยตรง", read: "อ่านเรื่องของเรา" }, finale: { sub: "เล่าเรื่องร้านของคุณให้ผมฟัง ผมจะไปหาคุณ ให้ดูว่าเว็บไซต์ของคุณจะออกมาเป็นแบบไหน แล้วทำให้ออนไลน์ในไม่กี่วัน" }, book: { b1: "ผมกับคุณดูร้านและโปรไฟล์ Google ไปด้วยกัน" } },
+    ar: { about: { nav: "من نحن", sig: "Mourad، تواصلك المباشر", read: "اقرأ قصتي" }, finale: { sub: "حدّثني عن محلّك. سآتي لزيارتك، وأريك كيف يمكن أن يبدو موقعك، ثم أطلقه خلال أيام." } }
   };
   /* Thai only: the founder's story: years of skills, came to Thailand, met and married his Thai wife, they work together;
      not to get rich, loyal and happy clients so they can stay; win-win */
