@@ -1,14 +1,14 @@
 /* NM Studio: the Thailand price list (Thai only).
    Thai shop owners get their own, simpler offer: a translated menu from 299 baht, a Google listing at 790 baht and
-   the complete pack (website + Google + QR menu) at 2,990 baht with the first year included, then 990 baht a year.
-   No monthly subscription. Every other language keeps the regular offers (offers-config.js), untouched.
+   the complete pack (website + Google + QR menu) at 2,990 baht setup, then the care plan at 390 baht a month (or 3,900
+   baht a year, 2 months free), plus two optional monthly plans (growth, social media). Every other language keeps the regular offers (offers-config.js), untouched.
    - shown whenever the page is read in Thai (the language switch works in place, so this listens to "nm:lang")
    - the regular cards, the billing toggle, the care box, the comparison table and the guide are hidden while it shows
    - the menu calculator adds 150 baht per extra page (beyond 2) and 150 baht per printed, laminated copy
    - to change a price: edit P below, the cards and the calculator follow */
 (function () {
   "use strict";
-  var P = { menu: 299, menuPages: 2, page: 150, copy: 150, google: 790, pack: 2990, renew: 990 };
+  var P = { menu: 299, menuPages: 2, page: 150, copy: 150, google: 790, pack: 2990, care: 390, careYear: 3900, grow: 990, social: 2500 };
   var C = window.NM_CONTACT || {};
   var WA = C.whatsappNumber ? "https://wa.me/" + C.whatsappNumber + "?text=" : "";
   var WA_LINK = C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1";
@@ -54,11 +54,30 @@
           '<h3 class="tho-card__name">แพ็กเกจครบชุด</h3>' +
           '<p class="tho-card__benefit">เว็บไซต์ร้าน + Google + เมนู QR ทุกอย่างที่นักท่องเที่ยวมองหา ในแพ็กเดียว</p>' +
           '<p class="tho-card__price"><strong>' + b(P.pack) + '</strong><span class="tho-card__cur">บาท</span></p>' +
-          '<p class="tho-card__unit">รวมปีแรก · ปีต่อไป ' + b(P.renew) + ' บาท/ปี</p>' +
-          list(["เว็บไซต์ร้านจากรูปของคุณ หลายภาษา", "Google Business Profile (ปกติ " + b(P.google) + " บาท)", "เมนูออนไลน์ + QR code ประจำโต๊ะ", "จองโต๊ะผ่าน WhatsApp หรือ LINE", "โฮสติ้ง และแก้ไขเมนู ราคา รูป ได้ตลอดปี", "แบ่งจ่ายได้ 2 งวด"]) +
+          '<p class="tho-card__unit">ค่าติดตั้ง · แล้วดูแลเดือนละ ' + b(P.care) + ' บาท</p>' +
+          list(["เว็บไซต์ร้านจากรูปของคุณ หลายภาษา", "Google Business Profile (ปกติ " + b(P.google) + " บาท)", "เมนูออนไลน์ + QR code ประจำโต๊ะ", "จองโต๊ะผ่าน WhatsApp หรือ LINE", "ดูแลให้ทุกเดือน: โฮสติ้ง แก้ไขเมนู ราคา รูป ไม่จำกัด", "ค่าติดตั้งแบ่งจ่ายได้ 2 งวด"]) +
           '<a class="btn btn--sun btn--block tho-card__cta" href="' + freeHref + '"><span>ดูแบบร่างฟรีก่อน</span>' + ARROW + '</a>' +
           '<a class="tho-card__alt" href="' + wa("สวัสดี NM Studio สนใจแพ็กเกจครบชุด") + '" target="_blank" rel="noopener">หรือคุยกับเราทาง WhatsApp</a>' +
         '</article>' +
+      '</div>' +
+
+      '<div class="tho-care">' +
+        '<div class="tho-care__head">' +
+          '<p class="tho-extra__k">หลังเว็บไซต์ออนไลน์</p>' +
+          '<h3 class="tho-extra__t">แพ็กดูแลรายเดือน เราดูแลร้านคุณให้ทุกเดือน</h3>' +
+          '<p class="tho-care__lead">เริ่มนับเมื่อเว็บไซต์ออนไลน์ ไม่มีสัญญา ยกเลิกได้ทุกเมื่อ</p>' +
+        '</div>' +
+        '<div class="tho-care__grid">' +
+          '<div class="tho-plan tho-plan--base"><p class="tho-plan__tag">มาพร้อมแพ็กเกจครบชุด</p><p class="tho-plan__name">ดูแลพื้นฐาน</p>' +
+            '<p class="tho-plan__price"><strong>' + b(P.care) + '</strong> บาท/เดือน</p><p class="tho-plan__alt">หรือ ' + b(P.careYear) + ' บาท/ปี (ฟรี 2 เดือน)</p>' +
+            list(["โฮสติ้ง เว็บไซต์ออนไลน์ตลอด", "แก้ไขเมนู ราคา รูป เวลาเปิด-ปิด ไม่จำกัด", "ส่งข้อความทาง WhatsApp หรือ LINE แล้วเสร็จ"]) + '</div>' +
+          '<div class="tho-plan"><p class="tho-plan__tag">เลือกเพิ่มได้</p><p class="tho-plan__name">เติบโต</p>' +
+            '<p class="tho-plan__price"><strong>' + b(P.grow) + '</strong> บาท/เดือน</p><p class="tho-plan__alt">ทุกอย่างในดูแลพื้นฐาน และ</p>' +
+            list(["โพสต์บน Google ทุกสัปดาห์", "ตอบรีวิวลูกค้าให้", "โปรโมชันประจำเดือนบนเว็บไซต์และ Google"]) + '</div>' +
+          '<div class="tho-plan"><p class="tho-plan__tag">เลือกเพิ่มได้</p><p class="tho-plan__name">โซเชียลมีเดีย</p>' +
+            '<p class="tho-plan__price"><span class="tho-plan__from">เริ่มต้น</span> <strong>' + b(P.social) + '</strong> บาท/เดือน</p><p class="tho-plan__alt">ให้คนเห็นร้านคุณทุกวัน</p>' +
+            list(["โพสต์ Facebook และ Instagram", "วิดีโอสั้นสำหรับ TikTok และ Reels", "วางแผนคอนเทนต์ให้ทุกเดือน"]) + '</div>' +
+        '</div>' +
       '</div>' +
 
       '<div class="tho-extra">' +
@@ -81,8 +100,8 @@
 
       '<ul class="tho-promise">' +
         '<li>' + CHECK + '<span>ดูแบบร่างฟรีก่อนตัดสินใจ</span></li>' +
-        '<li>' + CHECK + '<span>ไม่มีค่ารายเดือน</span></li>' +
-        '<li>' + CHECK + '<span>แพ็กเกจครบชุดแบ่งจ่ายได้ 2 งวด</span></li>' +
+        '<li>' + CHECK + '<span>ไม่มีสัญญา ยกเลิกได้ทุกเมื่อ</span></li>' +
+        '<li>' + CHECK + '<span>ค่าติดตั้งแบ่งจ่ายได้ 2 งวด</span></li>' +
         '<li>' + CHECK + '<span>จ่ายง่ายผ่านพร้อมเพย์</span></li>' +
       '</ul>';
   }

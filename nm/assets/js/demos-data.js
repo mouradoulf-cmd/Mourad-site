@@ -21,7 +21,7 @@ window.NM_LINKS = [
     { name: "NM Studio · Italiano", path: "nm/it/" },
     { name: "NM Studio · العربية", path: "nm/ar/" },
     { name: "Tarifs", path: "nm/fr/pricing.html", note: "Prix Europe" },
-    { name: "Tarifs Thaïlande · ไทย", path: "nm/th/pricing.html", note: "Menu 299 ฿ · Google 790 ฿ · Pack 2 990 ฿ (1re année incluse)" }
+    { name: "Tarifs Thaïlande · ไทย", path: "nm/th/pricing.html", note: "Menu 299 ฿ · Google 790 ฿ · Pack 2 990 ฿ + entretien 390 ฿/mois" }
   ] },
   { space: "formation", group: "NM Academy", items: [
     { name: "NM Academy (à jour)", path: "https://claude.ai/artifact/8nSXmvuVbzfwtwMEkdeBjh", note: "La formation : page de vente, formations, réalisations, tarifs, inscription" }
