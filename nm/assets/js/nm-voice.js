@@ -250,7 +250,7 @@
     th: { finale: { sub: "เล่าเรื่องร้านของคุณให้ผมฟัง ผมจะไปหาคุณ ให้ดูว่าเว็บไซต์ของคุณจะออกมาเป็นแบบไหน แล้วทำให้ออนไลน์ในไม่กี่วัน" }, book: { b1: "ผมกับคุณดูร้านและโปรไฟล์ Google ไปด้วยกัน" } },
     ar: { finale: { sub: "حدّثني عن محلّك. سآتي لزيارتك، وأريك كيف يمكن أن يبدو موقعك، ثم أطلقه خلال أيام." } }
   };
-  /* the founder's story: years of skills, came to Thailand, met and married his Thai wife, they work together;
+  /* Thai only: the founder's story: years of skills, came to Thailand, met and married his Thai wife, they work together;
      not to get rich, loyal and happy clients so they can stay; win-win */
   var C3 = {
  "en": {
@@ -295,7 +295,7 @@
  }
 };
   function deep(t, s) { Object.keys(s).forEach(function (k) { if (s[k] && typeof s[k] === "object") { t[k] = t[k] || {}; deep(t[k], s[k]); } else t[k] = s[k]; }); return t; }
-  deep(C, C2); deep(C, C3);
+  deep(C, C2); deep(C.th, C3.th);   // the wife story is for Thai readers only
   window.NM_EXTRA_DICT = deep(window.NM_EXTRA_DICT || {}, C);
   if (typeof module !== "undefined") module.exports = C;
 })();
