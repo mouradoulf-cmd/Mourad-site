@@ -200,6 +200,22 @@
     });
   }
 
+  /* ---------- founder: a quick, clear entrance while scrolling ----------
+     The owner wants the founder to "stand up" fast as soon as the section scrolls in: the photo lifts and
+     sharpens in 0.6 s, the text follows right behind. Visible by default; the hidden start state is only
+     switched on together with a working IntersectionObserver, and never for reduced motion. */
+  var fsec = document.getElementById("studio-founder");
+  if (fsec && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var r0 = fsec.getBoundingClientRect();
+    if (r0.top > window.innerHeight * 0.9) {        // only when it is still below the screen
+      fsec.classList.add("founder--anim");
+      var fio = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { fsec.classList.add("is-in"); fio.disconnect(); }
+      }, { rootMargin: "0px 0px -6% 0px" });
+      fio.observe(fsec);
+    }
+  }
+
   /* ---------- analytics (Cloudflare Web Analytics: no cookies), only when a token is set ---------- */
   if (C.analyticsToken) {
     var s = document.createElement("script"); s.defer = true;

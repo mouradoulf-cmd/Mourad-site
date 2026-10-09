@@ -221,3 +221,13 @@ body.nm-has-bar .line-float { bottom: calc(max(1.25rem, env(safe-area-inset-bott
 /* with a real photo: a larger portrait frame (head, suit and tie) instead of the round monogram */
 .founder__photo.has-photo { width: clamp(14rem, 28vw, 19rem); aspect-ratio: 4 / 5; border-radius: 28px; }
 .founder__photo.has-photo img { object-position: 50% 30%; }
+
+/* founder entrance (see nm-grow.js): fast lift of the photo, text right behind */
+.founder--anim .founder__photo { opacity: 0; transform: translateY(46px) scale(.94); filter: blur(6px); transition: opacity .55s ease, transform .65s cubic-bezier(.16,1,.3,1), filter .55s ease; }
+.founder--anim .founder__text > * { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .6s cubic-bezier(.16,1,.3,1); }
+.founder--anim.is-in .founder__photo { opacity: 1; transform: none; filter: none; }
+.founder--anim.is-in .founder__text > * { opacity: 1; transform: none; }
+.founder--anim.is-in .founder__text > :nth-child(2) { transition-delay: .06s; }
+.founder--anim.is-in .founder__text > :nth-child(3) { transition-delay: .12s; }
+.founder--anim.is-in .founder__text > :nth-child(4) { transition-delay: .18s; }
+.founder--anim.is-in .founder__text > :nth-child(5) { transition-delay: .24s; }
