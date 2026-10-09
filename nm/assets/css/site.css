@@ -1297,3 +1297,4 @@ html[lang="th"] .res__note, html[lang="ar"] .res__note { line-height: 1.8; }
 .finale__face img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px rgba(228,207,154,.55); }
 .finale__face i { position: absolute; right: -1px; bottom: 0; width: .8rem; height: .8rem; border-radius: 50%; background: #2bd97a; box-shadow: 0 0 0 3px #0d0b10; }
 [dir="rtl"] .finale__face i { right: auto; left: -1px; }
+.bk__avatar--logo svg { width: 1.8rem; height: 1.8rem; color: var(--gold); }

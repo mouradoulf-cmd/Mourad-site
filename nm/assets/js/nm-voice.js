@@ -250,8 +250,52 @@
     th: { finale: { sub: "เล่าเรื่องร้านของคุณให้ผมฟัง ผมจะไปหาคุณ ให้ดูว่าเว็บไซต์ของคุณจะออกมาเป็นแบบไหน แล้วทำให้ออนไลน์ในไม่กี่วัน" }, book: { b1: "ผมกับคุณดูร้านและโปรไฟล์ Google ไปด้วยกัน" } },
     ar: { finale: { sub: "حدّثني عن محلّك. سآتي لزيارتك، وأريك كيف يمكن أن يبدو موقعك، ثم أطلقه خلال أيام." } }
   };
+  /* the founder's story: years of skills, came to Thailand, met and married his Thai wife, they work together;
+     not to get rich, loyal and happy clients so they can stay; win-win */
+  var C3 = {
+ "en": {
+  "founder": {
+   "title": "A small team: my wife and me. <em>Not a big company.</em>",
+   "body": "Hello, I'm {name}. Over the years, I've learned to build websites, menus and Google listings that bring in real customers. Then I came to Thailand, met my wife here, and we got married. Today we work together: she is Thai, and between the two of us we understand local business owners as well as their foreign customers. We're not trying to get rich. We want loyal, happy clients, so we can keep living and working here, together. If it works for you, it works for us: let's move forward together.",
+   "p1": "We answer you ourselves, on WhatsApp",
+   "p2": "I come to you, or we talk on video"
+  }
+ },
+ "fr": {
+  "founder": {
+   "title": "Une petite équipe : ma femme et moi. <em>Pas une grosse boîte.</em>",
+   "body": "Bonjour, je m'appelle {name}. Pendant des années, j'ai appris à créer des sites, des menus et des fiches Google qui amènent de vrais clients. Puis je suis venu en Thaïlande, j'y ai rencontré ma femme et nous nous sommes mariés. Aujourd'hui, nous travaillons ensemble : elle est thaïe, et à deux, nous comprenons aussi bien les commerçants d'ici que leurs clients étrangers. Notre but n'est pas de devenir riches. Nous voulons des clients fidèles et heureux, pour pouvoir continuer à vivre et à travailler ici, ensemble. Si ça vous va, ça nous va : on avance ensemble.",
+   "p1": "Nous vous répondons nous-mêmes, sur WhatsApp",
+   "p2": "Je viens vous voir, ou on se parle en visio"
+  }
+ },
+ "it": {
+  "founder": {
+   "title": "Una piccola squadra: mia moglie e io. <em>Non una grande azienda.</em>",
+   "body": "Ciao, sono {name}. In tanti anni ho imparato a creare siti, menù e schede Google che portano clienti veri. Poi sono venuto in Thailandia, qui ho conosciuto mia moglie e ci siamo sposati. Oggi lavoriamo insieme: lei è thailandese, e in due capiamo sia i commercianti del posto sia i loro clienti stranieri. Non vogliamo diventare ricchi. Vogliamo clienti fedeli e felici, per poter continuare a vivere e lavorare qui, insieme. Se va bene a voi, va bene a noi: andiamo avanti insieme.",
+   "p1": "Vi rispondiamo noi, su WhatsApp",
+   "p2": "Vengo da voi, o ci sentiamo in video"
+  }
+ },
+ "th": {
+  "founder": {
+   "title": "ทีมเล็ก ๆ ผมกับภรรยา <em>ไม่ใช่บริษัทใหญ่</em>",
+   "body": "สวัสดีครับ ผมชื่อ {name} หลายปีที่ผ่านมา ผมฝึกฝนการทำเว็บไซต์ เมนู และโปรไฟล์ Google ที่ช่วยให้ร้านได้ลูกค้าจริง จากนั้นผมมาเมืองไทย ได้พบภรรยาของผมที่นี่ และเราก็แต่งงานกัน วันนี้เราทำงานด้วยกัน ภรรยาผมเป็นคนไทย เราจึงเข้าใจทั้งเจ้าของร้านคนไทยและลูกค้าชาวต่างชาติ เราไม่ได้อยากรวย เราแค่อยากมีลูกค้าประจำที่มีความสุข เพื่อให้เราได้อยู่และทำงานที่นี่ด้วยกันต่อไป คุณพอใจ เราก็มีความสุข เติบโตไปด้วยกันนะครับ",
+   "p1": "เราตอบคุณเองทาง WhatsApp",
+   "p2": "ผมไปหาคุณถึงร้าน หรือคุยทางวิดีโอคอล"
+  }
+ },
+ "ar": {
+  "founder": {
+   "title": "فريق صغير: أنا وزوجتي. <em>لسنا شركة كبيرة.</em>",
+   "body": "مرحبًا، اسمي {name}. على مدى سنوات، تعلّمت إنشاء مواقع وقوائم طعام وملفات على جوجل تجلب زبائن حقيقيين. ثم جئت إلى تايلاند، وتعرّفت هنا على زوجتي، وتزوّجنا. واليوم نعمل معًا: زوجتي تايلاندية، ومعًا نفهم أصحاب المحلات المحليين وزبائنهم الأجانب على حدّ سواء. لا نسعى إلى الثراء. نريد زبائن أوفياء وسعداء، لنتمكّن من مواصلة العيش والعمل هنا معًا. ما يناسبك يناسبنا: لنتقدّم معًا.",
+   "p1": "نرد عليك بأنفسنا على واتساب",
+   "p2": "آتي إليك، أو نتحدث عبر الفيديو"
+  }
+ }
+};
   function deep(t, s) { Object.keys(s).forEach(function (k) { if (s[k] && typeof s[k] === "object") { t[k] = t[k] || {}; deep(t[k], s[k]); } else t[k] = s[k]; }); return t; }
-  deep(C, C2);
+  deep(C, C2); deep(C, C3);
   window.NM_EXTRA_DICT = deep(window.NM_EXTRA_DICT || {}, C);
   if (typeof module !== "undefined") module.exports = C;
 })();
