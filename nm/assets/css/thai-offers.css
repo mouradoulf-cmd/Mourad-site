@@ -99,3 +99,12 @@
 .tho-more__body .tho-extra { margin-top: 1rem; }
 @media (min-width: 860px) { .tho-more__body .tho-care__grid { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 860px) { .tho-care > .tho-care__grid { grid-template-columns: minmax(0, 560px); } }
+
+.tho-opt { margin-top: 1.1rem; border-radius: 14px; background: rgba(201,169,97,.07); box-shadow: inset 0 0 0 1px rgba(201,169,97,.35); }
+.tho-opt__sum { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .85rem 1rem; cursor: pointer; list-style: none; font-weight: 600; font-size: .95rem; color: var(--gold); }
+.tho-opt__sum::-webkit-details-marker { display: none; }
+.tho-opt__sum svg { flex: none; transition: transform .25s; }
+.tho-opt[open] .tho-opt__sum svg { transform: rotate(180deg); }
+.tho-opt__body { padding: 0 1rem 1rem; }
+.tho-opt .tho-extra { display: block; margin-top: 0; padding: 0; background: none; box-shadow: none; border-radius: 0; }
+.tho-opt .tho-extra__copy { margin-bottom: 1rem; }
