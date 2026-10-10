@@ -215,7 +215,7 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const API_BASE='https://apihub.agnes-ai.com/v1',POLL_BASE='https://apihub.agnes-ai.com/agnesapi';
 const MODEL_TEXT='agnes-2.5-flash',MODEL_IMAGE='agnes-image-2.1-flash',MODEL_VIDEO='agnes-video-v2.0',FRAME_RATE=24;
-const T={VID_SAFE:75,IMG_INT:3400,FIRST_POLL:80,POLLS:[8,8,12,12,20,20,25],MAX_POLL:100,B429:[10,20,35,50,75,100,150],B503:[5,10,15,20,30,45],NET:[3,5,8,12,20,30]};
+const T={VID_SAFE:75,IMG_INT:3400,FIRST_POLL:80,POLLS:[8,8,12,12,20,20,25],MAX_POLL:100,B429:[15,30,50,75,100,150,200],B503:[10,20,40,60,90,120,180,240],NET:[3,5,8,12,20,30]};
 let TS=1;
 const KEY='agnes_api_key_studio',PROJ='story_project_v1',USAGE='story_usage_v1',TIMING='story_timing_v1';
 const S={pend:{},running:false,stop:false,wake:null,qaVision:null,refOK:null};
@@ -360,12 +360,14 @@ function showErr(m){const b=document.getElementById('errBox');if(!b)return;b.sty
 /* ───────── API ───────── */
 async function apiCall(method,url,body,label,kk){let a=0,b=0,n=0;if(label&&!/^poll/.test(label))log('→ '+label);
  for(;;){if(S.stop)throw new Error('Arrêt');let r;
+  {const w=(S.cool||0)-Date.now();if(w>0)await waitS(Math.ceil(w/(1000*TS)),'Pause : Agnes est surchargé… ')}
   try{r=await fetch(url,{method,headers:{'Authorization':'Bearer '+(kk||getKey()),'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined})}
   catch(e){if(n>=T.NET.length)throw new Error('Réseau : '+e.message);await waitS(T.NET[n++],'Réseau instable… ');continue}
-  if(r.status===429){if(a>=T.B429.length)throw new Error('Trop de requêtes (429)');await waitS(T.B429[a++],'Limite de débit… ');continue}
-  if(r.status===503){if(b>=T.B503.length)throw new Error('Serveur occupé (503)');await waitS(T.B503[b++],'Serveur occupé… ');continue}
+  if(r.status===429){if(a>=T.B429.length)throw new Error('Trop de requêtes (429)');const sec=T.B429[a++];S.cool=Math.max(S.cool||0,Date.now()+sec*1000*TS);S.par=Math.max(2,(S.par||4)-1);S.okRun=0;log('⏳ Limite de débit : pause '+sec+' s, '+S.par+' en parallèle');continue}
+  if(r.status===503){if(b>=T.B503.length)throw new Error('Serveur occupé (503)');const sec=T.B503[b++];S.cool=Math.max(S.cool||0,Date.now()+sec*1000*TS);S.par=Math.max(2,(S.par||4)-1);S.okRun=0;log('⏳ Agnes surchargé (503) : pause de '+sec+' s pour toutes les demandes, '+S.par+' en parallèle');continue}
   if(r.status===401||r.status===403||r.status===402){const e=new Error('Clé API refusée (HTTP '+r.status+')');e.keyBad=true;if(kk)throw e;const cur=getKey();badKeys[cur]=true;log('✗ clé '+keyTag(cur)+' refusée (HTTP '+r.status+')');if(goodKeys().length)continue;throw e}
   if(!r.ok){const t=await r.text();if(/quota|credit|balance|insufficient|exceed/i.test(t)&&r.status!==500){const e=new Error('Quota de la clé atteint : '+t.slice(0,100));e.keyBad=true;if(kk)throw e;const cur=getKey();badKeys[cur]=true;log('✗ clé '+keyTag(cur)+' : quota atteint');if(goodKeys().length)continue;throw e}const e=new Error('HTTP '+r.status+' '+t.slice(0,160));e.status=r.status;log('✗ '+(label||url)+' : HTTP '+r.status+' '+t.slice(0,120));throw e}
+  if(r.ok){S.okRun=(S.okRun||0)+1;if(S.okRun>=10&&S.par<(S.par0||4)){S.par++;S.okRun=0}}
   return r}}
 function parseJson(text){let s=String(text||'').trim().replace(/^```(?:json)?/i,'').replace(/```$/,'').trim();const i=s.indexOf('{');if(i>0)s=s.slice(i);
  const tries=[()=>JSON.parse(s),()=>{const j=s.lastIndexOf('}');return JSON.parse(s.slice(0,j+1))},()=>JSON.parse(balance(s))];let last;
@@ -655,7 +657,7 @@ function lenParse(){const v=$('len').value,d=+$('dur').value,perDay=+$('perDay')
 function readOpts(){const L_=lenParse();return{lenv:$('len').value,talk:$('talk').value,perDay:$('perDay').value,series:L_.series?{total:L_.total,perDay:L_.perDay}:null,genre:selGenre,idea:$('idea').value.trim(),n:L_.series?L_.perDay:L_.total,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:String(qAuto($('dur').value)),mode:$('mode').value,sq:$('optSq').checked}}
 async function run(){
  if(S.running)return;if(!getKey()){toast('Colle ta clé API Agnes en haut de la page, puis touche « Enregistrer la clé »','error',5000);$('apiPanel').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('apiKeyInput').focus(),500);return}
-S.running=true;S.stop=false;S.autoNext=false;S.userStop=false;S.quotaHit=false;Object.keys(badKeys).forEach(k=>delete badKeys[k]);showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
+S.par0=Math.max(2,Math.min(6,goodKeys().length+1));S.par=S.par0;S.cool=0;S.okRun=0;S.running=true;S.stop=false;S.autoNext=false;S.userStop=false;S.quotaHit=false;Object.keys(badKeys).forEach(k=>delete badKeys[k]);showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{
   if(!P||!P.scenes||!P.scenes.length){
    P={id:Date.now(),o:readOpts(),scenes:[],partStart:0,ep:SHOW?SHOW.eps.length+1:1};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
@@ -672,7 +674,7 @@ S.running=true;S.stop=false;S.autoNext=false;S.userStop=false;S.quotaHit=false;O
   S.anim=true;phase('clips','Création des clips…',.6);
   let prev=Promise.resolve(),fatal=null;const active=new Set();
   for(let i=0;i<P.scenes.length;i++){const sc=P.scenes[i];if(done(sc))continue;
-   while(active.size>=Math.max(2,Math.min(8,2*goodKeys().length))&&!S.stop&&!S.quotaHit)await Promise.race(active);
+   while(active.size>=Math.max(1,S.par||4)&&!S.stop&&!S.quotaHit)await Promise.race(active);
    if(S.stop||S.quotaHit)break;
    const p=produce(sc,i,prev).catch(e=>{if(e.message==='QUOTA'){fatal=e;S.quotaHit=true;sc.vidState='';render()}else if(e.message==='Arrêt'){if(!fatal)fatal=e;S.stop=true}else{sc.vidState='fail';sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);showErr('Scène '+sc.n+' : '+e.message);render()}});
    active.add(p);p.then(()=>active.delete(p));prev=p}
