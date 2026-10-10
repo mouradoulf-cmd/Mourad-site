@@ -89,3 +89,13 @@
 .tho-plan__from { font-size: .82rem; }
 .tho-plan__alt { margin-top: .2rem; font-size: .82rem; color: var(--faint); }
 .tho-plan .tho-card__list { margin-top: .9rem; padding-top: .9rem; }
+
+.tho-more { margin-top: 1rem; border: 1px solid rgba(255,255,255,.1); border-radius: var(--tho-r); background: rgba(255,255,255,.02); }
+.tho-more__sum { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; cursor: pointer; list-style: none; font-weight: 600; color: var(--gold); }
+.tho-more__sum::-webkit-details-marker { display: none; }
+.tho-more__sum svg { transition: transform .25s; flex: none; }
+.tho-more[open] .tho-more__sum svg { transform: rotate(180deg); }
+.tho-more__body { padding: 0 1rem 1rem; }
+.tho-more__body .tho-extra { margin-top: 1rem; }
+@media (min-width: 860px) { .tho-more__body .tho-care__grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 860px) { .tho-care > .tho-care__grid { grid-template-columns: minmax(0, 560px); } }

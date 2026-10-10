@@ -71,6 +71,8 @@
           '<div class="tho-plan tho-plan--base"><p class="tho-plan__tag">มาพร้อมแพ็กเกจครบชุด</p><p class="tho-plan__name">ดูแลพื้นฐาน</p>' +
             '<p class="tho-plan__price"><strong>' + b(P.care) + '</strong> บาท/เดือน</p><p class="tho-plan__alt">หรือ ' + b(P.careYear) + ' บาท/ปี (ฟรี 2 เดือน)</p>' +
             list(["โฮสติ้ง เว็บไซต์ออนไลน์ตลอด", "แก้ไขเมนู ราคา รูป เวลาเปิด-ปิด ไม่จำกัด", "ส่งข้อความทาง WhatsApp หรือ LINE แล้วเสร็จ"]) + '</div>' +
+          '</div>' +
+        '<details class="tho-more"><summary class="tho-more__sum"><span>ตัวเลือกเสริม (ไม่บังคับ)</span><svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="tho-more__body"><div class="tho-care__grid">' +
           '<div class="tho-plan"><p class="tho-plan__tag">เลือกเพิ่มได้</p><p class="tho-plan__name">เติบโต</p>' +
             '<p class="tho-plan__price"><strong>' + b(P.grow) + '</strong> บาท/เดือน</p><p class="tho-plan__alt">ทุกอย่างในดูแลพื้นฐาน และ</p>' +
             list(["โพสต์บน Google ทุกสัปดาห์", "ตอบรีวิวลูกค้าให้", "โปรโมชันประจำเดือนบนเว็บไซต์และ Google"]) + '</div>' +
@@ -78,7 +80,6 @@
             '<p class="tho-plan__price"><span class="tho-plan__from">เริ่มต้น</span> <strong>' + b(P.social) + '</strong> บาท/เดือน</p><p class="tho-plan__alt">ให้คนเห็นร้านคุณทุกวัน</p>' +
             list(["โพสต์ Facebook และ Instagram", "วิดีโอสั้นสำหรับ TikTok และ Reels", "วางแผนคอนเทนต์ให้ทุกเดือน"]) + '</div>' +
         '</div>' +
-      '</div>' +
 
       '<div class="tho-extra">' +
         '<div class="tho-extra__copy">' +
@@ -96,6 +97,8 @@
           '<p class="tho-calc__total" aria-live="polite"><span>รวม</span><strong data-out="total">' + b(P.menu) + ' บาท</strong></p>' +
           '<p class="tho-calc__note">ตัวอย่าง: เมนู 4 หน้า + เคลือบ 6 เล่ม = ' + b(P.menu + 2 * P.page + 6 * P.copy) + ' บาท</p>' +
         '</div>' +
+      '</div>' +
+      '</div></details>' +
       '</div>' +
 
       '<ul class="tho-promise">' +
