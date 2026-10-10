@@ -1,0 +1,15 @@
+{
+  "name": "Mon espace NM Studio",
+  "short_name": "Mon espace NM",
+  "start_url": "./demos.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#040a08",
+  "theme_color": "#040a08",
+  "lang": "fr",
+  "icons": [
+    { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

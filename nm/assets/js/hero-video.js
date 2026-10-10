@@ -19,11 +19,12 @@
  * the GPU, while VP9 is very often decoded in software (CPU at 100 %, visible
  * stutter). The webm stays as the desktop fallback source.
  *
- * Start-up is deliberately bumpy-free: after the first screen is painted the
- * video is fetched in the background WITHOUT calling play(); playback only
- * starts once `canplaythrough` has fired or `buffered` covers ~4 s, and at the
- * latest 8 s after the download began. Starting while the opening seconds are
- * still arriving is what produced the first-seconds juddering.
+ * Start-up is fast and still bump-free: the download starts right after the
+ * first paint (two animation frames, on every screen size), WITHOUT calling
+ * play(); playback starts as soon as `canplaythrough` fires or `buffered`
+ * covers 1.5 s ahead (the files are fast-start, a key frame every 2 s), and at
+ * the latest 4 s after the download began. The owner found the old rule (wait
+ * for the full page load + idle on phones, 4 s of buffer) too slow to start.
  *
  * The poster → video hand-over is a single 600 ms cross-fade driven by the
  * video's own `playing` event. The video is decoded and rendering its first
@@ -38,7 +39,7 @@
  * download starts, so the video's bytes and its decode never compete with the
  * paint the visitor is looking at, and it is paused the moment the hero leaves
  * the viewport. The guardrails still decide for the visitor: `saveData`,
- * `slow-2g`/`2g`/`3g` and `prefers-reduced-motion` all keep the poster, which
+ * `slow-2g`/`2g`/`3g` keep the poster, which
  * is the correct and intended outcome there.
  *
  * Resource budget: the video is paused when the hero leaves the viewport
@@ -53,8 +54,9 @@
   var video = document.querySelector(".h__video");
   if (!video) return;
 
-  // Respect the visitor's motion preference: never autoplay for them.
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // The muted hero video plays for everyone (the owner's choice), reduced motion included; only data saver
+  // and slow connections below keep the still image.
+  video.muted = true; video.defaultMuted = true; video.setAttribute("muted", ""); video.playsInline = true;
   // Skip metered or slow connections (Connection API is absent on Safari/FF,
   // in which case we simply keep the video).
   var conn = navigator.connection;
@@ -95,8 +97,8 @@
 
   /* ---------- start-up: download first, play second ---------- */
 
-  var MIN_BUFFER = 4;      // seconds of media we want before showing motion
-  var MAX_WAIT = 8000;     // hard deadline: never keep the poster longer
+  var MIN_BUFFER = 1.5;    // seconds of media we want before showing motion
+  var MAX_WAIT = 4000;     // hard deadline: never keep the poster longer
   var started = false, gaveUp = false, timer = 0;
   var t0 = (window.performance && performance.now) ? performance.now() : Date.now();
   var since = function () { return Math.round(((window.performance && performance.now) ? performance.now() : Date.now()) - t0); };
@@ -123,19 +125,21 @@
     video.removeEventListener("canplaythrough", start);
     video.removeEventListener("progress", onProgress);
     video.removeEventListener("error", fail);
-    window.__heroVideoStart = { at: since(), reason: video.readyState >= 4 ? "canplaythrough" : "buffer>=4s", ahead: +bufferedAhead().toFixed(2) };
+    window.__heroVideoStart = { at: since(), reason: video.readyState >= 4 ? "canplaythrough" : "buffer>=" + MIN_BUFFER + "s", ahead: +bufferedAhead().toFixed(2) };
     play();
   }
   function onProgress() { if (canStart()) start(); }
   function watch() {
     video.addEventListener("canplaythrough", start);
     video.addEventListener("progress", onProgress);
+    video.addEventListener("canplay", onProgress);
     video.addEventListener("error", fail);
     timer = window.setTimeout(start, MAX_WAIT);
   }
   function unwatch() {
     video.removeEventListener("canplaythrough", start);
     video.removeEventListener("progress", onProgress);
+    video.removeEventListener("canplay", onProgress);
     video.removeEventListener("error", fail);
   }
   function fail() {
@@ -203,25 +207,12 @@
 
   /* ---------- go ---------- */
 
-  function idle(fn, ms) {
-    return window.requestIdleCallback ? window.requestIdleCallback(fn, { timeout: ms }) : window.setTimeout(fn, ms);
-  }
+  // Right after the first paint, on every screen size: two animation frames
+  // guarantee the poster (preloaded in <head>) is on screen before the video
+  // starts fetching, so the download never delays the first paint.
   function begin() {
     video.load();     // picks the first playable <source> and starts fetching
     watch();
   }
-  if (small) {
-    // Phones: the whole first screen first. `load` has already gone out with the
-    // CSS, the fonts and the above-the-fold images, so the video waits for it
-    // and only then starts fetching — the 1.1 MiB and its decode never take part
-    // in the paint the visitor is looking at. Safari has no requestIdleCallback
-    // and lands on the plain 1.5 s timer.
-    if (document.readyState === "complete") idle(begin, 1500);
-    else window.addEventListener("load", function () { idle(begin, 1500); }, { once: true });
-  } else {
-    // Desktop, unchanged: kick the download off as soon as the first screen is
-    // painted, so this never competes with the LCP paint, but without waiting
-    // for full idle either.
-    idle(begin, 1200);
-  }
+  requestAnimationFrame(function () { requestAnimationFrame(begin); });
 })();
