@@ -586,11 +586,11 @@ function batText(title,list){const q=u=>String(u).replace(/"/g,'');return '@echo
 function batFullText(title,list){const q=u=>String(u).replace(/"/g,'');const R='\r\n';
  return '@echo off'+R+'chcp 65001 >nul'+R+'setlocal'+R+'cd /d "%~dp0"'+R+'set D=%~dp0videos'+R+'if not exist "%D%" mkdir "%D%"'+R
  +'echo ===== 1/3 : telechargement de '+list.length+' clips ====='+R
- +list.map(x=>'curl.exe -L -s --retry 3 -o "%D%\\'+pad(x.n)+'.mp4" "'+q(x.url)+'" && echo '+pad(x.n)+' ok').join(R)+R
+ +list.map(x=>'if exist "%D%\\'+pad(x.n)+'.mp4" (echo '+pad(x.n)+' deja la) else curl.exe -L -s --retry 3 -o "%D%\\'+pad(x.n)+'.mp4" "'+q(x.url)+'" && echo '+pad(x.n)+' ok').join(R)+R
  +'echo.'+R+'echo ===== 2/3 : outil de montage ffmpeg ====='+R
  +'set FF='+R+'where ffmpeg >nul 2>nul && set FF=ffmpeg'+R
  +'if "%FF%"=="" if not exist "%~dp0ffmpeg.zip" curl.exe -L -o "%~dp0ffmpeg.zip" "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"'+R
- +'if "%FF%"=="" tar.exe -xf "%~dp0ffmpeg.zip" -C "%~dp0"'+R
+ +'if "%FF%"=="" tar.exe -xf ffmpeg.zip'+R
  +'if "%FF%"=="" for /r "%~dp0" %%f in (ffmpe?.exe) do set FF=%%f'+R
  +'if "%FF%"=="" ('+R+'  echo ECHEC : ffmpeg introuvable. Envoie les clips a Claude pour le montage.'+R+'  pause'+R+'  exit /b 1'+R+')'+R
  +'echo.'+R+'echo ===== 3/3 : montage de l episode ====='+R
