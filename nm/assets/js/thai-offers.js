@@ -35,6 +35,25 @@
           '<p class="tho-card__price"><strong>' + b(P.menu) + '</strong><span class="tho-card__cur">บาท</span></p>' +
           '<p class="tho-card__unit">ทั้งเมนู สูงสุด ' + P.menuPages + ' หน้า</p>' +
           list(["แปลเป็นภาษาอังกฤษ หรือภาษาที่ลูกค้าของคุณใช้", "ชื่ออาหารที่นักท่องเที่ยวเข้าใจทันที", "จัดหน้าใหม่ สีสวย อ่านง่าย", "ได้ไฟล์พร้อมพิมพ์ ส่งให้ทาง LINE หรือ WhatsApp"]) +
+          '<details class="tho-opt"><summary class="tho-opt__sum"><span>แตะที่นี่เพื่อดูตัวเลือกเพิ่มเติม</span><svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="tho-opt__body">' +
+      '<div class="tho-extra">' +
+        '<div class="tho-extra__copy">' +
+          '<p class="tho-extra__k">อยากได้เมนูพรีเมียมแบบร้านอาหารชั้นนำ?</p>' +
+          '<h3 class="tho-extra__t">เลือกเพิ่มได้ตามต้องการ</h3>' +
+          '<ul class="tho-extra__list">' +
+            '<li><b>+' + b(P.page) + ' บาท</b><span>ต่อหน้า สำหรับเมนูที่ยาวกว่า ' + P.menuPages + ' หน้า</span></li>' +
+            '<li><b>+' + b(P.copy) + ' บาท</b><span>ต่อเล่ม พิมพ์สีบนกระดาษหนา เคลือบพลาสติกอย่างดี กันน้ำ กันคราบ มุมโค้งสวย</span></li>' +
+          '</ul>' +
+        '</div>' +
+        '<div class="tho-calc" aria-labelledby="thoCalcT">' +
+          '<p class="tho-calc__t" id="thoCalcT">คำนวณราคาเมนูของคุณ</p>' +
+          '<div class="tho-calc__row"><span>จำนวนหน้า</span><div class="tho-step"><button type="button" data-step="pages" data-d="-1" aria-label="ลดจำนวนหน้า">−</button><output data-out="pages">2</output><button type="button" data-step="pages" data-d="1" aria-label="เพิ่มจำนวนหน้า">+</button></div></div>' +
+          '<div class="tho-calc__row"><span>เล่มเคลือบพรีเมียม</span><div class="tho-step"><button type="button" data-step="copies" data-d="-1" aria-label="ลดจำนวนเล่ม">−</button><output data-out="copies">0</output><button type="button" data-step="copies" data-d="1" aria-label="เพิ่มจำนวนเล่ม">+</button></div></div>' +
+          '<p class="tho-calc__total" aria-live="polite"><span>รวม</span><strong data-out="total">' + b(P.menu) + ' บาท</strong></p>' +
+          '<p class="tho-calc__note">ตัวอย่าง: เมนู 4 หน้า + เคลือบ 6 เล่ม = ' + b(P.menu + 2 * P.page + 6 * P.copy) + ' บาท</p>' +
+        '</div>' +
+      '</div>' +
+          '</div></details>' +
           '<a class="btn btn--outline btn--block tho-card__cta" href="' + wa("สวัสดี NM Studio สนใจทำเมนูแปลภาษา") + '" target="_blank" rel="noopener"><span>สั่งเมนูแปลภาษา</span>' + ARROW + '</a>' +
         '</article>' +
         '<article class="tho-card">' +
@@ -81,23 +100,6 @@
             list(["โพสต์ Facebook และ Instagram", "วิดีโอสั้นสำหรับ TikTok และ Reels", "วางแผนคอนเทนต์ให้ทุกเดือน"]) + '</div>' +
         '</div>' +
 
-      '<div class="tho-extra">' +
-        '<div class="tho-extra__copy">' +
-          '<p class="tho-extra__k">อยากได้เมนูพรีเมียมแบบร้านอาหารชั้นนำ?</p>' +
-          '<h3 class="tho-extra__t">เลือกเพิ่มได้ตามต้องการ</h3>' +
-          '<ul class="tho-extra__list">' +
-            '<li><b>+' + b(P.page) + ' บาท</b><span>ต่อหน้า สำหรับเมนูที่ยาวกว่า ' + P.menuPages + ' หน้า</span></li>' +
-            '<li><b>+' + b(P.copy) + ' บาท</b><span>ต่อเล่ม พิมพ์สีบนกระดาษหนา เคลือบพลาสติกอย่างดี กันน้ำ กันคราบ มุมโค้งสวย</span></li>' +
-          '</ul>' +
-        '</div>' +
-        '<div class="tho-calc" aria-labelledby="thoCalcT">' +
-          '<p class="tho-calc__t" id="thoCalcT">คำนวณราคาเมนูของคุณ</p>' +
-          '<div class="tho-calc__row"><span>จำนวนหน้า</span><div class="tho-step"><button type="button" data-step="pages" data-d="-1" aria-label="ลดจำนวนหน้า">−</button><output data-out="pages">2</output><button type="button" data-step="pages" data-d="1" aria-label="เพิ่มจำนวนหน้า">+</button></div></div>' +
-          '<div class="tho-calc__row"><span>เล่มเคลือบพรีเมียม</span><div class="tho-step"><button type="button" data-step="copies" data-d="-1" aria-label="ลดจำนวนเล่ม">−</button><output data-out="copies">0</output><button type="button" data-step="copies" data-d="1" aria-label="เพิ่มจำนวนเล่ม">+</button></div></div>' +
-          '<p class="tho-calc__total" aria-live="polite"><span>รวม</span><strong data-out="total">' + b(P.menu) + ' บาท</strong></p>' +
-          '<p class="tho-calc__note">ตัวอย่าง: เมนู 4 หน้า + เคลือบ 6 เล่ม = ' + b(P.menu + 2 * P.page + 6 * P.copy) + ' บาท</p>' +
-        '</div>' +
-      '</div>' +
       '</div></details>' +
       '</div>' +
 
