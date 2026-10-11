@@ -39,11 +39,11 @@
         s4b: "10 €/mois (390 ฿), avec hébergement, mises à jour et modifications illimitées. Résiliable à tout moment."
       },
       founder: {
-        title: "Bonjour, nous sommes Mourad et son épouse. <em>Une petite équipe qui travaille avec le cœur.</em>",
-        body: "Nous aimons notre travail et les commerçants que nous rencontrons. Moi, je crée des sites, des menus QR et des fiches Google. Mon épouse est thaïlandaise : elle nous aide à bien vous comprendre, vous et vos clients.",
+        title: "Bonjour, je suis Mourad. <em>Avec l’aide de mon épouse, nous avons créé ce business.</em>",
+        body: "Cela fait longtemps que je travaille sur les sites web, les menus QR et les fiches Google. Avec l’aide de mon épouse thaïlandaise, qui comprend si bien les commerçants d’ici et leurs clients, nous avons décidé d’en faire un vrai business pour les aider.",
         quote: "Nous ne cherchons pas à devenir riches. Nous voulons simplement aider les commerçants thaïs, avec un travail soigné à un prix très doux. Quand votre commerce va bien, nous sommes heureux, et nous avançons ensemble.",
         p1: "Nous vous répondons nous-mêmes, avec plaisir, sur WhatsApp", p2: "Nous passons vous voir, ou on se parle en visio, comme vous préférez",
-        p3: "Sans contrat, résiliable à tout moment", sign: "Avec le sourire, Mourad et son épouse · NM Studio"
+        p3: "Sans contrat, résiliable à tout moment", sign: "Avec le sourire, Mourad · NM Studio"
       }
     }
   };
