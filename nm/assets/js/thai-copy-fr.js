@@ -39,11 +39,11 @@
         s4b: "10 €/mois (390 ฿), avec hébergement, mises à jour et modifications illimitées. Résiliable à tout moment."
       },
       founder: {
-        title: "Mon épouse et moi. <em>On avance avec les commerçants thaïs.</em>",
-        body: "Je m’appelle {name}. Je crée des sites, des menus QR et des fiches Google qui amènent de vrais clients. Mon épouse est thaïlandaise : à deux, nous comprenons aussi bien les commerçants d’ici que leurs clients étrangers.",
-        quote: "Nous ne cherchons pas à devenir riches. Nous voulons que les petits commerces aient un travail de qualité « agence » à un prix très bas. Si votre commerce marche bien, nous marchons bien aussi.",
-        p1: "Nous vous répondons nous-mêmes, sur WhatsApp", p2: "Je viens vous voir, ou on se parle en visio",
-        p3: "Sans contrat, résiliable à tout moment", sign: "{name} et son épouse · NM Studio"
+        title: "Bonjour, nous sommes Mourad et son épouse. <em>Une petite équipe qui travaille avec le cœur.</em>",
+        body: "Nous aimons notre travail et les commerçants que nous rencontrons. Moi, je crée des sites, des menus QR et des fiches Google. Mon épouse est thaïlandaise : elle nous aide à bien vous comprendre, vous et vos clients.",
+        quote: "Nous ne cherchons pas à devenir riches. Nous voulons simplement aider les commerçants thaïs, avec un travail soigné à un prix très doux. Quand votre commerce va bien, nous sommes heureux, et nous avançons ensemble.",
+        p1: "Nous vous répondons nous-mêmes, avec plaisir, sur WhatsApp", p2: "Nous passons vous voir, ou on se parle en visio, comme vous préférez",
+        p3: "Sans contrat, résiliable à tout moment", sign: "Avec le sourire, Mourad et son épouse · NM Studio"
       }
     }
   };
