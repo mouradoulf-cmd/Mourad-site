@@ -30,13 +30,13 @@
       '<div class="container">' +
         '<div class="section-head section-head--center"><p class="eyebrow" data-k="eb"></p><h2 class="section-title" id="mbaTitle" data-k="t"></h2></div>' +
         '<div class="mba__stage">' +
-          '<div class="mba__scene mba__scene--before"><span class="mba__tag" data-k="b"></span>' + oldMenu() + '</div>' +
-          '<div class="mba__scene mba__scene--qr"><span class="mba__tag" data-k="q"></span>' + tent() + '</div>' +
+          '<div class="mba__scene mba__scene--before"><span class="mba__tag" data-k="b"></span>' + oldMenu() + '<p class="mba__scap" data-c="0"></p></div>' +
+          '<div class="mba__scene mba__scene--qr"><span class="mba__tag" data-k="q"></span>' + tent() + '<p class="mba__scap" data-c="1"></p></div>' +
           '<div class="mba__scene mba__scene--after"><span class="mba__tag" data-k="a"></span>' +
-            '<div class="mphone"><div class="mphone__screen"><iframe title="' + x.ttl + '" loading="lazy" tabindex="-1"></iframe></div></div></div>' +
+            '<div class="mphone"><div class="mphone__screen"><iframe title="' + x.ttl + '" loading="lazy" tabindex="-1"></iframe></div></div><p class="mba__scap" data-c="2"></p></div>' +
         '</div>' +
-        '<div class="mba__cap" aria-live="polite"><p data-c="0"></p><p data-c="1" hidden></p><p data-c="2" hidden></p>' +
-          '<div class="mba__dots"><button type="button" data-go="1" aria-label="1"></button><button type="button" data-go="2" aria-label="2"></button><button type="button" data-go="3" aria-label="3"></button><button type="button" class="mba__replay" data-replay></button></div></div>' +
+        '<div class="mba__cap" aria-live="polite"><p id="mbaLive"></p>' +
+          '<div class="mba__dots"><button type="button" data-go="1" aria-label="1"></button><button type="button" data-go="2" aria-label="2"></button><button type="button" data-go="3" aria-label="3"></button></div><button type="button" class="mba__replay" data-replay></button></div>' +
         '<p class="mba__cta"><a class="btn btn--sun btn--lg" id="mbaCta" target="_blank" rel="noopener"><span data-k="cta"></span></a></p>' +
       '</div>';
     var anchor = document.getElementById("problems");
@@ -100,11 +100,17 @@
     if (window.QRCode) draw();
     else { var s = document.createElement("script"); s.src = new URL("assets/js/qrcode.min.js", BASE).href; s.onload = draw; document.head.appendChild(s); }
   }
+  function fit() {
+    var scr = sec.querySelector(".mphone__screen"), f = sec.querySelector("iframe"); if (!scr || !f || !scr.clientWidth) return;
+    var k = scr.clientWidth / 390; f.style.width = "390px"; f.style.height = ((scr.clientHeight - 30) / k) + "px"; f.style.transform = "scale(" + k + ")";
+  }
   function loadFrame() { var f = sec.querySelector("iframe"); if (!f.dataset.loaded) { f.dataset.loaded = "1"; f.src = f.dataset.want; } }
 
   function show(n) {
     step = n; sec.setAttribute("data-step", String(n));
-    [].forEach.call(sec.querySelectorAll("[data-c]"), function (p) { p.hidden = (+p.getAttribute("data-c") !== n - 1); });
+    var live = sec.querySelector("#mbaLive"); if (live) live.innerHTML = T[lang()].c[n - 1];
+    var sc = sec.querySelector(n === 1 ? ".mba__scene--before" : n === 2 ? ".mba__scene--qr" : ".mba__scene--after"), st = sec.querySelector(".mba__stage");
+    if (sc && st && matchMedia("(max-width: 860px)").matches && sec.classList.contains("mba--js")) st.style.height = (sc.offsetHeight + 8) + "px"; else if (st) st.style.height = "";
     [].forEach.call(sec.querySelectorAll("[data-go]"), function (b) { b.setAttribute("aria-current", +b.getAttribute("data-go") === n ? "true" : "false"); });
   }
   function play(from) {
@@ -115,13 +121,13 @@
 
   function start() {
     if (started) return; started = true;
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { [].forEach.call(sec.querySelectorAll("[data-c]"), function (p) { p.hidden = false; }); return; }
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return; /* static mode: the 3 scenes stay stacked, each with its own caption */
     sec.classList.add("mba--js"); play(1);
   }
 
   function init() {
     if (!build()) return;
-    makeQr();
+    makeQr(); fit(); addEventListener("resize", fit); if (window.ResizeObserver) new ResizeObserver(fit).observe(sec.querySelector(".mphone"));
     sec.addEventListener("click", function (e) {
       var g = e.target.closest("[data-go]"); if (g) { stop(); show(+g.getAttribute("data-go")); return; }
       if (e.target.closest("[data-replay]")) { sec.classList.add("mba--js"); play(1); }
