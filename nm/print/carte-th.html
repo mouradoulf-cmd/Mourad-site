@@ -70,7 +70,7 @@
   <div class="sep"></div>
   <div class="front__qr">
     <div class="tile" id="qrSite"></div>
-    <div class="scan">สแกนดูตัวอย่างและราคา<small>See examples &amp; prices</small></div>
+    <div class="scan">สแกนดูเมนูตัวอย่าง<small>See a sample menu</small></div>
   </div>
 </div>
 
@@ -97,8 +97,9 @@
 <script>
   var SITE = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html';
   var WA = 'https://wa.me/qr/PYPOVXTCVM74I1';
+  var MENU = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/demo-menu/';
   function qr(id, text) { new QRCode(document.getElementById(id), { text: text, width: 600, height: 600, colorDark: '#0b0c16', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M }); }
-  qr('qrSite', SITE); qr('qrWa', WA);
+  qr('qrSite', MENU); qr('qrWa', WA);
 </script>
 </body>
 </html>
