@@ -100,20 +100,21 @@
   .feat span { display: block; margin-top: .8mm; font-family: "Onest", sans-serif; font-size: 2.4mm; color: var(--dim); line-height: 1.35; }
 
   /* ---------- offer ---------- */
-  .offer { margin-top: auto; border-radius: 4mm; padding: 4.4mm 6mm; display: grid; grid-template-columns: 1fr auto auto; gap: 6mm; align-items: center;
+  .offer { margin-top: auto; border-radius: 4mm; padding: 4.4mm 6mm; display: grid; grid-template-columns: 1fr auto auto auto; gap: 4.4mm; align-items: center;
     background: linear-gradient(135deg, rgba(34,232,255,.12), rgba(168,85,247,.14) 55%, rgba(236,72,153,.14)); box-shadow: inset 0 0 0 .3mm rgba(255,255,255,.2); }
   .offer .free { display: inline-block; padding: 1mm 3mm; border-radius: 99mm; background: var(--grad); color: #fff; font-weight: 800; font-size: 3mm; letter-spacing: .02em; }
-  .offer h2 { margin-top: 2.2mm; font-size: 5.6mm; font-weight: 800; line-height: 1.35; }
-  .offer p { margin-top: 1.6mm; font-size: 3.2mm; color: #c8cde0; line-height: 1.5; }
+  .offer h2 { margin-top: 2.2mm; font-size: 5mm; font-weight: 800; line-height: 1.35; }
+  .offer p { margin-top: 1.6mm; font-size: 2.9mm; color: #c8cde0; line-height: 1.5; }
   .price-row { margin-top: 3mm; display: flex; align-items: baseline; gap: 2.2mm; }
   .price-row .from { font-size: 3mm; color: var(--dim); }
-  .price-row b { font-family: "Onest", sans-serif; font-weight: 800; font-size: 11mm; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .price-row b { font-family: "Onest", sans-serif; font-weight: 800; font-size: 10mm; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .price-row .cur { font-size: 4mm; font-weight: 700; }
   .price-row .note { font-size: 2.7mm; color: var(--dim); margin-left: 1mm; }
   .qr { text-align: center; }
-  .qr .tile { width: 28mm; height: 28mm; padding: 2mm; border-radius: 3mm; background: #fff; display: grid; place-items: center; box-shadow: 0 0 0 .6mm rgba(255,255,255,.2); }
+  .qr--hero .tile { box-shadow: 0 0 0 .6mm rgba(34,232,255,.9), 0 0 5mm rgba(34,232,255,.5); }
+  .qr .tile { width: 24.5mm; height: 24.5mm; padding: 2mm; border-radius: 3mm; background: #fff; display: grid; place-items: center; box-shadow: 0 0 0 .6mm rgba(255,255,255,.2); }
   .qr .tile img, .qr .tile canvas { width: 100% !important; height: 100% !important; display: block; }
-  .qr div.cap { margin-top: 2mm; font-size: 2.9mm; font-weight: 700; line-height: 1.3; }
+  .qr div.cap { margin-top: 1.8mm; font-size: 2.6mm; font-weight: 700; line-height: 1.3; }
   .qr div.cap small { display: block; font-family: "Onest", sans-serif; font-weight: 500; font-size: 2.3mm; color: var(--dim); }
 
   .foot { margin-top: 3.6mm; display: flex; justify-content: space-between; align-items: center; font-size: 2.7mm; color: var(--dim); }
@@ -202,6 +203,7 @@
       <p>เราแปลและจัดหน้า 3 รายการแรกให้ฟรี ไม่ผูกมัด ไม่ต้องจ่ายอะไรก่อน</p>
       <div class="price-row"><span class="from">เมนูแปลภาษา เริ่มต้น</span><b>299</b><span class="cur">บาท</span><span class="note">ทั้งเมนู สูงสุด 2 หน้า</span></div>
     </div>
+    <div class="qr qr--hero"><div class="tile" id="qrMenu"></div><div class="cap">ดูเมนูตัวอย่าง<small>See the sample menu</small></div></div>
     <div class="qr"><div class="tile" id="qrSite"></div><div class="cap">ดูเว็บไซต์และราคา<small>Website &amp; prices</small></div></div>
     <div class="qr"><div class="tile" id="qrWa"></div><div class="cap">คุยทาง WhatsApp<small>Chat with us</small></div></div>
   </section>
@@ -222,10 +224,11 @@
   /* QR codes: dark modules on a white tile (scans reliably on every phone) */
   var SITE = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html';
   var WA = 'https://wa.me/qr/PYPOVXTCVM74I1';
+  var MENU = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/demo-menu/';
   function qr(id, text) {
     new QRCode(document.getElementById(id), { text: text, width: 600, height: 600, colorDark: '#0b0c16', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
   }
-  qr('qrSite', SITE); qr('qrWa', WA);
+  qr('qrMenu', MENU); qr('qrSite', SITE); qr('qrWa', WA);
 </script>
 </body>
 </html>
