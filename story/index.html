@@ -81,6 +81,7 @@ summary.ttl::-webkit-details-marker{display:none}
   <div class="ttl">🎬 Mes histoires — 30 minutes chacune</div>
   <div class="status" id="keyLine"></div>
   <div id="cards"></div>
+  <div class="hint" id="patient" style="margin-top:.7rem">💤 <b>Mode patient (automatique)</b> : si Agnes est saturé, le site se met en veille puis réessaie tout seul toutes les <select id="sbMin" style="display:inline-block;width:auto;min-height:34px"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="60">60</option></select> minutes, jusqu'à ce que ça marche. Laisse l'onglet ouvert et le PC allumé.</div>
 </div>
 <div class="panel" id="dlPanel">
   <div class="ttl">📥 Télécharger TOUT + montage de la vidéo (en un seul clic)</div>
@@ -557,11 +558,12 @@ function enqueueVideo(sc,start){const k=pickKey();if(!k)return Promise.reject(ne
  Q[k]=p.catch(()=>{});return p}
 async function createAny(sc,start){for(let i=0;i<10;i++){try{return await enqueueVideo(sc,start)}catch(e){if(e.keyBad){const k=e.keyUsed;if(k){badKeys[k]=true;log('✗ clé '+keyTag(k)+' inutilisable : '+e.message.slice(0,60)+' — on passe à la suivante')}continue}throw e}}throw new Error('QUOTA')}
 async function createVideo(sc,start,k){
+ if(S.satHalt)throw new Error('SATURÉ');
  if(usageOf(k)>=+P.o.quota){const e=new Error('QUOTA');throw e}
  const body={model:MODEL_VIDEO,prompt:vidPrompt(sc),image:await toData(start,1280),num_frames:FRAMESFOR(+P.o.dur),frame_rate:FRAME_RATE};
  let r;try{r=await apiCall('POST',API_BASE+'/videos',body,'vidéo '+sc.n+' (clé '+(keyList().indexOf(k)+1)+')',k)}catch(e){if(e.keyBad)e.keyUsed=k;throw e}
  const d=await r.json();const id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas de video_id');
- sc.key=k;addUsage(k);const t=keyTimes();t[k]=Date.now();lsSet(TIMING,JSON.stringify(t));return id}
+ S.satFails=0;sc.key=k;addUsage(k);const t=keyTimes();t[k]=Date.now();lsSet(TIMING,JSON.stringify(t));return id}
 async function pollVideo(sc,id,first){
  await waitS(first?T.FIRST_POLL:T.POLLS[0],'Scène '+sc.n+' : 1er contrôle dans');
  for(let k=0;k<T.MAX_POLL;k++){if(S.stop)throw new Error('Arrêt');
@@ -677,7 +679,7 @@ function lenParse(){const v=$('len').value,d=+$('dur').value,perDay=+$('perDay')
 function readOpts(){const L_=lenParse();return{lenv:$('len').value,talk:$('talk').value,perDay:$('perDay').value,series:L_.series?{total:L_.total,perDay:L_.perDay}:null,genre:selGenre,idea:$('idea').value.trim(),n:L_.series?L_.perDay:L_.total,dur:$('dur').value,lang:$('lang').value,fmt:$('fmt').value,retries:$('retries').value,quota:String(qAuto($('dur').value)),mode:$('mode').value,sq:$('optSq').checked}}
 async function run(){
  if(S.running)return;if(!getKey()){toast('Colle ta clé API Agnes en haut de la page, puis touche « Enregistrer la clé »','error',5000);$('apiPanel').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('apiKeyInput').focus(),500);return}
-S.par0=Math.max(2,Math.min(6,goodKeys().length+1));S.par=S.par0;S.cool=0;S.okRun=0;S.running=true;S.stop=false;S.autoNext=false;S.userStop=false;S.quotaHit=false;Object.keys(badKeys).forEach(k=>delete badKeys[k]);showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
+S.standby=false;clearTimeout(S.sbTimer);S.satHalt=false;S.sat=false;S.satFails=0;S.par0=Math.max(2,Math.min(6,goodKeys().length+1));S.par=S.par0;S.cool=0;S.okRun=0;S.running=true;S.stop=false;S.autoNext=false;S.userStop=false;S.quotaHit=false;Object.keys(badKeys).forEach(k=>delete badKeys[k]);showErr('');log('— Démarrage —');await startWake();upd();window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
  try{
   if(!P||!P.scenes||!P.scenes.length){
    P={id:Date.now(),o:readOpts(),scenes:[],partStart:0,ep:SHOW?SHOW.eps.length+1:1};phase('story','Écriture de l\'histoire…',.03);setStatus('Écriture de l\'histoire…');
@@ -694,9 +696,9 @@ S.par0=Math.max(2,Math.min(6,goodKeys().length+1));S.par=S.par0;S.cool=0;S.okRun
   S.anim=true;phase('clips','Création des clips…',.6);
   let prev=Promise.resolve(),fatal=null;const active=new Set();
   for(let i=0;i<P.scenes.length;i++){const sc=P.scenes[i];if(done(sc))continue;
-   while(active.size>=Math.max(1,S.par||4)&&!S.stop&&!S.quotaHit)await Promise.race(active);
-   if(S.stop||S.quotaHit)break;
-   const p=produce(sc,i,prev).catch(e=>{if(e.message==='QUOTA'){fatal=e;S.quotaHit=true;sc.vidState='';render()}else if(e.message==='Arrêt'){if(!fatal)fatal=e;S.stop=true}else{sc.vidState='fail';sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);showErr('Scène '+sc.n+' : '+e.message);render()}});
+   while(active.size>=Math.max(1,S.par||4)&&!S.stop&&!S.quotaHit&&!S.satHalt)await Promise.race(active);
+   if(S.stop||S.quotaHit||S.satHalt)break;
+   const p=produce(sc,i,prev).catch(e=>{if(e.message==='QUOTA'){fatal=e;S.quotaHit=true;sc.vidState='';render()}else if(e.message==='Arrêt'){if(!fatal)fatal=e;S.stop=true}else if(e.message==='SATURÉ'){sc.vidState='';render()}else if(/503|occupé|429|surcharg/i.test(e.message)&&(S.satFails=(S.satFails||0)+1)>=1){S.satHalt=true;S.sat=true;sc.vidState='';sc.err=e.message;log('💤 Agnes est saturé : on arrête les demandes et on se met en veille');render()}else{sc.vidState='fail';sc.err=e.message;log('✗ scène '+sc.n+' : '+e.message);showErr('Scène '+sc.n+' : '+e.message);render()}});
    active.add(p);p.then(()=>active.delete(p));prev=p}
   await Promise.all([...active]);
   if(fatal)throw fatal;
@@ -705,13 +707,14 @@ S.par0=Math.max(2,Math.min(6,goodKeys().length+1));S.par=S.par0;S.cool=0;S.okRun
   if(P.series&&partComplete()&&P.series.cur+1<P.series.parts.length&&keysLeft()&&!S.stop)S.autoNext=true;
  }catch(e){
   if(e.message==='QUOTA')toast('Toutes tes clés ont atteint la limite de '+P.o.quota+' vidéos aujourd\'hui (ajoute une autre clé ou reviens demain) : l\'histoire reprendra là où elle s\'est arrêtée.','warn',9000);
-  else if(e.message==='Arrêt')toast('Arrêté — tu peux reprendre','warn');else{toast('Erreur : '+e.message.slice(0,120),'error',6000);showErr(e.message);log('✗ ERREUR : '+e.message)}}
+  else if(e.message==='Arrêt'){if(!S.sat)toast('Arrêté — tu peux reprendre','warn')}else{toast('Erreur : '+e.message.slice(0,120),'error',6000);showErr(e.message);log('✗ ERREUR : '+e.message)}}
  finally{S.running=false;S.anim=false;window.onbeforeunload=null;stopWake();setStatus(null);save();upd();render();
   try{if(P&&P.scenes){const dn=P.scenes.filter(done).length,N=P.scenes.length,fin=dn===N&&(!P.series||P.series.cur+1>=P.series.parts.length);
    if($('optAuto').checked&&dn)autoSaveLinks(fin?'FINI':'partie'+(P.series?P.series.cur+1:1));
    if(fin){document.title='✅ TERMINÉ — Story Studio';S.autoTry=0;if(DIR&&!P.ytDone){P.ytDone=true;save();youtubePack(packInfo(),P.ep||1)}}
    else if($('optAuto').checked&&!S.userStop&&getKey()){
-    if(S.autoNext){S.autoNext=false;S.autoTry=0;log('Partie suivante automatique (il reste des clés disponibles)');setTimeout(run,800)}
+    if(S.sat){S.sat=false;S.satHalt=false;standbyThenRun()}
+    else if(S.autoNext){S.autoNext=false;S.autoTry=0;log('Partie suivante automatique (il reste des clés disponibles)');setTimeout(run,800)}
     else if(!S.quotaHit&&P.scenes.some(x=>!done(x))&&(S.autoTry=(S.autoTry||0)+1)<=8&&keysLeft()){log('🔁 Reprise automatique dans 60 s (essai '+S.autoTry+'/8)');setTimeout(()=>{if(!S.running&&!S.userStop)run()},60000)}}}}catch(e){}}}
 
 /* ───────── Lecture / export ───────── */
@@ -898,7 +901,14 @@ async function nextEpisode(idea){if(S.running||!P)return;
  archiveEp();for(const sc of P.scenes){await dbPut('start:'+sc.n,null);await dbPut('clip:'+sc.n,null)}
  P=null;lsDel(PROJ);$('idea').value=String(idea||'').trim();['prog','bible','scenesPanel','result'].forEach(i=>{const e=$(i);if(e)e.style.display='none'});
  applyDefaults();epUi();serUi();upd();homeUi();toast('Histoire '+ep+' sauvegardée ✓ Création de la suivante…');run()}
-function dlUi(){const b=$('dlRows'),y=$('ytRows');if(!b||!y)return;const eps=SHOW?SHOW.eps:[];const curEp=P?(P.ep||1):(eps.length+1);let h='',yh='';
+function standbyMin(){const v=+lsGet('story_standby_v1');return [10,20,30,60].indexOf(v)>-1?v:30}
+function standbyThenRun(){const m=standbyMin(),until=Date.now()+m*60000;S.standby=true;S.standbyUntil=until;startWake();
+ log('💤 Agnes est saturé : veille de '+m+' min, puis nouvel essai automatique (jusqu\'à ce que ça marche)');
+ const hh=()=>new Date(until).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+ const tick=()=>{if(!S.standby)return;setStatus('💤 Agnes saturé — nouvel essai à '+hh()+' (dans '+Math.max(1,Math.ceil((until-Date.now())/60000))+' min). Laisse cet onglet ouvert.');try{homeUi()}catch(e){}};
+ tick();const iv=setInterval(()=>{if(!S.standby||S.running){clearInterval(iv);return}tick()},20000);
+ S.sbTimer=setTimeout(()=>{clearInterval(iv);if(!S.standby)return;S.standby=false;setStatus(null);if(!S.running&&!S.userStop){log('🔁 Fin de la veille : nouvel essai');run()}},m*60000)}
+function dlRowsUi(){const b=$('dlRows'),y=$('ytRows');if(!b||!y)return;const eps=SHOW?SHOW.eps:[];const curEp=P?(P.ep||1):(eps.length+1);let h='',yh='';
  for(let n=1;n<=5;n++){let have=0,tot=0,title='',yt=false,cur=false;
   if(P&&n===curEp){cur=true;have=P.scenes.filter(x=>done(x)&&x.url).length;tot=P.series?P.series.total:P.scenes.length;title=P.bible?P.bible.title:'';yt=!!P.bible}
   else if(n<=eps.length){const e=eps[n-1];have=e.clips.filter(x=>x.url).length;tot=e.clips.length;title=e.title;yt=!!e.info}
@@ -908,6 +918,7 @@ function dlUi(){const b=$('dlRows'),y=$('ytRows');if(!b||!y)return;const eps=SHO
   yh+='<div class="hc"><b>Histoire '+n+(title?' — '+esc(title):'')+'</b><button class="btn" type="button" data-hyt="'+n+'"'+(yt?'':' disabled')+'>📄 Pack YouTube (titres, description, miniatures)</button></div>'}
  b.innerHTML=h||'<div class="hint">Aucune histoire pour l\'instant. Lance « GÉNÉRER L\'HISTOIRE 1 » plus haut : les boutons apparaîtront ici.</div>';
  y.innerHTML=yh||'<div class="hint">Disponible dès qu\'une histoire est écrite.</div>'}
+(function(){const sb=$('sbMin');if(sb){sb.value=String(standbyMin());sb.onchange=()=>lsSet('story_standby_v1',sb.value)}})();
 document.addEventListener('click',e=>{const g=e.target.closest('#tabs [data-go]');if(!g)return;const el=$(g.dataset.go);if(!el)return;if(el.tagName==='DETAILS')el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'})});
 function homeUi(){const box=$('cards');if(!box)return;
  const nk=keyList().length;$('keyLine').innerHTML=nk?'🔑 <b>'+nk+' clé(s)</b> prête(s) · <span style="opacity:.7">'+keyList().map(keyTag).join(' · ')+'</span>':'⚠️ <b>Aucune clé.</b> Ouvre « Mes clés API » ci-dessous et colle-les.';
@@ -918,7 +929,7 @@ function homeUi(){const box=$('cards');if(!box)return;
   if(n<=eps.length&&!(P&&n===curEp)){const e=eps[n-1];c='<div class="hc ok"><b>Histoire '+n+' — '+esc(e.title)+'</b><div class="hint">✅ Terminée · '+e.clips.length+' clips</div><button class="btn main" type="button" data-hbat="'+n+'">⬇ Télécharger + monter la vidéo</button><button class="btn" type="button" data-hyt="'+n+'">📄 Pack YouTube (titres, description, miniatures)</button></div>'}
   else if(n===curEp&&!P){c='<div class="hc go"><b>Histoire '+n+'</b><div class="hint">Une aventure de 30 minutes, écrite et créée automatiquement.</div><label class="lab" for="hIdea">Une idée ? (facultatif : sinon l\'IA invente une belle histoire)</label><input id="hIdea" type="text" placeholder="ex : ils vont à l\'école / ils vont à la pêche" style="width:100%;box-sizing:border-box"><button class="btn main" type="button" id="hGen" style="min-height:60px;font-size:1.05rem;margin-top:.5rem">🚀 GÉNÉRER L\'HISTOIRE '+n+' (30 min)</button></div>'}
   else if(n===curEp&&P){const pct=tot?Math.round(100*dn/tot):0,part=P.series?(P.series.cur+1)+' / '+P.series.parts.length:'1 / 1';
-   c='<div class="hc'+(fin?' ok':' go')+'"><b>Histoire '+n+' — '+esc(P.bible?P.bible.title:'')+'</b><div class="bar" style="margin:.5rem 0"><i style="width:'+pct+'%"></i></div><div class="hint">'+(fin?'✅ Terminée':(S.running?'⏳ Génération en cours':'⏸ En pause'))+' · '+dn+' / '+tot+' clips · '+(Math.round(dn*dur/60*10)/10)+' min sur '+Math.round(tot*dur/60)+' · partie '+part+'</div>';
+   c='<div class="hc'+(fin?' ok':' go')+'"><b>Histoire '+n+' — '+esc(P.bible?P.bible.title:'')+'</b><div class="bar" style="margin:.5rem 0"><i style="width:'+pct+'%"></i></div><div class="hint">'+(fin?'✅ Terminée':(S.running?'⏳ Génération en cours':(S.standby?'💤 En veille : Agnes est saturé, nouvel essai à '+new Date(S.standbyUntil).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'⏸ En pause')))+' · '+dn+' / '+tot+' clips · '+(Math.round(dn*dur/60*10)/10)+' min sur '+Math.round(tot*dur/60)+' · partie '+part+'</div>';
    if(S.running)c+='<button class="btn stop on" type="button" id="hStop" style="display:block">⏹ Arrêter (tu pourras reprendre)</button>';
    else if(!fin)c+='<button class="btn main" type="button" id="hGen" style="min-height:60px;font-size:1.05rem">▶ CONTINUER LA GÉNÉRATION</button>';
    else c+='<button class="btn main" type="button" data-hbat="'+n+'" style="min-height:56px">⬇ Télécharger + monter la vidéo complète</button><button class="btn" type="button" data-hyt="'+n+'">📄 Pack YouTube (titres, description, miniatures)</button>';
@@ -927,7 +938,7 @@ function homeUi(){const box=$('cards');if(!box)return;
   else if(n===curEp+1&&fin){c='<div class="hc go"><b>Histoire '+n+'</b><div class="hint">Mêmes personnages, nouvelle aventure.</div><label class="lab" for="hIdeaN">Une idée ? (facultatif)</label><input id="hIdeaN" type="text" placeholder="ex : ils vont à l\'école / ils vont à la pêche" style="width:100%;box-sizing:border-box"><button class="btn main" type="button" id="hNext" style="min-height:60px;font-size:1.05rem;margin-top:.5rem">🚀 GÉNÉRER L\'HISTOIRE '+n+' (30 min)</button></div>'}
   else c='<div class="hc lock"><b>Histoire '+n+'</b> <span class="hint">🔒 se débloque après l\'histoire '+(n-1)+'</span></div>';
   h+=c}
- const act=document.activeElement&&document.activeElement.tagName==='INPUT'&&box.contains(document.activeElement);if(act)return;box.innerHTML=h;dlUi()}
+ const act=document.activeElement&&document.activeElement.tagName==='INPUT'&&box.contains(document.activeElement);if(act)return;box.innerHTML=h;dlRowsUi()}
 document.addEventListener('click',async e=>{const t=e.target;
  if(t.closest('#hGen')){generateAll($('hIdea')?$('hIdea').value:null);return}
  if(t.closest('#hStop')){$('btnStop').click();return}
