@@ -1,0 +1,91 @@
+/* NM Studio — "before / after" menu showcase.
+   Three scenes play in order: 1) the dated paper menu, 2) the QR card on the table, 3) the premium digital menu on a phone.
+   Visible by default (no-JS / reduced motion: all three scenes are shown side by side); the one-scene-at-a-time mode is only
+   switched on by menu-ba.js once the section is confirmed in view. */
+.mba { position: relative; padding: clamp(3.5rem, 7vw, 6.5rem) 0; overflow: hidden; }
+.mba::before { content: ""; position: absolute; inset: auto 0 0 0; height: 70%; background: radial-gradient(closest-side at 50% 80%, rgba(201,169,97,.13), transparent 72%); pointer-events: none; }
+.mba__stage { position: relative; margin-top: clamp(2rem, 4vw, 3.4rem); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 3vw, 2.4rem); align-items: center; justify-items: center; }
+.mba__scene { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1rem; transition: opacity .7s ease, transform .8s cubic-bezier(.2,.8,.2,1), filter .7s ease; }
+.mba__tag { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 99px; background: rgba(255,255,255,.07); box-shadow: inset 0 0 0 1px rgba(255,255,255,.16); color: #cfd4e6; }
+.mba__scene--after .mba__tag { color: #04050c; background: linear-gradient(135deg, #f0d58f, #c9a961); box-shadow: none; }
+.mba__scene--before .mba__tag { color: #ffb4a8; }
+
+/* -------- scene 1: the dated paper menu -------- */
+.old { position: relative; width: min(100%, 300px); aspect-ratio: 3 / 3.8; padding: 14px 14px 12px; background: #efe5c4; color: #3a3426; font-family: "Times New Roman", Times, serif; transform: rotate(-2.2deg); box-shadow: 0 18px 40px rgba(0,0,0,.55), inset 0 0 40px rgba(120,90,30,.28); border: 5px double #b53a2e; overflow: hidden; }
+.old::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 78% 86%, transparent 0 22px, rgba(120,80,30,.28) 23px 26px, transparent 27px), radial-gradient(circle at 20% 15%, rgba(255,255,255,.35), transparent 40%); pointer-events: none; }
+.old__t { text-align: center; font: 900 25px/1 Impact, "Arial Black", sans-serif; color: #c0261b; text-shadow: 2px 2px 0 #f6d36b, 3px 3px 0 #7a1a12; letter-spacing: .04em; }
+.old__sub { text-align: center; margin: 3px 0 7px; font: italic 10px/1.2 "Comic Sans MS", "Comic Neue", cursive; color: #1d5ea8; }
+.old__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; }
+.old h5 { font: 700 10.5px/1.1 Arial, sans-serif; color: #fff; background: #2f6b2f; padding: 2px 4px; margin: 5px 0 2px; text-transform: uppercase; }
+.old h5.b { background: #a34a00; font-family: "Courier New", monospace; }
+.old p { display: flex; justify-content: space-between; gap: 4px; font-size: 9.6px; line-height: 1.22; margin: 0 0 1.5px; border-bottom: 1px dotted #8c8466; }
+.old p span:first-child { font-weight: 700; }
+.old p i { font-style: normal; font-size: 8.4px; color: #8a3b30; display: block; font-family: Verdana, sans-serif; }
+.old__ph { display: flex; gap: 3px; margin-top: 6px; align-items: flex-start; }
+.old__ph b { display: block; flex: 1; height: 38px; filter: blur(1.1px) contrast(.78) saturate(.55) sepia(.3); border: 1px solid #b9ae8a; }
+.old__ph b:nth-child(1) { background: radial-gradient(circle at 40% 55%, #8a4b1a 0 40%, #c9a56a 41% 70%, #d9d1b8 71%); transform: rotate(-4deg); height: 34px; }
+.old__ph b:nth-child(2) { background: radial-gradient(circle at 55% 45%, #7a2a12 0 35%, #b9824a 36% 68%, #cfc7ad 69%); transform: rotate(3deg); margin-top: 3px; }
+.old__ph b:nth-child(3) { background: radial-gradient(circle at 50% 50%, #5d7a2b 0 30%, #c8b36a 31% 66%, #d6cdb3 67%); height: 41px; transform: rotate(-1deg); }
+.old__foot { margin-top: 5px; text-align: center; font: bold 8.5px/1.2 Arial, sans-serif; color: #7a1a12; }
+.old__stamp { position: absolute; right: 8px; bottom: 26px; transform: rotate(-9deg); padding: 4px 9px; border: 2px solid rgba(190,40,50,.78); color: rgba(190,40,50,.85); font: 800 13px/1.15 "Noto Sans Thai", Arial, sans-serif; text-align: center; background: rgba(239,229,196,.55); }
+.old__stamp small { display: block; font: 700 7.5px/1.2 Arial, sans-serif; letter-spacing: .14em; }
+
+/* -------- scene 2: QR card on the table -------- */
+.tent { position: relative; width: min(100%, 250px); padding: 22px 20px 18px; border-radius: 22px; text-align: center; color: #1b1a20; background: linear-gradient(180deg, #fffaf0, #efe5cf); box-shadow: 0 24px 50px rgba(0,0,0,.55), 0 0 0 1px rgba(201,169,97,.7), inset 0 0 0 6px #fffaf0, inset 0 0 0 7px rgba(201,169,97,.65); transform: perspective(900px) rotateX(5deg); }
+.tent__n { font: 600 18px/1.1 "Playfair Display", Georgia, serif; }
+.tent__n em { display: block; font-style: italic; font-size: 13px; color: #8a6a22; margin-top: 2px; }
+.tent__qr { position: relative; margin: 14px auto 10px; width: 150px; height: 150px; padding: 8px; background: #fff; border-radius: 14px; box-shadow: 0 0 0 1px rgba(0,0,0,.1); }
+.tent__qr img, .tent__qr canvas { width: 100% !important; height: 100% !important; display: block; }
+.tent__qr i { position: absolute; width: 22px; height: 22px; border: 3px solid #c9a961; }
+.tent__qr i:nth-of-type(1) { left: -5px; top: -5px; border-right: 0; border-bottom: 0; border-radius: 8px 0 0 0; }
+.tent__qr i:nth-of-type(2) { right: -5px; top: -5px; border-left: 0; border-bottom: 0; border-radius: 0 8px 0 0; }
+.tent__qr i:nth-of-type(3) { left: -5px; bottom: -5px; border-right: 0; border-top: 0; border-radius: 0 0 0 8px; }
+.tent__qr i:nth-of-type(4) { right: -5px; bottom: -5px; border-left: 0; border-top: 0; border-radius: 0 0 8px 0; }
+.tent__beam { position: absolute; left: 6px; right: 6px; height: 3px; top: 8px; background: linear-gradient(90deg, transparent, #22e8ff, transparent); box-shadow: 0 0 12px 2px rgba(34,232,255,.8); border-radius: 3px; opacity: 0; }
+.tent__scan { font: 700 12px/1.2 "Onest", "Noto Sans Thai", sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #1b1a20; }
+.tent__langs { margin-top: 7px; font: 500 11px/1.2 "Onest", "Noto Sans Thai", sans-serif; color: #6c6a73; }
+.tent__fl { display: flex; justify-content: center; gap: 4px; margin-top: 8px; }
+.tent__fl s { width: 18px; height: 12px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.15); }
+
+/* -------- scene 3: the phone with the live menu -------- */
+.mphone { position: relative; width: min(100%, 270px); aspect-ratio: 9 / 18.4; border-radius: 40px; padding: 9px; background: linear-gradient(145deg, #3a3d4a, #14151c); box-shadow: 0 30px 70px rgba(0,0,0,.65), 0 0 0 1.5px #5a5e70, 0 0 60px rgba(201,169,97,.18); }
+.mphone::before { content: ""; position: absolute; left: 50%; top: 16px; width: 74px; height: 20px; transform: translateX(-50%); background: #000; border-radius: 12px; z-index: 3; }
+.mphone__screen { position: relative; width: 100%; height: 100%; border-radius: 32px; overflow: hidden; background: #0b1f17; }
+.mphone iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #0b1f17; }
+
+/* -------- caption + stepper -------- */
+.mba__cap { margin: clamp(1.6rem, 3vw, 2.4rem) auto 0; max-width: 40rem; text-align: center; min-height: 4.6rem; }
+.mba__cap p { font-size: clamp(1.02rem, 1.6vw, 1.2rem); line-height: 1.55; color: var(--ink, #eef0f6); }
+.mba__cap p b { color: #f0d58f; font-weight: 700; }
+.mba__dots { margin-top: 1rem; display: flex; justify-content: center; align-items: center; gap: .6rem; }
+.mba__dots button { width: 11px; height: 11px; padding: 0; border: 0; border-radius: 99px; background: rgba(255,255,255,.25); cursor: pointer; transition: .35s; }
+.mba__dots button[aria-current="true"] { width: 34px; background: linear-gradient(90deg, #22e8ff, #a855f7, #ec4899); }
+.mba__replay { margin-inline-start: .8rem; border: 0; background: transparent; color: #aeb4c8; cursor: pointer; font: inherit; font-size: .85rem; text-decoration: underline; text-underline-offset: 3px; }
+.mba__cta { margin-top: 1.6rem; text-align: center; }
+
+/* -------- one scene at a time (enabled by JS) -------- */
+.mba--js .mba__stage { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mba--js .mba__scene { opacity: .22; filter: blur(2px) saturate(.6); transform: scale(.86); }
+.mba--js[data-step="1"] .mba__scene--before,
+.mba--js[data-step="2"] .mba__scene--qr,
+.mba--js[data-step="3"] .mba__scene--after { opacity: 1; filter: none; transform: scale(1.04); }
+.mba--js[data-step="2"] .tent__beam { animation: mbaBeam 1.7s ease-in-out infinite; }
+@keyframes mbaBeam { 0% { top: 8px; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { top: calc(100% - 11px); opacity: 0; } }
+.mba--js[data-step="1"] .old { animation: mbaShake 4.2s ease-in-out infinite; }
+@keyframes mbaShake { 0%, 100% { transform: rotate(-2.2deg); } 50% { transform: rotate(-1deg) translateY(-3px); } }
+
+@media (max-width: 860px) {
+  .mba__stage { grid-template-columns: minmax(0, 1fr); }
+  .mba--js .mba__stage { display: block; min-height: 560px; }
+  .mba--js .mba__scene { position: absolute; left: 0; right: 0; top: 0; opacity: 0; transform: scale(.94); filter: none; pointer-events: none; }
+  .mba--js[data-step="1"] .mba__scene--before,
+  .mba--js[data-step="2"] .mba__scene--qr,
+  .mba--js[data-step="3"] .mba__scene--after { opacity: 1; transform: none; pointer-events: auto; }
+  .old { width: min(78vw, 290px); } .tent { width: min(72vw, 250px); } .mphone { width: min(66vw, 265px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mba__scene, .mba__beam { transition: none !important; animation: none !important; }
+  .old, .tent__beam { animation: none !important; }
+}
+
+.old, .tent, .mphone { direction: ltr; }
