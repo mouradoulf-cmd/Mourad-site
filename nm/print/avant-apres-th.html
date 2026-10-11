@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>NM Studio — ก่อน / หลัง (A4)</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Noto+Serif+Thai:wght@500;600;700&family=Onest:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  @page { size: 210mm 297mm; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #111; }
+  body { display: flex; justify-content: center; }
+
+  :root {
+    --bg: #04050c;
+    --cyan: #22e8ff; --purple: #a855f7; --pink: #ec4899; --gold: #e9c46a;
+    --ink: #eef0f6; --dim: #9aa0b4;
+    --grad: linear-gradient(90deg, #22e8ff, #a855f7, #ec4899);
+  }
+
+  .sheet {
+    position: relative; width: 210mm; height: 297mm; overflow: hidden;
+    background: var(--bg); color: var(--ink);
+    font-family: "Noto Sans Thai", "Onest", sans-serif;
+    padding: 11mm 12mm 10mm;
+    display: flex; flex-direction: column;
+  }
+  .glow { position: absolute; border-radius: 50%; filter: blur(14mm); pointer-events: none; }
+  .glow--a { width: 120mm; height: 120mm; top: -50mm; right: -40mm; background: radial-gradient(circle, rgba(34,232,255,.34), transparent 65%); }
+  .glow--b { width: 110mm; height: 110mm; top: 95mm; left: -50mm; background: radial-gradient(circle, rgba(168,85,247,.22), transparent 65%); }
+  .glow--c { width: 130mm; height: 130mm; bottom: -60mm; right: -30mm; background: radial-gradient(circle, rgba(236,72,153,.28), transparent 65%); }
+  .sheet > *:not(.glow) { position: relative; z-index: 1; }
+
+  /* ---------- header ---------- */
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 3mm; font-family: "Onest", sans-serif; font-weight: 800; font-size: 6.2mm; letter-spacing: -.01em; }
+  .brand svg { width: 8mm; height: 8mm; color: #cfd6ee; }
+  .brand .accent { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tag { font-size: 3mm; font-weight: 600; color: var(--cyan); letter-spacing: .02em; padding: 1.4mm 3.4mm; border-radius: 99mm; border: .25mm solid rgba(34,232,255,.45); background: rgba(34,232,255,.07); }
+
+  /* ---------- hero ---------- */
+  .hero { margin-top: 7mm; }
+  .hero h1 { font-weight: 800; font-size: 11.4mm; line-height: 1.3; letter-spacing: -.01em; }
+  .hero h1 .grad { display: inline-block; padding-top: .3em; margin-top: -.3em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { margin-top: 2.6mm; font-family: "Onest", sans-serif; font-size: 3.7mm; color: var(--dim); font-weight: 500; }
+
+  /* ---------- before / after ---------- */
+  .compare { position: relative; margin-top: 5.5mm; display: grid; grid-template-columns: 1fr 1.14fr; gap: 11mm; align-items: stretch; }
+  .label { display: inline-flex; align-items: center; gap: 2mm; margin-bottom: 2.4mm; font-weight: 700; font-size: 3.5mm; letter-spacing: .04em; }
+  .label i { font-style: normal; font-family: "Onest", sans-serif; font-weight: 600; font-size: 2.6mm; letter-spacing: .14em; color: var(--dim); }
+  .label--after { color: var(--cyan); }
+  .label--after i { color: rgba(34,232,255,.7); }
+  .label--before { color: #b7bccd; }
+
+  .paper { border-radius: 3.4mm; padding: 6mm 5.4mm 5mm; height: 114mm; position: relative; overflow: hidden; }
+
+  /* BEFORE: flat, cramped, forgettable */
+  .paper--before { background: #d9d6cf; color: #4a4741; filter: saturate(.55) contrast(.92); transform: rotate(-1.1deg); box-shadow: 0 2mm 6mm rgba(0,0,0,.45); }
+  .paper--before .t { font-family: "Noto Sans Thai", sans-serif; font-weight: 700; font-size: 4.4mm; text-align: center; padding-bottom: 2.4mm; border-bottom: .3mm solid #8d8a82; }
+  .b-row { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; padding: 2.7mm 0; border-bottom: .2mm dotted #9b978d; font-size: 3.7mm; }
+  .b-row span:first-child { font-weight: 600; }
+  .b-row small { display: block; font-family: "Onest", sans-serif; font-size: 2.7mm; color: #7a766d; font-style: italic; margin-top: .6mm; }
+  .b-note { margin-top: 3.5mm; font-size: 2.7mm; color: #8b877e; font-family: "Onest", sans-serif; text-align: center; }
+  .stamp { position: absolute; left: 50%; bottom: 8mm; transform: translateX(-50%) rotate(-7deg); padding: 1.6mm 4.2mm; border: .6mm solid rgba(190,40,50,.78); color: rgba(190,40,50,.82); border-radius: 1.6mm; font-weight: 800; font-size: 4.4mm; text-align: center; line-height: 1.25; white-space: nowrap; }
+  .stamp small { display: block; font-family: "Onest", sans-serif; font-weight: 700; font-size: 2.3mm; letter-spacing: .16em; }
+  .stain { position: absolute; right: -6mm; bottom: -6mm; width: 26mm; height: 26mm; border-radius: 50%; background: radial-gradient(circle, rgba(120,90,50,.28), transparent 70%); }
+
+  /* AFTER: premium, bilingual, appetizing */
+  .paper--after { background: #faf6ee; color: #1b1a20; box-shadow: 0 0 0 .35mm rgba(34,232,255,.7), 0 0 14mm rgba(34,232,255,.35), 0 0 30mm rgba(168,85,247,.28), 0 4mm 9mm rgba(0,0,0,.5); }
+  .paper--after::before { content: ""; position: absolute; inset: 2.4mm; border: .25mm solid rgba(171,132,59,.55); border-radius: 2.4mm; pointer-events: none; }
+  .a-head { text-align: center; padding-bottom: 2.4mm; }
+  .a-head b { display: block; font-family: "Playfair Display", serif; font-weight: 700; font-size: 6mm; letter-spacing: .02em; color: #1d1b21; }
+  .a-head span { display: inline-block; margin-top: .9mm; font-family: "Onest", sans-serif; font-size: 2.5mm; letter-spacing: .34em; color: #a9843b; font-weight: 600; text-transform: uppercase; }
+  .a-head .rule { display: block; width: 24mm; height: .3mm; margin: 2mm auto 0; background: linear-gradient(90deg, transparent, #b8913f, transparent); }
+  .a-row { padding: 2.2mm 0 2.1mm; border-bottom: .18mm solid rgba(0,0,0,.1); position: relative; }
+  .a-row:last-of-type { border-bottom: 0; }
+  .a-line { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .a-name { font-family: "Playfair Display", serif; font-weight: 600; font-size: 3.7mm; color: #1d1b21; }
+  .a-th { font-family: "Noto Serif Thai", serif; font-size: 2.55mm; color: #9a7a35; margin-left: 1.6mm; font-weight: 500; }
+  .a-price { font-family: "Onest", sans-serif; font-weight: 700; font-size: 3.5mm; color: #1d1b21; white-space: nowrap; }
+  .a-desc { margin-top: .6mm; font-family: "Onest", sans-serif; font-size: 2.62mm; color: #5d5a63; line-height: 1.35; padding-right: 15mm; }
+  .chilis { position: absolute; right: 0; top: 6.9mm; display: inline-flex; gap: .4mm; }
+  .chilis svg { width: 2.7mm; height: 2.7mm; }
+  .pick { display: inline-block; margin-left: 1.8mm; padding: .3mm 1.5mm; border-radius: 99mm; background: linear-gradient(90deg, #22e8ff, #a855f7); color: #fff; font-family: "Onest", sans-serif; font-weight: 700; font-size: 2.1mm; letter-spacing: .08em; vertical-align: .3mm; }
+  .veg { display: inline-block; margin-left: 1.8mm; padding: .2mm 1.2mm; border-radius: 99mm; border: .2mm solid #3b8f5b; color: #3b8f5b; font-family: "Onest", sans-serif; font-weight: 700; font-size: 2.1mm; letter-spacing: .06em; vertical-align: .3mm; }
+  .a-foot { position: absolute; left: 0; right: 0; bottom: 4.3mm; text-align: center; font-family: "Onest", sans-serif; font-size: 2.2mm; letter-spacing: .12em; color: #a9843b; }
+
+  .arrow { position: absolute; left: 87.3mm; top: 53%; transform: translate(-50%, -50%); width: 9.6mm; height: 9.6mm; border-radius: 50%; display: grid; place-items: center; background: var(--grad); box-shadow: 0 0 0 1.1mm var(--bg), 0 0 6mm rgba(168,85,247,.7); z-index: 3; }
+  .arrow svg { width: 4.8mm; height: 4.8mm; color: #fff; }
+
+  /* ---------- features ---------- */
+  .features { margin-top: 5.5mm; margin-bottom: 4.5mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.4mm; }
+  .feat { padding: 3.6mm 3.2mm 3.4mm; border-radius: 3mm; background: rgba(255,255,255,.04); box-shadow: inset 0 0 0 .25mm rgba(255,255,255,.12); }
+  .feat .ic { width: 8.4mm; height: 8.4mm; border-radius: 2.4mm; display: grid; place-items: center; background: linear-gradient(135deg, rgba(34,232,255,.2), rgba(168,85,247,.2)); box-shadow: inset 0 0 0 .25mm rgba(34,232,255,.4); color: var(--cyan); }
+  .feat .ic svg { width: 4.6mm; height: 4.6mm; }
+  .feat b { display: block; margin-top: 2.2mm; font-size: 3.4mm; font-weight: 700; line-height: 1.35; }
+  .feat span { display: block; margin-top: .8mm; font-family: "Onest", sans-serif; font-size: 2.4mm; color: var(--dim); line-height: 1.35; }
+
+  /* ---------- offer ---------- */
+  .offer { margin-top: auto; border-radius: 4mm; padding: 4.4mm 6mm; display: grid; grid-template-columns: 1fr auto auto; gap: 6mm; align-items: center;
+    background: linear-gradient(135deg, rgba(34,232,255,.12), rgba(168,85,247,.14) 55%, rgba(236,72,153,.14)); box-shadow: inset 0 0 0 .3mm rgba(255,255,255,.2); }
+  .offer .free { display: inline-block; padding: 1mm 3mm; border-radius: 99mm; background: var(--grad); color: #fff; font-weight: 800; font-size: 3mm; letter-spacing: .02em; }
+  .offer h2 { margin-top: 2.2mm; font-size: 5.6mm; font-weight: 800; line-height: 1.35; }
+  .offer p { margin-top: 1.6mm; font-size: 3.2mm; color: #c8cde0; line-height: 1.5; }
+  .price-row { margin-top: 3mm; display: flex; align-items: baseline; gap: 2.2mm; }
+  .price-row .from { font-size: 3mm; color: var(--dim); }
+  .price-row b { font-family: "Onest", sans-serif; font-weight: 800; font-size: 11mm; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .price-row .cur { font-size: 4mm; font-weight: 700; }
+  .price-row .note { font-size: 2.7mm; color: var(--dim); margin-left: 1mm; }
+  .qr { text-align: center; }
+  .qr .tile { width: 28mm; height: 28mm; padding: 2mm; border-radius: 3mm; background: #fff; display: grid; place-items: center; box-shadow: 0 0 0 .6mm rgba(255,255,255,.2); }
+  .qr .tile img, .qr .tile canvas { width: 100% !important; height: 100% !important; display: block; }
+  .qr div.cap { margin-top: 2mm; font-size: 2.9mm; font-weight: 700; line-height: 1.3; }
+  .qr div.cap small { display: block; font-family: "Onest", sans-serif; font-weight: 500; font-size: 2.3mm; color: var(--dim); }
+
+  .foot { margin-top: 3.6mm; display: flex; justify-content: space-between; align-items: center; font-size: 2.7mm; color: var(--dim); }
+  .foot b { color: var(--ink); font-weight: 700; }
+  .foot .sample { font-family: "Onest", sans-serif; font-size: 2.3mm; opacity: .85; }
+</style>
+</head>
+<body>
+<main class="sheet" id="sheet">
+  <div class="glow glow--a"></div><div class="glow glow--b"></div><div class="glow glow--c"></div>
+
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <span>NM <span class="accent">Studio</span></span>
+    </div>
+    <div class="tag">สำหรับร้านอาหารในประเทศไทย</div>
+  </header>
+
+  <section class="hero">
+    <h1>เมนูของคุณ<br>ให้นักท่องเที่ยว<span class="grad">อ่านออก สั่งได้ทันที</span></h1>
+    <p>Your menu — readable for every tourist, so they order at once.</p>
+  </section>
+
+  <section class="compare">
+    <div>
+      <div class="label label--before">ก่อน <i>BEFORE</i></div>
+      <div class="paper paper--before">
+        <div class="t">เมนูอาหาร</div>
+        <div class="b-row"><span>ผัดกะเพราหมูสับ<small>Fry basil pig</small></span><span>60</span></div>
+        <div class="b-row"><span>ต้มยำกุ้ง<small>Tom yam shrimp soap</small></span><span>120</span></div>
+        <div class="b-row"><span>ผัดไทยกุ้งสด</span><span>80</span></div>
+        <div class="b-row"><span>ส้มตำไทย</span><span>50</span></div>
+        <div class="b-row"><span>ข้าวเหนียวมะม่วง</span><span>70</span></div>
+        <div class="b-note">ตัวหนังสือชิดกัน ไม่มีคำอธิบาย นักท่องเที่ยวไม่กล้าสั่ง</div>
+        <div class="stamp">อ่านไม่ออก ✕<small>TOURISTS CAN’T READ IT</small></div><div class="stain"></div>
+      </div>
+    </div>
+    <div>
+      <div class="label label--after">หลัง <i>AFTER</i></div>
+      <div class="paper paper--after">
+        <div class="a-head"><b>Signature Dishes</b><span>จานเด็ด · Thai Classics</span><i class="rule"></i></div>
+
+        <div class="a-row">
+          <div class="a-line"><div><span class="a-name">Pad Kra Pao Moo Sap</span><span class="a-th">ผัดกะเพราหมูสับ</span><span class="chilis" id="c2"></span><span class="pick">CHEF’S PICK</span></div><span class="a-price">฿60</span></div>
+          <div class="a-desc">Stir-fried holy basil with minced pork, chili and garlic, served on rice with a crispy fried egg.</div>
+        </div>
+        <div class="a-row">
+          <div class="a-line"><div><span class="a-name">Tom Yum Goong</span><span class="a-th">ต้มยำกุ้ง</span><span class="chilis" id="c3"></span></div><span class="a-price">฿120</span></div>
+          <div class="a-desc">Hot &amp; sour prawn soup with lemongrass, galangal, kaffir lime and fresh lime juice.</div>
+        </div>
+        <div class="a-row">
+          <div class="a-line"><div><span class="a-name">Pad Thai Goong</span><span class="a-th">ผัดไทยกุ้งสด</span><span class="chilis" id="c1"></span></div><span class="a-price">฿80</span></div>
+          <div class="a-desc">Wok-fried rice noodles with fresh prawns, tamarind sauce, bean sprouts and crushed peanuts.</div>
+        </div>
+        <div class="a-row">
+          <div class="a-line"><div><span class="a-name">Som Tam Thai</span><span class="a-th">ส้มตำไทย</span><span class="chilis" id="c2b"></span></div><span class="a-price">฿50</span></div>
+          <div class="a-desc">Green papaya salad pounded with chili, lime, palm sugar and roasted peanuts.</div>
+        </div>
+        <div class="a-row">
+          <div class="a-line"><div><span class="a-name">Mango Sticky Rice</span><span class="a-th">ข้าวเหนียวมะม่วง</span><span class="veg">VEGETARIAN</span></div><span class="a-price">฿70</span></div>
+          <div class="a-desc">Sweet coconut sticky rice with ripe golden mango.</div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="arrow" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h9M8.5 3v2M6 5c.8 3.6 3.4 6.4 6.5 8M12 5c-.8 3.6-3.4 6.4-6.5 8M14 20l4-9 4 9M15.4 17h5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>แปลถูกต้อง เข้าใจง่าย</b><span>Accurate, natural English</span></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><b>จัดหน้าสวย พร้อมพิมพ์</b><span>Beautiful, print-ready layout</span></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M14 14h3v3M20.5 14v.01M14 20.5h.01M17 20.5h3.5v-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><b>เมนูออนไลน์ สแกน QR</b><span>Online menu with table QR</span></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>ส่งงานใน 48 ชั่วโมง</b><span>Delivered in 48 hours</span></div>
+  </section>
+
+  <section class="offer">
+    <div>
+      <span class="free">ฟรี! ตัวอย่าง 3 รายการ</span>
+      <h2>ส่งรูปเมนูของคุณมาทาง WhatsApp<br>แล้วดูผลงานจริงก่อนตัดสินใจ</h2>
+      <p>เราแปลและจัดหน้า 3 รายการแรกให้ฟรี ไม่ผูกมัด ไม่ต้องจ่ายอะไรก่อน</p>
+      <div class="price-row"><span class="from">เมนูแปลภาษา เริ่มต้น</span><b>299</b><span class="cur">บาท</span><span class="note">ทั้งเมนู สูงสุด 2 หน้า</span></div>
+    </div>
+    <div class="qr"><div class="tile" id="qrSite"></div><div class="cap">ดูเว็บไซต์และราคา<small>Website &amp; prices</small></div></div>
+    <div class="qr"><div class="tile" id="qrWa"></div><div class="cap">คุยทาง WhatsApp<small>Chat with us</small></div></div>
+  </section>
+
+  <footer class="foot">
+    <div><b>NM Studio</b> · เว็บไซต์ร้านอาหาร เมนู QR และ Google Maps สำหรับร้านท้องถิ่น</div>
+    <div class="sample">ตัวอย่างเมนูเพื่อการนำเสนอ · Sample menu for illustration</div>
+  </footer>
+</main>
+
+<script src="../assets/js/qrcode.min.js"></script>
+<script>
+  /* chili icons: heat level */
+  var CH = '<svg viewBox="0 0 24 24"><path d="M15.5 3.5c1.6.3 2.6 1.4 2.5 2.9-.1 1.4-1.2 2.3-2.6 2.4 1.2 6.8-4.6 11.4-11.4 11.7 1.8-3.3 2.2-6.7 1.9-9.8 3.2-.2 5.5-2.2 5.5-5.2" fill="#e5484d"/><path d="M15.5 3.5c.3-1 1.3-1.7 2.4-1.5" stroke="#3b8f5b" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>';
+  function chilis(id, n) { var e = document.getElementById(id); var s = ''; for (var i = 0; i < n; i++) s += CH; e.innerHTML = s; }
+  chilis('c1', 1); chilis('c2', 2); chilis('c2b', 2); chilis('c3', 3);
+
+  /* QR codes: dark modules on a white tile (scans reliably on every phone) */
+  var SITE = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html';
+  var WA = 'https://wa.me/qr/PYPOVXTCVM74I1';
+  function qr(id, text) {
+    new QRCode(document.getElementById(id), { text: text, width: 600, height: 600, colorDark: '#0b0c16', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+  }
+  qr('qrSite', SITE); qr('qrWa', WA);
+</script>
+</body>
+</html>
