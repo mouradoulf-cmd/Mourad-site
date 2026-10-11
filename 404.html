@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — NM Studio</title>
+<meta name="description" content="This page does not exist. Go back to NM Studio — websites, QR menus and Google profiles for Pattaya businesses.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#07060c">
+<link rel="icon" href="/Mourad-site/nm/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/Mourad-site/nm/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/Mourad-site/nm/assets/img/apple-touch-icon.png">
+<style>
+  /* Absolute URLs on purpose: GitHub Pages serves this file for unknown paths at any depth. */
+  @font-face{font-family:"Satoshi";src:url("/Mourad-site/nm/assets/fonts/satoshi-900.woff2") format("woff2");font-weight:900;font-display:swap}
+  @font-face{font-family:"Satoshi";src:url("/Mourad-site/nm/assets/fonts/satoshi-700.woff2") format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Inter";src:url("/Mourad-site/nm/assets/fonts/inter-latin.woff2") format("woff2");font-weight:400 700;font-display:swap}
+  :root{
+    --night:#07060c; --ink:#0d0b16; --cream:#f4f1ea; --muted:#b9b3c9;
+    --gold:#e6c27a; --violet:#7b61ff; --line:rgba(255,255,255,.12);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--night); color:var(--cream);
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    display:grid; place-items:center; padding:2rem 1.25rem;
+    background-image:
+      radial-gradient(60rem 40rem at 15% -10%, rgba(123,97,255,.18), transparent 60%),
+      radial-gradient(45rem 30rem at 110% 110%, rgba(230,194,122,.12), transparent 60%);
+    background-attachment:fixed;
+  }
+  main{width:100%; max-width:34rem; text-align:center}
+  .code{
+    font-family:"Satoshi","Inter",system-ui,sans-serif; font-weight:900; line-height:.9;
+    font-size:clamp(4.5rem,18vw,8rem); letter-spacing:-.03em; margin:0;
+    background:linear-gradient(180deg,#fff 25%,var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  h1{
+    font-family:"Satoshi","Inter",system-ui,sans-serif; font-weight:700;
+    font-size:clamp(1.25rem,4.6vw,1.7rem); letter-spacing:-.01em; margin:1.25rem 0 .6rem;
+  }
+  p{color:var(--muted); line-height:1.65; margin:0 auto 2rem; max-width:26rem}
+  .actions{display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center}
+  .btn{
+    display:inline-flex; align-items:center; gap:.5rem; min-height:48px; padding:.85rem 1.35rem;
+    border-radius:.7rem; border:1px solid var(--line); text-decoration:none;
+    font-weight:600; font-size:.95rem; transition:transform .2s ease,background-color .2s ease;
+  }
+  .btn--gold{background:var(--gold); border-color:var(--gold); color:#1c1405}
+  .btn--ghost{background:rgba(255,255,255,.04); color:var(--cream)}
+  .btn:hover{transform:translateY(-1px)}
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+  footer{margin-top:2.5rem; font-size:.8rem; color:var(--muted)}
+  footer a{color:var(--gold)}
+  @media (forced-colors:active){ .code{color:CanvasText; background:none} }
+</style>
+</head>
+<body>
+<main>
+  <p class="code" aria-hidden="true">404</p>
+  <h1>This page doesn’t exist</h1>
+  <p>The link may be old, or the address may have a typo. Everything else is right here.</p>
+  <div class="actions">
+    <a class="btn btn--gold" href="/Mourad-site/nm/">Back to NM Studio</a>
+    <a class="btn btn--ghost" href="https://wa.me/qr/PYPOVXTCVM74I1" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+  <footer>
+    <a href="/Mourad-site/nm/pricing.html">Prices</a> ·
+    <a href="/Mourad-site/nm/services.html">Services</a> ·
+    <a href="/Mourad-site/nm/legal.html">Legal</a>
+  </footer>
+</main>
+</body>
+</html>

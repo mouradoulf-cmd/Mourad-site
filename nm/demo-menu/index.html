@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="sage">
 <head>
 <meta charset="UTF-8">
 <title>Baan Suan Thai Kitchen — Digital menu (sample by NM Studio)</title>
 <meta name="description" content="Sample digital restaurant menu by NM Studio: 4 languages, animated, QR-ready.">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b1f17">
+<meta name="theme-color" content="#e8eee4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -320,8 +320,8 @@
 
   var THEMES = [['ivory', '#f4eee0', '#a9822f'], ['white', '#ffffff', '#c8372d'], ['sand', '#efe3cf', '#a0522d'], ['sage', '#e8eee4', '#4f7a52'], ['ocean', '#f3f8fb', '#1c6aa5'], ['charcoal', '#161719', '#d4af5a'], ['blackred', '#2c1011', '#c8281f'], ['midnight', '#14407a', '#d9b25f'], ['burgundy', '#5a1c30', '#d9b25f'], ['teak', '#3c2816', '#e0a752'], ['forest', '#15422f', '#d9b25f']];
   var TCOL = { forest: '#0b1f17', burgundy: '#1a0a10', midnight: '#07101f', ivory: '#f4eee0', white: '#ffffff', charcoal: '#111214', blackred: '#0e0b0b', sand: '#efe3cf', sage: '#e8eee4', teak: '#1c130c', ocean: '#f3f8fb' };
-  var theme = 'forest';
-  function applyTheme(t) { if (!TCOL[t]) t = 'forest'; theme = t; document.documentElement.setAttribute('data-theme', t); var m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', TCOL[t]); try { localStorage.setItem('nm_menu_theme', t); } catch (x) {} markTheme(); }
+  var theme = 'sage';
+  function applyTheme(t) { if (!TCOL[t]) t = 'sage'; theme = t; document.documentElement.setAttribute('data-theme', t); var m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', TCOL[t]); try { localStorage.setItem('nm_menu_theme', t); } catch (x) {} markTheme(); }
   function markTheme() { [].forEach.call(document.querySelectorAll('#sw button'), function (b) { b.setAttribute('aria-pressed', b.dataset.t === theme ? 'true' : 'false'); }); }
   function chili(n) { var s = ''; for (var i = 0; i < n; i++) s += CHILI; return n ? '<span class="chili" aria-label="' + UI[lang].spice + ' ' + n + '/3">' + s + '</span>' : ''; }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }

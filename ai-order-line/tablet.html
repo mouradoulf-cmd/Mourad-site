@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Écran cuisine — AI Order Line</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="tablet-header">
+  <h1>🍽️ Écran cuisine — <span class="gradient-text" id="restaurantName"></span></h1>
+  <span class="live-dot">En direct</span>
+</div>
+
+<div class="ticket-rail" id="ticketRail"></div>
+
+<p class="demo-note" style="max-width:1100px;">
+  Les commandes passées depuis l'écran "Appel" (dans un autre onglet ou une autre fenêtre de ce même navigateur)
+  apparaissent ici automatiquement, dès leur envoi.
+</p>
+
+<script src="assets/js/menu-data.js"></script>
+<script src="assets/js/order-bus.js"></script>
+<script>document.getElementById('restaurantName').textContent = window.NM_RESTAURANT_NAME;</script>
+<script src="assets/js/tablet.js"></script>
+</body>
+</html>

@@ -65,84 +65,171 @@ client's business needs) rather than designing from scratch.
 The user has asked to reuse **Noir** (`noir/index.html`, `noir/assets/`) as
 the base style/reference for any future hair salon, barbershop, or beauty
 site built in this repo (as opposed to Giulivo for restaurants and
-Façadiers for B2B). Built with no real photos supplied — the "lookbook"
-section uses editorial color-block cards instead of photography, honestly
-labeled as placeholder ("your own photos would replace these on launch").
-Swap those for real client photos once available; everything else
-(services, pricing, copy) adapts per client same as the other templates.
+Façadiers for B2B). Rebuilt as a premium site with real photography
+(Unsplash License, sources in `noir/README.md`); the studio, team names,
+reviews and phone number are demo content to swap per client.
 
 - Design language: near-black warm palette (`--ink`, `--cream`, `--bronze`
-  in `assets/css/style.css`), `Bodoni Moda` italic display serif +
-  `Manrope` sans-serif body, thin gold hairline accents, editorial/
-  fashion-magazine feel rather than Giulivo's rustic warmth or Façadiers'
-  corporate brightness.
-- Sections: hero (with decorative animated SVG "hair strand" lines, no
-  photo), services marquee, services grid (price list), about/philosophy
-  with count-up stats, lookbook (color-block cards), reviews carousel,
-  booking (WhatsApp deep link), contact (address/hours/map), footer.
-- Interactions: vanilla JS only (no GSAP/Lenis) — IntersectionObserver
-  scroll reveals, count-up stats, testimonial carousel, mobile burger
-  menu. Same "visible by default, hidden state only switched on right
-  before a confirmed-working observer" safety pattern as the other
-  templates use for GSAP — keep it if you add reveals elsewhere.
+  in `assets/css/style.css`), `Bodoni Moda` (italic for emphasis) +
+  `Manrope`, both self-hosted variable woff2 in `assets/fonts/` (small serif
+  headings pin `font-variation-settings: "opsz" 14` so hairlines stay
+  sturdy). Editorial/fashion-magazine feel.
+- Sections: intro curtain (once per session), full-bleed photo hero with
+  live Bangkok-time "open now" status, marquee, studio + count-up stats,
+  services menu (ARIA tabs, photo per category), ritual steps, lookbook
+  bento (explicit `grid-template-areas`, no holes) + lightbox, team,
+  reviews carousel, booking (service → stylist → calendar → time slots →
+  WhatsApp message; mobile shows a compact recap instead of the summary
+  card), FAQ, contact (hours with today highlighted, map), final CTA.
+- The bento/lightbox and the calendar+slots are vanilla ports of 21st.dev
+  patterns ("Interactive Bento Gallery", "Preset Time Selection Calendar").
+- i18n EN/FR/TH in `assets/js/i18n.js`: English is baked into the HTML and
+  captured from the DOM, so only FR/TH dictionaries exist; strings built
+  in JS live in its `UI` table (all three languages). Prices follow the
+  language (`CURRENCY`/`PRICES` in `i18n.js`: EN → USD, FR → EUR, TH → THB,
+  hand-rounded, not live-converted); menu prices carry `data-price="key"`,
+  and a "guide price, paid in baht" note shows outside THB.
+- Interactions: vanilla JS only (no GSAP/Lenis). Reveals only hide content
+  after IntersectionObserver is confirmed (`html.reveal-ready`); clip
+  reveals put the `clip-path` on the inner `<picture>`, never on the
+  observed element (a fully clipped element never intersects).
 - Plain HTML/CSS/JS, no build step, same as the other templates.
 - Booking/phone CTAs use `tel:`/`wa.me` links — always add
   `target="_blank" rel="noopener"` to them, same reason as above.
 
-## Avatar Cash TH — reference template for info-product / online-course sites
+## Neon Tiger — reference template for bars / pubs / nightlife
 
-`avatar-cash-th/` is a Thai-language sales site for an "AI avatar influencer"
-course (copied from a TikTok video's Claude-built "Avatar Cash" idea): dark
-palette with green/violet accents, `Noto Sans Thai`, sales page (`index.html`),
-gated members area with the 5 modules (`members.html`), and `LAUNCH-KIT.md`.
-Payment/contact are driven by the `CONFIG` block at the top of
-`assets/js/main.js` (LINE OA + PromptPay) — placeholders until the client
-fills them. No fake testimonials/income claims, keep disclaimers. Plain
-HTML/CSS/JS, no build step.
+The user asked for a festive Pattaya bar site (pool, beer, parties);
+**Neon Tiger** (`neon-tiger/`) is the reference for future bar, pub or
+nightlife sites. Photos: Unsplash + CC0 pool shots (sources in
+`neon-tiger/README.md`); bar name, events, prices and reviews are demo.
 
-## AI Skill FR — reference for "explainer film" course-sales sites
+- Design language: night palette (`--night`, neon `--pink`/`--cyan`/
+  `--violet`, `--amber` for beer and happy hour, `--green` for pool) with
+  text-shadow neon glows (`.glow`, `.glow--amber`, `.glow--green`);
+  `--pink-btn` is the darker pink used under white text (AA contrast).
+  Fonts self-hosted: `Unbounded` (display, uppercase), `Monoton` (neon
+  sign logo), `Manrope` (body).
+- Sections: neon-sign intro, hero slideshow + live panel (open status,
+  happy-hour countdown, tonight's event — Bangkok time, a night after
+  midnight still counts as the previous evening), tilted marquee, the bar,
+  weekly events tabs (today highlighted), drinks tabs with happy-hour
+  prices switching live, colour-changing signature cocktail, pool (free
+  tables, hall of fame), bento gallery + lightbox, reviews, booking
+  (night → time → people → spot → WhatsApp, ticket-style summary), FAQ,
+  find us with a Thai address card for taxi drivers, final CTA.
+- EN/FR/TH/RU in `assets/js/i18n.js` (English baked into the HTML). Prices
+  are stored in baht and shown as EN → USD, FR → EUR, TH/RU → THB.
+- The site does not market staff as an attraction: the team is presented
+  as a friendly crew (keeps it usable for Google/Meta ads).
+- Plain HTML/CSS/JS, no build step; `tel:`/`wa.me` links keep
+  `target="_blank" rel="noopener"`.
 
-`ai-skill-fr/` (French only; `skill-ai-th/` is the older TH/FR/EN version with the
-same checkout/members/free pages). One-page site where a big ▶ button opens a
-fullscreen 3D explainer film (`assets/js/film.js`: deterministic `render(t)`
-scenes, CSS 3D, canvas starfield, optional French voice-over via
-`speechSynthesis`, captions, scrubber) that ends on the offers with buy
-buttons. Prices/links/codes live in the `CONFIG` block of `assets/js/main.js`.
-Keep the honesty rules: no income promises, "free" = free tiers with quotas.
+## Malee — reference for massage / spa / wellness (`v6-thai-spa/`)
 
-## Atelier des Façadiers (refonte) — reference for B2B / industry sites with interactive product tools
+Premium rebuild (folder name kept because NM Studio links to it). Jungle
+green + ivory + gold, Cormorant Garamond + Inter Tight self-hosted,
+vanilla JS like Noir/Neon Tiger (`MLI18n`, EN baked + FR/TH/RU, baht →
+USD/EUR/THB). Treatment cards with duration pills, a mood recommender, a
+gift-card builder and a WhatsApp booking flow. Photos are Unsplash (IDs in
+its README); business details are fictional demo content.
 
-`atelier-des-facadiers/` is a 7-page French rebuild of atelierdesfacadiers.com
-(real content, photos and contacts from the client's site). Direction "plan
-d'architecte": limestone + ink, logo navy `#244760`, signal orange, Archivo (wide)
-+ Instrument Sans + IBM Plex Mono, self-hosted fonts. Signature pieces to reuse:
-scroll-driven 3D exploded product cross-section (`.xv`), product configurator
-rendering an SVG and prefilling the quote form (`#cfg`), photo-slideshow hero with
-panel-reveal. `assets/js/site.js` has a `CONFIG` block for the form target.
+## Mae Lek — reference for street food / casual eateries (`street-food/`)
 
-**Multilingual (FR/EN/DE/NL/ES):** French pages at the root are the source of truth
-(generated from a Python build — not in the repo); `en/ de/ nl/ es/` hold the same 7 pages
-translated (assets via `../assets/`). Static text is baked per language; dynamic strings
-(configurator, form, errors) live in `assets/js/i18n.js` (`window.I18N[lang]`, French is the
-fallback in `site.js`). Language switcher = `.lang` in the header; the French pages only
-*suggest* the visitor's language (never auto-redirect). Form recap sent to the client stays
-in French. Keep "ça va barder !" and the word "bardillons" untranslated. Editing French copy
-means updating the four translations too.
+Simple but polished: paper + chili + turmeric "sticker" cards (hard ink
+shadow), Rubik + Manrope + Caveat. Filterable 15-dish menu, takeaway bag →
+WhatsApp order drawer, spice meter, nightly chalkboard special, phrase cards
+to show the cook. `SFI18n` EN/FR/TH/RU, baht → USD/EUR/THB. Careful: i18n
+rewrites the text of every `[data-price]`, so containers use `data-thb`.
 
-**v3 "excellence" layer (Atelier des Façadiers):** `assets/js/fx.js` (entrance loader, page-wipe
-transition, contextual cursor — additive, native cursor never hidden —, 3D tilt, optional synthesised
-sound OFF by default) and `assets/js/hero3d.js` (lazy Three.js scene, self-hosted in
-`assets/vendor/`, skipped on touch / reduced-motion / software GL / weak devices, with a perf
-governor). Orange text on light backgrounds must use `--signal-t` (AA). Design rationale, motion
-justifications, a11y/perf results and before/after in `atelier-des-facadiers/DESIGN.md`.
-Appending `#gl=force` to the home URL forces the 3D scene for debugging.
+## Ride Siam — reference for rentals / premium services (`scooter/`)
 
-## English Easy TH — reference for gamified language-learning / online-course sales apps
+Premium scooter rental: graphite + off-white + tangerine, Geologica +
+Inter. Fleet cards carry `data-day/-week/-month/-deposit`; a period toggle
+switches displayed prices. Booking builder with a vanilla range calendar
+(2 months desktop / 1 mobile), tiered pricing (7+ days weekly, 28+ monthly),
+extras, delivery and a WhatsApp request; `RSI18n` EN/FR/TH/RU.
 
-`english-easy-th/` is a Thai-language, Duolingo-style English course (original, inspired by arab-facile.com).
-Plain HTML/CSS/JS SPA (hash router), `window.EE` namespace. Script order: config → data → data2 → data3 → core → lesson → pro → cert → onb → views → fx → gl (ES module, Three.js self-hosted in `assets/vendor/`).
-- **Curriculum**: 24 units / 71 lessons in `assets/js/data*.js` (A1→A2: alphabet → pronunciation for Thai speakers). Lessons can carry a `note` (Thai grammar card). `EE.rebuild()` recomputes flat lists after units are pushed.
-- **Onboarding** (`onb.js`): splash → welcome → chat-style questions (name, gender with polite particles ค่ะ/ครับ, age in two pop-up drawers, goal, interests, level, 4-question placement test, daily goal) → analysis → projected path → offer. Result sets `S.unlockTo`.
-- **Selling**: everything commercial lives in `assets/js/config.js` (prices, `FREE_UNITS`, BUY_URL, LINE, access CODES — client-side, weak by design). Pro = units beyond FREE_UNITS, speaking practice (Web Speech API), unlimited hearts, certificate (`cert.js`). No fake timers/testimonials.
-- **FX**: WebGL hyperspace + holo core (`gl.js`, skipped on software GL / weak devices, `#gl=force` to debug), alive mascot (eyes follow pointer), in-lesson XP/combo/shockwave effects (`fx.js`).
-- Progress is localStorage only (`ee1`). Never hide the native cursor. `[hidden]` must stay `display:none!important`.
+## ÔBlanc — café-restaurant demo for a real business (`oblanc/`)
+
+Built for a real café in Mohammédia (Morocco) on the Neon Tiger structure,
+recoloured to its identity (white + navy + blue neon sign, gold prices),
+Fraunces + Manrope. Real address, phone, hours, Google rating and menu
+prices (from menu photos); real photos from its Google listing. FR baked +
+EN/AR (RTL) via `OBI18n` in `assets/js/i18n.js`. Details in `oblanc/README.md`.
+
+## NM Studio — the studio's own site (`nm/`)
+
+Plain HTML/CSS/JS, no build step. v4 "Night future, touch of gold"
+(user-approved plan, full restructure): night `#07060c`, violet `#7b61ff` →
+blue `#4f7bff` light, gold `#e6c27a` details, one stylesheet
+`assets/css/site.css`. Satoshi (display) + Fraunces italic gold key word +
+Inter, self-hosted. Home order: 50/50 hero « Be found. Be chosen. » (MacBook
++ iPhone cycling the 7 live demos, gold dust, orb), key figures + sectors
+marquee, the 7 demos in device mockups (live preview `.pv`), 4 offers +
+morphing dialog `.om`, why us (3 photos), how it works (3 steps), FAQ (8),
+« Ready to be visible? » giant WhatsApp finale, footer. No testimonials
+until real ones exist. Every logo must be the real brand mark (Simple Icons
+paths, official Google G, PromptPay image in `assets/img/logos/`); footer
+social icons stay hidden until `social` links are filled in
+`offers-config.js`. Other pages: `services.html`, `pricing.html` (care plan
+Monthly/Yearly toggle, comparison table), `checkout.html`, `success.html`,
+`cancel.html`, `account.html`, `legal.html`. `nm/README.md` documents
+everything (Stripe setup, going live).
+
+- Offers/prices: `assets/js/offers-config.js` (`NM_OFFERS` + `NMPrice`):
+  Google ฿990, QR ฿1,990, Complete ฿4,990, Ultimate ฿9,990 one-time; optional
+  care plan 0/290/590/1,490 ฿/month, yearly = 10 months. Baht is always the
+  real price; `data-thb` renders it, `data-approx` shows ≈ €/DH.
+  `videos` slots for the 4 offer videos (animated SVG `offer-icons.js` until
+  then — CSS animations override SVG `transform` attributes, so animate
+  inner elements, never ones carrying `transform="…"`).
+- i18n EN/FR/IT/TH/AR (RTL): original strings in `assets/js/i18n.js`, new
+  ones in `assets/js/nm-dict.js` (merged via `NM_EXTRA_DICT`, loaded before
+  i18n.js), checkout ones in `checkout-i18n.js` (merges too). Every new
+  string needs all five languages.
+- Payments stay static: Stripe Payment Links per offer / offer+care
+  (`payment-config.js`: `google…ultimate`, `qr_monthly…ultimate_yearly`,
+  `portal` = customer-portal login link), redirect to `success.html`;
+  PromptPay QR generated client-side; anything empty falls back to WhatsApp.
+  Never add card-number fields. Thai visitors get the Thai QR flow (order
+  ref, 15-min validity, save-as-image, slip upload → WhatsApp);
+  `checkout.html?demo=1` previews it with a sample QR.
+- Pages share partials generated by an authoring script (not in the repo):
+  when editing header/footer/offer cards, update every page.
+- GSAP gotcha: elements with a CSS `transition: transform` must use
+  `fromTo` + `clearProps` (and `transition:none` during the tween), or GSAP
+  reads a mid-transition value as the resting state and cards stay offset.
+- QR codes are always real (`nm-qr.js` → SVG modules, `data-qr`); never
+  draw a fake QR. Motion lives in `main.js` (GSAP), `home.js` (home only:
+  dust, hero device carousel, tilt) and `fx.js` (cursor trail, ripple,
+  marquee speed, count-up).
+- Showcase screenshots in `nm/assets/img/work/` are captured from the live
+  demos with Playwright (1280×800 and 390×780 @1.5 → jpg + webp + 360w).
+  Deployed via the `claude/thai-app-mnw166` branch (GitHub Pages source).
+- The user wants the live link sent at the end of every finished change:
+  https://mouradoulf-cmd.github.io/Mourad-site/nm/ (plus the page changed).
+
+## Open Edit CLI — video creation/editing tool
+
+The user has asked to have `@veedstudio/openedit-cli` (https://github.com/veedstudio/open-edit)
+available for video tasks (promo/demo videos for client sites, social content)
+across all sessions in this repo. Run it via `npx @veedstudio/openedit-cli
+<command>` — no persistent install needed, npx fetches it on demand.
+
+**Free-plan only — do not spend paid credits without explicit user confirmation
+for that specific run:**
+
+- Safe/free: `transcribe` (default WhisperX, local, no login needed),
+  `whisper`, `prep`, `synth-timings`, `background-removal` (default free VEED
+  route — never add `--fast`, which bills a fal key), `install-ffmpeg`,
+  `install-whisperx`, `install-engine`, `content-root`, `engine-path`, `lint`,
+  `wcag-pass`, `design-gate`, `probe-qa`, `scoped-edit`, `brand`,
+  `expect-windows`, `mux-audio`, `mix-audio`, `token`.
+- Never run without asking first (each spends real money/credits):
+  `generate` / `generate-set` (AI Playground + TTS credits), `lipsync`
+  (always fal-billed), `background-removal --fast` (fal-billed),
+  `transcribe --provider veed` (spends VEED transcription credits).
+- `login` opens a VEED OAuth browser flow — only needed for the free
+  `background-removal` route (to host the file) or if the user explicitly
+  wants a paid feature.

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Drama IA">
+<meta name="theme-color" content="#0b0a12">
+<meta name="format-detection" content="telephone=no">
+<title>Short Drama IA</title>
+<link rel="apple-touch-icon" id="touchIcon" href="">
+<style>
+/* ===== Variables et base (design sombre type Kata Studio) ===== */
+:root{--bg:#0b0a12;--panel:#14121f;--panel2:#1b1829;--line:rgba(255,255,255,.1);--text:#f2f0fa;--mut:#9a96b3;--acc:#8a63f8;--acc2:#22d3ee;--ok:#2ee6a0;--err:#ff5d73;--warn:#ffc857;--grad:linear-gradient(135deg,#8a63f8,#22d3ee)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;min-height:100dvh;line-height:1.45;-webkit-overflow-scrolling:touch;overflow-x:hidden;
+ padding:calc(env(safe-area-inset-top) + 14px) calc(env(safe-area-inset-right) + 14px) calc(env(safe-area-inset-bottom) + 110px) calc(env(safe-area-inset-left) + 14px);max-width:820px;margin:0 auto}
+h1{font-size:1.5rem;text-align:center;letter-spacing:-.02em}
+h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{text-align:center;color:var(--mut);font-size:.8rem;margin:.2rem 0 1rem}
+.banner{background:rgba(138,99,248,.12);border:1px solid rgba(138,99,248,.35);border-radius:12px;padding:.7rem .9rem;font-size:.8rem;color:#d9ccff;margin-bottom:1rem}
+.panel,.sec{background:var(--panel);border:1px solid var(--line);border-radius:16px;margin-bottom:.9rem}
+.panel{padding:1rem}.panel.ok{border-color:var(--ok)}
+.sec-h{min-height:48px;padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#cfc3ff;-webkit-user-select:none;user-select:none}
+.sec-h .chev{color:var(--mut);transition:transform .25s;font-size:.7rem}
+.sec.open .chev{transform:rotate(180deg)}
+.sec-b{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.sec.open .sec-b{max-height:9000px}
+.sec-c{padding:0 1rem 1rem}
+label{display:block;font-size:.74rem;color:var(--mut);margin:.7rem 0 .3rem}
+input[type=password],input[type=text],textarea,select{width:100%;min-height:48px;padding:.75rem .9rem;border-radius:12px;border:1px solid var(--line);background:#0e0d17;color:var(--text);font-family:inherit;font-size:16px;outline:none;-webkit-appearance:none;appearance:none}
+textarea{min-height:110px;resize:vertical}
+select{background-image:linear-gradient(45deg,transparent 50%,#9a96b3 50%),linear-gradient(135deg,#9a96b3 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:2.2rem}
+input:focus,textarea:focus,select:focus{border-color:var(--acc)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+button{min-height:48px;width:100%;border:0;border-radius:14px;background:var(--grad);color:#fff;font:600 1rem -apple-system,BlinkMacSystemFont,system-ui,sans-serif;cursor:pointer;margin-top:.55rem;padding:.7rem 1rem}
+button:active{transform:scale(.98);opacity:.9}
+button:disabled{opacity:.35}
+button.ghost{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--text)}
+button.stop{background:#c0283f}
+button.sm{min-height:44px;width:auto;font-size:.85rem;padding:.5rem .9rem;margin:.3rem .3rem 0 0}
+.status{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--mut);margin-top:.6rem}
+.dot{width:9px;height:9px;border-radius:50%;background:#555;flex-shrink:0}.status.ok{color:var(--ok)}.status.ok .dot{background:var(--ok)}
+.hint{font-size:.72rem;color:var(--mut);margin-top:.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.chip{min-height:44px;display:inline-flex;align-items:center;padding:0 .9rem;border-radius:999px;border:1px dashed var(--line);font-size:.8rem;color:var(--mut);cursor:pointer}
+.chip:active{background:rgba(138,99,248,.2);color:#fff}
+.tog{display:flex;align-items:center;gap:.7rem;min-height:48px;font-size:.88rem;cursor:pointer}
+.tog input{width:22px;height:22px;accent-color:#8a63f8;flex-shrink:0}
+.drop{border:2px dashed var(--line);border-radius:14px;min-height:76px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--mut);font-size:.85rem;cursor:pointer;padding:.8rem}
+.thumb{width:84px;height:150px;border-radius:10px;overflow:hidden;border:1px solid var(--line);margin-top:.6rem;position:relative}.thumb img{width:100%;height:100%;object-fit:cover}
+/* Barre de phases */
+.phases{display:flex;gap:.3rem;margin-bottom:.8rem}
+.ph{flex:1;text-align:center;font-size:.64rem;padding:.5rem .1rem;border-radius:10px;background:var(--panel2);color:var(--mut);border:1px solid transparent}
+.ph.on{border-color:var(--acc);color:#fff;background:rgba(138,99,248,.2)}.ph.done{color:var(--ok)}
+.bar{height:5px;border-radius:5px;background:var(--panel2);overflow:hidden;margin-bottom:.8rem}.bar i{display:block;height:100%;width:0;background:var(--grad);transition:width .4s}
+.q{display:flex;align-items:center;gap:.6rem;padding:.65rem .8rem;border-radius:12px;border:1px solid var(--line);background:var(--panel2);margin-bottom:.4rem;font-size:.8rem}
+.q.proc{border-color:var(--acc)}.q.done{border-color:var(--ok)}.q.fail{border-color:var(--err)}
+.q .n{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.q .s{color:var(--mut);font-size:.7rem;white-space:nowrap}
+.sc{border:1px solid var(--line);border-radius:14px;padding:.8rem;margin-bottom:.6rem;background:var(--panel2)}
+.sc b{font-size:.9rem}.sc p{font-size:.8rem;color:#cfcbe2;margin-top:.3rem}.sc .ln{color:#ffd9a0;font-style:italic}
+.gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.7rem}
+.gi{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000}
+.gi video{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;background:#000}
+.gi .cap{padding:.4rem .6rem;background:var(--panel2);font-size:.72rem;color:var(--mut)}
+.gi button{margin:0;border-radius:0;min-height:44px;font-size:.8rem}
+.player{width:min(100%,340px);margin:0 auto .8rem;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.player video{width:100%;aspect-ratio:9/16;display:block;background:#000;object-fit:cover}
+.log{background:#07060c;border:1px solid var(--line);border-radius:12px;padding:.6rem;font:11px/1.45 ui-monospace,Menlo,monospace;color:#b9b4d6;max-height:260px;overflow:auto;-webkit-overflow-scrolling:touch;white-space:pre-wrap;word-break:break-word}
+.log .e{color:var(--err)}.log .w{color:var(--warn)}.log .o{color:var(--ok)}
+.media a{display:block;font-size:.72rem;color:var(--acc2);padding:.45rem 0;border-bottom:1px solid var(--line);word-break:break-all;text-decoration:none}
+/* Éléments fixes NON interactifs (évite le bug clavier iOS) */
+.sbar{position:fixed;left:0;right:0;bottom:0;padding:.7rem calc(env(safe-area-inset-right) + 14px) calc(env(safe-area-inset-bottom) + .7rem) calc(env(safe-area-inset-left) + 14px);background:linear-gradient(135deg,#2a1a63,#0d3b4a);font-size:.8rem;display:flex;gap:.6rem;align-items:center;transform:translateY(110%);transition:transform .3s;z-index:90;pointer-events:none}
+.sbar.on{transform:none}
+.sp{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 12px);transform:translate(-50%,-140%);background:#201c36;border:1px solid var(--line);padding:.75rem 1.1rem;border-radius:12px;font-size:.85rem;z-index:100;max-width:92vw;text-align:center;opacity:0;transition:all .3s;pointer-events:none}
+.toast.on{transform:translate(-50%,0);opacity:1}.toast.err{background:#5a1624}.toast.ok{background:#0f4a37}.toast.wn{background:#5a4510}
+#nosleep{position:absolute;width:1px;height:1px;opacity:.01;pointer-events:none;left:-5px;top:-5px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<h1>🎭 <span>Short Drama IA</span></h1>
+<p class="sub">Idée → scénario → dialogues → images clés → vidéos → voix</p>
+<div class="banner"><b>Comment ça marche :</b> écris une phrase d'idée. L'IA écrit le scénario et les personnages, crée une image clé par scène, puis une vidéo par scène (1 toutes les 75 s), et tu lis le résultat avec la voix. Garde l'écran allumé : un verrou d'écran est activé pendant la création.</div>
+
+<video id="nosleep" muted playsinline loop></video>
+
+<form id="form" onsubmit="return false" autocomplete="off">
+
+<div class="panel" id="apiPanel">
+ <input type="password" id="apiKey" placeholder="Colle ta clé API Agnes (sk-...)" autocomplete="off" spellcheck="false" autocapitalize="off">
+ <button type="button" id="apiSave">Enregistrer la clé</button>
+ <div class="status" id="apiStatus"><span class="dot"></span><span id="apiText">Aucune clé enregistrée</span></div>
+ <div class="hint">Clé gratuite : platform.agnes-ai.com. Elle reste dans ce téléphone.</div>
+</div>
+
+<div class="sec open" id="secIdea"><div class="sec-h" data-sec="secIdea"><span>💡 Ton idée</span><span class="chev">▼</span></div><div class="sec-b"><div class="sec-c">
+ <textarea id="idea" placeholder="Ex : Une serveuse découvre que le client mystérieux du café est son père disparu depuis 20 ans."></textarea>
+ <div class="chips" id="ideaChips"></div>
+ <div class="row">
+  <div><label>Scènes</label><select id="nScenes"><option>4</option><option selected>6</option><option>8</option><option>10</option></select></div>
+  <div><label>Durée d'un plan</label><select id="frames"><option value="121">5 s</option><option value="153" selected>6,4 s</option><option value="241">10 s</option></select></div>
+ </div>
+ <div class="row">
+  <div><label>Genre</label><select id="genre"><option>Drame émotionnel</option><option>Romance</option><option>Thriller</option><option>Comédie</option><option>Fantastique</option><option>Famille</option><option>Mystère</option></select></div>
+  <div><label>Style d'image</label><select id="style"><option value="cinematic realistic, film still">Réaliste ciné</option><option value="premium 3D animation, Pixar style">3D Pixar</option><option value="anime, cel shading, detailed background">Anime</option><option value="watercolor illustration, soft colors">Aquarelle</option><option value="comic book, bold ink outlines">BD</option></select></div>
+ </div>
+ <label>Langue (histoire et voix)</label>
+ <select id="lang"><option value="fr-FR">Français</option><option value="en-US">English</option><option value="th-TH">ไทย</option></select>
+ <label class="tog"><input type="checkbox" id="optLast"> Continuité : dernière image = image de la scène suivante</label>
+ <label class="tog"><input type="checkbox" id="optVoice" checked> Voix off (lecture avec la voix du téléphone)</label>
+ <label>Image de référence (optionnel, sert de scène 1)</label>
+ <div class="drop" id="drop">＋ Ajouter une photo</div><input type="file" id="file" accept="image/*" hidden>
+ <div id="refPrev"></div>
+</div></div></div>
+
+<button type="button" id="runBtn" disabled>Ajoutez votre clé API</button>
+<button type="button" id="stopBtn" class="stop" style="display:none">⏹ Arrêter</button>
+<button type="button" id="newBtn" class="ghost">🆕 Nouveau projet</button>
+
+<div style="height:.9rem"></div>
+<div class="phases" id="phases"><div class="ph" data-p="text">Texte</div><div class="ph" data-p="dialogue">Dialogue</div><div class="ph" data-p="images">Images</div><div class="ph" data-p="videos">Vidéos</div><div class="ph" data-p="done">Terminé</div></div>
+<div class="bar"><i id="barFill"></i></div>
+<div id="queue"></div>
+
+<div class="sec" id="secScn"><div class="sec-h" data-sec="secScn"><span>📜 Scénario</span><span class="chev">▼</span></div><div class="sec-b"><div class="sec-c" id="scn"><p class="hint">Le scénario apparaîtra ici.</p></div></div></div>
+
+<div class="sec open" id="secGal"><div class="sec-h" data-sec="secGal"><span>🎞️ Résultat</span><span class="chev">▼</span></div><div class="sec-b"><div class="sec-c">
+ <div class="player"><video id="player" playsinline muted controls></video></div>
+ <button type="button" id="playAll" class="ghost">▶ Lecture complète avec voix</button>
+ <div class="gg" id="gal" style="margin-top:.8rem"></div>
+</div></div></div>
+
+<div class="sec" id="secMedia"><div class="sec-h" data-sec="secMedia"><span>🔗 Liens des médias</span><span class="chev">▼</span></div><div class="sec-b"><div class="sec-c media" id="media"><p class="hint">Les liens des images et vidéos apparaîtront ici.</p></div></div></div>
+
+<div class="sec" id="secDbg"><div class="sec-h" data-sec="secDbg"><span>🛠 Console debug</span><span class="chev">▼</span></div><div class="sec-b"><div class="sec-c">
+ <div class="log" id="log"></div>
+ <button type="button" class="sm ghost" id="dbgCopy">Copier</button><button type="button" class="sm ghost" id="dbgClear">Effacer</button><button type="button" class="sm ghost" id="dbgPaste">Coller</button>
+ <textarea id="dbgIn" placeholder="Colle ici une réponse JSON de l'IA pour tester le parseur" style="min-height:70px;margin-top:.5rem"></textarea>
+ <button type="button" class="sm ghost" id="dbgParse">Analyser le JSON</button>
+ <div class="hint" id="timingInfo"></div>
+</div></div></div>
+</form>
+
+<div class="sbar" id="sbar"><div class="sp"></div><span id="sbarTxt">Préparation…</span></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   CONSTANTES API AGNES (ne jamais modifier)
+   ============================================================ */
+const API_BASE='https://apihub.agnes-ai.com/v1';
+const POLL_BASE='https://apihub.agnes-ai.com/agnesapi';
+const MODEL_TEXT='agnes-2.5-flash';
+const MODEL_IMAGE='agnes-image-2.1-flash';
+const MODEL_VIDEO='agnes-video-v2.0';
+const FRAME_RATE=24;
+
+/* Temps validés en production (secondes, sauf IMG_INT en ms) */
+const T={VID_MIN:62,VID_SAFE:75,VID_MAX:90,IMG_PAR:3,IMG_INT:3400,FIRST_POLL:80,
+ POLLS:[8,8,12,12,20,20,25],B429:[10,20,35,50,75,100,150],B503:[5,10,15,20,30,45],NET:[3,5,8,12,20,30]};
+let TS=1; /* échelle de temps (1 en production) */
+
+const KEY_STORAGE='kata_studio_key_v1',TIMING_KEY='kata_studio_timing_v7',PROJ_KEY='drama_ia_project_v1',PENDING_KEY='drama_ia_pending_v1';
+const $=id=>document.getElementById(id);
+const S={running:false,stop:false,phase:null,wake:null,voices:[],audio:null};
+let P={idea:'',scenario:null,dialogued:false,scenes:[],ref:null,cfg:{}};
+
+/* ---------- Stockage (localStorage ET sessionStorage : Safari iOS purge parfois) ---------- */
+function lsGet(k){let v=null;try{v=localStorage.getItem(k)}catch(e){}if(v==null){try{v=sessionStorage.getItem(k)}catch(e){}}return v}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}try{sessionStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){try{localStorage.removeItem(k)}catch(e){}try{sessionStorage.removeItem(k)}catch(e){}}
+const getKey=()=>(lsGet(KEY_STORAGE)||'').trim();
+
+/* ---------- Toast (remplace alert/confirm) ---------- */
+let toastT=0;
+function toast(m,t){const el=$('toast');el.className='toast '+(t||'');el.textContent=m;void el.offsetWidth;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),2800)}
+
+/* ---------- Console debug ---------- */
+function log(msg,cls){const el=$('log');const d=document.createElement('div');if(cls)d.className=cls;const t=new Date().toLocaleTimeString('fr-FR');d.textContent='['+t+'] '+msg;el.appendChild(d);while(el.childNodes.length>400)el.removeChild(el.firstChild);el.scrollTop=el.scrollHeight}
+$('dbgClear').onclick=()=>{$('log').innerHTML='';toast('Console effacée')};
+$('dbgCopy').onclick=async()=>{const t=$('log').innerText;try{await navigator.clipboard.writeText(t);toast('Copié ✓','ok')}catch(e){const r=document.createRange();r.selectNodeContents($('log'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Sélectionné : copie manuellement','wn')}};
+$('dbgPaste').onclick=async()=>{try{$('dbgIn').value=await navigator.clipboard.readText();toast('Collé ✓','ok')}catch(e){$('dbgIn').focus();toast('Colle avec appui long dans le champ','wn')}};
+$('dbgParse').onclick=()=>{try{const r=parseJsonRobust($('dbgIn').value,'scenario');log('Analyse OK — stratégie '+r.strategy+' — clés : '+Object.keys(r.data).join(','),'o')}catch(e){log('Analyse KO : '+e.message,'e')}};
+
+/* ---------- Statut / phases ---------- */
+function setStatus(t){const b=$('sbar');if(t){b.classList.add('on');$('sbarTxt').textContent=t}else b.classList.remove('on')}
+const PH=['text','dialogue','images','videos','done'];
+function setPhase(p){S.phase=p;const i=PH.indexOf(p);document.querySelectorAll('.ph').forEach((el,k)=>{el.classList.toggle('on',k===i&&p!=='done');el.classList.toggle('done',k<i||p==='done')});updateBar()}
+function updateBar(){const n=P.scenes.length||1;let pts=0,tot=0;const ph=PH.indexOf(S.phase);
+ if(P.scenario)pts+=1;tot+=1;if(P.dialogued)pts+=1;tot+=1;
+ P.scenes.forEach(s=>{tot+=2;if(s.imgUrl)pts+=1;if(s.vidUrl)pts+=1});
+ $('barFill').style.width=Math.round(100*pts/(tot||1))+'%'}
+
+/* ---------- Attentes (interruptibles, avec compte à rebours) ---------- */
+function sleepMs(ms){return new Promise(r=>setTimeout(r,ms*TS))}
+async function waitS(sec,label){const end=Date.now()+sec*1000*TS;while(Date.now()<end){if(S.stop)throw new Error('Arrêt');if(label)setStatus(label+' '+Math.max(0,Math.ceil((end-Date.now())/(1000*TS)))+' s');await new Promise(r=>setTimeout(r,Math.min(1000*TS,Math.max(1,end-Date.now()))))}if(S.stop)throw new Error('Arrêt')}
+
+/* ---------- Cache timing ---------- */
+function timing(){try{return JSON.parse(lsGet(TIMING_KEY)||'{}')}catch(e){return{}}}
+function timingSet(o){lsSet(TIMING_KEY,JSON.stringify(o))}
+function showTiming(){const t=timing();const d=t.durations||[];$('timingInfo').textContent=d.length?('Durée moyenne d\'une vidéo observée : '+Math.round(d.reduce((a,b)=>a+b,0)/d.length)+' s ('+d.length+' mesures)'):'Aucune mesure de temps pour l\'instant.'}
+
+/* ============================================================
+   ENVOI API avec retries : 429 / 503 / réseau
+   ============================================================ */
+async function apiCall(method,url,body,label){
+ let n429=0,n503=0,nNet=0;
+ for(;;){
+  if(S.stop)throw new Error('Arrêt');
+  let r;
+  try{r=await fetch(url,{method,headers:{'Authorization':'Bearer '+getKey(),'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined})}
+  catch(e){if(nNet>=T.NET.length)throw new Error('Réseau : '+e.message);const w=T.NET[nNet++];log((label||url)+' — réseau, nouvel essai dans '+w+' s','w');await waitS(w,'Réseau instable… ');continue}
+  if(r.status===429){if(n429>=T.B429.length)throw new Error('429 persistant');const w=T.B429[n429++];log((label||url)+' — 429, attente '+w+' s','w');await waitS(w,'Limite de débit… ');continue}
+  if(r.status===503){if(n503>=T.B503.length)throw new Error('503 persistant');const w=T.B503[n503++];log((label||url)+' — 503, attente '+w+' s','w');await waitS(w,'Serveur occupé… ');continue}
+  if(r.status===401||r.status===403){throw new Error('Clé API refusée (HTTP '+r.status+')')}
+  if(!r.ok){const t=await r.text();throw new Error('HTTP '+r.status+' '+t.slice(0,200))}
+  return r}}
+
+/* ============================================================
+   PARSEUR JSON — 5 stratégies dans l'ordre
+   ============================================================ */
+function stripFences(s){s=String(s||'').trim().replace(/^```(?:json)?/i,'').replace(/```$/,'').trim();const i=s.indexOf('{');return i>0?s.slice(i):s}
+/* b) caractères de contrôle à l'intérieur des chaînes */
+function escapeControlCharsInStrings(s){let out='',inStr=false,esc=false;for(let i=0;i<s.length;i++){const c=s[i];
+ if(inStr){if(esc){out+=c;esc=false}else if(c==='\\'){out+=c;esc=true}else if(c==='"'){out+=c;inStr=false}else if(c==='\n')out+='\\n';else if(c==='\r')out+='\\r';else if(c==='\t')out+='\\t';else if(c.charCodeAt(0)<32)out+=' ';else out+=c}
+ else{out+=c;if(c==='"')inStr=true}}return out}
+/* fin du premier objet JSON équilibré (ignore le texte parasite après) */
+function firstBalancedEnd(s){let d=0,inStr=false,esc=false;for(let i=0;i<s.length;i++){const c=s[i];if(inStr){if(esc)esc=false;else if(c==='\\')esc=true;else if(c==='"')inStr=false;continue}if(c==='"')inStr=true;else if(c==='{')d++;else if(c==='}'){d--;if(d===0)return i}}return -1}
+/* d) rééquilibre accolades/crochets/guillemets d'un JSON tronqué */
+function balanceJson(s){const st=[];let inStr=false,esc=false,out='';for(let i=0;i<s.length;i++){const c=s[i];out+=c;
+ if(inStr){if(esc)esc=false;else if(c==='\\')esc=true;else if(c==='"')inStr=false;continue}
+ if(c==='"')inStr=true;else if(c==='{'||c==='[')st.push(c);else if(c==='}'||c===']')st.pop()}
+ if(inStr)out+='"';out=out.replace(/[,:\s]+$/,'');if(/"\s*$/.test(out)&&/[{,]\s*"[^"]*"\s*$/.test(out))out+=':""';
+ while(st.length){out+=st.pop()==='{'?'}':']'}return out}
+/* e) récupération par regex quand tout le reste échoue */
+function grab(t,k){const re=new RegExp('"'+k+'"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"','g');const o=[];let m;while((m=re.exec(t)))o.push(m[1].replace(/\\n/g,' ').replace(/\\"/g,'"'));return o}
+function salvageScenario(t){const titles=grab(t,'title'),imgs=grab(t,'image_prompt'),vids=grab(t,'video_prompt'),nar=grab(t,'narration'),lines=grab(t,'line');
+ const n=Math.max(imgs.length,vids.length);if(!n)throw new Error('rien à récupérer');
+ const scenes=[];const stTitles=titles.slice(1);for(let i=0;i<n;i++)scenes.push({title:stTitles[i]||('Scène '+(i+1)),narration:nar[i]||'',image_prompt:imgs[i]||vids[i]||'',video_prompt:vids[i]||imgs[i]||'',line:lines[i]||''});
+ const o={title:titles[0]||'Drame',scenes};if(lines.length&&!imgs.length)o.lines=lines.map((l,i)=>({n:i+1,line:l}));return o}
+function parseJsonRobust(text,kind){const raw=stripFences(text);const tries=[
+ ['a: JSON.parse direct',()=>JSON.parse(raw)],
+ ['b: échappement des caractères de contrôle',()=>JSON.parse(escapeControlCharsInStrings(raw))],
+ ['c: coupe au dernier }',()=>{const j=raw.lastIndexOf('}');if(j<0)throw new Error('pas de }');const e=escapeControlCharsInStrings(raw);try{return JSON.parse(e.slice(0,e.lastIndexOf('}')+1))}catch(x){const k=firstBalancedEnd(e);if(k<0)throw x;return JSON.parse(e.slice(0,k+1))}}],
+ ['d: équilibrage',()=>JSON.parse(balanceJson(escapeControlCharsInStrings(raw)))],
+ ['e: récupération regex',()=>salvageScenario(raw)]];
+ let last;for(const [name,fn] of tries){try{const d=fn();if(d&&typeof d==='object'){return{data:d,strategy:name}}}catch(e){last=e}}
+ throw new Error('JSON illisible : '+(last&&last.message))}
+
+/* ============================================================
+   Images : compression (canvas) et FileReader
+   ============================================================ */
+function readFile(f){return new Promise((ok,ko)=>{const r=new FileReader();r.onload=e=>ok(e.target.result);r.onerror=ko;r.readAsDataURL(f)})}
+function compress(dataUri,maxEdge,q){return new Promise(ok=>{const i=new Image();i.onload=()=>{try{const k=Math.min(1,maxEdge/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',q||.85))}catch(e){ok(dataUri)}};i.onerror=()=>ok(dataUri);i.src=dataUri})}
+/* URL générée → data URI compressé (repli : l'URL telle quelle) */
+async function toData(url){if(/^data:/.test(url))return compress(url,1280,.85);try{const r=await fetch(url);if(!r.ok)throw new Error('http '+r.status);const b=await r.blob();return await compress(await readFile(b),1280,.85)}catch(e){log('Conversion image impossible, envoi par URL ('+e.message+')','w');return url}}
+
+/* ============================================================
+   Réveil d'écran : Wake Lock + repli canvas.captureStream(1) (iOS)
+   ============================================================ */
+async function startWake(){
+ try{if('wakeLock' in navigator){S.wake=await navigator.wakeLock.request('screen');S.wake.addEventListener('release',()=>{S.wake=null});log('Wake Lock actif','o')}}catch(e){log('Wake Lock refusé : '+e.message,'w')}
+ try{const v=$('nosleep');if(!v.srcObject){const c=document.createElement('canvas');c.width=c.height=2;const x=c.getContext('2d');x.fillStyle='#000';x.fillRect(0,0,2,2);setInterval(()=>{x.fillStyle=x.fillStyle==='#000000'?'#010101':'#000';x.fillRect(0,0,2,2)},900);v.srcObject=c.captureStream(1)}const p=v.play();if(p&&p.catch)p.catch(()=>{});log('Repli canvas actif','o')}catch(e){log('Repli canvas impossible : '+e.message,'w')}}
+function stopWake(){try{if(S.wake){S.wake.release();S.wake=null}}catch(e){}try{$('nosleep').pause()}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&S.running)startWake()});
+
+/* ============================================================
+   Audio : AudioContext créé APRÈS un geste (déverrouillage iOS) et voix
+   ============================================================ */
+function unlockAudio(){try{if(!S.audio){const AC=window.AudioContext||window.webkitAudioContext;if(AC)S.audio=new AC()}if(S.audio){if(S.audio.state==='suspended')S.audio.resume();const b=S.audio.createBuffer(1,1,22050),s=S.audio.createBufferSource();s.buffer=b;s.connect(S.audio.destination);s.start(0)}}catch(e){}}
+function loadVoices(){return new Promise(ok=>{if(!('speechSynthesis' in window))return ok([]);const g=()=>speechSynthesis.getVoices();let v=g();if(v.length){S.voices=v;return ok(v)}let done=false;const f=()=>{if(done)return;done=true;S.voices=g();ok(S.voices)};speechSynthesis.addEventListener('voiceschanged',f);setTimeout(f,1500)})}
+function speak(text,lang){return new Promise(res=>{if(!text||!('speechSynthesis' in window))return res();try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=lang;const v=S.voices.filter(x=>x.lang&&x.lang.toLowerCase().indexOf(lang.slice(0,2).toLowerCase())===0)[0];if(v)u.voice=v;u.rate=.95;let done=false;const fin=()=>{if(!done){done=true;res()}};u.onend=fin;u.onerror=fin;setTimeout(fin,Math.max(4000,text.length*110));speechSynthesis.speak(u)}catch(e){res()}})}
+
+/* ============================================================
+   Sauvegarde du projet (reprise après rechargement)
+   ============================================================ */
+function save(){lsSet(PROJ_KEY,JSON.stringify(P));const pend=P.scenes.filter(s=>s.imgUrl&&!/^data:/.test(s.imgUrl)).map(s=>s.imgUrl);lsSet(PENDING_KEY,JSON.stringify(pend))}
+function load(){try{const o=JSON.parse(lsGet(PROJ_KEY)||'null');if(o&&o.scenes)P=o}catch(e){}}
+
+/* ============================================================
+   Étapes du pipeline
+   ============================================================ */
+const LANGN={'fr-FR':'français','en-US':'English','th-TH':'ภาษาไทย (Thai)'};
+function cfg(){return{n:parseInt($('nScenes').value,10),frames:parseInt($('frames').value,10),genre:$('genre').value,style:$('style').value,lang:$('lang').value,last:$('optLast').checked,voice:$('optVoice').checked}}
+
+async function stepText(idea){
+ const c=cfg();P.cfg=c;P.idea=idea;setStatus('Écriture du scénario…');log('Texte : génération du scénario ('+c.n+' scènes)');
+ const sys='Tu es scénariste de séries courtes verticales virales. Réponds UNIQUEMENT en JSON valide. Format exact : {"title":"","logline":"","characters":[{"name":"","description":"apparence physique détaillée, vêtements, âge"}],"scenes":[{"title":"","narration":"1 phrase","image_prompt":"description visuelle détaillée en anglais, personnages avec leur apparence exacte","video_prompt":"mouvement et caméra en anglais, 1 seule action"}]}. Le texte (titres, narration) est en '+LANGN[c.lang]+'. Les prompts image et vidéo sont en anglais. Exactement '+c.n+' scènes avec un début accrocheur, une montée de tension et une chute finale. Genre : '+c.genre+'.';
+ const r=await apiCall('POST',API_BASE+'/chat/completions',{model:MODEL_TEXT,messages:[{role:'system',content:sys},{role:'user',content:'Idée : '+idea}],response_format:{type:'json_object'},temperature:.8},'texte');
+ const d=await r.json();const txt=(d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'';
+ log('Réponse texte : '+txt.length+' caractères');
+ const pr=parseJsonRobust(txt,'scenario');log('Parseur : stratégie '+pr.strategy,pr.strategy[0]==='a'?'o':'w');
+ const sc=pr.data;if(!Array.isArray(sc.scenes)||!sc.scenes.length)throw new Error('Scénario sans scènes');
+ P.scenario={title:sc.title||'Drame',logline:sc.logline||'',characters:Array.isArray(sc.characters)?sc.characters:[]};
+ P.scenes=sc.scenes.slice(0,c.n).map((s,i)=>({n:i+1,title:s.title||('Scène '+(i+1)),narration:s.narration||'',image_prompt:s.image_prompt||s.video_prompt||idea,video_prompt:s.video_prompt||s.image_prompt||idea,line:'',imgUrl:null,imgState:'',vidId:null,vidUrl:null,vidState:'',err:''}));
+ P.dialogued=false;save();renderAll();log('Scénario OK : « '+P.scenario.title+' », '+P.scenes.length+' scènes','o')}
+
+async function stepDialogue(){
+ setStatus('Écriture des dialogues…');log('Dialogue : génération des répliques');
+ const c=P.cfg;const sys='Tu écris des répliques courtes et fortes (max 18 mots) pour une série verticale, une par scène, en '+LANGN[c.lang]+'. Réponds UNIQUEMENT en JSON : {"lines":[{"n":1,"line":""}]}';
+ const user='Titre : '+P.scenario.title+'\nScènes :\n'+P.scenes.map(s=>s.n+'. '+s.title+' — '+s.narration).join('\n');
+ try{const r=await apiCall('POST',API_BASE+'/chat/completions',{model:MODEL_TEXT,messages:[{role:'system',content:sys},{role:'user',content:user}],response_format:{type:'json_object'},temperature:.7},'dialogue');
+  const d=await r.json();const txt=(d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'';
+  const pr=parseJsonRobust(txt,'poetry');log('Parseur dialogue : '+pr.strategy);
+  const L=pr.data.lines||pr.data.dialogues||[];L.forEach((x,i)=>{const sc=P.scenes[(x.n?x.n-1:i)];if(sc&&x.line)sc.line=String(x.line)})
+ }catch(e){if(e.message==='Arrêt')throw e;log('Dialogue : échec ('+e.message+'), la narration sert de réplique','w')}
+ P.scenes.forEach(s=>{if(!s.line)s.line=s.narration});P.dialogued=true;save();renderAll();log('Dialogues OK','o')}
+
+function charSheet(){return (P.scenario.characters||[]).map(c=>c.name+': '+c.description).join(' | ')}
+async function makeImage(sc){
+ const prompt=P.cfg.style+'. Vertical 9:16 key frame. '+(charSheet()?'Characters (keep identical): '+charSheet()+'. ':'')+sc.image_prompt+'. No text, no watermark.';
+ const r=await apiCall('POST',API_BASE+'/images/generations',{model:MODEL_IMAGE,prompt,size:'1024x1792',n:1},'image '+sc.n);
+ const d=await r.json();const it=(d.data&&d.data[0])||(d.images&&d.images[0])||d;
+ const url=it.url||(it.b64_json?'data:image/png;base64,'+it.b64_json:null)||(typeof it==='string'?it:null);
+ if(!url)throw new Error('Pas d\'image dans la réponse');return url}
+
+/* Images : en parallèle ×3, démarrage espacé de 3400 ms */
+async function stepImages(){
+ const todo=P.scenes.filter(s=>!s.imgUrl);log('Images : '+todo.length+' à créer (×'+T.IMG_PAR+' en parallèle, '+T.IMG_INT+' ms d\'intervalle)');
+ if(P.ref&&P.scenes[0]&&!P.scenes[0].imgUrl){P.scenes[0].imgUrl=P.ref;P.scenes[0].imgState='done';save()}
+ const list=P.scenes.filter(s=>!s.imgUrl);let done=0;
+ await new Promise(resolve=>{let i=0,active=0,last=0;
+  const next=()=>{if(S.stop&&active===0)return resolve();if(i>=list.length&&active===0)return resolve();
+   while(active<T.IMG_PAR&&i<list.length&&!S.stop){const sc=list[i++];active++;const delay=Math.max(0,last+T.IMG_INT*TS-Date.now());last=Date.now()+delay;
+    setTimeout(async()=>{try{sc.imgState='proc';renderQueue();setStatus('Images '+(done+1)+'/'+list.length);sc.imgUrl=await makeImage(sc);sc.imgState='done';sc.err='';save();log('Image '+sc.n+' OK','o')}
+     catch(e){sc.imgState='fail';sc.err=e.message;log('Image '+sc.n+' échec : '+e.message,'e')}
+     done++;active--;renderAll();next()},delay)}};
+  next()});
+ if(S.stop)throw new Error('Arrêt')}
+
+/* Vidéos : 1 création / 75 s (min 62 s), premier poll à 80 s, polls espacés */
+async function gateCreate(){const t=timing();const last=t.lastCreateAt||0;const need=T.VID_SAFE*1000*TS-(Date.now()-last);if(need>0){await waitS(Math.ceil(need/(1000*TS)),'Prochaine vidéo dans')}}
+async function createVideo(i){const sc=P.scenes[i];const body={model:MODEL_VIDEO,prompt:sc.video_prompt+'. '+P.cfg.style+'. Keep characters identical to the image. Vertical 9:16, smooth motion, no text.',image:await toData(sc.imgUrl),num_frames:P.cfg.frames,frame_rate:FRAME_RATE};
+ const nx=P.scenes[i+1];if(P.cfg.last&&nx&&nx.imgUrl){body.last_frame=await toData(nx.imgUrl)}
+ const r=await apiCall('POST',API_BASE+'/videos',body,'vidéo '+sc.n);const d=await r.json();const id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas de video_id');return id}
+async function pollVideo(i,fresh){const sc=P.scenes[i];
+ try{await waitS(fresh?T.FIRST_POLL:T.POLLS[0],'Vidéo '+sc.n+' en cours, 1er contrôle dans');
+  for(let k=0;k<60;k++){if(S.stop)throw new Error('Arrêt');
+   const r=await apiCall('GET',POLL_BASE+'?video_id='+encodeURIComponent(sc.vidId)+'&model_name='+encodeURIComponent(MODEL_VIDEO),null,'poll '+sc.n);const d=await r.json();const st=String(d.status||'').toLowerCase();
+   sc.prog=(d.progress!=null?d.progress+'%':'…');renderQueue();setStatus('Vidéo '+sc.n+' : '+(st||'en cours')+' '+sc.prog);
+   if(['completed','succeeded','done','success'].indexOf(st)>-1){const url=(d.metadata&&d.metadata.url)||d.url||(d.output&&d.output.url);if(!url)throw new Error('Terminé sans URL');
+    sc.vidUrl=url;sc.vidState='done';sc.err='';if(sc.createdAt){const t=timing();t.durations=(t.durations||[]).concat([Math.round((Date.now()-sc.createdAt)/1000/ (TS||1))]).slice(-20);timingSet(t);showTiming()}save();renderAll();log('Vidéo '+sc.n+' OK','o');return}
+   if(st==='failed'||st==='error'||st==='cancelled')throw new Error('Génération échouée ('+st+')');
+   await waitS(T.POLLS[Math.min(k,T.POLLS.length-1)],'Vidéo '+sc.n+' : prochain contrôle dans')}
+  throw new Error('Délai dépassé')
+ }catch(e){if(e.message!=='Arrêt'){sc.vidState='fail';sc.err=e.message;sc.vidId=null;save();log('Vidéo '+sc.n+' échec : '+e.message,'e')}else{sc.vidState=sc.vidUrl?'done':''}renderAll()}}
+async function stepVideos(){
+ const polls=[];
+ for(let i=0;i<P.scenes.length;i++){if(S.stop)break;const sc=P.scenes[i];if(sc.vidUrl)continue;let fresh=false;
+  if(!sc.vidId){if(!sc.imgUrl){sc.vidState='fail';sc.err='pas d\'image';continue}
+   try{await gateCreate();sc.vidState='proc';renderQueue();setStatus('Envoi de la vidéo '+sc.n+'…');sc.vidId=await createVideo(i);sc.createdAt=Date.now();const t=timing();t.lastCreateAt=Date.now();timingSet(t);save();fresh=true;log('Vidéo '+sc.n+' envoyée (id '+sc.vidId+')')}
+   catch(e){if(e.message==='Arrêt')break;sc.vidState='fail';sc.err=e.message;log('Création vidéo '+sc.n+' : '+e.message,'e');renderAll();continue}}
+  polls.push(pollVideo(i,fresh))}
+ await Promise.all(polls);if(S.stop)throw new Error('Arrêt')}
+
+/* ---------- Orchestrateur ---------- */
+async function run(){
+ if(S.running)return;if(!getKey()){toast('Ajoute ta clé API','err');openSec('apiPanel');return}
+ const idea=$('idea').value.trim();if(!P.scenario&&!idea){toast('Écris une idée d\'abord','err');return}
+ S.running=true;S.stop=false;unlockAudio();loadVoices();await startWake();setBtns();
+ window.onbeforeunload=e=>{e.preventDefault();e.returnValue='';return ''};
+ try{
+  if(!P.scenario){setPhase('text');await stepText(idea)}
+  if(!P.dialogued){setPhase('dialogue');await stepDialogue()}
+  setPhase('images');await stepImages();
+  setPhase('videos');await stepVideos();
+  setPhase('done');const ok=P.scenes.filter(s=>s.vidUrl).length;setStatus('✦ '+ok+'/'+P.scenes.length+' vidéos prêtes ✦');toast(ok+'/'+P.scenes.length+' vidéos prêtes','ok');await sleepMs(3000)
+ }catch(e){if(e.message==='Arrêt'){toast('Arrêté','wn');log('Arrêt demandé','w')}else{toast('Erreur : '+e.message.slice(0,90),'err');log('ERREUR : '+e.message,'e')}}
+ finally{S.running=false;window.onbeforeunload=null;stopWake();setStatus(null);setBtns();renderAll()}}
+
+/* ============================================================
+   Affichage
+   ============================================================ */
+const ICON={'':'○',proc:'◐',done:'●',fail:'✕'};
+function renderQueue(){const q=$('queue');if(!P.scenes.length){q.innerHTML='';return}
+ q.innerHTML=P.scenes.map(s=>{const cls=(s.vidState==='fail'||s.imgState==='fail')?'fail':(s.vidState==='done'?'done':((s.vidState==='proc'||s.imgState==='proc')?'proc':''));
+  return'<div class="q '+cls+'"><span>'+(ICON[s.imgState||'']||'○')+' '+(ICON[s.vidState||'']||'○')+'</span><span class="n">'+s.n+'. '+esc(s.title)+'</span><span class="s">'+esc(s.err?s.err.slice(0,40):(s.vidState==='proc'?(s.prog||'vidéo'):(s.imgState==='proc'?'image':'')))+'</span></div>'}).join('')}
+function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function renderScn(){const el=$('scn');if(!P.scenario){el.innerHTML='<p class="hint">Le scénario apparaîtra ici.</p>';return}
+ el.innerHTML='<b style="font-size:1.05rem">'+esc(P.scenario.title)+'</b><p class="hint">'+esc(P.scenario.logline)+'</p>'+
+ (P.scenario.characters||[]).map(c=>'<div class="sc"><b>👤 '+esc(c.name)+'</b><p>'+esc(c.description)+'</p></div>').join('')+
+ P.scenes.map(s=>'<div class="sc"><b>'+s.n+'. '+esc(s.title)+'</b><p>'+esc(s.narration)+'</p><p class="ln">« '+esc(s.line)+' »</p><button type="button" class="sm ghost" data-say="'+(s.n-1)+'">🔊 Écouter</button></div>').join('')}
+function renderGal(){const g=$('gal');const L=P.scenes.filter(s=>s.vidUrl);
+ g.innerHTML=L.map(s=>'<div class="gi"><video playsinline muted loop preload="metadata" src="'+esc(s.vidUrl)+'" data-play="'+(s.n-1)+'"></video><div class="cap">Scène '+s.n+' · '+esc(s.title)+'</div><button type="button" class="ghost" data-open="'+(s.n-1)+'">▶ Voir</button></div>').join('')}
+function renderMedia(){const m=$('media');const L=[];P.scenes.forEach(s=>{if(s.imgUrl&&!/^data:/.test(s.imgUrl))L.push(['🖼 Image '+s.n,s.imgUrl]);if(s.vidUrl)L.push(['🎬 Vidéo '+s.n,s.vidUrl])});
+ m.innerHTML=L.length?L.map(x=>'<a href="'+esc(x[1])+'" target="_blank" rel="noopener">'+x[0]+' — '+esc(x[1])+'</a>').join(''):'<p class="hint">Les liens des images et vidéos apparaîtront ici.</p>'}
+function renderAll(){renderQueue();renderScn();renderGal();renderMedia();updateBar();setBtns()}
+function setBtns(){const b=$('runBtn');const has=!!getKey();b.disabled=S.running||!has;
+ b.textContent=S.running?'Création en cours…':(!has?'Ajoutez votre clé API':(P.scenario?'▶ Reprendre / continuer':'✨ Créer ma série'));
+ $('stopBtn').style.display=S.running?'block':'none'}
+
+/* ---------- Événements ---------- */
+function openSec(id){const e=$(id);if(e&&e.classList.contains('sec'))e.classList.add('open');e&&e.scrollIntoView({behavior:'smooth',block:'start'})}
+document.addEventListener('click',e=>{const h=e.target.closest('[data-sec]');if(h){$(h.dataset.sec).classList.toggle('open');return}
+ const say=e.target.closest('[data-say]');if(say){unlockAudio();loadVoices().then(()=>speak(P.scenes[+say.dataset.say].line,P.cfg.lang||$('lang').value));return}
+ const op=e.target.closest('[data-open]');if(op){const s=P.scenes[+op.dataset.open];const p=$('player');p.src=s.vidUrl;p.play().catch(()=>{});p.scrollIntoView({behavior:'smooth',block:'center'});return}});
+$('form').addEventListener('submit',e=>{e.preventDefault();return false});
+$('form').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName!=='TEXTAREA'){e.preventDefault()}});
+$('apiSave').onclick=()=>{const k=$('apiKey').value.trim();if(!k){lsDel(KEY_STORAGE);toast('Clé supprimée','wn')}else{lsSet(KEY_STORAGE,k);toast('Clé enregistrée ✓','ok')}updApi()};
+function updApi(){const k=getKey();$('apiPanel').classList.toggle('ok',!!k);$('apiStatus').classList.toggle('ok',!!k);$('apiText').textContent=k?('Clé active · '+k.slice(0,6)+'…'+k.slice(-4)):'Aucune clé enregistrée';$('apiKey').value=k;setBtns()}
+$('stopBtn').onclick=()=>{S.stop=true;toast('Arrêt en cours…','wn')};
+$('runBtn').onclick=run;
+let newArm=0;$('newBtn').onclick=()=>{if(S.running){toast('Arrête d\'abord la création','wn');return}
+ if(!newArm){newArm=1;$('newBtn').textContent='⚠️ Toucher encore pour effacer le projet';setTimeout(()=>{newArm=0;$('newBtn').textContent='🆕 Nouveau projet'},3500);return}
+ newArm=0;$('newBtn').textContent='🆕 Nouveau projet';P={idea:'',scenario:null,dialogued:false,scenes:[],ref:null,cfg:{}};lsDel(PROJ_KEY);lsDel(PENDING_KEY);$('refPrev').innerHTML='';$('idea').value='';setPhase(null);renderAll();toast('Nouveau projet','ok')};
+$('drop').onclick=()=>$('file').click();
+$('file').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const u=await compress(await readFile(f),1280,.85);P.ref=u;$('refPrev').innerHTML='<div class="thumb"><img src="'+u+'" alt=""></div>';toast('Photo ajoutée ✓','ok')}catch(err){toast('Lecture impossible','err')}};
+$('ideaChips').innerHTML=['Une serveuse découvre que le client mystérieux est son père disparu','Deux frères rivaux héritent du même restaurant','Un chien retrouve sa famille après 3 ans','Une fille reçoit un message de son futur elle-même'].map(t=>'<span class="chip">'+t+'</span>').join('');
+$('ideaChips').onclick=e=>{if(e.target.classList.contains('chip')){$('idea').value=e.target.textContent}};
+$('playAll').onclick=async()=>{unlockAudio();await loadVoices();const L=P.scenes.filter(s=>s.vidUrl);if(!L.length){toast('Aucune vidéo prête','wn');return}
+ const p=$('player');p.muted=true;const lang=P.cfg.lang||$('lang').value,vo=$('optVoice').checked;$('player').scrollIntoView({behavior:'smooth',block:'center'});
+ for(const s of L){p.src=s.vidUrl;p.play().catch(()=>{});const ended=new Promise(r=>{p.onended=r;p.onerror=r;setTimeout(r,((P.cfg.frames||153)/24+8)*1000)});await Promise.all([ended,vo?speak(s.line,lang):Promise.resolve()])}
+ toast('Fin de la série ✓','ok')};
+/* Icône d'écran d'accueil (générée) */
+(function(){try{const c=document.createElement('canvas');c.width=c.height=180;const x=c.getContext('2d');const g=x.createLinearGradient(0,0,180,180);g.addColorStop(0,'#8a63f8');g.addColorStop(1,'#22d3ee');x.fillStyle=g;x.fillRect(0,0,180,180);x.fillStyle='#fff';x.font='96px sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText('🎭',90,98);$('touchIcon').href=c.toDataURL('image/png')}catch(e){}})();
+
+/* ---------- Démarrage ---------- */
+load();updApi();showTiming();setPhase(P.scenario?(P.scenes.every(s=>s.vidUrl)?'done':null):null);
+if(P.idea)$('idea').value=P.idea;if(P.cfg&&P.cfg.n){$('nScenes').value=P.cfg.n;$('frames').value=P.cfg.frames;$('lang').value=P.cfg.lang;$('genre').value=P.cfg.genre}
+if(P.ref)$('refPrev').innerHTML='<div class="thumb"><img src="'+P.ref+'" alt=""></div>';
+renderAll();loadVoices();log('Prêt. '+(P.scenario?'Projet repris : '+P.scenes.length+' scènes.':'Nouveau projet.'));
+</script>
+</body>
+</html>

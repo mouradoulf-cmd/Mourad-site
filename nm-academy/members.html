@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NM Academy — Espace membres</title><meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/academy.css"></head>
+<body>
+<canvas id="bg" hidden></canvas><div class="vig"></div>
+<header class="nav" id="nav"><a href="index.html" class="logo">NM<b>ACADEMY</b></a><div class="nr"><div class="lang"></div><button class="snd mono" id="snd" type="button">SON</button></div></header>
+
+<section id="gate2" class="mgate"><div class="card mg">
+  <div class="mono" style="color:var(--c1);font-size:.72rem" data-t="mm_k">ACCÈS MEMBRES</div>
+  <h1 data-t="mm_t">Espace membres</h1><p data-t="mm_s">Entre le code reçu après ton inscription.</p>
+  <form id="gf"><input id="code" class="inp" autocomplete="off" data-t-ph="mm_ph" placeholder="CODE"><button class="btn pri full" data-t="mm_go">Entrer</button><p class="err" id="err" hidden data-t="mm_err">Code incorrect</p></form>
+</div></section>
+
+<main id="content" class="wrap mem" hidden>
+  <div class="mhead"><div><div class="mono" style="color:var(--c1);font-size:.72rem" data-t="mm_k">ACCÈS MEMBRES</div><h1 data-t="mm_w">Bienvenue dans NM Academy</h1></div>
+    <div class="mprog"><span class="mono" id="ptxt"></span><div class="pbar"><i id="pbar"></i></div></div></div>
+  <div class="tabs" role="tablist"><button class="tab on" data-v="vid" data-t="mm_tv">Vidéos</button><button class="tab" data-v="a" data-t="mm_ta">Plan A</button><button class="tab" data-v="b" data-t="mm_tb">Plan B</button><button class="tab" data-v="kit" data-t="mm_tk">Kit</button></div>
+  <p class="note" id="thnote" hidden data-t="mm_th">Le contenu des cours est disponible en français et en anglais (affichage en anglais).</p>
+  <div id="view"></div>
+</main>
+<script src="assets/js/config.js"></script><script src="assets/js/sfx.js"></script><script src="assets/js/course.js"></script><script src="assets/js/i18n.js"></script><script src="assets/js/members.js"></script>
+</body></html>

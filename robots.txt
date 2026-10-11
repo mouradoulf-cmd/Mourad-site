@@ -1,0 +1,22 @@
+# robots.txt — NM Studio
+# Le site est publie sur GitHub Pages a l'adresse
+#   https://mouradoulf-cmd.github.io/Mourad-site/nm/
+# GitHub Pages ne lit QUE le robots.txt place a la racine du depot publie
+# (il est donc servi a https://mouradoulf-cmd.github.io/robots.txt).
+# Un robots.txt place dans /nm/ ne serait jamais servi a /nm/robots.txt :
+# ce fichier doit rester a la racine du depot.
+
+User-agent: *
+Allow: /
+
+# Aucune page n'est bloquee volontairement ici : les pages utilitaires portent
+# une balise <meta name="robots" content="noindex">, et un Disallow empecherait
+# les moteurs de lire justement cette consigne.
+#   /Mourad-site/nm/account.html
+#   /Mourad-site/nm/checkout.html
+#   /Mourad-site/nm/success.html
+#   /Mourad-site/nm/cancel.html
+#   /Mourad-site/nm/qr-generator.html
+#   /Mourad-site/nm/business-card/card.html (gabarit d'impression, hors plan de site)
+
+Sitemap: https://mouradoulf-cmd.github.io/Mourad-site/nm/sitemap.xml

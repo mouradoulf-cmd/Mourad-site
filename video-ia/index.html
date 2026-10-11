@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio Vidéo IA</title>
+<meta name="description" content="Crée des vidéos avec l'IA : réaliste, dessin animé, bébé, anime, 3D, publicité. Des dizaines de styles, tu choisis, l'IA anime.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07060d;--panel:#100e1c;--line:rgba(255,255,255,.09);--text:#f3f1fa;--mut:#9a96b3;--v:#8a63f8;--c:#22d3ee;--g:#00ff88;--grad:linear-gradient(135deg,#8a63f8,#22d3ee);--r:20px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+h1,h2,h3,.dsp{font-family:Outfit,Inter,sans-serif;letter-spacing:-.03em}
+.glow{position:fixed;inset:0;z-index:-1;background:radial-gradient(60vw 50vw at 85% -10%,rgba(138,99,248,.28),transparent 60%),radial-gradient(50vw 40vw at -10% 40%,rgba(34,211,238,.14),transparent 60%)}
+.wrap{width:min(1180px,100% - 2rem);margin:0 auto}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(7,6,13,.7);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:1.2rem;display:flex;gap:.5rem;align-items:center}
+.logo i{width:26px;height:26px;border-radius:8px;background:var(--grad);display:inline-block}
+.btn{border:0;cursor:pointer;font:600 .95rem Inter,system-ui,sans-serif;border-radius:999px;padding:.8rem 1.4rem;color:#fff;background:var(--grad);transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:.5rem;justify-content:center;text-decoration:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(138,99,248,.7)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.ghost{background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.btn.sm{padding:.55rem 1rem;font-size:.85rem}
+.hero{padding:clamp(3rem,9vw,7rem) 0 3rem;text-align:center;position:relative}
+.pill{display:inline-flex;gap:.5rem;align-items:center;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;font-size:.8rem;color:var(--mut);background:rgba(255,255,255,.04)}
+.pill b{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 10px var(--g)}
+h1{font-size:clamp(2.6rem,8vw,6rem);line-height:.98;margin:1.4rem auto 1.2rem;max-width:14ch;font-weight:800}
+h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:40rem;margin:0 auto 2rem;color:var(--mut);font-size:clamp(1rem,2vw,1.2rem)}
+.marq{overflow:hidden;margin:3rem 0 0;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq div{display:flex;gap:.7rem;width:max-content;animation:mq 40s linear infinite}
+.marq span{padding:.55rem 1.1rem;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);font-size:.9rem;white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:clamp(2.5rem,6vw,4.5rem) 0}
+.sh{margin-bottom:1.6rem}.sh h2{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.05}.sh p{color:var(--mut);margin-top:.5rem}
+.studio{display:grid;gap:1.2rem;grid-template-columns:1fr}
+@media(min-width:980px){.studio{grid-template-columns:1.5fr 1fr;align-items:start}.side{position:sticky;top:84px}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem}
+.step{display:flex;gap:.7rem;align-items:center;margin-bottom:1rem}
+.step i{font:700 .8rem Outfit,Inter,sans-serif;font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--grad);display:grid;place-items:center}
+.step h3{font-size:1.1rem}.step small{color:var(--mut);margin-left:auto;font-size:.8rem}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.tab{padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--mut);font:500 .88rem Inter,system-ui,sans-serif;cursor:pointer}
+.tab.on{background:rgba(138,99,248,.18);border-color:var(--v);color:#fff}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
+.opt{border:1px solid var(--line);border-radius:14px;padding:.8rem;background:rgba(255,255,255,.03);cursor:pointer;text-align:left;color:var(--text);font:inherit;transition:.2s;position:relative;overflow:hidden}
+.opt:hover{border-color:rgba(138,99,248,.6);transform:translateY(-2px)}
+.opt.sel{border-color:var(--c);background:linear-gradient(160deg,rgba(138,99,248,.22),rgba(34,211,238,.12))}
+.opt .em{font-size:1.6rem;display:block;margin-bottom:.3rem}
+.opt b{display:block;font:600 .9rem Outfit,Inter,sans-serif}.opt small{color:var(--mut);font-size:.75rem;line-height:1.3;display:block}
+textarea,select,input[type=password],input[type=text]{width:100%;background:#0b0a14;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:.85rem 1rem;font:inherit;outline:none}
+textarea{min-height:110px;resize:vertical}
+textarea:focus,select:focus,input:focus{border-color:var(--v)}
+.row{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+label{font-size:.78rem;color:var(--mut);display:block;margin-bottom:.35rem}
+.chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.6rem}
+.chip{padding:.35rem .75rem;border-radius:999px;border:1px dashed var(--line);font-size:.78rem;color:var(--mut);cursor:pointer;background:none}
+.chip:hover{color:#fff;border-color:var(--c)}
+.drop{border:2px dashed var(--line);border-radius:16px;padding:1.6rem;text-align:center;cursor:pointer;color:var(--mut);transition:.2s}
+.drop:hover,.drop.on{border-color:var(--c);background:rgba(34,211,238,.06)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:.5rem;margin-top:.8rem}
+.th{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.th img{width:100%;height:100%;object-fit:cover}
+.th button{position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.7);color:#fff;cursor:pointer}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:.4rem .8rem;font-size:.85rem;margin:.8rem 0}
+.sum dt{color:var(--mut)}.sum dd{text-align:right;font-weight:600}
+.pv{background:#0b0a14;border:1px solid var(--line);border-radius:12px;padding:.8rem;font-size:.78rem;color:#bdb9d6;max-height:160px;overflow:auto;white-space:pre-wrap}
+.stack{display:grid;gap:.6rem}
+.q{display:flex;gap:.7rem;align-items:center;padding:.7rem .9rem;border:1px solid var(--line);border-radius:12px;font-size:.85rem;background:rgba(255,255,255,.03)}
+.q .s{margin-left:auto;color:var(--mut);font-size:.78rem}
+.q.proc{border-color:var(--v)}.q.done{border-color:var(--g)}.q.fail{border-color:#ff5d73}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;margin-top:1rem}
+.gi{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000}
+.gi video{width:100%;display:block;max-height:420px;object-fit:cover}
+.gi div{padding:.6rem .8rem;display:flex;justify-content:space-between;font-size:.8rem;background:var(--panel)}
+.gi a{color:var(--c);text-decoration:none;font-weight:600}
+.hint{font-size:.78rem;color:var(--mut);margin-top:.5rem}.hint a{color:var(--c)}
+dialog{border:1px solid var(--line);border-radius:20px;background:var(--panel);color:var(--text);padding:1.5rem;width:min(460px,92vw);margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(6px)}
+.toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,120px);background:#1b1830;border:1px solid var(--line);padding:.8rem 1.2rem;border-radius:12px;z-index:200;transition:.3s;max-width:92vw;text-align:center}
+.toast.on{transform:translate(-50%,0)}
+.feat{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.feat .card h3{margin:.4rem 0}.feat .card p{color:var(--mut);font-size:.9rem}.feat .card span{font-size:1.8rem}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--mut);font-size:.85rem;text-align:center}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.marq div{animation:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<nav><div class="wrap"><div class="logo"><i></i>Studio Vidéo IA</div><div style="display:flex;gap:.5rem"><a class="btn ghost sm" href="#studio">Studio</a><button class="btn sm" id="keyBtn">🔑 Clé API</button></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<span class="pill"><b></b> Réaliste · Dessin animé · Bébé · Anime · 3D</span>
+<h1>Crée n'importe quelle <em>vidéo</em> avec l'IA.</h1>
+<p class="lead">Choisis le type, le style, ajoute une idée ou une image. Le studio construit le prompt parfait et lance la génération. Du film réaliste à la comptine pour bébé.</p>
+<a class="btn" href="#studio">Commencer →</a>
+<div class="marq"><div id="marq"></div></div>
+</div></header>
+
+<section id="studio"><div class="wrap">
+<div class="sh"><h2>Le studio</h2><p>7 étapes, tout se règle ici. Le résultat apparaît en bas.</p></div>
+<div class="studio">
+<div class="stack">
+ <div class="card rv" id="story"><div class="step"><i>★</i><h3>Mon histoire</h3><small id="stBadge">Aucune</small></div>
+  <p class="hint" style="margin:0 0 .8rem">Décris ton personnage une seule fois : il sera gardé identique dans toutes tes vidéos, jusqu'à ce que tu cliques sur « Nouvelle histoire ».</p>
+  <div class="row"><div><label>Titre de l'histoire</label><input type="text" id="stTitle" placeholder="Ex : Mina et son éléphant"></div><div><label>Univers / décor fixe</label><input type="text" id="stWorld" placeholder="Ex : village thaïlandais, rizières, lumière dorée"></div></div>
+  <label style="margin-top:.8rem">Personnage principal (apparence fixe)</label><textarea id="stChar" style="min-height:80px" placeholder="Ex : Mina, fille de 6 ans, longs cheveux noirs en deux tresses, robe jaune, sourire timide ; son éléphanteau gris Boun avec une petite écharpe rouge"></textarea>
+  <div class="row" style="margin-top:.8rem;align-items:end"><div><label>Image de référence du personnage <small>(utilisée automatiquement)</small></label><button class="btn ghost sm" type="button" id="refBtn">＋ Choisir une image</button><input type="file" id="refFile" accept="image/*" hidden></div><div id="refPrev"></div></div>
+  <div class="chips"><span class="chip" style="cursor:default" id="stLock">Style et type : mémorisés avec l'histoire</span><span class="chip" style="cursor:default" id="stEp">Épisode 1</span></div>
+  <div id="stLog" class="hint"></div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem"><button class="btn sm" id="stSave">💾 Enregistrer l'histoire</button><button class="btn ghost sm" id="stNew">🆕 Nouvelle histoire</button></div>
+ </div>
+ <div class="card rv"><div class="step"><i>1</i><h3>Type de vidéo</h3><small id="cntType"></small></div><div class="tabs" id="catTabs"></div><div class="opts" id="typeGrid"></div></div>
+ <div class="card rv"><div class="step"><i>2</i><h3>Style visuel</h3><small id="cntSt"></small></div><div class="tabs" id="stTabs"></div><div class="opts" id="styleGrid"></div></div>
+ <div class="card rv"><div class="step"><i>3</i><h3>Ton idée</h3></div><textarea id="idea" placeholder="Ex : un bébé panda qui apprend à marcher dans une forêt de bambous, lumière douce du matin"></textarea><div class="chips" id="ideaChips"></div></div>
+ <div class="card rv"><div class="step"><i>4</i><h3>Image de départ <small>optionnel</small></h3></div><div class="drop" id="drop">＋ Ajoute une ou plusieurs images à animer<br><small>Sans image : la vidéo est créée à partir du texte</small></div><input type="file" id="file" accept="image/*" multiple hidden><div class="thumbs" id="thumbs"></div></div>
+ <div class="card rv"><div class="step"><i>5</i><h3>Modèle vidéo</h3><small id="cntM"></small></div><div class="opts" id="modelGrid"></div><p class="hint" id="modelInfo"></p></div>
+ <div class="card rv"><div class="step"><i>6</i><h3>Réglages</h3></div><div class="row">
+  <div><label>Format</label><select id="ratio"><option value="9:16">Vertical 9:16 (TikTok, Reels)</option><option value="16:9">Horizontal 16:9 (YouTube)</option><option value="1:1">Carré 1:1</option></select></div>
+  <div><label>Durée</label><select id="dur"><option value="121">5 secondes</option><option value="153" selected>6,4 secondes</option><option value="241">10 secondes</option></select></div>
+  <div><label>Cadrage</label><select id="frame"><option value="">Auto</option><option value="wide shot, environment visible">Plan large</option><option value="medium shot">Plan moyen</option><option value="extreme close-up">Gros plan</option><option value="aerial drone shot">Vue de drone</option></select></div>
+  <div><label>Mouvement</label><select id="move"><option value="gentle subtle movement">Doux</option><option value="moderate balanced movement" selected>Modéré</option><option value="strong dynamic energetic movement">Énergique</option></select></div>
+  <div><label>Variantes</label><select id="vars"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+ </div></div>
+ <div class="card rv" id="serie"><div class="step"><i>7</i><h3>Série automatique</h3><small>jusqu'à 50 vidéos</small></div>
+  <p class="hint" style="margin:0 0 .8rem">Configure ton histoire une fois : le studio écrit tout seul le scénario de la série, un prompt différent par vidéo, avec le même personnage du début à la fin.</p>
+  <div class="row"><div><label>Nombre de vidéos</label><select id="sN"><option>5</option><option>10</option><option selected>20</option><option>30</option><option>50</option></select></div>
+  <div><label>Ambiance de la série</label><select id="sTheme"><option value="adv">Aventure joyeuse</option><option value="calm">Douce / histoire du soir</option><option value="learn">Éducative</option><option value="fun">Comédie</option></select></div>
+  <div><label>Nom du héros</label><input type="text" id="sHero" placeholder="Ex : Mina"></div></div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0"><button class="btn sm" id="sMake">🧠 Écrire le scénario</button><button class="btn ghost sm" id="sAll">📋 Copier tous les prompts</button><button class="btn ghost sm" id="sTxt">⬇️ Télécharger .txt</button></div>
+  <div id="sList" class="stack"></div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem"><button class="btn" id="sRun" style="display:none">🚀 Lancer la série</button><button class="btn ghost" id="sStop" style="display:none">⏹ Arrêter</button></div>
+  <p class="hint" id="sInfo"></p>
+ </div>
+ </div>
+<aside class="side"><div class="card sum">
+ <h3 class="dsp">Ta vidéo</h3>
+ <dl><dt>Type</dt><dd id="sType">—</dd><dt>Style</dt><dd id="sStyle">—</dd><dt>Format</dt><dd id="sRatio">—</dd><dt>Modèle</dt><dd id="sModel">—</dd><dt>Images</dt><dd id="sImg">0</dd></dl>
+ <label>Prompt pro <span id="auto" style="color:var(--g)">· auto</span></label><textarea id="pv" style="min-height:170px;font-size:.8rem"></textarea>
+ <label style="margin-top:.7rem">Anti-erreurs (negative prompt)</label><textarea id="neg" style="min-height:70px;font-size:.78rem"></textarea>
+ <button class="chip" type="button" id="reauto" style="margin-top:.5rem">↺ Régénérer automatiquement</button>
+ <div style="display:grid;gap:.6rem;margin-top:1rem">
+  <button class="btn" id="gen">✨ Créer la vidéo</button>
+  <a class="btn ghost" id="open" target="_blank" rel="noopener" style="display:none">Ouvrir le modèle ↗</a>
+  <button class="btn ghost" id="copy">Copier le prompt</button>
+  <button class="btn ghost" id="stop" style="display:none">⏹ Arrêter</button>
+ </div>
+ <p class="hint" id="keyHint"></p>
+</div></aside>
+</div>
+<div id="queue" class="stack" style="margin-top:1.5rem"></div>
+<div class="gal" id="gal"></div>
+</div></section>
+
+<section><div class="wrap">
+<div class="sh"><h2>Pourquoi ce studio</h2></div>
+<div class="feat">
+<div class="card rv"><span>🎨</span><h3>Des dizaines de styles</h3><p>Réaliste, 3D, anime, claymation, aquarelle, comptines bébé… combine type et style.</p></div>
+<div class="card rv"><span>🖼️</span><h3>Texte ou image</h3><p>Écris une idée ou anime tes propres images en gardant le personnage identique.</p></div>
+<div class="card rv"><span>📱</span><h3>Tous les formats</h3><p>Vertical, horizontal ou carré. Prêt pour TikTok, YouTube et Instagram.</p></div>
+<div class="card rv"><span>🔒</span><h3>Ta clé reste chez toi</h3><p>Elle est gardée dans ton navigateur uniquement et envoyée seulement au service de génération.</p></div>
+</div></div></section>
+
+<footer><div class="wrap">Studio Vidéo IA · Les vidéos sont générées par un service d'IA externe avec ta propre clé.</div></footer>
+
+<dialog id="dlg"><h3 class="dsp" style="margin-bottom:.6rem">Clé API</h3><p class="hint" style="margin:0 0 .8rem">Colle ta clé du service de génération (agnes-ai). Elle reste dans ce navigateur.</p><input type="password" id="key" placeholder="sk-..." autocomplete="off" spellcheck="false"><p class="hint">Clé gratuite sur <a href="https://platform.agnes-ai.com" target="_blank" rel="noopener">platform.agnes-ai.com</a></p><div style="display:flex;gap:.6rem;margin-top:1rem"><button class="btn" id="saveKey" style="flex:1">Enregistrer</button><button class="btn ghost" id="closeKey">Fermer</button></div></dialog>
+<div class="toast" id="toast"></div>
+
+<script>
+var API='https://apihub.agnes-ai.com/v1',POLL='https://apihub.agnes-ai.com/agnesapi',MODEL='agnes-video-v2.0',KS='video_ia_key';
+var CATS=[
+{id:'real',nm:'🎬 Réaliste',items:[
+ ['cine','🎞️','Film cinéma','Scène dramatique','Cinematic film scene, shallow depth of field, anamorphic lens, dramatic lighting, realistic skin and textures'],
+ ['pub','🛍️','Pub produit','Spot premium','Premium product commercial, glossy studio lighting, slow macro camera moves, reflections, luxury feel'],
+ ['doc','🌍','Documentaire','Nature & monde','Nature documentary footage, natural light, handheld realism, wildlife and landscapes'],
+ ['drone','🚁','Vue drone','Paysages','Epic aerial drone footage, sweeping landscape reveal, golden hour'],
+ ['port','🧑','Portrait','Personnage réaliste','Realistic portrait video, natural expressions, soft window light, subtle breathing and blinking'],
+ ['mode','👗','Mode','Défilé & lookbook','High fashion editorial video, runway movement, flowing fabric, magazine lighting'],
+ ['food','🍜','Food','Cuisine appétissante','Mouth-watering food video, steam rising, close macro, warm light'],
+ ['sport','🏃','Sport','Action dynamique','Dynamic sports action, slow motion, motion blur, intense energy'],
+ ['immo','🏠','Immobilier','Visite fluide','Smooth real-estate walkthrough, bright interiors, gimbal camera motion'],
+ ['car','🚗','Auto','Voiture premium','Premium car commercial, tracking shots, reflections, road at dusk']]},
+{id:'toon',nm:'🧸 Dessin animé',items:[
+ ['kid','🧒','Aventure enfants','Histoires joyeuses','Joyful children adventure cartoon, friendly characters, bright colors, playful camera'],
+ ['animal','🐘','Animaux','Amis de la forêt','Cute animal friends cartoon, expressive faces, lush colorful nature'],
+ ['fam','👨‍👩‍👧','Famille','Vie de famille','Warm family cartoon episode, everyday life, emotional and funny moments'],
+ ['fairy','🧚','Conte de fées','Magie & princesses','Fairy tale animation, castles, magic sparkles, enchanted forest'],
+ ['hero','🦸','Super-héros','Action pour enfants','Kid-friendly superhero cartoon, bold action, vibrant colors'],
+ ['sea','🐠','Mer & océan','Poissons & sirènes','Underwater cartoon world, colorful coral, friendly sea creatures'],
+ ['dino','🦖','Dinosaures','Monde préhistorique','Friendly dinosaur cartoon, lush prehistoric jungle, comedic energy'],
+ ['space','🚀','Espace','Astronautes mignons','Cute space adventure cartoon, planets, rockets, stars']]},
+{id:'baby',nm:'👶 Bébé',items:[
+ ['rhyme','🎵','Comptine','Chansons à chanter','Baby nursery rhyme animation, big round cute characters, high contrast bright colors, slow gentle movement'],
+ ['sleep','🌙','Histoire du soir','Douceur & dodo','Calming bedtime story animation, soft pastel colors, twinkling stars, slow soothing motion'],
+ ['abc','🔤','Alphabet & chiffres','Éducatif','Educational baby learning animation, letters and numbers, bouncing objects, bright simple shapes'],
+ ['sens','🫧','Sensoriel','Formes & bulles','Baby sensory video, slow floating bubbles, high contrast patterns, gentle colors'],
+ ['color','🌈','Couleurs','Apprendre les couleurs','Learn colors animation for toddlers, each color introduced with cheerful objects'],
+ ['farm','🐮','Ferme','Animaux de la ferme','Cute farm animals nursery animation, big friendly shapes, soft colors']]},
+{id:'other',nm:'⚡ Créatif',items:[
+ ['anime','🌸','Anime','Série japonaise','Japanese anime scene, dynamic camera, expressive eyes, detailed backgrounds'],
+ ['fant','🐉','Fantasy','Dragons & épopées','Epic fantasy cinematic scene, dragons, castles, volumetric light'],
+ ['scifi','🛸','Science-fiction','Futur & robots','Futuristic sci-fi scene, neon cities, holograms, robots'],
+ ['cyber','🌃','Cyberpunk','Néons & pluie','Cyberpunk city at night, neon rain reflections, flying cars'],
+ ['art','🖌️','Art animé','Peinture vivante','Living painting animation, brush strokes moving, artistic'],
+ ['loop','♾️','Boucle déco','Fond animé','Seamless looping abstract motion background, smooth and hypnotic'],
+ ['music','🎤','Clip musical','Visuels rythmés','Music video visuals, rhythmic cuts, stylish lighting, energy'],
+ ['pov','🎥','Vlog / POV','Style réseaux','First-person POV vlog style, handheld, authentic social media look']]}];
+var STY=[
+{id:'all',nm:'Tous'},{id:'3d',nm:'3D'},{id:'2d',nm:'2D'},{id:'real',nm:'Réaliste'},{id:'art',nm:'Artistique'}];
+var STYLES=[
+['real4k','📷','Photoréaliste 4K','real','Ultra photorealistic, 4K, natural color grading, sharp details'],
+['cinema','🎞️','Cinéma','real','Hollywood cinematic look, film grain, teal and orange grading'],
+['doc','🎥','Caméra réelle','real','Shot on a real camera, handheld, authentic, natural light'],
+['pixar','🎬','3D Pixar','3d','Premium Pixar-style 3D animation, soft subsurface skin, expressive characters, cinematic depth of field'],
+['disney','✨','3D Disney','3d','Disney animated feature style, high-end 3D, magical lighting'],
+['cocomelon','🍉','3D bébé','3d','Bright smooth 3D toddler-show style, round friendly characters, saturated colors'],
+['lego','🧱','Briques','3d','Toy brick animation, plastic bricks, stop motion feel'],
+['clay','🏺','Pâte à modeler','3d','Claymation stop-motion, plasticine texture, handmade charm'],
+['toon2d','🖍️','Cartoon 2D','2d','Classic 2D cartoon, bold outlines, flat bright colors, squash and stretch'],
+['anime','🌸','Anime','2d','Japanese anime, cel shading, detailed backgrounds, expressive'],
+['ghibli','🌿','Ghibli','2d','Studio Ghibli hand-painted style, nostalgic warm atmosphere'],
+['flat','🟣','Flat design','2d','Modern flat vector animation, clean shapes, smooth motion graphics'],
+['water','🎨','Aquarelle','art','Watercolor painting, soft bleeding colors, paper texture'],
+['oil','🖼️','Peinture à l\'huile','art','Oil painting in motion, thick brush strokes, rich color'],
+['paper','✂️','Papier découpé','art','Paper cut-out layered animation, shadows between layers'],
+['bw','⚫','Noir & blanc','art','Elegant black and white film, high contrast, classic cinema'],
+['neon','💜','Néon','art','Glowing neon, dark background, vibrant glow, synthwave']];
+var CHIPS=['un bébé panda dans la bambouseraie','une voiture rouge sur la côte au coucher du soleil','un chat astronaute sur la lune','une petite fille et son dragon','un café parisien sous la pluie','des animaux qui chantent à la ferme'];
+var S0=1;var S={cat:'real',type:'cine',stf:'all',style:'real4k',imgs:[],run:false,stop:false};
+var $=function(i){return document.getElementById(i)};
+function key(){try{return(localStorage.getItem(KS)||'').trim()}catch(e){return''}}
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('on')},2600)}
+
+var MODELS=[
+['agnes','⚡','Agnes v2.0','Agnes AI','Génération directe depuis ce site avec ta clé',true,'tags','https://platform.agnes-ai.com',10],
+['veo','🔷','Veo 3 / 3.1','Google','Réalisme + son et dialogues synchronisés',false,'cine','https://labs.google/fx/tools/flow',8],
+['sora','🌀','Sora 2','OpenAI','Physique réaliste, scènes longues, son',false,'cine','https://sora.com',12],
+['kling','🎯','Kling 2.x','Kuaishou','Mouvements humains, très bon image-vers-vidéo',false,'tags','https://klingai.com',10],
+['runway','🛫','Runway Gen-4','Runway','Cohérence des personnages, contrôle caméra',false,'short','https://runwayml.com',10],
+['luma','🌅','Ray 2','Luma','Mouvements caméra fluides, cinématique',false,'cine','https://lumalabs.ai',9],
+['hailuo','🌊','Hailuo 02','MiniMax','Physique et action dynamique',false,'tags','https://hailuoai.video',10],
+['seedance','🌱','Seedance','ByteDance','Multi-plans cohérents, rapide',false,'tags','https://dreamina.capcut.com',10],
+['pika','💫','Pika 2.x','Pika','Effets créatifs, formats courts réseaux',false,'short','https://pika.art',5],
+['wan','🧩','Wan 2.x','Alibaba (open source)','Gratuit et open source, sans limite chez soi',false,'tags','https://wan.video',5],
+['firefly','🔥','Firefly Video','Adobe','Sûr pour usage commercial, bon pour B-roll',false,'short','https://firefly.adobe.com',5],
+['mj','🎨','Midjourney Video','Midjourney','Style artistique et images animées',false,'short','https://www.midjourney.com',5],
+['grok','✖️','Grok Imagine','xAI','Rapide, avec audio',false,'short','https://grok.com',6],
+['ltx','🧪','LTX Video','Lightricks','Open source, très rapide',false,'tags','https://ltx.studio',5]];
+S.model='agnes';S.edited=false;
+function curModel(){return MODELS.filter(function(m){return m[0]===S.model})[0]}
+var NEG='extra fingers, extra limbs, deformed hands, distorted face, duplicated characters, blurry, flickering, morphing objects, melting shapes, inconsistent character, text, subtitles, watermark, logo, low quality, jitter';
+var DEF={cine:'a cinematic moment with a clear subject and a simple action',pub:'a premium product slowly revealed',doc:'wildlife in its natural habitat',drone:'a sweeping reveal of a vast landscape',port:'a person looking toward the camera and smiling softly',kid:'friendly children exploring a colorful world',animal:'cute animal friends playing together',rhyme:'adorable round characters singing and dancing in a simple bright scene',sleep:'a sleepy little animal under a starry sky',abc:'bouncing colorful letters and objects'};
+function buildPro(ov){var t=curType(),st=curStyle(),m=curModel(),f=m[6];
+ var raw=(typeof ov==='string')?ov:$('idea').value.trim(),subject=raw||DEF[t[0]]||('a '+t[2].toLowerCase()+' scene');
+ var cam=$('frame').value||'smooth cinematic camera, one single continuous shot',mv=$('move').value,ratio=$('ratio').value;
+ var ref=(S.imgs.length||(ST&&ST.ref))?'Use the provided image as the first frame and keep the subject, face, outfit and composition strictly identical. ':'';
+ var sec={121:5,153:6,241:10}[$('dur').value];
+ if(f==='cine')return stCtx()+ref+'A '+sec+'-second single continuous shot. Subject and action: '+subject+'. Setting: details that fit the scene. Camera: '+cam+'. Look and lighting: '+t[4]+'; '+st[4]+'. Motion: '+mv+', natural physics, fluid and coherent. Audio: fitting ambient sound and light music, no spoken text unless requested. Format '+ratio+'. Keep the same characters and objects from start to end.';
+ if(f==='short')return stCtx()+ref+subject+'. '+cam+'. '+st[4]+'. '+mv+'. '+ratio+'.';
+ return stCtx()+ref+'Subject: '+subject+'. Action: '+mv+', one clear action only. Camera: '+cam+'. Style: '+st[4]+'. Genre: '+t[4]+'. Quality: sharp details, smooth motion, stable consistent characters, '+sec+' seconds, '+ratio+', 24fps.'}
+function refresh(){if(!S.edited){$('pv').value=buildPro();$('auto').textContent='· auto';}else $('auto').textContent='· modifié'; $('neg').value=$('neg').dataset.u?$('neg').value:NEG}
+function curType(){var c=CATS.filter(function(x){return x.id===S.cat})[0];return c.items.filter(function(i){return i[0]===S.type})[0]||c.items[0]}
+function curStyle(){return STYLES.filter(function(s){return s[0]===S.style})[0]}
+function render(){
+ $('catTabs').innerHTML=CATS.map(function(c){return'<button class="tab'+(c.id===S.cat?' on':'')+'" data-c="'+c.id+'">'+c.nm+'</button>'}).join('');
+ var c=CATS.filter(function(x){return x.id===S.cat})[0];if(!c.items.some(function(i){return i[0]===S.type}))S.type=c.items[0][0];
+ $('typeGrid').innerHTML=c.items.map(function(i){return'<button class="opt'+(i[0]===S.type?' sel':'')+'" data-t="'+i[0]+'"><span class="em">'+i[1]+'</span><b>'+i[2]+'</b><small>'+i[3]+'</small></button>'}).join('');
+ $('stTabs').innerHTML=STY.map(function(c){return'<button class="tab'+(c.id===S.stf?' on':'')+'" data-f="'+c.id+'">'+c.nm+'</button>'}).join('');
+ var L=STYLES.filter(function(s){return S.stf==='all'||s[3]===S.stf});
+ $('styleGrid').innerHTML=L.map(function(s){return'<button class="opt'+(s[0]===S.style?' sel':'')+'" data-s="'+s[0]+'"><span class="em">'+s[1]+'</span><b>'+s[2]+'</b></button>'}).join('');
+ $('cntType').textContent=c.items.length+' types';$('cntSt').textContent=STYLES.length+' styles';
+ $('modelGrid').innerHTML=MODELS.map(function(m){return'<button class="opt'+(m[0]===S.model?' sel':'')+'" data-m="'+m[0]+'"><span class="em">'+m[1]+'</span><b>'+m[2]+'</b><small>'+m[3]+'</small></button>'}).join('');
+ $('cntM').textContent=MODELS.length+' modèles';var cm=curModel();$('modelInfo').textContent=cm[3]+' — '+cm[4]+(cm[5]?'':'. Ce site prépare le prompt optimisé pour ce modèle : copie-le puis colle-le sur sa plateforme.');
+ sum()}
+function promptOld(){var t=curType(),s=curStyle(),p=[];
+ if(S.imgs.length)p.push('Animate this exact image as the starting frame. Keep the same subject, face, clothing and composition identical.');
+ var idea=$('idea').value.trim();if(idea)p.push('Scene: '+idea);
+ p.push(t[4]);p.push('Visual style: '+s[4]);
+ if($('frame').value)p.push($('frame').value);p.push($('move').value);
+ p.push('Aspect ratio '+$('ratio').value+', 24fps, smooth motion, consistent characters, no text, no watermark');
+ return p.join('. ')}
+function prompt_(){return $('pv').value.trim()}
+function sum(){refresh();if(typeof serDraw==='function')serDraw();var cm=curModel();$('sModel').textContent=cm[2];$('gen').textContent=cm[5]?'✨ Créer la vidéo':'📋 Préparer pour '+cm[2];var o=$('open');o.style.display=cm[5]?'none':'inline-flex';o.href=cm[7];o.textContent='Ouvrir '+cm[2]+' ↗';$('sType').textContent=curType()[2];$('sStyle').textContent=curStyle()[2];$('sRatio').textContent=$('ratio').value+' · '+({121:'5',153:'6,4',241:'10'}[$('dur').value])+' s';$('sImg').textContent=S.imgs.length;
+ $('keyHint').textContent=!curModel()[5]?'Ce modèle se lance sur sa plateforme : copie le prompt puis ouvre-la.':key()?'Clé API active ✓':'Ajoute ta clé API (bouton en haut) pour lancer la génération.'}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-c],[data-t],[data-f],[data-s],[data-m]');if(!b)return;
+ if(b.dataset.c)S.cat=b.dataset.c;if(b.dataset.t)S.type=b.dataset.t;if(b.dataset.f)S.stf=b.dataset.f;if(b.dataset.s)S.style=b.dataset.s;if(b.dataset.m)S.model=b.dataset.m;render()});
+['idea','ratio','dur','frame','move'].forEach(function(i){$(i).addEventListener('input',function(){S.edited=false;sum()})});$('pv').addEventListener('input',function(){S.edited=true;$('auto').textContent='· modifié'});$('neg').addEventListener('input',function(){$('neg').dataset.u=1});$('reauto').onclick=function(){S.edited=false;sum();toast('Prompt régénéré')};
+$('ideaChips').innerHTML=CHIPS.map(function(c){return'<button class="chip" type="button">'+c+'</button>'}).join('');
+$('ideaChips').onclick=function(e){if(e.target.classList.contains('chip')){$('idea').value=e.target.textContent;sum()}};
+$('marq').innerHTML=(function(){var a=[];CATS.forEach(function(c){c.items.forEach(function(i){a.push('<span>'+i[1]+' '+i[2]+'</span>')})});return a.concat(a).join('')})();
+// images
+function rd(f){return new Promise(function(ok,ko){var r=new FileReader();r.onload=function(e){ok(e.target.result)};r.onerror=ko;r.readAsDataURL(f)})}
+async function add(fs){for(var f of Array.from(fs)){if(f.type.indexOf('image/')||f.size>12e6)continue;S.imgs.push({id:Math.random(),u:await rd(f)})}thumbs();sum()}
+function thumbs(){$('thumbs').innerHTML=S.imgs.map(function(i){return'<div class="th"><img src="'+i.u+'" alt=""><button data-rm="'+i.id+'">✕</button></div>'}).join('');
+ $('thumbs').querySelectorAll('[data-rm]').forEach(function(b){b.onclick=function(){S.imgs=S.imgs.filter(function(i){return i.id!==parseFloat(b.dataset.rm)});thumbs();sum()}})}
+$('drop').onclick=function(){$('file').click()};$('file').onchange=function(e){add(e.target.files);e.target.value=''};
+['dragover','dragenter'].forEach(function(n){$('drop').addEventListener(n,function(e){e.preventDefault();$('drop').classList.add('on')})});
+['dragleave','drop'].forEach(function(n){$('drop').addEventListener(n,function(e){e.preventDefault();$('drop').classList.remove('on')})});
+$('drop').addEventListener('drop',function(e){add(e.dataTransfer.files)});
+// key dialog
+$('keyBtn').onclick=function(){$('key').value=key();$('dlg').showModal()};$('closeKey').onclick=function(){$('dlg').close()};
+$('saveKey').onclick=function(){var k=$('key').value.trim();try{k?localStorage.setItem(KS,k):localStorage.removeItem(KS)}catch(e){}$('dlg').close();sum();toast(k?'Clé enregistrée ✓':'Clé supprimée')};
+$('copy').onclick=function(){if(ST&&curModel()[5]===false&&this.dataset.ep!==$('pv').value){ST.eps=ST.eps||[];ST.eps.push(($('idea').value.trim()||curType()[2]).slice(0,60));stStore();stUI();this.dataset.ep=$('pv').value}var t=prompt_()+'\n\nNegative prompt: '+$('neg').value.trim();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('Prompt copié ✓')},function(){toast('Copie impossible, sélectionne le texte')})};
+// generation
+function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
+async function make(p,img){var b={model:MODEL,prompt:p,negative_prompt:$('neg').value.trim(),num_frames:parseInt($('dur').value,10),frame_rate:24};if(img)b.image=img;
+ var r=await fetch(API+'/videos',{method:'POST',headers:{Authorization:'Bearer '+key(),'Content-Type':'application/json'},body:JSON.stringify(b)});
+ if(!r.ok)throw new Error('Erreur '+r.status+' '+(await r.text()).slice(0,120));
+ var d=await r.json(),id=d.video_id||d.id||d.task_id;if(!id)throw new Error('Pas d\'identifiant de tâche');return id}
+async function poll(id,cb){for(var i=0;i<120;i++){if(S.stop)throw new Error('Arrêté');await sleep(6000);
+ var r=await fetch(POLL+'?video_id='+encodeURIComponent(id)+'&model_name='+encodeURIComponent(MODEL),{headers:{Authorization:'Bearer '+key()}});var d=await r.json(),st=d.status||'';cb('Création… '+(d.progress||0)+'%');
+ if(['completed','succeeded','done'].indexOf(st)>-1){var u=(d.metadata&&d.metadata.url)||d.url||(d.output&&d.output.url);if(!u)throw new Error('Pas d\'URL');return u}
+ if(st==='failed'||st==='error')throw new Error('Échec de la génération')}throw new Error('Délai dépassé')}
+function drawQ(L){$('queue').innerHTML=L.map(function(q,i){return'<div class="q '+q.c+'"><span>'+(q.c==='done'?'✅':q.c==='fail'?'⚠️':q.c==='proc'?'⏳':'•')+'</span>Vidéo '+(i+1)+'<span class="s">'+q.t+'</span></div>'}).join('')}
+$('gen').onclick=async function(){
+ if(S.run)return;if(!curModel()[5]){$('copy').click();return}if(!key()){$('keyBtn').click();return}
+ var n=parseInt($('vars').value,10),src=S.imgs.length?S.imgs:[null],jobs=[];
+ src.forEach(function(im){for(var k=0;k<n;k++)jobs.push({im:im,c:'',t:'En attente'})});
+ S.run=true;S.stop=false;$('gen').disabled=true;$('stop').style.display='block';drawQ(jobs);$('queue').scrollIntoView({behavior:'smooth',block:'center'});
+ for(var i=0;i<jobs.length;i++){if(S.stop)break;var j=jobs[i];
+  try{j.c='proc';j.t='Envoi…';drawQ(jobs);var id=await make(prompt_()+(n>1?' Variation '+(i%n+1)+'.':''),(j.im&&j.im.u)||(ST&&ST.ref)||null);
+   var u=await poll(id,function(t){j.t=t;drawQ(jobs)});j.c='done';j.t='Terminé';drawQ(jobs);if(ST&&i%n===0){ST.eps=ST.eps||[];ST.eps.push(($('idea').value.trim()||curType()[2]).slice(0,60));stStore();stUI()}
+   var d=document.createElement('div');d.className='gi';d.innerHTML='<video controls playsinline loop preload="metadata" src="'+u+'"></video><div><span>Vidéo '+(i+1)+'</span><a href="'+u+'" target="_blank" rel="noopener" download>Télécharger</a></div>';$('gal').appendChild(d)}
+  catch(e){j.c='fail';j.t=e.message;drawQ(jobs)}}
+ S.run=false;$('gen').disabled=false;$('stop').style.display='none';toast('Terminé')};
+$('stop').onclick=function(){S.stop=true;toast('Arrêt demandé')};
+// reveal
+if('IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});document.querySelectorAll('.rv').forEach(function(el){io.observe(el)})}else document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
+
+// ---------- Story session: same character until "Nouvelle histoire" ----------
+var SK='video_ia_story',ST=null;
+function stLoad(){try{ST=JSON.parse(localStorage.getItem(SK)||'null')}catch(e){ST=null}}
+function stStore(){try{localStorage.setItem(SK,JSON.stringify(ST))}catch(e){toast('Mémoire pleine : image de référence trop lourde')}}
+function stCtx(){if(!ST)return'';var p=[];if(ST.char)p.push('Recurring main character(s), must look exactly identical in every shot (same face, hair, outfit, colors, proportions): '+ST.char);if(ST.world)p.push('Consistent world: '+ST.world);if(ST.eps&&ST.eps.length)p.push('Story so far: '+ST.eps.slice(-3).join(' / ')+'. Continue the same story');return p.join('. ')+(p.length?'. ':'')}
+function stUI(){$('stTitle').value=ST?ST.title:'';$('stWorld').value=ST?ST.world:'';$('stChar').value=ST?ST.char:'';
+ $('refPrev').innerHTML=ST&&ST.ref?'<div class="th" style="width:78px"><img src="'+ST.ref+'" alt=""></div>':'';
+ $('stBadge').textContent=ST?('Active · '+(ST.title||'sans titre')):'Aucune';$('stEp').textContent='Épisode '+((ST&&ST.eps?ST.eps.length:0)+1);
+ $('stLog').innerHTML=ST&&ST.eps&&ST.eps.length?'Déjà fait : '+ST.eps.map(function(e,i){return(i+1)+'. '+e}).join(' · '):''}
+function shrink(u){return new Promise(function(ok){var i=new Image();i.onload=function(){var m=640,k=Math.min(1,m/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.82))};i.onerror=function(){ok(u)};i.src=u})}
+function stSaveNow(){ST=ST||{eps:[]};ST.title=$('stTitle').value.trim();ST.world=$('stWorld').value.trim();ST.char=$('stChar').value.trim();ST.cat=S.cat;ST.type=S.type;ST.style=S.style;ST.model=S.model;stStore();stUI();S.edited=false;sum()}
+$('stSave').onclick=function(){if(!$('stChar').value.trim()&&!(ST&&ST.ref)){toast('Décris ton personnage ou ajoute une image');return}stSaveNow();toast('Histoire enregistrée ✓ le personnage sera gardé')};
+$('refBtn').onclick=function(){$('refFile').click()};
+$('refFile').onchange=async function(e){var f=e.target.files[0];e.target.value='';if(!f)return;var u=await shrink(await rd(f));ST=ST||{eps:[]};ST.ref=u;stSaveNow();toast('Image de référence enregistrée ✓')};
+$('stNew').onclick=function(){if(ST&&!confirm('Commencer une nouvelle histoire ? Le personnage et l\'historique actuels seront effacés.'))return;ST=null;try{localStorage.removeItem(SK)}catch(e){}S.imgs=[];thumbs();$('idea').value='';stUI();S.edited=false;sum();toast('Nouvelle histoire : repartons de zéro')};
+stLoad();if(ST){S.cat=ST.cat||S.cat;S.type=ST.type||S.type;S.style=ST.style||S.style;S.model=ST.model||S.model}
+
+// ---------- Auto series: full scenario, one prompt per video ----------
+var LOCS=[['dans la cuisine','in the family kitchen'],['au bord de la rivière','by a sparkling river'],['dans la forêt','in a lush forest'],['sur la plage','on a sunny beach'],['au marché coloré','at a colorful market'],['dans le jardin','in a blooming garden'],['sur une colline','on a green hill'],['dans une grotte secrète','in a hidden glowing cave'],['au village','in the village square'],['sous la pluie','in gentle rain'],['près d\'une cascade','near a waterfall'],['dans un champ de fleurs','in a flower field'],['sur un bateau','on a little boat'],['dans le grenier','in a cozy attic'],['à l\'école','at a bright school'],['au bord d\'un lac','by a calm lake'],['sous les étoiles','under a starry sky'],['dans un champ de riz','in a green rice field'],['sur un pont de bois','on a wooden bridge'],['dans la neige','in soft snow'],['au sommet d\'une montagne','on a mountain top'],['dans un temple doré','in a golden temple'],['dans la chambre','in a warm bedroom'],['dans un parc de jeux','in a playground']];
+var ACTS=[['{c} découvre un objet mystérieux','{c} discovers a mysterious glowing object'],['{c} rit et joue avec ses amis','{c} laughs and plays with friends'],['{c} aide un petit animal','{c} helps a small animal in need'],['{c} prépare un goûter','{c} prepares a snack with care'],['{c} suit une piste de traces','{c} follows a trail of footprints'],['{c} apprend quelque chose de nouveau','{c} learns something new with curiosity'],['{c} danse de joie','{c} dances with joy'],['{c} partage avec un ami','{c} shares something with a friend'],['{c} construit quelque chose','{c} builds something creative'],['{c} écoute une histoire','{c} listens to a story'],['{c} cherche un trésor','{c} searches for a hidden treasure'],['{c} fait un câlin à son compagnon','{c} hugs its companion tenderly'],['{c} surmonte sa peur','{c} bravely overcomes a fear'],['{c} peint un dessin','{c} paints a colorful picture'],['{c} court dans le vent','{c} runs happily in the wind'],['{c} observe la nature','{c} watches nature in wonder'],['{c} fait un vœu','{c} makes a wish'],['{c} traverse un obstacle','{c} crosses a small obstacle with help'],['{c} retrouve un objet perdu','{c} finds a lost item'],['{c} chante une chanson','{c} sings a happy song'],['{c} plante une graine','{c} plants a seed and watches it grow'],['{c} réconforte un ami triste','{c} comforts a sad friend'],['{c} explore un endroit nouveau','{c} explores a new place'],['{c} sourit au coucher du soleil','{c} smiles at the sunset']];
+var ARC={intro:[['{c} se réveille et commence sa journée','{c} wakes up and starts a bright new day, introducing the setting'],['Présentation de {c} et de son univers','Establishing shot introducing {c} and the world, warm welcoming mood']],
+ quest:[['Une aventure commence','{c} finds a clue that starts a new adventure'],['Une mission se présente','{c} receives a small mission and sets off, determined']],
+ hard:[['Un petit obstacle apparaît','A small obstacle appears and {c} must think of a solution'],['Un moment de doute','{c} feels unsure for a moment, then finds courage']],
+ win:[['La solution est trouvée','{c} solves the problem with kindness and cleverness, relief and joy'],['Le succès est célébré','Everyone celebrates {c}\'s success warmly']],
+ end:[['Retour à la maison, fin douce','{c} returns home at golden hour, peaceful happy ending, gentle farewell'],['Épilogue : tout va bien','Calm epilogue, {c} smiling, everything in harmony, the story rests']]};
+var MOOD={adv:'adventurous and joyful',calm:'very calm, soft, soothing and sleepy',learn:'educational and clear, showing a simple lesson visually',fun:'funny and playful with light comic timing'};
+function heroName(){var h=$('sHero').value.trim();if(h)return h;var c=(ST&&ST.char)||'';var m=c.split(/[,;]/)[0].trim();return m&&m.split(' ').length<=3?m:'the hero'}
+function shuffle(a,seed){a=a.slice();var x=seed;for(var i=a.length-1;i>0;i--){x=(x*9301+49297)%233280;var j=Math.floor(x/233280*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function writeSeries(){var n=parseInt($('sN').value,10),th=$('sTheme').value,h=heroName(),seed=Date.now()%10000,L=shuffle(LOCS,seed),A=shuffle(ACTS,seed+7),out=[];
+ function fill(t){return t.replace(/\{c\}/g,h)}
+ for(var i=0;i<n;i++){var f=i/(n-1||1),ph,k;
+  if(i===0){ph='intro';k=0}else if(i===n-1){ph='end';k=1}else if(f<.12){ph='intro';k=1}else if(f<.25){ph='quest';k=i%2}else if(f>.82){ph='win';k=i%2}else if(Math.abs(f-.62)<.07){ph='hard';k=i%2}else{ph=null}
+  var fr,en;if(ph){fr=ARC[ph][k][0];en=ARC[ph][k][1];var lo=L[i%L.length];fr=fr+' ('+lo[0]+')';en=en+', '+lo[1]}
+  else{var lo=L[i%L.length],ac=A[i%A.length];fr=ac[0].replace('{c}',h)+' '+lo[0];en=ac[1]+', '+lo[1]}
+  out.push({fr:fill(fr),en:fill(en)+'. Mood: '+MOOD[th],on:true,st:''})}
+ return out}
+var SER=[];
+function serSave(){try{localStorage.setItem('video_ia_series',JSON.stringify(SER))}catch(e){}}
+function serDraw(){var l=$('sList');l.innerHTML=SER.map(function(r,i){var ic=r.st==='done'?'✅':r.st==='fail'?'⚠️':r.st==='proc'?'⏳':'•';return'<div class="q '+(r.st||'')+'" style="align-items:flex-start;flex-wrap:wrap"><span>'+ic+'</span><b style="min-width:2rem">'+(i+1)+'</b><textarea data-i="'+i+'" style="flex:1;min-width:200px;min-height:54px;font-size:.82rem">'+r.fr.replace(/</g,'&lt;')+'</textarea><span class="s">'+(r.url?'<a style="color:var(--c)" href="'+r.url+'" target="_blank" rel="noopener">Voir</a>':(r.msg||''))+'</span></div>'}).join('');
+ $('sRun').style.display=SER.length&&curModel()[5]?'inline-flex':'none';
+ $('sInfo').textContent=SER.length?SER.length+' vidéos prévues. Modifie n\'importe quelle ligne avant de lancer.'+(curModel()[5]?'':' Avec ce modèle : copie tous les prompts ou télécharge-les, puis colle-les un par un sur sa plateforme.'):''}
+$('sList').addEventListener('input',function(e){var i=e.target.dataset.i;if(i!==undefined){SER[i].fr=e.target.value;SER[i].en=SER[i].en.split('. Mood:')[0]===SER[i].en?SER[i].en:SER[i].en;SER[i].edited=e.target.value;serSave()}});
+$('sMake').onclick=function(){if(!ST||(!ST.char&&!ST.ref)){toast('Remplis d\'abord « Mon histoire » (personnage)');$('story').scrollIntoView({behavior:'smooth'});return}
+ SER=writeSeries();serSave();serDraw();toast(SER.length+' scènes écrites ✓')};
+function serPrompts(){return SER.map(function(r,i){var idea=r.edited?r.edited:r.en;return'Vidéo '+(i+1)+' — '+r.fr+'\n'+buildPro(idea)+'\nNegative prompt: '+$('neg').value.trim()}).join('\n\n')}
+$('sAll').onclick=function(){if(!SER.length){toast('Écris d\'abord le scénario');return}(navigator.clipboard?navigator.clipboard.writeText(serPrompts()):Promise.reject()).then(function(){toast(SER.length+' prompts copiés ✓')},function(){toast('Copie impossible : utilise le .txt')})};
+$('sTxt').onclick=function(){if(!SER.length){toast('Écris d\'abord le scénario');return}var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([serPrompts()],{type:'text/plain'}));a.download='serie-'+((ST&&ST.title)||'histoire').replace(/\W+/g,'-')+'.txt';a.click()};
+var SRUN=false,SSTOP=false;
+$('sStop').onclick=function(){SSTOP=true;toast('Arrêt après la vidéo en cours')};
+$('sRun').onclick=async function(){if(SRUN||!SER.length)return;if(!key()){$('keyBtn').click();return}
+ SRUN=true;SSTOP=false;$('sRun').disabled=true;$('sStop').style.display='inline-flex';
+ for(var i=0;i<SER.length;i++){if(SSTOP)break;var r=SER[i];if(r.st==='done')continue;
+  try{r.st='proc';r.msg='Envoi…';serDraw();var id=await make(buildPro(r.edited?r.edited:r.en),(ST&&ST.ref)||(S.imgs[0]&&S.imgs[0].u)||null);
+   var u=await poll(id,function(t){r.msg=t;serDraw()});r.st='done';r.url=u;serSave();serDraw();
+   var d=document.createElement('div');d.className='gi';d.innerHTML='<video controls playsinline loop preload="metadata" src="'+u+'"></video><div><span>Vidéo '+(i+1)+'</span><a href="'+u+'" target="_blank" rel="noopener" download>Télécharger</a></div>';$('gal').appendChild(d);
+   if(ST){ST.eps=ST.eps||[];ST.eps.push(r.fr.slice(0,60));stStore();stUI()}}
+  catch(e){r.st='fail';r.msg=e.message.slice(0,60);serDraw();if(/401|403/.test(e.message)){break}}
+  await sleep(3000)}
+ SRUN=false;$('sRun').disabled=false;$('sStop').style.display='none';toast('Série terminée : '+SER.filter(function(r){return r.st==='done'}).length+'/'+SER.length)};
+try{SER=JSON.parse(localStorage.getItem('video_ia_series')||'[]')}catch(e){SER=[]}
+render();stUI();serDraw();
+</script>
+</body>
+</html>
