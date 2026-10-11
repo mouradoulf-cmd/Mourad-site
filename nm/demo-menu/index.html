@@ -51,6 +51,10 @@
   .lantern { position: absolute; bottom: -20px; width: 6px; height: 6px; border-radius: 50%; background: var(--lantern); box-shadow: 0 0 14px 5px rgba(var(--gold-rgb),.5); opacity: 0; animation: rise linear infinite; }
   @keyframes rise { 0% { transform: translateY(0) translateX(0); opacity: 0; } 12% { opacity: .75; } 100% { transform: translateY(-110vh) translateX(var(--dx, 20px)); opacity: 0; } }
 
+  html.embed { scroll-behavior: auto; }
+  html.embed .cta, html.embed .legend { display: none; }
+  html.embed .wrap { padding-bottom: 30px; }
+  html.embed .hero { padding-top: 46px; }
   .wrap { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; padding: 0 16px calc(90px + env(safe-area-inset-bottom)); }
 
   /* ---------- hero ---------- */
@@ -377,6 +381,23 @@
   applyTheme(theme);
   buildLangs();
   render();
+  /* embed mode (used inside the NM Studio before/after phone): slow auto-scroll, stops as soon as the visitor touches it */
+  if (new URLSearchParams(location.search).get('embed') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('embed');
+    var y = 0, last = 0, halted = false, dirDown = true;
+    ['touchstart', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) { addEventListener(ev, function () { halted = true; }, { passive: true }); });
+    var tick = function (t) {
+      if (halted) return;
+      if (!last) last = t;
+      var dt = Math.min(.1, (t - last) / 1000); last = t;
+      var max = document.documentElement.scrollHeight - innerHeight;
+      y += (dirDown ? 46 : -160) * dt;
+      if (y >= max) { dirDown = false; } if (y <= 0) { y = 0; dirDown = true; }
+      scrollTo(0, Math.round(y));
+      requestAnimationFrame(tick);
+    };
+    setTimeout(function () { requestAnimationFrame(tick); }, 1500);
+  }
 })();
 </script>
 </body>
