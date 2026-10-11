@@ -61,10 +61,18 @@ video.pl{width:100%;max-height:60vh;background:#000;border-radius:var(--r)}
 .hc b{font-size:1.02rem}
 #epPanel{display:none!important}
 summary.ttl::-webkit-details-marker{display:none}
+
+#tabs{position:sticky;top:0;z-index:60;display:flex;gap:.4rem;overflow-x:auto;padding:.5rem .6rem;margin:0 -.8rem .8rem;background:rgba(10,10,18,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);-webkit-overflow-scrolling:touch}
+#tabs button{flex:none;min-height:44px;padding:.45rem .85rem;border-radius:999px;border:1px solid var(--border);background:var(--panel2);color:var(--ink);font:inherit;font-weight:700;font-size:.85rem;cursor:pointer;white-space:nowrap}
+#tabs button:active{transform:scale(.96)}
+#tabs button.star{background:linear-gradient(135deg,var(--orange),var(--yellow));color:#1a1206;border:0}
+.panel,details.panel{scroll-margin-top:64px}
+.dlsteps{margin:.5rem 0 .2rem;padding-left:1.2rem;font-size:.84rem;line-height:1.5;color:var(--ink)}
 </style>
 </head>
 <body>
 <header><h1>Story Studio</h1><div class="subtitle">Des dessins animés de 30 minutes, créés tout seuls, histoire après histoire</div></header>
+<nav id="tabs" aria-label="Menu"><button type="button" data-go="home">🏠 Mes histoires</button><button type="button" class="star" data-go="dlPanel">📥 Télécharger + montage</button><button type="button" data-go="tools">🛠 Réparer des clips</button><button type="button" data-go="ytPanel">📺 YouTube</button><button type="button" data-go="keysBox">🔑 Clés API</button><button type="button" data-go="logBox">📟 Journal</button></nav>
 <div class="toast" id="toast"><span id="toastText"></span></div>
 <div id="statusBar"><span id="statusText"></span></div>
 <video id="nosleep" muted playsinline style="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none"></video>
@@ -73,6 +81,17 @@ summary.ttl::-webkit-details-marker{display:none}
   <div class="ttl">🎬 Mes histoires — 30 minutes chacune</div>
   <div class="status" id="keyLine"></div>
   <div id="cards"></div>
+</div>
+<div class="panel" id="dlPanel">
+  <div class="ttl">📥 Télécharger TOUT + montage de la vidéo (en un seul clic)</div>
+  <ol class="dlsteps"><li>Appuie sur le gros bouton de ton histoire : un fichier <b>.bat</b> se télécharge.</li><li>Fais un <b>double-clic</b> dessus (Windows → « Informations complémentaires » → « Exécuter quand même »).</li><li>Il télécharge tous les clips, les range dans l'ordre et monte la vidéo complète en qualité d'origine.</li><li>Ta vidéo : <b>EPISODE-FINAL.mp4</b>, dans le même dossier que le .bat.</li></ol>
+  <div class="hint">Le bouton marche à tout moment : il prend les clips déjà prêts. Pour une histoire finie, tu obtiens la vidéo de 30 minutes.</div>
+  <div id="dlRows"></div>
+</div>
+<div class="panel" id="ytPanel">
+  <div class="ttl">📺 YouTube : titres, description, miniatures</div>
+  <div class="hint">Titres, description, hashtags et miniatures prêts à copier-coller dans YouTube Studio (réglages : audience « conçue pour les enfants », utilisation de l'IA « Oui »).</div>
+  <div id="ytRows"></div>
 </div>
 <details class="panel" id="keysBox"><summary class="ttl" style="cursor:pointer;margin:0">🔑 Mes clés API (touche pour les voir ou en ajouter)</summary><div style="height:.5rem"></div>
 <div class="panel" id="allPanel" style="display:none">
@@ -879,6 +898,17 @@ async function nextEpisode(idea){if(S.running||!P)return;
  archiveEp();for(const sc of P.scenes){await dbPut('start:'+sc.n,null);await dbPut('clip:'+sc.n,null)}
  P=null;lsDel(PROJ);$('idea').value=String(idea||'').trim();['prog','bible','scenesPanel','result'].forEach(i=>{const e=$(i);if(e)e.style.display='none'});
  applyDefaults();epUi();serUi();upd();homeUi();toast('Histoire '+ep+' sauvegardée ✓ Création de la suivante…');run()}
+function dlUi(){const b=$('dlRows'),y=$('ytRows');if(!b||!y)return;const eps=SHOW?SHOW.eps:[];const curEp=P?(P.ep||1):(eps.length+1);let h='',yh='';
+ for(let n=1;n<=5;n++){let have=0,tot=0,title='',yt=false,cur=false;
+  if(P&&n===curEp){cur=true;have=P.scenes.filter(x=>done(x)&&x.url).length;tot=P.series?P.series.total:P.scenes.length;title=P.bible?P.bible.title:'';yt=!!P.bible}
+  else if(n<=eps.length){const e=eps[n-1];have=e.clips.filter(x=>x.url).length;tot=e.clips.length;title=e.title;yt=!!e.info}
+  else continue;
+  const full=tot&&have>=tot;
+  h+='<div class="hc '+(full?'ok':'go')+'"><b>Histoire '+n+(title?' — '+esc(title):'')+'</b><div class="hint">'+have+' / '+tot+' clips prêts'+(full?' · ✅ complète':(cur?' · en cours : le montage contiendra les clips déjà prêts':''))+'</div><button class="btn main" type="button" data-hbat="'+n+'"'+(have?'':' disabled')+' style="min-height:60px">⬇ TOUT EN UN : télécharger '+have+' clip'+(have>1?'s':'')+' + montage</button></div>';
+  yh+='<div class="hc"><b>Histoire '+n+(title?' — '+esc(title):'')+'</b><button class="btn" type="button" data-hyt="'+n+'"'+(yt?'':' disabled')+'>📄 Pack YouTube (titres, description, miniatures)</button></div>'}
+ b.innerHTML=h||'<div class="hint">Aucune histoire pour l\'instant. Lance « GÉNÉRER L\'HISTOIRE 1 » plus haut : les boutons apparaîtront ici.</div>';
+ y.innerHTML=yh||'<div class="hint">Disponible dès qu\'une histoire est écrite.</div>'}
+document.addEventListener('click',e=>{const g=e.target.closest('#tabs [data-go]');if(!g)return;const el=$(g.dataset.go);if(!el)return;if(el.tagName==='DETAILS')el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'})});
 function homeUi(){const box=$('cards');if(!box)return;
  const nk=keyList().length;$('keyLine').innerHTML=nk?'🔑 <b>'+nk+' clé(s)</b> prête(s) · <span style="opacity:.7">'+keyList().map(keyTag).join(' · ')+'</span>':'⚠️ <b>Aucune clé.</b> Ouvre « Mes clés API » ci-dessous et colle-les.';
  const eps=SHOW?SHOW.eps:[],curEp=P?(P.ep||1):(eps.length+1),fin=!!(P&&epDone());
@@ -897,7 +927,7 @@ function homeUi(){const box=$('cards');if(!box)return;
   else if(n===curEp+1&&fin){c='<div class="hc go"><b>Histoire '+n+'</b><div class="hint">Mêmes personnages, nouvelle aventure.</div><label class="lab" for="hIdeaN">Une idée ? (facultatif)</label><input id="hIdeaN" type="text" placeholder="ex : ils vont à l\'école / ils vont à la pêche" style="width:100%;box-sizing:border-box"><button class="btn main" type="button" id="hNext" style="min-height:60px;font-size:1.05rem;margin-top:.5rem">🚀 GÉNÉRER L\'HISTOIRE '+n+' (30 min)</button></div>'}
   else c='<div class="hc lock"><b>Histoire '+n+'</b> <span class="hint">🔒 se débloque après l\'histoire '+(n-1)+'</span></div>';
   h+=c}
- const act=document.activeElement&&document.activeElement.tagName==='INPUT'&&box.contains(document.activeElement);if(act)return;box.innerHTML=h}
+ const act=document.activeElement&&document.activeElement.tagName==='INPUT'&&box.contains(document.activeElement);if(act)return;box.innerHTML=h;dlUi()}
 document.addEventListener('click',async e=>{const t=e.target;
  if(t.closest('#hGen')){generateAll($('hIdea')?$('hIdea').value:null);return}
  if(t.closest('#hStop')){$('btnStop').click();return}
