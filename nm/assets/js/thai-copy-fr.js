@@ -38,7 +38,12 @@
         s4: "Nous nous en occupons chaque mois",
         s4b: "10 €/mois (390 ฿), avec hébergement, mises à jour et modifications illimitées. Résiliable à tout moment."
       },
-      founder: { p3: "Sans contrat, résiliable à tout moment", sign: "{name}, fondateur de NM Studio" }
+      founder: {
+        title: "Une petite équipe : ma future épouse et moi. <em>Pas une grosse boîte.</em>",
+        body: "Bonjour, je m’appelle {name}. Pendant des années, j’ai appris à créer des sites, des menus et des fiches Google qui amènent de vrais clients. Puis je suis venu en Thaïlande, j’y ai rencontré ma compagne thaïlandaise et nous allons nous marier. Nous faisons ce travail ensemble : elle est thaïe, et à deux nous comprenons aussi bien les commerçants d’ici que leurs clients étrangers. Notre but n’est pas de devenir riches. Nous voulons que les petits commerces aient un travail de qualité « agence » à un prix très bas, plus bas que ce que la plupart ont déjà vu, et avoir des clients fidèles et heureux, pour pouvoir continuer à vivre et à travailler ici, ensemble. Si votre commerce marche bien, nous marchons bien aussi : on avance ensemble.",
+        p1: "Nous vous répondons nous-mêmes, sur WhatsApp", p2: "Je viens vous voir, ou on se parle en visio",
+        p3: "Sans contrat, résiliable à tout moment", sign: "{name}, fondateur de NM Studio"
+      }
     }
   };
   function deep(t, s) { Object.keys(s).forEach(function (k) { if (s[k] && typeof s[k] === "object") { t[k] = t[k] || {}; deep(t[k], s[k]); } else t[k] = s[k]; }); return t; }
