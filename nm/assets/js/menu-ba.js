@@ -88,7 +88,7 @@
     q("[data-scan]").textContent = x.scan; q("[data-langs]").textContent = x.langs;
     q("[data-replay]").textContent = x.rp;
     q("#mbaCta").href = DEMO + "?lang=" + menuLang(l);
-    var f = q("iframe"); var want = DEMO + "?embed=1&auto=1&theme=forest&lang=" + menuLang(l);
+    var f = q("iframe"); var want = DEMO + "?embed=1&auto=1&theme=sage&lang=" + menuLang(l);
     if (f.dataset.want !== want) { f.dataset.want = want; if (f.dataset.loaded) f.src = want; }
     sec.setAttribute("dir", document.documentElement.getAttribute("dir") || "ltr");
   }
