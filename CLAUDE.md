@@ -233,3 +233,13 @@ for that specific run:**
 - `login` opens a VEED OAuth browser flow — only needed for the free
   `background-removal` route (to host the file) or if the user explicitly
   wants a paid feature.
+
+## SOCAP Paysage — reference for landscaping / trades sites with real photography (`socap-paysage/`)
+
+Demo redesign of a real landscaper (socap-paysage.com), built after the user rejected a first low-poly 3D version as "basic/fake":
+**real photography + futuristic UI**. Plain HTML/CSS/JS, no build, no 3D library. Dark forest night + mint/lime + amber, Unbounded + Manrope +
+Bodoni Moda italic (self-hosted). Pieces to reuse: raw-WebGL "2.5D" hero photo (`assets/js/hero.js`, estimated depth from luminance/height,
+mouse parallax, warm light sweep, grain, canvas dust, photo stays as fallback), sticky "plan → photo" scrub (edge-detected blueprint image
+revealed into the real photo by a scan line, `bp-*.webp` made with OpenCV Canny), horizontal pinned gallery, radar zone map with real
+projection, tilt cards. Client photos are real but low-res; stock (Pexels) photos are mood only and must be replaced — keep that honest
+(see its README). Never label stock as the client's work.
