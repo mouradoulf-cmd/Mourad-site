@@ -241,5 +241,5 @@ Demo redesign of a real landscaper (socap-paysage.com), built after the user rej
 Bodoni Moda italic (self-hosted). Pieces to reuse: raw-WebGL "2.5D" hero photo (`assets/js/hero.js`, estimated depth from luminance/height,
 mouse parallax, warm light sweep, grain, canvas dust, photo stays as fallback), sticky "plan → photo" scrub (edge-detected blueprint image
 revealed into the real photo by a scan line, `bp-*.webp` made with OpenCV Canny), horizontal pinned gallery, radar zone map with real
-projection, tilt cards. Client photos are real but low-res; stock (Pexels) photos are mood only and must be replaced — keep that honest
-(see its README). Never label stock as the client's work.
+projection, tilt cards. All photos are the client's own (low-res, upscaled + unsharp); a first version used Pexels stock and the user asked for the original's real photos
+instead — never label stock as the client's work. Launch steps in `LANCEMENT.md`.
