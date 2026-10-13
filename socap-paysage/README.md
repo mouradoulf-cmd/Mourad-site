@@ -10,11 +10,12 @@ Textes, coordonnées, réalisations et logo proviennent du site actuel de l'entr
 - **Sections** : héros, bandeau de métiers, plan → jardin, entreprise (chiffres + 6 engagements UNEP), 9 prestations (cartes inclinables), 7 réalisations (défilement horizontal épinglé), zone d'intervention (carte radar, vraie projection), contact + devis, mentions légales (dialog).
 - **Sécurité d'affichage** : contenus visibles par défaut ; révélations activées seulement une fois l'IntersectionObserver confirmé ; curseur additif (le curseur natif n'est jamais masqué) ; `prefers-reduced-motion` respecté.
 
-## Photographies : ce qui est vrai et ce qui est d'ambiance
-- **Réalisations (7)** + photos « grands sujets » / « mur » : photographies **réelles de SOCAP**, issues de son site actuel (1 181 px, qualité moyenne). L'attribution à chaque chantier est déduite de l'ordre des pages du site actuel, à confirmer par SOCAP.
-- **Héros, plan → jardin, cartes de prestations, ambiance** : photographies de banque d'images libres de droits (**Pexels**, licence Pexels : usage commercial autorisé, attribution non obligatoire). **Ce ne sont pas des chantiers de SOCAP** : à remplacer par les vraies photos de l'entreprise (idéalement un reportage professionnel, drone + lumière du soir) avant mise en ligne.
-  Pexels (ids) : 7587879 (héros), 38296761, 34581778, 39009170, 7174103, 9056671 (plan → jardin), 8583822, 36713682, 31534350, 34845955, 36866669, 13871294 (prestations), 32172798 (entreprise), 33897208 (contact).
+## Photographies
+Toutes les photographies sont **celles de SOCAP**, issues de son site actuel (1 181 px de large, qualité moyenne : agrandies avec un léger accent de netteté). L'attribution à chaque chantier est déduite de l'ordre des pages du site actuel, à confirmer par SOCAP. Aucune photo de banque d'images. Un reportage photo professionnel (drone, lumière du soir) améliorerait encore nettement le rendu : il suffit de remplacer les fichiers de `assets/img/` (mêmes noms).
 
-## À renseigner avant mise en ligne
+## Mise en ligne
+Voir `LANCEMENT.md` (3 réglages : e-mail des devis, retrait du `noindex`, mentions légales).
+
+## Détail
 - `CONFIG.email` en tête de `assets/js/site.js` : adresse qui reçoit les devis (sinon le formulaire n'envoie rien et le dit clairement).
 - Mentions légales : hébergeur / responsable de publication à confirmer par SOCAP.
