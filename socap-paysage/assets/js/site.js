@@ -1,5 +1,5 @@
 /* SOCAP — interactions du site. Vanilla JS, aucune dépendance sauf Lenis (défilement doux, auto-hébergé).
-   - La scène 3D (scene.js) est chargée à la demande ; sans WebGL (ou machine trop faible) le poster statique reste affiché.
+   - Le héros photographique (hero.js) est en WebGL brut ; sans WebGL la photo reste affichée.
    - Les contenus sont visibles par défaut ; l'état « caché » des révélations n'est activé qu'une fois l'IntersectionObserver confirmé.
    - Le curseur personnalisé est un anneau ADDITIF : le curseur natif n'est jamais masqué. */
 (function () {
@@ -106,65 +106,25 @@
   });
   track.addEventListener("scroll", function () { if (!mobileMQ.matches) return; var n = Math.round(track.scrollLeft / (track.scrollWidth / nProj)) + 1; wCur.textContent = (n < 10 ? "0" : "") + clamp(n, 1, nProj); }, { passive: true });
 
-  /* ------------------------------------------------------------ scène 3D : plans de caméra pilotés par le scroll */
-  var scene = null, anchors = [];
-  var SHOTS = [
-    ["#top", 0.0, { px: -8, py: 12, pz: 46, tx: 0, ty: 1, tz: 0, build: 1, night: 0 }],
-    ["#top", 1.0, { px: -8, py: 12, pz: 46, tx: 0, ty: 1, tz: 0, build: 1, night: 0 }],
-    ["#plan", 0.05, { px: 0, py: 82, pz: 22, tx: 0, ty: 0, tz: 0, build: 0, night: 0.04 }],
-    ["#plan", 0.3, { px: -14, py: 54, pz: 34, tx: 0, ty: 0, tz: 0, build: 0.3, night: 0.05 }],
-    ["#plan", 0.55, { px: -30, py: 26, pz: 40, tx: 2, ty: 1, tz: 0, build: 0.58, night: 0.06 }],
-    ["#plan", 0.78, { px: -26, py: 14, pz: 36, tx: 4, ty: 1, tz: 2, build: 0.82, night: 0.08 }],
-    ["#plan", 0.98, { px: -12, py: 11, pz: 44, tx: 2, ty: 1, tz: 0, build: 1, night: 0.1 }],
-    ["#entreprise", 0.2, { px: 26, py: 12, pz: 38, tx: 2, ty: 2, tz: -6, build: 1, night: 0.14 }],
-    ["#entreprise", 0.9, { px: 30, py: 9, pz: 26, tx: 4, ty: 2, tz: -4, build: 1, night: 0.2 }],
-    ["#prestations", 0.1, { px: -26, py: 8, pz: 30, tx: -9, ty: 1, tz: 8, build: 1, night: 0.3 }],
-    ["#prestations", 0.9, { px: 2, py: 8, pz: 28, tx: -4, ty: 2, tz: 6, build: 1, night: 0.38 }],
-    ["#realisations", 0.08, { px: 32, py: 9, pz: 14, tx: 15, ty: 2, tz: -6, build: 1, night: 0.55 }],
-    ["#realisations", 0.92, { px: 24, py: 11, pz: -24, tx: 15, ty: 2, tz: -6, build: 1, night: 0.66 }],
-    ["#zone", 0.5, { px: 0, py: 96, pz: 8, tx: 0, ty: 0, tz: 0, build: 1, night: 0.85 }],
-    ["#contact", 0.5, { px: 0, py: 15, pz: 70, tx: 0, ty: -3, tz: 0, build: 1, night: 1 }]
-  ];
-  function measure() {
-    vh = innerHeight; var out = [];
-    SHOTS.forEach(function (s) { var el = $(s[0]); if (!el) return; var top = 0, e = el; while (e) { top += e.offsetTop; e = e.offsetParent; } out.push({ y: top + el.offsetHeight * s[1], s: s[2] }); });
-    out.sort(function (a, b) { return a.y - b.y; }); anchors = out; measureWork();
+  /* ------------------------------------------------------------ « plan -> photo » : le scroll révèle la vraie photo derrière le tracé */
+  var figs = $$("#stage figure"), scanEl = $("#scan"), curFig = -1;
+  function ease(t) { t = clamp(t, 0, 1); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function stageUpdate(p) {
+    var n = figs.length, f = Math.min(n - 1, Math.floor(p * n)), t = p * n - f, k = ease((t - 0.04) / 0.5);
+    if (f !== curFig) { curFig = f; figs.forEach(function (fg, i) { fg.classList.toggle("on", i === f); }); }
+    var cut = (1 - k) * 100; figs[f].style.setProperty("--cut", cut.toFixed(2) + "%");
+    if (scanEl) { scanEl.style.left = cut.toFixed(2) + "%"; scanEl.style.opacity = k > 0.02 && k < 0.985 ? 1 : 0; }
   }
-  var KEYS = ["px", "py", "pz", "tx", "ty", "tz", "build", "night"];
-  function shotAt(y) {
-    var c = y + vh * 0.5, a = anchors; if (!a.length) return null; if (c <= a[0].y) return a[0].s; if (c >= a[a.length - 1].y) return a[a.length - 1].s;
-    for (var i = 0; i < a.length - 1; i++) if (c >= a[i].y && c <= a[i + 1].y) { var t = smooth((c - a[i].y) / Math.max(1, a[i + 1].y - a[i].y)), r = {}; KEYS.forEach(function (k) { r[k] = a[i].s[k] + (a[i + 1].s[k] - a[i].s[k]) * t; }); return r; }
-    return a[0].s;
-  }
-  var lastPush = 0;
-  function pushScene(y) {
-    if (!scene) return; var s = shotAt(y); if (!s) return;
-    var asp = innerWidth / innerHeight, k = asp < 0.8 ? 1 + (0.8 - asp) * 1.1 : 1;           /* portrait : on recule un peu */
-    var o = {}; KEYS.forEach(function (key) { o[key] = s[key]; });
-    if (k > 1) { o.px = s.tx + (s.px - s.tx) * k; o.pz = s.tz + (s.pz - s.tz) * k; o.py = s.ty + (s.py - s.ty) * k; }
-    scene.setState(o);
-    if (reduce) { scene.snap(); scene.renderOnce(); }
-  }
-  onScroll(pushScene);
-  addEventListener("resize", function () { measure(); pushScene(readY()); });
-  addEventListener("load", function () { measure(); pushScene(readY()); setTimeout(function () { measure(); pushScene(readY()); }, 800); });
-  measure();
-  if (window.ResizeObserver) { var rt; new ResizeObserver(function () { clearTimeout(rt); rt = setTimeout(function () { measure(); pushScene(readY()); }, 120); }).observe(document.body); }
+  onScroll(function (y) { stageUpdate(planProgress(y)); });
+  stageUpdate(0);
+  figs.forEach(function (fg, i) { if (i) fg.querySelector(".ph").style.setProperty("--cut", "100%"); });
 
-  function glInfo() {
-    try { var c = document.createElement("canvas"), gl = c.getContext("webgl2") || c.getContext("webgl"); if (!gl) return null; var ext = gl.getExtension("WEBGL_debug_renderer_info"); var r = ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : ""; return { soft: /swiftshader|llvmpipe|software|basic render/i.test(r), name: r }; } catch (e) { return null; }
-  }
-  (function boot() {
-    var force = /gl=force/.test(location.hash), info = glInfo();
-    var saver = navigator.connection && navigator.connection.saveData, weakCPU = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) || (navigator.deviceMemory && navigator.deviceMemory <= 2);
-    if (!info || (!force && (info.soft || saver))) return;                    /* poster statique conservé */
-    var mobile = coarse || innerWidth < 900, lite = /lite/.test(location.hash);
-    import("./scene.js").then(function (m) {
-      scene = m.createScene($("#gl"), { mobile: mobile, weak: !!weakCPU || lite, shadows: !mobile && !weakCPU && !lite }); window.__scene = scene;
-      pushScene(readY()); if (reduce) { scene.snap(); scene.renderOnce(); } else { var s = shotAt(readY()); if (s && readY() > 200) scene.snap(); }
-      root.classList.add("gl-on");
-    }).catch(function (e) { if (window.console) console.warn("Scène 3D indisponible, poster conservé.", e); });
-  })();
+  /* parallaxe douce des photos encadrées */
+  var pars = $$("[data-par]");
+  if (pars.length && !reduce) onScroll(function () { pars.forEach(function (f) { var r = f.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; var k = (r.top + r.height / 2 - innerHeight / 2) / innerHeight, im = f.firstElementChild; if (im) im.style.transform = "translate3d(0," + (k * -26).toFixed(1) + "px,0) scale(1.12)"; }); });
+  function measure() { vh = innerHeight; measureWork(); }
+  addEventListener("resize", measure); addEventListener("load", measure); measure();
+  if (window.ResizeObserver) { var rt; new ResizeObserver(function () { clearTimeout(rt); rt = setTimeout(measure, 120); }).observe(document.body); }
 
   /* ------------------------------------------------------------ curseur additif, tilt, aimant */
   var cur = $("#cursor");

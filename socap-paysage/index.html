@@ -10,24 +10,16 @@
 <meta property="og:type" content="website"><meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="SOCAP · La signature nature">
 <meta property="og:description" content="Paysagiste dans l’Ain depuis 1983. Un seul interlocuteur, de l’étude au suivi après chantier.">
-<meta property="og:image" content="assets/img/poster.jpg">
+<meta property="og:image" content="assets/img/ph-hero-s.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2305100c'/%3E%3Cpath d='M44 20c-4-6-14-7-20-2s-6 14 0 19 16 4 20-3M20 46c8-2 18 0 26 8' fill='none' stroke='%237dffc6' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=1">
+<link rel="stylesheet" href="assets/css/site.css?v=2">
 <script>document.documentElement.className="js";</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LandscapingBusiness","name":"SOCAP — Société Châtillonnaise d’Aménagement et de Paysage","description":"Paysagiste dans l’Ain : conception, réalisation et entretien de jardins, terrasses, allées, bassins, clôtures, plantations.","telephone":"+33474550098","faxNumber":"+33474552756","foundingDate":"1983","address":{"@type":"PostalAddress","streetAddress":"Les Lazares","postalCode":"01400","addressLocality":"Châtillon-sur-Chalaronne","addressCountry":"FR"},"areaServed":["Ain","Rhône","Mâconnais"],"numberOfEmployees":{"@type":"QuantitativeValue","value":10}}</script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
-
-<!-- poster + canvas 3D : fixés derrière tout le contenu -->
-<div class="world" aria-hidden="true">
-  <div class="world__poster"></div>
-  <canvas id="gl"></canvas>
-  <div class="world__veil"></div>
-  <div class="world__grain"></div>
-</div>
 
 <div class="loader" id="loader" role="status" aria-live="polite">
   <div class="loader__in">
@@ -59,6 +51,12 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top" aria-labelledby="h1">
+  <div class="hero__media" id="heroMedia" aria-hidden="true">
+    <picture><source media="(max-width: 700px)" srcset="assets/img/ph-hero-m.webp"><img class="hero__img" id="heroImg" src="assets/img/ph-hero.webp" alt="" width="2400" height="1602" fetchpriority="high" decoding="async"></picture>
+    <canvas class="hero__gl" id="heroGL"></canvas>
+    <canvas class="hero__motes" id="motes"></canvas>
+    <div class="hero__shade"></div><div class="hero__sun"></div>
+  </div>
   <div class="hero__in">
     <p class="eyebrow"><span class="dot"></span>Paysagiste · Châtillon-sur-Chalaronne · Ain (01)</p>
     <h1 id="h1"><span class="l1">La signature</span> <span class="l2"><em>nature</em></span></h1>
@@ -74,7 +72,7 @@
     </ul>
   </div>
   <a class="hero__scroll" href="#plan" aria-label="Faire défiler"><i></i><span>Défiler</span></a>
-  <p class="hero__hint" aria-hidden="true"><i></i>Un îlot de jardin, dessiné pour vous. Bougez la souris.</p>
+  <p class="hero__hint" aria-hidden="true"><i></i>Bougez la souris : la photo prend de la profondeur.</p>
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="marquee__t">
@@ -85,6 +83,14 @@
 <!-- ============ DU PLAN AU JARDIN (scroll story) ============ -->
 <section class="plan" id="plan" aria-labelledby="planT">
   <div class="plan__sticky">
+    <div class="stage" id="stage" aria-hidden="true">
+      <figure class="on"><img class="bp" src="assets/img/bp-plan1.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan1.webp" alt="" loading="lazy"></figure>
+      <figure><img class="bp" src="assets/img/bp-plan2.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan2.webp" alt="" loading="lazy"></figure>
+      <figure><img class="bp" src="assets/img/bp-plan3.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan3.webp" alt="" loading="lazy"></figure>
+      <figure><img class="bp" src="assets/img/bp-plan4.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan4.webp" alt="" loading="lazy"></figure>
+      <figure><img class="bp" src="assets/img/bp-plan5.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan5.webp" alt="" loading="lazy"></figure>
+      <i class="scan" id="scan"></i><div class="stage__shade"></div>
+    </div>
     <div class="plan__hud" aria-hidden="true">
       <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
       <p class="hud hud--a">PLAN MASSE · ÉCHELLE 1/200</p>
@@ -122,6 +128,7 @@
         <div class="stat"><b>1</b><span>seul interlocuteur<br><small>pour tous vos corps de métier</small></span></div>
         <div class="stat stat--logo"><b>UNEP</b><span>entreprise adhérente<br><small>« Des entreprises qui s’engagent ! »</small></span></div>
       </div>
+      <figure class="ent__ph" data-par><img src="assets/img/ph-garden-s.webp" srcset="assets/img/ph-garden-s.webp 800w, assets/img/ph-garden.webp 1800w" sizes="(max-width:900px) 92vw, 560px" width="800" height="534" loading="lazy" alt="Jardin planté avec ruisseau de pierres et érable rouge"></figure>
     </div>
   </div>
   <div class="wrap">
@@ -143,15 +150,15 @@
     <p class="eyebrow"><span class="dot"></span>Nos prestations</p>
     <h2 id="preT" class="h2">Tout ce qu’il faut pour un jardin <em>qui vous ressemble</em></h2>
     <div class="cards" id="cards">
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/terrasses-s.webp" srcset="assets/img/terrasses-s.webp 640w, assets/img/terrasses.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Terrasse en dallage ardoise avec vue sur un lac"></div><div class="card__b"><span class="no">01</span><h3>Terrasses et dallage</h3><p>Zone de vie reliant la maison au jardin, nos terrasses sont de véritables pièces à vivre. Grès cérame, pierre naturelle locale ou exotique, bois composite, exotique ou local : nous vous guidons dans le choix des matériaux.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/cours-s.webp" srcset="assets/img/cours-s.webp 640w, assets/img/cours.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Allée gravillonnée bordée d’arbres"></div><div class="card__b"><span class="no">02</span><h3>Cours, allées et parkings</h3><p>Premier accès à votre maison : pavage, dallage, sable stabilisé, béton désactivé, enrobé, bordures… Nous allions praticité et esthétique, dans l’Ain et le Rhône.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/plantations-s.webp" srcset="assets/img/plantations-s.webp 640w, assets/img/plantations.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Allée sablée entre massifs de rhododendrons en fleurs"></div><div class="card__b"><span class="no">03</span><h3>Plantations et gazons</h3><p>Arbustes, massifs fleuris, haies, arbres, talus, gazons, prairies, pelouses… Nous aménageons votre jardin selon vos goûts, avec les Pépinières Daniel Soupe, dans l’Ain.</p></div></article>
+      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-terrasses-s.webp" srcset="assets/img/p-terrasses-s.webp 640w, assets/img/p-terrasses.webp 1200w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Terrasse en pierre devant une maison, avec coin repas"></div><div class="card__b"><span class="no">01</span><h3>Terrasses et dallage</h3><p>Zone de vie reliant la maison au jardin, nos terrasses sont de véritables pièces à vivre. Grès cérame, pierre naturelle locale ou exotique, bois composite, exotique ou local : nous vous guidons dans le choix des matériaux.</p></div></article>
+      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-allees-s.webp" srcset="assets/img/p-allees-s.webp 640w, assets/img/p-allees.webp 1200w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Allée dallée bordée de haies taillées"></div><div class="card__b"><span class="no">02</span><h3>Cours, allées et parkings</h3><p>Premier accès à votre maison : pavage, dallage, sable stabilisé, béton désactivé, enrobé, bordures… Nous allions praticité et esthétique, dans l’Ain et le Rhône.</p></div></article>
+      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-plantations-s.webp" srcset="assets/img/p-plantations-s.webp 640w, assets/img/p-plantations.webp 1200w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Jardin planté de topiaires et allée en pierre"></div><div class="card__b"><span class="no">03</span><h3>Plantations et gazons</h3><p>Arbustes, massifs fleuris, haies, arbres, talus, gazons, prairies, pelouses… Nous aménageons votre jardin selon vos goûts, avec les Pépinières Daniel Soupe, dans l’Ain.</p></div></article>
       <article class="card" data-tilt><div class="card__img"><img src="assets/img/grands-sujets-s.webp" srcset="assets/img/grands-sujets-s.webp 640w, assets/img/grands-sujets.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Grand platane planté devant une maison en pierre"></div><div class="card__b"><span class="no">04</span><h3>Plantation de grands sujets</h3><p>Des connaissances et des équipements spécifiques pour planter des sujets d’exception, ou transplanter les grands sujets déjà présents dans votre jardin. Dans l’Ain et le Rhône.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/bassin-s.webp" srcset="assets/img/bassin-s.webp 640w, assets/img/bassin.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Bassin d’ornement bordé de galets"></div><div class="card__b"><span class="no">05</span><h3>Bassins et fontaines</h3><p>Bassins d’ornement, étangs de jardin, fontaines, cascades ou jeux d’eau : terrassement, étanchéité en bâche, filtration et stérilisateur UV pour une eau claire. Bassins maçonnés à étanchéité enduite.</p></div></article>
+      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-bassin-s.webp" srcset="assets/img/p-bassin-s.webp 640w, assets/img/p-bassin.webp 1200w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Bassin naturel traversé de pas japonais"></div><div class="card__b"><span class="no">05</span><h3>Bassins et fontaines</h3><p>Bassins d’ornement, étangs de jardin, fontaines, cascades ou jeux d’eau : terrassement, étanchéité en bâche, filtration et stérilisateur UV pour une eau claire. Bassins maçonnés à étanchéité enduite.</p></div></article>
       <article class="card" data-tilt><div class="card__img"><img src="assets/img/mur-s.webp" srcset="assets/img/mur-s.webp 640w, assets/img/mur.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Soutènement en traverses et massifs étagés"></div><div class="card__b"><span class="no">06</span><h3>Murs, enrochements et maçonnerie paysagère</h3><p>Aplanir, stabiliser un terrain en pente, créer ou réaménager un espace de vie, délimiter les espaces : murs, enrochements et maçonnerie paysagère dans l’Ain (01) et autour de Lyon (69).</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/escalier-s.webp" srcset="assets/img/escalier-s.webp 640w, assets/img/escalier.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="360" loading="lazy" alt="Escalier de pierre claire entre buis et érables"></div><div class="card__b"><span class="no">07</span><h3>Escaliers</h3><p>Pour relier les paliers du jardin ou accéder à la maison ou à la terrasse : pierre taillée, dalles d’enrochement, bois, pavés ou métal, des matériaux qui allient esthétique et praticité.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/clotures-s.webp" srcset="assets/img/clotures-s.webp 640w, assets/img/clotures.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Portail blanc ajouré sur muret"></div><div class="card__b"><span class="no">08</span><h3>Clôtures et portails</h3><p>Pour intimiser ou protéger : ajourées ou occultantes, contemporaines ou rustiques, en divers matériaux et coloris. Treillis soudé, simple torsion, brise-vue, soubassement béton, claustras aluminium ou bois…</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/pergola-s.webp" srcset="assets/img/pergola-s.webp 640w, assets/img/pergola.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="360" loading="lazy" alt="Pergola métallique avec salon de jardin"></div><div class="card__b"><span class="no">09</span><h3>Pergolas, carports et équipements</h3><p>Pergola ombragée, abri de jardin en bois ou composite, carport pour abriter vos véhicules : conception et installation d’équipements de jardin et de solutions sur mesure.</p></div></article>
+      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-escalier-s.webp" srcset="assets/img/p-escalier-s.webp 640w, assets/img/p-escalier.webp 1200w" sizes="(max-width:700px) 90vw, 380px" width="640" height="360" loading="lazy" alt="Escalier de pierre et cyprès"></div><div class="card__b"><span class="no">07</span><h3>Escaliers</h3><p>Pour relier les paliers du jardin ou accéder à la maison ou à la terrasse : pierre taillée, dalles d’enrochement, bois, pavés ou métal, des matériaux qui allient esthétique et praticité.</p></div></article>
+      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-cloture-s.webp" srcset="assets/img/p-cloture-s.webp 640w, assets/img/p-cloture.webp 1200w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Clôture bois et allée en pierre claire"></div><div class="card__b"><span class="no">08</span><h3>Clôtures et portails</h3><p>Pour intimiser ou protéger : ajourées ou occultantes, contemporaines ou rustiques, en divers matériaux et coloris. Treillis soudé, simple torsion, brise-vue, soubassement béton, claustras aluminium ou bois…</p></div></article>
+      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-pergola-s.webp" srcset="assets/img/p-pergola-s.webp 640w, assets/img/p-pergola.webp 1200w" sizes="(max-width:700px) 90vw, 380px" width="640" height="360" loading="lazy" alt="Pergola en bois dans un jardin"></div><div class="card__b"><span class="no">09</span><h3>Pergolas, carports et équipements</h3><p>Pergola ombragée, abri de jardin en bois ou composite, carport pour abriter vos véhicules : conception et installation d’équipements de jardin et de solutions sur mesure.</p></div></article>
     </div>
   </div>
 </section>
@@ -192,6 +199,7 @@
 
 <!-- ============ CONTACT ============ -->
 <section class="sec contact" id="contact" aria-labelledby="coT">
+  <div class="contact__bg" aria-hidden="true"><img src="assets/img/ph-contact.webp" alt="" loading="lazy" width="2000" height="1333"></div>
   <div class="wrap contact__g">
     <div class="contact__l">
       <p class="eyebrow"><span class="dot"></span>Contact</p>
@@ -249,6 +257,7 @@
 </dialog>
 
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="assets/js/site.js?v=1"></script>
+<script src="assets/js/hero.js?v=2"></script>
+<script src="assets/js/site.js?v=2"></script>
 </body>
 </html>
