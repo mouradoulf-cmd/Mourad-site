@@ -22,7 +22,7 @@
   var portrait = function () { return innerWidth < 701 || innerWidth / innerHeight < 0.85; };
   var urlOf = function (s) { return portrait() ? s.m : s.d; };
 
-  var listeners = [], cur = 0, prev = 0, tStart = 0, trStart = -1, trTo = 0, auto = true, visible = true, loaded = [], mx = 0, my = 0, smx = 0, smy = 0, ready = false, gl = null, raf = 0, t0 = performance.now(), DPR = Math.min(window.devicePixelRatio || 1, 1.6);
+  var listeners = [], cur = 0, prev = 0, tStart = 0, trStart = -1, trTo = 0, auto = true, visible = true, loaded = [], mx = 0, my = 0, smx = 0, smy = 0, ready = false, gl = null, raf = 0, t0 = performance.now(), DPR = Math.min(window.devicePixelRatio || 1, (innerWidth < 900 || matchMedia('(hover: none)').matches) ? 1.15 : 1.6);
 
   /* ---------------------------------------------------------------- API */
   var API = window.SocapHero = {
