@@ -17,7 +17,8 @@
   /* ------------------------------------------------------------ défilement doux (Lenis) + bus de scroll */
   var lenis = null;
   function readY() { return lenis ? lenis.scroll : (window.pageYOffset || 0); }
-  if (!reduce && window.Lenis) { try { lenis = new window.Lenis({ duration: 1.15, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true }); root.classList.add("lenis", "lenis-smooth"); } catch (e) { lenis = null; } }
+  var lite = matchMedia("(hover: none), (max-width: 900px)").matches; if (lite) root.classList.add("lite");
+  if (!reduce && !lite && window.Lenis) { try { lenis = new window.Lenis({ duration: 1.15, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true }); root.classList.add("lenis", "lenis-smooth"); } catch (e) { lenis = null; } }
   var listeners = [], ticking = false;
   function onScroll(fn) { listeners.push(fn); }
   function fire() { ticking = false; var y = readY(); for (var i = 0; i < listeners.length; i++) listeners[i](y); }
@@ -120,8 +121,8 @@
   function stageUpdate(p) {
     var n = figs.length, f = Math.min(n - 1, Math.floor(p * n)), t = p * n - f, k = ease((t - 0.04) / 0.5);
     if (f !== curFig) { curFig = f; figs.forEach(function (fg, i) { fg.classList.toggle("on", i === f); }); buildCals(f); }
-    var cut = (1 - k) * 100; figs[f].style.setProperty("--cut", cut.toFixed(2) + "%"); calsEl.classList.toggle("in", k > 0.92);
-    if (scanEl) { scanEl.style.left = cut.toFixed(2) + "%"; scanEl.style.opacity = k > 0.02 && k < 0.985 ? 1 : 0; }
+    var cut = (1 - k) * 100; if (lite) { var rv = k > 0.35; if (figs[f].classList.contains("rev") !== rv) figs[f].classList.toggle("rev", rv); } else figs[f].style.setProperty("--cut", cut.toFixed(2) + "%"); calsEl.classList.toggle("in", k > 0.92);
+    if (scanEl && !lite) { scanEl.style.left = cut.toFixed(2) + "%"; scanEl.style.opacity = k > 0.02 && k < 0.985 ? 1 : 0; }
     var s = Math.min(steps.length - 1, Math.floor(p * steps.length)); planFill.style.transform = "scaleY(" + p + ")";
     if (s !== curStep) { curStep = s; steps.forEach(function (li, i) { li.classList.toggle("on", i === s); }); if (hudState) hudState.textContent = HUD[s]; }
   }

@@ -47,7 +47,7 @@
   /* ---------------------------------------------------------------- WebGL */
   var prog, U = {}, texs = [], texAspect = 16 / 9, texOK = [];
   function initGL() {
-    try { gl = cv.getContext("webgl", { antialias: false, alpha: false, powerPreference: "high-performance" }) || cv.getContext("experimental-webgl"); } catch (e) { gl = null; }
+    try { if (matchMedia("(hover: none)").matches && location.hash.indexOf("gl=force") < 0) throw 0; gl = cv.getContext("webgl", { antialias: false, alpha: false, powerPreference: "high-performance" }) || cv.getContext("experimental-webgl"); } catch (e) { gl = null; }
     if (!gl) return false;
     var vs = "attribute vec2 p; varying vec2 vUv; void main(){ vUv = p*.5+.5; gl_Position = vec4(p,0.,1.); }";
     var fs = "precision mediump float; varying vec2 vUv; uniform sampler2D uA, uB; uniform float uP, uT, uSa, uTa, uZa, uZb; uniform vec2 uM;" +

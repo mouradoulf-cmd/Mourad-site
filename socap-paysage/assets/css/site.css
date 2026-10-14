@@ -265,7 +265,7 @@ html.rv-on .rv { opacity: 0; transform: translateY(34px); } html.rv-on .rv.in { 
 
 /* Fluidity pass */
 body::before { inset: 0; mix-blend-mode: normal; opacity: .035; }
-.hero__media, .hero__gl, .marquee__t, .work__track, .stage, .svc__imgs figure { will-change: transform; }
+.hero__gl { will-change: transform; }
 .vows, .zone, .contact, .ft { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 @media (max-width: 900px), (hover: none) {
   body::before { display: none; }
@@ -278,3 +278,7 @@ body::before { inset: 0; mix-blend-mode: normal; opacity: .035; }
   .pill, .cap, .plan__txt, .svc__panel, .ring, .vows__g li { box-shadow: none; }
   html { scroll-behavior: auto; }
 }
+
+html.lite .stage .ph { clip-path: none; opacity: 0; transition: opacity 1.1s ease; } html.lite .stage figure.rev .ph { opacity: 1; } html.lite .scan { display: none; }
+html.lite .svc__imgs figure { clip-path: none; opacity: 0; transition: opacity .6s ease; } html.lite .svc__imgs figure.on { opacity: 1; }
+html.lite .svc__imgs img { transform: none; }
