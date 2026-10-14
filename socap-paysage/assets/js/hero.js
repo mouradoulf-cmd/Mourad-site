@@ -37,7 +37,9 @@
 
   /* ---------------------------------------------------------------- chargement des images (la 1re tout de suite, le reste au repos) */
   var imgs = [];
+  var stack = [];
   function ensure(i, cb) {
+    if (stack.length && stack[i]) { var s = stack[i]; if (!s.src) s.src = urlOf(SLIDES[i]); var done = function () { cb(); }; if (s.decode) s.decode().then(done, done); else if (s.complete) done(); else { s.onload = done; s.onerror = done; } return; }
     if (imgs[i] && imgs[i].complete && imgs[i].naturalWidth) return cb();
     var im = imgs[i] || (imgs[i] = new Image()); im.onload = function () { if (gl) upload(i); cb(); }; im.onerror = function () { cb(); }; if (!im.src) im.src = urlOf(SLIDES[i]);
     if (im.complete && im.naturalWidth) { if (gl) upload(i); cb(); }
@@ -91,8 +93,11 @@
   addEventListener("pointermove", function (e) { mx = (e.clientX / innerWidth - .5) * 2; my = (e.clientY / innerHeight - .5) * 2; }, { passive: true });
 
   /* ---------------------------------------------------------------- repli sans WebGL : fondu entre deux <img> */
-  var img2 = null;
-  function fallbackSwap() { if (gl || !img2) return; var s = urlOf(SLIDES[cur]); img2.src = s; img2.classList.add("in"); setTimeout(function () { img.src = s; img2.classList.remove("in"); }, 900); }
+  function fallbackSwap() {
+    if (gl || !stack.length) return; var n = stack[cur];
+    stack.forEach(function (s) { s.classList.remove("top"); }); n.classList.add("on", "top");
+    setTimeout(function () { stack.forEach(function (s, k) { if (k !== cur) s.classList.remove("on"); }); }, 1500);
+  }
 
   /* ---------------------------------------------------------------- poussière lumineuse */
   var motes = [], mctx = mo && mo.getContext("2d");
@@ -138,8 +143,12 @@
     resize();
     imgs[0] = img; texAspect = img.naturalWidth / img.naturalHeight || 16 / 9;
     if (initGL()) { upload(0); if (gl) { ready = true; media.classList.add("gl-on"); } }
-    if (!gl) { img2 = document.createElement("img"); img2.className = "hero__img hero__img2"; img2.alt = ""; media.insertBefore(img2, cv); }
+    if (!gl) {
+      media.classList.add("fb"); img.classList.add("hero__slide", "on", "top"); stack[0] = img;
+      for (var k = 1; k < SLIDES.length; k++) { var si = document.createElement("img"); si.className = "hero__img hero__slide"; si.alt = ""; si.decoding = "async"; media.insertBefore(si, cv); stack[k] = si; }
+    }
     tStart = performance.now(); preloadRest(); wake();
+    if (!document.documentElement.classList.contains("ready")) { var mo2 = new MutationObserver(function () { if (document.documentElement.classList.contains("ready")) { mo2.disconnect(); if (trStart < 0 && cur === 0) { tStart = performance.now(); document.querySelectorAll(".prog button.on i").forEach(function (i) { i.style.animation = "none"; void i.offsetWidth; i.style.animation = ""; }); } } }); mo2.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] }); }
     listeners.forEach(function (fn) { fn(cur, SLIDES[cur]); });
   }
   if (img.complete && img.naturalWidth) start(); else img.addEventListener("load", start, { once: true });
