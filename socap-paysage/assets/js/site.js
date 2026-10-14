@@ -107,7 +107,7 @@
 
   /* ------------------------------------------------------------ « plan -> photo » : le scroll révèle la vraie photo derrière le tracé */
   var plan = $("#plan"), steps = $$("#steps li"), planFill = $("#planFill"), hudState = $("#hudState"), HUD = ["ÉTAPE 01 · ÉTUDE", "ÉTAPE 02 · TERRAIN", "ÉTAPE 03 · MATÉRIAUX", "ÉTAPE 04 · VÉGÉTAL & EAU", "ÉTAPE 05 · SUIVI"], curStep = -1;
-  var figs = $$("#stage figure"), scanEl = $("#scan"), calsEl = $("#cals"), curFig = -1;
+  var stLab = $("#stLab"), figs = $$("#stage figure"), scanEl = $("#scan"), calsEl = $("#cals"), curFig = -1;
   var CALS = [
     [["Bassin d’ornement", 50, 44], ["Haies taillées", 18, 72], ["Allée sablée", 82, 30]],
     [["Maçonnerie paysagère", 30, 82], ["Topiaires", 52, 38], ["Haie persistante", 78, 24]],
@@ -117,12 +117,13 @@
   ];
   function planProgress(y) { return clamp((y - plan.offsetTop) / Math.max(1, plan.offsetHeight - innerHeight), 0, 1); }
   function ease(t) { t = clamp(t, 0, 1); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
-  function buildCals(f) { calsEl.innerHTML = ""; CALS[f].forEach(function (c, i) { var d = document.createElement("div"); d.className = "cal"; d.style.left = c[1] + "%"; d.style.top = c[2] + "%"; d.style.setProperty("--i", i); d.innerHTML = "<i></i><span>" + c[0] + "</span>"; calsEl.appendChild(d); }); }
+  function buildCals(f) { calsEl.innerHTML = ""; CALS[f].forEach(function (c, i) { var d = document.createElement("div"); d.className = "cal"; d.style.left = c[1] + "%"; d.style.top = (lite ? 14 + c[2] * 0.3 : c[2]) + "%"; if (c[1] > 55) d.classList.add("l"); d.style.setProperty("--i", i); d.innerHTML = "<i></i><span>" + c[0] + "</span>"; calsEl.appendChild(d); }); }
   function stageUpdate(p) {
     var n = figs.length, f = Math.min(n - 1, Math.floor(p * n)), t = p * n - f, k = ease((t - 0.04) / 0.5);
     if (f !== curFig) { curFig = f; figs.forEach(function (fg, i) { fg.classList.toggle("on", i === f); }); buildCals(f); }
-    var cut = (1 - k) * 100; if (lite) { var rv = k > 0.35; if (figs[f].classList.contains("rev") !== rv) figs[f].classList.toggle("rev", rv); } else figs[f].style.setProperty("--cut", cut.toFixed(2) + "%"); calsEl.classList.toggle("in", k > 0.92);
+    var cut = (1 - k) * 100; if (lite) { var rv = t > 0.48; if (figs[f].classList.contains("rev") !== rv) figs[f].classList.toggle("rev", rv); } else figs[f].style.setProperty("--cut", cut.toFixed(2) + "%"); calsEl.classList.toggle("in", lite ? t > 0.62 : k > 0.92);
     if (scanEl && !lite) { scanEl.style.left = cut.toFixed(2) + "%"; scanEl.style.opacity = k > 0.02 && k < 0.985 ? 1 : 0; }
+    var labOn = lite ? t > 0.48 : k > 0.5; if (stLab && stLab.dataset.on !== String(labOn)) { stLab.dataset.on = String(labOn); stLab.classList.toggle("real", labOn); stLab.lastChild.textContent = labOn ? "Réalisation" : "Plan d’étude"; }
     var s = Math.min(steps.length - 1, Math.floor(p * steps.length)); planFill.style.transform = "scaleY(" + p + ")";
     if (s !== curStep) { curStep = s; steps.forEach(function (li, i) { li.classList.toggle("on", i === s); }); if (hudState) hudState.textContent = HUD[s]; }
   }
