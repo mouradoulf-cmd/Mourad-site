@@ -17,7 +17,7 @@
 <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/hs1.webp" as="image" media="(min-width: 701px)">
-<link rel="stylesheet" href="assets/css/site.css?v=7">
+<link rel="stylesheet" href="assets/css/site.css?v=8">
 <script>document.documentElement.className="js";</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LandscapingBusiness","name":"SOCAP — Société Châtillonnaise d’Aménagement et de Paysage","description":"Paysagiste dans l’Ain : conception, réalisation et entretien de jardins, terrasses, allées, bassins, clôtures, plantations.","telephone":"+33474550098","faxNumber":"+33474552756","foundingDate":"1983","address":{"@type":"PostalAddress","streetAddress":"Les Lazares","postalCode":"01400","addressLocality":"Châtillon-sur-Chalaronne","addressCountry":"FR"},"areaServed":["Ain","Rhône","Mâconnais"],"numberOfEmployees":{"@type":"QuantitativeValue","value":10}}</script>
 </head>
@@ -218,6 +218,51 @@
   </div>
 </section>
 
+<!-- ================= STUDIO D'AMBIANCE (configurateur) ================= -->
+<section class="sec studio" id="studio" aria-labelledby="stT">
+  <div class="wrap studio__g">
+    <div class="studio__stage" id="stStage">
+      <img class="on" data-k="cont-j" src="assets/img/st-cont-j.webp" alt="Terrasse bois et pergola contemporaine, de jour" width="1200" height="900" loading="lazy">
+      <img data-k="cont-n" src="assets/img/st-cont-n.webp" alt="Entrée contemporaine éclairée, de nuit" width="1200" height="900" loading="lazy">
+      <img data-k="zen" src="assets/img/st-zen.webp" alt="Jardin zen avec bassin et lanterne en pierre" width="1200" height="900" loading="lazy">
+      <img data-k="class" src="assets/img/st-class.webp" alt="Jardin classique devant une maison de caractère" width="1200" height="900" loading="lazy">
+      <img data-k="pisc-j" src="assets/img/st-pisc-j.webp" alt="Piscine et platelage bois, de jour" width="1200" height="900" loading="lazy">
+      <img data-k="pisc-n" src="assets/img/st-pisc-n.webp" alt="Piscine et terrasse éclairées, de nuit" width="1200" height="900" loading="lazy">
+      <img data-k="pav" src="assets/img/st-pav.webp" alt="Pavillon en bois dans un jardin planté" width="1200" height="900" loading="lazy">
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <p class="studio__tag" id="stTag">Contemporain · Jour</p>
+      <p class="svc__ill">Photo d’illustration</p>
+    </div>
+    <div class="studio__ui">
+      <p class="eyebrow"><span class="dot"></span>Studio d’ambiance</p>
+      <h2 id="stT" class="h2">Composez l’ambiance <em>de votre jardin</em></h2>
+      <p class="studio__lead">Choisissez un style, jouez avec la lumière, ajoutez vos envies : on vous prépare une étude sur mesure.</p>
+      <div class="studio__row" role="group" aria-label="Ambiance">
+        <button type="button" class="stb on" data-amb="cont" aria-pressed="true">Contemporain</button>
+        <button type="button" class="stb" data-amb="zen" aria-pressed="false">Zen &amp; eau</button>
+        <button type="button" class="stb" data-amb="class" aria-pressed="false">Classique</button>
+        <button type="button" class="stb" data-amb="pisc" aria-pressed="false">Piscine</button>
+        <button type="button" class="stb" data-amb="pav" aria-pressed="false">Pavillon</button>
+      </div>
+      <div class="studio__light" role="group" aria-label="Lumière">
+        <button type="button" class="on" data-mode="j" aria-pressed="true">☀ Jour</button>
+        <button type="button" data-mode="n" aria-pressed="false">☾ Nuit</button>
+        <span id="stNoNight" hidden>Pas de vue de nuit pour cette ambiance</span>
+      </div>
+      <div class="studio__row studio__row--el" role="group" aria-label="Vos envies">
+        <button type="button" class="stc" data-el="Terrasse" aria-pressed="false">Terrasse</button>
+        <button type="button" class="stc" data-el="Bassin" aria-pressed="false">Bassin</button>
+        <button type="button" class="stc" data-el="Pergola" aria-pressed="false">Pergola</button>
+        <button type="button" class="stc" data-el="Éclairage" aria-pressed="false">Éclairage</button>
+        <button type="button" class="stc" data-el="Plantations" aria-pressed="false">Plantations</button>
+        <button type="button" class="stc" data-el="Pierre" aria-pressed="false">Pierre</button>
+      </div>
+      <p class="studio__sum" id="stSum" aria-live="polite"></p>
+      <a class="btn" href="#contact" id="stGo">Envoyer ce projet à SOCAP <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= RÉALISATIONS (photos SOCAP) ================= -->
 <section class="work" id="realisations" aria-labelledby="woT">
   <div class="work__sticky">
@@ -331,5 +376,6 @@
 <script src="assets/vendor/lenis.min.js"></script>
 <script src="assets/js/hero.js?v=5"></script>
 <script src="assets/js/site.js?v=5"></script>
+<script src="assets/js/studio.js?v=1" defer></script>
 </body>
 </html>
