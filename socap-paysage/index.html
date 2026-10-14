@@ -5,92 +5,154 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SOCAP, paysagiste dans l’Ain · La signature nature</title>
 <meta name="description" content="SOCAP, paysagiste à Châtillon-sur-Chalaronne (Ain) depuis 1983 : conception, réalisation et entretien de vos jardins, terrasses, allées, bassins, clôtures et plantations dans l’Ain, la région lyonnaise et le Mâconnais.">
-<meta name="theme-color" content="#05100c">
+<meta name="theme-color" content="#040d09">
 <!-- MISE EN LIGNE : supprimer la ligne robots ci-dessous (elle bloque Google tant que le site est une maquette) -->
 <meta name="robots" content="noindex,nofollow">
 <link rel="canonical" href="https://www.socap-paysage.com/">
 <meta property="og:type" content="website"><meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="SOCAP · La signature nature">
 <meta property="og:description" content="Paysagiste dans l’Ain depuis 1983. Un seul interlocuteur, de l’étude au suivi après chantier.">
-<meta property="og:image" content="assets/img/ph-hero-s.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2305100c'/%3E%3Cpath d='M44 20c-4-6-14-7-20-2s-6 14 0 19 16 4 20-3M20 46c8-2 18 0 26 8' fill='none' stroke='%237dffc6' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta property="og:image" content="assets/img/hs1.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23040d09'/%3E%3Cpath d='M93.900 26.100A48 48 0 1 0 93.900 93.900' transform='translate(0 0) scale(.78) translate(16 16)' fill='none' stroke='%237dffc6' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M62 52C62 38 72 28 86 28C86 42 76 52 62 52Z' transform='scale(.78) translate(16 16)' fill='%23c6ff7a'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=2">
+<link rel="preload" href="assets/img/hs1.webp" as="image" media="(min-width: 701px)">
+<link rel="stylesheet" href="assets/css/site.css?v=3">
 <script>document.documentElement.className="js";</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LandscapingBusiness","name":"SOCAP — Société Châtillonnaise d’Aménagement et de Paysage","description":"Paysagiste dans l’Ain : conception, réalisation et entretien de jardins, terrasses, allées, bassins, clôtures, plantations.","telephone":"+33474550098","faxNumber":"+33474552756","foundingDate":"1983","address":{"@type":"PostalAddress","streetAddress":"Les Lazares","postalCode":"01400","addressLocality":"Châtillon-sur-Chalaronne","addressCountry":"FR"},"areaServed":["Ain","Rhône","Mâconnais"],"numberOfEmployees":{"@type":"QuantitativeValue","value":10}}</script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 
+<!-- logo : symbole réutilisable (anneau en C ouvert + courbes de niveau + pousse) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="lgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c6ff7a"/><stop offset="1" stop-color="#7dffc6"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 120 120">
+      <path d="M93.9 26.1A48 48 0 1 0 93.9 93.9" fill="none" stroke="url(#lgG)" stroke-width="5.5" stroke-linecap="round"/>
+      <path d="M28 72C40 58 52 80 68 64S90 56 100 60" fill="none" stroke="#7dffc6" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M30 84C42 72 54 92 70 78S90 72 100 76" fill="none" stroke="#7dffc6" stroke-width="3.6" stroke-linecap="round" opacity=".7"/>
+      <path d="M38 95C48 87 58 100 72 91S88 88 94 90" fill="none" stroke="#7dffc6" stroke-width="3.6" stroke-linecap="round" opacity=".42"/>
+      <path d="M62 52C62 38 72 28 87 28C87 43 77 52 62 52Z" fill="url(#lgG)"/>
+      <path d="M62 52L62 66" fill="none" stroke="url(#lgG)" stroke-width="3.6" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
 <div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="loader__grid" aria-hidden="true"></div>
   <div class="loader__in">
-    <img src="assets/img/logo-light.png" alt="SOCAP" width="190" height="106">
-    <div class="loader__bar"><i></i></div>
-    <p>On prépare votre jardin…</p>
+    <svg class="loader__mark" viewBox="0 0 120 120" aria-hidden="true">
+      <path class="d d1" pathLength="1" d="M93.9 26.1A48 48 0 1 0 93.9 93.9"/>
+      <path class="d d2" pathLength="1" d="M28 72C40 58 52 80 68 64S90 56 100 60"/>
+      <path class="d d3" pathLength="1" d="M30 84C42 72 54 92 70 78S90 72 100 76"/>
+      <path class="d d4" pathLength="1" d="M38 95C48 87 58 100 72 91S88 88 94 90"/>
+      <path class="d d5" pathLength="1" d="M62 52L62 66"/>
+      <path class="leaf" d="M62 52C62 38 72 28 87 28C87 43 77 52 62 52Z"/>
+    </svg>
+    <div class="loader__word" aria-label="SOCAP"><span>S</span><span>O</span><span>C</span><span>A</span><span>P</span></div>
+    <p class="loader__sub">Société Châtillonnaise d’Aménagement et de Paysage</p>
+    <div class="loader__meter"><div class="loader__bar"><i id="ldBar"></i></div><b id="ldN">0</b><span>%</span></div>
   </div>
 </div>
+
 <div class="progress" id="progress" aria-hidden="true"><i></i></div>
-<div class="cursor" id="cursor" aria-hidden="true"><i></i></div>
+<div class="cursor" id="cursor" aria-hidden="true"><i></i><span id="cursorT"></span></div>
 
 <header class="hd" id="hd">
-  <a class="hd__logo" href="#top" aria-label="SOCAP, retour en haut"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M31 11c-3-5-11-6-16-2S9 20 14 25s13 4 16-2" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M12 33c6-2 14 0 20 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".6"/><circle cx="22" cy="17" r="2.2" fill="currentColor"/></svg><span><b>SOCAP</b><small>paysagiste · Ain</small></span></a>
+  <a class="hd__logo" href="#top" aria-label="SOCAP, retour en haut"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#mark"/></svg><span><b>SOCAP</b><small>paysagiste · Ain</small></span></a>
   <nav class="hd__nav" id="nav" aria-label="Navigation principale">
-    <a href="#plan">Du plan au jardin</a>
-    <a href="#entreprise">Entreprise</a>
-    <a href="#prestations">Prestations</a>
-    <a href="#realisations">Réalisations</a>
-    <a href="#zone">Où nous sommes</a>
+    <a href="#manifeste"><i>01</i>Entreprise</a>
+    <a href="#plan"><i>02</i>Méthode</a>
+    <a href="#prestations"><i>03</i>Prestations</a>
+    <a href="#realisations"><i>04</i>Réalisations</a>
+    <a href="#zone"><i>05</i>Zone</a>
     <a class="only-m" href="#contact">Demande de devis</a>
     <a class="only-m tel" href="tel:+33474550098" target="_blank" rel="noopener">04 74 55 00 98</a>
   </nav>
-  <a class="hd__tel" href="tel:+33474550098" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>04 74 55 00 98</span></a>
+  <a class="hd__tel" href="tel:+33474550098" target="_blank" rel="noopener" aria-label="Appeler SOCAP"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>04 74 55 00 98</span></a>
   <a class="btn btn--sm hd__cta" href="#contact" data-magnet>Demande de devis</a>
   <button class="hd__burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
 </header>
 
+<nav class="rail" id="rail" aria-label="Sections de la page">
+  <a href="#top" data-t="Accueil"><i></i></a><a href="#manifeste" data-t="Entreprise"><i></i></a><a href="#plan" data-t="Méthode"><i></i></a><a href="#prestations" data-t="Prestations"><i></i></a><a href="#realisations" data-t="Réalisations"><i></i></a><a href="#zone" data-t="Zone"><i></i></a><a href="#contact" data-t="Contact"><i></i></a>
+</nav>
+<button class="totop" id="totop" aria-label="Revenir en haut de page"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="19"/><circle class="fg" id="totopRing" cx="22" cy="22" r="19" pathLength="1"/><path d="M22 28V16M16 21l6-6 6 6"/></svg></button>
+
 <main id="contenu">
 
-<!-- ============ HERO ============ -->
+<!-- ================= HERO : diaporama photographique WebGL ================= -->
 <section class="hero" id="top" aria-labelledby="h1">
   <div class="hero__media" id="heroMedia" aria-hidden="true">
-    <picture><source media="(max-width: 700px)" srcset="assets/img/ph-hero-m.webp"><img class="hero__img" id="heroImg" src="assets/img/ph-hero.webp" alt="" width="2200" height="1235" fetchpriority="high" decoding="async"></picture>
+    <picture><source media="(max-width: 700px)" srcset="assets/img/hs1-m.webp"><img class="hero__img" id="heroImg" src="assets/img/hs1.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async"></picture>
     <canvas class="hero__gl" id="heroGL"></canvas>
     <canvas class="hero__motes" id="motes"></canvas>
-    <div class="hero__shade"></div><div class="hero__sun"></div>
+    <div class="hero__shade"></div><div class="hero__grid"></div><div class="hero__scan"></div>
+  </div>
+  <div class="hero__hud" aria-hidden="true">
+    <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+    <p class="hud hud--l">46.1206° N · 4.9617° E<br><b>Châtillon-sur-Chalaronne</b></p>
+    <p class="hud hud--r"><b id="clock">--:--</b><br>Heure locale · Ain (01)</p>
   </div>
   <div class="hero__in">
-    <p class="eyebrow"><span class="dot"></span>Paysagiste · Châtillon-sur-Chalaronne · Ain (01)</p>
-    <h1 id="h1"><span class="l1">La signature</span> <span class="l2"><em>nature</em></span></h1>
-    <p class="hero__lead">Nous concevons, réalisons et entretenons vos jardins dans l’Ain, la région lyonnaise et le Mâconnais. <strong>Un seul interlocuteur</strong>, du premier croquis au suivi après chantier.</p>
+    <p class="eyebrow"><span class="dot"></span>Paysagiste · Ain · Rhône · Mâconnais</p>
+    <h1 id="h1"><span class="ln"><span>La signature</span></span><span class="ln"><span><em>nature</em></span></span></h1>
+    <p class="hero__lead">Conception, réalisation et entretien de vos jardins. <strong>Un seul interlocuteur</strong>, du premier croquis au suivi après chantier. Depuis 1983.</p>
     <div class="hero__cta">
-      <a class="btn" href="#contact" data-magnet><span>Demander un devis</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m0 0l-4.500-4.500M15 10l-4.500 4.500"/></svg></a>
+      <a class="btn" href="#contact" data-magnet><span>Demander un devis</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5"/></svg></a>
       <a class="btn btn--ghost" href="#realisations" data-magnet><span>Voir nos réalisations</span></a>
     </div>
-    <ul class="hero__chips" aria-label="En bref">
-      <li><b>1983</b><span>création de l’entreprise</span></li>
-      <li><b>10</b><span>paysagistes qualifiés</span></li>
-      <li><b>UNEP</b><span>entreprise adhérente</span></li>
-    </ul>
   </div>
-  <a class="hero__scroll" href="#plan" aria-label="Faire défiler"><i></i><span>Défiler</span></a>
-  <p class="hero__hint" aria-hidden="true"><i></i>Bougez la souris : la photo prend de la profondeur.</p>
+  <div class="hero__bar">
+    <div class="cap"><span class="cap__n"><b id="hsI">01</b>/05</span><span class="cap__t" id="hsT">Terrasse bois &amp; pergola</span><span class="cap__l" id="hsL">Inspiration · jour</span></div>
+    <div class="prog" id="hsP" role="tablist" aria-label="Diapositives du haut de page"></div>
+    <div class="chips" aria-label="En bref"><span><b>1983</b>création</span><span><b>10</b>paysagistes</span><span><b>UNEP</b>adhérent</span></div>
+  </div>
+  <a class="hero__scroll" href="#manifeste" aria-label="Faire défiler"><i></i><span>Défiler</span></a>
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="marquee__t">
-  <span>Terrassement</span><span>Maçonnerie paysagère</span><span>Pavage &amp; dallage</span><span>Terrasses bois &amp; composite</span><span>Plantations</span><span>Engazonnement</span><span>Arrosage automatique</span><span>Clôtures &amp; portails</span><span>Bassins &amp; fontaines</span>
-  <span>Terrassement</span><span>Maçonnerie paysagère</span><span>Pavage &amp; dallage</span><span>Terrasses bois &amp; composite</span><span>Plantations</span><span>Engazonnement</span><span>Arrosage automatique</span><span>Clôtures &amp; portails</span><span>Bassins &amp; fontaines</span>
+  <span>Terrassement</span><span>Maçonnerie paysagère</span><span>Pavage &amp; dallage</span><span>Terrasses bois</span><span>Plantations</span><span>Arrosage automatique</span><span>Clôtures &amp; portails</span><span>Bassins &amp; fontaines</span><span>Grands sujets</span>
+  <span>Terrassement</span><span>Maçonnerie paysagère</span><span>Pavage &amp; dallage</span><span>Terrasses bois</span><span>Plantations</span><span>Arrosage automatique</span><span>Clôtures &amp; portails</span><span>Bassins &amp; fontaines</span><span>Grands sujets</span>
 </div></div>
 
-<!-- ============ DU PLAN AU JARDIN (scroll story) ============ -->
+<!-- ================= MANIFESTE ================= -->
+<section class="mani" id="manifeste" aria-labelledby="maniT">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span>01 — Notre entreprise</p>
+    <h2 class="mani__t" id="maniT">Du premier croquis au suivi après chantier, un seul interlocuteur pour tout votre extérieur : terrassement, maçonnerie paysagère, pavage, terrasses, plantations, arrosage, clôtures et portails.</h2>
+    <div class="mani__g">
+      <div class="mani__txt">
+        <p>SOCAP, société châtillonnaise d’aménagement et de paysage, rassemble tous les corps de métier nécessaires à l’aménagement de vos espaces extérieurs. Spécialiste du végétal, nous travaillons aussi bien pour les professionnels et les collectivités que pour les particuliers.</p>
+        <p>Notre bureau d’étude vous conseille avec plan, étude des réseaux et palette de matériaux et de végétaux. Notre équipe de 10 paysagistes passionnés, qualifiés et formés traite chaque aménagement avec le même souci du détail.</p>
+        <p>Nous faisons partie du groupe <b>Pépinières Daniel Soupe</b>, dans l’Ain : des végétaux cultivés localement et de première qualité.</p>
+      </div>
+      <div class="mani__ph" aria-hidden="true">
+        <figure data-par><img src="assets/img/mf1.webp" alt="" loading="lazy" width="800" height="1000"></figure>
+        <figure data-par><img src="assets/img/mf2.webp" alt="" loading="lazy" width="800" height="1000"></figure>
+        <figure data-par><img src="assets/img/mf3.webp" alt="" loading="lazy" width="800" height="1000"></figure>
+      </div>
+    </div>
+    <div class="rings">
+      <div class="ring" data-ring="1"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52" pathLength="1"/></svg><div><b data-count="43">43</b><span>ans de savoir-faire<small>depuis 1983</small></span></div></div>
+      <div class="ring" data-ring=".72"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52" pathLength="1"/></svg><div><b data-count="10">10</b><span>paysagistes<small>passionnés, qualifiés, formés</small></span></div></div>
+      <div class="ring" data-ring=".6"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52" pathLength="1"/></svg><div><b>1</b><span>seul interlocuteur<small>pour tous vos corps de métier</small></span></div></div>
+      <div class="ring" data-ring=".88"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52" pathLength="1"/></svg><div><b class="sm">UNEP</b><span>entreprise adhérente<small>« Des entreprises qui s’engagent ! »</small></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MÉTHODE : plan -> photo ================= -->
 <section class="plan" id="plan" aria-labelledby="planT">
   <div class="plan__sticky">
     <div class="stage" id="stage" aria-hidden="true">
-      <figure class="on"><img class="bp" src="assets/img/bp-plan1.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan1.webp" alt="" loading="lazy"></figure>
-      <figure><img class="bp" src="assets/img/bp-plan2.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan2.webp" alt="" loading="lazy"></figure>
-      <figure><img class="bp" src="assets/img/bp-plan3.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan3.webp" alt="" loading="lazy"></figure>
-      <figure><img class="bp" src="assets/img/bp-plan4.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan4.webp" alt="" loading="lazy"></figure>
-      <figure><img class="bp" src="assets/img/bp-plan5.webp" alt="" loading="lazy"><img class="ph" src="assets/img/ph-plan5.webp" alt="" loading="lazy"></figure>
+      <figure class="on"><img class="bp" src="assets/img/bp1.webp" alt="" loading="lazy"><img class="ph" src="assets/img/pl1.webp" alt="" loading="lazy"></figure>
+      <figure><img class="bp" src="assets/img/bp2.webp" alt="" loading="lazy"><img class="ph" src="assets/img/pl2.webp" alt="" loading="lazy"></figure>
+      <figure><img class="bp" src="assets/img/bp3.webp" alt="" loading="lazy"><img class="ph" src="assets/img/pl3.webp" alt="" loading="lazy"></figure>
+      <figure><img class="bp" src="assets/img/bp4.webp" alt="" loading="lazy"><img class="ph" src="assets/img/pl4.webp" alt="" loading="lazy"></figure>
+      <figure><img class="bp" src="assets/img/bp5.webp" alt="" loading="lazy"><img class="ph" src="assets/img/pl5.webp" alt="" loading="lazy"></figure>
+      <div class="cals" id="cals"></div>
       <i class="scan" id="scan"></i><div class="stage__shade"></div>
     </div>
     <div class="plan__hud" aria-hidden="true">
@@ -99,43 +161,89 @@
       <p class="hud hud--b" id="hudState">ÉTAPE 01 · ÉTUDE</p>
     </div>
     <div class="plan__txt">
-      <p class="eyebrow"><span class="dot"></span>Notre méthode</p>
+      <p class="eyebrow"><span class="dot"></span>02 — Notre méthode</p>
       <h2 id="planT" class="h2">Du plan au jardin, <em>sous vos yeux</em></h2>
       <ol class="steps" id="steps">
-        <li class="on" data-s="0"><span class="n">01</span><div><h3>Étude et plan</h3><p>Notre bureau d’étude vous conseille : plan, étude des réseaux, palette de matériaux et de végétaux, pour proposer les solutions les plus adaptées à vos attentes.</p></div></li>
-        <li data-s="1"><span class="n">02</span><div><h3>Terrassement &amp; maçonnerie</h3><p>On modèle le terrain : terrassement, murs, enrochements et soutènements, pour créer de vrais espaces de vie extérieurs.</p></div></li>
-        <li data-s="2"><span class="n">03</span><div><h3>Allées, cours &amp; terrasses</h3><p>Pavage, dallage, sable stabilisé, béton désactivé, terrasses bois ou composite, escaliers : le premier accès à votre maison.</p></div></li>
-        <li data-s="3"><span class="n">04</span><div><h3>Végétal &amp; eau</h3><p>Plantations, engazonnement, arrosage automatique, bassins et fontaines : le jardin prend vie.</p></div></li>
-        <li data-s="4"><span class="n">05</span><div><h3>Suivi après chantier</h3><p>Nous vous accompagnons tout au long du chantier et assurons le suivi après sa réalisation.</p></div></li>
+        <li class="on"><span class="n">01</span><div><h3>Étude et plan</h3><p>Notre bureau d’étude vous conseille : plan, étude des réseaux, palette de matériaux et de végétaux, pour proposer les solutions les plus adaptées à vos attentes.</p></div></li>
+        <li><span class="n">02</span><div><h3>Terrassement &amp; maçonnerie</h3><p>On modèle le terrain : terrassement, murs, enrochements et soutènements, pour créer de vrais espaces de vie extérieurs.</p></div></li>
+        <li><span class="n">03</span><div><h3>Allées, cours &amp; terrasses</h3><p>Pavage, dallage, sable stabilisé, béton désactivé, terrasses bois ou composite, escaliers : le premier accès à votre maison.</p></div></li>
+        <li><span class="n">04</span><div><h3>Végétal &amp; eau</h3><p>Plantations, engazonnement, arrosage automatique, bassins et fontaines : le jardin prend vie.</p></div></li>
+        <li><span class="n">05</span><div><h3>Suivi après chantier</h3><p>Nous vous accompagnons tout au long du chantier et assurons le suivi après sa réalisation.</p></div></li>
       </ol>
       <div class="plan__rail" aria-hidden="true"><i id="planFill"></i></div>
     </div>
   </div>
 </section>
 
-<!-- ============ ENTREPRISE ============ -->
-<section class="sec glass" id="entreprise" aria-labelledby="entT">
-  <div class="wrap ent">
-    <div class="ent__l">
-      <p class="eyebrow"><span class="dot"></span>Notre entreprise</p>
-      <h2 id="entT" class="h2">Un seul intervenant pour <em>tous vos projets</em></h2>
-      <p class="lead">SOCAP, société châtillonnaise d’aménagement et de paysage, rassemble tous les corps de métier nécessaires à l’aménagement de vos espaces extérieurs : terrassement, maçonnerie paysagère, circulations et allées, pavage, dallage, terrasses bois et composite, plantations, engazonnement, arrosage automatique, clôtures et portails.</p>
-      <p>Spécialiste du végétal et des aménagements extérieurs, nous travaillons aussi bien pour les professionnels et les collectivités que pour les particuliers. Notre équipe de 10 paysagistes passionnés, qualifiés et formés traite chaque aménagement avec le même souci du détail et du travail bien fait.</p>
-      <p>Nous faisons partie du groupe <b>Pépinières Daniel Soupe</b>, dans l’Ain : des végétaux cultivés localement et de première qualité.</p>
-    </div>
-    <div class="ent__r">
-      <div class="stats">
-        <div class="stat"><b data-count="43">43</b><span>ans de savoir-faire<br><small>depuis 1983</small></span></div>
-        <div class="stat"><b data-count="10">10</b><span>paysagistes<br><small>passionnés, qualifiés, formés</small></span></div>
-        <div class="stat"><b>1</b><span>seul interlocuteur<br><small>pour tous vos corps de métier</small></span></div>
-        <div class="stat stat--logo"><b>UNEP</b><span>entreprise adhérente<br><small>« Des entreprises qui s’engagent ! »</small></span></div>
+<!-- ================= PRESTATIONS : explorateur ================= -->
+<section class="sec svc" id="prestations" aria-labelledby="preT">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span>03 — Nos prestations</p>
+    <h2 id="preT" class="h2">Tout ce qu’il faut pour un jardin <em>qui vous ressemble</em></h2>
+    <div class="svc__g" id="svc">
+      <ol class="svc__list" id="svcList" role="tablist" aria-label="Prestations">
+        <li><button role="tab" aria-selected="true" data-i="0"><span class="n">01</span><span class="t">Terrasses et dallage</span><i></i></button></li>
+        <li><button role="tab" aria-selected="false" data-i="1"><span class="n">02</span><span class="t">Cours, allées et parkings</span><i></i></button></li>
+        <li><button role="tab" aria-selected="false" data-i="2"><span class="n">03</span><span class="t">Plantations et gazons</span><i></i></button></li>
+        <li><button role="tab" aria-selected="false" data-i="3"><span class="n">04</span><span class="t">Plantation de grands sujets</span><i></i></button></li>
+        <li><button role="tab" aria-selected="false" data-i="4"><span class="n">05</span><span class="t">Bassins et fontaines</span><i></i></button></li>
+        <li><button role="tab" aria-selected="false" data-i="5"><span class="n">06</span><span class="t">Murs, enrochements, maçonnerie</span><i></i></button></li>
+        <li><button role="tab" aria-selected="false" data-i="6"><span class="n">07</span><span class="t">Escaliers</span><i></i></button></li>
+        <li><button role="tab" aria-selected="false" data-i="7"><span class="n">08</span><span class="t">Clôtures et portails</span><i></i></button></li>
+        <li><button role="tab" aria-selected="false" data-i="8"><span class="n">09</span><span class="t">Pergolas, carports, équipements</span><i></i></button></li>
+      </ol>
+      <div class="svc__stage" id="svcStage">
+        <div class="svc__imgs" aria-hidden="true">
+          <figure class="on"><img src="assets/img/sv1.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <figure><img src="assets/img/sv2.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <figure><img src="assets/img/sv3.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <figure><img src="assets/img/sv4.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <figure><img src="assets/img/sv5.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <figure><img src="assets/img/sv6.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <figure><img src="assets/img/sv7.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <figure><img src="assets/img/sv8.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <figure><img src="assets/img/sv9.webp" alt="" width="1400" height="1050" loading="lazy"></figure>
+          <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+          <p class="svc__ill">Photo d’illustration</p>
+        </div>
+        <div class="svc__panel" role="tabpanel" aria-live="polite">
+          <p class="svc__no" id="svcNo">01 / 09</p>
+          <h3 id="svcT">Terrasses et dallage</h3>
+          <p id="svcD"></p>
+          <ul class="tags" id="svcTags"></ul>
+          <a class="lnk-arrow" href="#contact">Parler de mon projet <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5"/></svg></a>
+        </div>
       </div>
-      <figure class="ent__ph" data-par><img src="assets/img/ph-garden-s.webp" srcset="assets/img/ph-garden-s.webp 800w, assets/img/ph-garden.webp 886w" sizes="(max-width:900px) 92vw, 560px" width="800" height="600" loading="lazy" alt="Hortensias et massifs plantés, avec vue sur les montagnes"></figure>
     </div>
   </div>
+</section>
+
+<!-- ================= RÉALISATIONS (photos SOCAP) ================= -->
+<section class="work" id="realisations" aria-labelledby="woT">
+  <div class="work__sticky">
+    <div class="work__head wrap">
+      <div><p class="eyebrow"><span class="dot"></span>04 — Réalisations SOCAP</p><h2 id="woT" class="h2">Des jardins <em>réalisés dans l’Ain</em></h2></div>
+      <p class="work__count" aria-hidden="true"><b id="wCur">01</b><span>/ 07</span></p>
+    </div>
+    <div class="work__track" id="wTrack">
+      <article class="proj"><div class="proj__img"><img src="assets/img/cours-s.webp" srcset="assets/img/cours-s.webp 640w, assets/img/cours.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Allée et cour gravillonnées à La Chapelle-du-Châtelard"><em class="pill">Photo SOCAP</em></div><div class="proj__b"><span class="where">La Chapelle-du-Châtelard · Ain (01)</span><h3>Allée et cour</h3><p>Terrassement, chemin en concassé, bordures en pavés granit, béton désactivé roulé Château, lignage de pavés en béton, plantations.</p></div></article>
+      <article class="proj"><div class="proj__img"><img src="assets/img/r-gres-s.webp" srcset="assets/img/r-gres-s.webp 640w, assets/img/r-gres.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="360" loading="lazy" alt="Terrasse en grès cérame devant une maison, Ain"><em class="pill">Photo SOCAP</em></div><div class="proj__b"><span class="where">Ain (01)</span><h3>Aménagement d’un jardin</h3><p>Terrasse en grès cérame, escalier béton habillé grès cérame, cour en béton désactivé, allée en pavés basalte, jardinières en palis d’ardoise, arrosage automatique, plantations, engazonnement.</p><small>Conception : Intérieur et Paysage</small></div></article>
+      <article class="proj"><div class="proj__img"><img src="assets/img/r-manziat-s.webp" srcset="assets/img/r-manziat-s.webp 640w, assets/img/r-manziat.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Cour en sablé renforcé à Manziat"><em class="pill">Photo SOCAP</em></div><div class="proj__b"><span class="where">Manziat · Ain (01)</span><h3>Aménagement d’une cour</h3><p>Terrassement, sablé renforcé, bordures acier, pavage en granit beige.</p></div></article>
+      <article class="proj"><div class="proj__img"><img src="assets/img/terrasses-s.webp" srcset="assets/img/terrasses-s.webp 640w, assets/img/terrasses.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Terrasse dallée en basalte dominant le lac de Nantua"><em class="pill">Photo SOCAP</em></div><div class="proj__b"><span class="where">Nantua · Ain (01)</span><h3>Aménagement d’une propriété</h3><p>Pavage, béton désactivé, marches pierre, dallage basalte, muret granit, plantations, muret pierre sèche.</p></div></article>
+      <article class="proj proj--prize"><div class="proj__img"><img src="assets/img/r-michaille-s.webp" srcset="assets/img/r-michaille-s.webp 640w, assets/img/r-michaille.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Jardin avec terrasse en ipé et érable rouge, Châtillon-en-Michaille"><em class="pill">Photo SOCAP</em></div><div class="proj__b"><span class="where">Châtillon-en-Michaille · Ain (01)</span><h3>Jardin à Châtillon-en-Michaille</h3><p>Terrasse bois en ipé, escaliers et pas japonais en pierre de Chandore, soutènement en traverses de chêne, arrosage automatique, plantations et engazonnement.</p><small>Conception : Bellion-Jourdan, Art-Design &amp; Nature</small><em class="prize">Victoires du paysage 2018</em></div></article>
+      <article class="proj"><div class="proj__img"><img src="assets/img/r-genis-s.webp" srcset="assets/img/r-genis-s.webp 640w, assets/img/r-genis.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="360" loading="lazy" alt="Escalier de pierre claire et massifs, Saint-Genis-Pouilly"><em class="pill">Photo SOCAP</em></div><div class="proj__b"><span class="where">Saint-Genis-Pouilly · Ain (01)</span><h3>Jardin à Saint-Genis-Pouilly</h3><p>Terrasse pierre, escalier et pas japonais en Bleu de Savoie, platelage en composite, gazon de placage, fontaine, pergolas, plantations.</p><small>Conception : Bellion-Jourdan, Art-Design &amp; Nature</small></div></article>
+      <article class="proj"><div class="proj__img"><img src="assets/img/plantations-s.webp" srcset="assets/img/plantations-s.webp 640w, assets/img/plantations.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Jardin d’inspiration japonaise, allée sablée et rhododendrons"><em class="pill">Photo SOCAP</em></div><div class="proj__b"><span class="where">Ain (01)</span><h3>Jardin d’inspiration japonaise</h3><p>Dans un site ombragé et vallonné : chemin en sablé, enrochements, rivière, galets, bassin, plantes de terre de bruyère et d’ombre, pas japonais en ardoise et pierre de Saint-Martin-Belleroche.</p></div></article>
+    </div>
+    <p class="work__hint" aria-hidden="true"><i></i>Faites défiler</p>
+  </div>
+</section>
+
+<!-- ================= ENGAGEMENTS ================= -->
+<section class="sec vows" id="engagements" aria-labelledby="vowT">
   <div class="wrap">
-    <h3 class="h3">Nos six engagements <span>(charte UNEP)</span></h3>
-    <ol class="vows">
+    <p class="eyebrow"><span class="dot"></span>Charte UNEP</p>
+    <h2 id="vowT" class="h2">Nos six <em>engagements</em></h2>
+    <ol class="vows__g">
       <li><i>1</i><p>Nos salariés sont des professionnels formés, qui respectent les règles de nos métiers.</p></li>
       <li><i>2</i><p>Nous sommes forces de proposition et réalisons un projet adapté à vos besoins, à vos envies et à votre budget.</p></li>
       <li><i>3</i><p>Nous expliquons clairement nos contrats, nos devis, nos délais, et nous les respectons.</p></li>
@@ -146,66 +254,27 @@
   </div>
 </section>
 
-<!-- ============ PRESTATIONS ============ -->
-<section class="sec glass glass--2" id="prestations" aria-labelledby="preT">
-  <div class="wrap">
-    <p class="eyebrow"><span class="dot"></span>Nos prestations</p>
-    <h2 id="preT" class="h2">Tout ce qu’il faut pour un jardin <em>qui vous ressemble</em></h2>
-    <div class="cards" id="cards">
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-terrasses-s.webp" srcset="assets/img/p-terrasses-s.webp 640w, assets/img/p-terrasses.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Terrasse en platelage ipé et dallage pierre"></div><div class="card__b"><span class="no">01</span><h3>Terrasses et dallage</h3><p>Zone de vie reliant la maison au jardin, nos terrasses sont de véritables pièces à vivre. Grès cérame, pierre naturelle locale ou exotique, bois composite, exotique ou local : nous vous guidons dans le choix des matériaux.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-allees-s.webp" srcset="assets/img/p-allees-s.webp 640w, assets/img/p-allees.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Allée gravillonnée bordée d’arbres"></div><div class="card__b"><span class="no">02</span><h3>Cours, allées et parkings</h3><p>Premier accès à votre maison : pavage, dallage, sable stabilisé, béton désactivé, enrobé, bordures… Nous allions praticité et esthétique, dans l’Ain et le Rhône.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-plantations-s.webp" srcset="assets/img/p-plantations-s.webp 640w, assets/img/p-plantations.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Allée sablée entre massifs de rhododendrons en fleurs"></div><div class="card__b"><span class="no">03</span><h3>Plantations et gazons</h3><p>Arbustes, massifs fleuris, haies, arbres, talus, gazons, prairies, pelouses… Nous aménageons votre jardin selon vos goûts, avec les Pépinières Daniel Soupe, dans l’Ain.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-grands-s.webp" srcset="assets/img/p-grands-s.webp 640w, assets/img/p-grands.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Grand platane planté devant une maison en pierre"></div><div class="card__b"><span class="no">04</span><h3>Plantation de grands sujets</h3><p>Des connaissances et des équipements spécifiques pour planter des sujets d’exception, ou transplanter les grands sujets déjà présents dans votre jardin. Dans l’Ain et le Rhône.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-bassin-s.webp" srcset="assets/img/p-bassin-s.webp 640w, assets/img/p-bassin.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Bassin d’ornement bordé de galets"></div><div class="card__b"><span class="no">05</span><h3>Bassins et fontaines</h3><p>Bassins d’ornement, étangs de jardin, fontaines, cascades ou jeux d’eau : terrassement, étanchéité en bâche, filtration et stérilisateur UV pour une eau claire. Bassins maçonnés à étanchéité enduite.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-mur-s.webp" srcset="assets/img/p-mur-s.webp 640w, assets/img/p-mur.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Soutènement en traverses et massifs étagés"></div><div class="card__b"><span class="no">06</span><h3>Murs, enrochements et maçonnerie paysagère</h3><p>Aplanir, stabiliser un terrain en pente, créer ou réaménager un espace de vie, délimiter les espaces : murs, enrochements et maçonnerie paysagère dans l’Ain (01) et autour de Lyon (69).</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-escalier-s.webp" srcset="assets/img/p-escalier-s.webp 640w, assets/img/p-escalier.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="360" loading="lazy" alt="Escalier de pierre claire entre buis et érables"></div><div class="card__b"><span class="no">07</span><h3>Escaliers</h3><p>Pour relier les paliers du jardin ou accéder à la maison ou à la terrasse : pierre taillée, dalles d’enrochement, bois, pavés ou métal, des matériaux qui allient esthétique et praticité.</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-cloture-s.webp" srcset="assets/img/p-cloture-s.webp 640w, assets/img/p-cloture.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="480" loading="lazy" alt="Portail blanc ajouré sur muret"></div><div class="card__b"><span class="no">08</span><h3>Clôtures et portails</h3><p>Pour intimiser ou protéger : ajourées ou occultantes, contemporaines ou rustiques, en divers matériaux et coloris. Treillis soudé, simple torsion, brise-vue, soubassement béton, claustras aluminium ou bois…</p></div></article>
-      <article class="card" data-tilt><div class="card__img"><img src="assets/img/p-pergola-s.webp" srcset="assets/img/p-pergola-s.webp 640w, assets/img/p-pergola.webp 1181w" sizes="(max-width:700px) 90vw, 380px" width="640" height="360" loading="lazy" alt="Pergola métallique avec salon de jardin"></div><div class="card__b"><span class="no">09</span><h3>Pergolas, carports et équipements</h3><p>Pergola ombragée, abri de jardin en bois ou composite, carport pour abriter vos véhicules : conception et installation d’équipements de jardin et de solutions sur mesure.</p></div></article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ RÉALISATIONS (défilement horizontal) ============ -->
-<section class="work" id="realisations" aria-labelledby="woT">
-  <div class="work__sticky">
-    <div class="work__head wrap">
-      <div><p class="eyebrow"><span class="dot"></span>Nos réalisations</p><h2 id="woT" class="h2">Des jardins <em>réalisés dans l’Ain</em></h2></div>
-      <p class="work__count" aria-hidden="true"><b id="wCur">01</b><span>/ 07</span></p>
-    </div>
-    <div class="work__track" id="wTrack">
-      <article class="proj"><div class="proj__img"><img src="assets/img/cours-s.webp" srcset="assets/img/cours-s.webp 640w, assets/img/cours.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Allée et cour gravillonnées à La Chapelle-du-Châtelard"></div><div class="proj__b"><span class="where">La Chapelle-du-Châtelard · Ain (01)</span><h3>Allée et cour</h3><p>Terrassement, chemin en concassé, bordures en pavés granit, béton désactivé roulé Château, lignage de pavés en béton, plantations.</p></div></article>
-      <article class="proj"><div class="proj__img"><img src="assets/img/r-gres-s.webp" srcset="assets/img/r-gres-s.webp 640w, assets/img/r-gres.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="360" loading="lazy" alt="Terrasse en grès cérame devant une maison, Ain"></div><div class="proj__b"><span class="where">Ain (01)</span><h3>Aménagement d’un jardin</h3><p>Terrasse en grès cérame, escalier béton habillé grès cérame, cour en béton désactivé, allée en pavés basalte, jardinières en palis d’ardoise, arrosage automatique, plantations, engazonnement.</p><small>Conception : Intérieur et Paysage</small></div></article>
-      <article class="proj"><div class="proj__img"><img src="assets/img/r-manziat-s.webp" srcset="assets/img/r-manziat-s.webp 640w, assets/img/r-manziat.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Cour en sablé renforcé à Manziat"></div><div class="proj__b"><span class="where">Manziat · Ain (01)</span><h3>Aménagement d’une cour</h3><p>Terrassement, sablé renforcé, bordures acier, pavage en granit beige.</p></div></article>
-      <article class="proj"><div class="proj__img"><img src="assets/img/terrasses-s.webp" srcset="assets/img/terrasses-s.webp 640w, assets/img/terrasses.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Terrasse dallée en basalte dominant le lac de Nantua"></div><div class="proj__b"><span class="where">Nantua · Ain (01)</span><h3>Aménagement d’une propriété</h3><p>Pavage, béton désactivé, marches pierre, dallage basalte, muret granit, plantations, muret pierre sèche.</p></div></article>
-      <article class="proj proj--prize"><div class="proj__img"><img src="assets/img/r-michaille-s.webp" srcset="assets/img/r-michaille-s.webp 640w, assets/img/r-michaille.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Jardin avec terrasse en ipé et érable rouge, Châtillon-en-Michaille"></div><div class="proj__b"><span class="where">Châtillon-en-Michaille · Ain (01)</span><h3>Jardin à Châtillon-en-Michaille</h3><p>Terrasse bois en ipé, escaliers et pas japonais en pierre de Chandore, soutènement en traverses de chêne, arrosage automatique, plantations et engazonnement.</p><small>Conception : Bellion-Jourdan, Art-Design &amp; Nature</small><em class="prize">Victoires du paysage 2018</em></div></article>
-      <article class="proj"><div class="proj__img"><img src="assets/img/r-genis-s.webp" srcset="assets/img/r-genis-s.webp 640w, assets/img/r-genis.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="360" loading="lazy" alt="Escalier de pierre claire et massifs, Saint-Genis-Pouilly"></div><div class="proj__b"><span class="where">Saint-Genis-Pouilly · Ain (01)</span><h3>Jardin à Saint-Genis-Pouilly</h3><p>Terrasse pierre, escalier et pas japonais en Bleu de Savoie, platelage en composite, gazon de placage, fontaine, pergolas, plantations.</p><small>Conception : Bellion-Jourdan, Art-Design &amp; Nature</small></div></article>
-      <article class="proj"><div class="proj__img"><img src="assets/img/plantations-s.webp" srcset="assets/img/plantations-s.webp 640w, assets/img/plantations.webp 1181w" sizes="(max-width:700px) 82vw, 560px" width="640" height="480" loading="lazy" alt="Jardin d’inspiration japonaise, allée sablée et rhododendrons"></div><div class="proj__b"><span class="where">Ain (01)</span><h3>Jardin d’inspiration japonaise</h3><p>Dans un site ombragé et vallonné : chemin en sablé, enrochements, rivière, galets, bassin, plantes de terre de bruyère et d’ombre, pas japonais en ardoise et pierre de Saint-Martin-Belleroche.</p></div></article>
-    </div>
-    <p class="work__hint" aria-hidden="true"><i></i>Faites défiler</p>
-  </div>
-</section>
-
-<!-- ============ ZONE ============ -->
-<section class="sec glass" id="zone" aria-labelledby="zoT">
-  <div class="wrap zone">
+<!-- ================= ZONE ================= -->
+<section class="sec zone" id="zone" aria-labelledby="zoT">
+  <div class="wrap zone__g">
     <div class="zone__l">
-      <p class="eyebrow"><span class="dot"></span>Où nous intervenons</p>
+      <p class="eyebrow"><span class="dot"></span>05 — Où nous intervenons</p>
       <h2 id="zoT" class="h2">Dans l’Ain, la région lyonnaise <em>et le Mâconnais</em></h2>
       <p class="lead">Basés à Châtillon-sur-Chalaronne, nous concevons, réalisons et entretenons votre jardin dans un large rayon autour de l’Ain, jusqu’à Lyon et Mâcon.</p>
       <ul class="zone__list" id="zoneList"></ul>
-      <p class="zone__note">Carte indicative : les anneaux montrent des distances à vol d’oiseau depuis Châtillon-sur-Chalaronne.</p>
+      <p class="zone__note">Carte indicative : les anneaux montrent des distances à vol d’oiseau depuis Châtillon-sur-Chalaronne. Points verts : réalisations présentées sur ce site.</p>
     </div>
-    <div class="zone__r"><svg id="zoneMap" viewBox="0 0 560 560" role="img" aria-label="Carte indicative de la zone d’intervention autour de Châtillon-sur-Chalaronne"></svg></div>
+    <div class="zone__r" id="zoneWrap"><svg id="zoneMap" viewBox="0 0 560 560" role="img" aria-label="Carte indicative de la zone d’intervention autour de Châtillon-sur-Chalaronne"></svg></div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
+<!-- ================= CONTACT ================= -->
 <section class="sec contact" id="contact" aria-labelledby="coT">
-  <div class="contact__bg" aria-hidden="true"><img src="assets/img/ph-contact.webp" alt="" loading="lazy" width="2000" height="1333"></div>
+  <div class="contact__bg" aria-hidden="true"><img src="assets/img/ct.webp" alt="" loading="lazy" width="2000" height="1333"></div>
   <div class="wrap contact__g">
     <div class="contact__l">
-      <p class="eyebrow"><span class="dot"></span>Contact</p>
-      <h2 id="coT" class="h2">Parlons de <em>votre jardin</em></h2>
+      <p class="eyebrow"><span class="dot"></span>06 — Contact</p>
+      <h2 id="coT" class="h2 big">Parlons de <em>votre jardin</em></h2>
       <p class="lead">Devis et étude sur simple demande. Concevoir, réaliser et entretenir votre jardin : racontez-nous votre projet, nous revenons vers vous.</p>
       <a class="bigtel" href="tel:+33474550098" target="_blank" rel="noopener" data-magnet><small>Appelez-nous</small><b>04 74 55 00 98</b></a>
       <address class="addr">
@@ -229,7 +298,7 @@
       </div>
       <label>Votre question / projet<textarea name="msg" rows="4" placeholder="Terrasse, allée, plantations, bassin… dites-nous ce que vous imaginez."></textarea></label>
       <label class="chk"><input type="checkbox" name="rgpd" required><span>J’accepte que mes données servent à répondre à ma demande, conformément à la <button type="button" class="lnk" data-open="legal">politique de confidentialité</button>. <em>*</em></span></label>
-      <button class="btn btn--block" type="submit" data-magnet><span>Envoyer ma demande</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m0 0l-4.500-4.500M15 10l-4.500 4.500"/></svg></button>
+      <button class="btn btn--block" type="submit" data-magnet><span>Envoyer ma demande</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5"/></svg></button>
       <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -238,13 +307,14 @@
 </main>
 
 <footer class="ft">
+  <p class="ft__big" aria-hidden="true">SOCAP</p>
   <div class="wrap ft__g">
-    <div><img src="assets/img/logo-light.png" alt="SOCAP" width="110" height="62"><p>La signature nature.<br>Paysagiste dans l’Ain depuis 1983.</p></div>
+    <div><svg class="ft__mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#mark"/></svg><p>La signature nature.<br>Paysagiste dans l’Ain depuis 1983.</p></div>
     <div><h4>Contact</h4><p>Les Lazares<br>01400 Châtillon-sur-Chalaronne<br><a href="tel:+33474550098" target="_blank" rel="noopener">04 74 55 00 98</a></p></div>
-    <div><h4>Naviguer</h4><p><a href="#plan">Du plan au jardin</a><br><a href="#prestations">Prestations</a><br><a href="#realisations">Réalisations</a><br><a href="#contact">Demande de devis</a></p></div>
+    <div><h4>Naviguer</h4><p><a href="#plan">Méthode</a><br><a href="#prestations">Prestations</a><br><a href="#realisations">Réalisations</a><br><a href="#contact">Demande de devis</a></p></div>
     <div><h4>Informations</h4><p><button type="button" class="lnk" data-open="legal">Mentions légales</button><br>Adhérent UNEP</p></div>
   </div>
-  <p class="ft__c">© SOCAP SARL · Tous droits réservés · Textes et photographies : SOCAP.</p>
+  <p class="ft__c">© SOCAP SARL · Tous droits réservés · Photos « SOCAP » : SOCAP · Photos d’illustration : banque d’images libre de droits.</p>
 </footer>
 
 <dialog class="legal" id="legal" aria-labelledby="legT">
@@ -259,7 +329,7 @@
 </dialog>
 
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="assets/js/hero.js?v=2"></script>
-<script src="assets/js/site.js?v=2"></script>
+<script src="assets/js/hero.js?v=3"></script>
+<script src="assets/js/site.js?v=3"></script>
 </body>
 </html>

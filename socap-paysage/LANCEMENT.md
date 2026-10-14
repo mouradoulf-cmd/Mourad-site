@@ -21,3 +21,6 @@ Dans `index.html` (fenêtre « Mentions légales », en bas du fichier) : rensei
 - Toutes les photographies sont celles de SOCAP (aucune photo de banque d'images).
 - Adapté téléphone / tablette / ordinateur ; aucun cookie ; données du formulaire : usage limité à la réponse au devis (cf. mentions).
 - Si le navigateur ne gère pas WebGL, la photo du haut de page reste affichée normalement.
+
+## Mise à jour v3 — images
+Les grandes images d'ambiance (hero, méthode, prestations, manifeste, contact) sont des **photos libres de droits (Pexels)**, signalées « Photo d'illustration ». Seule la section Réalisations contient de vraies photos SOCAP. Avant la mise en ligne réelle : remplacer ces images (`assets/img/hs*, pl*, sv*, mf*, ct`) par les photos du client, et renseigner `CONFIG.email` dans `assets/js/site.js`.

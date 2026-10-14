@@ -234,12 +234,7 @@ for that specific run:**
   `background-removal` route (to host the file) or if the user explicitly
   wants a paid feature.
 
-## SOCAP Paysage — reference for landscaping / trades sites with real photography (`socap-paysage/`)
+## SOCAP Paysage — reference for landscaping / trades sites (`socap-paysage/`)
 
-Demo redesign of a real landscaper (socap-paysage.com), built after the user rejected a first low-poly 3D version as "basic/fake":
-**real photography + futuristic UI**. Plain HTML/CSS/JS, no build, no 3D library. Dark forest night + mint/lime + amber, Unbounded + Manrope +
-Bodoni Moda italic (self-hosted). Pieces to reuse: raw-WebGL "2.5D" hero photo (`assets/js/hero.js`, estimated depth from luminance/height,
-mouse parallax, warm light sweep, grain, canvas dust, photo stays as fallback), sticky "plan → photo" scrub (edge-detected blueprint image
-revealed into the real photo by a scan line, `bp-*.webp` made with OpenCV Canny), horizontal pinned gallery, radar zone map with real
-projection, tilt cards. All photos are the client's own (low-res, upscaled + unsharp); a first version used Pexels stock and the user asked for the original's real photos
-instead — never label stock as the client's work. Launch steps in `LANCEMENT.md`.
+Demo redesign of a real landscaper (socap-paysage.com) after the user rejected a low-poly 3D version as "basic/fake". v3 = cinematic + futuristic. Plain HTML/CSS/JS, no build. Dark forest night + mint/lime + amber, Unbounded + Manrope + Bodoni Moda italic (self-hosted). Pieces to reuse: animated SVG logo + loader, raw-WebGL liquid-wipe hero slideshow (`assets/js/hero.js`, day→dusk→night, fallback crossfade), word-scrub manifesto, plan→photo scan scrub with callouts (OpenCV Canny blueprints `bp-*.webp`), services explorer, horizontal pinned gallery, 3D radar map with real projection.
+**Imagery is hybrid**: atmosphere/hero/services/manifesto images are royalty-free stock (Pexels, labelled "Photo d'illustration"/"Inspiration"); only the Réalisations section uses the client's real photos (pill "Photo SOCAP"). Never present stock as the client's work; swap stock for client photos before launch. Form needs `CONFIG.email` in `site.js`. Launch steps in `LANCEMENT.md`.
