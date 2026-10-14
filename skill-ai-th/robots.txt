@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /members.html
+Disallow: /checkout.html
