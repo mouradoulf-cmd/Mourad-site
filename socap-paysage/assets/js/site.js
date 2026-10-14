@@ -143,7 +143,7 @@
   var svcBtns = $$("#svcList button"), svcFigs = $$(".svc__imgs figure"), svcCur = -1, svcTimer = 0, svcUser = false, svcVisible = false;
   function svcSelect(i) {
     if (i === svcCur) return; svcCur = i;
-    svcBtns.forEach(function (b, k) { b.setAttribute("aria-selected", String(k === i)); b.classList.toggle("on", k === i); }); svcFigs.forEach(function (f, k) { f.classList.toggle("on", k === i); });
+    svcBtns.forEach(function (b, k) { b.setAttribute("aria-selected", String(k === i)); b.classList.toggle("on", k === i); }); svcFigs.forEach(function (f, k) { f.classList.toggle("on", k === i); }); if (svcBtns[i].parentNode.parentNode && matchMedia("(max-width:900px)").matches) { var L = svcBtns[i].parentNode, P = L.parentNode; P.scrollTo({ left: L.offsetLeft - 16, behavior: "smooth" }); }
     var d = SVC[i], p = $(".svc__panel"); p.classList.remove("swap"); void p.offsetWidth; p.classList.add("swap");
     $("#svcNo").textContent = (i < 9 ? "0" : "") + (i + 1) + " / 09"; $("#svcT").textContent = d[0]; $("#svcD").textContent = d[1]; $("#svcTags").innerHTML = d[2].map(function (t) { return "<li>" + t + "</li>"; }).join("");
   }

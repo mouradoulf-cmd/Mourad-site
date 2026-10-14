@@ -246,6 +246,19 @@ html.rv-on .rv { opacity: 0; transform: translateY(34px); } html.rv-on .rv.in { 
   .work { height: auto; } .work__sticky { position: static; height: auto; padding: 4.5rem 0 3rem; } .work__track { width: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; scrollbar-width: none; } .work__track::-webkit-scrollbar { display: none; } .proj { scroll-snap-align: center; width: 82vw; flex: none; } .work__hint { position: static; padding: 0 var(--pad); }
   .zone__r { --rx: 28deg; --rz: -6deg; }
 }
-@media (max-width: 640px) { .vows__g { grid-template-columns: 1fr; } .f2 { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2.6rem, 14vw, 4.4rem); } .ft__g { grid-template-columns: 1fr; } .mani__ph { grid-template-columns: repeat(3, 1fr); gap: .5rem; } .rings { grid-template-columns: 1fr; } .ring { grid-template-columns: 80px 1fr; } .ring svg { width: 80px; height: 80px; } .svc__panel { min-height: 0; } .cap__t { font-size: .95rem; } }
+@media (max-width: 640px) {  .f2 { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2.6rem, 14vw, 4.4rem); } .ft__g { grid-template-columns: 1fr; } .mani__ph { grid-template-columns: repeat(3, 1fr); gap: .5rem; }  .svc__panel { min-height: 0; } .cap__t { font-size: .95rem; } }
 @media (prefers-reduced-motion: reduce) { .marquee__t, body::before, .hero__img, .hero__scan, .m-sweep, .m-pulse, .m-arc, .eyebrow .dot, .hero__scroll i, .work__hint i, .vows__g li::before, .cal i { animation: none !important; } .loader { transition-duration: .01s; } .loader__mark .d, .loader__word span, .loader__sub { animation-duration: .01s !important; animation-delay: 0s !important; } html.rv-on .rv { opacity: 1 !important; transform: none !important; } .hero h1 .ln > span, .hero .eyebrow, .hero__lead, .hero__cta { transform: none !important; opacity: 1 !important; } * { scroll-behavior: auto !important; } }
 @media print { .loader, .cursor, .progress, .hero__media, .rail, .totop { display: none; } body { background: #fff; color: #000; } }
+
+/* Mobile: compact layout (shorter page) */
+@media (max-width: 900px) {
+  .plan { height: 280vh; }
+  .svc__list { display: flex; gap: .5rem; overflow-x: auto; border: 0; scrollbar-width: none; padding-bottom: .4rem; scroll-snap-type: x proximity; } .svc__list::-webkit-scrollbar { display: none; }
+  .svc__list li { flex: none; border: 0; scroll-snap-align: start; }
+  .svc__list button { display: flex; width: auto; gap: .5rem; padding: .6rem 1rem; border-radius: 99px; box-shadow: inset 0 0 0 1px var(--line2); white-space: nowrap; }
+  .svc__list button.on { padding-left: 1rem; box-shadow: inset 0 0 0 1px var(--mint); background: rgba(125, 255, 198, .08); }
+  .svc__list i { display: none; } .svc__list .t { font-size: .92rem; }
+  .vows__g { display: flex; overflow-x: auto; gap: .8rem; scroll-snap-type: x mandatory; margin-inline: calc(var(--pad) * -1); padding: .4rem var(--pad) 1rem; scrollbar-width: none; } .vows__g::-webkit-scrollbar { display: none; }
+  .vows__g li { flex: 0 0 78%; scroll-snap-align: center; padding: 1.3rem 1.2rem; }
+  .rings { grid-template-columns: 1fr 1fr; gap: .7rem; } .ring { grid-template-columns: 1fr; justify-items: start; padding: 1rem; gap: .5rem; } .ring svg { width: 64px; height: 64px; }
+}
