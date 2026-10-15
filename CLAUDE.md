@@ -168,7 +168,7 @@ Inter, self-hosted. Home order: 50/50 hero « Be found. Be chosen. » (MacBook
 + iPhone cycling the 7 live demos, gold dust, orb), key figures + sectors
 marquee, the 7 demos in device mockups (live preview `.pv`), 4 offers +
 morphing dialog `.om`, why us (3 photos), how it works (3 steps), FAQ (8),
-« Ready to be visible? » giant WhatsApp finale, footer. Live preview « Votre site, en direct » (`#live`, `assets/js/live-preview.js`, injected after `#work`, own CSS + 5-language texts): the visitor types a business name + activity and a real demo opens in a laptop + phone via `?n=` (demo-name.js). No testimonials
+« Ready to be visible? » giant WhatsApp finale, footer. No testimonials
 until real ones exist. Every logo must be the real brand mark (Simple Icons
 paths, official Google G, PromptPay image in `assets/img/logos/`); footer
 social icons stay hidden until `social` links are filled in
