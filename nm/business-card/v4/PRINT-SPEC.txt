@@ -1,0 +1,19 @@
+NM STUDIO BUSINESS CARD - PRINT SPEC / ข้อมูลสำหรับร้านพิมพ์
+
+File: nm-studio-card-print.pdf  (page 1 = front / หน้า, page 2 = back / หลัง)
+Trim size / ขนาดสำเร็จ: 90 x 54 mm
+File size incl. bleed / ขนาดไฟล์รวมตัดตก: 96 x 60 mm (3 mm bleed each side / ตัดตก 3 มม. รอบด้าน)
+Safe area / พื้นที่ปลอดภัย: all text and QR are >= 4 mm inside the trim line.
+Colour / สี: designed in RGB (dark navy #07060C, violet #7B61FF, gold #E6C27A, cream #F4F1EA). Ask the printer to convert to CMYK and to check the QR codes after proofing (ขอให้แปลงเป็น CMYK และตรวจ QR หลังพิสูจน์อักษร).
+Front is a deep dark colour: ask for a RICH BLACK / full-coverage dark and a test print (หน้าหน้าเป็นสีเข้ม ขอให้ใช้สีดำเข้มและพิมพ์ตัวอย่างก่อน).
+
+RECOMMENDED STOCK AND FINISH (maximum quality) / วัสดุและการเคลือบที่แนะนำ
+- Paper: 350 gsm art card (or 400 gsm uncoated, cotton-feel for luxury) / กระดาษอาร์ตการ์ด 350 แกรม
+- Lamination: matt or soft-touch on both sides, to avoid scuffing on the dark side / เคลือบด้านหรือซอฟต์ทัชทั้งสองหน้า
+- Optional premium: spot UV or gold hot-foil on the wave logo and "Be chosen." / ปั๊มฟอยล์ทองหรือ Spot UV ที่โลโก้และคำว่า Be chosen.
+- Optional: edge painting in dark navy / ทาสีขอบการ์ด
+- Corners: square (or 2-3 mm round if desired; the design supports both) / มุมตรงหรือมุมมน
+
+CHECK BEFORE PRINTING / ตรวจสอบก่อนพิมพ์
+- Scan both QR codes with a phone from the printed proof (website + WhatsApp).
+- LINE QR not on this version yet: regenerate with python3 build.py "<LINE URL>" then node render.js
