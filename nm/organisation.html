@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07060c">
+<title>Mes discussions | NM Studio</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#07060c;--card:#110f1a;--line:rgba(255,255,255,.08);--ink:#f4f1ea;--dim:#a9a6bb;--gold:#e6c27a;--vio:#7b61ff;--ok:#7ee0a8;--wait:#ffb35a;--pause:#8fa3ff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif;padding:calc(env(safe-area-inset-top) + 22px) 16px 60px}
+.w{max-width:760px;margin:0 auto}
+a{color:var(--gold)}
+h1{font-size:28px;letter-spacing:-.02em}h1 b{color:var(--gold)}
+.sub{color:var(--dim);margin:.3rem 0 1.4rem;font-size:14px}
+h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:1.8rem 0 .7rem}
+.todo{list-style:none;display:grid;gap:8px}
+.todo li{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(230,194,122,.12),rgba(230,194,122,.03));box-shadow:inset 0 0 0 1px rgba(230,194,122,.28)}
+.todo input{margin-top:3px;width:18px;height:18px;accent-color:var(--gold);flex:none}
+.todo small{display:block;color:var(--dim);font-size:12px}
+.todo .tag{flex:none;margin-left:auto;font-size:11px;font-weight:700;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.07);color:var(--ink);white-space:nowrap}
+.todo li.done{opacity:.45}.todo li.done span{text-decoration:line-through}
+.cards{display:grid;gap:12px}
+.c{padding:16px;border-radius:18px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.c h3{font-size:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.b{font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px}
+.b.cours{background:rgba(126,224,168,.15);color:var(--ok)}.b.attente{background:rgba(255,179,90,.15);color:var(--wait)}.b.pause{background:rgba(143,163,255,.15);color:var(--pause)}.b.fini{background:rgba(255,255,255,.08);color:var(--dim)}
+.c .s{color:var(--dim);margin:.35rem 0 .6rem;font-size:14px}
+.c dl{display:grid;gap:8px;font-size:14px}
+.c dt{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.c dd ul{list-style:none;display:grid;gap:2px}.c dd li:before{content:"• ";color:var(--vio)}
+.c dd.wait li:before{content:"→ ";color:var(--wait)}
+.c .note{font-size:13px;color:var(--wait)}
+.lk{display:flex;flex-wrap:wrap;gap:6px}.lk a{font-size:13px;padding:6px 11px;border-radius:99px;background:rgba(230,194,122,.1);text-decoration:none}
+.guide{list-style:none;display:grid;gap:6px;font-size:14px}.guide b{color:var(--gold)}
+.foot{margin-top:2rem;color:var(--dim);font-size:12px}
+</style>
+</head>
+<body><div class="w">
+<h1>Mes <b>discussions</b></h1>
+<p class="sub" id="upd">Où en est chaque conversation, et ce qui t'attend.</p>
+<h2>À faire de ton côté</h2>
+<ul class="todo" id="todo"></ul>
+<h2>Quelle discussion pour quoi</h2>
+<ul class="guide" id="guide"></ul>
+<h2>Les discussions</h2>
+<div class="cards" id="cards"></div>
+<p class="foot">Règle : un nouveau sujet = une nouvelle discussion, avec un nom clair. Chaque discussion met à jour sa fiche ici. · <a href="demos.html">Mon espace</a></p>
+</div>
+<script src="assets/js/discussions-data.js?v=1"></script>
+<script>
+(function(){
+  var E=function(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  var LBL={cours:"En cours",attente:"Attend ta réponse",pause:"En pause",fini:"Terminé"};
+  var fd=function(d){return d?new Date(d+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"}):""};
+  if(window.DISC_UPDATED)document.getElementById("upd").textContent="Mis à jour le "+fd(window.DISC_UPDATED)+" · où en est chaque conversation, et ce qui t'attend.";
+  var done={};try{done=JSON.parse(localStorage.getItem("disc_done")||"{}")}catch(e){}
+  var todo=document.getElementById("todo");
+  (window.DISC_TODO||[]).forEach(function(x,i){
+    var k=x.t,li=document.createElement("li");if(done[k])li.className="done";
+    li.innerHTML='<input type="checkbox" '+(done[k]?"checked":"")+' aria-label="Fait"><span>'+E(x.t)+(x.why?"<small>"+E(x.why)+"</small>":"")+'</span><em class="tag">'+E(x.d)+'</em>';
+    li.querySelector("input").onchange=function(){done[k]=this.checked;li.className=this.checked?"done":"";try{localStorage.setItem("disc_done",JSON.stringify(done))}catch(e){}};
+    todo.appendChild(li);
+  });
+  var g=document.getElementById("guide"),c=document.getElementById("cards");
+  (window.DISC||[]).forEach(function(d){
+    if(d.etat!=="fini")g.insertAdjacentHTML("beforeend","<li><b>"+E(d.name)+"</b> : "+E(d.pour)+"</li>");
+    var h='<div class="c"><h3>'+E(d.name)+' <span class="b '+d.etat+'">'+LBL[d.etat]+'</span>'+(d.maj?' <small style="font-size:12px;color:var(--dim);font-weight:400">'+fd(d.maj)+'</small>':'')+'</h3><p class="s">'+E(d.sujet)+'</p><dl>';
+    if(d.fait&&d.fait.length)h+='<div><dt>Fait</dt><dd><ul>'+d.fait.map(function(x){return"<li>"+E(x)+"</li>"}).join("")+'</ul></dd></div>';
+    if(d.attend&&d.attend.length)h+='<div><dt>Ce qui t\'attend</dt><dd class="wait"><ul>'+d.attend.map(function(x){return"<li>"+E(x)+"</li>"}).join("")+'</ul></dd></div>';
+    if(d.note)h+='<p class="note">'+E(d.note)+'</p>';
+    if(d.liens&&d.liens.length)h+='<div><dt>Liens</dt><dd class="lk">'+d.liens.map(function(l){return'<a href="'+E(l.u)+'" target="_blank" rel="noopener">'+E(l.n)+'</a>'}).join("")+'</dd></div>';
+    h+='</dl></div>';c.insertAdjacentHTML("beforeend",h);
+  });
+})();
+</script>
+</body>
+</html>
