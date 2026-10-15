@@ -1,0 +1,26 @@
+NM STUDIO BUSINESS CARD v5 - PRINT SPEC / ข้อมูลสำหรับร้านพิมพ์
+
+FILES / ไฟล์
+1) nm-studio-card-print.pdf  - page 1 = FRONT (หน้า), page 2 = BACK (หลัง)
+2) nm-studio-spot-uv-mask.pdf - black shape = where to apply SPOT UV (or foil): the wave logo on the front only
+   (ไฟล์ดำ = ตำแหน่งสปอตยูวี / ฟอยล์ ที่โลโก้คลื่นด้านหน้าเท่านั้น)
+
+SIZE / ขนาด
+- Finished size / ขนาดสำเร็จ: 90 x 54 mm
+- File size incl. bleed / รวมตัดตก: 96 x 60 mm (3 mm bleed each side / ตัดตก 3 มม.)
+- All elements are inside the safe area (>= 6 mm from the file edge).
+
+COLOURS / สี
+- Designed in RGB: night #07060C, violet #7B61FF, gold #E6C27A, white QR tile, cream text.
+- Please convert to CMYK, use RICH BLACK for the dark background, and send a printed proof before the full run.
+  (ขอให้แปลง CMYK ใช้ดำเข้ม และพิมพ์ตัวอย่างก่อน)
+
+BEST QUALITY / คุณภาพสูงสุด
+- Stock: 350 gsm art card, or 400 gsm uncoated premium / กระดาษอาร์ตการ์ด 350 แกรม
+- Finish: soft-touch (velvet) lamination, both sides / เคลือบซอฟต์ทัช 2 หน้า
+- Spot UV (gloss) on the wave logo, front side, using the mask file / สปอตยูวีที่โลโก้ด้านหน้า
+- Optional: gold edge painting or dark navy edge / ทาสีขอบ
+
+QR CODE / คิวอาร์โค้ด
+- One QR (back) -> https://nmstudiothai.com ; printed 24.6 mm square on a white tile. Keep it black on white, do not recolour.
+- Scan the printed proof with a phone before approving. (สแกน QR จากตัวอย่างก่อนอนุมัติ)
