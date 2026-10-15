@@ -5,15 +5,15 @@
 window.DISC_UPDATED = "2026-10-15";
 
 window.DISC_TODO = [
-  { t: "Acheter le domaine nmstudiothai.com sur cloudflare.com (≈10 $/an), puis créer la clé limitée", d: "VG" },
-  { t: "Créer le compte LINE Official Account (manager.line.biz) et envoyer le lien", d: "VG", why: "pour le 2e QR de la carte de visite" },
-  { t: "Créer la micro-entreprise sur formalites.entreprises.gouv.fr", d: "VG", why: "obligatoire avant de facturer" },
-  { t: "Faire relire les textes thaï (carte, vidéo) par ta femme", d: "VG" },
+  { t: "Acheter le domaine nmstudiothai.com sur cloudflare.com (≈10 $/an), puis créer la clé limitée", d: "NM Studio" },
+  { t: "Créer le compte LINE Official Account (manager.line.biz) et envoyer le lien", d: "NM Studio", why: "pour le 2e QR de la carte de visite" },
+  { t: "Créer la micro-entreprise sur formalites.entreprises.gouv.fr", d: "NM Studio", why: "obligatoire avant de facturer" },
+  { t: "Faire relire les textes thaï (carte, vidéo) par ta femme", d: "NM Studio" },
   { t: "Répondre « oui » ou « non » pour ajouter 4 liens dans Mon espace", d: "Vidéo IA" }
 ];
 
 window.DISC = [
-  { name: "VG", etat: "cours", maj: "2026-10-15",
+  { name: "NM Studio · Sites clients & Business", etat: "cours", maj: "2026-10-15",
     sujet: "Sites clients, NM Studio (domaine, carte de visite), entreprise, prospection",
     fait: [
       "Site démo SOCAP Paysage v3 (mobile fluide, studio d'ambiance)",
