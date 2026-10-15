@@ -249,3 +249,11 @@ SA fiche dans `window.DISC` (etat cours/attente/pause/fini, maj, fait, attend, l
 `window.DISC_TODO`, puis `DISC_UPDATED` = date du jour, sur la branche publiée `claude/thai-app-mnw166`.
 Un nouveau sujet = une nouvelle discussion avec un nom clair. Les liens publiés vont aussi dans
 `nm/assets/js/demos-data.js` (Mon espace), dans le bon espace (site / video / formation).
+
+## Skills partagés entre toutes les discussions
+
+Mourad veut que chaque skill installé soit disponible dans toutes ses discussions. Installer un skill =
+le mettre dans `.claude/skills/<nom>/` (jamais d'installation globale hors du dépôt), puis le copier
+aussi sur la branche par défaut `claude/modern-professional-websites-0cetce` (où démarrent les nouvelles
+discussions) et sur `claude/thai-app-mnw166`, en ajout seulement (ne rien écraser ni supprimer).
+Une discussion déjà ouverte ne voit les nouveaux skills qu'au prochain démarrage.
