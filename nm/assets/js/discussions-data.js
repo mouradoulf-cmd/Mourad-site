@@ -27,14 +27,14 @@ window.DISC = [
       { n: "Carte de visite (fichiers)", u: "https://github.com/mouradoulf-cmd/Mourad-site/tree/claude/thai-app-mnw166/nm/business-card/v5" }
     ],
     pour: "Nouveaux sites clients, NM Studio, domaine, cartes, questions entreprise/admin" },
-  { name: "Vidéo IA", etat: "attente", maj: "2026-10-08",
+  { name: "Vidéo IA · Studios & Remix", etat: "attente", maj: "2026-10-08",
     sujet: "Studios vidéo IA : Studio Universel, Remix, Story Studio",
     fait: ["Studio Universel (séries, téléchargement groupé)", "Remix Studio (vidéo TikTok → nouvelle version)"],
     attend: ["Répondre oui/non pour ajouter 4 liens dans Mon espace"],
     note: "Problème connu : le Remix invente parfois des personnages ou du son ; pas encore corrigé.",
     liens: [{ n: "Story Studio", u: "https://mouradoulf-cmd.github.io/Mourad-site/story/" }],
     pour: "Tout ce qui est vidéo IA" },
-  { name: "Formation automatisée", etat: "pause", maj: "2026-10-11",
+  { name: "NM Academy · Formation & Mon espace", etat: "pause", maj: "2026-10-11",
     sujet: "NM Academy (formation), Mon espace, réservation Jong-ngai",
     fait: ["NM Academy", "Appli « Mon espace » sur l'iPhone"],
     attend: ["Installation de REA : reportée (« on fera ça plus tard »)"],
@@ -43,13 +43,13 @@ window.DISC = [
       { n: "Mon espace", u: "https://mouradoulf-cmd.github.io/Mourad-site/nm/demos.html" }
     ],
     pour: "La formation NM Academy et l'appli Mon espace" },
-  { name: "Business plan Thai", etat: "pause", maj: "2026-10-13",
+  { name: "Business · Plan Thaïlande & perso", etat: "pause", maj: "2026-10-13",
     sujet: "Business plan Thaïlande, Avatar Cash, NM Academy vente ; dernièrement : réparation PC",
     fait: ["Avatar Cash", "Page de vente NM Academy"],
     attend: ["Limite hebdomadaire atteinte : reprendre plus tard (la réparation PC était en cours)"],
     liens: [{ n: "Avatar Cash", u: "https://claude.ai/artifact/34nPeKyCopuG256DRmkBd8" }],
     pour: "Plan d'affaires Thaïlande et questions perso" },
   { name: "Terminées (archivées)", etat: "fini", maj: "",
-    sujet: "NM STUDIO (le gros du site NM), Site massage Malee, Refonte Giulivo / Façadiers, Site restaurant, Portiva, Vidéos 3D Sabai, DJs, Gagner 20 €/jour, Vérif. MCP 21st",
+    sujet: "NM Studio · Création du site, Démo · Malee Spa massage, Démo · Giulivo & Façadiers v1, Démo · Giulivo refonte, Test · Portiva hero, Idées · Sabai Ventures, Idées · DJs, Idées · Gagner 20 €/jour, Outils · Vérification MCP 21st",
     fait: [], attend: [], liens: [], pour: "Rien à faire : le travail est déjà dans le dépôt et dans Mon espace" }
 ];
