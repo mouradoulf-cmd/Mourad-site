@@ -157,3 +157,11 @@ Pick the space by what the work is about — never dump everything in "Site web"
 - **Site web** (`space: "site"`): NM Studio site, client demos (`NM_DEMOS`), website tools and templates.
 At the end of any task that publishes or changes a page, tell the owner in one line which space it is in
 ("c'est dans Mon espace → Vidéo IA") along with the URL. The page fetches the data file fresh on every open.
+
+## Skills partagés entre toutes les discussions
+
+Mourad veut que chaque skill installé soit disponible dans toutes ses discussions. Installer un skill =
+le mettre dans `.claude/skills/<nom>/` (jamais d'installation globale hors du dépôt), puis le copier
+aussi sur la branche par défaut `claude/modern-professional-websites-0cetce` (où démarrent les nouvelles
+discussions) et sur `claude/thai-app-mnw166`, en ajout seulement (ne rien écraser ni supprimer).
+Une discussion déjà ouverte ne voit les nouveaux skills qu'au prochain démarrage.
