@@ -1362,3 +1362,11 @@ html[lang="th"] .res__note, html[lang="ar"] .res__note { line-height: 1.8; }
 .wa-float { width: 52px; height: 52px; inset-inline-start: auto; inset-inline-end: 1rem; }
 .wa-float svg { width: 26px; height: 26px; }
 html.has-sheet .wa-float, .wa-float.is-tucked { transform: translateY(120%) scale(.8) !important; opacity: 0 !important; pointer-events: none; }
+
+/* ---------- Fluidity pass (phones): blur behind glass panels costs a full repaint on every scroll frame
+   on mid-range phones; the same panels get a solid, slightly lighter tint instead. Look unchanged at a glance. */
+@media (max-width: 899px), (hover: none) {
+  *, *::before, *::after { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .header.is-solid { background: rgba(9, 8, 12, .95); }
+  html { scroll-behavior: auto; }
+}

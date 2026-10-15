@@ -14,7 +14,9 @@
 
   /* ---------- smooth scroll ---------- */
   var lenis = null;
-  if (!reduce && window.Lenis) {
+  /* touch screens keep native scrolling: it is the smoothest on iPhone/Android, and Lenis there only adds work */
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!reduce && finePointer && window.Lenis) {
     lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 0.95, smoothWheel: true });
     if (hasGsap) {
       lenis.on("scroll", window.ScrollTrigger.update);

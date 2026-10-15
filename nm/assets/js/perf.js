@@ -36,3 +36,20 @@
     window.addEventListener("pageshow", function (e) { if (e.persisted) document.body.classList.remove("nm-leave"); });
   }
 })();
+
+/* 4. Phones: the floating WhatsApp / LINE buttons hide while the contact finale or the footer is on screen
+      (those already show big WhatsApp buttons), so they never cover a button or a line of text there. */
+(function () {
+  "use strict";
+  if (!("IntersectionObserver" in window) || !window.matchMedia("(max-width: 899px)").matches) return;
+  var st = document.createElement("style");
+  st.textContent = ".wa-float,.line-float{transition:opacity .3s,transform .3s}.nm-fab-off .wa-float,.nm-fab-off .line-float{opacity:0;transform:translateY(16px);pointer-events:none}";
+  document.head.appendChild(st);
+  var seen = new Set();
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+    document.documentElement.classList.toggle("nm-fab-off", seen.size > 0);
+  }, { rootMargin: "0px 0px -15% 0px" });
+  function init() { [document.getElementById("contact"), document.querySelector("footer")].forEach(function (el) { if (el) io.observe(el); }); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();
