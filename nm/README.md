@@ -171,3 +171,21 @@ restaurant), 1695606453510 (full restaurant). All colour-graded warm.
 ## Currency (v5c)
 
 Euros for EN / FR / IT / AR, baht for TH (`offers-config.js` → `currency`). Euro list: Google listing 150 €, website 800 € setup + 30 €/month, Complete Pack 1,500 € setup + 100 €/month (the monthly euro amounts are carried over from the owner's earlier figures; the two setup prices are the new ones). The euro amounts are keyed by the baht amount in `approx.eur`, so checkout totals stay exact (830 €, 1,100 €, 1,600 €, 2,500 €). Baht prices are unchanged. The generated language pages bake the right currency (`/tmp` helper `genlang.py` is not in the repo; the runtime `NMPrice` produces the same text).
+
+## Passes d'amélioration
+
+### 2026-10-16 · « Le téléphone doit sonner » (skills : landing-page-conversion-audit, cro, seo-local)
+
+Application à NM Studio de la méthode de conversion de CLAUDE.md (vidéo « le site de plombier que je ferais »).
+Le reste du site est inchangé.
+
+- **Nos engagements** (`#promise`, entre Offres et FAQ) : 6 peurs → 6 engagements. Chaque phrase reprend un
+  engagement déjà écrit dans la FAQ ou les offres (maquette gratuite 48 h, prix affichés, sans engagement,
+  photos par WhatsApp, Google 48 h, le site est à vous). Ne rien y ajouter qui ne soit pas vrai.
+- **Zones desservies** (bandeau sous les engagements) : Pattaya et alentours, + « ailleurs : visio et WhatsApp ».
+  Le JSON-LD `areaServed` liste les mêmes villes (SEO local).
+- **Rappel en une case** (finale `#contact`) : un seul champ numéro → message WhatsApp pré-rempli
+  (`form[data-callback]` dans `nm-grow.js`, même logique que les formulaires de maquette).
+- Textes dans `assets/js/nm-copy4.js` (EN/FR/IT/TH/AR) et en dur dans chaque `index.html` de langue.
+- Déjà conforme, pas touché : promesse du hero, 3 offres, bouton WhatsApp flottant, numéro jusqu'en bas.
+- Idée suivante (non faite) : un « carnet » de conseils/réalisations pour le SEO (règle 6).
