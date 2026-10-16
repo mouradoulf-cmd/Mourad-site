@@ -53,6 +53,24 @@
     });
   });
 
+  /* ---------- one-field call-back (finale): just a number, sent on WhatsApp ---------- */
+  [].slice.call(document.querySelectorAll("form[data-callback]")).forEach(function (form) {
+    var err = form.querySelector(".cb__err"), input = form.elements.tel;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var tel = input.value.trim();
+      if (tel.replace(/\D/g, "").length < 6) { if (err) err.textContent = t("callback.r"); input.focus(); return; }
+      if (err) err.textContent = "";
+      var msg = t("callback.m") + " " + tel;
+      try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: "callback" } })); } catch (e2) {}
+      var num = String(C.whatsappNumber || "").replace(/\D/g, "");
+      if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
+      var copied = copy(msg);
+      window.open(C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1", "_blank", "noopener");
+      copied.then(function () { toast(t("free.copied")); });
+    });
+  });
+
   /* ---------- video-call booking (slots in Thailand time, real availability from contact-config.js) ---------- */
   (function booking() {
     var box = document.getElementById("book"), cfg = C.booking;
