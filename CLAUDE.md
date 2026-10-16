@@ -289,3 +289,47 @@ que ce soit beau. Ne jamais livrer une version « basique » à améliorer plus 
    chaque lien et bouton, chaque langue, lisibilité, captures d'écran relues avec un œil critique
    (skills de design : impeccable, high-end-visual-design, design-taste-frontend, modern-web-guidance).
 6. Livrer avec le lien, ce qui a été fait, et ce qui reste à fournir par le client.
+
+## Méthode « le téléphone doit sonner » — conversion pour sites de métier/commerce (vidéo étudiée à la demande de Mourad)
+
+Tirée d'une vidéo TikTok « Si demain je devais créer un site de plombier »
+que Mourad a demandé d'apprendre et d'appliquer **à chaque futur site client**
+(artisans, commerces, restaurants, spas, services). Le but d'un site client
+n'est pas d'être joli, c'est **que le client appelle / écrive / réserve**.
+Cela complète la méthode « parfait du premier coup » (le waouh reste, mais au
+service de la conversion). Checklist à appliquer et à vérifier avant livraison :
+
+1. **Hero = une promesse en une phrase + le contact tout de suite.** Pas de
+   « Bienvenue sur notre site ». Promesse concrète (ex. « Réparer vite,
+   installer pour longtemps »), numéro / bouton WhatsApp-LINE visible sans
+   scroller, + un bouton « urgence » / action directe si le métier s'y prête.
+   Quelqu'un de pressé ne lit pas : il appelle.
+2. **Des preuves, pas des adjectifs.** Remplacer « professionnels et
+   réactifs » par des chiffres réels : année de création, nombre d'employés,
+   taux de réussite, délai moyen, nombre de clients/avis Google. Jamais de
+   chiffres inventés : demander au client ou les marquer « à compléter ».
+3. **3 services, pas 15.** Chacun avec une vraie photo + une ligne de bénéfice
+   concret (« Un plombier chez vous en 45 minutes »). Le visiteur trouve sa
+   case en 2 secondes.
+4. **Chaque peur du client devient un engagement.** Section « Peur de… ? →
+   promesse » : attendre → délai moyen ; se faire arnaquer → prix fixe annoncé
+   avant ; que ça lâche → garantie/certification. Adapter au métier
+   (restaurant : attente, prix, propreté ; spa : hygiène, prix cachés, etc.).
+5. **Bandeau des zones/quartiers desservis** (ex. Pattaya, Jomtien, Naklua…) :
+   le client « se voit dedans » et c'est du SEO local gratuit.
+6. **Carnet / conseils / réalisations** : vrais chantiers et vrais cas avec
+   des titres précis (« Réparer un robinet qui goutte ») → montre l'expertise
+   et ramène du trafic Google sur des recherches précises.
+7. **Pour ceux qui n'osent pas appeler : un seul champ.** « Ton numéro, on te
+   rappelle en 10 min » (ou un bouton WhatsApp/LINE pré-rempli). Jamais de
+   formulaire à 8 cases. Moins de friction = plus de demandes.
+8. **Le contact reste visible jusqu'en bas** : bouton flottant / barre
+   collante sur mobile + gros numéro en finale. Tous les liens `tel:`/`wa.me`
+   gardent `target="_blank" rel="noopener"`.
+
+Le format de la vidéo elle-même est aussi un modèle pour la pub TikTok de
+NM Studio : 90 s verticales, fond sombre, titre court en haut (« Une phrase.
+Un numéro. »), maquette du site qui défile au centre avec zooms sur l'élément
+dont on parle, sous-titres mot à mot avec le mot clé surligné, appel final
+« Écris SITE en commentaire ». Pour un « site de [métier] que je ferais »,
+reprendre ce déroulé, en thaï/français selon la cible.
