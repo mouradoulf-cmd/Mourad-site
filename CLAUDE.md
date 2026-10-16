@@ -273,6 +273,10 @@ Les gros changements (nouvelle section, refonte, offres) : proposer d'abord — 
 ## Méthode « parfait du premier coup » pour chaque nouveau site (demandé par Mourad)
 
 Mourad veut un site réussi dès la première version : seulement de petites retouches ensuite.
+NIVEAU PAR DÉFAUT = MAXIMUM : une simple demande « fais-moi un site » vaut demande premium, niveau agence à
+100 000 € (direction artistique, concept signature, finitions, fluidité, contrôle qualité). Mourad ne doit
+jamais avoir à écrire un prompt « premium / pro / au max » pour l'obtenir, ni demander une deuxième passe pour
+que ce soit beau. Ne jamais livrer une version « basique » à améliorer plus tard.
 1. Brief en 5 questions max avant de coder, uniquement si l'info manque : activité et ville, clients visés,
    ce qui doit donner envie (l'émotion), contenus réels disponibles (photos, menu, logo, textes), action
    principale (réserver, appeler, WhatsApp, commander). Sinon partir de ce que Mourad a envoyé.
