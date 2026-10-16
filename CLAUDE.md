@@ -241,3 +241,13 @@ Un numéro. »), maquette du site qui défile au centre avec zooms sur l'éléme
 dont on parle, sous-titres mot à mot avec le mot clé surligné, appel final
 « Écris SITE en commentaire ». Pour un « site de [métier] que je ferais »,
 reprendre ce déroulé, en thaï/français selon la cible.
+
+## OpenMontage — production vidéo (installé à la demande de Mourad)
+
+Skill partagé `.claude/skills/openmontage/` : outil open source de production vidéo par agent
+(github.com/calesthio/OpenMontage) pour les pubs TikTok/Reels, vidéos de démo des sites clients,
+explainers, sous-titres, doublage. C'est un projet complet sous licence **AGPL-3.0** : on le clone
+à la demande dans `/tmp/claude-0/openmontage` (`make setup`, ~3-5 min), on l'utilise comme outil,
+et seules les vidéos finales reviennent dans le dépôt (jamais son code). Gratuit par défaut : aucun
+fournisseur payant sans le « oui » de Mourad pour ce rendu précis ; pas de face swap ni de clone de
+voix/visage d'une vraie personne sans son accord. Détails dans le SKILL.md.
