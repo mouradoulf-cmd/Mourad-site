@@ -168,9 +168,12 @@ Une discussion déjà ouverte ne voit les nouveaux skills qu'au prochain démarr
 
 ## Chaque nouveau skill améliore NM Studio (demandé par Mourad)
 
-Après chaque installation de skill, regarder ce qu'il peut apporter au site NM Studio (`nm/`) et appliquer
-les améliorations sûres et testables (performance, fluidité, accessibilité, SEO, finitions visuelles) sans
-changer la structure, les textes de vente ni les prix. Tester ordinateur + téléphone dans les 5 langues,
-publier sur `claude/thai-app-mnw166`, puis dire à Mourad en quelques lignes ce qui a changé. Les grosses
-modifications (nouvelle section, refonte, changement d'offre ou de prix) : proposer d'abord, ne pas faire seul.
-Prix actuels à garder tels quels sauf demande explicite de Mourad.
+Tous les 3 à 5 nouveaux skills installés (ou quand des skills ont été ajoutés depuis la dernière passe),
+faire une « passe d'amélioration » du site NM Studio (`nm/`), carte blanche, sans attendre que Mourad le
+demande : utiliser les nouveaux skills pour améliorer fluidité, performance, finitions visuelles,
+accessibilité et SEO. Garder la structure, le style, les textes de vente et les prix (sauf demande
+explicite). Tester ordinateur + téléphone dans les 5 langues, publier sur `claude/thai-app-mnw166`, puis
+envoyer à Mourad un court rapport : ce qui a changé, le lien, et ton avis sur ce qui reste à améliorer.
+Noter la date et les skills utilisés dans `nm/README.md` (section « Passes d'amélioration »).
+Les gros changements (nouvelle section, refonte, offres) : proposer d'abord — Mourad a refusé une section
+« essai en direct » qui donnait l'impression que le travail se fait en une minute.
