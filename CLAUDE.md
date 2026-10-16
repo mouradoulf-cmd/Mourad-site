@@ -257,3 +257,12 @@ le mettre dans `.claude/skills/<nom>/` (jamais d'installation globale hors du d�
 aussi sur la branche par défaut `claude/modern-professional-websites-0cetce` (où démarrent les nouvelles
 discussions) et sur `claude/thai-app-mnw166`, en ajout seulement (ne rien écraser ni supprimer).
 Une discussion déjà ouverte ne voit les nouveaux skills qu'au prochain démarrage.
+
+## Chaque nouveau skill améliore NM Studio (demandé par Mourad)
+
+Après chaque installation de skill, regarder ce qu'il peut apporter au site NM Studio (`nm/`) et appliquer
+les améliorations sûres et testables (performance, fluidité, accessibilité, SEO, finitions visuelles) sans
+changer la structure, les textes de vente ni les prix. Tester ordinateur + téléphone dans les 5 langues,
+publier sur `claude/thai-app-mnw166`, puis dire à Mourad en quelques lignes ce qui a changé. Les grosses
+modifications (nouvelle section, refonte, changement d'offre ou de prix) : proposer d'abord, ne pas faire seul.
+Prix actuels à garder tels quels sauf demande explicite de Mourad.
