@@ -343,3 +343,19 @@ explainers, sous-titres, doublage. C'est un projet complet sous licence **AGPL-3
 et seules les vidéos finales reviennent dans le dépôt (jamais son code). Gratuit par défaut : aucun
 fournisseur payant sans le « oui » de Mourad pour ce rendu précis ; pas de face swap ni de clone de
 voix/visage d'une vraie personne sans son accord. Détails dans le SKILL.md.
+
+## Skills « 5 skills pour marques » (post TikTok envoyé par Mourad, 2026-10-16)
+
+- **n8n** (`n8n-*`, `using-n8n-mcp-skills`, MIT, czlonkowski) : construire des automatisations n8n
+  (ex. demande du site → WhatsApp/LINE de Mourad + Google Sheet, rappel de suivi client). Il faut une
+  instance n8n (auto-hébergée gratuite ou n8n Cloud payant) : demander avant de créer un compte payant.
+  Jamais d'envoi de messages en masse non sollicités.
+- **Higgsfield** (`higgsfield-product-photoshoot`, `higgsfield-generate`, MIT) : photos produit 4K et
+  visuels/vidéos IA. **Payant** (compte Higgsfield + crédits, `higgsfield auth login` fait par Mourad
+  lui-même) : annoncer le coût et attendre son « oui » pour chaque génération. Images IA = « illustration »,
+  jamais présentées comme de vraies photos du client.
+- **Brand brain** (`brand-brain`, écrit pour NM Studio) : un dossier `clients/<slug>/brain.md` avec les
+  vrais faits du client (infos, menu, avis Google, photos et leur origine, concurrents) avant tout site,
+  pub ou vidéo. Seulement des infos publiques dans le dépôt (il est publié).
+- **UGC** : déjà couvert par `ugc-ad-scripts` + `influencer-marketing`. **Pub Meta** : `facebook-ads`
+  (MIT, Rebecca Rae Barton) en plus de `ads` / `ad-creative` ; `marketing-council` pour l'avis « façon Seth Godin ».
