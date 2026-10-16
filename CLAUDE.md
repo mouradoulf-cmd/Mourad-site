@@ -269,3 +269,19 @@ envoyer à Mourad un court rapport : ce qui a changé, le lien, et ton avis sur 
 Noter la date et les skills utilisés dans `nm/README.md` (section « Passes d'amélioration »).
 Les gros changements (nouvelle section, refonte, offres) : proposer d'abord — Mourad a refusé une section
 « essai en direct » qui donnait l'impression que le travail se fait en une minute.
+
+## Méthode « parfait du premier coup » pour chaque nouveau site (demandé par Mourad)
+
+Mourad veut un site réussi dès la première version : seulement de petites retouches ensuite.
+1. Brief en 5 questions max avant de coder, uniquement si l'info manque : activité et ville, clients visés,
+   ce qui doit donner envie (l'émotion), contenus réels disponibles (photos, menu, logo, textes), action
+   principale (réserver, appeler, WhatsApp, commander). Sinon partir de ce que Mourad a envoyé.
+2. Étudier le site actuel du client s'il existe + 3 à 5 sites de référence du secteur (Awwwards, Godly).
+3. Montrer 3 directions artistiques très différentes (planche : couleurs, typos, style photo, idée de
+   mouvement signature) et laisser Mourad choisir AVANT de construire.
+4. Un concept signature par site, pas une accumulation d'effets ; structure adaptée au métier (pas toujours
+   le même squelette). Textes avec une vraie voix, contenu réel du client en priorité, jamais de faux avis.
+5. Contrôle qualité avant de montrer : téléphone + ordinateur, fluidité (défilement natif sur tactile),
+   chaque lien et bouton, chaque langue, lisibilité, captures d'écran relues avec un œil critique
+   (skills de design : impeccable, high-end-visual-design, design-taste-frontend, modern-web-guidance).
+6. Livrer avec le lien, ce qui a été fait, et ce qui reste à fournir par le client.
