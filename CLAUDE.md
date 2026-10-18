@@ -126,3 +126,144 @@ FR/EN/TH via `assets/js/i18n.js` (`[fr,en,th]` per key, `data-t` in HTML), all s
 `assets/js/config.js`, UI sounds in `assets/js/sfx.js` (Web Audio, no music, only after a
 user gesture), effects in `assets/js/fx.js`. Same honesty rules as Avatar Cash: no income
 guarantees, no fake proof, illustrative numbers must be labelled as examples.
+
+## NM Studio client demos (prospecting workflow)
+
+The user scouts a business and sends name, type, city, photos and an old-site / Google Maps URL. Build a
+personalised demo from the closest template (Giulivo, Noir, Mae Lek, ÔBlanc, Neon Tiger, Malee, Ride Siam,
+Façadiers): copy it to `demos/<slug>/` on the published branch `claude/thai-app-mnw166`, swap in their photos,
+name, copy and an adjusted palette, add `<meta name="robots" content="noindex">` and the "maquette gratuite"
+label, then add one line to `nm/assets/js/demos-data.js` (slug, name, type, city, date, status). The private
+page `nm/demos.html` ("Mon espace") lists them A–Z with status, QR code and WhatsApp share, and also holds
+every link the owner uses (`window.NM_LINKS` in the same data file) — add any new public page/project there so
+the owner never has to ask for URLs. Before handing over a demo, test it yourself (Playwright, mobile + desktop,
+no console errors, no horizontal overflow, all photos load, brand name replaced everywhere) and fix issues
+without waiting to be asked; then give the owner the hub link plus the demo link. Never invent reviews/ratings for a
+real business — remove the template's sample reviews/star counts or label them clearly as placeholders.
+
+
+## "Mon espace" — the owner's private hub (keep it up to date in EVERY conversation)
+
+`nm/demos.html` on the published branch `claude/thai-app-mnw166` is the owner's home-screen app
+(https://mouradoulf-cmd.github.io/Mourad-site/nm/demos.html). Home screen = three spaces: **Site web**
+(client demos A–Z + NM Studio links + tools + templates), **Vidéo IA**, **Formation**. All content comes from
+`nm/assets/js/demos-data.js`: `NM_DEMOS` (client demos) and `NM_LINKS` (groups with `space: "site" | "video" |
+"formation"`). Whenever you publish a new page, project, demo or course in any conversation, add it to the right
+space there and set `NM_UPDATED` to today's date — without being asked. When the owner says "ajoute ça dans
+Vidéo IA / Formation / Site web", add the link to that space.
+Pick the space by what the work is about — never dump everything in "Site web":
+- **Vidéo IA** (`space: "video"`): AI video studios/tools, video projects, generated films, TikTok/YouTube video work.
+- **Formation** (`space: "formation"`): courses and their pages (NM Academy, Avatar Cash, English Easy, members areas, funnels).
+- **Site web** (`space: "site"`): NM Studio site, client demos (`NM_DEMOS`), website tools and templates.
+At the end of any task that publishes or changes a page, tell the owner in one line which space it is in
+("c'est dans Mon espace → Vidéo IA") along with the URL. The page fetches the data file fresh on every open.
+
+## Skills partagés entre toutes les discussions
+
+Mourad veut que chaque skill installé soit disponible dans toutes ses discussions. Installer un skill =
+le mettre dans `.claude/skills/<nom>/` (jamais d'installation globale hors du dépôt), puis le copier
+aussi sur la branche par défaut `claude/modern-professional-websites-0cetce` (où démarrent les nouvelles
+discussions) et sur `claude/thai-app-mnw166`, en ajout seulement (ne rien écraser ni supprimer).
+Une discussion déjà ouverte ne voit les nouveaux skills qu'au prochain démarrage.
+
+## Chaque nouveau skill améliore NM Studio (demandé par Mourad)
+
+Tous les 3 à 5 nouveaux skills installés (ou quand des skills ont été ajoutés depuis la dernière passe),
+faire une « passe d'amélioration » du site NM Studio (`nm/`), carte blanche, sans attendre que Mourad le
+demande : utiliser les nouveaux skills pour améliorer fluidité, performance, finitions visuelles,
+accessibilité et SEO. Garder la structure, le style, les textes de vente et les prix (sauf demande
+explicite). Tester ordinateur + téléphone dans les 5 langues, publier sur `claude/thai-app-mnw166`, puis
+envoyer à Mourad un court rapport : ce qui a changé, le lien, et ton avis sur ce qui reste à améliorer.
+Noter la date et les skills utilisés dans `nm/README.md` (section « Passes d'amélioration »).
+Les gros changements (nouvelle section, refonte, offres) : proposer d'abord — Mourad a refusé une section
+« essai en direct » qui donnait l'impression que le travail se fait en une minute.
+
+## Méthode « parfait du premier coup » pour chaque nouveau site (demandé par Mourad)
+
+Mourad veut un site réussi dès la première version : seulement de petites retouches ensuite.
+NIVEAU PAR DÉFAUT = MAXIMUM : une simple demande « fais-moi un site » vaut demande premium, niveau agence à
+100 000 € (direction artistique, concept signature, finitions, fluidité, contrôle qualité). Mourad ne doit
+jamais avoir à écrire un prompt « premium / pro / au max » pour l'obtenir, ni demander une deuxième passe pour
+que ce soit beau. Ne jamais livrer une version « basique » à améliorer plus tard.
+1. Brief en 5 questions max avant de coder, uniquement si l'info manque : activité et ville, clients visés,
+   ce qui doit donner envie (l'émotion), contenus réels disponibles (photos, menu, logo, textes), action
+   principale (réserver, appeler, WhatsApp, commander). Sinon partir de ce que Mourad a envoyé.
+2. Étudier le site actuel du client s'il existe + 3 à 5 sites de référence du secteur (Awwwards, Godly).
+3. Montrer 3 directions artistiques très différentes (planche : couleurs, typos, style photo, idée de
+   mouvement signature) et laisser Mourad choisir AVANT de construire.
+4. Un concept signature par site, pas une accumulation d'effets ; structure adaptée au métier (pas toujours
+   le même squelette). Textes avec une vraie voix, contenu réel du client en priorité, jamais de faux avis.
+5. Contrôle qualité avant de montrer : téléphone + ordinateur, fluidité (défilement natif sur tactile),
+   chaque lien et bouton, chaque langue, lisibilité, captures d'écran relues avec un œil critique
+   (skills de design : impeccable, high-end-visual-design, design-taste-frontend, modern-web-guidance).
+6. Livrer avec le lien, ce qui a été fait, et ce qui reste à fournir par le client.
+
+## Méthode « le téléphone doit sonner » — conversion pour sites de métier/commerce (vidéo étudiée à la demande de Mourad)
+
+Tirée d'une vidéo TikTok « Si demain je devais créer un site de plombier »
+que Mourad a demandé d'apprendre et d'appliquer **à chaque futur site client**
+(artisans, commerces, restaurants, spas, services). Le but d'un site client
+n'est pas d'être joli, c'est **que le client appelle / écrive / réserve**.
+Cela complète la méthode « parfait du premier coup » (le waouh reste, mais au
+service de la conversion). Checklist à appliquer et à vérifier avant livraison :
+
+1. **Hero = une promesse en une phrase + le contact tout de suite.** Pas de
+   « Bienvenue sur notre site ». Promesse concrète (ex. « Réparer vite,
+   installer pour longtemps »), numéro / bouton WhatsApp-LINE visible sans
+   scroller, + un bouton « urgence » / action directe si le métier s'y prête.
+   Quelqu'un de pressé ne lit pas : il appelle.
+2. **Des preuves, pas des adjectifs.** Remplacer « professionnels et
+   réactifs » par des chiffres réels : année de création, nombre d'employés,
+   taux de réussite, délai moyen, nombre de clients/avis Google. Jamais de
+   chiffres inventés : demander au client ou les marquer « à compléter ».
+3. **3 services, pas 15.** Chacun avec une vraie photo + une ligne de bénéfice
+   concret (« Un plombier chez vous en 45 minutes »). Le visiteur trouve sa
+   case en 2 secondes.
+4. **Chaque peur du client devient un engagement.** Section « Peur de… ? →
+   promesse » : attendre → délai moyen ; se faire arnaquer → prix fixe annoncé
+   avant ; que ça lâche → garantie/certification. Adapter au métier
+   (restaurant : attente, prix, propreté ; spa : hygiène, prix cachés, etc.).
+5. **Bandeau des zones/quartiers desservis** (ex. Pattaya, Jomtien, Naklua…) :
+   le client « se voit dedans » et c'est du SEO local gratuit.
+6. **Carnet / conseils / réalisations** : vrais chantiers et vrais cas avec
+   des titres précis (« Réparer un robinet qui goutte ») → montre l'expertise
+   et ramène du trafic Google sur des recherches précises.
+7. **Pour ceux qui n'osent pas appeler : un seul champ.** « Ton numéro, on te
+   rappelle en 10 min » (ou un bouton WhatsApp/LINE pré-rempli). Jamais de
+   formulaire à 8 cases. Moins de friction = plus de demandes.
+8. **Le contact reste visible jusqu'en bas** : bouton flottant / barre
+   collante sur mobile + gros numéro en finale. Tous les liens `tel:`/`wa.me`
+   gardent `target="_blank" rel="noopener"`.
+
+Le format de la vidéo elle-même est aussi un modèle pour la pub TikTok de
+NM Studio : 90 s verticales, fond sombre, titre court en haut (« Une phrase.
+Un numéro. »), maquette du site qui défile au centre avec zooms sur l'élément
+dont on parle, sous-titres mot à mot avec le mot clé surligné, appel final
+« Écris SITE en commentaire ». Pour un « site de [métier] que je ferais »,
+reprendre ce déroulé, en thaï/français selon la cible.
+
+## OpenMontage — production vidéo (installé à la demande de Mourad)
+
+Skill partagé `.claude/skills/openmontage/` : outil open source de production vidéo par agent
+(github.com/calesthio/OpenMontage) pour les pubs TikTok/Reels, vidéos de démo des sites clients,
+explainers, sous-titres, doublage. C'est un projet complet sous licence **AGPL-3.0** : on le clone
+à la demande dans `/tmp/claude-0/openmontage` (`make setup`, ~3-5 min), on l'utilise comme outil,
+et seules les vidéos finales reviennent dans le dépôt (jamais son code). Gratuit par défaut : aucun
+fournisseur payant sans le « oui » de Mourad pour ce rendu précis ; pas de face swap ni de clone de
+voix/visage d'une vraie personne sans son accord. Détails dans le SKILL.md.
+
+## Skills « 5 skills pour marques » (post TikTok envoyé par Mourad, 2026-10-16)
+
+- **n8n** (`n8n-*`, `using-n8n-mcp-skills`, MIT, czlonkowski) : construire des automatisations n8n
+  (ex. demande du site → WhatsApp/LINE de Mourad + Google Sheet, rappel de suivi client). Il faut une
+  instance n8n (auto-hébergée gratuite ou n8n Cloud payant) : demander avant de créer un compte payant.
+  Jamais d'envoi de messages en masse non sollicités.
+- **Higgsfield** (`higgsfield-product-photoshoot`, `higgsfield-generate`, MIT) : photos produit 4K et
+  visuels/vidéos IA. **Payant** (compte Higgsfield + crédits, `higgsfield auth login` fait par Mourad
+  lui-même) : annoncer le coût et attendre son « oui » pour chaque génération. Images IA = « illustration »,
+  jamais présentées comme de vraies photos du client.
+- **Brand brain** (`brand-brain`, écrit pour NM Studio) : un dossier `clients/<slug>/brain.md` avec les
+  vrais faits du client (infos, menu, avis Google, photos et leur origine, concurrents) avant tout site,
+  pub ou vidéo. Seulement des infos publiques dans le dépôt (il est publié).
+- **UGC** : déjà couvert par `ugc-ad-scripts` + `influencer-marketing`. **Pub Meta** : `facebook-ads`
+  (MIT, Rebecca Rae Barton) en plus de `ads` / `ad-creative` ; `marketing-council` pour l'avis « façon Seth Godin ».
