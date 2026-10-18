@@ -267,3 +267,7 @@ voix/visage d'une vraie personne sans son accord. Détails dans le SKILL.md.
   pub ou vidéo. Seulement des infos publiques dans le dépôt (il est publié).
 - **UGC** : déjà couvert par `ugc-ad-scripts` + `influencer-marketing`. **Pub Meta** : `facebook-ads`
   (MIT, Rebecca Rae Barton) en plus de `ads` / `ad-creative` ; `marketing-council` pour l'avis « façon Seth Godin ».
+
+## Projets en cours
+
+Lis `PROJETS.md` à la racine au début d'une session : il résume les projets de Mourad (NM Academy, diagnostic Pattaya, rappels, etc.), leurs liens à jour et ce qui reste à faire. Mets-le à jour quand un projet avance.
