@@ -1,0 +1,408 @@
+<title>Diagnostic NM Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Quick business check for small shops: 5 taps, then the tools that fit.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Noto+Sans+Thai:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: one narrow column built for a phone passed across a counter; big tap targets, one screen per step. */
+:root{
+ --bg:#080b22;--bg2:#10163d;--ink:#f3f5ff;--mute:#a9b0d6;--line:rgba(255,255,255,.15);--card:rgba(255,255,255,.065);
+ --blue:#6a8dff;--pink:#ff63ab;--ok:#4ade80;--warn:#ffc27a;
+ --font:'Manrope','Noto Sans Thai',system-ui,-apple-system,'Segoe UI',sans-serif;
+ color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font:400 1.0625rem/1.55 var(--font);-webkit-font-smoothing:antialiased;
+ padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 40px;overflow-x:hidden}
+html[lang=th] body{line-height:1.7}
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(60% 40% at 15% 0%,rgba(106,141,255,.28),transparent 70%),radial-gradient(55% 40% at 100% 20%,rgba(255,99,171,.2),transparent 70%),radial-gradient(70% 45% at 50% 100%,rgba(106,92,255,.2),transparent 70%),var(--bg)}
+.app{max-width:520px;margin-inline:auto;display:grid;gap:18px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{background:none;border:0;color:var(--ink);font:800 1.05rem var(--font);letter-spacing:.01em;padding:8px 0;cursor:default}
+.brand b{background:linear-gradient(100deg,var(--blue),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px;background:var(--card)}
+.lang button{border:0;background:none;color:var(--mute);font:700 .8rem var(--font);padding:8px 13px;border-radius:99px;min-height:36px;cursor:pointer}
+.lang button[aria-pressed=true]{background:#fff;color:#10163d}
+h1,h2,h3{font-family:var(--font);letter-spacing:-.02em;line-height:1.2;text-wrap:balance}
+h1{font-size:clamp(1.85rem,8vw,2.5rem);font-weight:800}
+h2{font-size:clamp(1.45rem,6.2vw,1.9rem);font-weight:800}
+html[lang=th] h1,html[lang=th] h2{line-height:1.4;letter-spacing:0}
+.eyebrow{font:800 .74rem var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+html[lang=th] .eyebrow{letter-spacing:.04em}
+.lead{color:var(--mute);font-size:1.08rem}
+.screen{display:grid;gap:18px;animation:in .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero{padding-top:6vh;display:grid;gap:18px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:60px;padding:0 24px;border:0;border-radius:99px;background:linear-gradient(120deg,var(--blue),var(--pink));color:#fff;font:800 1.1rem var(--font);cursor:pointer;box-shadow:0 14px 34px -14px rgba(255,99,171,.7);transition:transform .25s}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.4;box-shadow:none;cursor:not-allowed}
+.btn.ghost{background:var(--card);border:1px solid var(--line);box-shadow:none;font-weight:700}
+.btn.small{min-height:48px;font-size:.98rem}
+:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.prog{display:grid;gap:8px}
+.prog .bar{height:5px;border-radius:5px;background:var(--line);overflow:hidden}
+.prog .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--pink));border-radius:5px;transition:width .4s}
+.prog span{font-size:.85rem;color:var(--mute);font-weight:600}
+.opts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;min-height:62px;padding:14px 18px;border-radius:20px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:600 1.04rem/1.35 var(--font);text-align:left;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.opt:active{transform:scale(.985)}
+.opt .tick{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.85rem;color:transparent}
+.opt[aria-pressed=true]{border-color:var(--blue);background:linear-gradient(120deg,rgba(106,141,255,.22),rgba(255,99,171,.16))}
+.opt[aria-pressed=true] .tick{background:linear-gradient(120deg,var(--blue),var(--pink));border-color:transparent;color:#fff}
+.hint{font-size:.9rem;color:var(--mute)}
+.nav{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.nav .btn.ghost{width:auto;padding:0 22px}
+/* thinking */
+.think{min-height:70vh;display:grid;place-content:center;justify-items:center;gap:26px;text-align:center}
+.orb{position:relative;width:min(62vw,250px);aspect-ratio:1}
+.orb svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.orb .trk{fill:none;stroke:var(--line);stroke-width:4}
+.orb .arc{fill:none;stroke:url(#g);stroke-width:5;stroke-linecap:round}
+.orb .core{position:absolute;inset:16%;border-radius:50%;background:conic-gradient(from 0deg,var(--blue),var(--pink),#7a5cff,var(--blue));animation:spin 4s linear infinite;box-shadow:0 0 60px rgba(106,141,255,.55)}
+.orb .core::after{content:"";position:absolute;inset:7%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#1b2160,#0a0e2c 75%)}
+.orb .ring{position:absolute;inset:8%;border-radius:50%;border:1.5px dashed rgba(255,255,255,.35);animation:spin 14s linear infinite reverse}
+.orb .pct{position:absolute;inset:0;display:grid;place-items:center;font:800 2.1rem var(--font);z-index:2}
+@keyframes spin{to{transform:rotate(360deg)}}
+.think .msg{min-height:3.4em;font-size:1.1rem;color:var(--mute);max-width:22em;transition:opacity .35s}
+/* results */
+.res-head{display:grid;gap:10px}
+.sol{display:grid;gap:12px;padding:20px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.035));animation:in .6s cubic-bezier(.22,1,.36,1) both}
+.sol:nth-of-type(1){animation-delay:.05s}.sol:nth-of-type(2){animation-delay:.2s}.sol:nth-of-type(3){animation-delay:.35s}
+.sol.best{border-color:rgba(255,99,171,.6);box-shadow:0 20px 50px -26px rgba(255,99,171,.7)}
+.tag{justify-self:start;font:800 .72rem var(--font);letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:99px;background:linear-gradient(120deg,var(--blue),var(--pink));color:#fff}
+html[lang=th] .tag{letter-spacing:.02em}
+.sol h3{font-size:1.28rem;font-weight:800}
+.sol .what{color:var(--mute);font-size:1rem}
+.ben{list-style:none;padding:0;display:grid;gap:8px}
+.ben li{position:relative;padding-left:30px;font-weight:600;font-size:1rem}
+.ben li::before{content:"✓";position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:rgba(74,222,128,.18);color:var(--ok);font-size:.78rem;font-weight:800;display:grid;place-items:center}
+.time{font-size:.88rem;color:var(--warn);font-weight:700}
+.note{padding:16px 18px;border-radius:18px;border:1px dashed var(--line);color:var(--mute);font-size:.98rem}
+.form{display:grid;gap:14px}
+.form label{display:grid;gap:7px;font-weight:700;font-size:.95rem}
+.form input,.form textarea{width:100%;font:500 1.05rem var(--font);color:var(--ink);background:rgba(8,11,34,.7);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;min-height:54px}
+.form textarea{min-height:100px;resize:vertical}
+.form input:focus,.form textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(106,141,255,.25)}
+.sumbox{white-space:pre-wrap;font-size:.95rem;color:var(--mute);padding:16px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.row{display:grid;gap:10px}
+.check{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:1.8rem;background:linear-gradient(120deg,var(--blue),var(--pink))}
+/* visits */
+.visit{padding:16px;border-radius:18px;border:1px solid var(--line);background:var(--card);display:grid;gap:4px;font-size:.95rem}
+.visit b{font-size:1.05rem}
+.visit small{color:var(--mute)}
+.empty{color:var(--mute);padding:24px 0;text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}.orb .core,.orb .ring{animation:none!important}}
+</style>
+
+<div class="bg" aria-hidden="true"></div>
+<div class="app">
+  <header class="top"><button class="brand" id="brand" type="button" aria-label="NM Studio">NM <b>Studio</b></button><div class="lang" id="lang" role="group" aria-label="Language"></div></header>
+  <main id="stage" aria-live="polite"></main>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* ---------- réglages ---------- */
+var CFG={BRAND:'NM Studio',THINK_MS:13000};
+var LS='nmDiagVisits';
+var IDX={en:0,th:1,fr:2},LANGS=['en','th','fr'],LABEL={en:'EN',th:'ไทย',fr:'FR'};
+
+/* ---------- textes : [anglais, thaï, français] ---------- */
+var D={
+intro_k:['Quick business check','ตรวจสอบธุรกิจแบบด่วน','Diagnostic rapide'],
+intro_h:['Let’s find what could save you time and bring you more customers.','มาหาวิธีช่วยประหยัดเวลาและเพิ่มลูกค้าให้ร้านของคุณกัน','Voyons ce qui peut vous faire gagner du temps et amener plus de clients.'],
+intro_p:['5 quick questions. Just tap. About one minute.','5 คำถามสั้น ๆ แค่แตะเลือก ใช้เวลาประมาณ 1 นาที','5 questions rapides. Il suffit de toucher. Environ une minute.'],
+start:['Start','เริ่มเลย','Commencer'],
+next:['Next','ถัดไป','Suivant'],back:['Back','ย้อนกลับ','Retour'],
+h1:['Choose one','เลือก 1 ข้อ','Choisissez une réponse'],
+hm:['Choose all that apply','เลือกได้หลายข้อ','Choisissez toutes celles qui conviennent'],
+h2:['Choose up to 2','เลือกได้สูงสุด 2 ข้อ','Choisissez jusqu’à 2 réponses'],
+q_type:['What kind of business do you have?','ธุรกิจของคุณเป็นประเภทไหน','Quel type de commerce avez-vous ?'],
+o_type_resto:['Restaurant / café','ร้านอาหาร / คาเฟ่','Restaurant / café'],
+o_type_bar:['Bar / pub','บาร์ / ผับ','Bar / pub'],
+o_type_beauty:['Hair / beauty / spa','ร้านทำผม / ความงาม / สปา','Coiffeur / beauté / spa'],
+o_type_other:['Something else','อย่างอื่น','Autre chose'],
+q_found:['How do customers find you today?','ตอนนี้ลูกค้าเจอร้านคุณได้อย่างไร','Comment vos clients vous trouvent-ils aujourd’hui ?'],
+o_found_walk:['They walk past','เดินผ่านมาเห็น','Ils passent devant'],
+o_found_maps:['Google Maps','Google Maps','Google Maps'],
+o_found_social:['Facebook / Instagram','Facebook / Instagram','Facebook / Instagram'],
+o_found_word:['Word of mouth','ปากต่อปาก','Bouche à oreille'],
+o_found_line:['LINE','LINE','LINE'],
+q_book:['How do you take bookings or orders?','คุณรับจองหรือรับออเดอร์อย่างไร','Comment prenez-vous les réservations ou commandes ?'],
+o_book_phone:['By phone','ทางโทรศัพท์','Par téléphone'],
+o_book_chat:['LINE / WhatsApp messages','ข้อความ LINE / WhatsApp','Messages LINE / WhatsApp'],
+o_book_notebook:['In a notebook','จดลงสมุด','Sur un cahier'],
+o_book_none:['No bookings, people just come','ไม่มีการจอง ลูกค้าเดินเข้ามาเอง','Pas de réservation : les gens viennent'],
+q_cust:['Who are your customers?','ลูกค้าของคุณเป็นใคร','Qui sont vos clients ?'],
+o_cust_thai:['Mostly Thai locals','ส่วนใหญ่เป็นคนไทยในพื้นที่','Surtout des Thaïlandais du coin'],
+o_cust_tourists:['Mostly tourists','ส่วนใหญ่เป็นนักท่องเที่ยว','Surtout des touristes'],
+o_cust_regulars:['Regulars and expats','ลูกค้าประจำและชาวต่างชาติที่อาศัยอยู่','Des habitués et des expatriés'],
+o_cust_mix:['A mix of everyone','ผสมกันหลายกลุ่ม','Un mélange de tout le monde'],
+q_pain:['What bothers you most?','อะไรที่ทำให้คุณลำบากใจมากที่สุด','Qu’est-ce qui vous gêne le plus ?'],
+o_pain_new:['Not enough new customers','ลูกค้าใหม่ไม่พอ','Pas assez de nouveaux clients'],
+o_pain_back:['Customers don’t come back','ลูกค้าไม่กลับมาซ้ำ','Les clients ne reviennent pas'],
+o_pain_lang:['Explaining the menu, language problems','ต้องอธิบายเมนูหรือมีปัญหาเรื่องภาษา','Expliquer le menu, problèmes de langue'],
+o_pain_missed:['Missed or forgotten bookings','ลืมหรือพลาดการจอง','Réservations oubliées ou ratées'],
+o_pain_same:['Answering the same questions all day','ตอบคำถามเดิม ๆ ทั้งวัน','Répondre aux mêmes questions toute la journée'],
+o_pain_none:['Nothing in particular','ไม่มีปัญหาอะไรมาก','Rien de particulier'],
+think_h:['Analysing your answers','กำลังวิเคราะห์คำตอบของคุณ','Analyse de vos réponses'],
+tm1:['Looking at how your customers find you…','กำลังดูว่าลูกค้าเจอร้านคุณอย่างไร…','Je regarde comment vos clients vous trouvent…'],
+tm2:['Checking what takes up your time…','กำลังตรวจสอบว่าอะไรกินเวลาของคุณ…','Je vérifie ce qui vous prend du temps…'],
+tm3:['Matching ideas to a business like yours…','กำลังจับคู่ไอเดียที่เหมาะกับร้านแบบของคุณ…','J’associe des idées à un commerce comme le vôtre…'],
+tm4:['Picking what is quickest to set up…','กำลังเลือกสิ่งที่ตั้งค่าได้เร็วที่สุด…','Je choisis ce qui se met en place le plus vite…'],
+tm5:['Almost ready…','เกือบเสร็จแล้ว…','Presque prêt…'],
+res_k:['Your results','ผลลัพธ์ของคุณ','Vos résultats'],
+res_h:['Here is what we can do for you','นี่คือสิ่งที่เราช่วยคุณได้','Voici ce que nous pouvons faire pour vous'],
+res_intro:['Based on your answers, these {n} things fit your business best:','จากคำตอบของคุณ {n} อย่างนี้เหมาะกับธุรกิจของคุณที่สุด:','D’après vos réponses, ces {n} solutions correspondent le mieux à votre commerce :'],
+best:['Best match','เหมาะที่สุด','Meilleur choix'],
+res_note:['These are things we set up together. The price depends on what you choose, so let’s talk about it.','สิ่งเหล่านี้เราจะทำร่วมกัน ราคาขึ้นอยู่กับสิ่งที่คุณเลือก มาคุยกันเลย','Ce sont des choses que nous mettons en place ensemble. Le prix dépend de ce que vous choisissez : parlons-en.'],
+res_cta:['Let’s talk about it','มาคุยกัน','Parlons-en'],
+form_h:['Leave your details','ทิ้งข้อมูลติดต่อของคุณ','Laissez vos coordonnées'],
+f_shop:['Shop name','ชื่อร้าน','Nom du commerce'],
+f_contact:['LINE ID / WhatsApp / phone','LINE ID / WhatsApp / เบอร์โทร','LINE / WhatsApp / téléphone'],
+f_note:['Anything you want to add?','มีอะไรอยากเพิ่มไหม','Quelque chose à ajouter ?'],
+save:['Save and finish','บันทึกและเสร็จสิ้น','Enregistrer et terminer'],
+done_h:['Thank you!','ขอบคุณ!','Merci !'],
+done_p:['We will get back to you soon. Here is your summary:','เราจะติดต่อกลับเร็ว ๆ นี้ นี่คือสรุปของคุณ:','Nous vous recontactons bientôt. Voici votre résumé :'],
+copy:['Copy summary','คัดลอกสรุป','Copier le résumé'],
+copied:['Copied','คัดลอกแล้ว','Copié'],
+restart:['Start again (next shop)','เริ่มใหม่ (ร้านถัดไป)','Recommencer (commerce suivant)'],
+sum_title:['Quick business check','ตรวจสอบธุรกิจแบบด่วน','Diagnostic rapide'],
+sum_reco:['What fits you best:','สิ่งที่เหมาะกับคุณที่สุด:','Ce qui vous correspond le mieux :'],
+v_title:['Visits saved on this phone','การเยี่ยมที่บันทึกไว้ในโทรศัพท์เครื่องนี้','Visites enregistrées sur ce téléphone'],
+v_empty:['No visits yet.','ยังไม่มีการเยี่ยม','Aucune visite pour l’instant.'],
+v_csv:['Copy all as CSV','คัดลอกทั้งหมดเป็น CSV','Tout copier en CSV'],
+v_clear:['Delete all visits','ลบการเยี่ยมทั้งหมด','Supprimer toutes les visites'],
+v_sure:['Tap again to confirm','แตะอีกครั้งเพื่อยืนยัน','Touchez encore pour confirmer'],
+v_back:['Back to the check','กลับไปที่การตรวจสอบ','Retour au diagnostic'],
+v_local:['These notes stay on this phone only.','บันทึกเหล่านี้อยู่ในโทรศัพท์เครื่องนี้เท่านั้น','Ces notes restent uniquement sur ce téléphone.'],
+/* solutions */
+s_site_t:['A simple website for your business','เว็บไซต์ง่าย ๆ สำหรับธุรกิจของคุณ','Un site simple pour votre commerce'],
+s_site_w:['Photos, menu, opening hours, map and contact in one page, in several languages.','รูปภาพ เมนู เวลาเปิด-ปิด แผนที่ และช่องทางติดต่อ รวมอยู่ในหน้าเดียว หลายภาษา','Photos, menu, horaires, carte et contact sur une seule page, en plusieurs langues.'],
+s_site_b1:['Customers trust you before they visit','ลูกค้าเชื่อมั่นในร้านก่อนมาถึง','Les clients vous font confiance avant de venir'],
+s_site_b2:['You show up when people search on Google','ปรากฏเมื่อคนค้นหาใน Google','Vous apparaissez quand on cherche sur Google'],
+s_site_b3:['Hours and prices are always correct','เวลาเปิดและราคาถูกต้องเสมอ','Horaires et prix toujours à jour'],
+s_site_d:['Ready in about 1–2 days','พร้อมใช้ภายในประมาณ 1–2 วัน','Prêt en environ 1 à 2 jours'],
+s_maps_t:['A complete Google Maps listing','ข้อมูลร้านใน Google Maps ที่สมบูรณ์','Une fiche Google Maps complète'],
+s_maps_w:['Good photos, correct hours, a clear description and an easy way to collect reviews.','รูปสวย เวลาถูกต้อง คำอธิบายชัดเจน และวิธีให้ลูกค้ารีวิวอย่างง่าย','De belles photos, des horaires justes, une description claire et un moyen simple de recevoir des avis.'],
+s_maps_b1:['More people nearby find you','คนแถวนั้นเจอร้านคุณมากขึ้น','Plus de gens autour de vous vous trouvent'],
+s_maps_b2:['Fewer calls asking where you are or when you open','ลดสายโทรถามทางหรือถามเวลาเปิด','Moins d’appels pour demander où vous êtes ou quand vous ouvrez'],
+s_maps_b3:['Reviews bring new customers','รีวิวช่วยดึงลูกค้าใหม่','Les avis amènent de nouveaux clients'],
+s_maps_d:['Ready in about 1 day','พร้อมใช้ภายในประมาณ 1 วัน','Prêt en environ 1 jour'],
+s_qr_t:['A QR menu in several languages','เมนู QR หลายภาษา','Un menu QR en plusieurs langues'],
+s_qr_w:['Customers scan the code on the table and read the menu in their own language.','ลูกค้าสแกนโค้ดที่โต๊ะและอ่านเมนูในภาษาของตัวเอง','Le client scanne le code sur la table et lit le menu dans sa langue.'],
+s_qr_b1:['Tourists understand what they order','นักท่องเที่ยวเข้าใจสิ่งที่สั่ง','Les touristes comprennent ce qu’ils commandent'],
+s_qr_b2:['You explain less and serve more','คุณอธิบายน้อยลง บริการได้มากขึ้น','Vous expliquez moins et servez plus'],
+s_qr_b3:['Change prices or dishes in minutes, no reprinting','เปลี่ยนราคาหรือเมนูได้ในไม่กี่นาที ไม่ต้องพิมพ์ใหม่','Changez prix et plats en quelques minutes, sans réimprimer'],
+s_qr_d:['Ready in about 1 day','พร้อมใช้ภายในประมาณ 1 วัน','Prêt en environ 1 jour'],
+s_qrb_t:['A QR price list for your services','QR รายการบริการและราคา','Un QR avec vos services et vos prix'],
+s_qrb_w:['Customers scan to see your services, prices and photos of your work.','ลูกค้าสแกนเพื่อดูบริการ ราคา และรูปผลงานของร้าน','Le client scanne pour voir vos services, vos prix et des photos de votre travail.'],
+s_qrb_b1:['Fewer questions about prices','ลดคำถามเรื่องราคา','Moins de questions sur les prix'],
+s_qrb_b2:['Show your best work','โชว์ผลงานที่ดีที่สุดของคุณ','Montrez votre meilleur travail'],
+s_qrb_b3:['Works in several languages','รองรับหลายภาษา','Fonctionne en plusieurs langues'],
+s_qrb_d:['Ready in about 1 day','พร้อมใช้ภายในประมาณ 1 วัน','Prêt en environ 1 jour'],
+s_line_t:['A LINE / WhatsApp button','ปุ่ม LINE / WhatsApp','Un bouton LINE / WhatsApp'],
+s_line_w:['One tap and the customer writes to you, with the message already started.','แตะครั้งเดียว ลูกค้าก็ส่งข้อความหาคุณได้ พร้อมข้อความที่เริ่มไว้ให้แล้ว','Un clic et le client vous écrit, avec le message déjà commencé.'],
+s_line_b1:['More messages from interested customers','ได้ข้อความจากลูกค้าที่สนใจมากขึ้น','Plus de messages de clients intéressés'],
+s_line_b2:['No need to give your number again and again','ไม่ต้องบอกเบอร์ซ้ำ ๆ','Plus besoin de redonner votre numéro'],
+s_line_b3:['Works on the apps everyone already uses','ใช้ได้กับแอปที่ทุกคนใช้อยู่แล้ว','Fonctionne avec les applis que tout le monde utilise déjà'],
+s_line_d:['Ready in about 1 hour','พร้อมใช้ภายในประมาณ 1 ชั่วโมง','Prêt en environ 1 heure'],
+s_promo_t:['A page for promotions and events','หน้าโปรโมชันและกิจกรรม','Une page promos et événements'],
+s_promo_w:['Tonight’s offers, match times, happy hour. Easy to update.','ข้อเสนอคืนนี้ เวลาถ่ายทอดสดบอล แฮปปี้อาวร์ อัปเดตง่าย','Les offres du soir, les horaires des matchs, l’happy hour. Facile à mettre à jour.'],
+s_promo_b1:['Customers know what is on tonight','ลูกค้ารู้ว่าคืนนี้มีอะไร','Les clients savent ce qui se passe ce soir'],
+s_promo_b2:['Fill quiet hours with offers','เติมช่วงเวลาเงียบด้วยโปรโมชัน','Remplissez les heures creuses avec des offres'],
+s_promo_b3:['Share it with one link','แชร์ได้ด้วยลิงก์เดียว','Partagez-la avec un seul lien'],
+s_promo_d:['Ready in about 1–2 days','พร้อมใช้ภายในประมาณ 1–2 วัน','Prêt en environ 1 à 2 jours'],
+s_book_t:['Simple online booking','ระบบจองออนไลน์แบบง่าย','Réservation en ligne simple'],
+s_book_w:['A short form that sends you the request as a message.','ฟอร์มสั้น ๆ ที่ส่งคำขอจองมาหาคุณเป็นข้อความ','Un court formulaire qui vous envoie la demande sous forme de message.'],
+s_book_b1:['Fewer phone calls','ลดสายโทรศัพท์','Moins d’appels téléphoniques'],
+s_book_b2:['No more forgotten bookings','ไม่ลืมการจองอีกต่อไป','Plus de réservations oubliées'],
+s_book_b3:['Customers can book at any hour','ลูกค้าจองได้ทุกเวลา','Les clients réservent à toute heure'],
+s_book_d:['Ready in about 2–4 days','พร้อมใช้ภายในประมาณ 2–4 วัน','Prêt en environ 2 à 4 jours'],
+s_loy_t:['A digital loyalty card','บัตรสะสมแต้มดิจิทัล','Une carte de fidélité numérique'],
+s_loy_w:['Customers collect a point at each visit and earn a reward you choose.','ลูกค้าสะสมแต้มทุกครั้งที่มา และรับรางวัลที่คุณกำหนด','Les clients cumulent un point à chaque visite et gagnent une récompense que vous choisissez.'],
+s_loy_b1:['Customers come back more often','ลูกค้ากลับมามากขึ้น','Les clients reviennent plus souvent'],
+s_loy_b2:['No paper card to lose','ไม่มีบัตรกระดาษให้หาย','Pas de carte en papier à perdre'],
+s_loy_b3:['You choose the reward','คุณเป็นคนเลือกรางวัล','Vous choisissez la récompense'],
+s_loy_d:['Ready in about 3–5 days','พร้อมใช้ภายในประมาณ 3–5 วัน','Prêt en environ 3 à 5 jours']
+};
+var Q=[
+ {id:'type',max:1,hint:'h1',opts:['resto','bar','beauty','other']},
+ {id:'found',max:5,hint:'hm',opts:['walk','maps','social','word','line']},
+ {id:'book',max:1,hint:'h1',opts:['phone','chat','notebook','none']},
+ {id:'cust',max:1,hint:'h1',opts:['thai','tourists','regulars','mix']},
+ {id:'pain',max:2,hint:'h2',opts:['new','back','lang','missed','same','none']}
+];
+
+/* ---------- état ---------- */
+var lang=pick(),step=0,A=blank(),stage=document.getElementById('stage'),timers=[],brandTaps=0;
+function blank(){return{type:[],found:[],book:[],cust:[],pain:[]}}
+function pick(){var n=(navigator.language||'en').slice(0,2).toLowerCase();return n==='th'?'th':n==='fr'?'fr':'en'}
+function t(k,l){var e=D[k];return e?e[IDX[l||lang]]:k}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function reduce(){try{return matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}}
+function load(){try{return JSON.parse(localStorage.getItem(LS)||'[]')}catch(e){return[]}}
+function store(v){try{localStorage.setItem(LS,JSON.stringify(v));return true}catch(e){return false}}
+function clearTimers(){timers.forEach(function(x){clearTimeout(x);clearInterval(x);cancelAnimationFrame(x)});timers=[]}
+
+/* ---------- recommandations ---------- */
+function has(q,v){return A[q].indexOf(v)>-1}
+function score(){
+ var s={site:0,maps:0,qr:0,line:0,promo:0,book:0,loy:0},ty=A.type[0],bk=A.book[0],cu=A.cust[0];
+ var resto=ty==='resto'||ty==='bar',beauty=ty==='beauty';
+ if(!has('found','maps'))s.maps+=3; else s.maps+=1;
+ if(has('found','walk')||has('found','word'))s.maps+=1;
+ if(!has('found','maps')&&!has('found','social'))s.site+=2;
+ if(has('pain','new'))s.site+=3,s.maps+=2,s.promo+=2;
+ if(bk==='none')s.site+=1;
+ s.site+=1;
+ if(has('pain','lang'))s.qr+=4;
+ if(cu==='tourists'||cu==='mix')s.qr+=2;
+ if(resto)s.qr+=2;
+ if(beauty)s.qr+=1;
+ if(bk==='phone'||bk==='notebook')s.line+=3;
+ if(has('pain','missed')||has('pain','same'))s.line+=2;
+ s.line+=1;
+ if(has('pain','missed'))s.book+=4;
+ if(bk==='notebook')s.book+=2;
+ if(bk==='phone')s.book+=1;
+ if(beauty)s.book+=1;
+ if(has('pain','back'))s.loy+=4;
+ if(cu==='regulars'||cu==='thai')s.loy+=2;
+ if(ty==='beauty'||ty==='resto')s.loy+=1;
+ if(cu==='tourists')s.loy-=2;
+ if(ty==='bar')s.promo+=2;
+ if(has('found','social'))s.promo+=1;
+ if(has('pain','same'))s.site+=1;
+ var order=['site','maps','qr','line','promo','book','loy'];
+ return order.sort(function(a,b){return s[b]-s[a]||order.indexOf(a)-order.indexOf(b)}).filter(function(k){return s[k]>0}).slice(0,3)
+}
+function sol(id,l){
+ var key=id==='qr'&&A.type[0]==='beauty'?'qrb':id==='loy'?'loy':id;
+ var p='s_'+key+'_';
+ return{id:id,title:t(p+'t',l),what:t(p+'w',l),ben:[t(p+'b1',l),t(p+'b2',l),t(p+'b3',l)],time:t(p+'d',l)}
+}
+
+/* ---------- écrans ---------- */
+function setStage(html){clearTimers();stage.innerHTML='<div class="screen">'+html+'</div>';window.scrollTo(0,0)}
+function intro(){
+ step=0;
+ setStage('<div class="hero"><span class="eyebrow">'+esc(t('intro_k'))+'</span><h1>'+esc(t('intro_h'))+'</h1><p class="lead">'+esc(t('intro_p'))+'</p></div><button class="btn" id="go" type="button">'+esc(t('start'))+' →</button>');
+ document.getElementById('go').onclick=function(){A=blank();question(0)}
+}
+function question(i){
+ step=i+1;var q=Q[i],cur=A[q.id];
+ var h='<div class="prog"><div class="bar"><i style="width:'+(i/Q.length*100)+'%"></i></div><span>'+(i+1)+' / '+Q.length+'</span></div>';
+ h+='<h2>'+esc(t('q_'+q.id))+'</h2><p class="hint">'+esc(t(q.hint))+'</p><ul class="opts">';
+ q.opts.forEach(function(o){h+='<li><button class="opt" type="button" data-o="'+o+'" aria-pressed="'+(cur.indexOf(o)>-1)+'"><span>'+esc(t('o_'+q.id+'_'+o))+'</span><span class="tick" aria-hidden="true">✓</span></button></li>'});
+ h+='</ul><div class="nav"><button class="btn ghost" id="bk" type="button">← '+esc(t('back'))+'</button><button class="btn" id="nx" type="button">'+esc(t('next'))+' →</button></div>';
+ setStage(h);
+ var nx=document.getElementById('nx');
+ function refresh(){var c=A[q.id];nx.disabled=!c.length;[].forEach.call(stage.querySelectorAll('.opt'),function(b){b.setAttribute('aria-pressed',c.indexOf(b.dataset.o)>-1)})}
+ [].forEach.call(stage.querySelectorAll('.opt'),function(b){b.onclick=function(){
+  var o=b.dataset.o,c=A[q.id],k=c.indexOf(o);
+  if(q.max===1){A[q.id]=[o]}
+  else if(k>-1){c.splice(k,1)}
+  else{
+   if(q.id==='pain'){if(o==='none'){c.length=0}else{var z=c.indexOf('none');if(z>-1)c.splice(z,1)}}
+   if(c.length>=q.max)c.shift();
+   c.push(o)
+  }
+  refresh();
+  if(q.max===1)timers.push(setTimeout(function(){go(i)},260));
+ }});
+ function go(n){if(n+1<Q.length)question(n+1);else thinking()}
+ document.getElementById('bk').onclick=function(){if(i===0)intro();else question(i-1)};
+ nx.onclick=function(){if(A[q.id].length)go(i)};
+ refresh()
+}
+function thinking(){
+ step=6;
+ var total=location.hash==='#fast'?1500:(reduce()?3000:CFG.THINK_MS),C=2*Math.PI*46;
+ setStage('<div class="think"><div class="orb" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6a8dff"/><stop offset="1" stop-color="#ff63ab"/></linearGradient></defs><circle class="trk" cx="50" cy="50" r="46"/><circle class="arc" id="arc" cx="50" cy="50" r="46" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+C.toFixed(1)+'"/></svg><div class="ring"></div><div class="core"></div><div class="pct" id="pct">0%</div></div><div><h2>'+esc(t('think_h'))+'</h2></div><p class="msg" id="msg">'+esc(t('tm1'))+'</p></div>');
+ var arc=document.getElementById('arc'),pct=document.getElementById('pct'),msg=document.getElementById('msg'),t0=performance.now(),mi=1;
+ function frame(now){
+  var p=Math.min(1,(now-t0)/total),e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+  arc.style.strokeDashoffset=(C*(1-e)).toFixed(1);pct.textContent=Math.round(e*100)+'%';
+  if(p<1)timers.push(requestAnimationFrame(frame));else result()
+ }
+ timers.push(requestAnimationFrame(frame));
+ var gap=Math.max(500,total/5);
+ var iv=setInterval(function(){if(mi>=5){clearInterval(iv);return}mi++;msg.style.opacity=0;timers.push(setTimeout(function(){msg.textContent=t('tm'+mi);msg.style.opacity=1},300))},gap);
+ timers.push(iv)
+}
+function result(){
+ step=7;
+ var ids=score(),list=ids.map(function(i){return sol(i)});
+ var h='<div class="res-head"><span class="eyebrow">'+esc(t('res_k'))+'</span><h2>'+esc(t('res_h'))+'</h2><p class="lead">'+esc(t('res_intro').replace('{n}',list.length))+'</p></div>';
+ list.forEach(function(s,i){h+='<section class="sol'+(i===0?' best':'')+'">'+(i===0?'<span class="tag">'+esc(t('best'))+'</span>':'')+'<h3>'+esc(s.title)+'</h3><p class="what">'+esc(s.what)+'</p><ul class="ben">'+s.ben.map(function(b){return'<li>'+esc(b)+'</li>'}).join('')+'</ul><span class="time">'+esc(s.time)+'</span></section>'});
+ h+='<p class="note">'+esc(t('res_note'))+'</p><button class="btn" id="talk" type="button">'+esc(t('res_cta'))+' →</button>';
+ setStage(h);
+ document.getElementById('talk').onclick=form
+}
+function summary(l,shop){
+ var ids=score(),lines=[CFG.BRAND+' — '+t('sum_title',l)+(shop?' ('+shop+')':''),'',t('sum_reco',l)];
+ ids.forEach(function(i,n){var s=sol(i,l);lines.push((n+1)+'. '+s.title+' — '+s.ben[0])});
+ return lines.join('\n')
+}
+function form(){
+ step=8;
+ setStage('<h2>'+esc(t('form_h'))+'</h2><div class="form"><label for="f-shop">'+esc(t('f_shop'))+'<input id="f-shop" type="text" autocomplete="organization" maxlength="80"></label><label for="f-contact">'+esc(t('f_contact'))+'<input id="f-contact" type="text" autocomplete="off" maxlength="80"></label><label for="f-note">'+esc(t('f_note'))+'<textarea id="f-note" maxlength="400"></textarea></label></div><div class="row"><button class="btn" id="sv" type="button">'+esc(t('save'))+'</button></div>');
+ document.getElementById('sv').onclick=function(){
+  var rec={d:new Date().toISOString(),shop:val('f-shop'),contact:val('f-contact'),note:val('f-note'),lang:lang,a:JSON.parse(JSON.stringify(A)),r:score()};
+  var all=load();all.unshift(rec);store(all);done(rec)
+ }
+}
+function val(id){return(document.getElementById(id).value||'').trim()}
+function done(rec){
+ step=9;var sum=summary(lang,rec.shop);
+ setStage('<div class="check" aria-hidden="true">✓</div><h2>'+esc(t('done_h'))+'</h2><p class="lead">'+esc(t('done_p'))+'</p><div class="sumbox" id="sum">'+esc(sum)+'</div><div class="row"><button class="btn ghost" id="cp" type="button">'+esc(t('copy'))+'</button><button class="btn" id="rs" type="button">'+esc(t('restart'))+'</button></div>');
+ document.getElementById('cp').onclick=function(){copy(sum,this,'copy')};
+ document.getElementById('rs').onclick=function(){A=blank();intro()}
+}
+function copy(text,btn,key){
+ function ok(){var o=t(key);btn.textContent=t('copied');setTimeout(function(){btn.textContent=o},1600)}
+ function fb(){try{var r=document.createRange();r.selectNodeContents(document.getElementById('sum')||btn);var s=getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}ok()}
+ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(ok,fb);else fb()
+}
+/* ---------- visites (réservé à Mourad : 5 touches sur le logo, ou #visites) ---------- */
+function visits(){
+ step='v';var all=load(),h='<h2>'+esc(t('v_title'))+'</h2><p class="hint">'+esc(t('v_local'))+'</p>';
+ if(!all.length)h+='<p class="empty">'+esc(t('v_empty'))+'</p>';
+ all.forEach(function(r){
+  var recos=(r.r||[]).map(function(i){return D['s_'+(i==='qr'&&r.a&&r.a.type[0]==='beauty'?'qrb':i)+'_t'][2]}).join(' / ');
+  var pains=(r.a.pain||[]).map(function(p){return D['o_pain_'+p][2]}).join(', ');
+  h+='<div class="visit"><b>'+esc(r.shop||'—')+'</b><small>'+esc(new Date(r.d).toLocaleString('fr-FR'))+' · '+esc(r.contact||'')+'</small><span>'+esc(pains)+'</span><small>→ '+esc(recos)+'</small>'+(r.note?'<small>'+esc(r.note)+'</small>':'')+'</div>'
+ });
+ h+='<div class="row"><button class="btn ghost small" id="csv" type="button">'+esc(t('v_csv'))+'</button><button class="btn ghost small" id="clr" type="button">'+esc(t('v_clear'))+'</button><button class="btn small" id="vb" type="button">'+esc(t('v_back'))+'</button></div><div class="sumbox" id="sum" hidden></div>';
+ setStage(h);
+ document.getElementById('csv').onclick=function(){
+  var rows=[['date','commerce','contact','note','type','clients_le_trouvent','reservations','clientele','problemes','solutions']];
+  all.forEach(function(r){var a=r.a;rows.push([r.d,r.shop,r.contact,r.note,lbl('type',a.type),lbl('found',a.found),lbl('book',a.book),lbl('cust',a.cust),lbl('pain',a.pain),(r.r||[]).join('|')])});
+  var csv=rows.map(function(r){return r.map(function(c){return'"'+String(c==null?'':c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
+  var box=document.getElementById('sum');box.hidden=false;box.textContent=csv;copy(csv,this,'v_csv')
+ };
+ var armed=false;
+ document.getElementById('clr').onclick=function(){if(!armed){armed=true;this.textContent=t('v_sure');return}store([]);visits()};
+ document.getElementById('vb').onclick=intro
+}
+function lbl(q,arr){return(arr||[]).map(function(o){return D['o_'+q+'_'+o][2]}).join(' / ')}
+
+/* ---------- langue + logo ---------- */
+function drawLang(){
+ var el=document.getElementById('lang');el.innerHTML=LANGS.map(function(l){return'<button type="button" data-l="'+l+'" aria-pressed="'+(l===lang)+'">'+LABEL[l]+'</button>'}).join('');
+ [].forEach.call(el.querySelectorAll('button'),function(b){b.onclick=function(){lang=b.dataset.l;document.documentElement.lang=lang;drawLang();rerender()}})
+}
+function rerender(){
+ if(step===0)intro();else if(step>=1&&step<=5)question(step-1);else if(step===6)thinking();else if(step===7)result();else if(step===8)form();else if(step==='v')visits();
+ else if(step===9){var all=load();done(all[0]||{shop:''})}
+}
+var brandTimer=0;
+document.getElementById('brand').onclick=function(){brandTaps++;clearTimeout(brandTimer);brandTimer=setTimeout(function(){brandTaps=0},2500);if(brandTaps>=5){brandTaps=0;visits()}};
+document.documentElement.lang=lang;
+drawLang();
+if(location.hash==='#visites')visits();else intro();
+})();
+</script>
