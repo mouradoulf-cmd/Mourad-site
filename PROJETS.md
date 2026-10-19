@@ -39,3 +39,9 @@ Mis à jour le 19 octobre 2026. Ce fichier garde l'état de tous les projets dis
 - Réponses en français, courtes, avec le lien à jour quand une page change.
 - Honnêteté d'abord : dire ce qui n'est pas vérifié ; ne pas promettre de revenus.
 - Quand Mourad dit « fais rien encore, on parle », ne rien construire avant son « go ».
+
+## Skills installés (2026-10-19, vidéo « 10 repos GitHub pour Claude »)
+- `hallmark` (Nutlope, MIT) : design sans look « IA ».
+- `rea` (morluto, MIT) : rétro-ingénierie d'apps ; l'installation de son serveur reste à faire et à approuver (Hopper/Ghidra requis pour le natif).
+- `last30days` (mvanhorn, MIT) : recherche des 30 derniers jours (Reddit, TikTok, YouTube…) ; certaines sources demandent une clé API.
+- Déjà présents : ponytail, superpowers, impeccable, ui-ux-pro-max.
