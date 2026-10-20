@@ -1,11 +1,11 @@
-/* Giulivo — hero: the real photo of the terrace at dusk; night falls and the real lanterns light up
-   one by one (raw WebGL, no library). A packed map (R = lantern glow, G = warm light pool on the tables,
-   B = estimated depth) was made from the same photo, so every glow sits on a real lamp.
-   Pointer / scroll move the scene in depth (near things move more than far things).
-   Without WebGL the plain photo stays, darkened by CSS. Paused when off-screen or tab hidden. */
+/* Giulivo — "Quando si accendono le luci": the real photo of the terrace at dusk; when the scene scrolls
+   into view, night falls and the real lanterns light up (raw WebGL, no library). A packed map
+   (R = lantern glow, G = warm light pool on the tables, B = estimated depth) was made from the same photo,
+   so every glow sits on a real lamp. Pointer / scroll move the scene in depth. It plays again each time
+   the scene comes back into view. Without WebGL the plain photo stays. Paused when off-screen. */
 (function () {
   "use strict";
-  var media = document.getElementById("heroMedia"), img = document.getElementById("heroImg"), cv = document.getElementById("heroGL");
+  var media = document.getElementById("lightsMedia"), img = document.getElementById("lightsImg"), cv = document.getElementById("lightsGL");
   if (!media || !img || !cv) return;
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var touch = matchMedia("(hover: none)").matches;
@@ -64,8 +64,8 @@
     raf = 0; if (!visible || document.hidden) return;
     var t = (now - t0) / 1000;
     smx += (mx - smx) * .05; smy += (my - smy) * .05;
-    if (onAt) { var k = Math.min(1, Math.max(0, (now - onAt) / 3800)); night = reduce ? (onAt ? 1 : 0) : k * k * (3 - 2 * k); }
-    var sc = Math.min(1, Math.max(0, scrollY / (innerHeight || 1)));
+    if (!onAt) night = 0; else { var k = Math.min(1, Math.max(0, (now - onAt) / 3800)); night = reduce ? (onAt ? 1 : 0) : k * k * (3 - 2 * k); }
+    var r = media.getBoundingClientRect(), sc = Math.min(1, Math.max(-1, (r.top + r.height / 2 - innerHeight / 2) / innerHeight));
     gl.uniform1f(U.uN, night); gl.uniform1f(U.uT, reduce ? 0 : t);
     gl.uniform1f(U.uSa, cv.width / cv.height); gl.uniform1f(U.uIa, imgAspect); gl.uniform1f(U.uSc, sc);
     gl.uniform2f(U.uP, reduce ? 0 : smx, reduce ? 0 : -smy); gl.uniform2f(U.uFoc, .66, .47);
@@ -79,10 +79,13 @@
     map.onload = function () {
       resize(); if (!init(map)) return;
       ok = true; media.classList.add("gl-on");
-      var begin = function () { onAt = performance.now() + (reduce ? 0 : 600); };
-      if (document.documentElement.classList.contains("ready")) begin();
-      else new MutationObserver(function (r, o) { if (document.documentElement.classList.contains("ready")) { o.disconnect(); begin(); } }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-      if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) loop(); }).observe(media);
+      if ("IntersectionObserver" in window) new IntersectionObserver(function (en) {
+        var x = en[0]; visible = x.isIntersecting;
+        if (!visible) onAt = 0;                                                   // replays next time
+        else if (!onAt && x.intersectionRatio >= .4) onAt = performance.now() + (reduce ? 0 : 350);
+        if (visible) loop();
+      }, { threshold: [0, .4, .7] }).observe(media);
+      else onAt = performance.now();
       document.addEventListener("visibilitychange", function () { if (!document.hidden) loop(); });
       loop();
     };
