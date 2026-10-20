@@ -61,7 +61,7 @@
   }
 
   /* ---------------------------------------------------------------- reveals */
-  var rvSel = ".mani__facts li, .ring__head > *, .rev__in > *, .book__copy > *, .bk, .find__grid > div, .foot .wrap > *, .carta__intro > *";
+  var rvSel = ".mani__facts li, .rev__in > *, .book__copy > *, .bk, .find__grid > div, .foot .wrap > *, .carta__intro > *";
   if ("IntersectionObserver" in window && !reduce) {
     root.classList.add("reveal-ready");
     var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
@@ -144,34 +144,41 @@
     }
   }
 
-  /* ---------------------------------------------------------------- DALLA CUCINA: the ring turns by itself (pure CSS).
-     JS only reads the animation clock a few times a second to show the name of the dish in front,
-     pauses while a finger holds the ring, and stops the animation when the ring is off-screen. */
-  var scene = $("#ringScene"), spin = $("#ringSpin"), items = $$(".ring__item"), RN = items.length;
-  if (scene && RN) {
-    var ringName = $("#ringName"), ringNum = $("#ringNum"), plates = (window.GIU_I18N || {}).plates || {}, front = 0, timer = 0;
-    var T = parseFloat(getComputedStyle(scene.closest(".ring")).getPropertyValue("--T")) * 1000 || 35000;
-    items.forEach(function (it, i) { it.style.setProperty("--i", i); });
-    function nameOf(i) { var p = plates[items[i].getAttribute("data-dish")] || {}; return p[I.lang] || p.it || ""; }
-    function show(i, force) {
-      if (i === front && !force) return; front = i;
-      ringName.classList.add("swap");
-      setTimeout(function () { ringNum.textContent = String(i + 1).padStart(2, "0"); ringName.textContent = nameOf(i); ringName.classList.remove("swap"); }, 220);
+  /* ---------------------------------------------------------------- DALLA CUCINA: full-screen dishes, circular "plate" reveal */
+  var dishSec = $(".dish"), figs = $$(".dish__f"), dNames = $$(".dish__name"), rail = $$(".dish__rail button"), dNum = $("#dishNum"), dBar = $("#dishBar"), rim = $(".dish__ringline");
+  if (dishSec && figs.length) {
+    var DN = figs.length, dActive = -1, dTick = false, imgs = figs.map(function (f) { return f.querySelector("img"); });
+    function dishPaint() {
+      dTick = false;
+      var r = dishSec.getBoundingClientRect(), total = r.height - innerHeight;
+      var p = clamp(-r.top / total, 0, 1) * (DN - 1), i = Math.floor(p), t = p - i;
+      if (i >= DN - 1) { i = DN - 1; t = 0; }
+      var et = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;   // ease in-out for the circle
+      var w = innerWidth >= 900 ? innerWidth * .62 : innerWidth, h = innerHeight, rmax = Math.sqrt(w * w + h * h) / 2 + 4;
+      for (var k = 1; k < DN; k++) {
+        var c = k <= i ? "none" : k === i + 1 ? "circle(" + (et * rmax).toFixed(1) + "px at 50% 52%)" : "circle(0px at 50% 52%)";
+        if (figs[k].__c !== c) { figs[k].style.clipPath = c; figs[k].style.webkitClipPath = c; figs[k].__c = c; }
+      }
+      for (k = 0; k < DN; k++) {   // slow settle zoom: 1.12 when it opens → 1.0 when it's the full dish
+        var z = k === i ? 1.0 + .04 * (1 - Math.min(1, t * 1.6)) * 0 + .02 * t : k === i + 1 ? 1.14 - .1 * et : 1.06;
+        if (imgs[k].__z !== z) { imgs[k].style.setProperty("--z", z.toFixed(4)); imgs[k].__z = z; }
+      }
+      if (rim) { var d = et * rmax * 2; rim.style.transform = "scale(" + (d / 10).toFixed(2) + ")"; rim.style.opacity = (t > .02 && t < .98 && i < DN - 1) ? (1 - et * .9).toFixed(3) : "0"; }
+      var cur = Math.min(DN - 1, Math.round(p));
+      if (cur !== dActive) {
+        dActive = cur;
+        dNames.forEach(function (n, j) { n.classList.toggle("on", j === cur); });
+        rail.forEach(function (b, j) { b.setAttribute("aria-current", String(j === cur)); });
+        if (dNum) dNum.textContent = String(cur + 1).padStart(2, "0");
+      }
+      if (dBar) dBar.style.setProperty("--p", (p / (DN - 1)).toFixed(4));
     }
-    function sync() {
-      var an = spin.getAnimations ? spin.getAnimations()[0] : null; if (!an || an.currentTime == null) return;
-      var p = (an.currentTime % T) / T;                       // 0..1 of a full turn
-      show(Math.round(p * RN) % RN);
-    }
-    function run(on) { clearInterval(timer); if (on) timer = setInterval(sync, 250); }
-    var hold = function (on) { scene.classList.toggle("is-paused", on); };
-    scene.addEventListener("pointerdown", function (e) { if (e.pointerType !== "mouse") hold(true); });
-    ["pointerup", "pointercancel", "pointerleave"].forEach(function (ev) { scene.addEventListener(ev, function () { hold(false); }); });
-    scene.addEventListener("contextmenu", function (e) { e.preventDefault(); });
-    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { var v = en[0].isIntersecting; scene.classList.toggle("is-off", !v); run(v); }, { rootMargin: "100px" }).observe(scene);
-    else run(true);
-    document.addEventListener("giu:lang", function () { show(front, true); var h = $(".ring__how"); if (h) h.textContent = I.t(fine ? "cucina.tilt" : "cucina.tiltTouch"); });
-    if (!fine) { var how = $(".ring__how"); if (how) how.textContent = I.t("cucina.tiltTouch"); }
+    function dishReq() { if (!dTick) { dTick = true; requestAnimationFrame(dishPaint); } }
+    addEventListener("scroll", dishReq, { passive: true }); addEventListener("resize", dishReq); dishPaint();
+    rail.forEach(function (b) { b.addEventListener("click", function () {
+      var k = +b.getAttribute("data-goto"), r = dishSec.getBoundingClientRect(), total = r.height - innerHeight;
+      goTo(scrollY + r.top + total * (k / (DN - 1)) + 1);
+    }); });
   }
 
   /* ---------------------------------------------------------------- LA TERRAZZA: scroll-driven sequence */
