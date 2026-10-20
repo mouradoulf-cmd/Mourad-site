@@ -49,3 +49,11 @@ the best of the sea, the terrace). Mourad disliked « Sotto gli ulivi, fino alle
 - **Terrazza**: editorial collage (no pinning, no scroll-jacking), the hero photo is no longer repeated;
   closes on a full-bleed "Tra gli ulivi". Parallax only on desktop with a fine pointer.
 - **Recensioni**: real 4,7 inside a slowly turning ring of type. Fixed film grain layer (inert).
+
+## Hero = la table, les lumières = la terrasse (2026-10-20)
+
+Asked by Mourad: the table photo (`table-partage`) is now the hero (split layout: photo right, name and
+booking on the dark side; phones: photo on top). The "night falls, lanterns light up" WebGL moved to
+`assets/js/lights.js` and closes the terrace section on the pergola photo ("Quando si accendono le luci");
+it starts when the scene is 40% in view and replays each time it comes back. `terrazza-tavoli` (same view
+as the pergola) now illustrates the manifesto instead of the table photo.
