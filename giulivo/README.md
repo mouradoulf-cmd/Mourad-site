@@ -16,16 +16,19 @@ original (ink, cream, terracotta, olive, gold) + the cream-yellow paper and sage
   service until 23:00 (days to confirm by phone). No invented reviews or quotes.
 
 ## Signature pieces
+- **Dalla cucina** (right after the hero): every real dish photo on a 3D ring (CSS 3D) that turns one
+  dish per scroll step on desktop (pinned), by finger on touch (drag + inertia + idle turn), with a
+  floor reflection, gold halo and orbit; the front dish is sharp and named. Mourad asked to put the
+  dish photos forward and **refused the 3D extruded brass logo** — never add 3D logo objects again.
 - `assets/js/hero.js` — raw WebGL hero: the real terrace photo, night falls and the real lanterns
   light up one by one. `assets/img/hero-maps.png` packs R = lantern glow (hand-placed on each real
   lamp), G = warm light pool on the tables, B = estimated depth (pointer/gyro/scroll parallax).
 - `assets/js/main.js` — "La Carta": the menu pages as 3D paper sheets turned like a book (pinned
   scroll on desktop, buttons/swipe/tabs on touch); "Dalla cucina" 3D coverflow + tilt + glare on the
-  dish photos; scroll-driven terrace sequence; Google rating count-up; booking (day → time → guests →
+  dish photos (replaced by the ring below); scroll-driven terrace sequence; Google rating count-up; booking (day → time → guests →
   where → name) to WhatsApp; one-field call-back; Google map loaded only on click.
-- `assets/js/mark3d.js` — three.js: the logo mark extruded in brass, lit warm, follows pointer and scroll.
 - `assets/js/i18n.js` + `i18n-data.js` — IT baked in the HTML, EN/DE/TH switched client-side (`?lang=`).
 - Desktop (fine pointer ≥1000px): Lenis + GSAP ScrollTrigger pins (`html.pin`). Touch: native scroll.
   Mobile action bar: Chiama · WhatsApp · Prenota (all `tel:`/`wa.me` links `target="_blank" rel="noopener"`).
 
-Vendor (MIT): three r160 + SVGLoader + RoomEnvironment, GSAP + ScrollTrigger, Lenis.
+Vendor (MIT): GSAP + ScrollTrigger, Lenis.
