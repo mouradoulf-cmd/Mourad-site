@@ -57,3 +57,9 @@ booking on the dark side; phones: photo on top). The "night falls, lanterns ligh
 `assets/js/lights.js` and closes the terrace section on the pergola photo ("Quando si accendono le luci");
 it starts when the scene is 40% in view and replays each time it comes back. `terrazza-tavoli` (same view
 as the pergola) now illustrates the manifesto instead of the table photo.
+
+## Moins de photos d'extérieur (2026-10-20)
+
+Mourad found the outdoor photos repetitive: the terrace section is now its title + the single
+"lights" scene (full-screen, night falls on the pergola). Manifesto keeps one photo (panna cotta);
+the map placeholder is a drawn card (pin + pulsing rings) instead of a garden photo.
