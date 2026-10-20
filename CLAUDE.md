@@ -276,7 +276,11 @@ Lis `PROJETS.md` à la racine au début d'une session : il résume les projets d
 
 Version « restaurant à 100 000 € » demandée par Mourad (carte blanche, mêmes couleurs) : nuit toscane,
 vraie carte du restaurant (5 pages transcrites) en feuilles de papier 3D qui se tournent, héros WebGL où la
-nuit tombe sur la vraie terrasse et les vraies lanternes s'allument, logo vectorisé depuis le menu et extrudé
-en laiton (three.js), plats en 3D (coverflow + inclinaison), réservation → WhatsApp. Contenu réel uniquement
+nuit tombe sur la vraie terrasse et les vraies lanternes s'allument, logo vectorisé depuis le menu, « roue » 3D
+de toutes les vraies photos de plats juste après le héros, réservation → WhatsApp. Contenu réel uniquement
 (détails dans `giulivo/README.md`). Le Giulivo d'origine reste à la racine tant que Mourad n'a pas validé
 le remplacement ; c'est la nouvelle référence de qualité pour les sites de restaurant.
+
+**Goût de Mourad (2026-10-20)** : il n'aime pas les objets 3D décoratifs comme le logo extrudé en laiton —
+ne plus en faire. Il veut les **photos des plats mises en avant** (grandes, en premier), avec des
+animations 3D qui servent les photos (ex. la roue des plats), pas des objets 3D à côté.
