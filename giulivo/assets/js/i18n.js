@@ -1,9 +1,9 @@
-/* Giulivo — language switch (IT baked in the HTML, EN / DE / TH from i18n-data.js).
+/* Giulivo — language switch (IT baked in the HTML, EN / DE / NL from i18n-data.js).
    API: window.GiuI18n = { lang, t(key), set(lang) }; fires "giu:lang" on document after each switch. */
 (function () {
   "use strict";
   var D = window.GIU_I18N; if (!D) return;
-  var LANGS = ["it", "en", "de", "th"];
+  var LANGS = ["it", "en", "de", "nl"];
   var api = window.GiuI18n = { lang: "it", t: function (k) { var u = D.ui[api.lang] || D.ui.it; return u[k] != null ? u[k] : (D.ui.it[k] || ""); }, set: set };
 
   function each(sel, fn) { var l = document.querySelectorAll(sel); for (var i = 0; i < l.length; i++) fn(l[i]); }

@@ -6,7 +6,7 @@ original (ink, cream, terracotta, olive, gold) + the cream-yellow paper and sage
 
 ## Real content only
 - **Menu**: transcribed from the restaurant's 5 printed menu pages (Terra primi / secondi, Mare,
-  Contorni, Bevande & Caffè, coperto 2,50 €), with allergen numbers as printed. Translations EN/DE/TH
+  Contorni, Bevande & Caffè, coperto 2,50 €), with allergen numbers as printed. Translations EN/DE/NL
   are descriptions only; dish names stay in Italian. Allergen legend = EU Reg. 1169/2011 order.
 - **Photos**: the restaurant's own photos (same as the old site), lightly enhanced (CLAHE, warmth,
   sharpening), exported 640/1280/2000 webp + jpg fallback.
@@ -29,7 +29,7 @@ original (ink, cream, terracotta, olive, gold) + the cream-yellow paper and sage
   scroll on desktop, buttons/swipe/tabs on touch); "Dalla cucina" 3D coverflow + tilt + glare on the
   dish photos (replaced by the ring below); scroll-driven terrace sequence; Google rating count-up; booking (day → time → guests →
   where → name) to WhatsApp; one-field call-back; Google map loaded only on click.
-- `assets/js/i18n.js` + `i18n-data.js` — IT baked in the HTML, EN/DE/TH switched client-side (`?lang=`).
+- `assets/js/i18n.js` + `i18n-data.js` — IT baked in the HTML, EN/DE/NL switched client-side (NL replaced TH at Mourad's request) (`?lang=`).
 - Desktop (fine pointer ≥1000px): Lenis + GSAP ScrollTrigger pins (`html.pin`). Touch: native scroll.
   Mobile action bar: Chiama · WhatsApp · Prenota (all `tel:`/`wa.me` links `target="_blank" rel="noopener"`).
 

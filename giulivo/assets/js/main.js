@@ -192,16 +192,16 @@
     new IntersectionObserver(function (en, o) {
       if (!en[0].isIntersecting) return; o.disconnect(); rev.classList.add("in");
       if (reduce) return; var t0 = performance.now();
-      (function step(now) { var k = clamp((now - t0) / 1400, 0, 1), v = 4.7 * ease(k); revNum.textContent = (I.lang === "it" || I.lang === "de" ? v.toFixed(1).replace(".", ",") : v.toFixed(1)); if (k < 1) requestAnimationFrame(step); })(t0);
+      (function step(now) { var k = clamp((now - t0) / 1400, 0, 1), v = 4.7 * ease(k); revNum.textContent = (I.lang === "en" ? v.toFixed(1) : v.toFixed(1).replace(".", ",")); if (k < 1) requestAnimationFrame(step); })(t0);
     }, { threshold: .4 }).observe(rev);
   }
-  document.addEventListener("giu:lang", function () { if (revNum) revNum.textContent = (I.lang === "it" || I.lang === "de") ? "4,7" : "4.7"; });
+  document.addEventListener("giu:lang", function () { if (revNum) revNum.textContent = (I.lang === "en") ? "4.7" : "4,7"; });
 
   /* ---------------------------------------------------------------- booking → WhatsApp */
   var WA = "393888566367";
   var bk = $("#bk"), daysEl = $("#bkDays"), timesEl = $("#bkTimes"), peopleEl = $("#bkPeople"), sumEl = $("#bkSummary"), errEl = $(".bk__err");
   var state = { day: 0, time: "20:00", people: 2, where: "terrace" };
-  var LOC = { it: "it-IT", en: "en-GB", de: "de-DE", th: "th-TH" };
+  var LOC = { it: "it-IT", en: "en-GB", de: "de-DE", nl: "nl-NL" };
   var TIMES = ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00"];
   function dayDate(i) { var d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + i); return d; }
   function dayLabel(i, long) {
