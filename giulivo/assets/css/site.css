@@ -261,41 +261,49 @@ html.js.ready .hero__logo { clip-path: inset(0 0 0 0); transition: clip-path 1.6
 .cover__sub::before, .cover__sub::after { content: ""; width: 10cqw; height: 1px; background: currentColor; }
 :lang(th) .cover__sub { letter-spacing: .05em; font-family: var(--font-body); font-size: 3.2cqw; }
 
-/* ---------------------------------------------------------------- DALLA CUCINA: 3D ring of real dish photos */
-.ring { position: relative; overflow: clip; background:
-  radial-gradient(60% 45% at 50% 58%, rgba(217,163,95,.16), transparent 70%),
+/* ---------------------------------------------------------------- DALLA CUCINA: 3D ring of real dish photos
+   Turns by itself with ONE compositor-only CSS animation (transform on the ring) — no JS per frame,
+   no filters, no reflections: smooth on phones. Each card's shade uses the same clock, phase-shifted,
+   so the dish facing you is bright and the ones behind are dimmed. Hover / finger hold pauses. */
+.ring { --n: 7; --T: 35s; position: relative; overflow: clip; background:
+  radial-gradient(55% 42% at 50% 56%, rgba(217,163,95,.16), transparent 72%),
   linear-gradient(180deg, var(--bg), #120c08 50%, var(--bg)); }
-.ring__pin { position: relative; display: flex; flex-direction: column; padding: var(--sec) 0 calc(var(--sec) * .6); }
-html.pin .ring__pin { height: 100vh; padding: 6.5rem 0 2.2rem; }
+.ring__pin { position: relative; display: flex; flex-direction: column; padding: calc(var(--sec) * .8) 0 calc(var(--sec) * .6); }
 .ring__head { text-align: center; }
 .ring__head .eyebrow::before { display: none; }
 .ring__head .h2 { font-size: clamp(2.3rem, 5vw, 4.4rem); }
-.ring__scene { --w: min(60vw, 300px); --r: calc(var(--w) * 1.22); position: relative; flex: 1; min-height: calc(var(--w) * 1.25 + 7rem); margin-top: 1rem; perspective: 1500px; perspective-origin: 50% 30%; outline: 0; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
-.ring__scene:active { cursor: grabbing; }
-@media (min-width: 900px) { .ring__scene { --w: min(25vw, 42vh, 390px); --r: calc(var(--w) * 1.3); } }
-.ring__spin { position: absolute; left: 50%; top: 46%; width: 0; height: 0; margin: 0; padding: 0; list-style: none; transform-style: preserve-3d; transform: translateZ(calc(var(--r) * -1)) rotateX(-6deg) rotateY(var(--a, 0deg)); }
-.ring__item { position: absolute; left: calc(var(--w) / -2); top: calc(var(--w) * -.625); width: var(--w); aspect-ratio: 4 / 5; transform-style: preserve-3d; transform: rotateY(calc(var(--i) * var(--step))) translateZ(var(--r)); }
-.ring__card { position: absolute; inset: 0; margin: 0; overflow: hidden; border-radius: 22px; background: #1b140e;
-  box-shadow: 0 0 0 1px rgba(236,201,143,calc(.15 + var(--f, 0) * .45)), 0 30px 60px -25px rgba(0,0,0,.9), 0 0 calc(var(--f, 0) * 60px) rgba(236,180,100,calc(var(--f, 0) * .35));
-  filter: brightness(calc(.38 + var(--f, 0) * .67)) saturate(calc(.7 + var(--f, 0) * .35)) blur(calc((1 - var(--f, 0)) * 1.4px));
-  -webkit-box-reflect: below 14px linear-gradient(transparent 62%, rgba(255,255,255,.22)); }
-.ring__card img { width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1.12 - var(--f, 0) * .1)); }
-.ring__glare { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 30%, rgba(255,240,215,.38) 46%, transparent 58%); background-size: 260% 100%; background-position: calc(var(--g, 0) * 100%) 0; mix-blend-mode: soft-light; }
-.ring__halo { position: absolute; left: 50%; top: 46%; width: calc(var(--w) * 2.2); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(240,180,95,.32), rgba(217,102,47,.12) 55%, transparent); filter: blur(10px); pointer-events: none; }
-.ring__orbit { position: absolute; left: 50%; top: calc(46% + var(--w) * .66); width: calc(var(--r) * 2.6); height: calc(var(--r) * .5); transform: translate(-50%, -50%); pointer-events: none; }
-.ring__orbit i { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(236,201,143,.28); }
-.ring__orbit i + i { inset: 14% 10%; border-color: rgba(236,201,143,.14); border-style: dashed; animation: orbit 40s linear infinite; }
-@keyframes orbit { to { transform: rotate(360deg); } }
-.ring__cap { display: flex; align-items: center; justify-content: center; gap: 1.4rem; margin-top: .6rem; }
-.ring__label { min-width: min(70vw, 26rem); text-align: center; }
+.ring__scene { --w: min(56vw, 280px); --r: calc(var(--w) * 1.2); position: relative; height: calc(var(--w) * 1.25 + 6rem); margin-top: 1.5rem; perspective: 1300px; perspective-origin: 50% 25%; outline: 0; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+@media (min-width: 900px) { .ring__scene { --w: min(23vw, 40vh, 360px); --r: calc(var(--w) * 1.3); height: calc(var(--w) * 1.25 + 8rem); } }
+.ring__spin { position: absolute; left: 50%; top: 50%; width: 0; height: 0; margin: 0; padding: 0; list-style: none; transform-style: preserve-3d; will-change: transform;
+  transform: translateZ(calc(var(--r) * -1)) rotateX(-5deg) rotateY(0deg); animation: ringSpin var(--T) linear infinite; }
+@keyframes ringSpin { to { transform: translateZ(calc(var(--r) * -1)) rotateX(-5deg) rotateY(-360deg); } }
+.ring__item { position: absolute; left: calc(var(--w) / -2); top: calc(var(--w) * -.625); width: var(--w); aspect-ratio: 4 / 5; transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r)); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.ring__card { position: absolute; inset: 0; margin: 0; overflow: hidden; border-radius: 20px; background: #1b140e; box-shadow: 0 0 0 1px rgba(236,201,143,.3), 0 26px 50px -24px rgba(0,0,0,.9); transform: translateZ(0); }
+.ring__card img { width: 100%; height: 100%; object-fit: cover; }
+.ring__card::after { content: ""; position: absolute; inset: 0; background: #0b0805; opacity: 0; pointer-events: none;
+  animation: ringShade var(--T) linear infinite; animation-delay: calc(var(--i) * var(--T) / var(--n) - var(--T)); }
+@keyframes ringShade { 0%, 100% { opacity: 0; } 10%, 90% { opacity: .42; } 22%, 78% { opacity: .72; } 50% { opacity: .85; } }
+.ring__scene.is-paused .ring__spin, .ring__scene.is-paused .ring__card::after, .ring__scene.is-off .ring__spin, .ring__scene.is-off .ring__card::after { animation-play-state: paused; }
+@media (hover: hover) { .ring__scene:hover .ring__spin, .ring__scene:hover .ring__card::after { animation-play-state: paused; } }
+.ring__halo { position: absolute; left: 50%; top: 50%; width: calc(var(--w) * 1.9); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(240,180,95,.3), rgba(217,102,47,.1) 55%, transparent); pointer-events: none; }
+.ring__orbit { position: absolute; left: 50%; top: calc(50% + var(--w) * .7); width: calc(var(--r) * 2.5); height: calc(var(--r) * .42); transform: translate(-50%, -50%); pointer-events: none; }
+.ring__orbit i { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(236,201,143,.26); }
+.ring__orbit i + i { inset: 16% 12%; border-color: rgba(236,201,143,.12); background: radial-gradient(closest-side, rgba(240,180,95,.12), transparent); }
+.ring__cap { display: flex; justify-content: center; margin-top: .4rem; }
+.ring__label { min-width: min(80vw, 26rem); text-align: center; }
 .ring__count { margin: 0; font-size: .8rem; letter-spacing: .25em; color: var(--gold); font-variant-numeric: tabular-nums; }
 .ring__count b { font-weight: 500; color: var(--cream); }
-.ring__name { margin: .35rem 0 0; font: italic 400 clamp(1.5rem, 2.6vw, 2.3rem)/1.15 var(--font-display); color: var(--cream); min-height: 1.2em; transition: opacity .35s, transform .35s var(--ease); }
-.ring__name.swap { opacity: 0; transform: translateY(8px); }
+.ring__name { margin: .35rem 0 0; font: italic 400 clamp(1.5rem, 2.6vw, 2.3rem)/1.15 var(--font-display); color: var(--cream); min-height: 1.2em; transition: opacity .4s, transform .4s var(--ease); }
+.ring__name.swap { opacity: 0; transform: translateY(6px); }
 :lang(th) .ring__name { font-style: normal; font-family: var(--font-body); }
 .ring__hint { margin: 1rem auto 0; text-align: center; font-size: .9rem; color: var(--cream-faint); }
 .ring__how { color: var(--gold-soft); font-style: italic; font-family: var(--font-display); }
-@media (prefers-reduced-motion: reduce) { .ring__card { filter: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .ring__scene { height: auto; perspective: none; }
+  .ring__spin { position: static; width: auto; height: auto; display: flex; gap: 1rem; overflow-x: auto; padding: 0 var(--gut); transform: none; animation: none; }
+  .ring__item { position: relative; left: 0; top: 0; flex: none; transform: none; }
+  .ring__card::after, .ring__halo, .ring__orbit { display: none; }
+}
 
 /* ---------------------------------------------------------------- LA TERRAZZA */
 .terr { position: relative; }
