@@ -144,73 +144,34 @@
     }
   }
 
-  /* ---------------------------------------------------------------- DALLA CUCINA: 3D ring of real dish photos
-     Desktop: pinned, the scroll turns the ring one dish at a time. Touch: drag / swipe with inertia,
-     slow auto-turn when idle, tap a side dish to bring it forward. Arrows + keyboard everywhere. */
+  /* ---------------------------------------------------------------- DALLA CUCINA: the ring turns by itself (pure CSS).
+     JS only reads the animation clock a few times a second to show the name of the dish in front,
+     pauses while a finger holds the ring, and stops the animation when the ring is off-screen. */
   var scene = $("#ringScene"), spin = $("#ringSpin"), items = $$(".ring__item"), RN = items.length;
-  var ringName = $("#ringName"), ringNum = $("#ringNum");
   if (scene && RN) {
-    var STEP = 360 / RN, ang = 0, target = 0, vel = 0, dragging = false, lastX = 0, idleAt = performance.now() + 2500, front = -1, ringRaf = 0, lastT = 0, ringST = null, visibleRing = true;
-    spin.style.setProperty("--step", STEP + "deg");
-    items.forEach(function (it, i) { it.style.setProperty("--i", i); it.addEventListener("click", function () { if (moved < 6) goDish(i); }); });
-    var plates = (window.GIU_I18N || {}).plates || {};
-    function nameOf(i) { var d = items[i].getAttribute("data-dish"), p = plates[d] || {}; return p[I.lang] || p.it || ""; }
-    function setFront(i) {
-      if (i === front) return; front = i;
-      ringNum.textContent = String(i + 1).padStart(2, "0");
+    var ringName = $("#ringName"), ringNum = $("#ringNum"), plates = (window.GIU_I18N || {}).plates || {}, front = 0, timer = 0;
+    var T = parseFloat(getComputedStyle(scene.closest(".ring")).getPropertyValue("--T")) * 1000 || 35000;
+    items.forEach(function (it, i) { it.style.setProperty("--i", i); });
+    function nameOf(i) { var p = plates[items[i].getAttribute("data-dish")] || {}; return p[I.lang] || p.it || ""; }
+    function show(i, force) {
+      if (i === front && !force) return; front = i;
       ringName.classList.add("swap");
-      setTimeout(function () { ringName.textContent = nameOf(i); ringName.classList.remove("swap"); }, 180);
+      setTimeout(function () { ringNum.textContent = String(i + 1).padStart(2, "0"); ringName.textContent = nameOf(i); ringName.classList.remove("swap"); }, 220);
     }
-    function paint() {
-      spin.style.setProperty("--a", (-ang).toFixed(3) + "deg");
-      for (var i = 0; i < RN; i++) {
-        var d = ((i * STEP - ang) % 360 + 540) % 360 - 180;          // -180..180, 0 = facing us
-        var f = Math.max(0, Math.cos(d * Math.PI / 180)); f = f * f * f;
-        items[i].style.setProperty("--f", f.toFixed(3));
-        items[i].firstElementChild.style.setProperty("--g", ((d + 180) / 360).toFixed(3));
-      }
-      setFront(((Math.round(ang / STEP) % RN) + RN) % RN);
+    function sync() {
+      var an = spin.getAnimations ? spin.getAnimations()[0] : null; if (!an || an.currentTime == null) return;
+      var p = (an.currentTime % T) / T;                       // 0..1 of a full turn
+      show(Math.round(p * RN) % RN);
     }
-    function tick(now) {
-      ringRaf = 0; if (!visibleRing) return;
-      var dt = Math.min(.05, (now - (lastT || now)) / 1000) || .016; lastT = now;
-      if (!dragging) {
-        if (!ringST && !reduce && now > idleAt) target += dt * 9;     // slow idle turn on touch screens
-        if (Math.abs(vel) > .01) { target += vel * dt * 60; vel *= Math.pow(.9, dt * 60); }
-        else if (!ringST && now <= idleAt) { var snap = Math.round(target / STEP) * STEP; target += (snap - target) * Math.min(1, dt * 6); }
-      }
-      ang += (target - ang) * (reduce ? 1 : 1 - Math.exp(-dt * 7));
-      paint();
-      ringRaf = requestAnimationFrame(tick);
-    }
-    function wakeRing() { if (!ringRaf) { lastT = 0; ringRaf = requestAnimationFrame(tick); } }
-    function goDish(i) {
-      idleAt = performance.now() + 6000; vel = 0;
-      var cur = Math.round(target / STEP), want = cur + ((((i - cur) % RN) + RN + Math.floor(RN / 2)) % RN) - Math.floor(RN / 2);
-      if (ringST) { var st = ringST, k = ((want % RN) + RN) % RN; goTo(st.start + (st.end - st.start) * (k / (RN - 1)) + 2); }
-      else { target = want * STEP; wakeRing(); }
-    }
-    $$("[data-ring]").forEach(function (b) { b.addEventListener("click", function () { goDish(((Math.round(target / STEP) + +b.getAttribute("data-ring")) % RN + RN) % RN); }); });
-    scene.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") goDish(front + 1 >= RN ? 0 : front + 1); if (e.key === "ArrowLeft") goDish(front - 1 < 0 ? RN - 1 : front - 1); });
-    // drag (touch + mouse when not pinned)
-    var moved = 0, startY = 0, horiz = null;
-    scene.addEventListener("pointerdown", function (e) { if (ringST && e.pointerType === "mouse") return; dragging = true; moved = 0; lastX = e.clientX; startY = e.clientY; horiz = null; vel = 0; idleAt = performance.now() + 6000; wakeRing(); });
-    addEventListener("pointermove", function (e) {
-      if (!dragging) return;
-      var dx = e.clientX - lastX; moved += Math.abs(dx);
-      if (horiz === null && (Math.abs(dx) > 4 || Math.abs(e.clientY - startY) > 4)) horiz = Math.abs(dx) >= Math.abs(e.clientY - startY);
-      if (!horiz) return;
-      var k = 120 / Math.max(260, scene.clientWidth); target -= dx * k; vel = -dx * k * .35; lastX = e.clientX;
-    }, { passive: true });
-    addEventListener("pointerup", function () { if (!dragging) return; dragging = false; idleAt = performance.now() + 6000; });
-    if (PIN) {
-      ringST = ST.create({ trigger: ".ring__pin", start: "top top", refreshPriority: 3, end: "+=" + RN * 55 + "%", pin: true, scrub: true,
-        onUpdate: function (self) { target = self.progress * (RN - 1) * STEP; idleAt = Infinity; wakeRing(); } });
-    }
-    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visibleRing = en[0].isIntersecting; if (visibleRing) wakeRing(); }).observe(scene);
-    document.addEventListener("giu:lang", function () { var f = front; front = -1; setFront(f < 0 ? 0 : f); if (!fine) { var h = $(".ring__how"); if (h) h.textContent = I.t("cucina.tiltTouch"); } });
+    function run(on) { clearInterval(timer); if (on) timer = setInterval(sync, 250); }
+    var hold = function (on) { scene.classList.toggle("is-paused", on); };
+    scene.addEventListener("pointerdown", function (e) { if (e.pointerType !== "mouse") hold(true); });
+    ["pointerup", "pointercancel", "pointerleave"].forEach(function (ev) { scene.addEventListener(ev, function () { hold(false); }); });
+    scene.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { var v = en[0].isIntersecting; scene.classList.toggle("is-off", !v); run(v); }, { rootMargin: "100px" }).observe(scene);
+    else run(true);
+    document.addEventListener("giu:lang", function () { show(front, true); var h = $(".ring__how"); if (h) h.textContent = I.t(fine ? "cucina.tilt" : "cucina.tiltTouch"); });
     if (!fine) { var how = $(".ring__how"); if (how) how.textContent = I.t("cucina.tiltTouch"); }
-    paint(); wakeRing();
   }
 
   /* ---------------------------------------------------------------- LA TERRAZZA: scroll-driven sequence */
