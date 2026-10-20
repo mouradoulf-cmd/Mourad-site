@@ -169,22 +169,29 @@
     lb.addEventListener("touchend", function (e) { if (lx == null) return; var dx = e.changedTouches[0].clientX - lx, dy = e.changedTouches[0].clientY - ly; lx = null; if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) lbShow(lbI + (dx < 0 ? 1 : -1), true); else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) lb.close(); }, { passive: true });
   }
 
-  /* ---------------------------------------------------------------- LA TERRAZZA: scroll-driven sequence */
-  var terr = $(".terr"), frames = $$(".terr__f"), dots = $$(".terr__dots li");
-  function paintTerr() {
-    if (!PIN || !terr) return;
-    var r = terr.getBoundingClientRect(), total = r.height - innerHeight;
-    var p = clamp(-r.top / total, 0, 1) * (frames.length - 1);
-    frames.forEach(function (f, i) {
-      var o = clamp(1 - Math.abs(p - i) * 1.25, 0, 1);
-      if (i === 0 && p < 0) o = 1;
-      f.style.opacity = o.toFixed(3);
-      f.style.setProperty("--s", (1.14 - .1 * clamp(p - i + 1, 0, 2) / 2).toFixed(4));
-      f.style.zIndex = o > .5 ? 2 : 1;
+  /* ---------------------------------------------------------------- photo reveals + gentle parallax (desktop) */
+  if ("IntersectionObserver" in window) {
+    var pio = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); pio.unobserve(x.target); } }); }, { rootMargin: "0px 0px -12% 0px" });
+    $$(".terr__f, .mani__media").forEach(function (el) { pio.observe(el); });
+  } else $$(".terr__f, .mani__media").forEach(function (el) { el.classList.add("in"); });
+  var pars = $$("[data-par]");
+  function paintPar() {
+    var vh = innerHeight;
+    pars.forEach(function (el) {
+      var r = el.getBoundingClientRect(); if (r.bottom < -100 || r.top > vh + 100) return;
+      var k = ((r.top + r.height / 2) - vh / 2) / (vh / 2 + r.height / 2), dir = +(el.getAttribute("data-par") || 1);
+      var img = el.querySelector("img"); if (img) img.style.setProperty("--py", (clamp(k, -1, 1) * -0.06 * r.height * dir).toFixed(1) + "px");
     });
-    dots.forEach(function (d, i) { d.style.setProperty("--p", clamp(p - i + 1, 0, 1).toFixed(3)); });
   }
-  if (PIN) { addEventListener("scroll", function () { requestAnimationFrame(paintTerr); }, { passive: true }); paintTerr(); }
+  if (PIN && !reduce && pars.length) { var parQ = false; addEventListener("scroll", function () { if (!parQ) { parQ = true; requestAnimationFrame(function () { parQ = false; paintPar(); }); } }, { passive: true }); paintPar(); }
+
+  /* "View" disc follows the pointer over the dishes */
+  var gCur = $(".gal__cursor");
+  if (gCur && gGrid && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    gGrid.addEventListener("pointermove", function (e) { gCur.style.left = e.clientX + "px"; gCur.style.top = e.clientY + "px"; gCur.classList.toggle("on", !!e.target.closest(".gal__btn")); });
+    gGrid.addEventListener("pointerleave", function () { gCur.classList.remove("on"); });
+    addEventListener("scroll", function () { gCur.classList.remove("on"); }, { passive: true });
+  }
 
   /* ---------------------------------------------------------------- reviews: count-up */
   var rev = $(".rev"), revNum = $(".rev__num");

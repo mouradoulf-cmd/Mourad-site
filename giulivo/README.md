@@ -37,3 +37,15 @@ Vendor (MIT): GSAP + ScrollTrigger, Lenis.
 
 Hero copy: tagline « La Toscana vera, nel piatto. » + promise line (handmade pasta, slow-cooked boar,
 the best of the sea, the terrace). Mourad disliked « Sotto gli ulivi, fino alle 23 » as a hook.
+
+## Pass « ultra-premium » (2026-10-20)
+
+- **Photos**: same real photos, re-graded from the originals (`grade.py`/`export.py` in the authoring
+  scratchpad): HDR halos softened, greens pulled toward olive, amber highlights, gentle vignette, plates
+  recropped (piatto della casa fills the frame). Served as AVIF → WebP → JPG with real width descriptors.
+- **Dalla cucina**: bigger 4-column bento that still fits one screen on desktop, numbered captions,
+  curtain reveal, light sheen + gold hairline on hover, a "Guarda" disc following the pointer.
+- **Manifesto**: two real photos (table, panna cotta) beside the words, curtain reveal + parallax.
+- **Terrazza**: editorial collage (no pinning, no scroll-jacking), the hero photo is no longer repeated;
+  closes on a full-bleed "Tra gli ulivi". Parallax only on desktop with a fine pointer.
+- **Recensioni**: real 4,7 inside a slowly turning ring of type. Fixed film grain layer (inert).
