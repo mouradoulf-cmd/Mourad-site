@@ -261,49 +261,44 @@ html.js.ready .hero__logo { clip-path: inset(0 0 0 0); transition: clip-path 1.6
 .cover__sub::before, .cover__sub::after { content: ""; width: 10cqw; height: 1px; background: currentColor; }
 :lang(th) .cover__sub { letter-spacing: .05em; font-family: var(--font-body); font-size: 3.2cqw; }
 
-/* ---------------------------------------------------------------- DALLA CUCINA: 3D ring of real dish photos
-   Turns by itself with ONE compositor-only CSS animation (transform on the ring) — no JS per frame,
-   no filters, no reflections: smooth on phones. Each card's shade uses the same clock, phase-shifted,
-   so the dish facing you is bright and the ones behind are dimmed. Hover / finger hold pauses. */
-.ring { --n: 7; --T: 35s; position: relative; overflow: clip; background:
-  radial-gradient(55% 42% at 50% 56%, rgba(217,163,95,.16), transparent 72%),
-  linear-gradient(180deg, var(--bg), #120c08 50%, var(--bg)); }
-.ring__pin { position: relative; display: flex; flex-direction: column; padding: calc(var(--sec) * .8) 0 calc(var(--sec) * .6); }
-.ring__head { text-align: center; }
-.ring__head .eyebrow::before { display: none; }
-.ring__head .h2 { font-size: clamp(2.3rem, 5vw, 4.4rem); }
-.ring__scene { --w: min(56vw, 280px); --r: calc(var(--w) * 1.2); position: relative; height: calc(var(--w) * 1.25 + 6rem); margin-top: 1.5rem; perspective: 1300px; perspective-origin: 50% 25%; outline: 0; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
-@media (min-width: 900px) { .ring__scene { --w: min(23vw, 40vh, 360px); --r: calc(var(--w) * 1.3); height: calc(var(--w) * 1.25 + 8rem); } }
-.ring__spin { position: absolute; left: 50%; top: 50%; width: 0; height: 0; margin: 0; padding: 0; list-style: none; transform-style: preserve-3d; will-change: transform;
-  transform: translateZ(calc(var(--r) * -1)) rotateX(-5deg) rotateY(0deg); animation: ringSpin var(--T) linear infinite; }
-@keyframes ringSpin { to { transform: translateZ(calc(var(--r) * -1)) rotateX(-5deg) rotateY(-360deg); } }
-.ring__item { position: absolute; left: calc(var(--w) / -2); top: calc(var(--w) * -.625); width: var(--w); aspect-ratio: 4 / 5; transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r)); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.ring__card { position: absolute; inset: 0; margin: 0; overflow: hidden; border-radius: 20px; background: #1b140e; box-shadow: 0 0 0 1px rgba(236,201,143,.3), 0 26px 50px -24px rgba(0,0,0,.9); transform: translateZ(0); }
-.ring__card img { width: 100%; height: 100%; object-fit: cover; }
-.ring__card::after { content: ""; position: absolute; inset: 0; background: #0b0805; opacity: 0; pointer-events: none;
-  animation: ringShade var(--T) linear infinite; animation-delay: calc(var(--i) * var(--T) / var(--n) - var(--T)); }
-@keyframes ringShade { 0%, 100% { opacity: 0; } 10%, 90% { opacity: .42; } 22%, 78% { opacity: .72; } 50% { opacity: .85; } }
-.ring__scene.is-paused .ring__spin, .ring__scene.is-paused .ring__card::after, .ring__scene.is-off .ring__spin, .ring__scene.is-off .ring__card::after { animation-play-state: paused; }
-@media (hover: hover) { .ring__scene:hover .ring__spin, .ring__scene:hover .ring__card::after { animation-play-state: paused; } }
-.ring__halo { position: absolute; left: 50%; top: 50%; width: calc(var(--w) * 1.9); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(240,180,95,.3), rgba(217,102,47,.1) 55%, transparent); pointer-events: none; }
-.ring__orbit { position: absolute; left: 50%; top: calc(50% + var(--w) * .7); width: calc(var(--r) * 2.5); height: calc(var(--r) * .42); transform: translate(-50%, -50%); pointer-events: none; }
-.ring__orbit i { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(236,201,143,.26); }
-.ring__orbit i + i { inset: 16% 12%; border-color: rgba(236,201,143,.12); background: radial-gradient(closest-side, rgba(240,180,95,.12), transparent); }
-.ring__cap { display: flex; justify-content: center; margin-top: .4rem; }
-.ring__label { min-width: min(80vw, 26rem); text-align: center; }
-.ring__count { margin: 0; font-size: .8rem; letter-spacing: .25em; color: var(--gold); font-variant-numeric: tabular-nums; }
-.ring__count b { font-weight: 500; color: var(--cream); }
-.ring__name { margin: .35rem 0 0; font: italic 400 clamp(1.5rem, 2.6vw, 2.3rem)/1.15 var(--font-display); color: var(--cream); min-height: 1.2em; transition: opacity .4s, transform .4s var(--ease); }
-.ring__name.swap { opacity: 0; transform: translateY(6px); }
-:lang(th) .ring__name { font-style: normal; font-family: var(--font-body); }
-.ring__hint { margin: 1rem auto 0; text-align: center; font-size: .9rem; color: var(--cream-faint); }
-.ring__how { color: var(--gold-soft); font-style: italic; font-family: var(--font-display); }
-@media (prefers-reduced-motion: reduce) {
-  .ring__scene { height: auto; perspective: none; }
-  .ring__spin { position: static; width: auto; height: auto; display: flex; gap: 1rem; overflow-x: auto; padding: 0 var(--gut); transform: none; animation: none; }
-  .ring__item { position: relative; left: 0; top: 0; flex: none; transform: none; }
-  .ring__card::after, .ring__halo, .ring__orbit { display: none; }
+/* ---------------------------------------------------------------- DALLA CUCINA: full-screen dishes
+   One sticky stage; each dish gets a scroll step. The next photo opens in a plate-shaped circle with a
+   thin gold rim, the current one settles with a slow zoom. Only clip-path / transform / opacity change. */
+.dish { position: relative; height: calc((var(--n) - 1) * 85svh + 100svh); background: var(--bg); }
+.dish__sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.dish__media { position: absolute; inset: 0; background: #120c08; }
+.dish__f { position: absolute; inset: 0; margin: 0; overflow: hidden; clip-path: circle(0% at 50% 52%); will-change: clip-path; }
+.dish__f:first-child { clip-path: none; }
+.dish__f img { width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1.08)); will-change: transform; }
+.dish__ringline { position: absolute; left: 50%; top: 52%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(236,201,143,.9), 0 0 30px rgba(236,180,100,.55); opacity: 0; transform: scale(0); will-change: transform, opacity; pointer-events: none; }
+.dish__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(11,8,5,.6) 0%, rgba(11,8,5,0) 20%, rgba(11,8,5,0) 46%, rgba(11,8,5,.78) 64%, rgba(11,8,5,.96) 82%, var(--bg) 100%); }
+@media (max-width: 899px) { .dish__note { display: none; } .dish__panel .eyebrow { text-shadow: 0 1px 10px rgba(0,0,0,.9); } }
+.dish__panel { position: absolute; z-index: 3; left: var(--gut); right: var(--gut); bottom: calc(5.6rem + env(safe-area-inset-bottom)); }
+.dish__num { margin: .9rem 0 0; display: flex; align-items: baseline; gap: .5rem; font-variant-numeric: tabular-nums; }
+.dish__num b { font: 300 2.2rem/1 var(--font-display); color: var(--gold-soft); }
+.dish__num span { font-size: .85rem; letter-spacing: .2em; color: var(--cream-faint); }
+.dish__names { position: relative; height: 2.5em; margin-top: .3rem; font: italic 400 clamp(2.1rem, 8.5vw, 4.9rem)/1.02 var(--font-display); letter-spacing: -.01em; font-variation-settings: "opsz" 144, "SOFT" 100; }
+.dish__name { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; font: inherit; color: var(--cream); text-wrap: balance; text-shadow: 0 4px 30px rgba(0,0,0,.6); opacity: 0; transform: translateY(.45em); transition: opacity .6s var(--ease), transform .7s var(--ease); }
+.dish__name.on { opacity: 1; transform: none; }
+:lang(th) .dish__names { font-style: normal; font-family: var(--font-body); font-weight: 500; font-size: clamp(1.9rem, 7.5vw, 3.8rem); line-height: 1.25; }
+.dish__note { margin: 1rem 0 0; max-width: 30rem; font-size: .95rem; color: var(--cream-soft); }
+.dish__ctas { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.3rem; }
+.dish__rail { position: absolute; z-index: 3; top: calc(4.6rem + env(safe-area-inset-top)); left: 0; right: 0; display: flex; justify-content: center; gap: .45rem; margin: 0; padding: 0 var(--gut); list-style: none; }
+.dish__rail button { display: block; width: 2.6rem; height: 2.6rem; padding: 0; border: 0; border-radius: 50%; overflow: hidden; cursor: pointer; background: #000; box-shadow: 0 0 0 1px rgba(248,243,234,.25); opacity: .6; transform: scale(.88); transition: opacity .4s, transform .4s var(--ease), box-shadow .4s; }
+.dish__rail button[aria-current="true"] { opacity: 1; transform: scale(1.06); box-shadow: 0 0 0 2px var(--gold), 0 0 18px rgba(236,180,100,.5); }
+.dish__rail img { width: 100%; height: 100%; object-fit: cover; }
+.dish__bar { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(248,243,234,.08); }
+.dish__bar i { position: absolute; inset: 0; background: linear-gradient(90deg, var(--gold), var(--terracotta)); transform-origin: left; transform: scaleX(var(--p, 0)); }
+@media (min-width: 900px) {
+  .dish__media { left: 38%; }
+  .dish__shade { background: linear-gradient(90deg, var(--bg) 0%, rgba(11,8,5,.55) 9%, rgba(11,8,5,0) 30%), linear-gradient(180deg, rgba(11,8,5,.35), transparent 25%, transparent 80%, rgba(11,8,5,.6)); }
+  .dish__panel { left: max(var(--gut), calc((100vw - var(--wrap)) / 2)); right: auto; top: 50%; bottom: auto; width: 34%; transform: translateY(-50%); }
+  .dish__names { height: 3.2em; font-size: clamp(2.6rem, 4.4vw, 4.9rem); }
+  .dish__rail { top: auto; bottom: 2.4rem; left: 38%; }
+  .dish__rail button { width: 3.2rem; height: 3.2rem; }
+  .dish::before { content: ""; position: absolute; inset: 0 62% 0 0; background: radial-gradient(70% 50% at 30% 50%, rgba(217,163,95,.1), transparent 70%); pointer-events: none; }
 }
+@media (prefers-reduced-motion: reduce) { .dish__f img { transform: none; } .dish__name { transition: none; } }
 
 /* ---------------------------------------------------------------- LA TERRAZZA */
 .terr { position: relative; }

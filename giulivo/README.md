@@ -16,10 +16,12 @@ original (ink, cream, terracotta, olive, gold) + the cream-yellow paper and sage
   service until 23:00 (days to confirm by phone). No invented reviews or quotes.
 
 ## Signature pieces
-- **Dalla cucina** (right after the hero): every real dish photo on a 3D ring that **turns by itself** with a
-  single CSS animation (compositor only, no JS per frame, no filters/reflections — smooth on phones);
-  card shades share the same clock so the front dish is bright; hover / finger hold pauses; JS only
-  reads the animation clock to show the front dish's name. No scroll pinning (it felt buggy on phone). Mourad asked to put the
+- **Dalla cucina** (right after the hero): each real dish photo full-screen (62% width on desktop, text
+  panel left). Scrolling opens the next dish in a plate-shaped circle with a thin gold rim, the photo
+  settles with a slow zoom; big italic dish name, counter, round thumbnail rail to jump to any dish,
+  progress bar. Sticky + one scroll listener + rAF, only clip-path/transform/opacity. Mourad wants the
+  dish photos to be the star of every restaurant site; he refused a 3D brass logo and found a 3D ring
+  of small photos not prominent enough. Mourad asked to put the
   dish photos forward and **refused the 3D extruded brass logo** — never add 3D logo objects again.
 - `assets/js/hero.js` — raw WebGL hero: the real terrace photo, night falls and the real lanterns
   light up one by one. `assets/img/hero-maps.png` packs R = lantern glow (hand-placed on each real
