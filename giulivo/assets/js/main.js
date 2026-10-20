@@ -61,7 +61,7 @@
   }
 
   /* ---------------------------------------------------------------- reveals */
-  var rvSel = ".mani__facts li, .cucina__head > div, .rev__in > *, .book__copy > *, .bk, .find__grid > div, .foot .wrap > *, .carta__intro > *";
+  var rvSel = ".mani__facts li, .ring__head > *, .rev__in > *, .book__copy > *, .bk, .find__grid > div, .foot .wrap > *, .carta__intro > *";
   if ("IntersectionObserver" in window && !reduce) {
     root.classList.add("reveal-ready");
     var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
@@ -139,48 +139,78 @@
     deck.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") cartaGo(Math.round(cartaTarget) + 1); if (e.key === "ArrowLeft") cartaGo(Math.round(cartaTarget) - 1); });
     deck.tabIndex = 0;
     if (PIN) {
-      cartaST = ST.create({ trigger: ".carta__pin", start: "top top", end: "+=" + (N - 1) * 85 + "%", pin: true, scrub: true, anticipatePin: 1,
+      cartaST = ST.create({ trigger: ".carta__pin", start: "top top", refreshPriority: 2, end: "+=" + (N - 1) * 85 + "%", pin: true, scrub: true, anticipatePin: 1,
         onUpdate: function (self) { setCarta(self.progress * (N - 1)); } });
     }
   }
 
-  /* ---------------------------------------------------------------- DALLA CUCINA: 3D plates */
-  var platesEl = $("#plates"), plates = $$(".plate");
-  function coverflow() {
-    var vw = innerWidth;
-    plates.forEach(function (p) {
-      var r = p.getBoundingClientRect(), c = r.left + r.width / 2, dx = (c - vw / 2) / (vw / 2);
-      var card = p.firstElementChild;
-      card.style.setProperty("--ry", clamp(-dx * 24, -32, 32).toFixed(2) + "deg");
-      card.style.setProperty("--tz", (-Math.abs(dx) * 90).toFixed(1) + "px");
-      card.style.setProperty("--px", (dx * -18).toFixed(1) + "px");
-    });
-  }
-  if (plates.length) {
-    if (PIN) {
-      var dist = function () { return Math.max(0, platesEl.scrollWidth - innerWidth); };
-      G.to(platesEl, { x: function () { return -dist(); }, ease: "none",
-        scrollTrigger: { trigger: ".cucina__pin", start: "top top", end: function () { return "+=" + dist(); }, pin: true, scrub: 1, invalidateOnRefresh: true, onUpdate: coverflow } });
-    } else platesEl.addEventListener("scroll", function () { requestAnimationFrame(coverflow); }, { passive: true });
-    coverflow(); addEventListener("resize", coverflow);
-    // pointer tilt + glare
-    plates.forEach(function (p) {
-      var card = p.firstElementChild;
-      card.addEventListener("pointermove", function (e) {
-        if (e.pointerType === "touch") return;
-        var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-        card.style.setProperty("--rx", (-y * 14).toFixed(2) + "deg"); card.style.setProperty("--ry", (x * 18).toFixed(2) + "deg");
-        card.style.setProperty("--px", (-x * 22).toFixed(1) + "px"); card.style.setProperty("--py", (-y * 22).toFixed(1) + "px");
-        card.style.setProperty("--gx", ((x + .5) * 100).toFixed(1) + "%"); card.style.setProperty("--gy", ((y + .5) * 100).toFixed(1) + "%"); card.style.setProperty("--go", "1");
-      });
-      card.addEventListener("pointerleave", function () { ["--rx", "--py"].forEach(function (k) { card.style.setProperty(k, "0"); }); card.style.setProperty("--go", ".6"); coverflow(); });
-    });
-    // phone tilt (Android; iOS needs a permission prompt, so it simply stays still)
-    addEventListener("deviceorientation", function (e) {
-      if (e.gamma == null || fine) return;
-      var gx = clamp(e.gamma / 30, -1, 1), gy = clamp((e.beta - 50) / 30, -1, 1);
-      plates.forEach(function (p) { var c = p.firstElementChild; c.style.setProperty("--rx", (-gy * 8).toFixed(2) + "deg"); c.style.setProperty("--py", (-gy * 14).toFixed(1) + "px"); c.style.setProperty("--gx", ((gx + 1) * 50).toFixed(1) + "%"); });
+  /* ---------------------------------------------------------------- DALLA CUCINA: 3D ring of real dish photos
+     Desktop: pinned, the scroll turns the ring one dish at a time. Touch: drag / swipe with inertia,
+     slow auto-turn when idle, tap a side dish to bring it forward. Arrows + keyboard everywhere. */
+  var scene = $("#ringScene"), spin = $("#ringSpin"), items = $$(".ring__item"), RN = items.length;
+  var ringName = $("#ringName"), ringNum = $("#ringNum");
+  if (scene && RN) {
+    var STEP = 360 / RN, ang = 0, target = 0, vel = 0, dragging = false, lastX = 0, idleAt = performance.now() + 2500, front = -1, ringRaf = 0, lastT = 0, ringST = null, visibleRing = true;
+    spin.style.setProperty("--step", STEP + "deg");
+    items.forEach(function (it, i) { it.style.setProperty("--i", i); it.addEventListener("click", function () { if (moved < 6) goDish(i); }); });
+    var plates = (window.GIU_I18N || {}).plates || {};
+    function nameOf(i) { var d = items[i].getAttribute("data-dish"), p = plates[d] || {}; return p[I.lang] || p.it || ""; }
+    function setFront(i) {
+      if (i === front) return; front = i;
+      ringNum.textContent = String(i + 1).padStart(2, "0");
+      ringName.classList.add("swap");
+      setTimeout(function () { ringName.textContent = nameOf(i); ringName.classList.remove("swap"); }, 180);
+    }
+    function paint() {
+      spin.style.setProperty("--a", (-ang).toFixed(3) + "deg");
+      for (var i = 0; i < RN; i++) {
+        var d = ((i * STEP - ang) % 360 + 540) % 360 - 180;          // -180..180, 0 = facing us
+        var f = Math.max(0, Math.cos(d * Math.PI / 180)); f = f * f * f;
+        items[i].style.setProperty("--f", f.toFixed(3));
+        items[i].firstElementChild.style.setProperty("--g", ((d + 180) / 360).toFixed(3));
+      }
+      setFront(((Math.round(ang / STEP) % RN) + RN) % RN);
+    }
+    function tick(now) {
+      ringRaf = 0; if (!visibleRing) return;
+      var dt = Math.min(.05, (now - (lastT || now)) / 1000) || .016; lastT = now;
+      if (!dragging) {
+        if (!ringST && !reduce && now > idleAt) target += dt * 9;     // slow idle turn on touch screens
+        if (Math.abs(vel) > .01) { target += vel * dt * 60; vel *= Math.pow(.9, dt * 60); }
+        else if (!ringST && now <= idleAt) { var snap = Math.round(target / STEP) * STEP; target += (snap - target) * Math.min(1, dt * 6); }
+      }
+      ang += (target - ang) * (reduce ? 1 : 1 - Math.exp(-dt * 7));
+      paint();
+      ringRaf = requestAnimationFrame(tick);
+    }
+    function wakeRing() { if (!ringRaf) { lastT = 0; ringRaf = requestAnimationFrame(tick); } }
+    function goDish(i) {
+      idleAt = performance.now() + 6000; vel = 0;
+      var cur = Math.round(target / STEP), want = cur + ((((i - cur) % RN) + RN + Math.floor(RN / 2)) % RN) - Math.floor(RN / 2);
+      if (ringST) { var st = ringST, k = ((want % RN) + RN) % RN; goTo(st.start + (st.end - st.start) * (k / (RN - 1)) + 2); }
+      else { target = want * STEP; wakeRing(); }
+    }
+    $$("[data-ring]").forEach(function (b) { b.addEventListener("click", function () { goDish(((Math.round(target / STEP) + +b.getAttribute("data-ring")) % RN + RN) % RN); }); });
+    scene.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") goDish(front + 1 >= RN ? 0 : front + 1); if (e.key === "ArrowLeft") goDish(front - 1 < 0 ? RN - 1 : front - 1); });
+    // drag (touch + mouse when not pinned)
+    var moved = 0, startY = 0, horiz = null;
+    scene.addEventListener("pointerdown", function (e) { if (ringST && e.pointerType === "mouse") return; dragging = true; moved = 0; lastX = e.clientX; startY = e.clientY; horiz = null; vel = 0; idleAt = performance.now() + 6000; wakeRing(); });
+    addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - lastX; moved += Math.abs(dx);
+      if (horiz === null && (Math.abs(dx) > 4 || Math.abs(e.clientY - startY) > 4)) horiz = Math.abs(dx) >= Math.abs(e.clientY - startY);
+      if (!horiz) return;
+      var k = 120 / Math.max(260, scene.clientWidth); target -= dx * k; vel = -dx * k * .35; lastX = e.clientX;
     }, { passive: true });
+    addEventListener("pointerup", function () { if (!dragging) return; dragging = false; idleAt = performance.now() + 6000; });
+    if (PIN) {
+      ringST = ST.create({ trigger: ".ring__pin", start: "top top", refreshPriority: 3, end: "+=" + RN * 55 + "%", pin: true, scrub: true,
+        onUpdate: function (self) { target = self.progress * (RN - 1) * STEP; idleAt = Infinity; wakeRing(); } });
+    }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visibleRing = en[0].isIntersecting; if (visibleRing) wakeRing(); }).observe(scene);
+    document.addEventListener("giu:lang", function () { var f = front; front = -1; setFront(f < 0 ? 0 : f); if (!fine) { var h = $(".ring__how"); if (h) h.textContent = I.t("cucina.tiltTouch"); } });
+    if (!fine) { var how = $(".ring__how"); if (how) how.textContent = I.t("cucina.tiltTouch"); }
+    paint(); wakeRing();
   }
 
   /* ---------------------------------------------------------------- LA TERRAZZA: scroll-driven sequence */
@@ -274,5 +304,5 @@
     $("#map").appendChild(f); mapBtn.parentNode.remove();
   });
 
-  if (ST) { addEventListener("load", function () { ST.refresh(); }); document.addEventListener("giu:lang", function () { setTimeout(function () { ST.refresh(); }, 50); }); }
+  if (ST) { if (ST.sort) ST.sort(); ST.refresh(); addEventListener("load", function () { ST.refresh(); }); document.addEventListener("giu:lang", function () { setTimeout(function () { ST.refresh(); }, 50); }); }
 })();
