@@ -110,6 +110,8 @@
     }
     var cur = clamp(Math.round(p), 0, N - 1);
     if (num) num.textContent = cur + 1;
+    $$('[data-carta="prev"]').forEach(function (b) { b.disabled = cur === 0; }); $$('[data-carta="next"]').forEach(function (b) { b.disabled = cur === N - 1; });
+    if (cur > 0) { var sw = $(".carta__swipe"); if (sw) sw.classList.add("used"); }
     var tab = sheets[cur] && sheets[cur].getAttribute("data-tab");
     tabs.forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-tab") === tab)); });
   }
@@ -131,8 +133,9 @@
     tabs.forEach(function (b) { b.addEventListener("click", function () { var t = b.getAttribute("data-tab"); for (var i = 0; i < N; i++) if (sheets[i].getAttribute("data-tab") === t) return cartaGo(i); }); });
     // swipe on the deck (touch)
     var sx = null, sy = null;
-    deck.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
-    deck.addEventListener("touchend", function (e) {
+    var stageEl = $("#cartaStage") || deck;
+    stageEl.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    stageEl.addEventListener("touchend", function (e) {
       if (sx == null) return; var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
       if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) cartaGo(Math.round(cartaTarget) + (dx < 0 ? 1 : -1));
     }, { passive: true });
@@ -145,7 +148,7 @@
   }
 
   /* ---------------------------------------------------------------- DALLA CUCINA: full-screen dishes, circular "plate" reveal */
-  var dishSec = $(".dish"), figs = $$(".dish__f"), dNames = $$(".dish__name"), rail = $$(".dish__rail button"), dNum = $("#dishNum"), dBar = $("#dishBar"), rim = $(".dish__ringline");
+  var dishSec = $(".show"), figs = $$(".show__f"), dNames = $$(".show__name"), rail = $$(".show__rail button"), dNum = $("#dishNum"), dBar = $("#dishBar"), rim = $(".show__ringline");
   if (dishSec && figs.length) {
     var DN = figs.length, dActive = -1, dTick = false, imgs = figs.map(function (f) { return f.querySelector("img"); });
     function dishPaint() {

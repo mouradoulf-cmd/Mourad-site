@@ -26,7 +26,7 @@
     if (!gl) return false;
     var vs = "attribute vec2 p; varying vec2 v; void main(){ v = p*.5+.5; gl_Position = vec4(p,0.,1.); }";
     var fs = [
-      "precision mediump float; varying vec2 v; uniform sampler2D uI, uM; uniform float uN, uT, uSa, uIa, uSc; uniform vec2 uP, uFoc;",
+      "#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\nvarying vec2 v; uniform sampler2D uI, uM; uniform float uN, uT, uSa, uIa, uSc; uniform vec2 uP, uFoc;",
       "float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }",
       "vec2 cover(vec2 uv){ bool port = uSa < uIa; vec2 s = port ? vec2(uSa/uIa, 1.) : vec2(1., uIa/uSa); float z = port ? .78 : .94; vec2 c = port ? uFoc : vec2(.5); uv = (uv-.5)*s*z + c; return vec2(uv.x, 1.-uv.y); }",
       "void main(){",
@@ -35,14 +35,12 @@
       "  vec2 off = (uP * .016 + vec2(0., uSc * .035)) * (d - .35);",
       "  uv = clamp(uv + off, .001, .999);",
       "  vec3 c = texture2D(uI, uv).rgb; vec3 m = texture2D(uM, uv).rgb;",
-      "  float cell = h(floor(uv * vec2(7., 5.)));",
-      "  float on = smoothstep(.08 + cell * .55, .28 + cell * .55, uN);",
-      "  float fl = .9 + .1 * sin(uT * (5. + cell * 6.) + cell * 30.) * sin(uT * 2.3 + cell * 11.);",
+      "  float on = smoothstep(.15, .75, uN);",
+      "  float fl = .965 + .035 * sin(uT * 2.1) * sin(uT * 3.7 + 1.3);",
       "  float L = m.r * on * fl; float pool = m.g * smoothstep(.35, 1., uN);",
       "  vec3 night = c * vec3(.25, .29, .42) * (1. - .25 * d) + c * L * 1.3 + L * vec3(1., .58, .26) * .6 + pow(L, 3.) * vec3(1., .82, .55) * .5 + c * pool * vec3(1., .72, .45) * .6;",
       "  vec3 dusk = c * vec3(.92, .86, .8);",
       "  vec3 col = mix(dusk, night, smoothstep(0., .55, uN));",
-      "  col += (h(v * vec2(1931., 1171.) + fract(uT)) - .5) * .022;",
       "  gl_FragColor = vec4(col, 1.);",
       "}"].join("\n");
     try {
