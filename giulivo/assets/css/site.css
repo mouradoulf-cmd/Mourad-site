@@ -42,7 +42,7 @@
   --bar-h: 0px;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; scroll-padding-bottom: 6rem; }
+html { overflow-x: clip; -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; scroll-padding-bottom: 6rem; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 body { margin: 0; background: var(--bg); color: var(--cream); font: 400 1.0625rem/1.65 var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
@@ -180,7 +180,7 @@ html.js.ready .hero__logo { clip-path: inset(0 0 0 0); transition: clip-path 1.6
 .mani__facts span { display: block; margin-top: .35rem; font-size: .93rem; color: var(--cream-soft); }
 
 /* ---------------------------------------------------------------- LA CARTA (3D paper menu) */
-.carta { position: relative; background: linear-gradient(180deg, var(--bg), #15100b 40%, var(--bg)); }
+.carta { position: relative; overflow-x: clip; background: linear-gradient(180deg, var(--bg), #15100b 40%, var(--bg)); }
 .carta__pin { padding: var(--sec) 0; }
 .carta__grid { display: grid; gap: 3rem; align-items: center; }
 @media (min-width: 1000px) { .carta__grid { grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: 2rem; min-height: 100vh; } .carta__pin { padding: 0; } html.pin .carta__grid { height: 100vh; } .carta__stage { place-items: center end; padding-right: 2vw; } .carta__intro { position: relative; z-index: 2; } }
@@ -261,44 +261,59 @@ html.js.ready .hero__logo { clip-path: inset(0 0 0 0); transition: clip-path 1.6
 .cover__sub::before, .cover__sub::after { content: ""; width: 10cqw; height: 1px; background: currentColor; }
 :lang(th) .cover__sub { letter-spacing: .05em; font-family: var(--font-body); font-size: 3.2cqw; }
 
-/* ---------------------------------------------------------------- DALLA CUCINA: full-screen dishes
-   One sticky stage; each dish gets a scroll step. The next photo opens in a plate-shaped circle with a
-   thin gold rim, the current one settles with a slow zoom. Only clip-path / transform / opacity change. */
-.show { position: relative; height: calc((var(--n) - 1) * 85svh + 100svh); background: var(--bg); }
-.show__sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-.show__media { position: absolute; inset: 0; background: #120c08; }
-.show__f { position: absolute; inset: 0; margin: 0; overflow: hidden; clip-path: circle(0% at 50% 52%); will-change: clip-path; }
-.show__f:first-child { clip-path: none; }
-.show__f img { width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1.08)); will-change: transform; }
-.show__ringline { position: absolute; left: 50%; top: 52%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(236,201,143,.9), 0 0 30px rgba(236,180,100,.55); opacity: 0; transform: scale(0); will-change: transform, opacity; pointer-events: none; }
-.show__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(11,8,5,.6) 0%, rgba(11,8,5,0) 20%, rgba(11,8,5,0) 46%, rgba(11,8,5,.78) 64%, rgba(11,8,5,.96) 82%, var(--bg) 100%); }
-@media (max-width: 899px) { .show__note { display: none; } .show__panel .eyebrow { text-shadow: 0 1px 10px rgba(0,0,0,.9); } }
-.show__panel { position: absolute; z-index: 3; left: var(--gut); right: var(--gut); bottom: calc(5.6rem + env(safe-area-inset-bottom)); }
-.show__num { margin: .9rem 0 0; display: flex; align-items: baseline; gap: .5rem; font-variant-numeric: tabular-nums; }
-.show__num b { font: 300 2.2rem/1 var(--font-display); color: var(--gold-soft); }
-.show__num span { font-size: .85rem; letter-spacing: .2em; color: var(--cream-faint); }
-.show__names { position: relative; height: 2.5em; margin-top: .3rem; font: italic 400 clamp(2.1rem, 8.5vw, 4.9rem)/1.02 var(--font-display); letter-spacing: -.01em; font-variation-settings: "opsz" 144, "SOFT" 100; }
-.show__name { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; font: inherit; color: var(--cream); text-wrap: balance; text-shadow: 0 4px 30px rgba(0,0,0,.6); opacity: 0; transform: translateY(.45em); transition: opacity .6s var(--ease), transform .7s var(--ease); }
-.show__name.on { opacity: 1; transform: none; }
-:lang(th) .show__names { font-style: normal; font-family: var(--font-body); font-weight: 500; font-size: clamp(1.9rem, 7.5vw, 3.8rem); line-height: 1.25; }
-.show__note { margin: 1rem 0 0; max-width: 30rem; font-size: .95rem; color: var(--cream-soft); }
-.show__ctas { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.3rem; }
-.show__rail { position: absolute; z-index: 3; top: calc(4.6rem + env(safe-area-inset-top)); left: 0; right: 0; display: flex; justify-content: center; gap: .45rem; margin: 0; padding: 0 var(--gut); list-style: none; }
-.show__rail button { display: block; width: 2.6rem; height: 2.6rem; padding: 0; border: 0; border-radius: 50%; overflow: hidden; cursor: pointer; background: #000; box-shadow: 0 0 0 1px rgba(248,243,234,.25); opacity: .6; transform: scale(.88); transition: opacity .4s, transform .4s var(--ease), box-shadow .4s; }
-.show__rail button[aria-current="true"] { opacity: 1; transform: scale(1.06); box-shadow: 0 0 0 2px var(--gold), 0 0 18px rgba(236,180,100,.5); }
-.show__rail img { width: 100%; height: 100%; object-fit: cover; }
-.show__bar { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(248,243,234,.08); }
-.show__bar i { position: absolute; inset: 0; background: linear-gradient(90deg, var(--gold), var(--terracotta)); transform-origin: left; transform: scaleX(var(--p, 0)); }
-@media (min-width: 900px) {
-  .show__media { left: 38%; }
-  .show__shade { background: linear-gradient(90deg, var(--bg) 0%, rgba(11,8,5,.55) 9%, rgba(11,8,5,0) 30%), linear-gradient(180deg, rgba(11,8,5,.35), transparent 25%, transparent 80%, rgba(11,8,5,.6)); }
-  .show__panel { left: max(var(--gut), calc((100vw - var(--wrap)) / 2)); right: auto; top: 50%; bottom: auto; width: 34%; transform: translateY(-50%); }
-  .show__names { height: 3.2em; font-size: clamp(2.6rem, 4.4vw, 4.9rem); }
-  .show__rail { top: auto; bottom: 2.4rem; left: 38%; }
-  .show__rail button { width: 3.2rem; height: 3.2rem; }
-  .show::before { content: ""; position: absolute; inset: 0 62% 0 0; background: radial-gradient(70% 50% at 30% 50%, rgba(217,163,95,.1), transparent 70%); pointer-events: none; }
+/* ---------------------------------------------------------------- DALLA CUCINA: magazine mosaic, all dishes at once
+   No pinning, no scroll-jacking. Desktop: the 7 photos fit one screen (5×2 grid, the star dish 2×2).
+   Phone: compact 3-column mosaic. Tap → full-screen viewer with swipe. */
+.gal { position: relative; padding: calc(var(--sec) * .75) 0 calc(var(--sec) * .7); background: radial-gradient(60% 50% at 50% 55%, rgba(217,163,95,.1), transparent 70%), var(--bg); }
+.gal__head { display: grid; gap: .6rem 4rem; align-items: end; margin-bottom: 2rem; }
+@media (min-width: 900px) { .gal__head { grid-template-columns: 1.2fr .8fr; } }
+.gal__grid { display: grid; gap: .55rem; margin: 0 auto; padding: 0; list-style: none;
+  grid-template-columns: repeat(3, 1fr); grid-auto-rows: 31vw;
+  grid-template-areas: "a a b" "a a c" "d e f" "d g g"; }
+@media (min-width: 900px) { .gal__grid { gap: .8rem; grid-template-columns: repeat(5, 1fr); grid-auto-rows: min(30vh, 17vw); grid-template-areas: "a a b c d" "a a e f g"; } }
+.gal__it--0 { grid-area: a; } .gal__it--1 { grid-area: b; } .gal__it--2 { grid-area: c; } .gal__it--3 { grid-area: d; } .gal__it--4 { grid-area: e; } .gal__it--5 { grid-area: f; } .gal__it--6 { grid-area: g; }
+.gal__it { min-width: 0; min-height: 0; }
+.gal__btn { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 16px; overflow: hidden; cursor: zoom-in; background: #1b140e; box-shadow: 0 0 0 1px rgba(236,201,143,.14), 0 24px 50px -30px rgba(0,0,0,.9); -webkit-tap-highlight-color: transparent; isolation: isolate; }
+@media (min-width: 900px) { .gal__btn { border-radius: 22px; } }
+.gal__img, .gal__img img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gal__img img { object-fit: cover; transform: scale(1.01); transition: transform 1.2s var(--ease), filter .6s; }
+.gal__cap { position: absolute; inset: auto 0 0 0; padding: 2.4rem .8rem .7rem; background: linear-gradient(180deg, transparent, rgba(11,8,5,.85)); text-align: left; }
+.gal__name { display: block; font: italic 400 clamp(.9rem, 1.4vw, 1.2rem)/1.15 var(--font-display); color: var(--cream); }
+.gal__it--0 .gal__name { font-size: clamp(1.3rem, 2.4vw, 2rem); }
+.gal__it--0 .gal__cap { padding: 4rem 1.2rem 1.1rem; }
+:lang(th) .gal__name { font-style: normal; font-family: var(--font-body); }
+@media (max-width: 899px) { .gal__it:not(.gal__it--0):not(.gal__it--6) .gal__cap { display: none; } }
+@media (hover: hover) {
+  .gal__btn:hover .gal__img img { transform: scale(1.07); }
+  .gal__grid:hover .gal__btn:not(:hover) .gal__img img { filter: brightness(.7) saturate(.85); }
 }
-@media (prefers-reduced-motion: reduce) { .show__f img { transform: none; } .show__name { transition: none; } }
+.gal__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; margin-top: 2rem; }
+html.reveal-ready .gal__it { opacity: 0; transform: translateY(24px) scale(.98); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--k, 0) * 70ms); }
+html.reveal-ready .gal__grid.in .gal__it { opacity: 1; transform: none; }
+
+/* full-screen viewer */
+.lb { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(8,6,4,.96); color: var(--cream); overflow: hidden; }
+.lb::backdrop { background: rgba(0,0,0,.6); }
+.lb[open] { display: grid; place-items: center; grid-template-columns: minmax(0, 1fr); animation: lbIn .35s var(--ease); }
+@keyframes lbIn { from { opacity: 0; } }
+.lb__fig { margin: 0 auto; width: min(88vw, 62vh); max-width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1rem; touch-action: pan-y; }
+.lb__fig img { width: 100%; max-height: 80vh; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; box-shadow: 0 40px 90px -30px rgba(0,0,0,.9); transition: opacity .25s, transform .35s var(--ease); }
+.lb__fig img.swap { opacity: 0; transform: scale(.97); }
+.lb__fig figcaption { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: .3rem .8rem; max-width: 100%; text-align: center; }
+.lb__n { font-size: .8rem; letter-spacing: .2em; color: var(--gold); font-variant-numeric: tabular-nums; }
+.lb__name { font: italic 400 clamp(1.4rem, 3vw, 2.2rem)/1.15 var(--font-display); }
+:lang(th) .lb__name { font-style: normal; font-family: var(--font-body); }
+.lb__close, .lb__nav { position: absolute; display: grid; place-items: center; width: 3rem; height: 3rem; border: 0; border-radius: 50%; cursor: pointer; background: rgba(248,243,234,.1); color: var(--cream); box-shadow: inset 0 0 0 1px rgba(248,243,234,.25); }
+.lb__close svg, .lb__nav svg { width: 1.25rem; height: 1.25rem; }
+.lb__close { top: calc(1rem + env(safe-area-inset-top)); right: 1rem; }
+.lb__nav { top: 50%; margin-top: -1.5rem; }
+.lb__nav--prev { left: 1rem; } .lb__nav--next { right: 1rem; }
+@media (max-width: 699px) { .lb__nav { top: auto; bottom: calc(1.2rem + env(safe-area-inset-bottom)); margin: 0; } .lb__nav--prev { left: calc(50% - 4rem); } .lb__nav--next { right: calc(50% - 4rem); } .lb__fig { margin-bottom: 4rem; } }
+
+/* hero tagline */
+.hero__tag { margin: 1.6rem 0 0; font: italic 400 clamp(1.7rem, 3.4vw, 2.9rem)/1.1 var(--font-display); color: var(--gold-soft); letter-spacing: -.01em; text-shadow: 0 4px 30px rgba(0,0,0,.55); }
+:lang(th) .hero__tag { font-style: normal; font-family: var(--font-body); font-weight: 500; line-height: 1.3; }
+.hero__tag + .hero__lead { margin-top: .9rem; }
 
 /* ---------------------------------------------------------------- LA TERRAZZA */
 .terr { position: relative; }

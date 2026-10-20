@@ -16,12 +16,11 @@ original (ink, cream, terracotta, olive, gold) + the cream-yellow paper and sage
   service until 23:00 (days to confirm by phone). No invented reviews or quotes.
 
 ## Signature pieces
-- **Dalla cucina** (right after the hero): each real dish photo full-screen (62% width on desktop, text
-  panel left). Scrolling opens the next dish in a plate-shaped circle with a thin gold rim, the photo
-  settles with a slow zoom; big italic dish name, counter, round thumbnail rail to jump to any dish,
-  progress bar. Sticky + one scroll listener + rAF, only clip-path/transform/opacity. Mourad wants the
-  dish photos to be the star of every restaurant site; he refused a 3D brass logo and found a 3D ring
-  of small photos not prominent enough. Mourad asked to put the
+- **Dalla cucina** (right after the hero): all 7 real dish photos at once in a magazine mosaic (desktop
+  5×2 grid fitting one screen, star dish 2×2; phone 3-column mosaic in about one screen), hover zoom,
+  tap → full-screen viewer (swipe / arrows / Esc). No pinning or scroll-jacking: Mourad found it
+  annoying to scroll through dishes one by one. He refused a 3D brass logo and a 3D ring of small
+  photos. Dish photos must be the star, visible at once. Mourad asked to put the
   dish photos forward and **refused the 3D extruded brass logo** — never add 3D logo objects again.
 - `assets/js/hero.js` — raw WebGL hero: the real terrace photo, night falls and the real lanterns
   light up one by one. `assets/img/hero-maps.png` packs R = lantern glow (hand-placed on each real
@@ -35,3 +34,6 @@ original (ink, cream, terracotta, olive, gold) + the cream-yellow paper and sage
   Mobile action bar: Chiama · WhatsApp · Prenota (all `tel:`/`wa.me` links `target="_blank" rel="noopener"`).
 
 Vendor (MIT): GSAP + ScrollTrigger, Lenis.
+
+Hero copy: tagline « La Toscana vera, nel piatto. » + promise line (handmade pasta, slow-cooked boar,
+the best of the sea, the terrace). Mourad disliked « Sotto gli ulivi, fino alle 23 » as a hook.
