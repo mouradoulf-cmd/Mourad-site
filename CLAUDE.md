@@ -359,3 +359,12 @@ voix/visage d'une vraie personne sans son accord. Détails dans le SKILL.md.
   pub ou vidéo. Seulement des infos publiques dans le dépôt (il est publié).
 - **UGC** : déjà couvert par `ugc-ad-scripts` + `influencer-marketing`. **Pub Meta** : `facebook-ads`
   (MIT, Rebecca Rae Barton) en plus de `ads` / `ad-creative` ; `marketing-council` pour l'avis « façon Seth Godin ».
+
+## Giulivo v2 — refonte premium (`giulivo/`, 2026-10-20)
+
+Version « restaurant à 100 000 € » demandée par Mourad (carte blanche, mêmes couleurs) : nuit toscane,
+vraie carte du restaurant (5 pages transcrites) en feuilles de papier 3D qui se tournent, héros WebGL où la
+nuit tombe sur la vraie terrasse et les vraies lanternes s'allument, logo vectorisé depuis le menu et extrudé
+en laiton (three.js), plats en 3D (coverflow + inclinaison), réservation → WhatsApp. Contenu réel uniquement
+(détails dans `giulivo/README.md`). Le Giulivo d'origine reste à la racine tant que Mourad n'a pas validé
+le remplacement ; c'est la nouvelle référence de qualité pour les sites de restaurant.
