@@ -20,7 +20,7 @@
   /* ---------------------------------------------------------------- intro → ready */
   var seen = root.classList.contains("seen");
   try { sessionStorage.setItem("giu-intro", "1"); } catch (e) {}
-  ["hero__place", "hero__lead", "hero__ctas", "hero__proof"].forEach(function (c, i) { var el = $("." + c); if (el) { el.setAttribute("data-in", ""); el.style.setProperty("--d", i + (i ? 2 : 0)); } });
+  ["hero__place", "hero__tag", "hero__lead", "hero__ctas", "hero__proof"].forEach(function (c, i) { var el = $("." + c); if (el) { el.setAttribute("data-in", ""); el.style.setProperty("--d", i + (i ? 2 : 0)); } });
   setTimeout(function () { root.classList.add("ready"); }, seen || reduce ? 60 : 1500);
 
   /* ---------------------------------------------------------------- smooth scroll */
@@ -147,41 +147,26 @@
     }
   }
 
-  /* ---------------------------------------------------------------- DALLA CUCINA: full-screen dishes, circular "plate" reveal */
-  var dishSec = $(".show"), figs = $$(".show__f"), dNames = $$(".show__name"), rail = $$(".show__rail button"), dNum = $("#dishNum"), dBar = $("#dishBar"), rim = $(".show__ringline");
-  if (dishSec && figs.length) {
-    var DN = figs.length, dActive = -1, dTick = false, imgs = figs.map(function (f) { return f.querySelector("img"); });
-    function dishPaint() {
-      dTick = false;
-      var r = dishSec.getBoundingClientRect(), total = r.height - innerHeight;
-      var p = clamp(-r.top / total, 0, 1) * (DN - 1), i = Math.floor(p), t = p - i;
-      if (i >= DN - 1) { i = DN - 1; t = 0; }
-      var et = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;   // ease in-out for the circle
-      var w = innerWidth >= 900 ? innerWidth * .62 : innerWidth, h = innerHeight, rmax = Math.sqrt(w * w + h * h) / 2 + 4;
-      for (var k = 1; k < DN; k++) {
-        var c = k <= i ? "none" : k === i + 1 ? "circle(" + (et * rmax).toFixed(1) + "px at 50% 52%)" : "circle(0px at 50% 52%)";
-        if (figs[k].__c !== c) { figs[k].style.clipPath = c; figs[k].style.webkitClipPath = c; figs[k].__c = c; }
-      }
-      for (k = 0; k < DN; k++) {   // slow settle zoom: 1.12 when it opens → 1.0 when it's the full dish
-        var z = k === i ? 1.0 + .04 * (1 - Math.min(1, t * 1.6)) * 0 + .02 * t : k === i + 1 ? 1.14 - .1 * et : 1.06;
-        if (imgs[k].__z !== z) { imgs[k].style.setProperty("--z", z.toFixed(4)); imgs[k].__z = z; }
-      }
-      if (rim) { var d = et * rmax * 2; rim.style.transform = "scale(" + (d / 10).toFixed(2) + ")"; rim.style.opacity = (t > .02 && t < .98 && i < DN - 1) ? (1 - et * .9).toFixed(3) : "0"; }
-      var cur = Math.min(DN - 1, Math.round(p));
-      if (cur !== dActive) {
-        dActive = cur;
-        dNames.forEach(function (n, j) { n.classList.toggle("on", j === cur); });
-        rail.forEach(function (b, j) { b.setAttribute("aria-current", String(j === cur)); });
-        if (dNum) dNum.textContent = String(cur + 1).padStart(2, "0");
-      }
-      if (dBar) dBar.style.setProperty("--p", (p / (DN - 1)).toFixed(4));
-    }
-    function dishReq() { if (!dTick) { dTick = true; requestAnimationFrame(dishPaint); } }
-    addEventListener("scroll", dishReq, { passive: true }); addEventListener("resize", dishReq); dishPaint();
-    rail.forEach(function (b) { b.addEventListener("click", function () {
-      var k = +b.getAttribute("data-goto"), r = dishSec.getBoundingClientRect(), total = r.height - innerHeight;
-      goTo(scrollY + r.top + total * (k / (DN - 1)) + 1);
-    }); });
+  /* ---------------------------------------------------------------- DALLA CUCINA: mosaic reveal + full-screen viewer */
+  var gGrid = $(".gal__grid"), gBtns = $$(".gal__btn"), lb = $("#lb"), lbImg = $("#lbImg"), lbName = $("#lbName"), lbN = $("#lbN"), lbI = 0;
+  if (gGrid) {
+    $$(".gal__it").forEach(function (it, k) { it.style.setProperty("--k", k); });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { gGrid.classList.add("in"); o.disconnect(); } }, { threshold: .12 }).observe(gGrid);
+    else gGrid.classList.add("in");
+  }
+  function lbShow(i, anim) {
+    lbI = (i + gBtns.length) % gBtns.length; var b = gBtns[lbI], name = b.querySelector(".gal__name").textContent;
+    var go = function () { lbImg.src = b.getAttribute("data-full"); lbImg.alt = name; lbName.textContent = name; lbN.textContent = String(lbI + 1).padStart(2, "0") + " / " + String(gBtns.length).padStart(2, "0"); lbImg.classList.remove("swap"); };
+    if (anim) { lbImg.classList.add("swap"); setTimeout(go, 180); } else go();
+  }
+  if (lb && gBtns.length && lb.showModal) {
+    gBtns.forEach(function (b, i) { b.addEventListener("click", function () { lbShow(i); lb.showModal(); if (lenis) lenis.stop(); }); });
+    lb.addEventListener("close", function () { if (lenis) lenis.start(); });
+    lb.addEventListener("click", function (e) { var t = e.target.closest("[data-lb]"); if (!t) { if (e.target === lb) lb.close(); return; } var v = t.getAttribute("data-lb"); if (v === "close") lb.close(); else lbShow(lbI + +v, true); });
+    lb.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") lbShow(lbI + 1, true); if (e.key === "ArrowLeft") lbShow(lbI - 1, true); });
+    var lx = null, ly = null;
+    lb.addEventListener("touchstart", function (e) { lx = e.touches[0].clientX; ly = e.touches[0].clientY; }, { passive: true });
+    lb.addEventListener("touchend", function (e) { if (lx == null) return; var dx = e.changedTouches[0].clientX - lx, dy = e.changedTouches[0].clientY - ly; lx = null; if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) lbShow(lbI + (dx < 0 ? 1 : -1), true); else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) lb.close(); }, { passive: true });
   }
 
   /* ---------------------------------------------------------------- LA TERRAZZA: scroll-driven sequence */
