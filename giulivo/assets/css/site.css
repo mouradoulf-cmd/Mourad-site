@@ -247,8 +247,25 @@ html.js.ready .hero__logo { clip-path: inset(0 0 0 0); transition: clip-path 1.6
 .sheet__note, .sheet__coperto { margin: auto 0 0; padding-top: 2.4cqw; border-top: 1px solid rgba(27,21,16,.55); text-align: center; font: italic 400 2.7cqw/1.35 var(--font-display); }
 .sheet__coperto { display: flex; justify-content: space-between; font-style: normal; letter-spacing: .14em; text-transform: uppercase; font-size: 3.2cqw; }
 .sheet__num { position: absolute; right: 4cqw; bottom: 2.4cqw; margin: 0; font: 400 2.2cqw/1 var(--font-body); letter-spacing: .1em; color: rgba(27,21,16,.45); }
-.sheet[data-sheet="2"] .dish { padding: 1.5cqw 0; }
-.sheet[data-sheet="2"] .dish__desc { font-size: 2.55cqw; }
+.sheet--dense .sheet__in { padding-top: 4cqw; }
+.sheet--dense .sheet__logo { width: 22cqw; }
+.sheet--dense .sheet__head { margin-top: 2cqw; padding: 1.8cqw 0; }
+.sheet--dense .sheet__title { font-size: 5.2cqw; }
+.sheet--dense .sheet__group { margin: 2.4cqw 0 .3cqw; font-size: 2.9cqw; }
+.sheet--dense .dish { padding: 1.15cqw 0; }
+.sheet--dense .dish__name, .sheet--dense .dish__price { font-size: 3.2cqw; line-height: 1.17; }
+.sheet--dense .dish__desc { font-size: 2.4cqw; margin-top: .5cqw; }
+.sheet--dense .al { font-size: 2cqw; margin-top: .3cqw; }
+.sheet--dense .sheet__note { padding-top: 1.6cqw; font-size: 2.4cqw; }
+/* cover, as the printed one: big logo, MENÙ, TERRA · MARE, sage sun and arc */
+.cover__sun { position: absolute; right: -20%; top: -16%; width: 78%; color: var(--paper-sage); transform: rotate(10deg); }
+.cover__arc { position: absolute; left: -16%; bottom: -14%; width: 66%; color: var(--paper-sage); }
+.cover__in { justify-content: center; align-items: center; text-align: center; }
+.cover__logo { width: 62cqw; color: var(--paper-ink); margin-top: 6cqw; }
+.cover__title { margin: 14cqw 0 0; font: 400 13cqw/1 var(--font-display); letter-spacing: .02em; text-transform: uppercase; font-variation-settings: "opsz" 144; }
+.cover__sub { margin: 9cqw 0 0; display: flex; align-items: center; gap: 3cqw; font: 400 2.7cqw/1 var(--font-display); letter-spacing: .3em; text-transform: uppercase; }
+.cover__sub::before, .cover__sub::after { content: ""; width: 10cqw; height: 1px; background: currentColor; }
+:lang(th) .cover__sub { letter-spacing: .05em; font-family: var(--font-body); font-size: 3.2cqw; }
 
 /* ---------------------------------------------------------------- DALLA CUCINA (3D plates) */
 .cucina { position: relative; padding: var(--sec) 0 calc(var(--sec) * .7); overflow: clip; }
