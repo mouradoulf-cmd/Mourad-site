@@ -201,16 +201,16 @@ html.js.ready .hero__logo { clip-path: inset(0 0 0 0); transition: clip-path 1.6
 .alg__list b { min-width: 1.4rem; color: var(--gold); font-weight: 500; }
 .carta__vary { margin: 1.2rem 0 0; font: italic 400 .95rem/1.5 var(--font-display); color: var(--cream-faint); }
 
-.carta__stage { position: relative; display: grid; place-items: center; perspective: 2400px; perspective-origin: 50% 40%; padding: 2rem 0 3rem; }
+.carta__stage { position: relative; display: grid; touch-action: pan-y; place-items: center; perspective: 2400px; perspective-origin: 50% 40%; padding: 2rem 0 3rem; }
 .carta__deck { position: relative; width: min(88vw, 470px); aspect-ratio: 1122 / 1402; transform-style: preserve-3d; transform: rotateX(10deg) rotateZ(-2deg); }
 @media (min-width: 1000px) { .carta__deck { width: min(23vw, 52vh, 410px); transform: rotateX(10deg) rotateY(-8deg) rotateZ(-2deg); } }
 .carta__floor { position: absolute; left: 50%; bottom: 0; width: 70%; height: 2.6rem; transform: translateX(-50%); background: radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.65), transparent 70%); filter: blur(6px); pointer-events: none; }
 
-.sheet { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 0% 50%; will-change: transform; container-type: inline-size; }
+.sheet { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 0% 50%; container-type: inline-size; }
 .sheet__face { position: absolute; inset: 0; overflow: hidden; border-radius: 6px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
   background-color: var(--paper); color: var(--paper-ink);
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .12 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    url("../img/paper-grain.png"),
     radial-gradient(120% 90% at 30% 20%, rgba(255,255,255,.45), transparent 60%),
     linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(120,90,30,.07));
   box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 30px 60px -20px rgba(0,0,0,.65), 0 8px 18px rgba(0,0,0,.35); }
@@ -264,41 +264,41 @@ html.js.ready .hero__logo { clip-path: inset(0 0 0 0); transition: clip-path 1.6
 /* ---------------------------------------------------------------- DALLA CUCINA: full-screen dishes
    One sticky stage; each dish gets a scroll step. The next photo opens in a plate-shaped circle with a
    thin gold rim, the current one settles with a slow zoom. Only clip-path / transform / opacity change. */
-.dish { position: relative; height: calc((var(--n) - 1) * 85svh + 100svh); background: var(--bg); }
-.dish__sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-.dish__media { position: absolute; inset: 0; background: #120c08; }
-.dish__f { position: absolute; inset: 0; margin: 0; overflow: hidden; clip-path: circle(0% at 50% 52%); will-change: clip-path; }
-.dish__f:first-child { clip-path: none; }
-.dish__f img { width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1.08)); will-change: transform; }
-.dish__ringline { position: absolute; left: 50%; top: 52%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(236,201,143,.9), 0 0 30px rgba(236,180,100,.55); opacity: 0; transform: scale(0); will-change: transform, opacity; pointer-events: none; }
-.dish__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(11,8,5,.6) 0%, rgba(11,8,5,0) 20%, rgba(11,8,5,0) 46%, rgba(11,8,5,.78) 64%, rgba(11,8,5,.96) 82%, var(--bg) 100%); }
-@media (max-width: 899px) { .dish__note { display: none; } .dish__panel .eyebrow { text-shadow: 0 1px 10px rgba(0,0,0,.9); } }
-.dish__panel { position: absolute; z-index: 3; left: var(--gut); right: var(--gut); bottom: calc(5.6rem + env(safe-area-inset-bottom)); }
-.dish__num { margin: .9rem 0 0; display: flex; align-items: baseline; gap: .5rem; font-variant-numeric: tabular-nums; }
-.dish__num b { font: 300 2.2rem/1 var(--font-display); color: var(--gold-soft); }
-.dish__num span { font-size: .85rem; letter-spacing: .2em; color: var(--cream-faint); }
-.dish__names { position: relative; height: 2.5em; margin-top: .3rem; font: italic 400 clamp(2.1rem, 8.5vw, 4.9rem)/1.02 var(--font-display); letter-spacing: -.01em; font-variation-settings: "opsz" 144, "SOFT" 100; }
-.dish__name { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; font: inherit; color: var(--cream); text-wrap: balance; text-shadow: 0 4px 30px rgba(0,0,0,.6); opacity: 0; transform: translateY(.45em); transition: opacity .6s var(--ease), transform .7s var(--ease); }
-.dish__name.on { opacity: 1; transform: none; }
-:lang(th) .dish__names { font-style: normal; font-family: var(--font-body); font-weight: 500; font-size: clamp(1.9rem, 7.5vw, 3.8rem); line-height: 1.25; }
-.dish__note { margin: 1rem 0 0; max-width: 30rem; font-size: .95rem; color: var(--cream-soft); }
-.dish__ctas { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.3rem; }
-.dish__rail { position: absolute; z-index: 3; top: calc(4.6rem + env(safe-area-inset-top)); left: 0; right: 0; display: flex; justify-content: center; gap: .45rem; margin: 0; padding: 0 var(--gut); list-style: none; }
-.dish__rail button { display: block; width: 2.6rem; height: 2.6rem; padding: 0; border: 0; border-radius: 50%; overflow: hidden; cursor: pointer; background: #000; box-shadow: 0 0 0 1px rgba(248,243,234,.25); opacity: .6; transform: scale(.88); transition: opacity .4s, transform .4s var(--ease), box-shadow .4s; }
-.dish__rail button[aria-current="true"] { opacity: 1; transform: scale(1.06); box-shadow: 0 0 0 2px var(--gold), 0 0 18px rgba(236,180,100,.5); }
-.dish__rail img { width: 100%; height: 100%; object-fit: cover; }
-.dish__bar { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(248,243,234,.08); }
-.dish__bar i { position: absolute; inset: 0; background: linear-gradient(90deg, var(--gold), var(--terracotta)); transform-origin: left; transform: scaleX(var(--p, 0)); }
+.show { position: relative; height: calc((var(--n) - 1) * 85svh + 100svh); background: var(--bg); }
+.show__sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.show__media { position: absolute; inset: 0; background: #120c08; }
+.show__f { position: absolute; inset: 0; margin: 0; overflow: hidden; clip-path: circle(0% at 50% 52%); will-change: clip-path; }
+.show__f:first-child { clip-path: none; }
+.show__f img { width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1.08)); will-change: transform; }
+.show__ringline { position: absolute; left: 50%; top: 52%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(236,201,143,.9), 0 0 30px rgba(236,180,100,.55); opacity: 0; transform: scale(0); will-change: transform, opacity; pointer-events: none; }
+.show__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(11,8,5,.6) 0%, rgba(11,8,5,0) 20%, rgba(11,8,5,0) 46%, rgba(11,8,5,.78) 64%, rgba(11,8,5,.96) 82%, var(--bg) 100%); }
+@media (max-width: 899px) { .show__note { display: none; } .show__panel .eyebrow { text-shadow: 0 1px 10px rgba(0,0,0,.9); } }
+.show__panel { position: absolute; z-index: 3; left: var(--gut); right: var(--gut); bottom: calc(5.6rem + env(safe-area-inset-bottom)); }
+.show__num { margin: .9rem 0 0; display: flex; align-items: baseline; gap: .5rem; font-variant-numeric: tabular-nums; }
+.show__num b { font: 300 2.2rem/1 var(--font-display); color: var(--gold-soft); }
+.show__num span { font-size: .85rem; letter-spacing: .2em; color: var(--cream-faint); }
+.show__names { position: relative; height: 2.5em; margin-top: .3rem; font: italic 400 clamp(2.1rem, 8.5vw, 4.9rem)/1.02 var(--font-display); letter-spacing: -.01em; font-variation-settings: "opsz" 144, "SOFT" 100; }
+.show__name { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; font: inherit; color: var(--cream); text-wrap: balance; text-shadow: 0 4px 30px rgba(0,0,0,.6); opacity: 0; transform: translateY(.45em); transition: opacity .6s var(--ease), transform .7s var(--ease); }
+.show__name.on { opacity: 1; transform: none; }
+:lang(th) .show__names { font-style: normal; font-family: var(--font-body); font-weight: 500; font-size: clamp(1.9rem, 7.5vw, 3.8rem); line-height: 1.25; }
+.show__note { margin: 1rem 0 0; max-width: 30rem; font-size: .95rem; color: var(--cream-soft); }
+.show__ctas { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.3rem; }
+.show__rail { position: absolute; z-index: 3; top: calc(4.6rem + env(safe-area-inset-top)); left: 0; right: 0; display: flex; justify-content: center; gap: .45rem; margin: 0; padding: 0 var(--gut); list-style: none; }
+.show__rail button { display: block; width: 2.6rem; height: 2.6rem; padding: 0; border: 0; border-radius: 50%; overflow: hidden; cursor: pointer; background: #000; box-shadow: 0 0 0 1px rgba(248,243,234,.25); opacity: .6; transform: scale(.88); transition: opacity .4s, transform .4s var(--ease), box-shadow .4s; }
+.show__rail button[aria-current="true"] { opacity: 1; transform: scale(1.06); box-shadow: 0 0 0 2px var(--gold), 0 0 18px rgba(236,180,100,.5); }
+.show__rail img { width: 100%; height: 100%; object-fit: cover; }
+.show__bar { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(248,243,234,.08); }
+.show__bar i { position: absolute; inset: 0; background: linear-gradient(90deg, var(--gold), var(--terracotta)); transform-origin: left; transform: scaleX(var(--p, 0)); }
 @media (min-width: 900px) {
-  .dish__media { left: 38%; }
-  .dish__shade { background: linear-gradient(90deg, var(--bg) 0%, rgba(11,8,5,.55) 9%, rgba(11,8,5,0) 30%), linear-gradient(180deg, rgba(11,8,5,.35), transparent 25%, transparent 80%, rgba(11,8,5,.6)); }
-  .dish__panel { left: max(var(--gut), calc((100vw - var(--wrap)) / 2)); right: auto; top: 50%; bottom: auto; width: 34%; transform: translateY(-50%); }
-  .dish__names { height: 3.2em; font-size: clamp(2.6rem, 4.4vw, 4.9rem); }
-  .dish__rail { top: auto; bottom: 2.4rem; left: 38%; }
-  .dish__rail button { width: 3.2rem; height: 3.2rem; }
-  .dish::before { content: ""; position: absolute; inset: 0 62% 0 0; background: radial-gradient(70% 50% at 30% 50%, rgba(217,163,95,.1), transparent 70%); pointer-events: none; }
+  .show__media { left: 38%; }
+  .show__shade { background: linear-gradient(90deg, var(--bg) 0%, rgba(11,8,5,.55) 9%, rgba(11,8,5,0) 30%), linear-gradient(180deg, rgba(11,8,5,.35), transparent 25%, transparent 80%, rgba(11,8,5,.6)); }
+  .show__panel { left: max(var(--gut), calc((100vw - var(--wrap)) / 2)); right: auto; top: 50%; bottom: auto; width: 34%; transform: translateY(-50%); }
+  .show__names { height: 3.2em; font-size: clamp(2.6rem, 4.4vw, 4.9rem); }
+  .show__rail { top: auto; bottom: 2.4rem; left: 38%; }
+  .show__rail button { width: 3.2rem; height: 3.2rem; }
+  .show::before { content: ""; position: absolute; inset: 0 62% 0 0; background: radial-gradient(70% 50% at 30% 50%, rgba(217,163,95,.1), transparent 70%); pointer-events: none; }
 }
-@media (prefers-reduced-motion: reduce) { .dish__f img { transform: none; } .dish__name { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .show__f img { transform: none; } .show__name { transition: none; } }
 
 /* ---------------------------------------------------------------- LA TERRAZZA */
 .terr { position: relative; }
@@ -420,3 +420,39 @@ html.reveal-ready [data-rv].in { opacity: 1; transform: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .intro { display: none; }
 }
+
+/* ---------------------------------------------------------------- La Carta on phones / tablets: the menu comes
+   right after the title, with big arrows on its sides, a swipe hint and the page counter right under it. */
+.carta__arrow { display: none; }
+.carta__swipe { display: none; }
+@media (max-width: 999px) {
+  .carta__grid { display: flex; flex-direction: column; gap: 0; }
+  .carta__intro { display: contents; }
+  .carta__intro > .eyebrow { order: 1; }
+  .carta__intro > .h2 { order: 2; }
+  .carta__lead { display: none; }
+  .tabs { order: 3; flex-wrap: nowrap; overflow-x: auto; margin: 1.4rem calc(var(--gut) * -1) 0; padding: 0 var(--gut) .2rem; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs__b { flex: none; }
+  .carta__stage { order: 4; padding: 1.4rem 0 .4rem; }
+  .carta__ctrl { order: 5; justify-content: center; margin-top: .4rem; }
+  .carta__ctrl { gap: 1.4rem; }
+  .carta__ctrl .round { width: 3.3rem; height: 3.3rem; background: rgba(236,201,143,.12); color: var(--gold-soft); box-shadow: inset 0 0 0 1px rgba(236,201,143,.6); }
+  .carta__ctrl .round[disabled] { opacity: .3; }
+  .alg { order: 6; }
+  .carta__vary { order: 7; }
+  .carta__arrow { display: none !important; position: absolute; z-index: 300; top: calc(50% - 1.4rem); display: grid; place-items: center; width: 2.8rem; height: 2.8rem; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+    background: rgba(11,8,5,.82); color: var(--gold-soft); box-shadow: 0 0 0 1px rgba(236,201,143,.55), 0 10px 24px rgba(0,0,0,.55); -webkit-tap-highlight-color: transparent; transition: transform .25s var(--ease), opacity .3s; }
+  .carta__arrow svg { width: 1.3rem; height: 1.3rem; }
+  .carta__arrow:active { transform: scale(.92); }
+  .carta__arrow--prev { left: -.6rem; }
+  .carta__arrow--next { right: -.6rem; }
+  .carta__arrow[disabled] { opacity: .25; pointer-events: none; }
+  .carta__swipe { display: flex; align-items: center; justify-content: center; gap: .55rem; margin: 1.8rem 0 0; font-size: .92rem; color: var(--gold-soft); transition: opacity .5s; }
+  .carta__swipe.used { opacity: .45; }
+  .carta__hand { display: inline-flex; width: 1.5rem; height: 1.5rem; animation: swipeHand 1.8s var(--ease) infinite; }
+  .carta__hand svg { width: 100%; height: 100%; }
+  .carta__swipe.used .carta__hand { animation: none; }
+  .carta__deck { width: min(80vw, 420px); }
+}
+@keyframes swipeHand { 0% { transform: translateX(10px) rotate(8deg); opacity: 0; } 20% { opacity: 1; } 70% { transform: translateX(-12px) rotate(-6deg); opacity: 1; } 100% { transform: translateX(-14px); opacity: 0; } }
