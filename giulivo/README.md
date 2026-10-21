@@ -79,3 +79,12 @@ facts (handmade pasta by La Castellana, slow-cooked wild boar, cacciucco without
 sfogliare con calma", terrace "Quando scende la sera" → "Si accendono le luci", reviews, booking "Vi
 teniamo un posto", practical info, buttons, footer, meta. Nothing invented (no chef, awards or history).
 Booking summary uses `book.guests` (keeps German nouns capitalised).
+
+## Retours du client (2026-10-21)
+- Manifesto : photo des cèpes (porcini) du client à la place de la panna cotta.
+- Nouvelle section « La domenica, anche a pranzo » (#domenica, section claire « lumière du jour ») avec
+  l'affiche du client, la caisse de porcini et le magret de canard ; bouton qui présélectionne le dimanche
+  suivant à 13:00. Créneaux du dimanche midi 12:30 / 13:00 / 13:30 (à confirmer par le restaurant).
+- Réservation : « In terrazza » / « In sala » au lieu de « Senza preferenze ».
+- Scène des lumières : 3 lueurs qui flottaient dans le ciel (sans lampe réelle) retirées de `hero-maps.png`.
+- Horaires : « la domenica anche a pranzo » dans le héros et dans « Dove siamo ».
