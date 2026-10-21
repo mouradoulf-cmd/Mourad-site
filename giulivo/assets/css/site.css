@@ -520,3 +520,7 @@ html.reveal-ready [data-rv].in { opacity: 1; transform: none; }
   .carta__deck { width: min(80vw, 420px); }
 }
 @keyframes swipeHand { 0% { transform: translateX(10px) rotate(8deg); opacity: 0; } 20% { opacity: 1; } 70% { transform: translateX(-12px) rotate(-6deg); opacity: 1; } 100% { transform: translateX(-14px); opacity: 0; } }
+
+/* copy pass: carta title on two lines beside the book, lead never under the deck; tighter gap before booking */
+@media (min-width: 1000px) { .carta__intro .h2 { font-size: clamp(2.4rem, 4vw, 3.9rem); } .carta__intro .lead { max-width: 25rem; } }
+.rev { padding-bottom: calc(var(--sec) * .55); }
