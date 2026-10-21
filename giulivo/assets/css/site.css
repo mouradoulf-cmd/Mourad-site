@@ -527,3 +527,32 @@ html.reveal-ready [data-rv].in { opacity: 1; transform: none; }
 
 .rev__note { margin: -.6rem 0 1.8rem; font: italic 400 clamp(1.05rem, 1.6vw, 1.25rem)/1.4 var(--font-display); color: var(--cream-soft); }
 .hero__tag, .rev__note, .lead { text-wrap: balance; }
+
+/* ---------------------------------------------------------------- LA DOMENICA: daylight after the night scene.
+   The only light section of the site: Sunday lunch, the client's own photos and poster. */
+.sun { position: relative; padding: var(--sec) 0; background: radial-gradient(70% 60% at 85% 20%, #fff8e6, transparent 70%), #efe5cf; color: #241a12; }
+.sun .eyebrow { color: #8a5a22; }
+.sun .h2 em { color: #a2461c; }
+.sun .lead { color: rgba(36,26,18,.78); }
+.sun__grid { display: grid; gap: 3rem; align-items: center; }
+.sun__copy .btn { margin-top: 2rem; }
+.sun__media { display: grid; gap: .8rem; grid-template-columns: 1fr 1fr; }
+.sun__f { margin: 0; min-width: 0; }
+.sun__ph { overflow: hidden; border-radius: var(--r-md); background: #e2d6bb; box-shadow: 0 30px 60px -34px rgba(60,35,10,.55), 0 0 0 1px rgba(36,26,18,.06); }
+.sun__ph picture, .sun__ph img { display: block; width: 100%; height: 100%; }
+.sun__ph img { object-fit: cover; aspect-ratio: 4 / 5; transition: transform 1.2s var(--ease); }
+.sun__f--poster { grid-column: 1 / -1; }
+.sun__f--poster .sun__ph img { aspect-ratio: 1284 / 1611; }
+.sun__f figcaption { margin-top: .6rem; font: italic 400 1.05rem/1.25 var(--font-display); color: #3b2c1f; }
+@media (hover: hover) { .sun__f:hover .sun__ph img { transform: scale(1.04); } }
+@media (min-width: 900px) {
+  .sun__grid { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 5rem; }
+  .sun__media { grid-template-columns: 1.3fr 1fr; grid-template-rows: auto auto; gap: 1.2rem; align-items: start; }
+  .sun__f--poster { grid-column: 1; grid-row: 1 / span 2; transform: rotate(-1.5deg); }
+  .sun__f--a { grid-column: 2; grid-row: 1; margin-top: 2.5rem; }
+  .sun__f--b { grid-column: 2; grid-row: 2; }
+}
+html.reveal-ready .sun__ph { clip-path: inset(100% 0 0 0 round var(--r-md)); transition: clip-path 1.3s var(--ease); }
+html.reveal-ready .sun__f--a .sun__ph { transition-delay: .15s; } html.reveal-ready .sun__f--b .sun__ph { transition-delay: .3s; }
+html.reveal-ready .sun__media.in .sun__ph { clip-path: inset(0 0 0 0 round var(--r-md)); }
+.bk__group { margin: 0 0 .45rem; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--cream-faint); grid-column: 1 / -1; }

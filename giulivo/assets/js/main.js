@@ -172,8 +172,8 @@
   /* ---------------------------------------------------------------- photo reveals + gentle parallax (desktop) */
   if ("IntersectionObserver" in window) {
     var pio = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); pio.unobserve(x.target); } }); }, { rootMargin: "0px 0px -12% 0px" });
-    $$(".terr__f, .mani__media").forEach(function (el) { pio.observe(el); });
-  } else $$(".terr__f, .mani__media").forEach(function (el) { el.classList.add("in"); });
+    $$(".terr__f, .mani__media, .sun__media").forEach(function (el) { pio.observe(el); });
+  } else $$(".terr__f, .mani__media, .sun__media").forEach(function (el) { el.classList.add("in"); });
   var pars = $$("[data-par]");
   function paintPar() {
     var vh = innerHeight;
@@ -210,6 +210,19 @@
   var state = { day: 0, time: "20:00", people: 2, where: "terrace" };
   var LOC = { it: "it-IT", en: "en-GB", de: "de-DE", nl: "nl-NL" };
   var TIMES = ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00"];
+  var LUNCH = ["12:30", "13:00", "13:30"];   // Sunday lunch (the restaurant confirms every request)
+  function isSunday(i) { return dayDate(i).getDay() === 0; }
+  function renderTimes() {
+    var sun = isSunday(state.day), all = (sun ? LUNCH : []).concat(TIMES);
+    if (all.indexOf(state.time) < 0) state.time = "20:00";
+    timesEl.innerHTML = "";
+    function group(label, list) {
+      if (sun) { var g = document.createElement("p"); g.className = "bk__group"; g.textContent = label; timesEl.appendChild(g); }
+      list.forEach(function (t) { var b = document.createElement("button"); b.type = "button"; b.className = "slot"; b.setAttribute("role", "radio"); b.textContent = t; b.dataset.t = t; radio(b, t === state.time); timesEl.appendChild(b); });
+    }
+    if (sun) group(I.t("book.lunch"), LUNCH);
+    group(I.t("book.dinner"), TIMES);
+  }
   function dayDate(i) { var d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + i); return d; }
   function dayLabel(i, long) {
     var d = dayDate(i), loc = LOC[I.lang] || "it-IT";
@@ -226,8 +239,7 @@
       b.innerHTML = "<small>" + small + "</small><b>" + dayDate(i).getDate() + "</b><small>" + dayDate(i).toLocaleDateString(LOC[I.lang] || "it-IT", { month: "short" }) + "</small>";
       radio(b, i === state.day); daysEl.appendChild(b);
     }
-    timesEl.innerHTML = "";
-    TIMES.forEach(function (t) { var b = document.createElement("button"); b.type = "button"; b.className = "slot"; b.setAttribute("role", "radio"); b.textContent = t; b.dataset.t = t; radio(b, t === state.time); timesEl.appendChild(b); });
+    renderTimes();
     summary();
   }
   function summary() {
@@ -238,10 +250,16 @@
   if (bk) {
     buildBooking();
     document.addEventListener("giu:lang", buildBooking);
-    daysEl.addEventListener("click", function (e) { var b = e.target.closest(".day"); if (!b) return; state.day = +b.dataset.i; $$(".day", daysEl).forEach(function (x) { radio(x, x === b); }); summary(); });
+    daysEl.addEventListener("click", function (e) { var b = e.target.closest(".day"); if (!b) return; state.day = +b.dataset.i; $$(".day", daysEl).forEach(function (x) { radio(x, x === b); }); renderTimes(); summary(); });
     timesEl.addEventListener("click", function (e) { var b = e.target.closest(".slot"); if (!b) return; state.time = b.dataset.t; $$(".slot", timesEl).forEach(function (x) { radio(x, x === b); }); summary(); });
     $$("[data-step]", bk).forEach(function (b) { b.addEventListener("click", function () { state.people = clamp(state.people + +b.dataset.step, 1, 30); peopleEl.textContent = state.people; summary(); }); });
     $$("[data-where]", bk).forEach(function (b) { b.addEventListener("click", function () { state.where = b.dataset.where; $$("[data-where]", bk).forEach(function (x) { x.setAttribute("aria-checked", String(x === b)); }); summary(); }); });
+    // "Book Sunday lunch": pick the next Sunday at 13:00, then the anchor scrolls to the form
+    $$("[data-sunday]").forEach(function (a) { a.addEventListener("click", function () {
+      for (var i = 0; i < 7; i++) if (isSunday(i)) { state.day = i; break; }
+      state.time = "13:00"; buildBooking();
+      var on = daysEl.querySelector('[aria-checked="true"]'); if (on) daysEl.scrollLeft = on.offsetLeft - daysEl.offsetLeft - 12;
+    }); });
     bk.addEventListener("submit", function (e) {
       e.preventDefault();
       var name = $("#bkName").value.trim(), notes = $("#bkNotes").value.trim();
