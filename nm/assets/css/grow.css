@@ -242,3 +242,5 @@ body.nm-has-bar .line-float { bottom: calc(max(1.25rem, env(safe-area-inset-bott
 .founder .founder__quote::before { content: "\201C"; position: absolute; left: .85rem; top: -.1rem; font: 700 3.4rem/1 Georgia, serif; color: #e6c27a; }
 .founder .founder__quote::after { content: "\201D"; font: 700 1.6rem/0 Georgia, serif; color: #e6c27a; margin-left: .25rem; vertical-align: -.35rem; }
 @media (max-width: 859px) { .founder .founder__quote { margin-inline: auto; text-align: start; } }
+/* perf (2026-10-21): on phones the rotating gold edge repainted the whole booking card every frame */
+@media (hover: none), (pointer: coarse) { .bk::before { animation: none; --bkA: 40deg; } }

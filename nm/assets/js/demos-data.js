@@ -26,7 +26,7 @@ window.NM_LINKS = [
   ] },
   { space: "site", group: "Démos clients", items: [
     { name: "SOCAP Paysage", path: "socap-paysage/", note: "Paysagiste (Ain) · démo premium" },
-    { name: "Giulivo v2 (3D)", path: "giulivo/", note: "Restaurant (Vicopisano) · refonte premium : carte en 3D, lanternes WebGL" }
+    { name: "Giulivo", path: "giulivo/", note: "Restaurant (Vicopisano) · version actuelle : carte à feuilleter, lumières qui s’allument, textes grande maison" }
   ] },
   { space: "formation", group: "NM Academy", items: [
     { name: "NM Academy (à jour)", path: "https://claude.ai/artifact/8nSXmvuVbzfwtwMEkdeBjh", note: "La formation : page de vente, formations, réalisations, tarifs, inscription" }

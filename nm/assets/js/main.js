@@ -390,14 +390,17 @@
       .from(".h__ctas > *", { y: 22, opacity: 0, duration: 1, stagger: 0.08 }, 0.9)
       .from(".h__proof li", { y: 16, opacity: 0, duration: 0.9, stagger: 0.07 }, 1.05)
       .from(".h__orb", { scale: 0.6, opacity: 0, duration: 2 }, 0)
-      .from(".h__ring", { scale: 0.7, opacity: 0, duration: 1.8, stagger: 0.1 }, 0.1)
-      .from(".dev--hero .mac__view", { opacity: 0.05, duration: 1.4, ease: "power2.out" }, 0.1)
-      .from(".dev--hero .iph", { y: 140, duration: 1.5 }, 0.4)
-      .from(".h__chip .chip", { scale: 0.6, opacity: 0, y: 20, duration: 1, stagger: 0.14, ease: "back.out(1.7)" }, 1.1)
-      .from(".h__now", { opacity: 0, y: 10, duration: 0.8 }, 1.4);
-    // Scrolling away: the copy drifts up and fades, the stage sinks slower.
-    // (the copy no longer fades out on scroll: it stays readable until it leaves the screen)
-    gsap.to(".h__visual", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".h", start: "top top", end: "bottom top", scrub: true } });
+      .from(".h__ring", { scale: 0.7, opacity: 0, duration: 1.8, stagger: 0.1 }, 0.1);
+    // The device stage is hidden (display:none) in the current design: only animate it when it is shown,
+    // otherwise GSAP warns about missing targets and a scrub trigger runs for nothing.
+    var heroVisual = $(".h__visual");
+    if (heroVisual && heroVisual.offsetParent) {
+      tl.from(".dev--hero .mac__view", { opacity: 0.05, duration: 1.4, ease: "power2.out" }, 0.1)
+        .from(".dev--hero .iph", { y: 140, duration: 1.5 }, 0.4)
+        .from(".h__chip .chip", { scale: 0.6, opacity: 0, y: 20, duration: 1, stagger: 0.14, ease: "back.out(1.7)" }, 1.1)
+        .from(".h__now", { opacity: 0, y: 10, duration: 0.8 }, 1.4);
+      gsap.to(".h__visual", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".h", start: "top top", end: "bottom top", scrub: true } });
+    }
   } else tl.kill();
 
   /* Section titles: word-by-word rise when they enter. Splitting a title

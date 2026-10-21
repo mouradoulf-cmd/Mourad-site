@@ -120,3 +120,4 @@ html[lang="th"] .film__headline em, html[lang="ar"] .film__headline em { font-st
 .film__endbtn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .film__replay { min-height: 2rem; }
 @media (prefers-reduced-motion: reduce) { .film__end { transition: none; transform: none; } }
+@media (hover: none), (pointer: coarse) { .film .film__headline em, .film__punchl .s:last-child { animation: none; background-position: 40% 0; } }

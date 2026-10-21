@@ -92,3 +92,4 @@
 }
 
 .old, .tent, .mphone { direction: ltr; }
+.mba[data-paused] .tent__beam, .mba[data-paused] .old { animation-play-state: paused; }

@@ -90,5 +90,12 @@
   }
 
   window.NMQR = { MENU_URL: MENU_URL, WA_URL: WA_URL, matrix: matrix, modules: modules, svg: svg, mount: mount };
-  mount();
+  // On page load, build each code only when it comes near the screen (encoding them all at once
+  // was a ~200 ms freeze on phones). Explicit NMQR.mount(root) calls stay immediate.
+  if ("IntersectionObserver" in window) {
+    var lazy = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) { lazy.unobserve(x.target); mount(x.target.parentNode); } });
+    }, { rootMargin: "600px 0px" });
+    document.querySelectorAll("[data-qr]").forEach(function (el) { lazy.observe(el); });
+  } else mount();
 })();

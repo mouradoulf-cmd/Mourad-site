@@ -104,10 +104,17 @@
     var scr = sec.querySelector(".mphone__screen"), f = sec.querySelector("iframe"); if (!scr || !f || !scr.clientWidth) return;
     var k = scr.clientWidth / 390; f.style.width = "390px"; f.style.height = ((scr.clientHeight - 30) / k) + "px"; f.style.transform = "scale(" + k + ")";
   }
-  function loadFrame() { var f = sec.querySelector("iframe"); if (!f.dataset.loaded) { f.dataset.loaded = "1"; f.src = f.dataset.want; } }
+  function loadFrame() { var f = sec.querySelector("iframe"); if (!f.dataset.loaded) { f.dataset.loaded = "1"; f.addEventListener("load", syncFrame); f.src = f.dataset.want; } }
 
+  /* the embedded menu only auto-scrolls while its phone is on screen and its scene is showing */
+  var secOn = false;
+  function syncFrame() {
+    var f = sec.querySelector("iframe"); if (!f || !f.contentWindow) return;
+    var on = secOn && (!sec.classList.contains("mba--js") || step === 3);
+    try { f.contentWindow.postMessage(on ? "nm-play" : "nm-pause", location.origin); } catch (e) {}
+  }
   function show(n) {
-    step = n; sec.setAttribute("data-step", String(n));
+    step = n; sec.setAttribute("data-step", String(n)); syncFrame();
     var live = sec.querySelector("#mbaLive"); if (live) live.innerHTML = T[lang()].c[n - 1];
     var sc = sec.querySelector(n === 1 ? ".mba__scene--before" : n === 2 ? ".mba__scene--qr" : ".mba__scene--after"), st = sec.querySelector(".mba__stage");
     if (sc && st && matchMedia("(max-width: 860px)").matches && sec.classList.contains("mba--js")) st.style.height = (sc.offsetHeight + 8) + "px"; else if (st) st.style.height = "";
@@ -137,6 +144,7 @@
       near.observe(sec);
       io = new IntersectionObserver(function (es) {
         es.forEach(function (e) {
+          secOn = e.isIntersecting; syncFrame();
           if (e.isIntersecting) { if (!started) start(); else if (sec.classList.contains("mba--js") && !auto && false) play(step); }
           else if (started && auto) { /* pause while off-screen */ clearTimeout(timer); sec.dataset.paused = "1"; }
           if (e.isIntersecting && sec.dataset.paused) { delete sec.dataset.paused; if (auto && sec.classList.contains("mba--js")) play(step || 1); }
