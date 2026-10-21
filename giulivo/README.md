@@ -88,3 +88,10 @@ Booking summary uses `book.guests` (keeps German nouns capitalised).
 - Réservation : « In terrazza » / « In sala » au lieu de « Senza preferenze ».
 - Scène des lumières : 3 lueurs qui flottaient dans le ciel (sans lampe réelle) retirées de `hero-maps.png`.
 - Horaires : « la domenica anche a pranzo » dans le héros et dans « Dove siamo ».
+
+## Netteté des photos (2026-10-21)
+Hero (`table-partage`) and the 7 dish photos were upscaled ×2 with EDSR (OpenCV dnn_superres, run
+locally, free), then graded/cropped as before and exported with a 2000w size (AVIF/WebP). The viewer
+opens the 2000w file; the hero `sizes` reflect its real cover width (200vw phone / 95vw desktop) so
+retina screens get the sharp file. Porcini photo: crate edges cropped, no inner frame or zoom.
+Desktop manifesto back to two columns (text | photo).
