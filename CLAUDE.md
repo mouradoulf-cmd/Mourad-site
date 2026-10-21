@@ -278,8 +278,9 @@ Version « restaurant à 100 000 € » demandée par Mourad (carte blanche, mê
 vraie carte du restaurant (5 pages transcrites) en feuilles de papier 3D qui se tournent, héros WebGL où la
 nuit tombe sur la vraie terrasse et les vraies lanternes s'allument, logo vectorisé depuis le menu, « roue » 3D
 de toutes les vraies photos de plats juste après le héros, réservation → WhatsApp. Contenu réel uniquement
-(détails dans `giulivo/README.md`). Le Giulivo d'origine reste à la racine tant que Mourad n'a pas validé
-le remplacement ; c'est la nouvelle référence de qualité pour les sites de restaurant.
+(détails dans `giulivo/README.md`). Validé par Mourad (2026-10-21) : c'est le Giulivo montré dans NM Studio
+(liens, aperçu, captures) ; l'ancien reste à la racine seulement pour l'historique. Nouvelle référence de qualité
+pour les sites de restaurant (textes « grande maison », vouvoiement, faits réels uniquement).
 
 **Goût de Mourad (2026-10-20)** : il n'aime pas les objets 3D décoratifs comme le logo extrudé en laiton —
 ne plus en faire. Il veut les **photos des plats mises en avant** (grandes, en premier), avec des
