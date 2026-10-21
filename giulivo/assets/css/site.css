@@ -556,3 +556,4 @@ html.reveal-ready .sun__ph { clip-path: inset(100% 0 0 0 round var(--r-md)); tra
 html.reveal-ready .sun__f--a .sun__ph { transition-delay: .15s; } html.reveal-ready .sun__f--b .sun__ph { transition-delay: .3s; }
 html.reveal-ready .sun__media.in .sun__ph { clip-path: inset(0 0 0 0 round var(--r-md)); }
 .bk__group { margin: 0 0 .45rem; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--cream-faint); grid-column: 1 / -1; }
+@media (max-width: 699px) { .mani__text { font-size: 1.6rem; line-height: 1.22; } }
