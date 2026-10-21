@@ -70,3 +70,12 @@ Copy pass on every visible string (IT/EN/DE/NL, overrides in the authoring `copy
 factual tone, formal address (voi / Sie / u). The manifesto no longer implies the pasta is made in-house
 (it is handmade by La Castellana); its three facts are all about the kitchen (pasta, land & sea, seasons).
 Nav order follows the page (Cucina, La Carta, Terrazza, Dove siamo).
+
+## Réécriture éditoriale complète (2026-10-21)
+
+Every visible string rewritten for a high-end, warm, formal voice in IT/EN/DE/NL (authoring `copy3.py`):
+hero "Dove la Toscana si siede a tavola.", dishes "Prima ancora di sedervi", manifesto built on real menu
+facts (handmade pasta by La Castellana, slow-cooked wild boar, cacciucco without bones), menu "Da
+sfogliare con calma", terrace "Quando scende la sera" → "Si accendono le luci", reviews, booking "Vi
+teniamo un posto", practical info, buttons, footer, meta. Nothing invented (no chef, awards or history).
+Booking summary uses `book.guests` (keeps German nouns capitalised).
