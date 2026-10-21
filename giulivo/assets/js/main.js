@@ -233,7 +233,7 @@
   function summary() {
     if (!sumEl) return;
     var where = state.where === "terrace" ? I.t("book.terrace") : I.t("book.inside");
-    sumEl.textContent = dayLabel(state.day, true) + " · " + state.time + " · " + state.people + " " + I.t("book.people").toLowerCase() + " · " + where;
+    sumEl.textContent = dayLabel(state.day, true) + " · " + state.time + " · " + state.people + " " + I.t("book.guests") + " · " + where;
   }
   if (bk) {
     buildBooking();

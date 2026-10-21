@@ -524,3 +524,6 @@ html.reveal-ready [data-rv].in { opacity: 1; transform: none; }
 /* copy pass: carta title on two lines beside the book, lead never under the deck; tighter gap before booking */
 @media (min-width: 1000px) { .carta__intro .h2 { font-size: clamp(2.4rem, 4vw, 3.9rem); } .carta__intro .lead { max-width: 25rem; } }
 .rev { padding-bottom: calc(var(--sec) * .55); }
+
+.rev__note { margin: -.6rem 0 1.8rem; font: italic 400 clamp(1.05rem, 1.6vw, 1.25rem)/1.4 var(--font-display); color: var(--cream-soft); }
+.hero__tag, .rev__note, .lead { text-wrap: balance; }
