@@ -125,7 +125,7 @@ html[lang="th"] .eyebrow, html[lang="ar"] .eyebrow { letter-spacing: .02em; }
 
 /* split-word masks used by heading reveals */
 .wm { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; padding-inline-end: .06em; }
-.wi, .ch { display: inline-block; will-change: transform; }
+.wi, .ch { display: inline-block; }
 
 /* ---------- buttons ---------- */
 .btn {

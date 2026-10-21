@@ -189,3 +189,13 @@ Le reste du site est inchangé.
 - Textes dans `assets/js/nm-copy4.js` (EN/FR/IT/TH/AR) et en dur dans chaque `index.html` de langue.
 - Déjà conforme, pas touché : promesse du hero, 3 offres, bouton WhatsApp flottant, numéro jusqu'en bas.
 - Idée suivante (non faite) : un « carnet » de conseils/réalisations pour le SEO (règle 6).
+
+### Contrôle fluidité (2026-10-21)
+- Le menu de démo intégré (`demo-menu/?embed=1`) défilait tout seul en continu, même hors écran : la page
+  entière ramait sur téléphone. Il ne défile plus que quand son téléphone est visible et sur la bonne scène
+  (`menu-ba.js` envoie `nm-pause` / `nm-play` par postMessage).
+- `.wi/.ch` (mots animés) n'ont plus de `will-change` permanent (48 calques GPU en moins).
+- QR codes construits à l'approche de l'écran (`nm-qr.js`), plus au chargement.
+- Sur tactile : plus de bordure dorée tournante sur la réservation ni de reflet animé sur le titre du film
+  (repeints à chaque image). Animations GSAP de l'appareil du hero sautées quand il est caché.
+- Giulivo : la vitrine pointe vers `giulivo/` (nouvelle version), captures `assets/img/work/giulivo-*` refaites.

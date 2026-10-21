@@ -413,10 +413,16 @@
   /* embed mode (used inside the NM Studio before/after phone): slow auto-scroll, stops as soon as the visitor touches it */
   if (new URLSearchParams(location.search).get('embed') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('embed');
-    var y = 0, last = 0, halted = false, dirDown = true;
+    var y = 0, last = 0, halted = false, dirDown = true, paused = false, running = false;
+    /* the NM Studio page tells us when the phone is off-screen or on another scene: no scrolling (and no repaint) then */
+    addEventListener('message', function (e) {
+      if (e.origin !== location.origin) return;
+      if (e.data === 'nm-pause') paused = true;
+      else if (e.data === 'nm-play' && paused) { paused = false; last = 0; if (!running && !halted) { running = true; requestAnimationFrame(tick); } }
+    });
     ['touchstart', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) { addEventListener(ev, function () { halted = true; }, { passive: true }); });
     var tick = function (t) {
-      if (halted) return;
+      if (halted || paused) { running = false; return; }
       if (!last) last = t;
       var dt = Math.min(.1, (t - last) / 1000); last = t;
       var max = document.documentElement.scrollHeight - innerHeight;
@@ -425,7 +431,7 @@
       scrollTo(0, Math.round(y));
       requestAnimationFrame(tick);
     };
-    setTimeout(function () { requestAnimationFrame(tick); }, 1500);
+    setTimeout(function () { if (!paused) { running = true; requestAnimationFrame(tick); } }, 1500);
   }
 })();
 </script>
