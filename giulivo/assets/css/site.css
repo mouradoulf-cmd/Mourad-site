@@ -571,3 +571,4 @@ html.reveal-ready .sun__media.in .sun__ph { clip-path: inset(0 0 0 0 round var(-
 .gal__name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .lb__name { text-wrap: balance; max-width: 34rem; }
 .gal__it--0 .gal__name { font-size: clamp(1.05rem, 1.9vw, 1.6rem); line-height: 1.2; }
+@media (min-width: 1000px) { .mani__grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 5rem; } }
