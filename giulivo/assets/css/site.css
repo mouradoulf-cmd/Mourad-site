@@ -567,3 +567,6 @@ html.reveal-ready .sun__media.in .sun__ph { clip-path: inset(0 0 0 0 round var(-
 .hero__p { display: block; } .hero__p + .hero__p { margin-top: .75em; }
 @media (min-width: 900px) { .hero .hero__logo { width: min(27vw, 34vh, 440px); } }
 .gal__cap { padding-left: 1.15rem; padding-bottom: .85rem; } @media (max-width: 899px) { .gal__it:not(.gal__it--0):not(.gal__it--6) .gal__cap { padding: 1.6rem .8rem .65rem; } }
+/* long dish names from the menu: two lines at most on the mosaic (full name in the viewer) */
+.gal__name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.lb__name { text-wrap: balance; max-width: 34rem; }
