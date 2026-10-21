@@ -63,3 +63,10 @@ as the pergola) now illustrates the manifesto instead of the table photo.
 Mourad found the outdoor photos repetitive: the terrace section is now its title + the single
 "lights" scene (full-screen, night falls on the pergola). Manifesto keeps one photo (panna cotta);
 the map placeholder is a drawn card (pin + pulsing rings) instead of a garden photo.
+
+## Textes « restaurant étoilé » (2026-10-21)
+
+Copy pass on every visible string (IT/EN/DE/NL, overrides in the authoring `copy2.py`): restrained,
+factual tone, formal address (voi / Sie / u). The manifesto no longer implies the pasta is made in-house
+(it is handmade by La Castellana); its three facts are all about the kitchen (pasta, land & sea, seasons).
+Nav order follows the page (Cucina, La Carta, Terrazza, Dove siamo).
