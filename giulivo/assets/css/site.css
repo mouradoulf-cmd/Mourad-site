@@ -186,11 +186,10 @@ html.js.ready .hero__logo { clip-path: inset(0 0 0 0); transition: clip-path 1.6
 .mani__facts { display: grid; gap: 1.4rem; margin: 3rem 0 0; padding: 0; list-style: none; }
 @media (min-width: 640px) { .mani__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .mani__media { position: relative; max-width: 32rem; width: 100%; justify-self: center; margin: 0; }
-.mani__ph { position: relative; margin: 0; overflow: hidden; border-radius: var(--r-md); background: #1b140e; aspect-ratio: 1284 / 1705; box-shadow: 0 40px 80px -40px rgba(0,0,0,.95); }
-.mani__ph::after { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(247,239,198,.38); border-radius: calc(var(--r-md) - 6px); pointer-events: none; }
+.mani__ph { position: relative; margin: 0; overflow: hidden; border-radius: var(--r-md); background: #1b140e; aspect-ratio: 3 / 4; box-shadow: 0 40px 80px -40px rgba(0,0,0,.95); }
 .mani__in, .mani__in picture, .mani__in img { display: block; width: 100%; height: 100%; }
 .mani__in img { object-fit: cover; }
-html.pin .mani__in img { transform: translate3d(0, var(--py, 0px), 0) scale(1.08); }
+
 .mani__credit { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 html.reveal-ready .mani__ph { clip-path: inset(100% 0 0 0 round var(--r-md)); transition: clip-path 1.4s var(--ease); }
 html.reveal-ready .mani__media.in .mani__ph { clip-path: inset(0 0 0 0 round var(--r-md)); }
