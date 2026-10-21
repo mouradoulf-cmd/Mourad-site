@@ -570,3 +570,4 @@ html.reveal-ready .sun__media.in .sun__ph { clip-path: inset(0 0 0 0 round var(-
 /* long dish names from the menu: two lines at most on the mosaic (full name in the viewer) */
 .gal__name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .lb__name { text-wrap: balance; max-width: 34rem; }
+.gal__it--0 .gal__name { font-size: clamp(1.05rem, 1.9vw, 1.6rem); line-height: 1.2; }
