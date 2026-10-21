@@ -21,7 +21,12 @@
     });
     each("[data-sub]", function (el) { var s = D.sub[el.getAttribute("data-sub")]; if (s) el.textContent = s[lang] || s.it; });
     each("[data-al]", function (el) { el.textContent = (D.allergens[lang] || D.allergens.it)[+el.getAttribute("data-al")]; });
-    each("[data-dishname]", function (el) { var p = D.plates[el.getAttribute("data-dishname")]; if (p) { el.textContent = p[lang] || p.it; var img = el.parentNode.querySelector("img"); if (img) img.alt = p[lang] || p.it; } });
+    each("[data-dishname]", function (el) {
+      var p = D.plates[el.getAttribute("data-dishname")]; if (!p) return;
+      var full = p[lang] || p.it;   // the mosaic shows the dish's short name, the viewer its full menu line
+      el.textContent = full.length > 34 ? full.split(/ (?:con|with|mit|met) |, /)[0] : full; el.setAttribute("data-full", full);
+      var img = el.closest("button") && el.closest("button").querySelector("img"); if (img) img.alt = full;
+    });
     each("[data-terrname]", function (el) { var p = D.terr[+el.getAttribute("data-terrname")]; if (p) el.textContent = p[lang] || p.it; });
     each("[data-lang]", function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === lang)); });
     if (matchMedia("(hover: none)").matches) { var cl = document.querySelector(".carta__lead"); if (cl) cl.textContent = api.t("carta.lead.touch"); }

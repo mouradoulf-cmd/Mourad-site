@@ -155,7 +155,7 @@
     else gGrid.classList.add("in");
   }
   function lbShow(i, anim) {
-    lbI = (i + gBtns.length) % gBtns.length; var b = gBtns[lbI], name = b.querySelector(".gal__name").textContent;
+    lbI = (i + gBtns.length) % gBtns.length; var b = gBtns[lbI], nm = b.querySelector(".gal__name"), name = nm.getAttribute("data-full") || nm.textContent;
     var go = function () { lbImg.src = b.getAttribute("data-full"); lbImg.alt = name; lbName.textContent = name; lbN.textContent = String(lbI + 1).padStart(2, "0") + " / " + String(gBtns.length).padStart(2, "0"); lbImg.classList.remove("swap"); };
     if (anim) { lbImg.classList.add("swap"); setTimeout(go, 180); } else go();
   }
