@@ -315,7 +315,13 @@ button{font:inherit;color:inherit}
   var haptic = function () { try { navigator.vibrate && navigator.vibrate(8); } catch (e) {} };
   function toast(m) { var t = $("toast"); t.textContent = m; t.classList.add("on"); clearTimeout(toast.k); toast.k = setTimeout(function () { t.classList.remove("on"); }, 2300); }
   function copy(u) { (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { toast("Lien copié ✓"); }, function () { prompt("Lien :", u); }); }
-  function href(p) { return /^https?:\/\//.test(p) ? p : ROOT + p; }
+  // site links always open the latest version (a fresh ?v= skips the phone's cached copy)
+  function href(p) {
+    if (/^https?:\/\//.test(p)) return p;
+    var u = ROOT + p, h = "", i = u.indexOf("#");
+    if (i > -1) { h = u.slice(i); u = u.slice(0, i); }
+    return u + (u.indexOf("?") > -1 ? "&" : "?") + "v=" + Date.now().toString(36) + h;
+  }
 
   var SPACES = {
     site: { title: "Site web", serif: "& démos", color: "#e2c07c", tint: [.88, .74, .45], lead: "Tes démos clients, ton site NM Studio et tous tes outils. Toujours la dernière version." },
