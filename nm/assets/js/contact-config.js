@@ -15,7 +15,7 @@
  *                  account. Empty: they keep using WhatsApp. (LINE only allows a pre-filled message to an Official Account.)
  */
 window.NM_CONTACT = {
-  whatsappNumber: "",
+  whatsappNumber: "33782943674",   // +33 7 82 94 36 74 (Mourad) — replace with the Thai number once it exists
   whatsappLink: "https://wa.me/qr/PYPOVXTCVM74I1",
   founderName: "Mourad",
   founderPhoto: "assets/img/founder.jpg?v=2",
