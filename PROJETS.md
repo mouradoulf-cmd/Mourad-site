@@ -31,6 +31,8 @@ Mis à jour le 19 octobre 2026. Ce fichier garde l'état de tous les projets dis
 - Installé seulement dans le conteneur temporaire de Claude (effacé en fin de session). Pour l'avoir : installer Node.js puis `npm install -g omniroute` sur le PC de Mourad.
 - Il ne donne pas « 7 milliards de tokens » : il regroupe des offres gratuites d'autres services (≈1,62 milliard/mois annoncé, estimation, avec ses propres comptes). Ne remplace pas Claude Code.
 
+- 2026-10-25 : OmniRoute installé sur le PC Windows de Mourad (Node 24.22.1, `npm install -g omniroute`). Règle de Mourad : **sites web et choses importantes = Claude Code seulement** (son abonnement Claude). OmniRoute (IA gratuites via `http://localhost:20128/v1`) seulement pour les petites tâches répétitives (traductions en masse, brouillons, chatbot simple). Ne jamais lancer `omniroute setup-claude` ni brancher Claude Code sur OmniRoute ; ne jamais utiliser les fournisseurs « Claude Web » par cookies (contraire aux conditions d'Anthropic). Pour un robot qui tourne 24 h/24 (rappels LINE), utiliser directement une clé d'IA gratuite dans les secrets GitHub, car OmniRoute ne tourne que quand le PC est allumé.
+
 ## 6. Autres travaux faits
 - Sous-titres français d'une vidéo traduits en thaï (vidéo remontée et livrée) ; textes d'une seconde vidéo traduits en thaï (texte seulement).
 - Aide au dépannage d'un PC de jeu (mémoire réglée en XMP, câbles d'alimentation à vérifier, températures à mesurer avec HWiNFO) : plantage en jeu non résolu.
