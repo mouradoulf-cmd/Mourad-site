@@ -134,3 +134,4 @@
   .tho-meet__ic { width: 2.6rem; height: 2.6rem; border-radius: 14px; align-self: start; }
   .tho-meet__btn { grid-column: 1 / -1; width: 100%; justify-content: center; }
 }
+#offers .section-title em { white-space: nowrap; }

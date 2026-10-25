@@ -10,6 +10,9 @@
  * lineLink       — your LINE Official Account link, e.g. "https://lin.ee/AbCdEf" or "https://line.me/R/ti/p/@nmstudio".
  *                  Empty: no LINE button. Set: a green LINE button appears above WhatsApp (and in the footer).
  * referralMonths — free months given to BOTH the referrer and the referred business when it subscribes (1 or 2…).
+ * lineOA         — the LINE Official Account ID, with its @ (e.g. "@nmstudio"). Set: on the Thai site (th + th-fr), the
+ *                  booking and the free QR-menu forms open LINE with the message already typed, sent straight to that
+ *                  account. Empty: they keep using WhatsApp. (LINE only allows a pre-filled message to an Official Account.)
  */
 window.NM_CONTACT = {
   whatsappNumber: "",
@@ -18,6 +21,7 @@ window.NM_CONTACT = {
   founderPhoto: "assets/img/founder.jpg?v=2",
   analyticsToken: "",
   lineLink: "",
+  lineOA: "",
   referralMonths: 1,
 
   /* Video-call booking (Thailand time). Only real data here: your real opening hours and the slots really taken.

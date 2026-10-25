@@ -9,6 +9,13 @@
 
   /* ---------- toast (same element as the rest of the site) ---------- */
   var toastEl = document.getElementById("toast"), toastTimer = 0;
+  // Thai site (th, or the private French copy /nm/th-fr/) + a LINE Official Account set → LINE with the message typed.
+  function lineURL(msg) {
+    var oa = String(C.lineOA || "").trim(), lang = window.NM_LANG || document.documentElement.lang;
+    if (!oa || !(lang === "th" || /\/th-fr\//.test(location.pathname))) return "";
+    if (oa.charAt(0) !== "@") oa = "@" + oa;
+    return "https://line.me/R/oaMessage/" + encodeURIComponent(oa) + "/?" + encodeURIComponent(msg.replace(/\*/g, ""));
+  }
   function toast(msg) {
     if (!toastEl) return;
     toastEl.textContent = msg; toastEl.classList.add("is-visible");
@@ -44,6 +51,7 @@
       });
       var msg = lines.join("\n");
       try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: kind } })); } catch (e2) {}
+      var ln = lineURL(msg); if (ln) { window.open(ln, "_blank", "noopener"); return; }
       var num = String(C.whatsappNumber || "").replace(/\D/g, "");
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       // No number configured: copy the message, then open the WhatsApp link (a new tab opened right away keeps the gesture)
@@ -63,6 +71,7 @@
       if (err) err.textContent = "";
       var msg = t("callback.m") + " " + tel;
       try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: "callback" } })); } catch (e2) {}
+      var ln = lineURL(msg); if (ln) { window.open(ln, "_blank", "noopener"); return; }
       var num = String(C.whatsappNumber || "").replace(/\D/g, "");
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       var copied = copy(msg);
@@ -145,6 +154,7 @@
       if (first) lines.push("*" + t("free.l_first") + ":* " + first);
       var msg = lines.join("\n");
       try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: "book" } })); } catch (e2) {}
+      var ln = lineURL(msg); if (ln) { window.open(ln, "_blank", "noopener"); return; }
       var num = String(C.whatsappNumber || "").replace(/\D/g, "");
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       var copied = copy(msg);
@@ -182,6 +192,7 @@
       });
       var msg = lines.join("\n");
       try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: "ref" } })); } catch (e2) {}
+      var ln = lineURL(msg); if (ln) { window.open(ln, "_blank", "noopener"); return; }
       var num = String(C.whatsappNumber || "").replace(/\D/g, "");
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       var copied = copy(msg);

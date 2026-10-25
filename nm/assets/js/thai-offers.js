@@ -45,9 +45,7 @@
         '<p class="tho-card__price">' + money(O.price.site, L) + '<span class="tho-card__per">' + esc(L.per) + "</span></p>" +
         list(L.site.list) + book +
       "</article>" +
-    "</div>" +
-    '<div class="tho-meet"><span class="tho-meet__ic" aria-hidden="true">' + CAL + '</span><div class="tho-meet__txt"><p class="tho-meet__k">' + esc(L.meetK) + '</p><p class="tho-meet__t">' + esc(L.meetT) + '</p><p class="tho-meet__b">' + esc(L.note) + '</p></div>' +
-      '<a class="btn btn--outline tho-meet__btn" href="#book" data-open-sheet="book"><span>' + esc(L.book) + "</span>" + ARROW + "</a></div>";
+    "</div>";
   }
 
   var HIDE = [".offer-grid", ".offers__links", ".trust[data-payment-claim]", ".pcards", ".bill", ".carebox", "#compare", "#guide"];
