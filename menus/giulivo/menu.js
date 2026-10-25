@@ -3,6 +3,7 @@ window.NM_MENU = {
  "slug": "giulivo",
  "name": "Giulivo",
  "logo": "logo.svg",
+ "motif": "motif.svg",
  "currency": "€",
  "tagline": {
   "it": "Cucina e Buonumore · Vicopisano",
@@ -21,13 +22,7 @@ window.NM_MENU = {
   "ru"
  ],
  "defaultLang": "en",
- "theme": {
-  "bg": "#14100c",
-  "ink": "#f3e9d6",
-  "accent": "#d9a35b",
-  "muted": "#b9a98e",
-  "card": "#1d1712"
- },
+ "theme": {"bg": "#14100c", "paper": "#f7efc6", "ink": "#1b1510", "sage": "#d6cd9c", "accent": "#d9a35b"},
  "notes": {
   "pasta": {
    "it": "Tutta la nostra pasta fresca è fatta a mano e prodotta dal pastificio La Castellana",

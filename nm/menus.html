@@ -93,14 +93,14 @@ dialog::backdrop{background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(6px);ba
   <input class="search" id="q" type="search" placeholder="Chercher un restaurant…" autocomplete="off" aria-label="Chercher un restaurant">
   <div class="list" id="list"></div>
   <div class="help">
-    <h3>Comment ça marche</h3>
     <div class="legend">
-      <div><i style="background:var(--ok)"></i><span><b style="color:var(--fg)">Vert</b> : payé (ou mois d'essai gratuit), le menu marche.</span></div>
-      <div><i style="background:var(--warn)"></i><span><b style="color:var(--fg)">Orange</b> : à payer dans les 7 jours, ou en retard : le menu marche encore <span id="gr">4</span> jours. C'est le moment d'envoyer le rappel WhatsApp.</span></div>
-      <div><i style="background:var(--bad)"></i><span><b style="color:var(--fg)">Rouge</b> : menu en pause. Les clients voient un message poli (« menu en cours de mise à jour, demandez la carte au personnel »), jamais une page vide.</span></div>
+      <div><i style="background:var(--ok)"></i><span><b style="color:var(--fg)">Vert</b> = payé, tout va bien.</span></div>
+      <div><i style="background:var(--warn)"></i><span><b style="color:var(--fg)">Orange</b> = bientôt à payer : appuie sur « Rappel ».</span></div>
+      <div><i style="background:var(--bad)"></i><span><b style="color:var(--fg)">Rouge</b> = pas payé, le menu est en pause.</span></div>
     </div>
-    <p>Pour tout changement, écris-le-moi simplement dans la discussion : <code>« Giulivo a payé »</code> (je repousse d'un mois), <code>« ajoute le restaurant X »</code> + photo du menu, <code>« change le prix du pad thaï à 80 »</code>, <code>« mets X en pause »</code>. Le QR code ne change jamais : ce qui est imprimé reste valable.</p>
+    <p>Un changement ? Écris-le-moi, par exemple <code>« Giulivo a payé »</code>.</p>
   </div>
+</div>
 </div>
 
 <dialog id="qrd" aria-label="QR code">
@@ -171,8 +171,6 @@ dialog::backdrop{background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(6px);ba
         '<div class="acts"><a class="btn main" href="../menus/' + r.slug + '/" target="_blank" rel="noopener">' + ico.eye + 'Voir le menu</a>' +
         '<button class="btn" type="button" data-qr="' + r.slug + '">' + ico.qr + 'QR code</button>' +
         (phone ? '<a class="btn wa" href="https://wa.me/' + phone + '?text=' + encodeURIComponent(waText(r, s)) + '" target="_blank" rel="noopener">' + ico.wa + 'Rappel</a>' : "") +
-        '<button class="btn" type="button" data-copy="' + r.slug + '">' + ico.link + 'Copier le lien</button>' +
-        (s.k !== "bad" ? '<a class="btn" href="../menus/' + r.slug + '/?apercu=pause" target="_blank" rel="noopener" style="color:var(--mute)">Écran « pause »</a>' : "") +
         '</div></article>';
     }).join("") : '<p class="empty">Aucun restaurant trouvé.</p>';
   }
@@ -198,7 +196,7 @@ dialog::backdrop{background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(6px);ba
   $("q").addEventListener("input", function () { q = this.value.trim().toLowerCase(); render(); });
   function load() {
     fetch("../menus/abonnements.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
-      data = d; $("gr").textContent = d.graceDays || 4; render();
+      data = d; render();
     }).catch(function () { $("sub").textContent = "Impossible de charger la liste (pas de connexion ?)."; });
   }
   load();
