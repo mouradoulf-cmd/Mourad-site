@@ -24,7 +24,11 @@ window.NM_MENU = {
   "ru"
  ],
  "defaultLang": "en",
- "theme": {"bg": "#0e0b08", "ink": "#f4ecdc", "accent": "#d9a35b"},
+ "theme": {
+  "bg": "#0e0b08",
+  "ink": "#f4ecdc",
+  "accent": "#d9a35b"
+ },
  "notes": {
   "pasta": {
    "it": "Tutta la nostra pasta fresca è fatta a mano e prodotta dal pastificio La Castellana",
@@ -172,7 +176,15 @@ window.NM_MENU = {
      "a": [
       1,
       7
-     ]
+     ],
+     "sn": {
+      "th": "ซุปข้าวบาร์เลย์ฟักทอง",
+      "en": "Barley & pumpkin soup",
+      "zh": "大麦南瓜汤",
+      "ru": "Суп с перловкой и тыквой",
+      "fr": "Soupe orge et potiron",
+      "it": "Zuppetta d’orzo e zucca con aglio nero e caprino fresco"
+     }
     },
     {
      "id": "trippa",
@@ -190,7 +202,15 @@ window.NM_MENU = {
       7,
       9,
       12
-     ]
+     ],
+     "sn": {
+      "th": "ผ้าขี้ริ้ววัวตุ๋น",
+      "en": "Braised tripe",
+      "zh": "炖牛肚",
+      "ru": "Тушёный рубец",
+      "fr": "Tripes mijotées",
+      "it": "Trippa alla butese con spuma di parmigiano"
+     }
     },
     {
      "id": "uovo",
@@ -207,7 +227,15 @@ window.NM_MENU = {
       1,
       3,
       7
-     ]
+     ],
+     "sn": {
+      "th": "ไข่ดาวน้ำทอดกรอบ เห็ดทรัฟเฟิล",
+      "en": "Fried poached egg, truffle",
+      "zh": "香炸水波蛋配松露",
+      "ru": "Жареное яйцо-пашот с трюфелем",
+      "fr": "Œuf poché frit, truffe",
+      "it": "Uovo pochè fritto su bietole saltate, fonduta di pecorino e tartufo"
+     }
     },
     {
      "id": "rustico",
@@ -227,7 +255,15 @@ window.NM_MENU = {
       7,
       9,
       12
-     ]
+     ],
+     "sn": {
+      "th": "จานรวมทัสคานี",
+      "en": "Tuscan platter",
+      "zh": "托斯卡纳拼盘",
+      "ru": "Тосканское ассорти",
+      "fr": "Assiette toscane",
+      "it": "Rustico Toscano"
+     }
     },
     {
      "id": "tartare-fassona",
@@ -248,7 +284,15 @@ window.NM_MENU = {
       8,
       10
      ],
-     "img": "tartare"
+     "img": "tartare",
+     "sn": {
+      "th": "ทาร์ทาร์เนื้อวัว",
+      "en": "Beef tartare",
+      "zh": "牛肉鞑靼",
+      "ru": "Тартар из говядины",
+      "fr": "Tartare de bœuf",
+      "it": "Tartare di fassona piemontese"
+     }
     },
     {
      "id": "patanegra",
@@ -264,7 +308,15 @@ window.NM_MENU = {
      "a": [
       1,
       7
-     ]
+     ],
+     "sn": {
+      "th": "แฮมปาตาเนกรา",
+      "en": "Pata Negra ham",
+      "zh": "伊比利亚火腿",
+      "ru": "Хамон Пата Негра",
+      "fr": "Jambon Pata Negra",
+      "it": "Prosciutto Patanegra"
+     }
     }
    ]
   },
@@ -299,7 +351,15 @@ window.NM_MENU = {
       10,
       11,
       12
-     ]
+     ],
+     "sn": {
+      "th": "พาสต้าซอสเนื้อน่องวัว",
+      "en": "Pasta, veal shank ragù",
+      "zh": "小牛腱肉酱短管面",
+      "ru": "Паста с рагу из оссобуко",
+      "fr": "Pâtes, ragoût d’osso buco",
+      "it": "Mezze maniche alla Giulivo"
+     }
     },
     {
      "id": "pappardelle",
@@ -320,7 +380,15 @@ window.NM_MENU = {
       10,
       11,
       12
-     ]
+     ],
+     "sn": {
+      "th": "พาสต้าเส้นแบน ซอสหมูป่า",
+      "en": "Pappardelle, wild boar ragù",
+      "zh": "野猪肉酱宽面",
+      "ru": "Паппарделле с кабаном",
+      "fr": "Pappardelle au sanglier",
+      "it": "Pappardelle al cinghiale"
+     }
     },
     {
      "id": "risotto-porcini",
@@ -338,7 +406,15 @@ window.NM_MENU = {
       7,
       8
      ],
-     "img": "porcini"
+     "img": "porcini",
+     "sn": {
+      "th": "ริซอตโต้เห็ดพอร์ชินี",
+      "en": "Porcini risotto",
+      "zh": "牛肝菌烩饭",
+      "ru": "Ризотто с белыми грибами",
+      "fr": "Risotto aux cèpes",
+      "it": "Risotto ai funghi porcini"
+     }
     },
     {
      "id": "cappellacci",
@@ -361,7 +437,15 @@ window.NM_MENU = {
       11,
       12
      ],
-     "img": "tortellini-panna-speck"
+     "img": "tortellini-panna-speck",
+     "sn": {
+      "th": "พาสต้าสอดไส้มันฝรั่ง",
+      "en": "Potato-filled pasta",
+      "zh": "土豆馅意式饺子",
+      "ru": "Паста с картофельной начинкой",
+      "fr": "Pâtes farcies aux pommes de terre",
+      "it": "Cappellacci di patate"
+     }
     },
     {
      "id": "tagliolini",
@@ -381,7 +465,15 @@ window.NM_MENU = {
       7,
       10,
       11
-     ]
+     ],
+     "sn": {
+      "th": "พาสต้าเห็ดทรัฟเฟิลดำ",
+      "en": "Black truffle tagliolini",
+      "zh": "黑松露细面",
+      "ru": "Тальолини с чёрным трюфелем",
+      "fr": "Tagliolini à la truffe noire",
+      "it": "Tagliolini al tartufo nero"
+     }
     }
    ],
    "note": "pasta"
@@ -415,7 +507,15 @@ window.NM_MENU = {
       7,
       12
      ],
-     "img": "piatto-signature"
+     "img": "piatto-signature",
+     "sn": {
+      "th": "สันในหมู",
+      "en": "Pork fillet",
+      "zh": "猪里脊",
+      "ru": "Свиная вырезка",
+      "fr": "Filet de porc",
+      "it": "Filetto di maiale"
+     }
     },
     {
      "id": "anatra",
@@ -435,7 +535,15 @@ window.NM_MENU = {
       9,
       12
      ],
-     "img": "anatra"
+     "img": "anatra",
+     "sn": {
+      "th": "อกเป็ด",
+      "en": "Duck breast",
+      "zh": "鸭胸",
+      "ru": "Утиная грудка",
+      "fr": "Magret de canard",
+      "it": "Petto d’anatra"
+     }
     },
     {
      "id": "coniglio",
@@ -452,7 +560,15 @@ window.NM_MENU = {
       1,
       9,
       12
-     ]
+     ],
+     "sn": {
+      "th": "กระต่ายทอด",
+      "en": "Fried rabbit",
+      "zh": "炸兔肉",
+      "ru": "Жареный кролик",
+      "fr": "Lapin frit",
+      "it": "Coniglio fritto disossato"
+     }
     },
     {
      "id": "cinghiale",
@@ -469,7 +585,15 @@ window.NM_MENU = {
       1,
       9,
       12
-     ]
+     ],
+     "sn": {
+      "th": "หมูป่าตุ๋น",
+      "en": "Wild boar stew",
+      "zh": "炖野猪肉",
+      "ru": "Тушёный кабан",
+      "fr": "Sanglier mijoté",
+      "it": "Cinghiale in umido con le ulive"
+     }
     },
     {
      "id": "tagliata",
@@ -485,7 +609,15 @@ window.NM_MENU = {
      },
      "a": [
       1
-     ]
+     ],
+     "sn": {
+      "th": "สเต๊กเนื้อหั่นชิ้น",
+      "en": "Sliced sirloin steak",
+      "zh": "西冷牛排切片",
+      "ru": "Тальята из говядины",
+      "fr": "Tagliata de bœuf",
+      "it": "Tagliata di controfiletto"
+     }
     }
    ]
   },
@@ -521,7 +653,15 @@ window.NM_MENU = {
       12,
       14
      ],
-     "img": "antipasto-misto"
+     "img": "antipasto-misto",
+     "sn": {
+      "th": "ทรีโออาหารทะเล",
+      "en": "Seafood trio",
+      "zh": "海鲜三拼",
+      "ru": "Морское трио",
+      "fr": "Trio de la mer",
+      "it": "Tris Giulivo"
+     }
     },
     {
      "id": "spaghettone",
@@ -541,7 +681,15 @@ window.NM_MENU = {
       9,
       12,
       14
-     ]
+     ],
+     "sn": {
+      "th": "สปาเก็ตตีซอสปลาเก๋า",
+      "en": "Spaghetti, grouper sauce",
+      "zh": "石斑鱼酱粗意面",
+      "ru": "Спагеттони с групером",
+      "fr": "Spaghetti au mérou",
+      "it": "Spaghettone con sugo di cernia"
+     }
     },
     {
      "id": "risotto-polpo",
@@ -564,7 +712,15 @@ window.NM_MENU = {
       9,
       12,
       14
-     ]
+     ],
+     "sn": {
+      "th": "ริซอตโต้ปลาหมึกยักษ์",
+      "en": "Octopus risotto",
+      "zh": "章鱼烩饭",
+      "ru": "Ризотто с осьминогом",
+      "fr": "Risotto au poulpe",
+      "it": "Risotto polpo e scamorza affumicata"
+     }
     },
     {
      "id": "cacciucco",
@@ -585,7 +741,15 @@ window.NM_MENU = {
       9,
       12,
       14
-     ]
+     ],
+     "sn": {
+      "th": "ซุปปลาทัสคานี",
+      "en": "Tuscan fish stew",
+      "zh": "托斯卡纳海鲜汤",
+      "ru": "Тосканская рыбная похлёбка",
+      "fr": "Soupe de poissons toscane",
+      "it": "Cacciucco di mare senza lische"
+     }
     }
    ],
    "note": "pasta"
@@ -614,7 +778,15 @@ window.NM_MENU = {
      },
      "a": [
       1
-     ]
+     ],
+     "sn": {
+      "th": "มันฝรั่งทอด",
+      "en": "French fries",
+      "zh": "炸薯条",
+      "ru": "Картофель фри",
+      "fr": "Frites",
+      "it": "Patate fritte"
+     }
     },
     {
      "id": "arrosto",
@@ -629,7 +801,15 @@ window.NM_MENU = {
      },
      "a": [
       1
-     ]
+     ],
+     "sn": {
+      "th": "มันฝรั่งอบ",
+      "en": "Roast potatoes",
+      "zh": "烤土豆",
+      "ru": "Запечённый картофель",
+      "fr": "Pommes de terre rôties",
+      "it": "Patate arrosto"
+     }
     },
     {
      "id": "fagioli",
@@ -644,7 +824,15 @@ window.NM_MENU = {
      },
      "a": [
       1
-     ]
+     ],
+     "sn": {
+      "th": "ถั่วขาว",
+      "en": "White beans",
+      "zh": "白芸豆",
+      "ru": "Белая фасоль",
+      "fr": "Haricots blancs",
+      "it": "Fagioli cannellini"
+     }
     },
     {
      "id": "verdure",
@@ -660,7 +848,15 @@ window.NM_MENU = {
      },
      "a": [
       1
-     ]
+     ],
+     "sn": {
+      "th": "ผักผัด",
+      "en": "Sautéed vegetables",
+      "zh": "炒时蔬",
+      "ru": "Овощи соте",
+      "fr": "Légumes sautés",
+      "it": "Verdure saltate"
+     }
     }
    ]
   },
@@ -685,6 +881,14 @@ window.NM_MENU = {
       "zh": "罐装汽水",
       "fr": "Soda en canette",
       "ru": "Газированный напиток в банке"
+     },
+     "sn": {
+      "th": "น้ำอัดลมกระป๋อง",
+      "en": "Canned soft drink",
+      "zh": "罐装汽水",
+      "ru": "Напиток в банке",
+      "fr": "Soda en canette",
+      "it": "Lattina"
      }
     },
     {
@@ -697,6 +901,14 @@ window.NM_MENU = {
       "zh": "意式浓缩咖啡",
       "fr": "Expresso",
       "ru": "Эспрессо"
+     },
+     "sn": {
+      "th": "เอสเปรสโซ",
+      "en": "Espresso",
+      "zh": "浓缩咖啡",
+      "ru": "Эспрессо",
+      "fr": "Expresso",
+      "it": "Caffè"
      }
     },
     {
@@ -709,6 +921,14 @@ window.NM_MENU = {
       "zh": "加少许利口酒的浓缩咖啡",
       "fr": "Expresso avec une goutte de liqueur",
       "ru": "Эспрессо с каплей ликёра"
+     },
+     "sn": {
+      "th": "เอสเปรสโซใส่เหล้า",
+      "en": "Espresso with liqueur",
+      "zh": "加酒浓缩咖啡",
+      "ru": "Эспрессо с ликёром",
+      "fr": "Café corretto",
+      "it": "Caffè corretto"
      }
     },
     {
@@ -721,6 +941,14 @@ window.NM_MENU = {
       "zh": "玛奇朵（加少许牛奶的浓缩咖啡）",
       "fr": "Expresso noisette",
       "ru": "Эспрессо маккиато"
+     },
+     "sn": {
+      "th": "เอสเปรสโซใส่นม",
+      "en": "Espresso macchiato",
+      "zh": "玛奇朵",
+      "ru": "Эспрессо маккиато",
+      "fr": "Café noisette",
+      "it": "Caffè macchiato"
      }
     },
     {
@@ -733,6 +961,14 @@ window.NM_MENU = {
       "zh": "利沃诺风味热朗姆潘趣",
       "fr": "Punch chaud au rhum, façon Livourne",
       "ru": "Горячий ромовый пунш по-ливорнски"
+     },
+     "sn": {
+      "th": "พันช์รัมร้อน",
+      "en": "Hot rum punch",
+      "zh": "热朗姆潘趣",
+      "ru": "Горячий ромовый пунш",
+      "fr": "Punch chaud au rhum",
+      "it": "Ponce"
      }
     },
     {
@@ -745,6 +981,14 @@ window.NM_MENU = {
       "zh": "意大利苦味利口酒与格拉帕",
       "fr": "Amers italiens et grappa",
       "ru": "Итальянские амаро и граппа"
+     },
+     "sn": {
+      "th": "เหล้าสมุนไพร / กรัปปา",
+      "en": "Amaro / grappa",
+      "zh": "苦味酒 / 格拉帕",
+      "ru": "Амаро / граппа",
+      "fr": "Amer / grappa",
+      "it": "Amari e grappe"
      }
     },
     {
@@ -757,6 +1001,14 @@ window.NM_MENU = {
       "zh": "朗姆酒",
       "fr": "Rhum",
       "ru": "Ром"
+     },
+     "sn": {
+      "th": "รัม",
+      "en": "Rum",
+      "zh": "朗姆酒",
+      "ru": "Ром",
+      "fr": "Rhum",
+      "it": "Rum"
      }
     },
     {
@@ -769,9 +1021,18 @@ window.NM_MENU = {
       "zh": "鸡尾酒",
       "fr": "Cocktails",
       "ru": "Коктейли"
+     },
+     "sn": {
+      "th": "ค็อกเทล",
+      "en": "Cocktail",
+      "zh": "鸡尾酒",
+      "ru": "Коктейль",
+      "fr": "Cocktail",
+      "it": "Cocktails"
      }
     }
    ]
   }
- ]
+ ],
+ "staffLang": "th"
 };

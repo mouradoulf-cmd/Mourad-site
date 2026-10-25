@@ -26,6 +26,11 @@
     empty: ["แตะ + ที่จานเพื่อเพิ่มที่นี่", "Tap + on a dish to add it here.", "点击菜品上的 + 即可加入。", "Нажмите + у блюда, чтобы добавить его сюда.", "Touchez + sur un plat pour l’ajouter ici.", "Toccate + su un piatto per aggiungerlo qui."],
     selnote: ["นี่ไม่ใช่การสั่งอาหาร แค่แสดงหน้าจอนี้ให้พนักงานดู", "This is not an order — simply show this screen to your waiter.", "这不是下单，只需把此页面给服务员看。", "Это не заказ — просто покажите экран официанту.", "Ce n’est pas une commande : montrez simplement cet écran au serveur.", "Non è un ordine: mostrate questa schermata al cameriere."],
     waiter: ["สำหรับพนักงาน", "For the waiter", "给服务员", "Для официанта", "Pour le serveur", "Per il cameriere"],
+    wtitle: ["ลูกค้าขอสั่งรายการนี้ค่ะ", "The guest would like to order", "客人想点以下菜品", "Гость хотел бы заказать", "Le client souhaite commander", "Il cliente desidera ordinare"],
+    wsub: ["รายการเดียวกันสำหรับคุณและพนักงาน", "The same list for you and for the staff", "您和服务员看到的是同一份清单", "Один и тот же список для вас и для официанта", "La même liste pour vous et pour le serveur", "La stessa lista per voi e per il cameriere"],
+    wstaff: ["ลูกค้าเลือกจากเมนู QR กรุณารับออเดอร์ตามปกติค่ะ", "Chosen from the QR menu — please take the order as usual.", "客人从二维码菜单中选择，请照常点单。", "Выбрано в QR-меню — примите заказ как обычно.", "Choisi sur le menu QR : prenez la commande comme d’habitude.", "Scelto dal menù QR: prendete l’ordine come al solito."],
+    walg: ["ลูกค้าแพ้อาหาร", "Food allergies", "食物过敏", "Пищевая аллергия", "Allergies alimentaires", "Allergie alimentari"],
+    turn: ["หมุนให้พนักงาน", "Turn the screen", "转给服务员看", "Повернуть", "Tourner l’écran", "Gira lo schermo"],
     back: ["กลับ", "Back", "返回", "Назад", "Retour", "Indietro"],
     total: ["รวม", "Total", "合计", "Итого", "Total", "Totale"],
     al: ["ภูมิแพ้", "Allergies", "过敏", "Аллергии", "Allergies", "Allergie"],
@@ -141,7 +146,7 @@
     // selection bar, sheets, waiter
     h.push('<div class="bag" id="bag"><span class="bag__t"><b id="bagn"></b><span id="bagp"></span></span><button class="bag__go" type="button" data-open="sel">' + esc(t("view")) + " " + ICO.arrow.replace("<svg", '<svg width="15" height="15"') + "</button></div>");
     h.push('<div class="scrim" id="scrim"></div><div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="sheet__grab" id="grab"></div><button class="sheet__x" type="button" data-close aria-label="' + esc(t("back")) + '">' + ICO.x + '</button><div class="sheet__body" id="sb"></div></div>');
-    h.push('<div class="waiter" id="waiter" role="dialog" aria-modal="true"><div class="waiter__in" id="wi"></div><div class="waiter__f"><button class="cta" type="button" data-wclose>' + esc(t("back")) + "</button></div></div>");
+    h.push('<div class="waiter" id="waiter" role="dialog" aria-modal="true"><div class="waiter__in" id="wi"></div><div class="waiter__f"><button class="cta ghost" type="button" data-turn aria-pressed="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"/></svg><span>' + esc(t("turn")) + '</span></button><button class="cta" type="button" data-wclose>' + esc(t("back")) + "</button></div></div>");
     h.push('<div class="toast" id="toast" role="status"></div>');
     root.innerHTML = h.join("");
     wire();
@@ -204,7 +209,7 @@
   }
 
   root.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-pick],[data-add],[data-dish],[data-open],[data-close],[data-lang],[data-a],[data-q],[data-go],[data-wclose],[data-show],[data-clear],[data-areset]");
+    var b = e.target.closest("[data-pick],[data-add],[data-dish],[data-open],[data-close],[data-lang],[data-a],[data-q],[data-go],[data-wclose],[data-turn],[data-show],[data-clear],[data-areset]");
     if (!b) return;
     if (b.hasAttribute("data-pick")) {
       var l = b.getAttribute("data-pick"); store.set("nm-menu-lang", l);
@@ -233,6 +238,7 @@
     if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { scrollTo({ top: g.getBoundingClientRect().top + scrollY - 70, behavior: "smooth" }); }, 250); return; }
     if (b.hasAttribute("data-clear")) { sel = {}; saveSel(); refreshAdds(); openSheet("sel"); return; }
     if (b.hasAttribute("data-show")) { showWaiter(); return; }
+    if (b.hasAttribute("data-turn")) { var wi = document.getElementById("wi"), on = !wi.classList.contains("flip"); wi.classList.toggle("flip", on); b.setAttribute("aria-pressed", on); return; }
     if (b.hasAttribute("data-wclose")) { document.getElementById("waiter").classList.remove("on"); document.body.classList.remove("lock"); }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeSheet(); var w = document.getElementById("waiter"); if (w) w.classList.remove("on"); } });
@@ -320,11 +326,32 @@
     function up() { if (y0 == null) return; y0 = null; sh.classList.remove("drag"); if (dy > 90) closeSheet(); else sh.style.transform = ""; }
     handle.addEventListener("pointerup", up); handle.addEventListener("pointercancel", up);
   }
+  // The waiter screen: one list both people can read. Each line = the staff's language (big, for the waiter),
+  // the guest's language (so they know what they picked) and the name as printed on the restaurant's menu.
+  function sname(d, l) { return (d.sn && d.sn[l]) || (l === ol ? d.n : "") ; }
   function showWaiter() {
-    var L = selList(), w = document.getElementById("waiter");
-    document.getElementById("wi").innerHTML = (svg.logo ? '<div class="waiter__logo">' + svg.logo + "</div>" : "<h1>" + esc(M.name) + "</h1>") +
-      "<h2>" + esc(U.waiter[ol] || U.waiter.en) + (lang !== ol ? " · " + esc(t("waiter")) : "") + "</h2><ol>" +
-      L.map(function (x) { return "<li><b>" + x.q + "×</b><span>" + esc(x.d.n) + "</span></li>"; }).join("") + '</ol><p class="waiter__note">' + esc(t("selnote")) + "</p>";
+    var L = selList(), w = document.getElementById("waiter"), st = M.staffLang || ol, sum = 0;
+    var two = lang !== st;
+    var rows = L.map(function (x) {
+      sum += x.q * num(x.d.p);
+      var a = sname(x.d, st) || x.d.n, b = two ? sname(x.d, lang) : "", c = x.d.n, seen = [a];
+      if (b && seen.indexOf(b) > -1) b = ""; if (b) seen.push(b);
+      if (seen.indexOf(c) > -1) c = "";
+      return '<li><span class="wq">' + x.q + '</span><div class="wn"><b lang="' + st + '">' + esc(a) + "</b>" + (b ? '<span lang="' + lang + '">' + esc(b) + "</span>" : "") + (c ? '<em lang="' + ol + '">' + esc(c) + "</em>" : "") + '</div><span class="wp">' + money(x.q * num(x.d.p)) + "</span></li>";
+    }).join("");
+    var al = "";
+    if (alg.length && M.allergens) {
+      var As = M.allergens[st] || M.allergens.en, Ac = M.allergens[lang] || M.allergens.en;
+      al = '<div class="walg"><b lang="' + st + '">⚠️ ' + esc(tr(U.walg, st)) + " : " + alg.map(function (n) { return esc(As[n - 1]); }).join(", ") + "</b>" +
+        (two ? '<span lang="' + lang + '">' + esc(t("walg")) + " : " + alg.map(function (n) { return esc(Ac[n - 1]); }).join(", ") + "</span>" : "") + "</div>";
+    }
+    document.getElementById("wi").innerHTML = '<div class="wcard">' + (svg.logo ? '<div class="waiter__logo">' + svg.logo + "</div>" : "<h1>" + esc(M.name) + "</h1>") +
+      '<h2 lang="' + st + '">' + esc(tr(U.wtitle, st)) + "</h2>" + (two ? '<p class="wsub" lang="' + lang + '">' + esc(t("wtitle")) + " · " + esc(t("wsub")) + "</p>" : "") +
+      '<ol class="wl">' + rows + "</ol>" + al +
+      '<div class="wtot"><span><b lang="' + st + '">' + esc(tr(U.total, st)) + "</b>" + (two ? " · " + esc(t("total")) : "") + "</span><b>" + money(sum) + "</b></div>" +
+      '<p class="waiter__note" lang="' + st + '">' + esc(tr(U.wstaff, st)) + "</p>" + (two ? '<p class="waiter__note" lang="' + lang + '">' + esc(t("selnote")) + "</p>" : "") + "</div>";
+    var wi = document.getElementById("wi"); wi.classList.remove("flip"); wi.scrollTop = 0;
+    var tb = w.querySelector("[data-turn]"); if (tb) tb.setAttribute("aria-pressed", "false");
     closeSheet(true); w.classList.add("on"); document.body.classList.add("lock");
   }
 
