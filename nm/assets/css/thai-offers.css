@@ -117,8 +117,20 @@
   font-size: .84rem; font-weight: 700; color: var(--gold); background: rgba(201,169,97,.12); box-shadow: inset 0 0 0 1px rgba(201,169,97,.35); }
 .tho-card__free svg { width: 1rem; height: 1rem; }
 .tho-card .tho-card__list { flex: 1; }
-.tho-meet { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .9rem 1.2rem; max-width: 880px; margin: clamp(1.4rem, 3vw, 2rem) auto 0;
-  padding: 1.1rem 1.3rem; border-radius: var(--tho-r); background: var(--glass, rgba(255,255,255,.04)); box-shadow: inset 0 0 0 1px rgba(245,241,232,.1); text-align: center; }
-.tho-meet__ic { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; color: var(--gold); background: rgba(201,169,97,.1); flex: none; }
-.tho-meet p { flex: 1 1 260px; margin: 0; font-size: .95rem; color: var(--muted); text-align: start; }
-@media (max-width: 560px) { .tho-meet { flex-direction: column; } .tho-meet p { text-align: center; } .tho-meet__btn { width: 100%; justify-content: center; } }
+.tho-meet { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.1rem 1.4rem; max-width: 880px; margin: clamp(1.4rem, 3vw, 2rem) auto 0;
+  padding: 1.35rem 1.5rem; border-radius: var(--tho-r); overflow: hidden;
+  background: radial-gradient(120% 140% at 0% 0%, rgba(201,169,97,.14), transparent 55%), var(--glass, rgba(255,255,255,.04));
+  box-shadow: inset 0 0 0 1px rgba(201,169,97,.28), 0 30px 60px -40px rgba(201,169,97,.45); }
+.tho-meet__ic { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 16px; color: var(--gold); background: rgba(201,169,97,.12); box-shadow: inset 0 0 0 1px rgba(201,169,97,.3); }
+.tho-meet__ic svg { width: 1.35rem; height: 1.35rem; }
+.tho-meet__txt { min-width: 0; }
+.tho-meet__k { margin: 0; display: inline-flex; align-items: center; gap: .45rem; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.tho-meet__k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 4px rgba(61,220,132,.15); }
+.tho-meet__t { margin: .35rem 0 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.25; color: var(--cream, #f5f1e8); }
+.tho-meet__b { margin: .3rem 0 0; font-size: .93rem; line-height: 1.5; color: var(--muted); }
+.tho-meet__btn { white-space: nowrap; }
+@media (max-width: 640px) {
+  .tho-meet { grid-template-columns: auto 1fr; padding: 1.25rem; gap: .9rem 1rem; }
+  .tho-meet__ic { width: 2.6rem; height: 2.6rem; border-radius: 14px; align-self: start; }
+  .tho-meet__btn { grid-column: 1 / -1; width: 100%; justify-content: center; }
+}
