@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#040a08">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Mes menus QR | NM Studio</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" sizes="180x180">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Noto+Sans+Thai:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040a08;--fg:#f7f3ea;--mute:#b4ab9c;--faint:#8a8273;--edge:rgba(255,255,255,.12);--card:rgba(255,255,255,.045);--ease:cubic-bezier(.22,1,.36,1);
+ --ok:#3ddc84;--warn:#ffb547;--bad:#ff5a5f;--c:#e2c07c}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip;-webkit-tap-highlight-color:transparent}
+body{min-height:100svh;background:radial-gradient(80% 50% at 20% 0%,#0a2219,transparent 70%),radial-gradient(60% 50% at 90% 100%,#16130a,transparent 70%),var(--bg);background-attachment:fixed;color:var(--fg);font:15px/1.5 'Manrope',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(760px,100%);margin:0 auto;padding:max(22px,env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom))}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;color:var(--mute);padding:6px 0}
+h1{margin-top:14px;font:400 clamp(2.4rem,10vw,3.4rem)/1 'Instrument Serif',Georgia,serif;font-style:italic;letter-spacing:-.01em}
+.sub{margin-top:8px;color:var(--mute);font-size:.92rem}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:22px}
+.kpi{padding:12px 10px;border-radius:16px;background:var(--card);border:1px solid var(--edge);text-align:center}
+.kpi b{display:block;font-size:1.5rem;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi span{font-size:.7rem;color:var(--mute);letter-spacing:.04em}
+.kpi.ok b{color:var(--ok)}.kpi.warn b{color:var(--warn)}.kpi.bad b{color:var(--bad)}.kpi.money b{color:var(--c);font-size:1.15rem;padding:.18em 0}
+.search{margin-top:18px;width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--edge);background:rgba(255,255,255,.04);color:var(--fg);font:inherit;font-size:16px}
+.search::placeholder{color:var(--faint)}
+.list{display:grid;gap:12px;margin-top:14px}
+.r{position:relative;padding:16px 16px 14px 20px;border-radius:20px;background:var(--card);border:1px solid var(--edge);overflow:hidden}
+.r::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--s)}
+.r.ok{--s:var(--ok)}.r.warn{--s:var(--warn)}.r.bad{--s:var(--bad)}
+.r-top{display:flex;align-items:center;gap:12px}
+.dot{flex:none;width:14px;height:14px;border-radius:50%;background:var(--s);box-shadow:0 0 0 5px color-mix(in srgb,var(--s) 18%,transparent),0 0 18px var(--s)}
+.r.ok .dot{animation:beat 2.4s ease-in-out infinite}
+@keyframes beat{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--s) 8%,transparent),0 0 24px var(--s)}}
+.r h2{font-size:1.15rem;font-weight:700;line-height:1.2}
+.r .city{font-size:.82rem;color:var(--mute)}
+.badge{margin-left:auto;flex:none;font-size:.74rem;font-weight:700;padding:5px 10px;border-radius:99px;color:var(--s);background:color-mix(in srgb,var(--s) 14%,transparent);white-space:nowrap}
+.r .info{margin-top:10px;font-size:.88rem;color:var(--mute)}
+.r .info b{color:var(--fg);font-weight:600}
+.r .note{margin-top:4px;font-size:.8rem;color:var(--faint)}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border-radius:12px;border:1px solid var(--edge);font-size:.86rem;font-weight:600;background:rgba(255,255,255,.04);transition:background .3s,transform .2s}
+.btn:active{transform:scale(.96)}
+.btn.main{background:var(--fg);color:#08100c;border-color:var(--fg)}
+.btn.wa{background:#1fa855;border-color:#1fa855;color:#fff}
+.btn svg{width:16px;height:16px}
+.empty{padding:30px;text-align:center;color:var(--mute)}
+.help{margin-top:28px;padding:18px;border-radius:20px;border:1px dashed var(--edge);font-size:.9rem;color:var(--mute);display:grid;gap:10px}
+.help h3{color:var(--fg);font-size:1rem}
+.help code{color:var(--c);font-family:inherit;font-weight:600}
+.legend{display:grid;gap:6px;margin-top:4px}
+.legend div{display:flex;gap:10px;align-items:center}.legend i{width:10px;height:10px;border-radius:50%;flex:none}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,30px);opacity:0;padding:11px 18px;border-radius:99px;background:var(--fg);color:#08100c;font-weight:700;font-size:.88rem;transition:all .4s var(--ease);pointer-events:none;z-index:30}
+.toast.on{transform:translate(-50%,0);opacity:1}
+/* QR sheet */
+dialog{margin:auto;border:0;padding:0;background:transparent;color:var(--fg);max-width:min(420px,calc(100% - 24px));width:100%}
+dialog::backdrop{background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.sheet{background:#0d1512;border:1px solid var(--edge);border-radius:24px;padding:20px;display:grid;gap:14px}
+.sheet-h{display:flex;justify-content:space-between;align-items:center}
+.sheet-h b{font-size:1.05rem}
+.x{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);font-size:1.2rem}
+.print{background:#fff;color:#111;border-radius:18px;padding:22px 20px;text-align:center;display:grid;justify-items:center;gap:10px}
+.print .pn{font:italic 400 2rem/1 'Instrument Serif',Georgia,serif}
+.print .pl{font-size:.82rem;line-height:1.5;color:#333;font-family:'Manrope','Noto Sans Thai',sans-serif}
+.print .pl b{font-size:1rem;color:#111}
+.qr{width:220px;height:220px}.qr canvas,.qr img{width:100%!important;height:100%!important}
+.print .by{font-size:.62rem;color:#888;letter-spacing:.08em}
+.sheet .acts{margin-top:0}.sheet .btn{flex:1;justify-content:center;white-space:nowrap;padding:12px 10px}
+@media print{
+ body{background:#fff}
+ body>*:not(dialog){display:none!important}
+ dialog{position:static;max-width:none}
+ dialog::backdrop{display:none}
+ .sheet{background:#fff;border:0;padding:0}
+ .sheet-h,.sheet .acts,.sheet .hint{display:none}
+ .print{border:2px solid #111;width:10cm;margin:2cm auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="demos.html">← Mon espace</a>
+  <h1>Mes menus QR</h1>
+  <p class="sub" id="sub">Chargement…</p>
+  <div class="kpis" id="kpis"></div>
+  <input class="search" id="q" type="search" placeholder="Chercher un restaurant…" autocomplete="off" aria-label="Chercher un restaurant">
+  <div class="list" id="list"></div>
+  <div class="help">
+    <h3>Comment ça marche</h3>
+    <div class="legend">
+      <div><i style="background:var(--ok)"></i><span><b style="color:var(--fg)">Vert</b> : payé (ou mois d'essai gratuit), le menu marche.</span></div>
+      <div><i style="background:var(--warn)"></i><span><b style="color:var(--fg)">Orange</b> : à payer dans les 7 jours, ou en retard : le menu marche encore <span id="gr">4</span> jours. C'est le moment d'envoyer le rappel WhatsApp.</span></div>
+      <div><i style="background:var(--bad)"></i><span><b style="color:var(--fg)">Rouge</b> : menu en pause. Les clients voient un message poli (« menu en cours de mise à jour, demandez la carte au personnel »), jamais une page vide.</span></div>
+    </div>
+    <p>Pour tout changement, écris-le-moi simplement dans la discussion : <code>« Giulivo a payé »</code> (je repousse d'un mois), <code>« ajoute le restaurant X »</code> + photo du menu, <code>« change le prix du pad thaï à 80 »</code>, <code>« mets X en pause »</code>. Le QR code ne change jamais : ce qui est imprimé reste valable.</p>
+  </div>
+</div>
+
+<dialog id="qrd" aria-label="QR code">
+  <div class="sheet">
+    <div class="sheet-h"><b id="qrt">QR code</b><button class="x" type="button" data-close aria-label="Fermer">×</button></div>
+    <div class="print" id="card">
+      <div class="pn" id="cn"></div>
+      <div class="qr" id="qrbox"></div>
+      <div class="pl"><b>สแกนดูเมนู · Scan for the menu</b><br>扫码看菜单 · Меню · Menu · Menù</div>
+      <div class="by">MENU · NM STUDIO</div>
+    </div>
+    <p class="hint" style="font-size:.8rem;color:var(--mute);text-align:center">Carte à imprimer pour les tables (10 × 13 cm environ).</p>
+    <div class="acts">
+      <a class="btn main" id="dl" download>Télécharger le QR</a>
+      <button class="btn" type="button" id="pr">Imprimer la carte</button>
+    </div>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="assets/js/qrcode.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var DAY = 864e5, data = null, q = "";
+  var $ = function (id) { return document.getElementById(id); };
+  function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+  function parse(s) { var p = s.split("-"); return new Date(+p[0], p[1] - 1, +p[2]); }
+  function fmt(d) { return d.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }); }
+  function menuUrl(r) { return new URL("../menus/" + r.slug + "/", location.href).href; }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  // same rule as menus/assets/menu.js — keep both in sync
+  function state(r) {
+    var g = data.graceDays || 4, end = parse(r.paidUntil), days = Math.round((end - today()) / DAY);
+    if (r.pause) return { k: "bad", label: "En pause", line: "Mis en pause à la main" };
+    if (days < -g) return { k: "bad", label: "En pause", line: "Pas payé depuis le <b>" + fmt(end) + "</b> · menu bloqué" };
+    if (days < 0) return { k: "warn", label: "En retard", line: "Échu le <b>" + fmt(end) + "</b> · bloqué dans <b>" + (g + days + 1) + " j</b> si rien" };
+    if (days <= 7) return { k: "warn", label: days === 0 ? "À payer aujourd'hui" : "À payer dans " + days + " j", line: (r.trial ? "Fin de l'essai gratuit le " : "Payé jusqu'au ") + "<b>" + fmt(end) + "</b>" };
+    return { k: "ok", label: r.trial ? "Essai gratuit" : "Payé", line: (r.trial ? "Essai gratuit jusqu'au " : "Payé jusqu'au ") + "<b>" + fmt(end) + "</b> · encore " + days + " j" };
+  }
+  var ico = {
+    eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+    qr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>',
+    wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>',
+    link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>'
+  };
+  function waText(r, s) {
+    var u = menuUrl(r), d = r.paidUntil.split("-").reverse().join("/");
+    if (s.k === "bad") return "สวัสดีค่ะ จาก NM Studio 🙏 เมนู QR ของร้าน " + r.name + " ถูกพักไว้ชั่วคราว เพราะยังไม่ได้ชำระค่าบริการ 390 บาท/เดือน โอนเมื่อไหร่ เมนูจะกลับมาใช้ได้ทันทีค่ะ\n\nHello from NM Studio 🙏 The QR menu of " + r.name + " is paused until the 390 ฿ monthly fee is paid. It comes back on right after payment.\n" + u;
+    return "สวัสดีค่ะ จาก NM Studio 🙏 แจ้งเตือนเล็กน้อย: ค่าบริการเมนู QR ของร้าน " + r.name + " (390 บาท/เดือน) ครบกำหนดวันที่ " + d + " ค่ะ ขอบคุณมากค่ะ\n\nHello from NM Studio 🙏 Friendly reminder: the QR menu of " + r.name + " (390 ฿/month) is due on " + d + ". Thank you!\n" + u;
+  }
+  function render() {
+    var rs = data.restaurants.slice().sort(function (a, b) { return a.name.localeCompare(b.name, "fr"); });
+    var n = { ok: 0, warn: 0, bad: 0 }, paying = 0;
+    rs.forEach(function (r) { r._s = state(r); n[r._s.k]++; if (!r.demo && !r.trial && r._s.k !== "bad") paying++; });
+    $("kpis").innerHTML =
+      '<div class="kpi ok"><b>' + n.ok + '</b><span>Actifs</span></div>' +
+      '<div class="kpi warn"><b>' + n.warn + '</b><span>À relancer</span></div>' +
+      '<div class="kpi bad"><b>' + n.bad + '</b><span>En pause</span></div>' +
+      '<div class="kpi money"><b>' + (paying * 390).toLocaleString("fr-FR") + ' ฿</b><span>Par mois</span></div>';
+    $("sub").textContent = rs.length + (rs.length > 1 ? " restaurants" : " restaurant") + " · " + (data.price || "390 ฿ / mois") + " · mis à jour à l'instant";
+    var f = rs.filter(function (r) { return !q || (r.name + " " + (r.city || "")).toLowerCase().indexOf(q) > -1; });
+    $("list").innerHTML = f.length ? f.map(function (r) {
+      var s = r._s, phone = String(r.phone || "").replace(/\D/g, "");
+      return '<article class="r ' + s.k + '"><div class="r-top"><span class="dot" aria-hidden="true"></span><div><h2>' + esc(r.name) + (r.demo ? ' <small style="font-weight:500;color:var(--faint);font-size:.72rem">· exemple</small>' : "") + '</h2><div class="city">' + esc(r.city) + '</div></div><span class="badge">' + s.label + '</span></div>' +
+        '<p class="info">' + s.line + '</p>' + (r.note ? '<p class="note">' + esc(r.note) + '</p>' : "") +
+        '<div class="acts"><a class="btn main" href="../menus/' + r.slug + '/" target="_blank" rel="noopener">' + ico.eye + 'Voir le menu</a>' +
+        '<button class="btn" type="button" data-qr="' + r.slug + '">' + ico.qr + 'QR code</button>' +
+        (phone ? '<a class="btn wa" href="https://wa.me/' + phone + '?text=' + encodeURIComponent(waText(r, s)) + '" target="_blank" rel="noopener">' + ico.wa + 'Rappel</a>' : "") +
+        '<button class="btn" type="button" data-copy="' + r.slug + '">' + ico.link + 'Copier le lien</button>' +
+        (s.k !== "bad" ? '<a class="btn" href="../menus/' + r.slug + '/?apercu=pause" target="_blank" rel="noopener" style="color:var(--mute)">Écran « pause »</a>' : "") +
+        '</div></article>';
+    }).join("") : '<p class="empty">Aucun restaurant trouvé.</p>';
+  }
+  function bySlug(s) { return data.restaurants.filter(function (r) { return r.slug === s; })[0]; }
+  function toast(m) { var t = $("toast"); t.textContent = m; t.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove("on"); }, 1800); }
+  function openQR(r) {
+    var box = $("qrbox"); box.innerHTML = "";
+    $("qrt").textContent = r.name; $("cn").textContent = r.name;
+    if (window.QRCode) new window.QRCode(box, { text: menuUrl(r), width: 640, height: 640, colorDark: "#111111", colorLight: "#ffffff", correctLevel: window.QRCode.CorrectLevel.M });
+    setTimeout(function () { var c = box.querySelector("canvas"); if (c) { $("dl").href = c.toDataURL("image/png"); $("dl").download = "menu-qr-" + r.slug + ".png"; } }, 60);
+    var d = $("qrd"); if (d.showModal) d.showModal(); else d.setAttribute("open", "");
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-qr],[data-copy],[data-close]"); if (!b) return;
+    if (b.hasAttribute("data-close")) return $("qrd").close();
+    var r = bySlug(b.getAttribute("data-qr") || b.getAttribute("data-copy"));
+    if (b.hasAttribute("data-qr")) return openQR(r);
+    var u = menuUrl(r);
+    (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { toast("Lien copié ✓"); }, function () { prompt("Lien du menu :", u); });
+  });
+  $("qrd").addEventListener("click", function (e) { if (e.target === this) this.close(); });
+  $("pr").addEventListener("click", function () { window.print(); });
+  $("q").addEventListener("input", function () { q = this.value.trim().toLowerCase(); render(); });
+  function load() {
+    fetch("../menus/abonnements.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+      data = d; $("gr").textContent = d.graceDays || 4; render();
+    }).catch(function () { $("sub").textContent = "Impossible de charger la liste (pas de connexion ?)."; });
+  }
+  load();
+  document.addEventListener("visibilitychange", function () { if (!document.hidden && data) load(); });
+})();
+</script>
+</body>
+</html>

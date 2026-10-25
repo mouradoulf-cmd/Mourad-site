@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-10-20";
+window.NM_UPDATED = "2026-10-25";
 
 window.NM_DEMOS = [
 ];
@@ -23,6 +23,10 @@ window.NM_LINKS = [
     { name: "Tarifs", path: "nm/fr/pricing.html", note: "Prix Europe" },
     { name: "Mes discussions", path: "nm/organisation.html", note: "Où en est chaque conversation + ce qui t'attend" },
     { name: "Tarifs Thaïlande · ไทย", path: "nm/th/pricing.html", note: "Menu 299 ฿ · Google 790 ฿ · Pack 2 990 ฿ + entretien 390 ฿/mois" }
+  ] },
+  { space: "site", group: "Menus QR (abonnements)", items: [
+    { name: "Mes menus QR", path: "nm/menus.html", note: "Tous les restaurants : vert = payé, orange = à relancer, rouge = en pause · QR à imprimer, rappel WhatsApp" },
+    { name: "Menu QR · Giulivo (exemple)", path: "menus/giulivo/", note: "Le menu que voient les clients : 6 langues, photos des plats, allergènes" }
   ] },
   { space: "site", group: "Démos clients", items: [
     { name: "SOCAP Paysage", path: "socap-paysage/", note: "Paysagiste (Ain) · démo premium" },
