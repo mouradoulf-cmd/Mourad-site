@@ -39,7 +39,8 @@ Mis à jour le 19 octobre 2026. Ce fichier garde l'état de tous les projets dis
 
 Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, Italiano) donné gratuitement 1 mois, puis 390 ฿/mois.
 - Tableau de bord privé : https://mouradoulf-cmd.github.io/Mourad-site/nm/menus.html (vert = payé, orange = à relancer, rouge = en pause, QR à imprimer, rappel WhatsApp).
-- Exemple : https://mouradoulf-cmd.github.io/Mourad-site/menus/giulivo/
+- Exemple à montrer (thaï, en baht) : https://mouradoulf-cmd.github.io/Mourad-site/menus/mae-lek/ (Giulivo en euros reste en ligne mais n'est plus montré)
+- Priorité de Mourad (2026-10-25) : 100 % business thaïlandais, tout en baht, prêt pour son arrivée.
 - Fichiers (branche publiée `claude/thai-app-mnw166`) : `menus/abonnements.json` (date « payé jusqu'au » par restaurant, pause auto après 4 jours de retard), `menus/<slug>/menu.js` (contenu), `menus/assets/` (affichage commun).
 - Quand Mourad dit « X a payé » : repousser `paidUntil` d'un mois. Nouveau restaurant : copier `menus/giulivo/`, remplir `menu.js`, ajouter une ligne dans `abonnements.json`.
 - À faire : premiers vrais restaurants pendant son séjour en Thaïlande.
