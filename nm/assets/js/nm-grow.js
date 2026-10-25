@@ -152,6 +152,14 @@
       var lines = [t("book.msg"), "", "*" + t("book.l_slot") + ":* " + when];
       if (name) lines.push("*" + t("free.l_name") + ":* " + name);
       if (first) lines.push("*" + t("free.l_first") + ":* " + first);
+      // Thai site: a polished, ready-to-send message (we come to the shop, no video call)
+      var O2 = window.NM_OFFERS2, lng = window.NM_LANG || document.documentElement.lang, W = O2 && (O2.langs || []).indexOf(lng) > -1 && O2[lng] && O2[lng].wa;
+      if (W) {
+        lines = [W.hi, W.ask, "", W.day + " : " + fmt(sel.ms, { weekday: "long", day: "numeric", month: "long" }), W.time + " : " + W.hm.replace("{t}", sel.hm)];
+        if (name) lines.push(W.biz + " : " + name);
+        if (first) lines.push(W.name + " : " + first);
+        lines.push(W.place + " : " + W.placeV, "", W.bye);
+      }
       var msg = lines.join("\n");
       try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: "book" } })); } catch (e2) {}
       var ln = lineURL(msg); if (ln) { window.open(ln, "_blank", "noopener"); return; }
