@@ -10,6 +10,10 @@
   if (!M) return;
   var root = document.getElementById("menu");
   var LN = { th: "ไทย", en: "English", zh: "中文", ru: "Русский", fr: "Français", it: "Italiano", de: "Deutsch", ja: "日本語", ko: "한국어" };
+  // Language flags: SVG from flag-icons (MIT, menus/assets/flags/) so they look the same on every phone.
+  var FLAG_DIR = (document.currentScript && document.currentScript.src) ? new URL("flags/", document.currentScript.src).href : "../assets/flags/";
+  var FC = { th: "th", en: "gb", zh: "cn", ru: "ru", fr: "fr", it: "it", de: "de", ja: "jp", ko: "kr" };
+  function flag(l, cls) { return FC[l] ? '<img class="flag' + (cls ? " " + cls : "") + '" src="' + FLAG_DIR + FC[l] + '.svg" alt="" width="24" height="18" decoding="async">' : ""; }
   var LS = { th: "ไทย", en: "EN", zh: "中文", ru: "RU", fr: "FR", it: "IT", de: "DE", ja: "日本", ko: "한국" };
   //            th, en, zh, ru, fr, it
   var U = (function (o) { var r = {}, k = ["th", "en", "zh", "ru", "fr", "it"]; Object.keys(o).forEach(function (n) { r[n] = {}; k.forEach(function (l, i) { r[n][l] = o[n][i]; }); }); return r; })({
@@ -129,12 +133,12 @@
     h.push('<div class="open__top">' + (M.wordmark ? '<h1 class="open__word rise" style="--d:.15s">' + esc(M.wordmark) + (M.wordmarkSub ? '<small lang="' + ol + '">' + esc(M.wordmarkSub) + "</small>" : "") + "</h1>" : svg.logo ? '<div class="open__logo rise" style="--d:.15s" role="img" aria-label="' + esc(M.name) + '">' + svg.logo + "</div>" : '<h1 class="open__name rise">' + esc(M.name) + "</h1>") +
       '<p class="open__tag rise" style="--d:.35s">' + esc(tr(M.tagline)) + "</p>" + (M.demo ? '<p class="demo rise" style="--d:.45s">' + esc(t("demo")) + "</p>" : "") + "</div>");
     h.push('<div class="open__bot"><p class="open__ask rise" style="--d:.55s">' + esc(t("choose")) + '</p><div class="langs">' +
-      langs.map(function (l, i) { return '<button type="button" class="rise' + (l === lang ? " sug" : "") + '" style="--d:' + (0.65 + i * 0.06).toFixed(2) + 's" data-pick="' + l + '" lang="' + l + '">' + (LN[l] || l) + "</button>"; }).join("") +
+      langs.map(function (l, i) { return '<button type="button" class="rise' + (l === lang ? " sug" : "") + '" style="--d:' + (0.65 + i * 0.06).toFixed(2) + 's" data-pick="' + l + '" lang="' + l + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") +
       '</div><p class="open__cue rise" style="--d:1.1s">' + esc(t("cue")) + "</p></div></section>");
     // header
     h.push('<header class="hd" id="hd"><a class="hd__logo' + (svg.logo ? "" : " txt") + '" href="#top" aria-label="' + esc(M.name) + '">' + (svg.logo || esc(M.wordmark || M.name)) + "</a>" +
       '<button class="hd__ch" type="button" id="hdch" aria-label="' + esc(t("menu")) + '"><small></small><span></span></button>' +
-      '<div class="hd__r"><button class="ib lb" type="button" data-open="lang" aria-label="' + esc(t("lang")) + '">' + (LS[lang] || lang) + "</button>" +
+      '<div class="hd__r"><button class="ib lb" type="button" data-open="lang" aria-label="' + esc(t("lang")) + " · " + (LN[lang] || lang) + '">' + flag(lang, "round") + "<span>" + (LS[lang] || lang) + "</span></button>" +
       '<button class="ib" type="button" data-open="alg" aria-label="' + esc(t("al")) + '">' + ICO.shield + '<span class="n' + (alg.length ? " on" : "") + '" id="algn">' + alg.length + "</span></button></div>" +
       '<i class="prog" id="prog"></i></header>');
     // chapters
@@ -315,7 +319,7 @@
         return '<li><button type="button" data-go="' + s.id + '" class="' + (i === cur ? "cur" : "") + '"><small>' + String(i + 1).padStart(2, "0") + "</small><b>" + esc(tr(s.t)) + "</b><i>" + s.items.length + "</i></button></li>";
       }).join("") + "</ul>";
     } else if (kind === "lang") {
-      h += '<h3 class="st" style="margin-top:4px">' + esc(t("lang")) + '</h3><div class="lgrid">' + langs.map(function (l) { return '<button type="button" data-lang="' + l + '" lang="' + l + '" aria-pressed="' + (l === lang) + '">' + (LN[l] || l) + "</button>"; }).join("") + "</div>";
+      h += '<h3 class="st" style="margin-top:4px">' + esc(t("lang")) + '</h3><div class="lgrid">' + langs.map(function (l) { return '<button type="button" data-lang="' + l + '" lang="' + l + '" aria-pressed="' + (l === lang) + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") + "</div>";
     } else if (kind === "alg") {
       var A = M.allergens && (M.allergens[lang] || M.allergens.en) || [];
       h += '<h3 class="st" style="margin-top:4px">' + esc(t("alt")) + '</h3><p class="ss">' + esc(t("als")) + '</p><div class="agrid">' + A.map(function (a, i) {

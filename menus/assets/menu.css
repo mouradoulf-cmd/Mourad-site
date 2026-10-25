@@ -295,3 +295,13 @@ body.alg .alb{display:block}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01s!important;transition-duration:.01s!important}}
 :lang(ko){word-break:keep-all}
+
+/* language flags */
+.flag{flex:none;width:24px;height:18px;border-radius:4px;object-fit:cover;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 2px 6px rgba(0,0,0,.35)}
+.flag.round{width:22px;height:22px;border-radius:50%}
+.langs button,.lgrid button{display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px}
+.langs button span,.lgrid button span{white-space:nowrap}
+.lgrid button .flag{width:28px;height:21px}
+.lgrid button[aria-pressed="true"] .flag{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+.lb{display:inline-flex;align-items:center;gap:7px;padding:0 12px 0 8px}
+@media (max-width:370px){.langs button{gap:7px;font-size:.98rem}.langs button .flag{width:20px;height:15px}}
