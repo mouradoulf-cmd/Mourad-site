@@ -14,14 +14,14 @@ window.NM_DEMOS = [
 ];
 
 window.NM_LINKS = [
-  { space: "site", group: "🇹🇭 Thaïlande · en français pour moi", items: [
-    { name: "Le site thaï, lu en français", path: "nm/th-fr/", note: "Exactement ce que voient les clients thaïs, traduit pour toi (copie privée, pas pour les clients)" },
-    { name: "Les 2 offres", path: "nm/th-fr/#offers", note: "Menu QR 390 ฿/mois, installation gratuite · Site web + menu QR 790 ฿/mois · bouton rendez-vous" },
-    { name: "Avant / après", path: "nm/th-fr/#menu-ba", note: "Le vieux menu papier tout en thaï → le QR sur la table → le menu dans le téléphone" },
-    { name: "Prendre rendez-vous", path: "nm/th-fr/#book", note: "Jour + heure, puis commerce, adresse, prénom → message WhatsApp tout écrit (dès que le numéro thaï est branché)" },
-    { name: "Menu QR d'exemple · Mae Lek en français", path: "menus/mae-lek/?lang=fr", note: "Le menu à montrer, ouvert en français : photos, piment, allergies, « montrer au serveur » en thaï" },
+  { space: "site", group: "🇹🇭 🇫🇷 Site web thaïlandais · en français pour moi", items: [
+    { name: "Site web thaïlandais · en français", icon: "🇹🇭🇫🇷", path: "nm/th-fr/", note: "Le site que voient les clients thaïs, traduit en français pour toi (copie privée, pas pour les clients)" },
+    { name: "Les 2 offres", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#offers", note: "Menu QR 390 ฿/mois, installation gratuite · Site web + menu QR 790 ฿/mois · bouton rendez-vous" },
+    { name: "Avant / après", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#menu-ba", note: "Le vieux menu papier tout en thaï → le QR sur la table → le menu dans le téléphone" },
+    { name: "Prendre rendez-vous", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#book", note: "Jour + heure, puis commerce, adresse, prénom → WhatsApp s'ouvre avec le message tout écrit" },
+    { name: "Menu QR d'exemple · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Le menu à montrer, ouvert en français : photos, piment, allergies, « montrer au serveur » en thaï" },
     { name: "Mes menus QR (tableau de bord)", path: "nm/menus.html", note: "Qui a payé (vert), à relancer (orange), en pause (rouge), cartes QR à imprimer" },
-    { name: "Le site thaï (version clients · ไทย)", path: "nm/th/", note: "La vraie version en thaï, celle que tu montres aux patrons" }
+    { name: "Site web thaïlandais · version clients (ไทย)", icon: "🇹🇭", path: "nm/th/", note: "La vraie version en thaï, celle que tu montres aux patrons" }
   ] },
   { space: "site", group: "NM Studio", items: [
     { name: "NM Studio · Français", path: "nm/fr/", note: "Le site à montrer aux clients" },

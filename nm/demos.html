@@ -265,6 +265,7 @@ button{font:inherit;color:inherit}
 .lsec + .lsec{margin-top:1.3rem}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}}
+.em2{font-size:.6em;letter-spacing:-.04em;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -376,6 +377,7 @@ button{font:inherit;color:inherit}
     play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>'
   };
   function itemIcon(it, sp) {
+    if (it.icon) return '<span class="em' + (it.icon.length > 4 ? " em2" : "") + '">' + it.icon + "</span>";   // e.g. "🇹🇭🇫🇷"
     var n = norm(it.name);
     if (sp === "site") {
       var fl = { "francais": "🇫🇷", "english": "🇬🇧", "italiano": "🇮🇹" }; for (var k in fl) if (n.indexOf(k) > -1) return '<span class="em">' + fl[k] + "</span>";
