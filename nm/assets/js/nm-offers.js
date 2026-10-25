@@ -22,9 +22,10 @@
       offers: { lead: "Prix en bahts thaïlandais. Un abonnement mensuel, hébergement, modifications et mises à jour compris. Chaque commerce est différent : rencontrons-nous pour parler du vôtre.", eyebrow: "Offres" },
       prob: { cap5: "Site web et menu QR : on s'occupe de tout, chaque mois. Vous, vous cuisinez." },
       process: { s2b: "Design, textes, menu QR et toutes les langues de vos clients. Vous validez, on ajuste.", s3b: "Votre site et votre menu QR sont en ligne. Les clients vous trouvent, ouvrent votre menu et vous écrivent." },
-      promise: { a2: "Deux prix clairs : menu QR 390 ฿ par mois, site web 790 ฿ par mois. Pas de surprise.", a5: "Menu QR prêt en 48 h. Site en ligne en quelques jours, pas en semaines." },
+      promise: { zn: "Vous n'êtes pas dans la liste ? Écrivez-nous : on se déplace jusqu'à vous.", a2: "Deux prix clairs : menu QR 390 ฿ par mois, site web 790 ฿ par mois. Pas de surprise.", a5: "Menu QR prêt en 48 h. Site en ligne en quelques jours, pas en semaines." },
       free: { a_k: "Menu QR offert", a_t: "Votre menu QR, 1er mois offert", a_b: "Je transforme votre carte en menu QR dans les langues de vos clients. Installation gratuite, 1er mois offert : vous ne payez que si vous le gardez (390 ฿ par mois).", a_btn: "Recevoir mon menu QR", msgA: "Bonjour NM Studio, je voudrais mon menu QR gratuit." },
-      book: { msg: "Bonjour NM Studio, je voudrais prendre rendez-vous pour un menu QR / un site web.", b1: "On regarde ensemble votre commerce et votre carte", b2: "Vous voyez des exemples de sites et de menus QR pour votre activité" }
+      founder: { p2: "Nous nous déplaçons jusqu'à vous, à votre commerce ou là où vous le souhaitez", body: "Cela fait longtemps que je travaille sur les sites web et les menus QR. Mon épouse comprend les commerçants thaïs ; moi, étranger moi-même, je comprends les clients venus d’ailleurs. À deux, nous comprenons les deux côtés." },
+      book: { msg: "Bonjour NM Studio, je voudrais prendre rendez-vous pour un menu QR / un site web.", t: "On vient chez vous. Choisissez le jour et l'heure.", b: "Nous nous déplaçons jusqu'à votre commerce, ou là où vous le souhaitez. Gratuit et sans engagement : on s'assoit ensemble et on regarde ce qu'il vous faut.", call: "Dans votre commerce, ou là où vous voulez", b1: "On regarde ensemble votre commerce et votre carte", b2: "Vous voyez des exemples de sites et de menus QR pour votre activité" }
     },
     it: {
       v4: { offersTitle: "Due offerte. <em>Semplici, al mese.</em>", proof1: "Menù QR · 390 ฿/mese", proof2: "Installazione gratuita",
@@ -42,10 +43,10 @@
       offers: { lead: "ราคาเป็นเงินบาท จ่ายรายเดือน รวมโฮสติ้ง การแก้ไข และการอัปเดต แต่ละร้านไม่เหมือนกัน นัดคุยกันเรื่องร้านของคุณได้เลย", eyebrow: "แพ็กเกจ" },
       prob: { cap5: "เว็บไซต์และเมนู QR เราดูแลให้ทุกเดือน คุณแค่ทำอาหาร" },
       process: { s2b: "ดีไซน์ ข้อความ เมนู QR และทุกภาษาที่ลูกค้าของคุณใช้ คุณตรวจ เราปรับให้", s3b: "เว็บไซต์และเมนู QR ของคุณออนไลน์แล้ว ลูกค้าหาเจอ เปิดเมนู และส่งข้อความหาคุณ" },
-      promise: { a2: "ราคาชัดเจน 2 แบบ: เมนู QR 390 บาท/เดือน เว็บไซต์ 790 บาท/เดือน ไม่มีค่าใช้จ่ายแอบแฝง", a5: "เมนู QR พร้อมใน 48 ชั่วโมง เว็บไซต์ออนไลน์ในไม่กี่วัน ไม่ใช่หลายสัปดาห์" },
+      promise: { zn: "ไม่อยู่ในรายชื่อ? ทักมาได้เลย เราเดินทางไปหาคุณ", a2: "ราคาชัดเจน 2 แบบ: เมนู QR 390 บาท/เดือน เว็บไซต์ 790 บาท/เดือน ไม่มีค่าใช้จ่ายแอบแฝง", a5: "เมนู QR พร้อมใน 48 ชั่วโมง เว็บไซต์ออนไลน์ในไม่กี่วัน ไม่ใช่หลายสัปดาห์" },
       free: { a_k: "เมนู QR ฟรี", a_t: "เมนู QR ของคุณ ใช้ฟรีเดือนแรก", a_b: "ผมเปลี่ยนเมนูของคุณเป็นเมนู QR หลายภาษาตามลูกค้าของคุณ ติดตั้งฟรี ใช้ฟรีเดือนแรก จ่ายเฉพาะเมื่ออยากใช้ต่อ (390 บาท/เดือน)", a_btn: "รับเมนู QR ฟรี", msgA: "สวัสดีค่ะ NM Studio อยากได้เมนู QR ฟรีค่ะ" },
-      book: { msg: "สวัสดีครับ NM Studio อยากนัดคุยเรื่องเมนู QR / เว็บไซต์ครับ", b1: "ผมกับคุณดูร้านและเมนูของคุณไปด้วยกัน", b2: "ดูตัวอย่างเว็บไซต์และเมนู QR ที่เหมาะกับร้านของคุณ" },
-      founder: { body: "ผมทำงานด้านเว็บไซต์และเมนู QR มานานหลายปี ภรรยาของผมเข้าใจเจ้าของร้านชาวไทย ส่วนผมเป็นชาวต่างชาติ จึงเข้าใจลูกค้าต่างชาติ เมื่อรวมกัน เราจึงเข้าใจทั้งสองฝั่ง" }
+      book: { msg: "สวัสดีครับ NM Studio อยากนัดคุยเรื่องเมนู QR / เว็บไซต์ครับ", k: "นัดเจอกันไหม?", t: "เราไปหาคุณถึงที่ เลือกวันและเวลาได้เลย", b: "เราเดินทางไปหาคุณถึงร้าน หรือที่ไหนก็ได้ที่คุณสะดวก ฟรี ไม่มีข้อผูกมัด นั่งคุยกันสบาย ๆ ว่าร้านของคุณต้องการอะไร", call: "ที่ร้านของคุณ หรือที่ที่คุณสะดวก", b1: "ผมกับคุณดูร้านและเมนูของคุณไปด้วยกัน", b2: "ดูตัวอย่างเว็บไซต์และเมนู QR ที่เหมาะกับร้านของคุณ" },
+      founder: { p2: "เราเดินทางไปหาคุณถึงร้าน หรือที่ไหนก็ได้ที่คุณสะดวก", body: "ผมทำงานด้านเว็บไซต์และเมนู QR มานานหลายปี ภรรยาของผมเข้าใจเจ้าของร้านชาวไทย ส่วนผมเป็นชาวต่างชาติ จึงเข้าใจลูกค้าต่างชาติ เมื่อรวมกัน เราจึงเข้าใจทั้งสองฝั่ง" }
     },
     ar: {
       v4: { offersTitle: "عرضان. <em>بسيطان وشهريان.</em>", proof1: "قائمة QR · ‏390 ฿ شهريًا", proof2: "تركيب مجاني",
