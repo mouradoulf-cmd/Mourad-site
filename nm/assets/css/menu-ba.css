@@ -93,3 +93,10 @@
 
 .old, .tent, .mphone { direction: ltr; }
 .mba[data-paused] .tent__beam, .mba[data-paused] .old { animation-play-state: paused; }
+
+/* Thai site: photo of a real-looking worn paper menu (assets/img/old-menu-th.webp, rendered from an HTML scene) */
+.old.old--photo { width: min(100%, 340px); aspect-ratio: 900 / 1125; padding: 0; border: 0; background: #2a2c2e; transform: rotate(-1.5deg); border-radius: 14px; overflow: hidden;
+  box-shadow: 0 28px 60px -18px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06); }
+.old.old--photo::before, .old.old--photo::after { content: none; }
+.old.old--photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.old.old--photo .old__stamp { right: 14px; bottom: 34px; background: rgba(250,244,230,.82); font-size: 15px; }

@@ -1,0 +1,106 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:NS;src:url(ns4.woff2);font-weight:400}@font-face{font-family:NS;src:url(ns7.woff2);font-weight:700}
+@font-face{font-family:Pen;src:url(cav.woff2)}
+*{margin:0;box-sizing:border-box}
+html,body{width:1000px;height:1250px;overflow:hidden}
+body{background:
+ radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.18),transparent 60%),
+ repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),
+ linear-gradient(160deg,#8e9296,#6c7074 45%,#55595d);perspective:1600px;font-family:Loma,NS,sans-serif}
+.noise{position:absolute;inset:0;opacity:.35;mix-blend-mode:overlay}
+.table-edge{position:absolute;left:-40px;right:-40px;bottom:-20px;height:120px;background:linear-gradient(#3b3e41,#25282a);transform:rotate(-2deg);box-shadow:0 -6px 18px rgba(0,0,0,.35)}
+.lam{position:absolute;left:105px;top:70px;width:780px;height:1060px;border-radius:22px;padding:14px;
+ background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.06));
+ transform:rotateX(9deg) rotateZ(-3.2deg);transform-origin:50% 80%;
+ box-shadow:0 40px 60px -20px rgba(0,0,0,.55),0 8px 16px rgba(0,0,0,.25),inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.paper{position:relative;width:100%;height:100%;overflow:hidden;border-radius:6px;
+ background:radial-gradient(140% 100% at 70% 10%,#f3ead2,#e9dcb8 55%,#dccb9c 100%);color:#2c241c}
+.paper::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.3%,rgba(80,60,30,.18) 50%,rgba(255,255,255,.25) 50.6%,transparent 51.5%);pointer-events:none;z-index:5}
+.paper::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 100% 100%,rgba(150,110,50,.35),transparent 70%),radial-gradient(40% 30% at 0% 0%,rgba(150,110,50,.25),transparent 70%);z-index:4;pointer-events:none}
+.hd{background:#b3261e;color:#f9e7c2;text-align:center;padding:18px 10px 14px;border-bottom:5px solid #e0a82e}
+.hd h1{font:700 64px/1 NS;letter-spacing:1px;text-shadow:2px 2px 0 #6e130e}
+.hd p{font:400 22px/1.4 NS;margin-top:6px;color:#ffe9a8}
+.pics{display:flex;gap:10px;padding:14px 22px 6px}
+.pics div{flex:1;height:118px;border:4px solid #fff7e4;box-shadow:0 2px 3px rgba(0,0,0,.25);background-size:cover;background-position:center;filter:saturate(.55) contrast(.8) brightness(1.1) sepia(.25) blur(.6px)}
+.pics span{display:block;text-align:center;font:700 19px NS;color:#7a1b14;margin-top:2px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 26px;padding:10px 26px 0}
+h2{font:700 27px/1 NS;color:#fff3d2;background:#2f6b3a;padding:7px 12px 6px;margin:12px 0 6px;transform:skew(-4deg)}
+h2.o{background:#c0571c}
+.it{display:flex;align-items:baseline;gap:6px;font:400 23px/1.42 Loma,NS;white-space:nowrap}
+.it i{flex:1;border-bottom:2px dotted rgba(60,40,20,.5);transform:translateY(-6px)}
+.it b{font:700 23px NS;color:#9b1c14;position:relative}
+.it.x{position:relative}
+.it.x::after{content:"";position:absolute;left:-4px;right:38px;top:52%;height:3px;background:#1f3a8a;border-radius:3px;transform:rotate(-2deg);opacity:.85}
+.pen{position:absolute;font:700 40px/1 Pen;color:#1f3a8a;transform:rotate(-8deg);opacity:.9}
+.strike{text-decoration:line-through;text-decoration-color:#1f3a8a;text-decoration-thickness:3px}
+.note{margin:14px 26px 0;padding:10px 14px;border:2px dashed rgba(155,28,20,.6);font:700 22px/1.4 NS;color:#9b1c14;text-align:center}
+.foot{position:absolute;left:0;right:0;bottom:16px;text-align:center;font:400 20px NS;color:#5c4b36}
+.ring{position:absolute;width:190px;height:190px;border-radius:50%;left:500px;top:610px;
+ background:radial-gradient(circle,transparent 58%,rgba(120,70,20,.32) 62%,rgba(120,70,20,.12) 66%,transparent 70%),radial-gradient(circle,rgba(140,90,30,.1),transparent 60%);transform:scale(1,.92) rotate(20deg);z-index:6;mix-blend-mode:multiply}
+.grease{position:absolute;left:120px;top:880px;width:140px;height:90px;border-radius:50%;background:radial-gradient(rgba(190,150,60,.28),transparent 70%);z-index:6;mix-blend-mode:multiply;filter:blur(2px)}
+.grease.b{left:560px;top:300px;width:90px;height:70px}
+.tape{position:absolute;width:150px;height:46px;background:rgba(240,225,170,.55);box-shadow:0 1px 2px rgba(0,0,0,.15);z-index:8}
+.ear{position:absolute;right:0;bottom:0;width:90px;height:90px;background:linear-gradient(135deg,#cdbd8f 50%,#7a7e82 50%);z-index:9;box-shadow:-3px -3px 6px rgba(0,0,0,.2)}
+.glare{position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.38) 45%,rgba(255,255,255,.08) 52%,transparent 60%);z-index:10;pointer-events:none;border-radius:22px}
+.bub{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.45);z-index:11}
+.light{position:absolute;inset:0;background:radial-gradient(70% 60% at 40% 30%,transparent 50%,rgba(0,0,0,.45));z-index:20;pointer-events:none}
+.pn{position:absolute;right:-6px;top:-30px;font:700 38px/1 Pen;font-style:normal;color:#1f3a8a;transform:rotate(-9deg);opacity:.92;white-space:nowrap}
+.crumple{position:absolute;inset:0;z-index:7;mix-blend-mode:multiply;opacity:.95;pointer-events:none}
+.crumple2{position:absolute;inset:0;z-index:7;mix-blend-mode:soft-light;opacity:.9;pointer-events:none}
+.sticker{position:absolute;left:300px;top:860px;width:330px;padding:16px 18px;background:#fbfaf4;transform:rotate(3.5deg);box-shadow:0 3px 6px rgba(0,0,0,.25);z-index:8;font:400 26px/1.35 NS;color:#1f3a8a;text-align:center}
+.sticker b{display:block;font:700 30px NS}
+.sticker .tp{position:absolute;width:90px;height:30px;background:rgba(240,225,170,.6);top:-14px;left:105px;transform:rotate(-4deg)}
+.shadowhand{position:absolute;right:-120px;bottom:-140px;width:520px;height:420px;border-radius:50%;background:rgba(0,0,0,.28);filter:blur(40px);z-index:19}
+.fade{position:absolute;left:0;right:0;top:0;height:170px;background:radial-gradient(60% 120% at 80% 0%,rgba(255,240,220,.35),transparent 70%);z-index:6;mix-blend-mode:screen}
+</style></head><body>
+<svg class="noise" width="1000" height="1250"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<div class="table-edge"></div>
+<div class="lam"><div class="paper">
+ <div class="hd"><h1>ครัวป้าแดง</h1><p>อาหารตามสั่ง · ข้าวแกง · ส้มตำ · เปิด 10.00 – 21.00 น.</p></div>
+ <div class="pics"><div style="background-image:url(krapao.webp)"></div><div style="background-image:url(padthai.webp)"></div><div style="background-image:url(somtam.webp)"></div><div style="background-image:url(tomyum.webp)"></div></div>
+ <div class="cols"><div>
+  <h2>อาหารจานเดียว</h2>
+  <div class="it">ข้าวผัดกะเพราหมูสับ<i></i><b><span class="strike">50</span><em class="pn">60</em></b></div>
+  <div class="it">ข้าวผัดหมู / ไก่<i></i><b>50</b></div>
+  <div class="it">ผัดไทยกุ้งสด<i></i><b>70</b></div>
+  <div class="it">ข้าวหมูกระเทียม<i></i><b>50</b></div>
+  <div class="it">ข้าวไข่เจียวหมูสับ<i></i><b>40</b></div>
+  <div class="it x">ราดหน้าหมู<i></i><b>50</b></div>
+  <div class="it">ผัดซีอิ๊วหมู<i></i><b>50</b></div>
+  <div class="it">ข้าวมันไก่<i></i><b>45</b></div>
+  <h2 class="o">ต้ม / แกง</h2>
+  <div class="it">ต้มยำกุ้งน้ำข้น<i></i><b><span class="strike">120</span><em class="pn">150</em></b></div>
+  <div class="it">ต้มข่าไก่<i></i><b>90</b></div>
+  <div class="it">แกงเขียวหวานไก่<i></i><b>80</b></div>
+  <div class="it">แกงจืดเต้าหู้หมูสับ<i></i><b>60</b></div>
+ </div><div>
+  <h2 class="o">ยำ / ส้มตำ</h2>
+  <div class="it">ส้มตำไทย<i></i><b>40</b></div>
+  <div class="it">ส้มตำปูปลาร้า<i></i><b>40</b></div>
+  <div class="it">ยำวุ้นเส้นทะเล<i></i><b>60</b></div>
+  <div class="it">ลาบหมู / น้ำตกหมู<i></i><b>60</b></div>
+  <div class="it">ไก่ทอดหาดใหญ่<i></i><b>70</b></div>
+  <div class="it">ข้าวเหนียว<i></i><b>10</b></div>
+  <h2>เครื่องดื่ม</h2>
+  <div class="it">น้ำเปล่า<i></i><b>10</b></div>
+  <div class="it">โค้ก / สไปรท์<i></i><b>20</b></div>
+  <div class="it">ชาเย็น / กาแฟเย็น<i></i><b>25</b></div>
+  <div class="it">เบียร์ช้าง / ลีโอ<i></i><b>70</b></div>
+  <div class="it">น้ำแข็ง<i></i><b>5</b></div>
+ </div></div>
+ <div class="note">ไข่ดาว +10 · พิเศษ +10 · ไม่รับบัตรเครดิต</div>
+ <div class="foot">ขอบคุณที่อุดหนุนค่ะ</div>
+ <div class="sticker"><span class="tp"></span><b>ปรับราคาใหม่</b>ขออภัยค่ะ</div>
+ <svg class="crumple" width="752" height="1032"><filter id="c"><feTurbulence type="fractalNoise" baseFrequency=".006 .011" numOctaves="4" seed="7"/><feDiffuseLighting lighting-color="#fff" surfaceScale="7"><feDistantLight azimuth="225" elevation="48"/></feDiffuseLighting></filter><rect width="100%" height="100%" filter="url(#c)"/></svg>
+ <svg class="crumple2" width="752" height="1032"><filter id="c2"><feTurbulence type="turbulence" baseFrequency=".018 .03" numOctaves="2" seed="3"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#c2)"/></svg>
+ <div class="fade"></div>
+ <div class="ring"></div><div class="grease"></div><div class="grease b"></div>
+ <div class="ear"></div>
+</div>
+ <div class="tape" style="left:-30px;top:30px;transform:rotate(-38deg)"></div>
+ <div class="tape" style="right:-34px;top:36px;transform:rotate(36deg)"></div>
+ <div class="glare"></div>
+ <div class="bub" style="left:30px;top:980px;width:22px;height:22px"></div><div class="bub" style="left:62px;top:1002px;width:12px;height:12px"></div><div class="bub" style="right:40px;top:420px;width:16px;height:16px"></div>
+</div>
+<div class="shadowhand"></div><div class="light"></div>
+</body></html>

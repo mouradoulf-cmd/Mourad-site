@@ -15,6 +15,12 @@
     it: { eb: "Prima · Dopo", t: "Da un menu datato <em>a un menu che fa venire voglia di ordinare</em>", c: ["<b>Il vecchio menu:</b> testo fitto, foto sfocate, traduzioni sbagliate. I turisti non lo leggono e non ordinano.", "<b>Un QR code su ogni tavolo.</b> Una scansione, nessuna app da scaricare.", "<b>Un bel menu in 7 lingue.</b> Foto ben ordinate, livello di piccantezza e allergeni indicati, facile da ordinare."], b: "Prima", q: "Scansiona", a: "Dopo", rp: "Rivedi", cta: "Apri il menu di esempio completo", stamp: "ILLEGGIBILE", stampS: "I TURISTI RINUNCIANO", scan: "Scansiona il menu", langs: "7 lingue", sample: "Menu di esempio a scopo illustrativo", rest: "Baan Suan Thai Kitchen", ttl: "Menu prima e dopo" },
     ar: { eb: "قبل · بعد", t: "من قائمة طعام قديمة <em>إلى قائمة تجعل الضيوف يرغبون في الطلب</em>", c: ["<b>القائمة القديمة:</b> نص مزدحم وصور غير واضحة وترجمات خاطئة. لا يستطيع السياح قراءتها فلا يطلبون.", "<b>رمز QR على كل طاولة.</b> مسح واحد، دون تحميل أي تطبيق.", "<b>قائمة جميلة بسبع لغات.</b> صور منظمة، ومستوى الحرارة والمواد المسببة للحساسية موضحة، وطلب أسهل."], b: "قبل", q: "امسح", a: "بعد", rp: "إعادة التشغيل", cta: "افتح القائمة النموذجية كاملة", stamp: "غير مقروءة", stampS: "السياح يتخلّون", scan: "امسح للقائمة", langs: "7 لغات", sample: "قائمة نموذجية للتوضيح", rest: "بان سوان", ttl: "القائمة قبل وبعد" }
   };
+  // Thai site: the "before" photo is a worn menu written only in Thai
+  if (/\/nm\/th(-fr)?\//.test(location.pathname)) {
+    T.th.c[0] = "<b>เมนูแบบเดิม</b> กระดาษเก่า ราคาแก้ด้วยปากกา และมีแต่ภาษาไทย นักท่องเที่ยวอ่านไม่ออก เลยไม่กล้าสั่ง";
+    T.fr.c[0] = "<b>Le menu d’aujourd’hui :</b> papier usé, prix corrigés au stylo, et tout en thaï. Les touristes ne peuvent pas le lire, alors ils n’osent pas commander.";
+    T.fr.stampS = "LES TOURISTES NE PEUVENT PAS LIRE";
+  }
   var DUR = [4600, 3800, 10500];
 
   function lang() { var l = (document.documentElement.lang || "en").slice(0, 2).toLowerCase(); return T[l] ? l : "en"; }
@@ -46,6 +52,12 @@
   }
 
   function oldMenu() {
+    // Thai site (and its French reading copy): a photo-like worn paper menu, all in Thai — what owners really have today
+    if (/\/nm\/th(-fr)?\//.test(location.pathname)) {
+      var img = new URL("assets/img/", BASE).href;
+      return '<div class="old old--photo" aria-hidden="true"><img src="' + img + 'old-menu-th.webp" srcset="' + img + 'old-menu-th-520.webp 520w, ' + img + 'old-menu-th.webp 900w" sizes="(min-width: 900px) 340px, 82vw" alt="" loading="lazy" decoding="async" width="900" height="1125">' +
+        '<div class="old__stamp" data-stamp></div></div>';
+    }
     return '<div class="old" aria-hidden="true">' +
       '<div class="old__t">MENU</div><div class="old__sub">~ Thai food · Chinese food · Europe food ~</div>' +
       '<div class="old__cols"><div>' +
