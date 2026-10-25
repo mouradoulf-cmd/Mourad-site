@@ -3,9 +3,21 @@
   "graceDays": 4,
   "monthly": 390,
   "restaurants": [
-    { "slug": "giulivo", "name": "Giulivo", "type": "Restaurant italien", "city": "Vicopisano (Italie)", "contact": "", "phone": "", "lang": "it",
-      "cover": "giulivo/tartare-640.webp", "start": "2026-10-25", "paidUntil": "2026-11-24", "trial": true, "demo": true,
+    {
+      "slug": "mae-lek",
+      "name": "Mae Lek",
+      "type": "Cuisine de rue thaïe",
+      "city": "Pattaya",
+      "contact": "",
+      "phone": "",
+      "lang": "th",
+      "cover": "mae-lek/krapao.webp",
+      "start": "2026-10-25",
+      "paidUntil": "2026-11-24",
+      "trial": true,
+      "demo": true,
       "payments": [],
-      "note": "Exemple à montrer : vraie carte du restaurant, 6 langues" }
+      "note": "Exemple à montrer aux restaurants thaïs : restaurant inventé, prix en baht, 6 langues (ไทย, English, 中文, Русский, 한국어, Français)"
+    }
   ]
 }

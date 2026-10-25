@@ -26,7 +26,7 @@ window.NM_LINKS = [
   ] },
   { space: "site", group: "Menus QR (abonnements)", items: [
     { name: "Mes menus QR", path: "nm/menus.html", note: "Tableau de bord : revenu du mois, à faire, calendrier des paiements, fiche de chaque restaurant, carte QR, rappel WhatsApp" },
-    { name: "Menu QR · Giulivo (exemple)", path: "menus/giulivo/", note: "Le menu des clients : grandes photos, 6 langues, filtre allergies, « ma sélection » à montrer au serveur" }
+    { name: "Menu QR · Mae Lek (exemple thaï)", path: "menus/mae-lek/", note: "À montrer aux restaurants : prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" }
   ] },
   { space: "site", group: "Démos clients", items: [
     { name: "SOCAP Paysage", path: "socap-paysage/", note: "Paysagiste (Ain) · démo premium" },

@@ -222,7 +222,7 @@ body.sample .banner{display:grid;justify-items:start}
     <div class="grid" id="grid"></div>
   </section>
 
-  <div class="how in" style="--d:.55s"><b>Pour changer quelque chose</b>, écris-le-moi dans la discussion : <code>« Giulivo a payé »</code>, <code>« ajoute le restaurant X »</code> + photos de son menu, <code>« change le prix du pad thaï à 80 »</code>, <code>« mets X en pause »</code>. Le QR code imprimé ne change jamais.</div>
+  <div class="how in" style="--d:.55s"><b>Pour changer quelque chose</b>, écris-le-moi dans la discussion : <code>« Mae Lek a payé »</code>, <code>« ajoute le restaurant X »</code> + photos de son menu, <code>« change le prix du pad thaï à 80 »</code>, <code>« mets X en pause »</code>. Le QR code imprimé ne change jamais.</div>
   <div class="demo"><button type="button" id="sample">Voir un exemple avec plusieurs restaurants</button></div>
 </div>
 
@@ -251,7 +251,7 @@ body.sample .banner{display:grid;justify-items:start}
   function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
   function fmt(d, y) { return d.toLocaleDateString("fr-FR", y ? { day: "numeric", month: "long", year: "numeric" } : { day: "numeric", month: "short" }); }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-  function mpath(r) { return "../menus/" + (r._sample ? "giulivo" : r.slug) + "/"; }
+  function mpath(r) { return "../menus/" + (r._sample ? "mae-lek" : r.slug) + "/"; }
   function menuUrl(r) { return new URL(mpath(r), location.href).href; }
   function hue(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360; return "linear-gradient(135deg,hsl(" + h + " 45% 28%),hsl(" + ((h + 40) % 360) + " 50% 14%))"; }
   function ini(n) { return n.split(/\s+/).map(function (w) { return w[0]; }).join("").slice(0, 2).toUpperCase(); }
@@ -381,10 +381,10 @@ body.sample .banner{display:grid;justify-items:start}
     var mk = function (slug, name, type, city, until, extra) { return Object.assign({ slug: slug, name: name, type: type, city: city, contact: "", phone: "66800000000", start: d(-120), paidUntil: d(until), payments: pm(3), _sample: true }, extra || {}); };
     return { graceDays: 4, monthly: 390, restaurants: [
       Object.assign({}, real.restaurants[0] || {}),
-      mk("ex-1", "Baan Somtam", "Isan", "Pattaya", 18), mk("ex-2", "Krua Mae Noi", "Cuisine thaïe", "Jomtien", 3),
-      mk("ex-3", "Sea Breeze Grill", "Fruits de mer", "Naklua", 25), mk("ex-4", "Café Lumière", "Café", "Pattaya", -2),
-      mk("ex-5", "Noodle Corner", "Nouilles", "Pattaya", 11), mk("ex-6", "La Dolce Sera", "Italien", "Jomtien", -9),
-      mk("ex-7", "Pad Thai Lady", "Street food", "Pattaya", 6, { trial: true, payments: [] }), mk("ex-8", "Ocean Spice", "Indien", "Naklua", 29)
+      mk("ex-1", "Baan Somtam", "Isan", "Pattaya", 18, { cover: "mae-lek/somtam.webp" }), mk("ex-2", "Krua Mae Noi", "Cuisine thaïe", "Jomtien", 3, { cover: "mae-lek/curry.webp" }),
+      mk("ex-3", "Sea Breeze Grill", "Fruits de mer", "Naklua", 25, { cover: "mae-lek/tomyum.webp" }), mk("ex-4", "Cha Yen Café", "Café", "Pattaya", -2, { cover: "mae-lek/tea.webp" }),
+      mk("ex-5", "Noodle Corner", "Nouilles", "Pattaya", 11, { cover: "mae-lek/boat.webp" }), mk("ex-6", "Moo Ping Soi 6", "Grillades", "Pattaya", -9, { cover: "mae-lek/grill.webp" }),
+      mk("ex-7", "Pad Thai Lady", "Street food", "Pattaya", 6, { trial: true, payments: [], cover: "mae-lek/padthai.webp" }), mk("ex-8", "Mango Garden", "Desserts", "Naklua", 29, { cover: "mae-lek/mango.webp" })
     ] };
   }
   function setSample(on) { sample = on; data = on ? sampleData() : real; document.body.classList.toggle("sample", on); filter = "all"; render(); scrollTo({ top: 0, behavior: "smooth" }); }

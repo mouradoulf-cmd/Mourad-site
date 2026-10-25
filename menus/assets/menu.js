@@ -30,7 +30,7 @@
     wsub: ["รายการเดียวกันสำหรับคุณและพนักงาน", "The same list for you and for the staff", "您和服务员看到的是同一份清单", "Один и тот же список для вас и для официанта", "La même liste pour vous et pour le serveur", "La stessa lista per voi e per il cameriere"],
     wstaff: ["ลูกค้าเลือกจากเมนู QR กรุณารับออเดอร์ตามปกติค่ะ", "Chosen from the QR menu — please take the order as usual.", "客人从二维码菜单中选择，请照常点单。", "Выбрано в QR-меню — примите заказ как обычно.", "Choisi sur le menu QR : prenez la commande comme d’habitude.", "Scelto dal menù QR: prendete l’ordine come al solito."],
     walg: ["ลูกค้าแพ้อาหาร", "Food allergies", "食物过敏", "Пищевая аллергия", "Allergies alimentaires", "Allergie alimentari"],
-    turn: ["หมุนให้พนักงาน", "Turn the screen", "转给服务员看", "Повернуть", "Tourner l’écran", "Gira lo schermo"],
+    turn: ["หมุนให้พนักงาน", "Turn", "转给服务员看", "Повернуть", "Tourner l’écran", "Gira lo schermo"],
     back: ["กลับ", "Back", "返回", "Назад", "Retour", "Indietro"],
     total: ["รวม", "Total", "合计", "Итого", "Total", "Totale"],
     al: ["ภูมิแพ้", "Allergies", "过敏", "Аллергии", "Allergies", "Allergie"],
@@ -48,8 +48,25 @@
     ask: ["แพ้อาหาร? แจ้งพนักงานของเราได้เลย", "Food allergy? Just tell our staff.", "如有食物过敏，请告知服务员。", "Есть аллергия? Скажите официанту.", "Une allergie ? Dites-le simplement à notre équipe.", "Allergie? Chiedete pure al nostro staff."],
     orig: ["ชื่อเดิม", "Original name", "原名", "Оригинал", "Nom d’origine", "Nome originale"],
     paused: ["เมนูออนไลน์กำลังปรับปรุง", "Our online menu is being updated", "我们的电子菜单正在更新", "Наше онлайн-меню обновляется", "Notre menu en ligne est en cours de mise à jour", "Il nostro menù online è in aggiornamento"],
+    spice: ["ระดับความเผ็ด", "How spicy?", "辣度", "Насколько остро?", "Quel piquant ?", "Quanto piccante?"],
+    s0: ["ไม่เผ็ด", "Not spicy", "不辣", "Не остро", "Pas épicé", "Non piccante"],
+    s1: ["เผ็ดน้อย", "A little spicy", "微辣", "Слегка остро", "Un peu épicé", "Poco piccante"],
+    s2: ["เผ็ดกลาง", "Medium", "中辣", "Средне", "Moyen", "Medio"],
+    s3: ["เผ็ดมาก", "Very spicy", "特辣", "Очень остро", "Très épicé", "Molto piccante"],
+    spiceq: ["ทุกจานในรายการนี้", "For every dish in this list", "适用于清单中所有菜品", "Для всех блюд в списке", "Pour tous les plats de la liste", "Per tutti i piatti della lista"],
+    demo: ["ตัวอย่างเมนู", "Demo menu", "示例菜单", "Пример меню", "Menu d’exemple", "Menù di esempio"],
     paused2: ["ขออภัยในความไม่สะดวก กรุณาขอเมนูจากพนักงานได้เลยค่ะ", "Sorry for the inconvenience — please ask our staff for the menu.", "抱歉给您带来不便，请向服务员索取菜单。", "Извините за неудобство — попросите меню у официанта.", "Désolés pour le désagrément : demandez la carte à notre équipe.", "Ci scusiamo: chiedete pure il menù al nostro staff."]
   });
+  // Korean (Pattaya has many Korean visitors)
+  var KO = { choose: "언어를 선택하세요", cue: "메뉴가 선택한 언어로 열립니다", see: "메뉴 보기", add: "내 선택에 추가", added: "추가되었습니다", sel: "내 선택", view: "보기", dishes: "개",
+    show: "직원에게 보여주기", clear: "비우기", empty: "메뉴의 + 를 눌러 여기에 추가하세요.", selnote: "주문이 아닙니다. 이 화면을 직원에게 보여주세요.", waiter: "직원용",
+    wtitle: "손님이 주문하고 싶은 메뉴", wsub: "손님과 직원이 같은 목록을 봅니다", wstaff: "QR 메뉴에서 선택했습니다. 평소처럼 주문을 받아 주세요.", walg: "음식 알레르기",
+    turn: "화면 돌리기", back: "돌아가기", total: "합계", al: "알레르기", alt: "알레르기가 있으신가요?", als: "해당 재료가 들어간 메뉴는 흐리게 표시됩니다.",
+    alf: "식당 제공 정보입니다. 꼭 직원에게 확인하세요.", alb: "알레르기 재료가 든 메뉴는 흐리게 표시됩니다. 직원에게 확인하세요.", done: "완료", reset: "초기화",
+    contains: "포함", alls: "알레르기 유발 성분", menu: "메뉴", lang: "언어", enjoy: "맛있게 드세요", ask: "음식 알레르기가 있으면 직원에게 말씀해 주세요.", orig: "원래 이름",
+    paused: "온라인 메뉴를 업데이트하고 있습니다", paused2: "불편을 드려 죄송합니다. 직원에게 메뉴를 요청해 주세요.",
+    spice: "맵기", s0: "안 맵게", s1: "조금 맵게", s2: "보통", s3: "아주 맵게", spiceq: "목록의 모든 메뉴에 적용", demo: "예시 메뉴" };
+  Object.keys(KO).forEach(function (k) { if (U[k]) U[k].ko = KO[k]; });
   var AI = ["🌾", "🦐", "🥚", "🐟", "🥜", "🫘", "🥛", "🌰", "🥬", "🟡", "⚪", "🍷", "🌸", "🦑"];
   var ICO = {
     plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>',
@@ -86,7 +103,12 @@
   }
   function price(p) { return M.currency === "฿" ? p + " ฿" : p + " " + M.currency; }
   function aname(n) { var a = M.allergens && (M.allergens[lang] || M.allergens.en); return a ? a[n - 1] : n; }
-  function img(base, w) { return base + "-" + w + ".webp"; }
+  function img(base, w) { return M.photoOne ? base + ".webp" : base + "-" + w + ".webp"; }
+  // Menus written in Thai script: tourists read the dish name in their own language first, the Thai name below.
+  function title(d) { return M.localTitles && lang !== ol && d.sn && d.sn[lang] ? d.sn[lang] : d.n; }
+  function sub(d) { return title(d) !== d.n ? d.n : ""; }
+  function hot(d) { return d.hot ? '<span class="chip hot" title="' + d.hot + '/3">' + new Array(d.hot + 1).join("🌶️") + "</span>" : ""; }
+  var spice = store.get(KEY + "-spice");
   function hits(d) { return (d.a || []).filter(function (n) { return alg.indexOf(n) > -1; }); }
   function desc(d) { var x = d.d && (d.d[lang] || (lang === ol ? "" : d.d.en)); return x && x !== d.n ? x : ""; }
   if (M.theme) Object.keys(M.theme).forEach(function (k) { document.documentElement.style.setProperty("--" + k, M.theme[k]); });
@@ -102,14 +124,15 @@
     h.push('<div class="grain" aria-hidden="true"></div>');
     // opening
     h.push('<section class="open" id="top">');
-    if (M.hero) h.push('<div class="open__ph"><img src="' + img(M.hero, 1280) + '" srcset="' + img(M.hero, 640) + ' 640w, ' + img(M.hero, 1280) + ' 1280w" sizes="100vw" alt="" fetchpriority="high"></div>');
-    h.push('<div class="open__top">' + (svg.logo ? '<div class="open__logo rise" style="--d:.15s" role="img" aria-label="' + esc(M.name) + '">' + svg.logo + "</div>" : '<h1 class="open__name rise">' + esc(M.name) + "</h1>") +
-      '<p class="open__tag rise" style="--d:.35s">' + esc(tr(M.tagline)) + "</p></div>");
+    if (M.heroMobile) h.push('<div class="open__ph"><picture><source media="(max-width:760px)" srcset="' + M.heroMobile + '"><img src="' + M.heroWide + '" alt="" fetchpriority="high"></picture></div>');
+    else if (M.hero) h.push('<div class="open__ph"><img src="' + img(M.hero, 1280) + '" srcset="' + img(M.hero, 640) + ' 640w, ' + img(M.hero, 1280) + ' 1280w" sizes="100vw" alt="" fetchpriority="high"></div>');
+    h.push('<div class="open__top">' + (M.wordmark ? '<h1 class="open__word rise" style="--d:.15s">' + esc(M.wordmark) + (M.wordmarkSub ? '<small lang="' + ol + '">' + esc(M.wordmarkSub) + "</small>" : "") + "</h1>" : svg.logo ? '<div class="open__logo rise" style="--d:.15s" role="img" aria-label="' + esc(M.name) + '">' + svg.logo + "</div>" : '<h1 class="open__name rise">' + esc(M.name) + "</h1>") +
+      '<p class="open__tag rise" style="--d:.35s">' + esc(tr(M.tagline)) + "</p>" + (M.demo ? '<p class="demo rise" style="--d:.45s">' + esc(t("demo")) + "</p>" : "") + "</div>");
     h.push('<div class="open__bot"><p class="open__ask rise" style="--d:.55s">' + esc(t("choose")) + '</p><div class="langs">' +
       langs.map(function (l, i) { return '<button type="button" class="rise' + (l === lang ? " sug" : "") + '" style="--d:' + (0.65 + i * 0.06).toFixed(2) + 's" data-pick="' + l + '" lang="' + l + '">' + (LN[l] || l) + "</button>"; }).join("") +
       '</div><p class="open__cue rise" style="--d:1.1s">' + esc(t("cue")) + "</p></div></section>");
     // header
-    h.push('<header class="hd" id="hd"><a class="hd__logo" href="#top" aria-label="' + esc(M.name) + '">' + (svg.logo || esc(M.name)) + "</a>" +
+    h.push('<header class="hd" id="hd"><a class="hd__logo' + (svg.logo ? "" : " txt") + '" href="#top" aria-label="' + esc(M.name) + '">' + (svg.logo || esc(M.wordmark || M.name)) + "</a>" +
       '<button class="hd__ch" type="button" id="hdch" aria-label="' + esc(t("menu")) + '"><small></small><span></span></button>' +
       '<div class="hd__r"><button class="ib lb" type="button" data-open="lang" aria-label="' + esc(t("lang")) + '">' + (LS[lang] || lang) + "</button>" +
       '<button class="ib" type="button" data-open="alg" aria-label="' + esc(t("al")) + '">' + ICO.shield + '<span class="n' + (alg.length ? " on" : "") + '" id="algn">' + alg.length + "</span></button></div>" +
@@ -126,7 +149,7 @@
         h.push('<div class="feat" data-feat>');
         feat.forEach(function (d) {
           h.push('<button type="button" class="card rv" data-dish="' + d.id + '"><img src="' + img(d.img, 640) + '" srcset="' + img(d.img, 640) + " 640w, " + img(d.img, 1280) + ' 1280w" sizes="(min-width:760px) 340px, 80vw" alt="" loading="lazy" decoding="async">' +
-            '<span class="card__b"><span class="card__k">' + esc(tr(s.t)) + '</span><span class="card__n">' + esc(d.n) + '</span><span class="card__f"><span class="card__p">' + price(d.p) + '</span><span class="card__go">' + esc(t("see")) + " " + ICO.arrow.replace("<svg", '<svg width="14" height="14"') + "</span></span></span></button>");
+            '<span class="card__b"><span class="card__k">' + esc(tr(s.t)) + '</span><span class="card__n">' + esc(title(d)) + "</span>" + (sub(d) ? '<span class="card__o" lang="' + ol + '">' + esc(sub(d)) + "</span>" : "") + '<span class="card__f"><span class="card__p">' + price(d.p) + '</span><span class="card__go">' + esc(t("see")) + " " + ICO.arrow.replace("<svg", '<svg width="14" height="14"') + "</span></span></span></button>");
         });
         h.push("</div>");
         if (feat.length > 1) h.push('<div class="dots2" aria-hidden="true">' + feat.map(function (_, i) { return "<i" + (i ? "" : ' class="on"') + "></i>"; }).join("") + "</div>");
@@ -156,10 +179,10 @@
   function dishRow(d, i) {
     var dd = desc(d), hs = hits(d), q = sel[d.id] || 0;
     return '<li class="dish rv' + (hs.length ? " off" : "") + '" data-row="' + d.id + '" style="--d:' + Math.min(i * 0.04, 0.2).toFixed(2) + 's">' +
-      '<button class="dish__o" type="button" data-dish="' + d.id + '" aria-label="' + esc(d.n) + '"></button>' +
-      '<span class="dish__n">' + esc(d.n) + '</span><span class="dish__p">' + price(d.p) + "</span>" +
+      '<button class="dish__o" type="button" data-dish="' + d.id + '" aria-label="' + esc(title(d)) + '"></button>' +
+      '<span class="dish__n">' + esc(title(d)) + (sub(d) ? '<small lang="' + ol + '">' + esc(sub(d)) + "</small>" : "") + '</span><span class="dish__p">' + price(d.p) + "</span>" +
       (dd ? '<span class="dish__d">' + esc(dd) + "</span>" : "") +
-      '<span class="dish__m">' + (d.img ? '<span class="chip ph">' + ICO.cam + "</span>" : "") +
+      '<span class="dish__m">' + hot(d) + (d.img ? '<span class="chip ph">' + ICO.cam + "</span>" : "") +
       (hs.length ? '<span class="chip warn">' + esc(t("contains")) + " · " + hs.map(function (n) { return AI[n - 1]; }).join(" ") + "</span>" : "") + "</span>" +
       '<button class="add' + (q ? " on" : "") + '" type="button" data-add="' + d.id + '" aria-label="' + esc(t("add")) + '">' + ICO.plus + '<span class="q">' + (q || "") + "</span></button></li>";
   }
@@ -209,7 +232,7 @@
   }
 
   root.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-pick],[data-add],[data-dish],[data-open],[data-close],[data-lang],[data-a],[data-q],[data-go],[data-wclose],[data-turn],[data-show],[data-clear],[data-areset]");
+    var b = e.target.closest("[data-pick],[data-add],[data-dish],[data-open],[data-close],[data-lang],[data-a],[data-q],[data-go],[data-wclose],[data-turn],[data-spice],[data-show],[data-clear],[data-areset]");
     if (!b) return;
     if (b.hasAttribute("data-pick")) {
       var l = b.getAttribute("data-pick"); store.set("nm-menu-lang", l);
@@ -238,6 +261,7 @@
     if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { scrollTo({ top: g.getBoundingClientRect().top + scrollY - 70, behavior: "smooth" }); }, 250); return; }
     if (b.hasAttribute("data-clear")) { sel = {}; saveSel(); refreshAdds(); openSheet("sel"); return; }
     if (b.hasAttribute("data-show")) { showWaiter(); return; }
+    if (b.hasAttribute("data-spice")) { var k = b.getAttribute("data-spice"); spice = spice === k ? null : k; store.set(KEY + "-spice", spice || ""); b.parentNode.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b && spice !== null); }); return; }
     if (b.hasAttribute("data-turn")) { var wi = document.getElementById("wi"), on = !wi.classList.contains("flip"); wi.classList.toggle("flip", on); b.setAttribute("aria-pressed", on); return; }
     if (b.hasAttribute("data-wclose")) { document.getElementById("waiter").classList.remove("on"); document.body.classList.remove("lock"); }
   });
@@ -281,8 +305,8 @@
     sh.classList.remove("sheet--photo");
     if (kind === "dish") {
       var d = byId[id], s = M.sections[d._s], dd = desc(d), hs = hits(d), od = d.d && d.d[ol] && lang !== ol ? d.d[ol] : "";
-      if (d.img) { sh.classList.add("sheet--photo"); h += '<div class="sd__ph"><img src="' + img(d.img, 1280) + '" alt="' + esc(d.n) + '"></div>'; }
-      h += '<p class="sd__k">' + esc(tr(s.t)) + '</p><h3 class="sd__n">' + esc(d.n) + "</h3>" + (dd ? '<p class="sd__d">' + esc(dd) + "</p>" : "") +
+      if (d.img) { sh.classList.add("sheet--photo"); h += '<div class="sd__ph"><img src="' + img(d.img, 1280) + '" alt="' + esc(title(d)) + '"></div>'; }
+      h += '<p class="sd__k">' + esc(tr(s.t)) + '</p><h3 class="sd__n">' + esc(title(d)) + "</h3>" + (sub(d) ? '<p class="sd__t" lang="' + ol + '">' + esc(sub(d)) + "</p>" : "") + (d.hot ? '<p class="sd__hot">' + hot(d) + "</p>" : "") + (dd ? '<p class="sd__d">' + esc(dd) + "</p>" : "") +
         (od && od !== dd ? '<p class="sd__o" lang="' + ol + '">' + esc(od) + "</p>" : "");
       if (d.a && d.a.length) h += '<p class="sd__h">' + esc(t("alls")) + '</p><div class="sd__al">' + d.a.map(function (n) { return '<span class="' + (hs.indexOf(n) > -1 ? "warn" : "") + '">' + AI[n - 1] + " " + esc(aname(n)) + "</span>"; }).join("") + "</div>";
       h += '<div class="sd__f"><span class="sd__p">' + price(d.p) + '</span><button class="cta" type="button" data-add="' + d.id + '">' + ICO.plus + esc(t("add")) + "</button></div>";
@@ -302,7 +326,9 @@
       h += '<h3 class="st" style="margin-top:4px">' + esc(t("sel")) + "</h3>";
       if (!L.length) h += '<p class="empty">' + esc(t("empty")) + "</p>";
       else {
-        h += '<ul class="sel">' + L.map(function (x) { sum += x.q * num(x.d.p); return '<li><span class="n">' + esc(x.d.n) + '</span><span class="p">' + price(x.d.p) + '</span><span class="qty"><button type="button" data-q="' + x.d.id + '" data-d="-1" aria-label="−">−</button><span>' + x.q + '</span><button type="button" data-q="' + x.d.id + '" data-d="1" aria-label="+">+</button></span></li>'; }).join("") + "</ul>";
+        h += '<ul class="sel">' + L.map(function (x) { sum += x.q * num(x.d.p); return '<li><span class="n">' + esc(title(x.d)) + '</span><span class="p">' + price(x.d.p) + '</span><span class="qty"><button type="button" data-q="' + x.d.id + '" data-d="-1" aria-label="−">−</button><span>' + x.q + '</span><button type="button" data-q="' + x.d.id + '" data-d="1" aria-label="+">+</button></span></li>'; }).join("") + "</ul>";
+        if (M.spice) h += '<div class="spi"><p class="sd__h">' + esc(t("spice")) + " · <span>" + esc(t("spiceq")) + '</span></p><div class="spg" role="group">' + [0, 1, 2, 3].map(function (k) {
+          return '<button type="button" data-spice="' + k + '" aria-pressed="' + (String(k) === spice) + '"><em>' + (k ? new Array(k + 1).join("🌶️") : "○") + "</em>" + esc(t("s" + k)) + "</button>"; }).join("") + "</div></div>";
         h += '<div class="tot"><span>' + esc(t("total")) + "</span><b>" + money(sum) + '</b></div><p class="fine">' + esc(t("selnote")) + '</p><div class="col2"><button class="cta" type="button" data-show>' + ICO.eye + esc(t("show")) + '</button><button class="link" type="button" data-clear>' + esc(t("clear")) + "</button></div>";
       }
     }
@@ -340,12 +366,13 @@
       return '<li><span class="wq">' + x.q + '</span><div class="wn"><b lang="' + st + '">' + esc(a) + "</b>" + (b ? '<span lang="' + lang + '">' + esc(b) + "</span>" : "") + (c ? '<em lang="' + ol + '">' + esc(c) + "</em>" : "") + '</div><span class="wp">' + money(x.q * num(x.d.p)) + "</span></li>";
     }).join("");
     var al = "";
+    if (M.spice && spice) al += '<div class="wspi"><b lang="' + st + '">🌶️ ' + esc(tr(U.spice, st)) + " : " + esc(tr(U["s" + spice], st)) + "</b>" + (two ? '<span lang="' + lang + '">' + esc(t("spice")) + " " + esc(t("s" + spice)) + "</span>" : "") + "</div>";
     if (alg.length && M.allergens) {
       var As = M.allergens[st] || M.allergens.en, Ac = M.allergens[lang] || M.allergens.en;
-      al = '<div class="walg"><b lang="' + st + '">⚠️ ' + esc(tr(U.walg, st)) + " : " + alg.map(function (n) { return esc(As[n - 1]); }).join(", ") + "</b>" +
+      al += '<div class="walg"><b lang="' + st + '">⚠️ ' + esc(tr(U.walg, st)) + " : " + alg.map(function (n) { return esc(As[n - 1]); }).join(", ") + "</b>" +
         (two ? '<span lang="' + lang + '">' + esc(t("walg")) + " : " + alg.map(function (n) { return esc(Ac[n - 1]); }).join(", ") + "</span>" : "") + "</div>";
     }
-    document.getElementById("wi").innerHTML = '<div class="wcard">' + (svg.logo ? '<div class="waiter__logo">' + svg.logo + "</div>" : "<h1>" + esc(M.name) + "</h1>") +
+    document.getElementById("wi").innerHTML = '<div class="wcard">' + (svg.logo ? '<div class="waiter__logo">' + svg.logo + "</div>" : '<h1 class="wname">' + esc(M.wordmark || M.name) + (M.wordmarkSub ? '<small lang="' + ol + '">' + esc(M.wordmarkSub) + "</small>" : "") + "</h1>") +
       '<h2 lang="' + st + '">' + esc(tr(U.wtitle, st)) + "</h2>" + (two ? '<p class="wsub" lang="' + lang + '">' + esc(t("wtitle")) + " · " + esc(t("wsub")) + "</p>" : "") +
       '<ol class="wl">' + rows + "</ol>" + al +
       '<div class="wtot"><span><b lang="' + st + '">' + esc(tr(U.total, st)) + "</b>" + (two ? " · " + esc(t("total")) : "") + "</span><b>" + money(sum) + "</b></div>" +

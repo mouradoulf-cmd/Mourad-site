@@ -124,6 +124,28 @@ img{display:block;max-width:100%}
 .alb{display:none;margin:14px 0 0;padding:12px 14px;border-radius:14px;background:rgba(255,138,122,.1);border:1px solid rgba(255,138,122,.3);font-size:.82rem;color:#ffb3a8}
 body.alg .alb{display:block}
 
+/* Thai-script menus: local name first, Thai name below; chilli level; spice choice */
+.dish__n small{display:block;margin-top:3px;font:400 .9rem/1.35 var(--body);color:var(--faint);letter-spacing:0}
+.card__o{font-size:.86rem;color:color-mix(in srgb,var(--ink) 75%,transparent)}
+.chip.hot{letter-spacing:-.12em;padding-right:10px;border-color:rgba(255,120,80,.35)}
+.sd__t{margin-top:6px;font-size:1rem;color:var(--mute)}
+.sd__hot{margin-top:10px}
+.spi{margin-top:14px}.spi .sd__h{margin-top:0}.spi .sd__h span{letter-spacing:.04em;text-transform:none}
+.spg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.spg button{display:grid;justify-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:1px solid var(--line);font-size:.74rem;line-height:1.2;text-align:center;transition:background .3s,border-color .3s}
+.spg button em{font-style:normal;font-size:.95rem;letter-spacing:-.12em;min-height:1.2em}
+.spg button[aria-pressed="true"]{background:color-mix(in srgb,var(--accent) 20%,transparent);border-color:var(--accent)}
+.wspi{margin-top:16px;padding:12px 16px;border-radius:16px;background:#fff1d6;border:1.5px solid #e0a43a;display:grid;gap:3px}
+.wspi b{font:700 1.08rem/1.35 'Noto Sans Thai',var(--body);color:#7a4a00}
+.wspi span{font-size:.9rem;color:#7a4a00}
+.walg{margin-top:10px}
+.demo{margin-top:2px;padding:6px 11px;border-radius:99px;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.open__word{display:grid;justify-items:center;gap:8px;font:300 clamp(3.4rem,17vw,6rem)/.9 var(--display);letter-spacing:-.03em;text-shadow:0 10px 40px rgba(0,0,0,.55)}
+.open__word small{font:500 1.05rem/1 'Noto Sans Thai',var(--body);letter-spacing:.1em;opacity:.9}
+.hd__logo.txt{font:400 1.15rem/1 var(--display);width:auto;white-space:nowrap;text-decoration:none;color:var(--ink)}
+.wname{display:grid;justify-items:center;gap:4px;text-align:center;font:400 2.4rem/1 var(--display);color:#16120d}
+.wname small{font:500 .95rem/1 'Noto Sans Thai',var(--body);color:#7a6a55;letter-spacing:.06em}
+
 /* reveal (visible by default; hidden state only once the observer is confirmed) */
 .js-rv .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
 .js-rv .rv.in{opacity:1;transform:none}
@@ -272,3 +294,4 @@ body.alg .alb{display:block}
   .langs{grid-template-columns:repeat(6,minmax(0,1fr));width:min(760px,100%)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01s!important;transition-duration:.01s!important}}
+:lang(ko){word-break:keep-all}
