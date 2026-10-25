@@ -137,7 +137,8 @@
     }
     var sumBox = box.querySelector(".bk__sum"), sumV = box.querySelector(".bk__sumv"), clockEl = box.querySelector(".bk__clocktxt");
     function summary() {
-      localEl.textContent = sel && !sameZone ? t("book.local").replace("{t}", localFmt(sel.ms)) : "";
+      var O2l = window.NM_OFFERS2, inPerson = O2l && (O2l.langs || []).indexOf(window.NM_LANG || document.documentElement.lang) > -1;   // Thai site: we meet in person in Thailand, so no "at your place: …" time conversion
+      localEl.textContent = sel && !sameZone && !inPerson ? t("book.local").replace("{t}", localFmt(sel.ms)) : "";
       if (!sumBox) return;
       if (sel) { sumV.textContent = fmt(sel.ms, { weekday: "long", day: "numeric", month: "long" }) + " · " + sel.hm + " · " + t("book.dur"); sumBox.classList.remove("is-set"); void sumBox.offsetWidth; sumBox.classList.add("is-set"); }
       else { sumV.textContent = t("book.sumNone"); sumBox.classList.remove("is-set"); }
