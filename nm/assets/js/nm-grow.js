@@ -145,10 +145,17 @@
     }
     function clock() { if (clockEl) clockEl.textContent = t("book.clock").replace("{t}", fmt(Date.now(), { hour: "2-digit", minute: "2-digit" })); }
     clock(); setInterval(clock, 30e3); document.addEventListener("nm:lang", function () { setTimeout(clock, 0); });
+    form.addEventListener("input", function () { if (err.textContent && sel) err.textContent = ""; });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!sel) { err.textContent = t("book.pick"); return; }
       var name = form.elements.business.value.trim(), first = form.elements.first.value.trim();
+      var addr = form.elements.addr ? form.elements.addr.value.trim() : "";
+      if (form.elements.addr && (!name || !addr || !first)) {   // Thai site: shop name, address and first name are all needed to come over
+        err.textContent = t("book.req");
+        var miss = !name ? form.elements.business : !addr ? form.elements.addr : form.elements.first; miss.focus();
+        return;
+      }
       var when = fmt(sel.ms, { weekday: "long", day: "numeric", month: "long" }) + " · " + sel.hm + " (" + t("book.tz") + ")";
       var lines = [t("book.msg"), "", "*" + t("book.l_slot") + ":* " + when];
       if (name) lines.push("*" + t("free.l_name") + ":* " + name);
@@ -159,7 +166,7 @@
         lines = [W.hi, W.ask, "", W.day + " : " + fmt(sel.ms, { weekday: "long", day: "numeric", month: "long" }), W.time + " : " + W.hm.replace("{t}", sel.hm)];
         if (name) lines.push(W.biz + " : " + name);
         if (first) lines.push(W.name + " : " + first);
-        lines.push(W.place + " : " + W.placeV, "", W.bye);
+        lines.push(W.place + " : " + (addr || W.placeV), "", W.bye);
       }
       var msg = lines.join("\n");
       try { document.dispatchEvent(new CustomEvent("nm:lead", { detail: { kind: "book" } })); } catch (e2) {}

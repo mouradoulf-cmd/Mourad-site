@@ -244,3 +244,4 @@ body.nm-has-bar .line-float { bottom: calc(max(1.25rem, env(safe-area-inset-bott
 @media (max-width: 859px) { .founder .founder__quote { margin-inline: auto; text-align: start; } }
 /* perf (2026-10-21): on phones the rotating gold edge repainted the whole booking card every frame */
 @media (hover: none), (pointer: coarse) { .bk::before { animation: none; --bkA: 40deg; } }
+.book__form--3 { display: grid; gap: .8rem; }
