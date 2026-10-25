@@ -108,3 +108,17 @@
 .tho-opt__body { padding: 0 1rem 1rem; }
 .tho-opt .tho-extra { display: block; margin-top: 0; padding: 0; background: none; box-shadow: none; border-radius: 0; }
 .tho-opt .tho-extra__copy { margin-bottom: 1rem; }
+
+/* Oct 2026: two offers only (QR menu, Website + QR menu), in every language */
+@media (min-width: 720px) { .tho__grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 880px; margin-inline: auto; } }
+@media (min-width: 1000px) { .tho__grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tho-card__per { font-size: .95rem; font-weight: 600; color: var(--muted); }
+.tho-card__free { display: inline-flex; align-items: center; gap: .4rem; align-self: flex-start; margin-top: .6rem; padding: .32rem .75rem .32rem .55rem; border-radius: 999px;
+  font-size: .84rem; font-weight: 700; color: var(--gold); background: rgba(201,169,97,.12); box-shadow: inset 0 0 0 1px rgba(201,169,97,.35); }
+.tho-card__free svg { width: 1rem; height: 1rem; }
+.tho-card .tho-card__list { flex: 1; }
+.tho-meet { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .9rem 1.2rem; max-width: 880px; margin: clamp(1.4rem, 3vw, 2rem) auto 0;
+  padding: 1.1rem 1.3rem; border-radius: var(--tho-r); background: var(--glass, rgba(255,255,255,.04)); box-shadow: inset 0 0 0 1px rgba(245,241,232,.1); text-align: center; }
+.tho-meet__ic { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; color: var(--gold); background: rgba(201,169,97,.1); flex: none; }
+.tho-meet p { flex: 1 1 260px; margin: 0; font-size: .95rem; color: var(--muted); text-align: start; }
+@media (max-width: 560px) { .tho-meet { flex-direction: column; } .tho-meet p { text-align: center; } .tho-meet__btn { width: 100%; justify-content: center; } }

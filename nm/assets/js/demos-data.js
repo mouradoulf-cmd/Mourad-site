@@ -22,7 +22,7 @@ window.NM_LINKS = [
     { name: "NM Studio · العربية", path: "nm/ar/" },
     { name: "Tarifs", path: "nm/fr/pricing.html", note: "Prix Europe" },
     { name: "Mes discussions", path: "nm/organisation.html", note: "Où en est chaque conversation + ce qui t'attend" },
-    { name: "Tarifs Thaïlande · ไทย", path: "nm/th/pricing.html", note: "Menu 299 ฿ · Google 790 ฿ · Pack 2 990 ฿ + entretien 390 ฿/mois" }
+    { name: "Offres Thaïlande · ไทย", path: "nm/th/#offers", note: "Menu QR 390 ฿/mois (installation gratuite) · Site web + menu QR 790 ฿/mois · bouton rendez-vous. Copie en français : nm/th-fr/#offers" }
   ] },
   { space: "site", group: "Menus QR (abonnements)", items: [
     { name: "Mes menus QR", path: "nm/menus.html", note: "Tableau de bord : revenu du mois, à faire, calendrier des paiements, fiche de chaque restaurant, carte QR, rappel WhatsApp" },
