@@ -4,6 +4,8 @@ window.NM_MENU = {
  "name": "Giulivo",
  "logo": "logo.svg",
  "motif": "motif.svg",
+ "hero": "tartare",
+ "origLang": "it",
  "currency": "€",
  "tagline": {
   "it": "Cucina e Buonumore · Vicopisano",
@@ -22,7 +24,7 @@ window.NM_MENU = {
   "ru"
  ],
  "defaultLang": "en",
- "theme": {"bg": "#14100c", "paper": "#f7efc6", "ink": "#1b1510", "sage": "#d6cd9c", "accent": "#d9a35b"},
+ "theme": {"bg": "#0e0b08", "ink": "#f4ecdc", "accent": "#d9a35b"},
  "notes": {
   "pasta": {
    "it": "Tutta la nostra pasta fresca è fatta a mano e prodotta dal pastificio La Castellana",

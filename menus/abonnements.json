@@ -1,10 +1,11 @@
 {
-  "_aide": "Abonnements des menus QR (390 ฿/mois). Claude met ce fichier à jour quand Mourad dit « X a payé » : on repousse paidUntil d'un mois. Statut automatique : vert = payé · orange = à payer dans 7 jours ou en retard (le menu marche encore 4 jours) · rouge = menu en pause. pause:true met le menu en pause tout de suite.",
+  "_aide": "Abonnements des menus QR (390 ฿/mois). Claude met ce fichier à jour quand Mourad dit « X a payé » : on repousse paidUntil d'un mois et on ajoute une ligne dans payments. Statut automatique : vert = payé · orange = à payer dans 7 jours ou en retard (le menu marche encore graceDays jours) · rouge = menu en pause. pause:true met le menu en pause tout de suite. cover = photo de la carte dans le tableau de bord (chemin depuis menus/).",
   "graceDays": 4,
-  "price": "390 ฿ / mois",
+  "monthly": 390,
   "restaurants": [
-    { "slug": "giulivo", "name": "Giulivo", "city": "Vicopisano (Italie)", "contact": "", "phone": "", "lang": "it",
-      "start": "2026-10-25", "paidUntil": "2026-11-24", "trial": true, "demo": true,
+    { "slug": "giulivo", "name": "Giulivo", "type": "Restaurant italien", "city": "Vicopisano (Italie)", "contact": "", "phone": "", "lang": "it",
+      "cover": "giulivo/tartare-640.webp", "start": "2026-10-25", "paidUntil": "2026-11-24", "trial": true, "demo": true,
+      "payments": [],
       "note": "Exemple à montrer : vraie carte du restaurant, 6 langues" }
   ]
 }

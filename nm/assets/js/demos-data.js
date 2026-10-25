@@ -25,8 +25,8 @@ window.NM_LINKS = [
     { name: "Tarifs Thaïlande · ไทย", path: "nm/th/pricing.html", note: "Menu 299 ฿ · Google 790 ฿ · Pack 2 990 ฿ + entretien 390 ฿/mois" }
   ] },
   { space: "site", group: "Menus QR (abonnements)", items: [
-    { name: "Mes menus QR", path: "nm/menus.html", note: "Tous les restaurants : vert = payé, orange = à relancer, rouge = en pause · QR à imprimer, rappel WhatsApp" },
-    { name: "Menu QR · Giulivo (exemple)", path: "menus/giulivo/", note: "Le menu en livre que voient les clients : on tourne les pages, 6 langues" }
+    { name: "Mes menus QR", path: "nm/menus.html", note: "Tableau de bord : revenu du mois, à faire, calendrier des paiements, fiche de chaque restaurant, carte QR, rappel WhatsApp" },
+    { name: "Menu QR · Giulivo (exemple)", path: "menus/giulivo/", note: "Le menu des clients : grandes photos, 6 langues, filtre allergies, « ma sélection » à montrer au serveur" }
   ] },
   { space: "site", group: "Démos clients", items: [
     { name: "SOCAP Paysage", path: "socap-paysage/", note: "Paysagiste (Ain) · démo premium" },
