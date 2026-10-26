@@ -108,6 +108,17 @@
   function price(p) { return M.currency === "฿" ? p + " ฿" : p + " " + M.currency; }
   function aname(n) { var a = M.allergens && (M.allergens[lang] || M.allergens.en); return a ? a[n - 1] : n; }
   function img(base, w) { return M.photoOne ? base + ".webp" : base + "-" + w + ".webp"; }
+  // photoHD: graded 4K-sourced photos in two crops: portrait 4:5 for the cards (-c-800/-c-1200), landscape 4:3 for the dish sheet (-w-1280/-w-2048)
+  function cardPic(d, only) {
+    if (!M.photoHD) return '<img src="' + img(d.img, 640) + '" srcset="' + img(d.img, 640) + " 640w, " + img(d.img, 1280) + ' 1280w" sizes="(min-width:760px) 340px, 80vw" alt="" loading="lazy" decoding="async">';
+    var c = d.img + "-c-800.webp 800w, " + d.img + "-c-1200.webp 1200w", w = d.img + "-w-1280.webp 1280w, " + d.img + "-w-2048.webp 2048w";
+    return "<picture>" + (only ? '<source media="(min-width:760px)" srcset="' + w + '" sizes="680px">' : "") +
+      '<img src="' + d.img + '-c-800.webp" srcset="' + c + '" sizes="(min-width:760px) 340px, 80vw" alt="" loading="lazy" decoding="async"></picture>';
+  }
+  function sheetPic(d) {
+    if (!M.photoHD) return '<img src="' + img(d.img, 1280) + '" alt="' + esc(title(d)) + '">';
+    return '<img src="' + d.img + '-w-1280.webp" srcset="' + d.img + "-w-1280.webp 1280w, " + d.img + '-w-2048.webp 2048w" sizes="(min-width:760px) 560px, 100vw" alt="' + esc(title(d)) + '">';
+  }
   // Menus written in Thai script: tourists read the dish name in their own language first, the Thai name below.
   function title(d) { return M.localTitles && lang !== ol && d.sn && d.sn[lang] ? d.sn[lang] : d.n; }
   function sub(d) { return title(d) !== d.n ? d.n : ""; }
@@ -151,8 +162,10 @@
       if (si === 0) h.push('<p class="alb">' + esc(t("alb")) + "</p>");
       if (feat.length) {
         h.push('<div class="feat" data-feat>');
-        feat.forEach(function (d) {
-          h.push('<button type="button" class="card rv" data-dish="' + d.id + '"><img src="' + img(d.img, 640) + '" srcset="' + img(d.img, 640) + " 640w, " + img(d.img, 1280) + ' 1280w" sizes="(min-width:760px) 340px, 80vw" alt="" loading="lazy" decoding="async">' +
+        feat.forEach(function (d, fi) {
+          // desktop: two-column grid; with an odd count the first card spans both columns in landscape
+          var lead = feat.length === 1 || (fi === 0 && feat.length % 2 === 1);
+          h.push('<button type="button" class="card rv' + (lead ? " card--lead" : "") + '" data-dish="' + d.id + '">' + cardPic(d, lead) +
             '<span class="card__b"><span class="card__k">' + esc(tr(s.t)) + '</span><span class="card__n">' + esc(title(d)) + "</span>" + (sub(d) ? '<span class="card__o" lang="' + ol + '">' + esc(sub(d)) + "</span>" : "") + '<span class="card__f"><span class="card__p">' + price(d.p) + '</span><span class="card__go">' + esc(t("see")) + " " + ICO.arrow.replace("<svg", '<svg width="14" height="14"') + "</span></span></span></button>");
         });
         h.push("</div>");
@@ -309,7 +322,7 @@
     sh.classList.remove("sheet--photo");
     if (kind === "dish") {
       var d = byId[id], s = M.sections[d._s], dd = desc(d), hs = hits(d), od = d.d && d.d[ol] && lang !== ol ? d.d[ol] : "";
-      if (d.img) { sh.classList.add("sheet--photo"); h += '<div class="sd__ph"><img src="' + img(d.img, 1280) + '" alt="' + esc(title(d)) + '"></div>'; }
+      if (d.img) { sh.classList.add("sheet--photo"); h += '<div class="sd__ph">' + sheetPic(d) + "</div>"; }
       h += '<p class="sd__k">' + esc(tr(s.t)) + '</p><h3 class="sd__n">' + esc(title(d)) + "</h3>" + (sub(d) ? '<p class="sd__t" lang="' + ol + '">' + esc(sub(d)) + "</p>" : "") + (d.hot ? '<p class="sd__hot">' + hot(d) + "</p>" : "") + (dd ? '<p class="sd__d">' + esc(dd) + "</p>" : "") +
         (od && od !== dd ? '<p class="sd__o" lang="' + ol + '">' + esc(od) + "</p>" : "");
       if (d.a && d.a.length) h += '<p class="sd__h">' + esc(t("alls")) + '</p><div class="sd__al">' + d.a.map(function (n) { return '<span class="' + (hs.indexOf(n) > -1 ? "warn" : "") + '">' + AI[n - 1] + " " + esc(aname(n)) + "</span>"; }).join("") + "</div>";

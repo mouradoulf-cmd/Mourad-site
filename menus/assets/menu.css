@@ -287,9 +287,11 @@ body.alg .alb{display:block}
 
 @media (min-width:760px){
   :root{--g:32px}
-  .card{width:340px}
-  .feat .card:only-child{width:min(100%,560px);aspect-ratio:16/11}
-  .feat{overflow:visible;flex-wrap:wrap}
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:14px;overflow:visible;margin-inline:0;padding:0}
+  .card{width:auto}
+  .card--lead{grid-column:1/-1;aspect-ratio:16/10}
+  .dots2{display:none}
+  .feat .card:only-child{width:auto;aspect-ratio:16/10}
   .open__top{padding-top:calc(var(--st) + 54px)}
   .langs{grid-template-columns:repeat(6,minmax(0,1fr));width:min(760px,100%)}
 }

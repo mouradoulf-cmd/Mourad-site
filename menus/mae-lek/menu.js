@@ -20,6 +20,7 @@ window.NM_MENU = {
  "staffLang": "th",
  "localTitles": true,
  "photoOne": true,
+ "photoHD": true,
  "spice": true,
  "heroMobile": "hero-m.webp",
  "heroWide": "hero.webp",
