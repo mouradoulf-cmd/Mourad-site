@@ -23,9 +23,25 @@
   function list(items) { return '<ul class="tho-card__list">' + items.map(function (t) { return "<li>" + CHECK + "<span>" + esc(t) + "</span></li>"; }).join("") + "</ul>"; }
   function money(n, L) { var v = n.toLocaleString("en-US"); return L.cur === "บาท" ? '<strong>' + v + '</strong><span class="tho-card__cur">บาท</span>' : '<strong>' + v + '</strong><span class="tho-card__cur">฿</span>'; }
 
-  function html(L) {
+  // photo ribbon above the cards: the retouched HD dish photos of the sample menu (what a menu by NM Studio looks like)
+  var RIB = {
+    th: { k: "รูปอาหารในเมนู", t: "รูปที่ทำให้ลูกค้า<em>อยากสั่ง</em>", c: "ภาพประกอบจากเมนูตัวอย่าง · เมนูของร้านคุณใช้รูปอาหารของร้าน ปรับแสงและสีให้น่ากิน" },
+    fr: { k: "Les photos du menu", t: "Des photos qui donnent <em>envie de commander</em>", c: "Photos d'illustration du menu d'exemple · le menu de votre restaurant utilise vos plats, avec lumière et couleurs retouchées" },
+    en: { k: "Menu photos", t: "Photos that make guests <em>want to order</em>", c: "Illustration photos from the sample menu · your menu uses your own dishes, with light and colour retouched" }
+  };
+  var DISHES = [["krapao", "ผัดกะเพรา"], ["tomyum", "ต้มยำกุ้ง"], ["somtam", "ส้มตำไทย"], ["curry", "แกงเผ็ด"], ["padthai", "ผัดไทย"], ["mango", "ข้าวเหนียวมะม่วง"], ["noodle", "ก๋วยเตี๋ยว"], ["chicken", "ไก่ทอด"], ["glory", "ผักบุ้งไฟแดง"], ["tea", "ชาไทย"]];
+  function ribbon(lang) {
+    var R = RIB[lang] || RIB.en;
+    var cells = DISHES.map(function (d) { return '<figure class="rib__c"><img src="' + DEMO + d[0] + '-c-800.webp" alt="' + d[1] + '" width="800" height="1000" loading="lazy" decoding="async"><figcaption lang="th">' + d[1] + "</figcaption></figure>"; }).join("");
+    return '<div class="rib"><p class="rib__k">' + esc(R.k) + '</p><h3 class="rib__t">' + R.t + '</h3>' +
+      '<a class="rib__row" href="' + DEMO + '" target="_blank" rel="noopener" aria-label="' + esc(L0(lang).demo) + '"><span class="rib__track">' + cells + '</span><span class="rib__track" aria-hidden="true">' + cells.replace(/ alt="[^"]*"/g, ' alt=""') + "</span></a>" +
+      '<p class="rib__cap">' + esc(R.c) + "</p></div>";
+  }
+  function L0(lang) { return O[lang] || O.th; }
+
+  function html(L, lang) {
     var book = '<a class="btn btn--sun btn--block tho-card__cta" href="#book" data-open-sheet="book"><span>' + esc(L.book) + "</span>" + ARROW + "</a>";
-    return '<div class="tho__grid tho__grid--two">' +
+    return ribbon(lang) + '<div class="tho__grid tho__grid--two">' +
       '<article class="tho-card">' +
         '<div class="tho-card__top"><span class="tho-card__tier">01</span><span class="tho-card__ic">' + ICON.menu + "</span></div>" +
         '<p class="tho-card__kicker">' + esc(L.menu.kicker) + "</p>" +
@@ -64,12 +80,12 @@
     }
     if (box) {
       box.classList.toggle("tho--off", !show);
-      if (show && lang !== cur) { box.innerHTML = html(O[lang]); cur = lang; }
+      if (show && lang !== cur) { box.innerHTML = html(O[lang], lang); cur = lang; }
     }
     HIDE.forEach(function (sel) { [].forEach.call(document.querySelectorAll(sel), function (el) { el.classList.toggle("tho-hide", show); }); });
   }
 
-  window.NM_OFFERS_HTML = function (lang, demo) { if (demo) DEMO = demo; return html(O[lang] || O.th); };
+  window.NM_OFFERS_HTML = function (lang, demo) { if (demo) DEMO = demo; return html(O[lang] || O.th, O[lang] ? lang : "th"); };
   document.addEventListener("nm:lang", function (e) { apply(e.detail && e.detail.lang); });
   apply(window.NM_LANG || document.documentElement.lang);
 })();
