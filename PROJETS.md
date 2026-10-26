@@ -49,6 +49,11 @@ Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, 
 - Légal : démarrer avec l'entreprise individuelle (ทะเบียนพาณิชย์, environ 50 ฿) au nom de sa femme, qui vend, signe et encaisse. Plus tard, si ça marche : société thaïe (elle 51 %, lui 49 % et directeur) + visa mariage + permis de travail, après avis d'un avocat thaï.
 - Fichiers (branche publiée `claude/thai-app-mnw166`) : `menus/abonnements.json` (date « payé jusqu'au » par restaurant, pause auto après 4 jours de retard), `menus/<slug>/menu.js` (contenu), `menus/assets/` (affichage commun).
 - Quand Mourad dit « X a payé » : repousser `paidUntil` d'un mois. Nouveau restaurant : copier `menus/giulivo/`, remplir `menu.js`, ajouter une ligne dans `abonnements.json`.
+- Nuit du 26 au 27/10 (carte blanche) : photos des plats de Mae Lek refaites depuis les originaux Unsplash 4000 px +
+  retouche (`.claude/skills/photo-plat/grade.py`), cartes 4:5 et fiche 4:3 (`"photoHD": true`), grille 2 colonnes sur
+  ordinateur, photo d'accueil en HD. Kit de vente privé pour sa femme : https://mouradoulf-cmd.github.io/Mourad-site/nm/kit.html
+  (nom du resto → QR → menu d'exemple à son nom via `?shop=`, pitch 1 min, objections, prix, check-list ; TH/FR).
+  Site thaï : bandeau des photos HD au-dessus des 2 offres.
 - À faire : premiers vrais restaurants pendant son séjour en Thaïlande.
 
 ## Règles de travail avec Mourad
