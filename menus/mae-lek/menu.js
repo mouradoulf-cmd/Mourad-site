@@ -22,8 +22,8 @@ window.NM_MENU = {
  "photoOne": true,
  "photoHD": true,
  "spice": true,
- "heroMobile": "hero-m.webp",
- "heroWide": "hero.webp",
+ "heroMobile": "hero-m.webp?v=11",
+ "heroWide": "hero.webp?v=11",
  "tagline": {
   "th": "อาหารไทยริมทาง · พัทยา",
   "en": "Thai street kitchen · Pattaya",
