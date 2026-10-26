@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b0907">
+<meta name="color-scheme" content="dark">
+<title>ชุดขาย · NM Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Private sales kit for the person who visits restaurants (Thai first, French for Mourad).
+   Layout: one column on phone, the live-demo block is the hero (type the shop name → QR to scan on the spot). */
+:root{--bg:#0b0907;--fg:#f7f1e6;--mute:#b9ae9c;--faint:#7d7466;--edge:rgba(255,255,255,.1);--card:rgba(255,255,255,.045);
+ --gold:#f0a53b;--ok:#3ddc84;--ease:cubic-bezier(.22,1,.36,1);--serif:'Instrument Serif',Georgia,serif;
+ --st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{min-height:100svh;background:var(--bg);color:var(--fg);font:16px/1.6 'Noto Sans Thai','Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+:lang(fr) body,html[lang=fr] body{font-family:'Manrope','Noto Sans Thai',system-ui,sans-serif}
+a{color:inherit;text-decoration:none}button,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.aura{position:fixed;inset:-20% -10% auto;height:70vh;z-index:0;pointer-events:none;background:radial-gradient(45% 45% at 25% 30%,rgba(240,165,59,.18),transparent 70%),radial-gradient(35% 35% at 85% 15%,rgba(61,220,132,.08),transparent 70%);filter:blur(8px)}
+.wrap{position:relative;z-index:1;width:min(860px,100%);margin:0 auto;padding:calc(var(--st) + 14px) 16px calc(var(--sb) + 56px)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:26px}
+.back{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px 0 10px;border-radius:99px;background:var(--card);border:1px solid var(--edge);font-size:.84rem;color:var(--mute)}
+.lg{display:flex;padding:3px;border-radius:99px;background:var(--card);border:1px solid var(--edge)}
+.lg button{height:32px;padding:0 13px;border-radius:99px;font-size:.8rem;font-weight:700;color:var(--mute)}
+.lg button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
+.kick{font:800 .68rem/1 'Manrope',sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+h1{font:400 clamp(2.3rem,9vw,3.6rem)/1.05 var(--serif);margin:10px 0 8px;letter-spacing:-.01em}
+h1 em{color:var(--gold)}
+.lead{color:var(--mute);max-width:46ch}
+section{margin-top:44px}
+h2{font:400 clamp(1.6rem,6vw,2.2rem)/1.15 var(--serif);margin:8px 0 14px}
+.box{background:var(--card);border:1px solid var(--edge);border-radius:22px;padding:18px}
+/* live demo */
+.demo{display:grid;gap:18px}
+@media (min-width:720px){.demo{grid-template-columns:1.1fr .9fr;align-items:center}}
+label{display:block;font-size:.85rem;color:var(--mute);margin-bottom:8px}
+.in{width:100%;height:56px;border-radius:16px;border:1px solid var(--edge);background:rgba(0,0,0,.35);padding:0 16px;font-size:1.15rem;outline:none;transition:border-color .3s}
+.in:focus{border-color:var(--gold)}
+.hint{font-size:.8rem;color:var(--faint);margin-top:8px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 16px;border-radius:14px;border:1px solid var(--edge);background:var(--card);font-weight:700;font-size:.92rem;transition:transform .2s var(--ease),background .3s}
+.btn:active{transform:scale(.97)}
+.btn--main{grid-column:1/-1;background:var(--gold);color:#1b1206;border-color:transparent}
+.btn--line{background:#06c755;color:#04210f;border-color:transparent}
+.btn svg{width:18px;height:18px;flex:none}
+.qr{justify-self:center;display:grid;gap:10px;justify-items:center;text-align:center}
+.qr__card{background:#fff;border-radius:22px;padding:16px;width:min(270px,74vw);aspect-ratio:1;display:grid;place-items:center;box-shadow:0 30px 60px -30px rgba(240,165,59,.55)}
+.qr__card img,.qr__card canvas{width:100%!important;height:auto!important;display:block}
+.qr__name{font:400 1.5rem/1.2 var(--serif);max-width:16ch;overflow-wrap:anywhere}
+.qr__cap{font-size:.82rem;color:var(--mute);max-width:30ch}
+/* photos */
+.ph{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media (min-width:720px){.ph{grid-template-columns:repeat(4,1fr)}}
+.ph figure{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:#1a1510}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.ph figure:hover img{transform:scale(1.04)}
+.ph figcaption{position:absolute;inset:auto 0 0;padding:26px 10px 8px;font-size:.78rem;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.note{font-size:.8rem;color:var(--faint);margin-top:10px}
+/* steps & lists */
+.steps{display:grid;gap:10px;counter-reset:s;list-style:none;padding:0}
+.steps li{position:relative;padding:14px 14px 14px 58px;border-radius:18px;background:var(--card);border:1px solid var(--edge)}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(240,165,59,.15);color:var(--gold);font:800 .85rem 'Manrope'}
+.steps b{display:block}
+.steps span{color:var(--mute);font-size:.92rem}
+.say{display:block;margin-top:6px;padding:10px 12px;border-left:2px solid var(--gold);background:rgba(240,165,59,.06);border-radius:0 10px 10px 0;font-size:.95rem}
+details{border-radius:18px;background:var(--card);border:1px solid var(--edge);margin-bottom:8px;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:15px 48px 15px 16px;position:relative;font-weight:700}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:18px;top:50%;width:10px;height:10px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--ease)}
+details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+details p{padding:0 16px 16px;color:var(--mute)}
+.price{display:grid;gap:10px}
+@media (min-width:720px){.price{grid-template-columns:1fr 1fr}}
+.price .box b{font:400 2.4rem/1 var(--serif);color:var(--gold)}
+.price .box small{color:var(--mute)}
+.price .box ul{margin-top:10px;padding-left:18px;color:var(--mute);font-size:.92rem}
+.chk{list-style:none;padding:0;display:grid;gap:6px}
+.chk label{display:flex;gap:12px;align-items:flex-start;margin:0;padding:13px 14px;border-radius:14px;background:var(--card);border:1px solid var(--edge);color:var(--fg);font-size:.95rem;cursor:pointer}
+.chk input{appearance:none;flex:none;width:22px;height:22px;border-radius:7px;border:1.5px solid var(--faint);display:grid;place-items:center;margin-top:1px;transition:background .2s}
+.chk input:checked{background:var(--ok);border-color:var(--ok)}
+.chk input:checked::after{content:"";width:6px;height:11px;border:solid #04210f;border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.chk input:checked+span{color:var(--mute);text-decoration:line-through}
+.links{display:grid;gap:8px;grid-template-columns:1fr 1fr}
+.toast{position:fixed;left:50%;bottom:calc(var(--sb) + 22px);transform:translate(-50%,20px);opacity:0;padding:12px 18px;border-radius:99px;background:var(--fg);color:var(--bg);font-weight:700;font-size:.88rem;transition:all .35s var(--ease);pointer-events:none;z-index:9}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+html:not([lang=fr]) .fr{display:none}
+html[lang=fr] .th{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="aura" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="demos.html"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="th">กลับ</span><span class="fr">Mon espace</span></a>
+    <div class="lg" role="group" aria-label="Langue"><button type="button" data-l="th" aria-pressed="true">ไทย</button><button type="button" data-l="fr" aria-pressed="false">FR</button></div>
+  </div>
+
+  <p class="kick">NM Studio · ชุดขาย</p>
+  <h1><span class="th">ไปเยี่ยมร้าน<br>แล้ว<em>ให้เขาเห็นเมนูของตัวเอง</em></span><span class="fr">En visite :<br><em>montre-lui son propre menu</em></span></h1>
+  <p class="lead"><span class="th">พิมพ์ชื่อร้าน ให้เจ้าของร้านสแกน QR ด้วยมือถือของเขาเอง เขาจะเห็นเมนู 6 ภาษาที่มีชื่อร้านของเขาทันที</span><span class="fr">Tape le nom du restaurant, le patron scanne le QR avec son propre téléphone : il voit tout de suite un menu en 6 langues à son nom.</span></p>
+
+  <!-- 1 · live demo -->
+  <section class="box demo" aria-labelledby="dT">
+    <div>
+      <h2 id="dT" style="margin-top:0"><span class="th">เดโมสด</span><span class="fr">Démo en direct</span></h2>
+      <label for="shop"><span class="th">ชื่อร้าน</span><span class="fr">Nom du restaurant</span></label>
+      <input class="in" id="shop" maxlength="40" autocomplete="off" placeholder="ร้านส้มตำป้าแดง">
+      <p class="hint"><span class="th">เป็นเมนูตัวอย่าง (รูปและรายการอาหารยังไม่ใช่ของร้าน) เมนูจริงของร้านจะทำให้หลังตกลงกัน</span><span class="fr">C'est un menu d'exemple (plats et photos pas encore les siens). Son vrai menu est fait après accord.</span></p>
+      <div class="acts">
+        <a class="btn btn--main" id="open" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" fill="none"><path d="M8 4H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3M11 4h5v5M16 4l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="th">เปิดเมนู</span><span class="fr">Ouvrir le menu</span></a>
+        <a class="btn btn--line" id="line" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6C21.4 14.1 22 12.6 22 11c0-4.4-4.5-8-10-8Z"/></svg><span class="th">ส่งทาง LINE</span><span class="fr">Envoyer (LINE)</span></a>
+        <button class="btn" id="copy" type="button"><svg viewBox="0 0 20 20" fill="none"><rect x="7" y="7" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M13 7V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2" stroke="currentColor" stroke-width="1.7"/></svg><span class="th">คัดลอกลิงก์</span><span class="fr">Copier le lien</span></button>
+      </div>
+    </div>
+    <div class="qr">
+      <div class="qr__card" id="qr" role="img" aria-label="QR"></div>
+      <p class="qr__name" id="qrName">Mae Lek</p>
+      <p class="qr__cap"><span class="th">ให้เจ้าของร้านสแกนด้วยกล้องมือถือ</span><span class="fr">Le patron scanne avec l'appareil photo de son téléphone</span></p>
+    </div>
+  </section>
+
+  <!-- 2 · photos -->
+  <section aria-labelledby="pT">
+    <p class="kick"><span class="th">คุณภาพรูป</span><span class="fr">Qualité photo</span></p>
+    <h2 id="pT"><span class="th">รูปอาหารที่น่ากิน คือสิ่งที่ขายได้</span><span class="fr">Des photos qui donnent faim, c'est ça qui vend</span></h2>
+    <div class="ph" id="ph"></div>
+    <p class="note"><span class="th">ภาพประกอบในเมนูตัวอย่าง (Unsplash) ปรับแสงและสีโดย NM Studio · ร้านจริงใช้รูปของร้าน หรือรูปประกอบที่ระบุว่า «ภาพประกอบ»</span><span class="fr">Photos d'illustration du menu d'exemple (Unsplash), retouchées par NM Studio. Un vrai restaurant : ses propres photos, ou des photos marquées « ภาพประกอบ / illustration ».</span></p>
+  </section>
+
+  <!-- 3 · pitch -->
+  <section aria-labelledby="sT">
+    <p class="kick"><span class="th">พูด 1 นาที</span><span class="fr">Le pitch en 1 minute</span></p>
+    <h2 id="sT"><span class="th">พูดอะไรกับเจ้าของร้าน</span><span class="fr">Quoi dire au patron</span></h2>
+    <ol class="steps">
+      <li><b class="th">ทักทาย ชมร้าน</b><b class="fr">Saluer, faire un compliment sincère</b><span class="th say">«สวัสดีค่ะ ร้านคนเยอะจัง ลูกค้าต่างชาติเยอะไหมคะ»</span><span class="fr say">« Bonjour, il y a du monde ! Vous avez beaucoup de clients étrangers ? »</span></li>
+      <li><b class="th">ถามปัญหา</b><b class="fr">Faire dire le problème</b><span class="th say">«เวลาลูกค้าต่างชาติสั่งอาหาร อธิบายเมนูยากไหมคะ»</span><span class="fr say">« Quand un étranger commande, c'est difficile d'expliquer le menu ? »</span></li>
+      <li><b class="th">ให้เห็นเดโม (ข้างบน)</b><b class="fr">Montrer la démo (en haut)</b><span class="th say">«ลองสแกนดูค่ะ นี่คือเมนูที่มีชื่อร้านพี่ 6 ภาษา ลูกค้าเลือกภาษาเอง แล้วกดให้พนักงานดูเป็นภาษาไทย»</span><span class="fr say">« Scannez : voilà un menu à votre nom en 6 langues. Le client choisit sa langue, puis montre sa commande au serveur en thaï. »</span></li>
+      <li><b class="th">บอกราคาให้ชัด</b><b class="fr">Annoncer le prix clairement</b><span class="th say">«ติดตั้งฟรี ใช้ฟรีเดือนแรก หลังจากนั้นเดือนละ 390 บาท ไม่มีสัญญาผูกมัด»</span><span class="fr say">« Installation gratuite, premier mois gratuit, ensuite 390 ฿ par mois. Sans engagement. »</span></li>
+      <li><b class="th">ขอสิ่งที่ต้องใช้ แล้วนัดวันส่งงาน</b><b class="fr">Prendre ce qu'il faut et fixer la date</b><span class="th">ถ่ายรูปเมนูเดิมทุกหน้า รูปหน้าร้าน และขอ LINE ของร้าน (ดูรายการด้านล่าง)</span><span class="fr">Photographier le menu actuel, la devanture, prendre le LINE du restaurant (liste plus bas).</span></li>
+    </ol>
+  </section>
+
+  <!-- 4 · objections -->
+  <section aria-labelledby="oT">
+    <p class="kick"><span class="th">ข้อกังวล</span><span class="fr">Objections</span></p>
+    <h2 id="oT"><span class="th">ถ้าเจ้าของร้านถามว่า…</span><span class="fr">Si le patron dit…</span></h2>
+    <details><summary><span class="th">«แพงไป»</span><span class="fr">« C'est trop cher »</span></summary><p class="th">เดือนละ 390 บาท ประมาณวันละ 13 บาท น้อยกว่าราคาอาหารจานเดียว ถ้าลูกค้าต่างชาติสั่งเพิ่มแค่จานเดียวต่อวันก็คุ้มแล้ว และเดือนแรกลองฟรี</p><p class="fr">390 ฿ par mois ≈ 13 ฿ par jour, moins qu'un plat. Un seul plat de plus par jour suffit à le rembourser, et le premier mois est gratuit.</p></details>
+    <details><summary><span class="th">«ลูกค้าไม่ใช้หรอก»</span><span class="fr">« Mes clients ne l'utiliseront pas »</span></summary><p class="th">ไม่ต้องโหลดแอป แค่สแกนด้วยกล้องมือถือ ลองเดือนแรกฟรีแล้วดูเองว่าลูกค้าใช้ไหม ถ้าไม่ชอบก็หยุดได้เลย</p><p class="fr">Aucune application à installer, juste l'appareil photo. Il essaie un mois gratuit et voit lui-même ; s'il n'aime pas, il arrête.</p></details>
+    <details><summary><span class="th">«เปลี่ยนราคาบ่อย»</span><span class="fr">« Je change souvent mes prix »</span></summary><p class="th">ส่งข้อความมาทาง LINE เราแก้ให้ ไม่มีค่าใช้จ่ายเพิ่ม QR บนโต๊ะไม่ต้องพิมพ์ใหม่</p><p class="fr">Un message LINE et on modifie, sans frais. Le QR sur la table ne change pas, pas besoin de réimprimer.</p></details>
+    <details><summary><span class="th">«ไม่มีรูปอาหาร»</span><span class="fr">« Je n'ai pas de photos »</span></summary><p class="th">ถ่ายด้วยมือถือได้เลย เราปรับแสงและสีให้ หรือใช้รูปประกอบที่ระบุชัดว่า «ภาพประกอบ» ก่อนก็ได้</p><p class="fr">On peut les prendre au téléphone, on les retouche. Ou commencer avec des photos d'illustration clairement marquées « ภาพประกอบ ».</p></details>
+    <details><summary><span class="th">«ยกเลิกได้ไหม»</span><span class="fr">« Je peux arrêter ? »</span></summary><p class="th">ได้ทุกเมื่อ ไม่มีสัญญา ถ้าไม่จ่ายเดือนถัดไป เมนูจะหยุดเอง ไม่มีค่าปรับ</p><p class="fr">Quand il veut, sans contrat. S'il ne paie pas le mois suivant, le menu se met en pause, sans pénalité.</p></details>
+    <details><summary><span class="th">«มีเว็บไซต์ด้วยไหม»</span><span class="fr">« Vous faites aussi les sites ? »</span></summary><p class="th">มี เว็บไซต์ของร้าน + เมนู QR เดือนละ 790 บาท รวมโฮสติ้งและการแก้ไข ช่วยให้ลูกค้าหาร้านเจอบน Google</p><p class="fr">Oui : site du restaurant + menu QR, 790 ฿ par mois, hébergement et modifications compris.</p></details>
+  </section>
+
+  <!-- 5 · prices -->
+  <section aria-labelledby="rT">
+    <p class="kick"><span class="th">ราคา</span><span class="fr">Prix</span></p>
+    <h2 id="rT"><span class="th">2 แพ็กเกจเท่านั้น</span><span class="fr">Seulement 2 offres</span></h2>
+    <div class="price">
+      <div class="box"><p class="th">เมนู QR</p><p class="fr">Menu QR</p><b>390</b> <small class="th">บาท / เดือน</small><small class="fr">฿ / mois</small>
+        <ul class="th"><li>ติดตั้งฟรี · เดือนแรกฟรี</li><li>6 ภาษา พร้อมรูปอาหาร</li><li>หน้าจอให้พนักงานดูเป็นภาษาไทย</li></ul>
+        <ul class="fr"><li>Installation gratuite · 1er mois offert</li><li>6 langues avec photos</li><li>Écran serveur en thaï</li></ul></div>
+      <div class="box"><p class="th">เว็บไซต์ + เมนู QR</p><p class="fr">Site + menu QR</p><b>790</b> <small class="th">บาท / เดือน</small><small class="fr">฿ / mois</small>
+        <ul class="th"><li>เว็บไซต์หลายภาษา + เมนู QR</li><li>ปุ่ม LINE / WhatsApp</li><li>รวมโฮสติ้งและการแก้ไข</li></ul>
+        <ul class="fr"><li>Site multilingue + menu QR</li><li>Bouton LINE / WhatsApp</li><li>Hébergement et modifications compris</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 6 · checklist -->
+  <section aria-labelledby="cT">
+    <p class="kick"><span class="th">ก่อนออกจากร้าน</span><span class="fr">Avant de partir</span></p>
+    <h2 id="cT"><span class="th">สิ่งที่ต้องขอจากร้าน</span><span class="fr">Ce qu'il faut récupérer</span></h2>
+    <ul class="chk" id="chk">
+      <li><label><input type="checkbox"><span class="th">ถ่ายรูปเมนูเดิมทุกหน้า (ชื่ออาหาร + ราคา ชัด ๆ)</span><span class="fr">Photo de chaque page du menu actuel (noms + prix lisibles)</span></label></li>
+      <li><label><input type="checkbox"><span class="th">รูปหน้าร้าน หรือโลโก้</span><span class="fr">Photo de la devanture ou logo</span></label></li>
+      <li><label><input type="checkbox"><span class="th">รูปอาหารเด่น 3–5 จาน (ถ้ามี)</span><span class="fr">Photos de 3 à 5 plats phares (si possible)</span></label></li>
+      <li><label><input type="checkbox"><span class="th">ลูกค้าต่างชาติส่วนใหญ่พูดภาษาอะไร</span><span class="fr">Langues principales des clients étrangers</span></label></li>
+      <li><label><input type="checkbox"><span class="th">LINE / เบอร์โทรของร้าน และชื่อเจ้าของ</span><span class="fr">LINE / téléphone du restaurant et prénom du patron</span></label></li>
+      <li><label><input type="checkbox"><span class="th">เวลาเปิด–ปิด และจำนวนโต๊ะ (สำหรับป้าย QR)</span><span class="fr">Horaires et nombre de tables (pour les supports QR)</span></label></li>
+    </ul>
+    <button class="btn" id="reset" type="button" style="margin-top:10px"><span class="th">ร้านใหม่ (ล้างรายการ)</span><span class="fr">Nouveau restaurant (tout décocher)</span></button>
+  </section>
+
+  <section>
+    <div class="links">
+      <a class="btn" href="menus.html"><span class="th">แดชบอร์ดเมนู</span><span class="fr">Tableau des menus</span></a>
+      <a class="btn" href="th/index.html#offers" target="_blank" rel="noopener"><span class="th">เว็บไซต์ภาษาไทย</span><span class="fr">Site thaï</span></a>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="assets/js/qrcode.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var BASE = new URL("../menus/mae-lek/", location.href).href;
+  var DISH = new URL("../menus/mae-lek/", location.href).href;
+  var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+  var $ = function (id) { return document.getElementById(id); };
+  var inp = $("shop"), qr = $("qr"), qrName = $("qrName"), toast = $("toast"), tm;
+
+  // language (TH for the seller, FR for Mourad)
+  function setLang(l) {
+    document.documentElement.lang = l;
+    [].forEach.call(document.querySelectorAll("[data-l]"), function (b) { b.setAttribute("aria-pressed", String(b.dataset.l === l)); });
+    store.set("nm-kit-lang", l);
+  }
+  [].forEach.call(document.querySelectorAll("[data-l]"), function (b) { b.addEventListener("click", function () { setLang(b.dataset.l); }); });
+  setLang(store.get("nm-kit-lang") || "th");
+
+  function say(t) { toast.textContent = t; toast.classList.add("on"); clearTimeout(tm); tm = setTimeout(function () { toast.classList.remove("on"); }, 2200); }
+  function fr() { return document.documentElement.lang === "fr"; }
+
+  // live demo: the menu reads ?shop= and shows the name (sample label stays)
+  function url() { var n = inp.value.trim(); return BASE + (n ? "?shop=" + encodeURIComponent(n) : ""); }
+  var t0;
+  function update() {
+    var u = url(), n = inp.value.trim();
+    qrName.textContent = n || "Mae Lek";
+    $("open").href = u;
+    $("line").href = "https://line.me/R/share?text=" + encodeURIComponent((n ? n + " · " : "") + "เมนู QR 6 ภาษา (ตัวอย่าง) " + u);
+    clearTimeout(t0);
+    t0 = setTimeout(function () {
+      qr.innerHTML = "";
+      if (window.QRCode) new window.QRCode(qr, { text: u, width: 600, height: 600, colorDark: "#16120d", colorLight: "#ffffff", correctLevel: window.QRCode.CorrectLevel.M });
+    }, 150);
+    store.set("nm-kit-shop", n);
+  }
+  inp.value = store.get("nm-kit-shop") || "";
+  inp.addEventListener("input", update);
+  $("copy").addEventListener("click", function () {
+    var u = url();
+    (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { say(fr() ? "Lien copié" : "คัดลอกแล้ว"); }, function () { prompt("", u); });
+  });
+  update();
+
+  // photo wall (the retouched HD photos of the sample menu)
+  var P = [["krapao", "ผัดกะเพรา"], ["tomyum", "ต้มยำกุ้ง"], ["somtam", "ส้มตำไทย"], ["curry", "แกงเผ็ด"], ["padthai", "ผัดไทย"], ["mango", "ข้าวเหนียวมะม่วง"], ["noodle", "ก๋วยเตี๋ยว"], ["chicken", "ไก่ทอด"]];
+  $("ph").innerHTML = P.map(function (p) { return '<figure><img src="' + DISH + p[0] + '-c-800.webp" alt="' + p[1] + '" loading="lazy" decoding="async" width="800" height="1000"><figcaption lang="th">' + p[1] + "</figcaption></figure>"; }).join("");
+
+  // checklist (kept on this phone until "new restaurant")
+  var boxes = [].slice.call(document.querySelectorAll("#chk input"));
+  var saved = (store.get("nm-kit-chk") || "").split("");
+  boxes.forEach(function (b, i) { b.checked = saved[i] === "1"; b.addEventListener("change", function () { store.set("nm-kit-chk", boxes.map(function (x) { return x.checked ? 1 : 0; }).join("")); }); });
+  $("reset").addEventListener("click", function () { boxes.forEach(function (b) { b.checked = false; }); store.set("nm-kit-chk", ""); inp.value = ""; update(); say(fr() ? "Prêt pour le suivant" : "พร้อมสำหรับร้านต่อไป"); });
+})();
+</script>
+</body>
+</html>

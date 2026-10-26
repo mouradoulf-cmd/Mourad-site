@@ -142,6 +142,7 @@ body.alg .alb{display:block}
 .demo{margin-top:2px;padding:6px 11px;border-radius:99px;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .open__word{display:grid;justify-items:center;gap:8px;font:300 clamp(3.4rem,17vw,6rem)/.9 var(--display);letter-spacing:-.03em;text-shadow:0 10px 40px rgba(0,0,0,.55)}
 .open__word small{font:500 1.05rem/1 'Noto Sans Thai',var(--body);letter-spacing:.1em;opacity:.9}
+.open__word.long{font-size:clamp(2rem,9vw,3.6rem);line-height:1.15;max-width:min(92vw,16ch);text-wrap:balance;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:anywhere}
 .hd__logo.txt{font:400 1.15rem/1 var(--display);width:auto;white-space:nowrap;text-decoration:none;color:var(--ink)}
 .wname{display:grid;justify-items:center;gap:4px;text-align:center;font:400 2.4rem/1 var(--display);color:#16120d}
 .wname small{font:500 .95rem/1 'Noto Sans Thai',var(--body);color:#7a6a55;letter-spacing:.06em}

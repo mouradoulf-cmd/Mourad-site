@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-10-25";
+window.NM_UPDATED = "2026-10-27";
 
 window.NM_DEMOS = [
 ];
@@ -20,6 +20,7 @@ window.NM_LINKS = [
     { name: "Avant / après", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#menu-ba", note: "Le vieux menu papier tout en thaï → le QR sur la table → le menu dans le téléphone" },
     { name: "Prendre rendez-vous", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#book", note: "Jour + heure, puis commerce, adresse, prénom → WhatsApp s'ouvre avec le message tout écrit" },
     { name: "Menu QR d'exemple · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Le menu à montrer, ouvert en français : photos, piment, allergies, « montrer au serveur » en thaï" },
+    { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "En visite : taper le nom du resto → QR à scanner → le patron voit un menu à son nom. + pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" },
     { name: "Mes menus QR (tableau de bord)", path: "nm/menus.html", note: "Qui a payé (vert), à relancer (orange), en pause (rouge), cartes QR à imprimer" },
     { name: "Site web thaïlandais · version clients (ไทย)", icon: "🇹🇭", path: "nm/th/", note: "La vraie version en thaï, celle que tu montres aux patrons" }
   ] },
@@ -35,7 +36,8 @@ window.NM_LINKS = [
   ] },
   { space: "site", group: "Menus QR (abonnements)", items: [
     { name: "Mes menus QR", path: "nm/menus.html", note: "Tableau de bord : revenu du mois, à faire, calendrier des paiements, fiche de chaque restaurant, carte QR, rappel WhatsApp" },
-    { name: "Menu QR · Mae Lek (exemple thaï)", path: "menus/mae-lek/", note: "À montrer aux restaurants : prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" }
+    { name: "Kit de vente · démo au nom du resto", path: "nm/kit.html", note: "Nom du restaurant → QR → menu d'exemple à son nom (lien ?shop=…)" },
+    { name: "Menu QR · Mae Lek (exemple thaï)", path: "menus/mae-lek/", note: "Photos HD retouchées · À montrer aux restaurants : prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" }
   ] },
   { space: "site", group: "Démos clients", items: [
     { name: "SOCAP Paysage", path: "socap-paysage/", note: "Paysagiste (Ain) · démo premium" },

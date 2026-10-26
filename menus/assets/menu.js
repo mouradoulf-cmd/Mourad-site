@@ -3,12 +3,15 @@
  * photos, a detail sheet per dish, an allergy filter, and "my selection" that the guest shows to the waiter in the
  * restaurant's own language (no order is sent anywhere). Subscription: menus/abonnements.json, fetched fresh on
  * every open so "paid"/"paused" takes effect right away; if it can't be read (offline) the menu stays open.
- * Preview the paused screen with ?apercu=pause. */
+ * Preview the paused screen with ?apercu=pause. On a demo menu, ?shop=<name> shows the prospect's own shop name
+ * (sales visit: the owner scans and sees "their" menu; the "sample menu" label stays). */
 (function () {
   "use strict";
   var M = window.NM_MENU;
   if (!M) return;
   var root = document.getElementById("menu");
+  var shop = M.demo && (new URLSearchParams(location.search).get("shop") || "").trim().slice(0, 40);
+  if (shop) { M.name = M.wordmark = shop; M.wordmarkSub = ""; M.tagline = { en: "" }; }
   var LN = { th: "ไทย", en: "English", zh: "中文", ru: "Русский", fr: "Français", it: "Italiano", de: "Deutsch", ja: "日本語", ko: "한국어" };
   // Language flags: SVG from flag-icons (MIT, menus/assets/flags/) so they look the same on every phone.
   var FLAG_DIR = (document.currentScript && document.currentScript.src) ? new URL("flags/", document.currentScript.src).href : "../assets/flags/";
@@ -141,7 +144,7 @@
     h.push('<section class="open" id="top">');
     if (M.heroMobile) h.push('<div class="open__ph"><picture><source media="(max-width:760px)" srcset="' + M.heroMobile + '"><img src="' + M.heroWide + '" alt="" fetchpriority="high"></picture></div>');
     else if (M.hero) h.push('<div class="open__ph"><img src="' + img(M.hero, 1280) + '" srcset="' + img(M.hero, 640) + ' 640w, ' + img(M.hero, 1280) + ' 1280w" sizes="100vw" alt="" fetchpriority="high"></div>');
-    h.push('<div class="open__top">' + (M.wordmark ? '<h1 class="open__word rise" style="--d:.15s">' + esc(M.wordmark) + (M.wordmarkSub ? '<small lang="' + ol + '">' + esc(M.wordmarkSub) + "</small>" : "") + "</h1>" : svg.logo ? '<div class="open__logo rise" style="--d:.15s" role="img" aria-label="' + esc(M.name) + '">' + svg.logo + "</div>" : '<h1 class="open__name rise">' + esc(M.name) + "</h1>") +
+    h.push('<div class="open__top">' + (M.wordmark ? '<h1 class="open__word rise' + (M.wordmark.length > 12 ? " long" : "") + '" style="--d:.15s">' + esc(M.wordmark) + (M.wordmarkSub ? '<small lang="' + ol + '">' + esc(M.wordmarkSub) + "</small>" : "") + "</h1>" : svg.logo ? '<div class="open__logo rise" style="--d:.15s" role="img" aria-label="' + esc(M.name) + '">' + svg.logo + "</div>" : '<h1 class="open__name rise">' + esc(M.name) + "</h1>") +
       '<p class="open__tag rise" style="--d:.35s">' + esc(tr(M.tagline)) + "</p>" + (M.demo ? '<p class="demo rise" style="--d:.45s">' + esc(t("demo")) + "</p>" : "") + "</div>");
     h.push('<div class="open__bot"><p class="open__ask rise" style="--d:.55s">' + esc(t("choose")) + '</p><div class="langs">' +
       langs.map(function (l, i) { return '<button type="button" class="rise' + (l === lang ? " sug" : "") + '" style="--d:' + (0.65 + i * 0.06).toFixed(2) + 's" data-pick="' + l + '" lang="' + l + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") +
