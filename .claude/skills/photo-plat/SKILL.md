@@ -33,6 +33,25 @@ la meilleure, prête pour le menu.
 - Dans le menu, ces photos portent la mention **« ภาพประกอบ / Photo d'illustration »** (le vrai plat peut varier).
   Les spécialités de la maison : préférer une vraie photo prise sur place.
 
+## Qualité premium « 4K » (méthode validée 2026-10-27, menu Mae Lek)
+Mourad veut des photos niveau restaurant étoilé. Le secret : **partir de l'original haute définition**, jamais d'une
+petite image agrandie.
+1. **Original 4000 px** : quand on connaît l'ID Unsplash (ex. ceux listés dans `street-food/README.md`), le CDN
+   officiel donne l'original : `https://images.unsplash.com/photo-<ID>?w=4000&q=92&fm=jpg`. (Ne pas contourner la
+   protection anti-robot de la recherche Unsplash : si la recherche est bloquée, demander les liens à Mourad ou
+   utiliser Openverse / Wikimedia, `api.openverse.org`.)
+2. **Retouche + recadrage** avec `grade.py` (dans ce dossier, Python + `opencv-python-headless`) :
+   `python3 -I grade.py <dossier_src> crops.json <dossier_sortie>` — niveaux doux (sans brûler les blancs),
+   balance chaude, courbe en S légère, vibrance, clarté, vignette discrète, netteté de sortie.
+   `crops.json` : `{"plat": {"x":…, "y":…, "side":…}}` = carré qui cadre l'assiette dans l'original ;
+   options `wcx`/`wcy`/`wside` pour recadrer à part la version paysage.
+3. Sorties : `plat-c-800/-c-1200.webp` (portrait 4:5, cartes du menu), `plat-w-1280/-w-2048.webp` (paysage 4:3,
+   fiche du plat), `plat.webp` (carré 720). Mettre `"photoHD": true` dans `menus/<slug>/menu.js`.
+4. **Toujours regarder** une planche avant/après de tous les plats (blancs brûlés, objets parasites en haut du
+   cadre, assiette coupée) et recadrer plat par plat avant de publier.
+5. Les photos de téléphone d'un vrai client passent aussi par `grade.py` (mais sans miracle : une photo floue
+   reste floue ; mieux vaut lui faire refaire la photo en lumière du jour).
+
 ## Réseau (environnement cloud)
 Le téléchargement direct demande que `unsplash.com`, `images.unsplash.com`, `pexels.com` et `images.pexels.com`
 soient dans les domaines autorisés de l'environnement. S'ils sont bloqués : le dire à Mourad (réglages de
