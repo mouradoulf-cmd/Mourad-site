@@ -78,3 +78,7 @@ Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, 
 - Procédure complète pour traiter un nouveau client : voir `CLAUDE.md`, section « Procédure nouveau client menu QR ».
 - Idée non faite (attend un « oui ») : compter les scans de chaque menu pour montrer au restaurant « 120 scans ce mois-ci ».
 
+
+## « Mon espace » → Site web : 5 onglets (27 octobre 2026, nuit)
+- Site thaï (traduit en français en premier) · Menus QR (état en direct : en ligne / à payer bientôt / hors ligne / revenu) · NM Studio (site dans toutes les langues + outils) · Démos · Modèles. Barre d'onglets collante, en-tête compact : plus besoin de tout faire défiler.
+- Détails techniques dans `nm/README.md` (branche `claude/thai-app-mnw166`).
