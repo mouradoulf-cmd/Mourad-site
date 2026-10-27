@@ -17,7 +17,7 @@ window.NM_LINKS = [
   { space: "site", group: "🇹🇭 🇫🇷 Site web thaïlandais · en français pour moi", items: [
     { name: "Site web thaïlandais · en français", icon: "🇹🇭🇫🇷", path: "nm/th-fr/", note: "Le site que voient les clients thaïs, traduit en français pour toi (copie privée, pas pour les clients)" },
     { name: "Les 2 offres", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#offers", note: "Menu QR 390 ฿/mois, installation gratuite · Site web + menu QR 790 ฿/mois · bouton rendez-vous" },
-    { name: "Avant / après", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#menu-ba", note: "Le vieux menu papier tout en thaï → le QR sur la table → le menu dans le téléphone" },
+    { name: "Avant / après", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#menu-ba", note: "Simple et fixe (sans animation) : le vieux menu papier → le menu dans le téléphone, puis 3 étapes : scanner, choisir la langue, commander" },
     { name: "Prendre rendez-vous", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#book", note: "Jour + heure, puis commerce, adresse, prénom → WhatsApp s'ouvre avec le message tout écrit" },
     { name: "Menu QR d'exemple · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Le menu à montrer, ouvert en français : photos, piment, allergies, « montrer au serveur » en thaï" },
     { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "En visite : taper le nom du resto → QR à scanner → le patron voit un menu à son nom. + pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" },
