@@ -271,3 +271,17 @@ voix/visage d'une vraie personne sans son accord. Détails dans le SKILL.md.
 ## Projets en cours
 
 Lis `PROJETS.md` à la racine au début d'une session : il résume les projets de Mourad (NM Academy, diagnostic Pattaya, rappels, etc.), leurs liens à jour et ce qui reste à faire. Mets-le à jour quand un projet avance.
+
+## Giulivo v2 — refonte premium (`giulivo/`, 2026-10-20)
+
+Version « restaurant à 100 000 € » demandée par Mourad (carte blanche, mêmes couleurs) : nuit toscane,
+vraie carte du restaurant (5 pages transcrites) en feuilles de papier 3D qui se tournent, héros WebGL où la
+nuit tombe sur la vraie terrasse et les vraies lanternes s'allument, logo vectorisé depuis le menu, « roue » 3D
+de toutes les vraies photos de plats juste après le héros, réservation → WhatsApp. Contenu réel uniquement
+(détails dans `giulivo/README.md`). Validé par Mourad (2026-10-21) : c'est le Giulivo montré dans NM Studio
+(liens, aperçu, captures) ; l'ancien reste à la racine seulement pour l'historique. Nouvelle référence de qualité
+pour les sites de restaurant (textes « grande maison », vouvoiement, faits réels uniquement).
+
+**Goût de Mourad (2026-10-20)** : il n'aime pas les objets 3D décoratifs comme le logo extrudé en laiton —
+ne plus en faire. Il veut les **photos des plats mises en avant** (grandes, en premier), avec des
+animations 3D qui servent les photos (ex. la roue des plats), pas des objets 3D à côté.
