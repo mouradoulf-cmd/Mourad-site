@@ -85,5 +85,5 @@ Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, 
 
 ## Supports de table avec QR : offre décidée par Mourad (28 octobre 2026)
 - Support en acrylique A5 vertical (Lazada, ~36 ฿ la pièce, prix promo vu le 27/10) + feuille A5 imprimée papier épais mat, **sans plastification** (le support protège déjà). Coût estimé 46 à 56 ฿ par pièce (impression = estimation à confirmer par devis dans 2 imprimeries de Pattaya).
-- Offre : **3 supports offerts** avec l'installation du menu QR ; supports en plus **100 ฿ la pièce** (marge ~45 à 55 ฿). Le vrai revenu reste l'abonnement 390 ฿/mois.
+- Offre (corrigée par Mourad) : **support avec QR à 100 ฿ la pièce ; pour 3 achetés, le 4ᵉ est offert** (4 supports = 300 ฿, bénéfice ~76 à 116 ฿ sur les 4, soit ~24 ฿ par pièce : marge faible, 120 ฿ conseillé). Le vrai revenu reste l'abonnement 390 ฿/mois.
 - Avant de commander 100 : acheter 10 pièces A5 vertical, tester le scan du QR (plusieurs téléphones, soleil et pénombre).
