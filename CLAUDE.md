@@ -285,3 +285,18 @@ pour les sites de restaurant (textes « grande maison », vouvoiement, faits ré
 **Goût de Mourad (2026-10-20)** : il n'aime pas les objets 3D décoratifs comme le logo extrudé en laiton —
 ne plus en faire. Il veut les **photos des plats mises en avant** (grandes, en premier), avec des
 animations 3D qui servent les photos (ex. la roue des plats), pas des objets 3D à côté.
+
+## Procédure « nouveau client menu QR » (Mourad envoie la fiche + les photos du menu)
+
+Mourad trouve un restaurant, remplit l'onglet « + Nouveau client » de `nm/menus.html` (nom, ville, contact, langues, notes),
+copie la fiche et la colle dans une discussion avec les photos. Étapes à suivre, sans lui reposer les questions déjà dans la fiche :
+1. Transcrire fidèlement le menu depuis les photos, prix en baht. Illisible ou absent = le dire et demander, jamais inventer (ni plats, ni photos, ni avis, ni allergènes).
+2. Sur la branche publiée `claude/thai-app-mnw166` : copier `menus/mae-lek/` (ou `menus/giulivo/`) en `menus/<slug>/`, remplir `menu.js`
+   (seulement les vraies photos fournies), langues demandées (thaï, anglais, chinois, russe, coréen, français, italien).
+3. Ajouter une ligne dans `menus/abonnements.json` (start = aujourd'hui, `paidUntil` = +1 mois, `trial: true`, contact, ville, pas de `demo`).
+4. Tester (Playwright téléphone + ordinateur, toutes les langues, aucune erreur console), pousser, vérifier que le lien répond (Pages met ~10-15 min).
+5. Livrer : le lien du menu + le panneau QR A5 en PDF (page `nm/print/chevalet-qr.html?url=<lien>&name=<nom>` rendue avec Playwright, QR décodé et vérifié),
+   rappeler de scanner le QR avant d'imprimer et de faire relire le thaï par un natif (sa femme).
+6. « X a payé » : repousser `paidUntil` d'un mois et ajouter une ligne dans `payments`.
+Le tableau de bord (privé, `nm/menus.html`) a 3 onglets : Clients, Chiffres, + Nouveau client. Mettre à jour `PROJETS.md` quand un client est ajouté.
+

@@ -72,3 +72,9 @@ Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, 
 - Ajouts (branche `claude/thai-app-mnw166`, dossier `nm/`) : fluidité au toucher ; proposition de la version thaïe une seule fois pour les visiteurs à Bangkok avec un téléphone en anglais ; menu d'exemple v2 (filtres Végétarien / Pas épicé / Épicé / Choix du chef + bouton fixe WhatsApp et LINE) ; chevalet QR A5 à imprimer (`nm/print/chevalet-qr.html`).
 - Pas fait : un « carnet » d'articles pour le référencement, de vrais avis clients (aucun inventé), vrai numéro WhatsApp / vrais liens de paiement à confirmer.
 - Skills installés ce jour-là : hallmark, rea, last30days (aucun lancé pour cette passe).
+
+## Tableau de bord des menus : 3 onglets (27 octobre 2026, soir)
+- `nm/menus.html` : Clients (existant) · Chiffres (abonnés, essais, retards, abandons, revenu, visites du site) · + Nouveau client (4 photos à prendre, fiche à copier dans la discussion, étapes de chaque client sur le téléphone).
+- Procédure complète pour traiter un nouveau client : voir `CLAUDE.md`, section « Procédure nouveau client menu QR ».
+- Idée non faite (attend un « oui ») : compter les scans de chaque menu pour montrer au restaurant « 120 scans ce mois-ci ».
+
