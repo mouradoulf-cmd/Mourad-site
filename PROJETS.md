@@ -45,3 +45,9 @@ Mis à jour le 19 octobre 2026. Ce fichier garde l'état de tous les projets dis
 - `rea` (morluto, MIT) : rétro-ingénierie d'apps ; l'installation de son serveur reste à faire et à approuver (Hopper/Ghidra requis pour le natif).
 - `last30days` (mvanhorn, MIT) : recherche des 30 derniers jours (Reddit, TikTok, YouTube…) ; certaines sources demandent une clé API.
 - Déjà présents : ponytail, superpowers, impeccable, ui-ux-pro-max.
+
+## NM Studio : passe de finitions (27 octobre 2026)
+- Audit du site (téléphone + ordinateur) : déjà solide (page d'accueil ~2,9 Mo, aucune erreur, réponse au toucher rapide). Les conseils « promesse + contact, preuves, zones, un seul champ » étaient déjà en place depuis la passe du 16 octobre.
+- Ajouts (branche `claude/thai-app-mnw166`, dossier `nm/`) : fluidité au toucher ; proposition de la version thaïe une seule fois pour les visiteurs à Bangkok avec un téléphone en anglais ; menu d'exemple v2 (filtres Végétarien / Pas épicé / Épicé / Choix du chef + bouton fixe WhatsApp et LINE) ; chevalet QR A5 à imprimer (`nm/print/chevalet-qr.html`).
+- Pas fait : un « carnet » d'articles pour le référencement, de vrais avis clients (aucun inventé), vrai numéro WhatsApp / vrais liens de paiement à confirmer.
+- Skills installés ce jour-là : hallmark, rea, last30days (aucun lancé pour cette passe).
