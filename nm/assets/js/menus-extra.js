@@ -76,16 +76,15 @@
   function save() { store("nmNewDraft", draft); }
   function list() { return store("nmNewClients") || []; }
   function brief() {
-    var got = STEPS.map(function (s, i) { return draft.steps[i] ? s[0] : null; }).filter(Boolean);
     return ["NOUVEAU CLIENT · MENU QR", "Restaurant : " + (draft.name || "(à préciser)"), "Ville : " + (draft.city || "(à préciser)"), "Contact : " + (draft.contact || "(à préciser)"),
       "Langues : " + (draft.langs.length ? draft.langs.map(function (l) { return LANGS.filter(function (x) { return x[0] === l; })[0][1]; }).join(", ") : "(à préciser)"),
-      "Photos jointes : " + (got.length ? got.join(" · ") : "aucune pour l’instant"), "Notes : " + (draft.notes || "–"), "",
+      "Notes : " + (draft.notes || "–"), "",
       "À faire : transcrire le menu depuis les photos, le traduire, le mettre en ligne (menus/<nom>/), l’ajouter au tableau de bord (1er mois offert, puis 390 ฿/mois), puis me donner le lien et le QR en A5 prêt à imprimer. Prix en baht, rien d’inventé : s’il manque une information, demande-la-moi."].join("\n");
   }
   function renderNew() {
     var root = $("tabNouveau");
-    root.innerHTML = '<section class="sec"><div class="sh"><h2>Nouveau <i>client</i></h2><span>4 photos, 1 fiche</span></div>' +
-      '<p class="calhint" style="margin:0">Coche chaque étape quand c’est fait.</p><div class="steps" id="nSteps"></div>' +
+    root.innerHTML = '<section class="sec"><div class="sh"><h2>Nouveau <i>client</i></h2><span>4 photos</span></div>' +
+      '<p class="calhint" style="margin:0">Photos à prendre. Rien à cocher : tu m’envoies tout dans la discussion, avec le nom du restaurant.</p><div class="steps" id="nSteps"></div>' +
       '<div class="form"><label>NOM DU RESTAURANT<input type="text" id="fName" autocomplete="off"></label><label>VILLE<input type="text" id="fCity" autocomplete="off"></label>' +
       '<label>CONTACT (WHATSAPP, LINE OU TÉLÉPHONE)<input type="text" id="fContact" autocomplete="off" inputmode="text"></label>' +
       '<label>LANGUES DU MENU<div class="chips" id="fLangs"></div></label><label>À NE PAS OUBLIER<textarea id="fNotes" placeholder="ex. plat du jour, plats sans porc, horaires…"></textarea></label></div>' +
@@ -96,7 +95,6 @@
     $("fName").value = draft.name; $("fCity").value = draft.city; $("fContact").value = draft.contact; $("fNotes").value = draft.notes;
     ["fName:name", "fCity:city", "fContact:contact", "fNotes:notes"].forEach(function (p) { var a = p.split(":"); $(a[0]).addEventListener("input", function () { draft[a[1]] = this.value; save(); }); });
     drawSteps(); drawLangs(); drawList();
-    $("nSteps").addEventListener("click", function (e) { var b = e.target.closest("[data-i]"); if (!b) return; var i = +b.dataset.i; draft.steps[i] = !draft.steps[i]; save(); drawSteps(); });
     $("fLangs").addEventListener("click", function (e) { var b = e.target.closest("[data-l]"); if (!b) return; var l = b.dataset.l, i = draft.langs.indexOf(l); if (i > -1) draft.langs.splice(i, 1); else draft.langs.push(l); save(); drawLangs(); });
     $("nCopy").onclick = function () {
       var t = brief();
@@ -107,9 +105,9 @@
     $("nShare").onclick = function () { if (navigator.share) navigator.share({ text: brief() }).catch(function () {}); else $("nCopy").click(); };
     $("nSave").onclick = function () {
       if (!draft.name.trim()) { toast("Écris d’abord le nom du restaurant."); $("fName").focus(); return; }
-      var l = list(); l.unshift({ id: Date.now(), name: draft.name.trim(), city: draft.city.trim(), stage: draft.steps.some(Boolean) ? 1 : 0 }); store("nmNewClients", l);
-      draft = { name: "", city: "", contact: "", notes: "", langs: draft.langs, steps: [false, false, false, false] }; save();
-      $("fName").value = $("fCity").value = $("fContact").value = $("fNotes").value = ""; drawSteps(); drawList(); toast("Ajouté à ta liste."); $("nList").scrollIntoView({ behavior: "smooth", block: "start" });
+      var l = list(); l.unshift({ id: Date.now(), name: draft.name.trim(), city: draft.city.trim(), stage: 0 }); store("nmNewClients", l);
+      draft = { name: "", city: "", contact: "", notes: "", langs: draft.langs, steps: [] }; save();
+      $("fName").value = $("fCity").value = $("fContact").value = $("fNotes").value = ""; drawList(); toast("Ajouté à ta liste."); $("nList").scrollIntoView({ behavior: "smooth", block: "start" });
     };
     $("nList").addEventListener("click", function (e) {
       var b = e.target.closest("[data-a]"); if (!b) return; var l = list(), c = l.filter(function (x) { return String(x.id) === b.dataset.id; })[0]; if (!c) return;
@@ -120,7 +118,7 @@
     });
   }
   function drawSteps() {
-    $("nSteps").innerHTML = STEPS.map(function (s, i) { return '<button type="button" class="step" data-i="' + i + '" aria-pressed="' + !!draft.steps[i] + '"><span class="step__n">' + (draft.steps[i] ? "✓" : i + 1) + "</span><div><b>" + s[0] + "</b><span>" + s[1] + "</span></div></button>"; }).join("");
+    $("nSteps").innerHTML = STEPS.map(function (s, i) { return '<div class="step"><span class="step__n">' + (i + 1) + "</span><div><b>" + s[0] + "</b><span>" + s[1] + "</span></div></div>"; }).join("");
   }
   function drawLangs() { $("fLangs").innerHTML = LANGS.map(function (l) { return '<button type="button" data-l="' + l[0] + '" aria-pressed="' + (draft.langs.indexOf(l[0]) > -1) + '">' + l[1] + "</button>"; }).join(""); }
   function drawList() {

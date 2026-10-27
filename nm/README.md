@@ -223,7 +223,7 @@ peurs → engagements, zones, un seul champ » étaient déjà appliqués (passe
 - **Chiffres** : abonnés qui paient, essais gratuits, à relancer, abandons (= menus en pause), revenu par mois, calculés depuis
   `menus/abonnements.json` (la démo Mae Lek n'est pas comptée) + visiteurs/contacts du site (compteur Abacus, comme `stats.html`).
   Les scans par menu ne sont pas comptés : à activer sur demande de Mourad.
-- **+ Nouveau client** : 4 photos à prendre (menu, enseigne, restaurant, plats s'ils en ont), fiche (nom, ville, contact, langues, notes)
+- **+ Nouveau client** : 4 photos à prendre, en simple rappel (rien à cocher, simplifié à la demande de Mourad : il envoie tout dans la discussion), fiche (nom, ville, contact, langues, notes)
   copiée en un appui pour la coller dans la discussion, liste des clients en cours avec leur étape (Trouvé → Photos envoyées → Menu en cours
   → À relire → QR imprimé → Payé), enregistrée sur le téléphone seulement (localStorage).
 
