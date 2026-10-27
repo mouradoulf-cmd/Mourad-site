@@ -37,7 +37,9 @@ window.NM_LINKS = [
   { space: "site", group: "Menus QR (abonnements)", items: [
     { name: "Mes menus QR", path: "nm/menus.html", note: "Tableau de bord : revenu du mois, à faire, calendrier des paiements, fiche de chaque restaurant, carte QR, rappel WhatsApp" },
     { name: "Kit de vente · démo au nom du resto", path: "nm/kit.html", note: "Nom du restaurant → QR → menu d'exemple à son nom (lien ?shop=…)" },
-    { name: "Menu QR · Mae Lek (exemple thaï)", path: "menus/mae-lek/", note: "Photos HD retouchées · À montrer aux restaurants : prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" }
+    { name: "Menu QR · Mae Lek (exemple thaï)", path: "menus/mae-lek/", note: "Photos HD retouchées · À montrer aux restaurants : prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" },
+    { name: "Menu d'exemple v2 · filtres + bouton Réserver", path: "nm/demo-menu/?line=@nmstudio", note: "Baan Suan (8 langues) : filtres Végétarien / Pas épicé / Épicé / Choix du chef, bouton fixe WhatsApp + LINE en bas. Pour un client : ?wa=66…&line=@sonid" },
+    { name: "Chevalet QR à imprimer (A5)", path: "nm/print/chevalet-qr.html", note: "Nom du resto + lien du menu → panneau de table prêt à imprimer : « สแกนดูเมนู / Scan for the menu » + 6 langues, QR testé" }
   ] },
   { space: "site", group: "Démos clients", items: [
     { name: "SOCAP Paysage", path: "socap-paysage/", note: "Paysagiste (Ain) · démo premium" },

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NM Studio — ป้ายตั้งโต๊ะ QR เมนู (A5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+Thai:wght@500;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+@page { size: A5 portrait; margin: 0; }
+:root { --ink: #14110c; --accent: #a9822f; --paper: #fffdf8; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #e9e6df; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: 'Noto Sans Thai', 'Manrope', system-ui, sans-serif; min-height: 100vh; display: grid; justify-items: center; gap: 18px; padding: 18px 12px 40px; }
+.ctl { width: min(560px, 100%); display: grid; gap: 10px; padding: 16px; border-radius: 16px; background: #fff; box-shadow: 0 6px 24px rgba(0,0,0,.08); font-size: 14px; }
+.ctl h1 { font-size: 16px; }
+.ctl label { display: grid; gap: 4px; font-weight: 700; font-size: 12px; color: #5b5648; }
+.ctl input[type=text], .ctl input[type=url] { font: inherit; font-weight: 500; padding: 10px 12px; border: 1px solid #d6d1c4; border-radius: 10px; }
+.ctl .row { display: flex; gap: 10px; align-items: end; flex-wrap: wrap; }
+.ctl button { font: inherit; font-weight: 800; padding: 12px 18px; border: 0; border-radius: 99px; background: var(--ink); color: #fff; cursor: pointer; }
+.ctl p { font-size: 12px; color: #6a6454; line-height: 1.5; }
+.sheet { width: 148mm; height: 210mm; background: var(--paper); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 11mm 10mm 9mm; box-shadow: 0 10px 40px rgba(0,0,0,.18); }
+.sheet::before { content: ""; position: absolute; inset: 5mm; border: .5mm solid var(--accent); border-radius: 6mm; pointer-events: none; }
+.name { font-family: 'Instrument Serif', Georgia, serif; font-size: 11mm; line-height: 1.05; margin-top: 4mm; }
+.rule { width: 24mm; height: .5mm; background: var(--accent); margin: 4mm auto 5mm; }
+.h-th { font-weight: 800; font-size: 11.5mm; line-height: 1.2; }
+.h-en { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 6.2mm; letter-spacing: .02em; margin-top: 1.5mm; color: var(--accent); }
+.qr { margin: 6mm auto 0; width: 82mm; height: 82mm; padding: 4mm; background: #fff; border-radius: 4mm; box-shadow: 0 0 0 .4mm #14110c14; }
+.qr svg { display: block; width: 100%; height: 100%; }
+.langs { margin-top: 6mm; display: grid; grid-template-columns: repeat(3, auto); gap: 2.2mm 7mm; justify-content: center; font-size: 4mm; font-weight: 700; line-height: 1.25; }
+.langs span { white-space: nowrap; }
+.langs small { display: block; font-size: 2.9mm; font-weight: 500; color: #5b5648; }
+.noapp { margin-top: auto; font-size: 4mm; font-weight: 700; }
+.noapp small { display: block; font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 3.2mm; color: #5b5648; }
+.by { margin-top: 3mm; font-family: 'Manrope', sans-serif; font-size: 2.6mm; letter-spacing: .24em; text-transform: uppercase; color: #8a8372; }
+@media print {
+  html, body { background: none; }
+  body { padding: 0; gap: 0; display: block; }
+  .ctl { display: none; }
+  .sheet { box-shadow: none; margin: 0; break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="ctl">
+  <h1>ป้ายตั้งโต๊ะ QR เมนู · Table sign (A5)</h1>
+  <label>Lien du menu du client (URL)<input type="url" id="u" placeholder="https://..."></label>
+  <div class="row">
+    <label style="flex:1;min-width:180px">Nom du restaurant<input type="text" id="n" placeholder="Baan Suan Thai Kitchen"></label>
+    <label>Couleur<input type="color" id="c" value="#a9822f"></label>
+    <button type="button" id="p">Imprimer / PDF</button>
+  </div>
+  <p>Imprime en A5 (ou 2 par feuille A4), de préférence sur papier épais, mets-le dans un porte-menu ou colle-le sur la table. <b>Scanne toujours le QR avec ton téléphone avant de le laisser au client.</b> Les liens se règlent dans l'adresse : <code>?url=…&amp;name=…</code></p>
+</div>
+
+<div class="sheet" id="sheet">
+  <div class="name" id="nm">Baan Suan Thai Kitchen</div>
+  <div class="rule"></div>
+  <div class="h-th">สแกนดูเมนู</div>
+  <div class="h-en">Scan for the menu</div>
+  <div class="qr" id="qr" role="img" aria-label="QR code"></div>
+  <div class="langs">
+    <span>扫码看菜单<small>中文</small></span>
+    <span>Сканируйте меню<small>Русский</small></span>
+    <span>메뉴 스캔<small>한국어</small></span>
+    <span>मेन्यू स्कैन करें<small>हिन्दी</small></span>
+    <span>Imbas menu<small>Melayu</small></span>
+    <span>Scannez le menu<small>Français</small></span>
+  </div>
+  <div class="noapp">ไม่ต้องโหลดแอป · แค่เปิดกล้อง<small>No app needed. Just open your camera.</small></div>
+  <div class="by">NM Studio · Pattaya</div>
+</div>
+
+<script src="../assets/js/qrcode.min.js"></script>
+<script>
+(function () {
+  var DEF = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/demo-menu/';
+  var q = new URLSearchParams(location.search);
+  var u = document.getElementById('u'), n = document.getElementById('n'), c = document.getElementById('c');
+  u.value = q.get('url') || DEF; n.value = q.get('name') || 'Baan Suan Thai Kitchen';
+  var col = q.get('color'); if (col && /^#?[0-9a-f]{6}$/i.test(col)) c.value = col.charAt(0) === '#' ? col : '#' + col;
+  function matrix(text) {
+    var h = document.createElement('div'); var qr = new QRCode(h, { text: text, width: 64, height: 64, correctLevel: QRCode.CorrectLevel.H });
+    var m = qr._oQRCode, k = m.getModuleCount(), rows = [];
+    for (var r = 0; r < k; r++) { var row = []; for (var cc = 0; cc < k; cc++) row.push(m.isDark(r, cc)); rows.push(row); }
+    return { k: k, d: rows };
+  }
+  function draw() {
+    var text = (u.value || '').trim() || DEF, m = matrix(text), k = m.k, quiet = 2, s = k + quiet * 2, p = '';
+    for (var r = 0; r < k; r++) { var run = -1; for (var cc = 0; cc <= k; cc++) { var on = cc < k && m.d[r][cc]; if (on && run < 0) run = cc; if (!on && run >= 0) { p += 'M' + (run + quiet) + ' ' + (r + quiet) + 'h' + (cc - run) + 'v1h-' + (cc - run) + 'z'; run = -1; } } }
+    document.getElementById('qr').innerHTML = '<svg viewBox="0 0 ' + s + ' ' + s + '" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><rect width="' + s + '" height="' + s + '" fill="#fff"/><path d="' + p + '" fill="#000"/></svg>';
+    document.getElementById('nm').textContent = n.value || '';
+    document.documentElement.style.setProperty('--accent', c.value);
+  }
+  ['input', 'change'].forEach(function (ev) { [u, n, c].forEach(function (el) { el.addEventListener(ev, draw); }); });
+  document.getElementById('p').addEventListener('click', function () { window.print(); });
+  draw();
+})();
+</script>
+</body>
+</html>

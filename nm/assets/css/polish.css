@@ -4,3 +4,10 @@
   .offer-grid .offer__icon { aspect-ratio: auto; margin: .5rem -.35rem .3rem; padding: 1rem 0 .6rem; }
   .offer-grid .offer__icon svg { width: 2.4rem; height: 2.4rem; }
 }
+
+/* Tap feel (2026-10-28): no 300 ms double-tap delay, instant pressed state on cards and buttons. */
+a, button, summary, [role="button"], .offer, .pcard { touch-action: manipulation; }
+@media (hover: none) {
+  .offer:active, .pcard:active { transform: scale(.985); transition: transform .08s ease-out; }
+  a:active, button:active { transition-duration: .08s; }
+}

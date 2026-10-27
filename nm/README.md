@@ -199,3 +199,19 @@ Le reste du site est inchangé.
 - Sur tactile : plus de bordure dorée tournante sur la réservation ni de reflet animé sur le titre du film
   (repeints à chaque image). Animations GSAP de l'appareil du hero sautées quand il est caché.
 - Giulivo : la vitrine pointe vers `giulivo/` (nouvelle version), captures `assets/img/work/giulivo-*` refaites.
+
+### 2026-10-27 · Finitions mobile + menu QR v2 (méthode : audit Playwright + règles « le téléphone doit sonner » ; aucun skill de design lancé)
+
+Audit du site (téléphone et ordinateur, `?lang` x8) : poids de la page d'accueil ~2,9 Mo sur téléphone, aucun débordement,
+aucune erreur, réponse au toucher < 70 ms même avec le processeur ralenti 4x. Les conseils « promesse + contact, preuves,
+peurs → engagements, zones, un seul champ » étaient déjà appliqués (passe du 2026-10-16). Ajouts :
+
+- **Fluidité au toucher** (`polish.css`) : `touch-action: manipulation` (plus de délai de double-tap), état « enfoncé » instantané
+  sur les cartes d'offres (tactile uniquement).
+- **Proposition de la version thaïe** (`nm-thai-hint.js`, pages EN racine) : une seule fois, seulement si le fuseau est
+  Asia/Bangkok ET le téléphone en anglais. Jamais pour un téléphone en français/thaï ; ne force rien, disparaît après 15 s.
+- **Menu d'exemple v2** (`demo-menu/`) : filtres Tout / Choix du chef / Végétarien / Pas épicé / Épicé (8 langues), bouton fixe
+  « Réserver / commander » WhatsApp + LINE (`?wa=66…&line=@id`, masqué dans l'aperçu intégré et avec `?bar=0`), contraste des
+  boutons corrigé sur les thèmes sombres (texte foncé sur l'or).
+- **Chevalet QR A5** (`print/chevalet-qr.html`) : panneau de table prêt à imprimer, QR décodé et vérifié, 7 langues.
+- Pas touché : prix, textes de vente, moteur « La carta » des vrais menus (`menus/assets/menu.js`, déjà complet : photos, allergies, « montrer au serveur »).

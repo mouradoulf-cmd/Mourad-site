@@ -165,13 +165,29 @@
   .cta { margin-top: 22px; padding: 18px; text-align: center; border-radius: 22px; background: linear-gradient(135deg, rgba(var(--gold-rgb),.14), var(--glass)); box-shadow: inset 0 0 0 1px rgba(var(--gold-rgb),.35); }
   .cta b { display: block; font-size: 15px; }
   .cta span { display: block; margin-top: 3px; font-size: 12.5px; color: var(--dim); }
-  .cta a { display: inline-block; margin-top: 12px; padding: 11px 22px; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 14px; color: var(--cta-ink); background: linear-gradient(90deg, var(--accent), var(--accent2)); box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+  .cta a { display: inline-block; margin-top: 12px; padding: 11px 22px; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 14px; color: var(--btn-ink); background: linear-gradient(90deg, var(--accent), var(--accent2)); box-shadow: 0 6px 18px rgba(0,0,0,.2); }
   .themes { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
   .themes small { display: block; font-size: 12px; color: var(--dim); margin-bottom: 10px; }
   .sw { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
   .sw button { width: 34px; height: 34px; border-radius: 50%; border: 0; cursor: pointer; box-shadow: 0 0 0 2px var(--line), inset 0 0 0 2px rgba(255,255,255,.35); transition: transform .2s; }
   .sw button:active { transform: scale(.92); }
   .sw button[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--gold), 0 0 0 5px var(--bg), 0 0 0 7px var(--gold); }
+
+
+  /* ---------- filters + sticky action bar (menu v2) ---------- */
+  button, a, summary { touch-action: manipulation; }
+  .flt { margin: 16px auto 4px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .flt button { border: 0; cursor: pointer; font: inherit; font-weight: 600; font-size: 12.5px; color: var(--dim); background: var(--glass); padding: 8px 14px; min-height: 36px; border-radius: 99px; box-shadow: inset 0 0 0 1px var(--line); transition: transform .12s, background .2s, color .2s; }
+  .flt button:active { transform: scale(.94); }
+  .flt button[aria-pressed="true"] { color: var(--btn-ink); background: linear-gradient(135deg, var(--gold2), var(--gold)); box-shadow: 0 4px 14px rgba(var(--gold-rgb),.3); }
+  .is-off { display: none !important; }
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: flex; justify-content: center; gap: 10px; padding: 22px 16px calc(12px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(180deg, transparent, var(--tabs-b) 52%); pointer-events: none; }
+  .bar a { pointer-events: auto; flex: 1.7; max-width: 260px; white-space: nowrap; padding: 0 18px; min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 14.5px; border-radius: 99px; color: var(--btn-ink); background: linear-gradient(135deg, var(--gold2), var(--gold)); box-shadow: 0 10px 28px rgba(0,0,0,.28), 0 4px 14px rgba(var(--gold-rgb),.3); transition: transform .12s; }
+  .bar a:active { transform: scale(.97); }
+  .bar a.line { flex: .8; max-width: 120px; background: #06c755; color: #fff; box-shadow: 0 10px 28px rgba(0,0,0,.28); }
+  .bar svg { width: 20px; height: 20px; flex: none; }
+  body.hasbar .wrap { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)); }
+  html.embed .flt, html.embed .bar { display: none; }
 
   @media (prefers-reduced-motion: reduce) {
     .blob, .lantern, .steam path { animation: none !important; }
@@ -200,12 +216,15 @@
     <div class="langs" id="langs" role="group" aria-label="Language"></div>
   </header>
 
+  <div class="flt" id="flt" role="group" aria-label="Filter"></div>
+
   <nav class="tabs" aria-label="Menu categories"><div class="tabs__row" id="tabs"></div></nav>
   <main id="menu"></main>
 
   <p class="legend" id="legend"></p>
   <div class="cta" id="cta"></div>
 </div>
+<div class="bar" id="bar"></div>
 
 <div class="scrim" id="scrim"></div>
 <aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Dish details"></aside>
@@ -326,6 +345,44 @@
   function chili(n) { var s = ''; for (var i = 0; i < n; i++) s += CHILI; return n ? '<span class="chili" aria-label="' + UI[lang].spice + ' ' + n + '/3">' + s + '</span>' : ''; }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 
+  /* ================== FILTERS + ACTION BAR (menu v2) ================== */
+  var FLT = {
+    en: ['All', "Chef's picks", 'Vegetarian', 'Not spicy', 'Spicy', 'Filter'], th: ['ทั้งหมด', 'เมนูแนะนำ', 'มังสวิรัติ', 'ไม่เผ็ด', 'เผ็ด', 'กรองเมนู'],
+    zh: ['全部', '主厨推荐', '素食', '不辣', '辣', '筛选'], ms: ['Semua', 'Pilihan chef', 'Vegetarian', 'Tidak pedas', 'Pedas', 'Tapis'],
+    hi: ['सभी', 'शेफ की पसंद', 'शाकाहारी', 'तीखा नहीं', 'तीखा', 'फ़िल्टर'], ru: ['Все', 'Выбор шефа', 'Вегетарианское', 'Не острое', 'Острое', 'Фильтр'],
+    ko: ['전체', '셰프 추천', '채식', '안 매운', '매운', '필터'], fr: ['Tout', 'Choix du chef', 'Végétarien', 'Pas épicé', 'Épicé', 'Filtrer']
+  };
+  var BOOK = { en: 'Book / order', th: 'จอง / สั่งอาหาร', zh: '订位 / 点餐', ms: 'Tempah / pesan', hi: 'बुक / ऑर्डर करें', ru: 'Бронь / заказ', ko: '예약 / 주문', fr: 'Réserver / commander' };
+  var FKEYS = ['all', 'pick', 'veg', 'mild', 'hot'], flt = 'all';
+  var QP = new URLSearchParams(location.search);
+  function waUrl() { var n = (QP.get('wa') || '').replace(/\D/g, ''); return n ? 'https://wa.me/' + n : WA; }
+  function lineUrl() { var v = (QP.get('line') || '').trim(); if (!v) return ''; if (/^https?:\/\//i.test(v)) return v; return v.charAt(0) === '@' ? 'https://line.me/R/ti/p/' + encodeURIComponent(v) : 'https://line.me/ti/p/~' + encodeURIComponent(v.replace(/^~/, '')); }
+  var WAICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.9 9.9 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 016.99 2.9 9.82 9.82 0 012.89 6.99c0 5.45-4.44 9.88-9.89 9.88zM20.52 3.45A11.8 11.8 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.17-3.48-8.45z"/></svg>';
+  function renderBar() {
+    var bar = document.getElementById('bar');
+    if (QP.get('embed') || QP.get('bar') === '0') { bar.innerHTML = ''; document.body.classList.remove('hasbar'); return; }
+    var l = lineUrl();
+    bar.innerHTML = '<a href="' + waUrl() + '" target="_blank" rel="noopener">' + WAICON + '<span>' + BOOK[lang] + '</span></a>' + (l ? '<a class="line" href="' + l + '" target="_blank" rel="noopener"><span>LINE</span></a>' : '');
+    document.body.classList.add('hasbar');
+  }
+  function buildFilters() {
+    var f = FLT[lang];
+    document.getElementById('flt').setAttribute('aria-label', f[5]);
+    document.getElementById('flt').innerHTML = FKEYS.map(function (k, i) { return '<button data-f="' + k + '" aria-pressed="' + (k === flt) + '">' + f[i] + '</button>'; }).join('');
+  }
+  function applyFilter() {
+    [].forEach.call(document.querySelectorAll('.dish'), function (el) {
+      var v = el.dataset.v === '1', s = +el.dataset.s, p = el.dataset.p === '1';
+      var on = flt === 'all' || (flt === 'pick' && p) || (flt === 'veg' && v) || (flt === 'mild' && s === 0) || (flt === 'hot' && s >= 2);
+      el.classList.toggle('is-off', !on);
+    });
+    ORDER.forEach(function (c) {
+      var sec = document.getElementById('c-' + c), any = sec.querySelectorAll('.dish:not(.is-off)').length > 0;
+      sec.classList.toggle('is-off', !any);
+      var tab = document.querySelector('.tab[data-c="' + c + '"]'); if (tab) tab.classList.toggle('is-off', !any);
+    });
+  }
+
   function render() {
     var T = UI[lang];
     document.documentElement.lang = lang;
@@ -337,7 +394,7 @@
       h += '<section class="cat" id="c-' + c + '"><h2>' + T.cat[c] + (lang !== 'en' ? '<small>' + UI.en.cat[c] + '</small>' : '') + '</h2>';
       D.forEach(function (d, i) {
         if (d.c !== c) return;
-        h += '<button class="dish" data-i="' + i + '"><div class="art">' + ART[d.a]() + '</div><div class="info"><div class="nm">' + esc(d.n[lang]) + '</div>' +
+        h += '<button class="dish" data-i="' + i + '" data-v="' + (d.veg ? 1 : 0) + '" data-s="' + (d.s || 0) + '" data-p="' + (d.pick ? 1 : 0) + '"><div class="art">' + ART[d.a]() + '</div><div class="info"><div class="nm">' + esc(d.n[lang]) + '</div>' +
           (lang !== 'th' ? '<div class="nm2">' + esc(d.n.th) + '</div>' : '') + '<div class="ds">' + esc(d.d[lang]) + '</div>' +
           '<div class="meta"><span class="price"><span>฿</span>' + d.p + '</span>' + chili(d.s) + (d.veg ? '<span class="chip chip--veg">' + T.veg + '</span>' : '') + (d.pick ? '<span class="chip chip--pick">' + T.chef + '</span>' : '') + '</div></div></button>';
       });
@@ -347,6 +404,7 @@
     document.getElementById('menu').innerHTML = h;
     document.getElementById('legend').innerHTML = chili(1) + chili(2).replace(/<span class="chili"/, '<span class="chili"') + ' ' + T.spice + ' · ' + T.legend;
     document.getElementById('cta').innerHTML = '<b>' + T.cta1 + '</b><span>' + T.cta2 + '</span><a href="' + WA + '" target="_blank" rel="noopener">' + T.cta3 + '</a><div class="themes"><small>' + T.colors + '</small><div class="sw" id="sw">' + THEMES.map(function (t) { return '<button data-t="' + t[0] + '" aria-label="' + t[0] + '" aria-pressed="false" style="background:linear-gradient(135deg,' + t[1] + ',' + t[2] + ')"></button>'; }).join('') + '</div></div>';
+    buildFilters(); applyFilter(); renderBar();
     markTheme();
     [].forEach.call(document.querySelectorAll('#langs button'), function (b) { b.setAttribute('aria-pressed', b.dataset.l === lang ? 'true' : 'false'); });
     observe();
@@ -367,7 +425,7 @@
     if (spy) spy.disconnect();
     spy = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) mark(e.target.id.slice(2)); }); }, { rootMargin: '-30% 0px -60% 0px' });
     [].forEach.call(document.querySelectorAll('section.cat'), function (s) { spy.observe(s); });
-    mark(ORDER[0]);
+    mark((ORDER.filter(function (c) { return !document.getElementById('c-' + c).classList.contains('is-off'); })[0]) || ORDER[0]);
   }
   function mark(c) {
     [].forEach.call(document.querySelectorAll('.tab'), function (t) {
@@ -392,6 +450,7 @@
   document.addEventListener('click', function (e) {
     var t = e.target.closest('.dish'); if (t) { openSheet(+t.dataset.i); return; }
     var tb = e.target.closest('.tab'); if (tb) { document.getElementById('c-' + tb.dataset.c).scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    var fb = e.target.closest('#flt button'); if (fb) { flt = fb.dataset.f; buildFilters(); applyFilter(); observe(); var fl = document.getElementById('flt'); if (fl.getBoundingClientRect().top < 0) fl.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     var sb = e.target.closest('#sw button'); if (sb) { applyTheme(sb.dataset.t); return; }
     var lb = e.target.closest('#langs button'); if (lb) { lang = lb.dataset.l; try { localStorage.setItem('nm_menu_lang', lang); } catch (x) {} render(); }
   });
