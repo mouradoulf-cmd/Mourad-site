@@ -215,3 +215,15 @@ peurs → engagements, zones, un seul champ » étaient déjà appliqués (passe
   boutons corrigé sur les thèmes sombres (texte foncé sur l'or).
 - **Chevalet QR A5** (`print/chevalet-qr.html`) : panneau de table prêt à imprimer, QR décodé et vérifié, 7 langues.
 - Pas touché : prix, textes de vente, moteur « La carta » des vrais menus (`menus/assets/menu.js`, déjà complet : photos, allergies, « montrer au serveur »).
+
+### 2026-10-27 (soir) · Tableau de bord des menus : onglets Chiffres et + Nouveau client
+
+`menus.html` a maintenant 3 onglets (`assets/js/menus-extra.js`, aucune donnée client en dur) :
+- **Clients** : l'écran existant, inchangé.
+- **Chiffres** : abonnés qui paient, essais gratuits, à relancer, abandons (= menus en pause), revenu par mois, calculés depuis
+  `menus/abonnements.json` (la démo Mae Lek n'est pas comptée) + visiteurs/contacts du site (compteur Abacus, comme `stats.html`).
+  Les scans par menu ne sont pas comptés : à activer sur demande de Mourad.
+- **+ Nouveau client** : 4 photos à prendre (menu, enseigne, restaurant, plats s'ils en ont), fiche (nom, ville, contact, langues, notes)
+  copiée en un appui pour la coller dans la discussion, liste des clients en cours avec leur étape (Trouvé → Photos envoyées → Menu en cours
+  → À relire → QR imprimé → Payé), enregistrée sur le téléphone seulement (localStorage).
+

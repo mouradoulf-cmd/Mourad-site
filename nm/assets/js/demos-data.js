@@ -35,7 +35,7 @@ window.NM_LINKS = [
     { name: "Offres Thaïlande · ไทย", path: "nm/th/#offers", note: "Menu QR 390 ฿/mois (installation gratuite) · Site web + menu QR 790 ฿/mois · bouton rendez-vous. Copie en français : nm/th-fr/#offers" }
   ] },
   { space: "site", group: "Menus QR (abonnements)", items: [
-    { name: "Mes menus QR", path: "nm/menus.html", note: "Tableau de bord : revenu du mois, à faire, calendrier des paiements, fiche de chaque restaurant, carte QR, rappel WhatsApp" },
+    { name: "Mes menus QR", path: "nm/menus.html", note: "3 onglets : Clients (qui a payé, QR, rappel WhatsApp) · Chiffres (abonnés, essais, abandons, visites) · + Nouveau client (4 photos à prendre, fiche à copier dans la discussion, étapes de chaque client)" },
     { name: "Kit de vente · démo au nom du resto", path: "nm/kit.html", note: "Nom du restaurant → QR → menu d'exemple à son nom (lien ?shop=…)" },
     { name: "Menu QR · Mae Lek (exemple thaï)", path: "menus/mae-lek/", note: "Photos HD retouchées · À montrer aux restaurants : prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" },
     { name: "Menu d'exemple v2 · filtres + bouton Réserver", path: "nm/demo-menu/", note: "Baan Suan (8 langues) : filtres Végétarien / Pas épicé / Épicé / Choix du chef, bouton fixe WhatsApp + LINE en bas. Pour un client : ?wa=66…&line=@sonid" },

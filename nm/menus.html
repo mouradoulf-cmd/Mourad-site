@@ -184,6 +184,47 @@ body.sample .banner{display:grid;justify-items:start}
 .print .by{font-size:.6rem;color:#8b7d68;letter-spacing:.2em}
 .toast{position:fixed;left:50%;bottom:calc(var(--sb) + 24px);z-index:60;transform:translate(-50%,20px);opacity:0;padding:11px 18px;border-radius:99px;background:var(--fg);color:#08100c;font-weight:700;font-size:.86rem;transition:all .4s var(--ease);pointer-events:none}
 .toast.on{transform:translate(-50%,0);opacity:1}
+
+/* tabs (Clients / Chiffres / Nouveau client) */
+.tabs{position:sticky;top:calc(var(--st) + 6px);z-index:30;display:flex;gap:4px;margin:16px 0 4px;padding:4px;border-radius:99px;background:rgba(10,16,13,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--edge)}
+.tabs button{flex:1;min-height:44px;padding:0 8px;border-radius:99px;font-size:.84rem;font-weight:700;color:var(--mute);white-space:nowrap;transition:background .15s,color .15s}
+.tabs button:active{transform:scale(.97)}
+.tabs button[aria-selected="true"]{background:var(--fg);color:#08100c}
+.tabpane[hidden]{display:none}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.kpi{padding:16px;border-radius:20px;background:var(--card);border:1px solid color-mix(in srgb,var(--c,var(--edge)) 40%,var(--edge))}
+.kpi small{display:block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.kpi b{display:block;margin-top:6px;font:400 2.3rem/1 var(--serif);color:var(--c,var(--fg));font-variant-numeric:tabular-nums}
+.kpi span{display:block;margin-top:4px;font-size:.78rem;color:var(--mute)}
+.kpi.wide{grid-column:1/-1}
+.note2{margin-top:14px;padding:14px 16px;border-radius:16px;background:var(--card);border:1px dashed var(--edge);font-size:.84rem;color:var(--mute);line-height:1.5}
+.note2 b{color:var(--fg)}
+.linkbtn{display:inline-flex;align-items:center;min-height:44px;margin-top:10px;padding:0 16px;border-radius:99px;border:1px solid var(--edge);font-weight:700;font-size:.84rem;background:var(--card)}
+.steps{display:grid;gap:10px;margin-top:14px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;width:100%;text-align:left;padding:14px;border-radius:20px;background:var(--card);border:1px solid var(--edge)}
+.step__n{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:400 1.3rem/1 var(--serif);background:rgba(255,255,255,.07);border:1px solid var(--edge)}
+.step b{display:block;font-size:.98rem}.step div span{display:block;margin-top:3px;font-size:.82rem;color:var(--mute);line-height:1.45}
+.step[aria-pressed="true"]{border-color:color-mix(in srgb,var(--ok) 55%,var(--edge));background:color-mix(in srgb,var(--ok) 9%,var(--card))}
+.step[aria-pressed="true"] .step__n{background:var(--ok);color:#06140c;border-color:var(--ok)}
+.form{display:grid;gap:12px;margin-top:14px}
+.form label{display:grid;gap:6px;font-size:.74rem;font-weight:700;letter-spacing:.06em;color:var(--mute)}
+.form input[type=text],.form textarea{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--edge);background:var(--card);color:var(--fg);font:inherit;font-size:16px;font-weight:500}
+.form textarea{min-height:84px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:40px;padding:0 14px;border-radius:99px;border:1px solid var(--edge);background:var(--card);font-size:.84rem;font-weight:600;color:var(--mute)}
+.chips button[aria-pressed="true"]{background:var(--fg);color:#08100c;border-color:var(--fg)}
+.acts{display:grid;gap:8px;margin-top:6px}
+.acts .bb{width:100%}
+.nc{display:grid;gap:10px;margin-top:12px}
+.ncard{padding:14px;border-radius:20px;background:var(--card);border:1px solid var(--edge)}
+.ncard h3{font:400 1.4rem/1.1 var(--serif)}.ncard small{color:var(--faint);font-size:.78rem}
+.stg{display:flex;gap:4px;margin-top:12px}
+.stg i{flex:1;height:6px;border-radius:99px;background:rgba(255,255,255,.1)}
+.stg i.on{background:var(--ok)}
+.ncard .now{margin-top:8px;font-weight:700;font-size:.9rem}
+.ncard .row2{display:flex;gap:8px;margin-top:12px}
+.ncard .row2 button{flex:1;min-height:44px;border-radius:14px;border:1px solid var(--edge);font-weight:700;font-size:.82rem;background:rgba(255,255,255,.05)}
+.ncard .row2 button.go{background:var(--fg);color:#08100c;border-color:var(--fg);flex:2}
 @media print{
  body{background:#fff}body>*:not(.sheet){display:none!important}
  .sheet{position:static;transform:none;box-shadow:none;background:#fff;max-height:none;border:0}
@@ -201,6 +242,13 @@ body.sample .banner{display:grid;justify-items:start}
     <span class="brand">NM · Menus QR</span>
     <button class="rf" id="rf" type="button" aria-label="Actualiser"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg></button>
   </div>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Sections">
+    <button type="button" role="tab" data-tab="clients" aria-selected="true">Clients</button>
+    <button type="button" role="tab" data-tab="chiffres" aria-selected="false">Chiffres</button>
+    <button type="button" role="tab" data-tab="nouveau" aria-selected="false">+ Nouveau client</button>
+  </nav>
+
+<div id="tabClients" class="tabpane" role="tabpanel">
   <p class="banner" id="banner"><span>Exemples inventés, juste pour voir à quoi ça ressemble avec plusieurs restaurants.</span><button type="button" id="real">Revenir à mes vrais restaurants</button></p>
 
   <section class="hero">
@@ -224,6 +272,9 @@ body.sample .banner{display:grid;justify-items:start}
 
   <div class="how in" style="--d:.55s"><b>Pour changer quelque chose</b>, écris-le-moi dans la discussion : <code>« Mae Lek a payé »</code>, <code>« ajoute le restaurant X »</code> + photos de son menu, <code>« change le prix du pad thaï à 80 »</code>, <code>« mets X en pause »</code>. Le QR code imprimé ne change jamais.</div>
   <div class="demo"><button type="button" id="sample">Voir un exemple avec plusieurs restaurants</button></div>
+</div>
+<div id="tabChiffres" class="tabpane" role="tabpanel" hidden></div>
+<div id="tabNouveau" class="tabpane" role="tabpanel" hidden></div>
 </div>
 
 <div class="scrim" id="scrim"></div>
@@ -402,5 +453,6 @@ body.sample .banner{display:grid;justify-items:start}
   document.addEventListener("visibilitychange", function () { if (!document.hidden && real && !sample) load(); });
 })();
 </script>
+<script src="assets/js/menus-extra.js?v=20261028a"></script>
 </body>
 </html>
