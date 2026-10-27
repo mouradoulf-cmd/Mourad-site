@@ -82,3 +82,8 @@ Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, 
 ## « Mon espace » → Site web : 5 onglets (27 octobre 2026, nuit)
 - Site thaï (traduit en français en premier) · Menus QR (état en direct : en ligne / à payer bientôt / hors ligne / revenu) · NM Studio (site dans toutes les langues + outils) · Démos · Modèles. Barre d'onglets collante, en-tête compact : plus besoin de tout faire défiler.
 - Détails techniques dans `nm/README.md` (branche `claude/thai-app-mnw166`).
+
+## Supports de table avec QR : offre décidée par Mourad (28 octobre 2026)
+- Support en acrylique A5 vertical (Lazada, ~36 ฿ la pièce, prix promo vu le 27/10) + feuille A5 imprimée papier épais mat, **sans plastification** (le support protège déjà). Coût estimé 46 à 56 ฿ par pièce (impression = estimation à confirmer par devis dans 2 imprimeries de Pattaya).
+- Offre : **3 supports offerts** avec l'installation du menu QR ; supports en plus **100 ฿ la pièce** (marge ~45 à 55 ฿). Le vrai revenu reste l'abonnement 390 ฿/mois.
+- Avant de commander 100 : acheter 10 pièces A5 vertical, tester le scan du QR (plusieurs téléphones, soleil et pénombre).
