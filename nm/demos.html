@@ -230,6 +230,21 @@ button{font:inherit;color:inherit}
 .seg button[aria-selected="true"]{color:#120d05}
 .seg button em{font-style:normal;opacity:.7;margin-left:.25rem;font-size:.75rem}
 .pane{display:none}.pane.on{display:block;animation:paneIn .5s var(--ease)}
+/* Site web hub: 5 sections + live menu status */
+.hero--c{margin-top:.9rem;padding:.95rem 1.1rem;border-radius:24px;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.hero--c .orb{width:42px;height:42px;margin:0}.hero--c h1{font-size:1.45rem;line-height:1.05}.hero--c h1 .serif{display:inline;margin-left:.3rem;font-size:1em}
+.hero--c .hstat:not(:last-child){display:none}.hero--c p{display:none}.hero--c .hstats{margin-top:0;flex:1 1 100%}.hero--c::before{opacity:.22}
+.seg.s5{position:sticky;top:.55rem;z-index:20;margin-top:.9rem;background:rgba(8,16,13,.95)}
+.seg.s5{grid-template-columns:repeat(5,1fr)}.seg.s5 .seg__pill{width:calc((100% - .6rem)/5)}.seg.s5 button{font-size:.7rem;padding:.72rem .1rem;line-height:1.15}
+.mdot{display:block;width:.85rem;height:.85rem;border-radius:50%;background:var(--s);box-shadow:0 0 0 4px color-mix(in srgb,var(--s) 22%,transparent)}
+.mxk{grid-template-columns:repeat(2,minmax(0,1fr))}.mxk .kpi{cursor:default}.mxk .kpi:active{transform:none}
+.mxload{grid-column:1/-1;color:var(--mute);font-size:.84rem;padding:.4rem 0}
+.mxa{display:grid;gap:.55rem;margin:1rem 0 1.4rem}
+.mxb{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:16px;font-weight:700;font-size:.9rem;background:var(--glass);box-shadow:inset 0 0 0 1px var(--edge);transition:transform .2s var(--ease)}.mxb:active{transform:scale(.97)}.mxb.main{background:var(--fg);color:#08100c}
+.tagx{font-style:normal;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);border:1px solid var(--edge);padding:.1rem .4rem;border-radius:99px;margin-left:.35rem;vertical-align:middle}
+.mxn{margin:.2rem 0 .8rem;padding:.9rem 1rem;border-radius:18px;background:var(--glass);box-shadow:inset 0 0 0 1px var(--edge);font-size:.84rem;color:var(--mute);line-height:1.5}.mxn b{color:var(--fg)}
+.mxl{margin-top:.2rem}
+
 @keyframes paneIn{from{opacity:0;transform:translateY(10px)}}
 /* featured link */
 .feat{position:relative;display:block;margin-bottom:.7rem;padding:1.2rem;border-radius:26px;overflow:hidden;isolation:isolate;background:var(--glass);box-shadow:inset 0 0 0 1px var(--edge),0 30px 60px -40px var(--c);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px)}
@@ -398,7 +413,7 @@ button{font:inherit;color:inherit}
 
   function heroHtml(sp) {
     var c = SPACES[sp], up = window.NM_UPDATED ? new Date(window.NM_UPDATED + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) : "";
-    return '<section class="hero rise" style="--d:0"><span class="orb" aria-hidden="true">' + ORB[sp] + "</span><h1>" + esc(c.title) + '<span class="serif">' + esc(c.serif) + "</span></h1><p>" + esc(c.lead) + "</p>" +
+    return '<section class="hero' + (sp === "site" ? " hero--c" : "") + ' rise" style="--d:0"><span class="orb" aria-hidden="true">' + ORB[sp] + "</span><h1>" + esc(c.title) + '<span class="serif">' + esc(c.serif) + "</span></h1><p>" + esc(c.lead) + "</p>" +
       '<div class="hstats">' + stats(sp).map(function (x) { return '<span class="hstat">' + x + "</span>"; }).join("") + (up ? '<span class="hstat"><i></i>À jour · ' + esc(up) + "</span>" : "") + "</div></section>";
   }
   function stats(sp) {
@@ -410,9 +425,9 @@ button{font:inherit;color:inherit}
   }
   function shortUrl(u) { return u.replace(/^https?:\/\//, "").replace(/^mouradoulf-cmd\.github\.io\/Mourad-site/, "…"); }
   var CHEV = '<svg class="row__go" viewBox="0 0 20 20" fill="none"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  function linksHtml(sp, start) {
+  function linksHtml(sp, start, pred) {
     var n = start || 0, out = "";
-    links.filter(function (g) { return (g.space || "site") === sp; }).forEach(function (g) {
+    links.filter(function (g) { return (g.space || "site") === sp && (!pred || pred(g)); }).forEach(function (g) {
       out += '<div class="lsec"><p class="ghead">' + esc(g.group) + "<span>" + g.items.length + "</span></p>";
       var rest = g.items, first = g.items[0];
       if (first && first.note) {
@@ -435,19 +450,59 @@ button{font:inherit;color:inherit}
     });
     return out;
   }
+  /* Site web: which of the 5 sections a link group belongs to (by its name, so new groups land in the right place) */
+  function paneOf(g) { var n = norm(g.group); if (/menus? qr|abonnement/.test(n)) return "menus"; if (/thailandais/.test(n)) return "thai"; if (/demos? client/.test(n)) return "demos"; return "nm"; }
+  function inPane(id) { return function (g) { return paneOf(g) === id; }; }
+  var MC = { ok: "#4ade80", warn: "#f6c453", bad: "#f87171" };
+  function mState(r, grace, t) {
+    var p = String(r.paidUntil).split("-"), end = new Date(+p[0], p[1] - 1, +p[2]), days = Math.round((end - t) / 864e5), f = end.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+    if (r.pause) return { k: "bad", on: false, line: "Hors ligne · mis en pause" };
+    if (days < -grace) return { k: "bad", on: false, line: "Hors ligne · impayé depuis le " + f };
+    if (days < 0) return { k: "warn", on: true, line: "En ligne · en retard, bloqué dans " + (grace + days + 1) + " j" };
+    if (days <= 7) return { k: "warn", on: true, line: "En ligne · " + (r.trial ? "fin d’essai le " : "à payer le ") + f };
+    return { k: "ok", on: true, line: "En ligne · " + (r.trial ? "essai gratuit" : "payé") + " jusqu’au " + f };
+  }
+  function menusHtml() {
+    return '<div class="rise" style="--d:0"><div class="kpis mxk" id="mxK"><div class="mxload">Chargement des menus…</div></div>' +
+      '<p class="ghead">Mes restaurants<span id="mxMaj"></span></p><div class="glist mxl" id="mxL"></div>' +
+      '<div class="mxa"><a class="mxb main" href="' + esc(href("nm/menus.html")) + '" target="_blank" rel="noopener">Ouvrir le tableau de bord complet</a>' +
+      '<a class="mxb" href="' + esc(href("nm/menus.html#nouveau")) + '" target="_blank" rel="noopener">+ Nouveau client</a></div></div>';
+  }
+  function loadMenus() {
+    var K = $("mxK"), L = $("mxL"); if (!K) return;
+    fetch(ROOT + "menus/abonnements.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+      var grace = d.graceDays || 4, price = d.monthly || 390, t = new Date(), ord = { bad: 0, warn: 1, ok: 2 }; t.setHours(0, 0, 0, 0);
+      var rs = d.restaurants.map(function (r) { return { r: r, s: mState(r, grace, t) }; });
+      var real = rs.filter(function (x) { return !x.r.demo; });
+      var on = real.filter(function (x) { return x.s.on; }).length, soon = real.filter(function (x) { return x.s.k === "warn"; }).length, off = real.filter(function (x) { return !x.s.on; }).length;
+      var paying = real.filter(function (x) { return x.s.on && !x.r.trial; }).length;
+      var kp = function (n, label, c) { return '<div class="kpi" style="--k:' + c + '"><b>' + n + "</b><span>" + label + "</span></div>"; };
+      K.innerHTML = kp(on, "menus en ligne", MC.ok) + kp(soon, "à payer bientôt", MC.warn) + kp(off, "hors ligne", MC.bad) + kp((paying * price).toLocaleString("fr-FR") + " ฿", "revenu par mois", "#e2c07c");
+      rs.sort(function (a, b) { return (!!a.r.demo - !!b.r.demo) || (ord[a.s.k] - ord[b.s.k]) || a.r.name.localeCompare(b.r.name, "fr"); });
+      L.innerHTML = rs.map(function (x) {
+        var m = ROOT + "menus/" + x.r.slug + "/";
+        return '<a class="row" href="' + esc(href("menus/" + x.r.slug + "/")) + '" target="_blank" rel="noopener"><span class="row__ic" aria-hidden="true"><i class="mdot" style="--s:' + MC[x.s.k] + '"></i></span><span class="row__t"><b>' + esc(x.r.name) + (x.r.demo ? '<em class="tagx">Exemple</em>' : "") + "</b><small>" + esc(x.r.city ? x.r.city + " · " : "") + esc(x.s.line) + "</small></span>" + CHEV + "</a>";
+      }).join("");
+      if (!real.length) L.insertAdjacentHTML("beforebegin", '<p class="mxn"><b>Aucun vrai client pour l’instant.</b> Ton premier restaurant apparaîtra ici avec sa couleur : vert = en ligne et payé, orange = bientôt à payer, rouge = hors ligne. Pour l’ajouter : « + Nouveau client », puis envoie-moi les photos du menu.</p>');
+      $("mxMaj").textContent = "à jour " + new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    }).catch(function () { K.innerHTML = '<div class="mxload">Impossible de lire les abonnements pour l’instant. Appuie sur actualiser.</div>'; });
+  }
   function renderSpace(sp) {
     cur = sp; var c = SPACES[sp], vc = $("vc");
     document.documentElement.style.setProperty("--c", c.color);
     $("vTitle").textContent = c.title;
     var html = heroHtml(sp);
     if (sp === "site") {
-      var nl = links.filter(function (g) { return (g.space || "site") === "site"; }).reduce(function (a, g) { return a + g.items.length; }, 0);
-      html += '<div class="seg" role="tablist" aria-label="Sections"><span class="seg__pill" id="segPill"></span>' +
-        '<button type="button" role="tab" data-pane="demos">Démos<em>' + demos.length + '</em></button><button type="button" role="tab" data-pane="liens">Liens<em>' + nl + '</em></button><button type="button" role="tab" data-pane="modeles">Modèles<em>8</em></button></div>' +
+      var PD = [["thai", "Site thaï"], ["menus", "Menus QR"], ["nm", "NM Studio"], ["demos", "Démos"], ["modeles", "Modèles"]];
+      html += '<div class="seg s5" role="tablist" aria-label="Sections"><span class="seg__pill" id="segPill"></span>' +
+        PD.map(function (x) { return '<button type="button" role="tab" data-pane="' + x[0] + '">' + x[1] + "</button>"; }).join("") + "</div>" +
+        '<div class="pane" id="pane-thai"><section class="sec">' + linksHtml("site", 1, inPane("thai")) + "</section></div>" +
+        '<div class="pane" id="pane-menus"><section class="sec">' + menusHtml() + linksHtml("site", 3, inPane("menus")) + "</section></div>" +
+        '<div class="pane" id="pane-nm"><section class="sec">' + linksHtml("site", 1, inPane("nm")) + "</section></div>" +
         '<div class="pane" id="pane-demos"><section class="sec"><div class="sec__h"><h2>Mes <span class="serif">démos</span></h2><span id="demoCount"></span></div>' +
         '<div class="kpis" id="kpis"></div><div class="search"><input id="q" type="search" autocomplete="off" placeholder="Rechercher un nom, une ville, un type…" aria-label="Rechercher un commerce"></div>' +
-        '<div class="chips" id="chips"></div><div class="az" id="az"></div><div id="list"></div></section></div>' +
-        '<div class="pane" id="pane-liens"><section class="sec">' + linksHtml("site", 1) + "</section></div>" +
+        '<div class="chips" id="chips"></div><div class="az" id="az"></div><div id="list"></div></section>' +
+        '<section class="sec">' + linksHtml("site", 1, inPane("demos")) + "</section></div>" +
         '<div class="pane" id="pane-modeles"><section class="sec"><div class="sec__h"><h2>Mes <span class="serif">modèles</span></h2><span>à montrer en exemple</span></div><div class="tgrid" id="tpl"></div></section></div>';
     } else {
       var body = linksHtml(sp, 1);
@@ -459,16 +514,17 @@ button{font:inherit;color:inherit}
       b.onclick = function (e) { e.preventDefault(); e.stopPropagation(); haptic(); copy(b.getAttribute("data-copy")); };
     });
     if (sp === "site") {
-      var panes = ["demos", "liens", "modeles"], cp = "demos";
-      try { cp = localStorage.getItem("nmSitePane") || "demos"; } catch (e) {}
+      var panes = ["thai", "menus", "nm", "demos", "modeles"], cp = "thai";
+      try { cp = localStorage.getItem("nmSitePane2") || "thai"; } catch (e) {}
       var setPane = function (name) {
-        if (panes.indexOf(name) < 0) name = "demos";
+        if (panes.indexOf(name) < 0) name = "thai";
         panes.forEach(function (x, i) {
           $("pane-" + x).classList.toggle("on", x === name);
           var b = vc.querySelector('.seg [data-pane="' + x + '"]'); b.setAttribute("aria-selected", String(x === name));
           if (x === name) $("segPill").style.transform = "translateX(" + (i * 100) + "%)";
         });
-        try { localStorage.setItem("nmSitePane", name); } catch (e) {}
+        if (name === "menus") loadMenus();
+        try { localStorage.setItem("nmSitePane2", name); } catch (e) {}
       };
       [].slice.call(vc.querySelectorAll(".seg button")).forEach(function (b) { b.onclick = function () { haptic(); setPane(b.getAttribute("data-pane")); }; });
       setPane(cp);

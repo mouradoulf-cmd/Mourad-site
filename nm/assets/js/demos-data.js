@@ -14,32 +14,38 @@ window.NM_DEMOS = [
 ];
 
 window.NM_LINKS = [
-  { space: "site", group: "🇹🇭 🇫🇷 Site web thaïlandais · en français pour moi", items: [
+  { space: "site", group: "🇹🇭 → 🇫🇷 Site web thaïlandais, traduit en français pour moi", items: [
     { name: "Site web thaïlandais · en français", icon: "🇹🇭🇫🇷", path: "nm/th-fr/", note: "Le site que voient les clients thaïs, traduit en français pour toi (copie privée, pas pour les clients)" },
     { name: "Les 2 offres", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#offers", note: "Menu QR 390 ฿/mois, installation gratuite · Site web + menu QR 790 ฿/mois · bouton rendez-vous" },
     { name: "Avant / après", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#menu-ba", note: "Simple et fixe (sans animation) : le vieux menu papier → QR code → le menu dans le téléphone, puis 3 étapes : scanner, choisir la langue, commander" },
     { name: "Prendre rendez-vous", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#book", note: "Jour + heure, puis commerce, adresse, prénom → WhatsApp s'ouvre avec le message tout écrit" },
-    { name: "Menu QR d'exemple · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Le menu à montrer, ouvert en français : photos, piment, allergies, « montrer au serveur » en thaï" },
-    { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "En visite : taper le nom du resto → QR à scanner → le patron voit un menu à son nom. + pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" },
-    { name: "Mes menus QR (tableau de bord)", path: "nm/menus.html", note: "Qui a payé (vert), à relancer (orange), en pause (rouge), cartes QR à imprimer" },
-    { name: "Site web thaïlandais · version clients (ไทย)", icon: "🇹🇭", path: "nm/th/", note: "La vraie version en thaï, celle que tu montres aux patrons" }
+    { name: "Site web thaïlandais · version clients (ไทย)", icon: "🇹🇭", path: "nm/th/", note: "La vraie version en thaï, celle que tu montres aux patrons" },
+    { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "En visite : taper le nom du resto → QR à scanner → le patron voit un menu à son nom. + pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" }
   ] },
-  { space: "site", group: "NM Studio", items: [
+  { space: "site", group: "Menus QR · mes clients", items: [
+    { name: "Tableau de bord des menus QR", path: "nm/menus.html", note: "3 onglets : Clients (qui a payé, QR, rappel WhatsApp) · Chiffres (abonnés, essais, abandons, visites) · + Nouveau client (photos à prendre, fiche à copier dans la discussion, étapes de chaque client)" },
+    { name: "+ Nouveau client", path: "nm/menus.html#nouveau", note: "La fiche à remplir, puis tu m'envoies les photos dans la discussion" },
+    { name: "Menu QR d'exemple · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Le menu à montrer, ouvert en français : photos, piment, allergies, « montrer au serveur » en thaï" },
+    { name: "Menu QR d'exemple · Mae Lek en thaï", icon: "🇹🇭", path: "menus/mae-lek/", note: "Photos HD retouchées · prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" },
+    { name: "Menu d'exemple v2 · filtres + bouton Réserver", path: "nm/demo-menu/", note: "Baan Suan (8 langues) : filtres Végétarien / Pas épicé / Épicé / Choix du chef, bouton fixe WhatsApp + LINE en bas. Pour un client : ?wa=66…&line=@sonid" },
+    { name: "Chevalet QR à imprimer (A5)", path: "nm/print/chevalet-qr.html", note: "Nom du resto + lien du menu → panneau de table prêt à imprimer : « สแกนดูเมนู / Scan for the menu » + 6 langues, QR testé" }
+  ] },
+  { space: "site", group: "NM Studio · le site", items: [
     { name: "NM Studio · Français", path: "nm/fr/", note: "Le site à montrer aux clients" },
     { name: "NM Studio · English", path: "nm/" },
     { name: "NM Studio · ไทย", path: "nm/th/" },
     { name: "NM Studio · Italiano", path: "nm/it/" },
     { name: "NM Studio · العربية", path: "nm/ar/" },
     { name: "Tarifs", path: "nm/fr/pricing.html", note: "Prix Europe" },
-    { name: "Mes discussions", path: "nm/organisation.html", note: "Où en est chaque conversation + ce qui t'attend" },
-    { name: "Offres Thaïlande · ไทย", path: "nm/th/#offers", note: "Menu QR 390 ฿/mois (installation gratuite) · Site web + menu QR 790 ฿/mois · bouton rendez-vous. Copie en français : nm/th-fr/#offers" }
+    { name: "Offres Thaïlande · ไทย", path: "nm/th/#offers", note: "Copie en français : nm/th-fr/#offers" }
   ] },
-  { space: "site", group: "Menus QR (abonnements)", items: [
-    { name: "Mes menus QR", path: "nm/menus.html", note: "3 onglets : Clients (qui a payé, QR, rappel WhatsApp) · Chiffres (abonnés, essais, abandons, visites) · + Nouveau client (4 photos à prendre, fiche à copier dans la discussion, étapes de chaque client)" },
-    { name: "Kit de vente · démo au nom du resto", path: "nm/kit.html", note: "Nom du restaurant → QR → menu d'exemple à son nom (lien ?shop=…)" },
-    { name: "Menu QR · Mae Lek (exemple thaï)", path: "menus/mae-lek/", note: "Photos HD retouchées · À montrer aux restaurants : prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" },
-    { name: "Menu d'exemple v2 · filtres + bouton Réserver", path: "nm/demo-menu/", note: "Baan Suan (8 langues) : filtres Végétarien / Pas épicé / Épicé / Choix du chef, bouton fixe WhatsApp + LINE en bas. Pour un client : ?wa=66…&line=@sonid" },
-    { name: "Chevalet QR à imprimer (A5)", path: "nm/print/chevalet-qr.html", note: "Nom du resto + lien du menu → panneau de table prêt à imprimer : « สแกนดูเมนู / Scan for the menu » + 6 langues, QR testé" }
+  { space: "site", group: "NM Studio · outils", items: [
+    { name: "Statistiques du site", path: "nm/stats.html", note: "Visiteurs et contacts, jour par jour" },
+    { name: "Maquette express", path: "nm/maquette.html", note: "Montrer à un commerçant à quoi son site pourrait ressembler" },
+    { name: "Générateur de QR code", path: "nm/qr-generator.html", note: "Un QR en PNG ou SVG pour n'importe quel lien" },
+    { name: "Carte de visite (thaï)", path: "nm/print/carte-th.html", note: "À imprimer · 90 × 54 mm" },
+    { name: "Avant / après à imprimer (A4)", path: "nm/print/avant-apres-th.html", note: "La feuille « vieux menu → QR → téléphone » en thaï" },
+    { name: "Mes discussions", path: "nm/organisation.html", note: "Où en est chaque conversation + ce qui t'attend" }
   ] },
   { space: "site", group: "Démos clients", items: [
     { name: "SOCAP Paysage", path: "socap-paysage/", note: "Paysagiste (Ain) · démo premium" },

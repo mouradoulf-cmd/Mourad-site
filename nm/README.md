@@ -227,3 +227,8 @@ peurs → engagements, zones, un seul champ » étaient déjà appliqués (passe
   copiée en un appui pour la coller dans la discussion, liste des clients en cours avec leur étape (Trouvé → Photos envoyées → Menu en cours
   → À relire → QR imprimé → Payé), enregistrée sur le téléphone seulement (localStorage).
 
+### 2026-10-27 (nuit) · « Mon espace » → Site web réorganisé en 5 onglets (`demos.html`, `assets/js/demos-data.js`)
+- Onglets (barre collante, visible même en défilant) : **Site thaï** (le site thaïlandais traduit en français en premier, puis la version thaï, offres, avant/après, rendez-vous, kit de vente) · **Menus QR** (état en direct des restaurants lu dans `menus/abonnements.json` : en ligne / à payer bientôt / hors ligne / revenu, puis les liens) · **NM Studio** (le site dans toutes les langues + outils : statistiques, maquette, générateur de QR, cartes à imprimer, discussions) · **Démos** · **Modèles**.
+- Un groupe de liens va dans son onglet d'après son nom (`paneOf()` : « menus qr/abonnement » → Menus QR, « thaïlandais » → Site thaï, « démos client » → Démos, le reste → NM Studio). Garder ces mots dans les noms de groupes.
+- En-tête de la page Site web compacté (le contenu apparaît dès le premier écran). Vidéo IA et Formation inchangés.
+
