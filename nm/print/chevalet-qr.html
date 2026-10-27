@@ -12,8 +12,8 @@
 :root { --ink: #14110c; --accent: #a9822f; --paper: #fffdf8; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: #e9e6df; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-body { font-family: 'Noto Sans Thai', 'Manrope', system-ui, sans-serif; min-height: 100vh; display: grid; justify-items: center; gap: 18px; padding: 18px 12px 40px; }
-.ctl { width: min(560px, 100%); display: grid; gap: 10px; padding: 16px; border-radius: 16px; background: #fff; box-shadow: 0 6px 24px rgba(0,0,0,.08); font-size: 14px; }
+body { font-family: 'Noto Sans Thai', 'Manrope', system-ui, sans-serif; min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 18px; padding: 18px 12px 40px; overflow-x: hidden; }
+.ctl { width: min(560px, 100%); min-width: 0; display: grid; gap: 10px; padding: 16px; border-radius: 16px; background: #fff; box-shadow: 0 6px 24px rgba(0,0,0,.08); font-size: 14px; }
 .ctl h1 { font-size: 16px; }
 .ctl label { display: grid; gap: 4px; font-weight: 700; font-size: 12px; color: #5b5648; }
 .ctl input[type=text], .ctl input[type=url] { font: inherit; font-weight: 500; padding: 10px 12px; border: 1px solid #d6d1c4; border-radius: 10px; }
@@ -38,7 +38,7 @@ body { font-family: 'Noto Sans Thai', 'Manrope', system-ui, sans-serif; min-heig
   html, body { background: none; }
   body { padding: 0; gap: 0; display: block; }
   .ctl { display: none; }
-  .sheet { box-shadow: none; margin: 0; break-after: avoid; }
+  .sheet { box-shadow: none; margin: 0; break-after: avoid; zoom: 1 !important; }
 }
 </style>
 </head>
@@ -95,6 +95,9 @@ body { font-family: 'Noto Sans Thai', 'Manrope', system-ui, sans-serif; min-heig
   }
   ['input', 'change'].forEach(function (ev) { [u, n, c].forEach(function (el) { el.addEventListener(ev, draw); }); });
   document.getElementById('p').addEventListener('click', function () { window.print(); });
+  /* on a phone the A5 sheet is wider than the screen: shrink it on screen only (printing always uses real A5) */
+  function fit() { var sh = document.getElementById('sheet'), w = 559, a = Math.min(1, (document.documentElement.clientWidth - 24) / w); sh.style.zoom = a < 1 ? a : ''; }
+  fit(); addEventListener('resize', fit);
   draw();
 })();
 </script>
