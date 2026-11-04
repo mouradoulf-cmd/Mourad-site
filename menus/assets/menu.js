@@ -413,7 +413,7 @@
 
   // subscription status (same rule as the admin page nm/menus.html)
   function status(sub, grace) {
-    if (!sub) return "ok";
+    if (!sub || sub.demo) return "ok"; // the sample menu shown to prospects never pauses
     if (sub.pause) return "pause";
     var end = new Date(sub.paidUntil + "T23:59:59");
     return new Date() <= new Date(end.getTime() + (grace || 4) * 864e5) ? "ok" : "pause";

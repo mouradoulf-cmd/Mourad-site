@@ -282,6 +282,7 @@ body.sample .banner{display:grid;justify-items:start}
 <div class="toast" id="toast" role="status"></div>
 
 <script src="assets/js/qrcode.min.js"></script>
+<script src="assets/js/payment-config.js"></script>
 <script>
 (function () {
   "use strict";
@@ -319,10 +320,15 @@ body.sample .banner{display:grid;justify-items:start}
     if (days <= 7) return Object.assign(o, { k: "warn", label: days === 0 ? "Aujourd’hui" : "Dans " + days + " j", line: (r.trial ? "Fin d’essai le " : "À payer le ") + fmt(end) });
     return Object.assign(o, { k: "ok", label: r.trial ? "Essai gratuit" : "Payé", line: "Jusqu’au " + fmt(end) });
   }
+  // how to pay (PromptPay of the wife, from payment-config.js); left out until it is filled in
+  function payLine() {
+    var P = window.NM_PAYMENTS || {}, id = P.promptpay;
+    return id ? "\n\nโอนผ่านพร้อมเพย์ / PromptPay: " + id + (P.promptpayName ? " (" + P.promptpayName + ")" : "") + "\nโอนแล้วส่งสลิปมาได้เลยค่ะ / Please send the slip after paying." : "";
+  }
   function waText(r, s) {
     var u = menuUrl(r), d = r.paidUntil.split("-").reverse().join("/"), p = data.monthly || 390;
-    if (s.k === "bad") return "สวัสดีค่ะ จาก NM Studio 🙏 เมนู QR ของร้าน " + r.name + " ถูกพักไว้ชั่วคราว เพราะยังไม่ได้ชำระค่าบริการ " + p + " บาท/เดือน โอนเมื่อไหร่ เมนูจะกลับมาใช้ได้ทันทีค่ะ\n\nHello from NM Studio 🙏 The QR menu of " + r.name + " is paused until the " + p + " ฿ monthly fee is paid. It comes back right after payment.\n" + u;
-    return "สวัสดีค่ะ จาก NM Studio 🙏 แจ้งเตือนเล็กน้อย: ค่าบริการเมนู QR ของร้าน " + r.name + " (" + p + " บาท/เดือน) ครบกำหนดวันที่ " + d + " ค่ะ ขอบคุณมากค่ะ\n\nHello from NM Studio 🙏 Friendly reminder: the QR menu of " + r.name + " (" + p + " ฿/month) is due on " + d + ". Thank you!\n" + u;
+    if (s.k === "bad") return "สวัสดีค่ะ จาก NM Studio 🙏 เมนู QR ของร้าน " + r.name + " ถูกพักไว้ชั่วคราว เพราะยังไม่ได้ชำระค่าบริการ " + p + " บาท/เดือน โอนเมื่อไหร่ เมนูจะกลับมาใช้ได้ทันทีค่ะ\n\nHello from NM Studio 🙏 The QR menu of " + r.name + " is paused until the " + p + " ฿ monthly fee is paid. It comes back right after payment." + payLine() + "\n" + u;
+    return "สวัสดีค่ะ จาก NM Studio 🙏 แจ้งเตือนเล็กน้อย: ค่าบริการเมนู QR ของร้าน " + r.name + " (" + p + " บาท/เดือน) ครบกำหนดวันที่ " + d + " ค่ะ ขอบคุณมากค่ะ\n\nHello from NM Studio 🙏 Friendly reminder: the QR menu of " + r.name + " (" + p + " ฿/month) is due on " + d + ". Thank you!" + payLine() + "\n" + u;
   }
   function phone(r) { return String(r.phone || "").replace(/\D/g, ""); }
   function waLink(r) { if (r._sample) return "#exemple"; return "https://wa.me/" + phone(r) + "?text=" + encodeURIComponent(waText(r, r._s)); }
