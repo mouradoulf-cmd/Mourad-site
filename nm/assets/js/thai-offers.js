@@ -1,6 +1,6 @@
 /* NM Studio: the Thailand offers, shown ONLY when the page is read in Thai (and on the private French reading copy
-   /nm/th-fr/). QR menu 390 baht/month with free setup, Website + QR menu 790 baht/month; no Google listing, no online
-   checkout: every card leads to the appointment sheet (#book), plus a link to a live QR menu (Mae Lek).
+   /nm/th-fr/). QR menu 390 baht/month with free setup, Website + QR menu 790 baht/month; no Google listing, sign-up
+   page th/signup.html (PromptPay) as the main button, the appointment sheet (#book) under it, plus a link to a live QR menu (Mae Lek).
    Every other language keeps the regular offers (offers-config.js), untouched.
    - texts live in nm-offers.js (window.NM_OFFERS2); this file only builds the cards
    - while it shows, the regular cards, links, payment strip, billing toggle, care box, comparison and guide are hidden
@@ -11,6 +11,7 @@
   if (!O) return;
   var SRC = document.currentScript && document.currentScript.src;
   var DEMO = SRC ? new URL("../../../menus/mae-lek/", SRC).href : "../menus/mae-lek/";
+  var SIGNUP = SRC ? new URL("../../th/signup.html", SRC).href.split("?")[0] : "signup.html";
 
   var CHECK = '<svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var ARROW = '<svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>';
@@ -40,7 +41,12 @@
   function L0(lang) { return O[lang] || O.th; }
 
   function html(L, lang) {
-    var book = '<a class="btn btn--sun btn--block tho-card__cta" href="#book" data-open-sheet="book"><span>' + esc(L.book) + "</span>" + ARROW + "</a>";
+    // Primary action: the Thai sign-up page (PromptPay); a meeting stays one tap away under it.
+    var SIGN = { th: ["สมัครเลย", "หรือ นัดพูดคุยก่อน"], fr: ["S’inscrire", "ou prendre rendez-vous d’abord"], en: ["Sign up", "or book a meeting first"] }[lang] || ["สมัครเลย", "หรือ นัดพูดคุยก่อน"];
+    function cta(offer) {
+      return '<a class="btn btn--sun btn--block tho-card__cta" href="' + SIGNUP + '?offer=' + offer + '"><span>' + esc(SIGN[0]) + "</span>" + ARROW + "</a>" +
+        '<a class="tho-card__alt tho-card__alt--book" href="#book" data-open-sheet="book">' + esc(SIGN[1]) + "</a>";
+    }
     return ribbon(lang) + '<div class="tho__grid tho__grid--two">' +
       '<article class="tho-card">' +
         '<div class="tho-card__top"><span class="tho-card__tier">01</span><span class="tho-card__ic">' + ICON.menu + "</span></div>" +
@@ -49,7 +55,7 @@
         '<p class="tho-card__benefit">' + esc(L.menu.benefit) + "</p>" +
         '<p class="tho-card__price">' + money(O.price.menu, L) + '<span class="tho-card__per">' + esc(L.per) + "</span></p>" +
         '<p class="tho-card__unit tho-card__free">' + CHECK + esc(L.free) + "</p>" +
-        list(L.menu.list) + book +
+        list(L.menu.list) + cta("qr") +
         '<a class="tho-card__alt" href="' + DEMO + '" target="_blank" rel="noopener">' + esc(L.demo) + " ↗</a>" +
       "</article>" +
       '<article class="tho-card tho-card--feat">' +
@@ -59,7 +65,7 @@
         '<h3 class="tho-card__name">' + esc(L.site.name) + "</h3>" +
         '<p class="tho-card__benefit">' + esc(L.site.benefit) + "</p>" +
         '<p class="tho-card__price">' + money(O.price.site, L) + '<span class="tho-card__per">' + esc(L.per) + "</span></p>" +
-        list(L.site.list) + book +
+        list(L.site.list) + cta("site") +
       "</article>" +
     "</div>";
   }

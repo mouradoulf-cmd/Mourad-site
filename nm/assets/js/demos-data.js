@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-10-27";
+window.NM_UPDATED = "2026-11-10";
 
 window.NM_DEMOS = [
 ];
@@ -20,6 +20,7 @@ window.NM_LINKS = [
     { name: "Avant / après", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#menu-ba", note: "Simple et fixe (sans animation) : le vieux menu papier → QR code → le menu dans le téléphone, puis 3 étapes : scanner, choisir la langue, commander" },
     { name: "Prendre rendez-vous", icon: "🇹🇭🇫🇷", path: "nm/th-fr/#book", note: "Jour + heure, puis commerce, adresse, prénom → WhatsApp s'ouvre avec le message tout écrit" },
     { name: "Site web thaïlandais · version clients (ไทย)", icon: "🇹🇭", path: "nm/th/", note: "La vraie version en thaï, celle que tu montres aux patrons" },
+    { name: "Inscription clients thaïs (390 / 790)", icon: "✍️", path: "nm/th/signup.html", note: "Lien à donner au patron : il choisit l'offre, met son nom et son numéro → message prêt sur WhatsApp/LINE. Site 790 : QR PromptPay avec le montant dès que le numéro PromptPay est rempli." },
     { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "En visite : taper le nom du resto → QR à scanner → le patron voit un menu à son nom. + pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" }
   ] },
   { space: "site", group: "Menus QR · mes clients", items: [

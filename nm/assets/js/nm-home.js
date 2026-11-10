@@ -4,6 +4,8 @@
    Every block is optional: it quietly skips if its markup isn't on the page. */
 (function () {
   "use strict";
+  // Language folders (fr/, it/, ar/, th/, th-fr/) sit one level below the checkout.
+  var CO_URL = (/\/nm\/(?:fr|it|ar|th|th-fr)\//.test(location.pathname) ? "../" : "") + "checkout.html";
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -166,7 +168,7 @@
       ? t("offers.careFrom").replace("{price}", P.thb(care))
       : t("price2.noCare");
     $("#omOrderLabel").textContent = t("offers.order").replace("{price}", P.thb(price + plus));
-    $("#omOrder").href = "checkout.html?offer=" + k;
+    $("#omOrder").href = CO_URL + "?offer=" + k;
     var list = $("#omList"); list.innerHTML = "";
     ["i1", "i2", "i3", "i4", "i5"].forEach(function (f, n) {
       var li = document.createElement("li"); li.style.setProperty("--i", n);
@@ -305,7 +307,7 @@
         var k = a.getAttribute("data-cta"), care = O.care[k];
         // the subscribed offers always go to the checkout with their monthly
         // period; a care plan only when the offer has one
-        a.href = "checkout.html?offer=" + k + (care ? "&care=" + mode : (O.sub && O.sub[k] ? "&care=monthly" : ""));
+        a.href = CO_URL + "?offer=" + k + (care ? "&care=" + mode : (O.sub && O.sub[k] ? "&care=monthly" : ""));
         var l = $(".pcard__cta-label", a); if (l) l.textContent = t("price2.choose").replace("{name}", t("offers." + k + ".short"));
       });
     }
