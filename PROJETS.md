@@ -96,3 +96,8 @@ Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, 
   → `nm/assets/js/payment-config.js` (`promptpay`, `promptpayName`) ; numéro WhatsApp thaï + LINE OA (`contact-config.js`) ;
   numéro d'enregistrement de l'activité (mentions légales). En attendant, la page dit « on vous envoie le QR » (pas de faux QR).
 - Corrigé le même jour : boutons « Choisir » des pages fr/it/ar (page introuvable), anciennes offres dans le titre/données Google de la page thaïe.
+
+## Passe « carte blanche » (11 novembre 2026)
+
+Site thaï réordonné (offres juste après la démo du menu), barre « สมัครเลย » fixe sur téléphone, « 8 vrais sites » corrigé en
+« 8 sites conçus par nous » (5 langues), menus QR utilisables sans réseau (`menus/sw.js`). Détails : `nm/README.md`.
