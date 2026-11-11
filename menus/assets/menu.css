@@ -335,3 +335,20 @@ body.alg .alb{display:block}
 /* Confirmation toast sits just above the selection bar, never over the category tabs */
 .toast{top:auto;bottom:calc(var(--sb) + 86px);transform:translate(-50%,16px);white-space:nowrap}
 .toast.on{transform:translate(-50%,0)}
+/* Hindi + Arabic: their own fonts (loaded on demand by menu.js), Arabic reads right to left */
+:root:lang(hi){--body:'Jost','Noto Sans Devanagari',system-ui,sans-serif;--display:'Fraunces','Noto Sans Devanagari',Georgia,serif}
+:root:lang(ar){--body:'Noto Naskh Arabic','Jost',system-ui,sans-serif;--display:'Noto Naskh Arabic','Fraunces',Georgia,serif}
+:lang(hi) .ch__t,:lang(ar) .ch__t{letter-spacing:0;line-height:1.25}
+:lang(hi) .dish__n,:lang(ar) .dish__n{line-height:1.45}
+html[dir=rtl] [lang]:not([lang=ar]){direction:ltr;unicode-bidi:isolate;text-align:right}
+html[dir=rtl] .ch__no{direction:ltr;flex-direction:row-reverse}
+.dish__p,.bag__t span,.sum__v,.x__p{direction:ltr;unicode-bidi:isolate}
+html[dir=rtl] .dish.has-ph .add{margin:0 0 -8px -6px}
+html[dir=rtl] .dish__p{text-align:right;margin:0 0 0 2px}
+html[dir=rtl] .ch__no,html[dir=rtl] .card__k,html[dir=rtl] .open__ask{letter-spacing:.06em}
+/* nine languages = a tidy 3 × 3 grid on every screen */
+@media (min-width:760px){.langs{grid-template-columns:repeat(3,minmax(0,1fr));width:min(560px,100%)}}
+/* Arabic: close button on the other side of the sheet title; the waiter screen (for the Thai staff) stays left-to-right */
+html[dir=rtl] .sheet__x{right:auto;left:14px}
+html[dir=rtl] .waiter{direction:ltr}
+html[dir=rtl] .waiter [lang]:not([lang=ar]){text-align:inherit}

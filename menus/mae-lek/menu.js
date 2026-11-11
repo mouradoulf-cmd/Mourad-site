@@ -13,6 +13,9 @@ window.NM_MENU = {
   "zh",
   "ru",
   "ko",
+  "hi",
+  "ar",
+  "de",
   "fr"
  ],
  "defaultLang": "en",
@@ -30,7 +33,10 @@ window.NM_MENU = {
   "zh": "泰式街头厨房 · 芭提雅",
   "ru": "Тайская уличная кухня · Паттайя",
   "ko": "태국 길거리 주방 · 파타야",
-  "fr": "Cuisine de rue thaïe · Pattaya"
+  "fr": "Cuisine de rue thaïe · Pattaya",
+  "hi": "थाई स्ट्रीट किचन · पटाया",
+  "ar": "مطبخ الشارع التايلاندي · باتايا",
+  "de": "Thailändische Straßenküche · Pattaya"
  },
  "theme": {
   "bg": "#0d0a08",
@@ -44,7 +50,10 @@ window.NM_MENU = {
    "zh": "辣度可选：不辣、微辣或特辣。",
    "ru": "Скажите, насколько остро: не остро, слегка или очень остро.",
    "ko": "맵기를 알려 주세요: 안 맵게, 조금 맵게, 아주 맵게.",
-   "fr": "Dites-nous votre piquant : pas épicé, un peu ou très épicé."
+   "fr": "Dites-nous votre piquant : pas épicé, un peu ou très épicé.",
+   "hi": "बताइए आपको कितना तीखा चाहिए: बिना तीखा, थोड़ा तीखा या बहुत तीखा।",
+   "ar": "أخبرنا بدرجة الحرارة التي تفضّلها: بدون حار، قليل الحرارة أو حار جدًا.",
+   "de": "Sagen Sie uns, wie scharf Sie es mögen: nicht scharf, leicht oder sehr scharf."
   }
  },
  "allergens": {
@@ -143,6 +152,54 @@ window.NM_MENU = {
    "Sulfites",
    "Lupin",
    "Mollusques"
+  ],
+  "hi": [
+   "ग्लूटेन वाले अनाज",
+   "क्रस्टेशियन (झींगा, केकड़ा)",
+   "अंडा",
+   "मछली (फ़िश सॉस सहित)",
+   "मूंगफली",
+   "सोया",
+   "दूध",
+   "मेवे",
+   "अजवाइन की पत्ती (सेलरी)",
+   "सरसों",
+   "तिल",
+   "सल्फ़ाइट",
+   "ल्यूपिन",
+   "शंख-सीप (मोलस्क)"
+  ],
+  "ar": [
+   "حبوب تحتوي على الغلوتين",
+   "قشريات (روبيان، سلطعون)",
+   "بيض",
+   "سمك (يشمل صلصة السمك)",
+   "فول سوداني",
+   "صويا",
+   "حليب",
+   "مكسرات",
+   "كرفس",
+   "خردل",
+   "سمسم",
+   "كبريتيت",
+   "ترمس",
+   "رخويات"
+  ],
+  "de": [
+   "Glutenhaltiges Getreide",
+   "Krebstiere",
+   "Eier",
+   "Fisch (inkl. Fischsauce)",
+   "Erdnüsse",
+   "Soja",
+   "Milch",
+   "Schalenfrüchte",
+   "Sellerie",
+   "Senf",
+   "Sesam",
+   "Sulfite",
+   "Lupinen",
+   "Weichtiere"
   ]
  },
  "sections": [
@@ -154,7 +211,10 @@ window.NM_MENU = {
     "zh": "炒菜与米饭",
     "ru": "Вок и рис",
     "ko": "볶음 & 밥",
-    "fr": "Wok et riz"
+    "fr": "Wok et riz",
+    "hi": "वोक और चावल",
+    "ar": "ووك وأرز",
+    "de": "Wok & Reis"
    },
    "items": [
     {
@@ -174,7 +234,10 @@ window.NM_MENU = {
       "ru": "Свинина с тайским базиликом и яйцом",
       "ko": "팟끄라파오 돼지고기 + 계란후라이",
       "fr": "Porc au basilic thaï, œuf frit",
-      "th": "ผัดกะเพราหมูสับ ไข่ดาว"
+      "th": "ผัดกะเพราหมูสับ ไข่ดาว",
+      "hi": "तुलसी पोर्क, तला अंडा",
+      "ar": "لحم خنزير بالريحان المقدس وبيضة مقلية",
+      "de": "Schwein mit Thai-Basilikum, Spiegelei"
      },
      "d": {
       "th": "หมูสับผัดใบกะเพรา พริก กระเทียม เสิร์ฟกับข้าวสวยและไข่ดาวกรอบ",
@@ -182,7 +245,10 @@ window.NM_MENU = {
       "zh": "罗勒辣椒炒猪肉末，配米饭和香脆煎蛋",
       "ru": "Фарш, обжаренный с тайским базиликом, чили и чесноком, с рисом и хрустящей глазуньей",
       "ko": "홀리바질·고추·마늘에 볶은 다진 돼지고기, 밥과 바삭한 계란후라이",
-      "fr": "Porc haché sauté au basilic sacré, piment et ail, riz et œuf frit croustillant"
+      "fr": "Porc haché sauté au basilic sacré, piment et ail, riz et œuf frit croustillant",
+      "hi": "पवित्र तुलसी, मिर्च और लहसुन के साथ भुना कीमा पोर्क, चावल और कुरकुरा तला अंडा",
+      "ar": "لحم خنزير مفروم مقلي مع الريحان المقدس والفلفل الحار والثوم، يقدَّم مع الأرز وبيضة مقلية مقرمشة",
+      "de": "Hackfleisch vom Schwein mit Thai-Basilikum, Chili und Knoblauch, dazu Reis und ein knuspriges Spiegelei"
      }
     },
     {
@@ -204,7 +270,10 @@ window.NM_MENU = {
       "ru": "Пад-тай с креветками",
       "ko": "새우 팟타이",
       "fr": "Pad thaï aux crevettes",
-      "th": "ผัดไทยกุ้งสด"
+      "th": "ผัดไทยกุ้งสด",
+      "hi": "झींगा पैड थाई",
+      "ar": "باد تاي بالروبيان",
+      "de": "Pad Thai mit Garnelen"
      },
      "d": {
       "th": "เส้นจันท์ผัดซอสมะขาม กุ้งสด ไข่ ถั่วงอก ถั่วลิสงคั่ว",
@@ -212,7 +281,10 @@ window.NM_MENU = {
       "zh": "罗望子酱炒河粉，鲜虾、鸡蛋、豆芽、烤花生",
       "ru": "Рисовая лапша в соусе из тамаринда, креветки, яйцо, ростки, арахис",
       "ko": "타마린드 소스 쌀국수 볶음, 새우·계란·숙주·땅콩",
-      "fr": "Nouilles de riz sauce tamarin, crevettes, œuf, pousses de soja, cacahuètes grillées"
+      "fr": "Nouilles de riz sauce tamarin, crevettes, œuf, pousses de soja, cacahuètes grillées",
+      "hi": "इमली सॉस में राइस नूडल्स, ताज़ा झींगे, अंडा, अंकुरित मूंग और भुनी मूंगफली",
+      "ar": "نودلز الأرز بصلصة التمر الهندي مع روبيان طازج وبيض وبراعم الفاصوليا وفول سوداني محمّص",
+      "de": "Reisnudeln in Tamarindensauce mit frischen Garnelen, Ei, Sojasprossen und gerösteten Erdnüssen"
      }
     },
     {
@@ -232,7 +304,10 @@ window.NM_MENU = {
       "ru": "Жареный рис с креветками",
       "ko": "새우 볶음밥",
       "fr": "Riz sauté aux crevettes",
-      "th": "ข้าวผัดกุ้ง"
+      "th": "ข้าวผัดกุ้ง",
+      "hi": "झींगा फ्राइड राइस",
+      "ar": "أرز مقلي بالروبيان",
+      "de": "Gebratener Reis mit Garnelen"
      },
      "d": {
       "th": "ข้าวผัดไฟแรงกับกุ้ง ไข่ ต้นหอม เสิร์ฟกับมะนาว",
@@ -240,7 +315,10 @@ window.NM_MENU = {
       "zh": "大火炒饭配虾仁、鸡蛋和葱，附青柠",
       "ru": "Рис, обжаренный в воке с креветками, яйцом и луком, с лаймом",
       "ko": "새우·계란·파를 넣은 센불 볶음밥, 라임 곁들임",
-      "fr": "Riz sauté au wok, crevettes, œuf et oignon nouveau, citron vert"
+      "fr": "Riz sauté au wok, crevettes, œuf et oignon nouveau, citron vert",
+      "hi": "झींगे, अंडे और हरे प्याज़ के साथ वोक में तले चावल, नींबू के साथ",
+      "ar": "أرز مقلي في الووك مع الروبيان والبيض والبصل الأخضر، يقدَّم مع الليمون",
+      "de": "Im Wok gebratener Reis mit Garnelen, Ei und Frühlingszwiebeln, mit Limette serviert"
      }
     },
     {
@@ -261,7 +339,10 @@ window.NM_MENU = {
       "ru": "Лапша с морепродуктами в соевом соусе",
       "ko": "해산물 팟씨유",
       "fr": "Nouilles sautées sauce soja, fruits de mer",
-      "th": "ผัดซีอิ๊วทะเล"
+      "th": "ผัดซีอิ๊วทะเล",
+      "hi": "सी-फ़ूड सोया सॉस नूडल्स",
+      "ar": "نودلز بصلصة الصويا مع المأكولات البحرية",
+      "de": "Meeresfrüchte-Nudeln mit Sojasauce"
      },
      "d": {
       "th": "เส้นใหญ่ผัดซีอิ๊ว กุ้ง ปลาหมึก คะน้า",
@@ -269,7 +350,10 @@ window.NM_MENU = {
       "zh": "宽河粉酱油炒虾、鱿鱼和芥兰",
       "ru": "Широкая рисовая лапша с соевым соусом, креветками, кальмаром и капустой",
       "ko": "넓은 쌀국수에 간장·새우·오징어·카이란 볶음",
-      "fr": "Larges nouilles de riz au soja, crevettes, calamar et chou chinois"
+      "fr": "Larges nouilles de riz au soja, crevettes, calamar et chou chinois",
+      "hi": "सोया सॉस, झींगे, स्क्विड और चाइनीज़ केल के साथ चौड़े राइस नूडल्स",
+      "ar": "نودلز أرز عريضة بصلصة الصويا مع الروبيان والحبار والكرنب الصيني",
+      "de": "Breite Reisnudeln mit Sojasauce, Garnelen, Tintenfisch und chinesischem Brokkoli"
      }
     },
     {
@@ -288,7 +372,10 @@ window.NM_MENU = {
       "ru": "Обжаренный водяной шпинат",
       "ko": "모닝글로리 볶음",
       "fr": "Liseron d’eau sauté",
-      "th": "ผักบุ้งไฟแดง"
+      "th": "ผักบุ้งไฟแดง",
+      "hi": "भुना मॉर्निंग ग्लोरी (पानी पालक)",
+      "ar": "سبانخ الماء المقلية",
+      "de": "Gebratener Wasserspinat"
      },
      "d": {
       "th": "ผักบุ้งผัดไฟแรงกับกระเทียม พริก และเต้าเจี้ยว",
@@ -296,7 +383,10 @@ window.NM_MENU = {
       "zh": "大火爆炒空心菜，配蒜、辣椒和黄豆酱",
       "ru": "Водяной шпинат, обжаренный с чесноком, чили и соевой пастой",
       "ko": "마늘·고추·된장 소스로 센불에 볶은 공심채",
-      "fr": "Liseron d’eau sauté vif à l’ail, piment et pâte de soja"
+      "fr": "Liseron d’eau sauté vif à l’ail, piment et pâte de soja",
+      "hi": "लहसुन, मिर्च और सोयाबीन पेस्ट के साथ तेज़ आँच पर भुना पानी पालक",
+      "ar": "سبانخ الماء مقلية سريعًا مع الثوم والفلفل الحار ومعجون فول الصويا",
+      "de": "Wasserspinat, kurz gebraten mit Knoblauch, Chili und Sojabohnenpaste"
      }
     }
    ]
@@ -309,7 +399,10 @@ window.NM_MENU = {
     "zh": "汤与咖喱",
     "ru": "Супы и карри",
     "ko": "수프 & 커리",
-    "fr": "Soupes et currys"
+    "fr": "Soupes et currys",
+    "hi": "सूप और करी",
+    "ar": "شوربات وكاري",
+    "de": "Suppen & Currys"
    },
    "items": [
     {
@@ -329,7 +422,10 @@ window.NM_MENU = {
       "ru": "Том ям с креветками",
       "ko": "똠얌꿍",
       "fr": "Tom yum aux crevettes",
-      "th": "ต้มยำกุ้งน้ำข้น"
+      "th": "ต้มยำกุ้งน้ำข้น",
+      "hi": "झींगा टॉम यम",
+      "ar": "توم يام بالروبيان",
+      "de": "Tom Yum mit Garnelen"
      },
      "d": {
       "th": "ต้มยำกุ้งแม่น้ำ ข่า ตะไคร้ ใบมะกรูด น้ำข้นด้วยนม",
@@ -337,7 +433,10 @@ window.NM_MENU = {
       "zh": "酸辣虾汤，配南姜、香茅和青柠叶，浓汤",
       "ru": "Остро-кислый суп с креветками, галангалом, лемонграссом, сливочный",
       "ko": "갈랑갈·레몬그라스·라임잎을 넣은 새콤매콤한 새우 수프 (크리미)",
-      "fr": "Soupe aigre-piquante aux crevettes, galanga, citronnelle, feuilles de combava, version crémeuse"
+      "fr": "Soupe aigre-piquante aux crevettes, galanga, citronnelle, feuilles de combava, version crémeuse",
+      "hi": "गलंगल, लेमनग्रास और नींबू पत्तों वाला खट्टा-तीखा झींगा सूप, क्रीमी स्टाइल",
+      "ar": "شوربة روبيان حارة وحامضة مع الخولنجان وعشبة الليمون وأوراق الليمون، بقوام كريمي",
+      "de": "Scharf-saure Garnelensuppe mit Galgant, Zitronengras und Limettenblättern, cremige Art"
      }
     },
     {
@@ -355,7 +454,10 @@ window.NM_MENU = {
       "ru": "Зелёное карри с курицей",
       "ko": "치킨 그린커리",
       "fr": "Curry vert au poulet",
-      "th": "แกงเขียวหวานไก่"
+      "th": "แกงเขียวหวานไก่",
+      "hi": "चिकन ग्रीन करी",
+      "ar": "كاري أخضر بالدجاج",
+      "de": "Grünes Curry mit Huhn"
      },
      "d": {
       "th": "แกงเขียวหวานกะทิ ไก่ มะเขือ ใบโหระพา เสิร์ฟกับข้าวสวย",
@@ -363,7 +465,10 @@ window.NM_MENU = {
       "zh": "椰浆绿咖喱鸡，泰国茄子和九层塔，配米饭",
       "ru": "Зелёное карри на кокосовом молоке с курицей, баклажаном и базиликом, с рисом",
       "ko": "코코넛 그린커리, 닭고기·태국가지·바질, 밥 포함",
-      "fr": "Curry vert au lait de coco, poulet, aubergine thaïe et basilic, avec riz"
+      "fr": "Curry vert au lait de coco, poulet, aubergine thaïe et basilic, avec riz",
+      "hi": "चिकन, थाई बैंगन और मीठी तुलसी वाली नारियल ग्रीन करी, चावल के साथ",
+      "ar": "كاري أخضر بحليب جوز الهند مع الدجاج والباذنجان التايلاندي والريحان، يقدَّم مع الأرز",
+      "de": "Grünes Kokoscurry mit Huhn, Thai-Aubergine und süßem Basilikum, mit Reis"
      }
     },
     {
@@ -381,7 +486,10 @@ window.NM_MENU = {
       "ru": "Суп том кха с курицей",
       "ko": "똠카가이 (코코넛 치킨 수프)",
       "fr": "Soupe coco-galanga au poulet",
-      "th": "ต้มข่าไก่"
+      "th": "ต้มข่าไก่",
+      "hi": "चिकन नारियल सूप (टॉम खा)",
+      "ar": "شوربة الدجاج بجوز الهند (توم كا)",
+      "de": "Hühner-Kokossuppe (Tom Kha)"
      },
      "d": {
       "th": "ซุปกะทิ ข่า ตะไคร้ ไก่ และเห็ด",
@@ -389,7 +497,10 @@ window.NM_MENU = {
       "zh": "椰奶汤配南姜、香茅、鸡肉和蘑菇",
       "ru": "Суп на кокосовом молоке с галангалом, лемонграссом, курицей и грибами",
       "ko": "갈랑갈·레몬그라스를 넣은 코코넛 치킨 수프",
-      "fr": "Soupe au lait de coco, galanga, citronnelle, poulet et champignons"
+      "fr": "Soupe au lait de coco, galanga, citronnelle, poulet et champignons",
+      "hi": "गलंगल, लेमनग्रास, चिकन और मशरूम वाला नारियल दूध का सूप",
+      "ar": "شوربة بحليب جوز الهند مع الخولنجان وعشبة الليمون والدجاج والفطر",
+      "de": "Kokosmilchsuppe mit Galgant, Zitronengras, Huhn und Pilzen"
      }
     },
     {
@@ -408,7 +519,10 @@ window.NM_MENU = {
       "ru": "Карри массаман с курицей",
       "ko": "마사만 커리",
       "fr": "Curry massaman au poulet",
-      "th": "แกงมัสมั่นไก่"
+      "th": "แกงมัสมั่นไก่",
+      "hi": "चिकन मस्समन करी",
+      "ar": "كاري مسمان بالدجاج",
+      "de": "Massaman-Curry mit Huhn"
      },
      "d": {
       "th": "แกงมัสมั่นรสกลมกล่อม ไก่ มันฝรั่ง ถั่วลิสง",
@@ -416,7 +530,10 @@ window.NM_MENU = {
       "zh": "温和浓郁的咖喱，配鸡肉、土豆和花生",
       "ru": "Мягкое насыщенное карри с курицей, картофелем и арахисом",
       "ko": "닭고기·감자·땅콩이 들어간 순하고 진한 커리",
-      "fr": "Curry doux et riche, poulet, pommes de terre et cacahuètes"
+      "fr": "Curry doux et riche, poulet, pommes de terre et cacahuètes",
+      "hi": "हल्की, गाढ़ी करी — चिकन, आलू और मूंगफली के साथ",
+      "ar": "كاري خفيف وغني بالدجاج والبطاطس والفول السوداني",
+      "de": "Mildes, reichhaltiges Curry mit Huhn, Kartoffeln und Erdnüssen"
      }
     }
    ]
@@ -429,7 +546,10 @@ window.NM_MENU = {
     "zh": "青木瓜沙拉与烧烤",
     "ru": "Сом там и гриль",
     "ko": "쏨땀 & 구이",
-    "fr": "Som tam et grillades"
+    "fr": "Som tam et grillades",
+    "hi": "पपीता सलाद और ग्रिल",
+    "ar": "سلطة البابايا والمشاوي",
+    "de": "Papayasalat & Grill"
    },
    "items": [
     {
@@ -449,7 +569,10 @@ window.NM_MENU = {
       "ru": "Салат из зелёной папайи",
       "ko": "쏨땀 (파파야 샐러드)",
       "fr": "Salade de papaye verte",
-      "th": "ส้มตำไทย"
+      "th": "ส้มตำไทย",
+      "hi": "कच्चे पपीते का सलाद",
+      "ar": "سلطة البابايا الخضراء",
+      "de": "Grüner Papayasalat"
      },
      "d": {
       "th": "มะละกอตำ พริก มะนาว น้ำปลา ถั่วลิสง กุ้งแห้ง",
@@ -457,7 +580,10 @@ window.NM_MENU = {
       "zh": "捣青木瓜配辣椒、青柠、鱼露、花生和虾米",
       "ru": "Толчёная папайя с чили, лаймом, рыбным соусом, арахисом и сушёной креветкой",
       "ko": "고추·라임·피시소스·땅콩·건새우를 넣고 찧은 그린 파파야",
-      "fr": "Papaye verte pilée, piment, citron vert, sauce poisson, cacahuètes, crevettes séchées"
+      "fr": "Papaye verte pilée, piment, citron vert, sauce poisson, cacahuètes, crevettes séchées",
+      "hi": "कूटा हुआ कच्चा पपीता, मिर्च, नींबू, फ़िश सॉस, मूंगफली और सूखे झींगे",
+      "ar": "بابايا خضراء مدقوقة مع الفلفل الحار والليمون وصلصة السمك والفول السوداني والروبيان المجفف",
+      "de": "Gestampfte grüne Papaya mit Chili, Limette, Fischsauce, Erdnüssen und getrockneten Garnelen"
      }
     },
     {
@@ -474,7 +600,10 @@ window.NM_MENU = {
       "ru": "Шашлычки из свинины (5 шт.)",
       "ko": "무삥 돼지꼬치 (5개)",
       "fr": "Brochettes de porc grillé (5)",
-      "th": "หมูปิ้ง (5 ไม้)"
+      "th": "หมูปิ้ง (5 ไม้)",
+      "hi": "ग्रिल्ड पोर्क सीख (5)",
+      "ar": "أسياخ لحم خنزير مشوية (5)",
+      "de": "Gegrillte Schweinespieße (5)"
      },
      "d": {
       "th": "หมูหมักนมสด กระเทียม พริกไทย ย่างเตาถ่าน",
@@ -482,7 +611,10 @@ window.NM_MENU = {
       "zh": "牛奶蒜香胡椒腌猪肉，炭火烤制",
       "ru": "Свинина в маринаде из молока, чеснока и перца на углях",
       "ko": "우유·마늘·후추에 재운 돼지고기 숯불구이",
-      "fr": "Porc mariné au lait, ail et poivre, grillé au charbon"
+      "fr": "Porc mariné au lait, ail et poivre, grillé au charbon",
+      "hi": "दूध, लहसुन और काली मिर्च में मैरिनेट किया पोर्क, कोयले पर ग्रिल्ड",
+      "ar": "لحم خنزير متبّل بالحليب والثوم والفلفل، مشوي على الفحم",
+      "de": "Schweinefleisch in Milch, Knoblauch und Pfeffer mariniert, über Holzkohle gegrillt"
      }
     },
     {
@@ -500,7 +632,10 @@ window.NM_MENU = {
       "ru": "Ассорти шашлычков",
       "ko": "모듬 꼬치구이",
       "fr": "Assortiment de brochettes",
-      "th": "ของปิ้งย่างรวม"
+      "th": "ของปิ้งย่างรวม",
+      "hi": "मिक्स ग्रिल सीख",
+      "ar": "أسياخ مشاوي مشكّلة",
+      "de": "Gemischte Grillspieße"
      },
      "d": {
       "th": "ไก่ หมู ลูกชิ้น ย่างเตาถ่าน พร้อมน้ำจิ้มแจ่ว",
@@ -508,7 +643,10 @@ window.NM_MENU = {
       "zh": "炭烤鸡肉、猪肉和肉丸串，配蘸酱",
       "ru": "Курица, свинина и фрикадельки на углях, с соусом джео",
       "ko": "숯불에 구운 닭·돼지·완자 꼬치, 재우 소스",
-      "fr": "Poulet, porc et boulettes au charbon, sauce jaew"
+      "fr": "Poulet, porc et boulettes au charbon, sauce jaew",
+      "hi": "कोयले पर बनी चिकन, पोर्क और मीटबॉल सीख, जेओ डिप सॉस के साथ",
+      "ar": "أسياخ دجاج ولحم خنزير وكرات لحم مشوية على الفحم، مع صلصة جاو للتغميس",
+      "de": "Spieße mit Huhn, Schwein und Fleischbällchen vom Holzkohlegrill, mit Jaew-Dip"
      }
     },
     {
@@ -525,7 +663,10 @@ window.NM_MENU = {
       "ru": "Жареная курица по-хатъяйски",
       "ko": "핫야이 프라이드치킨",
       "fr": "Poulet frit de Hat Yai",
-      "th": "ไก่ทอดหาดใหญ่"
+      "th": "ไก่ทอดหาดใหญ่",
+      "hi": "हाट याई फ्राइड चिकन",
+      "ar": "دجاج مقلي على طريقة هات ياي",
+      "de": "Frittiertes Hähnchen Hat Yai"
      },
      "d": {
       "th": "ไก่ทอดกรอบโรยหอมเจียว",
@@ -533,7 +674,10 @@ window.NM_MENU = {
       "zh": "香脆炸鸡撒上炸红葱",
       "ru": "Хрустящая курица с жареным луком-шалотом",
       "ko": "튀긴 샬롯을 올린 바삭한 프라이드치킨",
-      "fr": "Poulet frit croustillant, échalotes frites"
+      "fr": "Poulet frit croustillant, échalotes frites",
+      "hi": "कुरकुरा तला चिकन, ऊपर से तले हुए छोटे प्याज़",
+      "ar": "دجاج مقلي مقرمش يعلوه بصل مقلي",
+      "de": "Knusprig frittiertes Hähnchen mit gerösteten Schalotten"
      }
     },
     {
@@ -551,7 +695,10 @@ window.NM_MENU = {
       "ru": "Острый салат ларб со свининой",
       "ko": "랍무 (매운 돼지고기 샐러드)",
       "fr": "Larb de porc épicé",
-      "th": "ลาบหมู"
+      "th": "ลาบหมู",
+      "hi": "तीखा कीमा पोर्क सलाद (लार्ब)",
+      "ar": "سلطة لحم خنزير مفروم حارة (لارب)",
+      "de": "Scharfer Hackfleischsalat (Larb)"
      },
      "d": {
       "th": "หมูสับ ข้าวคั่ว พริกป่น สะระแหน่ มะนาว",
@@ -559,7 +706,10 @@ window.NM_MENU = {
       "zh": "猪肉末配炒米粉、辣椒粉、薄荷和青柠",
       "ru": "Фарш со жареным рисом, хлопьями чили, мятой и лаймом",
       "ko": "다진 돼지고기·볶은 쌀가루·고춧가루·민트·라임",
-      "fr": "Porc haché, riz grillé pilé, piment, menthe et citron vert"
+      "fr": "Porc haché, riz grillé pilé, piment, menthe et citron vert",
+      "hi": "कीमा पोर्क, भुने चावल का चूरा, मिर्च के फ़्लेक्स, पुदीना और नींबू",
+      "ar": "لحم خنزير مفروم مع أرز محمّص مطحون ورقائق الفلفل الحار والنعناع والليمون",
+      "de": "Schweinehack mit geröstetem Reis, Chiliflocken, Minze und Limette"
      }
     },
     {
@@ -573,7 +723,10 @@ window.NM_MENU = {
       "ru": "Клейкий рис",
       "ko": "찹쌀밥",
       "fr": "Riz gluant",
-      "th": "ข้าวเหนียว"
+      "th": "ข้าวเหนียว",
+      "hi": "स्टिकी राइस",
+      "ar": "أرز دبق",
+      "de": "Klebreis"
      }
     }
    ],
@@ -587,7 +740,10 @@ window.NM_MENU = {
     "zh": "面条",
     "ru": "Лапша",
     "ko": "국수",
-    "fr": "Nouilles"
+    "fr": "Nouilles",
+    "hi": "नूडल्स",
+    "ar": "نودلز",
+    "de": "Nudeln"
    },
    "items": [
     {
@@ -607,7 +763,10 @@ window.NM_MENU = {
       "ru": "Лапша «бот»",
       "ko": "보트누들",
       "fr": "Soupe de nouilles « bateau »",
-      "th": "ก๋วยเตี๋ยวเรือ"
+      "th": "ก๋วยเตี๋ยวเรือ",
+      "hi": "बोट नूडल सूप",
+      "ar": "شوربة نودلز القارب",
+      "de": "Bootsnudelsuppe"
      },
      "d": {
       "th": "น้ำซุปเข้มข้น เนื้อหมู ลูกชิ้น ผักบุ้ง",
@@ -615,7 +774,10 @@ window.NM_MENU = {
       "zh": "浓郁汤底配猪肉、肉丸和空心菜",
       "ru": "Насыщенный тёмный бульон со свининой, фрикадельками и шпинатом",
       "ko": "진한 국물에 돼지고기·완자·공심채",
-      "fr": "Bouillon sombre et riche, porc, boulettes, liseron d’eau"
+      "fr": "Bouillon sombre et riche, porc, boulettes, liseron d’eau",
+      "hi": "पोर्क, मीटबॉल और पानी पालक के साथ गाढ़ा, गहरा शोरबा",
+      "ar": "مرق داكن وغني مع لحم الخنزير وكرات اللحم وسبانخ الماء",
+      "de": "Kräftige dunkle Brühe mit Schwein, Fleischbällchen und Wasserspinat"
      }
     },
     {
@@ -636,7 +798,10 @@ window.NM_MENU = {
       "ru": "Лапша том ям",
       "ko": "똠얌 국수",
       "fr": "Soupe de nouilles tom yum",
-      "th": "ก๋วยเตี๋ยวต้มยำ"
+      "th": "ก๋วยเตี๋ยวต้มยำ",
+      "hi": "टॉम यम नूडल सूप",
+      "ar": "شوربة نودلز توم يام",
+      "de": "Tom-Yum-Nudelsuppe"
      },
      "d": {
       "th": "เส้นเล็ก น้ำต้มยำ หมู ถั่วลิสง มะนาว",
@@ -644,7 +809,10 @@ window.NM_MENU = {
       "zh": "细河粉配冬阴汤、猪肉、花生和青柠",
       "ru": "Тонкая рисовая лапша в бульоне том ям со свининой, арахисом и лаймом",
       "ko": "똠얌 국물에 얇은 쌀국수·돼지고기·땅콩·라임",
-      "fr": "Fines nouilles de riz, bouillon tom yum, porc, cacahuètes, citron vert"
+      "fr": "Fines nouilles de riz, bouillon tom yum, porc, cacahuètes, citron vert",
+      "hi": "टॉम यम शोरबे में पतले राइस नूडल्स, पोर्क, मूंगफली और नींबू के साथ",
+      "ar": "نودلز أرز رفيعة في مرق توم يام مع لحم الخنزير والفول السوداني والليمون",
+      "de": "Dünne Reisnudeln in Tom-Yum-Brühe mit Schwein, Erdnüssen und Limette"
      }
     },
     {
@@ -661,7 +829,10 @@ window.NM_MENU = {
       "ru": "Курица по-хайнаньски с рисом",
       "ko": "카오만까이 (닭고기 덮밥)",
       "fr": "Riz au poulet hainanais",
-      "th": "ข้าวมันไก่"
+      "th": "ข้าวมันไก่",
+      "hi": "हैनानीज़ चिकन राइस",
+      "ar": "أرز الدجاج الهايناني",
+      "de": "Hainan-Hühnerreis"
      },
      "d": {
       "th": "ไก่ต้ม ข้าวมัน น้ำจิ้มเต้าเจี้ยว ซุปใส",
@@ -669,7 +840,10 @@ window.NM_MENU = {
       "zh": "白切鸡、鸡油饭、黄豆酱和清汤",
       "ru": "Отварная курица, рис на курином бульоне, соевый соус, бульон",
       "ko": "삶은 닭고기, 닭육수 밥, 된장 소스, 맑은 국",
-      "fr": "Poulet poché, riz au bouillon de volaille, sauce soja fermentée, bouillon"
+      "fr": "Poulet poché, riz au bouillon de volaille, sauce soja fermentée, bouillon",
+      "hi": "उबला चिकन, चिकन स्टॉक में पके चावल, सोयाबीन सॉस और साफ़ सूप",
+      "ar": "دجاج مسلوق مع أرز مطبوخ بمرق الدجاج وصلصة فول الصويا وشوربة صافية",
+      "de": "Pochiertes Huhn, in Hühnerbrühe gegarter Reis, Sojabohnensauce und klare Suppe"
      }
     }
    ]
@@ -682,7 +856,10 @@ window.NM_MENU = {
     "zh": "甜点",
     "ru": "Десерты",
     "ko": "디저트",
-    "fr": "Desserts"
+    "fr": "Desserts",
+    "hi": "मिठाइयाँ",
+    "ar": "حلويات",
+    "de": "Desserts"
    },
    "items": [
     {
@@ -696,7 +873,10 @@ window.NM_MENU = {
       "ru": "Манго с клейким рисом",
       "ko": "망고 찹쌀밥",
       "fr": "Riz gluant à la mangue",
-      "th": "ข้าวเหนียวมะม่วง"
+      "th": "ข้าวเหนียวมะม่วง",
+      "hi": "मैंगो स्टिकी राइस",
+      "ar": "أرز دبق بالمانجو",
+      "de": "Mango mit Klebreis"
      },
      "d": {
       "th": "มะม่วงน้ำดอกไม้สุก ข้าวเหนียวมูน ราดกะทิ",
@@ -704,7 +884,10 @@ window.NM_MENU = {
       "zh": "熟芒果配椰浆糯米饭",
       "ru": "Спелое манго, клейкий рис в кокосовом молоке и кокосовые сливки",
       "ko": "잘 익은 망고, 코코넛 찹쌀밥과 코코넛 크림",
-      "fr": "Mangue mûre, riz gluant au lait de coco, crème de coco"
+      "fr": "Mangue mûre, riz gluant au lait de coco, crème de coco",
+      "hi": "पका आम, मीठा नारियल स्टिकी राइस और नारियल क्रीम",
+      "ar": "مانجو ناضجة مع أرز دبق محلّى بجوز الهند وكريمة جوز الهند",
+      "de": "Reife Mango, süßer Kokos-Klebreis und Kokoscreme"
      }
     },
     {
@@ -718,7 +901,10 @@ window.NM_MENU = {
       "ru": "Бананы в кокосовом молоке",
       "ko": "코코넛 밀크 바나나",
       "fr": "Banane au lait de coco",
-      "th": "กล้วยบวชชี"
+      "th": "กล้วยบวชชี",
+      "hi": "नारियल दूध में केला",
+      "ar": "موز بحليب جوز الهند",
+      "de": "Banane in Kokosmilch"
      },
      "d": {
       "th": "กล้วยน้ำว้าต้มในกะทิอุ่นๆ",
@@ -726,7 +912,10 @@ window.NM_MENU = {
       "zh": "泰国香蕉煮温椰奶",
       "ru": "Тайские бананы в тёплом кокосовом молоке",
       "ko": "따뜻한 코코넛 밀크에 졸인 태국 바나나",
-      "fr": "Bananes thaïes mijotées dans du lait de coco tiède"
+      "fr": "Bananes thaïes mijotées dans du lait de coco tiède",
+      "hi": "गर्म नारियल दूध में पकाए गए थाई केले",
+      "ar": "موز تايلاندي مطهو في حليب جوز الهند الدافئ",
+      "de": "Thai-Bananen, in warmer Kokosmilch gegart"
      }
     }
    ]
@@ -739,7 +928,10 @@ window.NM_MENU = {
     "zh": "饮品",
     "ru": "Напитки",
     "ko": "음료",
-    "fr": "Boissons"
+    "fr": "Boissons",
+    "hi": "पेय",
+    "ar": "مشروبات",
+    "de": "Getränke"
    },
    "items": [
     {
@@ -756,7 +948,10 @@ window.NM_MENU = {
       "ru": "Тайский холодный чай",
       "ko": "타이 아이스티",
       "fr": "Thé thaï glacé",
-      "th": "ชาไทยเย็น"
+      "th": "ชาไทยเย็น",
+      "hi": "थाई आइस्ड टी",
+      "ar": "شاي تايلاندي مثلّج",
+      "de": "Thai-Eistee"
      },
      "d": {
       "th": "ชาไทยใส่นมข้น เสิร์ฟเย็น",
@@ -764,7 +959,10 @@ window.NM_MENU = {
       "zh": "泰式红茶加炼乳，加冰",
       "ru": "Тайский чай со сгущёнкой, со льдом",
       "ko": "연유를 넣은 태국식 홍차, 아이스",
-      "fr": "Thé thaï au lait concentré, sur glace"
+      "fr": "Thé thaï au lait concentré, sur glace",
+      "hi": "कंडेंस्ड मिल्क वाली थाई चाय, बर्फ़ के साथ",
+      "ar": "شاي تايلاندي بالحليب المكثّف على الثلج",
+      "de": "Thai-Tee mit Kondensmilch auf Eis"
      }
     },
     {
@@ -778,7 +976,10 @@ window.NM_MENU = {
       "ru": "Свежий кокос",
       "ko": "생 코코넛",
       "fr": "Noix de coco fraîche",
-      "th": "น้ำมะพร้าวสด"
+      "th": "น้ำมะพร้าวสด",
+      "hi": "ताज़ा नारियल पानी",
+      "ar": "جوز هند طازج",
+      "de": "Frische Kokosnuss"
      }
     },
     {
@@ -792,7 +993,10 @@ window.NM_MENU = {
       "ru": "Лаймовая содовая",
       "ko": "라임 소다",
       "fr": "Soda citron vert",
-      "th": "น้ำมะนาวโซดา"
+      "th": "น้ำมะนาวโซดา",
+      "hi": "नींबू सोडा",
+      "ar": "صودا الليمون",
+      "de": "Limetten-Soda"
      }
     },
     {
@@ -809,7 +1013,10 @@ window.NM_MENU = {
       "ru": "Пиво Chang / Singha (большое)",
       "ko": "창 / 싱하 맥주 (큰 병)",
       "fr": "Bière Chang / Singha (grande)",
-      "th": "เบียร์ช้าง / สิงห์ (ขวดใหญ่)"
+      "th": "เบียร์ช้าง / สิงห์ (ขวดใหญ่)",
+      "hi": "चांग / सिंघा बीयर (बड़ी)",
+      "ar": "بيرة تشانغ / سينغا (كبيرة)",
+      "de": "Chang / Singha Bier (groß)"
      }
     },
     {
@@ -823,7 +1030,10 @@ window.NM_MENU = {
       "ru": "Кока-кола",
       "ko": "콜라",
       "fr": "Coca",
-      "th": "โค้ก"
+      "th": "โค้ก",
+      "hi": "कोक",
+      "ar": "كوكا كولا",
+      "de": "Cola"
      }
     },
     {
@@ -837,7 +1047,10 @@ window.NM_MENU = {
       "ru": "Вода",
       "ko": "생수",
       "fr": "Eau",
-      "th": "น้ำเปล่า"
+      "th": "น้ำเปล่า",
+      "hi": "पानी",
+      "ar": "ماء",
+      "de": "Wasser"
      }
     }
    ]

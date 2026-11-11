@@ -27,9 +27,9 @@ window.NM_LINKS = [
     { name: "Tableau de bord des menus QR", path: "nm/menus.html", note: "3 onglets : Clients (qui a payé, QR, rappel WhatsApp) · Chiffres (abonnés, essais, abandons, visites) · + Nouveau client (photos à prendre, fiche à copier dans la discussion, étapes de chaque client)" },
     { name: "+ Nouveau client", path: "nm/menus.html#nouveau", note: "La fiche à remplir, puis tu m'envoies les photos dans la discussion" },
     { name: "Menu QR d'exemple · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Le menu à montrer, ouvert en français : photos, piment, allergies, « montrer au serveur » en thaï" },
-    { name: "Menu QR d'exemple · Mae Lek en thaï", icon: "🇹🇭", path: "menus/mae-lek/", note: "Photos HD retouchées · prix en baht, 6 langues dont 中文 / Русский / 한국어, piment, écran serveur en thaï" },
+    { name: "Menu QR d'exemple · Mae Lek en thaï", icon: "🇹🇭", path: "menus/mae-lek/", note: "Photos HD retouchées · prix en baht, 9 langues (dont hindi, arabe, allemand) dont 中文 / Русский / 한국어, piment, écran serveur en thaï" },
     { name: "Menu d'exemple v2 · filtres + bouton Réserver", path: "nm/demo-menu/", note: "Baan Suan (8 langues) : filtres Végétarien / Pas épicé / Épicé / Choix du chef, bouton fixe WhatsApp + LINE en bas. Pour un client : ?wa=66…&line=@sonid" },
-    { name: "Chevalet QR à imprimer (A5)", path: "nm/print/chevalet-qr.html", note: "Nom du resto + lien du menu → panneau de table prêt à imprimer : « สแกนดูเมนู / Scan for the menu » + 6 langues, QR testé" }
+    { name: "Chevalet QR à imprimer (A5)", path: "nm/print/chevalet-qr.html", note: "Nom du resto + lien du menu → panneau de table prêt à imprimer : « สแกนดูเมนู / Scan for the menu » + 9 langues, QR testé" }
   ] },
   { space: "site", group: "NM Studio · le site", items: [
     { name: "NM Studio · Français", path: "nm/fr/", note: "Le site à montrer aux clients" },

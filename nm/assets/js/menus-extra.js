@@ -70,9 +70,9 @@
     ["Photos du restaurant", "Devant, puis l’intérieur (tables, ambiance). Sert pour la page d’accueil du menu."],
     ["Photos de leurs plats (si ils en ont)", "Seulement de vraies photos de leurs plats. Sinon, je n’en invente pas : le menu marche très bien sans."]
   ];
-  var LANGS = [["th", "ไทย"], ["en", "English"], ["zh", "中文"], ["ru", "Русский"], ["ko", "한국어"], ["fr", "Français"], ["it", "Italiano"]];
+  var LANGS = [["th", "ไทย"], ["en", "English"], ["zh", "中文"], ["ru", "Русский"], ["ko", "한국어"], ["hi", "हिन्दी (hindi)"], ["ar", "العربية (arabe)"], ["de", "Deutsch"], ["fr", "Français"], ["it", "Italiano"]];
   var STAGES = ["Trouvé", "Photos envoyées", "Menu en cours", "À relire", "QR imprimé", "Payé"];
-  var draft = store("nmNewDraft") || { name: "", city: "", contact: "", notes: "", langs: ["th", "en", "zh", "ru", "ko", "fr"], steps: [false, false, false, false] };
+  var draft = store("nmNewDraft") || { name: "", city: "", contact: "", notes: "", langs: ["th", "en", "zh", "ru", "ko", "hi", "ar", "de", "fr"], steps: [false, false, false, false] };
   function save() { store("nmNewDraft", draft); }
   function list() { return store("nmNewClients") || []; }
   function brief() {

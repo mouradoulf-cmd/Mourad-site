@@ -148,9 +148,9 @@
      before photo → after phone screenshot, then 3 big steps. Mourad (2026-10-27): "simple pour tout le monde, même les vieux". */
   var S = {
     th: { t: "เมนูกระดาษ <em>→ เมนูในมือถือ</em>", b: "ก่อน", bc: "เมนูภาษาไทยอย่างเดียว นักท่องเที่ยวอ่านไม่ออก", a: "หลัง", ac: "นักท่องเที่ยวเห็นเมนูเป็นภาษาของเขา พร้อมรูปอาหาร",
-      q: "สแกน", s: [["สแกน", "ลูกค้าสแกน QR บนโต๊ะ ด้วยกล้องมือถือ"], ["เลือกภาษา", "อังกฤษ จีน รัสเซีย เกาหลี ฝรั่งเศส หรือไทย"], ["ดูรูปแล้วสั่ง", "กดให้พนักงานดู เป็นภาษาไทย"]], cta: "ลองเปิดเมนูตัวอย่าง" },
+      q: "สแกน", s: [["สแกน", "ลูกค้าสแกน QR บนโต๊ะ ด้วยกล้องมือถือ"], ["เลือกภาษา", "อังกฤษ จีน รัสเซีย เกาหลี ฮินดี อาหรับ เยอรมัน ฝรั่งเศส หรือไทย"], ["ดูรูปแล้วสั่ง", "กดให้พนักงานดู เป็นภาษาไทย"]], cta: "ลองเปิดเมนูตัวอย่าง" },
     fr: { t: "Menu papier <em>→ menu dans le téléphone</em>", b: "Avant", bc: "Menu tout en thaï : les touristes ne peuvent pas le lire", a: "Après", ac: "Le touriste voit le menu dans sa langue, avec les photos",
-      q: "Scanner", s: [["Scanner", "Le client scanne le QR sur la table avec l'appareil photo"], ["Choisir la langue", "Anglais, chinois, russe, coréen, français ou thaï"], ["Voir et commander", "Il montre sa commande au serveur, en thaï"]], cta: "Ouvrir le menu d'exemple" }
+      q: "Scanner", s: [["Scanner", "Le client scanne le QR sur la table avec l'appareil photo"], ["Choisir la langue", "Anglais, chinois, russe, coréen, hindi, arabe, allemand, français ou thaï"], ["Voir et commander", "Il montre sa commande au serveur, en thaï"]], cta: "Ouvrir le menu d'exemple" }
   };
   var AR = '<span class="mbs__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
   function simple() {

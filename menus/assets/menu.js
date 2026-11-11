@@ -12,12 +12,12 @@
   var root = document.getElementById("menu");
   var shop = M.demo && (new URLSearchParams(location.search).get("shop") || "").trim().slice(0, 40);
   if (shop) { M.name = M.wordmark = shop; M.wordmarkSub = ""; M.tagline = { en: "" }; }
-  var LN = { th: "ไทย", en: "English", zh: "中文", ru: "Русский", fr: "Français", it: "Italiano", de: "Deutsch", ja: "日本語", ko: "한국어" };
+  var LN = { th: "ไทย", en: "English", zh: "中文", ru: "Русский", fr: "Français", it: "Italiano", de: "Deutsch", ja: "日本語", ko: "한국어", hi: "हिन्दी", ar: "العربية" };
   // Language flags: SVG from flag-icons (MIT, menus/assets/flags/) so they look the same on every phone.
   var FLAG_DIR = (document.currentScript && document.currentScript.src) ? new URL("flags/", document.currentScript.src).href : "../assets/flags/";
-  var FC = { th: "th", en: "gb", zh: "cn", ru: "ru", fr: "fr", it: "it", de: "de", ja: "jp", ko: "kr" };
+  var FC = { th: "th", en: "gb", zh: "cn", ru: "ru", fr: "fr", it: "it", de: "de", ja: "jp", ko: "kr", hi: "in", ar: "ae" };
   function flag(l, cls) { return FC[l] ? '<img class="flag' + (cls ? " " + cls : "") + '" src="' + FLAG_DIR + FC[l] + '.svg" alt="" width="24" height="18" decoding="async">' : ""; }
-  var LS = { th: "ไทย", en: "EN", zh: "中文", ru: "RU", fr: "FR", it: "IT", de: "DE", ja: "日本", ko: "한국" };
+  var LS = { th: "ไทย", en: "EN", zh: "中文", ru: "RU", fr: "FR", it: "IT", de: "DE", ja: "日本", ko: "한국", hi: "हिन्दी", ar: "عربي" };
   //            th, en, zh, ru, fr, it
   var U = (function (o) { var r = {}, k = ["th", "en", "zh", "ru", "fr", "it"]; Object.keys(o).forEach(function (n) { r[n] = {}; k.forEach(function (l, i) { r[n][l] = o[n][i]; }); }); return r; })({
     choose: ["เลือกภาษา", "Choose your language", "选择语言", "Выберите язык", "Choisissez votre langue", "Scegliete la lingua"],
@@ -74,6 +74,40 @@
     paused: "온라인 메뉴를 업데이트하고 있습니다", paused2: "불편을 드려 죄송합니다. 직원에게 메뉴를 요청해 주세요.",
     spice: "맵기", s0: "안 맵게", s1: "조금 맵게", s2: "보통", s3: "아주 맵게", spiceq: "목록의 모든 메뉴에 적용", demo: "예시 메뉴" };
   Object.keys(KO).forEach(function (k) { if (U[k]) U[k].ko = KO[k]; });
+  // Hindi, Arabic, German (Pattaya's Indian, Gulf and German visitors)
+  var HI = { choose: "अपनी भाषा चुनें", cue: "मेनू आपकी भाषा में खुलेगा", see: "डिश देखें", add: "मेरी पसंद में जोड़ें", added: "आपकी पसंद में जोड़ा गया", sel: "मेरी पसंद", view: "देखें", dishes: "डिश",
+    show: "वेटर को दिखाएँ", clear: "हटाएँ", empty: "किसी डिश पर + दबाकर उसे यहाँ जोड़ें।", selnote: "यह ऑर्डर नहीं है — बस यह स्क्रीन वेटर को दिखाएँ।", waiter: "वेटर के लिए",
+    wtitle: "मेहमान यह ऑर्डर करना चाहते हैं", wsub: "आपके और स्टाफ़ के लिए एक ही सूची", wstaff: "QR मेनू से चुना गया — कृपया हमेशा की तरह ऑर्डर लें।", walg: "खाने से एलर्जी",
+    turn: "स्क्रीन घुमाएँ", back: "वापस", total: "कुल", al: "एलर्जी", alt: "कोई एलर्जी?", als: "जिन डिश में ये हैं, वे धुंधली दिखेंगी।",
+    alf: "यह जानकारी रेस्टोरेंट की है — हमेशा हमारे स्टाफ़ से पुष्टि करें।", alb: "आपकी एलर्जी वाली डिश धुंधली दिखाई गई हैं — कृपया स्टाफ़ से पुष्टि करें।", done: "हो गया", reset: "रीसेट",
+    contains: "इसमें है", alls: "एलर्जन", menu: "मेनू", lang: "भाषा", enjoy: "खाने का आनंद लें", ask: "खाने से एलर्जी? बस हमारे स्टाफ़ को बताइए।", orig: "मूल नाम",
+    paused: "हमारा ऑनलाइन मेनू अपडेट हो रहा है", paused2: "असुविधा के लिए खेद है — कृपया स्टाफ़ से मेनू माँगें।",
+    spice: "कितना तीखा?", s0: "बिना तीखा", s1: "थोड़ा तीखा", s2: "मध्यम", s3: "बहुत तीखा", spiceq: "सूची की सभी डिश के लिए", demo: "डेमो मेनू" };
+  var AR = { choose: "اختر لغتك", cue: "ستُفتح القائمة بلغتك", see: "عرض الطبق", add: "أضف إلى اختياري", added: "أُضيف إلى اختيارك", sel: "اختياري", view: "عرض", dishes: "أطباق",
+    show: "أرِ النادل", clear: "مسح", empty: "اضغط + على أي طبق لإضافته هنا.", selnote: "هذا ليس طلبًا — فقط أرِ هذه الشاشة للنادل.", waiter: "للنادل",
+    wtitle: "يرغب الضيف في طلب", wsub: "القائمة نفسها لك وللموظفين", wstaff: "تم الاختيار من قائمة QR — يُرجى أخذ الطلب كالمعتاد.", walg: "حساسية من الطعام",
+    turn: "اقلب الشاشة", back: "رجوع", total: "المجموع", al: "الحساسية", alt: "هل لديك حساسية؟", als: "ستظهر الأطباق التي تحتوي عليها باهتة.",
+    alf: "معلومات مقدَّمة من المطعم — تأكّد دائمًا مع موظفينا.", alb: "الأطباق التي تحتوي على مسبّبات الحساسية لديك باهتة — يُرجى التأكد مع الموظفين.", done: "تم", reset: "إعادة ضبط",
+    contains: "يحتوي على", alls: "مسبّبات الحساسية", menu: "القائمة", lang: "اللغة", enjoy: "بالهناء والشفاء", ask: "حساسية من طعام ما؟ أخبر موظفينا ببساطة.", orig: "الاسم الأصلي",
+    paused: "قائمتنا الإلكترونية قيد التحديث", paused2: "نعتذر عن الإزعاج — يُرجى طلب القائمة من موظفينا.",
+    spice: "درجة الحرارة؟", s0: "بدون حار", s1: "حار قليلًا", s2: "متوسط", s3: "حار جدًا", spiceq: "لكل الأطباق في القائمة", demo: "قائمة تجريبية" };
+  var DE = { choose: "Sprache wählen", cue: "Die Karte öffnet sich in Ihrer Sprache", see: "Gericht ansehen", add: "Zu meiner Auswahl", added: "Zu Ihrer Auswahl hinzugefügt", sel: "Meine Auswahl", view: "Ansehen", dishes: "Gerichte",
+    show: "Dem Kellner zeigen", clear: "Leeren", empty: "Tippen Sie bei einem Gericht auf +, um es hier hinzuzufügen.", selnote: "Das ist keine Bestellung – zeigen Sie diesen Bildschirm einfach dem Kellner.", waiter: "Für den Kellner",
+    wtitle: "Der Gast möchte bestellen", wsub: "Dieselbe Liste für Sie und das Personal", wstaff: "Aus der QR-Karte gewählt – bitte wie gewohnt die Bestellung aufnehmen.", walg: "Lebensmittelallergien",
+    turn: "Bildschirm drehen", back: "Zurück", total: "Summe", al: "Allergien", alt: "Allergien?", als: "Gerichte, die sie enthalten, werden blasser.",
+    alf: "Angaben des Restaurants – bitte immer beim Personal nachfragen.", alb: "Gerichte mit Ihren Allergenen sind blasser – bitte beim Personal nachfragen.", done: "Fertig", reset: "Zurücksetzen",
+    contains: "Enthält", alls: "Allergene", menu: "Speisekarte", lang: "Sprache", enjoy: "Guten Appetit", ask: "Lebensmittelallergie? Sagen Sie es einfach unserem Team.", orig: "Originalname",
+    paused: "Unsere Online-Karte wird gerade aktualisiert", paused2: "Entschuldigen Sie die Unannehmlichkeit – fragen Sie bitte unser Personal nach der Karte.",
+    spice: "Wie scharf?", s0: "Nicht scharf", s1: "Leicht scharf", s2: "Mittel", s3: "Sehr scharf", spiceq: "Für alle Gerichte der Liste", demo: "Beispielkarte" };
+  [["hi", HI], ["ar", AR], ["de", DE]].forEach(function (x) { Object.keys(x[1]).forEach(function (k) { if (U[k]) U[k][x[0]] = x[1][k]; }); });
+  // fonts for scripts the menu fonts do not cover, loaded only when that language is chosen
+  var FONT = { hi: "Noto+Sans+Devanagari:wght@400;500;600", ar: "Noto+Naskh+Arabic:wght@400;500;600" };
+  function needFont(l) {
+    if (!FONT[l] || document.getElementById("nmf-" + l)) return;
+    var k = document.createElement("link"); k.id = "nmf-" + l; k.rel = "stylesheet";
+    k.href = "https://fonts.googleapis.com/css2?family=" + FONT[l] + "&display=swap"; document.head.appendChild(k);
+  }
+  function setLang(l) { document.documentElement.lang = l === "zh" ? "zh-Hans" : l; document.documentElement.dir = l === "ar" ? "rtl" : "ltr"; needFont(l); }
   var AI = ["🌾", "🦐", "🥚", "🐟", "🥜", "🫘", "🥛", "🌰", "🥬", "🟡", "⚪", "🍷", "🌸", "🦑"];
   var ICO = {
     plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>',
@@ -106,9 +140,10 @@
   function money(v) {
     var s = (Math.round(v * 100) / 100).toFixed(v % 1 ? 2 : 0);
     if (M.currency === "€") s = s.replace(".", ",");
-    return M.currency === "฿" ? s + " ฿" : s + " " + M.currency;
+    return "\u2066" + (M.currency === "฿" ? s + " ฿" : s + " " + M.currency) + "\u2069";
   }
-  function price(p) { return M.currency === "฿" ? p + " ฿" : p + " " + M.currency; }
+  // wrapped in a left-to-right isolate so "60 ฿" never turns into "฿ 60" inside Arabic text
+  function price(p) { return "\u2066" + (M.currency === "฿" ? p + " ฿" : p + " " + M.currency) + "\u2069"; }
   function aname(n) { var a = M.allergens && (M.allergens[lang] || M.allergens.en); return a ? a[n - 1] : n; }
   function img(base, w) { return M.photoOne ? base + ".webp" : base + "-" + w + ".webp"; }
   // photoHD: graded 4K-sourced photos in two crops: portrait 4:5 for the cards (-c-800/-c-1200), landscape 4:3 for the dish sheet (-w-1280/-w-2048)
@@ -141,7 +176,7 @@
 
   /* ─────────── page ─────────── */
   function render() {
-    document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+    setLang(lang);
     document.title = M.name + " · " + t("menu");
     var h = [];
     h.push('<div class="grain" aria-hidden="true"></div>');
@@ -225,7 +260,8 @@
         if (on) {
           [].forEach.call(tabs.children, function (x) { x.classList.toggle("on", x === on); x.removeAttribute("aria-current"); });
           on.setAttribute("aria-current", "true");
-          tabs.scrollTo({ left: on.offsetLeft - (tabs.clientWidth - on.offsetWidth) / 2, behavior: "smooth" });
+          var tr_ = tabs.getBoundingClientRect(), or_ = on.getBoundingClientRect();
+          tabs.scrollBy({ left: (or_.left + or_.width / 2) - (tr_.left + tr_.width / 2), behavior: "smooth" });
         }
       }
     };
@@ -405,7 +441,7 @@
 
   /* ─────────── paused screen ─────────── */
   function paused() {
-    document.documentElement.lang = lang;
+    setLang(lang);
     var others = langs.filter(function (l) { return l !== lang; }).slice(0, 4);
     root.innerHTML = '<div class="grain" aria-hidden="true"></div><div class="pause">' + (svg.logo ? '<div class="open__logo">' + svg.logo + "</div>" : '<h1 class="open__name">' + esc(M.name) + "</h1>") +
       "<h1>" + esc(t("paused")) + "</h1><p>" + esc(t("paused2")) + '</p><div class="others">' +
