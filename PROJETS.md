@@ -106,3 +106,8 @@ Site thaï réordonné (offres juste après la démo du menu), barre « สม�
 
 Ajout du hindi (demande de Mourad : beaucoup de touristes indiens), de l’arabe (Golfe) et de l’allemand. Mae Lek entièrement traduit,
 arabe de droite à gauche. Chaque plat de Mae Lek a maintenant une photo (Unsplash, voir `menus/assets/dishes/CREDITS.md`).
+
+## Relecture thaï + conditions de vente (12 novembre 2026)
+
+Site thaï, menu, kit et conditions de vente relus et alignés sur les offres 390 / 790 ฿ (PromptPay, pause si impayé). Rendez-vous fermés
+du 12 au 17 novembre (voyage) dans `nm/assets/js/contact-config.js` → `booking.closed` : à ajuster quand Mourad donne sa date d’arrivée.
