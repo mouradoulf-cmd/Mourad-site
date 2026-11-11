@@ -300,3 +300,12 @@ copie la fiche et la colle dans une discussion avec les photos. Étapes à suivr
 6. « X a payé » : repousser `paidUntil` d'un mois et ajouter une ligne dans `payments`.
 Le tableau de bord (privé, `nm/menus.html`) a 3 onglets : Clients, Chiffres, + Nouveau client. Mettre à jour `PROJETS.md` quand un client est ajouté.
 
+
+## find-skills : à utiliser à chaque nouvelle tâche (demandé par Mourad, 2026-11-11)
+
+Avant de commencer une tâche (site, vidéo, pub, automatisation, outil…), utiliser le skill `find-skills`
+pour vérifier s'il existe déjà un skill adapté : d'abord parmi ceux installés dans `.claude/skills/`, puis dans
+l'écosystème (`npx skills find <mot-clé>`). S'il y en a un de pertinent, l'utiliser. Un skill trouvé hors du dépôt
+ne s'installe qu'avec la règle « Skills partagés » ci-dessus (dossier du dépôt, copie sur les deux branches,
+jamais global) et après avoir regardé son contenu. Si rien ne convient, continuer normalement. Ne pas ralentir
+Mourad : une ligne en fin de réponse suffit pour dire quel skill a servi.
