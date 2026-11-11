@@ -30,7 +30,7 @@
     fr: { k: "Les photos du menu", t: "Des photos qui donnent <em>envie de commander</em>", c: "Photos d'illustration du menu d'exemple · le menu de votre restaurant utilise vos plats, avec lumière et couleurs retouchées" },
     en: { k: "Menu photos", t: "Photos that make guests <em>want to order</em>", c: "Illustration photos from the sample menu · your menu uses your own dishes, with light and colour retouched" }
   };
-  var DISHES = [["krapao", "ผัดกะเพรา"], ["tomyum", "ต้มยำกุ้ง"], ["somtam", "ส้มตำไทย"], ["curry", "แกงเผ็ด"], ["padthai", "ผัดไทย"], ["mango", "ข้าวเหนียวมะม่วง"], ["noodle", "ก๋วยเตี๋ยว"], ["chicken", "ไก่ทอด"], ["glory", "ผักบุ้งไฟแดง"], ["tea", "ชาไทย"]];
+  var DISHES = [["krapao", "ผัดกะเพรา"], ["tomyum", "ต้มยำกุ้ง"], ["somtam", "ส้มตำไทย"], ["curry", "แกงเขียวหวาน"], ["padthai", "ผัดไทย"], ["mango", "ข้าวเหนียวมะม่วง"], ["noodle", "ก๋วยเตี๋ยวต้มยำ"], ["chicken", "ไก่ทอด"], ["glory", "ผักบุ้งไฟแดง"], ["tea", "ชาไทย"]];
   function ribbon(lang) {
     var R = RIB[lang] || RIB.en;
     var cells = DISHES.map(function (d) { return '<figure class="rib__c"><img src="' + DEMO + d[0] + '-c-800.webp" alt="' + d[1] + '" width="800" height="1000" loading="lazy" decoding="async"><figcaption lang="th">' + d[1] + "</figcaption></figure>"; }).join("");

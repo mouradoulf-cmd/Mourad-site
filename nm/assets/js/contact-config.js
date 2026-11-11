@@ -32,6 +32,6 @@ window.NM_CONTACT = {
     minutes: 20,
     daysAhead: 10,
     booked: [],
-    closed: []
+    closed: ["2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17"]   // Mourad en voyage vers la Thaïlande : pas de rendez-vous ces jours-là
   }
 };
