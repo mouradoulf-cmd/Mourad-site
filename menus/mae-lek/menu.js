@@ -368,6 +368,7 @@ window.NM_MENU = {
     },
     {
      "id": "tomkha",
+     "img": "tomkha",
      "n": "ต้มข่าไก่",
      "p": "90",
      "hot": 1,
@@ -393,6 +394,7 @@ window.NM_MENU = {
     },
     {
      "id": "massaman",
+     "img": "massaman",
      "n": "แกงมัสมั่นไก่",
      "p": "100",
      "hot": 1,
@@ -536,6 +538,7 @@ window.NM_MENU = {
     },
     {
      "id": "larb",
+     "img": "larb",
      "n": "ลาบหมู",
      "p": "70",
      "hot": 3,
@@ -561,6 +564,7 @@ window.NM_MENU = {
     },
     {
      "id": "sticky",
+     "img": "sticky",
      "n": "ข้าวเหนียว",
      "p": "15",
      "sn": {
@@ -645,6 +649,7 @@ window.NM_MENU = {
     },
     {
      "id": "khaoman",
+     "img": "khaoman",
      "n": "ข้าวมันไก่",
      "p": "60",
      "a": [
@@ -704,6 +709,7 @@ window.NM_MENU = {
     },
     {
      "id": "banana",
+     "img": "banana",
      "n": "กล้วยบวชชี",
      "p": "40",
      "sn": {
@@ -763,6 +769,7 @@ window.NM_MENU = {
     },
     {
      "id": "coconut",
+     "img": "coconut",
      "n": "น้ำมะพร้าวสด",
      "p": "50",
      "sn": {
@@ -776,6 +783,7 @@ window.NM_MENU = {
     },
     {
      "id": "lime",
+     "img": "lime",
      "n": "น้ำมะนาวโซดา",
      "p": "40",
      "sn": {
@@ -789,6 +797,7 @@ window.NM_MENU = {
     },
     {
      "id": "beer",
+     "img": "beer",
      "n": "เบียร์ช้าง / สิงห์ (ขวดใหญ่)",
      "p": "100",
      "a": [
@@ -805,6 +814,7 @@ window.NM_MENU = {
     },
     {
      "id": "coke",
+     "img": "coke",
      "n": "โค้ก",
      "p": "25",
      "sn": {
@@ -818,6 +828,7 @@ window.NM_MENU = {
     },
     {
      "id": "water",
+     "img": "water",
      "n": "น้ำเปล่า",
      "p": "15",
      "sn": {

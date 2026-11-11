@@ -279,7 +279,7 @@
     }
     if (b.hasAttribute("data-areset")) { alg = []; saveAlg(); openSheet("alg"); return; }
     if (b.hasAttribute("data-q")) { add(b.getAttribute("data-q"), +b.getAttribute("data-d")); openSheet("sel"); return; }
-    if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { scrollTo({ top: g.getBoundingClientRect().top + scrollY - 118, behavior: "smooth" }); }, closeSheet && document.getElementById("sheet").classList.contains("on") ? 250 : 0); return; }
+    if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { var tg = g.querySelector(".ch__h") || g; scrollTo({ top: tg.getBoundingClientRect().top + scrollY - 140, behavior: "smooth" }); }, closeSheet && document.getElementById("sheet").classList.contains("on") ? 250 : 0); return; }
     if (b.hasAttribute("data-clear")) { sel = {}; saveSel(); refreshAdds(); openSheet("sel"); return; }
     if (b.hasAttribute("data-show")) { showWaiter(); return; }
     if (b.hasAttribute("data-spice")) { var k = b.getAttribute("data-spice"); spice = spice === k ? null : k; store.set(KEY + "-spice", spice || ""); b.parentNode.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b && spice !== null); }); return; }
