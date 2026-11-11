@@ -87,3 +87,27 @@ Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, 
 - Support en acrylique A5 vertical (Lazada, ~36 ฿ la pièce, prix promo vu le 27/10) + feuille A5 imprimée papier épais mat, **sans plastification** (le support protège déjà). Coût estimé 46 à 56 ฿ par pièce (impression = estimation à confirmer par devis dans 2 imprimeries de Pattaya).
 - Offre (corrigée par Mourad) : **support avec QR à 100 ฿ la pièce ; pour 3 achetés, le 4ᵉ est offert** (4 supports = 300 ฿, bénéfice ~76 à 116 ฿ sur les 4, soit ~24 ฿ par pièce : marge faible, 120 ฿ conseillé). Le vrai revenu reste l'abonnement 390 ฿/mois.
 - Avant de commander 100 : acheter 10 pièces A5 vertical, tester le scan du QR (plusieurs téléphones, soleil et pénombre).
+
+## Paiement en ligne Thaïlande : page d'inscription (10 novembre 2026)
+
+- Lien : https://mouradoulf-cmd.github.io/Mourad-site/nm/th/signup.html (boutons « สมัครเลย » des 2 offres du site thaï).
+- Menu QR 390 : rien à payer (1er mois gratuit), message prêt sur WhatsApp/LINE. Site 790 : QR PromptPay de 790 ฿ avec le montant exact.
+- **Reste à fournir par Mourad** : numéro PromptPay de sa femme (téléphone, pas la carte d'identité) + nom affiché par la banque
+  → `nm/assets/js/payment-config.js` (`promptpay`, `promptpayName`) ; numéro WhatsApp thaï + LINE OA (`contact-config.js`) ;
+  numéro d'enregistrement de l'activité (mentions légales). En attendant, la page dit « on vous envoie le QR » (pas de faux QR).
+- Corrigé le même jour : boutons « Choisir » des pages fr/it/ar (page introuvable), anciennes offres dans le titre/données Google de la page thaïe.
+
+## Passe « carte blanche » (11 novembre 2026)
+
+Site thaï réordonné (offres juste après la démo du menu), barre « สมัครเลย » fixe sur téléphone, « 8 vrais sites » corrigé en
+« 8 sites conçus par nous » (5 langues), menus QR utilisables sans réseau (`menus/sw.js`). Détails : `nm/README.md`.
+
+## Menus QR en 9 langues (11 novembre 2026)
+
+Ajout du hindi (demande de Mourad : beaucoup de touristes indiens), de l’arabe (Golfe) et de l’allemand. Mae Lek entièrement traduit,
+arabe de droite à gauche. Chaque plat de Mae Lek a maintenant une photo (Unsplash, voir `menus/assets/dishes/CREDITS.md`).
+
+## Relecture thaï + conditions de vente (12 novembre 2026)
+
+Site thaï, menu, kit et conditions de vente relus et alignés sur les offres 390 / 790 ฿ (PromptPay, pause si impayé). Rendez-vous fermés
+du 12 au 17 novembre (voyage) dans `nm/assets/js/contact-config.js` → `booking.closed` : à ajuster quand Mourad donne sa date d’arrivée.
