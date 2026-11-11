@@ -429,3 +429,13 @@
     if (preview === "pause" || (data && status(sub, data.graceDays) === "pause")) paused(); else render();
   });
 })();
+
+/* Instant reopen and offline use on a weak signal (menus/sw.js). Skipped in previews (?shop=, ?preview=). */
+(function () {
+  if (!("serviceWorker" in navigator) || /[?&](shop|preview)=/.test(location.search)) return;
+  var src = document.currentScript && document.currentScript.src;
+  if (!src) return;
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register(new URL("../sw.js", src).href, { scope: new URL("../", src).href }).catch(function () {});
+  });
+})();

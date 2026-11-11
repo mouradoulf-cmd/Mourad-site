@@ -232,3 +232,8 @@ peurs → engagements, zones, un seul champ » étaient déjà appliqués (passe
 - Un groupe de liens va dans son onglet d'après son nom (`paneOf()` : « menus qr/abonnement » → Menus QR, « thaïlandais » → Site thaï, « démos client » → Démos, le reste → NM Studio). Garder ces mots dans les noms de groupes.
 - En-tête de la page Site web compacté (le contenu apparaît dès le premier écran). Vidéo IA et Formation inchangés.
 
+
+- **2026-11-11** (carte blanche de Mourad) : site thaï réordonné pour aller plus vite à l'offre (héros → papier/QR/téléphone →
+  2 offres → engagements → film → réalisations → fondateur → FAQ → contact) ; barre « สมัครเลย 390 ฿ » fixe en bas sur téléphone
+  (`th-bar.js/css`, se retire sur les offres et le contact) ; « 8 vrais sites » remplacé par « 8 sites conçus par nous » dans les
+  5 langues (ce sont des maquettes, pas des clients) ; menus QR utilisables hors connexion et réouverture instantanée (`menus/sw.js`).

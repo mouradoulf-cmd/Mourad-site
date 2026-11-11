@@ -10,7 +10,7 @@
         pricing: { title: "Prices: setup, then a subscription | NM Studio", description: "Thai baht prices: website ฿5,800 then ฿1,140 a month, Complete Pack ฿13,300 then ฿3,800 a month. Google and QR menu paid once." }
       },
       nav2: { offers: "Offers", services: "Services", pricing: "Pricing", account: "My account", home: "Home", cta: "Chat on WhatsApp" },
-    reel: { eyebrow: "Real work", title: "Eight sites, <em>live right now.</em>", lead: "Open any of them: real businesses, their own photos and their own languages.", hint: "Point at it to stop" },
+    reel: { eyebrow: "Our work", title: "Eight sites, <em>live right now.</em>", lead: "Open any of them: real businesses, their own photos and their own languages.", hint: "Point at it to stop" },
     cta: { startProject: "Start my project", startShort: "Start a project", quote: "Free quote" },
       hero2: {
         eyebrow: "Web agency & design studio",

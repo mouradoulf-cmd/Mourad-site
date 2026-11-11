@@ -45,7 +45,7 @@
           '<div class="mba__dots"><button type="button" data-go="1" aria-label="1"></button><button type="button" data-go="2" aria-label="2"></button><button type="button" data-go="3" aria-label="3"></button></div><button type="button" class="mba__replay" data-replay></button></div>' +
         '<p class="mba__cta"><a class="btn btn--sun btn--lg" id="mbaCta" target="_blank" rel="noopener"><span data-k="cta"></span></a></p>' +
       '</div>';
-    var anchor = document.getElementById("problems");
+    var anchor = document.querySelector("[data-mba-anchor]") || document.getElementById("problems");
     if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(sec, anchor.nextSibling);
     else { var w = document.getElementById("work"); if (!w) return false; w.parentNode.insertBefore(sec, w); }
     text(); return true;
@@ -174,7 +174,7 @@
     function qr() { var el = sec.querySelector("#mbsQr"); if (!el || el.firstChild) return; try { new QRCode(el, { text: MAE, width: 240, height: 240, colorDark: "#0b0c16", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M }); } catch (e) {} }
     if (window.QRCode) qr(); else { var sc = document.createElement("script"); sc.src = new URL("assets/js/qrcode.min.js", BASE).href; sc.onload = qr; document.head.appendChild(sc); }
     document.addEventListener("nm:lang", function () { if (window.QRCode) qr(); });
-    var anchor = document.getElementById("problems");
+    var anchor = document.querySelector("[data-mba-anchor]") || document.getElementById("problems");
     if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(sec, anchor.nextSibling);
     else { var w = document.getElementById("work"); if (!w) return; w.parentNode.insertBefore(sec, w); }
     document.addEventListener("nm:lang", fill);
