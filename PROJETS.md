@@ -101,3 +101,8 @@ Offre : menu QR traduit (ไทย, English, 中文, Русский, Français, 
 
 Site thaï réordonné (offres juste après la démo du menu), barre « สมัครเลย » fixe sur téléphone, « 8 vrais sites » corrigé en
 « 8 sites conçus par nous » (5 langues), menus QR utilisables sans réseau (`menus/sw.js`). Détails : `nm/README.md`.
+
+## Menus QR en 9 langues (11 novembre 2026)
+
+Ajout du hindi (demande de Mourad : beaucoup de touristes indiens), de l’arabe (Golfe) et de l’allemand. Mae Lek entièrement traduit,
+arabe de droite à gauche. Chaque plat de Mae Lek a maintenant une photo (Unsplash, voir `menus/assets/dishes/CREDITS.md`).

@@ -292,7 +292,8 @@ Mourad trouve un restaurant, remplit l'onglet « + Nouveau client » de `nm/menu
 copie la fiche et la colle dans une discussion avec les photos. Étapes à suivre, sans lui reposer les questions déjà dans la fiche :
 1. Transcrire fidèlement le menu depuis les photos, prix en baht. Illisible ou absent = le dire et demander, jamais inventer (ni plats, ni photos, ni avis, ni allergènes).
 2. Sur la branche publiée `claude/thai-app-mnw166` : copier `menus/mae-lek/` (ou `menus/giulivo/`) en `menus/<slug>/`, remplir `menu.js`
-   (seulement les vraies photos fournies), langues demandées (thaï, anglais, chinois, russe, coréen, français, italien).
+   (seulement les vraies photos fournies), langues demandées — par défaut les 9 langues des touristes de Pattaya (thaï, anglais, chinois, russe, coréen,
+   hindi, arabe, allemand, français ; italien sur demande), arabe de droite à gauche déjà géré par `menus/assets/menu.js`.
 3. Ajouter une ligne dans `menus/abonnements.json` (start = aujourd'hui, `paidUntil` = +1 mois, `trial: true`, contact, ville, pas de `demo`).
 4. Tester (Playwright téléphone + ordinateur, toutes les langues, aucune erreur console), pousser, vérifier que le lien répond (Pages met ~10-15 min).
 5. Livrer : le lien du menu + le panneau QR A5 en PDF (page `nm/print/chevalet-qr.html?url=<lien>&name=<nom>` rendue avec Playwright, QR décodé et vérifié),
