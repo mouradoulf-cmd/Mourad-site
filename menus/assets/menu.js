@@ -118,6 +118,11 @@
     return "<picture>" + (only ? '<source media="(min-width:760px)" srcset="' + w + '" sizes="680px">' : "") +
       '<img src="' + d.img + '-c-800.webp" srcset="' + c + '" sizes="(min-width:760px) 340px, 80vw" alt="" loading="lazy" decoding="async"></picture>';
   }
+  // square thumbnail in the dish row (the 4:5 card crop, centred)
+  function thumb(d) {
+    var src = M.photoHD ? d.img + "-c-800.webp" : img(d.img, 640);
+    return '<span class="dish__ph"><img src="' + src + '" alt="" width="96" height="96" loading="lazy" decoding="async"></span>';
+  }
   function sheetPic(d) {
     if (!M.photoHD) return '<img src="' + img(d.img, 1280) + '" alt="' + esc(title(d)) + '">';
     return '<img src="' + d.img + '-w-1280.webp" srcset="' + d.img + "-w-1280.webp 1280w, " + d.img + '-w-2048.webp 2048w" sizes="(min-width:760px) 560px, 100vw" alt="' + esc(title(d)) + '">';
@@ -154,26 +159,15 @@
       '<button class="hd__ch" type="button" id="hdch" aria-label="' + esc(t("menu")) + '"><small></small><span></span></button>' +
       '<div class="hd__r"><button class="ib lb" type="button" data-open="lang" aria-label="' + esc(t("lang")) + " · " + (LN[lang] || lang) + '">' + flag(lang, "round") + "<span>" + (LS[lang] || lang) + "</span></button>" +
       '<button class="ib" type="button" data-open="alg" aria-label="' + esc(t("al")) + '">' + ICO.shield + '<span class="n' + (alg.length ? " on" : "") + '" id="algn">' + alg.length + "</span></button></div>" +
+      '<nav class="tabs" id="tabs" aria-label="' + esc(t("menu")) + '">' + M.sections.map(function (s, i) { return '<button type="button" data-go="' + s.id + '"' + (i ? "" : ' class="on"') + ">" + esc(tr(s.t)) + "</button>"; }).join("") + "</nav>" +
       '<i class="prog" id="prog"></i></header>');
     // chapters
     h.push("<main>");
     M.sections.forEach(function (s, si) {
-      var feat = s.items.filter(function (d) { return d.img; });
       h.push('<section class="ch" id="' + s.id + '" data-i="' + si + '"><div class="wrap">');
       h.push('<header class="ch__h rv"><p class="ch__no">' + String(si + 1).padStart(2, "0") + " / " + String(M.sections.length).padStart(2, "0") + '</p><h2 class="ch__t">' + esc(tr(s.t)) + "</h2>" +
         (lang !== ol && s.t[ol] ? '<p class="ch__o" lang="' + ol + '">' + esc(s.t[ol]) + "</p>" : "") + "</header>");
       if (si === 0) h.push('<p class="alb">' + esc(t("alb")) + "</p>");
-      if (feat.length) {
-        h.push('<div class="feat" data-feat>');
-        feat.forEach(function (d, fi) {
-          // desktop: two-column grid; with an odd count the first card spans both columns in landscape
-          var lead = feat.length === 1 || (fi === 0 && feat.length % 2 === 1);
-          h.push('<button type="button" class="card rv' + (lead ? " card--lead" : "") + '" data-dish="' + d.id + '">' + cardPic(d, lead) +
-            '<span class="card__b"><span class="card__k">' + esc(tr(s.t)) + '</span><span class="card__n">' + esc(title(d)) + "</span>" + (sub(d) ? '<span class="card__o" lang="' + ol + '">' + esc(sub(d)) + "</span>" : "") + '<span class="card__f"><span class="card__p">' + price(d.p) + '</span><span class="card__go">' + esc(t("see")) + " " + ICO.arrow.replace("<svg", '<svg width="14" height="14"') + "</span></span></span></button>");
-        });
-        h.push("</div>");
-        if (feat.length > 1) h.push('<div class="dots2" aria-hidden="true">' + feat.map(function (_, i) { return "<i" + (i ? "" : ' class="on"') + "></i>"; }).join("") + "</div>");
-      }
       h.push('<ul class="list">');
       s.items.forEach(function (d, i) { h.push(dishRow(d, i)); });
       h.push("</ul>");
@@ -198,12 +192,13 @@
 
   function dishRow(d, i) {
     var dd = desc(d), hs = hits(d), q = sel[d.id] || 0;
-    return '<li class="dish rv' + (hs.length ? " off" : "") + '" data-row="' + d.id + '" style="--d:' + Math.min(i * 0.04, 0.2).toFixed(2) + 's">' +
+    return '<li class="dish rv' + (d.img ? " has-ph" : "") + (hs.length ? " off" : "") + '" data-row="' + d.id + '" style="--d:' + Math.min(i * 0.04, 0.2).toFixed(2) + 's">' +
       '<button class="dish__o" type="button" data-dish="' + d.id + '" aria-label="' + esc(title(d)) + '"></button>' +
-      '<span class="dish__n">' + esc(title(d)) + (sub(d) ? '<small lang="' + ol + '">' + esc(sub(d)) + "</small>" : "") + '</span><span class="dish__p">' + price(d.p) + "</span>" +
+      '<span class="dish__txt"><span class="dish__n">' + esc(title(d)) + (sub(d) ? '<small lang="' + ol + '">' + esc(sub(d)) + "</small>" : "") + "</span>" +
       (dd ? '<span class="dish__d">' + esc(dd) + "</span>" : "") +
-      '<span class="dish__m">' + hot(d) + (d.img ? '<span class="chip ph">' + ICO.cam + "</span>" : "") +
-      (hs.length ? '<span class="chip warn">' + esc(t("contains")) + " · " + hs.map(function (n) { return AI[n - 1]; }).join(" ") + "</span>" : "") + "</span>" +
+      '<span class="dish__m"><span class="dish__p">' + price(d.p) + "</span>" + hot(d) +
+      (hs.length ? '<span class="chip warn">' + esc(t("contains")) + " · " + hs.map(function (n) { return AI[n - 1]; }).join(" ") + "</span>" : "") + "</span></span>" +
+      (d.img ? thumb(d) : "") +
       '<button class="add' + (q ? " on" : "") + '" type="button" data-add="' + d.id + '" aria-label="' + esc(t("add")) + '">' + ICO.plus + '<span class="q">' + (q || "") + "</span></button></li>";
   }
 
@@ -219,13 +214,19 @@
       var max = document.documentElement.scrollHeight - H;
       prog.style.setProperty("--p", Math.max(0, Math.min(1, (y - H * 0.5) / Math.max(1, max - H * 0.5))).toFixed(3));
       var c = 0;
-      chs.forEach(function (s, i) { if (s.getBoundingClientRect().top < 120) c = i; });
+      chs.forEach(function (s, i) { if (s.getBoundingClientRect().top < 170) c = i; });
       if (c !== cur) {
         cur = c;
         var s = M.sections[c];
         hdch.querySelector("small").textContent = String(c + 1).padStart(2, "0") + " / " + String(M.sections.length).padStart(2, "0");
         hdch.querySelector("span").textContent = tr(s.t);
         hdch.classList.remove("swap"); void hdch.offsetWidth; hdch.classList.add("swap");
+        var tabs = document.getElementById("tabs"), on = tabs && tabs.children[c];
+        if (on) {
+          [].forEach.call(tabs.children, function (x) { x.classList.toggle("on", x === on); x.removeAttribute("aria-current"); });
+          on.setAttribute("aria-current", "true");
+          tabs.scrollTo({ left: on.offsetLeft - (tabs.clientWidth - on.offsetWidth) / 2, behavior: "smooth" });
+        }
       }
     };
     addEventListener("scroll", spyFn, { passive: true }); spyFn();
@@ -278,7 +279,7 @@
     }
     if (b.hasAttribute("data-areset")) { alg = []; saveAlg(); openSheet("alg"); return; }
     if (b.hasAttribute("data-q")) { add(b.getAttribute("data-q"), +b.getAttribute("data-d")); openSheet("sel"); return; }
-    if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { scrollTo({ top: g.getBoundingClientRect().top + scrollY - 70, behavior: "smooth" }); }, 250); return; }
+    if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { scrollTo({ top: g.getBoundingClientRect().top + scrollY - 118, behavior: "smooth" }); }, closeSheet && document.getElementById("sheet").classList.contains("on") ? 250 : 0); return; }
     if (b.hasAttribute("data-clear")) { sel = {}; saveSel(); refreshAdds(); openSheet("sel"); return; }
     if (b.hasAttribute("data-show")) { showWaiter(); return; }
     if (b.hasAttribute("data-spice")) { var k = b.getAttribute("data-spice"); spice = spice === k ? null : k; store.set(KEY + "-spice", spice || ""); b.parentNode.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b && spice !== null); }); return; }

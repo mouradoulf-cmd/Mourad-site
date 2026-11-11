@@ -308,3 +308,24 @@ body.alg .alb{display:block}
 .lgrid button[aria-pressed="true"] .flag{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 .lb{display:inline-flex;align-items:center;gap:7px;padding:0 12px 0 8px}
 @media (max-width:370px){.langs button{gap:7px;font-size:.98rem}.langs button .flag{width:20px;height:15px}}
+
+/* ── Tidy layout (2026-11-11): category tabs under the header, one clean row per dish with its square photo on the right ── */
+.hd__ch{visibility:hidden;pointer-events:none}
+.tabs{grid-column:1/-1;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:4px -12px -2px;padding:2px 12px 4px;overscroll-behavior-x:contain}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;min-height:36px;padding:0 15px;border-radius:99px;font:500 .9rem/1 var(--body);color:var(--mute);border:1px solid var(--line);background:transparent;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.tabs button.on{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.ch{scroll-margin-top:118px}
+.list{margin-top:18px}
+.dish{grid-template-columns:minmax(0,1fr) auto;gap:0 16px;padding:18px 0;align-items:start}
+.dish__txt{grid-column:1;grid-row:1;display:grid;gap:5px;min-width:0}
+.dish__d{grid-column:auto;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dish__m{grid-column:auto;margin-top:4px;gap:8px}
+.dish__p{text-align:left;font-size:1.08rem;margin-right:2px}
+.dish__ph{grid-column:2;grid-row:1;width:96px;height:96px;border-radius:16px;overflow:hidden;background:var(--line);transition:opacity .5s,filter .5s}
+.dish__ph img{display:block;width:100%;height:100%;object-fit:cover}
+.dish .add{grid-column:2;grid-row:1;align-self:center;justify-self:end}
+.dish.has-ph .add{align-self:end;margin:0 -6px -8px 0;background:var(--bg);box-shadow:0 0 0 3px var(--bg)}
+.dish.has-ph .add.on{background:var(--accent)}
+.dish.off .dish__ph{opacity:.3;filter:grayscale(1)}
+@media (min-width:760px){.dish__ph{width:112px;height:112px}.tabs{justify-content:center}}
