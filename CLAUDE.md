@@ -373,3 +373,12 @@ pour les sites de restaurant (textes « grande maison », vouvoiement, faits ré
 **Goût de Mourad (2026-10-20)** : il n'aime pas les objets 3D décoratifs comme le logo extrudé en laiton —
 ne plus en faire. Il veut les **photos des plats mises en avant** (grandes, en premier), avec des
 animations 3D qui servent les photos (ex. la roue des plats), pas des objets 3D à côté.
+
+## find-skills : à utiliser à chaque nouvelle tâche (demandé par Mourad, 2026-11-11)
+
+Avant de commencer une tâche (site, vidéo, pub, automatisation, outil…), utiliser le skill `find-skills`
+pour vérifier s'il existe déjà un skill adapté : d'abord parmi ceux installés dans `.claude/skills/`, puis dans
+l'écosystème (`npx skills find <mot-clé>`). S'il y en a un de pertinent, l'utiliser. Un skill trouvé hors du dépôt
+ne s'installe qu'avec la règle « Skills partagés » ci-dessus (dossier du dépôt, copie sur les deux branches,
+jamais global) et après avoir regardé son contenu. Si rien ne convient, continuer normalement. Ne pas ralentir
+Mourad : une ligne en fin de réponse suffit pour dire quel skill a servi.
