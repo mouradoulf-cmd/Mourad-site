@@ -111,3 +111,8 @@ arabe de droite à gauche. Chaque plat de Mae Lek a maintenant une photo (Unspla
 
 Site thaï, menu, kit et conditions de vente relus et alignés sur les offres 390 / 790 ฿ (PromptPay, pause si impayé). Rendez-vous fermés
 du 12 au 17 novembre (voyage) dans `nm/assets/js/contact-config.js` → `booking.closed` : à ajuster quand Mourad donne sa date d’arrivée.
+
+## Premier vrai client menu QR : Steak Dek Naew (สเต็กเด็กแนว) — 19/11/2026
+
+Menu v1 publié : https://mouradoulf-cmd.github.io/Mourad-site/menus/steak-dek-naew/ (branche `claude/thai-app-mnw166`, 52 plats, 9 langues, essai gratuit jusqu'au 19/12). Prix lus sur les photos du menu papier (écriture au stylo bleu), photos des plats = celles de son menu imprimé.
+**À compléter (demander à Mourad)** : plats dont le prix est caché par un autocollant jaune (côtes de porc BBQ, poisson grillé sauce seafood, 3 riz « น้ำจิ้มแจ่ว », burgers x4 + œuf, spaghetti « ผัดขี้เมา » et sauce tomate — ces deux photos sont barrées au stylo, sans doute indisponibles, une salade au nom caché à 89 ฿) ; carte Krapao n°1–6, riz sauté n°7–10 et boissons (aucun prix sur les photos) ; à confirmer : nom latin exact, ville, contact LINE/WhatsApp, « สเต็กหมูบด » (le menu anglais écrit « Minced Beef » par erreur : on a mis porc haché), photos des riz/bols assignées par position. Aucun allergène ni description inventés. Site vitrine : 3 directions à proposer avant de construire.
