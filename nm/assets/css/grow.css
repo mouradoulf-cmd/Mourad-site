@@ -213,11 +213,11 @@ html[lang="th"] .ref__k, html[lang="ar"] .ref__k { letter-spacing: 0; font-size:
 .ref .ref__fine { margin: .3rem 0 0; color: var(--muted); font-size: .8rem; line-height: 1.55; }
 
 /* ---------- LINE floating button (only shown once lineLink is set) ---------- */
-.line-float { position: fixed; z-index: 150; inset-inline-start: 1.25rem; bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 70px); display: grid; place-items: center;
+.line-float { position: fixed; z-index: 150; inset-inline-start: auto; inset-inline-end: 1.25rem; bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 64px); display: grid; place-items: center;
   width: 58px; height: 58px; border-radius: 17px; color: #fff; background: #06c755; box-shadow: 0 6px 16px -4px rgba(0,0,0,.45); }
 .line-float[hidden] { display: none; }
 .line-float svg { width: 34px; height: 34px; }
-body.nm-has-bar .line-float { bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + var(--nm-bar-h, 5.5rem) + 70px); }
+body.nm-has-bar .line-float { bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + var(--nm-bar-h, 5.5rem) + 64px); }
 /* with a real photo: a larger portrait frame (head, suit and tie) instead of the round monogram */
 .founder__photo.has-photo { width: clamp(14rem, 28vw, 19rem); aspect-ratio: 4 / 5; border-radius: 28px; }
 .founder__photo.has-photo img { object-position: 50% 30%; }
