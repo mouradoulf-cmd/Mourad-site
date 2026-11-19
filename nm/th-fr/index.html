@@ -39,6 +39,7 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <link as="image" fetchpriority="high" href="../assets/video/hero-poster.avif" rel="preload" type="image/avif"/>
 <link href="../assets/css/vendor/devices.min.css" rel="stylesheet"/>
 <link href="../assets/css/site.css?v=20261021a" rel="stylesheet"/>
+<link href="../assets/css/hero-rich.css?v=1" rel="stylesheet"/>
 <link href="../assets/css/craft.css?v=20261008v" rel="stylesheet"/>
 <link href="../assets/css/work-gallery.css?v=20261008v" rel="stylesheet"/>
 <link href="../assets/css/film.css?v=20261021a" rel="stylesheet"/>
@@ -151,12 +152,14 @@ document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?
 <a class="h__me" href="#studio-founder"><span aria-hidden="true" class="h__me-face"><img alt="" decoding="async" height="160" src="../assets/img/founder-sm.jpg?v=1" width="160"/><i></i></span><span class="h__me-txt"><span data-i18n="about.sig">Mourad ติดต่อผมได้โดยตรง</span><span class="h__me-link"><span data-i18n="about.read">อ่านเรื่องของเรา</span><svg aria-hidden="true" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></span></span></a>
 </div>
 <div class="h__visual">
-<div aria-hidden="true" class="h__stage" id="stage">
-<div class="h__orb"><i></i><i></i><i></i><b></b></div>
-<div class="h__ring h__ring--1"></div><div class="h__ring h__ring--2"></div>
-<div class="dev dev--hero"><div class="dev-scale dev-scale--mac"><div class="device device-macbook-pro device-spacegray"><div class="device-frame"><div class="mac__view device-screen"><picture><source sizes="(max-width: 430px) 280px, (max-width: 1079px) 72vw, 560px" srcset="../assets/img/work/giulivo-desk-520.avif 520w, ../assets/img/work/giulivo-desk-780.avif 780w, ../assets/img/work/giulivo-desk-1040.avif 1040w, ../assets/img/work/giulivo-desk.webp.avif 1280w" type="image/avif"><source sizes="(max-width: 430px) 280px, (max-width: 1079px) 72vw, 560px" srcset="../assets/img/work/giulivo-desk.webp 1280w" type="image/webp"><img alt="" decoding="async" height="800" loading="lazy" src="../assets/img/work/giulivo-desk.jpg" width="1280"/></source></source></picture></div></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div></div></div><div class="dev-scale dev-scale--iph"><div class="device device-iphone-14-pro device-black"><div class="device-frame"><div class="iph__view device-screen"><picture><source sizes="(max-width: 430px) 60px, (max-width: 1079px) 17vw, 145px" srcset="../assets/img/work/giulivo-mob-120.avif 120w, ../assets/img/work/giulivo-mob-240.avif 240w, ../assets/img/work/giulivo-mob-360.avif 360w, ../assets/img/work/giulivo-mob.webp.avif 585w" type="image/avif"><source sizes="(max-width: 430px) 60px, (max-width: 1079px) 17vw, 145px" srcset="../assets/img/work/giulivo-mob-360.webp 360w, ../assets/img/work/giulivo-mob.webp 585w" type="image/webp"><img alt="" decoding="async" height="1170" loading="lazy" src="../assets/img/work/giulivo-mob.jpg" width="585"/></source></source></picture></div></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div></div></div></div>
-<div class="h__chip h__chip--qr"><span class="chip"><span aria-hidden="true" class="chip__qr" data-qr="menu"></span><span data-i18n="hero.chipQr">รวมเมนู QR แล้ว</span></span></div>
-<div class="h__chip h__chip--live"><span class="chip"><span aria-hidden="true" class="live-dot"></span><span data-i18n="hero.chipLive">ออนไลน์ในไม่กี่วัน</span></span></div>
+<div class="h__stage" id="stage" aria-hidden="true">
+<div class="hx__glow"></div><div class="hx__ring"></div>
+<figure class="hx__desk"><span class="hx__bar"><i></i><i></i><i></i></span><img alt="" decoding="async" height="800" loading="lazy" src="../assets/img/work/giulivo-desk.jpg" width="1280"/></figure>
+<figure class="hx__ph hx__ph--b"><img alt="" decoding="async" height="1170" loading="lazy" src="../assets/img/work/giulivo-mob.jpg" width="585"/></figure>
+<figure class="hx__ph hx__ph--a"><img alt="" decoding="async" height="780" loading="lazy" src="../assets/img/menu-after-en-390.webp" width="390"/></figure>
+<div class="h__chip hx__c hx__c--qr"><span class="chip"><span aria-hidden="true" class="chip__qr" data-qr="menu"></span><span data-i18n="hero.chipQr">QR</span></span></div>
+<div class="h__chip hx__c hx__c--lang"><span class="chip"><span aria-hidden="true" class="live-dot"></span><span data-i18n="hero.chipLang">9 languages</span></span></div>
+<div class="h__chip hx__c hx__c--live"><span class="chip"><span aria-hidden="true" class="live-dot"></span><span data-i18n="hero.chipLive">Live in days</span></span></div>
 </div>
 <p class="h__now"><span aria-hidden="true" class="h__now-dots"><i class="is-on"></i><i></i><i></i><i></i><i></i><i></i></span><span data-i18n="v4.nowShowing">กำลังแสดง</span> <b id="nowName">Giulivo</b> <span class="h__now-cat" data-i18n="work.p1cat" id="nowCat">ร้านอาหาร · ทัสคานี</span></p>
 </div>

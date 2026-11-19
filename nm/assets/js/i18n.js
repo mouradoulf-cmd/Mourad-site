@@ -20,6 +20,8 @@
         ctaPrimary: "Start your project",
         ctaSecondary: "See our work",
         chipLive: "Live in days",
+        chipLang: "9 languages, one scan",
+        chipScan: "Scan · order · done",
         chipQr: "QR menu included"
       },
       audience: {
@@ -149,6 +151,8 @@
         ctaPrimary: "Lancer mon projet",
         ctaSecondary: "Voir nos réalisations",
         chipLive: "En ligne en quelques jours",
+        chipLang: "9 langues, un seul scan",
+        chipScan: "Scannez · choisissez",
         chipQr: "Menu QR inclus"
       },
       audience: {
@@ -278,6 +282,8 @@
         ctaPrimary: "Inizia il tuo progetto",
         ctaSecondary: "Guarda i progetti",
         chipLive: "Online in pochi giorni",
+        chipLang: "9 lingue, una sola scansione",
+        chipScan: "Scansiona · scegli",
         chipQr: "Menù QR incluso"
       },
       audience: {
@@ -407,6 +413,8 @@
         ctaPrimary: "เริ่มโปรเจกต์ของคุณ",
         ctaSecondary: "ดูผลงานของเรา",
         chipLive: "ออนไลน์ในไม่กี่วัน",
+        chipLang: "9 ภาษา สแกนครั้งเดียว",
+        chipScan: "สแกน · เลือก · สั่ง",
         chipQr: "รวมเมนู QR แล้ว"
       },
       audience: {
@@ -536,6 +544,8 @@
         ctaPrimary: "ابدأ مشروعك",
         ctaSecondary: "شاهد أعمالنا",
         chipLive: "متاح خلال أيام",
+        chipLang: "٩ لغات بمسح واحد",
+        chipScan: "امسح · اختر · اطلب",
         chipQr: "قائمة QR مشمولة"
       },
       audience: {
