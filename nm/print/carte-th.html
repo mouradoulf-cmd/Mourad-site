@@ -51,6 +51,12 @@
   .back .list i { font-style: normal; color: var(--cyan); margin-right: 1.2mm; }
   .back .who { margin-top: 2.8mm; font-size: 2.35mm; color: var(--dim); }
   .back .who b { color: var(--ink); font-weight: 700; }
+  .back .row { gap: 8mm; }
+  /* ?print=1 : fichier d'imprimerie 96 x 60 mm = carte 90 x 54 + 3 mm de fond perdu, coins carrés */
+  body.print { background: #fff; padding: 0; gap: 0; display: block; }
+  body.print .card { width: 96mm; height: 60mm; border-radius: 0; padding: 3mm; page-break-after: always; }
+  body.print .back { padding: calc(3mm + 4.4mm) calc(3mm + 6mm); }
+  @page { size: 96mm 60mm; margin: 0; }
 </style>
 </head>
 <body>
@@ -63,43 +69,44 @@
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/></svg>
       <span>NM <span class="accent">Studio</span></span>
     </div>
-    <div class="head">เมนูภาษาอังกฤษ<br><span class="grad">ให้นักท่องเที่ยวสั่งได้</span></div>
-    <p class="sub">แปลเมนู · เว็บไซต์ร้านอาหาร<br>Google Maps · เมนู QR</p>
-    <div class="price">เริ่มต้น <b>299</b> บาท</div>
+    <div class="head">เมนูหลายภาษา<br><span class="grad">ให้นักท่องเที่ยวสั่งได้</span></div>
+    <p class="sub">เมนู QR 9 ภาษา · เว็บไซต์ร้านอาหาร<br>เราทำให้ · ส่งงานใน 2 วัน</p>
+    <div class="price">ติดตั้งฟรี · <b>ลองฟรี 1 เดือน</b></div>
   </div>
   <div class="sep"></div>
   <div class="front__qr">
     <div class="tile" id="qrSite"></div>
-    <div class="scan">สแกนดูเมนูตัวอย่าง<small>See a sample menu</small></div>
+    <div class="scan">สแกนดูเว็บไซต์<small>Scan for our website</small></div>
   </div>
 </div>
 
 <!-- BACK -->
 <div class="card back" id="cardBack">
   <div class="glow glow--a"></div><div class="glow glow--b"></div>
-  <div class="kick">ส่งรูปเมนูของคุณมาได้เลย</div>
-  <h2>รับตัวอย่างแปล <span class="grad">ฟรี 3 รายการ</span></h2>
+  <div class="kick">ทักหาเราได้เลย · Chat with us</div>
+  <h2>แอดไลน์ หรือ <span class="grad">ส่ง WhatsApp</span></h2>
   <div class="row">
+    <div>
+      <div class="tile" id="qrLine"></div>
+      <div class="cap">LINE<small>ADD FRIEND</small></div>
+    </div>
     <div>
       <div class="tile" id="qrWa"></div>
       <div class="cap">WhatsApp<small>CHAT WITH US</small></div>
     </div>
-    <div class="list">
-      <div><i>✓</i>แปลถูกต้อง จัดหน้าสวย</div>
-      <div><i>✓</i>ส่งงานใน 48 ชั่วโมง</div>
-      <div><i>✓</i>ไม่ผูกมัด ดูตัวอย่างก่อน</div>
-    </div>
   </div>
-  <div class="who"><b>Mourad</b> · ผู้ก่อตั้ง NM Studio</div>
+  <div class="who"><b>Mourad</b> · NM Studio · +66 96 540 5754</div>
 </div>
 
 <script src="../assets/js/qrcode.min.js"></script>
 <script>
-  var SITE = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/th/index.html';
+  var SITE = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/th/';
+  var LINE = 'https://line.me/ti/p/vMkNZMcALE';
   var WA = 'https://wa.me/66965405754';
   var MENU = 'https://mouradoulf-cmd.github.io/Mourad-site/nm/demo-menu/';
   function qr(id, text) { new QRCode(document.getElementById(id), { text: text, width: 600, height: 600, colorDark: '#0b0c16', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M }); }
-  qr('qrSite', MENU); qr('qrWa', WA);
+  qr('qrSite', SITE); qr('qrLine', LINE); qr('qrWa', WA);
+  if (location.search.indexOf('print') > -1) document.body.classList.add('print');
 </script>
 </body>
 </html>

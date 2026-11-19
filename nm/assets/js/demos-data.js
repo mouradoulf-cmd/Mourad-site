@@ -45,7 +45,7 @@ window.NM_LINKS = [
     { name: "Statistiques du site", path: "nm/stats.html", note: "Visiteurs et contacts, jour par jour" },
     { name: "Maquette express", path: "nm/maquette.html", note: "Montrer à un commerçant à quoi son site pourrait ressembler" },
     { name: "Générateur de QR code", path: "nm/qr-generator.html", note: "Un QR en PNG ou SVG pour n'importe quel lien" },
-    { name: "Carte de visite (thaï)", path: "nm/print/carte-th.html", note: "À imprimer · 90 × 54 mm" },
+    { name: "Carte de visite (thaï)", path: "nm/print/carte-th.html", note: "90 × 54 mm · recto : QR du site · verso : QR LINE + WhatsApp. Fichier imprimerie (PDF avec fond perdu) : nm/print/carte-visite-imprimerie.pdf" },
     { name: "Avant / après à imprimer (A4)", path: "nm/print/avant-apres-th.html", note: "La feuille « vieux menu → QR → téléphone » en thaï" },
     { name: "Mes discussions", path: "nm/organisation.html", note: "Où en est chaque conversation + ce qui t'attend" }
   ] },
