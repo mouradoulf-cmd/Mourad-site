@@ -23,6 +23,7 @@ window.NM_MENU = {
  "localTitles": true,
  "photoOne": true,
  "photoHD": false,
+ "tapHint": true,
  "spice": false,
  "heroMobile": "hero-m.webp?v=3",
  "heroWide": "hero.webp?v=3",

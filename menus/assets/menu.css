@@ -352,3 +352,15 @@ html[dir=rtl] .ch__no,html[dir=rtl] .card__k,html[dir=rtl] .open__ask{letter-spa
 html[dir=rtl] .sheet__x{right:auto;left:14px}
 html[dir=rtl] .waiter{direction:ltr}
 html[dir=rtl] .waiter [lang]:not([lang=ar]){text-align:inherit}
+
+/* "Touch a dish to see it": hint line, zoom badge on every photo, soft pulse on the first one until a dish has been opened */
+.tap{display:flex;align-items:center;gap:12px;margin:16px 0 0;padding:12px 16px;border-radius:16px;background:color-mix(in srgb,var(--accent) 14%,transparent);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);color:var(--ink);font-size:.9rem;font-weight:600;line-height:1.35}
+.tap__i{flex:none;width:30px;height:30px;color:var(--accent);animation:tapNudge 1.8s ease-in-out infinite}
+.tap__i svg{width:100%;height:100%;display:block}
+@keyframes tapNudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.dish__ph{position:relative}
+.dish__zoom{position:absolute;left:6px;bottom:6px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(10,8,6,.72);color:#fff;pointer-events:none;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+.dish__zoom svg{width:16px;height:16px;display:block}
+body.tap-on .list > .dish:first-child .dish__ph::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 0 0 2px var(--accent);animation:tapRing 1.8s ease-out infinite;pointer-events:none}
+@keyframes tapRing{0%{opacity:.95;transform:scale(1)}100%{opacity:0;transform:scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.tap__i,body.tap-on .list > .dish:first-child .dish__ph::after{animation:none}}

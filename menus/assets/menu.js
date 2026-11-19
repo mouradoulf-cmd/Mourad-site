@@ -109,6 +109,12 @@
   }
   function setLang(l) { document.documentElement.lang = l === "zh" ? "zh-Hans" : l; document.documentElement.dir = l === "ar" ? "rtl" : "ltr"; needFont(l); }
   var AI = ["🌾", "🦐", "🥚", "🐟", "🥜", "🫘", "🥛", "🌰", "🥬", "🟡", "⚪", "🍷", "🌸", "🦑"];
+  /* "Touch a dish to see it": hint line + zoom badge on every photo (switched on per menu with "tapHint": true) */
+  var TAP = { th: "แตะที่จานอาหารเพื่อดูรูปใหญ่", en: "Touch a dish to see it up close", zh: "点按菜品查看大图", ru: "Нажмите на блюдо, чтобы рассмотреть его", ko: "메뉴를 눌러 크게 보세요", hi: "डिश पर टैप करके बड़ी फ़ोटो देखें", ar: "المس الطبق لرؤيته بوضوح", de: "Gericht antippen, um es groß zu sehen", fr: "Touchez un plat pour le voir en grand", it: "Tocca un piatto per vederlo da vicino" };
+  var TAPICO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M10.5 8v5M8 10.5h5"/></svg>';
+  var TAPHAND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 013 0V10m0 0V8.5a1.5 1.5 0 013 0V11m0 0v-.5a1.5 1.5 0 013 0V15a6 6 0 01-6 6h-1.5a6 6 0 01-4.7-2.3L4 15.5a1.6 1.6 0 012.4-2L9 15.5V11z"/></svg>';
+  function tapSeen() { try { return store.get("nm-tap-seen") === "1"; } catch (e) { return false; } }
+  function markTap() { try { store.set("nm-tap-seen", "1"); } catch (e) {} document.body.classList.remove("tap-on"); var el = document.getElementById("tap"); if (el) el.remove(); }
   var ICO = {
     plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>',
     x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>',
@@ -156,7 +162,7 @@
   // square thumbnail in the dish row (the 4:5 card crop, centred)
   function thumb(d) {
     var src = M.photoHD ? d.img + "-c-800.webp" : img(d.img, 640);
-    return '<span class="dish__ph"><img src="' + src + '" alt="" width="96" height="96" loading="lazy" decoding="async"></span>';
+    return '<span class="dish__ph"><img src="' + src + '" alt="" width="96" height="96" loading="lazy" decoding="async">' + (M.tapHint ? '<i class="dish__zoom" aria-hidden="true">' + TAPICO + "</i>" : "") + "</span>";
   }
   function sheetPic(d) {
     if (!M.photoHD) return '<img src="' + img(d.img, 1280) + '" alt="' + esc(title(d)) + '">';
@@ -203,6 +209,7 @@
       h.push('<header class="ch__h rv"><p class="ch__no">' + String(si + 1).padStart(2, "0") + " / " + String(M.sections.length).padStart(2, "0") + '</p><h2 class="ch__t">' + esc(tr(s.t)) + "</h2>" +
         (lang !== ol && s.t[ol] ? '<p class="ch__o" lang="' + ol + '">' + esc(s.t[ol]) + "</p>" : "") + "</header>");
       if (si === 0) h.push('<p class="alb">' + esc(t("alb")) + "</p>");
+      if (si === 0 && M.tapHint && !tapSeen()) h.push('<p class="tap" id="tap" role="note"><span class="tap__i">' + TAPHAND + "</span><span>" + esc(tr(TAP)) + "</span></p>");
       h.push('<ul class="list">');
       s.items.forEach(function (d, i) { h.push(dishRow(d, i)); });
       h.push("</ul>");
@@ -222,6 +229,7 @@
     h.push('<div class="toast" id="toast" role="status"></div>');
     root.innerHTML = h.join("");
     wire();
+    if (M.tapHint && !tapSeen()) document.body.classList.add("tap-on");
     applyAlg(); bagUpdate();
   }
 
@@ -299,7 +307,7 @@
       return;
     }
     if (b.hasAttribute("data-add")) { e.stopPropagation(); add(b.getAttribute("data-add"), 1, b); return; }
-    if (b.hasAttribute("data-dish")) { openSheet("dish", b.getAttribute("data-dish")); return; }
+    if (b.hasAttribute("data-dish")) { if (M.tapHint) markTap(); openSheet("dish", b.getAttribute("data-dish")); return; }
     if (b.hasAttribute("data-open")) { openSheet(b.getAttribute("data-open")); return; }
     if (b.hasAttribute("data-close")) { closeSheet(); return; }
     if (b.hasAttribute("data-lang")) {
