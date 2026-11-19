@@ -6,12 +6,12 @@
   if (!window.IntersectionObserver) return;
   var fr = document.documentElement.lang !== "th";
   var SRC = document.currentScript && document.currentScript.src;
-  var href = SRC ? new URL("../../th/signup.html", SRC).href : "signup.html";
+  var href = (window.NM_CONTACT && window.NM_CONTACT.lineLink) || "https://line.me/ti/p/vMkNZMcALE";
   var bar = document.createElement("div");
-  bar.className = "thbar"; bar.setAttribute("role", "region"); bar.setAttribute("aria-label", fr ? "Inscription" : "สมัครใช้บริการ");
+  bar.className = "thbar"; bar.setAttribute("role", "region"); bar.setAttribute("aria-label", fr ? "Contact" : "ติดต่อ");
   bar.innerHTML = '<p class="thbar__t"><b>' + (fr ? "Menu QR 390 ฿/mois" : "เมนู QR 390 บาท/เดือน") + "</b><span>" +
-    (fr ? "Installation gratuite · 1er mois offert" : "ติดตั้งฟรี · เดือนแรกฟรี") + '</span></p>' +
-    '<a class="thbar__btn" href="' + href + '">' + (fr ? "S’inscrire" : "สมัครเลย") + "</a>";
+    (fr ? "Rendez-vous gratuit · Sans engagement" : "นัดพบฟรี · ไม่มีข้อผูกมัด") + '</span></p>' +
+    '<a class="thbar__btn" href="' + href + '" target="_blank" rel="noopener">' + (fr ? "Écrire sur LINE" : "ทักไลน์") + "</a>";
   document.body.appendChild(bar);
   var past = false, busy = {};
   function update() {

@@ -245,3 +245,6 @@ body.nm-has-bar .line-float { bottom: calc(max(1.25rem, env(safe-area-inset-bott
 /* perf (2026-10-21): on phones the rotating gold edge repainted the whole booking card every frame */
 @media (hover: none), (pointer: coarse) { .bk::before { animation: none; --bkA: 40deg; } }
 .book__form--3 { display: grid; gap: .8rem; }
+
+/* 2026-11-19 : no online payment. Every payment claim (cards, PromptPay, Stripe strip) stays hidden. */
+[data-payment-claim], .trust[data-payment-claim], .om__trust[data-payment-claim] { display: none !important; }

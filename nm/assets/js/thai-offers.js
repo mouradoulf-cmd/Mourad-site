@@ -11,8 +11,7 @@
   if (!O) return;
   var SRC = document.currentScript && document.currentScript.src;
   var DEMO = SRC ? new URL("../../../menus/mae-lek/", SRC).href : "../menus/mae-lek/";
-  var SIGNUP = SRC ? new URL("../../th/signup.html", SRC).href.split("?")[0] : "signup.html";
-
+  
   var CHECK = '<svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var ARROW = '<svg aria-hidden="true" class="btn__arrow" fill="none" viewBox="0 0 20 20"><path d="M4 10h11m0 0l-4.5-4.5M15 10l-4.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>';
   var CAL = '<svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none"><rect x="3" y="4.5" width="14" height="12.5" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3 8.5h14M7 2.8v3.4M13 2.8v3.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
@@ -41,11 +40,14 @@
   function L0(lang) { return O[lang] || O.th; }
 
   function html(L, lang) {
-    // Primary action: the Thai sign-up page (PromptPay); a meeting stays one tap away under it.
-    var SIGN = { th: ["สมัครเลย", "หรือ นัดพูดคุยก่อน"], fr: ["S’inscrire", "ou prendre rendez-vous d’abord"], en: ["Sign up", "or book a meeting first"] }[lang] || ["สมัครเลย", "หรือ นัดพูดคุยก่อน"];
+    // No online payment: each card sends the visitor to Mourad on LINE or WhatsApp, a meeting stays one tap away.
+    var CC = window.NM_CONTACT || {};
+    var LINE = CC.lineLink || "https://line.me/ti/p/vMkNZMcALE", WA = CC.whatsappLink || "https://wa.me/66965405754";
+    var SIGN = { th: ["ทักไลน์เพื่อสมัคร", "ทัก WhatsApp", "หรือ นัดพบก่อน"], fr: ["Me écrire sur LINE", "Me écrire sur WhatsApp", "ou prendre rendez-vous d’abord"], en: ["Message me on LINE", "Message me on WhatsApp", "or book a meeting first"] }[lang] || ["ทักไลน์เพื่อสมัคร", "ทัก WhatsApp", "หรือ นัดพบก่อน"];
     function cta(offer) {
-      return '<a class="btn btn--sun btn--block tho-card__cta" href="' + SIGNUP + '?offer=' + offer + '"><span>' + esc(SIGN[0]) + "</span>" + ARROW + "</a>" +
-        '<a class="tho-card__alt tho-card__alt--book" href="#book" data-open-sheet="book">' + esc(SIGN[1]) + "</a>";
+      return '<a class="btn btn--sun btn--block tho-card__cta" href="' + LINE + '" target="_blank" rel="noopener" data-contact="line"><span>' + esc(SIGN[0]) + "</span>" + ARROW + "</a>" +
+        '<a class="btn btn--ghost btn--block tho-card__cta" href="' + WA + '" target="_blank" rel="noopener" data-contact="whatsapp"><span>' + esc(SIGN[1]) + "</span></a>" +
+        '<a class="tho-card__alt tho-card__alt--book" href="#book" data-open-sheet="book">' + esc(SIGN[2]) + "</a>";
     }
     return ribbon(lang) + '<div class="tho__grid tho__grid--two">' +
       '<article class="tho-card">' +

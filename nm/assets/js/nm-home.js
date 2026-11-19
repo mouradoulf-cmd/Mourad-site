@@ -5,7 +5,11 @@
 (function () {
   "use strict";
   // Language folders (fr/, it/, ar/, th/, th-fr/) sit one level below the checkout.
+  /* No online payment: every "order" button now leads to the contact block (LINE / WhatsApp), where we agree a meeting. */
   var CO_URL = (/\/nm\/(?:fr|it|ar|th|th-fr)\//.test(location.pathname) ? "../" : "") + "checkout.html";
+  var CONTACT_HREF = document.getElementById("contact") ? "#contact" : "index.html#contact";
+  var CONTACT_TXT = { th: "ติดต่อเพื่อสมัคร", fr: "Me contacter pour cette offre", en: "Contact me about this offer", it: "Contattami per questa offerta", ar: "تواصل معي بخصوص هذا العرض" };
+  function contactTxt() { return CONTACT_TXT[window.NM_LANG || document.documentElement.lang] || CONTACT_TXT.en; }
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -167,8 +171,9 @@
     $("#omCare").textContent = care > 0
       ? t("offers.careFrom").replace("{price}", P.thb(care))
       : t("price2.noCare");
-    $("#omOrderLabel").textContent = t("offers.order").replace("{price}", P.thb(price + plus));
-    $("#omOrder").href = CO_URL + "?offer=" + k;
+    $("#omOrderLabel").textContent = contactTxt();
+    $("#omOrder").href = CONTACT_HREF;
+    if (!$("#omOrder").dataset.cc) { $("#omOrder").dataset.cc = "1"; $("#omOrder").addEventListener("click", function () { try { closeOffer(); } catch (e) {} }); }
     var list = $("#omList"); list.innerHTML = "";
     ["i1", "i2", "i3", "i4", "i5"].forEach(function (f, n) {
       var li = document.createElement("li"); li.style.setProperty("--i", n);
@@ -307,8 +312,8 @@
         var k = a.getAttribute("data-cta"), care = O.care[k];
         // the subscribed offers always go to the checkout with their monthly
         // period; a care plan only when the offer has one
-        a.href = CO_URL + "?offer=" + k + (care ? "&care=" + mode : (O.sub && O.sub[k] ? "&care=monthly" : ""));
-        var l = $(".pcard__cta-label", a); if (l) l.textContent = t("price2.choose").replace("{name}", t("offers." + k + ".short"));
+        a.href = CONTACT_HREF;
+        var l = $(".pcard__cta-label", a); if (l) l.textContent = contactTxt();
       });
     }
     if (bill) $$(".bill__btn", bill).forEach(function (b) {
