@@ -9,9 +9,13 @@
   var href = (window.NM_CONTACT && window.NM_CONTACT.lineLink) || "https://line.me/ti/p/vMkNZMcALE";
   var bar = document.createElement("div");
   bar.className = "thbar"; bar.setAttribute("role", "region"); bar.setAttribute("aria-label", fr ? "Contact" : "ติดต่อ");
+  var CC = window.NM_CONTACT || {};
+  var LINE = CC.lineLink || "https://line.me/ti/p/vMkNZMcALE", WA = CC.whatsappLink || "https://wa.me/66965405754";
+  function icon(sel) { var s = document.querySelector(sel + " svg"); return s ? s.outerHTML : ""; }
   bar.innerHTML = '<p class="thbar__t"><b>' + (fr ? "Menu QR 390 ฿/mois" : "เมนู QR 390 บาท/เดือน") + "</b><span>" +
     (fr ? "Rendez-vous gratuit · Sans engagement" : "นัดพบฟรี · ไม่มีข้อผูกมัด") + '</span></p>' +
-    '<a class="thbar__btn" href="' + href + '" target="_blank" rel="noopener">' + (fr ? "Écrire sur LINE" : "ทักไลน์") + "</a>";
+    '<a class="thbar__ic thbar__ic--line" href="' + LINE + '" target="_blank" rel="noopener" aria-label="LINE">' + icon(".line-float") + "</a>" +
+    '<a class="thbar__ic thbar__ic--wa" href="' + WA + '" target="_blank" rel="noopener" aria-label="WhatsApp">' + icon(".wa-float") + "</a>";
   document.body.appendChild(bar);
   var past = false, busy = {};
   function update() {
