@@ -12,6 +12,7 @@ window.NM_UPDATED = "2026-11-19";
 
 window.NM_DEMOS = [
   { slug: "steak-dek-naew", name: "Steak Dek Naew (สเต็กเด็กแนว)", type: "Steakhouse", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Premier client. Site 3 langues (thaï, anglais, français) fait avec ses vraies photos + son menu QR (menus/steak-dek-naew/). À compléter : adresse, horaires, LINE/WhatsApp du patron." },
+  { slug: "tattoo-studio", name: "Tattoo Studio (nom à confirmer)", type: "Salon de tatouage", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Maquette faite avec 2 vidéos du salon (images sans personne, qualité modeste). Thème japonais vert/rouge. À fournir : nom, ville, contact, vraies photos + réalisations." },
 ];
 
 window.NM_LINKS = [
