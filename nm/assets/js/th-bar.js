@@ -4,16 +4,24 @@
 (function () {
   "use strict";
   if (!window.IntersectionObserver) return;
-  var fr = document.documentElement.lang !== "th";
+  var L = document.documentElement.lang || "th";
+  var TX = {
+    th: ["ติดต่อ", "เมนู QR 390 บาท/เดือน", "นัดพบฟรี · ไม่มีข้อผูกมัด"],
+    fr: ["Contact", "Menu QR 390 ฿/mois", "RDV gratuit · Sans engagement"],
+    en: ["Contact", "QR menu 390 ฿/month", "Free meeting · No commitment"],
+    it: ["Contatti", "Menu QR 390 ฿/mese", "Incontro gratis · Senza impegno"],
+    ar: ["تواصل", "قائمة QR ٣٩٠ باهت/شهر", "موعد مجاني · دون التزام"]
+  };
+  var T = TX[L] || TX.en;
   var SRC = document.currentScript && document.currentScript.src;
   var href = (window.NM_CONTACT && window.NM_CONTACT.lineLink) || "https://line.me/ti/p/vMkNZMcALE";
   var bar = document.createElement("div");
-  bar.className = "thbar"; bar.setAttribute("role", "region"); bar.setAttribute("aria-label", fr ? "Contact" : "ติดต่อ");
+  bar.className = "thbar"; bar.setAttribute("role", "region"); bar.setAttribute("aria-label", T[0]);
   var CC = window.NM_CONTACT || {};
   var LINE = CC.lineLink || "https://line.me/ti/p/vMkNZMcALE", WA = CC.whatsappLink || "https://wa.me/66965405754";
   function icon(sel) { var s = document.querySelector(sel + " svg"); return s ? s.outerHTML : ""; }
-  bar.innerHTML = '<p class="thbar__t"><b>' + (fr ? "Menu QR 390 ฿/mois" : "เมนู QR 390 บาท/เดือน") + "</b><span>" +
-    (fr ? "Rendez-vous gratuit · Sans engagement" : "นัดพบฟรี · ไม่มีข้อผูกมัด") + '</span></p>' +
+  bar.innerHTML = '<p class="thbar__t"><b>' + T[1] + "</b><span>" +
+    T[2] + '</span></p>' +
     '<a class="thbar__ic thbar__ic--line" href="' + LINE + '" target="_blank" rel="noopener" aria-label="LINE">' + icon(".line-float") + "</a>" +
     '<a class="thbar__ic thbar__ic--wa" href="' + WA + '" target="_blank" rel="noopener" aria-label="WhatsApp">' + icon(".wa-float") + "</a>";
   document.body.appendChild(bar);
