@@ -150,7 +150,13 @@
     th: { t: "เมนูกระดาษ <em>→ เมนูในมือถือ</em>", b: "ก่อน", bc: "เมนูภาษาไทยอย่างเดียว นักท่องเที่ยวอ่านไม่ออก", a: "หลัง", ac: "นักท่องเที่ยวเห็นเมนูเป็นภาษาของเขา พร้อมรูปอาหาร",
       q: "สแกน", s: [["สแกน", "ลูกค้าสแกน QR บนโต๊ะ ด้วยกล้องมือถือ"], ["เลือกภาษา", "อังกฤษ จีน รัสเซีย เกาหลี ฮินดี อาหรับ เยอรมัน ฝรั่งเศส หรือไทย"], ["ดูรูปแล้วสั่ง", "กดให้พนักงานดู เป็นภาษาไทย"]], cta: "ลองเปิดเมนูตัวอย่าง" },
     fr: { t: "Menu papier <em>→ menu dans le téléphone</em>", b: "Avant", bc: "Menu tout en thaï : les touristes ne peuvent pas le lire", a: "Après", ac: "Le touriste voit le menu dans sa langue, avec les photos",
-      q: "Scanner", s: [["Scanner", "Le client scanne le QR sur la table avec l'appareil photo"], ["Choisir la langue", "Anglais, chinois, russe, coréen, hindi, arabe, allemand, français ou thaï"], ["Voir et commander", "Il montre sa commande au serveur, en thaï"]], cta: "Ouvrir le menu d'exemple" }
+      q: "Scanner", s: [["Scanner", "Le client scanne le QR sur la table avec l'appareil photo"], ["Choisir la langue", "Anglais, chinois, russe, coréen, hindi, arabe, allemand, français ou thaï"], ["Voir et commander", "Il montre sa commande au serveur, en thaï"]], cta: "Ouvrir le menu d'exemple" },
+    en: { t: "Paper menu <em>→ menu on the phone</em>", b: "Before", bc: "A menu in Thai only: tourists can’t read it", a: "After", ac: "Tourists see the menu in their own language, with photos",
+      q: "Scan", s: [["Scan", "The guest scans the QR code on the table with their phone camera"], ["Pick a language", "English, Chinese, Russian, Korean, Hindi, Arabic, German, French or Thai"], ["Look and order", "They show their order to the waiter, in Thai"]], cta: "Open the sample menu" },
+    it: { t: "Menu di carta <em>→ menu sul telefono</em>", b: "Prima", bc: "Un menu solo in thailandese: i turisti non riescono a leggerlo", a: "Dopo", ac: "Il turista vede il menu nella sua lingua, con le foto",
+      q: "Scansiona", s: [["Scansiona", "Il cliente inquadra il QR sul tavolo con la fotocamera"], ["Scegli la lingua", "Inglese, cinese, russo, coreano, hindi, arabo, tedesco, francese o thailandese"], ["Guarda e ordina", "Mostra l’ordine al cameriere, in thailandese"]], cta: "Apri il menu di esempio" },
+    ar: { t: "قائمة ورقية <em>← قائمة على الهاتف</em>", b: "قبل", bc: "قائمة بالتايلاندية فقط: السياح لا يستطيعون قراءتها", a: "بعد", ac: "يرى السائح القائمة بلغته مع صور الأطباق",
+      q: "امسح", s: [["امسح", "يمسح الزبون رمز QR على الطاولة بكاميرا هاتفه"], ["اختر اللغة", "الإنجليزية والصينية والروسية والكورية والهندية والعربية والألمانية والفرنسية أو التايلاندية"], ["شاهد واطلب", "يُري طلبه للنادل بالتايلاندية"]], cta: "افتح القائمة التجريبية" }
   };
   var AR = '<span class="mbs__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
   function simple() {
@@ -158,7 +164,7 @@
     sec = document.createElement("section");
     sec.className = "mbs"; sec.id = "menu-ba"; sec.setAttribute("aria-labelledby", "mbsTitle");
     function fill() {
-      var l = document.documentElement.lang === "fr" ? "fr" : "th", x = S[l];
+      var l = (document.documentElement.lang || "en").slice(0, 2).toLowerCase(); if (!S[l]) l = "en"; var x = S[l];
       sec.setAttribute("lang", l);
       sec.innerHTML = '<div class="container">' +
         '<h2 class="section-title mbs__t" id="mbsTitle">' + x.t + "</h2>" +
@@ -168,7 +174,7 @@
           '<figure class="mbs__col"><span class="mbs__tag mbs__tag--a">' + x.a + '</span><div class="mbs__pic mbs__phone"><img src="' + img + 'menu-after-en-390.webp?v=2" srcset="' + img + "menu-after-en-390.webp?v=2 390w, " + img + 'menu-after-en.webp?v=2 780w" sizes="(min-width: 760px) 300px, 44vw" alt="" loading="lazy" decoding="async" width="780" height="1560"></div><figcaption>' + x.ac + "</figcaption></figure>" +
         "</div>" +
         '<ol class="mbs__steps">' + x.s.map(function (s, i) { return '<li><b class="mbs__n">' + (i + 1) + "</b><span><strong>" + s[0] + "</strong>" + s[1] + "</span></li>"; }).join("") + "</ol>" +
-        '<p class="mbs__cta"><a class="btn btn--sun btn--lg" href="' + MAE + "?lang=" + (l === "fr" ? "fr" : "en") + '" target="_blank" rel="noopener"><span>' + x.cta + "</span></a></p></div>";
+        '<p class="mbs__cta"><a class="btn btn--sun btn--lg" href="' + MAE + "?lang=" + (l === "fr" ? "fr" : l === "th" ? "th" : "en") + '" target="_blank" rel="noopener"><span>' + x.cta + "</span></a></p></div>";
     }
     fill();
     function qr() { var el = sec.querySelector("#mbsQr"); if (!el || el.firstChild) return; try { new QRCode(el, { text: MAE, width: 240, height: 240, colorDark: "#0b0c16", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M }); } catch (e) {} }
@@ -181,7 +187,7 @@
   }
 
   function init() {
-    if (/\/nm\/th(-fr)?\//.test(location.pathname)) { simple(); return; }
+    simple(); return; /* 2026-11-19 (Mourad) : même version fixe partout : avant | QR | après, côte à côte, sans animation */
     if (!build()) return;
     makeQr(); fit(); addEventListener("resize", fit); if (window.ResizeObserver) new ResizeObserver(fit).observe(sec.querySelector(".mphone"));
     sec.addEventListener("click", function (e) {
