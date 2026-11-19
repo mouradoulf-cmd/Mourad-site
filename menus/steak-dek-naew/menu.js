@@ -375,6 +375,18 @@ window.NM_MENU = {
       "ar": "ستيك سمك السابا (الماكريل)",
       "de": "Saba-Makrelensteak",
       "fr": "Steak de saba (maquereau)"
+     },
+     "img": "saba-ph",
+     "d": {
+      "th": "ภาพประกอบ · 📷 Fred Cherrygarden, CC BY-SA 4.0",
+      "en": "Illustrative photo · 📷 Fred Cherrygarden, CC BY-SA 4.0",
+      "zh": "示意图 · 📷 Fred Cherrygarden, CC BY-SA 4.0",
+      "ru": "Фото для иллюстрации · 📷 Fred Cherrygarden, CC BY-SA 4.0",
+      "ko": "참고용 사진 · 📷 Fred Cherrygarden, CC BY-SA 4.0",
+      "hi": "चित्रण हेतु फ़ोटो · 📷 Fred Cherrygarden, CC BY-SA 4.0",
+      "ar": "صورة توضيحية · 📷 Fred Cherrygarden, CC BY-SA 4.0",
+      "de": "Illustrationsfoto · 📷 Fred Cherrygarden, CC BY-SA 4.0",
+      "fr": "Photo d’illustration · 📷 Fred Cherrygarden, CC BY-SA 4.0"
      }
     }
    ]
@@ -661,6 +673,18 @@ window.NM_MENU = {
       "ar": "ستيك سابا ياباني مشوي مع الأرز",
       "de": "Gegrilltes japanisches Saba-Steak mit Reis",
       "fr": "Steak de saba japonais grillé avec du riz"
+     },
+     "img": "rice-saba-ph",
+     "d": {
+      "th": "ภาพประกอบ · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0",
+      "en": "Illustrative photo · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0",
+      "zh": "示意图 · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0",
+      "ru": "Фото для иллюстрации · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0",
+      "ko": "참고용 사진 · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0",
+      "hi": "चित्रण हेतु फ़ोटो · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0",
+      "ar": "صورة توضيحية · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0",
+      "de": "Illustrationsfoto · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0",
+      "fr": "Photo d’illustration · 📷 Raita Futo from Tokyo, Japan, CC BY 2.0"
      }
     },
     {
@@ -744,6 +768,18 @@ window.NM_MENU = {
       "ar": "سلطة بلحم خنزير مشوي",
       "de": "Salat mit gegrilltem Schweinefleisch",
       "fr": "Salade au porc grillé"
+     },
+     "img": "salad-pork-ph",
+     "d": {
+      "th": "ภาพประกอบ · 📷 PattayaPatrol, CC BY-SA 4.0",
+      "en": "Illustrative photo · 📷 PattayaPatrol, CC BY-SA 4.0",
+      "zh": "示意图 · 📷 PattayaPatrol, CC BY-SA 4.0",
+      "ru": "Фото для иллюстрации · 📷 PattayaPatrol, CC BY-SA 4.0",
+      "ko": "참고용 사진 · 📷 PattayaPatrol, CC BY-SA 4.0",
+      "hi": "चित्रण हेतु फ़ोटो · 📷 PattayaPatrol, CC BY-SA 4.0",
+      "ar": "صورة توضيحية · 📷 PattayaPatrol, CC BY-SA 4.0",
+      "de": "Illustrationsfoto · 📷 PattayaPatrol, CC BY-SA 4.0",
+      "fr": "Photo d’illustration · 📷 PattayaPatrol, CC BY-SA 4.0"
      }
     },
     {
@@ -760,6 +796,18 @@ window.NM_MENU = {
       "ar": "سلطة بسمك مقلي",
       "de": "Salat mit gebratenem Fisch",
       "fr": "Salade au poisson frit"
+     },
+     "img": "salad-fish-ph",
+     "d": {
+      "th": "ภาพประกอบ · 📷 Benreis, CC BY 3.0",
+      "en": "Illustrative photo · 📷 Benreis, CC BY 3.0",
+      "zh": "示意图 · 📷 Benreis, CC BY 3.0",
+      "ru": "Фото для иллюстрации · 📷 Benreis, CC BY 3.0",
+      "ko": "참고용 사진 · 📷 Benreis, CC BY 3.0",
+      "hi": "चित्रण हेतु फ़ोटो · 📷 Benreis, CC BY 3.0",
+      "ar": "صورة توضيحية · 📷 Benreis, CC BY 3.0",
+      "de": "Illustrationsfoto · 📷 Benreis, CC BY 3.0",
+      "fr": "Photo d’illustration · 📷 Benreis, CC BY 3.0"
      }
     },
     {
@@ -900,6 +948,7 @@ window.NM_MENU = {
      "id": "set4",
      "n": "Set 4",
      "p": "319",
+     "img": "set1",
      "sn": {
       "th": "Set 4",
       "en": "Set 4",
@@ -912,21 +961,22 @@ window.NM_MENU = {
       "fr": "Set 4"
      },
      "d": {
-      "th": "สันคอหมู + ปลา",
-      "en": "Pork collar + Fish",
-      "zh": "猪颈肉 + 鱼",
-      "ru": "Свиная шея + Рыба",
-      "ko": "돼지 목살 + 생선",
-      "hi": "पोर्क नेक + मछली",
-      "ar": "رقبة الخنزير + سمك",
-      "de": "Schweinenacken + Fisch",
-      "fr": "Échine de porc + Poisson"
+      "th": "สันคอหมู + ปลา · ภาพประกอบ (ชุดใกล้เคียง)",
+      "en": "Pork collar + Fish · Illustrative photo (similar set)",
+      "zh": "猪颈肉 + 鱼 · 示意图（相近套餐）",
+      "ru": "Свиная шея + Рыба · Фото для иллюстрации (похожий сет)",
+      "ko": "돼지 목살 + 생선 · 참고용 사진 (비슷한 세트)",
+      "hi": "पोर्क नेक + मछली · चित्रण हेतु फ़ोटो (मिलता-जुलता सेट)",
+      "ar": "رقبة الخنزير + سمك · صورة توضيحية (مجموعة مشابهة)",
+      "de": "Schweinenacken + Fisch · Illustrationsfoto (ähnliches Set)",
+      "fr": "Échine de porc + Poisson · Photo d’illustration (assortiment proche)"
      }
     },
     {
      "id": "set5",
      "n": "Set 5",
      "p": "279",
+     "img": "set3",
      "sn": {
       "th": "Set 5",
       "en": "Set 5",
@@ -939,21 +989,22 @@ window.NM_MENU = {
       "fr": "Set 5"
      },
      "d": {
-      "th": "พอร์คชอพ + โคขุน",
-      "en": "Pork chop + Sirloin",
-      "zh": "带骨猪排 + 西冷",
-      "ru": "Свиная отбивная + Сирлойн",
-      "ko": "포크 찹 + 서로인",
-      "hi": "पोर्क चॉप + सिरलोइन",
-      "ar": "قطعة خنزير بالعظم + سيرلوين",
-      "de": "Schweinekotelett + Sirloin",
-      "fr": "Côte de porc + Faux-filet"
+      "th": "พอร์คชอพ + โคขุน · ภาพประกอบ (ชุดใกล้เคียง)",
+      "en": "Pork chop + Sirloin · Illustrative photo (similar set)",
+      "zh": "带骨猪排 + 西冷 · 示意图（相近套餐）",
+      "ru": "Свиная отбивная + Сирлойн · Фото для иллюстрации (похожий сет)",
+      "ko": "포크 찹 + 서로인 · 참고용 사진 (비슷한 세트)",
+      "hi": "पोर्क चॉप + सिरलोइन · चित्रण हेतु फ़ोटो (मिलता-जुलता सेट)",
+      "ar": "قطعة خنزير بالعظم + سيرلوين · صورة توضيحية (مجموعة مشابهة)",
+      "de": "Schweinekotelett + Sirloin · Illustrationsfoto (ähnliches Set)",
+      "fr": "Côte de porc + Faux-filet · Photo d’illustration (assortiment proche)"
      }
     },
     {
      "id": "set6",
      "n": "Set 6",
      "p": "369",
+     "img": "set9",
      "sn": {
       "th": "Set 6",
       "en": "Set 6",
@@ -966,15 +1017,15 @@ window.NM_MENU = {
       "fr": "Set 6"
      },
      "d": {
-      "th": "พอร์คชอพ + ทีโบน",
-      "en": "Pork chop + T-bone",
-      "zh": "带骨猪排 + T骨牛排",
-      "ru": "Свиная отбивная + Ти-бон",
-      "ko": "포크 찹 + 티본",
-      "hi": "पोर्क चॉप + टी-बोन",
-      "ar": "قطعة خنزير بالعظم + تي-بون",
-      "de": "Schweinekotelett + T-Bone",
-      "fr": "Côte de porc + T-bone"
+      "th": "พอร์คชอพ + ทีโบน · ภาพประกอบ (ชุดใกล้เคียง)",
+      "en": "Pork chop + T-bone · Illustrative photo (similar set)",
+      "zh": "带骨猪排 + T骨牛排 · 示意图（相近套餐）",
+      "ru": "Свиная отбивная + Ти-бон · Фото для иллюстрации (похожий сет)",
+      "ko": "포크 찹 + 티본 · 참고용 사진 (비슷한 세트)",
+      "hi": "पोर्क चॉप + टी-बोन · चित्रण हेतु फ़ोटो (मिलता-जुलता सेट)",
+      "ar": "قطعة خنزير بالعظم + تي-بون · صورة توضيحية (مجموعة مشابهة)",
+      "de": "Schweinekotelett + T-Bone · Illustrationsfoto (ähnliches Set)",
+      "fr": "Côte de porc + T-bone · Photo d’illustration (assortiment proche)"
      }
     },
     {
@@ -1149,6 +1200,7 @@ window.NM_MENU = {
      "id": "set13",
      "n": "Set 13",
      "p": "439",
+     "img": "set9",
      "sn": {
       "th": "Set 13",
       "en": "Set 13",
@@ -1161,15 +1213,15 @@ window.NM_MENU = {
       "fr": "Set 13"
      },
      "d": {
-      "th": "แซลมอน + ซาบะ + ปลา",
-      "en": "Salmon + Saba + Fish",
-      "zh": "三文鱼 + 鲭鱼 + 鱼",
-      "ru": "Лосось + Саба (скумбрия) + Рыба",
-      "ko": "연어 + 사바(고등어) + 생선",
-      "hi": "सैल्मन + साबा (मैकेरल) + मछली",
-      "ar": "سلمون + سابا (ماكريل) + سمك",
-      "de": "Lachs + Saba (Makrele) + Fisch",
-      "fr": "Saumon + Saba (maquereau) + Poisson"
+      "th": "แซลมอน + ซาบะ + ปลา · ภาพประกอบ (ชุดใกล้เคียง)",
+      "en": "Salmon + Saba + Fish · Illustrative photo (similar set)",
+      "zh": "三文鱼 + 鲭鱼 + 鱼 · 示意图（相近套餐）",
+      "ru": "Лосось + Саба (скумбрия) + Рыба · Фото для иллюстрации (похожий сет)",
+      "ko": "연어 + 사바(고등어) + 생선 · 참고용 사진 (비슷한 세트)",
+      "hi": "सैल्मन + साबा (मैकेरल) + मछली · चित्रण हेतु फ़ोटो (मिलता-जुलता सेट)",
+      "ar": "سلمون + سابا (ماكريل) + سمك · صورة توضيحية (مجموعة مشابهة)",
+      "de": "Lachs + Saba (Makrele) + Fisch · Illustrationsfoto (ähnliches Set)",
+      "fr": "Saumon + Saba (maquereau) + Poisson · Photo d’illustration (assortiment proche)"
      }
     }
    ]

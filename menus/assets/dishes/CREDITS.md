@@ -28,3 +28,12 @@ Fichier · photo Unsplash (images.unsplash.com/photo-…)
 - beer · 1597822738124-151fb72dcb79 (bouteille sans marque)
 - coke · 1629654613528-5d0a2e4166de (verre sans logo)
 - water · 1763619814029-fb9763f509c8
+
+## Steak Dek Naew (menus/steak-dek-naew/) — 2026-11-19
+
+Plats : photos du menu papier du restaurant (découpées), sauf les 4 ci-dessous (Wikimedia Commons, recadrées et légèrement retouchées ; CC BY / CC BY-SA : l'auteur est crédité dans la fiche du plat, les versions retouchées sont donc partagées sous la même licence). Affichées comme « photo d'illustration ».
+
+- `saba-ph.webp` · Grilled Okhotsk Atka Mackerel.jpg · Fred Cherrygarden · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Grilled_Okhotsk_Atka_Mackerel.jpg
+- `rice-saba-ph.webp` · Coal-grilled mackerel lunch at Shiroganeya (29406008015).jpg · Raita Futo from Tokyo, Japan · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Coal-grilled_mackerel_lunch_at_Shiroganeya_(29406008015).jpg
+- `salad-pork-ph.webp` · DFC 5010 Grilled sesame pork slices with fresh garden salad and creamy dipping sauce - a flavorful Thai-style plate from Sattahip.jpg · PattayaPatrol · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_5010_Grilled_sesame_pork_slices_with_fresh_garden_salad_and_creamy_dipping_sauce_-_a_flavorful_Thai-style_plate_from_Sattahip.jpg
+- `salad-fish-ph.webp` · Salat Zander Spargel Oskar.jpg · Benreis · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:Salat_Zander_Spargel_Oskar.jpg
