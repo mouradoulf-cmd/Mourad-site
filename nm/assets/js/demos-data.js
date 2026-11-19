@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-11-11";
+window.NM_UPDATED = "2026-11-19";
 
 window.NM_DEMOS = [
 ];
@@ -24,6 +24,7 @@ window.NM_LINKS = [
     { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "En visite : taper le nom du resto → QR à scanner → le patron voit un menu à son nom. + pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" }
   ] },
   { space: "site", group: "Menus QR · mes clients", items: [
+    { name: "Menu QR · Steak Dek Naew (vrai client, v1)", icon: "🥩", path: "menus/steak-dek-naew/", note: "Premier client réel : 52 plats, 9 langues, prix lus sur son menu papier. Reste à compléter (voir PROJETS.md)" },
     { name: "Tableau de bord des menus QR", path: "nm/menus.html", note: "3 onglets : Clients (qui a payé, QR, rappel WhatsApp) · Chiffres (abonnés, essais, abandons, visites) · + Nouveau client (photos à prendre, fiche à copier dans la discussion, étapes de chaque client)" },
     { name: "+ Nouveau client", path: "nm/menus.html#nouveau", note: "La fiche à remplir, puis tu m'envoies les photos dans la discussion" },
     { name: "Menu QR d'exemple · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Le menu à montrer, ouvert en français : photos, piment, allergies, « montrer au serveur » en thaï" },

@@ -18,6 +18,21 @@
       "demo": true,
       "payments": [],
       "note": "Exemple à montrer aux restaurants thaïs : restaurant inventé, prix en baht, 6 langues (ไทย, English, 中文, Русский, 한국어, Français)"
+    },
+    {
+      "slug": "steak-dek-naew",
+      "name": "Steak Dek Naew (สเต็กเด็กแนว)",
+      "type": "Steakhouse",
+      "city": "Pattaya",
+      "contact": "",
+      "phone": "",
+      "lang": "th",
+      "cover": "steak-dek-naew/set7.webp",
+      "start": "2026-11-19",
+      "paidUntil": "2026-12-19",
+      "trial": true,
+      "payments": [],
+      "note": "Premier vrai client (trouvé le 19/11). Menu v1 : 52 plats lus sur les photos du menu papier. À compléter : plats sous autocollants jaunes + carte Krapao / riz sauté / boissons (aucun prix sur les photos). Photos = celles du menu imprimé du restaurant."
     }
   ]
 }
