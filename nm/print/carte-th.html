@@ -22,11 +22,11 @@
 
   /* ---------- FRONT ---------- */
   .front { display: flex; }
-  .front__text { flex: 1; padding: 5.6mm 3.4mm 5.2mm 6.4mm; display: flex; flex-direction: column; }
+  .front__text { flex: 1; padding: 5.6mm 3.4mm 7mm 6.4mm; display: flex; flex-direction: column; }
   .brand { display: flex; align-items: center; gap: 1.8mm; font-family: "Onest", sans-serif; font-weight: 800; font-size: 3.7mm; letter-spacing: -.01em; }
   .brand svg { width: 5mm; height: 5mm; color: #cfd6ee; }
   .brand .accent { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .head { margin-top: 2.6mm; font-weight: 800; font-size: 4.7mm; line-height: 1.32; letter-spacing: -.005em; }
+  .head { margin-top: 2.2mm; font-weight: 800; font-size: 4.7mm; line-height: 1.32; letter-spacing: -.005em; }
   .head .grad { display: inline-block; padding-top: .42em; margin-top: -.42em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .sub { margin-top: 1.8mm; font-size: 2.3mm; line-height: 1.55; color: #c3c8da; font-weight: 500; }
   .price { margin-top: auto; display: inline-flex; align-items: baseline; gap: 1.2mm; padding: .9mm 2.8mm; border-radius: 99mm; width: fit-content; background: rgba(34,232,255,.08); box-shadow: inset 0 0 0 .22mm rgba(34,232,255,.55); font-size: 2.55mm; font-weight: 600; color: #bdf6ff; }
@@ -34,10 +34,10 @@
   .head-en { margin-top: 1.6mm; font-family: "Onest", sans-serif; font-weight: 700; font-size: 3.1mm; line-height: 1.25; color: #bdf6ff; }
   .h2-en { margin-top: .6mm; font-family: "Onest", sans-serif; font-weight: 600; font-size: 2.7mm; color: #c3c8da; }
   .sep { width: .22mm; margin: 6mm 0; background: linear-gradient(180deg, transparent, rgba(255,255,255,.22) 20%, rgba(255,255,255,.22) 80%, transparent); }
-  .front__qr { width: 33mm; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-right: 2mm; }
-  .tile { width: 24.4mm; height: 24.4mm; padding: 1.5mm; border-radius: 2.6mm; background: #fff; box-shadow: 0 0 0 .5mm rgba(255,255,255,.18); display: grid; place-items: center; }
+  .front__qr { width: 33mm; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-right: 3.6mm; }
+  .tile { width: 23mm; height: 23mm; padding: 1.5mm; border-radius: 2.6mm; background: #fff; box-shadow: 0 0 0 .5mm rgba(255,255,255,.18); display: grid; place-items: center; }
   .tile img, .tile canvas { width: 100% !important; height: 100% !important; display: block; }
-  .scan { margin-top: 1.9mm; text-align: center; font-size: 2.45mm; font-weight: 700; line-height: 1.3; }
+  .scan { margin-top: 1.4mm; text-align: center; font-size: 2.45mm; font-weight: 700; line-height: 1.3; }
   .scan small { display: block; font-family: "Onest", sans-serif; font-weight: 600; font-size: 1.85mm; letter-spacing: .12em; color: var(--dim); text-transform: uppercase; margin-top: .3mm; }
 
   /* ---------- BACK ---------- */
@@ -45,19 +45,19 @@
   .back .kick { font-size: 2.6mm; font-weight: 700; letter-spacing: .04em; color: var(--cyan); }
   .back h2 { margin-top: 1.2mm; font-size: 4.6mm; font-weight: 800; line-height: 1.32; }
   .back h2 .grad { display: inline-block; padding-top: .3em; margin-top: -.3em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .back .row { margin-top: 2.4mm; display: flex; align-items: center; gap: 5.2mm; }
-  .back .tile { width: 20.5mm; height: 20.5mm; padding: 1.2mm; border-radius: 2.2mm; }
+  .back .row { margin-top: 3mm; display: flex; align-items: center; gap: 5.2mm; }
+  .back .tile { width: 19mm; height: 19mm; padding: 1.2mm; border-radius: 2.2mm; }
   .back .cap { margin-top: 1.5mm; font-size: 2.35mm; font-weight: 700; }
   .back .cap small { display: block; font-family: "Onest", sans-serif; font-weight: 500; font-size: 1.8mm; color: var(--dim); letter-spacing: .06em; }
   .back .list { text-align: left; font-size: 2.45mm; line-height: 1.75; color: #d8dcea; font-weight: 500; }
   .back .list i { font-style: normal; color: var(--cyan); margin-right: 1.2mm; }
-  .back .who { margin-top: 2.8mm; font-size: 2.35mm; color: var(--dim); }
+  .back .who { margin-top: 2.2mm; font-size: 2.35mm; color: var(--dim); }
   .back .who b { color: var(--ink); font-weight: 700; }
   .back .row { gap: 8mm; }
   /* ?print=1 : fichier d'imprimerie 96 x 60 mm = carte 90 x 54 + 3 mm de fond perdu, coins carrés */
   body.print { background: #fff; padding: 0; gap: 0; display: block; }
   body.print .card { width: 96mm; height: 60mm; border-radius: 0; padding: 3mm; page-break-after: always; }
-  body.print .back { padding: calc(3mm + 4.4mm) calc(3mm + 6mm); }
+  body.print .back { padding: calc(3mm + 5mm) calc(3mm + 6mm); }
   @page { size: 96mm 60mm; margin: 0; }
 </style>
 </head>
@@ -86,17 +86,16 @@
 <!-- BACK -->
 <div class="card back" id="cardBack">
   <div class="glow glow--a"></div><div class="glow glow--b"></div>
-  <div class="kick">ทักหาเราได้เลย · Chat with us</div>
   <h2>แอดไลน์ หรือ <span class="grad">ส่ง WhatsApp</span></h2>
   <div class="h2-en">Add us on LINE or message us on WhatsApp</div>
   <div class="row">
     <div>
       <div class="tile" id="qrLine"></div>
-      <div class="cap">LINE<small>ADD FRIEND</small></div>
+      <div class="cap">LINE</div>
     </div>
     <div>
       <div class="tile" id="qrWa"></div>
-      <div class="cap">WhatsApp<small>CHAT WITH US</small></div>
+      <div class="cap">WhatsApp</div>
     </div>
   </div>
   <div class="who"><b>Mourad</b> · NM Studio · +66 96 540 5754</div>
