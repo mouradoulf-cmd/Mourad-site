@@ -25,6 +25,7 @@ window.NM_LINKS = [
     { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "En visite : taper le nom du resto → QR à scanner → le patron voit un menu à son nom. + pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" }
   ] },
   { space: "site", group: "Menus QR · mes clients", items: [
+    { name: "Site web · Steak Dek Naew (version futuriste)", icon: "🥩", path: "demos/steak-dek-naew/", note: "Le site du restaurant, à jour : héros photo + assiettes, cartes verre, section menu QR avec téléphone. TH/EN/FR" },
     { name: "Menu QR · Steak Dek Naew (vrai client, v1)", icon: "🥩", path: "menus/steak-dek-naew/", note: "Premier client réel : 52 plats, 9 langues, prix lus sur son menu papier. Reste à compléter (voir PROJETS.md)" },
     { name: "Tableau de bord des menus QR", path: "nm/menus.html", note: "3 onglets : Clients (qui a payé, QR, rappel WhatsApp) · Chiffres (abonnés, essais, abandons, visites) · + Nouveau client (photos à prendre, fiche à copier dans la discussion, étapes de chaque client)" },
     { name: "+ Nouveau client", path: "nm/menus.html#nouveau", note: "La fiche à remplir, puis tu m'envoies les photos dans la discussion" },
