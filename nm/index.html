@@ -2,7 +2,15 @@
 <html dir="ltr" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><script data-nm-lang-lock="1">/* NM Studio : la langue de l'URL fait foi. Un visiteur des pages anglaises (racine /nm/) ne voit jamais une autre langue, et le selecteur du site navigue vers la meme page dans l'autre langue. */
+(function(){try{window.NM_LANG="en";}catch(e){}
+var FOLDERS={"en":"","fr":"fr/","it":"it/","th":"th/","ar":"ar/"};
+try{localStorage.setItem("nmLang","en");}catch(e){}
+var ROUTES={"/nm/fr/index.html":"index.html","/nm/it/index.html":"index.html","/nm/th/index.html":"index.html","/nm/ar/index.html":"index.html","/nm/index.html":"index.html","/nm/fr/services.html":"services.html","/nm/it/services.html":"services.html","/nm/th/services.html":"services.html","/nm/ar/services.html":"services.html","/nm/services.html":"services.html","/nm/fr/pricing.html":"pricing.html","/nm/it/pricing.html":"pricing.html","/nm/th/pricing.html":"pricing.html","/nm/ar/pricing.html":"pricing.html","/nm/pricing.html":"pricing.html","/nm/fr/legal.html":"legal.html","/nm/it/legal.html":"legal.html","/nm/th/legal.html":"legal.html","/nm/ar/legal.html":"legal.html","/nm/legal.html":"legal.html","/nm/fr/start.html":"start.html","/nm/it/start.html":"start.html","/nm/th/start.html":"start.html","/nm/ar/start.html":"start.html","/nm/start.html":"start.html"};
+function folderFor(code){try{var p=location.pathname.replace(/\/+/g,"/");var m=p.match(/\/nm\/(fr|it|th|ar)\/([^\/?#]*)$/);return m?m[2]:p.replace(/^.*\//,"");}catch(e){return"";}}
+function nav(code){try{var f=folderFor();var page=ROUTES["/nm/"+(FOLDERS[code]||"")+f]?f:ROUTES["/nm/"+f];if(!page)page="index.html";location.href=location.pathname.replace(/\/nm\/.*$/,"/nm/")+FOLDERS[code]+page;}catch(e){}}
+document.addEventListener("click",function(e){var t=e.target;var b=t&&t.closest?t.closest("[data-lang]"):null;if(!b)return;var code=b.getAttribute("data-lang");if(code&&code!=="en"){e.preventDefault();e.stopPropagation();nav(code);}},true);
+})();</script>
 <title>Website, QR menu &amp; Google listing for restaurants and local businesses | NM Studio</title>
 <meta content="NM Studio builds websites, QR menus and Google Business Profiles for restaurants, bars, salons and shops. Live in days, no contract. From €150." name="description"/>
 <meta content="#07060c" name="theme-color"/>
