@@ -844,6 +844,7 @@ window.NM_MENU = {
      "id": "set2",
      "n": "Set 2",
      "p": "319",
+     "img": "set3",
      "sn": {
       "th": "Set 2",
       "en": "Set 2",
@@ -856,15 +857,15 @@ window.NM_MENU = {
       "fr": "Set 2"
      },
      "d": {
-      "th": "ไก่ + ปลา + โคขุน",
-      "en": "Chicken + Fish + Sirloin",
-      "zh": "鸡肉 + 鱼 + 西冷",
-      "ru": "Курица + Рыба + Сирлойн",
-      "ko": "닭고기 + 생선 + 서로인",
-      "hi": "चिकन + मछली + सिरलोइन",
-      "ar": "دجاج + سمك + سيرلوين",
-      "de": "Hähnchen + Fisch + Sirloin",
-      "fr": "Poulet + Poisson + Faux-filet"
+      "th": "ไก่ + ปลา + โคขุน · ภาพประกอบ (ชุดใกล้เคียง)",
+      "en": "Chicken + Fish + Sirloin · Illustrative photo (similar set)",
+      "zh": "鸡肉 + 鱼 + 西冷 · 示意图（相近套餐）",
+      "ru": "Курица + Рыба + Сирлойн · Фото для иллюстрации (похожий сет)",
+      "ko": "닭고기 + 생선 + 서로인 · 참고용 사진 (비슷한 세트)",
+      "hi": "चिकन + मछली + सिरलोइन · चित्रण हेतु फ़ोटो (मिलता-जुलता सेट)",
+      "ar": "دجاج + سمك + سيرلوين · صورة توضيحية (مجموعة مشابهة)",
+      "de": "Hähnchen + Fisch + Sirloin · Illustrationsfoto (ähnliches Set)",
+      "fr": "Poulet + Poisson + Faux-filet · Photo d’illustration (assortiment proche)"
      }
     },
     {
@@ -1008,6 +1009,7 @@ window.NM_MENU = {
      "id": "set8",
      "n": "Set 8",
      "p": "429",
+     "img": "set9",
      "sn": {
       "th": "Set 8",
       "en": "Set 8",
@@ -1020,15 +1022,15 @@ window.NM_MENU = {
       "fr": "Set 8"
      },
      "d": {
-      "th": "แซลมอน + ทีโบน",
-      "en": "Salmon + T-bone",
-      "zh": "三文鱼 + T骨牛排",
-      "ru": "Лосось + Ти-бон",
-      "ko": "연어 + 티본",
-      "hi": "सैल्मन + टी-बोन",
-      "ar": "سلمون + تي-بون",
-      "de": "Lachs + T-Bone",
-      "fr": "Saumon + T-bone"
+      "th": "แซลมอน + ทีโบน · ภาพประกอบ (ชุดใกล้เคียง)",
+      "en": "Salmon + T-bone · Illustrative photo (similar set)",
+      "zh": "三文鱼 + T骨牛排 · 示意图（相近套餐）",
+      "ru": "Лосось + Ти-бон · Фото для иллюстрации (похожий сет)",
+      "ko": "연어 + 티본 · 참고용 사진 (비슷한 세트)",
+      "hi": "सैल्मन + टी-बोन · चित्रण हेतु फ़ोटो (मिलता-जुलता सेट)",
+      "ar": "سلمون + تي-بون · صورة توضيحية (مجموعة مشابهة)",
+      "de": "Lachs + T-Bone · Illustrationsfoto (ähnliches Set)",
+      "fr": "Saumon + T-bone · Photo d’illustration (assortiment proche)"
      }
     },
     {
@@ -1091,6 +1093,7 @@ window.NM_MENU = {
      "id": "set11",
      "n": "Set 11",
      "p": "459",
+     "img": "set12",
      "sn": {
       "th": "Set 11",
       "en": "Set 11",
@@ -1103,15 +1106,15 @@ window.NM_MENU = {
       "fr": "Set 11"
      },
      "d": {
-      "th": "ไก่ + หมู + โคขุน + ปลา + แซลมอน",
-      "en": "Chicken + Pork + Sirloin + Fish + Salmon",
-      "zh": "鸡肉 + 猪肉 + 西冷 + 鱼 + 三文鱼",
-      "ru": "Курица + Свинина + Сирлойн + Рыба + Лосось",
-      "ko": "닭고기 + 돼지고기 + 서로인 + 생선 + 연어",
-      "hi": "चिकन + पोर्क + सिरलोइन + मछली + सैल्मन",
-      "ar": "دجاج + لحم خنزير + سيرلوين + سمك + سلمون",
-      "de": "Hähnchen + Schwein + Sirloin + Fisch + Lachs",
-      "fr": "Poulet + Porc + Faux-filet + Poisson + Saumon"
+      "th": "ไก่ + หมู + โคขุน + ปลา + แซลมอน · ภาพประกอบ (ชุดใกล้เคียง)",
+      "en": "Chicken + Pork + Sirloin + Fish + Salmon · Illustrative photo (similar set)",
+      "zh": "鸡肉 + 猪肉 + 西冷 + 鱼 + 三文鱼 · 示意图（相近套餐）",
+      "ru": "Курица + Свинина + Сирлойн + Рыба + Лосось · Фото для иллюстрации (похожий сет)",
+      "ko": "닭고기 + 돼지고기 + 서로인 + 생선 + 연어 · 참고용 사진 (비슷한 세트)",
+      "hi": "चिकन + पोर्क + सिरलोइन + मछली + सैल्मन · चित्रण हेतु फ़ोटो (मिलता-जुलता सेट)",
+      "ar": "دجاج + لحم خنزير + سيرلوين + سمك + سلمون · صورة توضيحية (مجموعة مشابهة)",
+      "de": "Hähnchen + Schwein + Sirloin + Fisch + Lachs · Illustrationsfoto (ähnliches Set)",
+      "fr": "Poulet + Porc + Faux-filet + Poisson + Saumon · Photo d’illustration (assortiment proche)"
      }
     },
     {
