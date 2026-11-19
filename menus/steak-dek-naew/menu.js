@@ -24,7 +24,7 @@ window.NM_MENU = {
  "photoOne": true,
  "photoHD": false,
  "spice": false,
- "heroMobile": "hero-m.webp?v=2",
+ "heroMobile": "hero-m.webp?v=1",
  "heroWide": "hero.webp?v=1",
  "tagline": {
   "th": "สเต็กอร่อย ราคาเป็นกันเอง",
@@ -78,6 +78,7 @@ window.NM_MENU = {
      "id": "pcs",
      "n": "พอร์คชอพซอสสไปซี่",
      "p": "159",
+     "img": "pork-chop",
      "sn": {
       "th": "พอร์คชอพซอสสไปซี่",
       "en": "Pork chop, spicy sauce",
@@ -94,6 +95,7 @@ window.NM_MENU = {
      "id": "pcb",
      "n": "พอร์คชอพซอสบาร์บีคิว",
      "p": "159",
+     "img": "pork-chop",
      "sn": {
       "th": "พอร์คชอพซอสบาร์บีคิว",
       "en": "Pork chop, BBQ sauce",
@@ -127,6 +129,7 @@ window.NM_MENU = {
      "id": "pbs",
      "n": "สเต็กสันคอหมูซอสสไปซี่",
      "p": "229",
+     "img": "pork-blade",
      "sn": {
       "th": "สเต็กสันคอหมูซอสสไปซี่",
       "en": "Pork collar steak, spicy sauce",
@@ -143,6 +146,7 @@ window.NM_MENU = {
      "id": "pbb",
      "n": "สเต็กสันคอหมูซอสบาร์บีคิว",
      "p": "229",
+     "img": "pork-blade",
      "sn": {
       "th": "สเต็กสันคอหมูซอสบาร์บีคิว",
       "en": "Pork collar steak, BBQ sauce",
@@ -176,6 +180,7 @@ window.NM_MENU = {
      "id": "pss",
      "n": "สเต็กหมูสไปซี่",
      "p": "119",
+     "img": "pork-steak",
      "sn": {
       "th": "สเต็กหมูสไปซี่",
       "en": "Pork steak, spicy",
@@ -192,6 +197,7 @@ window.NM_MENU = {
      "id": "psb",
      "n": "สเต็กหมูซอสบาร์บีคิว",
      "p": "119",
+     "img": "pork-steak",
      "sn": {
       "th": "สเต็กหมูซอสบาร์บีคิว",
       "en": "Pork steak, BBQ sauce",
@@ -208,6 +214,7 @@ window.NM_MENU = {
      "id": "mp",
      "n": "สเต็กหมูบด",
      "p": "99",
+     "img": "minced-beef",
      "sn": {
       "th": "สเต็กหมูบด",
       "en": "Minced pork steak",
@@ -257,6 +264,7 @@ window.NM_MENU = {
      "id": "sc",
      "n": "สะโพกไก่สไปซี่",
      "p": "99",
+     "img": "chicken",
      "sn": {
       "th": "สะโพกไก่สไปซี่",
       "en": "Spicy chicken thigh steak",
@@ -273,6 +281,7 @@ window.NM_MENU = {
      "id": "bpc",
      "n": "สะโพกไก่พริกไทยดำ",
      "p": "99",
+     "img": "chicken",
      "sn": {
       "th": "สะโพกไก่พริกไทยดำ",
       "en": "Black pepper chicken thigh steak",
@@ -289,6 +298,7 @@ window.NM_MENU = {
      "id": "bc",
      "n": "สเต็กไก่ซอสบาร์บีคิว",
      "p": "99",
+     "img": "chicken",
      "sn": {
       "th": "สเต็กไก่ซอสบาร์บีคิว",
       "en": "Chicken steak, BBQ sauce",
@@ -421,6 +431,7 @@ window.NM_MENU = {
      "id": "re",
      "n": "ริปอายสเต็กเนื้อ",
      "p": "149",
+     "img": "sirloin",
      "sn": {
       "th": "ริปอายสเต็กเนื้อ",
       "en": "Rib eye steak",
@@ -555,6 +566,7 @@ window.NM_MENU = {
      "id": "rmb",
      "n": "ข้าวหน้าสเต็กเนื้อบด",
      "p": "119",
+     "img": "r-sirloin",
      "sn": {
       "th": "ข้าวหน้าสเต็กเนื้อบด",
       "en": "Minced beef steak with rice",
@@ -588,6 +600,7 @@ window.NM_MENU = {
      "id": "rmp",
      "n": "ข้าวหน้าสเต็กหมูบด",
      "p": "119",
+     "img": "r-pork-steak",
      "sn": {
       "th": "ข้าวหน้าสเต็กหมูบด",
       "en": "Minced pork steak with rice",
@@ -621,6 +634,7 @@ window.NM_MENU = {
      "id": "rcf",
      "n": "ข้าวหน้าสเต็กปลาทอดกรอบ",
      "p": "119",
+     "img": "fried-fish",
      "sn": {
       "th": "ข้าวหน้าสเต็กปลาทอดกรอบ",
       "en": "Crispy fried fish steak with rice",
