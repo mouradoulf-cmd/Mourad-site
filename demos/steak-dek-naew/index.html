@@ -73,7 +73,7 @@ h1 em{font-style:italic;color:var(--or);text-shadow:0 0 40px rgba(255,122,26,.45
 .plates>img{position:absolute;filter:drop-shadow(0 26px 34px rgba(0,0,0,.7));will-change:transform}
 .plates .p1{width:78%;right:-6%;top:12%;animation:fl 9s ease-in-out infinite}
 .plates .p2{width:50%;left:-8%;bottom:-6%;animation:fl 7s ease-in-out -2s infinite}
-.plates .p3{width:36%;right:2%;top:-8%;animation:fl 8s ease-in-out -4s infinite}
+.plates .p3{width:34%;right:6%;top:-12%;animation:fl 8s ease-in-out -4s infinite}
 @keyframes fl{50%{transform:translateY(-12px) rotate(2deg)}}
 .badge{position:absolute;left:1%;top:0;width:112px;height:112px;border-radius:50%;background:var(--lime);color:#14110a;display:grid;place-items:center;text-align:center;font:800 13px/1.15 var(--body);transform:rotate(-10deg);box-shadow:0 14px 34px -10px rgba(217,242,58,.55)}
 .badge b{display:block;font:700 30px/1 var(--display)}
@@ -163,9 +163,60 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .rv{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
 .rv-on .rv:not(.in){opacity:0;transform:translateY(22px)}
 @media(prefers-reduced-motion:reduce){.rv{transition:none}}
+
+/* ===== FUTURE LAYER ===== */
+:root{--cy:#35e6ff;--glass:rgba(255,255,255,.045);--glassb:rgba(255,255,255,.14)}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent 80%);mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent 80%)}
+.prog{position:fixed;top:0;left:0;height:3px;width:100%;z-index:90;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--or),var(--lime),var(--cy))}
+h1 em{background:linear-gradient(100deg,#ff7a1a,#ffc15a 45%,#ff5a00);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 0 26px rgba(255,122,26,.5));padding-right:.08em}
+.eyebrow{font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;color:var(--cy)}.eyebrow::before{background:var(--cy);box-shadow:0 0 12px var(--cy)}
+.tag{display:inline-flex;align-items:center;gap:10px;font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--cy);margin-bottom:14px}
+.tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--cy);box-shadow:0 0 14px 2px var(--cy)}
+.btn.p{position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(255,200,120,.5),0 18px 44px -12px rgba(255,122,26,.9),0 0 36px -6px rgba(255,122,26,.7)}
+.btn.p::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sh 4.5s ease-in-out infinite}
+@keyframes sh{0%,60%{left:-60%}100%{left:130%}}
+.btn.g{background:var(--glass);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px var(--glassb)}
+.cat,.set,.pro div,.contact div,.qrbox{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--glassb);transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.cat::before,.set::before,.pro div::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,140,40,.28),transparent 70%)}
+.cat:hover,.set:hover,.pro div:hover{transform:translateY(-6px);border-color:rgba(255,160,70,.6);box-shadow:0 30px 60px -28px rgba(255,110,10,.7)}
+.cat:hover::before,.set:hover::before,.pro div:hover::before{opacity:1}
+.cat img,.set img{transition:transform .8s cubic-bezier(.2,.8,.2,1)}.cat:hover img,.set:hover img{transform:scale(1.07)}
+.cat,.set{overflow:hidden}
+.set__b h3 b,.cat b{text-shadow:0 0 18px rgba(255,122,26,.5)}
+.stats{background:linear-gradient(90deg,rgba(255,122,26,.08),rgba(53,230,255,.05),rgba(217,242,58,.06))}
+.stats b{background:linear-gradient(180deg,#fff,#ffb35a 60%,#ff7a1a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(255,122,26,.45));font-variant-numeric:tabular-nums}
+.stats .wrap>div{position:relative}.stats .wrap>div+div::before{content:"";position:absolute;left:-5px;top:12%;height:76%;width:1px;background:var(--line)}
+.hchip{position:absolute;z-index:5;display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:99px;background:rgba(14,12,18,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--glassb);font:600 14px var(--body);white-space:nowrap;box-shadow:0 18px 40px -18px #000;animation:fl 8s ease-in-out infinite}
+.hchip i{width:9px;height:9px;border-radius:50%;background:var(--cy);box-shadow:0 0 14px 3px var(--cy)}
+.hchip.c1{left:-6%;top:40%;animation-delay:-2s}.hchip.c2{right:-2%;top:44%;animation-delay:-5s}.hchip.c2 i{background:var(--lime);box-shadow:0 0 14px 3px var(--lime)}
+.plates{transform-style:preserve-3d}
+.plates>img,.badge,.hchip{translate:calc(var(--px,0)*var(--d,1)*1px) calc(var(--py,0)*var(--d,1)*1px)}
+.plates .p1{--d:-26}.plates .p2{--d:-44}.plates .p3{--d:-14}.badge{--d:-34}
+/* QR section: phone */
+.qrbox{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(18px,3vw,40px);align-items:center;overflow:hidden;background:radial-gradient(60% 80% at 80% 50%,rgba(255,110,10,.2),transparent 70%),linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+.phone{position:relative;width:min(250px,100%);aspect-ratio:390/800;margin-inline:auto;border-radius:38px;padding:9px;background:linear-gradient(160deg,#2c2733,#0d0b10);box-shadow:0 50px 90px -30px rgba(255,110,10,.7),0 0 0 1px rgba(255,255,255,.2),inset 0 0 0 2px #000;transform:rotate(-4deg);animation:fl 9s ease-in-out infinite}
+.phone::before{content:"";position:absolute;top:14px;left:50%;width:34%;height:20px;border-radius:20px;background:#000;transform:translateX(-50%);z-index:3}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:30px}
+.scan{position:relative;width:min(220px,100%);aspect-ratio:1;margin-inline:auto}
+.scan .tile{width:100%!important}
+.scan::before,.scan::after{content:"";position:absolute;inset:-14px;border-radius:30px;pointer-events:none;background:
+ linear-gradient(var(--cy),var(--cy)) 0 0/34px 3px,linear-gradient(var(--cy),var(--cy)) 0 0/3px 34px,
+ linear-gradient(var(--cy),var(--cy)) 100% 0/34px 3px,linear-gradient(var(--cy),var(--cy)) 100% 0/3px 34px,
+ linear-gradient(var(--cy),var(--cy)) 0 100%/34px 3px,linear-gradient(var(--cy),var(--cy)) 0 100%/3px 34px,
+ linear-gradient(var(--cy),var(--cy)) 100% 100%/34px 3px,linear-gradient(var(--cy),var(--cy)) 100% 100%/3px 34px;background-repeat:no-repeat;filter:drop-shadow(0 0 8px var(--cy))}
+.scan::after{inset:0;border-radius:22px;background:linear-gradient(180deg,transparent,rgba(53,230,255,.55),transparent) 0 0/100% 40px no-repeat;filter:none;animation:scn 2.8s ease-in-out infinite alternate;mix-blend-mode:screen}
+@keyframes scn{from{background-position:0 -10px}to{background-position:0 calc(100% + 10px)}}
+.qrcopy ul{margin:18px 0 24px}
+@media(max-width:900px){.qrbox{grid-template-columns:1fr 1fr}.qrcopy{grid-column:1/-1}}
+@media(max-width:560px){.qrbox{grid-template-columns:1fr}.phone{width:210px}.scan{width:190px}}
+.nav{background:rgba(12,10,14,.55)}
+.brand i{box-shadow:0 0 22px rgba(255,122,26,.7)}
+.blob.a{opacity:.34}
+@media(prefers-reduced-motion:reduce){.btn.p::after,.hchip,.phone,.scan::after{animation:none}}
 </style>
 </head>
 <body>
+<div class="prog" id="prog"></div>
 <div class="blob a"></div><div class="blob b"></div>
 
 <div class="demo"><span data-k="demo">มาเก็ตตัวอย่างฟรีจาก NM Studio — ยังไม่ใช่เว็บไซต์จริงของร้าน</span> · <a href="https://wa.me/66965405754" target="_blank" rel="noopener" data-k="demoCta">คุยกับเรา</a></div>
@@ -191,6 +242,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <img class="p1" src="img/cut-set12.webp" alt="" fetchpriority="high">
     <img class="p3" src="img/cut-salmon.webp" alt="">
     <img class="p2" src="img/cut-tbone.webp" alt="">
+    <div class="hchip c1"><i></i><span data-k="hc1">สแกน QR · 9 ภาษา</span></div><div class="hchip c2"><i></i><span data-k="hc2">ราคาชัดเจนทุกจาน</span></div>
     <div class="badge"><div><b>99฿</b><span data-k="badge">เริ่มต้น</span></div></div>
   </div>
 </div><span class="scroll" aria-hidden="true"></span></section>
@@ -225,12 +277,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 <section id="qr"><div class="wrap">
   <div class="qrbox rv">
-    <div>
+    <div class="qrcopy">
+      <span class="tag">QR MENU</span>
       <h2 data-k="qT">สแกนที่โต๊ะ ดูเมนูในมือถือ</h2>
       <ul><li data-k="q1">ไม่ต้องโหลดแอป เปิดกล้องแล้วสแกน</li><li data-k="q2">เมนู 9 ภาษา ไทย อังกฤษ จีน รัสเซีย เกาหลี ฮินดี อาหรับ เยอรมัน ฝรั่งเศส</li><li data-k="q3">มีรูปอาหารและราคาทุกเมนู</li></ul>
       <a class="btn p" href="../../menus/steak-dek-naew/" data-k="qBtn">เปิดเมนู QR</a>
     </div>
-    <div><div class="tile" id="qrTile" role="img" aria-label="QR"></div></div>
+    <div class="phone" aria-hidden="true"><img src="img/menu-mid.webp" alt="" loading="lazy" width="390" height="844"></div>
+    <div class="scan"><div class="tile" id="qrTile" role="img" aria-label="QR"></div></div>
   </div>
 </div></section>
 
@@ -260,13 +314,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 (function(){
 "use strict";
 var T={
-th:{demo:"มาเก็ตตัวอย่างฟรีจาก NM Studio — ยังไม่ใช่เว็บไซต์จริงของร้าน",demoCta:"คุยกับเรา",nMenu:"เมนู",nSets:"เซ็ตรวม",nQr:"เมนู QR",nContact:"ติดต่อ",eyebrow:"สเต็กหมู ไก่ ปลา เนื้อ",h1:"สเต็กจานใหญ่<br><em>ราคาชัดเจน</em>",lead:"เลือกเดี่ยว ๆ ตั้งแต่ 99 บาท หรือเซ็ตรวมหลายอย่างในจานเดียว เสิร์ฟพร้อมสลัดและขนมปังปิ้ง",ctaMenu:"ดูเมนูเต็ม · 9 ภาษา",ctaSets:"ดูเซ็ตรวม",c1:"ราคาแสดงทุกเมนู",c2:"13 เซ็ตรวม",c3:"เมนู QR 9 ภาษา",s1:"฿ เริ่มต้นสเต็ก",s2:"เซ็ตรวม",s3:"เมนูในเมนู QR",s4:"ภาษาในเมนู QR",mT:"เลือกตามใจ",mP:"สเต็กหมู ไก่ ปลา เนื้อ ข้าวหน้า สลัด และสปาเก็ตตี้ ราคาตามเมนูของร้าน",xT:"เซ็ตรวม คุ้มกว่าสั่งแยก",xP:"หลายอย่างในจานเดียว ราคาตามเมนูของร้าน",ctaMenu2:"ดูเมนูเต็ม",pT:"ง่าย ชัดเจน ไม่มีเซอร์ไพรส์",p1t:"ราคาชัดเจน",p1:"ทุกเมนูมีราคาแสดง ลูกค้าเห็นก่อนสั่ง ไม่ต้องถามหลายรอบ",p2t:"สั่งง่ายสำหรับนักท่องเที่ยว",p2:"สแกน QR ที่โต๊ะ อ่านเมนูในภาษาของตัวเอง แล้วกดให้พนักงานดูเป็นภาษาไทย",p3t:"เลือกเซ็ตหรือเลือกเอง",p3:"จะกินคนเดียวหรือหลายคน มีทั้งสเต็กเดี่ยว ข้าวหน้า และเซ็ตรวม",qT:"สแกนที่โต๊ะ ดูเมนูในมือถือ",q1:"ไม่ต้องโหลดแอป เปิดกล้องแล้วสแกน",q2:"เมนู 9 ภาษา ไทย อังกฤษ จีน รัสเซีย เกาหลี ฮินดี อาหรับ เยอรมัน ฝรั่งเศส",q3:"มีรูปอาหารและราคาทุกเมนู",qBtn:"เปิดเมนู QR",gT:"ร้านของเรา",g1:"หน้าร้าน",g2:"โต๊ะในร้าน",kT:"มาหาเรา",k1:"ที่อยู่ & เวลาเปิด",todo:"ใส่ที่อยู่ เวลาเปิด-ปิด และแผนที่ของร้านที่นี่",k2:"สั่ง / ถามเรา",todo2:"ใส่ LINE หรือเบอร์โทรของร้านที่นี่ ลูกค้าจะกดแล้วคุยได้ทันที",made:"ทำโดย NM Studio · มาเก็ตตัวอย่างฟรี",barBtn:"ดูเมนู · 9 ภาษา",from:"เริ่มต้น",badge:"เริ่มต้น",marq:["สเต็กหมู","สเต็กไก่","สเต็กปลา","สเต็กเนื้อ","ข้าวหน้า","เซ็ตรวม 13 แบบ","เมนู QR 9 ภาษา"],
+th:{hc1:"สแกน QR · 9 ภาษา",hc2:"ราคาชัดเจนทุกจาน",demo:"มาเก็ตตัวอย่างฟรีจาก NM Studio — ยังไม่ใช่เว็บไซต์จริงของร้าน",demoCta:"คุยกับเรา",nMenu:"เมนู",nSets:"เซ็ตรวม",nQr:"เมนู QR",nContact:"ติดต่อ",eyebrow:"สเต็กหมู ไก่ ปลา เนื้อ",h1:"สเต็กจานใหญ่<br><em>ราคาชัดเจน</em>",lead:"เลือกเดี่ยว ๆ ตั้งแต่ 99 บาท หรือเซ็ตรวมหลายอย่างในจานเดียว เสิร์ฟพร้อมสลัดและขนมปังปิ้ง",ctaMenu:"ดูเมนูเต็ม · 9 ภาษา",ctaSets:"ดูเซ็ตรวม",c1:"ราคาแสดงทุกเมนู",c2:"13 เซ็ตรวม",c3:"เมนู QR 9 ภาษา",s1:"฿ เริ่มต้นสเต็ก",s2:"เซ็ตรวม",s3:"เมนูในเมนู QR",s4:"ภาษาในเมนู QR",mT:"เลือกตามใจ",mP:"สเต็กหมู ไก่ ปลา เนื้อ ข้าวหน้า สลัด และสปาเก็ตตี้ ราคาตามเมนูของร้าน",xT:"เซ็ตรวม คุ้มกว่าสั่งแยก",xP:"หลายอย่างในจานเดียว ราคาตามเมนูของร้าน",ctaMenu2:"ดูเมนูเต็ม",pT:"ง่าย ชัดเจน ไม่มีเซอร์ไพรส์",p1t:"ราคาชัดเจน",p1:"ทุกเมนูมีราคาแสดง ลูกค้าเห็นก่อนสั่ง ไม่ต้องถามหลายรอบ",p2t:"สั่งง่ายสำหรับนักท่องเที่ยว",p2:"สแกน QR ที่โต๊ะ อ่านเมนูในภาษาของตัวเอง แล้วกดให้พนักงานดูเป็นภาษาไทย",p3t:"เลือกเซ็ตหรือเลือกเอง",p3:"จะกินคนเดียวหรือหลายคน มีทั้งสเต็กเดี่ยว ข้าวหน้า และเซ็ตรวม",qT:"สแกนที่โต๊ะ ดูเมนูในมือถือ",q1:"ไม่ต้องโหลดแอป เปิดกล้องแล้วสแกน",q2:"เมนู 9 ภาษา ไทย อังกฤษ จีน รัสเซีย เกาหลี ฮินดี อาหรับ เยอรมัน ฝรั่งเศส",q3:"มีรูปอาหารและราคาทุกเมนู",qBtn:"เปิดเมนู QR",gT:"ร้านของเรา",g1:"หน้าร้าน",g2:"โต๊ะในร้าน",kT:"มาหาเรา",k1:"ที่อยู่ & เวลาเปิด",todo:"ใส่ที่อยู่ เวลาเปิด-ปิด และแผนที่ของร้านที่นี่",k2:"สั่ง / ถามเรา",todo2:"ใส่ LINE หรือเบอร์โทรของร้านที่นี่ ลูกค้าจะกดแล้วคุยได้ทันที",made:"ทำโดย NM Studio · มาเก็ตตัวอย่างฟรี",barBtn:"ดูเมนู · 9 ภาษา",from:"เริ่มต้น",badge:"เริ่มต้น",marq:["สเต็กหมู","สเต็กไก่","สเต็กปลา","สเต็กเนื้อ","ข้าวหน้า","เซ็ตรวม 13 แบบ","เมนู QR 9 ภาษา"],
  cats:[["สเต็กหมู","ธรรมดา ซอสสไปซี่ หรือบาร์บีคิว"],["สเต็กไก่","อกหรือสะโพก หลายซอส"],["สเต็กปลา","แซลมอน ปลาทอด ซาบะ"],["สเต็กเนื้อ","ที-โบน ริปอาย โคขุน"],["ข้าวหน้า","ข้าวหน้าสเต็ก คัตสึ และหมูเกาหลี"],["สลัด & พาสต้า","สลัดสเต็ก คาโบนาร่า ผักโขมอบชีส"]],
  sets:{set1:"ไก่ + หมู + ปลา",set3:"ไก่ + โคขุน + พอร์คชอพ + ปลา",set7:"หมู + พอร์คชอพ + สันคอ",set9:"ที-โบน + พอร์คชอพ + แซลมอน",set10:"ที-โบน + โคขุน + ริปอาย",set12:"ปลา + ไก่ + พอร์คชอพ + สันคอหมู + ริปอาย + ที-โบน"}},
-en:{demo:"Free mock-up by NM Studio — not the restaurant’s real website yet",demoCta:"Talk to us",nMenu:"Menu",nSets:"Sets",nQr:"QR menu",nContact:"Contact",eyebrow:"Pork · chicken · fish · beef",h1:"Big-plate steaks,<br><em>clear prices</em>",lead:"Pick a single steak from 99 baht, or a set with several cuts on one plate, served with salad and toast.",ctaMenu:"Full menu · 9 languages",ctaSets:"See the sets",c1:"Every price shown",c2:"13 sets",c3:"QR menu in 9 languages",s1:"฿ steaks from",s2:"sets",s3:"dishes on the QR menu",s4:"languages on the QR menu",mT:"Pick what you like",mP:"Pork, chicken, fish and beef steaks, rice dishes, salads and spaghetti. Prices as on the restaurant’s menu.",xT:"Sets: better value than ordering apart",xP:"Several cuts on one plate. Prices as on the restaurant’s menu.",ctaMenu2:"Full menu",pT:"Simple, clear, no surprises",p1t:"Clear prices",p1:"Every dish has its price shown, so guests know before they order.",p2t:"Easy for tourists",p2:"Scan the QR on the table, read the menu in your language, and show your order to the staff in Thai.",p3t:"A set or your own pick",p3:"Alone or sharing: single steaks, rice dishes and sets.",qT:"Scan at the table, read the menu on your phone",q1:"No app needed: open your camera and scan",q2:"Menu in 9 languages: Thai, English, Chinese, Russian, Korean, Hindi, Arabic, German, French",q3:"Photos and prices for every dish",qBtn:"Open the QR menu",gT:"Our place",g1:"The shopfront",g2:"A table inside",kT:"Come and see us",k1:"Address & opening hours",todo:"Add the restaurant’s address, opening hours and map here",k2:"Order / ask us",todo2:"Add the restaurant’s LINE or phone here: guests tap and chat at once",made:"Made by NM Studio · free mock-up",barBtn:"Menu · 9 languages",from:"from",badge:"from",marq:["Pork steaks","Chicken steaks","Fish steaks","Beef steaks","Rice dishes","13 sets","QR menu in 9 languages"],
+en:{hc1:"Scan QR · 9 languages",hc2:"Clear price on every plate",demo:"Free mock-up by NM Studio — not the restaurant’s real website yet",demoCta:"Talk to us",nMenu:"Menu",nSets:"Sets",nQr:"QR menu",nContact:"Contact",eyebrow:"Pork · chicken · fish · beef",h1:"Big-plate steaks,<br><em>clear prices</em>",lead:"Pick a single steak from 99 baht, or a set with several cuts on one plate, served with salad and toast.",ctaMenu:"Full menu · 9 languages",ctaSets:"See the sets",c1:"Every price shown",c2:"13 sets",c3:"QR menu in 9 languages",s1:"฿ steaks from",s2:"sets",s3:"dishes on the QR menu",s4:"languages on the QR menu",mT:"Pick what you like",mP:"Pork, chicken, fish and beef steaks, rice dishes, salads and spaghetti. Prices as on the restaurant’s menu.",xT:"Sets: better value than ordering apart",xP:"Several cuts on one plate. Prices as on the restaurant’s menu.",ctaMenu2:"Full menu",pT:"Simple, clear, no surprises",p1t:"Clear prices",p1:"Every dish has its price shown, so guests know before they order.",p2t:"Easy for tourists",p2:"Scan the QR on the table, read the menu in your language, and show your order to the staff in Thai.",p3t:"A set or your own pick",p3:"Alone or sharing: single steaks, rice dishes and sets.",qT:"Scan at the table, read the menu on your phone",q1:"No app needed: open your camera and scan",q2:"Menu in 9 languages: Thai, English, Chinese, Russian, Korean, Hindi, Arabic, German, French",q3:"Photos and prices for every dish",qBtn:"Open the QR menu",gT:"Our place",g1:"The shopfront",g2:"A table inside",kT:"Come and see us",k1:"Address & opening hours",todo:"Add the restaurant’s address, opening hours and map here",k2:"Order / ask us",todo2:"Add the restaurant’s LINE or phone here: guests tap and chat at once",made:"Made by NM Studio · free mock-up",barBtn:"Menu · 9 languages",from:"from",badge:"from",marq:["Pork steaks","Chicken steaks","Fish steaks","Beef steaks","Rice dishes","13 sets","QR menu in 9 languages"],
  cats:[["Pork steaks","Plain, spicy or BBQ sauce"],["Chicken steaks","Breast or thigh, several sauces"],["Fish steaks","Salmon, fried fish, saba"],["Beef steaks","T-bone, rib eye, sirloin"],["Rice dishes","Steak on rice, katsu, Korean-style pork"],["Salads & pasta","Steak salads, carbonara, baked spinach"]],
  sets:{set1:"Chicken + pork + fish",set3:"Chicken + sirloin + pork chop + fish",set7:"Pork + pork chop + pork collar",set9:"T-bone + pork chop + salmon",set10:"T-bone + sirloin + rib eye",set12:"Fish + chicken + pork chop + pork collar + rib eye + T-bone"}},
-fr:{demo:"Maquette gratuite par NM Studio — pas encore le vrai site du restaurant",demoCta:"Nous écrire",nMenu:"Carte",nSets:"Sets",nQr:"Menu QR",nContact:"Contact",eyebrow:"Porc · poulet · poisson · bœuf",h1:"Des steaks bien servis,<br><em>des prix clairs</em>",lead:"Un steak seul dès 99 bahts, ou un set avec plusieurs viandes dans la même assiette, servi avec salade et pain grillé.",ctaMenu:"Menu complet · 9 langues",ctaSets:"Voir les sets",c1:"Tous les prix affichés",c2:"13 sets",c3:"Menu QR en 9 langues",s1:"฿ steaks dès",s2:"sets",s3:"plats dans le menu QR",s4:"langues dans le menu QR",mT:"Choisissez à votre goût",mP:"Steaks de porc, poulet, poisson et bœuf, plats avec riz, salades et spaghetti. Prix de la carte du restaurant.",xT:"Les sets : plus avantageux que séparément",xP:"Plusieurs morceaux dans la même assiette. Prix de la carte du restaurant.",ctaMenu2:"Menu complet",pT:"Simple, clair, sans surprise",p1t:"Prix clairs",p1:"Chaque plat affiche son prix : le client sait avant de commander.",p2t:"Facile pour les touristes",p2:"On scanne le QR sur la table, on lit la carte dans sa langue, et on montre sa commande au serveur en thaï.",p3t:"Un set ou votre choix",p3:"Seul ou à plusieurs : steaks seuls, plats avec riz et sets.",qT:"On scanne à table, on lit la carte sur son téléphone",q1:"Sans application : on ouvre l’appareil photo et on scanne",q2:"Carte en 9 langues : thaï, anglais, chinois, russe, coréen, hindi, arabe, allemand, français",q3:"Photos et prix pour chaque plat",qBtn:"Ouvrir le menu QR",gT:"Notre adresse",g1:"La devanture",g2:"Une table",kT:"Venez nous voir",k1:"Adresse & horaires",todo:"Ajoutez ici l’adresse, les horaires et le plan du restaurant",k2:"Commander / nous écrire",todo2:"Ajoutez ici le LINE ou le téléphone du restaurant : un appui et la discussion s’ouvre",made:"Réalisé par NM Studio · maquette gratuite",barBtn:"Menu · 9 langues",from:"dès",badge:"dès",marq:["Steaks de porc","Steaks de poulet","Steaks de poisson","Steaks de bœuf","Plats avec riz","13 sets","Menu QR en 9 langues"],
+fr:{hc1:"Scan QR · 9 langues",hc2:"Prix clair sur chaque assiette",demo:"Maquette gratuite par NM Studio — pas encore le vrai site du restaurant",demoCta:"Nous écrire",nMenu:"Carte",nSets:"Sets",nQr:"Menu QR",nContact:"Contact",eyebrow:"Porc · poulet · poisson · bœuf",h1:"Des steaks bien servis,<br><em>des prix clairs</em>",lead:"Un steak seul dès 99 bahts, ou un set avec plusieurs viandes dans la même assiette, servi avec salade et pain grillé.",ctaMenu:"Menu complet · 9 langues",ctaSets:"Voir les sets",c1:"Tous les prix affichés",c2:"13 sets",c3:"Menu QR en 9 langues",s1:"฿ steaks dès",s2:"sets",s3:"plats dans le menu QR",s4:"langues dans le menu QR",mT:"Choisissez à votre goût",mP:"Steaks de porc, poulet, poisson et bœuf, plats avec riz, salades et spaghetti. Prix de la carte du restaurant.",xT:"Les sets : plus avantageux que séparément",xP:"Plusieurs morceaux dans la même assiette. Prix de la carte du restaurant.",ctaMenu2:"Menu complet",pT:"Simple, clair, sans surprise",p1t:"Prix clairs",p1:"Chaque plat affiche son prix : le client sait avant de commander.",p2t:"Facile pour les touristes",p2:"On scanne le QR sur la table, on lit la carte dans sa langue, et on montre sa commande au serveur en thaï.",p3t:"Un set ou votre choix",p3:"Seul ou à plusieurs : steaks seuls, plats avec riz et sets.",qT:"On scanne à table, on lit la carte sur son téléphone",q1:"Sans application : on ouvre l’appareil photo et on scanne",q2:"Carte en 9 langues : thaï, anglais, chinois, russe, coréen, hindi, arabe, allemand, français",q3:"Photos et prix pour chaque plat",qBtn:"Ouvrir le menu QR",gT:"Notre adresse",g1:"La devanture",g2:"Une table",kT:"Venez nous voir",k1:"Adresse & horaires",todo:"Ajoutez ici l’adresse, les horaires et le plan du restaurant",k2:"Commander / nous écrire",todo2:"Ajoutez ici le LINE ou le téléphone du restaurant : un appui et la discussion s’ouvre",made:"Réalisé par NM Studio · maquette gratuite",barBtn:"Menu · 9 langues",from:"dès",badge:"dès",marq:["Steaks de porc","Steaks de poulet","Steaks de poisson","Steaks de bœuf","Plats avec riz","13 sets","Menu QR en 9 langues"],
  cats:[["Steaks de porc","Nature, sauce épicée ou barbecue"],["Steaks de poulet","Blanc ou cuisse, plusieurs sauces"],["Steaks de poisson","Saumon, poisson frit, saba"],["Steaks de bœuf","T-bone, entrecôte, faux-filet"],["Plats avec riz","Steak sur riz, katsu, porc à la coréenne"],["Salades & pâtes","Salades-steak, carbonara, épinards gratinés"]]
  ,sets:{set1:"Poulet + porc + poisson",set3:"Poulet + faux-filet + côte de porc + poisson",set7:"Porc + côte de porc + échine",set9:"T-bone + côte de porc + saumon",set10:"T-bone + faux-filet + entrecôte",set12:"Poisson + poulet + côte de porc + échine + entrecôte + T-bone"}}
 };
@@ -293,6 +347,18 @@ function reveal(){
 }
 render();
 try{new QRCode(document.getElementById("qrTile"),{text:"https://mouradoulf-cmd.github.io/Mourad-site/menus/steak-dek-naew/",width:300,height:300,colorDark:"#0b0c16",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}catch(e){}
+})();
+
+/* future layer: tags, tilt, spotlight, count-up, progress */
+(function(){
+var tags=["01 · MENU","02 · SETS","03 · PROMISE","04 · QR","05 · PLACE","06 · CONTACT"];
+[].forEach.call(document.querySelectorAll(".sh"),function(sh,i){if(sh.querySelector(".tag"))return;var t=document.createElement("span");t.className="tag";t.textContent=tags[i]||"";sh.insertBefore(t,sh.firstChild)});
+var pl=document.querySelector(".plates"),hero=document.querySelector(".hero"),fine=matchMedia("(hover:hover)").matches&&!matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(pl&&hero&&fine)hero.addEventListener("pointermove",function(e){var r=hero.getBoundingClientRect();pl.style.setProperty("--px",((e.clientX-r.left)/r.width-.5).toFixed(3));pl.style.setProperty("--py",((e.clientY-r.top)/r.height-.5).toFixed(3))});
+document.addEventListener("pointermove",function(e){var c=e.target.closest&&e.target.closest(".cat,.set,.pro div");if(!c)return;var r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")});
+var pr=document.getElementById("prog");function sp(){var h=document.documentElement.scrollHeight-innerHeight;pr.style.transform="scaleX("+(h>0?scrollY/h:0)+")"}addEventListener("scroll",sp,{passive:true});sp();
+var st=document.querySelector(".stats");
+if(st&&"IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion:reduce)").matches){var o=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;o.disconnect();[].forEach.call(st.querySelectorAll("b"),function(b){var n=+b.textContent,t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-k,3);b.textContent=Math.round(n*e);if(k<1)requestAnimationFrame(f)})(t0)})},{threshold:.5});o.observe(st)}
 })();
 </script>
 </body>
