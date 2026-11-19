@@ -56,7 +56,7 @@
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       // No number configured: copy the message, then open the WhatsApp link (a new tab opened right away keeps the gesture)
       var copied = copy(msg);   // start the copy inside the tap, then open WhatsApp in the same tap
-      window.open(C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1", "_blank", "noopener");
+      window.open(C.whatsappLink || "https://wa.me/66965405754", "_blank", "noopener");
       copied.then(function () { toast(t("free.copied")); });
     });
   });
@@ -75,7 +75,7 @@
       var num = String(C.whatsappNumber || "").replace(/\D/g, "");
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       var copied = copy(msg);
-      window.open(C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1", "_blank", "noopener");
+      window.open(C.whatsappLink || "https://wa.me/66965405754", "_blank", "noopener");
       copied.then(function () { toast(t("free.copied")); });
     });
   });
@@ -174,7 +174,7 @@
       var num = String(C.whatsappNumber || "").replace(/\D/g, "");
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       var copied = copy(msg);
-      window.open(C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1", "_blank", "noopener");
+      window.open(C.whatsappLink || "https://wa.me/66965405754", "_blank", "noopener");
       copied.then(function () { toast(t("book.copied")); });
     });
     render();
@@ -212,7 +212,7 @@
       var num = String(C.whatsappNumber || "").replace(/\D/g, "");
       if (num) { window.open("https://wa.me/" + num + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); return; }
       var copied = copy(msg);
-      window.open(C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1", "_blank", "noopener");
+      window.open(C.whatsappLink || "https://wa.me/66965405754", "_blank", "noopener");
       copied.then(function () { toast(t("ref.copied")); });
     });
   })();

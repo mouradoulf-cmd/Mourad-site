@@ -11,7 +11,7 @@ font, wave-icon logo).
 - `card-front-en.png` / `card-back-en.png` — EN renders.
 - `qr-site.png` — QR on the front, links to the NM Studio site.
 - `qr-whatsapp.png` — QR on the back, links to the real WhatsApp
-  (`https://wa.me/qr/PYPOVXTCVM74I1`).
+  (`https://wa.me/66965405754`).
 
 ## Still to do
 

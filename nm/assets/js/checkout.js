@@ -11,7 +11,7 @@
 (function () {
   "use strict";
 
-  var WA_URL = "https://wa.me/qr/PYPOVXTCVM74I1";
+  var WA_URL = "https://wa.me/66965405754";
   var STORE = "nmCheckout";
   var PAY = window.NM_PAYMENTS || {};
   var params = new URLSearchParams(location.search);

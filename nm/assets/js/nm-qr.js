@@ -6,7 +6,7 @@
 (function () {
   "use strict";
   var MENU_URL = "https://mouradoulf-cmd.github.io/Mourad-site/giulivo-qr-menu.html";
-  var WA_URL = "https://wa.me/qr/PYPOVXTCVM74I1";
+  var WA_URL = "https://wa.me/66965405754";
   var cache = {};
 
   function matrix(text, level) {

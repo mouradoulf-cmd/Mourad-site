@@ -11,7 +11,7 @@
   var P = { menu: 299, menuPages: 2, page: 150, copy: 150, google: 790, pack: 2990, care: 390, careYear: 3900, grow: 990, social: 2500 };
   var C = window.NM_CONTACT || {};
   var WA = C.whatsappNumber ? "https://wa.me/" + C.whatsappNumber + "?text=" : "";
-  var WA_LINK = C.whatsappLink || "https://wa.me/qr/PYPOVXTCVM74I1";
+  var WA_LINK = C.whatsappLink || "https://wa.me/66965405754";
   function wa(msg) { return WA ? WA + encodeURIComponent(msg) : WA_LINK; }
   var RATE = 38; /* ≈ 38 THB per euro, rounded, for reading only */
   function b(n) { return Math.round(n / RATE).toLocaleString("fr-FR"); }

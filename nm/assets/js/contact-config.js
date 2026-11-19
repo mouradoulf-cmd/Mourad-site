@@ -15,12 +15,12 @@
  *                  account. Empty: they keep using WhatsApp. (LINE only allows a pre-filled message to an Official Account.)
  */
 window.NM_CONTACT = {
-  whatsappNumber: "33782943674",   // +33 7 82 94 36 74 (Mourad) — replace with the Thai number once it exists
-  whatsappLink: "https://wa.me/qr/PYPOVXTCVM74I1",
+  whatsappNumber: "66965405754",   // +66 96 540 5754 (numéro thaï NM Studio, WhatsApp Business + LINE)
+  whatsappLink: "https://wa.me/66965405754",
   founderName: "Mourad",
   founderPhoto: "assets/img/founder.jpg?v=2",
   analyticsToken: "",
-  lineLink: "",
+  lineLink: "https://line.me/ti/p/vMkNZMcALE",   // LINE personnel du numéro thaï (lien « Ajouter en ami »). Pas un compte Official Account : lineOA reste vide
   lineOA: "",
   referralMonths: 1,
 

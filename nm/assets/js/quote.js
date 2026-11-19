@@ -15,7 +15,7 @@
 
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
-  var WA = "https://wa.me/qr/PYPOVXTCVM74I1";
+  var WA = "https://wa.me/66965405754";
   var MAX_STEP = 4;
   var LANGS = ["en", "fr", "it", "th", "ar"];
 
