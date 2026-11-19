@@ -4,239 +4,302 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#0c0f08">
-<title>Tattoo Studio · มาเก็ตตัวอย่าง</title>
-<meta name="description" content="Tattoo studio — สตูดิโอสักส่วนตัว ดีไซน์ก่อนสัก ราคาแจ้งก่อนเริ่ม · Private tattoo studio, design first, price before we start.">
+<meta name="theme-color" content="#0a0d06">
+<title>Tattoo Studio | มาเก็ตตัวอย่าง</title>
+<meta name="description" content="Private tattoo studio. Talk first, price before we start, a clean private room.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Jost:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;800&family=Noto+Serif+Thai:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Jost:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0e07;--bg2:#12170b;--moss:#2c3a14;--ink:#f1ead8;--dim:#b3ad98;--red:#e0301e;--gold:#d4b25c;--line:rgba(241,234,216,.14);
- --display:"Shippori Mincho","Noto Serif Thai",Georgia,serif;--body:"Jost","Noto Sans Thai",system-ui,sans-serif}
+/* Design read: private irezumi-leaning tattoo studio, Pattaya locals and visitors. Dark olive + one vermilion accent.
+   Shippori Mincho is chosen for the Japanese heritage of the room itself (samurai corner, kanji scrolls). Radius: 20px cards, pills for buttons, arches only as the signature motif. */
+:root{--bg:#0a0d06;--bg2:#10150a;--moss:#1a2310;--ink:#efe9dc;--dim:#aaa592;--red:#d8341f;--line:rgba(239,233,220,.13);
+ --ease:cubic-bezier(.32,.72,0,1);
+ --display:"Shippori Mincho","Noto Serif Thai",serif;--body:"Jost","Noto Sans Thai",system-ui,sans-serif;--r:20px}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:90px}
 body{background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);overflow-x:hidden;padding-bottom:84px}
 html[lang=th] body{font-family:"Noto Sans Thai","Jost",sans-serif}
 html[lang=th] h1,html[lang=th] h2,html[lang=th] h3{font-family:"Noto Serif Thai","Shippori Mincho",serif}
 img{max-width:100%;display:block;height:auto}a{color:inherit;text-decoration:none}
-.wrap{width:min(1160px,100% - 40px);margin:0 auto}
-main,header,footer,.demo{position:relative;z-index:1}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;background:radial-gradient(60% 50% at 85% 0%,rgba(224,48,30,.18),transparent 70%),radial-gradient(50% 50% at 0% 100%,rgba(90,120,30,.22),transparent 70%)}
-.prog{position:fixed;top:0;left:0;height:3px;width:100%;z-index:90;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--red),var(--gold))}
-.demo{background:var(--gold);color:#17120a;font:600 13px/1.3 var(--body);text-align:center;padding:8px 14px}
+.wrap{width:min(1180px,100% - 40px);margin:0 auto}
+main,footer,.demo{position:relative;z-index:1}
+.grain{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+.prog{position:fixed;top:0;left:0;height:2px;width:100%;z-index:90;transform-origin:0 50%;transform:scaleX(0);background:var(--red)}
+.demo{background:var(--red);color:#fff;font:600 13px/1.35 var(--body);text-align:center;padding:8px 14px}
 .demo a{text-decoration:underline;font-weight:700}
-.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,14,7,.62);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
-.brand{display:flex;align-items:center;gap:12px;font:800 19px/1 var(--display);letter-spacing:.04em}
-.seal{width:34px;height:34px;border-radius:7px;background:var(--red);display:grid;place-items:center;color:#fff;font:800 19px/1 "Shippori Mincho",serif;transform:rotate(-4deg);box-shadow:0 0 22px rgba(224,48,30,.55)}
-.nav ul{display:flex;gap:26px;list-style:none;font-weight:500;font-size:15px;color:var(--dim)}
-.nav ul a:hover{color:var(--ink)}
-.lang{display:flex;gap:4px;background:rgba(255,255,255,.06);border-radius:99px;padding:3px}
-.lang button{border:0;background:none;color:var(--dim);font:600 12px var(--body);padding:6px 10px;border-radius:99px;cursor:pointer}
+
+/* nav: floating pill */
+.nav{position:sticky;top:12px;z-index:60;width:max-content;max-width:calc(100% - 24px);margin:12px auto 0;display:flex;align-items:center;gap:6px;padding:6px 6px 6px 18px;border-radius:99px;background:rgba(14,18,9,.72);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 0 0 1px var(--line),inset 0 1px 0 rgba(255,255,255,.08),0 18px 40px -18px #000}
+.brand{display:flex;align-items:center;gap:10px;font:800 15px/1 var(--display);letter-spacing:.08em;margin-right:8px;white-space:nowrap}
+.seal{width:28px;height:28px;border-radius:7px;background:var(--red);display:grid;place-items:center;color:#fff;font:800 16px/1 "Shippori Mincho",serif;transform:rotate(-5deg)}
+.nav ul{display:flex;list-style:none;gap:2px}
+.nav ul a{display:block;padding:9px 14px;border-radius:99px;font:500 14px var(--body);color:var(--dim);transition:color .4s var(--ease),background .4s var(--ease)}
+.nav ul a:hover{color:var(--ink);background:rgba(255,255,255,.07)}
+.lang{display:flex;background:rgba(255,255,255,.06);border-radius:99px;padding:3px}
+.lang button{border:0;background:none;color:var(--dim);font:600 12px var(--body);padding:7px 10px;border-radius:99px;cursor:pointer;transition:background .4s var(--ease),color .4s var(--ease)}
 .lang button[aria-pressed=true]{background:var(--red);color:#fff}
-@media(max-width:820px){.nav ul{display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 28px;border-radius:99px;font:700 16px var(--body);border:0;cursor:pointer;transition:transform .2s}
+@media(max-width:820px){.nav>.btn{display:none}.nav ul{display:none}.brand span:last-child{display:none}.brand{margin-right:2px}}
+
+.btn{--g:rgba(255,255,255,.18);display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:6px 6px 6px 26px;border-radius:99px;font:600 16px var(--body);border:0;cursor:pointer;white-space:nowrap;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.btn i{width:42px;height:42px;border-radius:50%;background:var(--g);display:grid;place-items:center;font-style:normal;font-size:18px;transition:transform .5s var(--ease)}
+.btn:hover i{transform:translate(3px,-2px) scale(1.06)}
 .btn:active{transform:scale(.97)}
-.btn.p{background:var(--red);color:#fff;box-shadow:0 16px 40px -14px rgba(224,48,30,.9),0 0 0 1px rgba(255,150,130,.35)}
+.btn.p{background:var(--red);color:#fff;box-shadow:0 18px 44px -16px rgba(216,52,31,.9)}
 .btn.g{background:rgba(255,255,255,.06);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
-.tag{display:inline-flex;align-items:center;gap:10px;font:600 12px var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.tag::before{content:"";width:30px;height:1px;background:var(--gold)}
+.btn.sm{min-height:42px;padding:4px 4px 4px 18px;font-size:14px;gap:10px}.btn.sm i{width:34px;height:34px;font-size:15px}
+.tag{display:inline-block;font:600 11px var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+section{padding:clamp(70px,10vw,150px) 0}
+h1,h2{text-wrap:balance}
+h2{font:800 clamp(30px,4.6vw,58px)/1.14 var(--display);max-width:18ch}
+html[lang=th] h2{line-height:1.32}
 
 /* hero */
-.hero{position:relative;padding:clamp(34px,6vw,80px) 0 clamp(50px,7vw,90px);overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(20px,4vw,60px);align-items:center}
-h1{font:800 clamp(44px,7.4vw,98px)/1.04 var(--display);letter-spacing:-.01em;text-wrap:balance}
-html[lang=th] h1{line-height:1.2;font-size:clamp(40px,6.4vw,84px)}
-h1 em{font-style:normal;color:var(--red);text-shadow:0 0 50px rgba(224,48,30,.45)}
-.lead{margin-top:20px;max-width:42ch;color:#e3dcc7;font-size:clamp(17px,2vw,20px)}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.chips{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:24px;color:var(--dim);font-size:14px}
-.chips span::before{content:"✓ ";color:var(--gold);font-weight:700}
-.kanji{position:absolute;right:-1%;top:4%;writing-mode:vertical-rl;font:800 clamp(90px,15vw,220px)/1 "Shippori Mincho",serif;color:rgba(224,48,30,.1);letter-spacing:.06em;pointer-events:none;user-select:none}
-.arches{display:grid;grid-template-columns:1fr 1.18fr 1fr;gap:clamp(8px,1.4vw,18px);align-items:end;position:relative}
-.arch{position:relative;overflow:hidden;border-radius:999px 999px 18px 18px;aspect-ratio:1/2;box-shadow:0 40px 80px -30px #000,0 0 0 1px rgba(241,234,216,.18);background:#0d1108}
-.arch.m{aspect-ratio:1/2.14}
-.arch img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:kb 24s ease-in-out infinite alternate}
-.arch:nth-child(2) img{animation-delay:-8s}.arch:nth-child(3) img{animation-delay:-15s}
-.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,14,7,.55))}
-@keyframes kb{to{transform:scale(1.18) translateY(-2%)}}
-.arches>*{translate:calc(var(--px,0)*var(--d,1)*1px) calc(var(--py,0)*var(--d,1)*1px)}
-.arches>:nth-child(1){--d:-10}.arches>:nth-child(2){--d:-22}.arches>:nth-child(3){--d:-14}
-.hanko{position:absolute;left:46%;bottom:-3%;z-index:3;width:92px;height:92px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;text-align:center;font:700 13px/1.15 var(--body);transform:rotate(-10deg);box-shadow:0 14px 34px -10px rgba(224,48,30,.8)}
-.hanko b{display:block;font:800 26px/1 var(--display)}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.arches{max-width:520px;margin:10px auto 0}.hanko{width:78px;height:78px;font-size:11px}.hanko b{font-size:21px}}
-.marq{overflow:hidden;border-block:1px solid var(--line);background:var(--red);color:#fff;font:700 14px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
-.marq div{display:flex;width:max-content;animation:mq 40s linear infinite;padding:15px 0}
-.marq span{padding:0 28px;white-space:nowrap}.marq span::after{content:"◆";margin-left:56px;opacity:.6}
+.hero{position:relative;min-height:calc(100dvh - 60px);padding:clamp(30px,5vw,60px) 0 clamp(60px,8vw,100px);display:flex;align-items:center;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,80px);align-items:center}
+h1{font:800 clamp(40px,5.6vw,84px)/1.05 var(--display);letter-spacing:-.01em}
+html[lang=th] h1{line-height:1.22;font-size:clamp(38px,5vw,72px)}
+h1 em{font-style:normal;color:var(--red);display:block}
+.lead{margin-top:22px;max-width:36ch;color:#d6d0c0;font-size:clamp(17px,1.8vw,20px)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.stage{position:relative;width:min(360px,100%);margin-inline:auto;padding:0 6%}
+.arch{position:relative;aspect-ratio:9/15.5;border-radius:999px 999px 22px 22px;overflow:hidden;box-shadow:0 60px 100px -40px #000,0 0 0 1px rgba(239,233,220,.2);background:#0d1108}
+.arch img{width:100%;height:100%;object-fit:cover;filter:contrast(1.06) saturate(1.05);transform:scale(1.08);animation:kb 26s var(--ease) infinite alternate}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,13,6,0) 50%,rgba(10,13,6,.6))}
+@keyframes kb{to{transform:scale(1.2) translateY(-2%)}}
+.enso{position:absolute;inset:-9% -16% -4%;width:132%;height:auto;overflow:visible;pointer-events:none;color:var(--red)}
+.enso path{fill:none;stroke:currentColor;stroke-linecap:round;stroke-width:7;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.4s var(--ease) .3s forwards;filter:url(#rough)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.kanji{position:absolute;right:-10%;top:-2%;writing-mode:vertical-rl;font:800 clamp(80px,12vw,170px)/1 "Shippori Mincho",serif;color:rgba(239,233,220,.07);letter-spacing:.05em;pointer-events:none;user-select:none}
+.hanko{position:absolute;left:0;bottom:10%;z-index:3;width:86px;height:86px;border-radius:14px;background:var(--red);color:#fff;display:grid;place-items:center;text-align:center;font:700 11px/1.15 var(--body);letter-spacing:.06em;text-transform:uppercase;transform:rotate(-8deg);box-shadow:0 16px 36px -10px rgba(216,52,31,.8)}
+.hanko b{display:block;font:800 22px/1 var(--display);text-transform:none;letter-spacing:0}
+@media(max-width:860px){.hero{min-height:0}.hero .wrap{grid-template-columns:1fr}.stage{width:min(340px,86%);margin-top:20px}.hanko{width:72px;height:72px}}
+
+.marq{overflow:hidden;border-block:1px solid var(--line);background:var(--bg2);color:var(--dim);font:500 14px/1 var(--body);letter-spacing:.24em;text-transform:uppercase}
+.marq div{display:flex;width:max-content;animation:mq 46s linear infinite;padding:20px 0}
+.marq span{padding:0 30px;white-space:nowrap}.marq span::after{content:"/";margin-left:60px;color:var(--red)}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-section{padding:clamp(54px,8vw,104px) 0}
-.sh{max-width:680px;margin-bottom:clamp(28px,4vw,48px)}
-h2{font:800 clamp(30px,4.6vw,54px)/1.14 var(--display);text-wrap:balance}
-html[lang=th] h2{line-height:1.3}
-.sh p{margin-top:12px;color:var(--dim)}
+/* manifesto */
+.mf p{font:700 clamp(28px,4.8vw,66px)/1.22 var(--display);max-width:22ch;text-wrap:balance}
+html[lang=th] .mf p{line-height:1.45}
+.mf .w{display:inline-block;margin-right:.26em}
+@supports (animation-timeline:view()){.mf .w{opacity:.16;animation:wr linear both;animation-timeline:view();animation-range:entry calc(var(--i)*2.6%) entry calc(26% + var(--i)*2.6%)}@keyframes wr{to{opacity:1}}}
 
-/* promise */
-.pro{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.pro div{position:relative;padding:28px;border-radius:20px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid var(--line);transition:transform .35s,border-color .3s}
-.pro div:hover{transform:translateY(-6px);border-color:rgba(224,48,30,.6)}
-.pro small{display:block;font:600 12px var(--body);letter-spacing:.22em;color:var(--red);margin-bottom:12px}
-.pro h3{font:700 22px/1.3 var(--display);margin-bottom:8px}
-.pro p{color:var(--dim);font-size:15.5px}
-@media(max-width:760px){.pro{grid-template-columns:1fr}}
+/* promises */
+.pr{background:var(--bg2)}.pr .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,6vw,100px);align-items:start}
+.pr .sticky{position:sticky;top:110px}
+.rows{display:grid}
+.row{display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,3vw,36px);padding:clamp(26px,4vw,46px) 0;border-top:1px solid var(--line);transition:padding .6s var(--ease)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row:hover{padding-left:14px}
+.row b{font:800 clamp(46px,6vw,84px)/1 "Shippori Mincho",serif;color:var(--red);opacity:.9}
+.row h3{font:700 clamp(21px,2.4vw,30px)/1.3 var(--display);margin-bottom:8px}
+.row p{color:var(--dim);max-width:46ch}
+@media(max-width:820px){.pr .wrap{grid-template-columns:1fr}.pr .sticky{position:static}}
 
-/* studio gallery */
-.studio{background:var(--bg2)}
-.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.gal figure{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;background:#0d1108;box-shadow:0 0 0 1px var(--line)}
-.gal figure:nth-child(2),.gal figure:nth-child(5){transform:translateY(26px)}
-.gal img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-.gal figure:hover img{transform:scale(1.07)}
-.gal figcaption{position:absolute;left:12px;bottom:12px;right:12px;font:600 13px var(--body);padding:7px 12px;border-radius:99px;background:rgba(11,14,7,.7);backdrop-filter:blur(8px);width:max-content;max-width:100%}
-.gal.rv{padding-bottom:26px}
-@media(max-width:860px){.gal{grid-template-columns:1fr 1fr}.gal figure:nth-child(2),.gal figure:nth-child(5){transform:none}.gal figure:nth-child(even){transform:translateY(20px)}}
-.note{margin-top:30px;color:var(--dim);font-size:14px;border-left:2px solid var(--gold);padding-left:14px;max-width:60ch}
+/* process: drawn ink line */
+.pc .steps{view-timeline-name:--st;position:relative;margin-top:clamp(34px,5vw,70px);display:grid;gap:clamp(40px,6vw,80px);padding-left:clamp(46px,7vw,100px)}
+.pc .line{position:absolute;left:clamp(12px,2.2vw,26px);top:20px;bottom:20px;width:3px;margin-left:-1px;background:var(--red);transform-origin:50% 0;border-radius:3px}
+@supports (animation-timeline:view()){.pc .line{transform:scaleY(0);animation:grow linear both;animation-timeline:--st;animation-range:entry 30% cover 60%}@keyframes grow{to{transform:scaleY(1)}}}
+.step{position:relative;max-width:560px}
+.step::before{content:"";position:absolute;left:calc(-1*clamp(46px,7vw,100px) + clamp(12px,2.2vw,26px) - 7px);top:12px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:3px solid var(--red)}
+.step h3{font:700 clamp(22px,2.6vw,34px)/1.25 var(--display);margin-bottom:8px}
+.step p{color:var(--dim)}
 
-/* services */
-.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
-.svc a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:22px 6px;border-bottom:1px solid var(--line);transition:padding .3s,color .3s}
-.svc a:nth-child(odd){margin-right:clamp(0px,3vw,40px)}
-.svc a:hover{padding-left:16px;color:var(--gold)}
-.svc b{font:700 clamp(20px,2.4vw,28px)/1.25 var(--display)}
-.svc span{color:var(--dim);font-size:14px;text-align:right}
-@media(max-width:700px){.svc{grid-template-columns:1fr}.svc a:nth-child(odd){margin-right:0}}
+/* studio gallery: native horizontal scroll */
+.sg{background:var(--bg2);padding-bottom:clamp(60px,8vw,110px)}
+.sg .hd{margin-bottom:clamp(26px,4vw,50px)}
+.sg .hd p{color:var(--dim);margin-top:14px;max-width:46ch}
+.rail{display:flex;gap:clamp(14px,2vw,26px);overflow-x:auto;scroll-snap-type:x mandatory;padding:6px max(20px,calc((100vw - 1180px)/2)) 22px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--red) transparent}
+.shell{flex:0 0 auto;width:min(74vw,300px);scroll-snap-align:center;padding:7px;border-radius:calc(var(--r) + 7px);background:rgba(255,255,255,.04);box-shadow:0 0 0 1px var(--line)}
+.shell:nth-child(even){margin-top:34px}
+.core{border-radius:var(--r);overflow:hidden;aspect-ratio:9/16;background:#0d1108;box-shadow:inset 0 1px 1px rgba(255,255,255,.12)}
+.core img{width:100%;height:100%;object-fit:cover;filter:contrast(1.06) saturate(1.05);transition:transform 1.1s var(--ease)}
+.shell:hover img{transform:scale(1.06)}
+.shell p{padding:12px 6px 4px;font:500 14px var(--body);color:var(--dim)}
+.note{margin-top:8px;font-size:14px;color:var(--dim);max-width:62ch;border-left:2px solid var(--red);padding-left:14px}
+
+/* styles: tiles */
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(190px,auto);gap:14px;margin-top:clamp(30px,4vw,56px)}
+.tile{position:relative;overflow:hidden;border-radius:var(--r);padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;justify-content:flex-end;gap:4px;transition:transform .6s var(--ease)}
+.tile:hover{transform:translateY(-6px)}
+.tile .k{position:absolute;right:14px;top:6px;font:800 clamp(80px,9vw,140px)/1 "Shippori Mincho",serif;opacity:.9;pointer-events:none}
+.tile h3{font:700 clamp(20px,2vw,26px)/1.25 var(--display);position:relative}
+.tile p{font-size:15px;position:relative;opacity:.85}
+.tile:nth-child(1){grid-column:span 3;grid-row:span 2;background:var(--red);color:#fff}.tile:nth-child(1) .k{color:rgba(0,0,0,.28);font-size:clamp(150px,18vw,260px)}
+.tile:nth-child(2){grid-column:span 3;background:var(--moss)}.tile:nth-child(2) .k{color:rgba(239,233,220,.1)}
+.tile:nth-child(3){grid-column:span 3;background:#050603;box-shadow:inset 0 0 0 1px var(--line)}.tile:nth-child(3) .k{color:rgba(239,233,220,.12)}
+.tile:nth-child(4){grid-column:span 2;background:var(--ink);color:#15180d}.tile:nth-child(4) .k{color:rgba(0,0,0,.1)}
+.tile:nth-child(5){grid-column:span 2;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line)}.tile:nth-child(5) .k{color:rgba(239,233,220,.1)}
+.tile:nth-child(6){grid-column:span 2;background:var(--moss)}.tile:nth-child(6) .k{color:rgba(239,233,220,.1)}
+@media(max-width:820px){.tiles{grid-template-columns:1fr 1fr}.tile:nth-child(n){grid-column:span 1;grid-row:auto}.tile:nth-child(1){grid-column:span 2;min-height:260px}.tile:nth-child(1) .k{font-size:150px}}
 
 /* booking */
-.book{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;border-radius:30px;padding:clamp(26px,5vw,58px);background:radial-gradient(60% 90% at 90% 20%,rgba(224,48,30,.28),transparent 70%),linear-gradient(135deg,#1b230e,#0f1309);border:1px solid var(--line)}
-.book form{display:grid;gap:12px}
-.book label{font-size:14px;color:var(--dim)}
-.book input,.book select{width:100%;min-height:52px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font:500 16px var(--body);padding:0 16px}
-.book input::placeholder{color:#7d7966}
-@media(max-width:760px){.book{grid-template-columns:1fr}}
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-.contact div{padding:26px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
-.contact h3{font:700 21px var(--display);margin-bottom:8px}
-.todo{color:var(--gold);font-weight:600;font-size:14px}
-@media(max-width:700px){.contact{grid-template-columns:1fr}}
-footer{border-top:1px solid var(--line);padding:34px 0 20px;color:var(--dim);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
-.bar{position:fixed;z-index:60;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(11,14,7,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;gap:10px;justify-content:center}
-.bar .btn{flex:1;max-width:340px;min-height:48px}
-.rv{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
-.rv-on .rv:not(.in){opacity:0;transform:translateY(22px)}
-@media(prefers-reduced-motion:reduce){.arch img,.marq div{animation:none}.rv{transition:none}}
+.bk{background:var(--bg2)}
+.shellb{padding:8px;border-radius:calc(var(--r) + 14px);background:rgba(255,255,255,.04);box-shadow:0 0 0 1px var(--line)}
+.coreb{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,70px);align-items:center;border-radius:calc(var(--r) + 6px);padding:clamp(28px,5vw,66px);background:radial-gradient(70% 90% at 100% 0%,rgba(216,52,31,.26),transparent 70%),var(--moss);box-shadow:inset 0 1px 1px rgba(255,255,255,.1)}
+.coreb p.lead{color:#d6d0c0}
+form{display:grid;gap:10px}
+label{font-size:14px;color:#cfc9b6}
+input{width:100%;min-height:54px;border-radius:14px;border:1px solid rgba(239,233,220,.3);background:rgba(0,0,0,.28);color:var(--ink);font:500 16px var(--body);padding:0 16px;transition:border-color .4s var(--ease)}
+input:focus{outline:0;border-color:var(--red);box-shadow:0 0 0 3px rgba(216,52,31,.3)}
+input::placeholder{color:#8e8a77}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:820px){.coreb{grid-template-columns:1fr}}
+@media(max-width:480px){.two{grid-template-columns:1fr}}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.info div{padding:clamp(22px,3vw,34px);border-radius:var(--r);border:1px solid var(--line)}
+.info h3{font:700 21px var(--display);margin-bottom:8px}
+.todo{color:#e9a89d;font-weight:500;font-size:15px}
+@media(max-width:700px){.info{grid-template-columns:1fr}}
+footer{padding:36px 0 22px;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:24px}
+.bar{position:fixed;z-index:65;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(10,13,6,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;justify-content:center}
+.bar .btn{width:100%;max-width:360px;justify-content:space-between}
+
+.rv{opacity:1;transform:none;filter:none;transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.rv-on .rv:not(.in){opacity:0;transform:translateY(40px);filter:blur(6px)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv-on .rv:not(.in){opacity:1;transform:none;filter:none}.enso path{stroke-dashoffset:0}.mf .w{opacity:1}.pc .line path{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
-<div class="prog" id="prog"></div>
-<div class="demo"><span data-k="demo">มาเก็ตตัวอย่างฟรีจาก NM Studio — ใช้รูปจริงจากร้าน, ชื่อและข้อมูลยังเป็นตัวอย่าง</span> · <a href="https://wa.me/66965405754" target="_blank" rel="noopener" data-k="demoCta">คุยกับเรา</a></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="5"/></filter></svg>
+<div class="prog" id="prog"></div><div class="grain"></div>
+<div class="demo"><span data-k="demo"></span> <a href="https://wa.me/66965405754" target="_blank" rel="noopener" data-k="demoCta"></a></div>
 
-<header class="nav"><div class="wrap">
-  <a class="brand" href="#top"><span class="seal">刺</span><span id="nm">TATTOO STUDIO</span></a>
-  <ul><li><a href="#why" data-k="n1">ทำไมเรา</a></li><li><a href="#studio" data-k="n2">สตูดิโอ</a></li><li><a href="#work" data-k="n3">งานสัก</a></li><li><a href="#book" data-k="n4">จองคิว</a></li></ul>
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top"><span class="seal">刺</span><span>TATTOO STUDIO</span></a>
+  <ul><li><a href="#studio" data-k="n1"></a></li><li><a href="#process" data-k="n2"></a></li><li><a href="#styles" data-k="n3"></a></li></ul>
   <div class="lang"><button data-l="th" aria-pressed="true">ไทย</button><button data-l="en" aria-pressed="false">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
-</div></header>
+  <a class="btn p sm" href="#book"><span data-k="nCta"></span><i>↗</i></a>
+</nav>
 
 <main id="top">
-<section class="hero"><div class="kanji" aria-hidden="true">刺青</div><div class="wrap">
+<section class="hero"><div class="wrap">
   <div>
-    <p class="tag" data-k="eyebrow">สตูดิโอสักส่วนตัว</p>
-    <h1 data-k="h1" data-html>ลายที่ใช่<br><em>อยู่กับคุณตลอดไป</em></h1>
-    <p class="lead" data-k="lead">คุยแบบ แจ้งราคาก่อนเริ่ม ห้องสะอาด เป็นส่วนตัว แล้วค่อยลงมือสัก ไม่มีเซอร์ไพรส์</p>
-    <div class="cta"><a class="btn p" href="#book" data-k="cta1">จองคิวปรึกษาฟรี</a><a class="btn g" href="#studio" data-k="cta2">ดูสตูดิโอ</a></div>
-    <div class="chips"><span data-k="c1">ปรึกษาแบบก่อนสัก</span><span data-k="c2">แจ้งราคาก่อนเริ่ม</span><span data-k="c3">ห้องสักส่วนตัว</span></div>
+    <p class="tag" data-k="eyebrow"></p>
+    <h1><span data-k="h1a"></span><em data-k="h1b"></em></h1>
+    <p class="lead" data-k="lead"></p>
+    <div class="cta"><a class="btn p" href="#book"><span data-k="cta1"></span><i>↗</i></a><a class="btn g" href="#studio"><span data-k="cta2"></span><i>↓</i></a></div>
   </div>
-  <div class="arches" id="arches" aria-hidden="true">
-    <div class="arch"><img src="img/samurai.webp" alt="" width="928" height="1664" fetchpriority="high"></div>
-    <div class="arch m"><img src="img/lamp.webp" alt="" width="928" height="1664" fetchpriority="high"></div>
-    <div class="arch"><img src="img/curtain.webp" alt="" width="928" height="1664"></div>
-    <div class="hanko"><div><b data-k="hk">ฟรี</b><span data-k="hk2">ปรึกษา</span></div></div>
+  <div class="stage" aria-hidden="true">
+    <div class="kanji">刺青</div>
+    <div class="arch"><img src="img/lamp.webp" alt="" width="928" height="1664" fetchpriority="high"></div>
+    <svg class="enso" viewBox="0 0 400 520" fill="none"><path pathLength="1" d="M338 78C262 6 118 22 62 128C6 234 36 392 138 458C240 524 374 468 392 328C398 282 388 236 366 206"/></svg>
+    <div class="hanko"><div><b data-k="hk"></b><span data-k="hk2"></span></div></div>
   </div>
 </div></section>
 <div class="marq" aria-hidden="true"><div id="marq"></div></div>
 
-<section id="why"><div class="wrap">
-  <div class="sh rv"><p class="tag" data-k="t1">ความกังวลของลูกค้า</p><h2 data-k="pT">กลัวอะไร เราตอบให้ก่อนสัก</h2></div>
-  <div class="pro rv">
-    <div><small>01</small><h3 data-k="p1t">กลัวราคาบานปลาย</h3><p data-k="p1">แจ้งราคาให้ชัดก่อนเริ่ม ตามขนาดและรายละเอียดของลาย ไม่มีบวกเพิ่มกลางทาง</p></div>
-    <div><small>02</small><h3 data-k="p2t">กลัวลายไม่เหมือนที่คิด</h3><p data-k="p2">คุยลาย ตำแหน่ง และขนาดก่อน ดูแบบร่างแล้วค่อยลงมือ ปรับได้จนคุณพอใจ</p></div>
-    <div><small>03</small><h3 data-k="p3t">กลัวเรื่องความสะอาด</h3><p data-k="p3">พื้นที่สักเป็นสัดส่วน ใช้อุปกรณ์แบบใช้ครั้งเดียวเมื่อเป็นไปได้ และเปิดให้ถามทุกขั้นตอน</p></div>
+<section class="mf"><div class="wrap"><p id="mf"></p></div></section>
+
+<section class="pr" id="why"><div class="wrap">
+  <div class="sticky rv"><h2 data-k="pT"></h2></div>
+  <div class="rows rv" id="rows"></div>
+</div></section>
+
+<section class="pc" id="process"><div class="wrap">
+  <p class="tag rv" data-k="t2"></p>
+  <h2 class="rv" data-k="cT"></h2>
+  <div class="steps" id="steps">
+    <div class="line" aria-hidden="true"></div>
   </div>
 </div></section>
 
-<section class="studio" id="studio"><div class="wrap">
-  <div class="sh rv"><p class="tag" data-k="t2">สตูดิโอจริง</p><h2 data-k="sT">ห้องที่คุณจะนั่งสัก</h2><p data-k="sP">ภาพจากสตูดิโอจริง ไม่มีคนในภาพ เห็นก่อนว่าคุณจะมาที่ไหน</p></div>
-  <div class="gal rv">
-    <figure><img src="img/table.webp" alt="" loading="lazy" width="928" height="1664"><figcaption data-k="g1">โต๊ะทำงาน</figcaption></figure>
-    <figure><img src="img/bed.webp" alt="" loading="lazy" width="928" height="1664"><figcaption data-k="g2">เตียงสัก</figcaption></figure>
-    <figure><img src="img/wall.webp" alt="" loading="lazy" width="928" height="1664"><figcaption data-k="g3">ผนังลายสัก</figcaption></figure>
-    <figure><img src="img/shrine.webp" alt="" loading="lazy" width="928" height="1664"><figcaption data-k="g4">มุมซามูไร</figcaption></figure>
-    <figure><img src="img/chair.webp" alt="" loading="lazy" width="928" height="1664"><figcaption data-k="g5">เก้าอี้ช่างสัก</figcaption></figure>
-  </div>
-  <p class="note rv" data-k="note">รูปจากวิดีโอที่ร้านส่งมา คุณภาพไม่สูงนัก ถ้าได้รูปถ่ายจริงของร้านและผลงาน หน้านี้จะคมและน่าสนใจขึ้นมาก</p>
+<section class="sg" id="studio"><div class="wrap hd rv"><h2 data-k="sT"></h2><p data-k="sP"></p></div>
+  <div class="rail rv" id="rail" tabindex="0" aria-label="Studio photos"></div>
+  <div class="wrap"><p class="note rv" data-k="note"></p></div>
+</section>
+
+<section id="styles"><div class="wrap">
+  <h2 class="rv" data-k="wT"></h2>
+  <p class="rv" style="color:var(--dim);margin-top:14px" data-k="wP"></p>
+  <div class="tiles rv" id="tiles"></div>
 </div></section>
 
-<section id="work"><div class="wrap">
-  <div class="sh rv"><p class="tag" data-k="t3">งานสัก</p><h2 data-k="wT">สไตล์ที่ทำได้</h2><p data-k="wP">ตัวอย่างหัวข้อ — ปรับตามที่ร้านทำจริง</p></div>
-  <div class="svc rv" id="svc"></div>
-</div></section>
-
-<section id="book"><div class="wrap">
-  <div class="book rv">
-    <div><p class="tag" data-k="t4">จองคิว</p><h2 data-k="bT">บอกไอเดียสั้น ๆ เดี๋ยวเราทักกลับ</h2><p class="lead" data-k="bP" style="margin-top:12px">ช่องเดียว ไม่ต้องกรอกยาว กดแล้วคุยต่อใน WhatsApp หรือ LINE</p></div>
+<section class="bk" id="book"><div class="wrap">
+  <div class="shellb rv"><div class="coreb">
+    <div><p class="tag" data-k="t4"></p><h2 data-k="bT"></h2><p class="lead" data-k="bP"></p></div>
     <form id="bf" novalidate>
-      <label for="idea" data-k="bL">ไอเดียลาย / ตำแหน่งที่อยากสัก</label>
-      <input id="idea" placeholder="" autocomplete="off">
-      <a class="btn p" id="wa" href="https://wa.me/66965405754" target="_blank" rel="noopener" data-k="bBtn">ส่งทาง WhatsApp</a>
+      <label for="idea" data-k="bL"></label>
+      <input id="idea" autocomplete="off">
+      <div class="two">
+        <a class="btn p" id="wa" href="https://wa.me/66965405754" target="_blank" rel="noopener"><span data-k="bWa"></span><i>↗</i></a>
+        <a class="btn g" id="ln" href="https://line.me/ti/p/vMkNZMcALE" target="_blank" rel="noopener"><span>LINE</span><i>↗</i></a>
+      </div>
     </form>
-  </div>
-  <div class="contact rv">
-    <div><h3 data-k="k1">ที่อยู่ & เวลาเปิด</h3><p class="todo" data-k="todo">ใส่ที่อยู่ เวลาเปิด-ปิด และแผนที่ของร้านที่นี่</p></div>
-    <div><h3 data-k="k2">ติดต่อ</h3><p class="todo" data-k="todo2">ใส่ LINE / WhatsApp / Instagram ของร้านที่นี่</p></div>
+  </div></div>
+  <div class="info rv">
+    <div><h3 data-k="k1"></h3><p class="todo" data-k="todo"></p></div>
+    <div><h3 data-k="k2"></h3><p class="todo" data-k="todo2"></p></div>
   </div>
 </div></section>
 </main>
 
-<footer><div class="wrap"><span>© Tattoo Studio</span><span data-k="made">ทำโดย NM Studio · มาเก็ตตัวอย่างฟรี</span></div></footer>
-<div class="bar"><a class="btn p" href="#book" data-k="barBtn">จองคิวปรึกษาฟรี</a></div>
+<footer><div class="wrap"><span>© Tattoo Studio</span><span data-k="made"></span></div></footer>
+<div class="bar"><a class="btn p" href="#book"><span data-k="barBtn"></span><i>↗</i></a></div>
 
 <script>
 (function(){
 "use strict";
+var PH=[["lamp","samurai","table","chair","shrine","wall","bed","curtain"]][0];
 var T={
-th:{demo:"มาเก็ตตัวอย่างฟรีจาก NM Studio — ใช้รูปจริงจากร้าน, ชื่อและข้อมูลยังเป็นตัวอย่าง",demoCta:"คุยกับเรา",n1:"ทำไมเรา",n2:"สตูดิโอ",n3:"งานสัก",n4:"จองคิว",eyebrow:"สตูดิโอสักส่วนตัว",h1:"ลายที่ใช่<br><em>อยู่กับคุณตลอดไป</em>",lead:"คุยแบบ แจ้งราคาก่อนเริ่ม ห้องสะอาด เป็นส่วนตัว แล้วค่อยลงมือสัก ไม่มีเซอร์ไพรส์",cta1:"จองคิวปรึกษาฟรี",cta2:"ดูสตูดิโอ",c1:"ปรึกษาก่อนสัก",c2:"แจ้งราคาก่อนเริ่ม",c3:"ห้องสักส่วนตัว",hk:"ฟรี",hk2:"ปรึกษา",
- t1:"ความกังวลของลูกค้า",pT:"กลัวอะไร เราตอบให้ก่อนสัก",p1t:"กลัวราคาบานปลาย",p1:"แจ้งราคาให้ชัดก่อนเริ่ม ตามขนาดและรายละเอียดของลาย ไม่มีบวกเพิ่มกลางทาง",p2t:"กลัวลายไม่เหมือนที่คิด",p2:"คุยลาย ตำแหน่ง และขนาดก่อน ดูแบบร่างแล้วค่อยลงมือ ปรับได้จนคุณพอใจ",p3t:"กลัวเรื่องความสะอาด",p3:"พื้นที่สักเป็นสัดส่วน ใช้อุปกรณ์แบบใช้ครั้งเดียวเมื่อเป็นไปได้ และเปิดให้ถามทุกขั้นตอน",
- t2:"สตูดิโอจริง",sT:"ห้องที่คุณจะนั่งสัก",sP:"ภาพจากสตูดิโอจริง ไม่มีคนในภาพ เห็นก่อนว่าคุณจะมาที่ไหน",g1:"โต๊ะทำงาน",g2:"เตียงสัก",g3:"ผนังลายสัก",g4:"มุมซามูไร",g5:"เก้าอี้ช่างสัก",note:"รูปจากวิดีโอที่ร้านส่งมา คุณภาพไม่สูงนัก ถ้าได้รูปถ่ายจริงของร้านและผลงาน หน้านี้จะคมและน่าสนใจขึ้นมาก",
- t3:"งานสัก",wT:"สไตล์ที่ทำได้",wP:"ตัวอย่างหัวข้อ — ปรับตามที่ร้านทำจริง",svc:[["ญี่ปุ่น / อีเรซึมิ","มังกร ปลาคาร์ป ซามูไร"],["ลายเส้น","เส้นเล็กคม เรียบง่าย"],["แบล็กเวิร์ก","ดำเข้ม กราฟิก"],["ตัวอักษร","ชื่อ วลี ข้อความ"],["ทับลายเก่า","ปรึกษาก่อนทำ"],["ออกแบบเอง","จากไอเดียของคุณ"]],
- t4:"จองคิว",bT:"บอกไอเดียสั้น ๆ เดี๋ยวเราทักกลับ",bP:"ช่องเดียว ไม่ต้องกรอกยาว กดแล้วคุยต่อใน WhatsApp หรือ LINE",bL:"ไอเดียลาย / ตำแหน่งที่อยากสัก",ph:"เช่น มังกรที่แขนซ้าย ขนาดฝ่ามือ",bBtn:"ส่งทาง WhatsApp",msg:"สวัสดีครับ อยากปรึกษางานสัก: ",k1:"ที่อยู่ & เวลาเปิด",todo:"ใส่ที่อยู่ เวลาเปิด-ปิด และแผนที่ของร้านที่นี่",k2:"ติดต่อ",todo2:"ใส่ LINE / WhatsApp / Instagram ของร้านที่นี่",made:"ทำโดย NM Studio · มาเก็ตตัวอย่างฟรี",barBtn:"จองคิวปรึกษาฟรี",marq:["สักส่วนตัว","ปรึกษาฟรี","แจ้งราคาก่อนเริ่ม","ออกแบบเฉพาะคุณ","สะอาด ปลอดภัย"]},
-en:{demo:"Free mock-up by NM Studio — real photos from the shop; name and details are placeholders",demoCta:"Talk to us",n1:"Why us",n2:"Studio",n3:"Work",n4:"Book",eyebrow:"Private tattoo studio",h1:"The right design,<br><em>yours for life</em>",lead:"We talk it through, quote the price before we start, in a clean private room. No surprises.",cta1:"Book a free consult",cta2:"See the studio",c1:"Consult first",c2:"Price before we start",c3:"Private room",hk:"Free",hk2:"consult",
- t1:"What worries clients",pT:"Afraid of something? We answer before you sit down",p1t:"Price creeping up",p1:"A clear quote before we start, based on size and detail. Nothing added halfway.",p2t:"Design not what you pictured",p2:"We agree design, placement and size first, review a draft, then start. Adjusted until you are happy.",p3t:"Cleanliness",p3:"A dedicated work area, single-use equipment where possible, and you can ask about every step.",
- t2:"The real studio",sT:"The room you will sit in",sP:"Photos from the actual studio, no people in them, so you know where you are coming.",g1:"Work station",g2:"Tattoo bed",g3:"Flash wall",g4:"Samurai corner",g5:"Artist chair",note:"Photos taken from the videos the shop sent, so quality is modest. With proper photos of the shop and the work, this page gets much sharper.",
- t3:"Work",wT:"Styles we can do",wP:"Sample headings — adjust to what the shop really does",svc:[["Japanese / irezumi","Dragons, koi, samurai"],["Fine line","Thin, sharp, simple"],["Blackwork","Bold, graphic"],["Lettering","Names, phrases"],["Cover-up","Talk first"],["Custom design","From your idea"]],
- t4:"Book",bT:"Tell us your idea in a line — we message you back",bP:"One field, no long form. Continue on WhatsApp or LINE.",bL:"Your idea / where you want it",ph:"e.g. a dragon on the left arm, palm size",bBtn:"Send on WhatsApp",msg:"Hello, I’d like to talk about a tattoo: ",k1:"Address & hours",todo:"Add the shop’s address, opening hours and map here",k2:"Contact",todo2:"Add the shop’s LINE / WhatsApp / Instagram here",made:"By NM Studio · free mock-up",barBtn:"Book a free consult",marq:["Private studio","Free consult","Price before we start","Designed for you","Clean & safe"]},
-fr:{demo:"Maquette gratuite par NM Studio — vraies photos du salon ; nom et infos à remplacer",demoCta:"Nous écrire",n1:"Pourquoi nous",n2:"Studio",n3:"Travaux",n4:"Réserver",eyebrow:"Studio de tatouage privé",h1:"Le bon dessin,<br><em>pour la vie</em>",lead:"On en parle, le prix est annoncé avant de commencer, dans une pièce propre et privée. Aucune surprise.",cta1:"Consultation gratuite",cta2:"Voir le studio",c1:"On discute d’abord",c2:"Prix annoncé avant",c3:"Pièce privée",hk:"Gratuit",hk2:"conseil",
- t1:"Ce qui inquiète",pT:"Une crainte ? On y répond avant de commencer",p1t:"Peur que le prix grimpe",p1:"Un devis clair avant de commencer, selon la taille et le détail. Rien d’ajouté en route.",p2t:"Peur que ce ne soit pas ce qu’on imaginait",p2:"On valide le dessin, l’emplacement et la taille d’abord, vous voyez un croquis, puis on commence. Ajusté jusqu’à ce que vous soyez content.",p3t:"Hygiène",p3:"Un espace de travail dédié, du matériel à usage unique quand c’est possible, et vous pouvez poser vos questions à chaque étape.",
- t2:"Le vrai studio",sT:"La pièce où vous serez installé",sP:"Photos du vrai studio, sans personne, pour savoir où vous venez.",g1:"Poste de travail",g2:"Table de tatouage",g3:"Mur de dessins",g4:"Coin samouraï",g5:"Chaise du tatoueur",note:"Photos tirées des vidéos envoyées par le salon, donc qualité modeste. Avec de vraies photos du salon et des réalisations, cette page sera bien plus nette.",
- t3:"Travaux",wT:"Les styles proposés",wP:"Intitulés d’exemple — à adapter à ce que fait vraiment le salon",svc:[["Japonais / irezumi","Dragons, carpes koï, samouraïs"],["Fine line","Trait fin, net, simple"],["Blackwork","Noir dense, graphique"],["Lettrage","Prénoms, phrases"],["Recouvrement","On en parle d’abord"],["Dessin sur mesure","À partir de votre idée"]],
- t4:"Réserver",bT:"Votre idée en une ligne — on vous répond",bP:"Un seul champ, pas de long formulaire. On continue sur WhatsApp ou LINE.",bL:"Votre idée / l’emplacement souhaité",ph:"ex. un dragon sur le bras gauche, taille d’une paume",bBtn:"Envoyer sur WhatsApp",msg:"Bonjour, je voudrais parler d’un tatouage : ",k1:"Adresse & horaires",todo:"Ajouter ici l’adresse, les horaires et la carte du salon",k2:"Contact",todo2:"Ajouter ici le LINE / WhatsApp / Instagram du salon",made:"Par NM Studio · maquette gratuite",barBtn:"Consultation gratuite",marq:["Studio privé","Conseil gratuit","Prix annoncé avant","Dessiné pour vous","Propre & sûr"]}
+th:{demo:"มาเก็ตตัวอย่างฟรีจาก NM Studio | ใช้รูปจริงจากร้าน ชื่อและข้อมูลยังเป็นตัวอย่าง",demoCta:"คุยกับเรา",n1:"สตูดิโอ",n2:"ขั้นตอน",n3:"สไตล์",nCta:"จองคิว",
+ eyebrow:"สตูดิโอสักส่วนตัว",h1a:"ลายที่ใช่",h1b:"อยู่กับคุณตลอดไป",lead:"คุยลาย แจ้งราคาให้ชัด แล้วจึงลงเข็ม ในห้องสะอาดที่เป็นส่วนตัว",cta1:"จองคิวปรึกษาฟรี",cta2:"ดูสตูดิโอ",hk:"ฟรี",hk2:"ปรึกษา",
+ marq:["สักส่วนตัว","ปรึกษาฟรี","แจ้งราคาก่อนเริ่ม","ออกแบบเฉพาะคุณ","สะอาดและปลอดภัย"],
+ mf:"ลายสักไม่ใช่ของที่ลบง่าย เราจึงคุยให้ชัด ออกแบบให้ใช่ แล้วค่อยเริ่ม",
+ pT:"สิ่งที่คุณควรได้ก่อนลงเข็ม",rows:[["壱","ราคาชัดก่อนเริ่ม","ขนาดและรายละเอียดกำหนดราคา เราแจ้งก่อนลงเข็ม ไม่บวกเพิ่มระหว่างทาง"],["弐","เห็นแบบก่อนสัก","คุยลาย ตำแหน่ง ขนาด ดูแบบร่าง แก้ได้จนคุณพอใจ แล้วจึงเริ่ม"],["参","สะอาดและเป็นส่วนตัว","พื้นที่สักแยกเป็นสัดส่วน ถามได้ทุกขั้นตอนว่าเราใช้อะไรและทำอย่างไร"]],
+ t2:"ตั้งแต่ทักมาจนแผลหาย",cT:"สี่ขั้นตอน ไม่มีเซอร์ไพรส์",steps:[["ทักมาเล่าไอเดีย","บอกลาย ตำแหน่ง และขนาดคร่าว ๆ ผ่าน WhatsApp หรือ LINE ไม่ต้องกรอกฟอร์มยาว"],["ออกแบบและตกลงราคา","เราส่งแบบร่างให้ดู แก้จนใช่ แล้วแจ้งราคาที่ชัดเจนก่อนนัดวัน"],["วันสัก","มาที่สตูดิโอ นั่งสบาย ถามได้ตลอด เราอธิบายทุกขั้นตอน"],["ดูแลหลังสัก","เราบอกวิธีดูแลแผลให้ชัด และคุยต่อได้ถ้ามีคำถาม"]],
+ sT:"ห้องที่คุณจะนั่งสัก",sP:"ภาพจากสตูดิโอจริง ไม่มีคนในภาพ เห็นก่อนว่าคุณจะมาที่ไหน",caps:["มุมออกแบบและโคมไฟ","มุมซามูไร","โต๊ะทำงาน","เก้าอี้ช่างสัก","ฉากหลังไม้และพัด","ผนังภาพสักและเครื่องมือ","เตียงสัก","ผ้าม่านอักษรญี่ปุ่น"],
+ note:"รูปตัดมาจากวิดีโอที่ร้านส่งมา คุณภาพจึงไม่สูงนัก ถ้ามีรูปถ่ายจริงของร้านและผลงาน หน้านี้จะคมและน่าสนใจขึ้นมาก",
+ wT:"สไตล์ที่ทำได้",wP:"หัวข้อตัวอย่าง ปรับตามที่ร้านทำจริง",tiles:[["和彫","ญี่ปุ่น","มังกร ปลาคาร์ป ซามูไร"],["線","ลายเส้น","เส้นเล็กคม เรียบง่าย"],["黒","แบล็กเวิร์ก","ดำเข้ม กราฟิก"],["字","ตัวอักษร","ชื่อ วลี ข้อความ"],["覆","ทับลายเก่า","คุยก่อนทำ"],["図","ออกแบบเอง","จากไอเดียของคุณ"]],
+ t4:"จองคิว",bT:"เล่าไอเดียสั้น ๆ เดี๋ยวเราทักกลับ",bP:"ช่องเดียว ไม่มีฟอร์มยาว กดแล้วคุยต่อได้ทันที",bL:"ไอเดียลาย หรือตำแหน่งที่อยากสัก",ph:"เช่น มังกรที่แขนซ้าย ขนาดฝ่ามือ",bWa:"WhatsApp",msg:"สวัสดีครับ อยากปรึกษางานสัก: ",k1:"ที่อยู่และเวลาเปิด",todo:"ใส่ที่อยู่ เวลาเปิดปิด และแผนที่ของร้านที่นี่",k2:"ช่องทางติดต่อ",todo2:"ใส่ LINE WhatsApp และ Instagram ของร้านที่นี่",made:"ทำโดย NM Studio · มาเก็ตตัวอย่างฟรี",barBtn:"จองคิวปรึกษาฟรี"},
+en:{demo:"Free mock-up by NM Studio | real photos from the shop, name and details are placeholders",demoCta:"Talk to us",n1:"Studio",n2:"Process",n3:"Styles",nCta:"Book",
+ eyebrow:"Private tattoo studio",h1a:"The right design,",h1b:"yours for life",lead:"We talk it through, quote a clear price, then begin, in a clean private room.",cta1:"Book a free consult",cta2:"See the studio",hk:"Free",hk2:"consult",
+ marq:["Private studio","Free consult","Price before we start","Designed for you","Clean and safe"],
+ mf:"A tattoo is not easy to undo. So we talk it through, design it right, then begin.",
+ pT:"What you should have before the needle",rows:[["壱","A clear price first","Size and detail set the price. We tell you before we start, with nothing added halfway."],["弐","See it before you wear it","We agree design, placement and size, review a draft, and adjust until you are happy."],["参","Clean and private","A dedicated work area, and you can ask what we use and how we do it at every step."]],
+ t2:"From first message to healed skin",cT:"Four steps, no surprises",steps:[["Message us your idea","Tell us the design, placement and rough size on WhatsApp or LINE. No long form."],["Design and price","We send a draft, adjust it until it feels right, and give you a clear price before the date."],["Tattoo day","Come to the studio, sit comfortably, ask anything. We explain each step."],["Aftercare","We tell you clearly how to look after the skin, and you can keep talking to us."]],
+ sT:"The room you will sit in",sP:"Photos from the real studio, no people in them, so you know where you are coming.",caps:["Design corner and lamp","Samurai corner","Work station","Artist chair","Wood wall and fans","Flash wall and tools","Tattoo bed","Japanese calligraphy curtain"],
+ note:"Photos cut from videos the shop sent, so quality is modest. With proper photos of the shop and the work, this page gets much sharper.",
+ wT:"Styles we can do",wP:"Sample headings, adjust to what the shop really does",tiles:[["和彫","Japanese","Dragons, koi, samurai"],["線","Fine line","Thin, sharp, simple"],["黒","Blackwork","Bold and graphic"],["字","Lettering","Names, phrases"],["覆","Cover-up","Talk first"],["図","Custom design","From your idea"]],
+ t4:"Book",bT:"Tell us your idea in a line and we reply",bP:"One field, no long form. Continue right away.",bL:"Your idea, or where you want it",ph:"e.g. a dragon on the left arm, palm size",bWa:"WhatsApp",msg:"Hello, I’d like to talk about a tattoo: ",k1:"Address and hours",todo:"Add the shop’s address, opening hours and map here",k2:"Contact",todo2:"Add the shop’s LINE, WhatsApp and Instagram here",made:"By NM Studio · free mock-up",barBtn:"Book a free consult"},
+fr:{demo:"Maquette gratuite par NM Studio | vraies photos du salon, nom et infos à remplacer",demoCta:"Nous écrire",n1:"Studio",n2:"Étapes",n3:"Styles",nCta:"Réserver",
+ eyebrow:"Studio de tatouage privé",h1a:"Le bon dessin,",h1b:"pour la vie",lead:"On en parle, le prix est annoncé clairement, puis on commence, dans une pièce propre et privée.",cta1:"Consultation gratuite",cta2:"Voir le studio",hk:"Gratuit",hk2:"conseil",
+ marq:["Studio privé","Conseil gratuit","Prix annoncé avant","Dessiné pour vous","Propre et sûr"],
+ mf:"Un tatouage ne s’efface pas facilement. Alors on en parle, on dessine juste, puis on commence.",
+ pT:"Ce que vous devez avoir avant l’aiguille",rows:[["壱","Un prix clair d’abord","La taille et le détail fixent le prix. Il est annoncé avant de commencer, sans ajout en route."],["弐","Voir avant de porter","On valide le dessin, l’emplacement et la taille, vous voyez un croquis, et on ajuste jusqu’à ce que vous soyez content."],["参","Propre et privé","Un espace de travail dédié, et vous pouvez demander ce qu’on utilise et comment on procède à chaque étape."]],
+ t2:"Du premier message à la peau cicatrisée",cT:"Quatre étapes, aucune surprise",steps:[["Écrivez votre idée","Dessin, emplacement et taille approximative sur WhatsApp ou LINE. Pas de long formulaire."],["Dessin et prix","On envoie un croquis, on ajuste jusqu’à ce que ce soit juste, et le prix est clair avant la date."],["Le jour du tatouage","Venez au studio, installez-vous, posez toutes vos questions. On explique chaque étape."],["Après le tatouage","On vous dit clairement comment soigner la peau, et on reste joignable."]],
+ sT:"La pièce où vous serez installé",sP:"Photos du vrai studio, sans personne, pour savoir où vous venez.",caps:["Coin dessin et lampe","Coin samouraï","Poste de travail","Chaise du tatoueur","Mur de bois et éventails","Mur de dessins et outils","Table de tatouage","Rideau de calligraphie japonaise"],
+ note:"Photos tirées de vidéos envoyées par le salon, donc qualité modeste. Avec de vraies photos du salon et des réalisations, cette page sera bien plus nette.",
+ wT:"Les styles proposés",wP:"Intitulés d’exemple, à adapter à ce que fait vraiment le salon",tiles:[["和彫","Japonais","Dragons, carpes koï, samouraïs"],["線","Fine line","Trait fin, net, simple"],["黒","Blackwork","Noir dense, graphique"],["字","Lettrage","Prénoms, phrases"],["覆","Recouvrement","On en parle d’abord"],["図","Sur mesure","À partir de votre idée"]],
+ t4:"Réserver",bT:"Votre idée en une ligne, on vous répond",bP:"Un seul champ, pas de long formulaire. On continue tout de suite.",bL:"Votre idée, ou l’emplacement souhaité",ph:"ex. un dragon sur le bras gauche, taille d’une paume",bWa:"WhatsApp",msg:"Bonjour, je voudrais parler d’un tatouage : ",k1:"Adresse et horaires",todo:"Ajouter ici l’adresse, les horaires et la carte du salon",k2:"Contact",todo2:"Ajouter ici le LINE, WhatsApp et Instagram du salon",made:"Par NM Studio · maquette gratuite",barBtn:"Consultation gratuite"}
 };
 var lang="th";try{var s=localStorage.getItem("tt-lang");if(T[s])lang=s}catch(e){}
+function $(i){return document.getElementById(i)}
 function render(){
  var x=T[lang];document.documentElement.lang=lang;
- [].forEach.call(document.querySelectorAll("[data-k]"),function(e){var v=x[e.getAttribute("data-k")];if(v==null)return;if(e.hasAttribute("data-html"))e.innerHTML=v;else e.textContent=v});
- document.getElementById("svc").innerHTML=x.svc.map(function(a){return '<a href="#book"><b>'+a[0]+'</b><span>'+a[1]+'</span></a>'}).join("");
- var m=x.marq.map(function(t){return "<span>"+t+"</span>"}).join("");document.getElementById("marq").innerHTML=m+m+m+m;
- document.getElementById("idea").placeholder=x.ph;upd();
+ [].forEach.call(document.querySelectorAll("[data-k]"),function(e){var v=x[e.getAttribute("data-k")];if(v!=null)e.textContent=v});
+ var m=x.marq.map(function(t){return "<span>"+t+"</span>"}).join("");$("marq").innerHTML=m+m+m+m;
+ $("mf").innerHTML=x.mf.split(" ").map(function(w,i){return '<span class="w" style="--i:'+i+'">'+w+"</span>"}).join("");
+ $("rows").innerHTML=x.rows.map(function(r){return '<div class="row"><b aria-hidden="true">'+r[0]+'</b><div><h3>'+r[1]+"</h3><p>"+r[2]+"</p></div></div>"}).join("");
+ var st=$("steps"),line=st.querySelector(".line");st.innerHTML="";st.appendChild(line);
+ x.steps.forEach(function(r){var d=document.createElement("div");d.className="step rv";d.innerHTML="<h3>"+r[0]+"</h3><p>"+r[1]+"</p>";st.appendChild(d)});
+ $("rail").innerHTML=PH.map(function(p,i){if(i===2)return "";return '<figure class="shell"><div class="core"><img src="img/'+p+'.webp" alt="" loading="lazy" width="928" height="1664"></div><p>'+x.caps[i]+"</p></figure>"}).join("");
+ $("tiles").innerHTML=x.tiles.map(function(t){return '<a class="tile" href="#book"><span class="k" aria-hidden="true">'+t[0]+"</span><h3>"+t[1]+"</h3><p>"+t[2]+"</p></a>"}).join("");
+ $("idea").placeholder=x.ph;upd();
  [].forEach.call(document.querySelectorAll(".lang button"),function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===lang?"true":"false")});
  reveal();
 }
-function upd(){document.getElementById("wa").href="https://wa.me/66965405754?text="+encodeURIComponent(T[lang].msg+document.getElementById("idea").value)}
-document.getElementById("idea").addEventListener("input",upd);
+function upd(){$("wa").href="https://wa.me/66965405754?text="+encodeURIComponent(T[lang].msg+$("idea").value)}
+$("idea").addEventListener("input",upd);
 document.querySelector(".lang").addEventListener("click",function(e){var b=e.target.closest("[data-l]");if(!b)return;lang=b.getAttribute("data-l");try{localStorage.setItem("tt-lang",lang)}catch(_){}render()});
-var io;function reveal(){if(!("IntersectionObserver" in window))return;if(!io){io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.1});document.documentElement.classList.add("rv-on")}[].forEach.call(document.querySelectorAll(".rv:not(.in)"),function(e){io.observe(e)})}
-var ar=document.getElementById("arches"),hero=document.querySelector(".hero");
-if(matchMedia("(hover:hover)").matches&&!matchMedia("(prefers-reduced-motion:reduce)").matches)hero.addEventListener("pointermove",function(e){var r=hero.getBoundingClientRect();ar.style.setProperty("--px",((e.clientX-r.left)/r.width-.5).toFixed(3));ar.style.setProperty("--py",((e.clientY-r.top)/r.height-.5).toFixed(3))});
-var pr=document.getElementById("prog");function sp(){var h=document.documentElement.scrollHeight-innerHeight;pr.style.transform="scaleX("+(h>0?scrollY/h:0)+")"}addEventListener("scroll",sp,{passive:true});sp();
+var io;function reveal(){if(!("IntersectionObserver" in window))return;if(!io){io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});document.documentElement.classList.add("rv-on")}[].forEach.call(document.querySelectorAll(".rv:not(.in)"),function(e){io.observe(e)})}
+/* progress bar uses a scroll-driven animation when available, else a passive listener */
+var pr=$("prog");
+if(CSS.supports&&CSS.supports("animation-timeline:scroll()")){pr.style.animation="pg linear both";pr.style.animationTimeline="scroll()";var k=document.createElement("style");k.textContent="@keyframes pg{to{transform:scaleX(1)}}";document.head.appendChild(k)}
+else{var tk=false;addEventListener("scroll",function(){if(tk)return;tk=true;requestAnimationFrame(function(){var h=document.documentElement.scrollHeight-innerHeight;pr.style.transform="scaleX("+(h>0?scrollY/h:0)+")";tk=false})},{passive:true})}
 render();
 })();
 </script>
