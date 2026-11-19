@@ -24,8 +24,8 @@ window.NM_MENU = {
  "photoOne": true,
  "photoHD": false,
  "spice": false,
- "heroMobile": "hero-m.webp?v=1",
- "heroWide": "hero.webp?v=1",
+ "heroMobile": "hero-m.webp?v=3",
+ "heroWide": "hero.webp?v=3",
  "tagline": {
   "th": "สเต็กอร่อย ราคาเป็นกันเอง",
   "en": "Steaks, rice dishes & sets",
