@@ -342,7 +342,7 @@ var WK=["dragon","doll-case","crane","hannya","geisha","warrior","doll-back","ke
 /* Contacts: replace with the tattoo shop's own LINE profile link and WhatsApp number once known */
 var CFG={line:"https://line.me/ti/p/vMkNZMcALE",wa:"66965405754"};
 /* demo helper: open the page with ?line=<profile link>&wa=<number> to test the booking with the shop's own contacts */
-try{var Q=new URLSearchParams(location.search),ql=Q.get("line"),qw=(Q.get("wa")||"").replace(/\D/g,"");if(ql&&/^https:\/\/(line\.me|lin\.ee)\//.test(ql))CFG.line=ql;if(qw.length>7)CFG.wa=qw}catch(e){}
+try{var Q=new URLSearchParams(location.search),ql=Q.get("line"),qw=(Q.get("wa")||"").replace(/\D/g,"");if(ql==="share")CFG.line="share";else if(ql&&/^https:\/\/(line\.me|lin\.ee)\//.test(ql))CFG.line=ql;if(qw.length>7)CFG.wa=qw}catch(e){}
 var SEL={style:null,zone:null,size:null};
 var lang="th";try{var s=localStorage.getItem("tt-lang");if(T[s])lang=s}catch(e){}
 function $(i){return document.getElementById(i)}
@@ -383,7 +383,7 @@ $("goLine").addEventListener("click",function(){var c=compose(),x=T[lang],note=$
  if(c.empty){note.textContent=x.need;return}
  note.textContent="";
  copyTxt(c.text).then(function(){note.textContent=x.copied},function(){note.textContent=c.text});
- window.open(CFG.line,"_blank","noopener")});
+ window.open(CFG.line==="share"?"https://line.me/R/share?text="+encodeURIComponent(c.text):CFG.line,"_blank","noopener")});
 $("wa").addEventListener("click",function(e){if(compose().empty){e.preventDefault();$("fnote").textContent=T[lang].need}});
 document.querySelector(".lang").addEventListener("click",function(e){var b=e.target.closest("[data-l]");if(!b)return;lang=b.getAttribute("data-l");try{localStorage.setItem("tt-lang",lang)}catch(_){}render()});
 var io;function reveal(){if(!("IntersectionObserver" in window))return;if(!io){io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});document.documentElement.classList.add("rv-on")}[].forEach.call(document.querySelectorAll(".rv:not(.in)"),function(e){io.observe(e)})}
