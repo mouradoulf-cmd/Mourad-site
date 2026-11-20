@@ -27,3 +27,21 @@
 .wa-float svg, .line-float svg { width: 28px; height: 28px; }
 .line-float { bottom: calc(max(14px, env(safe-area-inset-bottom)) + 64px) !important; }
 body.nm-has-bar .line-float { bottom: calc(max(14px, env(safe-area-inset-bottom)) + var(--nm-bar-h, 5.5rem) + 64px) !important; }
+
+/* LINE and WhatsApp floating buttons: icon always centred (something upstream turned the LINE <a> into a plain block) */
+.line-float:not([hidden]), .wa-float { display: flex !important; align-items: center; justify-content: center; }
+.line-float[hidden] { display: none !important; }
+.line-float svg { display: block !important; flex: none; width: 28px !important; height: 28px !important; margin: 0 !important; position: static !important; }
+.thbar__ic { display: flex; align-items: center; justify-content: center; }
+.thbar__ic svg { display: block; flex: none; width: 28px; height: 28px; margin: 0; }
+
+/* LINE next to WhatsApp in the page body, finale and footer */
+.btn--line { background: #06c755; color: #fff; box-shadow: 0 10px 28px -10px rgba(6,199,85,.7); }
+.btn--line:hover { background: #05b34c; }
+.btn--line svg, .btn .btn__logo { width: 1.2rem; height: 1.2rem; flex: none; }
+.line-giant { margin-top: 1rem; display: inline-flex; align-items: center; justify-content: center; gap: .6rem; }
+.finale .wa-giant + .line-giant { align-self: center; }
+.social--line:hover { color: #fff; background: #06c755; border-color: #06c755; }
+.faq + .btn, .btn.btn--ghost.magnetic + .btn.btn--ghost.magnetic { margin-left: .5rem; }
+.btn--line svg, .btn--line .btn__logo { color: #fff !important; fill: currentColor; opacity: 1 !important; filter: none !important; }
+.btn--line svg path { fill: #fff !important; }
