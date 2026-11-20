@@ -46,6 +46,8 @@ window.NM_LINKS = [
     { name: "Giulivo", path: "giulivo/", note: "Restaurant (Vicopisano) · carte à feuilleter, lumières qui s’allument" }
   ] },
   { space: "site", pane: "tools", group: "Mes outils", items: [
+    { name: "Page de vente en thaï · Site web", icon: "🇹🇭", path: "nm/pitch/site-th.html", note: "Une page à envoyer par LINE à un patron : ce qu'il reçoit, étapes, prix 10 000 ฿ + 790 ฿/mois, confiance, calcul d'exemple" },
+    { name: "Page de vente en thaï · Menu QR", icon: "🇹🇭", path: "nm/pitch/menu-th.html", note: "Même chose pour le menu QR : 3 000 ฿ + 390 ฿/mois, exemple « 13 ฿ par jour »" },
     { name: "Statistiques détaillées", path: "nm/stats.html", note: "Visites et contacts, jour par jour (le résumé est dans l'onglet Site visits)" },
     { name: "Tableau de bord des menus QR", path: "nm/menus.html", note: "Clients (qui a payé, QR, rappel WhatsApp) · Chiffres · + Nouveau client" },
     { name: "Maquette express", path: "nm/maquette.html", note: "Montrer à un commerçant à quoi son site pourrait ressembler" },
