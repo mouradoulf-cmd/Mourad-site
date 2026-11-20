@@ -281,6 +281,15 @@ button{font:inherit;color:inherit}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}}
 .tile__ic .em.em2,.row__ic .em.em2{font-size:.72rem;white-space:nowrap}.feat__ic .em.em2{font-size:1.05rem;white-space:nowrap}
+
+.vlead,.vnote{color:var(--muted,#b9b3a4);font-size:.86rem;line-height:1.55;margin:.2rem 0 1rem}
+.vk{margin-bottom:.4rem}
+.vchart{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:.3rem;align-items:end;height:9rem;margin-top:1.4rem}
+.vcol{position:relative;height:100%;display:flex;align-items:flex-end}.vcol i{display:block;width:100%;border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#e2c07c,#a07f3a)}
+.vcol em{position:absolute;top:-1.15rem;left:0;right:0;text-align:center;font-style:normal;font-size:.66rem;color:#efe9dc;font-variant-numeric:tabular-nums}
+.vdays{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:.3rem;margin-top:.35rem}.vdays span{text-align:center;font-size:.6rem;color:#8d887a}
+.vlang{display:grid;gap:.5rem}.vrow{display:grid;grid-template-columns:7.5rem 1fr 2.2rem;gap:.7rem;align-items:center;font-size:.88rem}
+.vrow>div{height:.55rem;border-radius:9px;background:rgba(255,255,255,.07);overflow:hidden}.vrow i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#e2c07c,#c9a961)}.vrow b{text-align:right;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -414,7 +423,7 @@ button{font:inherit;color:inherit}
   function heroHtml(sp) {
     var c = SPACES[sp], up = window.NM_UPDATED ? new Date(window.NM_UPDATED + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) : "";
     return '<section class="hero' + (sp === "site" ? " hero--c" : "") + ' rise" style="--d:0"><span class="orb" aria-hidden="true">' + ORB[sp] + "</span><h1>" + esc(c.title) + '<span class="serif">' + esc(c.serif) + "</span></h1><p>" + esc(c.lead) + "</p>" +
-      '<div class="hstats">' + stats(sp).map(function (x) { return '<span class="hstat">' + x + "</span>"; }).join("") + (up ? '<span class="hstat"><i></i>À jour · ' + esc(up) + "</span>" : "") + "</div></section>";
+      '<div class="hstats">' + stats(sp).map(function (x) { return '<span class="hstat">' + x + "</span>"; }).join("") + (sp === "site" ? '<span class="hstat" id="hVis"><b>–</b> visits today</span>' : "") + (up ? '<span class="hstat"><i></i>À jour · ' + esc(up) + "</span>" : "") + "</div></section>";
   }
   function stats(sp) {
     var n = links.filter(function (g) { return (g.space || "site") === sp; }).reduce(function (a, g) { return a + g.items.length; }, 0);
@@ -451,7 +460,7 @@ button{font:inherit;color:inherit}
     return out;
   }
   /* Site web: which of the 5 sections a link group belongs to (by its name, so new groups land in the right place) */
-  function paneOf(g) { var n = norm(g.group); if (/menus? qr|abonnement/.test(n)) return "menus"; if (/thailandais/.test(n)) return "thai"; if (/demos? client/.test(n)) return "demos"; return "nm"; }
+  function paneOf(g) { return g.pane || "nm"; }
   function inPane(id) { return function (g) { return paneOf(g) === id; }; }
   var MC = { ok: "#4ade80", warn: "#f6c453", bad: "#f87171" };
   function mState(r, grace, t) {
@@ -461,6 +470,51 @@ button{font:inherit;color:inherit}
     if (days < 0) return { k: "warn", on: true, line: "En ligne · en retard, bloqué dans " + (grace + days + 1) + " j" };
     if (days <= 7) return { k: "warn", on: true, line: "En ligne · " + (r.trial ? "fin d’essai le " : "à payer le ") + f };
     return { k: "ok", on: true, line: "En ligne · " + (r.trial ? "essai gratuit" : "payé") + " jusqu’au " + f };
+  }
+
+  var VK = "mouradoulf-nmstudio", VG = "https://abacus.jasoncameron.dev/get/" + VK + "/";
+  function vday(off) { return new Date(Date.now() + 7 * 3600e3 - off * 864e5).toISOString().slice(0, 10).replace(/-/g, ""); }
+  function vget(k) { return fetch(VG + k, { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : { value: 0 }; }).then(function (j) { return +(j && j.value) || 0; }).catch(function () { return null; }); }
+  function visitsHtml() {
+    return '<div class="rise" style="--d:0"><div class="sec__h"><h2>Site <span class="serif">visits</span></h2><span id="vMaj"></span></div>' +
+      '<p class="vlead">Combien de personnes ont ouvert ton site NM Studio (cartes de visite, TikTok, Google…). Un visiteur = un téléphone ou un ordinateur, compté une fois par jour.</p>' +
+      '<div class="kpis vk" id="vK"><div class="mxload">Loading…</div></div>' +
+      '<p class="ghead">Last 14 days<span>visitors</span></p><div class="vchart" id="vChart"></div><div class="vdays" id="vDays"></div>' +
+      '<p class="ghead">Contacts<span>last 7 days</span></p><div class="kpis vk" id="vC"></div>' +
+      '<p class="ghead">By language<span>all time</span></p><div class="vlang" id="vL"></div>' +
+      '<div class="mxa"><a class="mxb main" href="' + esc(href("nm/stats.html")) + '" target="_blank" rel="noopener">Open detailed stats</a>' +
+      '<button class="mxb" id="vMe" type="button">Don’t count my visits</button></div>' +
+      '<p class="vnote">Astuce : ajoute <b>?src=carte</b> au bout d’un lien (ex. …/nm/th/?src=carte) pour voir ici combien de personnes viennent de ce QR ou de ce post. Les cartes déjà imprimées sont comptées dans le total.</p></div>';
+  }
+  function loadVisits() {
+    var K = $("vK"), hv = $("hVis");
+    if (hv) vget("v-" + vday(0)).then(function (x) { if (x !== null) hv.innerHTML = "<b>" + x + "</b> visit" + (x === 1 ? "" : "s") + " today"; });
+    var days = []; for (var i = 29; i >= 0; i--) days.push(vday(i));
+    var jobs = days.map(function (d) { return vget("v-" + d); });
+    var W = days.slice(-7);
+    var wj = W.map(function (d) { return Promise.all([vget("wa-" + d), vget("line-" + d), vget("lead-" + d)]); });
+    var lj = ["th", "fr", "en", "it", "ar"].map(function (l) { return vget("vl-" + l); });
+    var tj = vget("vtot");
+    Promise.all([Promise.all(jobs), Promise.all(wj), Promise.all(lj), tj]).then(function (res) {
+      var v = res[0], wa = res[1], lg = res[2], tot = res[3], n = function (x) { return x || 0; };
+      if (v.every(function (x) { return x === null; })) { if (K) K.innerHTML = '<div class="mxload">The counter is not answering right now. Try again in a minute.</div>'; if (hv) hv.innerHTML = "<b>–</b> visits today"; return; }
+      var today = n(v[29]), s7 = v.slice(-7).reduce(function (a, x) { return a + n(x); }, 0), s30 = v.reduce(function (a, x) { return a + n(x); }, 0);
+      if (hv) hv.innerHTML = "<b>" + today + "</b> visit" + (today === 1 ? "" : "s") + " today";
+      if (!K) return;
+      var kp = function (num, label, c) { return '<div class="kpi" style="--k:' + c + '"><b>' + num + "</b><span>" + label + "</span></div>"; };
+      K.innerHTML = kp(today, "Visitors today", "#e2c07c") + kp(s7, "Last 7 days", "#7cc4ff") + kp(s30, "Last 30 days", "#4ade80");
+      var c = [0, 0, 0]; wa.forEach(function (r) { c[0] += n(r[0]); c[1] += n(r[1]); c[2] += n(r[2]); });
+      $("vC").innerHTML = kp(c[0], "WhatsApp clicks", "#25d366") + kp(c[1], "LINE clicks", "#06c755") + kp(c[2], "Requests", "#f6c453");
+      var last14 = v.slice(-14), max = Math.max(1, Math.max.apply(null, last14.map(n)));
+      $("vChart").innerHTML = last14.map(function (x, i) { return '<div class="vcol" title="' + days[16 + i].slice(6) + '/' + days[16 + i].slice(4, 6) + ' : ' + n(x) + '"><em>' + (n(x) || "") + '</em><i style="height:' + Math.max(3, n(x) / max * 100) + '%"></i></div>'; }).join("");
+      $("vDays").innerHTML = last14.map(function (x, i) { return "<span>" + days[16 + i].slice(6) + "</span>"; }).join("");
+      var names = [["th", "🇹🇭 ไทย"], ["fr", "🇫🇷 Français"], ["en", "🇬🇧 English"], ["it", "🇮🇹 Italiano"], ["ar", "🌍 العربية"]], lmax = Math.max(1, Math.max.apply(null, lg.map(n)));
+      $("vL").innerHTML = names.map(function (x, i) { return '<div class="vrow"><span>' + x[1] + '</span><div><i style="width:' + (n(lg[i]) / lmax * 100) + '%"></i></div><b>' + n(lg[i]) + "</b></div>"; }).join("") +
+        '<p class="vnote" style="margin-top:.6rem">Total depuis le début du compteur : <b>' + n(tot) + "</b></p>";
+      $("vMaj").textContent = "updated " + new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    });
+    var me = $("vMe");
+    if (me && !me.__b) { me.__b = 1; var lab = function () { var on = false; try { on = localStorage.getItem("nmOwner") === "1"; } catch (e) {} me.textContent = on ? "✓ This device is not counted" : "Don’t count my visits"; }; me.onclick = function () { try { localStorage.setItem("nmOwner", localStorage.getItem("nmOwner") === "1" ? "0" : "1"); } catch (e) {} lab(); }; lab(); }
   }
   function menusHtml() {
     return '<div class="rise" style="--d:0"><div class="kpis mxk" id="mxK"><div class="mxload">Chargement des menus…</div></div>' +
@@ -493,17 +547,18 @@ button{font:inherit;color:inherit}
     $("vTitle").textContent = c.title;
     var html = heroHtml(sp);
     if (sp === "site") {
-      var PD = [["thai", "Site thaï"], ["menus", "Menus QR"], ["nm", "NM Studio"], ["demos", "Démos"], ["modeles", "Modèles"]];
+      var PD = [["visits", "Site visits"], ["nm", "NM Studio"], ["clients", "Clients"], ["demos", "Démos"], ["tools", "Outils"]];
       html += '<div class="seg s5" role="tablist" aria-label="Sections"><span class="seg__pill" id="segPill"></span>' +
         PD.map(function (x) { return '<button type="button" role="tab" data-pane="' + x[0] + '">' + x[1] + "</button>"; }).join("") + "</div>" +
-        '<div class="pane" id="pane-thai"><section class="sec">' + linksHtml("site", 1, inPane("thai")) + "</section></div>" +
-        '<div class="pane" id="pane-menus"><section class="sec">' + menusHtml() + linksHtml("site", 3, inPane("menus")) + "</section></div>" +
+        '<div class="pane" id="pane-visits"><section class="sec">' + visitsHtml() + "</section></div>" +
         '<div class="pane" id="pane-nm"><section class="sec">' + linksHtml("site", 1, inPane("nm")) + "</section></div>" +
+        '<div class="pane" id="pane-clients"><section class="sec">' + menusHtml() + linksHtml("site", 3, inPane("clients")) + "</section></div>" +
         '<div class="pane" id="pane-demos"><section class="sec"><div class="sec__h"><h2>Mes <span class="serif">démos</span></h2><span id="demoCount"></span></div>' +
         '<div class="kpis" id="kpis"></div><div class="search"><input id="q" type="search" autocomplete="off" placeholder="Rechercher un nom, une ville, un type…" aria-label="Rechercher un commerce"></div>' +
         '<div class="chips" id="chips"></div><div class="az" id="az"></div><div id="list"></div></section>' +
-        '<section class="sec">' + linksHtml("site", 1, inPane("demos")) + "</section></div>" +
-        '<div class="pane" id="pane-modeles"><section class="sec"><div class="sec__h"><h2>Mes <span class="serif">modèles</span></h2><span>à montrer en exemple</span></div><div class="tgrid" id="tpl"></div></section></div>';
+        '<section class="sec">' + linksHtml("site", 1, inPane("demos")) + "</section>" +
+        '<section class="sec"><div class="sec__h"><h2>Mes <span class="serif">modèles</span></h2><span>à montrer en exemple</span></div><div class="tgrid" id="tpl"></div></section></div>' +
+        '<div class="pane" id="pane-tools"><section class="sec">' + linksHtml("site", 1, inPane("tools")) + "</section></div>";
     } else {
       var body = linksHtml(sp, 1);
       html += '<section class="sec">' + (body || '<div class="empty rise"><span class="orb">' + ORB[sp] + "</span><h3>Rien ici pour l’instant</h3><p>Dis-moi ce que tu veux y mettre.</p></div>") + "</section>";
@@ -514,17 +569,17 @@ button{font:inherit;color:inherit}
       b.onclick = function (e) { e.preventDefault(); e.stopPropagation(); haptic(); copy(b.getAttribute("data-copy")); };
     });
     if (sp === "site") {
-      var panes = ["thai", "menus", "nm", "demos", "modeles"], cp = "thai";
-      try { cp = localStorage.getItem("nmSitePane2") || "thai"; } catch (e) {}
+      var panes = ["visits", "nm", "clients", "demos", "tools"], cp = "visits";
+      try { cp = localStorage.getItem("nmSitePane3") || "visits"; } catch (e) {}
       var setPane = function (name) {
-        if (panes.indexOf(name) < 0) name = "thai";
+        if (panes.indexOf(name) < 0) name = "visits";
         panes.forEach(function (x, i) {
           $("pane-" + x).classList.toggle("on", x === name);
           var b = vc.querySelector('.seg [data-pane="' + x + '"]'); b.setAttribute("aria-selected", String(x === name));
           if (x === name) $("segPill").style.transform = "translateX(" + (i * 100) + "%)";
         });
-        if (name === "menus") loadMenus();
-        try { localStorage.setItem("nmSitePane2", name); } catch (e) {}
+        if (name === "clients") loadMenus(); if (name === "visits") loadVisits();
+        try { localStorage.setItem("nmSitePane3", name); } catch (e) {}
       };
       [].slice.call(vc.querySelectorAll(".seg button")).forEach(function (b) { b.onclick = function () { haptic(); setPane(b.getAttribute("data-pane")); }; });
       setPane(cp);

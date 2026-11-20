@@ -44,13 +44,13 @@
 
   <div class="st2__kpis">
     <div class="st2__kpi st2__kpi--gold"><b id="kV">–</b><span>visiteurs aujourd'hui</span><small id="kV7">–</small></div>
-    <div class="st2__kpi"><b id="kC">–</b><span>clics WhatsApp aujourd'hui</span><small id="kC7">–</small></div>
+    <div class="st2__kpi"><b id="kC">–</b><span>clics WhatsApp + LINE aujourd'hui</span><small id="kC7">–</small></div>
     <div class="st2__kpi"><b id="kL">–</b><span>demandes de maquette ou d'audit aujourd'hui</span><small id="kL7">–</small></div>
   </div>
 
   <div class="st2__box">
     <h2>Les 14 derniers jours</h2>
-    <div class="st2__legend"><span><i style="background:#d9bd7c"></i>Visiteurs</span><span><i style="background:#25d366"></i>Contacts (WhatsApp + demandes)</span></div>
+    <div class="st2__legend"><span><i style="background:#d9bd7c"></i>Visiteurs</span><span><i style="background:#25d366"></i>Contacts (WhatsApp + LINE + demandes)</span></div>
     <div class="st2__chart" id="chart"></div>
     <div class="st2__days" id="days"></div>
   </div>
@@ -79,7 +79,7 @@
   function load() {
     state.textContent = "Chargement…";
     var jobs = [];
-    for (var i = 13; i >= 0; i--) (function (d) { jobs.push(Promise.all([get("v-" + d), get("wa-" + d), get("lead-" + d)]).then(function (r) { return { d: d, v: r[0], w: r[1], l: r[2] }; })); })(dayStr(i));
+    for (var i = 13; i >= 0; i--) (function (d) { jobs.push(Promise.all([get("v-" + d), get("wa-" + d), get("lead-" + d), get("line-" + d)]).then(function (r) { return { d: d, v: r[0], w: (r[1] || 0) + (r[3] || 0), l: r[2] }; })); })(dayStr(i));
     Promise.all(jobs).then(function (rows) {
       if (rows.every(function (r) { return r.v === null; })) { state.textContent = "Le compteur ne répond pas pour le moment. Réessaie dans quelques minutes."; return; }
       var t = rows[rows.length - 1], last7 = rows.slice(-7), n = function (x) { return x || 0; };
