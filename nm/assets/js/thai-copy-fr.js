@@ -4,39 +4,39 @@
   "use strict";
   var C = {
     fr: {
-      meta: { description: "NM Studio réalise menus traduits, sites web, menus QR et fiches Google Business Profile pour restaurants, bars, salons et commerces. En ligne en quelques jours, sans engagement. Dès 8 € (299 ฿)." },
+      meta: { description: "NM Studio réalise des menus QR multilingues et des sites web pour restaurants, bars, salons et commerces. Menu QR : 3 000 ฿ une fois puis 390 ฿ par mois. Site web : 10 000 ฿ une fois puis 790 ฿ par mois. Sans engagement." },
       meta2: {
-        pricing: { title: "Tarifs pour les commerces en Thaïlande, dès 8 € (299 ฿) | NM Studio", description: "Menu traduit 8 € (299 ฿), fiche Google 21 € (790 ฿), pack complet 79 € (2 990 ฿) puis entretien 10 €/mois (390 ฿). Sans contrat, maquette gratuite avant de décider." },
-        services: { title: "Services : menu traduit, Google et site web | NM Studio", description: "3 formules pour les commerces en Thaïlande : menu traduit, fiche Google et pack complet, dès 8 € (299 ฿). Sans engagement." }
+        pricing: { title: "Tarifs : menu QR 3 000 ฿ + 390 ฿/mois, site web 10 000 ฿ + 790 ฿/mois | NM Studio", description: "Menu QR en 9 langues : 3 000 ฿ une fois puis 390 ฿ par mois. Site web : 10 000 ฿ une fois puis 790 ฿ par mois. Hébergement, entretien et modifications compris dans l’abonnement. Sans contrat." },
+        services: { title: "Services : menu QR et site web | NM Studio", description: "2 services pour les commerces en Thaïlande : menu QR en 9 langues et site web. Mise en place payée une fois, puis abonnement mensuel. Sans engagement." }
       },
       hero2: {
-        price: "Menu traduit dès <b>8 € (299 ฿)</b> · fiche Google <b>21 € (790 ฿)</b> · site complet <b>79 € (2 990 ฿)</b> puis <b>10 €/mois (390 ฿)</b>",
+        price: "Menu QR <b>3 000 ฿</b> + <b>390 ฿/mois</b> · site web <b>10 000 ฿</b> + <b>790 ฿/mois</b>",
         l4: "Sans contrat : l’entretien mensuel se résilie à tout moment"
       },
-      v4: { proof1: "Dès 8 € (299 ฿)" },
-      offers: { lead: "Prix en bahts pour les commerces en Thaïlande (ici affichés en euros, ≈ 38 ฿ = 1 €). Dès 8 € (299 ฿), sans contrat, maquette gratuite avant de décider." },
+      v4: { proof1: "Menu QR : 3 000 ฿ + 390 ฿/mois" },
+      offers: { lead: "Prix en bahts. Une mise en place payée une seule fois, puis un abonnement mensuel : hébergement, entretien et modifications compris. Maquette gratuite avant de décider." },
       why2: { r3b: "Nouveaux prix, nouveau menu, nouvelles photos : envoyez-les par WhatsApp ou LINE et c’est fait." },
-      svc: { sa4: "Pas besoin : l’hébergement est inclus dans l’entretien à 10 €/mois (390 ฿)." },
+      svc: { sa4: "Pas besoin : l’hébergement est inclus dans l’abonnement mensuel." },
       prob: {
-        fixB: "10 €/mois (390 ฿), sans rien gérer : nous créons, hébergeons et mettons à jour. Vous, vous gérez votre commerce.",
-        cap5: "Site web, menu QR, fiche Google : nous nous occupons de tout. Vous, vous cuisinez."
+        fixB: "Abonnement mensuel, sans rien gérer : nous créons, hébergeons et mettons à jour. Vous, vous gérez votre commerce.",
+        cap5: "Site web et menu QR : nous nous occupons de tout, chaque mois. Vous, vous cuisinez."
       },
       price2: {
-        title: "Des prix clairs, <em>dès 8 € (299 ฿)</em>",
-        lead: "Pour les commerces en Thaïlande : sans contrat, sans frais cachés, maquette gratuite avant de décider.",
-        pa1: "Menu traduit et fiche Google : paiement unique. Le pack complet a des frais d’installation de 79 € (2 990 ฿), puis un entretien de 10 €/mois (390 ฿), ou 103 €/an (3 900 ฿, 2 mois offerts). L’entretien compte à partir de la mise en ligne.",
-        pq2: "Que comprend l’entretien à 10 €/mois (390 ฿) ?",
-        pa2: "L’hébergement, le site toujours en ligne et les modifications illimitées du menu, des prix, des photos et des horaires par WhatsApp ou LINE. Pour aller plus loin : le forfait Croissance à 26 €/mois (990 ฿) et les réseaux sociaux dès 66 €/mois (2 500 ฿).",
-        pa3: "Bien sûr. Beaucoup de commerces commencent par le menu traduit ou la fiche Google, puis passent au pack complet quand ils sont prêts.",
-        pa4: "Scan du QR PromptPay, virement bancaire ou espèces quand on se rencontre. Les frais d’installation du pack complet se paient en 2 fois : la moitié au démarrage, l’autre moitié à la livraison.",
-        pa5: "Non. Pas de contrat : l’entretien mensuel se résilie à tout moment, il suffit de nous envoyer un message."
+        title: "Des prix clairs, <em>une fois, puis au mois</em>",
+        lead: "Sans contrat, sans frais cachés, maquette gratuite avant de décider.",
+        pa1: "Menu QR : 3 000 ฿ une seule fois, puis 390 ฿ par mois. Site web : 10 000 ฿ une seule fois, puis 790 ฿ par mois. L’abonnement mensuel commence une fois tout en ligne.",
+        pq2: "Que comprend l’abonnement mensuel ?",
+        pa2: "L’hébergement, le site ou le menu toujours en ligne, et les modifications des plats, des prix, des photos et des horaires par WhatsApp ou LINE.",
+        pa3: "Bien sûr. Beaucoup de commerces commencent par le menu QR, puis ajoutent le site quand ils sont prêts. Pour les deux, écrivez-nous pour le prix.",
+        pa4: "Scan du QR PromptPay, virement ou espèces quand on se rencontre. Nous fixons ensemble le paiement de la mise en place.",
+        pa5: "Non. Pas de contrat : l’abonnement mensuel se résilie à tout moment, il suffit de nous envoyer un message."
       },
       free: {
         lead: "Maquette gratuite, sans engagement : vous décidez si elle vous plaît. Votre site peut être en ligne en quelques jours.",
         s3: "Elle vous plaît ? Vous décidez",
-        s3b: "Installation 79 € (2 990 ฿), payable en 2 fois. Nous mettons le site en ligne et vous envoyons le lien par LINE ou WhatsApp.",
+        s3b: "Elle vous plaît ? Vous réglez la mise en place (menu QR 3 000 ฿, site web 10 000 ฿), puis nous mettons en ligne et vous envoyons le lien par LINE ou WhatsApp.",
         s4: "Nous nous en occupons chaque mois",
-        s4b: "10 €/mois (390 ฿), avec hébergement, mises à jour et modifications illimitées. Résiliable à tout moment."
+        s4b: "Menu QR 390 ฿ ou site web 790 ฿ par mois : hébergement, entretien et modifications compris. Résiliable à tout moment."
       },
       founder: {
         title: "Bonjour, je suis Mourad. <em>Avec l’aide de mon épouse, nous avons créé ce business.</em>",

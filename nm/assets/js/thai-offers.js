@@ -23,6 +23,14 @@
   function list(items) { return '<ul class="tho-card__list">' + items.map(function (t) { return "<li>" + CHECK + "<span>" + esc(t) + "</span></li>"; }).join("") + "</ul>"; }
   function money(n, L) { var v = n.toLocaleString("en-US"); return L.cur === "บาท" ? '<strong>' + v + '</strong><span class="tho-card__cur">บาท</span>' : '<strong>' + v + '</strong><span class="tho-card__cur">฿</span>'; }
 
+  // two-step price: paid once, then monthly (what the monthly fee covers is stated under it)
+  function prices(setup, month, L) {
+    return '<div class="tho-p2"><div class="tho-p2__c"><span class="tho-p2__k">' + esc(L.onceK) + '</span><p class="tho-card__price">' + money(setup, L) + '<span class="tho-card__per">' + esc(L.once) + '</span></p></div>' +
+      '<span class="tho-p2__plus" aria-hidden="true">+</span>' +
+      '<div class="tho-p2__c"><span class="tho-p2__k">' + esc(L.monthK) + '</span><p class="tho-card__price">' + money(month, L) + '<span class="tho-card__per">' + esc(L.per) + '</span></p></div></div>' +
+      '<p class="tho-card__unit tho-card__free">' + CHECK + esc(L.incl) + "</p>";
+  }
+
   // photo ribbon above the cards: the retouched HD dish photos of the sample menu (what a menu by NM Studio looks like)
   var RIB = {
     th: { k: "รูปอาหารในเมนู", t: "รูปที่ทำให้ลูกค้า<em>อยากสั่ง</em>", c: "ภาพประกอบจากเมนูตัวอย่าง · เมนูของร้านคุณใช้รูปอาหารของร้าน ปรับแสงและสีให้น่ากิน" },
@@ -55,8 +63,7 @@
         '<p class="tho-card__kicker">' + esc(L.menu.kicker) + "</p>" +
         '<h3 class="tho-card__name">' + esc(L.menu.name) + "</h3>" +
         '<p class="tho-card__benefit">' + esc(L.menu.benefit) + "</p>" +
-        '<p class="tho-card__price">' + money(O.price.menu, L) + '<span class="tho-card__per">' + esc(L.per) + "</span></p>" +
-        '<p class="tho-card__unit tho-card__free">' + CHECK + esc(L.free) + "</p>" +
+        prices(O.price.menuSetup, O.price.menu, L) +
         list(L.menu.list) + cta("qr") +
         '<a class="tho-card__alt" href="' + DEMO + '" target="_blank" rel="noopener">' + esc(L.demo) + " ↗</a>" +
       "</article>" +
@@ -66,7 +73,7 @@
         '<p class="tho-card__kicker">' + esc(L.site.kicker) + "</p>" +
         '<h3 class="tho-card__name">' + esc(L.site.name) + "</h3>" +
         '<p class="tho-card__benefit">' + esc(L.site.benefit) + "</p>" +
-        '<p class="tho-card__price">' + money(O.price.site, L) + '<span class="tho-card__per">' + esc(L.per) + "</span></p>" +
+        prices(O.price.siteSetup, O.price.site, L) +
         list(L.site.list) + cta("site") +
       "</article>" +
     "</div>";

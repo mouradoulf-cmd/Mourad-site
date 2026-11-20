@@ -6,11 +6,11 @@
   if (!window.IntersectionObserver) return;
   var L = document.documentElement.lang || "th";
   var TX = {
-    th: ["ติดต่อ", "เมนู QR 390 บาท/เดือน", "นัดพบฟรี · ไม่มีข้อผูกมัด"],
-    fr: ["Contact", "Menu QR 390 ฿/mois", "RDV gratuit · Sans engagement"],
-    en: ["Contact", "QR menu 390 ฿/month", "Free meeting · No commitment"],
-    it: ["Contatti", "Menu QR 390 ฿/mese", "Incontro gratis · Senza impegno"],
-    ar: ["تواصل", "قائمة QR ٣٩٠ باهت/شهر", "موعد مجاني · دون التزام"]
+    th: ["ติดต่อ", "เมนู QR 3,000 + 390 บาท/เดือน", "นัดพบฟรี · ไม่มีข้อผูกมัด"],
+    fr: ["Contact", "Menu QR 3 000 ฿ + 390 ฿/mois", "RDV gratuit · Sans engagement"],
+    en: ["Contact", "QR menu 3,000 ฿ + 390 ฿/month", "Free meeting · No commitment"],
+    it: ["Contatti", "Menu QR 3.000 ฿ + 390 ฿/mese", "Incontro gratis · Senza impegno"],
+    ar: ["تواصل", "قائمة QR 3,000 + 390 ฿/شهر", "موعد مجاني · دون التزام"]
   };
   var T = TX[L] || TX.en;
   var SRC = document.currentScript && document.currentScript.src;
