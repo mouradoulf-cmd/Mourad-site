@@ -138,6 +138,35 @@ html[lang=th] .mf p{line-height:1.45}
 .lb button{position:absolute;border:0;background:rgba(255,255,255,.1);color:#fff;width:48px;height:48px;border-radius:50%;font-size:28px;cursor:pointer;line-height:1}
 .lbx{top:18px;right:18px}.lbp{left:14px;top:50%}.lbn{right:14px;top:50%}
 
+
+fieldset{border:0;min-width:0;display:grid;gap:8px}legend{font-size:14px;color:#cfc9b6;margin-bottom:2px}
+.chipsel{display:flex;flex-wrap:wrap;gap:8px}
+.chipsel button{border:1px solid rgba(239,233,220,.3);background:rgba(0,0,0,.25);color:var(--ink);font:500 15px var(--body);padding:9px 15px;min-height:44px;border-radius:99px;cursor:pointer;transition:background .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease)}
+.chipsel button:active{transform:scale(.96)}
+.chipsel button[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}
+.bsteps{list-style:none;margin-top:22px;display:grid;gap:10px;color:#d6d0c0;font-size:15px}
+.bsteps li{display:flex;gap:12px;align-items:flex-start}.bsteps b{flex:none;width:26px;height:26px;border-radius:50%;background:rgba(216,52,31,.9);color:#fff;display:grid;place-items:center;font:700 13px var(--body)}
+.fnote{min-height:1.4em;font-size:14px;color:#e9c9c0}
+/* signature: tattooed dolls */
+.dl{background:var(--bg)}
+.dl .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,6vw,90px);align-items:center}
+.dl .tri{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.dl .tri figure{margin:0;border-radius:var(--r);overflow:hidden;background:#0d1108;box-shadow:0 0 0 1px var(--line)}
+.dl .tri figure:first-child{grid-row:span 2}.dl .tri img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease)}
+.dl .tri figure:hover img{transform:scale(1.05)}
+.dl p.lead{color:var(--dim);margin-top:16px;max-width:40ch}
+@media(max-width:820px){.dl .wrap{grid-template-columns:1fr}}
+/* FAQ */
+.fq{background:var(--bg2)}
+.fq details{border-top:1px solid var(--line);padding:0}.fq details:last-child{border-bottom:1px solid var(--line)}
+.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 4px;font:700 clamp(18px,2vw,22px)/1.4 var(--display)}
+.fq summary::-webkit-details-marker{display:none}.fq summary::after{content:"+";flex:none;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);display:grid;place-items:center;font:400 22px var(--body);transition:transform .5s var(--ease),background .5s var(--ease)}
+.fq details[open] summary::after{transform:rotate(45deg);background:var(--red)}
+.fq details p{padding:0 4px 24px;color:var(--dim);max-width:60ch}
+.fq .wrap{max-width:820px}
+/* hero trust line */
+.trust{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;color:#cfc9b6;font-size:14px}.trust span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--red);margin-right:9px;transform:rotate(45deg)}
+
 /* styles: tiles */
 .tiles{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(190px,auto);gap:14px;margin-top:clamp(30px,4vw,56px)}
 .tile{position:relative;overflow:hidden;border-radius:var(--r);padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;justify-content:flex-end;gap:4px;transition:transform .6s var(--ease)}
@@ -200,6 +229,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     <h1><span data-k="h1a"></span><em data-k="h1b"></em></h1>
     <p class="lead" data-k="lead"></p>
     <div class="cta"><a class="btn p" href="#book"><span data-k="cta1"></span><i>↗</i></a><a class="btn g" href="#studio"><span data-k="cta2"></span><i>↓</i></a></div>
+    <p class="trust" id="trust"></p>
   </div>
   <div class="stage" aria-hidden="true">
     <div class="kanji">刺青</div>
@@ -215,6 +245,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 <section class="pr" id="why"><div class="wrap">
   <div class="sticky rv"><h2 data-k="pT"></h2></div>
   <div class="rows rv" id="rows"></div>
+</div></section>
+
+<section class="dl" id="dolls"><div class="wrap">
+  <div class="tri rv"><figure><img src="img/work/doll-case.webp" alt="" loading="lazy" width="975" height="1400"></figure><figure><img src="img/work/kewpie.webp" alt="" loading="lazy" width="1024" height="1024"></figure><figure><img src="img/work/doll-back.webp" alt="" loading="lazy" width="1127" height="1400"></figure></div>
+  <div class="rv"><p class="tag" data-k="dK"></p><h2 data-k="dT"></h2><p class="lead" data-k="dP"></p><div class="cta"><a class="btn g" href="#book"><span data-k="dCta"></span><i>↗</i></a></div></div>
 </div></section>
 
 <section class="pc" id="process"><div class="wrap">
@@ -236,16 +271,25 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   <div class="tiles rv" id="tiles"></div>
 </div></section>
 
+<section class="fq" id="faq"><div class="wrap"><h2 class="rv" data-k="qT"></h2><div class="rv" id="faqL" style="margin-top:clamp(24px,4vw,48px)"></div></div></section>
+
 <section class="bk" id="book"><div class="wrap">
   <div class="shellb rv"><div class="coreb">
-    <div><p class="tag" data-k="t4"></p><h2 data-k="bT"></h2><p class="lead" data-k="bP"></p></div>
+    <div><p class="tag" data-k="t4"></p><h2 data-k="bT"></h2><p class="lead" data-k="bP"></p>
+      <ul class="bsteps" id="bsteps"></ul></div>
     <form id="bf" novalidate>
+      <fieldset><legend data-k="fStyle"></legend><div class="chipsel" id="cStyle"></div></fieldset>
+      <fieldset><legend data-k="fZone"></legend><div class="chipsel" id="cZone"></div></fieldset>
+      <fieldset><legend data-k="fSize"></legend><div class="chipsel" id="cSize"></div></fieldset>
       <label for="idea" data-k="bL"></label>
       <input id="idea" autocomplete="off">
+      <label for="nm" data-k="fName"></label>
+      <input id="nm" autocomplete="name">
       <div class="two">
-        <a class="btn p" id="wa" href="https://wa.me/66965405754" target="_blank" rel="noopener"><span data-k="bWa"></span><i>↗</i></a>
-        <a class="btn g" id="ln" href="https://line.me/ti/p/vMkNZMcALE" target="_blank" rel="noopener"><span>LINE</span><i>↗</i></a>
+        <button class="btn p" id="goLine" type="button"><span data-k="sendLine"></span><i>↗</i></button>
+        <a class="btn g" id="wa" href="https://wa.me/66965405754" target="_blank" rel="noopener"><span data-k="bWa"></span><i>↗</i></a>
       </div>
+      <p class="fnote" id="fnote" aria-live="polite"></p>
     </form>
   </div></div>
   <div class="info rv">
@@ -263,7 +307,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 "use strict";
 var PH=[["lamp","samurai","table","chair","shrine","wall","bed","curtain"]][0];
 var T={
-th:{demo:"มาเก็ตตัวอย่างฟรีจาก NM Studio | ใช้รูปจริงจากร้าน ชื่อและข้อมูลยังเป็นตัวอย่าง",demoCta:"คุยกับเรา",n1:"สตูดิโอ",n2:"ขั้นตอน",n3:"สไตล์",nCta:"จองคิว",
+th:{fStyle:"สไตล์ที่สนใจ",fZone:"ตำแหน่งบนร่างกาย",fSize:"ขนาดโดยประมาณ",fName:"ชื่อของคุณ",sendLine:"ส่งข้อความทาง LINE",chips:{style:["ญี่ปุ่น","ลายเส้น","แบล็กเวิร์ก","ตัวอักษร","ทับลายเก่า","ยังไม่แน่ใจ"],zone:["แขน","ไหล่/อก","หลัง","ขา","ลำตัว","อื่น ๆ"],size:["เล็ก","กลาง","ใหญ่","เต็มส่วน"]},bsteps:["เลือกสไตล์ ตำแหน่ง ขนาด","กดส่ง ข้อความจะถูกเตรียมให้","คุยต่อกับช่างทางแชท ได้แบบร่างและราคา"],copied:"คัดลอกข้อความแล้ว วางในแชท LINE ได้เลย",need:"เลือกอย่างน้อยหนึ่งข้อ หรือเล่าไอเดียสั้น ๆ ก่อนนะ",trust:["ปรึกษาฟรี","แจ้งราคาก่อนเริ่ม","ห้องสักส่วนตัว"],dK:"ลายเด่นของร้าน",dT:"ตุ๊กตาสักลายญี่ปุ่น",dP:"ลายเต็มตัวบนตุ๊กตา ฝีมือเดียวกับที่สักบนผิวคน ดูงานก่อนตัดสินใจได้เลย",dCta:"ปรึกษาลายของคุณ",qT:"คำถามที่ลูกค้าถามบ่อย",faq:[["จองคิวอย่างไร","เลือกสไตล์ ตำแหน่ง และขนาดในหน้านี้ แล้วกดส่ง ข้อความจะไปหาช่างทาง LINE หรือ WhatsApp"],["ราคาเท่าไร","ขึ้นกับขนาดและรายละเอียดของลาย ช่างจะแจ้งราคาให้ก่อนเริ่มลงเข็ม"],["เจ็บไหม","แต่ละคนและแต่ละตำแหน่งรู้สึกต่างกัน ถามช่างได้ว่าจุดที่คุณสนใจเป็นอย่างไร"],["ต้องเตรียมตัวอย่างไร","ช่างจะบอกขั้นตอนเตรียมตัวและการดูแลแผลหลังสักให้ตอนนัด"],["สักทับลายเก่าได้ไหม","บางงานทำได้ ส่งรูปลายเดิมมาให้ช่างดูก่อน"]],demo:"มาเก็ตตัวอย่างฟรีจาก NM Studio | ใช้รูปจริงจากร้าน ชื่อและข้อมูลยังเป็นตัวอย่าง",demoCta:"คุยกับเรา",n1:"สตูดิโอ",n2:"ขั้นตอน",n3:"สไตล์",nCta:"จองคิว",
  eyebrow:"สตูดิโอสักส่วนตัว",h1a:"ลายที่ใช่",h1b:"อยู่กับคุณตลอดไป",lead:"คุยลาย แจ้งราคาให้ชัด แล้วจึงลงเข็ม ในห้องสะอาดที่เป็นส่วนตัว",cta1:"จองคิวปรึกษาฟรี",cta2:"ดูสตูดิโอ",hk:"ฟรี",hk2:"ปรึกษา",
  marq:["สักส่วนตัว","ปรึกษาฟรี","แจ้งราคาก่อนเริ่ม","ออกแบบเฉพาะคุณ","สะอาดและปลอดภัย"],
  mf:"ลายสักไม่ใช่ของที่ลบง่าย เราจึงคุยให้ชัด ออกแบบให้ใช่ แล้วค่อยเริ่ม",
@@ -272,8 +316,8 @@ th:{demo:"มาเก็ตตัวอย่างฟรีจาก NM Studio
  sT:"ผลงาน",sP:"ลายญี่ปุ่นเต็มหลัง ซีกอก ต้นแขน ขา และลายบนตุ๊กตา ภาพจากร้านจริง",wk:["มังกรและดอกโบตั๋น · เต็มหลัง","ลายบนตุ๊กตาในตู้โชว์","นกกระเรียนและซากุระ · ขาเต็ม","ฮันเนียและเทพเจ้า · อกและแขน","เกอิชาและเบญจมาศ · ต้นแขน","นักรบญี่ปุ่น · ต้นขา","ลายหลังบนตุ๊กตา","ตุ๊กตาคิวพีลายญี่ปุ่น","สตูดิโอ"],caps:["มุมออกแบบและโคมไฟ","มุมซามูไร","โต๊ะทำงาน","เก้าอี้ช่างสัก","ฉากหลังไม้และพัด","ผนังภาพสักและเครื่องมือ","เตียงสัก","ผ้าม่านอักษรญี่ปุ่น"],
  note:"กดที่รูปเพื่อดูขนาดใหญ่ ภาพลงเว็บด้วยความยินยอมของลูกค้า ชื่อลายเป็นคำอธิบายชั่วคราว รอร้านยืนยัน",
  wT:"สไตล์ที่ทำได้",wP:"หัวข้อตัวอย่าง ปรับตามที่ร้านทำจริง",tiles:[["和彫","ญี่ปุ่น","มังกร ปลาคาร์ป ซามูไร"],["線","ลายเส้น","เส้นเล็กคม เรียบง่าย"],["黒","แบล็กเวิร์ก","ดำเข้ม กราฟิก"],["字","ตัวอักษร","ชื่อ วลี ข้อความ"],["覆","ทับลายเก่า","คุยก่อนทำ"],["図","ออกแบบเอง","จากไอเดียของคุณ"]],
- t4:"จองคิว",bT:"เล่าไอเดียสั้น ๆ เดี๋ยวเราทักกลับ",bP:"ช่องเดียว ไม่มีฟอร์มยาว กดแล้วคุยต่อได้ทันที",bL:"ไอเดียลาย หรือตำแหน่งที่อยากสัก",ph:"เช่น มังกรที่แขนซ้าย ขนาดฝ่ามือ",bWa:"WhatsApp",msg:"สวัสดีครับ อยากปรึกษางานสัก: ",k1:"ที่อยู่และเวลาเปิด",todo:"ใส่ที่อยู่ เวลาเปิดปิด และแผนที่ของร้านที่นี่",k2:"ช่องทางติดต่อ",todo2:"ใส่ LINE WhatsApp และ Instagram ของร้านที่นี่",made:"ทำโดย NM Studio · มาเก็ตตัวอย่างฟรี",barBtn:"จองคิวปรึกษาฟรี"},
-en:{demo:"Free mock-up by NM Studio | real photos from the shop, name and details are placeholders",demoCta:"Talk to us",n1:"Studio",n2:"Process",n3:"Styles",nCta:"Book",
+ t4:"จองคิว",bT:"จองคิวใน 3 ขั้นตอน",bP:"เลือกสไตล์ ตำแหน่ง และขนาด ไม่ต้องกรอกยาว แล้วส่งหาช่างได้ทันที",bL:"ไอเดียลาย หรือตำแหน่งที่อยากสัก",ph:"เช่น มังกรที่แขนซ้าย ขนาดฝ่ามือ",bWa:"WhatsApp",msg:"สวัสดีครับ อยากปรึกษางานสัก: ",k1:"ที่อยู่และเวลาเปิด",todo:"ใส่ที่อยู่ เวลาเปิดปิด และแผนที่ของร้านที่นี่",k2:"ช่องทางติดต่อ",todo2:"ใส่ LINE WhatsApp และ Instagram ของร้านที่นี่",made:"ทำโดย NM Studio · มาเก็ตตัวอย่างฟรี",barBtn:"จองคิวปรึกษาฟรี"},
+en:{fStyle:"Style you like",fZone:"Where on the body",fSize:"Rough size",fName:"Your name",sendLine:"Send on LINE",chips:{style:["Japanese","Fine line","Blackwork","Lettering","Cover-up","Not sure yet"],zone:["Arm","Shoulder / chest","Back","Leg","Torso","Other"],size:["Small","Medium","Large","Full piece"]},bsteps:["Pick style, place and size","Tap send, the message is prepared for you","Keep talking with the artist for a draft and a price"],copied:"Message copied. Paste it in the LINE chat.",need:"Pick at least one option, or tell us your idea in a line.",trust:["Free consult","Price before we start","Private room"],dK:"Signature work",dT:"Tattooed dolls, Japanese style",dP:"Full designs on dolls, by the same hand that tattoos skin. See the work before you decide.",dCta:"Talk about your design",qT:"Questions clients often ask",faq:[["How do I book?","Pick a style, place and size on this page, then tap send. The message goes to the artist on LINE or WhatsApp."],["How much does it cost?","It depends on size and detail. The artist gives you the price before starting."],["Does it hurt?","It differs by person and by place on the body. Ask the artist about the spot you have in mind."],["How do I prepare?","The artist explains preparation and aftercare when you book."],["Can you cover an old tattoo?","Sometimes. Send a photo of the existing tattoo first."]],demo:"Free mock-up by NM Studio | real photos from the shop, name and details are placeholders",demoCta:"Talk to us",n1:"Studio",n2:"Process",n3:"Styles",nCta:"Book",
  eyebrow:"Private tattoo studio",h1a:"The right design,",h1b:"yours for life",lead:"We talk it through, quote a clear price, then begin, in a clean private room.",cta1:"Book a free consult",cta2:"See the studio",hk:"Free",hk2:"consult",
  marq:["Private studio","Free consult","Price before we start","Designed for you","Clean and safe"],
  mf:"A tattoo is not easy to undo. So we talk it through, design it right, then begin.",
@@ -282,8 +326,8 @@ en:{demo:"Free mock-up by NM Studio | real photos from the shop, name and detail
  sT:"The work",sP:"Japanese back pieces, chest panels, sleeves, legs and designs on dolls. Real photos from the shop.",wk:["Dragon and peony · full back","Tattooed doll in the display case","Crane and cherry blossom · full leg","Hannya and deity · chest and arms","Geisha and chrysanthemum · upper arm","Japanese warrior · thigh","Back piece on a doll","Kewpie doll, Japanese designs","The studio"],caps:["Design corner and lamp","Samurai corner","Work station","Artist chair","Wood wall and fans","Flash wall and tools","Tattoo bed","Japanese calligraphy curtain"],
  note:"Tap a photo to enlarge. Shown with the clients’ consent. Design names are placeholders until the shop confirms them.",
  wT:"Styles we can do",wP:"Sample headings, adjust to what the shop really does",tiles:[["和彫","Japanese","Dragons, koi, samurai"],["線","Fine line","Thin, sharp, simple"],["黒","Blackwork","Bold and graphic"],["字","Lettering","Names, phrases"],["覆","Cover-up","Talk first"],["図","Custom design","From your idea"]],
- t4:"Book",bT:"Tell us your idea in a line and we reply",bP:"One field, no long form. Continue right away.",bL:"Your idea, or where you want it",ph:"e.g. a dragon on the left arm, palm size",bWa:"WhatsApp",msg:"Hello, I’d like to talk about a tattoo: ",k1:"Address and hours",todo:"Add the shop’s address, opening hours and map here",k2:"Contact",todo2:"Add the shop’s LINE, WhatsApp and Instagram here",made:"By NM Studio · free mock-up",barBtn:"Book a free consult"},
-fr:{demo:"Maquette gratuite par NM Studio | vraies photos du salon, nom et infos à remplacer",demoCta:"Nous écrire",n1:"Studio",n2:"Étapes",n3:"Styles",nCta:"Réserver",
+ t4:"Book",bT:"Book in three steps",bP:"Pick style, place and size. No long form. Then send it straight to the artist.",bL:"Your idea, or where you want it",ph:"e.g. a dragon on the left arm, palm size",bWa:"WhatsApp",msg:"Hello, I’d like to talk about a tattoo: ",k1:"Address and hours",todo:"Add the shop’s address, opening hours and map here",k2:"Contact",todo2:"Add the shop’s LINE, WhatsApp and Instagram here",made:"By NM Studio · free mock-up",barBtn:"Book a free consult"},
+fr:{fStyle:"Style qui vous plaît",fZone:"Où sur le corps",fSize:"Taille approximative",fName:"Votre prénom",sendLine:"Envoyer sur LINE",chips:{style:["Japonais","Fine line","Blackwork","Lettrage","Recouvrement","Pas sûr"],zone:["Bras","Épaule / torse","Dos","Jambe","Buste","Autre"],size:["Petit","Moyen","Grand","Pièce complète"]},bsteps:["Choisissez style, zone et taille","Appuyez sur envoyer, le message est préparé","Continuez avec le tatoueur pour un croquis et un prix"],copied:"Message copié. Collez-le dans la discussion LINE.",need:"Choisissez au moins une option, ou décrivez votre idée en une ligne.",trust:["Conseil gratuit","Prix annoncé avant","Pièce privée"],dK:"Signature du salon",dT:"Poupées tatouées, style japonais",dP:"Des motifs complets sur des poupées, de la même main que sur la peau. Voyez le travail avant de décider.",dCta:"Parler de votre motif",qT:"Les questions fréquentes",faq:[["Comment réserver ?","Choisissez style, zone et taille sur cette page, puis appuyez sur envoyer. Le message part au tatoueur sur LINE ou WhatsApp."],["Combien ça coûte ?","Cela dépend de la taille et du détail. Le tatoueur annonce le prix avant de commencer."],["Est-ce que ça fait mal ?","Cela varie selon la personne et la zone. Demandez au tatoueur pour l’endroit qui vous intéresse."],["Comment se préparer ?","Le tatoueur explique la préparation et les soins après tatouage lors de la réservation."],["Peut-on recouvrir un ancien tatouage ?","Parfois. Envoyez d’abord une photo du tatouage existant."]],demo:"Maquette gratuite par NM Studio | vraies photos du salon, nom et infos à remplacer",demoCta:"Nous écrire",n1:"Studio",n2:"Étapes",n3:"Styles",nCta:"Réserver",
  eyebrow:"Studio de tatouage privé",h1a:"Le bon dessin,",h1b:"pour la vie",lead:"On en parle, le prix est annoncé clairement, puis on commence, dans une pièce propre et privée.",cta1:"Consultation gratuite",cta2:"Voir le studio",hk:"Gratuit",hk2:"conseil",
  marq:["Studio privé","Conseil gratuit","Prix annoncé avant","Dessiné pour vous","Propre et sûr"],
  mf:"Un tatouage ne s’efface pas facilement. Alors on en parle, on dessine juste, puis on commence.",
@@ -292,9 +336,12 @@ fr:{demo:"Maquette gratuite par NM Studio | vraies photos du salon, nom et infos
  sT:"Les réalisations",sP:"Dos complets, torses, bras, jambes et motifs sur poupées, dans le style japonais. Vraies photos du salon.",wk:["Dragon et pivoine · dos complet","Poupée tatouée en vitrine","Grue et cerisier · jambe complète","Hannya et divinité · torse et bras","Geisha et chrysanthème · haut du bras","Guerrier japonais · cuisse","Dos tatoué sur une poupée","Poupée Kewpie, motifs japonais","Le studio"],caps:["Coin dessin et lampe","Coin samouraï","Poste de travail","Chaise du tatoueur","Mur de bois et éventails","Mur de dessins et outils","Table de tatouage","Rideau de calligraphie japonaise"],
  note:"Touchez une photo pour l’agrandir. Photos publiées avec l’accord des clients. Les noms des motifs sont provisoires, à confirmer par le salon.",
  wT:"Les styles proposés",wP:"Intitulés d’exemple, à adapter à ce que fait vraiment le salon",tiles:[["和彫","Japonais","Dragons, carpes koï, samouraïs"],["線","Fine line","Trait fin, net, simple"],["黒","Blackwork","Noir dense, graphique"],["字","Lettrage","Prénoms, phrases"],["覆","Recouvrement","On en parle d’abord"],["図","Sur mesure","À partir de votre idée"]],
- t4:"Réserver",bT:"Votre idée en une ligne, on vous répond",bP:"Un seul champ, pas de long formulaire. On continue tout de suite.",bL:"Votre idée, ou l’emplacement souhaité",ph:"ex. un dragon sur le bras gauche, taille d’une paume",bWa:"WhatsApp",msg:"Bonjour, je voudrais parler d’un tatouage : ",k1:"Adresse et horaires",todo:"Ajouter ici l’adresse, les horaires et la carte du salon",k2:"Contact",todo2:"Ajouter ici le LINE, WhatsApp et Instagram du salon",made:"Par NM Studio · maquette gratuite",barBtn:"Consultation gratuite"}
+ t4:"Réserver",bT:"Réservez en trois étapes",bP:"Choisissez style, zone et taille. Pas de long formulaire. Puis envoyez directement au tatoueur.",bL:"Votre idée, ou l’emplacement souhaité",ph:"ex. un dragon sur le bras gauche, taille d’une paume",bWa:"WhatsApp",msg:"Bonjour, je voudrais parler d’un tatouage : ",k1:"Adresse et horaires",todo:"Ajouter ici l’adresse, les horaires et la carte du salon",k2:"Contact",todo2:"Ajouter ici le LINE, WhatsApp et Instagram du salon",made:"Par NM Studio · maquette gratuite",barBtn:"Consultation gratuite"}
 };
 var WK=["dragon","doll-case","crane","hannya","geisha","warrior","doll-back","kewpie","chair"];var WS={dragon:[1120,1400],"doll-case":[975,1400],crane:[550,1029],hannya:[1222,1340],geisha:[1104,1400],warrior:[1050,1400],"doll-back":[1127,1400],kewpie:[1024,1024],chair:[928,1664]};
+/* Contacts: replace with the tattoo shop's own LINE profile link and WhatsApp number once known */
+var CFG={line:"https://line.me/ti/p/vMkNZMcALE",wa:"66965405754"};
+var SEL={style:null,zone:null,size:null};
 var lang="th";try{var s=localStorage.getItem("tt-lang");if(T[s])lang=s}catch(e){}
 function $(i){return document.getElementById(i)}
 function render(){
@@ -308,12 +355,34 @@ function render(){
  $("mas").innerHTML=WK.map(function(w,i){return '<figure data-i="'+i+'"><img src="img/work/'+w+'.webp" alt="" loading="lazy" width="'+WS[w][0]+'" height="'+WS[w][1]+'"><figcaption>'+x.wk[i]+"</figcaption></figure>"}).join("");
  vids();
  $("tiles").innerHTML=x.tiles.map(function(t){return '<a class="tile" href="#book"><span class="k" aria-hidden="true">'+t[0]+"</span><h3>"+t[1]+"</h3><p>"+t[2]+"</p></a>"}).join("");
- $("idea").placeholder=x.ph;upd();
+ $("idea").placeholder=x.ph;
+ [["style","cStyle"],["zone","cZone"],["size","cSize"]].forEach(function(g){$(g[1]).innerHTML=x.chips[g[0]].map(function(c,i){return '<button type="button" data-g="'+g[0]+'" data-i="'+i+'" aria-pressed="'+(SEL[g[0]]===i)+'">'+c+"</button>"}).join("")});
+ $("bsteps").innerHTML=x.bsteps.map(function(t,i){return "<li><b>"+(i+1)+"</b><span>"+t+"</span></li>"}).join("");
+ $("trust").innerHTML=x.trust.map(function(t){return "<span>"+t+"</span>"}).join("");
+ $("faqL").innerHTML=x.faq.map(function(q){return "<details><summary>"+q[0]+"</summary><p>"+q[1]+"</p></details>"}).join("");
+ upd();
  [].forEach.call(document.querySelectorAll(".lang button"),function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===lang?"true":"false")});
  reveal();
 }
-function upd(){$("wa").href="https://wa.me/66965405754?text="+encodeURIComponent(T[lang].msg+$("idea").value)}
-$("idea").addEventListener("input",upd);
+function compose(){
+ var x=T[lang],p=[];
+ if(SEL.style!==null)p.push(x.fStyle+": "+x.chips.style[SEL.style]);
+ if(SEL.zone!==null)p.push(x.fZone+": "+x.chips.zone[SEL.zone]);
+ if(SEL.size!==null)p.push(x.fSize+": "+x.chips.size[SEL.size]);
+ var i=$("idea").value.trim();if(i)p.push(i);
+ var n=$("nm").value.trim();
+ return {text:x.msg+(n?"("+n+") ":"")+"\n"+p.join("\n"),empty:!p.length};
+}
+function upd(){$("wa").href="https://wa.me/"+CFG.wa+"?text="+encodeURIComponent(compose().text)}
+["idea","nm"].forEach(function(id){$(id).addEventListener("input",upd)});
+$("bf").addEventListener("click",function(e){var b=e.target.closest("button[data-g]");if(!b)return;var g=b.dataset.g,i=+b.dataset.i;SEL[g]=SEL[g]===i?null:i;[].forEach.call($("bf").querySelectorAll('button[data-g="'+g+'"]'),function(o){o.setAttribute("aria-pressed",String(+o.dataset.i===SEL[g]))});upd()});
+function copyTxt(t){try{if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(t)}catch(e){}return Promise.reject()}
+$("goLine").addEventListener("click",function(){var c=compose(),x=T[lang],note=$("fnote");
+ if(c.empty){note.textContent=x.need;return}
+ note.textContent="";
+ copyTxt(c.text).then(function(){note.textContent=x.copied},function(){note.textContent=c.text});
+ window.open(CFG.line,"_blank","noopener")});
+$("wa").addEventListener("click",function(e){if(compose().empty){e.preventDefault();$("fnote").textContent=T[lang].need}});
 document.querySelector(".lang").addEventListener("click",function(e){var b=e.target.closest("[data-l]");if(!b)return;lang=b.getAttribute("data-l");try{localStorage.setItem("tt-lang",lang)}catch(_){}render()});
 var io;function reveal(){if(!("IntersectionObserver" in window))return;if(!io){io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});document.documentElement.classList.add("rv-on")}[].forEach.call(document.querySelectorAll(".rv:not(.in)"),function(e){io.observe(e)})}
 /* progress bar uses a scroll-driven animation when available, else a passive listener */

@@ -12,7 +12,7 @@ window.NM_UPDATED = "2026-11-20";
 
 window.NM_DEMOS = [
   { slug: "steak-dek-naew", name: "Steak Dek Naew (สเต็กเด็กแนว)", type: "Steakhouse", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Premier client. Site 3 langues (thaï, anglais, français) fait avec ses vraies photos + son menu QR (menus/steak-dek-naew/). À compléter : adresse, horaires, LINE/WhatsApp du patron." },
-  { slug: "tattoo-studio", name: "Tattoo Studio (nom à confirmer)", type: "Salon de tatouage", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "V3 avec les vraies photos de tatouages : héros qui défile (poupée tatouée, dos dragon, geisha, grue), galerie maçonnerie + agrandissement, visages des clients recadrés. À confirmer avec le salon : noms des motifs, accord des clients, nom, contact, prix. À fournir : nom, ville, contact, vraies photos + réalisations." },
+  { slug: "tattoo-studio", name: "Tattoo Studio (nom à confirmer)", type: "Salon de tatouage", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "V4 pro : héros, manifeste, section poupées tatouées, étapes, galerie avec agrandissement, FAQ, réservation en 3 étapes (style, zone, taille) qui prépare le message pour LINE ou WhatsApp. À fournir : nom, LINE/WhatsApp du salon, adresse, prix, accord des clients, vraies infos d\'hygiène." },
 ];
 
 window.NM_LINKS = [
