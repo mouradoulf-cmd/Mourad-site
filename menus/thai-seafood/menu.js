@@ -1,9 +1,9 @@
-/* Menu QR (brouillon) : nom du commerce à confirmer. Plats et prix lus sur les photos des panneaux du commerce. */
+/* Menu QR (brouillon) : nom lu en partie sur l'enseigne (« …ai Foods »), à confirmer. Plats et prix lus sur les photos et vidéos des panneaux. */
 window.NM_MENU = {
  "slug": "thai-seafood",
- "name": "Thai Food & Seafood",
- "wordmark": "อาหารไทย & ซีฟู้ด",
- "wordmarkSub": "Thai Food & Seafood",
+ "name": "Thai Foods",
+ "wordmark": "Thai Foods",
+ "wordmarkSub": "อาหารไทย · ซีฟู้ด · สเต็ก",
  "demo": false,
  "currency": "฿",
  "langs": [
@@ -886,6 +886,22 @@ window.NM_MENU = {
       "ar": "سلطة لحم الخنزير المشوي الحارة",
       "de": "Scharfer Schweinebraten-Salat",
       "fr": "Salade de porc grillé épicée"
+     }
+    },
+    {
+     "id": "f10",
+     "n": "ส้มตำ",
+     "p": "70",
+     "sn": {
+      "th": "ส้มตำ",
+      "en": "Papaya salad (som tam)",
+      "zh": "青木瓜沙拉",
+      "ru": "Салат из папайи (сом там)",
+      "ko": "파파야 샐러드 (솜땀)",
+      "hi": "पपीता सलाद (सोम ताम)",
+      "ar": "سلطة البابايا (سوم تام)",
+      "de": "Papayasalat (Som Tam)",
+      "fr": "Salade de papaye (som tam)"
      }
     }
    ]

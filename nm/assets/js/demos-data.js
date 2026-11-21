@@ -34,7 +34,7 @@ window.NM_LINKS = [
   ] },
   { space: "site", pane: "clients", group: "Les sites de mes clients", items: [
     { name: "Site web · Steak Dek Naew", icon: "🥩", path: "demos/steak-dek-naew/", note: "Le site du restaurant : héros photo + assiettes, section menu QR avec téléphone. TH/EN/FR" },
-    { name: "Menu QR · restaurant thaï & fruits de mer (brouillon)", icon: "🍤", path: "menus/thai-seafood/", note: "77 plats, 9 langues, photos tirées des panneaux du patron. Nom du commerce à confirmer" },
+    { name: "Menu QR · Thai Foods (brouillon)", icon: "🍤", path: "menus/thai-seafood/", note: "78 plats, 9 langues, photos tirées des panneaux du patron. Nom lu sur l'enseigne, à confirmer" },
     { name: "Menu QR · Steak Dek Naew", icon: "🥩", path: "menus/steak-dek-naew/", note: "Premier client réel : 52 plats, 9 langues, prix lus sur son menu papier" }
   ] },
   { space: "site", pane: "demos", group: "Exemples de menus QR à montrer", items: [
