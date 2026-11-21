@@ -1,38 +1,53 @@
 {
-  "_aide": "Abonnements des menus QR (390 ฿/mois). Claude met ce fichier à jour quand Mourad dit « X a payé » : on repousse paidUntil d'un mois et on ajoute une ligne dans payments. Statut automatique : vert = payé · orange = à payer dans 7 jours ou en retard (le menu marche encore graceDays jours) · rouge = menu en pause. pause:true met le menu en pause tout de suite. cover = photo de la carte dans le tableau de bord (chemin depuis menus/).",
-  "graceDays": 4,
-  "monthly": 390,
-  "restaurants": [
-    {
-      "slug": "mae-lek",
-      "name": "Mae Lek",
-      "type": "Cuisine de rue thaïe",
-      "city": "Pattaya",
-      "contact": "",
-      "phone": "",
-      "lang": "th",
-      "cover": "mae-lek/krapao.webp",
-      "start": "2026-10-25",
-      "paidUntil": "2026-11-24",
-      "trial": true,
-      "demo": true,
-      "payments": [],
-      "note": "Exemple à montrer aux restaurants thaïs : restaurant inventé, prix en baht, 6 langues (ไทย, English, 中文, Русский, 한국어, Français)"
-    },
-    {
-      "slug": "steak-dek-naew",
-      "name": "Steak Dek Naew (สเต็กเด็กแนว)",
-      "type": "Steakhouse",
-      "city": "Pattaya",
-      "contact": "",
-      "phone": "",
-      "lang": "th",
-      "cover": "steak-dek-naew/set7.webp",
-      "start": "2026-11-19",
-      "paidUntil": "2026-12-19",
-      "trial": true,
-      "payments": [],
-      "note": "Premier vrai client (trouvé le 19/11). Menu v1 : 52 plats lus sur les photos du menu papier. À compléter : plats sous autocollants jaunes + carte Krapao / riz sauté / boissons (aucun prix sur les photos). Photos = celles du menu imprimé du restaurant."
-    }
-  ]
+ "_aide": "Abonnements des menus QR (390 ฿/mois). Claude met ce fichier à jour quand Mourad dit « X a payé » : on repousse paidUntil d'un mois et on ajoute une ligne dans payments. Statut automatique : vert = payé · orange = à payer dans 7 jours ou en retard (le menu marche encore graceDays jours) · rouge = menu en pause. pause:true met le menu en pause tout de suite. cover = photo de la carte dans le tableau de bord (chemin depuis menus/).",
+ "graceDays": 4,
+ "monthly": 390,
+ "restaurants": [
+  {
+   "slug": "mae-lek",
+   "name": "Mae Lek",
+   "type": "Cuisine de rue thaïe",
+   "city": "Pattaya",
+   "contact": "",
+   "phone": "",
+   "lang": "th",
+   "cover": "mae-lek/krapao.webp",
+   "start": "2026-10-25",
+   "paidUntil": "2026-11-24",
+   "trial": true,
+   "demo": true,
+   "payments": [],
+   "note": "Exemple à montrer aux restaurants thaïs : restaurant inventé, prix en baht, 6 langues (ไทย, English, 中文, Русский, 한국어, Français)"
+  },
+  {
+   "slug": "steak-dek-naew",
+   "name": "Steak Dek Naew (สเต็กเด็กแนว)",
+   "type": "Steakhouse",
+   "city": "Pattaya",
+   "contact": "",
+   "phone": "",
+   "lang": "th",
+   "cover": "steak-dek-naew/set7.webp",
+   "start": "2026-11-19",
+   "paidUntil": "2026-12-19",
+   "trial": true,
+   "payments": [],
+   "note": "Premier vrai client (trouvé le 19/11). Menu v1 : 52 plats lus sur les photos du menu papier. À compléter : plats sous autocollants jaunes + carte Krapao / riz sauté / boissons (aucun prix sur les photos). Photos = celles du menu imprimé du restaurant."
+  },
+  {
+   "slug": "thai-seafood",
+   "name": "Thai Food & Seafood (nom à confirmer)",
+   "type": "Cuisine thaïe, fruits de mer, steaks",
+   "city": "Pattaya",
+   "contact": "",
+   "phone": "",
+   "lang": "th",
+   "cover": "thai-seafood/cs-tomyum.webp",
+   "start": "2026-11-21",
+   "paidUntil": "2026-12-21",
+   "trial": true,
+   "payments": [],
+   "note": "Brouillon : 77 plats lus sur les photos des panneaux (accord du patron). À confirmer : nom, prix du poulet aux noix de cajou, boissons, plats 1-10 du panneau fruits de mer, ส้มตำ, contact."
+  }
+ ]
 }

@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-11-20";
+window.NM_UPDATED = "2026-11-21";
 
 window.NM_DEMOS = [
   { slug: "steak-dek-naew", name: "Steak Dek Naew (สเต็กเด็กแนว)", type: "Steakhouse", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Premier client. Site 3 langues (thaï, anglais, français) fait avec ses vraies photos + son menu QR (menus/steak-dek-naew/). À compléter : adresse, horaires, LINE/WhatsApp du patron." },
@@ -34,6 +34,7 @@ window.NM_LINKS = [
   ] },
   { space: "site", pane: "clients", group: "Les sites de mes clients", items: [
     { name: "Site web · Steak Dek Naew", icon: "🥩", path: "demos/steak-dek-naew/", note: "Le site du restaurant : héros photo + assiettes, section menu QR avec téléphone. TH/EN/FR" },
+    { name: "Menu QR · restaurant thaï & fruits de mer (brouillon)", icon: "🍤", path: "menus/thai-seafood/", note: "77 plats, 9 langues, photos tirées des panneaux du patron. Nom du commerce à confirmer" },
     { name: "Menu QR · Steak Dek Naew", icon: "🥩", path: "menus/steak-dek-naew/", note: "Premier client réel : 52 plats, 9 langues, prix lus sur son menu papier" }
   ] },
   { space: "site", pane: "demos", group: "Exemples de menus QR à montrer", items: [
