@@ -48,6 +48,22 @@
    "trial": true,
    "payments": [],
    "note": "Brouillon : 78 plats lus sur les panneaux (photos + vidéo, accord du patron). Nom lu sur l'enseigne (« …ai Foods »). À confirmer : nom exact, prix du poulet aux noix de cajou, plats 1-10 du panneau fruits de mer (flou), boissons, contact."
+  },
+  {
+   "slug": "fishermans-garden",
+   "name": "Fisherman's Garden Restaurant & Bar",
+   "type": "Restaurant & bar",
+   "city": "",
+   "contact": "",
+   "phone": "",
+   "lang": "th",
+   "cover": "",
+   "start": "2026-11-22",
+   "paidUntil": "2026-12-22",
+   "trial": true,
+   "demo": true,
+   "payments": [],
+   "note": "Démo en direct pour un prospect : page boissons lue sur 6 photos du menu papier (57 articles). Les plats ne sont pas encore photographiés. Pas encore client."
   }
  ]
 }
