@@ -25,8 +25,8 @@ window.NM_MENU = {
  "photoHD": false,
  "tapHint": false,
  "spice": false,
- "heroMobile": "hero-m.webp?v=4",
- "heroWide": "hero.webp?v=4",
+ "heroMobile": "hero-m.webp?v=5",
+ "heroWide": "hero.webp?v=5",
  "tagline": {
   "th": "อาหารไทย ซีฟู้ด เครื่องดื่ม",
   "en": "Thai food, seafood & drinks",
@@ -62,7 +62,7 @@ window.NM_MENU = {
      "id": "club1",
      "n": "คลับแซนด์วิช",
      "p": "150",
-     "img": "club",
+     "img": "ph-club",
      "sn": {
       "th": "คลับแซนด์วิช",
       "en": "Club sandwich",
@@ -79,7 +79,7 @@ window.NM_MENU = {
      "id": "hamcheese1",
      "n": "แซนด์วิชแฮมชีส / ทูน่า + เฟรนช์ฟรายส์",
      "p": "150",
-     "img": "hamcheese",
+     "img": "ph-hamcheese",
      "sn": {
       "th": "แซนด์วิชแฮมชีส / ทูน่า + เฟรนช์ฟรายส์",
       "en": "Tuna or ham & cheese sandwich with fries",
@@ -96,7 +96,6 @@ window.NM_MENU = {
      "id": "toast1",
      "n": "ฮาวายโทส",
      "p": "100",
-     "img": "toast",
      "sn": {
       "th": "ฮาวายโทส",
       "en": "Hawaiian toast",
@@ -113,7 +112,7 @@ window.NM_MENU = {
      "id": "garlicbread1",
      "n": "ขนมปังกระเทียม",
      "p": "60",
-     "img": "garlicbread",
+     "img": "ph-garlicbread",
      "sn": {
       "th": "ขนมปังกระเทียม",
       "en": "Garlic bread",
@@ -130,7 +129,7 @@ window.NM_MENU = {
      "id": "hamburger1",
      "n": "แฮมเบอร์เกอร์ (หมู/ไก่)",
      "p": "130",
-     "img": "hamburger",
+     "img": "ph-hamburger",
      "sn": {
       "th": "แฮมเบอร์เกอร์ (หมู/ไก่)",
       "en": "Hamburger (pork/chicken)",
@@ -147,7 +146,7 @@ window.NM_MENU = {
      "id": "hamburger2",
      "n": "แฮมเบอร์เกอร์ (เนื้อ)",
      "p": "150",
-     "img": "hamburger",
+     "img": "ph-hamburger",
      "sn": {
       "th": "แฮมเบอร์เกอร์ (เนื้อ)",
       "en": "Hamburger (beef)",
@@ -190,13 +189,14 @@ window.NM_MENU = {
       "ar": "سجق براتفورست مع خبز",
       "de": "Bratwurst mit Brötchen",
       "fr": "Bratwurst avec petits pains"
-     }
+     },
+     "img": "ph-bratwurst"
     },
     {
      "id": "schnitzel1",
      "n": "ชนิทเซล (หมู/ไก่)",
      "p": "150",
-     "img": "schnitzel",
+     "img": "ph-schnitzel",
      "sn": {
       "th": "ชนิทเซล (หมู/ไก่)",
       "en": "Schnitzel with fries and salad (pork/chicken)",
@@ -213,7 +213,7 @@ window.NM_MENU = {
      "id": "corndog1",
      "n": "คอร์นด็อก",
      "p": "90",
-     "img": "corndog",
+     "img": "ph-corndog",
      "sn": {
       "th": "คอร์นด็อก",
       "en": "Corn dog",
@@ -230,7 +230,6 @@ window.NM_MENU = {
      "id": "friedpotato1",
      "n": "มันผัดไข่ดาว",
      "p": "150",
-     "img": "friedpotato",
      "sn": {
       "th": "มันผัดไข่ดาว",
       "en": "Fried potatoes with fried egg",
@@ -247,7 +246,7 @@ window.NM_MENU = {
      "id": "fishchips1",
      "n": "สเต็กปลา",
      "p": "200",
-     "img": "fishchips",
+     "img": "ph-fishchips",
      "sn": {
       "th": "สเต็กปลา",
       "en": "Fish steak and chips",
@@ -264,7 +263,7 @@ window.NM_MENU = {
      "id": "porkchop1",
      "n": "พอร์คช็อพ",
      "p": "250",
-     "img": "porkchop",
+     "img": "ph-porkchop",
      "sn": {
       "th": "พอร์คช็อพ",
       "en": "Pork chop steak",
@@ -281,7 +280,7 @@ window.NM_MENU = {
      "id": "carbonara1",
      "n": "สปาเก็ตตี้คาโบนาร่า",
      "p": "150",
-     "img": "carbonara",
+     "img": "ph-carbonara",
      "sn": {
       "th": "สปาเก็ตตี้คาโบนาร่า",
       "en": "Spaghetti carbonara",
@@ -366,7 +365,7 @@ window.NM_MENU = {
      "id": "currywurst1",
      "n": "ไส้กรอกย่างเคอรี่เวิร์ส (1 ไส้กรอก)",
      "p": "130",
-     "img": "currywurst",
+     "img": "ph-currywurst",
      "sn": {
       "th": "ไส้กรอกย่างเคอรี่เวิร์ส (1 ไส้กรอก)",
       "en": "Curry wurst sausages with fries and salad (1 sausage)",
@@ -383,7 +382,7 @@ window.NM_MENU = {
      "id": "currywurst2",
      "n": "ไส้กรอกย่างเคอรี่เวิร์ส (2 ไส้กรอก)",
      "p": "200",
-     "img": "currywurst",
+     "img": "ph-currywurst",
      "sn": {
       "th": "ไส้กรอกย่างเคอรี่เวิร์ส (2 ไส้กรอก)",
       "en": "Curry wurst sausages with fries and salad (2 sausages)",
@@ -416,7 +415,7 @@ window.NM_MENU = {
      "id": "wings1",
      "n": "ปีกไก่ทอด",
      "p": "100",
-     "img": "wings",
+     "img": "ph-wings",
      "sn": {
       "th": "ปีกไก่ทอด",
       "en": "Fried chicken wings",
@@ -433,7 +432,7 @@ window.NM_MENU = {
      "id": "wingsfries1",
      "n": "ปีกไก่ทอด + เฟรนช์ฟรายส์",
      "p": "150",
-     "img": "wingsfries",
+     "img": "ph-wings",
      "sn": {
       "th": "ปีกไก่ทอด + เฟรนช์ฟรายส์",
       "en": "Fried chicken wings with french fries",
@@ -450,7 +449,6 @@ window.NM_MENU = {
      "id": "springroll1",
      "n": "ปอเปี๊ยะทอด",
      "p": "60",
-     "img": "springroll",
      "sn": {
       "th": "ปอเปี๊ยะทอด",
       "en": "Fried spring rolls",
@@ -484,7 +482,6 @@ window.NM_MENU = {
      "id": "porkribs1",
      "n": "ซี่โครงทอด",
      "p": "200",
-     "img": "porkribs",
      "sn": {
       "th": "ซี่โครงทอด",
       "en": "Fried pork ribs",
@@ -501,7 +498,7 @@ window.NM_MENU = {
      "id": "battered1",
      "n": "เมนูชุบแป้งทอด (ผัก)",
      "p": "80",
-     "img": "battered",
+     "img": "ph-battered",
      "sn": {
       "th": "เมนูชุบแป้งทอด (ผัก)",
       "en": "Battered and fried (vegetables)",
@@ -518,7 +515,7 @@ window.NM_MENU = {
      "id": "battered2",
      "n": "เมนูชุบแป้งทอด (กุ้ง/หมึก/ทะเล)",
      "p": "200",
-     "img": "battered",
+     "img": "ph-battered",
      "sn": {
       "th": "เมนูชุบแป้งทอด (กุ้ง/หมึก/ทะเล)",
       "en": "Battered and fried (shrimp/squid/seafood)",
@@ -552,7 +549,7 @@ window.NM_MENU = {
      "id": "onion1",
      "n": "หอมทอด",
      "p": "80",
-     "img": "onion",
+     "img": "ph-onion",
      "sn": {
       "th": "หอมทอด",
       "en": "Onion rings",
@@ -569,7 +566,7 @@ window.NM_MENU = {
      "id": "fries1",
      "n": "เฟรนช์ฟรายส์",
      "p": "60",
-     "img": "fries",
+     "img": "ph-fries",
      "sn": {
       "th": "เฟรนช์ฟรายส์",
       "en": "French fries",
@@ -602,7 +599,7 @@ window.NM_MENU = {
      "id": "fishsashimi1",
      "n": "ซาชิมิปลา (เซ็ต)",
      "p": "300",
-     "img": "fishsashimi",
+     "img": "ph-fishsashimi",
      "sn": {
       "th": "ซาชิมิปลา (เซ็ต)",
       "en": "Fish sashimi set",
@@ -619,7 +616,7 @@ window.NM_MENU = {
      "id": "murexsashimi1",
      "n": "ซาชิมิหอยมะระ (เซ็ต)",
      "p": "400",
-     "img": "murexsashimi",
+     "img": "ph-murexsashimi",
      "sn": {
       "th": "ซาชิมิหอยมะระ (เซ็ต)",
       "en": "Murex shell sashimi set",
@@ -652,7 +649,7 @@ window.NM_MENU = {
      "id": "somtam1",
      "n": "ส้มตำไทย",
      "p": "80",
-     "img": "somtam",
+     "img": "ph-somtam",
      "sn": {
       "th": "ส้มตำไทย",
       "en": "Thai papaya salad",
@@ -669,7 +666,7 @@ window.NM_MENU = {
      "id": "somtampu1",
      "n": "ส้มตำปูม้า",
      "p": "100",
-     "img": "somtam",
+     "img": "ph-somtampu",
      "sn": {
       "th": "ส้มตำปูม้า",
       "en": "Papaya salad with blue crab",
@@ -686,7 +683,7 @@ window.NM_MENU = {
      "id": "somtamtalay1",
      "n": "ส้มตำทะเล",
      "p": "150",
-     "img": "somtamtalay",
+     "img": "ph-somtamtalay",
      "sn": {
       "th": "ส้มตำทะเล",
       "en": "Papaya salad with seafood",
@@ -703,7 +700,7 @@ window.NM_MENU = {
      "id": "grillpork1",
      "n": "คอหมูย่าง",
      "p": "150",
-     "img": "grillpork",
+     "img": "ph-grillpork",
      "sn": {
       "th": "คอหมูย่าง",
       "en": "Grilled pork neck",
@@ -720,7 +717,7 @@ window.NM_MENU = {
      "id": "cryingtiger1",
      "n": "เสือร้องไห้",
      "p": "150",
-     "img": "cryingtiger",
+     "img": "ph-cryingtiger",
      "sn": {
       "th": "เสือร้องไห้",
       "en": "Grilled beef brisket (“crying tiger”)",
@@ -737,7 +734,7 @@ window.NM_MENU = {
      "id": "laab1",
      "n": "ลาบ (หมู/ไก่)",
      "p": "150",
-     "img": "laab",
+     "img": "ph-laab",
      "sn": {
       "th": "ลาบ (หมู/ไก่)",
       "en": "Spicy minced salad with herbs (laab) (pork/chicken)",
@@ -754,7 +751,7 @@ window.NM_MENU = {
      "id": "laab2",
      "n": "ลาบ (กุ้ง/หมึก/เนื้อ/ทะเล)",
      "p": "180",
-     "img": "laab",
+     "img": "ph-laab",
      "sn": {
       "th": "ลาบ (กุ้ง/หมึก/เนื้อ/ทะเล)",
       "en": "Spicy minced salad with herbs (laab) (shrimp/squid/beef/seafood)",
@@ -771,7 +768,6 @@ window.NM_MENU = {
      "id": "duckbeak1",
      "n": "ปากเป็ดทอด",
      "p": "100",
-     "img": "duckbeak",
      "sn": {
       "th": "ปากเป็ดทอด",
       "en": "Fried duck beaks",
@@ -788,7 +784,7 @@ window.NM_MENU = {
      "id": "yammamuang1",
      "n": "ยำมะม่วง",
      "p": "80",
-     "img": "yammamuang",
+     "img": "ph-yammamuang",
      "sn": {
       "th": "ยำมะม่วง",
       "en": "Spicy mango salad",
@@ -805,7 +801,7 @@ window.NM_MENU = {
      "id": "yamkana1",
      "n": "ยำก้านคะน้ากุ้งสด",
      "p": "180",
-     "img": "yamkana",
+     "img": "ph-yamkana",
      "sn": {
       "th": "ยำก้านคะน้ากุ้งสด",
       "en": "Spicy Chinese kale stem salad with fresh shrimp",
@@ -838,7 +834,6 @@ window.NM_MENU = {
      "id": "yamwunsen1",
      "n": "ยำวุ้นเส้น (หมู/ไก่)",
      "p": "150",
-     "img": "yamwunsen",
      "sn": {
       "th": "ยำวุ้นเส้น (หมู/ไก่)",
       "en": "Spicy glass noodle salad (pork/chicken)",
@@ -855,7 +850,6 @@ window.NM_MENU = {
      "id": "yamwunsen2",
      "n": "ยำวุ้นเส้น (กุ้ง/หมึก/ทะเล)",
      "p": "180",
-     "img": "yamwunsen",
      "sn": {
       "th": "ยำวุ้นเส้น (กุ้ง/หมึก/ทะเล)",
       "en": "Spicy glass noodle salad (shrimp/squid/seafood)",
@@ -872,7 +866,7 @@ window.NM_MENU = {
      "id": "yamtalay1",
      "n": "ยำทะเล",
      "p": "180",
-     "img": "yamtalay",
+     "img": "ph-yamtalay",
      "sn": {
       "th": "ยำทะเล",
       "en": "Spicy seafood salad",
@@ -889,7 +883,7 @@ window.NM_MENU = {
      "id": "kungchae1",
      "n": "กุ้งแช่น้ำปลา",
      "p": "200",
-     "img": "kungchae",
+     "img": "ph-kungchae",
      "sn": {
       "th": "กุ้งแช่น้ำปลา",
       "en": "Spicy shrimp in fish sauce",
@@ -922,7 +916,7 @@ window.NM_MENU = {
      "id": "squidgrill1",
      "n": "หมึกไข่ย่าง",
      "p": "250",
-     "img": "squidgrill",
+     "img": "ph-squidgrill",
      "sn": {
       "th": "หมึกไข่ย่าง",
       "en": "Grilled squid with roe",
@@ -939,7 +933,6 @@ window.NM_MENU = {
      "id": "squiddry1",
      "n": "หมึกแดดเดียว",
      "p": "200",
-     "img": "squiddry",
      "sn": {
       "th": "หมึกแดดเดียว",
       "en": "Deep-fried sun-dried squid",
@@ -956,7 +949,7 @@ window.NM_MENU = {
      "id": "squidgarlic1",
      "n": "หมึกไข่ทอดกระเทียม",
      "p": "250",
-     "img": "squidgarlic",
+     "img": "ph-squidgarlic",
      "sn": {
       "th": "หมึกไข่ทอดกระเทียม",
       "en": "Fried squid with garlic",
@@ -1007,7 +1000,7 @@ window.NM_MENU = {
      "id": "oyster1",
      "n": "หอยนางรม (เล็ก)",
      "p": "180",
-     "img": "oyster",
+     "img": "ph-oyster",
      "sn": {
       "th": "หอยนางรม (เล็ก)",
       "en": "Oysters (small)",
@@ -1024,7 +1017,7 @@ window.NM_MENU = {
      "id": "oyster2",
      "n": "หอยนางรม (ใหญ่/4 ตัว)",
      "p": "300",
-     "img": "oyster",
+     "img": "ph-oyster",
      "sn": {
       "th": "หอยนางรม (ใหญ่/4 ตัว)",
       "en": "Oysters (large/4 pieces)",
@@ -1041,7 +1034,7 @@ window.NM_MENU = {
      "id": "oyster3",
      "n": "หอยนางรม (ใหญ่/1 ตัว)",
      "p": "80",
-     "img": "oyster",
+     "img": "ph-oyster",
      "sn": {
       "th": "หอยนางรม (ใหญ่/1 ตัว)",
       "en": "Oysters (large/1 piece)",
@@ -1075,7 +1068,7 @@ window.NM_MENU = {
      "id": "bakedmussel1",
      "n": "หอยแมลงภู่อบชีส",
      "p": "180",
-     "img": "bakedmussel",
+     "img": "ph-bakedmussel",
      "sn": {
       "th": "หอยแมลงภู่อบชีส",
       "en": "Baked mussels with cheese",
@@ -1092,7 +1085,7 @@ window.NM_MENU = {
      "id": "prawn1",
      "n": "กุ้งอบเกลือ / กุ้งเผา (0.5 กก.)",
      "p": "400",
-     "img": "prawn",
+     "img": "ph-prawn",
      "sn": {
       "th": "กุ้งอบเกลือ / กุ้งเผา (0.5 กก.)",
       "en": "Salted steamed prawns / grilled prawns (0.5 kg)",
@@ -1109,7 +1102,7 @@ window.NM_MENU = {
      "id": "prawn2",
      "n": "กุ้งอบเกลือ / กุ้งเผา (1 กก.)",
      "p": "800",
-     "img": "prawn",
+     "img": "ph-prawn",
      "sn": {
       "th": "กุ้งอบเกลือ / กุ้งเผา (1 กก.)",
       "en": "Salted steamed prawns / grilled prawns (1 kg)",
@@ -1126,7 +1119,7 @@ window.NM_MENU = {
      "id": "bluecrab1",
      "n": "ปูม้านึ่ง (0.5 กก.)",
      "p": "400",
-     "img": "bluecrab",
+     "img": "ph-bluecrab",
      "sn": {
       "th": "ปูม้านึ่ง (0.5 กก.)",
       "en": "Steamed blue crab (0.5 kg)",
@@ -1143,7 +1136,7 @@ window.NM_MENU = {
      "id": "bluecrab2",
      "n": "ปูม้านึ่ง (1 กก.)",
      "p": "800",
-     "img": "bluecrab",
+     "img": "ph-bluecrab",
      "sn": {
       "th": "ปูม้านึ่ง (1 กก.)",
       "en": "Steamed blue crab (1 kg)",
@@ -1160,7 +1153,7 @@ window.NM_MENU = {
      "id": "fishgarlic1",
      "n": "ปลาทอดกระเทียม",
      "p": "400",
-     "img": "fishgarlic",
+     "img": "ph-fishgarlic",
      "sn": {
       "th": "ปลาทอดกระเทียม",
       "en": "Deep-fried fish with garlic",
@@ -1177,7 +1170,6 @@ window.NM_MENU = {
      "id": "fishchili1",
      "n": "ปลาราดพริก",
      "p": "400",
-     "img": "fishchili",
      "sn": {
       "th": "ปลาราดพริก",
       "en": "Deep-fried fish with sweet and spicy sauce",
@@ -1194,7 +1186,7 @@ window.NM_MENU = {
      "id": "fishsauce1",
      "n": "ปลาทอดราดน้ำปลา",
      "p": "400",
-     "img": "fishsauce",
+     "img": "ph-fishsauce",
      "sn": {
       "th": "ปลาทอดราดน้ำปลา",
       "en": "Deep-fried fish with fish sauce",
@@ -1211,7 +1203,7 @@ window.NM_MENU = {
      "id": "fishlemon1",
      "n": "ปลานึ่งมะนาว",
      "p": "400",
-     "img": "fishlemon",
+     "img": "ph-fishlemon",
      "sn": {
       "th": "ปลานึ่งมะนาว",
       "en": "Steamed fish with lemon juice",
@@ -1228,7 +1220,7 @@ window.NM_MENU = {
      "id": "fishsour1",
      "n": "ปลาทอดราดซอสเปรี้ยวหวาน",
      "p": "400",
-     "img": "fishsour",
+     "img": "ph-fishsour",
      "sn": {
       "th": "ปลาทอดราดซอสเปรี้ยวหวาน",
       "en": "Deep-fried fish with sweet and sour sauce",
@@ -1262,7 +1254,7 @@ window.NM_MENU = {
      "id": "mackerel1",
      "n": "ปลาอินทรีย์ทอดราดซอสน้ำปลา",
      "p": "300",
-     "img": "mackerel",
+     "img": "ph-mackerel",
      "sn": {
       "th": "ปลาอินทรีย์ทอดราดซอสน้ำปลา",
       "en": "Deep-fried Spanish mackerel with fish sauce",
@@ -1279,7 +1271,6 @@ window.NM_MENU = {
      "id": "mantis1",
      "n": "กั้งกระเทียม",
      "p": "450",
-     "img": "mantis",
      "sn": {
       "th": "กั้งกระเทียม",
       "en": "Deep-fried mantis shrimp with garlic",
@@ -1312,7 +1303,6 @@ window.NM_MENU = {
      "id": "ginger1",
      "n": "ผัดขิง (หมู/ไก่)",
      "p": "150",
-     "img": "ginger",
      "sn": {
       "th": "ผัดขิง (หมู/ไก่)",
       "en": "Stir-fried ginger (pork/chicken)",
@@ -1329,7 +1319,6 @@ window.NM_MENU = {
      "id": "ginger2",
      "n": "ผัดขิง (เนื้อ)",
      "p": "180",
-     "img": "ginger",
      "sn": {
       "th": "ผัดขิง (เนื้อ)",
       "en": "Stir-fried ginger (beef)",
@@ -1346,7 +1335,7 @@ window.NM_MENU = {
      "id": "mushroom1",
      "n": "ผัดเห็ดฟาง (หมู/ไก่)",
      "p": "150",
-     "img": "mushroom",
+     "img": "ph-mushroom",
      "sn": {
       "th": "ผัดเห็ดฟาง (หมู/ไก่)",
       "en": "Stir-fried straw mushrooms (pork/chicken)",
@@ -1363,7 +1352,7 @@ window.NM_MENU = {
      "id": "mushroom2",
      "n": "ผัดเห็ดฟาง (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "180",
-     "img": "mushroom",
+     "img": "ph-mushroom",
      "sn": {
       "th": "ผัดเห็ดฟาง (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried straw mushrooms (beef/shrimp/squid/seafood)",
@@ -1380,7 +1369,7 @@ window.NM_MENU = {
      "id": "cashew1",
      "n": "ผัดเม็ดมะม่วง (ไก่)",
      "p": "150",
-     "img": "cashew",
+     "img": "ph-cashew",
      "sn": {
       "th": "ผัดเม็ดมะม่วง (ไก่)",
       "en": "Stir-fried cashew nuts (chicken)",
@@ -1397,7 +1386,7 @@ window.NM_MENU = {
      "id": "cashew2",
      "n": "ผัดเม็ดมะม่วง (กุ้ง/ทะเล)",
      "p": "180",
-     "img": "cashew",
+     "img": "ph-cashew",
      "sn": {
       "th": "ผัดเม็ดมะม่วง (กุ้ง/ทะเล)",
       "en": "Stir-fried cashew nuts (shrimp/seafood)",
@@ -1414,7 +1403,6 @@ window.NM_MENU = {
      "id": "glassnoodle1",
      "n": "ผัดวุ้นเส้น (หมู/ไก่)",
      "p": "150",
-     "img": "glassnoodle",
      "sn": {
       "th": "ผัดวุ้นเส้น (หมู/ไก่)",
       "en": "Stir-fried glass noodles (pork/chicken)",
@@ -1431,7 +1419,6 @@ window.NM_MENU = {
      "id": "glassnoodle2",
      "n": "ผัดวุ้นเส้น (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "180",
-     "img": "glassnoodle",
      "sn": {
       "th": "ผัดวุ้นเส้น (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried glass noodles (beef/shrimp/squid/seafood)",
@@ -1482,7 +1469,7 @@ window.NM_MENU = {
      "id": "omelette1",
      "n": "ไข่เจียว (หมู/ไก่)",
      "p": "100",
-     "img": "omelette",
+     "img": "ph-omelette",
      "sn": {
       "th": "ไข่เจียว (หมู/ไก่)",
       "en": "Thai-style omelette (pork/chicken)",
@@ -1499,7 +1486,7 @@ window.NM_MENU = {
      "id": "omelette2",
      "n": "ไข่เจียว (กุ้ง/หมึก)",
      "p": "150",
-     "img": "omelette",
+     "img": "ph-omelette",
      "sn": {
       "th": "ไข่เจียว (กุ้ง/หมึก)",
       "en": "Thai-style omelette (shrimp/squid)",
@@ -1516,7 +1503,7 @@ window.NM_MENU = {
      "id": "raadnaa1",
      "n": "ราดหน้า (หมู/ไก่)",
      "p": "70",
-     "img": "raadnaa",
+     "img": "ph-raadnaa",
      "sn": {
       "th": "ราดหน้า (หมู/ไก่)",
       "en": "Noodles in thick gravy (pork/chicken)",
@@ -1533,7 +1520,7 @@ window.NM_MENU = {
      "id": "raadnaa2",
      "n": "ราดหน้า (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "90",
-     "img": "raadnaa",
+     "img": "ph-raadnaa",
      "sn": {
       "th": "ราดหน้า (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Noodles in thick gravy (beef/shrimp/squid/seafood)",
@@ -1550,7 +1537,7 @@ window.NM_MENU = {
      "id": "kaprao_rice1",
      "n": "ข้าวราดผัดกะเพรา (หมู/ไก่)",
      "p": "80",
-     "img": "kaprao_rice",
+     "img": "ph-kaprao_rice",
      "sn": {
       "th": "ข้าวราดผัดกะเพรา (หมู/ไก่)",
       "en": "Holy basil stir-fry on rice (phad kaprao) (pork/chicken)",
@@ -1567,7 +1554,7 @@ window.NM_MENU = {
      "id": "kaprao_rice2",
      "n": "ข้าวราดผัดกะเพรา (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "100",
-     "img": "kaprao_rice",
+     "img": "ph-kaprao_rice",
      "sn": {
       "th": "ข้าวราดผัดกะเพรา (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Holy basil stir-fry on rice (phad kaprao) (beef/shrimp/squid/seafood)",
@@ -1584,7 +1571,7 @@ window.NM_MENU = {
      "id": "broccoli1",
      "n": "บล็อกโคลีผัดกุ้ง",
      "p": "180",
-     "img": "broccoli",
+     "img": "ph-broccoli",
      "sn": {
       "th": "บล็อกโคลีผัดกุ้ง",
       "en": "Stir-fried broccoli with shrimp",
@@ -1601,7 +1588,6 @@ window.NM_MENU = {
      "id": "kalecrispy1",
      "n": "คะน้าหมูกรอบ",
      "p": "150",
-     "img": "kalecrispy",
      "sn": {
       "th": "คะน้าหมูกรอบ",
       "en": "Stir-fried Chinese kale with crispy pork",
@@ -1628,13 +1614,14 @@ window.NM_MENU = {
       "ar": "كرنب صيني بصلصة المحار",
       "de": "Chinesischer Grünkohl in Austernsauce",
       "fr": "Chou chinois sauce aux huîtres"
-     }
+     },
+     "img": "ph-kaleoyster"
     },
     {
      "id": "kalefish1",
      "n": "คะน้าปลาเค็ม",
      "p": "120",
-     "img": "kalefish",
+     "img": "ph-kalefish",
      "sn": {
       "th": "คะน้าปลาเค็ม",
       "en": "Stir-fried Chinese kale with salted fish",
@@ -1651,7 +1638,6 @@ window.NM_MENU = {
      "id": "beefoyster1",
      "n": "เนื้อผัดน้ำมันหอย",
      "p": "150",
-     "img": "beefoyster",
      "sn": {
       "th": "เนื้อผัดน้ำมันหอย",
       "en": "Stir-fried beef in oyster sauce",
@@ -1668,7 +1654,7 @@ window.NM_MENU = {
      "id": "padthai1",
      "n": "ผัดไท (กุ้ง/หมึก/ทะเล)",
      "p": "100",
-     "img": "padthai",
+     "img": "ph-padthai",
      "sn": {
       "th": "ผัดไท (กุ้ง/หมึก/ทะเล)",
       "en": "Pad thai (stir-fried rice noodles) (shrimp/squid/seafood)",
@@ -1685,7 +1671,6 @@ window.NM_MENU = {
      "id": "stuffedomelet1",
      "n": "ไข่ยัดไส้ (หมู/ไก่)",
      "p": "130",
-     "img": "stuffedomelet",
      "sn": {
       "th": "ไข่ยัดไส้ (หมู/ไก่)",
       "en": "Stuffed omelette (pork/chicken)",
@@ -1702,7 +1687,6 @@ window.NM_MENU = {
      "id": "stuffedomelet2",
      "n": "ไข่ยัดไส้ (กุ้ง/หมึก/ทะเล)",
      "p": "150",
-     "img": "stuffedomelet",
      "sn": {
       "th": "ไข่ยัดไส้ (กุ้ง/หมึก/ทะเล)",
       "en": "Stuffed omelette (shrimp/squid/seafood)",
@@ -1736,7 +1720,7 @@ window.NM_MENU = {
      "id": "saltedegg1",
      "n": "ผัดไข่เค็ม (กุ้ง/หมึก)",
      "p": "250",
-     "img": "saltedegg",
+     "img": "ph-saltedegg",
      "sn": {
       "th": "ผัดไข่เค็ม (กุ้ง/หมึก)",
       "en": "Stir-fried with salted egg (shrimp/squid)",
@@ -1753,7 +1737,7 @@ window.NM_MENU = {
      "id": "chuchi1",
      "n": "ฉู่ฉี่กุ้ง",
      "p": "200",
-     "img": "chuchi",
+     "img": "ph-chuchi",
      "sn": {
       "th": "ฉู่ฉี่กุ้ง",
       "en": "Curry fried shrimp (chu chee)",
@@ -1770,7 +1754,7 @@ window.NM_MENU = {
      "id": "currypowder1",
      "n": "ผัดผงกะหรี่ (กุ้ง/หมึก/ทะเล)",
      "p": "250",
-     "img": "currypowder",
+     "img": "ph-currypowder",
      "sn": {
       "th": "ผัดผงกะหรี่ (กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried with curry powder (shrimp/squid/seafood)",
@@ -1787,7 +1771,7 @@ window.NM_MENU = {
      "id": "currypowder2",
      "n": "ผัดผงกะหรี่ (ปู)",
      "p": "350",
-     "img": "currypowder",
+     "img": "ph-currypowder",
      "sn": {
       "th": "ผัดผงกะหรี่ (ปู)",
       "en": "Stir-fried with curry powder (crab)",
@@ -1814,7 +1798,8 @@ window.NM_MENU = {
       "ar": "مكرونة مقلية (لحم خنزير/دجاج)",
       "de": "Gebratene Makkaroni (Schwein/Hähnchen)",
       "fr": "Macaronis sautés (porc/poulet)"
-     }
+     },
+     "img": "ph-macaroni"
     },
     {
      "id": "macaroni2",
@@ -1830,13 +1815,14 @@ window.NM_MENU = {
       "ar": "مكرونة مقلية (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Gebratene Makkaroni (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
       "fr": "Macaronis sautés (bœuf/crevettes/calmar/fruits de mer)"
-     }
+     },
+     "img": "ph-macaroni"
     },
     {
      "id": "basil1",
      "n": "ผัดกะเพรา (หมู/ไก่)",
      "p": "150",
-     "img": "basil",
+     "img": "ph-basil",
      "sn": {
       "th": "ผัดกะเพรา (หมู/ไก่)",
       "en": "Stir-fried holy basil (pork/chicken)",
@@ -1853,7 +1839,7 @@ window.NM_MENU = {
      "id": "basil2",
      "n": "ผัดกะเพรา (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "180",
-     "img": "basil",
+     "img": "ph-basil",
      "sn": {
       "th": "ผัดกะเพรา (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried holy basil (beef/shrimp/squid/seafood)",
@@ -1870,7 +1856,7 @@ window.NM_MENU = {
      "id": "mixveg1",
      "n": "ผัดผักรวม (ผัก)",
      "p": "100",
-     "img": "mixveg",
+     "img": "ph-mixveg",
      "sn": {
       "th": "ผัดผักรวม (ผัก)",
       "en": "Stir-fried mixed vegetables (vegetables)",
@@ -1887,7 +1873,7 @@ window.NM_MENU = {
      "id": "mixveg2",
      "n": "ผัดผักรวม (หมู/ไก่)",
      "p": "150",
-     "img": "mixveg",
+     "img": "ph-mixveg",
      "sn": {
       "th": "ผัดผักรวม (หมู/ไก่)",
       "en": "Stir-fried mixed vegetables (pork/chicken)",
@@ -1904,7 +1890,7 @@ window.NM_MENU = {
      "id": "mixveg3",
      "n": "ผัดผักรวม (กุ้ง/หมึก/ทะเล)",
      "p": "180",
-     "img": "mixveg",
+     "img": "ph-mixveg",
      "sn": {
       "th": "ผัดผักรวม (กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried mixed vegetables (shrimp/squid/seafood)",
@@ -1921,7 +1907,7 @@ window.NM_MENU = {
      "id": "siew1",
      "n": "ผัดซีอิ๊ว (หมู/ไก่)",
      "p": "70",
-     "img": "siew",
+     "img": "ph-siew",
      "sn": {
       "th": "ผัดซีอิ๊ว (หมู/ไก่)",
       "en": "Stir-fried flat noodles with soy sauce (pork/chicken)",
@@ -1938,7 +1924,7 @@ window.NM_MENU = {
      "id": "siew2",
      "n": "ผัดซีอิ๊ว (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "90",
-     "img": "siew",
+     "img": "ph-siew",
      "sn": {
       "th": "ผัดซีอิ๊ว (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried flat noodles with soy sauce (beef/shrimp/squid/seafood)",
@@ -1955,7 +1941,7 @@ window.NM_MENU = {
      "id": "mama1",
      "n": "ผัดมาม่า (หมู/ไก่)",
      "p": "80",
-     "img": "mama",
+     "img": "ph-mama",
      "sn": {
       "th": "ผัดมาม่า (หมู/ไก่)",
       "en": "Stir-fried instant noodles (pork/chicken)",
@@ -1972,7 +1958,7 @@ window.NM_MENU = {
      "id": "mama2",
      "n": "ผัดมาม่า (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "100",
-     "img": "mama",
+     "img": "ph-mama",
      "sn": {
       "th": "ผัดมาม่า (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried instant noodles (beef/shrimp/squid/seafood)",
@@ -1989,7 +1975,7 @@ window.NM_MENU = {
      "id": "sweetsour1",
      "n": "ผัดเปรี้ยวหวาน (หมู/ไก่)",
      "p": "150",
-     "img": "sweetsour",
+     "img": "ph-sweetsour",
      "sn": {
       "th": "ผัดเปรี้ยวหวาน (หมู/ไก่)",
       "en": "Sweet and sour stir-fry (pork/chicken)",
@@ -2006,7 +1992,7 @@ window.NM_MENU = {
      "id": "sweetsour2",
      "n": "ผัดเปรี้ยวหวาน (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "180",
-     "img": "sweetsour",
+     "img": "ph-sweetsour",
      "sn": {
       "th": "ผัดเปรี้ยวหวาน (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Sweet and sour stir-fry (beef/shrimp/squid/seafood)",
@@ -2023,7 +2009,7 @@ window.NM_MENU = {
      "id": "waterspinach1",
      "n": "ผัดผักบุ้ง",
      "p": "80",
-     "img": "waterspinach",
+     "img": "ph-waterspinach",
      "sn": {
       "th": "ผัดผักบุ้ง",
       "en": "Stir-fried water spinach",
@@ -2056,7 +2042,7 @@ window.NM_MENU = {
      "id": "friedrice1_1",
      "n": "ข้าวผัด (ไข่/หมู/ไก่, เล็ก)",
      "p": "70",
-     "img": "friedrice1",
+     "img": "ph-friedrice1",
      "sn": {
       "th": "ข้าวผัด (ไข่/หมู/ไก่, เล็ก)",
       "en": "Fried rice (egg/pork/chicken, small)",
@@ -2073,7 +2059,7 @@ window.NM_MENU = {
      "id": "friedrice1_2",
      "n": "ข้าวผัด (ไข่/หมู/ไก่, กลาง)",
      "p": "150",
-     "img": "friedrice1",
+     "img": "ph-friedrice1",
      "sn": {
       "th": "ข้าวผัด (ไข่/หมู/ไก่, กลาง)",
       "en": "Fried rice (egg/pork/chicken, medium)",
@@ -2090,7 +2076,7 @@ window.NM_MENU = {
      "id": "friedrice1_3",
      "n": "ข้าวผัด (ไข่/หมู/ไก่, ใหญ่)",
      "p": "180",
-     "img": "friedrice1",
+     "img": "ph-friedrice1",
      "sn": {
       "th": "ข้าวผัด (ไข่/หมู/ไก่, ใหญ่)",
       "en": "Fried rice (egg/pork/chicken, large)",
@@ -2107,7 +2093,7 @@ window.NM_MENU = {
      "id": "friedrice2_1",
      "n": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, เล็ก)",
      "p": "90",
-     "img": "friedrice2",
+     "img": "ph-friedrice2",
      "sn": {
       "th": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, เล็ก)",
       "en": "Fried rice (beef/shrimp/crab/squid/seafood, small)",
@@ -2124,7 +2110,7 @@ window.NM_MENU = {
      "id": "friedrice2_2",
      "n": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, กลาง)",
      "p": "170",
-     "img": "friedrice2",
+     "img": "ph-friedrice2",
      "sn": {
       "th": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, กลาง)",
       "en": "Fried rice (beef/shrimp/crab/squid/seafood, medium)",
@@ -2141,7 +2127,7 @@ window.NM_MENU = {
      "id": "friedrice2_3",
      "n": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, ใหญ่)",
      "p": "200",
-     "img": "friedrice2",
+     "img": "ph-friedrice2",
      "sn": {
       "th": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, ใหญ่)",
       "en": "Fried rice (beef/shrimp/crab/squid/seafood, large)",
@@ -2158,7 +2144,7 @@ window.NM_MENU = {
      "id": "steamrice1",
      "n": "ข้าวสวย (เล็ก)",
      "p": "20",
-     "img": "steamrice",
+     "img": "ph-steamrice",
      "sn": {
       "th": "ข้าวสวย (เล็ก)",
       "en": "Steamed rice (small)",
@@ -2175,7 +2161,7 @@ window.NM_MENU = {
      "id": "steamrice2",
      "n": "ข้าวสวย (ใหญ่)",
      "p": "100",
-     "img": "steamrice",
+     "img": "ph-steamrice",
      "sn": {
       "th": "ข้าวสวย (ใหญ่)",
       "en": "Steamed rice (large)",
@@ -2192,7 +2178,7 @@ window.NM_MENU = {
      "id": "friedegg1",
      "n": "ไข่ดาว",
      "p": "20",
-     "img": "friedegg",
+     "img": "ph-friedegg",
      "sn": {
       "th": "ไข่ดาว",
       "en": "Fried egg",
@@ -2209,7 +2195,7 @@ window.NM_MENU = {
      "id": "oysteromelet1",
      "n": "ออส่วน",
      "p": "200",
-     "img": "oysteromelet",
+     "img": "ph-oysteromelet",
      "sn": {
       "th": "ออส่วน",
       "en": "Oyster omelette",
@@ -2242,7 +2228,7 @@ window.NM_MENU = {
      "id": "mamasoup1",
      "n": "ซุปมาม่า (หมู/ไก่)",
      "p": "70",
-     "img": "mamasoup",
+     "img": "ph-mamasoup",
      "sn": {
       "th": "ซุปมาม่า (หมู/ไก่)",
       "en": "Instant noodle soup (pork/chicken)",
@@ -2259,7 +2245,7 @@ window.NM_MENU = {
      "id": "mamasoup2",
      "n": "ซุปมาม่า (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "90",
-     "img": "mamasoup",
+     "img": "ph-mamasoup",
      "sn": {
       "th": "ซุปมาม่า (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Instant noodle soup (beef/shrimp/squid/seafood)",
@@ -2276,7 +2262,7 @@ window.NM_MENU = {
      "id": "riceboil1",
      "n": "ข้าวต้ม (หมู/ไก่)",
      "p": "70",
-     "img": "riceboil",
+     "img": "ph-riceboil",
      "sn": {
       "th": "ข้าวต้ม (หมู/ไก่)",
       "en": "Rice soup (khao tom) (pork/chicken)",
@@ -2293,7 +2279,7 @@ window.NM_MENU = {
      "id": "riceboil2",
      "n": "ข้าวต้ม (กุ้ง/หมึก/ทะเล)",
      "p": "90",
-     "img": "riceboil",
+     "img": "ph-riceboil",
      "sn": {
       "th": "ข้าวต้ม (กุ้ง/หมึก/ทะเล)",
       "en": "Rice soup (khao tom) (shrimp/squid/seafood)",
@@ -2310,7 +2296,7 @@ window.NM_MENU = {
      "id": "tomyum1",
      "n": "ต้มยำ (หมู/ไก่)",
      "p": "150",
-     "img": "tomyum",
+     "img": "ph-tomyum",
      "sn": {
       "th": "ต้มยำ (หมู/ไก่)",
       "en": "Tom yum (spicy soup) (pork/chicken)",
@@ -2327,7 +2313,7 @@ window.NM_MENU = {
      "id": "tomyum2",
      "n": "ต้มยำ (กุ้ง/หมึก/ทะเล)",
      "p": "180",
-     "img": "tomyum",
+     "img": "ph-tomyum",
      "sn": {
       "th": "ต้มยำ (กุ้ง/หมึก/ทะเล)",
       "en": "Tom yum (spicy soup) (shrimp/squid/seafood)",
@@ -2344,7 +2330,7 @@ window.NM_MENU = {
      "id": "tomyum3",
      "n": "ต้มยำ (หม้อไฟ)",
      "p": "250",
-     "img": "tomyum",
+     "img": "ph-tomyum",
      "sn": {
       "th": "ต้มยำ (หม้อไฟ)",
       "en": "Tom yum (spicy soup) (hot pot)",
@@ -2361,7 +2347,7 @@ window.NM_MENU = {
      "id": "tomkha1",
      "n": "ต้มข่า (หมู/ไก่)",
      "p": "150",
-     "img": "tomkha",
+     "img": "ph-tomkha",
      "sn": {
       "th": "ต้มข่า (หมู/ไก่)",
       "en": "Tom kha (coconut soup) (pork/chicken)",
@@ -2378,7 +2364,7 @@ window.NM_MENU = {
      "id": "tomkha2",
      "n": "ต้มข่า (กุ้ง/หมึก/ทะเล)",
      "p": "180",
-     "img": "tomkha",
+     "img": "ph-tomkha",
      "sn": {
       "th": "ต้มข่า (กุ้ง/หมึก/ทะเล)",
       "en": "Tom kha (coconut soup) (shrimp/squid/seafood)",
@@ -2395,7 +2381,7 @@ window.NM_MENU = {
      "id": "greencurry1",
      "n": "แกงเขียวหวาน (หมู/ไก่)",
      "p": "150",
-     "img": "greencurry",
+     "img": "ph-greencurry",
      "sn": {
       "th": "แกงเขียวหวาน (หมู/ไก่)",
       "en": "Green curry (pork/chicken)",
@@ -2412,7 +2398,7 @@ window.NM_MENU = {
      "id": "greencurry2",
      "n": "แกงเขียวหวาน (เนื้อ)",
      "p": "180",
-     "img": "greencurry",
+     "img": "ph-greencurry",
      "sn": {
       "th": "แกงเขียวหวาน (เนื้อ)",
       "en": "Green curry (beef)",
@@ -2429,7 +2415,7 @@ window.NM_MENU = {
      "id": "panang1",
      "n": "พะแนง (หมู/ไก่)",
      "p": "150",
-     "img": "panang",
+     "img": "ph-panang",
      "sn": {
       "th": "พะแนง (หมู/ไก่)",
       "en": "Panang curry (pork/chicken)",
@@ -2446,7 +2432,7 @@ window.NM_MENU = {
      "id": "panang2",
      "n": "พะแนง (เนื้อ/กุ้ง/ทะเล)",
      "p": "180",
-     "img": "panang",
+     "img": "ph-panang",
      "sn": {
       "th": "พะแนง (เนื้อ/กุ้ง/ทะเล)",
       "en": "Panang curry (beef/shrimp/seafood)",
@@ -2463,7 +2449,7 @@ window.NM_MENU = {
      "id": "tofusoup1",
      "n": "แกงจืดเต้าหู้หมูสับสาหร่าย",
      "p": "100",
-     "img": "tofusoup",
+     "img": "ph-tofusoup",
      "sn": {
       "th": "แกงจืดเต้าหู้หมูสับสาหร่าย",
       "en": "Clear soup with tofu, minced pork and seaweed",
@@ -2480,7 +2466,7 @@ window.NM_MENU = {
      "id": "mushroomsoup1",
      "n": "ซุปเห็ด",
      "p": "80",
-     "img": "mushroomsoup",
+     "img": "ph-mushroomsoup",
      "sn": {
       "th": "ซุปเห็ด",
       "en": "Mushroom soup",
@@ -2497,7 +2483,7 @@ window.NM_MENU = {
      "id": "sourshrimp1",
      "n": "แกงส้มกุ้ง",
      "p": "180",
-     "img": "sourshrimp",
+     "img": "ph-sourshrimp",
      "sn": {
       "th": "แกงส้มกุ้ง",
       "en": "Sour soup with shrimp (kaeng som)",
@@ -2514,7 +2500,7 @@ window.NM_MENU = {
      "id": "tomyumpoh1",
      "n": "ต้มยำโป๊ะแตก (ถ้วย)",
      "p": "180",
-     "img": "tomyumpoh",
+     "img": "ph-tomyumpoh",
      "sn": {
       "th": "ต้มยำโป๊ะแตก (ถ้วย)",
       "en": "Tom yum Poh Taek (spicy seafood soup) (bowl)",
@@ -2531,7 +2517,7 @@ window.NM_MENU = {
      "id": "tomyumpoh2",
      "n": "ต้มยำโป๊ะแตก (หม้อไฟ)",
      "p": "250",
-     "img": "tomyumpoh",
+     "img": "ph-tomyumpoh",
      "sn": {
       "th": "ต้มยำโป๊ะแตก (หม้อไฟ)",
       "en": "Tom yum Poh Taek (spicy seafood soup) (hot pot)",
@@ -2548,7 +2534,6 @@ window.NM_MENU = {
      "id": "eggpot1",
      "n": "ไข่ตุ๋นทะเลหม้อไฟ",
      "p": "250",
-     "img": "eggpot",
      "sn": {
       "th": "ไข่ตุ๋นทะเลหม้อไฟ",
       "en": "Seafood steamed egg hot pot",
@@ -2565,7 +2550,6 @@ window.NM_MENU = {
      "id": "squidink1",
      "n": "หมึกต้มน้ำดำ",
      "p": "200",
-     "img": "squidink",
      "sn": {
       "th": "หมึกต้มน้ำดำ",
       "en": "Squid ink soup",
@@ -2582,7 +2566,6 @@ window.NM_MENU = {
      "id": "coconut1",
      "n": "ห่อหมกทะเลมะพร้าวอ่อน",
      "p": "250",
-     "img": "coconut",
      "sn": {
       "th": "ห่อหมกทะเลมะพร้าวอ่อน",
       "en": "Seafood red curry steamed in a young coconut",

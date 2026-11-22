@@ -20,3 +20,5 @@
 ## Fisherman's Garden : photos partout (2026-11-22)
 - Menu : 187 articles sur 200 ont une photo (plats découpés dans les photos du menu papier ; chaque variante de prix reprend la photo du plat). Boissons : 38 photos libres (Openverse, CC0/CC BY) utilisées comme illustration, crédits dans `menus/fishermans-garden/CREDITS.md`. Sans photo : jus de pomme, B52, Coke Zero, électrolyte, M-150, suppléments, bratwurst, quelques plats flous.
 - À remplacer par les vraies photos du restaurant dès qu'il en a.
+
+- 2026-11-22 : Fisherman's Garden — photos floues du menu papier remplacées par des photos HD (bibliothèque Mae Lek + Openverse/Wikimedia, crédits dans CREDITS.md) ; 170/200 plats avec photo, photos = illustrations, à remplacer par les vraies du resto.

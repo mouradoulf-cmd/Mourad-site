@@ -41,3 +41,63 @@ Photos de plats : découpées dans les photos du menu papier du restaurant (avec
 - `dk-ice.webp` · « ice cubes », Muffet · https://www.flickr.com/photos/53133240@N00/2591108804 · licence BY 2.0
 - `dk-lipton.webp` · « Iced Tea in Summer », zaimoku_woodpile · https://www.flickr.com/photos/11250735@N07/9597269901 · licence BY 2.0
 - `dk-oishi.webp` · « mornig green tea », Kanko* · https://www.flickr.com/photos/29282750@N00/83154603 · licence BY 2.0
+
+## Photos de plats premium (remplacent les photos floues du menu papier)
+
+Photos libres (Wikimedia Commons, Openverse) utilisées comme **photos d'illustration** ; à remplacer par les vraies photos du restaurant. Les photos des plats thaïs principaux (pad thaï, tom yum, som tam…) viennent de la bibliothèque HD des menus NM Studio (licence Unsplash).
+
+- `ph-hamcheese.webp` · « Sandwich with French fries.jpg », Aida · https://commons.wikimedia.org/wiki/File:Sandwich_with_French_fries.jpg · CC BY 3.0
+- `ph-garlicbread.webp` · « Garlic bread baguettes 1.jpg », Infrogmation · https://commons.wikimedia.org/wiki/File:Garlic_bread_baguettes_1.jpg · CC BY-SA 4.0
+- `ph-hamburger.webp` · « Homemade hamburger with french fries in Argentina.jpg », Horacio Cambeiro · https://commons.wikimedia.org/wiki/File:Homemade_hamburger_with_french_fries_in_Argentina.jpg · CC BY-SA 3.0
+- `ph-bratwurst.webp` · « Bayreuther Bratwürste.jpg », El Grafo · https://commons.wikimedia.org/wiki/File:Bayreuther_Bratw%C3%BCrste.jpg · CC BY-SA 4.0
+- `ph-schnitzel.webp` · « Wiener Schnitzel - Chicken with Cheese Sauce - plus Frites and a Green Salad - W », Wiki.cullin · https://commons.wikimedia.org/wiki/File:Wiener_Schnitzel_-_Chicken_with_Cheese_Sauce_-_plus_Frites_and_a_Green_Salad_-_Walvis_Bay,_Namibia.jpg · CC BY-SA 4.0
+- `ph-corndog.webp` · « Corn dog 001.jpg », Ocdp · https://commons.wikimedia.org/wiki/File:Corn_dog_001.jpg · CC0
+- `ph-fishchips.webp` · « Fish and chips blackpool.jpg », Matthias Meckel · https://commons.wikimedia.org/wiki/File:Fish_and_chips_blackpool.jpg · CC BY-SA 4.0
+- `ph-porkchop.webp` · « Grilled Pork Chop with Rice.jpg », Ceeseven · https://commons.wikimedia.org/wiki/File:Grilled_Pork_Chop_with_Rice.jpg · CC BY-SA 4.0
+- `ph-carbonara.webp` · « Espaguetis carbonara.jpg », Javier Somoza · https://commons.wikimedia.org/wiki/File:Espaguetis_carbonara.jpg · CC BY-SA 4.0
+- `ph-squidgarlic.webp` · « Deep-fried squid with garlic.jpg », Vee Satayamas · https://commons.wikimedia.org/wiki/File:Deep-fried_squid_with_garlic.jpg · CC BY-SA 4.0
+- `ph-oyster.webp` · « Whitstable beach front, Fresh oysters for sale 2 - geograph.org.uk - 5231350.jpg », Michael Garlick  · https://commons.wikimedia.org/wiki/File:Whitstable_beach_front,_Fresh_oysters_for_sale_2_-_geograph.org.uk_-_5231350.jpg · CC BY-SA 2.0
+- `ph-bakedmussel.webp` · « Baked mussels hotel.jpg », CNEcija12345 · https://commons.wikimedia.org/wiki/File:Baked_mussels_hotel.jpg · CC BY-SA 4.0
+- `ph-prawn.webp` · « Kung yang.JPG », Takeaway · https://commons.wikimedia.org/wiki/File:Kung_yang.JPG · CC BY-SA 3.0
+- `ph-bluecrab.webp` · « Maryland blue crabs.jpg », bigbirdz · https://commons.wikimedia.org/wiki/File:Maryland_blue_crabs.jpg · CC BY 2.0
+- `ph-fishgarlic.webp` · « Deep fried catfish.jpg », pelican · https://commons.wikimedia.org/wiki/File:Deep_fried_catfish.jpg · CC BY-SA 2.0
+- `ph-fishsauce.webp` · « Deep fried catfish.jpg », pelican · https://commons.wikimedia.org/wiki/File:Deep_fried_catfish.jpg · CC BY-SA 2.0
+- `ph-fishlemon.webp` · « Thai steamed fish with lime juice-2.jpg », Mattes (talk) *derivative work: an-d (talk) · https://commons.wikimedia.org/wiki/File:Thai_steamed_fish_with_lime_juice-2.jpg · Public domain
+- `ph-fishsour.webp` · « Deep fried fish in a sweet & sour sauce.jpg », Yun Huang Yong from Harbord, Australia · https://commons.wikimedia.org/wiki/File:Deep_fried_fish_in_a_sweet_%26_sour_sauce.jpg · CC BY 2.0
+- `ph-mackerel.webp` · « Deep-fried horse mackerel lunch 002.jpg », Ocdp · https://commons.wikimedia.org/wiki/File:Deep-fried_horse_mackerel_lunch_002.jpg · CC0
+- `ph-friedrice2.webp` · « Crab Roe Sauce Seafood Fried Rice - Aberdeen Seafood 2025-09-08.jpg », Andy Li · https://commons.wikimedia.org/wiki/File:Crab_Roe_Sauce_Seafood_Fried_Rice_-_Aberdeen_Seafood_2025-09-08.jpg · CC0
+- `ph-friedegg.webp` · « Fried egg cooking in a pan.jpg », Horacio Cambeiro · https://commons.wikimedia.org/wiki/File:Fried_egg_cooking_in_a_pan.jpg · CC BY-SA 3.0
+- `ph-oysteromelet.webp` · « Oyster omelette.jpg », Chensiyuan · https://commons.wikimedia.org/wiki/File:Oyster_omelette.jpg · CC BY-SA 4.0
+- `ph-mushroom.webp` · « Neutaribokkeum (stir-fried oyster mushrooms).jpg », Hyeon-Jeong Suk · https://commons.wikimedia.org/wiki/File:Neutaribokkeum_(stir-fried_oyster_mushrooms).jpg · CC BY 2.0
+- `ph-cashew.webp` · « Cashewchickenphoto.jpg », Simon Law from Montréal, QC, Canada · https://commons.wikimedia.org/wiki/File:Cashewchickenphoto.jpg · CC BY-SA 2.0
+- `ph-omelette.webp` · « Crispy pork phat thai in omelette ball - Chiang Rai - 2017-07-03 (001).jpg », Iudexvivorum · https://commons.wikimedia.org/wiki/File:Crispy_pork_phat_thai_in_omelette_ball_-_Chiang_Rai_-_2017-07-03_(001).jpg · CC0
+- `ph-raadnaa.webp` · « Kuai-tiao rat na mu.JPG », Takeaway · https://commons.wikimedia.org/wiki/File:Kuai-tiao_rat_na_mu.JPG · CC BY-SA 3.0
+- `ph-broccoli.webp` · « Noodle stir fry with chicken, shrimp, and broccoli (18471621051).jpg », jeffreyw · https://commons.wikimedia.org/wiki/File:Noodle_stir_fry_with_chicken,_shrimp,_and_broccoli_(18471621051).jpg · CC BY 2.0
+- `ph-kaleoyster.webp` · « Chinese Broccoli with Oyster sauce.jpg », stu_spivack · https://commons.wikimedia.org/wiki/File:Chinese_Broccoli_with_Oyster_sauce.jpg · CC BY-SA 2.0
+- `ph-kalefish.webp` · « Taste of Beijing, Soho, London (4363228093).jpg », Ewan Munro from London, UK · https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363228093).jpg · CC BY-SA 2.0
+- `ph-saltedegg.webp` · « Stir-fried Squid with Salted Egg.jpg », Boonlert · https://commons.wikimedia.org/wiki/File:Stir-fried_Squid_with_Salted_Egg.jpg · CC0
+- `ph-chuchi.webp` · « Thaiger Prawn Chu Chee - Easythaiger 2026-04-21.jpg », Andy Li · https://commons.wikimedia.org/wiki/File:Thaiger_Prawn_Chu_Chee_-_Easythaiger_2026-04-21.jpg · CC0
+- `ph-currypowder.webp` · « Pu Phat Phong Kari.jpg », User:Takoradee · https://commons.wikimedia.org/wiki/File:Pu_Phat_Phong_Kari.jpg · CC BY-SA 3.0
+- `ph-macaroni.webp` · « MC 澳門 Macau 澳門 Macao 賈伯樂提督街 55 Rua do Almirante Costa Cabral 富明樓 Fu Ming Lau 新鴻發 », JohnLEE Brothers · https://commons.wikimedia.org/wiki/File:MC_%E6%BE%B3%E9%96%80_Macau_%E6%BE%B3%E9%96%80_Macao_%E8%B3%88%E4%BC%AF%E6%A8%82%E6%8F%90%E7%9D%A3%E8%A1%97_55_Rua_do_Almirante_Costa_Cabral_%E5%AF%8C%E6%98%8E%E6%A8%93_Fu_Ming_Lau_%E6%96%B0%E9%B4%BB%E7%99%BC%E7%BE%8E%E9%A3%9F_XinHongFa_Cuisine_Restaurant_%E6%97%A9%E9%A4%90_breakfast_%E7%89%9B%E8%82%89%E7%82%92%E9%80%9A%E7%B2%89_Stir-fried_macaroni_n_beef_beef_November_2024_R12S_01.jpg · CC0
+- `ph-mixveg.webp` · « Stir fried mixed vegetables.jpg », CNEcija12345 · https://commons.wikimedia.org/wiki/File:Stir_fried_mixed_vegetables.jpg · CC BY-SA 4.0
+- `ph-mama.webp` · « Rabokki - SOJU 2024-06-02.jpg », Andy Li · https://commons.wikimedia.org/wiki/File:Rabokki_-_SOJU_2024-06-02.jpg · CC0
+- `ph-sweetsour.webp` · « 菠萝咕噜肉.jpg », Walter Grassroot · https://commons.wikimedia.org/wiki/File:%E8%8F%A0%E8%90%9D%E5%92%95%E5%99%9C%E8%82%89.jpg · CC BY-SA 3.0
+- `ph-mamasoup.webp` · « Instant pot roast beef noodle soup by Jinmailang (20220316191040).jpg », N509FZ · https://commons.wikimedia.org/wiki/File:Instant_pot_roast_beef_noodle_soup_by_Jinmailang_(20220316191040).jpg · CC BY-SA 4.0
+- `ph-riceboil.webp` · « Khao tom pla.jpg », Takeaway · https://commons.wikimedia.org/wiki/File:Khao_tom_pla.jpg · CC BY-SA 3.0
+- `ph-greencurry.webp` · « Thai green chicken curry and roti.jpg », Takeaway · https://commons.wikimedia.org/wiki/File:Thai_green_chicken_curry_and_roti.jpg · CC BY-SA 3.0
+- `ph-tofusoup.webp` · « Tofu, shrimp, clams, pork, chopped vegetables as Korean soup - Massachusetts.jpg », Daderot · https://commons.wikimedia.org/wiki/File:Tofu,_shrimp,_clams,_pork,_chopped_vegetables_as_Korean_soup_-_Massachusetts.jpg · CC0
+- `ph-mushroomsoup.webp` · « Cream Mushroom soup 2.jpg », Redeemer|Vodesnet · https://commons.wikimedia.org/wiki/File:Cream_Mushroom_soup_2.jpg · CC BY-SA 3.0
+- `ph-sourshrimp.webp` · « Kaeng som kung.jpg », Takeaway · https://commons.wikimedia.org/wiki/File:Kaeng_som_kung.jpg · CC BY-SA 3.0
+- `ph-panang.webp` · « Phanaeng beef curry.jpg », Alpha from Melbourne, Australia · https://commons.wikimedia.org/wiki/File:Phanaeng_beef_curry.jpg · CC BY-SA 2.0
+- `ph-club.webp` · « Texas Club Sandwich », Paul Lowry · https://www.flickr.com/photos/10039026@N03/54253285489 · by 2.0
+- `ph-currywurst.webp` · « Waffel mit Currywurst », tm-md · https://www.flickr.com/photos/28224460@N00/50287196597 · by-sa 2.0
+- `ph-battered.webp` · « Tempura green beans », sarahstierch · https://www.flickr.com/photos/7633518@N08/51732631833 · by 2.0
+- `ph-onion.webp` · « Mozzarella sticks and nibblers (baby onion rings) », sarahstierch · https://www.flickr.com/photos/7633518@N08/52156456923 · by 2.0
+- `ph-fries.webp` · « French Fries », stockcatalog · https://www.flickr.com/photos/151691693@N02/40095363004 · by 2.0
+- `ph-fishsashimi.webp` · « Sashimi Bowl from Donggang Seafood Market in Pingtung, Taiwan », midnightbreakfastcafe · https://www.flickr.com/photos/193353181@N06/52131446475 · by 2.0
+- `ph-murexsashimi.webp` · « 141230 Sashimi in Shibuya », odako1 · https://www.flickr.com/photos/54573638@N05/15960388680 · by-sa 2.0
+- `ph-yammamuang.webp` · « Sun-dried Spanish Mackerel with Green Mango Salad - Porkfat - Sydney », Haydn Blackey · https://www.flickr.com/photos/54549113@N00/53996703649 · by-sa 2.0
+- `ph-yamkana.webp` · « Free papaya salad somtum image », auteur inconnu · https://www.rawpixel.com/image/5911029/image-public-domain-leaf-green · cc0 1.0
+- `ph-kungchae.webp` · « Free papaya salad somtum image », auteur inconnu · https://www.rawpixel.com/image/5910971/image-public-domain-green-food · cc0 1.0
+- `ph-yamtalay.webp` · « Free papaya salad somtum image », auteur inconnu · https://www.rawpixel.com/image/5910971/image-public-domain-green-food · cc0 1.0
+- `ph-squidgrill.webp` · « Grilled Squid, Nakama Sushi, Franklin Street, San Francisco », Brokentaco · https://www.flickr.com/photos/92024986@N00/51921474682 · by 2.0

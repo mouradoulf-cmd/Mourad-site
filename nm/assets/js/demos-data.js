@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-11-21";
+window.NM_UPDATED = "2026-11-22";
 
 window.NM_DEMOS = [
   { slug: "steak-dek-naew", name: "Steak Dek Naew (สเต็กเด็กแนว)", type: "Steakhouse", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Premier client. Site 3 langues (thaï, anglais, français) fait avec ses vraies photos + son menu QR (menus/steak-dek-naew/). À compléter : adresse, horaires, LINE/WhatsApp du patron." },
