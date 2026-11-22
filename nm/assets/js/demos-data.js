@@ -34,7 +34,7 @@ window.NM_LINKS = [
   ] },
   { space: "site", pane: "clients", group: "Les sites de mes clients", items: [
     { name: "Site web · Steak Dek Naew", icon: "🥩", path: "demos/steak-dek-naew/", note: "Le site du restaurant : héros photo + assiettes, section menu QR avec téléphone. TH/EN/FR" },
-    { name: "Menu QR · Fisherman's Garden (démo prospect)", icon: "🍹", path: "menus/fishermans-garden/", note: "Page boissons (57 articles, 9 langues) lue sur les photos du menu papier. À montrer en direct au patron. Plats pas encore ajoutés" },
+    { name: "Menu QR · Fisherman's Garden (démo prospect)", icon: "🍹", path: "menus/fishermans-garden/", note: "Carte complète (200 articles : plats + boissons, 9 langues) lue sur 22 photos du menu papier. À montrer en direct au patron" },
     { name: "Menu QR · Thai Foods (brouillon)", icon: "🍤", path: "menus/thai-seafood/", note: "78 plats, 9 langues, photos tirées des panneaux du patron. Nom lu sur l'enseigne, à confirmer" },
     { name: "Menu QR · Steak Dek Naew", icon: "🥩", path: "menus/steak-dek-naew/", note: "Premier client réel : 52 plats, 9 langues, prix lus sur son menu papier" }
   ] },
