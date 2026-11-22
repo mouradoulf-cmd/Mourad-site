@@ -10,7 +10,7 @@
 <meta name="description" content="Steak Dek Naew — Steaks, rice dishes & sets. Menu in 9 languages: ไทย, English, 中文, Русский, 한국어, हिन्दी, العربية, Deutsch, Français.">
 <script>
 /* Interrupteur de démo (voir menus/demo-switch.json) : redirige vers le menu d'un prospect tant qu'il est actif, puis le vrai menu revient tout seul. */
-(function(){try{var x=new XMLHttpRequest();x.open("GET","../demo-switch.json?t="+Date.now(),false);x.send();if(x.status===200){var j=JSON.parse(x.responseText);if(j.active&&/^[a-z0-9-]+$/.test(j.slug||"")&&Date.now()<Date.parse(j.until)){location.replace("../"+j.slug+"/"+location.search+location.hash)}}}catch(e){}})();
+(function(){try{var x=new XMLHttpRequest();x.open("GET","../demo-switch.json?t="+Date.now(),false);x.send();if(x.status===200){var j=JSON.parse(x.responseText);if(j.active&&/^[a-z0-9-]+$/.test(j.slug||"")&&Date.now()<Date.parse(j.until)){location.replace("../"+j.slug+"/"+(location.search?location.search+"&":"?")+"r="+Date.now()+location.hash)}}}catch(e){}})();
 </script>
 <link rel="preload" as="image" href="hero-m.webp?v=3" media="(max-width:760px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">

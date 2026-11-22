@@ -2,7 +2,7 @@
    - pages, scripts, styles, data (prices, subscription status): network first, the saved copy only when offline
    - photos and fonts: saved copy first (their URLs carry a version, so a new photo is a new file)
    Bump VERSION to drop every saved copy. */
-var VERSION = "nm-menus-v1";
+var VERSION = "nm-menus-v2";
 self.addEventListener("install", function () { self.skipWaiting(); });
 self.addEventListener("activate", function (e) {
   e.waitUntil(caches.keys().then(function (ks) {
@@ -24,7 +24,9 @@ self.addEventListener("fetch", function (e) {
     }));
     return;
   }
-  e.respondWith(fetch(r).then(function (res) {
+  // pages, scripts and data always revalidate with the server (never a stale browser copy), the saved copy is only the offline fallback
+  var fresh = new Request(r.url, { cache: "no-cache", credentials: "same-origin" });
+  e.respondWith(fetch(fresh).then(function (res) {
     if (res.ok) { var copy = res.clone(); caches.open(VERSION).then(function (c) { c.put(r, copy); }); }
     return res;
   }).catch(function () {
