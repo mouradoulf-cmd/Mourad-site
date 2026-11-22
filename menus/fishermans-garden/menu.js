@@ -25,8 +25,8 @@ window.NM_MENU = {
  "photoHD": false,
  "tapHint": false,
  "spice": false,
- "heroMobile": "hero-m.webp?v=2",
- "heroWide": "hero.webp?v=2",
+ "heroMobile": "hero-m.webp?v=4",
+ "heroWide": "hero.webp?v=4",
  "tagline": {
   "th": "อาหารไทย ซีฟู้ด เครื่องดื่ม",
   "en": "Thai food, seafood & drinks",
