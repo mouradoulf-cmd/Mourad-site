@@ -13,3 +13,6 @@
 ## Menu QR « Fisherman's Garden Restaurant and Bar » (démo prospect, 2026-11-22)
 - Lien : `menus/fishermans-garden/`. 200 articles en 9 langues : 8 rubriques de nourriture (sandwichs/européen, fritures, sashimi, salades épicées/grillades, poissons et fruits de mer, sautés, riz et œufs, soupes et currys) + 5 rubriques de boissons. Photos de plats découpées dans les photos du menu papier (qualité moyenne).
 - À confirmer avec le patron : bratwurst (autocollant X sur la photo), prix du curry de la jungle (coupé sur la photo, plat non ajouté), icône du prix 400 ฿ du curry en poudre (non ajouté), riz vapeur grande portion à 100 ฿, taille « S » des huîtres, noms/orthographe, contact, nom de domaine.
+
+## Interrupteur de démo des QR (2026-11-22)
+- `menus/demo-switch.json` : tant que `active` est vrai et que `until` n'est pas passé (6 h par défaut), le QR imprimé de Steak Dek Naew ouvre le menu du restaurant `slug` (ex. fishermans-garden). Ensuite, le vrai menu de Steak Dek Naew revient tout seul. Pour arrêter plus tôt : mettre `"active": false`.
