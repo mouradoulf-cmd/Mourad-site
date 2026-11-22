@@ -147,6 +147,7 @@ window.NM_MENU = {
      "id": "hamburger2",
      "n": "แฮมเบอร์เกอร์ (เนื้อ)",
      "p": "150",
+     "img": "hamburger",
      "sn": {
       "th": "แฮมเบอร์เกอร์ (เนื้อ)",
       "en": "Hamburger (beef)",
@@ -348,6 +349,7 @@ window.NM_MENU = {
      "id": "thaispag2",
      "n": "สปาเก็ตตี้ขี้เมา (กุ้ง/หมึก/ทะเล)",
      "p": "150",
+     "img": "thaispag",
      "sn": {
       "th": "สปาเก็ตตี้ขี้เมา (กุ้ง/หมึก/ทะเล)",
       "en": "Spaghetti Thai style (spicy) (shrimp/squid/seafood)",
@@ -381,6 +383,7 @@ window.NM_MENU = {
      "id": "currywurst2",
      "n": "ไส้กรอกย่างเคอรี่เวิร์ส (2 ไส้กรอก)",
      "p": "200",
+     "img": "currywurst",
      "sn": {
       "th": "ไส้กรอกย่างเคอรี่เวิร์ส (2 ไส้กรอก)",
       "en": "Curry wurst sausages with fries and salad (2 sausages)",
@@ -515,6 +518,7 @@ window.NM_MENU = {
      "id": "battered2",
      "n": "เมนูชุบแป้งทอด (กุ้ง/หมึก/ทะเล)",
      "p": "200",
+     "img": "battered",
      "sn": {
       "th": "เมนูชุบแป้งทอด (กุ้ง/หมึก/ทะเล)",
       "en": "Battered and fried (shrimp/squid/seafood)",
@@ -665,6 +669,7 @@ window.NM_MENU = {
      "id": "somtampu1",
      "n": "ส้มตำปูม้า",
      "p": "100",
+     "img": "somtam",
      "sn": {
       "th": "ส้มตำปูม้า",
       "en": "Papaya salad with blue crab",
@@ -749,6 +754,7 @@ window.NM_MENU = {
      "id": "laab2",
      "n": "ลาบ (กุ้ง/หมึก/เนื้อ/ทะเล)",
      "p": "180",
+     "img": "laab",
      "sn": {
       "th": "ลาบ (กุ้ง/หมึก/เนื้อ/ทะเล)",
       "en": "Spicy minced salad with herbs (laab) (shrimp/squid/beef/seafood)",
@@ -782,6 +788,7 @@ window.NM_MENU = {
      "id": "yammamuang1",
      "n": "ยำมะม่วง",
      "p": "80",
+     "img": "yammamuang",
      "sn": {
       "th": "ยำมะม่วง",
       "en": "Spicy mango salad",
@@ -798,6 +805,7 @@ window.NM_MENU = {
      "id": "yamkana1",
      "n": "ยำก้านคะน้ากุ้งสด",
      "p": "180",
+     "img": "yamkana",
      "sn": {
       "th": "ยำก้านคะน้ากุ้งสด",
       "en": "Spicy Chinese kale stem salad with fresh shrimp",
@@ -847,6 +855,7 @@ window.NM_MENU = {
      "id": "yamwunsen2",
      "n": "ยำวุ้นเส้น (กุ้ง/หมึก/ทะเล)",
      "p": "180",
+     "img": "yamwunsen",
      "sn": {
       "th": "ยำวุ้นเส้น (กุ้ง/หมึก/ทะเล)",
       "en": "Spicy glass noodle salad (shrimp/squid/seafood)",
@@ -981,6 +990,7 @@ window.NM_MENU = {
      "id": "squidsteam2",
      "n": "หมึกไข่นึ่งมะนาว (หม้อไฟ)",
      "p": "400",
+     "img": "squidsteam",
      "sn": {
       "th": "หมึกไข่นึ่งมะนาว (หม้อไฟ)",
       "en": "Steamed squid with roe and lemon juice (hot pot)",
@@ -1014,6 +1024,7 @@ window.NM_MENU = {
      "id": "oyster2",
      "n": "หอยนางรม (ใหญ่/4 ตัว)",
      "p": "300",
+     "img": "oyster",
      "sn": {
       "th": "หอยนางรม (ใหญ่/4 ตัว)",
       "en": "Oysters (large/4 pieces)",
@@ -1030,6 +1041,7 @@ window.NM_MENU = {
      "id": "oyster3",
      "n": "หอยนางรม (ใหญ่/1 ตัว)",
      "p": "80",
+     "img": "oyster",
      "sn": {
       "th": "หอยนางรม (ใหญ่/1 ตัว)",
       "en": "Oysters (large/1 piece)",
@@ -1097,6 +1109,7 @@ window.NM_MENU = {
      "id": "prawn2",
      "n": "กุ้งอบเกลือ / กุ้งเผา (1 กก.)",
      "p": "800",
+     "img": "prawn",
      "sn": {
       "th": "กุ้งอบเกลือ / กุ้งเผา (1 กก.)",
       "en": "Salted steamed prawns / grilled prawns (1 kg)",
@@ -1130,6 +1143,7 @@ window.NM_MENU = {
      "id": "bluecrab2",
      "n": "ปูม้านึ่ง (1 กก.)",
      "p": "800",
+     "img": "bluecrab",
      "sn": {
       "th": "ปูม้านึ่ง (1 กก.)",
       "en": "Steamed blue crab (1 kg)",
@@ -1315,6 +1329,7 @@ window.NM_MENU = {
      "id": "ginger2",
      "n": "ผัดขิง (เนื้อ)",
      "p": "180",
+     "img": "ginger",
      "sn": {
       "th": "ผัดขิง (เนื้อ)",
       "en": "Stir-fried ginger (beef)",
@@ -1348,6 +1363,7 @@ window.NM_MENU = {
      "id": "mushroom2",
      "n": "ผัดเห็ดฟาง (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "180",
+     "img": "mushroom",
      "sn": {
       "th": "ผัดเห็ดฟาง (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried straw mushrooms (beef/shrimp/squid/seafood)",
@@ -1381,6 +1397,7 @@ window.NM_MENU = {
      "id": "cashew2",
      "n": "ผัดเม็ดมะม่วง (กุ้ง/ทะเล)",
      "p": "180",
+     "img": "cashew",
      "sn": {
       "th": "ผัดเม็ดมะม่วง (กุ้ง/ทะเล)",
       "en": "Stir-fried cashew nuts (shrimp/seafood)",
@@ -1414,6 +1431,7 @@ window.NM_MENU = {
      "id": "glassnoodle2",
      "n": "ผัดวุ้นเส้น (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "180",
+     "img": "glassnoodle",
      "sn": {
       "th": "ผัดวุ้นเส้น (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried glass noodles (beef/shrimp/squid/seafood)",
@@ -1447,6 +1465,7 @@ window.NM_MENU = {
      "id": "garlicfry2",
      "n": "ทอดกระเทียม (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "200",
+     "img": "garlicfry",
      "sn": {
       "th": "ทอดกระเทียม (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Deep-fried with garlic (beef/shrimp/squid/seafood)",
@@ -1480,6 +1499,7 @@ window.NM_MENU = {
      "id": "omelette2",
      "n": "ไข่เจียว (กุ้ง/หมึก)",
      "p": "150",
+     "img": "omelette",
      "sn": {
       "th": "ไข่เจียว (กุ้ง/หมึก)",
       "en": "Thai-style omelette (shrimp/squid)",
@@ -1513,6 +1533,7 @@ window.NM_MENU = {
      "id": "raadnaa2",
      "n": "ราดหน้า (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "90",
+     "img": "raadnaa",
      "sn": {
       "th": "ราดหน้า (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Noodles in thick gravy (beef/shrimp/squid/seafood)",
@@ -1546,6 +1567,7 @@ window.NM_MENU = {
      "id": "kaprao_rice2",
      "n": "ข้าวราดผัดกะเพรา (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "100",
+     "img": "kaprao_rice",
      "sn": {
       "th": "ข้าวราดผัดกะเพรา (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Holy basil stir-fry on rice (phad kaprao) (beef/shrimp/squid/seafood)",
@@ -1680,6 +1702,7 @@ window.NM_MENU = {
      "id": "stuffedomelet2",
      "n": "ไข่ยัดไส้ (กุ้ง/หมึก/ทะเล)",
      "p": "150",
+     "img": "stuffedomelet",
      "sn": {
       "th": "ไข่ยัดไส้ (กุ้ง/หมึก/ทะเล)",
       "en": "Stuffed omelette (shrimp/squid/seafood)",
@@ -1764,6 +1787,7 @@ window.NM_MENU = {
      "id": "currypowder2",
      "n": "ผัดผงกะหรี่ (ปู)",
      "p": "350",
+     "img": "currypowder",
      "sn": {
       "th": "ผัดผงกะหรี่ (ปู)",
       "en": "Stir-fried with curry powder (crab)",
@@ -1829,6 +1853,7 @@ window.NM_MENU = {
      "id": "basil2",
      "n": "ผัดกะเพรา (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "180",
+     "img": "basil",
      "sn": {
       "th": "ผัดกะเพรา (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried holy basil (beef/shrimp/squid/seafood)",
@@ -1862,6 +1887,7 @@ window.NM_MENU = {
      "id": "mixveg2",
      "n": "ผัดผักรวม (หมู/ไก่)",
      "p": "150",
+     "img": "mixveg",
      "sn": {
       "th": "ผัดผักรวม (หมู/ไก่)",
       "en": "Stir-fried mixed vegetables (pork/chicken)",
@@ -1878,6 +1904,7 @@ window.NM_MENU = {
      "id": "mixveg3",
      "n": "ผัดผักรวม (กุ้ง/หมึก/ทะเล)",
      "p": "180",
+     "img": "mixveg",
      "sn": {
       "th": "ผัดผักรวม (กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried mixed vegetables (shrimp/squid/seafood)",
@@ -1911,6 +1938,7 @@ window.NM_MENU = {
      "id": "siew2",
      "n": "ผัดซีอิ๊ว (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "90",
+     "img": "siew",
      "sn": {
       "th": "ผัดซีอิ๊ว (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried flat noodles with soy sauce (beef/shrimp/squid/seafood)",
@@ -1944,6 +1972,7 @@ window.NM_MENU = {
      "id": "mama2",
      "n": "ผัดมาม่า (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "100",
+     "img": "mama",
      "sn": {
       "th": "ผัดมาม่า (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Stir-fried instant noodles (beef/shrimp/squid/seafood)",
@@ -1977,6 +2006,7 @@ window.NM_MENU = {
      "id": "sweetsour2",
      "n": "ผัดเปรี้ยวหวาน (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "180",
+     "img": "sweetsour",
      "sn": {
       "th": "ผัดเปรี้ยวหวาน (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Sweet and sour stir-fry (beef/shrimp/squid/seafood)",
@@ -1993,6 +2023,7 @@ window.NM_MENU = {
      "id": "waterspinach1",
      "n": "ผัดผักบุ้ง",
      "p": "80",
+     "img": "waterspinach",
      "sn": {
       "th": "ผัดผักบุ้ง",
       "en": "Stir-fried water spinach",
@@ -2042,6 +2073,7 @@ window.NM_MENU = {
      "id": "friedrice1_2",
      "n": "ข้าวผัด (ไข่/หมู/ไก่, กลาง)",
      "p": "150",
+     "img": "friedrice1",
      "sn": {
       "th": "ข้าวผัด (ไข่/หมู/ไก่, กลาง)",
       "en": "Fried rice (egg/pork/chicken, medium)",
@@ -2058,6 +2090,7 @@ window.NM_MENU = {
      "id": "friedrice1_3",
      "n": "ข้าวผัด (ไข่/หมู/ไก่, ใหญ่)",
      "p": "180",
+     "img": "friedrice1",
      "sn": {
       "th": "ข้าวผัด (ไข่/หมู/ไก่, ใหญ่)",
       "en": "Fried rice (egg/pork/chicken, large)",
@@ -2091,6 +2124,7 @@ window.NM_MENU = {
      "id": "friedrice2_2",
      "n": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, กลาง)",
      "p": "170",
+     "img": "friedrice2",
      "sn": {
       "th": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, กลาง)",
       "en": "Fried rice (beef/shrimp/crab/squid/seafood, medium)",
@@ -2107,6 +2141,7 @@ window.NM_MENU = {
      "id": "friedrice2_3",
      "n": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, ใหญ่)",
      "p": "200",
+     "img": "friedrice2",
      "sn": {
       "th": "ข้าวผัด (เนื้อ/กุ้ง/ปู/หมึก/ทะเล, ใหญ่)",
       "en": "Fried rice (beef/shrimp/crab/squid/seafood, large)",
@@ -2140,6 +2175,7 @@ window.NM_MENU = {
      "id": "steamrice2",
      "n": "ข้าวสวย (ใหญ่)",
      "p": "100",
+     "img": "steamrice",
      "sn": {
       "th": "ข้าวสวย (ใหญ่)",
       "en": "Steamed rice (large)",
@@ -2223,6 +2259,7 @@ window.NM_MENU = {
      "id": "mamasoup2",
      "n": "ซุปมาม่า (เนื้อ/กุ้ง/หมึก/ทะเล)",
      "p": "90",
+     "img": "mamasoup",
      "sn": {
       "th": "ซุปมาม่า (เนื้อ/กุ้ง/หมึก/ทะเล)",
       "en": "Instant noodle soup (beef/shrimp/squid/seafood)",
@@ -2256,6 +2293,7 @@ window.NM_MENU = {
      "id": "riceboil2",
      "n": "ข้าวต้ม (กุ้ง/หมึก/ทะเล)",
      "p": "90",
+     "img": "riceboil",
      "sn": {
       "th": "ข้าวต้ม (กุ้ง/หมึก/ทะเล)",
       "en": "Rice soup (khao tom) (shrimp/squid/seafood)",
@@ -2289,6 +2327,7 @@ window.NM_MENU = {
      "id": "tomyum2",
      "n": "ต้มยำ (กุ้ง/หมึก/ทะเล)",
      "p": "180",
+     "img": "tomyum",
      "sn": {
       "th": "ต้มยำ (กุ้ง/หมึก/ทะเล)",
       "en": "Tom yum (spicy soup) (shrimp/squid/seafood)",
@@ -2305,6 +2344,7 @@ window.NM_MENU = {
      "id": "tomyum3",
      "n": "ต้มยำ (หม้อไฟ)",
      "p": "250",
+     "img": "tomyum",
      "sn": {
       "th": "ต้มยำ (หม้อไฟ)",
       "en": "Tom yum (spicy soup) (hot pot)",
@@ -2338,6 +2378,7 @@ window.NM_MENU = {
      "id": "tomkha2",
      "n": "ต้มข่า (กุ้ง/หมึก/ทะเล)",
      "p": "180",
+     "img": "tomkha",
      "sn": {
       "th": "ต้มข่า (กุ้ง/หมึก/ทะเล)",
       "en": "Tom kha (coconut soup) (shrimp/squid/seafood)",
@@ -2371,6 +2412,7 @@ window.NM_MENU = {
      "id": "greencurry2",
      "n": "แกงเขียวหวาน (เนื้อ)",
      "p": "180",
+     "img": "greencurry",
      "sn": {
       "th": "แกงเขียวหวาน (เนื้อ)",
       "en": "Green curry (beef)",
@@ -2404,6 +2446,7 @@ window.NM_MENU = {
      "id": "panang2",
      "n": "พะแนง (เนื้อ/กุ้ง/ทะเล)",
      "p": "180",
+     "img": "panang",
      "sn": {
       "th": "พะแนง (เนื้อ/กุ้ง/ทะเล)",
       "en": "Panang curry (beef/shrimp/seafood)",
@@ -2488,6 +2531,7 @@ window.NM_MENU = {
      "id": "tomyumpoh2",
      "n": "ต้มยำโป๊ะแตก (หม้อไฟ)",
      "p": "250",
+     "img": "tomyumpoh",
      "sn": {
       "th": "ต้มยำโป๊ะแตก (หม้อไฟ)",
       "en": "Tom yum Poh Taek (spicy seafood soup) (hot pot)",
@@ -2581,7 +2625,8 @@ window.NM_MENU = {
       "ar": "عصير جوز الهند",
       "de": "Kokossaft",
       "fr": "Jus de coco"
-     }
+     },
+     "img": "dk-coconut"
     },
     {
      "id": "j2",
@@ -2613,7 +2658,8 @@ window.NM_MENU = {
       "ar": "عصير برتقال",
       "de": "Orangensaft",
       "fr": "Jus d’orange"
-     }
+     },
+     "img": "dk-orange"
     },
     {
      "id": "j4",
@@ -2629,7 +2675,8 @@ window.NM_MENU = {
       "ar": "عصير أناناس",
       "de": "Ananassaft",
       "fr": "Jus d’ananas"
-     }
+     },
+     "img": "dk-pineapple"
     }
    ]
   },
@@ -2661,7 +2708,8 @@ window.NM_MENU = {
       "ar": "سلاش الأناناس",
       "de": "Ananas-Slush",
       "fr": "Slush à l’ananas"
-     }
+     },
+     "img": "dk-pineslush"
     },
     {
      "id": "s2",
@@ -2677,7 +2725,8 @@ window.NM_MENU = {
       "ar": "سلاش البطيخ",
       "de": "Wassermelonen-Slush",
       "fr": "Slush à la pastèque"
-     }
+     },
+     "img": "dk-watermelon"
     },
     {
      "id": "s3",
@@ -2693,7 +2742,8 @@ window.NM_MENU = {
       "ar": "سلاش المانجو",
       "de": "Mango-Slush",
       "fr": "Slush à la mangue"
-     }
+     },
+     "img": "dk-mango"
     },
     {
      "id": "s4",
@@ -2709,7 +2759,8 @@ window.NM_MENU = {
       "ar": "سلاش الفراولة",
       "de": "Erdbeer-Slush",
       "fr": "Slush à la fraise"
-     }
+     },
+     "img": "dk-strawberry"
     },
     {
      "id": "s5",
@@ -2725,7 +2776,8 @@ window.NM_MENU = {
       "ar": "سلاش الليمون الأخضر",
       "de": "Limetten-Slush",
       "fr": "Slush au citron vert"
-     }
+     },
+     "img": "dk-lime"
     },
     {
      "id": "s6",
@@ -2741,7 +2793,8 @@ window.NM_MENU = {
       "ar": "سلاش جوز الهند",
       "de": "Kokos-Slush",
       "fr": "Slush à la noix de coco"
-     }
+     },
+     "img": "dk-coconutslush"
     },
     {
      "id": "s7",
@@ -2757,7 +2810,8 @@ window.NM_MENU = {
       "ar": "كاكاو فرابيه",
       "de": "Kakao-Frappé",
       "fr": "Frappé au cacao"
-     }
+     },
+     "img": "dk-cocoa"
     },
     {
      "id": "s8",
@@ -2773,7 +2827,8 @@ window.NM_MENU = {
       "ar": "سلاش الكيوي",
       "de": "Kiwi-Slush",
       "fr": "Slush au kiwi"
-     }
+     },
+     "img": "dk-kiwi"
     }
    ]
   },
@@ -2805,7 +2860,8 @@ window.NM_MENU = {
       "ar": "Singha بيرة, زجاجة صغيرة",
       "de": "Singha Bier, kleine Flasche",
       "fr": "Singha bière, petite bouteille"
-     }
+     },
+     "img": "dk-singha"
     },
     {
      "id": "a2",
@@ -2821,7 +2877,8 @@ window.NM_MENU = {
       "ar": "Singha بيرة, زجاجة كبيرة",
       "de": "Singha Bier, große Flasche",
       "fr": "Singha bière, grande bouteille"
-     }
+     },
+     "img": "dk-singha"
     },
     {
      "id": "a3",
@@ -2837,7 +2894,8 @@ window.NM_MENU = {
       "ar": "Leo بيرة, زجاجة صغيرة",
       "de": "Leo Bier, kleine Flasche",
       "fr": "Leo bière, petite bouteille"
-     }
+     },
+     "img": "dk-beer"
     },
     {
      "id": "a4",
@@ -2853,7 +2911,8 @@ window.NM_MENU = {
       "ar": "Leo بيرة, زجاجة كبيرة",
       "de": "Leo Bier, große Flasche",
       "fr": "Leo bière, grande bouteille"
-     }
+     },
+     "img": "dk-beer"
     },
     {
      "id": "a5",
@@ -2869,7 +2928,8 @@ window.NM_MENU = {
       "ar": "Chang بيرة, زجاجة صغيرة",
       "de": "Chang Bier, kleine Flasche",
       "fr": "Chang bière, petite bouteille"
-     }
+     },
+     "img": "dk-chang"
     },
     {
      "id": "a6",
@@ -2885,7 +2945,8 @@ window.NM_MENU = {
       "ar": "Chang بيرة, زجاجة كبيرة",
       "de": "Chang Bier, große Flasche",
       "fr": "Chang bière, grande bouteille"
-     }
+     },
+     "img": "dk-chang"
     },
     {
      "id": "a7",
@@ -2901,7 +2962,8 @@ window.NM_MENU = {
       "ar": "Heineken بيرة, زجاجة صغيرة",
       "de": "Heineken Bier, kleine Flasche",
       "fr": "Heineken bière, petite bouteille"
-     }
+     },
+     "img": "dk-heineken"
     },
     {
      "id": "a8",
@@ -2917,7 +2979,8 @@ window.NM_MENU = {
       "ar": "Heineken بيرة, زجاجة كبيرة",
       "de": "Heineken Bier, große Flasche",
       "fr": "Heineken bière, grande bouteille"
-     }
+     },
+     "img": "dk-heineken"
     },
     {
      "id": "a9",
@@ -2933,7 +2996,8 @@ window.NM_MENU = {
       "ar": "San Miguel Light بيرة, زجاجة صغيرة",
       "de": "San Miguel Light Bier, kleine Flasche",
       "fr": "San Miguel Light bière, petite bouteille"
-     }
+     },
+     "img": "dk-beer"
     },
     {
      "id": "a10",
@@ -2949,7 +3013,8 @@ window.NM_MENU = {
       "ar": "Sangsom, زجاجة مسطحة",
       "de": "Sangsom, Flachmann",
       "fr": "Sangsom, flasque"
-     }
+     },
+     "img": "dk-flask"
     },
     {
      "id": "a11",
@@ -2965,7 +3030,8 @@ window.NM_MENU = {
       "ar": "Sangsom, زجاجة مستديرة",
       "de": "Sangsom, runde Flasche",
       "fr": "Sangsom, bouteille ronde"
-     }
+     },
+     "img": "dk-flask"
     },
     {
      "id": "a12",
@@ -2981,7 +3047,8 @@ window.NM_MENU = {
       "ar": "Hong Thong, زجاجة مسطحة",
       "de": "Hong Thong, Flachmann",
       "fr": "Hong Thong, flasque"
-     }
+     },
+     "img": "dk-flask"
     },
     {
      "id": "a13",
@@ -2997,7 +3064,8 @@ window.NM_MENU = {
       "ar": "Hong Thong, زجاجة مستديرة",
       "de": "Hong Thong, runde Flasche",
       "fr": "Hong Thong, bouteille ronde"
-     }
+     },
+     "img": "dk-flask"
     },
     {
      "id": "a14",
@@ -3013,7 +3081,8 @@ window.NM_MENU = {
       "ar": "Regency, زجاجة مسطحة",
       "de": "Regency, Flachmann",
       "fr": "Regency, flasque"
-     }
+     },
+     "img": "dk-flask"
     }
    ]
   },
@@ -3045,7 +3114,8 @@ window.NM_MENU = {
       "ar": "Mai Tai",
       "de": "Mai Tai",
       "fr": "Mai Tai"
-     }
+     },
+     "img": "dk-maitai"
     },
     {
      "id": "c2",
@@ -3061,7 +3131,8 @@ window.NM_MENU = {
       "ar": "Margarita",
       "de": "Margarita",
       "fr": "Margarita"
-     }
+     },
+     "img": "dk-margarita"
     },
     {
      "id": "c3",
@@ -3077,7 +3148,8 @@ window.NM_MENU = {
       "ar": "Pink Lady",
       "de": "Pink Lady",
       "fr": "Pink Lady"
-     }
+     },
+     "img": "dk-pinklady"
     },
     {
      "id": "c4",
@@ -3093,7 +3165,8 @@ window.NM_MENU = {
       "ar": "Mojito",
       "de": "Mojito",
       "fr": "Mojito"
-     }
+     },
+     "img": "dk-mojito"
     },
     {
      "id": "c5",
@@ -3109,7 +3182,8 @@ window.NM_MENU = {
       "ar": "Long Island",
       "de": "Long Island",
       "fr": "Long Island"
-     }
+     },
+     "img": "dk-longisland"
     },
     {
      "id": "c6",
@@ -3125,7 +3199,8 @@ window.NM_MENU = {
       "ar": "Blue Hawaii",
       "de": "Blue Hawaii",
       "fr": "Blue Hawaii"
-     }
+     },
+     "img": "dk-bluehawaii"
     },
     {
      "id": "c7",
@@ -3141,7 +3216,8 @@ window.NM_MENU = {
       "ar": "Piña Colada",
       "de": "Piña Colada",
       "fr": "Piña Colada"
-     }
+     },
+     "img": "dk-pinacolada"
     },
     {
      "id": "c8",
@@ -3157,7 +3233,8 @@ window.NM_MENU = {
       "ar": "Sex on the Beach",
       "de": "Sex on the Beach",
       "fr": "Sex on the Beach"
-     }
+     },
+     "img": "dk-sexbeach"
     },
     {
      "id": "c9",
@@ -3173,7 +3250,8 @@ window.NM_MENU = {
       "ar": "Kamikaze",
       "de": "Kamikaze",
       "fr": "Kamikaze"
-     }
+     },
+     "img": "dk-kamikaze"
     },
     {
      "id": "c10",
@@ -3189,7 +3267,8 @@ window.NM_MENU = {
       "ar": "Kahlúa",
       "de": "Kahlúa",
       "fr": "Kahlúa"
-     }
+     },
+     "img": "dk-kahlua"
     },
     {
      "id": "c11",
@@ -3221,7 +3300,8 @@ window.NM_MENU = {
       "ar": "Tequila",
       "de": "Tequila",
       "fr": "Tequila"
-     }
+     },
+     "img": "dk-tequila"
     },
     {
      "id": "c13",
@@ -3253,7 +3333,8 @@ window.NM_MENU = {
       "ar": "كوكتيل مثلج",
       "de": "Frozen Cocktail",
       "fr": "Cocktail frappé"
-     }
+     },
+     "img": "dk-frozen"
     },
     {
      "id": "c15",
@@ -3301,7 +3382,8 @@ window.NM_MENU = {
       "ar": "كوكاكولا (250 مل)",
       "de": "Cola (250 ml)",
       "fr": "Coca-Cola (250 ml)"
-     }
+     },
+     "img": "dk-coke"
     },
     {
      "id": "d2",
@@ -3317,7 +3399,8 @@ window.NM_MENU = {
       "ar": "كوكاكولا (1.5 لتر)",
       "de": "Cola (1,5 l)",
       "fr": "Coca-Cola (1,5 L)"
-     }
+     },
+     "img": "dk-coke"
     },
     {
      "id": "d3",
@@ -3333,7 +3416,8 @@ window.NM_MENU = {
       "ar": "فانتا (250 مل)",
       "de": "Fanta (250 ml)",
       "fr": "Fanta (250 ml)"
-     }
+     },
+     "img": "dk-fanta"
     },
     {
      "id": "d4",
@@ -3349,7 +3433,8 @@ window.NM_MENU = {
       "ar": "سبرايت (250 مل)",
       "de": "Sprite (250 ml)",
       "fr": "Sprite (250 ml)"
-     }
+     },
+     "img": "dk-sprite"
     },
     {
      "id": "d5",
@@ -3381,7 +3466,8 @@ window.NM_MENU = {
       "ar": "شويبس بالليمون",
       "de": "Schweppes Zitrone",
       "fr": "Schweppes citron"
-     }
+     },
+     "img": "dk-tonic"
     },
     {
      "id": "d7",
@@ -3397,7 +3483,8 @@ window.NM_MENU = {
       "ar": "شويبس تونيك",
       "de": "Schweppes Tonic",
       "fr": "Schweppes tonic"
-     }
+     },
+     "img": "dk-tonic"
     },
     {
      "id": "d8",
@@ -3413,7 +3500,8 @@ window.NM_MENU = {
       "ar": "عصير برتقال مينيت ميد",
       "de": "Minute Maid Orangensaft",
       "fr": "Jus d’orange Minute Maid"
-     }
+     },
+     "img": "dk-oj"
     },
     {
      "id": "d9",
@@ -3429,7 +3517,8 @@ window.NM_MENU = {
       "ar": "مياه شرب (550 مل)",
       "de": "Wasser (550 ml)",
       "fr": "Eau (550 ml)"
-     }
+     },
+     "img": "dk-water"
     },
     {
      "id": "d10",
@@ -3445,7 +3534,8 @@ window.NM_MENU = {
       "ar": "مياه شرب (1.5 لتر)",
       "de": "Wasser (1,5 l)",
       "fr": "Eau (1,5 L)"
-     }
+     },
+     "img": "dk-water"
     },
     {
      "id": "d11",
@@ -3461,7 +3551,8 @@ window.NM_MENU = {
       "ar": "صودا (325 مل)",
       "de": "Sodawasser (325 ml)",
       "fr": "Eau gazeuse (325 ml)"
-     }
+     },
+     "img": "dk-soda"
     },
     {
      "id": "d12",
@@ -3477,7 +3568,8 @@ window.NM_MENU = {
       "ar": "ثلج",
       "de": "Eiswürfel",
       "fr": "Glaçons"
-     }
+     },
+     "img": "dk-ice"
     },
     {
      "id": "d13",
@@ -3525,7 +3617,8 @@ window.NM_MENU = {
       "ar": "شاي ليبتون المثلج بالليمون",
       "de": "Lipton Eistee Zitrone",
       "fr": "Lipton thé glacé citron"
-     }
+     },
+     "img": "dk-lipton"
     },
     {
      "id": "d16",
@@ -3541,7 +3634,8 @@ window.NM_MENU = {
       "ar": "شاي أويشي",
       "de": "Oishi Tee",
       "fr": "Thé Oishi"
-     }
+     },
+     "img": "dk-oishi"
     }
    ]
   }

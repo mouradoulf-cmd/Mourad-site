@@ -16,3 +16,7 @@
 
 ## Interrupteur de démo des QR (2026-11-22)
 - `menus/demo-switch.json` : tant que `active` est vrai et que `until` n'est pas passé (6 h par défaut), le QR imprimé de Steak Dek Naew ouvre le menu du restaurant `slug` (ex. fishermans-garden). Ensuite, le vrai menu de Steak Dek Naew revient tout seul. Pour arrêter plus tôt : mettre `"active": false`.
+
+## Fisherman's Garden : photos partout (2026-11-22)
+- Menu : 187 articles sur 200 ont une photo (plats découpés dans les photos du menu papier ; chaque variante de prix reprend la photo du plat). Boissons : 38 photos libres (Openverse, CC0/CC BY) utilisées comme illustration, crédits dans `menus/fishermans-garden/CREDITS.md`. Sans photo : jus de pomme, B52, Coke Zero, électrolyte, M-150, suppléments, bratwurst, quelques plats flous.
+- À remplacer par les vraies photos du restaurant dès qu'il en a.
