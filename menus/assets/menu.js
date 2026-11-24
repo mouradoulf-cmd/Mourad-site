@@ -408,7 +408,9 @@
         return '<li><button type="button" data-go="' + s.id + '" class="' + (i === cur ? "cur" : "") + '"><small>' + String(i + 1).padStart(2, "0") + "</small><b>" + esc(tr(s.t)) + "</b><i>" + s.items.length + "</i></button></li>";
       }).join("") + "</ul>";
     } else if (kind === "lang") {
-      h += '<h3 class="st" style="margin-top:4px">' + esc(t("lang")) + '</h3><div class="lgrid' + (langs.length > 12 ? " many" : "") + '">' + langs.map(function (l) { return '<button type="button" data-lang="' + l + '" lang="' + l + '" aria-pressed="' + (l === lang) + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") + "</div>";
+      var many = langs.length > 12;
+      var CK = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>', CV = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
+      h += (many ? '<p class="lg-t">' + esc(t("choose")) + "</p>" : '<h3 class="st" style="margin-top:4px">' + esc(t("lang")) + "</h3>") + '<div class="lgrid' + (many ? " many" : "") + '" role="group" aria-label="' + esc(t("lang")) + '">' + langs.map(function (l) { return '<button type="button" data-lang="' + l + '" lang="' + l + '" aria-pressed="' + (l === lang) + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span>" + (many ? '<i class="lgi">' + (l === lang ? CK : CV) + "</i>" : "") + "</button>"; }).join("") + "</div>";
     } else if (kind === "alg") {
       var A = M.allergens && (M.allergens[lang] || M.allergens.en) || [];
       h += '<h3 class="st" style="margin-top:4px">' + esc(t("alt")) + '</h3><p class="ss">' + esc(t("als")) + '</p><div class="agrid">' + A.map(function (a, i) {

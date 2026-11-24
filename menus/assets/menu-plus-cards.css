@@ -151,3 +151,4 @@ html.pl-cards.pl-v-grid .dish:not(.has-ph) .pl-side{grid-column:1;grid-row:2;dis
 html.pl-cards.pl-v-grid .dish:not(.has-ph) .pl-first span{display:none}
 html.pl-cards.pl-v-grid .dish:not(.has-ph) .pl-first{width:44px;padding:0;justify-content:center}
 html.pl-cards.pl-v-grid .dish:not(.has-ph) .dish__n{font-size:1.05rem;line-height:1.2}
+.pl-vsw{justify-self:start;width:max-content;max-width:100%}

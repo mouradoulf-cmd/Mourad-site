@@ -390,3 +390,21 @@ html[dir=rtl] .open__go svg{transform:scaleX(-1)}
 .open--many .open__word.long{font-size:clamp(1.8rem,8vw,3rem)}
 .open--many .open__tag{font-size:.64rem;letter-spacing:.12em;text-wrap:balance;max-width:100%;text-shadow:0 1px 14px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.7)}
 .open--many .open__word{text-shadow:0 2px 24px rgba(0,0,0,.7)}
+/* ── language sheet as a list (many languages): big rounded flag, bold name, ✓ on the current one, › on the others ── */
+.lg-t{font:600 .74rem/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin:6px 0 14px}
+.lgrid.many{display:grid;grid-template-columns:1fr;gap:4px;margin-top:0}
+.lgrid.many button{height:64px;min-height:64px;padding:0 14px 0 8px;border:0;border-radius:18px;background:transparent;display:flex;align-items:center;justify-content:flex-start;gap:16px;text-align:start;font:600 1.06rem/1.2 var(--body);color:var(--ink);transition:background .4s var(--ease),transform .3s var(--ease)}
+.lgrid.many button:active{transform:scale(.985)}
+.lgrid.many button[aria-pressed="true"]{background:color-mix(in srgb,var(--ink) 11%,transparent);color:var(--ink);border:0}
+.lgrid.many button .flag{width:46px;height:46px;border-radius:14px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 6px 14px -6px rgba(0,0,0,.6)}
+.lgrid.many button span{flex:1;min-width:0;max-width:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lgrid.many button .lgi{flex:none;display:grid;place-items:center;color:var(--faint)}
+.lgrid.many button[aria-pressed="true"] .lgi{color:var(--ink)}
+html[dir=rtl] .lgrid.many button .lgi svg{transform:scaleX(-1)}
+@media (min-width:560px){.lgrid.many{grid-template-columns:1fr}}
+/* header + opening pill: flag + chevron, like a language tab */
+.hd__r .lb:has(.flag){padding:0 10px 0 7px;gap:7px}
+.hd__r .lb .flag.round,.open__lang .flag.round{width:34px;height:25px;border-radius:7px}
+.hd__r .lb span:not(.n){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.open__lang span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.open__lang{padding:0 11px 0 8px;gap:8px}
