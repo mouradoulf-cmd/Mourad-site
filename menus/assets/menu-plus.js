@@ -64,76 +64,107 @@
     return '<div class="pl-info">' + (st ? '<div class="pl-info__r">' + st + "</div>" : "") + (I.address ? '<p class="pl-info__a">' + esc(I.address) + "</p>" : "") + (b.length ? '<div class="pl-info__b">' + b.join("") + "</div>" : "") + "</div>";
   }
 
-  /* ───────────── carousel + search ───────────── */
+  /* ───────────── showcase (auto-playing 3D photo ring) + search ───────────── */
   function featured() {
     var ids = P.featured && P.featured.length ? P.featured : M.sections.map(function (s) { var x = s.items.filter(function (d) { return d.img; })[0]; return x && x.id; }).filter(Boolean);
     return ids.map(function (i) { return byId[i]; }).filter(function (d) { return d && d.img; }).slice(0, 9);
   }
-  var tickBound = null;
+  function trObj(o) { var l = L(); return (o && (o[l] || o.en || o[ol])) || ""; }
+  function desc(d) { var l = L(), x = d.d && (d.d[l] || (l === ol ? "" : d.d.en)); return x && x !== d.n ? x : ""; }
+  function srcset(d) { return M.photoHD ? d.img + "-c-800.webp 800w, " + d.img + "-c-1200.webp 1200w" : d.img + ".webp 1280w"; }
+  var V = { th: "ดูจาน", en: "See the dish", zh: "查看菜品", ru: "Посмотреть", ko: "메뉴 보기", hi: "व्यंजन देखें", ar: "عرض الطبق", de: "Gericht ansehen", fr: "Voir le plat", it: "Vedi il piatto" };
+  var HOLD = 4200;   // ms each dish stays in front
+  function wrap(v, n) { v = ((v % n) + n) % n; return v > n / 2 ? v - n : v; }
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function buildTop(main) {
     if (main.querySelector(".pl-top")) return;
-    var F = featured();
-    var h = '<section class="pl-top" aria-label="' + esc(tx("rec")) + '">' + infoCard() +
-      '<label class="pl-search">' + ICO.search + '<input type="search" inputmode="search" enterkeyhint="search" autocomplete="off" placeholder="' + esc(tx("search")) + '" aria-label="' + esc(tx("search")) + '"></label>';
-    if (F.length) {
-      h += '<div class="pl-rail"><div class="pl-rail__h"><h2>' + esc(tx("rec")) + '</h2><span>' + esc(tx("swipe")) + '</span></div><div class="pl-stage"><div class="pl-track" tabindex="0">' +
-        F.map(function (d, i) {
-          return '<button type="button" class="pl-card" data-pl="' + esc(d.id) + '"><span class="pl-ph"><img src="' + pic(d, 800) + '" alt="" ' + (i < 3 ? "" : 'loading="lazy" ') + 'decoding="async" width="260" height="325"><i class="pl-sh"></i></span>' +
-            '<span class="pl-n">' + esc(title(d)) + '</span><span class="pl-p">' + money(d.p) + "</span></button>";
-        }).join("") + "</div></div></div>";
+    var F = featured(), N = F.length, show = N >= 3;
+    var h = '<section class="pl-top" aria-label="' + esc(tx("rec")) + '">' + infoCard();
+    if (show) {
+      h += '<div class="pl-show" tabindex="0" aria-roledescription="carousel"><div class="pl-amb" aria-hidden="true"><img alt=""><img alt=""></div>' +
+        '<div class="pl-eye"><span>' + esc(tx("rec")) + '</span><b class="pl-no"></b></div>' +
+        '<div class="pl-stage"><div class="pl-ring">' + F.map(function (d, i) {
+          return '<button type="button" class="pl-card" data-pl="' + esc(d.id) + '" aria-label="' + esc(title(d)) + '"><span class="pl-ph"><img src="' + pic(d, 800) + '" srcset="' + srcset(d) + '" sizes="(min-width:760px) 300px, 72vw" alt="" decoding="async" draggable="false"><i class="pl-sh"></i></span></button>';
+        }).join("") + '</div><div class="pl-floor" aria-hidden="true"></div></div>' +
+        '<div class="pl-info2" aria-live="polite"><p class="pl-cat"></p><h3 class="pl-name"></h3><p class="pl-desc"></p><div class="pl-row"><span class="pl-price"></span><span class="pl-hot"></span><button type="button" class="pl-view">' + esc(V[L()] || V.en) + '</button></div></div>' +
+        '<div class="pl-seg" aria-hidden="true">' + F.map(function () { return "<i><u></u></i>"; }).join("") + "</div></div>";
     }
-    h += '<p class="pl-none" hidden>' + esc(tx("none")) + "</p></section>";
+    h += '<label class="pl-search">' + ICO.search + '<input type="search" inputmode="search" enterkeyhint="search" autocomplete="off" placeholder="' + esc(tx("search")) + '" aria-label="' + esc(tx("search")) + '"></label>' +
+      '<p class="pl-none" hidden>' + esc(tx("none")) + "</p></section>";
     main.insertAdjacentHTML("afterbegin", h);
-    var top = main.querySelector(".pl-top"), track = top.querySelector(".pl-track"), inp = top.querySelector("input");
-    // search
+    var top = main.querySelector(".pl-top"), inp = top.querySelector("input"), sh = top.querySelector(".pl-show");
     inp.addEventListener("input", function () {
       var q = inp.value.trim().toLowerCase(), any = false;
-      main.querySelectorAll(".dish").forEach(function (li) {
-        var ok = !q || li.textContent.toLowerCase().indexOf(q) > -1; li.classList.toggle("pl-hide", !ok); if (ok) any = true;
-      });
+      main.querySelectorAll(".dish").forEach(function (li) { var ok = !q || li.textContent.toLowerCase().indexOf(q) > -1; li.classList.toggle("pl-hide", !ok); if (ok) any = true; });
       main.querySelectorAll(".ch").forEach(function (c) { c.classList.toggle("pl-hide", !!q && !c.querySelector(".dish:not(.pl-hide)")); });
-      var r = top.querySelector(".pl-rail"); if (r) r.hidden = !!q;
+      if (sh) sh.hidden = !!q;
       top.querySelector(".pl-none").hidden = any || !q;
       document.body.classList.toggle("pl-searching", !!q);
     });
-    if (!track) return;
-    // open the dish through the engine's own button
-    track.addEventListener("click", function (e) {
-      var c = e.target.closest(".pl-card"); if (!c) return;
-      var btn = root.querySelector('.dish__o[data-dish="' + c.getAttribute("data-pl") + '"]'); if (btn) btn.click();
-    });
-    // 3D cover-flow: every card is positioned from its distance to the centre of the track
-    var cards = [].slice.call(track.querySelectorAll(".pl-card")), raf = 0, tx0 = 0, ty0 = 0;
-    function tick() {
-      raf = 0;
-      var tr = track.getBoundingClientRect(), mid = tr.left + tr.width / 2;
-      cards.forEach(function (c) {
-        var cr = c.getBoundingClientRect(), r = (cr.left + cr.width / 2 - mid) / cr.width;
-        r = Math.max(-2.2, Math.min(2.2, r)); var a = Math.abs(r);
-        if (reduce) { c.style.opacity = String(1 - Math.min(a, 1) * 0.35); return; }
-        c.style.transform = "translate3d(" + (-r * 26).toFixed(1) + "px,0," + (-a * 130).toFixed(1) + "px) rotateY(" + (-r * 34).toFixed(1) + "deg) scale(" + (1 - a * 0.06).toFixed(3) + ")";
-        c.style.opacity = String(Math.max(0.35, 1 - a * 0.28).toFixed(2));
-        c.style.zIndex = String(10 - Math.round(a * 3));
-        c.style.setProperty("--sh", (r * -60).toFixed(0) + "%");
-        c.classList.toggle("is-mid", a < 0.35);
+    if (!show) return;
+
+    var cards = [].slice.call(top.querySelectorAll(".pl-card")), segs = [].slice.call(top.querySelectorAll(".pl-seg i")),
+      amb = [].slice.call(top.querySelectorAll(".pl-amb img")), ambI = 0, stage = top.querySelector(".pl-stage"),
+      cat = top.querySelector(".pl-cat"), nameEl = top.querySelector(".pl-name"), dEl = top.querySelector(".pl-desc"),
+      pr = top.querySelector(".pl-price"), hotEl = top.querySelector(".pl-hot"), noEl = top.querySelector(".pl-no"), info = top.querySelector(".pl-info2");
+    var pos = 0, spread = 0, idx = -1, W = 270, tw = 0, dragging = false, visible = false, inView = false, moved = 0, started = false;
+    function measure() { W = Math.min(innerWidth * 0.66, 300); stage.style.setProperty("--w", W + "px"); }
+    function render() {
+      var ref = 1;
+      cards.forEach(function (c, i) {
+        var o = wrap(i - pos, N), a = Math.abs(o), sg = o < 0 ? -1 : 1, ac = Math.min(a, 2.2);
+        var x = sg * (Math.min(ac, 1) * 0.66 + Math.max(0, ac - 1) * 0.34) * W * spread;
+        var z = -ac * 150 * spread, ry = -Math.max(-2, Math.min(2, o)) * 40 * spread, sc = (1 - Math.min(a, 2) * 0.07) * (0.86 + 0.14 * spread);
+        c.style.transform = "translate3d(" + x.toFixed(1) + "px,0," + z.toFixed(1) + "px) rotateY(" + ry.toFixed(1) + "deg) scale(" + sc.toFixed(3) + ")";
+        c.style.opacity = a > 2.4 ? "0" : String(Math.max(0, (1 - Math.min(a, 2) * 0.3) * spread).toFixed(2));
+        c.style.zIndex = String(100 - Math.round(a * 10));
+        c.style.pointerEvents = a < 0.5 ? "auto" : "none";
+        var ph = c.firstChild; ph.style.filter = a > 0.15 ? "blur(" + (Math.min(a, 2) * 1.3).toFixed(1) + "px) brightness(" + (1 - Math.min(a, 2) * 0.16).toFixed(2) + ")" : "none";
+        var im = ph.firstChild; im.style.transform = "translate3d(" + (-o * 7).toFixed(1) + "%,0,0) scale(1.18)";
+        c.firstChild.querySelector(".pl-sh").style.backgroundPosition = (-o * 90 + 50).toFixed(0) + "% 0";
       });
+      var n = ((Math.round(pos) % N) + N) % N; if (n !== idx) setIdx(n);
     }
-    function sched() { if (!raf) raf = requestAnimationFrame(tick); }
-    track.addEventListener("scroll", sched, { passive: true }); addEventListener("resize", sched);
-    // gentle tilt on the centred photo (finger or mouse)
-    track.addEventListener("pointermove", function (e) {
-      if (reduce) return; var c = cards.filter(function (x) { return x.classList.contains("is-mid"); })[0]; if (!c) return;
-      var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-      c.style.setProperty("--tx", (-y * 9).toFixed(1) + "deg"); c.style.setProperty("--ty", (x * 12).toFixed(1) + "deg");
+    function setIdx(n) {
+      idx = n; var d = F[n], s = M.sections[d._s];
+      noEl.textContent = String(n + 1).padStart(2, "0") + " / " + String(N).padStart(2, "0");
+      cat.textContent = trObj(s.t); pr.textContent = ""; pr.innerHTML = money(d.p);
+      var words = String(title(d)).split(" ");
+      nameEl.innerHTML = words.map(function (w, k) { return '<span style="--k:' + k + '">' + esc(w) + "</span>"; }).join(" ");
+      dEl.textContent = desc(d); hotEl.textContent = d.hot ? new Array(d.hot + 1).join("🌶️") : "";
+      info.classList.remove("swap"); void info.offsetWidth; info.classList.add("swap");
+      info.setAttribute("data-id", d.id);
+      segs.forEach(function (sg, k) { sg.className = k < n ? "done" : k === n ? "cur" : ""; });
+      var im = amb[ambI = 1 - ambI]; im.src = pic(d, 800); im.className = "on"; amb[1 - ambI].className = "";
+    }
+    function tween(target, ms) {
+      cancelAnimationFrame(tw); var from = pos, t0 = null;
+      function step(t) { if (t0 == null) t0 = t; var k = Math.min(1, (t - t0) / ms); pos = from + (target - from) * ease(k); render(); if (k < 1) tw = requestAnimationFrame(step); }
+      tw = requestAnimationFrame(step);
+    }
+    function next() { tween(Math.round(pos) + 1, reduce ? 1 : 1000); }
+    // auto-advance: the progress segment of the front dish fills, and when it ends the ring turns
+    top.addEventListener("animationend", function (e) { if (e.target.tagName === "U" && !dragging) next(); });
+    function run() { sh.classList.toggle("paused", !(inView && !document.hidden && !dragging) || reduce); }
+    document.addEventListener("visibilitychange", run);
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { inView = en[0].isIntersecting; if (inView && !started) intro(); run(); }, { threshold: 0.35 }).observe(sh); else { inView = true; intro(); }
+    function intro() { started = true; if (reduce) { spread = 1; render(); return; } var t0 = null; (function step(t) { if (t0 == null) t0 = t; var k = Math.min(1, (t - t0) / 1300); spread = ease(k); render(); if (k < 1) requestAnimationFrame(step); })(performance.now()); }
+    // drag / swipe still works, and a tap opens the dish
+    var sx = 0, sp = 0, lx = 0, lt = 0, vel = 0;
+    stage.addEventListener("pointerdown", function (e) { dragging = true; moved = 0; sx = lx = e.clientX; sp = pos; lt = performance.now(); vel = 0; cancelAnimationFrame(tw); run(); try { stage.setPointerCapture(e.pointerId); } catch (x) {} });
+    stage.addEventListener("pointermove", function (e) {
+      if (dragging) { var dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx)); var now = performance.now(); vel = (e.clientX - lx) / Math.max(1, now - lt); lx = e.clientX; lt = now; pos = sp - dx / (W * 0.62); render(); }
+      else if (!reduce && e.pointerType === "mouse") { var c = cards[idx]; if (c) { var r = c.getBoundingClientRect(); c.firstChild.style.setProperty("--tx", (-((e.clientY - r.top) / r.height - 0.5) * 8).toFixed(1) + "deg"); c.firstChild.style.setProperty("--ty", (((e.clientX - r.left) / r.width - 0.5) * 10).toFixed(1) + "deg"); } }
     });
-    track.addEventListener("pointerleave", function () { cards.forEach(function (c) { c.style.setProperty("--tx", "0deg"); c.style.setProperty("--ty", "0deg"); }); });
-    // start centred on the second card so the 3D shows at once, then a small nudge to hint at swiping
-    requestAnimationFrame(function () {
-      var c = cards[Math.min(1, cards.length - 1)];
-      if (c) { var tr = track.getBoundingClientRect(), cr = c.getBoundingClientRect(); track.scrollLeft += (cr.left + cr.width / 2) - (tr.left + tr.width / 2); }
-      tick();
-      if (!reduce && cards.length > 2) setTimeout(function () { try { track.scrollBy({ left: 70, behavior: "smooth" }); setTimeout(function () { track.scrollBy({ left: -70, behavior: "smooth" }); }, 700); } catch (e) {} }, 1400);
-    });
+    function end() { if (!dragging) return; dragging = false; var tgt = Math.round(pos - vel * 2.2); tween(tgt, 700); run(); }
+    stage.addEventListener("pointerup", end); stage.addEventListener("pointercancel", end);
+    stage.addEventListener("pointerleave", function () { cards.forEach(function (c) { c.firstChild.style.setProperty("--tx", "0deg"); c.firstChild.style.setProperty("--ty", "0deg"); }); });
+    function openDish(id) { var btn = root.querySelector('.dish__o[data-dish="' + id + '"]'); if (btn) btn.click(); }
+    stage.addEventListener("click", function (e) { var c = e.target.closest(".pl-card"); if (c && moved < 8 && cards.indexOf(c) === idx) openDish(c.getAttribute("data-pl")); else if (c && moved < 8) tween(Math.round(pos) + wrap(cards.indexOf(c) - Math.round(pos), N), 800); });
+    top.querySelector(".pl-view").addEventListener("click", function () { openDish(info.getAttribute("data-id")); });
+    sh.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") tween(Math.round(pos) + 1, 700); if (e.key === "ArrowLeft") tween(Math.round(pos) - 1, 700); });
+    measure(); addEventListener("resize", function () { measure(); render(); });
+    render(); run();
   }
 
   /* ───────────── "goes well with" inside the dish sheet ───────────── */
