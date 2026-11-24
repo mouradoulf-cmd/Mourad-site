@@ -32,8 +32,8 @@ html[data-pl-theme="ivoire"] .tabs button,html[data-pl-theme="kaiseki"] .tabs bu
 .chip.pl-so{background:color-mix(in srgb,var(--ink) 12%,transparent);color:var(--ink);border-color:var(--line)}
 .chip.pl-dt{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--ink)}
 /* style switcher */
-.pl-style{opacity:0;pointer-events:none;transition:opacity .6s cubic-bezier(.32,.72,0,1),transform .4s cubic-bezier(.32,.72,0,1);position:fixed;right:14px;bottom:calc(88px + var(--sb));z-index:55;height:44px;padding:0 16px 0 13px;border-radius:99px;border:1px solid color-mix(in srgb,var(--ink) 24%,transparent);background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink);display:inline-flex;align-items:center;gap:9px;font:500 .85rem var(--body);cursor:pointer;box-shadow:0 12px 30px -10px rgba(0,0,0,.6)}
-.pl-style b{font-weight:500;max-width:9.5em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pl-style{opacity:0;pointer-events:none;transition:opacity .6s cubic-bezier(.32,.72,0,1),transform .4s cubic-bezier(.32,.72,0,1);position:fixed;left:12px;bottom:calc(88px + var(--sb));z-index:55;height:44px;width:44px;padding:0;justify-content:center;border-radius:99px;border:1px solid color-mix(in srgb,var(--ink) 24%,transparent);background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink);display:inline-flex;align-items:center;gap:9px;font:500 .85rem var(--body);cursor:pointer;box-shadow:0 12px 30px -10px rgba(0,0,0,.6)}
+.pl-style b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .pl-style:active{transform:scale(.96)}
 /* scroll polish (progressive: only where scroll-driven animations exist) */
 @supports (animation-timeline:view()){
@@ -51,3 +51,5 @@ html[data-pl-theme="modern"] .pl-name,html[data-pl-theme="modern"] .ch__t{text-t
 html[data-pl-theme="kaiseki"] .pl-name,html[data-pl-theme="kaiseki"] .ch__t{font-weight:500;letter-spacing:.02em}
 
 .pl-style.on{opacity:1;pointer-events:auto}
+
+.pl-style-hd b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

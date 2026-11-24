@@ -30,3 +30,5 @@
 - 2026-11-24 (v2) : onglet « Recommandés » refait en vitrine 3D automatique (anneau de photos HD qui tourne seul, fond lumineux à la couleur du plat, nom/prix/description animés, barre de progression, glisser et toucher possibles, pause hors écran). Testé fr/en/th/ar/de, mobile + ordinateur, mouvement réduit.
 
 - 2026-11-24 (v3 « Lux ») : 7 identités complètes (noir/ivoire/trattoria/kaiseki/bistro/tropical/modern) + bouton « Style » de démo, photo d ouverture WebGL, filtres épicé/régime, plats épuisés, devises indicatives (taux BCE en direct), miniatures légères. Doc : menus/PLUS.md. Activé sur mae-lek et fishermans-garden (bouton Style à retirer pour un vrai client).
+
+- 2026-11-24 (v4) : 20 langues (th en zh zh-Hant ru ko ja hi ms id lo de fr it vi km fil ar he es), cartes de plats éditoriales (photo + prix + bouton sur la photo, stepper de quantité, panier animé avec miniatures), onglets avec photo, vue grille/large, devises retirées. Activé sur mae-lek et fishermans-garden. Traductions automatiques à faire relire (lao, khmer, hébreu, malais surtout).

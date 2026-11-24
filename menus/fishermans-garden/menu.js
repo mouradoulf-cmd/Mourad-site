@@ -10,12 +10,23 @@ window.NM_MENU = {
   "th",
   "en",
   "zh",
+  "zt",
   "ru",
   "ko",
+  "ja",
   "hi",
-  "ar",
+  "ms",
+  "id",
+  "lo",
   "de",
-  "fr"
+  "fr",
+  "it",
+  "vi",
+  "km",
+  "fil",
+  "ar",
+  "he",
+  "es"
  ],
  "defaultLang": "en",
  "origLang": "th",
@@ -23,6 +34,7 @@ window.NM_MENU = {
  "localTitles": true,
  "photoOne": true,
  "thumbs": true,
+ "cards": true,
  "photoHD": false,
  "tapHint": false,
  "spice": false,
@@ -37,7 +49,18 @@ window.NM_MENU = {
   "hi": "थाई भोजन, सीफूड और पेय",
   "ar": "مأكولات تايلندية ومأكولات بحرية ومشروبات",
   "de": "Thai-Küche, Meeresfrüchte & Getränke",
-  "fr": "Cuisine thaïe, fruits de mer & boissons"
+  "fr": "Cuisine thaïe, fruits de mer & boissons",
+  "ja": "タイ料理・シーフード・ドリンク",
+  "zt": "泰式料理、海鮮與飲品",
+  "ms": "Masakan Thai, makanan laut & minuman",
+  "id": "Masakan Thailand, seafood & minuman",
+  "lo": "ອາຫານໄທ ອາຫານທະເລ ແລະ ເຄື່ອງດື່ມ",
+  "vi": "Món Thái, hải sản & đồ uống",
+  "km": "ម្ហូបថៃ អាហារសមុទ្រ និងភេសជ្ជៈ",
+  "fil": "Thai food, seafood at inumin",
+  "he": "אוכל תאילנדי, פירות ים ומשקאות",
+  "es": "Comida tailandesa, mariscos y bebidas",
+  "it": "Cucina thailandese, frutti di mare e bevande"
  },
  "theme": {
   "bg": "#0f1b15",
@@ -45,10 +68,61 @@ window.NM_MENU = {
   "accent": "#e3b341"
  },
  "plus": {
-  "styles": true, "hero3d": true, "fx": true,
-  "crops": ["tomyum1", "oyster1", "grillpork1", "fishlemon1", "siew1", "hamburger1"],
-  "featured": ["tomyum1", "oyster1", "grillpork1", "fishlemon1", "siew1", "hamburger1"],
-  "pairs": { "euro": ["d1", "j3"], "fried": ["a3", "d1"], "sash": ["a1", "j1"], "salad": ["a3", "s5", "j1"], "sea": ["a1", "j1", "s5"], "stir": ["d1", "j1"], "rice": ["d1", "j3"], "soup": ["j1", "s5"] }
+  "styles": true,
+  "hero3d": true,
+  "crops": [
+   "tomyum1",
+   "oyster1",
+   "grillpork1",
+   "fishlemon1",
+   "siew1",
+   "hamburger1"
+  ],
+  "featured": [
+   "tomyum1",
+   "oyster1",
+   "grillpork1",
+   "fishlemon1",
+   "siew1",
+   "hamburger1"
+  ],
+  "pairs": {
+   "euro": [
+    "d1",
+    "j3"
+   ],
+   "fried": [
+    "a3",
+    "d1"
+   ],
+   "sash": [
+    "a1",
+    "j1"
+   ],
+   "salad": [
+    "a3",
+    "s5",
+    "j1"
+   ],
+   "sea": [
+    "a1",
+    "j1",
+    "s5"
+   ],
+   "stir": [
+    "d1",
+    "j1"
+   ],
+   "rice": [
+    "d1",
+    "j3"
+   ],
+   "soup": [
+    "j1",
+    "s5"
+   ]
+  },
+  "cards": true
  },
  "sections": [
   {
@@ -62,7 +136,18 @@ window.NM_MENU = {
     "hi": "सैंडविच और यूरोपीय भोजन",
     "ar": "ساندويتشات وأطعمة أوروبية",
     "de": "Sandwiches & Europäisch",
-    "fr": "Sandwichs & cuisine européenne"
+    "fr": "Sandwichs & cuisine européenne",
+    "ja": "サンドイッチ・ヨーロッパ料理",
+    "zt": "三明治與西式料理",
+    "ms": "Sandwic & masakan Eropah",
+    "id": "Sandwich & masakan Eropa",
+    "lo": "ແຊນວິດ & ອາຫານເອີຣົບ",
+    "vi": "Bánh mì kẹp & món Âu",
+    "km": "សាំងវិច និងម្ហូបអឺរ៉ុប",
+    "fil": "Sandwiches at European",
+    "he": "כריכים ומטבח אירופי",
+    "es": "Sándwiches y cocina europea",
+    "it": "Panini e cucina europea"
    },
    "items": [
     {
@@ -79,7 +164,18 @@ window.NM_MENU = {
       "hi": "क्लब सैंडविच",
       "ar": "ساندويتش كلوب",
       "de": "Club Sandwich",
-      "fr": "Club sandwich"
+      "fr": "Club sandwich",
+      "ja": "クラブサンドイッチ",
+      "zt": "總匯三明治",
+      "ms": "Sandwic kelab",
+      "id": "Club sandwich",
+      "lo": "ຄລັບແຊນວິດ",
+      "vi": "Bánh mì kẹp club",
+      "km": "ក្លឹបសាំងវិច",
+      "fil": "Club sandwich",
+      "he": "כריך קלאב",
+      "es": "Sándwich club",
+      "it": "Club sandwich"
      }
     },
     {
@@ -96,7 +192,18 @@ window.NM_MENU = {
       "hi": "ट्यूना या हैम चीज़ सैंडविच, फ्राइज़ के साथ",
       "ar": "ساندويتش تونة أو لحم مع جبن وبطاطس مقلية",
       "de": "Thunfisch- oder Schinken-Käse-Sandwich mit Pommes",
-      "fr": "Sandwich thon ou jambon-fromage avec frites"
+      "fr": "Sandwich thon ou jambon-fromage avec frites",
+      "ja": "ツナまたはハムチーズのサンドイッチ、フライドポテト付き",
+      "zt": "鮪魚或火腿起司三明治，附薯條",
+      "ms": "Sandwic tuna atau ham & keju dengan kentang goreng",
+      "id": "Sandwich tuna atau ham & keju dengan kentang goreng",
+      "lo": "ແຊນວິດທູນາ ຫຼື ແຮມຊີດ ກິນກັບມັນຝລັ່ງຝອຍ",
+      "vi": "Bánh mì kẹp cá ngừ hoặc giăm bông phô mai kèm khoai tây chiên",
+      "km": "សាំងវិចត្រីធូណា ឬហាំជាមួយឈីស មានដំឡូងបារាំងចៀន",
+      "fil": "Sandwich na tuna o ham at keso na may fries",
+      "he": "כריך טונה או חזיר וגבינה עם צ'יפס",
+      "es": "Sándwich de atún o jamón y queso con patatas fritas",
+      "it": "Panino al tonno o prosciutto e formaggio con patatine fritte"
      }
     },
     {
@@ -112,7 +219,18 @@ window.NM_MENU = {
       "hi": "हवाईयन टोस्ट",
       "ar": "توست هاواي",
       "de": "Toast Hawaii",
-      "fr": "Toast hawaïen"
+      "fr": "Toast hawaïen",
+      "ja": "ハワイアントースト",
+      "zt": "夏威夷吐司",
+      "ms": "Roti bakar Hawaii",
+      "id": "Roti panggang Hawaii",
+      "lo": "ເຂົ້າຈີ່ຮາວາຍ",
+      "vi": "Bánh mì nướng Hawaii",
+      "km": "នំបុ័ងអាំងហាវ៉ៃ",
+      "fil": "Hawaiian toast",
+      "he": "טוסט הוואי",
+      "es": "Tostada hawaiana",
+      "it": "Toast hawaiano"
      }
     },
     {
@@ -129,7 +247,18 @@ window.NM_MENU = {
       "hi": "गार्लिक ब्रेड",
       "ar": "خبز بالثوم",
       "de": "Knoblauchbrot",
-      "fr": "Pain à l’ail"
+      "fr": "Pain à l’ail",
+      "ja": "ガーリックブレッド",
+      "zt": "蒜香麵包",
+      "ms": "Roti bawang putih",
+      "id": "Roti bawang putih",
+      "lo": "ເຂົ້າຈີ່ກະທຽມ",
+      "vi": "Bánh mì bơ tỏi",
+      "km": "នំបុ័ងខ្ទឹមស",
+      "fil": "Garlic bread",
+      "he": "לחם שום",
+      "es": "Pan de ajo",
+      "it": "Pane all'aglio"
      }
     },
     {
@@ -146,7 +275,18 @@ window.NM_MENU = {
       "hi": "हैमबर्गर (पोर्क/चिकन)",
       "ar": "همبرغر (لحم خنزير/دجاج)",
       "de": "Hamburger (Schwein/Hähnchen)",
-      "fr": "Hamburger (porc/poulet)"
+      "fr": "Hamburger (porc/poulet)",
+      "ja": "ハンバーガー (豚肉/鶏肉)",
+      "zt": "漢堡 (豬肉/雞肉)",
+      "ms": "Hamburger (khinzir/ayam)",
+      "id": "Hamburger (babi/ayam)",
+      "lo": "ແຮມເບີເກີ (ໝູ/ໄກ່)",
+      "vi": "Hamburger (heo/gà)",
+      "km": "ហាំប៊ឺហ្គឺ (ជ្រូក/មាន់)",
+      "fil": "Hamburger (baboy/manok)",
+      "he": "המבורגר (חזיר/עוף)",
+      "es": "Hamburguesa (cerdo/pollo)",
+      "it": "Hamburger (maiale/pollo)"
      }
     },
     {
@@ -163,7 +303,18 @@ window.NM_MENU = {
       "hi": "हैमबर्गर (बीफ़)",
       "ar": "همبرغر (لحم بقر)",
       "de": "Hamburger (Rind)",
-      "fr": "Hamburger (bœuf)"
+      "fr": "Hamburger (bœuf)",
+      "ja": "ハンバーガー (牛肉)",
+      "zt": "漢堡 (牛肉)",
+      "ms": "Hamburger (daging lembu)",
+      "id": "Hamburger (sapi)",
+      "lo": "ແຮມເບີເກີ (ງົວ)",
+      "vi": "Hamburger (bò)",
+      "km": "ហាំប៊ឺហ្គឺ (គោ)",
+      "fil": "Hamburger (baka)",
+      "he": "המבורגר (בקר)",
+      "es": "Hamburguesa (ternera)",
+      "it": "Hamburger (manzo)"
      }
     },
     {
@@ -179,7 +330,18 @@ window.NM_MENU = {
       "hi": "अतिरिक्त चीज़ (हैमबर्गर)",
       "ar": "جبن إضافي (همبرغر)",
       "de": "Extra Käse (Hamburger)",
-      "fr": "Fromage en plus (hamburger)"
+      "fr": "Fromage en plus (hamburger)",
+      "ja": "チーズ追加（ハンバーガー）",
+      "zt": "加起司（漢堡）",
+      "ms": "Keju tambahan (hamburger)",
+      "id": "Keju tambahan (hamburger)",
+      "lo": "ເພີ່ມຊີດ (ແຮມເບີເກີ)",
+      "vi": "Thêm phô mai (hamburger)",
+      "km": "បន្ថែមឈីស (ហាំប៊ឺហ្គឺ)",
+      "fil": "Dagdag na keso (hamburger)",
+      "he": "גבינה נוספת (המבורגר)",
+      "es": "Queso extra (hamburguesa)",
+      "it": "Formaggio extra (hamburger)"
      }
     },
     {
@@ -195,7 +357,18 @@ window.NM_MENU = {
       "hi": "ब्रैटवर्स्ट ब्रेड रोल के साथ",
       "ar": "سجق براتفورست مع خبز",
       "de": "Bratwurst mit Brötchen",
-      "fr": "Bratwurst avec petits pains"
+      "fr": "Bratwurst avec petits pains",
+      "ja": "ブラートヴルスト、パンロール付き",
+      "zt": "德式香腸佐麵包卷",
+      "ms": "Bratwurst dengan roti gulung",
+      "id": "Bratwurst dengan roti gulung",
+      "lo": "ໄສ້ກອກບຣາດເວີດ ກິນກັບເຂົ້າຈີ່",
+      "vi": "Xúc xích Bratwurst với bánh mì cuộn",
+      "km": "សាច់ក្រកប្រាតវើស្ត ជាមួយនំបុ័ង",
+      "fil": "Bratwurst na may tinapay",
+      "he": "בראטוורסט עם לחמניות",
+      "es": "Bratwurst con panecillos",
+      "it": "Bratwurst con panini"
      },
      "img": "ph-bratwurst"
     },
@@ -213,7 +386,18 @@ window.NM_MENU = {
       "hi": "श्नित्ज़ेल, फ्राइज़ और सलाद के साथ (पोर्क/चिकन)",
       "ar": "شنيتزل مع بطاطس وسلطة (لحم خنزير/دجاج)",
       "de": "Schnitzel mit Pommes und Salat (Schwein/Hähnchen)",
-      "fr": "Escalope panée, frites et salade (porc/poulet)"
+      "fr": "Escalope panée, frites et salade (porc/poulet)",
+      "ja": "シュニッツェル、フライドポテトとサラダ付き (豚肉/鶏肉)",
+      "zt": "炸豬排佐薯條與沙拉 (豬肉/雞肉)",
+      "ms": "Schnitzel dengan kentang goreng dan salad (khinzir/ayam)",
+      "id": "Schnitzel dengan kentang goreng dan salad (babi/ayam)",
+      "lo": "ຊນິດເຊວ ກິນກັບມັນຝລັ່ງຝອຍ ແລະ ສະຫຼັດ (ໝູ/ໄກ່)",
+      "vi": "Schnitzel với khoai tây chiên và salad (heo/gà)",
+      "km": "ស្នីតសែល ជាមួយដំឡូងបារាំងចៀន និងសាឡាត់ (ជ្រូក/មាន់)",
+      "fil": "Schnitzel na may fries at salad (baboy/manok)",
+      "he": "שניצל עם צ'יפס וסלט (חזיר/עוף)",
+      "es": "Schnitzel con patatas fritas y ensalada (cerdo/pollo)",
+      "it": "Cotoletta alla viennese con patatine e insalata (maiale/pollo)"
      }
     },
     {
@@ -230,7 +414,18 @@ window.NM_MENU = {
       "hi": "कॉर्न डॉग",
       "ar": "كورن دوغ",
       "de": "Corn Dog",
-      "fr": "Corn dog"
+      "fr": "Corn dog",
+      "ja": "アメリカンドッグ",
+      "zt": "美式玉米熱狗",
+      "ms": "Corn dog",
+      "id": "Corn dog",
+      "lo": "ຄອນດ໊ອກ",
+      "vi": "Corn dog",
+      "km": "ខន់ដុក",
+      "fil": "Corn dog",
+      "he": "קורן דוג",
+      "es": "Corn dog",
+      "it": "Corn dog"
      }
     },
     {
@@ -246,7 +441,18 @@ window.NM_MENU = {
       "hi": "तले आलू और तला अंडा",
       "ar": "بطاطا مقلية مع بيض مقلي",
       "de": "Bratkartoffeln mit Spiegelei",
-      "fr": "Pommes de terre sautées, œuf au plat"
+      "fr": "Pommes de terre sautées, œuf au plat",
+      "ja": "ポテトのソテー、目玉焼き添え",
+      "zt": "煎馬鈴薯佐煎蛋",
+      "ms": "Kentang goreng dengan telur goreng",
+      "id": "Kentang goreng dengan telur mata sapi",
+      "lo": "ມັນຝລັ່ງຜັດ ໄຂ່ດາວ",
+      "vi": "Khoai tây chiên với trứng ốp la",
+      "km": "ដំឡូងបារាំងឆា ជាមួយស៊ុតចៀន",
+      "fil": "Pritong patatas na may pritong itlog",
+      "he": "תפוחי אדמה מטוגנים עם ביצת עין",
+      "es": "Patatas fritas con huevo frito",
+      "it": "Patate fritte con uovo fritto"
      }
     },
     {
@@ -263,7 +469,18 @@ window.NM_MENU = {
       "hi": "फ़िश स्टेक और चिप्स",
       "ar": "ستيك سمك مع بطاطس",
       "de": "Fischsteak mit Pommes",
-      "fr": "Steak de poisson et frites"
+      "fr": "Steak de poisson et frites",
+      "ja": "フィッシュステーキとフライドポテト",
+      "zt": "魚排佐薯條",
+      "ms": "Stik ikan dan kentang goreng",
+      "id": "Steak ikan dan kentang goreng",
+      "lo": "ປາສະເຕັກ ກິນກັບມັນຝລັ່ງຝອຍ",
+      "vi": "Cá bít tết và khoai tây chiên",
+      "km": "ស្ទេកត្រី និងដំឡូងបារាំងចៀន",
+      "fil": "Fish steak at chips",
+      "he": "סטייק דג וצ'יפס",
+      "es": "Filete de pescado con patatas fritas",
+      "it": "Bistecca di pesce con patatine"
      }
     },
     {
@@ -280,7 +497,18 @@ window.NM_MENU = {
       "hi": "पोर्क चॉप स्टेक",
       "ar": "ستيك قطعة لحم خنزير",
       "de": "Schweinekotelett",
-      "fr": "Côte de porc"
+      "fr": "Côte de porc",
+      "ja": "ポークチョップステーキ",
+      "zt": "豬排牛排",
+      "ms": "Stik potongan khinzir",
+      "id": "Steak daging babi",
+      "lo": "ສະເຕັກໝູ",
+      "vi": "Bít tết sườn heo",
+      "km": "ស្ទេកជ្រូក",
+      "fil": "Pork chop steak",
+      "he": "סטייק צלעות חזיר",
+      "es": "Chuleta de cerdo",
+      "it": "Braciola di maiale"
      }
     },
     {
@@ -297,7 +525,18 @@ window.NM_MENU = {
       "hi": "स्पेगेटी कार्बोनारा",
       "ar": "سباغيتي كاربونارا",
       "de": "Spaghetti Carbonara",
-      "fr": "Spaghetti carbonara"
+      "fr": "Spaghetti carbonara",
+      "ja": "スパゲッティ・カルボナーラ",
+      "zt": "奶油培根義大利麵",
+      "ms": "Spageti carbonara",
+      "id": "Spageti carbonara",
+      "lo": "ສະປາເກັດຕີຄາໂບນາລາ",
+      "vi": "Mì Ý carbonara",
+      "km": "ស្ប៉ាហ្គេទីកាបូណារ៉ា",
+      "fil": "Spaghetti carbonara",
+      "he": "ספגטי קרבונרה",
+      "es": "Espaguetis carbonara",
+      "it": "Spaghetti alla carbonara"
      }
     },
     {
@@ -314,7 +553,18 @@ window.NM_MENU = {
       "hi": "स्पेगेटी बोलोनीज़ (पोर्क/बीफ़)",
       "ar": "سباغيتي بولونيز (لحم خنزير/لحم بقر)",
       "de": "Spaghetti Bolognese (Schwein/Rind)",
-      "fr": "Spaghetti bolognaise (porc/bœuf)"
+      "fr": "Spaghetti bolognaise (porc/bœuf)",
+      "ja": "スパゲッティ・ボロネーゼ (豚肉/牛肉)",
+      "zt": "肉醬義大利麵 (豬肉/牛肉)",
+      "ms": "Spageti bolognese (khinzir/daging lembu)",
+      "id": "Spageti bolognese (babi/sapi)",
+      "lo": "ສະປາເກັດຕີໂບໂລເນສ (ໝູ/ງົວ)",
+      "vi": "Mì Ý sốt bò bằm (heo/bò)",
+      "km": "ស្ប៉ាហ្គេទីបូឡូញែស (ជ្រូក/គោ)",
+      "fil": "Spaghetti bolognese (baboy/baka)",
+      "he": "ספגטי בולונז (חזיר/בקר)",
+      "es": "Espaguetis a la boloñesa (cerdo/ternera)",
+      "it": "Spaghetti alla bolognese (maiale/manzo)"
      }
     },
     {
@@ -331,7 +581,18 @@ window.NM_MENU = {
       "hi": "ट्यूना स्पेगेटी",
       "ar": "سباغيتي بالتونة",
       "de": "Spaghetti mit Thunfisch",
-      "fr": "Spaghetti au thon"
+      "fr": "Spaghetti au thon",
+      "ja": "ツナのスパゲッティ",
+      "zt": "鮪魚義大利麵",
+      "ms": "Spageti dengan tuna",
+      "id": "Spageti dengan tuna",
+      "lo": "ສະປາເກັດຕີທູນາ",
+      "vi": "Mì Ý cá ngừ",
+      "km": "ស្ប៉ាហ្គេទីត្រីធូណា",
+      "fil": "Spaghetti na may tuna",
+      "he": "ספגטי עם טונה",
+      "es": "Espaguetis con atún",
+      "it": "Spaghetti al tonno"
      }
     },
     {
@@ -348,7 +609,18 @@ window.NM_MENU = {
       "hi": "थाई स्टाइल स्पेगेटी (मसालेदार) (पोर्क/चिकन)",
       "ar": "سباغيتي بالطريقة التايلندية (حارة) (لحم خنزير/دجاج)",
       "de": "Spaghetti Thai-Style (scharf) (Schwein/Hähnchen)",
-      "fr": "Spaghetti à la thaïe (épicés) (porc/poulet)"
+      "fr": "Spaghetti à la thaïe (épicés) (porc/poulet)",
+      "ja": "タイ風スパゲッティ（辛口） (豚肉/鶏肉)",
+      "zt": "泰式義大利麵（辣） (豬肉/雞肉)",
+      "ms": "Spageti gaya Thai (pedas) (khinzir/ayam)",
+      "id": "Spageti ala Thailand (pedas) (babi/ayam)",
+      "lo": "ສະປາເກັດຕີແບບໄທ (ເຜັດ) (ໝູ/ໄກ່)",
+      "vi": "Mì Ý kiểu Thái (cay) (heo/gà)",
+      "km": "ស្ប៉ាហ្គេទីបែបថៃ (ហឹរ) (ជ្រូក/មាន់)",
+      "fil": "Spaghetti Thai style (maanghang) (baboy/manok)",
+      "he": "ספגטי בסגנון תאילנדי (חריף) (חזיר/עוף)",
+      "es": "Espaguetis estilo tailandés (picante) (cerdo/pollo)",
+      "it": "Spaghetti alla thailandese (piccanti) (maiale/pollo)"
      }
     },
     {
@@ -365,7 +637,18 @@ window.NM_MENU = {
       "hi": "थाई स्टाइल स्पेगेटी (मसालेदार) (झींगा/स्क्विड/सीफूड)",
       "ar": "سباغيتي بالطريقة التايلندية (حارة) (روبيان/حبار/مأكولات بحرية)",
       "de": "Spaghetti Thai-Style (scharf) (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Spaghetti à la thaïe (épicés) (crevettes/calmar/fruits de mer)"
+      "fr": "Spaghetti à la thaïe (épicés) (crevettes/calmar/fruits de mer)",
+      "ja": "タイ風スパゲッティ（辛口） (エビ/イカ/海鮮)",
+      "zt": "泰式義大利麵（辣） (蝦/魷魚/海鮮)",
+      "ms": "Spageti gaya Thai (pedas) (udang/sotong/makanan laut)",
+      "id": "Spageti ala Thailand (pedas) (udang/cumi/seafood)",
+      "lo": "ສະປາເກັດຕີແບບໄທ (ເຜັດ) (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Mì Ý kiểu Thái (cay) (tôm/mực/hải sản)",
+      "km": "ស្ប៉ាហ្គេទីបែបថៃ (ហឹរ) (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Spaghetti Thai style (maanghang) (hipon/pusit/seafood)",
+      "he": "ספגטי בסגנון תאילנדי (חריף) (שרימפס/קלמרי/פירות ים)",
+      "es": "Espaguetis estilo tailandés (picante) (langostinos/calamar/marisco)",
+      "it": "Spaghetti alla thailandese (piccanti) (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -382,7 +665,18 @@ window.NM_MENU = {
       "hi": "करी वर्स्ट सॉसेज, फ्राइज़ और सलाद (1 सॉसेज)",
       "ar": "نقانق كاري فورست مع بطاطس وسلطة (نقانق واحدة)",
       "de": "Currywurst mit Pommes und Salat (1 Wurst)",
-      "fr": "Currywurst avec frites et salade (1 saucisse)"
+      "fr": "Currywurst avec frites et salade (1 saucisse)",
+      "ja": "カレーヴルスト（ソーセージ）、フライドポテトとサラダ付き (ソーセージ1本)",
+      "zt": "咖哩香腸佐薯條與沙拉 (1根香腸)",
+      "ms": "Sosej currywurst dengan kentang goreng dan salad (1 sosej)",
+      "id": "Sosis currywurst dengan kentang goreng dan salad (1 sosis)",
+      "lo": "ໄສ້ກອກເຄີຣີວຸດ ກິນກັບມັນຝລັ່ງຝອຍ ແລະ ສະຫຼັດ (ໄສ້ກອກ 1 ເສັ້ນ)",
+      "vi": "Xúc xích currywurst với khoai tây chiên và salad (1 xúc xích)",
+      "km": "សាច់ក្រកការីវើស្ត ជាមួយដំឡូងបារាំងចៀន និងសាឡាត់ (សាច់ក្រក១)",
+      "fil": "Currywurst na may fries at salad (1 sausage)",
+      "he": "נקניקיות קארי-וורסט עם צ'יפס וסלט (נקניקייה אחת)",
+      "es": "Salchichas currywurst con patatas fritas y ensalada (1 salchicha)",
+      "it": "Salsicce currywurst con patatine e insalata (1 salsiccia)"
      }
     },
     {
@@ -399,7 +693,18 @@ window.NM_MENU = {
       "hi": "करी वर्स्ट सॉसेज, फ्राइज़ और सलाद (2 सॉसेज)",
       "ar": "نقانق كاري فورست مع بطاطس وسلطة (نقانق اثنتان)",
       "de": "Currywurst mit Pommes und Salat (2 Würste)",
-      "fr": "Currywurst avec frites et salade (2 saucisses)"
+      "fr": "Currywurst avec frites et salade (2 saucisses)",
+      "ja": "カレーヴルスト（ソーセージ）、フライドポテトとサラダ付き (ソーセージ2本)",
+      "zt": "咖哩香腸佐薯條與沙拉 (2根香腸)",
+      "ms": "Sosej currywurst dengan kentang goreng dan salad (2 sosej)",
+      "id": "Sosis currywurst dengan kentang goreng dan salad (2 sosis)",
+      "lo": "ໄສ້ກອກເຄີຣີວຸດ ກິນກັບມັນຝລັ່ງຝອຍ ແລະ ສະຫຼັດ (ໄສ້ກອກ 2 ເສັ້ນ)",
+      "vi": "Xúc xích currywurst với khoai tây chiên và salad (2 xúc xích)",
+      "km": "សាច់ក្រកការីវើស្ត ជាមួយដំឡូងបារាំងចៀន និងសាឡាត់ (សាច់ក្រក២)",
+      "fil": "Currywurst na may fries at salad (2 sausage)",
+      "he": "נקניקיות קארי-וורסט עם צ'יפס וסלט (2 נקניקיות)",
+      "es": "Salchichas currywurst con patatas fritas y ensalada (2 salchichas)",
+      "it": "Salsicce currywurst con patatine e insalata (2 salsicce)"
      }
     }
    ]
@@ -415,7 +720,18 @@ window.NM_MENU = {
     "hi": "तले व्यंजन",
     "ar": "مقليات",
     "de": "Frittiertes",
-    "fr": "Fritures"
+    "fr": "Fritures",
+    "ja": "揚げ物",
+    "zt": "炸物",
+    "ms": "Makanan goreng",
+    "id": "Gorengan",
+    "lo": "ຂອງທອດ",
+    "vi": "Món chiên",
+    "km": "ម្ហូបចៀន",
+    "fil": "Mga prito",
+    "he": "מטוגנים",
+    "es": "Fritos",
+    "it": "Fritti"
    },
    "items": [
     {
@@ -432,7 +748,18 @@ window.NM_MENU = {
       "hi": "तले चिकन विंग्स",
       "ar": "أجنحة دجاج مقلية",
       "de": "Frittierte Hähnchenflügel",
-      "fr": "Ailes de poulet frites"
+      "fr": "Ailes de poulet frites",
+      "ja": "フライドチキンウィング",
+      "zt": "炸雞翅",
+      "ms": "Kepak ayam goreng",
+      "id": "Sayap ayam goreng",
+      "lo": "ປີກໄກ່ທອດ",
+      "vi": "Cánh gà chiên",
+      "km": "ស្លាបមាន់ចៀន",
+      "fil": "Pritong chicken wings",
+      "he": "כנפי עוף מטוגנות",
+      "es": "Alitas de pollo fritas",
+      "it": "Ali di pollo fritte"
      }
     },
     {
@@ -449,7 +776,18 @@ window.NM_MENU = {
       "hi": "तले चिकन विंग्स और फ्राइज़",
       "ar": "أجنحة دجاج مقلية مع بطاطس",
       "de": "Frittierte Hähnchenflügel mit Pommes",
-      "fr": "Ailes de poulet frites avec frites"
+      "fr": "Ailes de poulet frites avec frites",
+      "ja": "フライドチキンウィングとフライドポテト",
+      "zt": "炸雞翅佐薯條",
+      "ms": "Kepak ayam goreng dengan kentang goreng",
+      "id": "Sayap ayam goreng dengan kentang goreng",
+      "lo": "ປີກໄກ່ທອດ ກິນກັບມັນຝລັ່ງຝອຍ",
+      "vi": "Cánh gà chiên với khoai tây chiên",
+      "km": "ស្លាបមាន់ចៀន ជាមួយដំឡូងបារាំងចៀន",
+      "fil": "Pritong chicken wings na may fries",
+      "he": "כנפי עוף מטוגנות עם צ'יפס",
+      "es": "Alitas de pollo fritas con patatas fritas",
+      "it": "Ali di pollo fritte con patatine"
      }
     },
     {
@@ -465,7 +803,18 @@ window.NM_MENU = {
       "hi": "तले स्प्रिंग रोल",
       "ar": "سبرينغ رول مقلي",
       "de": "Frittierte Frühlingsrollen",
-      "fr": "Nems frits"
+      "fr": "Nems frits",
+      "ja": "揚げ春巻き",
+      "zt": "炸春捲",
+      "ms": "Popiah goreng",
+      "id": "Lumpia goreng",
+      "lo": "ເປາະເປຍທອດ",
+      "vi": "Chả giò chiên",
+      "km": "នំប៉័ងរមៀលចៀន",
+      "fil": "Pritong lumpia",
+      "he": "אגרולים מטוגנים",
+      "es": "Rollitos de primavera fritos",
+      "it": "Involtini primavera fritti"
      }
     },
     {
@@ -482,7 +831,18 @@ window.NM_MENU = {
       "hi": "झींगा केक",
       "ar": "كعك الروبيان المقلي",
       "de": "Garnelenküchlein",
-      "fr": "Galettes de crevettes"
+      "fr": "Galettes de crevettes",
+      "ja": "エビのすり身揚げ",
+      "zt": "炸蝦餅",
+      "ms": "Kek udang",
+      "id": "Kue udang goreng",
+      "lo": "ເຂົ້າຈີ່ກຸ້ງຊຸບແປ້ງ",
+      "vi": "Chả tôm chiên",
+      "km": "នំបង្គាចៀន",
+      "fil": "Shrimp cakes",
+      "he": "עוגיות שרימפס",
+      "es": "Tortitas de langostinos",
+      "it": "Tortini di gamberi"
      }
     },
     {
@@ -498,7 +858,18 @@ window.NM_MENU = {
       "hi": "तले पोर्क रिब्स",
       "ar": "ضلوع لحم خنزير مقلية",
       "de": "Frittierte Schweinerippchen",
-      "fr": "Travers de porc frits"
+      "fr": "Travers de porc frits",
+      "ja": "豚スペアリブの揚げ物",
+      "zt": "炸豬肋排",
+      "ms": "Rusuk khinzir goreng",
+      "id": "Iga babi goreng",
+      "lo": "ກະດູກຊີ່ໂຄງໝູທອດ",
+      "vi": "Sườn heo chiên",
+      "km": "ឆ្អឹងជំនីជ្រូកចៀន",
+      "fil": "Pritong tadyang ng baboy",
+      "he": "צלעות חזיר מטוגנות",
+      "es": "Costillas de cerdo fritas",
+      "it": "Costine di maiale fritte"
      }
     },
     {
@@ -515,7 +886,18 @@ window.NM_MENU = {
       "hi": "बैटर में तला हुआ (सब्जियां)",
       "ar": "مقلي بالعجين (خضار)",
       "de": "Im Teigmantel frittiert (Gemüse)",
-      "fr": "Beignets frits (légumes)"
+      "fr": "Beignets frits (légumes)",
+      "ja": "天ぷら風の揚げ物 (野菜)",
+      "zt": "裹粉酥炸 (蔬菜)",
+      "ms": "Bersalut tepung dan digoreng (sayur)",
+      "id": "Digoreng tepung (sayuran)",
+      "lo": "ທອດຊຸບແປ້ງ (ຜັກ)",
+      "vi": "Chiên bột (rau củ)",
+      "km": "ចៀនជ្រលក់ម្សៅ (បន្លែ)",
+      "fil": "Binalutan ng harina at pinirito (gulay)",
+      "he": "מצופה בבלילה ומטוגן (ירקות)",
+      "es": "Rebozado y frito (verduras)",
+      "it": "Impanato e fritto (verdure)"
      }
     },
     {
@@ -532,7 +914,18 @@ window.NM_MENU = {
       "hi": "बैटर में तला हुआ (झींगा/स्क्विड/सीफूड)",
       "ar": "مقلي بالعجين (روبيان/حبار/مأكولات بحرية)",
       "de": "Im Teigmantel frittiert (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Beignets frits (crevettes/calmar/fruits de mer)"
+      "fr": "Beignets frits (crevettes/calmar/fruits de mer)",
+      "ja": "天ぷら風の揚げ物 (エビ/イカ/海鮮)",
+      "zt": "裹粉酥炸 (蝦/魷魚/海鮮)",
+      "ms": "Bersalut tepung dan digoreng (udang/sotong/makanan laut)",
+      "id": "Digoreng tepung (udang/cumi/seafood)",
+      "lo": "ທອດຊຸບແປ້ງ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Chiên bột (tôm/mực/hải sản)",
+      "km": "ចៀនជ្រលក់ម្សៅ (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Binalutan ng harina at pinirito (hipon/pusit/seafood)",
+      "he": "מצופה בבלילה ומטוגן (שרימפס/קלמרי/פירות ים)",
+      "es": "Rebozado y frito (langostinos/calamar/marisco)",
+      "it": "Impanato e fritto (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -549,7 +942,18 @@ window.NM_MENU = {
       "hi": "तले चिकन टेंडन",
       "ar": "أوتار الدجاج المقلية",
       "de": "Frittierte Hähnchensehnen",
-      "fr": "Tendons de poulet frits"
+      "fr": "Tendons de poulet frits",
+      "ja": "鶏の腱の唐揚げ",
+      "zt": "炸雞筋",
+      "ms": "Urat ayam goreng",
+      "id": "Urat ayam goreng",
+      "lo": "ເອັນໄກ່ທອດ",
+      "vi": "Gân gà chiên",
+      "km": "សរសៃមាន់ចៀន",
+      "fil": "Pritong litid ng manok",
+      "he": "גידי עוף מטוגנים",
+      "es": "Tendón de pollo frito",
+      "it": "Tendini di pollo fritti"
      }
     },
     {
@@ -566,7 +970,18 @@ window.NM_MENU = {
       "hi": "अनियन रिंग",
       "ar": "حلقات البصل",
       "de": "Zwiebelringe",
-      "fr": "Rondelles d’oignon"
+      "fr": "Rondelles d’oignon",
+      "ja": "オニオンリング",
+      "zt": "洋蔥圈",
+      "ms": "Cincin bawang",
+      "id": "Onion ring",
+      "lo": "ຫົວຜັກບົ່ວຊຸບແປ້ງທອດ",
+      "vi": "Hành tây chiên vòng",
+      "km": "រង្វង់ខ្ទឹមបារាំងចៀន",
+      "fil": "Onion rings",
+      "he": "טבעות בצל",
+      "es": "Aros de cebolla",
+      "it": "Anelli di cipolla"
      }
     },
     {
@@ -583,7 +998,18 @@ window.NM_MENU = {
       "hi": "फ्रेंच फ्राइज़",
       "ar": "بطاطس مقلية",
       "de": "Pommes frites",
-      "fr": "Frites"
+      "fr": "Frites",
+      "ja": "フライドポテト",
+      "zt": "薯條",
+      "ms": "Kentang goreng",
+      "id": "Kentang goreng",
+      "lo": "ມັນຝລັ່ງຝອຍ",
+      "vi": "Khoai tây chiên",
+      "km": "ដំឡូងបារាំងចៀន",
+      "fil": "French fries",
+      "he": "צ'יפס",
+      "es": "Patatas fritas",
+      "it": "Patatine fritte"
      }
     }
    ]
@@ -599,7 +1025,18 @@ window.NM_MENU = {
     "hi": "साशिमी",
     "ar": "ساشيمي",
     "de": "Sashimi",
-    "fr": "Sashimi"
+    "fr": "Sashimi",
+    "ja": "刺身",
+    "zt": "生魚片",
+    "ms": "Sashimi",
+    "id": "Sashimi",
+    "lo": "ຊາຊິມິ",
+    "vi": "Sashimi",
+    "km": "សាស៊ីមី",
+    "fil": "Sashimi",
+    "he": "סשימי",
+    "es": "Sashimi",
+    "it": "Sashimi"
    },
    "items": [
     {
@@ -616,7 +1053,18 @@ window.NM_MENU = {
       "hi": "फ़िश साशिमी सेट",
       "ar": "طقم ساشيمي السمك",
       "de": "Fisch-Sashimi-Set",
-      "fr": "Set de sashimi de poisson"
+      "fr": "Set de sashimi de poisson",
+      "ja": "魚の刺身セット",
+      "zt": "生魚片套餐",
+      "ms": "Set sashimi ikan",
+      "id": "Set sashimi ikan",
+      "lo": "ຊຸດປາດິບ",
+      "vi": "Set sashimi cá",
+      "km": "សាស៊ីមីត្រី",
+      "fil": "Fish sashimi set",
+      "he": "סט סשימי דגים",
+      "es": "Set de sashimi de pescado",
+      "it": "Set di sashimi di pesce"
      }
     },
     {
@@ -633,7 +1081,18 @@ window.NM_MENU = {
       "hi": "मुरेक्स शेल साशिमी सेट",
       "ar": "طقم ساشيمي محار موركس",
       "de": "Murex-Muschel-Sashimi-Set",
-      "fr": "Set de sashimi de murex"
+      "fr": "Set de sashimi de murex",
+      "ja": "アクキガイの刺身セット",
+      "zt": "骨螺生魚片套餐",
+      "ms": "Set sashimi siput murex",
+      "id": "Set sashimi kerang murex",
+      "lo": "ຊຸດຫອຍມູເຣັກຊົບດິບ",
+      "vi": "Set sashimi ốc gai",
+      "km": "សាស៊ីមីខ្យងមូរិច",
+      "fil": "Murex shell sashimi set",
+      "he": "סט סשימי רכיכת מורקס",
+      "es": "Set de sashimi de múrex",
+      "it": "Set di sashimi di murice"
      }
     }
    ]
@@ -649,7 +1108,18 @@ window.NM_MENU = {
     "hi": "थाई मसालेदार सलाद और ग्रिल",
     "ar": "سلطات تايلندية حارة ومشويات",
     "de": "Scharfe Thai-Salate & Grill",
-    "fr": "Salades épicées thaïes & grillades"
+    "fr": "Salades épicées thaïes & grillades",
+    "ja": "タイ風辛口サラダと炭火焼き",
+    "zt": "泰式辣沙拉與燒烤",
+    "ms": "Salad pedas Thai & bakar",
+    "id": "Salad pedas Thailand & bakaran",
+    "lo": "ຢຳ ຕຳ ແລະ ປີ້ງ",
+    "vi": "Gỏi cay Thái & đồ nướng",
+    "km": "ញាំហឹរបែបថៃ និងសាច់អាំង",
+    "fil": "Maanghang na Thai salad at inihaw",
+    "he": "סלטים חריפים תאילנדיים וצלי",
+    "es": "Ensaladas picantes tailandesas y parrilla",
+    "it": "Insalate piccanti thai e grill"
    },
    "items": [
     {
@@ -666,7 +1136,18 @@ window.NM_MENU = {
       "hi": "थाई पपीता सलाद",
       "ar": "سلطة البابايا التايلندية",
       "de": "Thailändischer Papayasalat",
-      "fr": "Salade de papaye thaïe"
+      "fr": "Salade de papaye thaïe",
+      "ja": "ソムタム（タイ風パパイヤサラダ）",
+      "zt": "泰式青木瓜沙拉",
+      "ms": "Salad betik Thai",
+      "id": "Salad pepaya Thailand",
+      "lo": "ຕຳໝາກຫຸ່ງ",
+      "vi": "Gỏi đu đủ Thái",
+      "km": "ញាំល្ហុងបែបថៃ",
+      "fil": "Thai papaya salad",
+      "he": "סלט פפאיה תאילנדי",
+      "es": "Ensalada tailandesa de papaya",
+      "it": "Insalata thai di papaya"
      }
     },
     {
@@ -683,7 +1164,18 @@ window.NM_MENU = {
       "hi": "नीले केकड़े के साथ पपीता सलाद",
       "ar": "سلطة البابايا بسلطعون أزرق",
       "de": "Papayasalat mit Blaukrabbe",
-      "fr": "Salade de papaye au crabe bleu"
+      "fr": "Salade de papaye au crabe bleu",
+      "ja": "ソムタム、ワタリガニ入り",
+      "zt": "青木瓜沙拉佐藍蟹",
+      "ms": "Salad betik dengan ketam biru",
+      "id": "Salad pepaya dengan kepiting biru",
+      "lo": "ຕຳໝາກຫຸ່ງປູ",
+      "vi": "Gỏi đu đủ với cua xanh",
+      "km": "ញាំល្ហុងជាមួយក្តាមខៀវ",
+      "fil": "Papaya salad na may blue crab",
+      "he": "סלט פפאיה עם סרטן כחול",
+      "es": "Ensalada de papaya con cangrejo azul",
+      "it": "Insalata di papaya con granchio blu"
      }
     },
     {
@@ -700,7 +1192,18 @@ window.NM_MENU = {
       "hi": "सीफूड के साथ पपीता सलाद",
       "ar": "سلطة البابايا بالمأكولات البحرية",
       "de": "Papayasalat mit Meeresfrüchten",
-      "fr": "Salade de papaye aux fruits de mer"
+      "fr": "Salade de papaye aux fruits de mer",
+      "ja": "ソムタム、海鮮入り",
+      "zt": "青木瓜沙拉佐海鮮",
+      "ms": "Salad betik dengan makanan laut",
+      "id": "Salad pepaya dengan seafood",
+      "lo": "ຕຳໝາກຫຸ່ງທະເລ",
+      "vi": "Gỏi đu đủ hải sản",
+      "km": "ញាំល្ហុងអាហារសមុទ្រ",
+      "fil": "Papaya salad na may seafood",
+      "he": "סלט פפאיה עם פירות ים",
+      "es": "Ensalada de papaya con marisco",
+      "it": "Insalata di papaya con frutti di mare"
      }
     },
     {
@@ -717,7 +1220,18 @@ window.NM_MENU = {
       "hi": "ग्रिल्ड पोर्क नेक",
       "ar": "رقبة خنزير مشوية",
       "de": "Gegrillter Schweinenacken",
-      "fr": "Échine de porc grillée"
+      "fr": "Échine de porc grillée",
+      "ja": "豚トロの炭火焼き",
+      "zt": "烤豬頸肉",
+      "ms": "Leher khinzir bakar",
+      "id": "Sate leher babi bakar",
+      "lo": "ຄໍໝູປີ້ງ",
+      "vi": "Cổ heo nướng",
+      "km": "កជ្រូកអាំង",
+      "fil": "Inihaw na leeg ng baboy",
+      "he": "צוואר חזיר צלוי",
+      "es": "Cuello de cerdo a la parrilla",
+      "it": "Collo di maiale alla griglia"
      }
     },
     {
@@ -734,7 +1248,18 @@ window.NM_MENU = {
       "hi": "ग्रिल्ड बीफ़ ब्रिस्केट (“रोता बाघ”)",
       "ar": "صدر بقر مشوي («النمر الباكي»)",
       "de": "Gegrillte Rinderbrust („weinender Tiger“)",
-      "fr": "Poitrine de bœuf grillée (« tigre qui pleure »)"
+      "fr": "Poitrine de bœuf grillée (« tigre qui pleure »)",
+      "ja": "牛バラ肉の炭火焼き（「泣く虎」）",
+      "zt": "烤牛腩（「哭泣的老虎」）",
+      "ms": "Brisket daging lembu bakar («harimau menangis»)",
+      "id": "Sandung lamur sapi bakar («macan menangis»)",
+      "lo": "ຊີ້ນງົວປີ້ງ («ເສືອຮ້ອງໄຫ້»)",
+      "vi": "Thịt bò nạm nướng («hổ khóc»)",
+      "km": "សាច់គោអាំង («ខ្លាយំ»)",
+      "fil": "Inihaw na brisket ng baka («umiiyak na tigre»)",
+      "he": "חזה בקר צלוי («הנמר הבוכה»)",
+      "es": "Falda de ternera a la parrilla («tigre que llora»)",
+      "it": "Punta di petto di manzo alla griglia («tigre che piange»)"
      }
     },
     {
@@ -751,7 +1276,18 @@ window.NM_MENU = {
       "hi": "जड़ी-बूटियों वाला मसालेदार सलाद (लाब) (पोर्क/चिकन)",
       "ar": "سلطة لاب الحارة بالأعشاب (لحم خنزير/دجاج)",
       "de": "Scharfer Kräutersalat (Laab) (Schwein/Hähnchen)",
-      "fr": "Salade épicée aux herbes (laab) (porc/poulet)"
+      "fr": "Salade épicée aux herbes (laab) (porc/poulet)",
+      "ja": "ハーブと和えたスパイシーなひき肉サラダ（ラープ） (豚肉/鶏肉)",
+      "zt": "香草辣拌肉末（拉普） (豬肉/雞肉)",
+      "ms": "Salad daging kisar pedas dengan herba (larb) (khinzir/ayam)",
+      "id": "Salad daging cincang pedas dengan rempah segar (larb) (babi/ayam)",
+      "lo": "ລາບ (ໝູ/ໄກ່)",
+      "vi": "Gỏi thịt băm cay với rau thơm (larb) (heo/gà)",
+      "km": "ឡាប (ជ្រូក/មាន់)",
+      "fil": "Maanghang na giniling na may halamang gamot (larb) (baboy/manok)",
+      "he": "סלט בשר טחון חריף עם עשבי תיבול (לאב) (חזיר/עוף)",
+      "es": "Ensalada picante de carne picada con hierbas (larb) (cerdo/pollo)",
+      "it": "Insalata piccante di carne macinata con erbe (larb) (maiale/pollo)"
      }
     },
     {
@@ -768,7 +1304,18 @@ window.NM_MENU = {
       "hi": "जड़ी-बूटियों वाला मसालेदार सलाद (लाब) (झींगा/स्क्विड/बीफ़/सीफूड)",
       "ar": "سلطة لاب الحارة بالأعشاب (روبيان/حبار/لحم بقر/مأكولات بحرية)",
       "de": "Scharfer Kräutersalat (Laab) (Garnelen/Tintenfisch/Rind/Meeresfrüchte)",
-      "fr": "Salade épicée aux herbes (laab) (crevettes/calmar/bœuf/fruits de mer)"
+      "fr": "Salade épicée aux herbes (laab) (crevettes/calmar/bœuf/fruits de mer)",
+      "ja": "ハーブと和えたスパイシーなひき肉サラダ（ラープ） (エビ/イカ/牛肉/海鮮)",
+      "zt": "香草辣拌肉末（拉普） (蝦/魷魚/牛肉/海鮮)",
+      "ms": "Salad daging kisar pedas dengan herba (larb) (udang/sotong/daging lembu/makanan laut)",
+      "id": "Salad daging cincang pedas dengan rempah segar (larb) (udang/cumi/sapi/seafood)",
+      "lo": "ລາບ (ກຸ້ງ/ປາໝຶກ/ງົວ/ທະເລ)",
+      "vi": "Gỏi thịt băm cay với rau thơm (larb) (tôm/mực/bò/hải sản)",
+      "km": "ឡាប (បង្គា/មឹក/គោ/អាហារសមុទ្រ)",
+      "fil": "Maanghang na giniling na may halamang gamot (larb) (hipon/pusit/baka/seafood)",
+      "he": "סלט בשר טחון חריף עם עשבי תיבול (לאב) (שרימפס/קלמרי/בקר/פירות ים)",
+      "es": "Ensalada picante de carne picada con hierbas (larb) (langostinos/calamar/ternera/marisco)",
+      "it": "Insalata piccante di carne macinata con erbe (larb) (gamberi/calamari/manzo/frutti di mare)"
      }
     },
     {
@@ -784,7 +1331,18 @@ window.NM_MENU = {
       "hi": "तले हुए बत्तख की चोंच",
       "ar": "مناقير البط المقلية",
       "de": "Frittierte Entenschnäbel",
-      "fr": "Becs de canard frits"
+      "fr": "Becs de canard frits",
+      "ja": "アヒルのくちばしの唐揚げ",
+      "zt": "炸鴨嘴",
+      "ms": "Paruh itik goreng",
+      "id": "Paruh bebek goreng",
+      "lo": "ປາກເປັດທອດ",
+      "vi": "Mỏ vịt chiên",
+      "km": "ចំពុះទាចៀន",
+      "fil": "Pritong tuka ng pato",
+      "he": "מקורי ברווז מטוגנים",
+      "es": "Picos de pato fritos",
+      "it": "Becchi d'anatra fritti"
      }
     },
     {
@@ -801,7 +1359,18 @@ window.NM_MENU = {
       "hi": "मसालेदार आम सलाद",
       "ar": "سلطة المانجو الحارة",
       "de": "Scharfer Mangosalat",
-      "fr": "Salade de mangue épicée"
+      "fr": "Salade de mangue épicée",
+      "ja": "スパイシーなマンゴーサラダ",
+      "zt": "辣芒果沙拉",
+      "ms": "Salad mangga pedas",
+      "id": "Salad mangga pedas",
+      "lo": "ຢຳໝາກມ່ວງ",
+      "vi": "Gỏi xoài cay",
+      "km": "ញាំស្វាយ",
+      "fil": "Maanghang na mango salad",
+      "he": "סלט מנגו חריף",
+      "es": "Ensalada picante de mango",
+      "it": "Insalata piccante di mango"
      }
     },
     {
@@ -818,7 +1387,18 @@ window.NM_MENU = {
       "hi": "ताज़े झींगे के साथ मसालेदार केल सलाद",
       "ar": "سلطة سيقان الكرنب الحارة مع روبيان طازج",
       "de": "Scharfer Grünkohlstängel-Salat mit frischen Garnelen",
-      "fr": "Salade épicée de tiges de chou kale aux crevettes fraîches"
+      "fr": "Salade épicée de tiges de chou kale aux crevettes fraîches",
+      "ja": "カイランの茎のスパイシーサラダ、生エビ入り",
+      "zt": "辣拌芥蘭莖佐鮮蝦",
+      "ms": "Salad batang kailan pedas dengan udang segar",
+      "id": "Salad batang kailan pedas dengan udang segar",
+      "lo": "ຢຳຄະນ້າກຸ້ງສົດ",
+      "vi": "Gỏi thân cải làn cay với tôm tươi",
+      "km": "ញាំដើមខាត់ណាជាមួយបង្គាស្រស់",
+      "fil": "Maanghang na salad ng tangkay ng Chinese kale na may sariwang hipon",
+      "he": "סלט גבעולי קייל סיני חריף עם שרימפס טרי",
+      "es": "Ensalada picante de tallos de col china con langostinos frescos",
+      "it": "Insalata piccante di gambi di cavolo cinese con gamberi freschi"
      }
     },
     {
@@ -834,7 +1414,18 @@ window.NM_MENU = {
       "hi": "मसालेदार नीला केकड़ा सलाद",
       "ar": "سلطة السلطعون الأزرق الحارة",
       "de": "Scharfer Blaukrabben-Salat",
-      "fr": "Salade épicée de crabe bleu"
+      "fr": "Salade épicée de crabe bleu",
+      "ja": "スパイシーなワタリガニのサラダ",
+      "zt": "辣拌藍蟹沙拉",
+      "ms": "Salad ketam biru pedas",
+      "id": "Salad kepiting biru pedas",
+      "lo": "ຢຳປູມ້າ",
+      "vi": "Gỏi cua xanh cay",
+      "km": "ញាំក្តាមខៀវ",
+      "fil": "Maanghang na blue crab salad",
+      "he": "סלט סרטן כחול חריף",
+      "es": "Ensalada picante de cangrejo azul",
+      "it": "Insalata piccante di granchio blu"
      }
     },
     {
@@ -850,7 +1441,18 @@ window.NM_MENU = {
       "hi": "मसालेदार ग्लास नूडल सलाद (पोर्क/चिकन)",
       "ar": "سلطة شعيرية الزجاج الحارة (لحم خنزير/دجاج)",
       "de": "Scharfer Glasnudelsalat (Schwein/Hähnchen)",
-      "fr": "Salade épicée de vermicelles de verre (porc/poulet)"
+      "fr": "Salade épicée de vermicelles de verre (porc/poulet)",
+      "ja": "スパイシーな春雨サラダ (豚肉/鶏肉)",
+      "zt": "辣拌冬粉沙拉 (豬肉/雞肉)",
+      "ms": "Salad bihun kaca pedas (khinzir/ayam)",
+      "id": "Salad soun pedas (babi/ayam)",
+      "lo": "ຢຳວຸ້ນເສັ້ນ (ໝູ/ໄກ່)",
+      "vi": "Gỏi miến cay (heo/gà)",
+      "km": "ញាំមីសុីដូស (ជ្រូក/មាន់)",
+      "fil": "Maanghang na glass noodle salad (baboy/manok)",
+      "he": "סלט אטריות זכוכית חריף (חזיר/עוף)",
+      "es": "Ensalada picante de fideos de cristal (cerdo/pollo)",
+      "it": "Insalata piccante di noodles di vetro (maiale/pollo)"
      }
     },
     {
@@ -866,7 +1468,18 @@ window.NM_MENU = {
       "hi": "मसालेदार ग्लास नूडल सलाद (झींगा/स्क्विड/सीफूड)",
       "ar": "سلطة شعيرية الزجاج الحارة (روبيان/حبار/مأكولات بحرية)",
       "de": "Scharfer Glasnudelsalat (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Salade épicée de vermicelles de verre (crevettes/calmar/fruits de mer)"
+      "fr": "Salade épicée de vermicelles de verre (crevettes/calmar/fruits de mer)",
+      "ja": "スパイシーな春雨サラダ (エビ/イカ/海鮮)",
+      "zt": "辣拌冬粉沙拉 (蝦/魷魚/海鮮)",
+      "ms": "Salad bihun kaca pedas (udang/sotong/makanan laut)",
+      "id": "Salad soun pedas (udang/cumi/seafood)",
+      "lo": "ຢຳວຸ້ນເສັ້ນ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Gỏi miến cay (tôm/mực/hải sản)",
+      "km": "ញាំមីសុីដូស (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Maanghang na glass noodle salad (hipon/pusit/seafood)",
+      "he": "סלט אטריות זכוכית חריף (שרימפס/קלמרי/פירות ים)",
+      "es": "Ensalada picante de fideos de cristal (langostinos/calamar/marisco)",
+      "it": "Insalata piccante di noodles di vetro (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -883,7 +1496,18 @@ window.NM_MENU = {
       "hi": "मसालेदार सीफूड सलाद",
       "ar": "سلطة المأكولات البحرية الحارة",
       "de": "Scharfer Meeresfrüchtesalat",
-      "fr": "Salade de fruits de mer épicée"
+      "fr": "Salade de fruits de mer épicée",
+      "ja": "スパイシーな海鮮サラダ",
+      "zt": "辣拌海鮮沙拉",
+      "ms": "Salad makanan laut pedas",
+      "id": "Salad seafood pedas",
+      "lo": "ຢຳທະເລ",
+      "vi": "Gỏi hải sản cay",
+      "km": "ញាំអាហារសមុទ្រ",
+      "fil": "Maanghang na seafood salad",
+      "he": "סלט פירות ים חריף",
+      "es": "Ensalada picante de marisco",
+      "it": "Insalata piccante di frutti di mare"
      }
     },
     {
@@ -900,7 +1524,18 @@ window.NM_MENU = {
       "hi": "फ़िश सॉस में मसालेदार झींगे",
       "ar": "روبيان حار في صلصة السمك",
       "de": "Scharfe Garnelen in Fischsauce",
-      "fr": "Crevettes épicées à la sauce de poisson"
+      "fr": "Crevettes épicées à la sauce de poisson",
+      "ja": "エビのナンプラー和え（辛口）",
+      "zt": "魚露辣拌生蝦",
+      "ms": "Udang pedas dalam sos ikan",
+      "id": "Udang pedas dalam saus ikan",
+      "lo": "ກຸ້ງແຊ່ນ້ຳປາ",
+      "vi": "Tôm sống ngâm nước mắm cay",
+      "km": "បង្គាត្រាំទឹកត្រីហឹរ",
+      "fil": "Maanghang na hipon sa patis",
+      "he": "שרימפס חריף ברוטב דגים",
+      "es": "Gambas picantes en salsa de pescado",
+      "it": "Gamberi piccanti in salsa di pesce"
      }
     }
    ]
@@ -916,7 +1551,18 @@ window.NM_MENU = {
     "hi": "मछली और सीफूड",
     "ar": "أسماك ومأكولات بحرية",
     "de": "Fisch & Meeresfrüchte",
-    "fr": "Poissons & fruits de mer"
+    "fr": "Poissons & fruits de mer",
+    "ja": "魚介料理",
+    "zt": "魚與海鮮",
+    "ms": "Ikan & makanan laut",
+    "id": "Ikan & seafood",
+    "lo": "ປາ ແລະ ອາຫານທະເລ",
+    "vi": "Cá & hải sản",
+    "km": "ត្រី និងអាហារសមុទ្រ",
+    "fil": "Isda at seafood",
+    "he": "דגים ופירות ים",
+    "es": "Pescados y mariscos",
+    "it": "Pesce e frutti di mare"
    },
    "items": [
     {
@@ -933,7 +1579,18 @@ window.NM_MENU = {
       "hi": "अंडे वाला ग्रिल्ड स्क्विड",
       "ar": "حبار مشوي بالبيض",
       "de": "Gegrillter Tintenfisch mit Rogen",
-      "fr": "Calmar grillé aux œufs"
+      "fr": "Calmar grillé aux œufs",
+      "ja": "卵付きイカの炭火焼き",
+      "zt": "烤魷魚（帶卵）",
+      "ms": "Sotong bakar dengan telur",
+      "id": "Cumi bakar dengan telur",
+      "lo": "ປາໝຶກໄຂ່ປີ້ງ",
+      "vi": "Mực trứng nướng",
+      "km": "មឹកមានពងអាំង",
+      "fil": "Inihaw na pusit na may itlog",
+      "he": "קלמרי צלוי עם ביצי דג",
+      "es": "Calamar a la parrilla con huevas",
+      "it": "Calamari alla griglia con uova"
      }
     },
     {
@@ -949,7 +1606,18 @@ window.NM_MENU = {
       "hi": "धूप में सूखा तला स्क्विड",
       "ar": "حبار مجفف مقلي",
       "de": "Frittierter sonnengetrockneter Tintenfisch",
-      "fr": "Calmar séché au soleil frit"
+      "fr": "Calmar séché au soleil frit",
+      "ja": "干しイカの唐揚げ",
+      "zt": "炸魷魚乾",
+      "ms": "Sotong kering goreng",
+      "id": "Cumi kering goreng",
+      "lo": "ປາໝຶກແຫ້ງທອດ",
+      "vi": "Mực khô chiên",
+      "km": "មឹកស្ងួតចៀន",
+      "fil": "Pritong pinatuyong pusit",
+      "he": "קלמרי מיובש בשמש מטוגן",
+      "es": "Calamar seco al sol frito",
+      "it": "Calamari essiccati fritti"
      }
     },
     {
@@ -966,7 +1634,18 @@ window.NM_MENU = {
       "hi": "लहसुन के साथ तला स्क्विड",
       "ar": "حبار مقلي بالثوم",
       "de": "Frittierter Tintenfisch mit Knoblauch",
-      "fr": "Calmar frit à l’ail"
+      "fr": "Calmar frit à l’ail",
+      "ja": "イカのニンニク揚げ",
+      "zt": "蒜香炸魷魚",
+      "ms": "Sotong goreng bawang putih",
+      "id": "Cumi goreng bawang putih",
+      "lo": "ປາໝຶກທອດກະທຽມ",
+      "vi": "Mực chiên tỏi",
+      "km": "មឹកចៀនខ្ទឹមស",
+      "fil": "Pritong pusit na may bawang",
+      "he": "קלמרי מטוגן עם שום",
+      "es": "Calamar frito con ajo",
+      "it": "Calamari fritti con aglio"
      }
     },
     {
@@ -983,7 +1662,18 @@ window.NM_MENU = {
       "hi": "नींबू के रस के साथ भाप में पका स्क्विड (कटोरा)",
       "ar": "حبار مطهو على البخار بعصير الليمون (وعاء)",
       "de": "Gedämpfter Tintenfisch mit Rogen und Zitronensaft (Schüssel)",
-      "fr": "Calmar vapeur aux œufs et jus de citron (bol)"
+      "fr": "Calmar vapeur aux œufs et jus de citron (bol)",
+      "ja": "卵付きイカの蒸し物、レモンソース (椀)",
+      "zt": "檸檬蒸魷魚（帶卵） (碗)",
+      "ms": "Sotong kukus dengan telur dan jus lemon (mangkuk)",
+      "id": "Cumi kukus dengan telur dan air lemon (mangkuk)",
+      "lo": "ປາໝຶກໄຂ່ນຶ່ງໝາກນາວ (ຖ້ວຍ)",
+      "vi": "Mực trứng hấp chanh (tô)",
+      "km": "មឹកមានពងចំហុយក្រូចឆ្មារ (ចាន)",
+      "fil": "Steamed na pusit na may itlog at katas ng lemon (mangkok)",
+      "he": "קלמרי מאודה עם ביצי דג ומיץ לימון (קערה)",
+      "es": "Calamar al vapor con huevas y zumo de limón (cuenco)",
+      "it": "Calamari al vapore con uova e succo di limone (ciotola)"
      }
     },
     {
@@ -1000,7 +1690,18 @@ window.NM_MENU = {
       "hi": "नींबू के रस के साथ भाप में पका स्क्विड (हॉट पॉट)",
       "ar": "حبار مطهو على البخار بعصير الليمون (قدر ساخن)",
       "de": "Gedämpfter Tintenfisch mit Rogen und Zitronensaft (Feuertopf)",
-      "fr": "Calmar vapeur aux œufs et jus de citron (marmite)"
+      "fr": "Calmar vapeur aux œufs et jus de citron (marmite)",
+      "ja": "卵付きイカの蒸し物、レモンソース (土鍋)",
+      "zt": "檸檬蒸魷魚（帶卵） (火鍋)",
+      "ms": "Sotong kukus dengan telur dan jus lemon (periuk panas)",
+      "id": "Cumi kukus dengan telur dan air lemon (hot pot)",
+      "lo": "ປາໝຶກໄຂ່ນຶ່ງໝາກນາວ (ໝໍ້ໄຟ)",
+      "vi": "Mực trứng hấp chanh (nồi lẩu)",
+      "km": "មឹកមានពងចំហុយក្រូចឆ្មារ (ឆ្នាំងក្តៅ)",
+      "fil": "Steamed na pusit na may itlog at katas ng lemon (hot pot)",
+      "he": "קלמרי מאודה עם ביצי דג ומיץ לימון (סיר חם)",
+      "es": "Calamar al vapor con huevas y zumo de limón (olla caliente)",
+      "it": "Calamari al vapore con uova e succo di limone (tegamino)"
      }
     },
     {
@@ -1017,7 +1718,18 @@ window.NM_MENU = {
       "hi": "ऑयस्टर (छोटा)",
       "ar": "محار (صغير)",
       "de": "Austern (klein)",
-      "fr": "Huîtres (petit)"
+      "fr": "Huîtres (petit)",
+      "ja": "牡蠣 (小)",
+      "zt": "生蠔 (小)",
+      "ms": "Tiram (kecil)",
+      "id": "Tiram (kecil)",
+      "lo": "ຫອຍນາງລົມ (ນ້ອຍ)",
+      "vi": "Hàu (nhỏ)",
+      "km": "ខ្យងអយស្ទ័រ (តូច)",
+      "fil": "Talaba (maliit)",
+      "he": "צדפות (קטן)",
+      "es": "Ostras (pequeño)",
+      "it": "Ostriche (piccolo)"
      }
     },
     {
@@ -1034,7 +1746,18 @@ window.NM_MENU = {
       "hi": "ऑयस्टर (बड़ा/4 पीस)",
       "ar": "محار (كبير/4 قطع)",
       "de": "Austern (groß/4 Stück)",
-      "fr": "Huîtres (grand/4 pièces)"
+      "fr": "Huîtres (grand/4 pièces)",
+      "ja": "牡蠣 (大/4個)",
+      "zt": "生蠔 (大/4個)",
+      "ms": "Tiram (besar/4 biji)",
+      "id": "Tiram (besar/4 buah)",
+      "lo": "ຫອຍນາງລົມ (ໃຫຍ່/4 ໂຕ)",
+      "vi": "Hàu (lớn/4 con)",
+      "km": "ខ្យងអយស្ទ័រ (ធំ/៤)",
+      "fil": "Talaba (malaki/4 piraso)",
+      "he": "צדפות (גדול/4 יחידות)",
+      "es": "Ostras (grande/4 unidades)",
+      "it": "Ostriche (grande/4 pezzi)"
      }
     },
     {
@@ -1051,7 +1774,18 @@ window.NM_MENU = {
       "hi": "ऑयस्टर (बड़ा/1 पीस)",
       "ar": "محار (كبير/قطعة واحدة)",
       "de": "Austern (groß/1 Stück)",
-      "fr": "Huîtres (grand/1 pièce)"
+      "fr": "Huîtres (grand/1 pièce)",
+      "ja": "牡蠣 (大/1個)",
+      "zt": "生蠔 (大/1個)",
+      "ms": "Tiram (besar/1 biji)",
+      "id": "Tiram (besar/1 buah)",
+      "lo": "ຫອຍນາງລົມ (ໃຫຍ່/1 ໂຕ)",
+      "vi": "Hàu (lớn/1 con)",
+      "km": "ខ្យងអយស្ទ័រ (ធំ/១)",
+      "fil": "Talaba (malaki/1 piraso)",
+      "he": "צדפות (גדול/יחידה אחת)",
+      "es": "Ostras (grande/1 unidad)",
+      "it": "Ostriche (grande/1 pezzo)"
      }
     },
     {
@@ -1068,7 +1802,18 @@ window.NM_MENU = {
       "hi": "उबला सीफूड और डिपिंग सॉस",
       "ar": "مأكولات بحرية مسلوقة مع صلصة",
       "de": "Pochierte Meeresfrüchte mit Dip",
-      "fr": "Fruits de mer pochés, sauce"
+      "fr": "Fruits de mer pochés, sauce",
+      "ja": "海鮮のポーチ、ディップソース付き",
+      "zt": "水煮海鮮佐沾醬",
+      "ms": "Makanan laut rebus dengan sos cecah",
+      "id": "Seafood rebus dengan saus celup",
+      "lo": "ທະເລຕົ້ມ ກິນກັບນ້ຳຈິ້ມ",
+      "vi": "Hải sản luộc kèm nước chấm",
+      "km": "អាហារសមុទ្រស្ងោរ ជាមួយទឹកជ្រលក់",
+      "fil": "Pinakuluang seafood na may sawsawan",
+      "he": "פירות ים מבושלים עם רוטב טבילה",
+      "es": "Marisco escalfado con salsa para mojar",
+      "it": "Frutti di mare in camicia con salsa"
      }
     },
     {
@@ -1085,7 +1830,18 @@ window.NM_MENU = {
       "hi": "चीज़ के साथ बेक्ड मसल्स",
       "ar": "بلح البحر المخبوز بالجبن",
       "de": "Überbackene Miesmuscheln mit Käse",
-      "fr": "Moules gratinées au fromage"
+      "fr": "Moules gratinées au fromage",
+      "ja": "ムール貝のチーズ焼き",
+      "zt": "焗烤起司淡菜",
+      "ms": "Kupang bakar dengan keju",
+      "id": "Kerang hijau panggang keju",
+      "lo": "ຫອຍແມງພູອົບຊີດ",
+      "vi": "Vẹm nướng phô mai",
+      "km": "ខ្យងឆ្អិនអាំងជាមួយឈីស",
+      "fil": "Baked mussels na may keso",
+      "he": "מולים אפויים עם גבינה",
+      "es": "Mejillones gratinados con queso",
+      "it": "Cozze gratinate al formaggio"
      }
     },
     {
@@ -1102,7 +1858,18 @@ window.NM_MENU = {
       "hi": "नमक में भाप में पके झींगे / ग्रिल्ड झींगे (0.5 किलो)",
       "ar": "روبيان بالملح على البخار / مشوي (0.5 كغ)",
       "de": "Gedämpfte Salzgarnelen / gegrillte Garnelen (0,5 kg)",
-      "fr": "Gambas vapeur au sel / grillées (0,5 kg)"
+      "fr": "Gambas vapeur au sel / grillées (0,5 kg)",
+      "ja": "エビの塩蒸し／炭火焼き (0.5kg)",
+      "zt": "鹽蒸蝦／烤蝦 (0.5公斤)",
+      "ms": "Udang kukus bergaram / udang bakar (0.5 kg)",
+      "id": "Udang kukus garam / udang bakar (0,5 kg)",
+      "lo": "ກຸ້ງນຶ່ງເກືອ / ກຸ້ງເຜົາ (0.5 ກິໂລ)",
+      "vi": "Tôm hấp muối / tôm nướng (0,5 kg)",
+      "km": "បង្គាចំហុយអំបិល / បង្គាអាំង (០.៥ គីឡូ)",
+      "fil": "Steamed na hipon na may asin / inihaw na hipon (0.5 kg)",
+      "he": "שרימפס מאודה במלח / שרימפס צלוי (0.5 ק\"ג)",
+      "es": "Langostinos al vapor con sal / a la parrilla (0,5 kg)",
+      "it": "Gamberoni al vapore con sale / alla griglia (0,5 kg)"
      }
     },
     {
@@ -1119,7 +1886,18 @@ window.NM_MENU = {
       "hi": "नमक में भाप में पके झींगे / ग्रिल्ड झींगे (1 किलो)",
       "ar": "روبيان بالملح على البخار / مشوي (1 كغ)",
       "de": "Gedämpfte Salzgarnelen / gegrillte Garnelen (1 kg)",
-      "fr": "Gambas vapeur au sel / grillées (1 kg)"
+      "fr": "Gambas vapeur au sel / grillées (1 kg)",
+      "ja": "エビの塩蒸し／炭火焼き (1kg)",
+      "zt": "鹽蒸蝦／烤蝦 (1公斤)",
+      "ms": "Udang kukus bergaram / udang bakar (1 kg)",
+      "id": "Udang kukus garam / udang bakar (1 kg)",
+      "lo": "ກຸ້ງນຶ່ງເກືອ / ກຸ້ງເຜົາ (1 ກິໂລ)",
+      "vi": "Tôm hấp muối / tôm nướng (1 kg)",
+      "km": "បង្គាចំហុយអំបិល / បង្គាអាំង (១ គីឡូ)",
+      "fil": "Steamed na hipon na may asin / inihaw na hipon (1 kg)",
+      "he": "שרימפס מאודה במלח / שרימפס צלוי (1 ק\"ג)",
+      "es": "Langostinos al vapor con sal / a la parrilla (1 kg)",
+      "it": "Gamberoni al vapore con sale / alla griglia (1 kg)"
      }
     },
     {
@@ -1136,7 +1914,18 @@ window.NM_MENU = {
       "hi": "भाप में पका नीला केकड़ा (0.5 किलो)",
       "ar": "سلطعون أزرق على البخار (0.5 كغ)",
       "de": "Gedämpfte Blaukrabbe (0,5 kg)",
-      "fr": "Crabe bleu vapeur (0,5 kg)"
+      "fr": "Crabe bleu vapeur (0,5 kg)",
+      "ja": "ワタリガニの蒸し物 (0.5kg)",
+      "zt": "清蒸藍蟹 (0.5公斤)",
+      "ms": "Ketam biru kukus (0.5 kg)",
+      "id": "Kepiting biru kukus (0,5 kg)",
+      "lo": "ປູມ້ານຶ່ງ (0.5 ກິໂລ)",
+      "vi": "Cua xanh hấp (0,5 kg)",
+      "km": "ក្តាមខៀវចំហុយ (០.៥ គីឡូ)",
+      "fil": "Steamed na blue crab (0.5 kg)",
+      "he": "סרטן כחול מאודה (0.5 ק\"ג)",
+      "es": "Cangrejo azul al vapor (0,5 kg)",
+      "it": "Granchio blu al vapore (0,5 kg)"
      }
     },
     {
@@ -1153,7 +1942,18 @@ window.NM_MENU = {
       "hi": "भाप में पका नीला केकड़ा (1 किलो)",
       "ar": "سلطعون أزرق على البخار (1 كغ)",
       "de": "Gedämpfte Blaukrabbe (1 kg)",
-      "fr": "Crabe bleu vapeur (1 kg)"
+      "fr": "Crabe bleu vapeur (1 kg)",
+      "ja": "ワタリガニの蒸し物 (1kg)",
+      "zt": "清蒸藍蟹 (1公斤)",
+      "ms": "Ketam biru kukus (1 kg)",
+      "id": "Kepiting biru kukus (1 kg)",
+      "lo": "ປູມ້ານຶ່ງ (1 ກິໂລ)",
+      "vi": "Cua xanh hấp (1 kg)",
+      "km": "ក្តាមខៀវចំហុយ (១ គីឡូ)",
+      "fil": "Steamed na blue crab (1 kg)",
+      "he": "סרטן כחול מאודה (1 ק\"ג)",
+      "es": "Cangrejo azul al vapor (1 kg)",
+      "it": "Granchio blu al vapore (1 kg)"
      }
     },
     {
@@ -1170,7 +1970,18 @@ window.NM_MENU = {
       "hi": "लहसुन के साथ तली मछली",
       "ar": "سمك مقلي بالثوم",
       "de": "Frittierter Fisch mit Knoblauch",
-      "fr": "Poisson frit à l’ail"
+      "fr": "Poisson frit à l’ail",
+      "ja": "魚のニンニク揚げ",
+      "zt": "蒜香炸魚",
+      "ms": "Ikan goreng bawang putih",
+      "id": "Ikan goreng bawang putih",
+      "lo": "ປາທອດກະທຽມ",
+      "vi": "Cá chiên tỏi",
+      "km": "ត្រីចៀនខ្ទឹមស",
+      "fil": "Pritong isda na may bawang",
+      "he": "דג מטוגן עם שום",
+      "es": "Pescado frito con ajo",
+      "it": "Pesce fritto con aglio"
      }
     },
     {
@@ -1186,7 +1997,18 @@ window.NM_MENU = {
       "hi": "मीठी-तीखी चटनी के साथ तली मछली",
       "ar": "سمك مقلي بصلصة حلوة وحارة",
       "de": "Frittierter Fisch mit süß-scharfer Sauce",
-      "fr": "Poisson frit sauce douce et épicée"
+      "fr": "Poisson frit sauce douce et épicée",
+      "ja": "魚の唐揚げ、甘辛ソース",
+      "zt": "炸魚佐甜辣醬",
+      "ms": "Ikan goreng dengan sos manis pedas",
+      "id": "Ikan goreng saus manis pedas",
+      "lo": "ປາທອດນ້ຳພິກຫວານ",
+      "vi": "Cá chiên sốt chua ngọt cay",
+      "km": "ត្រីចៀនទឹកជ្រលក់ផ្អែមហឹរ",
+      "fil": "Pritong isda na may matamis at maanghang na sarsa",
+      "he": "דג מטוגן ברוטב מתוק וחריף",
+      "es": "Pescado frito con salsa agridulce picante",
+      "it": "Pesce fritto con salsa dolce e piccante"
      }
     },
     {
@@ -1203,7 +2025,18 @@ window.NM_MENU = {
       "hi": "फ़िश सॉस के साथ तली मछली",
       "ar": "سمك مقلي بصلصة السمك",
       "de": "Frittierter Fisch mit Fischsauce",
-      "fr": "Poisson frit à la sauce de poisson"
+      "fr": "Poisson frit à la sauce de poisson",
+      "ja": "魚の唐揚げ、ナンプラーソース",
+      "zt": "魚露炸魚",
+      "ms": "Ikan goreng dengan sos ikan",
+      "id": "Ikan goreng saus ikan",
+      "lo": "ປາທອດນ້ຳປາ",
+      "vi": "Cá chiên nước mắm",
+      "km": "ត្រីចៀនទឹកត្រី",
+      "fil": "Pritong isda na may patis",
+      "he": "דג מטוגן עם רוטב דגים",
+      "es": "Pescado frito con salsa de pescado",
+      "it": "Pesce fritto con salsa di pesce"
      }
     },
     {
@@ -1220,7 +2053,18 @@ window.NM_MENU = {
       "hi": "नींबू के रस के साथ भाप में पकी मछली",
       "ar": "سمك على البخار بعصير الليمون",
       "de": "Gedämpfter Fisch mit Zitronensaft",
-      "fr": "Poisson vapeur au citron"
+      "fr": "Poisson vapeur au citron",
+      "ja": "魚の蒸し物、レモンソース",
+      "zt": "檸檬蒸魚",
+      "ms": "Ikan kukus dengan jus lemon",
+      "id": "Ikan kukus air lemon",
+      "lo": "ປານຶ່ງໝາກນາວ",
+      "vi": "Cá hấp chanh",
+      "km": "ត្រីចំហុយក្រូចឆ្មារ",
+      "fil": "Steamed na isda na may katas ng lemon",
+      "he": "דג מאודה עם מיץ לימון",
+      "es": "Pescado al vapor con zumo de limón",
+      "it": "Pesce al vapore con succo di limone"
      }
     },
     {
@@ -1237,7 +2081,18 @@ window.NM_MENU = {
       "hi": "खट्टी-मीठी चटनी के साथ तली मछली",
       "ar": "سمك مقلي بالصلصة الحلوة والحامضة",
       "de": "Frittierter Fisch mit süß-saurer Sauce",
-      "fr": "Poisson frit sauce aigre-douce"
+      "fr": "Poisson frit sauce aigre-douce",
+      "ja": "魚の唐揚げ、甘酢ソース",
+      "zt": "糖醋炸魚",
+      "ms": "Ikan goreng dengan sos masam manis",
+      "id": "Ikan goreng saus asam manis",
+      "lo": "ປາທອດສະໄລ້ຊຽວຫວານ",
+      "vi": "Cá chiên sốt chua ngọt",
+      "km": "ត្រីចៀនទឹកជ្រលក់ជូរផ្អែម",
+      "fil": "Pritong isda na may matamis at maasim na sarsa",
+      "he": "דג מטוגן ברוטב חמוץ-מתוק",
+      "es": "Pescado frito con salsa agridulce",
+      "it": "Pesce fritto in agrodolce"
      }
     },
     {
@@ -1254,7 +2109,18 @@ window.NM_MENU = {
       "hi": "उबली मछली के टुकड़े डिप के साथ",
       "ar": "شرائح سمك مسلوقة مع صلصة",
       "de": "Gekochtes Fischfilet mit Dip",
-      "fr": "Filet de poisson poché, sauce"
+      "fr": "Filet de poisson poché, sauce",
+      "ja": "魚の切り身の水煮、ディップソース付き",
+      "zt": "水煮魚片佐沾醬",
+      "ms": "Fillet ikan rebus dengan sos cecah",
+      "id": "Fillet ikan rebus dengan saus celup",
+      "lo": "ປາຕົ້ມຕັດຊິ້ນ ກິນກັບນ້ຳຈິ້ມ",
+      "vi": "Phi lê cá luộc kèm nước chấm",
+      "km": "ហ្វីលេត្រីស្ងោរ ជាមួយទឹកជ្រលក់",
+      "fil": "Pinakuluang fish fillet na may sawsawan",
+      "he": "פילה דג מבושל עם רוטב טבילה",
+      "es": "Filete de pescado hervido con salsa para mojar",
+      "it": "Filetto di pesce lessato con salsa"
      }
     },
     {
@@ -1271,7 +2137,18 @@ window.NM_MENU = {
       "hi": "फ़िश सॉस के साथ तली स्पैनिश मैकेरल",
       "ar": "سمك الماكريل الإسباني المقلي بصلصة السمك",
       "de": "Frittierte Königsmakrele mit Fischsauce",
-      "fr": "Maquereau espagnol frit à la sauce de poisson"
+      "fr": "Maquereau espagnol frit à la sauce de poisson",
+      "ja": "サワラの唐揚げ、ナンプラーソース",
+      "zt": "魚露炸馬鮫魚",
+      "ms": "Ikan tenggiri goreng dengan sos ikan",
+      "id": "Ikan tenggiri goreng saus ikan",
+      "lo": "ປາກະໄທທອດນ້ຳປາ",
+      "vi": "Cá thu chiên nước mắm",
+      "km": "ត្រីអង្កាញ់ចៀនទឹកត្រី",
+      "fil": "Pritong tangigue na may patis",
+      "he": "מקרל ספרדי מטוגן עם רוטב דגים",
+      "es": "Caballa española frita con salsa de pescado",
+      "it": "Sgombro spagnolo fritto con salsa di pesce"
      }
     },
     {
@@ -1287,7 +2164,18 @@ window.NM_MENU = {
       "hi": "लहसुन के साथ तला मैंटिस श्रिम्प",
       "ar": "قريدس السرعوف المقلي بالثوم",
       "de": "Frittierte Fangschreckenkrebse mit Knoblauch",
-      "fr": "Squilles frites à l’ail"
+      "fr": "Squilles frites à l’ail",
+      "ja": "シャコのニンニク揚げ",
+      "zt": "蒜香炸蝦蛄",
+      "ms": "Udang lipan goreng bawang putih",
+      "id": "Udang ronggeng goreng bawang putih",
+      "lo": "ກຸ້ງດີດຂັນທອດກະທຽມ",
+      "vi": "Tôm tít chiên tỏi",
+      "km": "បង្គាកណ្តៀរចៀនខ្ទឹមស",
+      "fil": "Pritong tatampal na may bawang",
+      "he": "שרימפס גמל שלמה מטוגן עם שום",
+      "es": "Galera frita con ajo",
+      "it": "Canocchia fritta con aglio"
      }
     }
    ]
@@ -1303,7 +2191,18 @@ window.NM_MENU = {
     "hi": "स्टिर-फ्राई",
     "ar": "أطباق مقلية",
     "de": "Pfannengerichte",
-    "fr": "Sautés"
+    "fr": "Sautés",
+    "ja": "炒め物",
+    "zt": "炒菜",
+    "ms": "Masakan goreng wok",
+    "id": "Tumisan",
+    "lo": "ຜັດ",
+    "vi": "Món xào",
+    "km": "ម្ហូបឆា",
+    "fil": "Mga ginisa",
+    "he": "מוקפצים",
+    "es": "Salteados",
+    "it": "Saltati"
    },
    "items": [
     {
@@ -1319,7 +2218,18 @@ window.NM_MENU = {
       "hi": "अदरक स्टिर-फ्राई (पोर्क/चिकन)",
       "ar": "مقلي بالزنجبيل (لحم خنزير/دجاج)",
       "de": "Pfannengericht mit Ingwer (Schwein/Hähnchen)",
-      "fr": "Sauté au gingembre (porc/poulet)"
+      "fr": "Sauté au gingembre (porc/poulet)",
+      "ja": "生姜炒め (豚肉/鶏肉)",
+      "zt": "薑絲炒 (豬肉/雞肉)",
+      "ms": "Goreng halia (khinzir/ayam)",
+      "id": "Tumis jahe (babi/ayam)",
+      "lo": "ຜັດຂີງ (ໝູ/ໄກ່)",
+      "vi": "Xào gừng (heo/gà)",
+      "km": "ឆាខ្ញី (ជ្រូក/មាន់)",
+      "fil": "Ginisang luya (baboy/manok)",
+      "he": "מוקפץ עם ג'ינג'ר (חזיר/עוף)",
+      "es": "Salteado con jengibre (cerdo/pollo)",
+      "it": "Saltato allo zenzero (maiale/pollo)"
      }
     },
     {
@@ -1335,7 +2245,18 @@ window.NM_MENU = {
       "hi": "अदरक स्टिर-फ्राई (बीफ़)",
       "ar": "مقلي بالزنجبيل (لحم بقر)",
       "de": "Pfannengericht mit Ingwer (Rind)",
-      "fr": "Sauté au gingembre (bœuf)"
+      "fr": "Sauté au gingembre (bœuf)",
+      "ja": "生姜炒め (牛肉)",
+      "zt": "薑絲炒 (牛肉)",
+      "ms": "Goreng halia (daging lembu)",
+      "id": "Tumis jahe (sapi)",
+      "lo": "ຜັດຂີງ (ງົວ)",
+      "vi": "Xào gừng (bò)",
+      "km": "ឆាខ្ញី (គោ)",
+      "fil": "Ginisang luya (baka)",
+      "he": "מוקפץ עם ג'ינג'ר (בקר)",
+      "es": "Salteado con jengibre (ternera)",
+      "it": "Saltato allo zenzero (manzo)"
      }
     },
     {
@@ -1352,7 +2273,18 @@ window.NM_MENU = {
       "hi": "स्ट्रॉ मशरूम स्टिर-फ्राई (पोर्क/चिकन)",
       "ar": "فطر القش المقلي (لحم خنزير/دجاج)",
       "de": "Strohpilze aus dem Wok (Schwein/Hähnchen)",
-      "fr": "Champignons de paille sautés (porc/poulet)"
+      "fr": "Champignons de paille sautés (porc/poulet)",
+      "ja": "草菇炒め (豚肉/鶏肉)",
+      "zt": "炒草菇 (豬肉/雞肉)",
+      "ms": "Cendawan jerami goreng (khinzir/ayam)",
+      "id": "Tumis jamur merang (babi/ayam)",
+      "lo": "ຜັດເຫັດຟາງ (ໝູ/ໄກ່)",
+      "vi": "Nấm rơm xào (heo/gà)",
+      "km": "ឆាផ្សិតចំបើង (ជ្រូក/មាន់)",
+      "fil": "Ginisang straw mushroom (baboy/manok)",
+      "he": "פטריות קש מוקפצות (חזיר/עוף)",
+      "es": "Setas de paja salteadas (cerdo/pollo)",
+      "it": "Funghi di paglia saltati (maiale/pollo)"
      }
     },
     {
@@ -1369,7 +2301,18 @@ window.NM_MENU = {
       "hi": "स्ट्रॉ मशरूम स्टिर-फ्राई (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "فطر القش المقلي (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Strohpilze aus dem Wok (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Champignons de paille sautés (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Champignons de paille sautés (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "草菇炒め (牛肉/エビ/イカ/海鮮)",
+      "zt": "炒草菇 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Cendawan jerami goreng (daging lembu/udang/sotong/makanan laut)",
+      "id": "Tumis jamur merang (sapi/udang/cumi/seafood)",
+      "lo": "ຜັດເຫັດຟາງ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Nấm rơm xào (bò/tôm/mực/hải sản)",
+      "km": "ឆាផ្សិតចំបើង (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Ginisang straw mushroom (baka/hipon/pusit/seafood)",
+      "he": "פטריות קש מוקפצות (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Setas de paja salteadas (ternera/langostinos/calamar/marisco)",
+      "it": "Funghi di paglia saltati (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1386,7 +2329,18 @@ window.NM_MENU = {
       "hi": "काजू स्टिर-फ्राई (चिकन)",
       "ar": "مقلي بالكاجو (دجاج)",
       "de": "Pfannengericht mit Cashewnüssen (Hähnchen)",
-      "fr": "Sauté aux noix de cajou (poulet)"
+      "fr": "Sauté aux noix de cajou (poulet)",
+      "ja": "カシューナッツ炒め (鶏肉)",
+      "zt": "腰果炒 (雞肉)",
+      "ms": "Gajus goreng (ayam)",
+      "id": "Tumis kacang mete (ayam)",
+      "lo": "ຜັດໝາກຖົ່ວມ່ວງຫິມະພານ (ໄກ່)",
+      "vi": "Xào hạt điều (gà)",
+      "km": "ឆាគ្រាប់ស្វាយចន្ទី (មាន់)",
+      "fil": "Ginisang kasoy (manok)",
+      "he": "קשיו מוקפץ (עוף)",
+      "es": "Anacardos salteados (pollo)",
+      "it": "Anacardi saltati (pollo)"
      }
     },
     {
@@ -1403,7 +2357,18 @@ window.NM_MENU = {
       "hi": "काजू स्टिर-फ्राई (झींगा/सीफूड)",
       "ar": "مقلي بالكاجو (روبيان/مأكولات بحرية)",
       "de": "Pfannengericht mit Cashewnüssen (Garnelen/Meeresfrüchte)",
-      "fr": "Sauté aux noix de cajou (crevettes/fruits de mer)"
+      "fr": "Sauté aux noix de cajou (crevettes/fruits de mer)",
+      "ja": "カシューナッツ炒め (エビ/海鮮)",
+      "zt": "腰果炒 (蝦/海鮮)",
+      "ms": "Gajus goreng (udang/makanan laut)",
+      "id": "Tumis kacang mete (udang/seafood)",
+      "lo": "ຜັດໝາກຖົ່ວມ່ວງຫິມະພານ (ກຸ້ງ/ທະເລ)",
+      "vi": "Xào hạt điều (tôm/hải sản)",
+      "km": "ឆាគ្រាប់ស្វាយចន្ទី (បង្គា/អាហារសមុទ្រ)",
+      "fil": "Ginisang kasoy (hipon/seafood)",
+      "he": "קשיו מוקפץ (שרימפס/פירות ים)",
+      "es": "Anacardos salteados (langostinos/marisco)",
+      "it": "Anacardi saltati (gamberi/frutti di mare)"
      }
     },
     {
@@ -1419,7 +2384,18 @@ window.NM_MENU = {
       "hi": "ग्लास नूडल स्टिर-फ्राई (पोर्क/चिकन)",
       "ar": "شعيرية زجاجية مقلية (لحم خنزير/دجاج)",
       "de": "Gebratene Glasnudeln (Schwein/Hähnchen)",
-      "fr": "Vermicelles de verre sautés (porc/poulet)"
+      "fr": "Vermicelles de verre sautés (porc/poulet)",
+      "ja": "春雨炒め (豚肉/鶏肉)",
+      "zt": "炒冬粉 (豬肉/雞肉)",
+      "ms": "Bihun kaca goreng (khinzir/ayam)",
+      "id": "Tumis soun (babi/ayam)",
+      "lo": "ຜັດວຸ້ນເສັ້ນ (ໝູ/ໄກ່)",
+      "vi": "Miến xào (heo/gà)",
+      "km": "ឆាមីសុីដូស (ជ្រូក/មាន់)",
+      "fil": "Ginisang glass noodles (baboy/manok)",
+      "he": "אטריות זכוכית מוקפצות (חזיר/עוף)",
+      "es": "Fideos de cristal salteados (cerdo/pollo)",
+      "it": "Noodles di vetro saltati (maiale/pollo)"
      }
     },
     {
@@ -1435,7 +2411,18 @@ window.NM_MENU = {
       "hi": "ग्लास नूडल स्टिर-फ्राई (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "شعيرية زجاجية مقلية (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Gebratene Glasnudeln (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Vermicelles de verre sautés (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Vermicelles de verre sautés (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "春雨炒め (牛肉/エビ/イカ/海鮮)",
+      "zt": "炒冬粉 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Bihun kaca goreng (daging lembu/udang/sotong/makanan laut)",
+      "id": "Tumis soun (sapi/udang/cumi/seafood)",
+      "lo": "ຜັດວຸ້ນເສັ້ນ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Miến xào (bò/tôm/mực/hải sản)",
+      "km": "ឆាមីសុីដូស (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Ginisang glass noodles (baka/hipon/pusit/seafood)",
+      "he": "אטריות זכוכית מוקפצות (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Fideos de cristal salteados (ternera/langostinos/calamar/marisco)",
+      "it": "Noodles di vetro saltati (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1452,7 +2439,18 @@ window.NM_MENU = {
       "hi": "लहसुन के साथ तला (पोर्क/चिकन)",
       "ar": "مقلي بالثوم (لحم خنزير/دجاج)",
       "de": "Frittiert mit Knoblauch (Schwein/Hähnchen)",
-      "fr": "Frit à l’ail (porc/poulet)"
+      "fr": "Frit à l’ail (porc/poulet)",
+      "ja": "ニンニク揚げ (豚肉/鶏肉)",
+      "zt": "蒜香酥炸 (豬肉/雞肉)",
+      "ms": "Goreng bawang putih (khinzir/ayam)",
+      "id": "Goreng bawang putih (babi/ayam)",
+      "lo": "ທອດກະທຽມ (ໝູ/ໄກ່)",
+      "vi": "Chiên tỏi (heo/gà)",
+      "km": "ចៀនខ្ទឹមស (ជ្រូក/មាន់)",
+      "fil": "Pritong may bawang (baboy/manok)",
+      "he": "מטוגן עם שום (חזיר/עוף)",
+      "es": "Frito con ajo (cerdo/pollo)",
+      "it": "Fritto con aglio (maiale/pollo)"
      }
     },
     {
@@ -1469,7 +2467,18 @@ window.NM_MENU = {
       "hi": "लहसुन के साथ तला (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "مقلي بالثوم (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Frittiert mit Knoblauch (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Frit à l’ail (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Frit à l’ail (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "ニンニク揚げ (牛肉/エビ/イカ/海鮮)",
+      "zt": "蒜香酥炸 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Goreng bawang putih (daging lembu/udang/sotong/makanan laut)",
+      "id": "Goreng bawang putih (sapi/udang/cumi/seafood)",
+      "lo": "ທອດກະທຽມ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Chiên tỏi (bò/tôm/mực/hải sản)",
+      "km": "ចៀនខ្ទឹមស (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Pritong may bawang (baka/hipon/pusit/seafood)",
+      "he": "מטוגן עם שום (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Frito con ajo (ternera/langostinos/calamar/marisco)",
+      "it": "Fritto con aglio (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1486,7 +2495,18 @@ window.NM_MENU = {
       "hi": "थाई ऑमलेट (पोर्क/चिकन)",
       "ar": "عجّة تايلندية (لحم خنزير/دجاج)",
       "de": "Thai-Omelett (Schwein/Hähnchen)",
-      "fr": "Omelette thaïe (porc/poulet)"
+      "fr": "Omelette thaïe (porc/poulet)",
+      "ja": "タイ風オムレツ (豚肉/鶏肉)",
+      "zt": "泰式煎蛋 (豬肉/雞肉)",
+      "ms": "Telur dadar gaya Thai (khinzir/ayam)",
+      "id": "Telur dadar ala Thailand (babi/ayam)",
+      "lo": "ໄຂ່ຈຽວແບບໄທ (ໝູ/ໄກ່)",
+      "vi": "Trứng chiên kiểu Thái (heo/gà)",
+      "km": "ស៊ុតចៀនបែបថៃ (ជ្រូក/មាន់)",
+      "fil": "Thai-style omelette (baboy/manok)",
+      "he": "חביתה בסגנון תאילנדי (חזיר/עוף)",
+      "es": "Tortilla estilo tailandés (cerdo/pollo)",
+      "it": "Frittata alla thailandese (maiale/pollo)"
      }
     },
     {
@@ -1503,7 +2523,18 @@ window.NM_MENU = {
       "hi": "थाई ऑमलेट (झींगा/स्क्विड)",
       "ar": "عجّة تايلندية (روبيان/حبار)",
       "de": "Thai-Omelett (Garnelen/Tintenfisch)",
-      "fr": "Omelette thaïe (crevettes/calmar)"
+      "fr": "Omelette thaïe (crevettes/calmar)",
+      "ja": "タイ風オムレツ (エビ/イカ)",
+      "zt": "泰式煎蛋 (蝦/魷魚)",
+      "ms": "Telur dadar gaya Thai (udang/sotong)",
+      "id": "Telur dadar ala Thailand (udang/cumi)",
+      "lo": "ໄຂ່ຈຽວແບບໄທ (ກຸ້ງ/ປາໝຶກ)",
+      "vi": "Trứng chiên kiểu Thái (tôm/mực)",
+      "km": "ស៊ុតចៀនបែបថៃ (បង្គា/មឹក)",
+      "fil": "Thai-style omelette (hipon/pusit)",
+      "he": "חביתה בסגנון תאילנדי (שרימפס/קלמרי)",
+      "es": "Tortilla estilo tailandés (langostinos/calamar)",
+      "it": "Frittata alla thailandese (gamberi/calamari)"
      }
     },
     {
@@ -1520,7 +2551,18 @@ window.NM_MENU = {
       "hi": "गाढ़ी ग्रेवी में नूडल्स (पोर्क/चिकन)",
       "ar": "نودلز بصلصة كثيفة (لحم خنزير/دجاج)",
       "de": "Nudeln in dicker Sauce (Schwein/Hähnchen)",
-      "fr": "Nouilles en sauce épaisse (porc/poulet)"
+      "fr": "Nouilles en sauce épaisse (porc/poulet)",
+      "ja": "あんかけ麺 (豚肉/鶏肉)",
+      "zt": "勾芡麵 (豬肉/雞肉)",
+      "ms": "Mi dalam kuah pekat (khinzir/ayam)",
+      "id": "Mi dengan kuah kental (babi/ayam)",
+      "lo": "ເສັ້ນລາດໜ້າ (ໝູ/ໄກ່)",
+      "vi": "Mì sốt đặc (heo/gà)",
+      "km": "មីទឹកជ្រលក់ខាប់ (ជ្រូក/មាន់)",
+      "fil": "Noodles sa makapal na sarsa (baboy/manok)",
+      "he": "אטריות ברוטב סמיך (חזיר/עוף)",
+      "es": "Fideos en salsa espesa (cerdo/pollo)",
+      "it": "Noodles in salsa densa (maiale/pollo)"
      }
     },
     {
@@ -1537,7 +2579,18 @@ window.NM_MENU = {
       "hi": "गाढ़ी ग्रेवी में नूडल्स (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "نودلز بصلصة كثيفة (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Nudeln in dicker Sauce (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Nouilles en sauce épaisse (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Nouilles en sauce épaisse (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "あんかけ麺 (牛肉/エビ/イカ/海鮮)",
+      "zt": "勾芡麵 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Mi dalam kuah pekat (daging lembu/udang/sotong/makanan laut)",
+      "id": "Mi dengan kuah kental (sapi/udang/cumi/seafood)",
+      "lo": "ເສັ້ນລາດໜ້າ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Mì sốt đặc (bò/tôm/mực/hải sản)",
+      "km": "មីទឹកជ្រលក់ខាប់ (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Noodles sa makapal na sarsa (baka/hipon/pusit/seafood)",
+      "he": "אטריות ברוטב סמיך (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Fideos en salsa espesa (ternera/langostinos/calamar/marisco)",
+      "it": "Noodles in salsa densa (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1554,7 +2607,18 @@ window.NM_MENU = {
       "hi": "तुलसी स्टिर-फ्राई चावल पर (पड कपराओ) (पोर्क/चिकन)",
       "ar": "أرز بالريحان المقلي (باد كاباو) (لحم خنزير/دجاج)",
       "de": "Reis mit Basilikum aus dem Wok (Pad Kaprao) (Schwein/Hähnchen)",
-      "fr": "Riz au basilic sauté (pad kaprao) (porc/poulet)"
+      "fr": "Riz au basilic sauté (pad kaprao) (porc/poulet)",
+      "ja": "ガパオライス (豚肉/鶏肉)",
+      "zt": "打拋飯 (豬肉/雞肉)",
+      "ms": "Nasi selasih suci goreng (pad kaprao) (khinzir/ayam)",
+      "id": "Nasi tumis kemangi suci (pad kaprao) (babi/ayam)",
+      "lo": "ເຂົ້າໜ້າຜັດກະເພົາ (ໝູ/ໄກ່)",
+      "vi": "Cơm xào húng quế Thái (pad kaprao) (heo/gà)",
+      "km": "បាយឆាម្ទេសបាស៊ីល (ផាត់កាប្រៅ) (ជ្រូក/មាន់)",
+      "fil": "Kanin na may holy basil stir-fry (pad kaprao) (baboy/manok)",
+      "he": "אורז עם בזיליקום קדוש מוקפץ (פאד קאפראו) (חזיר/עוף)",
+      "es": "Arroz con salteado de albahaca sagrada (pad kaprao) (cerdo/pollo)",
+      "it": "Riso con saltato al basilico sacro (pad kaprao) (maiale/pollo)"
      }
     },
     {
@@ -1571,7 +2635,18 @@ window.NM_MENU = {
       "hi": "तुलसी स्टिर-फ्राई चावल पर (पड कपराओ) (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "أرز بالريحان المقلي (باد كاباو) (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Reis mit Basilikum aus dem Wok (Pad Kaprao) (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Riz au basilic sauté (pad kaprao) (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Riz au basilic sauté (pad kaprao) (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "ガパオライス (牛肉/エビ/イカ/海鮮)",
+      "zt": "打拋飯 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Nasi selasih suci goreng (pad kaprao) (daging lembu/udang/sotong/makanan laut)",
+      "id": "Nasi tumis kemangi suci (pad kaprao) (sapi/udang/cumi/seafood)",
+      "lo": "ເຂົ້າໜ້າຜັດກະເພົາ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Cơm xào húng quế Thái (pad kaprao) (bò/tôm/mực/hải sản)",
+      "km": "បាយឆាម្ទេសបាស៊ីល (ផាត់កាប្រៅ) (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Kanin na may holy basil stir-fry (pad kaprao) (baka/hipon/pusit/seafood)",
+      "he": "אורז עם בזיליקום קדוש מוקפץ (פאד קאפראו) (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Arroz con salteado de albahaca sagrada (pad kaprao) (ternera/langostinos/calamar/marisco)",
+      "it": "Riso con saltato al basilico sacro (pad kaprao) (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1588,7 +2663,18 @@ window.NM_MENU = {
       "hi": "झींगा के साथ ब्रोकली",
       "ar": "بروكلي مع روبيان",
       "de": "Brokkoli mit Garnelen",
-      "fr": "Brocoli aux crevettes"
+      "fr": "Brocoli aux crevettes",
+      "ja": "ブロッコリーとエビの炒め物",
+      "zt": "蝦仁炒花椰菜",
+      "ms": "Brokoli goreng dengan udang",
+      "id": "Tumis brokoli dengan udang",
+      "lo": "ຜັດບຣັອກໂຄລີກຸ້ງ",
+      "vi": "Bông cải xanh xào tôm",
+      "km": "ឆាប៊្រុកកូលីជាមួយបង្គា",
+      "fil": "Ginisang broccoli na may hipon",
+      "he": "ברוקולי מוקפץ עם שרימפס",
+      "es": "Brócoli salteado con langostinos",
+      "it": "Broccoli saltati con gamberi"
      }
     },
     {
@@ -1604,7 +2690,18 @@ window.NM_MENU = {
       "hi": "कुरकुरे पोर्क के साथ चाइनीज़ केल",
       "ar": "كرنب صيني مع لحم خنزير مقرمش",
       "de": "Chinesischer Grünkohl mit knusprigem Schwein",
-      "fr": "Chou chinois au porc croustillant"
+      "fr": "Chou chinois au porc croustillant",
+      "ja": "カイランとカリカリ豚の炒め物",
+      "zt": "脆皮豬肉炒芥蘭",
+      "ms": "Kailan goreng dengan khinzir rangup",
+      "id": "Tumis kailan dengan babi krispi",
+      "lo": "ຜັດຄະນ້າໝູກອບ",
+      "vi": "Cải làn xào thịt heo giòn",
+      "km": "ឆាខាត់ណាជាមួយសាច់ជ្រូកស្រួយ",
+      "fil": "Ginisang Chinese kale na may malutong na baboy",
+      "he": "קייל סיני מוקפץ עם חזיר פריך",
+      "es": "Col china salteada con cerdo crujiente",
+      "it": "Cavolo cinese saltato con maiale croccante"
      }
     },
     {
@@ -1620,7 +2717,18 @@ window.NM_MENU = {
       "hi": "ऑयस्टर सॉस में चाइनीज़ केल",
       "ar": "كرنب صيني بصلصة المحار",
       "de": "Chinesischer Grünkohl in Austernsauce",
-      "fr": "Chou chinois sauce aux huîtres"
+      "fr": "Chou chinois sauce aux huîtres",
+      "ja": "カイランのオイスターソース炒め",
+      "zt": "蠔油炒芥蘭",
+      "ms": "Kailan goreng sos tiram",
+      "id": "Tumis kailan saus tiram",
+      "lo": "ຜັດຄະນ້ານ້ຳມັນຫອຍ",
+      "vi": "Cải làn xào dầu hào",
+      "km": "ឆាខាត់ណាទឹកខ្យងអយស្ទ័រ",
+      "fil": "Ginisang Chinese kale sa oyster sauce",
+      "he": "קייל סיני מוקפץ ברוטב צדפות",
+      "es": "Col china salteada con salsa de ostras",
+      "it": "Cavolo cinese saltato in salsa di ostriche"
      },
      "img": "ph-kaleoyster"
     },
@@ -1638,7 +2746,18 @@ window.NM_MENU = {
       "hi": "नमकीन मछली के साथ चाइनीज़ केल",
       "ar": "كرنب صيني مع سمك مملح",
       "de": "Chinesischer Grünkohl mit Salzfisch",
-      "fr": "Chou chinois au poisson salé"
+      "fr": "Chou chinois au poisson salé",
+      "ja": "カイランと塩漬け魚の炒め物",
+      "zt": "鹹魚炒芥蘭",
+      "ms": "Kailan goreng dengan ikan masin",
+      "id": "Tumis kailan dengan ikan asin",
+      "lo": "ຜັດຄະນ້າປາເຄັມ",
+      "vi": "Cải làn xào cá mặn",
+      "km": "ឆាខាត់ណាជាមួយត្រីប្រហុក",
+      "fil": "Ginisang Chinese kale na may tuyo",
+      "he": "קייל סיני מוקפץ עם דג מלוח",
+      "es": "Col china salteada con pescado salado",
+      "it": "Cavolo cinese saltato con pesce salato"
      }
     },
     {
@@ -1654,7 +2773,18 @@ window.NM_MENU = {
       "hi": "ऑयस्टर सॉस में बीफ़",
       "ar": "لحم بقر بصلصة المحار",
       "de": "Rindfleisch in Austernsauce",
-      "fr": "Bœuf sauce aux huîtres"
+      "fr": "Bœuf sauce aux huîtres",
+      "ja": "牛肉のオイスターソース炒め",
+      "zt": "蠔油牛肉",
+      "ms": "Daging lembu goreng sos tiram",
+      "id": "Tumis sapi saus tiram",
+      "lo": "ຜັດຊີ້ນງົວນ້ຳມັນຫອຍ",
+      "vi": "Thịt bò xào dầu hào",
+      "km": "ឆាសាច់គោទឹកខ្យងអយស្ទ័រ",
+      "fil": "Ginisang baka sa oyster sauce",
+      "he": "בקר מוקפץ ברוטב צדפות",
+      "es": "Ternera salteada con salsa de ostras",
+      "it": "Manzo saltato in salsa di ostriche"
      }
     },
     {
@@ -1671,7 +2801,18 @@ window.NM_MENU = {
       "hi": "पैड थाई (झींगा/स्क्विड/सीफूड)",
       "ar": "باد تاي (روبيان/حبار/مأكولات بحرية)",
       "de": "Pad Thai (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Pad thaï (crevettes/calmar/fruits de mer)"
+      "fr": "Pad thaï (crevettes/calmar/fruits de mer)",
+      "ja": "パッタイ（米麺の炒め物） (エビ/イカ/海鮮)",
+      "zt": "泰式炒河粉 (蝦/魷魚/海鮮)",
+      "ms": "Pad Thai (mi beras goreng) (udang/sotong/makanan laut)",
+      "id": "Pad Thai (mi beras tumis) (udang/cumi/seafood)",
+      "lo": "ຜັດໄທ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Pad Thai (bún gạo xào) (tôm/mực/hải sản)",
+      "km": "ផាត់ថៃ (មីអង្ករឆា) (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Pad Thai (ginisang rice noodles) (hipon/pusit/seafood)",
+      "he": "פאד תאי (אטריות אורז מוקפצות) (שרימפס/קלמרי/פירות ים)",
+      "es": "Pad thai (fideos de arroz salteados) (langostinos/calamar/marisco)",
+      "it": "Pad thai (noodles di riso saltati) (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1687,7 +2828,18 @@ window.NM_MENU = {
       "hi": "भरवां ऑमलेट (पोर्क/चिकन)",
       "ar": "عجّة محشوة (لحم خنزير/دجاج)",
       "de": "Gefülltes Omelett (Schwein/Hähnchen)",
-      "fr": "Omelette farcie (porc/poulet)"
+      "fr": "Omelette farcie (porc/poulet)",
+      "ja": "具入りオムレツ (豚肉/鶏肉)",
+      "zt": "餡料蛋包 (豬肉/雞肉)",
+      "ms": "Telur dadar berinti (khinzir/ayam)",
+      "id": "Telur dadar isi (babi/ayam)",
+      "lo": "ໄຂ່ຍັດໄສ້ (ໝູ/ໄກ່)",
+      "vi": "Trứng chiên nhồi (heo/gà)",
+      "km": "ស៊ុតចៀនបំពេញ (ជ្រូក/មាន់)",
+      "fil": "Stuffed omelette (baboy/manok)",
+      "he": "חביתה ממולאת (חזיר/עוף)",
+      "es": "Tortilla rellena (cerdo/pollo)",
+      "it": "Frittata ripiena (maiale/pollo)"
      }
     },
     {
@@ -1703,7 +2855,18 @@ window.NM_MENU = {
       "hi": "भरवां ऑमलेट (झींगा/स्क्विड/सीफूड)",
       "ar": "عجّة محشوة (روبيان/حبار/مأكولات بحرية)",
       "de": "Gefülltes Omelett (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Omelette farcie (crevettes/calmar/fruits de mer)"
+      "fr": "Omelette farcie (crevettes/calmar/fruits de mer)",
+      "ja": "具入りオムレツ (エビ/イカ/海鮮)",
+      "zt": "餡料蛋包 (蝦/魷魚/海鮮)",
+      "ms": "Telur dadar berinti (udang/sotong/makanan laut)",
+      "id": "Telur dadar isi (udang/cumi/seafood)",
+      "lo": "ໄຂ່ຍັດໄສ້ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Trứng chiên nhồi (tôm/mực/hải sản)",
+      "km": "ស៊ុតចៀនបំពេញ (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Stuffed omelette (hipon/pusit/seafood)",
+      "he": "חביתה ממולאת (שרימפס/קלמרי/פירות ים)",
+      "es": "Tortilla rellena (langostinos/calamar/marisco)",
+      "it": "Frittata ripiena (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1720,7 +2883,18 @@ window.NM_MENU = {
       "hi": "पड चा: सीफूड, स्टिंगरे, शार्क या मैकेरल",
       "ar": "باد تشا بالمأكولات البحرية أو الراي أو القرش أو الماكريل",
       "de": "Phad Cha mit Meeresfrüchten, Rochen, Hai oder Königsmakrele",
-      "fr": "Phad cha aux fruits de mer, raie, requin ou maquereau"
+      "fr": "Phad cha aux fruits de mer, raie, requin ou maquereau",
+      "ja": "パッチャー（海鮮、エイ、サメ、サワラ入り）",
+      "zt": "辣炒香料（海鮮、魟魚、鯊魚或馬鮫魚）",
+      "ms": "Pad cha dengan makanan laut, pari, jerung atau tenggiri",
+      "id": "Pad cha dengan seafood, ikan pari, hiu, atau tenggiri",
+      "lo": "ຜັດຈ້າທະເລ ປາກະເບນ ປາສະຫຼາມ ຫຼື ປາກະໄທ",
+      "vi": "Pad cha hải sản, cá đuối, cá mập hoặc cá thu",
+      "km": "ផាត់ឆាអាហារសមុទ្រ ត្រីផ្លែល ត្រីឆ្លាម ឬត្រីអង្កាញ់",
+      "fil": "Pad cha na may seafood, pagi, pating o tangigue",
+      "he": "פאד צ'ה עם פירות ים, טריגון, כריש או מקרל ספרדי",
+      "es": "Pad cha con marisco, raya, tiburón o caballa española",
+      "it": "Pad cha con frutti di mare, razza, squalo o sgombro spagnolo"
      }
     },
     {
@@ -1737,7 +2911,18 @@ window.NM_MENU = {
       "hi": "नमकीन अंडे की स्टिर-फ्राई (झींगा/स्क्विड)",
       "ar": "مقلي بالبيض المملح (روبيان/حبار)",
       "de": "Mit gesalzenem Ei aus dem Wok (Garnelen/Tintenfisch)",
-      "fr": "Sauté à l’œuf salé (crevettes/calmar)"
+      "fr": "Sauté à l’œuf salé (crevettes/calmar)",
+      "ja": "塩卵炒め (エビ/イカ)",
+      "zt": "鹹蛋炒 (蝦/魷魚)",
+      "ms": "Goreng telur masin (udang/sotong)",
+      "id": "Tumis telur asin (udang/cumi)",
+      "lo": "ຜັດໄຂ່ເຄັມ (ກຸ້ງ/ປາໝຶກ)",
+      "vi": "Xào trứng muối (tôm/mực)",
+      "km": "ឆាស៊ុតប្រៃ (បង្គា/មឹក)",
+      "fil": "Ginisang itlog na maalat (hipon/pusit)",
+      "he": "מוקפץ עם ביצה מלוחה (שרימפס/קלמרי)",
+      "es": "Salteado con huevo salado (langostinos/calamar)",
+      "it": "Saltato con uovo salato (gamberi/calamari)"
      }
     },
     {
@@ -1754,7 +2939,18 @@ window.NM_MENU = {
       "hi": "करी फ्राइड झींगे (चू ची)",
       "ar": "روبيان مقلي بالكاري (تشو تشي)",
       "de": "Garnelen in Curry (Chu Chi)",
-      "fr": "Crevettes au curry (chu chi)"
+      "fr": "Crevettes au curry (chu chi)",
+      "ja": "エビのチューチーカレー炒め",
+      "zt": "炒蝦仁紅咖哩（楚吉）",
+      "ms": "Udang goreng kari (chu chee)",
+      "id": "Udang goreng kari (chu chee)",
+      "lo": "ກຸ້ງຜັດແກງຊູຊີ",
+      "vi": "Tôm xào cà ri (chu chee)",
+      "km": "បង្គាឆាការីជូជី",
+      "fil": "Curried fried shrimp (chu chee)",
+      "he": "שרימפס מוקפץ בקארי (צ'ו צ'י)",
+      "es": "Gambas fritas al curry (chu chee)",
+      "it": "Gamberi fritti al curry (chu chee)"
      }
     },
     {
@@ -1771,7 +2967,18 @@ window.NM_MENU = {
       "hi": "करी पाउडर स्टिर-फ्राई (झींगा/स्क्विड/सीफूड)",
       "ar": "مقلي بمسحوق الكاري (روبيان/حبار/مأكولات بحرية)",
       "de": "Aus dem Wok mit Currypulver (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Sauté au curry (crevettes/calmar/fruits de mer)"
+      "fr": "Sauté au curry (crevettes/calmar/fruits de mer)",
+      "ja": "カレー粉炒め (エビ/イカ/海鮮)",
+      "zt": "咖哩粉炒 (蝦/魷魚/海鮮)",
+      "ms": "Goreng serbuk kari (udang/sotong/makanan laut)",
+      "id": "Tumis bubuk kari (udang/cumi/seafood)",
+      "lo": "ຜັດຜົງກະຫຼີ່ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Xào bột cà ri (tôm/mực/hải sản)",
+      "km": "ឆាម្សៅការី (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Ginisa na may curry powder (hipon/pusit/seafood)",
+      "he": "מוקפץ עם אבקת קארי (שרימפס/קלמרי/פירות ים)",
+      "es": "Salteado con curry en polvo (langostinos/calamar/marisco)",
+      "it": "Saltato al curry in polvere (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1788,7 +2995,18 @@ window.NM_MENU = {
       "hi": "करी पाउडर स्टिर-फ्राई (केकड़ा)",
       "ar": "مقلي بمسحوق الكاري (سلطعون)",
       "de": "Aus dem Wok mit Currypulver (Krabbe)",
-      "fr": "Sauté au curry (crabe)"
+      "fr": "Sauté au curry (crabe)",
+      "ja": "カレー粉炒め (カニ)",
+      "zt": "咖哩粉炒 (蟹)",
+      "ms": "Goreng serbuk kari (ketam)",
+      "id": "Tumis bubuk kari (kepiting)",
+      "lo": "ຜັດຜົງກະຫຼີ່ (ປູ)",
+      "vi": "Xào bột cà ri (cua)",
+      "km": "ឆាម្សៅការី (ក្តាម)",
+      "fil": "Ginisa na may curry powder (alimango)",
+      "he": "מוקפץ עם אבקת קארי (סרטן)",
+      "es": "Salteado con curry en polvo (cangrejo)",
+      "it": "Saltato al curry in polvere (granchio)"
      }
     },
     {
@@ -1804,7 +3022,18 @@ window.NM_MENU = {
       "hi": "स्टिर-फ्राई मैकरोनी (पोर्क/चिकन)",
       "ar": "مكرونة مقلية (لحم خنزير/دجاج)",
       "de": "Gebratene Makkaroni (Schwein/Hähnchen)",
-      "fr": "Macaronis sautés (porc/poulet)"
+      "fr": "Macaronis sautés (porc/poulet)",
+      "ja": "マカロニ炒め (豚肉/鶏肉)",
+      "zt": "炒通心粉 (豬肉/雞肉)",
+      "ms": "Makaroni goreng (khinzir/ayam)",
+      "id": "Tumis makaroni (babi/ayam)",
+      "lo": "ຜັດມັກກະໂລນີ (ໝູ/ໄກ່)",
+      "vi": "Nui xào (heo/gà)",
+      "km": "ឆាម៉ាការ៉ូនី (ជ្រូក/មាន់)",
+      "fil": "Ginisang macaroni (baboy/manok)",
+      "he": "מקרוני מוקפץ (חזיר/עוף)",
+      "es": "Macarrones salteados (cerdo/pollo)",
+      "it": "Maccheroni saltati (maiale/pollo)"
      },
      "img": "ph-macaroni"
     },
@@ -1821,7 +3050,18 @@ window.NM_MENU = {
       "hi": "स्टिर-फ्राई मैकरोनी (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "مكرونة مقلية (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Gebratene Makkaroni (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Macaronis sautés (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Macaronis sautés (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "マカロニ炒め (牛肉/エビ/イカ/海鮮)",
+      "zt": "炒通心粉 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Makaroni goreng (daging lembu/udang/sotong/makanan laut)",
+      "id": "Tumis makaroni (sapi/udang/cumi/seafood)",
+      "lo": "ຜັດມັກກະໂລນີ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Nui xào (bò/tôm/mực/hải sản)",
+      "km": "ឆាម៉ាការ៉ូនី (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Ginisang macaroni (baka/hipon/pusit/seafood)",
+      "he": "מקרוני מוקפץ (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Macarrones salteados (ternera/langostinos/calamar/marisco)",
+      "it": "Maccheroni saltati (manzo/gamberi/calamari/frutti di mare)"
      },
      "img": "ph-macaroni"
     },
@@ -1839,7 +3079,18 @@ window.NM_MENU = {
       "hi": "तुलसी स्टिर-फ्राई (पोर्क/चिकन)",
       "ar": "مقلي بالريحان (لحم خنزير/دجاج)",
       "de": "Pfannengericht mit Basilikum (Schwein/Hähnchen)",
-      "fr": "Sauté au basilic (porc/poulet)"
+      "fr": "Sauté au basilic (porc/poulet)",
+      "ja": "ガパオ炒め (豚肉/鶏肉)",
+      "zt": "炒打拋葉 (豬肉/雞肉)",
+      "ms": "Goreng selasih suci (khinzir/ayam)",
+      "id": "Tumis kemangi suci (babi/ayam)",
+      "lo": "ຜັດກະເພົາ (ໝູ/ໄກ່)",
+      "vi": "Xào húng quế Thái (heo/gà)",
+      "km": "ឆាម្ទេសបាស៊ីល (ជ្រូក/មាន់)",
+      "fil": "Ginisang holy basil (baboy/manok)",
+      "he": "בזיליקום קדוש מוקפץ (חזיר/עוף)",
+      "es": "Salteado de albahaca sagrada (cerdo/pollo)",
+      "it": "Saltato al basilico sacro (maiale/pollo)"
      }
     },
     {
@@ -1856,7 +3107,18 @@ window.NM_MENU = {
       "hi": "तुलसी स्टिर-फ्राई (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "مقلي بالريحان (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Pfannengericht mit Basilikum (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Sauté au basilic (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Sauté au basilic (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "ガパオ炒め (牛肉/エビ/イカ/海鮮)",
+      "zt": "炒打拋葉 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Goreng selasih suci (daging lembu/udang/sotong/makanan laut)",
+      "id": "Tumis kemangi suci (sapi/udang/cumi/seafood)",
+      "lo": "ຜັດກະເພົາ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Xào húng quế Thái (bò/tôm/mực/hải sản)",
+      "km": "ឆាម្ទេសបាស៊ីល (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Ginisang holy basil (baka/hipon/pusit/seafood)",
+      "he": "בזיליקום קדוש מוקפץ (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Salteado de albahaca sagrada (ternera/langostinos/calamar/marisco)",
+      "it": "Saltato al basilico sacro (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1873,7 +3135,18 @@ window.NM_MENU = {
       "hi": "मिश्रित सब्जियां स्टिर-फ्राई (सब्जियां)",
       "ar": "خضار مشكلة مقلية (خضار)",
       "de": "Gebratenes Mischgemüse (Gemüse)",
-      "fr": "Légumes sautés (légumes)"
+      "fr": "Légumes sautés (légumes)",
+      "ja": "野菜炒め (野菜)",
+      "zt": "炒雜菜 (蔬菜)",
+      "ms": "Sayur campur goreng (sayur)",
+      "id": "Tumis sayur campur (sayuran)",
+      "lo": "ຜັດຜັກລວມ (ຜັກ)",
+      "vi": "Rau củ xào thập cẩm (rau củ)",
+      "km": "ឆាបន្លែចម្រុះ (បន្លែ)",
+      "fil": "Ginisang halo-halong gulay (gulay)",
+      "he": "ירקות מעורבים מוקפצים (ירקות)",
+      "es": "Verduras variadas salteadas (verduras)",
+      "it": "Verdure miste saltate (verdure)"
      }
     },
     {
@@ -1890,7 +3163,18 @@ window.NM_MENU = {
       "hi": "मिश्रित सब्जियां स्टिर-फ्राई (पोर्क/चिकन)",
       "ar": "خضار مشكلة مقلية (لحم خنزير/دجاج)",
       "de": "Gebratenes Mischgemüse (Schwein/Hähnchen)",
-      "fr": "Légumes sautés (porc/poulet)"
+      "fr": "Légumes sautés (porc/poulet)",
+      "ja": "野菜炒め (豚肉/鶏肉)",
+      "zt": "炒雜菜 (豬肉/雞肉)",
+      "ms": "Sayur campur goreng (khinzir/ayam)",
+      "id": "Tumis sayur campur (babi/ayam)",
+      "lo": "ຜັດຜັກລວມ (ໝູ/ໄກ່)",
+      "vi": "Rau củ xào thập cẩm (heo/gà)",
+      "km": "ឆាបន្លែចម្រុះ (ជ្រូក/មាន់)",
+      "fil": "Ginisang halo-halong gulay (baboy/manok)",
+      "he": "ירקות מעורבים מוקפצים (חזיר/עוף)",
+      "es": "Verduras variadas salteadas (cerdo/pollo)",
+      "it": "Verdure miste saltate (maiale/pollo)"
      }
     },
     {
@@ -1907,7 +3191,18 @@ window.NM_MENU = {
       "hi": "मिश्रित सब्जियां स्टिर-फ्राई (झींगा/स्क्विड/सीफूड)",
       "ar": "خضار مشكلة مقلية (روبيان/حبار/مأكولات بحرية)",
       "de": "Gebratenes Mischgemüse (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Légumes sautés (crevettes/calmar/fruits de mer)"
+      "fr": "Légumes sautés (crevettes/calmar/fruits de mer)",
+      "ja": "野菜炒め (エビ/イカ/海鮮)",
+      "zt": "炒雜菜 (蝦/魷魚/海鮮)",
+      "ms": "Sayur campur goreng (udang/sotong/makanan laut)",
+      "id": "Tumis sayur campur (udang/cumi/seafood)",
+      "lo": "ຜັດຜັກລວມ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Rau củ xào thập cẩm (tôm/mực/hải sản)",
+      "km": "ឆាបន្លែចម្រុះ (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Ginisang halo-halong gulay (hipon/pusit/seafood)",
+      "he": "ירקות מעורבים מוקפצים (שרימפס/קלמרי/פירות ים)",
+      "es": "Verduras variadas salteadas (langostinos/calamar/marisco)",
+      "it": "Verdure miste saltate (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1924,7 +3219,18 @@ window.NM_MENU = {
       "hi": "सोया सॉस के साथ फ्लैट नूडल्स (पोर्क/चिकन)",
       "ar": "نودلز مسطحة بصلصة الصويا (لحم خنزير/دجاج)",
       "de": "Gebratene Bandnudeln mit Sojasauce (Schwein/Hähnchen)",
-      "fr": "Nouilles plates sautées à la sauce soja (porc/poulet)"
+      "fr": "Nouilles plates sautées à la sauce soja (porc/poulet)",
+      "ja": "平打ち麺のしょうゆ炒め (豚肉/鶏肉)",
+      "zt": "醬油炒河粉 (豬肉/雞肉)",
+      "ms": "Kuetiau goreng kicap (khinzir/ayam)",
+      "id": "Kwetiau goreng kecap (babi/ayam)",
+      "lo": "ຜັດຊີອິ້ວ (ໝູ/ໄກ່)",
+      "vi": "Phở xào xì dầu (heo/gà)",
+      "km": "មីឆាស៊ីអ៊ីវ (ជ្រូក/មាន់)",
+      "fil": "Pritong flat noodles na may toyo (baboy/manok)",
+      "he": "אטריות שטוחות מוקפצות ברוטב סויה (חזיר/עוף)",
+      "es": "Fideos planos salteados con soja (cerdo/pollo)",
+      "it": "Noodles piatti saltati alla soia (maiale/pollo)"
      }
     },
     {
@@ -1941,7 +3247,18 @@ window.NM_MENU = {
       "hi": "सोया सॉस के साथ फ्लैट नूडल्स (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "نودلز مسطحة بصلصة الصويا (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Gebratene Bandnudeln mit Sojasauce (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Nouilles plates sautées à la sauce soja (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Nouilles plates sautées à la sauce soja (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "平打ち麺のしょうゆ炒め (牛肉/エビ/イカ/海鮮)",
+      "zt": "醬油炒河粉 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Kuetiau goreng kicap (daging lembu/udang/sotong/makanan laut)",
+      "id": "Kwetiau goreng kecap (sapi/udang/cumi/seafood)",
+      "lo": "ຜັດຊີອິ້ວ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Phở xào xì dầu (bò/tôm/mực/hải sản)",
+      "km": "មីឆាស៊ីអ៊ីវ (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Pritong flat noodles na may toyo (baka/hipon/pusit/seafood)",
+      "he": "אטריות שטוחות מוקפצות ברוטב סויה (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Fideos planos salteados con soja (ternera/langostinos/calamar/marisco)",
+      "it": "Noodles piatti saltati alla soia (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1958,7 +3275,18 @@ window.NM_MENU = {
       "hi": "स्टिर-फ्राई इंस्टेंट नूडल्स (पोर्क/चिकन)",
       "ar": "إندومي مقلي (لحم خنزير/دجاج)",
       "de": "Gebratene Instantnudeln (Schwein/Hähnchen)",
-      "fr": "Nouilles instantanées sautées (porc/poulet)"
+      "fr": "Nouilles instantanées sautées (porc/poulet)",
+      "ja": "インスタント麺の炒め物 (豚肉/鶏肉)",
+      "zt": "炒泡麵 (豬肉/雞肉)",
+      "ms": "Mi segera goreng (khinzir/ayam)",
+      "id": "Tumis mi instan (babi/ayam)",
+      "lo": "ຜັດມາມ່າ (ໝູ/ໄກ່)",
+      "vi": "Mì gói xào (heo/gà)",
+      "km": "ឆាមីម៉ាម៉ា (ជ្រូក/មាន់)",
+      "fil": "Ginisang instant noodles (baboy/manok)",
+      "he": "אטריות אינסטנט מוקפצות (חזיר/עוף)",
+      "es": "Fideos instantáneos salteados (cerdo/pollo)",
+      "it": "Noodles istantanei saltati (maiale/pollo)"
      }
     },
     {
@@ -1975,7 +3303,18 @@ window.NM_MENU = {
       "hi": "स्टिर-फ्राई इंस्टेंट नूडल्स (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "إندومي مقلي (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Gebratene Instantnudeln (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Nouilles instantanées sautées (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Nouilles instantanées sautées (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "インスタント麺の炒め物 (牛肉/エビ/イカ/海鮮)",
+      "zt": "炒泡麵 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Mi segera goreng (daging lembu/udang/sotong/makanan laut)",
+      "id": "Tumis mi instan (sapi/udang/cumi/seafood)",
+      "lo": "ຜັດມາມ່າ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Mì gói xào (bò/tôm/mực/hải sản)",
+      "km": "ឆាមីម៉ាម៉ា (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Ginisang instant noodles (baka/hipon/pusit/seafood)",
+      "he": "אטריות אינסטנט מוקפצות (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Fideos instantáneos salteados (ternera/langostinos/calamar/marisco)",
+      "it": "Noodles istantanei saltati (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -1992,7 +3331,18 @@ window.NM_MENU = {
       "hi": "खट्टा-मीठा स्टिर-फ्राई (पोर्क/चिकन)",
       "ar": "مقلي بالصلصة الحلوة والحامضة (لحم خنزير/دجاج)",
       "de": "Süß-sauer aus dem Wok (Schwein/Hähnchen)",
-      "fr": "Sauté aigre-doux (porc/poulet)"
+      "fr": "Sauté aigre-doux (porc/poulet)",
+      "ja": "酢豚風の甘酢炒め (豚肉/鶏肉)",
+      "zt": "糖醋炒 (豬肉/雞肉)",
+      "ms": "Goreng masam manis (khinzir/ayam)",
+      "id": "Tumis asam manis (babi/ayam)",
+      "lo": "ຜັດເປັ້ຽວຫວານ (ໝູ/ໄກ່)",
+      "vi": "Xào chua ngọt (heo/gà)",
+      "km": "ឆាជូរផ្អែម (ជ្រូក/មាន់)",
+      "fil": "Sweet and sour stir-fry (baboy/manok)",
+      "he": "מוקפץ חמוץ-מתוק (חזיר/עוף)",
+      "es": "Salteado agridulce (cerdo/pollo)",
+      "it": "Saltato in agrodolce (maiale/pollo)"
      }
     },
     {
@@ -2009,7 +3359,18 @@ window.NM_MENU = {
       "hi": "खट्टा-मीठा स्टिर-फ्राई (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "مقلي بالصلصة الحلوة والحامضة (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Süß-sauer aus dem Wok (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Sauté aigre-doux (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Sauté aigre-doux (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "酢豚風の甘酢炒め (牛肉/エビ/イカ/海鮮)",
+      "zt": "糖醋炒 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Goreng masam manis (daging lembu/udang/sotong/makanan laut)",
+      "id": "Tumis asam manis (sapi/udang/cumi/seafood)",
+      "lo": "ຜັດເປັ້ຽວຫວານ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Xào chua ngọt (bò/tôm/mực/hải sản)",
+      "km": "ឆាជូរផ្អែម (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Sweet and sour stir-fry (baka/hipon/pusit/seafood)",
+      "he": "מוקפץ חמוץ-מתוק (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Salteado agridulce (ternera/langostinos/calamar/marisco)",
+      "it": "Saltato in agrodolce (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -2026,7 +3387,18 @@ window.NM_MENU = {
       "hi": "स्टिर-फ्राई मॉर्निंग ग्लोरी",
       "ar": "سبانخ الماء المقلية",
       "de": "Gebratener Wasserspinat",
-      "fr": "Liseron d’eau sauté"
+      "fr": "Liseron d’eau sauté",
+      "ja": "空芯菜の炒め物",
+      "zt": "炒空心菜",
+      "ms": "Kangkung goreng",
+      "id": "Tumis kangkung",
+      "lo": "ຜັກບົ້ງໄຟແດງ",
+      "vi": "Rau muống xào",
+      "km": "ត្រកួនឆា",
+      "fil": "Ginisang kangkong",
+      "he": "ירק מורנינג גלורי מוקפץ",
+      "es": "Espinaca de agua salteada",
+      "it": "Spinaci d'acqua saltati"
      }
     }
    ]
@@ -2042,7 +3414,18 @@ window.NM_MENU = {
     "hi": "चावल और अंडे",
     "ar": "أرز وبيض",
     "de": "Reis & Eier",
-    "fr": "Riz & œufs"
+    "fr": "Riz & œufs",
+    "ja": "ご飯・卵料理",
+    "zt": "飯類與蛋類",
+    "ms": "Nasi & telur",
+    "id": "Nasi & telur",
+    "lo": "ເຂົ້າ & ໄຂ່",
+    "vi": "Cơm & trứng",
+    "km": "បាយ និងស៊ុត",
+    "fil": "Kanin at itlog",
+    "he": "אורז וביצים",
+    "es": "Arroz y huevos",
+    "it": "Riso e uova"
    },
    "items": [
     {
@@ -2059,7 +3442,18 @@ window.NM_MENU = {
       "hi": "फ्राइड राइस (अंडा/पोर्क/चिकन, छोटा)",
       "ar": "أرز مقلي (بيض/لحم خنزير/دجاج, صغير)",
       "de": "Gebratener Reis (Ei/Schwein/Hähnchen, klein)",
-      "fr": "Riz sauté (œuf/porc/poulet, petit)"
+      "fr": "Riz sauté (œuf/porc/poulet, petit)",
+      "ja": "チャーハン (卵/豚肉/鶏肉, 小)",
+      "zt": "炒飯 (蛋/豬肉/雞肉, 小)",
+      "ms": "Nasi goreng (telur/khinzir/ayam, kecil)",
+      "id": "Nasi goreng (telur/babi/ayam, kecil)",
+      "lo": "ເຂົ້າຜັດ (ໄຂ່/ໝູ/ໄກ່, ນ້ອຍ)",
+      "vi": "Cơm chiên (trứng/heo/gà, nhỏ)",
+      "km": "បាយឆា (ស៊ុត/ជ្រូក/មាន់, តូច)",
+      "fil": "Sinangag (itlog/baboy/manok, maliit)",
+      "he": "אורז מוקפץ (ביצה/חזיר/עוף, קטן)",
+      "es": "Arroz frito (huevo/cerdo/pollo, pequeño)",
+      "it": "Riso fritto (uovo/maiale/pollo, piccolo)"
      }
     },
     {
@@ -2076,7 +3470,18 @@ window.NM_MENU = {
       "hi": "फ्राइड राइस (अंडा/पोर्क/चिकन, मध्यम)",
       "ar": "أرز مقلي (بيض/لحم خنزير/دجاج, وسط)",
       "de": "Gebratener Reis (Ei/Schwein/Hähnchen, mittel)",
-      "fr": "Riz sauté (œuf/porc/poulet, moyen)"
+      "fr": "Riz sauté (œuf/porc/poulet, moyen)",
+      "ja": "チャーハン (卵/豚肉/鶏肉, 中)",
+      "zt": "炒飯 (蛋/豬肉/雞肉, 中)",
+      "ms": "Nasi goreng (telur/khinzir/ayam, sederhana)",
+      "id": "Nasi goreng (telur/babi/ayam, sedang)",
+      "lo": "ເຂົ້າຜັດ (ໄຂ່/ໝູ/ໄກ່, ກາງ)",
+      "vi": "Cơm chiên (trứng/heo/gà, vừa)",
+      "km": "បាយឆា (ស៊ុត/ជ្រូក/មាន់, មធ្យម)",
+      "fil": "Sinangag (itlog/baboy/manok, katamtaman)",
+      "he": "אורז מוקפץ (ביצה/חזיר/עוף, בינוני)",
+      "es": "Arroz frito (huevo/cerdo/pollo, mediano)",
+      "it": "Riso fritto (uovo/maiale/pollo, medio)"
      }
     },
     {
@@ -2093,7 +3498,18 @@ window.NM_MENU = {
       "hi": "फ्राइड राइस (अंडा/पोर्क/चिकन, बड़ा)",
       "ar": "أرز مقلي (بيض/لحم خنزير/دجاج, كبير)",
       "de": "Gebratener Reis (Ei/Schwein/Hähnchen, groß)",
-      "fr": "Riz sauté (œuf/porc/poulet, grand)"
+      "fr": "Riz sauté (œuf/porc/poulet, grand)",
+      "ja": "チャーハン (卵/豚肉/鶏肉, 大)",
+      "zt": "炒飯 (蛋/豬肉/雞肉, 大)",
+      "ms": "Nasi goreng (telur/khinzir/ayam, besar)",
+      "id": "Nasi goreng (telur/babi/ayam, besar)",
+      "lo": "ເຂົ້າຜັດ (ໄຂ່/ໝູ/ໄກ່, ໃຫຍ່)",
+      "vi": "Cơm chiên (trứng/heo/gà, lớn)",
+      "km": "បាយឆា (ស៊ុត/ជ្រូក/មាន់, ធំ)",
+      "fil": "Sinangag (itlog/baboy/manok, malaki)",
+      "he": "אורז מוקפץ (ביצה/חזיר/עוף, גדול)",
+      "es": "Arroz frito (huevo/cerdo/pollo, grande)",
+      "it": "Riso fritto (uovo/maiale/pollo, grande)"
      }
     },
     {
@@ -2110,7 +3526,18 @@ window.NM_MENU = {
       "hi": "फ्राइड राइस (बीफ़/झींगा/केकड़ा/स्क्विड/सीफूड, छोटा)",
       "ar": "أرز مقلي (لحم بقر/روبيان/سلطعون/حبار/مأكولات بحرية, صغير)",
       "de": "Gebratener Reis (Rind/Garnelen/Krabbe/Tintenfisch/Meeresfrüchte, klein)",
-      "fr": "Riz sauté (bœuf/crevettes/crabe/calmar/fruits de mer, petit)"
+      "fr": "Riz sauté (bœuf/crevettes/crabe/calmar/fruits de mer, petit)",
+      "ja": "チャーハン (牛肉/エビ/カニ/イカ/海鮮, 小)",
+      "zt": "炒飯 (牛肉/蝦/蟹/魷魚/海鮮, 小)",
+      "ms": "Nasi goreng (daging lembu/udang/ketam/sotong/makanan laut, kecil)",
+      "id": "Nasi goreng (sapi/udang/kepiting/cumi/seafood, kecil)",
+      "lo": "ເຂົ້າຜັດ (ງົວ/ກຸ້ງ/ປູ/ປາໝຶກ/ທະເລ, ນ້ອຍ)",
+      "vi": "Cơm chiên (bò/tôm/cua/mực/hải sản, nhỏ)",
+      "km": "បាយឆា (គោ/បង្គា/ក្តាម/មឹក/អាហារសមុទ្រ, តូច)",
+      "fil": "Sinangag (baka/hipon/alimango/pusit/seafood, maliit)",
+      "he": "אורז מוקפץ (בקר/שרימפס/סרטן/קלמרי/פירות ים, קטן)",
+      "es": "Arroz frito (ternera/langostinos/cangrejo/calamar/marisco, pequeño)",
+      "it": "Riso fritto (manzo/gamberi/granchio/calamari/frutti di mare, piccolo)"
      }
     },
     {
@@ -2127,7 +3554,18 @@ window.NM_MENU = {
       "hi": "फ्राइड राइस (बीफ़/झींगा/केकड़ा/स्क्विड/सीफूड, मध्यम)",
       "ar": "أرز مقلي (لحم بقر/روبيان/سلطعون/حبار/مأكولات بحرية, وسط)",
       "de": "Gebratener Reis (Rind/Garnelen/Krabbe/Tintenfisch/Meeresfrüchte, mittel)",
-      "fr": "Riz sauté (bœuf/crevettes/crabe/calmar/fruits de mer, moyen)"
+      "fr": "Riz sauté (bœuf/crevettes/crabe/calmar/fruits de mer, moyen)",
+      "ja": "チャーハン (牛肉/エビ/カニ/イカ/海鮮, 中)",
+      "zt": "炒飯 (牛肉/蝦/蟹/魷魚/海鮮, 中)",
+      "ms": "Nasi goreng (daging lembu/udang/ketam/sotong/makanan laut, sederhana)",
+      "id": "Nasi goreng (sapi/udang/kepiting/cumi/seafood, sedang)",
+      "lo": "ເຂົ້າຜັດ (ງົວ/ກຸ້ງ/ປູ/ປາໝຶກ/ທະເລ, ກາງ)",
+      "vi": "Cơm chiên (bò/tôm/cua/mực/hải sản, vừa)",
+      "km": "បាយឆា (គោ/បង្គា/ក្តាម/មឹក/អាហារសមុទ្រ, មធ្យម)",
+      "fil": "Sinangag (baka/hipon/alimango/pusit/seafood, katamtaman)",
+      "he": "אורז מוקפץ (בקר/שרימפס/סרטן/קלמרי/פירות ים, בינוני)",
+      "es": "Arroz frito (ternera/langostinos/cangrejo/calamar/marisco, mediano)",
+      "it": "Riso fritto (manzo/gamberi/granchio/calamari/frutti di mare, medio)"
      }
     },
     {
@@ -2144,7 +3582,18 @@ window.NM_MENU = {
       "hi": "फ्राइड राइस (बीफ़/झींगा/केकड़ा/स्क्विड/सीफूड, बड़ा)",
       "ar": "أرز مقلي (لحم بقر/روبيان/سلطعون/حبار/مأكولات بحرية, كبير)",
       "de": "Gebratener Reis (Rind/Garnelen/Krabbe/Tintenfisch/Meeresfrüchte, groß)",
-      "fr": "Riz sauté (bœuf/crevettes/crabe/calmar/fruits de mer, grand)"
+      "fr": "Riz sauté (bœuf/crevettes/crabe/calmar/fruits de mer, grand)",
+      "ja": "チャーハン (牛肉/エビ/カニ/イカ/海鮮, 大)",
+      "zt": "炒飯 (牛肉/蝦/蟹/魷魚/海鮮, 大)",
+      "ms": "Nasi goreng (daging lembu/udang/ketam/sotong/makanan laut, besar)",
+      "id": "Nasi goreng (sapi/udang/kepiting/cumi/seafood, besar)",
+      "lo": "ເຂົ້າຜັດ (ງົວ/ກຸ້ງ/ປູ/ປາໝຶກ/ທະເລ, ໃຫຍ່)",
+      "vi": "Cơm chiên (bò/tôm/cua/mực/hải sản, lớn)",
+      "km": "បាយឆា (គោ/បង្គា/ក្តាម/មឹក/អាហារសមុទ្រ, ធំ)",
+      "fil": "Sinangag (baka/hipon/alimango/pusit/seafood, malaki)",
+      "he": "אורז מוקפץ (בקר/שרימפס/סרטן/קלמרי/פירות ים, גדול)",
+      "es": "Arroz frito (ternera/langostinos/cangrejo/calamar/marisco, grande)",
+      "it": "Riso fritto (manzo/gamberi/granchio/calamari/frutti di mare, grande)"
      }
     },
     {
@@ -2161,7 +3610,18 @@ window.NM_MENU = {
       "hi": "उबला चावल (छोटा)",
       "ar": "أرز مطهو على البخار (صغير)",
       "de": "Gedämpfter Reis (klein)",
-      "fr": "Riz vapeur (petit)"
+      "fr": "Riz vapeur (petit)",
+      "ja": "白ご飯 (小)",
+      "zt": "白飯 (小)",
+      "ms": "Nasi putih (kecil)",
+      "id": "Nasi putih (kecil)",
+      "lo": "ເຂົ້າສວຍ (ນ້ອຍ)",
+      "vi": "Cơm trắng (nhỏ)",
+      "km": "បាយស (តូច)",
+      "fil": "Kanin (maliit)",
+      "he": "אורז מאודה (קטן)",
+      "es": "Arroz blanco (pequeño)",
+      "it": "Riso bianco (piccolo)"
      }
     },
     {
@@ -2178,7 +3638,18 @@ window.NM_MENU = {
       "hi": "उबला चावल (बड़ा)",
       "ar": "أرز مطهو على البخار (كبير)",
       "de": "Gedämpfter Reis (groß)",
-      "fr": "Riz vapeur (grand)"
+      "fr": "Riz vapeur (grand)",
+      "ja": "白ご飯 (大)",
+      "zt": "白飯 (大)",
+      "ms": "Nasi putih (besar)",
+      "id": "Nasi putih (besar)",
+      "lo": "ເຂົ້າສວຍ (ໃຫຍ່)",
+      "vi": "Cơm trắng (lớn)",
+      "km": "បាយស (ធំ)",
+      "fil": "Kanin (malaki)",
+      "he": "אורז מאודה (גדול)",
+      "es": "Arroz blanco (grande)",
+      "it": "Riso bianco (grande)"
      }
     },
     {
@@ -2195,7 +3666,18 @@ window.NM_MENU = {
       "hi": "तला अंडा",
       "ar": "بيض مقلي",
       "de": "Spiegelei",
-      "fr": "Œuf au plat"
+      "fr": "Œuf au plat",
+      "ja": "目玉焼き",
+      "zt": "煎蛋",
+      "ms": "Telur goreng",
+      "id": "Telur mata sapi",
+      "lo": "ໄຂ່ດາວ",
+      "vi": "Trứng ốp la",
+      "km": "ស៊ុតចៀន",
+      "fil": "Pritong itlog",
+      "he": "ביצת עין",
+      "es": "Huevo frito",
+      "it": "Uovo fritto"
      }
     },
     {
@@ -2212,7 +3694,18 @@ window.NM_MENU = {
       "hi": "ऑयस्टर ऑमलेट",
       "ar": "عجّة المحار",
       "de": "Austernomelett",
-      "fr": "Omelette aux huîtres"
+      "fr": "Omelette aux huîtres",
+      "ja": "牡蠣のオムレツ",
+      "zt": "蚵仔煎",
+      "ms": "Telur dadar tiram",
+      "id": "Telur dadar tiram",
+      "lo": "ໄຂ່ຈຽວຫອຍ",
+      "vi": "Trứng chiên hàu",
+      "km": "ស៊ុតចៀនខ្យងអយស្ទ័រ",
+      "fil": "Oyster omelette",
+      "he": "חביתת צדפות",
+      "es": "Tortilla de ostras",
+      "it": "Frittata di ostriche"
      }
     }
    ]
@@ -2228,7 +3721,18 @@ window.NM_MENU = {
     "hi": "सूप और करी",
     "ar": "شوربات وكاري",
     "de": "Suppen & Currys",
-    "fr": "Soupes & currys"
+    "fr": "Soupes & currys",
+    "ja": "スープ・カレー",
+    "zt": "湯品與咖哩",
+    "ms": "Sup & kari",
+    "id": "Sup & kari",
+    "lo": "ແກງ & ຕົ້ມ",
+    "vi": "Súp & cà ri",
+    "km": "ស៊ុប និងការី",
+    "fil": "Sopas at curry",
+    "he": "מרקים וקארי",
+    "es": "Sopas y currys",
+    "it": "Zuppe e curry"
    },
    "items": [
     {
@@ -2245,7 +3749,18 @@ window.NM_MENU = {
       "hi": "इंस्टेंट नूडल सूप (पोर्क/चिकन)",
       "ar": "شوربة إندومي (لحم خنزير/دجاج)",
       "de": "Instantnudelsuppe (Schwein/Hähnchen)",
-      "fr": "Soupe de nouilles instantanées (porc/poulet)"
+      "fr": "Soupe de nouilles instantanées (porc/poulet)",
+      "ja": "インスタントラーメンスープ (豚肉/鶏肉)",
+      "zt": "泡麵湯 (豬肉/雞肉)",
+      "ms": "Sup mi segera (khinzir/ayam)",
+      "id": "Sup mi instan (babi/ayam)",
+      "lo": "ຕົ້ມມາມ່າ (ໝູ/ໄກ່)",
+      "vi": "Mì gói nước (heo/gà)",
+      "km": "មីម៉ាម៉ាទឹក (ជ្រូក/មាន់)",
+      "fil": "Instant noodle soup (baboy/manok)",
+      "he": "מרק אטריות אינסטנט (חזיר/עוף)",
+      "es": "Sopa de fideos instantáneos (cerdo/pollo)",
+      "it": "Zuppa di noodles istantanei (maiale/pollo)"
      }
     },
     {
@@ -2262,7 +3777,18 @@ window.NM_MENU = {
       "hi": "इंस्टेंट नूडल सूप (बीफ़/झींगा/स्क्विड/सीफूड)",
       "ar": "شوربة إندومي (لحم بقر/روبيان/حبار/مأكولات بحرية)",
       "de": "Instantnudelsuppe (Rind/Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Soupe de nouilles instantanées (bœuf/crevettes/calmar/fruits de mer)"
+      "fr": "Soupe de nouilles instantanées (bœuf/crevettes/calmar/fruits de mer)",
+      "ja": "インスタントラーメンスープ (牛肉/エビ/イカ/海鮮)",
+      "zt": "泡麵湯 (牛肉/蝦/魷魚/海鮮)",
+      "ms": "Sup mi segera (daging lembu/udang/sotong/makanan laut)",
+      "id": "Sup mi instan (sapi/udang/cumi/seafood)",
+      "lo": "ຕົ້ມມາມ່າ (ງົວ/ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Mì gói nước (bò/tôm/mực/hải sản)",
+      "km": "មីម៉ាម៉ាទឹក (គោ/បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Instant noodle soup (baka/hipon/pusit/seafood)",
+      "he": "מרק אטריות אינסטנט (בקר/שרימפס/קלמרי/פירות ים)",
+      "es": "Sopa de fideos instantáneos (ternera/langostinos/calamar/marisco)",
+      "it": "Zuppa di noodles istantanei (manzo/gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -2279,7 +3805,18 @@ window.NM_MENU = {
       "hi": "राइस सूप (ख़ाओ टॉम) (पोर्क/चिकन)",
       "ar": "حساء الأرز (كاو توم) (لحم خنزير/دجاج)",
       "de": "Reissuppe (Khao Tom) (Schwein/Hähnchen)",
-      "fr": "Soupe de riz (khao tom) (porc/poulet)"
+      "fr": "Soupe de riz (khao tom) (porc/poulet)",
+      "ja": "お粥風スープ（カオトム） (豚肉/鶏肉)",
+      "zt": "泰式粥（考湯） (豬肉/雞肉)",
+      "ms": "Sup nasi (khao tom) (khinzir/ayam)",
+      "id": "Bubur nasi (khao tom) (babi/ayam)",
+      "lo": "ເຂົ້າຕົ້ມ (ໝູ/ໄກ່)",
+      "vi": "Cháo cơm (khao tom) (heo/gà)",
+      "km": "បបរបាយ (ខៅតុំ) (ជ្រូក/មាន់)",
+      "fil": "Sopas na kanin (khao tom) (baboy/manok)",
+      "he": "מרק אורז (קאו טום) (חזיר/עוף)",
+      "es": "Sopa de arroz (khao tom) (cerdo/pollo)",
+      "it": "Zuppa di riso (khao tom) (maiale/pollo)"
      }
     },
     {
@@ -2296,7 +3833,18 @@ window.NM_MENU = {
       "hi": "राइस सूप (ख़ाओ टॉम) (झींगा/स्क्विड/सीफूड)",
       "ar": "حساء الأرز (كاو توم) (روبيان/حبار/مأكولات بحرية)",
       "de": "Reissuppe (Khao Tom) (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Soupe de riz (khao tom) (crevettes/calmar/fruits de mer)"
+      "fr": "Soupe de riz (khao tom) (crevettes/calmar/fruits de mer)",
+      "ja": "お粥風スープ（カオトム） (エビ/イカ/海鮮)",
+      "zt": "泰式粥（考湯） (蝦/魷魚/海鮮)",
+      "ms": "Sup nasi (khao tom) (udang/sotong/makanan laut)",
+      "id": "Bubur nasi (khao tom) (udang/cumi/seafood)",
+      "lo": "ເຂົ້າຕົ້ມ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Cháo cơm (khao tom) (tôm/mực/hải sản)",
+      "km": "បបរបាយ (ខៅតុំ) (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Sopas na kanin (khao tom) (hipon/pusit/seafood)",
+      "he": "מרק אורז (קאו טום) (שרימפס/קלמרי/פירות ים)",
+      "es": "Sopa de arroz (khao tom) (langostinos/calamar/marisco)",
+      "it": "Zuppa di riso (khao tom) (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -2313,7 +3861,18 @@ window.NM_MENU = {
       "hi": "टॉम यम (मसालेदार सूप) (पोर्क/चिकन)",
       "ar": "توم يام (حساء حار) (لحم خنزير/دجاج)",
       "de": "Tom Yum (scharfe Suppe) (Schwein/Hähnchen)",
-      "fr": "Tom yum (soupe épicée) (porc/poulet)"
+      "fr": "Tom yum (soupe épicée) (porc/poulet)",
+      "ja": "トムヤム（辛いスープ） (豚肉/鶏肉)",
+      "zt": "冬蔭功（酸辣湯） (豬肉/雞肉)",
+      "ms": "Tom yum (sup pedas) (khinzir/ayam)",
+      "id": "Tom yum (sup pedas) (babi/ayam)",
+      "lo": "ຕົ້ມຍຳ (ໝູ/ໄກ່)",
+      "vi": "Tom yum (súp cay chua) (heo/gà)",
+      "km": "តុំយុំ (ស៊ុបហឹរ) (ជ្រូក/មាន់)",
+      "fil": "Tom yum (maanghang na sopas) (baboy/manok)",
+      "he": "טום יאם (מרק חריף) (חזיר/עוף)",
+      "es": "Tom yum (sopa picante) (cerdo/pollo)",
+      "it": "Tom yum (zuppa piccante) (maiale/pollo)"
      }
     },
     {
@@ -2330,7 +3889,18 @@ window.NM_MENU = {
       "hi": "टॉम यम (मसालेदार सूप) (झींगा/स्क्विड/सीफूड)",
       "ar": "توم يام (حساء حار) (روبيان/حبار/مأكولات بحرية)",
       "de": "Tom Yum (scharfe Suppe) (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Tom yum (soupe épicée) (crevettes/calmar/fruits de mer)"
+      "fr": "Tom yum (soupe épicée) (crevettes/calmar/fruits de mer)",
+      "ja": "トムヤム（辛いスープ） (エビ/イカ/海鮮)",
+      "zt": "冬蔭功（酸辣湯） (蝦/魷魚/海鮮)",
+      "ms": "Tom yum (sup pedas) (udang/sotong/makanan laut)",
+      "id": "Tom yum (sup pedas) (udang/cumi/seafood)",
+      "lo": "ຕົ້ມຍຳ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Tom yum (súp cay chua) (tôm/mực/hải sản)",
+      "km": "តុំយុំ (ស៊ុបហឹរ) (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Tom yum (maanghang na sopas) (hipon/pusit/seafood)",
+      "he": "טום יאם (מרק חריף) (שרימפס/קלמרי/פירות ים)",
+      "es": "Tom yum (sopa picante) (langostinos/calamar/marisco)",
+      "it": "Tom yum (zuppa piccante) (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -2347,7 +3917,18 @@ window.NM_MENU = {
       "hi": "टॉम यम (मसालेदार सूप) (हॉट पॉट)",
       "ar": "توم يام (حساء حار) (قدر ساخن)",
       "de": "Tom Yum (scharfe Suppe) (Feuertopf)",
-      "fr": "Tom yum (soupe épicée) (marmite)"
+      "fr": "Tom yum (soupe épicée) (marmite)",
+      "ja": "トムヤム（辛いスープ） (土鍋)",
+      "zt": "冬蔭功（酸辣湯） (火鍋)",
+      "ms": "Tom yum (sup pedas) (periuk panas)",
+      "id": "Tom yum (sup pedas) (hot pot)",
+      "lo": "ຕົ້ມຍຳ (ໝໍ້ໄຟ)",
+      "vi": "Tom yum (súp cay chua) (nồi lẩu)",
+      "km": "តុំយុំ (ស៊ុបហឹរ) (ឆ្នាំងក្តៅ)",
+      "fil": "Tom yum (maanghang na sopas) (hot pot)",
+      "he": "טום יאם (מרק חריף) (סיר חם)",
+      "es": "Tom yum (sopa picante) (olla caliente)",
+      "it": "Tom yum (zuppa piccante) (tegamino)"
      }
     },
     {
@@ -2364,7 +3945,18 @@ window.NM_MENU = {
       "hi": "टॉम खा (नारियल सूप) (पोर्क/चिकन)",
       "ar": "توم خا (شوربة جوز الهند) (لحم خنزير/دجاج)",
       "de": "Tom Kha (Kokossuppe) (Schwein/Hähnchen)",
-      "fr": "Tom kha (soupe au lait de coco) (porc/poulet)"
+      "fr": "Tom kha (soupe au lait de coco) (porc/poulet)",
+      "ja": "トムカー（ココナッツスープ） (豚肉/鶏肉)",
+      "zt": "椰奶雞湯（泰式椰奶湯） (豬肉/雞肉)",
+      "ms": "Tom kha (sup kelapa) (khinzir/ayam)",
+      "id": "Tom kha (sup kelapa) (babi/ayam)",
+      "lo": "ຕົ້ມຂ່າ (ໝູ/ໄກ່)",
+      "vi": "Tom kha (súp dừa) (heo/gà)",
+      "km": "តុំខា (ស៊ុបដូង) (ជ្រូក/មាន់)",
+      "fil": "Tom kha (sopas na gata) (baboy/manok)",
+      "he": "תום קה (מרק קוקוס) (חזיר/עוף)",
+      "es": "Tom kha (sopa de coco) (cerdo/pollo)",
+      "it": "Tom kha (zuppa al cocco) (maiale/pollo)"
      }
     },
     {
@@ -2381,7 +3973,18 @@ window.NM_MENU = {
       "hi": "टॉम खा (नारियल सूप) (झींगा/स्क्विड/सीफूड)",
       "ar": "توم خا (شوربة جوز الهند) (روبيان/حبار/مأكولات بحرية)",
       "de": "Tom Kha (Kokossuppe) (Garnelen/Tintenfisch/Meeresfrüchte)",
-      "fr": "Tom kha (soupe au lait de coco) (crevettes/calmar/fruits de mer)"
+      "fr": "Tom kha (soupe au lait de coco) (crevettes/calmar/fruits de mer)",
+      "ja": "トムカー（ココナッツスープ） (エビ/イカ/海鮮)",
+      "zt": "椰奶雞湯（泰式椰奶湯） (蝦/魷魚/海鮮)",
+      "ms": "Tom kha (sup kelapa) (udang/sotong/makanan laut)",
+      "id": "Tom kha (sup kelapa) (udang/cumi/seafood)",
+      "lo": "ຕົ້ມຂ່າ (ກຸ້ງ/ປາໝຶກ/ທະເລ)",
+      "vi": "Tom kha (súp dừa) (tôm/mực/hải sản)",
+      "km": "តុំខា (ស៊ុបដូង) (បង្គា/មឹក/អាហារសមុទ្រ)",
+      "fil": "Tom kha (sopas na gata) (hipon/pusit/seafood)",
+      "he": "תום קה (מרק קוקוס) (שרימפס/קלמרי/פירות ים)",
+      "es": "Tom kha (sopa de coco) (langostinos/calamar/marisco)",
+      "it": "Tom kha (zuppa al cocco) (gamberi/calamari/frutti di mare)"
      }
     },
     {
@@ -2398,7 +4001,18 @@ window.NM_MENU = {
       "hi": "ग्रीन करी (पोर्क/चिकन)",
       "ar": "كاري أخضر (لحم خنزير/دجاج)",
       "de": "Grünes Curry (Schwein/Hähnchen)",
-      "fr": "Curry vert (porc/poulet)"
+      "fr": "Curry vert (porc/poulet)",
+      "ja": "グリーンカレー (豚肉/鶏肉)",
+      "zt": "綠咖哩 (豬肉/雞肉)",
+      "ms": "Kari hijau (khinzir/ayam)",
+      "id": "Kari hijau (babi/ayam)",
+      "lo": "ແກງຂຽວຫວານ (ໝູ/ໄກ່)",
+      "vi": "Cà ri xanh (heo/gà)",
+      "km": "ការីបៃតង (ជ្រូក/មាន់)",
+      "fil": "Green curry (baboy/manok)",
+      "he": "קארי ירוק (חזיר/עוף)",
+      "es": "Curry verde (cerdo/pollo)",
+      "it": "Curry verde (maiale/pollo)"
      }
     },
     {
@@ -2415,7 +4029,18 @@ window.NM_MENU = {
       "hi": "ग्रीन करी (बीफ़)",
       "ar": "كاري أخضر (لحم بقر)",
       "de": "Grünes Curry (Rind)",
-      "fr": "Curry vert (bœuf)"
+      "fr": "Curry vert (bœuf)",
+      "ja": "グリーンカレー (牛肉)",
+      "zt": "綠咖哩 (牛肉)",
+      "ms": "Kari hijau (daging lembu)",
+      "id": "Kari hijau (sapi)",
+      "lo": "ແກງຂຽວຫວານ (ງົວ)",
+      "vi": "Cà ri xanh (bò)",
+      "km": "ការីបៃតង (គោ)",
+      "fil": "Green curry (baka)",
+      "he": "קארי ירוק (בקר)",
+      "es": "Curry verde (ternera)",
+      "it": "Curry verde (manzo)"
      }
     },
     {
@@ -2432,7 +4057,18 @@ window.NM_MENU = {
       "hi": "पनांग करी (पोर्क/चिकन)",
       "ar": "كاري بانانغ (لحم خنزير/دجاج)",
       "de": "Panang-Curry (Schwein/Hähnchen)",
-      "fr": "Curry panang (porc/poulet)"
+      "fr": "Curry panang (porc/poulet)",
+      "ja": "パナンカレー (豚肉/鶏肉)",
+      "zt": "帕能咖哩 (豬肉/雞肉)",
+      "ms": "Kari Panang (khinzir/ayam)",
+      "id": "Kari Panang (babi/ayam)",
+      "lo": "ແກງພະແນງ (ໝູ/ໄກ່)",
+      "vi": "Cà ri Panang (heo/gà)",
+      "km": "ការីផាណាំង (ជ្រូក/មាន់)",
+      "fil": "Panang curry (baboy/manok)",
+      "he": "קארי פאנאנג (חזיר/עוף)",
+      "es": "Curry panang (cerdo/pollo)",
+      "it": "Curry panang (maiale/pollo)"
      }
     },
     {
@@ -2449,7 +4085,18 @@ window.NM_MENU = {
       "hi": "पनांग करी (बीफ़/झींगा/सीफूड)",
       "ar": "كاري بانانغ (لحم بقر/روبيان/مأكولات بحرية)",
       "de": "Panang-Curry (Rind/Garnelen/Meeresfrüchte)",
-      "fr": "Curry panang (bœuf/crevettes/fruits de mer)"
+      "fr": "Curry panang (bœuf/crevettes/fruits de mer)",
+      "ja": "パナンカレー (牛肉/エビ/海鮮)",
+      "zt": "帕能咖哩 (牛肉/蝦/海鮮)",
+      "ms": "Kari Panang (daging lembu/udang/makanan laut)",
+      "id": "Kari Panang (sapi/udang/seafood)",
+      "lo": "ແກງພະແນງ (ງົວ/ກຸ້ງ/ທະເລ)",
+      "vi": "Cà ri Panang (bò/tôm/hải sản)",
+      "km": "ការីផាណាំង (គោ/បង្គា/អាហារសមុទ្រ)",
+      "fil": "Panang curry (baka/hipon/seafood)",
+      "he": "קארי פאנאנג (בקר/שרימפס/פירות ים)",
+      "es": "Curry panang (ternera/langostinos/marisco)",
+      "it": "Curry panang (manzo/gamberi/frutti di mare)"
      }
     },
     {
@@ -2466,7 +4113,18 @@ window.NM_MENU = {
       "hi": "टोफू, कीमा पोर्क और सीवीड वाला क्लियर सूप",
       "ar": "حساء صافٍ بالتوفو ولحم الخنزير المفروم والأعشاب البحرية",
       "de": "Klare Suppe mit Tofu, Schweinehack und Seetang",
-      "fr": "Soupe claire au tofu, porc haché et algues"
+      "fr": "Soupe claire au tofu, porc haché et algues",
+      "ja": "豆腐、豚ひき肉、海苔の澄まし汁",
+      "zt": "豆腐肉末紫菜清湯",
+      "ms": "Sup jernih dengan tauhu, khinzir kisar dan rumpai laut",
+      "id": "Sup bening dengan tahu, babi cincang, dan rumput laut",
+      "lo": "ແກງຈືດເຕົ້າຫູ້ ໝູສັບ ແລະ ສາຫຼ່າຍ",
+      "vi": "Canh trong với đậu hũ, thịt heo băm và rong biển",
+      "km": "ស៊ុបថ្លាតៅហ៊ូ សាច់ជ្រូកកិន និងសារាយសមុទ្រ",
+      "fil": "Malinaw na sopas na may tokwa, giniling na baboy at seaweed",
+      "he": "מרק צלול עם טופו, בשר חזיר טחון ואצות",
+      "es": "Sopa clara con tofu, cerdo picado y alga",
+      "it": "Brodo chiaro con tofu, maiale macinato e alghe"
      }
     },
     {
@@ -2483,7 +4141,18 @@ window.NM_MENU = {
       "hi": "मशरूम सूप",
       "ar": "شوربة فطر",
       "de": "Pilzsuppe",
-      "fr": "Soupe aux champignons"
+      "fr": "Soupe aux champignons",
+      "ja": "きのこスープ",
+      "zt": "蘑菇湯",
+      "ms": "Sup cendawan",
+      "id": "Sup jamur",
+      "lo": "ແກງເຫັດ",
+      "vi": "Súp nấm",
+      "km": "ស៊ុបផ្សិត",
+      "fil": "Mushroom soup",
+      "he": "מרק פטריות",
+      "es": "Sopa de setas",
+      "it": "Zuppa di funghi"
      }
     },
     {
@@ -2500,7 +4169,18 @@ window.NM_MENU = {
       "hi": "झींगा के साथ खट्टा सूप",
       "ar": "حساء حامض بالروبيان",
       "de": "Saure Suppe mit Garnelen",
-      "fr": "Soupe acidulée aux crevettes"
+      "fr": "Soupe acidulée aux crevettes",
+      "ja": "エビ入り酸味スープ（ゲーンソム）",
+      "zt": "酸辣蝦湯（酸湯）",
+      "ms": "Sup masam dengan udang (kaeng som)",
+      "id": "Sup asam dengan udang (kaeng som)",
+      "lo": "ແກງສົ້ມກຸ້ງ",
+      "vi": "Canh chua tôm (kaeng som)",
+      "km": "ស៊ុបជូរបង្គា (កែងសូម)",
+      "fil": "Maasim na sopas na may hipon (kaeng som)",
+      "he": "מרק חמוץ עם שרימפס (קאנג סום)",
+      "es": "Sopa ácida con langostinos (kaeng som)",
+      "it": "Zuppa acida con gamberi (kaeng som)"
      }
     },
     {
@@ -2517,7 +4197,18 @@ window.NM_MENU = {
       "hi": "टॉम यम पोह टेक (कटोरा)",
       "ar": "توم يام بو تيك (وعاء)",
       "de": "Tom Yum Poh Taek (scharfe Meeresfrüchtesuppe) (Schüssel)",
-      "fr": "Tom yum poh taek (soupe épicée aux fruits de mer) (bol)"
+      "fr": "Tom yum poh taek (soupe épicée aux fruits de mer) (bol)",
+      "ja": "トムヤム・ポーテーク（辛い海鮮スープ） (椀)",
+      "zt": "海鮮冬蔭功（波泰） (碗)",
+      "ms": "Tom yum Poh Taek (sup makanan laut pedas) (mangkuk)",
+      "id": "Tom yum Poh Taek (sup seafood pedas) (mangkuk)",
+      "lo": "ຕົ້ມຍຳໂປ໊ະແຕກ (ຖ້ວຍ)",
+      "vi": "Tom yum Poh Taek (súp hải sản cay) (tô)",
+      "km": "តុំយុំផូតែក (ស៊ុបអាហារសមុទ្រហឹរ) (ចាន)",
+      "fil": "Tom yum Poh Taek (maanghang na seafood soup) (mangkok)",
+      "he": "טום יאם פו טאק (מרק פירות ים חריף) (קערה)",
+      "es": "Tom yum Poh Taek (sopa picante de marisco) (cuenco)",
+      "it": "Tom yum Poh Taek (zuppa piccante di frutti di mare) (ciotola)"
      }
     },
     {
@@ -2534,7 +4225,18 @@ window.NM_MENU = {
       "hi": "टॉम यम पोह टेक (हॉट पॉट)",
       "ar": "توم يام بو تيك (قدر ساخن)",
       "de": "Tom Yum Poh Taek (scharfe Meeresfrüchtesuppe) (Feuertopf)",
-      "fr": "Tom yum poh taek (soupe épicée aux fruits de mer) (marmite)"
+      "fr": "Tom yum poh taek (soupe épicée aux fruits de mer) (marmite)",
+      "ja": "トムヤム・ポーテーク（辛い海鮮スープ） (土鍋)",
+      "zt": "海鮮冬蔭功（波泰） (火鍋)",
+      "ms": "Tom yum Poh Taek (sup makanan laut pedas) (periuk panas)",
+      "id": "Tom yum Poh Taek (sup seafood pedas) (hot pot)",
+      "lo": "ຕົ້ມຍຳໂປ໊ະແຕກ (ໝໍ້ໄຟ)",
+      "vi": "Tom yum Poh Taek (súp hải sản cay) (nồi lẩu)",
+      "km": "តុំយុំផូតែក (ស៊ុបអាហារសមុទ្រហឹរ) (ឆ្នាំងក្តៅ)",
+      "fil": "Tom yum Poh Taek (maanghang na seafood soup) (hot pot)",
+      "he": "טום יאם פו טאק (מרק פירות ים חריף) (סיר חם)",
+      "es": "Tom yum Poh Taek (sopa picante de marisco) (olla caliente)",
+      "it": "Tom yum Poh Taek (zuppa piccante di frutti di mare) (tegamino)"
      }
     },
     {
@@ -2550,7 +4252,18 @@ window.NM_MENU = {
       "hi": "सीफूड स्टीम्ड एग हॉट पॉट",
       "ar": "بيض مطهو على البخار مع المأكولات البحرية في قدر",
       "de": "Gedämpftes Ei mit Meeresfrüchten im Feuertopf",
-      "fr": "Œuf vapeur aux fruits de mer en marmite"
+      "fr": "Œuf vapeur aux fruits de mer en marmite",
+      "ja": "海鮮の茶碗蒸し鍋",
+      "zt": "海鮮蒸蛋煲",
+      "ms": "Periuk panas telur kukus makanan laut",
+      "id": "Hot pot telur kukus seafood",
+      "lo": "ໄຂ່ຕຸ໋ນທະເລຫມໍ້ໄຟ",
+      "vi": "Trứng hấp hải sản nồi lẩu",
+      "km": "ស៊ុតចំហុយអាហារសមុទ្រក្នុងឆ្នាំងក្តៅ",
+      "fil": "Steamed egg hot pot na may seafood",
+      "he": "סיר חם של ביצה מאודה עם פירות ים",
+      "es": "Olla caliente de huevo al vapor con marisco",
+      "it": "Tegamino di uovo al vapore con frutti di mare"
      }
     },
     {
@@ -2566,7 +4279,18 @@ window.NM_MENU = {
       "hi": "स्क्विड इंक सूप",
       "ar": "حساء الحبار بحبره الأسود",
       "de": "Tintenfisch in schwarzer Tinte",
-      "fr": "Calmar à l’encre noire"
+      "fr": "Calmar à l’encre noire",
+      "ja": "イカ墨スープ",
+      "zt": "墨汁魷魚湯",
+      "ms": "Sup dakwat sotong",
+      "id": "Sup tinta cumi",
+      "lo": "ແກງນ້ຳດຳປາໝຶກ",
+      "vi": "Súp mực nước đen",
+      "km": "ស៊ុបទឹកខ្មៅមឹក",
+      "fil": "Squid ink soup",
+      "he": "מרק דיו קלמרי",
+      "es": "Sopa de tinta de calamar",
+      "it": "Zuppa al nero di seppia"
      }
     },
     {
@@ -2582,7 +4306,18 @@ window.NM_MENU = {
       "hi": "कच्चे नारियल में भाप में पकी सीफूड रेड करी",
       "ar": "مأكولات بحرية بالكاري الأحمر مطهوة في جوز هند",
       "de": "Meeresfrüchte in rotem Curry im jungen Kokosnuss",
-      "fr": "Fruits de mer au curry rouge cuits à la vapeur dans une noix de coco"
+      "fr": "Fruits de mer au curry rouge cuits à la vapeur dans une noix de coco",
+      "ja": "若いココナッツで蒸した海鮮レッドカレー",
+      "zt": "椰青海鮮紅咖哩蒸",
+      "ms": "Kari merah makanan laut dikukus dalam kelapa muda",
+      "id": "Kari merah seafood dikukus dalam kelapa muda",
+      "lo": "ຫໍ່ໝົກທະເລໃນໝາກພ້າວອ່ອນ",
+      "vi": "Cà ri đỏ hải sản hấp trong dừa non",
+      "km": "ហហ៊ោកអាហារសមុទ្រក្នុងដូងខ្ចី",
+      "fil": "Seafood red curry na steamed sa batang buko",
+      "he": "קארי אדום עם פירות ים מאודה בקוקוס צעיר",
+      "es": "Curry rojo de marisco al vapor en un coco tierno",
+      "it": "Curry rosso di frutti di mare al vapore in un cocco giovane"
      }
     }
    ]
@@ -2598,7 +4333,18 @@ window.NM_MENU = {
     "hi": "जूस",
     "ar": "عصائر",
     "de": "Säfte",
-    "fr": "Jus"
+    "fr": "Jus",
+    "ja": "ジュース",
+    "zt": "果汁",
+    "ms": "Jus",
+    "id": "Jus",
+    "lo": "ນ້ຳໝາກໄມ້",
+    "vi": "Nước ép",
+    "km": "ទឹកផ្លែឈើ",
+    "fil": "Juice",
+    "he": "מיצים",
+    "es": "Zumos",
+    "it": "Succhi"
    },
    "items": [
     {
@@ -2614,7 +4360,18 @@ window.NM_MENU = {
       "hi": "नारियल का रस",
       "ar": "عصير جوز الهند",
       "de": "Kokossaft",
-      "fr": "Jus de coco"
+      "fr": "Jus de coco",
+      "ja": "ココナッツジュース",
+      "zt": "椰子汁",
+      "ms": "Jus kelapa",
+      "id": "Air kelapa",
+      "lo": "ນ້ຳໝາກພ້າວ",
+      "vi": "Nước dừa",
+      "km": "ទឹកដូង",
+      "fil": "Buko juice",
+      "he": "מיץ קוקוס",
+      "es": "Zumo de coco",
+      "it": "Succo di cocco"
      },
      "img": "dk-coconut"
     },
@@ -2631,7 +4388,18 @@ window.NM_MENU = {
       "hi": "सेब का रस",
       "ar": "عصير تفاح",
       "de": "Apfelsaft",
-      "fr": "Jus de pomme"
+      "fr": "Jus de pomme",
+      "ja": "アップルジュース",
+      "zt": "蘋果汁",
+      "ms": "Jus epal",
+      "id": "Jus apel",
+      "lo": "ນ້ຳໝາກແອັບເປິ້ນ",
+      "vi": "Nước ép táo",
+      "km": "ទឹកផ្លែប៉ោម",
+      "fil": "Apple juice",
+      "he": "מיץ תפוחים",
+      "es": "Zumo de manzana",
+      "it": "Succo di mela"
      }
     },
     {
@@ -2647,7 +4415,18 @@ window.NM_MENU = {
       "hi": "संतरे का रस",
       "ar": "عصير برتقال",
       "de": "Orangensaft",
-      "fr": "Jus d’orange"
+      "fr": "Jus d’orange",
+      "ja": "オレンジジュース",
+      "zt": "柳橙汁",
+      "ms": "Jus oren",
+      "id": "Jus jeruk",
+      "lo": "ນ້ຳສົ້ມ",
+      "vi": "Nước cam ép",
+      "km": "ទឹកក្រូច",
+      "fil": "Orange juice",
+      "he": "מיץ תפוזים",
+      "es": "Zumo de naranja",
+      "it": "Succo d'arancia"
      },
      "img": "dk-orange"
     },
@@ -2664,7 +4443,18 @@ window.NM_MENU = {
       "hi": "अनानास का रस",
       "ar": "عصير أناناس",
       "de": "Ananassaft",
-      "fr": "Jus d’ananas"
+      "fr": "Jus d’ananas",
+      "ja": "パイナップルジュース",
+      "zt": "鳳梨汁",
+      "ms": "Jus nanas",
+      "id": "Jus nanas",
+      "lo": "ນ້ຳໝາກນັດ",
+      "vi": "Nước ép dứa",
+      "km": "ទឹកម្នាស់",
+      "fil": "Pineapple juice",
+      "he": "מיץ אננס",
+      "es": "Zumo de piña",
+      "it": "Succo di ananas"
      },
      "img": "dk-pineapple"
     }
@@ -2681,7 +4471,18 @@ window.NM_MENU = {
     "hi": "स्लश",
     "ar": "سلاش",
     "de": "Slushies",
-    "fr": "Slushs"
+    "fr": "Slushs",
+    "ja": "スラッシュ",
+    "zt": "冰沙",
+    "ms": "Slush",
+    "id": "Slush",
+    "lo": "ນ້ຳປັ່ນ",
+    "vi": "Đá xay",
+    "km": "ទឹកកកកិន",
+    "fil": "Slush",
+    "he": "סלאש",
+    "es": "Granizados",
+    "it": "Granite"
    },
    "items": [
     {
@@ -2697,7 +4498,18 @@ window.NM_MENU = {
       "hi": "अनानास स्लश",
       "ar": "سلاش الأناناس",
       "de": "Ananas-Slush",
-      "fr": "Slush à l’ananas"
+      "fr": "Slush à l’ananas",
+      "ja": "パイナップルスラッシュ",
+      "zt": "鳳梨冰沙",
+      "ms": "Slush nanas",
+      "id": "Slush nanas",
+      "lo": "ນ້ຳໝາກນັດປັ່ນ",
+      "vi": "Dứa đá xay",
+      "km": "ទឹកកកកិនម្នាស់",
+      "fil": "Pineapple slush",
+      "he": "סלאש אננס",
+      "es": "Granizado de piña",
+      "it": "Granita all'ananas"
      },
      "img": "dk-pineslush"
     },
@@ -2714,7 +4526,18 @@ window.NM_MENU = {
       "hi": "तरबूज़ स्लश",
       "ar": "سلاش البطيخ",
       "de": "Wassermelonen-Slush",
-      "fr": "Slush à la pastèque"
+      "fr": "Slush à la pastèque",
+      "ja": "スイカスラッシュ",
+      "zt": "西瓜冰沙",
+      "ms": "Slush tembikai",
+      "id": "Slush semangka",
+      "lo": "ນ້ຳໝາກໂມປັ່ນ",
+      "vi": "Dưa hấu đá xay",
+      "km": "ទឹកកកកិនឪឡឹក",
+      "fil": "Watermelon slush",
+      "he": "סלאש אבטיח",
+      "es": "Granizado de sandía",
+      "it": "Granita all'anguria"
      },
      "img": "dk-watermelon"
     },
@@ -2731,7 +4554,18 @@ window.NM_MENU = {
       "hi": "आम स्लश",
       "ar": "سلاش المانجو",
       "de": "Mango-Slush",
-      "fr": "Slush à la mangue"
+      "fr": "Slush à la mangue",
+      "ja": "マンゴースラッシュ",
+      "zt": "芒果冰沙",
+      "ms": "Slush mangga",
+      "id": "Slush mangga",
+      "lo": "ນ້ຳໝາກມ່ວງປັ່ນ",
+      "vi": "Xoài đá xay",
+      "km": "ទឹកកកកិនស្វាយ",
+      "fil": "Mango slush",
+      "he": "סלאש מנגו",
+      "es": "Granizado de mango",
+      "it": "Granita al mango"
      },
      "img": "dk-mango"
     },
@@ -2748,7 +4582,18 @@ window.NM_MENU = {
       "hi": "स्ट्रॉबेरी स्लश",
       "ar": "سلاش الفراولة",
       "de": "Erdbeer-Slush",
-      "fr": "Slush à la fraise"
+      "fr": "Slush à la fraise",
+      "ja": "ストロベリースラッシュ",
+      "zt": "草莓冰沙",
+      "ms": "Slush strawberi",
+      "id": "Slush stroberi",
+      "lo": "ນ້ຳສະຕໍເບີຣີປັ່ນ",
+      "vi": "Dâu đá xay",
+      "km": "ទឹកកកកិនស្ត្របឺរី",
+      "fil": "Strawberry slush",
+      "he": "סלאש תות",
+      "es": "Granizado de fresa",
+      "it": "Granita alla fragola"
      },
      "img": "dk-strawberry"
     },
@@ -2765,7 +4610,18 @@ window.NM_MENU = {
       "hi": "लाइम स्लश",
       "ar": "سلاش الليمون الأخضر",
       "de": "Limetten-Slush",
-      "fr": "Slush au citron vert"
+      "fr": "Slush au citron vert",
+      "ja": "ライムスラッシュ",
+      "zt": "檸檬冰沙",
+      "ms": "Slush limau",
+      "id": "Slush jeruk nipis",
+      "lo": "ນ້ຳໝາກນາວປັ່ນ",
+      "vi": "Chanh đá xay",
+      "km": "ទឹកកកកិនក្រូចឆ្មារ",
+      "fil": "Lime slush",
+      "he": "סלאש ליים",
+      "es": "Granizado de lima",
+      "it": "Granita al lime"
      },
      "img": "dk-lime"
     },
@@ -2782,7 +4638,18 @@ window.NM_MENU = {
       "hi": "नारियल स्लश",
       "ar": "سلاش جوز الهند",
       "de": "Kokos-Slush",
-      "fr": "Slush à la noix de coco"
+      "fr": "Slush à la noix de coco",
+      "ja": "ココナッツスラッシュ",
+      "zt": "椰子冰沙",
+      "ms": "Slush kelapa",
+      "id": "Slush kelapa",
+      "lo": "ນ້ຳໝາກພ້າວປັ່ນ",
+      "vi": "Dừa đá xay",
+      "km": "ទឹកកកកិនដូង",
+      "fil": "Coconut slush",
+      "he": "סלאש קוקוס",
+      "es": "Granizado de coco",
+      "it": "Granita al cocco"
      },
      "img": "dk-coconutslush"
     },
@@ -2799,7 +4666,18 @@ window.NM_MENU = {
       "hi": "कोको फ्रेप्पे",
       "ar": "كاكاو فرابيه",
       "de": "Kakao-Frappé",
-      "fr": "Frappé au cacao"
+      "fr": "Frappé au cacao",
+      "ja": "ココアフラッペ",
+      "zt": "可可冰沙",
+      "ms": "Frappé koko",
+      "id": "Frappé cokelat",
+      "lo": "ໂກໂກ້ປັ່ນ",
+      "vi": "Cacao đá xay",
+      "km": "កាកាវហ្វ្រាប៉េ",
+      "fil": "Cocoa frappé",
+      "he": "פרפה קקאו",
+      "es": "Frappé de cacao",
+      "it": "Frappè al cacao"
      },
      "img": "dk-cocoa"
     },
@@ -2816,7 +4694,18 @@ window.NM_MENU = {
       "hi": "कीवी स्लश",
       "ar": "سلاش الكيوي",
       "de": "Kiwi-Slush",
-      "fr": "Slush au kiwi"
+      "fr": "Slush au kiwi",
+      "ja": "キウイスラッシュ",
+      "zt": "奇異果冰沙",
+      "ms": "Slush kiwi",
+      "id": "Slush kiwi",
+      "lo": "ນ້ຳກີວີປັ່ນ",
+      "vi": "Kiwi đá xay",
+      "km": "ទឹកកកកិនគីវី",
+      "fil": "Kiwi slush",
+      "he": "סלאש קיווי",
+      "es": "Granizado de kiwi",
+      "it": "Granita al kiwi"
      },
      "img": "dk-kiwi"
     }
@@ -2833,7 +4722,18 @@ window.NM_MENU = {
     "hi": "बीयर और स्पिरिट",
     "ar": "بيرة ومشروبات روحية",
     "de": "Bier & Spirituosen",
-    "fr": "Bières & spiritueux"
+    "fr": "Bières & spiritueux",
+    "ja": "ビール・お酒",
+    "zt": "啤酒與烈酒",
+    "ms": "Bir & minuman keras",
+    "id": "Bir & minuman beralkohol",
+    "lo": "ເບຍ & ເຫຼົ້າ",
+    "vi": "Bia & rượu",
+    "km": "ស្រាបៀរ និងស្រា",
+    "fil": "Beer at alak",
+    "he": "בירה ואלכוהול",
+    "es": "Cerveza y licores",
+    "it": "Birra e liquori"
    },
    "items": [
     {
@@ -2849,7 +4749,18 @@ window.NM_MENU = {
       "hi": "Singha बीयर, छोटी बोतल",
       "ar": "Singha بيرة, زجاجة صغيرة",
       "de": "Singha Bier, kleine Flasche",
-      "fr": "Singha bière, petite bouteille"
+      "fr": "Singha bière, petite bouteille",
+      "ja": "シンハービール（小瓶）",
+      "zt": "勝獅啤酒（小瓶）",
+      "ms": "Bir Singha, botol kecil",
+      "id": "Bir Singha, botol kecil",
+      "lo": "ເບຍສິງ ຂວດນ້ອຍ",
+      "vi": "Bia Singha, chai nhỏ",
+      "km": "ស្រាបៀរស៊ីង ដបតូច",
+      "fil": "Singha beer, maliit na bote",
+      "he": "בירה סינגהה, בקבוק קטן",
+      "es": "Cerveza Singha, botella pequeña",
+      "it": "Birra Singha, bottiglia piccola"
      },
      "img": "dk-singha"
     },
@@ -2866,7 +4777,18 @@ window.NM_MENU = {
       "hi": "Singha बीयर, बड़ी बोतल",
       "ar": "Singha بيرة, زجاجة كبيرة",
       "de": "Singha Bier, große Flasche",
-      "fr": "Singha bière, grande bouteille"
+      "fr": "Singha bière, grande bouteille",
+      "ja": "シンハービール（大瓶）",
+      "zt": "勝獅啤酒（大瓶）",
+      "ms": "Bir Singha, botol besar",
+      "id": "Bir Singha, botol besar",
+      "lo": "ເບຍສິງ ຂວດໃຫຍ່",
+      "vi": "Bia Singha, chai lớn",
+      "km": "ស្រាបៀរស៊ីង ដបធំ",
+      "fil": "Singha beer, malaking bote",
+      "he": "בירה סינגהה, בקבוק גדול",
+      "es": "Cerveza Singha, botella grande",
+      "it": "Birra Singha, bottiglia grande"
      },
      "img": "dk-singha"
     },
@@ -2883,7 +4805,18 @@ window.NM_MENU = {
       "hi": "Leo बीयर, छोटी बोतल",
       "ar": "Leo بيرة, زجاجة صغيرة",
       "de": "Leo Bier, kleine Flasche",
-      "fr": "Leo bière, petite bouteille"
+      "fr": "Leo bière, petite bouteille",
+      "ja": "レオビール（小瓶）",
+      "zt": "利奧啤酒（小瓶）",
+      "ms": "Bir Leo, botol kecil",
+      "id": "Bir Leo, botol kecil",
+      "lo": "ເບຍລີໂອ ຂວດນ້ອຍ",
+      "vi": "Bia Leo, chai nhỏ",
+      "km": "ស្រាបៀរលីអូ ដបតូច",
+      "fil": "Leo beer, maliit na bote",
+      "he": "בירה ליאו, בקבוק קטן",
+      "es": "Cerveza Leo, botella pequeña",
+      "it": "Birra Leo, bottiglia piccola"
      },
      "img": "dk-beer"
     },
@@ -2900,7 +4833,18 @@ window.NM_MENU = {
       "hi": "Leo बीयर, बड़ी बोतल",
       "ar": "Leo بيرة, زجاجة كبيرة",
       "de": "Leo Bier, große Flasche",
-      "fr": "Leo bière, grande bouteille"
+      "fr": "Leo bière, grande bouteille",
+      "ja": "レオビール（大瓶）",
+      "zt": "利奧啤酒（大瓶）",
+      "ms": "Bir Leo, botol besar",
+      "id": "Bir Leo, botol besar",
+      "lo": "ເບຍລີໂອ ຂວດໃຫຍ່",
+      "vi": "Bia Leo, chai lớn",
+      "km": "ស្រាបៀរលីអូ ដបធំ",
+      "fil": "Leo beer, malaking bote",
+      "he": "בירה ליאו, בקבוק גדול",
+      "es": "Cerveza Leo, botella grande",
+      "it": "Birra Leo, bottiglia grande"
      },
      "img": "dk-beer"
     },
@@ -2917,7 +4861,18 @@ window.NM_MENU = {
       "hi": "Chang बीयर, छोटी बोतल",
       "ar": "Chang بيرة, زجاجة صغيرة",
       "de": "Chang Bier, kleine Flasche",
-      "fr": "Chang bière, petite bouteille"
+      "fr": "Chang bière, petite bouteille",
+      "ja": "チャーンビール（小瓶）",
+      "zt": "象牌啤酒（小瓶）",
+      "ms": "Bir Chang, botol kecil",
+      "id": "Bir Chang, botol kecil",
+      "lo": "ເບຍຊ້າງ ຂວດນ້ອຍ",
+      "vi": "Bia Chang, chai nhỏ",
+      "km": "ស្រាបៀរឆាង ដបតូច",
+      "fil": "Chang beer, maliit na bote",
+      "he": "בירה צ'אנג, בקבוק קטן",
+      "es": "Cerveza Chang, botella pequeña",
+      "it": "Birra Chang, bottiglia piccola"
      },
      "img": "dk-chang"
     },
@@ -2934,7 +4889,18 @@ window.NM_MENU = {
       "hi": "Chang बीयर, बड़ी बोतल",
       "ar": "Chang بيرة, زجاجة كبيرة",
       "de": "Chang Bier, große Flasche",
-      "fr": "Chang bière, grande bouteille"
+      "fr": "Chang bière, grande bouteille",
+      "ja": "チャーンビール（大瓶）",
+      "zt": "象牌啤酒（大瓶）",
+      "ms": "Bir Chang, botol besar",
+      "id": "Bir Chang, botol besar",
+      "lo": "ເບຍຊ້າງ ຂວດໃຫຍ່",
+      "vi": "Bia Chang, chai lớn",
+      "km": "ស្រាបៀរឆាង ដបធំ",
+      "fil": "Chang beer, malaking bote",
+      "he": "בירה צ'אנג, בקבוק גדול",
+      "es": "Cerveza Chang, botella grande",
+      "it": "Birra Chang, bottiglia grande"
      },
      "img": "dk-chang"
     },
@@ -2951,7 +4917,18 @@ window.NM_MENU = {
       "hi": "Heineken बीयर, छोटी बोतल",
       "ar": "Heineken بيرة, زجاجة صغيرة",
       "de": "Heineken Bier, kleine Flasche",
-      "fr": "Heineken bière, petite bouteille"
+      "fr": "Heineken bière, petite bouteille",
+      "ja": "ハイネケン（小瓶）",
+      "zt": "海尼根啤酒（小瓶）",
+      "ms": "Bir Heineken, botol kecil",
+      "id": "Bir Heineken, botol kecil",
+      "lo": "ເບຍຮາຍເນເກນ ຂວດນ້ອຍ",
+      "vi": "Bia Heineken, chai nhỏ",
+      "km": "ស្រាបៀរហៃណិកិន ដបតូច",
+      "fil": "Heineken beer, maliit na bote",
+      "he": "בירה היינקן, בקבוק קטן",
+      "es": "Cerveza Heineken, botella pequeña",
+      "it": "Birra Heineken, bottiglia piccola"
      },
      "img": "dk-heineken"
     },
@@ -2968,7 +4945,18 @@ window.NM_MENU = {
       "hi": "Heineken बीयर, बड़ी बोतल",
       "ar": "Heineken بيرة, زجاجة كبيرة",
       "de": "Heineken Bier, große Flasche",
-      "fr": "Heineken bière, grande bouteille"
+      "fr": "Heineken bière, grande bouteille",
+      "ja": "ハイネケン（大瓶）",
+      "zt": "海尼根啤酒（大瓶）",
+      "ms": "Bir Heineken, botol besar",
+      "id": "Bir Heineken, botol besar",
+      "lo": "ເບຍຮາຍເນເກນ ຂວດໃຫຍ່",
+      "vi": "Bia Heineken, chai lớn",
+      "km": "ស្រាបៀរហៃណិកិន ដបធំ",
+      "fil": "Heineken beer, malaking bote",
+      "he": "בירה היינקן, בקבוק גדול",
+      "es": "Cerveza Heineken, botella grande",
+      "it": "Birra Heineken, bottiglia grande"
      },
      "img": "dk-heineken"
     },
@@ -2985,7 +4973,18 @@ window.NM_MENU = {
       "hi": "San Miguel Light बीयर, छोटी बोतल",
       "ar": "San Miguel Light بيرة, زجاجة صغيرة",
       "de": "San Miguel Light Bier, kleine Flasche",
-      "fr": "San Miguel Light bière, petite bouteille"
+      "fr": "San Miguel Light bière, petite bouteille",
+      "ja": "サンミゲル・ライト（小瓶）",
+      "zt": "生力輕啤酒（小瓶）",
+      "ms": "Bir San Miguel Light, botol kecil",
+      "id": "Bir San Miguel Light, botol kecil",
+      "lo": "ເບຍຊານມິເກວ ໄລທ໌ ຂວດນ້ອຍ",
+      "vi": "Bia San Miguel Light, chai nhỏ",
+      "km": "ស្រាបៀរសាន់មីហ្គែល ឡាយ ដបតូច",
+      "fil": "San Miguel Light beer, maliit na bote",
+      "he": "בירה סן מיגל לייט, בקבוק קטן",
+      "es": "Cerveza San Miguel Light, botella pequeña",
+      "it": "Birra San Miguel Light, bottiglia piccola"
      },
      "img": "dk-beer"
     },
@@ -3002,7 +5001,18 @@ window.NM_MENU = {
       "hi": "Sangsom, फ्लैट बोतल",
       "ar": "Sangsom, زجاجة مسطحة",
       "de": "Sangsom, Flachmann",
-      "fr": "Sangsom, flasque"
+      "fr": "Sangsom, flasque",
+      "ja": "セーンソム（フラスコ型ボトル）",
+      "zt": "三顆（扁瓶）",
+      "ms": "Sangsom, botol leper",
+      "id": "Sangsom, botol pipih",
+      "lo": "ແສງໂສມ ຂວດແບນ",
+      "vi": "Sangsom, chai dẹt",
+      "km": "សាំងសោម ដបបែប",
+      "fil": "Sangsom, flask bottle",
+      "he": "סנגסום, בקבוק שטוח",
+      "es": "Sangsom, botella plana",
+      "it": "Sangsom, bottiglia piatta"
      },
      "img": "dk-flask"
     },
@@ -3019,7 +5029,18 @@ window.NM_MENU = {
       "hi": "Sangsom, गोल बोतल",
       "ar": "Sangsom, زجاجة مستديرة",
       "de": "Sangsom, runde Flasche",
-      "fr": "Sangsom, bouteille ronde"
+      "fr": "Sangsom, bouteille ronde",
+      "ja": "セーンソム（丸ボトル）",
+      "zt": "三顆（圓瓶）",
+      "ms": "Sangsom, botol bulat",
+      "id": "Sangsom, botol bulat",
+      "lo": "ແສງໂສມ ຂວດມົນ",
+      "vi": "Sangsom, chai tròn",
+      "km": "សាំងសោម ដបមូល",
+      "fil": "Sangsom, bilog na bote",
+      "he": "סנגסום, בקבוק עגול",
+      "es": "Sangsom, botella redonda",
+      "it": "Sangsom, bottiglia rotonda"
      },
      "img": "dk-flask"
     },
@@ -3036,7 +5057,18 @@ window.NM_MENU = {
       "hi": "Hong Thong, फ्लैट बोतल",
       "ar": "Hong Thong, زجاجة مسطحة",
       "de": "Hong Thong, Flachmann",
-      "fr": "Hong Thong, flasque"
+      "fr": "Hong Thong, flasque",
+      "ja": "ホントン（フラスコ型ボトル）",
+      "zt": "鴻通（扁瓶）",
+      "ms": "Hong Thong, botol leper",
+      "id": "Hong Thong, botol pipih",
+      "lo": "ຮົງທອງ ຂວດແບນ",
+      "vi": "Hong Thong, chai dẹt",
+      "km": "ហុងតុង ដបបែប",
+      "fil": "Hong Thong, flask bottle",
+      "he": "הונג תונג, בקבוק שטוח",
+      "es": "Hong Thong, botella plana",
+      "it": "Hong Thong, bottiglia piatta"
      },
      "img": "dk-flask"
     },
@@ -3053,7 +5085,18 @@ window.NM_MENU = {
       "hi": "Hong Thong, गोल बोतल",
       "ar": "Hong Thong, زجاجة مستديرة",
       "de": "Hong Thong, runde Flasche",
-      "fr": "Hong Thong, bouteille ronde"
+      "fr": "Hong Thong, bouteille ronde",
+      "ja": "ホントン（丸ボトル）",
+      "zt": "鴻通（圓瓶）",
+      "ms": "Hong Thong, botol bulat",
+      "id": "Hong Thong, botol bulat",
+      "lo": "ຮົງທອງ ຂວດມົນ",
+      "vi": "Hong Thong, chai tròn",
+      "km": "ហុងតុង ដបមូល",
+      "fil": "Hong Thong, bilog na bote",
+      "he": "הונג תונג, בקבוק עגול",
+      "es": "Hong Thong, botella redonda",
+      "it": "Hong Thong, bottiglia rotonda"
      },
      "img": "dk-flask"
     },
@@ -3070,7 +5113,18 @@ window.NM_MENU = {
       "hi": "Regency, फ्लैट बोतल",
       "ar": "Regency, زجاجة مسطحة",
       "de": "Regency, Flachmann",
-      "fr": "Regency, flasque"
+      "fr": "Regency, flasque",
+      "ja": "リージェンシー（フラスコ型ボトル）",
+      "zt": "Regency（扁瓶）",
+      "ms": "Regency, botol leper",
+      "id": "Regency, botol pipih",
+      "lo": "ຣີເຈັນຊີ ຂວດແບນ",
+      "vi": "Regency, chai dẹt",
+      "km": "រីជិនស៊ី ដបបែប",
+      "fil": "Regency, flask bottle",
+      "he": "רג'נסי, בקבוק שטוח",
+      "es": "Regency, botella plana",
+      "it": "Regency, bottiglia piatta"
      },
      "img": "dk-flask"
     }
@@ -3087,7 +5141,18 @@ window.NM_MENU = {
     "hi": "कॉकटेल",
     "ar": "كوكتيل",
     "de": "Cocktails",
-    "fr": "Cocktails"
+    "fr": "Cocktails",
+    "ja": "カクテル",
+    "zt": "雞尾酒",
+    "ms": "Koktel",
+    "id": "Koktail",
+    "lo": "ຄັອກເທວ",
+    "vi": "Cocktail",
+    "km": "ខ្វកថែល",
+    "fil": "Cocktails",
+    "he": "קוקטיילים",
+    "es": "Cócteles",
+    "it": "Cocktail"
    },
    "items": [
     {
@@ -3103,7 +5168,18 @@ window.NM_MENU = {
       "hi": "Mai Tai",
       "ar": "Mai Tai",
       "de": "Mai Tai",
-      "fr": "Mai Tai"
+      "fr": "Mai Tai",
+      "ja": "マイタイ",
+      "zt": "Mai Tai",
+      "ms": "Mai Tai",
+      "id": "Mai Tai",
+      "lo": "Mai Tai",
+      "vi": "Mai Tai",
+      "km": "Mai Tai",
+      "fil": "Mai Tai",
+      "he": "Mai Tai",
+      "es": "Mai Tai",
+      "it": "Mai Tai"
      },
      "img": "dk-maitai"
     },
@@ -3120,7 +5196,18 @@ window.NM_MENU = {
       "hi": "Margarita",
       "ar": "Margarita",
       "de": "Margarita",
-      "fr": "Margarita"
+      "fr": "Margarita",
+      "ja": "マルガリータ",
+      "zt": "Margarita",
+      "ms": "Margarita",
+      "id": "Margarita",
+      "lo": "Margarita",
+      "vi": "Margarita",
+      "km": "Margarita",
+      "fil": "Margarita",
+      "he": "Margarita",
+      "es": "Margarita",
+      "it": "Margarita"
      },
      "img": "dk-margarita"
     },
@@ -3137,7 +5224,18 @@ window.NM_MENU = {
       "hi": "Pink Lady",
       "ar": "Pink Lady",
       "de": "Pink Lady",
-      "fr": "Pink Lady"
+      "fr": "Pink Lady",
+      "ja": "ピンクレディ",
+      "zt": "Pink Lady",
+      "ms": "Pink Lady",
+      "id": "Pink Lady",
+      "lo": "Pink Lady",
+      "vi": "Pink Lady",
+      "km": "Pink Lady",
+      "fil": "Pink Lady",
+      "he": "Pink Lady",
+      "es": "Pink Lady",
+      "it": "Pink Lady"
      },
      "img": "dk-pinklady"
     },
@@ -3154,7 +5252,18 @@ window.NM_MENU = {
       "hi": "Mojito",
       "ar": "Mojito",
       "de": "Mojito",
-      "fr": "Mojito"
+      "fr": "Mojito",
+      "ja": "モヒート",
+      "zt": "Mojito",
+      "ms": "Mojito",
+      "id": "Mojito",
+      "lo": "Mojito",
+      "vi": "Mojito",
+      "km": "Mojito",
+      "fil": "Mojito",
+      "he": "Mojito",
+      "es": "Mojito",
+      "it": "Mojito"
      },
      "img": "dk-mojito"
     },
@@ -3171,7 +5280,18 @@ window.NM_MENU = {
       "hi": "Long Island",
       "ar": "Long Island",
       "de": "Long Island",
-      "fr": "Long Island"
+      "fr": "Long Island",
+      "ja": "ロングアイランド",
+      "zt": "Long Island",
+      "ms": "Long Island",
+      "id": "Long Island",
+      "lo": "Long Island",
+      "vi": "Long Island",
+      "km": "Long Island",
+      "fil": "Long Island",
+      "he": "Long Island",
+      "es": "Long Island",
+      "it": "Long Island"
      },
      "img": "dk-longisland"
     },
@@ -3188,7 +5308,18 @@ window.NM_MENU = {
       "hi": "Blue Hawaii",
       "ar": "Blue Hawaii",
       "de": "Blue Hawaii",
-      "fr": "Blue Hawaii"
+      "fr": "Blue Hawaii",
+      "ja": "ブルーハワイ",
+      "zt": "Blue Hawaii",
+      "ms": "Blue Hawaii",
+      "id": "Blue Hawaii",
+      "lo": "Blue Hawaii",
+      "vi": "Blue Hawaii",
+      "km": "Blue Hawaii",
+      "fil": "Blue Hawaii",
+      "he": "Blue Hawaii",
+      "es": "Blue Hawaii",
+      "it": "Blue Hawaii"
      },
      "img": "dk-bluehawaii"
     },
@@ -3205,7 +5336,18 @@ window.NM_MENU = {
       "hi": "Piña Colada",
       "ar": "Piña Colada",
       "de": "Piña Colada",
-      "fr": "Piña Colada"
+      "fr": "Piña Colada",
+      "ja": "ピニャコラーダ",
+      "zt": "Piña Colada",
+      "ms": "Piña Colada",
+      "id": "Piña Colada",
+      "lo": "Piña Colada",
+      "vi": "Piña Colada",
+      "km": "Piña Colada",
+      "fil": "Piña Colada",
+      "he": "Piña Colada",
+      "es": "Piña Colada",
+      "it": "Piña Colada"
      },
      "img": "dk-pinacolada"
     },
@@ -3222,7 +5364,18 @@ window.NM_MENU = {
       "hi": "Sex on the Beach",
       "ar": "Sex on the Beach",
       "de": "Sex on the Beach",
-      "fr": "Sex on the Beach"
+      "fr": "Sex on the Beach",
+      "ja": "セックス・オン・ザ・ビーチ",
+      "zt": "Sex on the Beach",
+      "ms": "Sex on the Beach",
+      "id": "Sex on the Beach",
+      "lo": "Sex on the Beach",
+      "vi": "Sex on the Beach",
+      "km": "Sex on the Beach",
+      "fil": "Sex on the Beach",
+      "he": "Sex on the Beach",
+      "es": "Sex on the Beach",
+      "it": "Sex on the Beach"
      },
      "img": "dk-sexbeach"
     },
@@ -3239,7 +5392,18 @@ window.NM_MENU = {
       "hi": "Kamikaze",
       "ar": "Kamikaze",
       "de": "Kamikaze",
-      "fr": "Kamikaze"
+      "fr": "Kamikaze",
+      "ja": "カミカゼ",
+      "zt": "Kamikaze",
+      "ms": "Kamikaze",
+      "id": "Kamikaze",
+      "lo": "Kamikaze",
+      "vi": "Kamikaze",
+      "km": "Kamikaze",
+      "fil": "Kamikaze",
+      "he": "Kamikaze",
+      "es": "Kamikaze",
+      "it": "Kamikaze"
      },
      "img": "dk-kamikaze"
     },
@@ -3256,7 +5420,18 @@ window.NM_MENU = {
       "hi": "Kahlúa",
       "ar": "Kahlúa",
       "de": "Kahlúa",
-      "fr": "Kahlúa"
+      "fr": "Kahlúa",
+      "ja": "カルーア",
+      "zt": "Kahlúa",
+      "ms": "Kahlúa",
+      "id": "Kahlúa",
+      "lo": "Kahlúa",
+      "vi": "Kahlúa",
+      "km": "Kahlúa",
+      "fil": "Kahlúa",
+      "he": "Kahlúa",
+      "es": "Kahlúa",
+      "it": "Kahlúa"
      },
      "img": "dk-kahlua"
     },
@@ -3273,7 +5448,18 @@ window.NM_MENU = {
       "hi": "B52",
       "ar": "B52",
       "de": "B52",
-      "fr": "B52"
+      "fr": "B52",
+      "ja": "B52",
+      "zt": "B52",
+      "ms": "B52",
+      "id": "B52",
+      "lo": "B52",
+      "vi": "B52",
+      "km": "B52",
+      "fil": "B52",
+      "he": "B52",
+      "es": "B52",
+      "it": "B52"
      }
     },
     {
@@ -3289,7 +5475,18 @@ window.NM_MENU = {
       "hi": "Tequila",
       "ar": "Tequila",
       "de": "Tequila",
-      "fr": "Tequila"
+      "fr": "Tequila",
+      "ja": "テキーラ",
+      "zt": "Tequila",
+      "ms": "Tequila",
+      "id": "Tequila",
+      "lo": "Tequila",
+      "vi": "Tequila",
+      "km": "Tequila",
+      "fil": "Tequila",
+      "he": "Tequila",
+      "es": "Tequila",
+      "it": "Tequila"
      },
      "img": "dk-tequila"
     },
@@ -3306,7 +5503,18 @@ window.NM_MENU = {
       "hi": "कॉकटेल में एक अतिरिक्त शॉट",
       "ar": "شوت إضافي في الكوكتيل",
       "de": "Zusätzlicher Shot im Cocktail",
-      "fr": "Shot supplémentaire dans un cocktail"
+      "fr": "Shot supplémentaire dans un cocktail",
+      "ja": "カクテルにショット追加",
+      "zt": "雞尾酒加一份酒",
+      "ms": "Tambahan satu shot dalam koktel",
+      "id": "Tambahan satu shot dalam koktail",
+      "lo": "ເພີ່ມຊັອດໃນຄັອກເທວ",
+      "vi": "Thêm một shot vào cocktail",
+      "km": "បន្ថែមស្រាមួយ shot ក្នុងខ្វកថែល",
+      "fil": "Dagdag na shot sa cocktail",
+      "he": "שוט נוסף בקוקטייל",
+      "es": "Chupito extra en el cóctel",
+      "it": "Shot extra nel cocktail"
      }
     },
     {
@@ -3322,7 +5530,18 @@ window.NM_MENU = {
       "hi": "फ्रोज़न कॉकटेल",
       "ar": "كوكتيل مثلج",
       "de": "Frozen Cocktail",
-      "fr": "Cocktail frappé"
+      "fr": "Cocktail frappé",
+      "ja": "フローズンカクテル",
+      "zt": "冰沙雞尾酒",
+      "ms": "Koktel beku",
+      "id": "Koktail beku",
+      "lo": "ຄັອກເທວປັ່ນ",
+      "vi": "Cocktail đá xay",
+      "km": "ខ្វកថែលកកកិន",
+      "fil": "Frozen cocktail",
+      "he": "קוקטייל קפוא",
+      "es": "Cóctel frozen",
+      "it": "Cocktail frozen"
      },
      "img": "dk-frozen"
     },
@@ -3339,7 +5558,18 @@ window.NM_MENU = {
       "hi": "फ्रोज़न कॉकटेल में एक अतिरिक्त शॉट",
       "ar": "شوت إضافي في الكوكتيل المثلج",
       "de": "Zusätzlicher Shot im Frozen Cocktail",
-      "fr": "Shot supplémentaire dans un cocktail frappé"
+      "fr": "Shot supplémentaire dans un cocktail frappé",
+      "ja": "フローズンカクテルにショット追加",
+      "zt": "冰沙雞尾酒加一份酒",
+      "ms": "Tambahan satu shot dalam koktel beku",
+      "id": "Tambahan satu shot dalam koktail beku",
+      "lo": "ເພີ່ມຊັອດໃນຄັອກເທວປັ່ນ",
+      "vi": "Thêm một shot vào cocktail đá xay",
+      "km": "បន្ថែមស្រាមួយ shot ក្នុងខ្វកថែលកកកិន",
+      "fil": "Dagdag na shot sa frozen cocktail",
+      "he": "שוט נוסף בקוקטייל קפוא",
+      "es": "Chupito extra en el cóctel frozen",
+      "it": "Shot extra nel cocktail frozen"
      }
     }
    ]
@@ -3355,7 +5585,18 @@ window.NM_MENU = {
     "hi": "शीतल पेय",
     "ar": "مشروبات غازية",
     "de": "Alkoholfreie Getränke",
-    "fr": "Boissons sans alcool"
+    "fr": "Boissons sans alcool",
+    "ja": "ソフトドリンク",
+    "zt": "軟性飲料",
+    "ms": "Minuman ringan",
+    "id": "Minuman ringan",
+    "lo": "ເຄື່ອງດື່ມບໍ່ມີແອວກໍຮໍ",
+    "vi": "Nước giải khát",
+    "km": "ភេសជ្ជៈគ្មានជាតិអាល់កុល",
+    "fil": "Softdrinks",
+    "he": "משקאות קלים",
+    "es": "Refrescos",
+    "it": "Bibite analcoliche"
    },
    "items": [
     {
@@ -3371,7 +5612,18 @@ window.NM_MENU = {
       "hi": "कोक (250 मिली)",
       "ar": "كوكاكولا (250 مل)",
       "de": "Cola (250 ml)",
-      "fr": "Coca-Cola (250 ml)"
+      "fr": "Coca-Cola (250 ml)",
+      "ja": "コーラ（250ml）",
+      "zt": "可樂（250毫升）",
+      "ms": "Coca-Cola (250 ml)",
+      "id": "Coca-Cola (250 ml)",
+      "lo": "ໂຄກ (250 ml)",
+      "vi": "Coca-Cola (250 ml)",
+      "km": "កូកាកូឡា (២៥០ ម.ល.)",
+      "fil": "Coke (250 ml)",
+      "he": "קולה (250 מ\"ל)",
+      "es": "Coca-Cola (250 ml)",
+      "it": "Coca-Cola (250 ml)"
      },
      "img": "dk-coke"
     },
@@ -3388,7 +5640,18 @@ window.NM_MENU = {
       "hi": "कोक (1.5 लीटर)",
       "ar": "كوكاكولا (1.5 لتر)",
       "de": "Cola (1,5 l)",
-      "fr": "Coca-Cola (1,5 L)"
+      "fr": "Coca-Cola (1,5 L)",
+      "ja": "コーラ（1.5L）",
+      "zt": "可樂（1.5公升）",
+      "ms": "Coca-Cola (1.5 L)",
+      "id": "Coca-Cola (1,5 L)",
+      "lo": "ໂຄກ (1.5 L)",
+      "vi": "Coca-Cola (1,5 L)",
+      "km": "កូកាកូឡា (១.៥ លីត្រ)",
+      "fil": "Coke (1.5 L)",
+      "he": "קולה (1.5 ליטר)",
+      "es": "Coca-Cola (1,5 L)",
+      "it": "Coca-Cola (1,5 L)"
      },
      "img": "dk-coke"
     },
@@ -3405,7 +5668,18 @@ window.NM_MENU = {
       "hi": "फैंटा (250 मिली)",
       "ar": "فانتا (250 مل)",
       "de": "Fanta (250 ml)",
-      "fr": "Fanta (250 ml)"
+      "fr": "Fanta (250 ml)",
+      "ja": "ファンタ（250ml）",
+      "zt": "芬達（250毫升）",
+      "ms": "Fanta (250 ml)",
+      "id": "Fanta (250 ml)",
+      "lo": "ແຟນຕ້າ (250 ml)",
+      "vi": "Fanta (250 ml)",
+      "km": "ហ្វង់តា (២៥០ ម.ល.)",
+      "fil": "Fanta (250 ml)",
+      "he": "פנטה (250 מ\"ל)",
+      "es": "Fanta (250 ml)",
+      "it": "Fanta (250 ml)"
      },
      "img": "dk-fanta"
     },
@@ -3422,7 +5696,18 @@ window.NM_MENU = {
       "hi": "स्प्राइट (250 मिली)",
       "ar": "سبرايت (250 مل)",
       "de": "Sprite (250 ml)",
-      "fr": "Sprite (250 ml)"
+      "fr": "Sprite (250 ml)",
+      "ja": "スプライト（250ml）",
+      "zt": "雪碧（250毫升）",
+      "ms": "Sprite (250 ml)",
+      "id": "Sprite (250 ml)",
+      "lo": "ສະໄປຣ໌ (250 ml)",
+      "vi": "Sprite (250 ml)",
+      "km": "ស្ព្រាយ (២៥០ ម.ល.)",
+      "fil": "Sprite (250 ml)",
+      "he": "ספרייט (250 מ\"ל)",
+      "es": "Sprite (250 ml)",
+      "it": "Sprite (250 ml)"
      },
      "img": "dk-sprite"
     },
@@ -3439,7 +5724,18 @@ window.NM_MENU = {
       "hi": "कोक ज़ीरो",
       "ar": "كوكاكولا زيرو",
       "de": "Coke Zero",
-      "fr": "Coke Zero"
+      "fr": "Coke Zero",
+      "ja": "コーラ ゼロ",
+      "zt": "零卡可樂",
+      "ms": "Coke Zero",
+      "id": "Coke Zero",
+      "lo": "ໂຄກ ຊີໂຣ",
+      "vi": "Coke Zero",
+      "km": "កូកសូន្យ",
+      "fil": "Coke Zero",
+      "he": "קוקה קולה זירו",
+      "es": "Coca-Cola Zero",
+      "it": "Coca-Cola Zero"
      }
     },
     {
@@ -3455,7 +5751,18 @@ window.NM_MENU = {
       "hi": "श्वेप्स नींबू",
       "ar": "شويبس بالليمون",
       "de": "Schweppes Zitrone",
-      "fr": "Schweppes citron"
+      "fr": "Schweppes citron",
+      "ja": "シュウェップス レモン",
+      "zt": "舒味思檸檬",
+      "ms": "Schweppes lemon",
+      "id": "Schweppes lemon",
+      "lo": "ຊະເວັບເລມອນ",
+      "vi": "Schweppes chanh",
+      "km": "ស្វែបភីឡឹម",
+      "fil": "Schweppes lemon",
+      "he": "שוופס לימון",
+      "es": "Schweppes limón",
+      "it": "Schweppes limone"
      },
      "img": "dk-tonic"
     },
@@ -3472,7 +5779,18 @@ window.NM_MENU = {
       "hi": "श्वेप्स टॉनिक",
       "ar": "شويبس تونيك",
       "de": "Schweppes Tonic",
-      "fr": "Schweppes tonic"
+      "fr": "Schweppes tonic",
+      "ja": "シュウェップス トニック",
+      "zt": "舒味思通寧水",
+      "ms": "Schweppes tonik",
+      "id": "Schweppes tonic",
+      "lo": "ຊະເວັບໂທນິກ",
+      "vi": "Schweppes tonic",
+      "km": "ស្វែបតូនិក",
+      "fil": "Schweppes tonic",
+      "he": "שוופס טוניק",
+      "es": "Schweppes tónica",
+      "it": "Schweppes tonica"
      },
      "img": "dk-tonic"
     },
@@ -3489,7 +5807,18 @@ window.NM_MENU = {
       "hi": "मिनट मेड संतरे का जूस",
       "ar": "عصير برتقال مينيت ميد",
       "de": "Minute Maid Orangensaft",
-      "fr": "Jus d’orange Minute Maid"
+      "fr": "Jus d’orange Minute Maid",
+      "ja": "ミニッツメイド オレンジジュース",
+      "zt": "美粒果柳橙汁",
+      "ms": "Jus oren Minute Maid",
+      "id": "Jus jeruk Minute Maid",
+      "lo": "ນ້ຳສົ້ມ Minute Maid",
+      "vi": "Nước cam Minute Maid",
+      "km": "ទឹកក្រូច Minute Maid",
+      "fil": "Minute Maid orange juice",
+      "he": "מיץ תפוזים מיניוט מייד",
+      "es": "Zumo de naranja Minute Maid",
+      "it": "Succo d'arancia Minute Maid"
      },
      "img": "dk-oj"
     },
@@ -3506,7 +5835,18 @@ window.NM_MENU = {
       "hi": "पीने का पानी (550 मिली)",
       "ar": "مياه شرب (550 مل)",
       "de": "Wasser (550 ml)",
-      "fr": "Eau (550 ml)"
+      "fr": "Eau (550 ml)",
+      "ja": "お水（550ml）",
+      "zt": "飲用水（550毫升）",
+      "ms": "Air (550 ml)",
+      "id": "Air mineral (550 ml)",
+      "lo": "ນ້ຳດື່ມ (550 ml)",
+      "vi": "Nước suối (550 ml)",
+      "km": "ទឹកបរិសុទ្ធ (៥៥០ ម.ល.)",
+      "fil": "Tubig (550 ml)",
+      "he": "מים (550 מ\"ל)",
+      "es": "Agua (550 ml)",
+      "it": "Acqua (550 ml)"
      },
      "img": "dk-water"
     },
@@ -3523,7 +5863,18 @@ window.NM_MENU = {
       "hi": "पीने का पानी (1.5 लीटर)",
       "ar": "مياه شرب (1.5 لتر)",
       "de": "Wasser (1,5 l)",
-      "fr": "Eau (1,5 L)"
+      "fr": "Eau (1,5 L)",
+      "ja": "お水（1.5L）",
+      "zt": "飲用水（1.5公升）",
+      "ms": "Air (1.5 L)",
+      "id": "Air mineral (1,5 L)",
+      "lo": "ນ້ຳດື່ມ (1.5 L)",
+      "vi": "Nước suối (1,5 L)",
+      "km": "ទឹកបរិសុទ្ធ (១.៥ លីត្រ)",
+      "fil": "Tubig (1.5 L)",
+      "he": "מים (1.5 ליטר)",
+      "es": "Agua (1,5 L)",
+      "it": "Acqua (1,5 L)"
      },
      "img": "dk-water"
     },
@@ -3540,7 +5891,18 @@ window.NM_MENU = {
       "hi": "सोडा (325 मिली)",
       "ar": "صودا (325 مل)",
       "de": "Sodawasser (325 ml)",
-      "fr": "Eau gazeuse (325 ml)"
+      "fr": "Eau gazeuse (325 ml)",
+      "ja": "ソーダ水（325ml）",
+      "zt": "蘇打水（325毫升）",
+      "ms": "Air soda (325 ml)",
+      "id": "Air soda (325 ml)",
+      "lo": "ນ້ຳໂຊດາ (325 ml)",
+      "vi": "Nước soda (325 ml)",
+      "km": "ទឹកសូដា (៣២៥ ម.ល.)",
+      "fil": "Soda water (325 ml)",
+      "he": "סודה (325 מ\"ל)",
+      "es": "Agua con gas (325 ml)",
+      "it": "Acqua di soda (325 ml)"
      },
      "img": "dk-soda"
     },
@@ -3557,7 +5919,18 @@ window.NM_MENU = {
       "hi": "बर्फ",
       "ar": "ثلج",
       "de": "Eiswürfel",
-      "fr": "Glaçons"
+      "fr": "Glaçons",
+      "ja": "氷",
+      "zt": "冰塊",
+      "ms": "Ketulan ais",
+      "id": "Es batu",
+      "lo": "ນ້ຳກ້ອນ",
+      "vi": "Đá viên",
+      "km": "ទឹកកកដុំ",
+      "fil": "Yelo",
+      "he": "קוביות קרח",
+      "es": "Cubitos de hielo",
+      "it": "Cubetti di ghiaccio"
      },
      "img": "dk-ice"
     },
@@ -3574,7 +5947,18 @@ window.NM_MENU = {
       "hi": "इलेक्ट्रोलाइट पेय",
       "ar": "مشروب الإلكتروليت",
       "de": "Elektrolytgetränk",
-      "fr": "Boisson électrolytique"
+      "fr": "Boisson électrolytique",
+      "ja": "スポーツ（電解質）ドリンク",
+      "zt": "電解質飲料",
+      "ms": "Minuman elektrolit",
+      "id": "Minuman elektrolit",
+      "lo": "ເຄື່ອງດື່ມເກືອແຮ່",
+      "vi": "Nước điện giải",
+      "km": "ភេសជ្ជៈអេឡិចត្រូលីត",
+      "fil": "Electrolyte drink",
+      "he": "משקה אלקטרוליטים",
+      "es": "Bebida con electrolitos",
+      "it": "Bevanda con elettroliti"
      }
     },
     {
@@ -3590,7 +5974,18 @@ window.NM_MENU = {
       "hi": "M-150",
       "ar": "M-150",
       "de": "M-150",
-      "fr": "M-150"
+      "fr": "M-150",
+      "ja": "M-150（エナジードリンク）",
+      "zt": "M-150（能量飲料）",
+      "ms": "M-150 (minuman tenaga)",
+      "id": "M-150 (minuman energi)",
+      "lo": "M-150 (ເຄື່ອງດື່ມເພີ່ມພະລັງງານ)",
+      "vi": "M-150 (nước tăng lực)",
+      "km": "M-150 (ភេសជ្ជៈថាមពល)",
+      "fil": "M-150 (energy drink)",
+      "he": "M-150 (משקה אנרגיה)",
+      "es": "M-150 (bebida energética)",
+      "it": "M-150 (bevanda energetica)"
      }
     },
     {
@@ -3606,7 +6001,18 @@ window.NM_MENU = {
       "hi": "लिप्टन नींबू आइस टी",
       "ar": "شاي ليبتون المثلج بالليمون",
       "de": "Lipton Eistee Zitrone",
-      "fr": "Lipton thé glacé citron"
+      "fr": "Lipton thé glacé citron",
+      "ja": "リプトン アイスレモンティー",
+      "zt": "立頓冰檸檬茶",
+      "ms": "Teh lemon ais Lipton",
+      "id": "Es teh lemon Lipton",
+      "lo": "ຊາເລມອນເຢັນ Lipton",
+      "vi": "Trà chanh đá Lipton",
+      "km": "តែក្រូចឆ្មារទឹកកក Lipton",
+      "fil": "Lipton iced lemon tea",
+      "he": "תה לימון קר ליפטון",
+      "es": "Té helado de limón Lipton",
+      "it": "Tè freddo al limone Lipton"
      },
      "img": "dk-lipton"
     },
@@ -3623,7 +6029,18 @@ window.NM_MENU = {
       "hi": "ओइशी चाय",
       "ar": "شاي أويشي",
       "de": "Oishi Tee",
-      "fr": "Thé Oishi"
+      "fr": "Thé Oishi",
+      "ja": "オイシ ティー",
+      "zt": "OISHI 茶飲",
+      "ms": "Teh Oishi",
+      "id": "Teh Oishi",
+      "lo": "ຊາ Oishi",
+      "vi": "Trà Oishi",
+      "km": "តែ Oishi",
+      "fil": "Oishi tea",
+      "he": "תה אוישי",
+      "es": "Té Oishi",
+      "it": "Tè Oishi"
      },
      "img": "dk-oishi"
     }

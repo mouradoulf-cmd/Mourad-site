@@ -2,7 +2,6 @@
  *   theme: "noir" | "ivoire" | "trattoria" | "kaiseki" | "bistro" | "tropical" | "modern"   — full identity (palette, type pairing, shapes, grain)
  *   styles: true           — floating "Style" button that lets a prospect see THEIR menu in every identity (sales demos; remove for live clients)
  *   hero3d: true           — WebGL opening photo (parallax drift, light sweep, touch ripple, film grain). Falls back to the plain photo.
- *   fx: true               — "prices in…" chips with live ECB rates (api.frankfurter.dev). Only for menus priced in ฿. No network → chips hidden.
  * Also always on (data-driven, never invented): spice / diet filter chips, sold-out dishes (item.soldout:true), diet badges (item.diet:[...]).
  */
 (function () {
@@ -12,7 +11,7 @@
   var P = M.plus, qs = new URLSearchParams(location.search);
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var ol = M.origLang || M.defaultLang || M.langs[0];
-  function L() { var l = document.documentElement.lang || "en"; return l === "zh-Hans" ? "zh" : l; }
+  function L() { var l = document.documentElement.lang || "en"; return l === "zh-Hans" ? "zh" : l === "zh-Hant" ? "zt" : l; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function sget(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
   function sset(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
@@ -50,16 +49,18 @@
     document.documentElement.style.colorScheme = t.dark ? "dark" : "light";
     var mt = document.querySelector('meta[name="theme-color"]'); if (mt) mt.setAttribute("content", t.bg);
     fonts(k);
-    var b = document.getElementById("plstyle"); if (b) { b.querySelector("b").textContent = t.n; b.setAttribute("aria-label", "Style : " + t.n + " — " + t.s); }
+    var b = document.getElementById("plstyle"); if (b) { var bb = b.querySelector("b"); if (bb) bb.textContent = t.n; b.setAttribute("aria-label", "Style : " + t.n + " — " + t.s); }
     if (!quiet) { var tt = document.getElementById("toast"); if (tt) { tt.textContent = t.n + " · " + t.s; tt.classList.add("on"); clearTimeout(applyTheme.t); applyTheme.t = setTimeout(function () { tt.classList.remove("on"); }, 1800); } }
   }
   if (cur) applyTheme(cur, true);
   function styleButton() {
     if (!(P.styles || qs.has("styles")) || document.getElementById("plstyle")) return;
-    var b = document.createElement("button"); b.id = "plstyle"; b.type = "button"; b.className = "pl-style";
-    b.innerHTML = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.7 0 2-1.1 1.4-2-.7-1.1.1-2.4 1.6-2.4H17a4 4 0 0 0 4-4c0-5-4-9.6-9-9.6Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/></svg><b></b>';
-    document.body.appendChild(b);
-    var showB = function () { b.classList.toggle("on", scrollY > innerHeight * 0.6); }; addEventListener("scroll", showB, { passive: true }); showB();
+    var host = document.querySelector(".hd__r"), b = document.createElement("button");
+    b.id = "plstyle"; b.type = "button"; b.className = host ? "ib pl-style-hd" : "pl-style";
+    b.innerHTML = '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.7 0 2-1.1 1.4-2-.7-1.1.1-2.4 1.6-2.4H17a4 4 0 0 0 4-4c0-5-4-9.6-9-9.6Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/></svg><b></b>';
+    b.setAttribute("aria-label", "Style");
+    if (host) host.insertBefore(b, host.firstChild); else document.body.appendChild(b);
+    if (!host) { var showB = function () { b.classList.toggle("on", scrollY > innerHeight * 0.6); }; addEventListener("scroll", showB, { passive: true }); showB(); }
     b.addEventListener("click", function () {
       if (b.__busy) return; b.__busy = true; var k = ORDER[cur ? (ORDER.indexOf(cur) + 1) % ORDER.length : 0];
       fonts(k).then(function () {
@@ -69,7 +70,7 @@
         else { document.documentElement.classList.add("pl-morph"); go(); setTimeout(function () { document.documentElement.classList.remove("pl-morph"); b.__busy = false; }, 900); }
       });
     });
-    if (cur) applyTheme(cur, true); else b.querySelector("b").textContent = "Style";
+    if (cur) applyTheme(cur, true);
   }
 
   /* ───────────── 2 · WebGL opening photo ───────────── */
@@ -135,11 +136,11 @@
     gf: { th: "ไม่มีกลูเตน", en: "Gluten-free", zh: "无麸质", ru: "Без глютена", ko: "글루텐 프리", hi: "ग्लूटेन-मुक्त", ar: "خالٍ من الغلوتين", de: "Glutenfrei", fr: "Sans gluten", it: "Senza glutine" },
     halal: { th: "ฮาลาล", en: "Halal", zh: "清真", ru: "Халяль", ko: "할랄", hi: "हलाल", ar: "حلال", de: "Halal", fr: "Halal", it: "Halal" },
     sold: { th: "หมดแล้ว", en: "Sold out", zh: "已售罄", ru: "Нет в наличии", ko: "품절", hi: "उपलब्ध नहीं", ar: "نفد", de: "Ausverkauft", fr: "Épuisé", it: "Esaurito" },
-    ppl: { th: "ราคาโดยประมาณเป็น", en: "Approx. prices in", zh: "参考价格（币种）", ru: "Примерные цены в", ko: "대략적인 가격 통화", hi: "अनुमानित कीमतें", ar: "أسعار تقريبية بـ", de: "Ungefähre Preise in", fr: "Prix indicatifs en", it: "Prezzi indicativi in" },
-    rate: { th: "อัตราแลกเปลี่ยนอ้างอิง (ECB) ไม่ใช่ราคาที่ชำระจริง", en: "Indicative ECB rates, not the amount charged", zh: "欧洲央行参考汇率，仅供参考", ru: "Ориентировочный курс ЕЦБ, не сумма к оплате", ko: "ECB 참고 환율이며 실제 청구 금액이 아닙니다", hi: "ECB का सांकेतिक दर, वास्तविक शुल्क नहीं", ar: "أسعار صرف إرشادية (ECB) وليست المبلغ المحصَّل", de: "Richtkurse der EZB, nicht der berechnete Betrag", fr: "Taux indicatifs BCE, pas le montant facturé", it: "Tassi indicativi BCE, non l’importo addebitato" }
   };
+  var XPl = (window.NM_I18N_X && window.NM_I18N_X.plus) || {};
+  Object.keys(XPl).forEach(function (lg) { Object.keys(XPl[lg]).forEach(function (k) { if (LB[k]) LB[k][lg] = XPl[lg][k]; }); });
   function lb(k) { var o = LB[k], l = L(); return (o && (o[l] || o.en)) || k; }
-  var flt = { chip: "all", fx: lget("pl-fx") || "THB" };
+  var flt = { chip: "all" };
   var hasHot = false, dietSet = {};
   M.sections.forEach(function (s) { s.items.forEach(function (d) { if (d.hot) hasHot = true; (d.diet || []).forEach(function (x) { dietSet[x] = 1; }); }); });
   var chips = [];
@@ -184,50 +185,11 @@
     if (d && d.soldout) { e.stopPropagation(); e.preventDefault(); }
   }, true);
 
-  /* ───────────── 4 · "approx. prices in…" with live ECB rates ───────────── */
-  var FX = { EUR: ["€", 2], USD: ["$", 2], GBP: ["£", 2], CNY: ["¥", 1], KRW: ["₩", 0], INR: ["₹", 0], JPY: ["JP¥", 0], AUD: ["A$", 2] }, rates = null;
-  function loadRates() {
-    if (!P.fx || M.currency !== "฿") return Promise.resolve(null);
-    try { var c = JSON.parse(lget("pl-rates") || "null"); if (c && Date.now() - c.t < 6 * 3600e3) return Promise.resolve(c); } catch (e) {}
-    return fetch("https://api.frankfurter.dev/v1/latest?base=THB&symbols=" + Object.keys(FX).join(",")).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-      if (!j || !j.rates) return null; var c = { t: Date.now(), date: j.date, rates: j.rates }; lset("pl-rates", JSON.stringify(c)); return c;
-    }).catch(function () { return null; });
-  }
-  function conv(p) {
-    if (flt.fx === "THB" || !rates || !rates.rates[flt.fx]) return "";
-    var f = FX[flt.fx], v = p * rates.rates[flt.fx], s = f[1] === 0 ? Math.round(v).toLocaleString("en") : v.toFixed(v < 10 ? 2 : 1);
-    return "≈ ⁦" + f[0] + s + "⁩";
-  }
-  function paintFx() {
-    var main = root.querySelector("main"); if (!main) return;
-    main.querySelectorAll(".pl-fxv").forEach(function (n) { n.remove(); });
-    if (flt.fx === "THB" || !rates) return;
-    main.querySelectorAll(".dish").forEach(function (li) { var d = byId[li.getAttribute("data-row")], p = li.querySelector(".dish__p"); if (d && p) p.insertAdjacentHTML("afterend", '<span class="pl-fxv">' + conv(+d.p) + "</span>"); });
-    paintSheetFx();
-  }
-  function paintSheetFx() {
-    var sb = document.getElementById("sb"); if (!sb) return; sb.querySelectorAll(".pl-fxv").forEach(function (n) { n.remove(); });
-    if (flt.fx === "THB" || !rates) return;
-    var add = sb.querySelector(".sd__f [data-add]"), p = sb.querySelector(".sd__p"); if (!add || !p) return; var d = byId[add.getAttribute("data-add")]; if (d) p.insertAdjacentHTML("afterend", '<span class="pl-fxv pl-fxv--sheet">' + conv(+d.p) + "</span>");
-  }
-  function buildFx(main) {
-    var top = main.querySelector(".pl-top"); if (!top || top.querySelector(".pl-fx") || !rates) return;
-    var avail = Object.keys(FX).filter(function (k) { return rates.rates[k]; }); if (!avail.length) return;
-    var sel = ["THB"].concat(avail.filter(function (k) { return ["EUR", "USD", "GBP", "CNY", "KRW", "INR"].indexOf(k) > -1; }));
-    var h = '<div class="pl-fx"><span>' + esc(lb("ppl")) + '</span><div role="group">' + sel.map(function (k) { return '<button type="button" data-plfx="' + k + '" aria-pressed="' + (flt.fx === k) + '">' + (k === "THB" ? "฿" : FX[k][0]) + "</button>"; }).join("") + '</div><small>' + esc(lb("rate")) + " · " + esc(rates.date || "") + "</small></div>";
-    var anchor = top.querySelector(".pl-chips") || top.querySelector(".pl-search"); anchor.insertAdjacentHTML("afterend", h);
-    top.querySelector(".pl-fx").addEventListener("click", function (e) {
-      var b = e.target.closest("[data-plfx]"); if (!b) return; flt.fx = b.getAttribute("data-plfx"); lset("pl-fx", flt.fx);
-      top.querySelectorAll("[data-plfx]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); paintFx();
-    });
-  }
   var sbObs = null;
   function enhance() {
     var main = root.querySelector("main"); if (!main) return;
-    buildChips(main); decorate(main); buildFx(main); if (rates) paintFx(); refresh(); hero3d(); styleButton();
-    var sb = document.getElementById("sb"); if (sb && !sb.__lux) { sb.__lux = 1; if (sbObs) sbObs.disconnect(); sbObs = new MutationObserver(function () { paintSheetFx(); }); sbObs.observe(sb, { childList: true }); }
+    buildChips(main); decorate(main); refresh(); hero3d(); styleButton();
   }
-  loadRates().then(function (r) { rates = r; enhance(); });
   // runs after menu-plus.js has built the top block (same MutationObserver tick order: this file is loaded later)
   new MutationObserver(function () { requestAnimationFrame(enhance); }).observe(root, { childList: true });
   enhance();

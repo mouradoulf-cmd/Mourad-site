@@ -29,7 +29,10 @@
     map: { th: "แผนที่", en: "Map", zh: "地图", ru: "Карта", ko: "지도", hi: "नक्शा", ar: "الخريطة", de: "Karte", fr: "Plan", it: "Mappa" },
     call: { th: "โทร", en: "Call", zh: "致电", ru: "Позвонить", ko: "전화", hi: "कॉल", ar: "اتصال", de: "Anrufen", fr: "Appeler", it: "Chiama" }
   };
-  function L() { var l = document.documentElement.lang || "en"; return l === "zh-Hans" ? "zh" : l; }
+  // the other 10 languages come from menus/assets/i18n-extra.js
+  var XP = (window.NM_I18N_X && window.NM_I18N_X.plus) || {}, XU = (window.NM_I18N_X && window.NM_I18N_X.ui) || {};
+  Object.keys(XP).forEach(function (l) { Object.keys(XP[l]).forEach(function (k) { if (T[k]) T[k][l] = XP[l][k]; }); });
+  function L() { var l = document.documentElement.lang || "en"; return l === "zh-Hans" ? "zh" : l === "zh-Hant" ? "zt" : l; }
   function tx(k) { var o = T[k], l = L(); return o[l] || o.en; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   var byId = {}, all = [];
@@ -75,6 +78,7 @@
   function desc(d) { var l = L(), x = d.d && (d.d[l] || (l === ol ? "" : d.d.en)); return x && x !== d.n ? x : ""; }
   function srcset(d) { return M.photoHD ? d.img + "-c-800.webp 800w, " + d.img + "-c-1200.webp 1200w" : pic(d); }
   var V = { th: "ดูจาน", en: "See the dish", zh: "查看菜品", ru: "Посмотреть", ko: "메뉴 보기", hi: "व्यंजन देखें", ar: "عرض الطبق", de: "Gericht ansehen", fr: "Voir le plat", it: "Vedi il piatto" };
+  Object.keys(XU).forEach(function (l) { if (XU[l].see) V[l] = XU[l].see; });
   var HOLD = 4200;   // ms each dish stays in front
   function wrap(v, n) { v = ((v % n) + n) % n; return v > n / 2 ? v - n : v; }
   function ease(t) { return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t); }

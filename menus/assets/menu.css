@@ -8,8 +8,8 @@
   --glass:color-mix(in srgb,var(--bg) 72%,transparent);
   --raise:color-mix(in srgb,var(--ink) 5%,var(--bg));
   --ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.4,.64,1);
-  --display:'Fraunces',Georgia,'Noto Serif Thai','Noto Serif SC',serif;
-  --body:'Jost','Noto Sans Thai','Noto Sans SC',system-ui,-apple-system,sans-serif;
+  --display:'Fraunces',Georgia,'Noto Serif Thai','Noto Serif SC','Noto Sans JP','Noto Sans TC','Noto Sans Khmer','Noto Sans Lao','Noto Sans Hebrew','Noto Sans Devanagari','Noto Naskh Arabic',serif;
+  --body:'Jost','Noto Sans Thai','Noto Sans SC','Noto Sans JP','Noto Sans TC','Noto Sans Khmer','Noto Sans Lao','Noto Sans Hebrew','Noto Sans Devanagari','Noto Naskh Arabic',system-ui,-apple-system,sans-serif;
   --st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px);
   --g:20px
 }
@@ -25,7 +25,7 @@ img{display:block;max-width:100%}
 .wrap{width:min(680px,100%);margin:0 auto;padding:0 var(--g)}
 
 /* ───────────── opening ───────────── */
-.open{position:relative;height:100svh;min-height:560px;overflow:hidden;display:grid;grid-template-rows:1fr auto;isolation:isolate}
+.open{position:relative;min-height:max(100svh,560px);overflow:hidden;display:grid;grid-template-rows:1fr auto;isolation:isolate}
 .open__ph{position:absolute;inset:0;z-index:-2}
 .open__ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);animation:kb 22s ease-out forwards}
 @keyframes kb{to{transform:scale(1)}}
@@ -40,7 +40,9 @@ img{display:block;max-width:100%}
 .open__bot{padding:0 var(--g) calc(var(--sb) + 26px);display:grid;justify-items:center;gap:18px}
 .open__ask{display:flex;align-items:center;gap:12px;font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
 .open__ask::before,.open__ask::after{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
-.langs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:min(440px,100%)}
+.langs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;width:min(440px,100%)}
+.langs.many button{height:48px;font-size:1rem;border-radius:14px;padding:0 6px;gap:8px;white-space:nowrap}
+.langs.many button:lang(km),.langs.many button:lang(lo),.langs.many button:lang(he),.langs.many button:lang(ja),.langs.many button:lang(zh-Hant),.langs.many button:lang(zh-Hans){letter-spacing:0}
 .langs button{position:relative;height:54px;border-radius:16px;background:color-mix(in srgb,var(--ink) 7%,transparent);border:1px solid color-mix(in srgb,var(--ink) 16%,transparent);
   -webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);font:400 1.06rem/1 var(--display);transition:background .4s,border-color .4s,transform .3s var(--spring)}
 .langs button:active{transform:scale(.95)}
@@ -338,7 +340,9 @@ body.alg .alb{display:block}
 /* Hindi + Arabic: their own fonts (loaded on demand by menu.js), Arabic reads right to left */
 :root:lang(hi){--body:'Jost','Noto Sans Devanagari',system-ui,sans-serif;--display:'Fraunces','Noto Sans Devanagari',Georgia,serif}
 :root:lang(ar){--body:'Noto Naskh Arabic','Jost',system-ui,sans-serif;--display:'Noto Naskh Arabic','Fraunces',Georgia,serif}
-:lang(hi) .ch__t,:lang(ar) .ch__t{letter-spacing:0;line-height:1.25}
+:lang(hi) .ch__t,:lang(ar) .ch__t,:lang(he) .ch__t,:lang(km) .ch__t,:lang(lo) .ch__t,:lang(ja) .ch__t,:lang(zh-Hant) .ch__t{letter-spacing:0;line-height:1.25}
+:lang(km) .dish__n,:lang(lo) .dish__n,:lang(km) .sd__n,:lang(lo) .sd__n{line-height:1.45}
+:lang(ja) .dish__d,:lang(zh-Hant) .dish__d,:lang(km) .dish__d,:lang(lo) .dish__d{line-height:1.6}
 :lang(hi) .dish__n,:lang(ar) .dish__n{line-height:1.45}
 html[dir=rtl] [lang]:not([lang=ar]){direction:ltr;unicode-bidi:isolate;text-align:right}
 html[dir=rtl] .ch__no{direction:ltr;flex-direction:row-reverse}

@@ -12,12 +12,12 @@
   var root = document.getElementById("menu");
   var shop = M.demo && (new URLSearchParams(location.search).get("shop") || "").trim().slice(0, 40);
   if (shop) { M.name = M.wordmark = shop; M.wordmarkSub = ""; M.tagline = { en: "" }; }
-  var LN = { th: "ไทย", en: "English", zh: "中文", ru: "Русский", fr: "Français", it: "Italiano", de: "Deutsch", ja: "日本語", ko: "한국어", hi: "हिन्दी", ar: "العربية" };
+  var LN = { th: "ไทย", en: "English", zh: "简体中文", zt: "繁體中文", ru: "Русский", fr: "Français", it: "Italiano", de: "Deutsch", ja: "日本語", ko: "한국어", hi: "हिन्दी", ar: "العربية", ms: "Melayu", id: "Indonesia", lo: "ລາວ", vi: "Tiếng Việt", km: "ខ្មែរ", fil: "Filipino", he: "עברית", es: "Español" };
   // Language flags: SVG from flag-icons (MIT, menus/assets/flags/) so they look the same on every phone.
   var FLAG_DIR = (document.currentScript && document.currentScript.src) ? new URL("flags/", document.currentScript.src).href : "../assets/flags/";
-  var FC = { th: "th", en: "gb", zh: "cn", ru: "ru", fr: "fr", it: "it", de: "de", ja: "jp", ko: "kr", hi: "in", ar: "ae" };
+  var FC = { th: "th", en: "gb", zh: "cn", zt: "tw", ru: "ru", fr: "fr", it: "it", de: "de", ja: "jp", ko: "kr", hi: "in", ar: "ae", ms: "my", id: "id", lo: "la", vi: "vn", km: "kh", fil: "ph", he: "il", es: "es" };
   function flag(l, cls) { return FC[l] ? '<img class="flag' + (cls ? " " + cls : "") + '" src="' + FLAG_DIR + FC[l] + '.svg" alt="" width="24" height="18" decoding="async">' : ""; }
-  var LS = { th: "ไทย", en: "EN", zh: "中文", ru: "RU", fr: "FR", it: "IT", de: "DE", ja: "日本", ko: "한국", hi: "हिन्दी", ar: "عربي" };
+  var LS = { th: "ไทย", en: "EN", zh: "简", zt: "繁", ru: "RU", fr: "FR", it: "IT", de: "DE", ja: "日本", ko: "한국", hi: "हिन्दी", ar: "عربي", ms: "MS", id: "ID", lo: "ລາວ", vi: "VI", km: "ខ្មែរ", fil: "FIL", he: "עברית", es: "ES" };
   //            th, en, zh, ru, fr, it
   var U = (function (o) { var r = {}, k = ["th", "en", "zh", "ru", "fr", "it"]; Object.keys(o).forEach(function (n) { r[n] = {}; k.forEach(function (l, i) { r[n][l] = o[n][i]; }); }); return r; })({
     choose: ["เลือกภาษา", "Choose your language", "选择语言", "Выберите язык", "Choisissez votre langue", "Scegliete la lingua"],
@@ -74,6 +74,9 @@
     paused: "온라인 메뉴를 업데이트하고 있습니다", paused2: "불편을 드려 죄송합니다. 직원에게 메뉴를 요청해 주세요.",
     spice: "맵기", s0: "안 맵게", s1: "조금 맵게", s2: "보통", s3: "아주 맵게", spiceq: "목록의 모든 메뉴에 적용", demo: "예시 메뉴" };
   Object.keys(KO).forEach(function (k) { if (U[k]) U[k].ko = KO[k]; });
+  // Language pack for the other 10 languages (menus/assets/i18n-extra.js, loaded before this file by the menus that offer them)
+  var X = window.NM_I18N_X || { ui: {}, tap: {} };
+  Object.keys(X.ui).forEach(function (l) { Object.keys(X.ui[l]).forEach(function (k) { if (!U[k]) U[k] = {}; U[k][l] = X.ui[l][k]; }); });
   // Hindi, Arabic, German (Pattaya's Indian, Gulf and German visitors)
   var HI = { choose: "अपनी भाषा चुनें", cue: "मेनू आपकी भाषा में खुलेगा", see: "डिश देखें", add: "मेरी पसंद में जोड़ें", added: "आपकी पसंद में जोड़ा गया", sel: "मेरी पसंद", view: "देखें", dishes: "डिश",
     show: "वेटर को दिखाएँ", clear: "हटाएँ", empty: "किसी डिश पर + दबाकर उसे यहाँ जोड़ें।", selnote: "यह ऑर्डर नहीं है — बस यह स्क्रीन वेटर को दिखाएँ।", waiter: "वेटर के लिए",
@@ -101,16 +104,26 @@
     spice: "Wie scharf?", s0: "Nicht scharf", s1: "Leicht scharf", s2: "Mittel", s3: "Sehr scharf", spiceq: "Für alle Gerichte der Liste", demo: "Beispielkarte" };
   [["hi", HI], ["ar", AR], ["de", DE]].forEach(function (x) { Object.keys(x[1]).forEach(function (k) { if (U[k]) U[k][x[0]] = x[1][k]; }); });
   // fonts for scripts the menu fonts do not cover, loaded only when that language is chosen
-  var FONT = { hi: "Noto+Sans+Devanagari:wght@400;500;600", ar: "Noto+Naskh+Arabic:wght@400;500;600" };
+  var FONT = { hi: "Noto+Sans+Devanagari:wght@400;500;600", ar: "Noto+Naskh+Arabic:wght@400;500;600", ja: "Noto+Sans+JP:wght@400;500;600", zt: "Noto+Sans+TC:wght@400;500;600", km: "Noto+Sans+Khmer:wght@400;500;600", lo: "Noto+Sans+Lao:wght@400;500;600", he: "Noto+Sans+Hebrew:wght@400;500;600" };
   function needFont(l) {
     if (!FONT[l] || document.getElementById("nmf-" + l)) return;
     var k = document.createElement("link"); k.id = "nmf-" + l; k.rel = "stylesheet";
     k.href = "https://fonts.googleapis.com/css2?family=" + FONT[l] + "&display=swap"; document.head.appendChild(k);
   }
-  function setLang(l) { document.documentElement.lang = l === "zh" ? "zh-Hans" : l; document.documentElement.dir = l === "ar" ? "rtl" : "ltr"; needFont(l); }
+  var HTMLANG = { zh: "zh-Hans", zt: "zh-Hant" }, RTL = { ar: 1, he: 1 };
+  // the language names of non-Latin scripts must render even before their language is chosen: one tiny subset request
+  (function () {
+    var all = Object.keys(LN).map(function (k) { return LN[k]; }).join(""), have = langs && langs.length > 12;
+    if (!M.langs || M.langs.length < 12) return;
+    var k = document.createElement("link"); k.rel = "stylesheet";
+    k.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400&family=Noto+Sans+Lao:wght@400&family=Noto+Sans+Hebrew:wght@400&family=Noto+Sans+JP:wght@400&family=Noto+Sans+TC:wght@400&family=Noto+Sans+Devanagari:wght@400&family=Noto+Naskh+Arabic:wght@400&display=swap&text=" + encodeURIComponent(all);
+    document.head.appendChild(k);
+  })();
+  function setLang(l) { document.documentElement.lang = HTMLANG[l] || l; document.documentElement.dir = RTL[l] ? "rtl" : "ltr"; needFont(l); }
   var AI = ["🌾", "🦐", "🥚", "🐟", "🥜", "🫘", "🥛", "🌰", "🥬", "🟡", "⚪", "🍷", "🌸", "🦑"];
   /* "Touch a dish to see it": hint line + zoom badge on every photo (switched on per menu with "tapHint": true) */
   var TAP = { th: "แตะที่จานอาหารเพื่อดูรูปใหญ่", en: "Touch a dish to see it up close", zh: "点按菜品查看大图", ru: "Нажмите на блюдо, чтобы рассмотреть его", ko: "메뉴를 눌러 크게 보세요", hi: "डिश पर टैप करके बड़ी फ़ोटो देखें", ar: "المس الطبق لرؤيته بوضوح", de: "Gericht antippen, um es groß zu sehen", fr: "Touchez un plat pour le voir en grand", it: "Tocca un piatto per vederlo da vicino" };
+  Object.keys(X.tap || {}).forEach(function (l) { TAP[l] = X.tap[l]; });
   var TAPICO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M10.5 8v5M8 10.5h5"/></svg>';
   var TAPHAND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 013 0V10m0 0V8.5a1.5 1.5 0 013 0V11m0 0v-.5a1.5 1.5 0 013 0V15a6 6 0 01-6 6h-1.5a6 6 0 01-4.7-2.3L4 15.5a1.6 1.6 0 012.4-2L9 15.5V11z"/></svg>';
   function tapSeen() { try { return store.get("nm-tap-seen") === "1"; } catch (e) { return false; } }
@@ -130,7 +143,12 @@
   var qLang = new URLSearchParams(location.search).get("lang");
   var suggested = (function () {
     var navs = navigator.languages || [navigator.language || ""];
-    for (var i = 0; i < navs.length; i++) { var l = String(navs[i]).slice(0, 2).toLowerCase(); if (langs.indexOf(l) > -1) return l; }
+    for (var i = 0; i < navs.length; i++) {
+      var full = String(navs[i]).toLowerCase(), l = full.slice(0, 2);
+      if (/^zh-(tw|hk|mo|hant)/.test(full) && langs.indexOf("zt") > -1) return "zt";
+      if (l === "tl" || full.slice(0, 3) === "fil") l = "fil"; else if (l === "iw") l = "he"; else if (l === "no" || l === "nb") l = "en";
+      if (langs.indexOf(l) > -1) return l;
+    }
     return M.defaultLang || langs[0];
   })();
   var lang = (qLang && langs.indexOf(qLang) > -1) ? qLang : (langs.indexOf(store.get("nm-menu-lang")) > -1 ? store.get("nm-menu-lang") : suggested);
@@ -161,8 +179,8 @@
   }
   // square thumbnail in the dish row (the 4:5 card crop, centred)
   function thumb(d) {
-    var src = M.photoHD ? d.img + "-c-800.webp" : (M.thumbs ? d.img + "-t.webp" : img(d.img, 640));
-    return '<span class="dish__ph"><img src="' + src + '" alt="" width="96" height="96" loading="lazy" decoding="async">' + (M.tapHint ? '<i class="dish__zoom" aria-hidden="true">' + TAPICO + "</i>" : "") + "</span>";
+    var src = M.cards ? d.img + "-m.webp" : M.photoHD ? d.img + "-c-800.webp" : (M.thumbs ? d.img + "-t.webp" : img(d.img, 640));
+    return '<span class="dish__ph"><img src="' + src + '" alt="" width="' + (M.cards ? 800 : 96) + '" height="' + (M.cards ? 600 : 96) + '" loading="lazy" decoding="async">' + (M.tapHint ? '<i class="dish__zoom" aria-hidden="true">' + TAPICO + "</i>" : "") + "</span>";
   }
   function sheetPic(d) {
     if (!M.photoHD) return '<img src="' + img(d.img, 1280) + '" alt="' + esc(title(d)) + '">';
@@ -192,7 +210,7 @@
     else if (M.hero) h.push('<div class="open__ph"><img src="' + img(M.hero, 1280) + '" srcset="' + img(M.hero, 640) + ' 640w, ' + img(M.hero, 1280) + ' 1280w" sizes="100vw" alt="" fetchpriority="high"></div>');
     h.push('<div class="open__top">' + (M.wordmark ? '<h1 class="open__word rise' + (M.wordmark.length > 12 ? " long" : "") + '" style="--d:.15s">' + esc(M.wordmark) + (M.wordmarkSub ? '<small lang="' + ol + '">' + esc(M.wordmarkSub) + "</small>" : "") + "</h1>" : svg.logo ? '<div class="open__logo rise" style="--d:.15s" role="img" aria-label="' + esc(M.name) + '">' + svg.logo + "</div>" : '<h1 class="open__name rise">' + esc(M.name) + "</h1>") +
       '<p class="open__tag rise" style="--d:.35s">' + esc(tr(M.tagline)) + "</p>" + (M.demo ? '<p class="demo rise" style="--d:.45s">' + esc(t("demo")) + "</p>" : "") + "</div>");
-    h.push('<div class="open__bot"><p class="open__ask rise" style="--d:.55s">' + esc(t("choose")) + '</p><div class="langs">' +
+    h.push('<div class="open__bot"><p class="open__ask rise" style="--d:.55s">' + esc(t("choose")) + '</p><div class="langs' + (langs.length > 12 ? " many" : "") + '">' +
       langs.map(function (l, i) { return '<button type="button" class="rise' + (l === lang ? " sug" : "") + '" style="--d:' + (0.65 + i * 0.06).toFixed(2) + 's" data-pick="' + l + '" lang="' + l + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") +
       '</div><p class="open__cue rise" style="--d:1.1s">' + esc(t("cue")) + "</p></div></section>");
     // header
@@ -341,7 +359,10 @@
   }
   function refreshAdds() {
     root.querySelectorAll("[data-add]").forEach(function (b) { var q = sel[b.getAttribute("data-add")] || 0; b.classList.toggle("on", !!q); var s = b.querySelector(".q"); if (s) s.textContent = q || ""; });
+    document.dispatchEvent(new CustomEvent("nm-sel"));
   }
+  // small, stable surface for the add-on layers (menu-plus*.js): quantity stepper, fly-to-bag, etc.
+  window.__nmMenu = { qty: function (id) { return sel[id] || 0; }, add: function (id, d) { if (byId[id]) add(id, d, d > 0); }, ids: function () { return Object.keys(sel).filter(function (k) { return byId[k] && sel[k]; }); }, count: function () { var n = 0; Object.keys(sel).forEach(function (k) { if (byId[k]) n += sel[k]; }); return n; } };
   function selList() { return Object.keys(sel).filter(function (k) { return byId[k]; }).map(function (k) { return { d: byId[k], q: sel[k] }; }).sort(function (a, b) { return a.d._s - b.d._s; }); }
   function bagUpdate() {
     var L = selList(), n = 0, sum = 0; L.forEach(function (x) { n += x.q; sum += x.q * num(x.d.p); });

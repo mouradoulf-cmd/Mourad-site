@@ -1,0 +1,128 @@
+/* NM Studio · QR menu "Cards" layer — photo-led editorial dish cards, quantity stepper, animated selection bar, visual category tabs.
+ * Opt-in: NM_MENU.plus.cards = true (+ NM_MENU.cards = true and a <img>-m.webp (4:3) per photo). Every colour comes from the menu's tokens. */
+html.pl-cards{--ez:cubic-bezier(.32,.72,0,1);--r:var(--pl-r,26px)}
+/* ───────── layout: large cards (1 column) / grid (2 columns) ───────── */
+html.pl-cards .list{display:grid;gap:22px;margin-top:22px;grid-template-columns:minmax(0,1fr)}
+html.pl-cards.pl-v-grid .list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:760px){
+  html.pl-cards .ch .wrap{width:min(1120px,100%)}
+  html.pl-cards .list{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+  html.pl-cards.pl-v-grid .list{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+}
+@media (min-width:1180px){html.pl-cards:not(.pl-v-grid) .list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* ───────── the card: a hairline tray holding the photograph ───────── */
+html.pl-cards .dish{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:0;padding:6px;align-items:start;border:1px solid color-mix(in srgb,var(--ink) 12%,transparent);border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent);border-radius:calc(var(--r) + 6px);background:color-mix(in srgb,var(--ink) 5%,transparent);
+  box-shadow:0 34px 46px -36px rgba(0,0,0,.85);transition:transform .7s var(--ez),box-shadow .7s var(--ez),opacity .5s,filter .5s}
+html.pl-cards .dish:last-child{border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
+html.pl-cards .dish__o{border-radius:calc(var(--r) + 6px)}
+html.pl-cards .dish:active{transform:scale(.985)}
+@media (hover:hover){html.pl-cards .dish:hover{transform:translateY(-4px);box-shadow:0 44px 54px -34px rgba(0,0,0,.9)}html.pl-cards .dish:hover .dish__ph img{transform:scale(1.045)}}
+html.pl-cards .dish__ph{grid-column:1;grid-row:1;position:relative;width:100%;height:auto;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:var(--raise);transition:opacity .5s,filter .5s}
+html.pl-cards .ch .list .dish.has-ph:first-child .dish__ph{aspect-ratio:5/4}
+html.pl-cards.pl-v-grid .dish__ph{aspect-ratio:1/1}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__ph{aspect-ratio:1/1}
+html.pl-cards .dish__ph::before{content:"";position:absolute;inset:0;background:var(--lq,none) center/cover;filter:blur(14px);transform:scale(1.15)}
+html.pl-cards .dish__ph img{position:relative;display:block;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1s var(--ez),transform 1.4s var(--ez)}
+html.pl-cards .dish__ph img.pl-ok{opacity:1;transform:none}
+html.pl-cards .dish__ph::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(180deg,transparent,rgba(8,6,4,.62));pointer-events:none}
+html.pl-cards .dish__zoom{display:none}
+/* price + add control live on the photograph */
+html.pl-cards .dish__ph .dish__p{position:absolute;left:12px;bottom:12px;z-index:2;margin:0;padding:7px 13px;border-radius:99px;background:color-mix(in srgb,var(--bg) 84%,transparent);border:1px solid color-mix(in srgb,var(--ink) 16%,transparent);font:600 1.12rem/1 var(--body);color:var(--ink);letter-spacing:0}
+html.pl-cards .dish__ph .dish__p b{color:var(--accent);font-weight:600}
+html.pl-cards.pl-v-grid .dish__ph .dish__p{left:8px;bottom:8px;padding:5px 10px;font-size:.95rem}
+html.pl-cards .dish .add{display:none}
+.pl-ctl{position:absolute;right:10px;bottom:10px;z-index:3;display:flex;align-items:center;justify-content:flex-end}
+.pl-ctl button{border:0;cursor:pointer;color:var(--bg);background:var(--accent);font:600 .95rem/1 var(--body);-webkit-tap-highlight-color:transparent;transition:transform .5s var(--ez),background .4s var(--ez),opacity .4s var(--ez)}
+.pl-first{height:44px;padding:0 18px 0 14px;border-radius:99px;display:inline-flex;align-items:center;gap:8px}
+.pl-first svg{width:16px;height:16px}
+.pl-ctl:not([data-q="0"]) .pl-first{display:none}
+.pl-step{display:none;align-items:center;height:44px;border-radius:99px;background:color-mix(in srgb,var(--bg) 88%,transparent);border:1px solid color-mix(in srgb,var(--accent) 70%,transparent);transform-origin:right center}
+.pl-ctl:not([data-q="0"]) .pl-step{display:inline-flex;animation:plStep .55s var(--ez) both}
+.pl-step button{width:44px;height:44px;border-radius:50%;background:transparent;color:var(--ink);font-size:1.3rem;display:grid;place-items:center}
+.pl-step .pl-inc{color:var(--accent)}
+.pl-step button:active{transform:scale(.86)}
+.pl-q{min-width:1.6ch;text-align:center;font:600 1.05rem var(--body);font-variant-numeric:tabular-nums;color:var(--ink)}
+.pl-q.bump{animation:plPop .45s var(--ez)}
+.pl-first:active{transform:scale(.94)}
+@keyframes plStep{from{opacity:0;transform:scaleX(.4)}to{opacity:1;transform:none}}
+@keyframes plPop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+html[dir=rtl] .pl-ctl{right:auto;left:10px}html[dir=rtl] .dish__ph .dish__p{left:auto;right:12px}
+/* text under the photograph */
+html.pl-cards .dish__txt{grid-column:1;grid-row:2;display:grid;gap:7px;padding:16px 12px 12px;min-width:0}
+html.pl-cards .dish__n{font:400 clamp(1.4rem,6vw,1.7rem)/1.14 var(--display);letter-spacing:-.012em;text-wrap:balance}
+html.pl-cards .dish__n small{margin-top:5px;font:400 .92rem/1.35 var(--body);color:color-mix(in srgb,var(--ink) 62%,transparent)}
+html.pl-cards .dish__d{font:300 .98rem/1.55 var(--body);color:color-mix(in srgb,var(--ink) 80%,transparent);-webkit-line-clamp:3}
+html.pl-cards .dish__m{margin-top:2px;gap:7px}
+html.pl-cards.pl-v-grid .dish__txt{padding:12px 8px 8px;gap:4px}
+html.pl-cards.pl-v-grid .dish__n{font-size:1.05rem;line-height:1.2}
+html.pl-cards.pl-v-grid .dish__n small,html.pl-cards.pl-v-grid .dish__d{display:none}
+html.pl-cards .dish.off .dish__txt{opacity:.3;filter:grayscale(1)}
+/* dishes without a photograph: a quiet typographic card (name + price + add on one line) */
+html.pl-cards .dish:not(.has-ph){grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto;padding:4px;background:transparent;box-shadow:none;border-color:color-mix(in srgb,var(--ink) 10%,transparent)}
+html.pl-cards .dish:not(.has-ph) .dish__txt{grid-row:1;padding:14px 12px}
+html.pl-cards .dish:not(.has-ph) .dish__n{font-size:1.25rem}
+html.pl-cards .dish:not(.has-ph) .pl-side{grid-column:2;grid-row:1;display:grid;justify-items:end;align-content:center;gap:10px;padding:10px 12px 10px 0;z-index:3}
+html.pl-cards .dish:not(.has-ph) .dish__p{font:600 1.15rem var(--body);color:var(--accent)}
+html.pl-cards .dish:not(.has-ph) .pl-ctl{position:static}
+html.pl-cards.pl-v-grid .dish:not(.has-ph){grid-column:1/-1}
+/* ───────── view switch ───────── */
+.pl-vsw{display:inline-flex;gap:2px;padding:3px;border-radius:99px;border:1px solid var(--line);background:var(--raise);align-self:flex-start}
+.pl-vsw button{width:44px;height:38px;border-radius:99px;border:0;background:transparent;color:var(--mute);display:grid;place-items:center;cursor:pointer;transition:background .5s var(--ez),color .5s var(--ez)}
+.pl-vsw button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.pl-vsw svg{width:20px;height:20px}
+.pl-bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+/* ───────── selection bar ───────── */
+.pl-cards .bag{left:50%;bottom:calc(14px + var(--sb));width:min(calc(100% - 24px),460px);padding:8px 8px 8px 14px;border-radius:99px;background:color-mix(in srgb,var(--bg) 90%,transparent);border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);box-shadow:0 22px 40px -18px rgba(0,0,0,.8);display:flex;align-items:center;gap:12px}
+.pl-cards .bag.bump{animation:plBag .6s var(--ez)}
+@keyframes plBag{0%{transform:translate(-50%,0)}35%{transform:translate(-50%,-6px) scale(1.025)}100%{transform:translate(-50%,0)}}
+.pl-bagth{display:flex;flex:none}
+.pl-bagth i{width:34px;height:34px;border-radius:50%;overflow:hidden;border:2px solid var(--bg);margin-inline-start:-10px;background:var(--raise)}
+.pl-bagth i:first-child{margin-inline-start:0}
+.pl-bagth img{width:100%;height:100%;object-fit:cover;display:block}
+.pl-cards .bag__t{flex:1;min-width:0}
+.pl-cards .bag__go{border-radius:99px;height:44px}
+.pl-fly{position:fixed;left:0;top:0;z-index:90;width:54px;height:54px;border-radius:50%;overflow:hidden;border:2px solid var(--accent);pointer-events:none;box-shadow:0 10px 24px -6px rgba(0,0,0,.6);will-change:transform,opacity}
+.pl-fly img{width:100%;height:100%;object-fit:cover}
+/* ───────── category tabs with a sliding indicator ───────── */
+.pl-cards .tabs{position:relative;gap:6px}
+.pl-cards .tabs button{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 6px;border-color:transparent;background:color-mix(in srgb,var(--ink) 6%,transparent);transition:color .5s var(--ez)}
+.pl-cards .tabs button.on{background:color-mix(in srgb,var(--ink) 6%,transparent);color:var(--bg);border-color:transparent}
+.pl-tabimg{width:32px;height:32px;border-radius:50%;overflow:hidden;flex:none;background:var(--raise);transition:transform .6s var(--ez)}
+.pl-tabimg img{width:100%;height:100%;object-fit:cover;display:block}
+.pl-cards .tabs button.on .pl-tabimg{transform:scale(1.08)}
+.pl-ind{position:absolute;left:0;top:0;height:44px;border-radius:99px;background:var(--accent);z-index:0;pointer-events:none;transition:transform .7s var(--ez),width .7s var(--ez)}
+@media (prefers-reduced-motion:reduce){
+  html.pl-cards .dish,html.pl-cards .dish__ph img,.pl-ind,.pl-tabimg{transition:none!important}
+  html.pl-cards .dish__ph img{opacity:1;transform:none}
+  .pl-ctl:not([data-q="0"]) .pl-step,.pl-q.bump,.pl-cards .bag.bump{animation:none}
+}
+/* scroll-driven depth where supported: the photo drifts slightly inside its frame */
+@supports (animation-timeline:view()){
+  html.pl-cards .dish__ph img.pl-ok{animation:plDrift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  @keyframes plDrift{from{transform:scale(1.1) translateY(4%)}to{transform:scale(1.1) translateY(-4%)}}
+}
+
+.pl-sold .pl-ctl{display:none}
+
+/* selection bar: dark glass with light text (the engine's default is a light bar) */
+.pl-cards .bag{color:var(--ink)}
+.pl-cards .bag__t,.pl-cards .bag__t b,.pl-cards .bag__t span{color:var(--ink)}
+.pl-cards .bag__t b{font:600 .95rem var(--body)}
+.pl-cards .bag__t span{font:500 .85rem var(--body);color:var(--accent)}
+.pl-cards .bag__go{background:var(--accent);color:var(--bg);padding:0 18px;font-weight:600}
+/* grid view: price on top-left, add control stays bottom-right and loses its label */
+html.pl-cards.pl-v-grid .dish__ph .dish__p{top:8px;bottom:auto;left:8px}
+html.pl-cards.pl-v-grid .pl-first{width:44px;padding:0;justify-content:center}
+html.pl-cards.pl-v-grid .pl-first span{display:none}
+html.pl-cards.pl-v-grid .pl-ctl{right:8px;bottom:8px}
+html.pl-cards.pl-v-grid .pl-step{height:40px}
+html.pl-cards.pl-v-grid .pl-step button{width:36px;height:40px}
+html[dir=rtl].pl-cards.pl-v-grid .dish__ph .dish__p{left:auto;right:8px}
+
+.pl-style-hd b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pl-style-hd{position:relative}
+
+/* equal-height rows; photo-less dishes always take the full row so they never leave a hole next to a photo card */
+html.pl-cards .list{align-items:stretch}
+html.pl-cards .dish{align-self:stretch;align-content:start}
+html.pl-cards .dish:not(.has-ph){grid-column:1/-1}
