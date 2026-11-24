@@ -382,3 +382,21 @@ l'écosystème (`npx skills find <mot-clé>`). S'il y en a un de pertinent, l'ut
 ne s'installe qu'avec la règle « Skills partagés » ci-dessus (dossier du dépôt, copie sur les deux branches,
 jamais global) et après avoir regardé son contenu. Si rien ne convient, continuer normalement. Ne pas ralentir
 Mourad : une ligne en fin de réponse suffit pour dire quel skill a servi.
+
+
+## Menu QR « Premium » — le modèle pour TOUS les futurs menus (décidé par Mourad, 2026-11-24)
+
+Mourad a validé le menu de **Fisherman's Garden** (`menus/fishermans-garden/`, vrai resto, 200 plats) et celui de **Mae Lek**
+(`menus/mae-lek/`, démo) : **chaque nouveau menu QR se construit à partir de ce modèle, toujours**, jamais depuis un ancien menu
+(giulivo, steak-dek-naew, thai-seafood = anciens). Cela **remplace l'étape 2** de la procédure « nouveau client menu QR » ci-dessus
+(copier `menus/fishermans-garden/` au lieu de `menus/mae-lek/`).
+- Contenu du modèle : 20 langues avec drapeaux (th en zh zt ru ko ja hi ms id lo de fr it vi km fil ar he es), écran d'ouverture compact
+  (un bouton + pastille drapeau en haut à droite → feuille de tous les drapeaux avec les noms), cartes de plats à grande photo (prix + bouton
+  d'ajout sur la photo, quantité − 2 +, panier animé), onglets de catégories avec photo et indicateur glissant, vue grille/large, vitrine 3D
+  automatique, recherche, filtres piment/régime, plats épuisés, allergènes, photo d'ouverture WebGL, 7 identités (`?styles=1` = mode vente).
+  Prix en baht uniquement (plus de conversion de devises). Bouton « Style » invisible pour les clients du resto.
+- **Mode d'emploi complet : `menus/NOUVEAU-MENU.md`** (branche publiée `claude/thai-app-mnw166`) + `menus/PLUS.md` + scripts
+  `menus/tools/prep-images.py` (fabrique les photos -m/-t/-sc) et `menus/tools/qa/*.js` (contrôles onglets, 20 langues, a11y, 404, perf).
+- Règles : contenu réel seulement (jamais de plats/prix/photos/horaires inventés) ; traductions faites par Claude = à faire relire par un natif ;
+  avant de montrer : tester téléphone + ordinateur en fr/th/ar, zéro erreur, zéro 404, zéro débordement, onglet = catégorie à l'écran.
+- Piège connu : l'indicateur des onglets doit être le DERNIER enfant du `<nav id="tabs">` (le moteur adresse les boutons par index).
