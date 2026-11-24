@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-11-22";
+window.NM_UPDATED = "2026-11-24";
 
 window.NM_DEMOS = [
   { slug: "steak-dek-naew", name: "Steak Dek Naew (สเต็กเด็กแนว)", type: "Steakhouse", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Premier client. Site 3 langues (thaï, anglais, français) fait avec ses vraies photos + son menu QR (menus/steak-dek-naew/). À compléter : adresse, horaires, LINE/WhatsApp du patron." },
@@ -49,6 +49,7 @@ window.NM_LINKS = [
   ] },
   { space: "site", pane: "tools", group: "Mes outils", items: [
     { name: "Page de vente en thaï · Site web", icon: "🇹🇭", path: "nm/pitch/site-th.html", note: "Une page à envoyer par LINE à un patron : ce qu'il reçoit, étapes, prix 10 000 ฿ + 790 ฿/mois, confiance, calcul d'exemple" },
+    { name: "Carte de présentation animée (thaï + français)", icon: "✨", path: "nm/card/index.html", note: "À montrer sur ton téléphone au patron : 7 écrans animés (qui tu es, menu QR, 9 langues, pourquoi plus de clients, prix 150 ฿ la carte, contact LINE/WhatsApp) + traduction française à la fin" },
     { name: "Page de vente en thaï · Menu QR", icon: "🇹🇭", path: "nm/pitch/menu-th.html", note: "Même chose pour le menu QR : 3 000 ฿ + 390 ฿/mois, exemple « 13 ฿ par jour »" },
     { name: "Statistiques détaillées", path: "nm/stats.html", note: "Visites et contacts, jour par jour (le résumé est dans l'onglet Site visits)" },
     { name: "Tableau de bord des menus QR", path: "nm/menus.html", note: "Clients (qui a payé, QR, rappel WhatsApp) · Chiffres · + Nouveau client" },

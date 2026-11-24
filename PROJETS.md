@@ -22,3 +22,5 @@
 - À remplacer par les vraies photos du restaurant dès qu'il en a.
 
 - 2026-11-22 : Fisherman's Garden — photos floues du menu papier remplacées par des photos HD (bibliothèque Mae Lek + Openverse/Wikimedia, crédits dans CREDITS.md) ; 170/200 plats avec photo, photos = illustrations, à remplacer par les vraies du resto.
+
+- 2026-11-24 : carte de présentation animée `nm/card/` (thaï, traduction FR en dernier écran). Prix affiché : 150 ฿ la carte QR de table — À CONFIRMER avec Mourad (sens exact). Pas de photo de lui (à fournir, vraie photo).
