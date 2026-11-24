@@ -2,5 +2,5 @@
  "_aide": "Interrupteur de démonstration : tant que active=true et que l'heure 'until' n'est pas passée, le QR du menu Steak Dek Naew ouvre le menu du restaurant 'slug' (pour montrer un exemple à un prospect). Passé 'until', ou avec active=false, le vrai menu de Steak Dek Naew revient tout seul. Claude met ce fichier à jour à la demande de Mourad.",
  "active": true,
  "slug": "fishermans-garden",
- "until": "2026-11-22T11:38:01Z"
+ "until": "2026-11-24T15:17:08Z"
 }
