@@ -1,6 +1,6 @@
 const {chromium}=require('/opt/node-tools/node_modules/playwright');
 (async()=>{const b=await chromium.launch({args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-for(const slug of ['fishermans-garden','mae-lek']){
+for(const slug of (process.env.QA_SLUGS?process.env.QA_SLUGS.split(','):['fishermans-garden','mae-lek'])){
 const c=await b.newContext({viewport:{width:390,height:844},isMobile:true});const p=await c.newPage();const bad=new Set();
 p.on('response',r=>{if(r.status()>=400)bad.add(r.url().replace(/.*\/menus\//,''))});
 await p.goto(`http://localhost:8765/menus/${slug}/?x=${Date.now()}`,{waitUntil:'networkidle'});await p.waitForTimeout(1200);await p.click('[data-pick="en"]');await p.waitForTimeout(2000);

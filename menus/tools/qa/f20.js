@@ -3,7 +3,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const LANGS=["th","en","zh","zt","ru","ko","ja","hi","ms","id","lo","de","fr","it","vi","km","fil","ar","he","es"];
 (async()=>{const b=await chromium.launch({args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const rows=[];
-for(const slug of ['mae-lek','fishermans-garden']){
+for(const slug of (process.env.QA_SLUGS?process.env.QA_SLUGS.split(','):['mae-lek','fishermans-garden'])){
  const errs=[];
  for(const lang of LANGS){
   const c=await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});

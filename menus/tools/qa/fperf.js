@@ -1,7 +1,7 @@
 const {chromium}=require('/opt/node-tools/node_modules/playwright');
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{const b=await chromium.launch({args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-for(const slug of ['mae-lek','fishermans-garden']){
+for(const slug of (process.env.QA_SLUGS?process.env.QA_SLUGS.split(','):['mae-lek','fishermans-garden'])){
 const c=await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true});
 const p=await c.newPage();let bytes=0;const files=[];
 p.on('response',async r=>{try{const bd=await r.body();bytes+=bd.length;files.push([bd.length,r.url().replace(/.*\/menus\//,'')])}catch(e){}});

@@ -32,3 +32,10 @@
 - 2026-11-24 (v3 « Lux ») : 7 identités complètes (noir/ivoire/trattoria/kaiseki/bistro/tropical/modern) + bouton « Style » de démo, photo d ouverture WebGL, filtres épicé/régime, plats épuisés, devises indicatives (taux BCE en direct), miniatures légères. Doc : menus/PLUS.md. Activé sur mae-lek et fishermans-garden (bouton Style à retirer pour un vrai client).
 
 - 2026-11-24 (v4) : 20 langues (th en zh zh-Hant ru ko ja hi ms id lo de fr it vi km fil ar he es), cartes de plats éditoriales (photo + prix + bouton sur la photo, stepper de quantité, panier animé avec miniatures), onglets avec photo, vue grille/large, devises retirées. Activé sur mae-lek et fishermans-garden. Traductions automatiques à faire relire (lao, khmer, hébreu, malais surtout).
+
+## Menu QR « Tahiti Beach Club » (nouveau client potentiel, 2026-11-24)
+Beach club au bord de la mer (ville à préciser). 156 plats/boissons transcrits depuis 16 photos du menu papier, modèle Premium, 20 langues,
+`menus/tahiti-beach-club/`. Photos = celles imprimées sur le menu (photographiées, donc grain/reflets du plastique : une vraie photo d'origine serait mieux).
+Héros = **placeholder** : remplacer `hero.webp` (2560×1600) et `hero-m.webp` (1200×2000) par la photo de la plage de Mourad (puis `?v=2`).
+À confirmer avec le restaurant : prix « petit/grand » (riz sautés, soupes), « Mir » (Blue Paradise Mojito = menthe ?), Tequila Sunrise listé avec du gin, noms
+« Sunshine mese » / « Fun of the sum » (fautes ?). Traductions à faire relire (thaï, lao, khmer, hébreu, malais).

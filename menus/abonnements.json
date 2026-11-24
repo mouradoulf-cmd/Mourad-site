@@ -64,6 +64,21 @@
    "demo": true,
    "payments": [],
    "note": "Démo en direct pour un prospect : carte complète lue sur 22 photos du menu papier (200 articles : nourriture + boissons, 9 langues). Pas encore client. À confirmer avec le patron : plats « sticker X » (bratwurst), prix du curry de la jungle, prix de 400 ฿ du curry en poudre, riz vapeur grande portion 100 ฿."
+  },
+  {
+   "slug": "tahiti-beach-club",
+   "name": "Tahiti Beach Club",
+   "type": "Beach club (restaurant & bar)",
+   "city": "",
+   "contact": "",
+   "phone": "",
+   "lang": "th",
+   "cover": "tahiti-beach-club/tbc-prawn-tamarind.webp",
+   "start": "2026-11-24",
+   "paidUntil": "2026-12-24",
+   "trial": true,
+   "payments": [],
+   "note": "Menu premium 20 langues, 156 plats/boissons lus sur 16 photos du menu papier. Photos = celles imprimées sur le menu (photographiées). Héros = placeholder en attendant la photo de la plage de Mourad. À faire relire : thaï, lao, khmer, hébreu, malais ; prix 'petit/grand' des riz sautés et soupes supposés ; fautes d'orthographe du menu papier (Tequila Sunrise au gin ?, Mocktails)."
   }
  ]
 }

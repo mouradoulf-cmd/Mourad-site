@@ -2,7 +2,7 @@ const {chromium}=require('/opt/node-tools/node_modules/playwright');
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function still(p){let last=-1,n=0;for(let i=0;i<60;i++){const y=await p.evaluate(()=>Math.round(scrollY));if(y===last){if(++n>=3)return}else{n=0;last=y}await sleep(120)}}
 (async()=>{const b=await chromium.launch({args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});let bad=0,checked=0;const errs=[];
-for(const slug of ['mae-lek','fishermans-garden']){
+for(const slug of (process.env.QA_SLUGS?process.env.QA_SLUGS.split(','):['mae-lek','fishermans-garden'])){
  for(const lang of ['en','ar','th']){
   const c=await b.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const p=await c.newPage();p.on('pageerror',e=>errs.push(e.message));
   await p.goto(`http://localhost:8765/menus/${slug}/?lang=${lang}&x=${Date.now()}`,{waitUntil:'networkidle'});await sleep(900);await p.click('.open__go');await sleep(2200);
