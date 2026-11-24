@@ -167,7 +167,7 @@
     return "\u2066" + (M.currency === "฿" ? s + " ฿" : s + " " + M.currency) + "\u2069";
   }
   // wrapped in a left-to-right isolate so "60 ฿" never turns into "฿ 60" inside Arabic text
-  function price(p) { return "\u2066" + (M.currency === "฿" ? p + " ฿" : p + " " + M.currency) + "\u2069"; }
+  function price(p) { if (p === "" || p == null) return "\u2013"; return "\u2066" + (M.currency === "฿" ? p + " ฿" : p + " " + M.currency) + "\u2069"; }
   function aname(n) { var a = M.allergens && (M.allergens[lang] || M.allergens.en); return a ? a[n - 1] : n; }
   function img(base, w) { return M.photoOne ? base + ".webp" : base + "-" + w + ".webp"; }
   // photoHD: graded 4K-sourced photos in two crops: portrait 4:5 for the cards (-c-800/-c-1200), landscape 4:3 for the dish sheet (-w-1280/-w-2048)
