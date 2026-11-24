@@ -92,6 +92,8 @@ p.lead b{color:#fff;font-weight:600}
 .price{position:relative;text-align:center;padding:30px 16px;border-radius:28px;border:1px solid rgba(94,231,255,.4);background:radial-gradient(90% 90% at 50% 0%,rgba(94,231,255,.16),rgba(139,108,255,.08) 60%,transparent);box-shadow:0 0 70px rgba(94,231,255,.15)}
 .price .big{font:700 clamp(4rem,22vw,5.6rem)/1 var(--en);letter-spacing:-.04em}
 .price .big small{font-size:.38em;margin-left:6px;color:var(--mute);letter-spacing:0}
+.price .inc{font-size:.92rem;color:var(--mute)}
+.price .inc b{color:#fff}
 .price p{margin-top:10px;color:#cfd6f5;font-size:1.02rem;line-height:1.6}
 /* S6 contact */
 .btns{display:grid;gap:11px}
@@ -123,7 +125,7 @@ html:not(.js) .slide{position:relative;opacity:1;visibility:visible;transform:no
 html:not(.js) .slide>*{opacity:1;transform:none}
 html:not(.js) .nav,html:not(.js) .prog,html:not(.js) .hint{display:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.slide>*{opacity:1;transform:none}}
-@media(max-height:700px){.fr{font-size:.84rem;gap:7px;padding:12px}.fr .p{padding:8px 10px}.slide{gap:12px;padding-top:64px;padding-bottom:84px}.orb{width:150px}.phone{width:130px}.price{padding:20px 10px}}
+@media(max-height:700px){.slide.fr7{justify-content:flex-start;overflow-y:auto;padding-top:70px}.fr{font-size:.84rem;gap:7px;padding:12px}.fr .p{padding:8px 10px}.slide{gap:12px;padding-top:64px;padding-bottom:84px}.orb{width:150px}.phone{width:130px}.price{padding:20px 10px}}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -151,7 +153,7 @@ html:not(.js) .nav,html:not(.js) .prog,html:not(.js) .hint{display:none}
    <div class="it"><div class="ph"></div><div><div class="ln"></div><div class="ln"></div></div></div>
    <div class="it"><div class="ph"></div><div><div class="ln"></div><div class="ln"></div></div></div>
    <div class="qr"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-  <p class="lead" style="--i:3">เมนูมี<b>รูปอาหาร</b>และราคา เปิดได้จากมือถือของลูกค้าเอง ไม่ต้องโหลดแอป</p>
+  <p class="lead" style="--i:3">ผม<b>ถ่ายรูปเมนู</b>ของร้านคุณ แล้วทำเมนู QR ที่มี<b>รูปอาหาร</b>และราคา เปิดได้จากมือถือของลูกค้า ไม่ต้องโหลดแอป</p>
  </section>
 
  <!-- 3 -->
@@ -181,7 +183,7 @@ html:not(.js) .nav,html:not(.js) .prog,html:not(.js) .hint{display:none}
  <section class="slide" data-s>
   <span class="eyebrow" style="--i:0">ราคา</span>
   <h2 style="--i:1">ราคา<span class="grad">การ์ด QR</span><br>สำหรับร้านของคุณ</h2>
-  <div class="price" style="--i:2"><div class="big"><span id="cnt" data-to="150">150</span><small>บาท</small></div><p>การ์ดตั้งโต๊ะพร้อม QR Code<br><b>ใบละ 150 บาท</b></p></div>
+  <div class="price" style="--i:2"><div class="big"><span id="cnt" data-to="150">150</span><small>บาท</small></div><p>การ์ดตั้งโต๊ะพร้อม QR Code<br><b>ใบละ 150 บาท</b></p><p class="inc">ผมทำเมนูให้ <b>พิมพ์ และเคลือบพลาสติก</b> เอง แล้วนำมาวางที่โต๊ะ</p></div>
   <p class="lead" style="--i:3">ผมทำเมนูตัวอย่างของร้านคุณให้ดู<b>ฟรี</b> ก่อนตัดสินใจ</p>
  </section>
 
@@ -198,14 +200,14 @@ html:not(.js) .nav,html:not(.js) .prog,html:not(.js) .hint{display:none}
  </section>
 
  <!-- 7 FR -->
- <section class="slide" data-s>
+ <section class="slide fr7" data-s>
   <span class="eyebrow lat" style="--i:0">🇫🇷 Traduction en français</span>
   <h2 style="--i:1;font-family:var(--en)">Ce que dit <span class="grad">cette carte</span></h2>
   <div class="fr" style="--i:2">
-   <div class="p"><b>Bonjour, je m'appelle Mourad.</b> J'aide les restaurateurs à Pattaya avec des menus QR code.</div>
+   <div class="p"><b>Bonjour, je m'appelle Mourad.</b> J'aide les restaurateurs à Pattaya avec des menus QR code : je prends votre menu en photo, je fabrique le menu QR sur ordinateur, puis j'imprime et je plastifie les cartes.</div>
    <div class="p">Le client <b>scanne une fois</b> et voit le menu avec photos et prix, dans <b>9 langues</b> (thaï, anglais, chinois, russe, coréen, hindi, arabe, allemand, français).</div>
    <div class="p"><b>Pourquoi vous aurez plus de clients :</b> les touristes comprennent le menu sans aide, les photos donnent envie de commander, et vous changez un prix sans réimprimer.</div>
-   <div class="p"><b>Prix :</b> la carte de table avec QR code, <b>150 ฿ la carte</b>. Je prépare gratuitement un menu d'essai pour votre restaurant avant que vous décidiez.</div>
+   <div class="p"><b>Prix :</b> <b>150 ฿ par carte</b> de table avec QR code, imprimée et plastifiée par moi, posée sur vos tables. Je prépare gratuitement un menu d'essai pour votre restaurant avant que vous décidiez.</div>
   </div>
  </section>
 
