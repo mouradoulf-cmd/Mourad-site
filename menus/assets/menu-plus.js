@@ -77,19 +77,19 @@
   var V = { th: "ดูจาน", en: "See the dish", zh: "查看菜品", ru: "Посмотреть", ko: "메뉴 보기", hi: "व्यंजन देखें", ar: "عرض الطبق", de: "Gericht ansehen", fr: "Voir le plat", it: "Vedi il piatto" };
   var HOLD = 4200;   // ms each dish stays in front
   function wrap(v, n) { v = ((v % n) + n) % n; return v > n / 2 ? v - n : v; }
-  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function ease(t) { return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t); }
   function buildTop(main) {
     if (main.querySelector(".pl-top")) return;
     var F = featured(), N = F.length, show = N >= 3;
     var h = '<section class="pl-top" aria-label="' + esc(tx("rec")) + '">' + infoCard();
     if (show) {
-      h += '<div class="pl-show" tabindex="0" aria-roledescription="carousel"><div class="pl-amb" aria-hidden="true"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></div>' +
-        '<div class="pl-eye"><span>' + esc(tx("rec")) + '</span><b class="pl-no"></b><button type="button" class="pl-pause" aria-label="' + esc(tx("pause")) + '" aria-pressed="false"><svg class="i-p" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-g" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div>' +
+      h += '<div class="pl-show" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + esc(tx("rec")) + '"><div class="pl-amb" aria-hidden="true"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></div>' +
+        '<button type="button" class="pl-pause" aria-label="' + esc(tx("pause")) + '" aria-pressed="false"><svg class="i-p" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-g" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>' +
         '<div class="pl-stage"><div class="pl-ring">' + F.map(function (d, i) {
-          return '<button type="button" class="pl-card" data-pl="' + esc(d.id) + '" aria-label="' + esc(title(d)) + '"><span class="pl-ph"><img src="' + pic(d, 800) + '"' + (M.photoHD ? ' srcset="' + srcset(d) + '" sizes="(min-width:760px) 300px, 66vw"' : "") + (i > 2 ? ' loading="lazy"' : "") + ' alt="" decoding="async" draggable="false"><i class="pl-sh"></i></span></button>';
+          return '<button type="button" class="pl-card" data-pl="' + esc(d.id) + '" aria-label="' + (i + 1) + " / " + N + " · " + esc(title(d)) + '"><span class="pl-bz"><span class="pl-ph"><img src="' + pic(d, 800) + '"' + (M.photoHD ? ' srcset="' + srcset(d) + '" sizes="(min-width:760px) 300px, 66vw"' : "") + (i > 2 ? ' loading="lazy"' : "") + ' alt="" decoding="async" draggable="false"><i class="pl-sh"></i></span></span></button>';
         }).join("") + '</div><div class="pl-floor" aria-hidden="true"></div></div>' +
-        '<div class="pl-info2" aria-live="off"><p class="pl-cat"></p><h3 class="pl-name"></h3><p class="pl-desc"></p><div class="pl-row"><span class="pl-price"></span><span class="pl-hot"></span><button type="button" class="pl-view">' + esc(V[L()] || V.en) + '</button></div></div>' +
-        '<div class="pl-seg" aria-hidden="true">' + F.map(function () { return "<i><u></u></i>"; }).join("") + "</div></div>";
+        '<div class="pl-info2"><h3 class="pl-name"></h3><p class="pl-meta"></p><p class="pl-desc"></p><div class="pl-row"><span class="pl-price"></span><span class="pl-hot"></span><button type="button" class="pl-view">' + esc(V[L()] || V.en) + '</button></div></div>' +
+        '<div class="pl-seg" role="group" aria-label="' + esc(tx("rec")) + '">' + F.map(function (d, k) { return '<button type="button" class="pl-sg" data-k="' + k + '" aria-label="' + (k + 1) + " / " + N + '"><i><u></u></i></button>'; }).join("") + '</div><p class="pl-sr" role="status" aria-live="polite"></p></div>';
     }
     h += '<label class="pl-search">' + ICO.search + '<input type="search" inputmode="search" enterkeyhint="search" autocomplete="off" placeholder="' + esc(tx("search")) + '" aria-label="' + esc(tx("search")) + '"></label>' +
       '<p class="pl-none" hidden>' + esc(tx("none")) + "</p></section>";
@@ -105,10 +105,10 @@
     });
     if (!show) return;
 
-    var cards = [].slice.call(top.querySelectorAll(".pl-card")), segs = [].slice.call(top.querySelectorAll(".pl-seg i")),
+    var cards = [].slice.call(top.querySelectorAll(".pl-card")), segs = [].slice.call(top.querySelectorAll(".pl-sg")),
       amb = [].slice.call(top.querySelectorAll(".pl-amb img")), ambI = 0, stage = top.querySelector(".pl-stage"),
-      cat = top.querySelector(".pl-cat"), nameEl = top.querySelector(".pl-name"), dEl = top.querySelector(".pl-desc"),
-      pr = top.querySelector(".pl-price"), hotEl = top.querySelector(".pl-hot"), noEl = top.querySelector(".pl-no"), info = top.querySelector(".pl-info2");
+      cat = top.querySelector(".pl-meta"), nameEl = top.querySelector(".pl-name"), dEl = top.querySelector(".pl-desc"),
+      pr = top.querySelector(".pl-price"), hotEl = top.querySelector(".pl-hot"), info = top.querySelector(".pl-info2"), sr = top.querySelector(".pl-sr"), userMoved = false;
     var pos = 0, spread = 0, idx = -1, W = 270, tw = 0, dragging = false, visible = false, inView = false, moved = 0, started = false, userPaused = false;
     function measure() { W = Math.min(innerWidth * 0.66, 300); stage.style.setProperty("--w", W + "px"); }
     function render() {
@@ -121,30 +121,30 @@
         c.style.opacity = a > 2.4 ? "0" : String(Math.max(0, (1 - Math.min(a, 2) * 0.3) * spread).toFixed(2));
         c.style.zIndex = String(100 - Math.round(a * 10));
         c.style.pointerEvents = a < 0.5 ? "auto" : "none";
-        var ph = c.firstChild; ph.style.filter = a > 0.15 ? "blur(" + (Math.min(a, 2) * 1.3).toFixed(1) + "px) brightness(" + (1 - Math.min(a, 2) * 0.16).toFixed(2) + ")" : "none";
+        var bz = c.firstChild, ph = bz.firstChild; bz.style.filter = a > 0.15 ? "blur(" + (Math.min(a, 2) * 1.2).toFixed(1) + "px) brightness(" + (1 - Math.min(a, 2) * 0.18).toFixed(2) + ")" : "none";
         var im = ph.firstChild; im.style.transform = "translate3d(" + (-o * 7).toFixed(1) + "%,0,0) scale(1.18)";
-        c.firstChild.querySelector(".pl-sh").style.backgroundPosition = (-o * 90 + 50).toFixed(0) + "% 0";
+        ph.lastChild.style.backgroundPosition = (-o * 90 + 50).toFixed(0) + "% 0";
       });
       var n = ((Math.round(pos) % N) + N) % N; if (n !== idx) setIdx(n);
     }
     function setIdx(n) {
       idx = n; var d = F[n], s = M.sections[d._s];
-      noEl.textContent = String(n + 1).padStart(2, "0") + " / " + String(N).padStart(2, "0");
-      cat.textContent = trObj(s.t); pr.textContent = ""; pr.innerHTML = money(d.p);
+      cat.textContent = trObj(s.t); pr.innerHTML = money(d.p);
       var words = String(title(d)).split(" ");
       nameEl.innerHTML = words.map(function (w, k) { return '<span style="--k:' + k + '">' + esc(w) + "</span>"; }).join(" ");
       dEl.textContent = desc(d); hotEl.textContent = d.hot ? new Array(d.hot + 1).join("🌶️") : "";
       info.classList.remove("swap"); void info.offsetWidth; info.classList.add("swap");
       info.setAttribute("data-id", d.id);
-      segs.forEach(function (sg, k) { sg.className = k < n ? "done" : k === n ? "cur" : ""; });
+      segs.forEach(function (sg, k) { sg.firstChild.className = k < n ? "done" : k === n ? "cur" : ""; if (k === n) sg.setAttribute("aria-current", "true"); else sg.removeAttribute("aria-current"); });
+
       var im = amb[ambI = 1 - ambI]; im.src = pic(d, 800); im.className = "on"; amb[1 - ambI].className = "";
     }
     function tween(target, ms) {
       cancelAnimationFrame(tw); var from = pos, t0 = null;
-      function step(t) { if (t0 == null) t0 = t; var k = Math.min(1, (t - t0) / ms); pos = from + (target - from) * ease(k); render(); if (k < 1) tw = requestAnimationFrame(step); }
+      function step(t) { if (t0 == null) t0 = t; var k = Math.min(1, (t - t0) / ms); pos = from + (target - from) * ease(k); render(); if (k < 1) tw = requestAnimationFrame(step); else if (userMoved) { var d = F[idx]; sr.textContent = (idx + 1) + " / " + N + " · " + title(d) + ", " + String(money(d.p)).replace(/[\u2066\u2069]/g, ""); userMoved = false; } }
       tw = requestAnimationFrame(step);
     }
-    function next() { tween(Math.round(pos) + 1, reduce ? 1 : 1000); }
+    function next() { tween(Math.round(pos) + 1, reduce ? 1 : 1150); }
     // auto-advance: the progress segment of the front dish fills, and when it ends the ring turns
     top.addEventListener("animationend", function (e) { if (e.target.tagName === "U" && !dragging) next(); });
     function run() { sh.classList.toggle("paused", !(inView && !document.hidden && !dragging) || reduce || userPaused); }
@@ -158,14 +158,15 @@
       if (dragging) { var dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx)); var now = performance.now(); vel = (e.clientX - lx) / Math.max(1, now - lt); lx = e.clientX; lt = now; pos = sp - dx / (W * 0.62); render(); }
       else if (!reduce && e.pointerType === "mouse") { var c = cards[idx]; if (c) { var r = c.getBoundingClientRect(); c.firstChild.style.setProperty("--tx", (-((e.clientY - r.top) / r.height - 0.5) * 8).toFixed(1) + "deg"); c.firstChild.style.setProperty("--ty", (((e.clientX - r.left) / r.width - 0.5) * 10).toFixed(1) + "deg"); } }
     });
-    function end() { if (!dragging) return; dragging = false; var tgt = Math.round(pos - vel * 2.2); tween(tgt, 700); run(); }
+    function end() { if (!dragging) return; dragging = false; userMoved = moved > 8; var tgt = Math.round(pos - vel * 2.2); tween(tgt, 700); run(); }
     stage.addEventListener("pointerup", end); stage.addEventListener("pointercancel", end);
     stage.addEventListener("pointerleave", function () { cards.forEach(function (c) { c.firstChild.style.setProperty("--tx", "0deg"); c.firstChild.style.setProperty("--ty", "0deg"); }); });
     function openDish(id) { var btn = root.querySelector('.dish__o[data-dish="' + id + '"]'); if (btn) btn.click(); }
     stage.addEventListener("click", function (e) { var c = e.target.closest(".pl-card"); if (c && moved < 8 && cards.indexOf(c) === idx) openDish(c.getAttribute("data-pl")); else if (c && moved < 8) tween(Math.round(pos) + wrap(cards.indexOf(c) - Math.round(pos), N), 800); });
     var pb = top.querySelector(".pl-pause"); pb.addEventListener("click", function () { userPaused = !userPaused; pb.setAttribute("aria-pressed", userPaused); pb.setAttribute("aria-label", userPaused ? tx("play") : tx("pause")); sh.classList.toggle("is-paused", userPaused); run(); });
     top.querySelector(".pl-view").addEventListener("click", function () { openDish(info.getAttribute("data-id")); });
-    sh.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") tween(Math.round(pos) + 1, 700); if (e.key === "ArrowLeft") tween(Math.round(pos) - 1, 700); });
+    top.querySelector(".pl-seg").addEventListener("click", function (e) { var b = e.target.closest(".pl-sg"); if (!b) return; userMoved = true; tween(Math.round(pos) + wrap(+b.getAttribute("data-k") - Math.round(pos), N), 1000); });
+    sh.addEventListener("keydown", function (e) { userMoved = true; if (e.key === "ArrowRight") tween(Math.round(pos) + 1, 700); if (e.key === "ArrowLeft") tween(Math.round(pos) - 1, 700); });
     measure(); addEventListener("resize", function () { measure(); render(); });
     render(); run();
   }

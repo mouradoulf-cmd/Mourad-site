@@ -32,6 +32,13 @@
   };
   var ORDER = Object.keys(TH);
   var cur = TH[qs.get("theme")] ? qs.get("theme") : (TH[sget("pl-theme")] && P.styles ? sget("pl-theme") : (TH[P.theme] ? P.theme : null));
+  // each identity's fonts are fetched once; the promise resolves when they are ready (or after 800 ms, whichever comes first)
+  var fontP = {};
+  function fonts(k) {
+    if (fontP[k]) return fontP[k]; var t = TH[k];
+    fontP[k] = new Promise(function (res) { var l = document.createElement("link"); l.id = "plf-" + k; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=" + t.f + "&display=swap"; l.onload = function () { (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(res); }; l.onerror = res; document.head.appendChild(l); setTimeout(res, 800); });
+    return fontP[k];
+  }
   function applyTheme(k, quiet) {
     var t = TH[k]; if (!t) return;
     cur = k; sset("pl-theme", k);
@@ -42,7 +49,7 @@
     document.documentElement.setAttribute("data-pl-theme", k);
     document.documentElement.style.colorScheme = t.dark ? "dark" : "light";
     var mt = document.querySelector('meta[name="theme-color"]'); if (mt) mt.setAttribute("content", t.bg);
-    if (!document.getElementById("plf-" + k)) { var l = document.createElement("link"); l.id = "plf-" + k; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=" + t.f + "&display=swap"; document.head.appendChild(l); }
+    fonts(k);
     var b = document.getElementById("plstyle"); if (b) { b.querySelector("b").textContent = t.n; b.setAttribute("aria-label", "Style : " + t.n + " — " + t.s); }
     if (!quiet) { var tt = document.getElementById("toast"); if (tt) { tt.textContent = t.n + " · " + t.s; tt.classList.add("on"); clearTimeout(applyTheme.t); applyTheme.t = setTimeout(function () { tt.classList.remove("on"); }, 1800); } }
   }
@@ -53,7 +60,15 @@
     b.innerHTML = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.7 0 2-1.1 1.4-2-.7-1.1.1-2.4 1.6-2.4H17a4 4 0 0 0 4-4c0-5-4-9.6-9-9.6Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/></svg><b></b>';
     document.body.appendChild(b);
     var showB = function () { b.classList.toggle("on", scrollY > innerHeight * 0.6); }; addEventListener("scroll", showB, { passive: true }); showB();
-    b.addEventListener("click", function () { var i = cur ? (ORDER.indexOf(cur) + 1) % ORDER.length : 0; document.documentElement.classList.add("pl-morph"); applyTheme(ORDER[i]); setTimeout(function () { document.documentElement.classList.remove("pl-morph"); }, 900); });
+    b.addEventListener("click", function () {
+      if (b.__busy) return; b.__busy = true; var k = ORDER[cur ? (ORDER.indexOf(cur) + 1) % ORDER.length : 0];
+      fonts(k).then(function () {
+        var go = function () { applyTheme(k); };
+        // one cross-fade of the whole page through the View Transitions API; plain colour transition where it does not exist
+        if (document.startViewTransition && !reduce) { var vt = document.startViewTransition(go); vt.finished.then(function () { b.__busy = false; }, function () { b.__busy = false; }); }
+        else { document.documentElement.classList.add("pl-morph"); go(); setTimeout(function () { document.documentElement.classList.remove("pl-morph"); b.__busy = false; }, 900); }
+      });
+    });
     if (cur) applyTheme(cur, true); else b.querySelector("b").textContent = "Style";
   }
 
