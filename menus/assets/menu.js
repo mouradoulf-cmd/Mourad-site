@@ -246,6 +246,7 @@
       "<h2>" + esc(t("enjoy")) + "</h2>" +
       (M.extras || []).map(function (x) { return '<div class="xrow"><span>' + esc(tr(x.t)) + "</span><span>" + price(x.p) + "</span></div>"; }).join("") +
       "<p>" + esc(t("ask")) + '</p><p class="by"><a href="https://mouradoulf-cmd.github.io/Mourad-site/nm/" target="_blank" rel="noopener">Menu · NM Studio</a></p></div></section>');
+    if (M.footnote) h.push('<p class="foot">' + esc(tr(M.footnote)) + "</p>");
     h.push("</main>");
     // selection bar, sheets, waiter
     h.push('<div class="bag" id="bag"><span class="bag__t"><b id="bagn"></b><span id="bagp"></span></span><button class="bag__go" type="button" data-open="sel">' + esc(t("view")) + " " + ICO.arrow.replace("<svg", '<svg width="15" height="15"') + "</button></div>");

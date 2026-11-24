@@ -400,3 +400,14 @@ Mourad a validé le menu de **Fisherman's Garden** (`menus/fishermans-garden/`, 
 - Règles : contenu réel seulement (jamais de plats/prix/photos/horaires inventés) ; traductions faites par Claude = à faire relire par un natif ;
   avant de montrer : tester téléphone + ordinateur en fr/th/ar, zéro erreur, zéro 404, zéro débordement, onglet = catégorie à l'écran.
 - Piège connu : l'indicateur des onglets doit être le DERNIER enfant du `<nav id="tabs">` (le moteur adresse les boutons par index).
+
+## Photos : CHAQUE plat a sa photo, belle (exigence de Mourad, 2026-11-24)
+
+Tout menu QR livré doit avoir une photo sur **chaque** plat/boisson, de qualité « magazine » — jamais des cartes sans photo.
+Ordre de préférence : 1) les vraies photos du restaurant (fichiers d'origine > photos du menu papier) ; 2) visuels générés par
+IA du plat exact (Higgsfield / autre — payant : annoncer le coût et attendre le « oui » de Mourad, il se connecte lui-même),
+affichés comme « illustration » (le menu porte la mention `footnote`) ; 3) photo libre (Openverse/Wikimedia) seulement si elle montre
+vraiment le même plat/la même marque et est belle — **jamais une photo d'un autre plat pour boucher un trou** (test du 24/11 :
+la recherche libre renvoie des fleurs pour « blue hawaii », des marchés pour « som tam » : inutilisable en masse).
+Donc dès la fiche client : demander les photos d'origine ou préparer la liste des visuels à générer (`menus/<slug>/PHOTOS-A-FAIRE.md`)
+et demander le feu vert pour le coût AVANT de livrer. Les menus d'Android/Chrome traduisent la page : `translate="no"` + meta notranslate sont déjà dans le modèle.
