@@ -75,3 +75,7 @@ html[dir=rtl] .pl-seg u{transform-origin:right}
 html[dir=rtl] .pl-pc button{right:auto;left:8px}
 .pl-pc button:active{transform:scale(.9)}.pl-pc button.done{background:var(--accent);color:var(--bg);border-color:var(--accent)}
 @media (prefers-reduced-motion:reduce){.pl-ph,.pl-on .sd__ph img,.pl-info2 *{transition:none!important;animation:none!important}.pl-seg .cur u{animation:none!important;transform:scaleX(1)}}
+
+.pl-eye .pl-pause{margin-inline-start:12px;width:30px;height:30px;border-radius:50%;border:1px solid color-mix(in srgb,var(--ink) 28%,transparent);background:color-mix(in srgb,var(--bg) 50%,transparent);color:var(--ink);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.pl-eye{gap:0}.pl-eye b{margin-inline-start:auto}
+.pl-pause .i-g{display:none}.pl-show.is-paused .pl-pause .i-p{display:none}.pl-show.is-paused .pl-pause .i-g{display:block}

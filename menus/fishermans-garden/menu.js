@@ -22,6 +22,7 @@ window.NM_MENU = {
  "staffLang": "th",
  "localTitles": true,
  "photoOne": true,
+ "thumbs": true,
  "photoHD": false,
  "tapHint": false,
  "spice": false,
@@ -44,7 +45,9 @@ window.NM_MENU = {
   "accent": "#e3b341"
  },
  "plus": {
-  "featured": ["tomyum1", "oyster1", "grillpork1", "fishlemon1", "friedrice1_1", "hamburger1"],
+  "styles": true, "hero3d": true, "fx": true,
+  "crops": ["tomyum1", "oyster1", "grillpork1", "fishlemon1", "siew1", "hamburger1"],
+  "featured": ["tomyum1", "oyster1", "grillpork1", "fishlemon1", "siew1", "hamburger1"],
   "pairs": { "euro": ["d1", "j3"], "fried": ["a3", "d1"], "sash": ["a1", "j1"], "salad": ["a3", "s5", "j1"], "sea": ["a1", "j1", "s5"], "stir": ["d1", "j1"], "rice": ["d1", "j3"], "soup": ["j1", "s5"] }
  },
  "sections": [

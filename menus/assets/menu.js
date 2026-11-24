@@ -161,7 +161,7 @@
   }
   // square thumbnail in the dish row (the 4:5 card crop, centred)
   function thumb(d) {
-    var src = M.photoHD ? d.img + "-c-800.webp" : img(d.img, 640);
+    var src = M.photoHD ? d.img + "-c-800.webp" : (M.thumbs ? d.img + "-t.webp" : img(d.img, 640));
     return '<span class="dish__ph"><img src="' + src + '" alt="" width="96" height="96" loading="lazy" decoding="async">' + (M.tapHint ? '<i class="dish__zoom" aria-hidden="true">' + TAPICO + "</i>" : "") + "</span>";
   }
   function sheetPic(d) {

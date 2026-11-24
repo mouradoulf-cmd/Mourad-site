@@ -203,6 +203,7 @@ window.NM_MENU = {
   ]
  },
  "plus": {
+  "styles": true, "hero3d": true, "fx": true,
   "featured": ["tomyum", "padthai", "somtam", "mango", "massaman", "grill"],
   "pairs": { "wok": ["lime", "coconut"], "soup": ["lime", "water"], "isan": ["beer", "coconut"], "noodle": ["tea", "lime"], "sweet": ["tea", "coconut"] }
  },

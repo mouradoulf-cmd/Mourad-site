@@ -16,6 +16,8 @@
   var T = {
     search: { th: "ค้นหาในเมนู…", en: "Search the menu…", zh: "搜索菜单…", ru: "Поиск по меню…", ko: "메뉴 검색…", hi: "मेन्यू में खोजें…", ar: "ابحث في القائمة…", de: "In der Karte suchen…", fr: "Rechercher dans la carte…", it: "Cerca nel menù…" },
     rec: { th: "เมนูแนะนำ", en: "Recommended", zh: "推荐菜品", ru: "Рекомендуем", ko: "추천 메뉴", hi: "सुझाए गए व्यंजन", ar: "نوصي به", de: "Empfehlungen", fr: "Nos suggestions", it: "Consigliati" },
+    pause: { th: "หยุดชั่วคราว", en: "Pause", zh: "暂停", ru: "Пауза", ko: "일시정지", hi: "रोकें", ar: "إيقاف مؤقت", de: "Pause", fr: "Pause", it: "Pausa" },
+    play: { th: "เล่นต่อ", en: "Play", zh: "播放", ru: "Продолжить", ko: "재생", hi: "चलाएँ", ar: "تشغيل", de: "Abspielen", fr: "Lecture", it: "Riprendi" },
     swipe: { th: "ปัดเพื่อดูเพิ่ม", en: "Swipe to browse", zh: "左右滑动浏览", ru: "Листайте", ko: "옆으로 넘겨보세요", hi: "स्वाइप करें", ar: "اسحب للتصفح", de: "Wischen zum Blättern", fr: "Faites glisser", it: "Scorri" },
     pair: { th: "ทานคู่กับ", en: "Goes well with", zh: "搭配推荐", ru: "Хорошо сочетается", ko: "함께 드셔보세요", hi: "इसके साथ", ar: "يتناسب مع", de: "Passt dazu", fr: "À associer", it: "Da abbinare" },
     none: { th: "ไม่พบรายการที่ค้นหา", en: "Nothing found", zh: "没有找到", ru: "Ничего не найдено", ko: "결과 없음", hi: "कुछ नहीं मिला", ar: "لا توجد نتائج", de: "Nichts gefunden", fr: "Aucun résultat", it: "Nessun risultato" },
@@ -34,7 +36,7 @@
   M.sections.forEach(function (s, si) { s.items.forEach(function (d) { d._s = si; byId[d.id] = d; all.push(d); }); });
   function title(d) { var l = L(); return M.localTitles && l !== ol && d.sn && d.sn[l] ? d.sn[l] : d.n; }
   function money(p) { return "⁦" + (M.currency === "฿" ? p + " ฿" : p + " " + M.currency) + "⁩"; }
-  function pic(d, w) { return M.photoHD ? d.img + "-c-" + (w || 800) + ".webp" : d.img + ".webp"; }
+  function pic(d, w) { return M.photoHD ? d.img + "-c-" + (w || 800) + ".webp" : (P.crops && P.crops.indexOf(d.id) > -1 ? d.img + "-sc.webp" : d.img + ".webp"); }
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var ICO = {
     search: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
@@ -67,11 +69,11 @@
   /* ───────────── showcase (auto-playing 3D photo ring) + search ───────────── */
   function featured() {
     var ids = P.featured && P.featured.length ? P.featured : M.sections.map(function (s) { var x = s.items.filter(function (d) { return d.img; })[0]; return x && x.id; }).filter(Boolean);
-    return ids.map(function (i) { return byId[i]; }).filter(function (d) { return d && d.img; }).slice(0, 9);
+    return ids.map(function (i) { return byId[i]; }).filter(function (d) { return d && d.img && !d.soldout; }).slice(0, 9);
   }
   function trObj(o) { var l = L(); return (o && (o[l] || o.en || o[ol])) || ""; }
   function desc(d) { var l = L(), x = d.d && (d.d[l] || (l === ol ? "" : d.d.en)); return x && x !== d.n ? x : ""; }
-  function srcset(d) { return M.photoHD ? d.img + "-c-800.webp 800w, " + d.img + "-c-1200.webp 1200w" : d.img + ".webp 1280w"; }
+  function srcset(d) { return M.photoHD ? d.img + "-c-800.webp 800w, " + d.img + "-c-1200.webp 1200w" : pic(d); }
   var V = { th: "ดูจาน", en: "See the dish", zh: "查看菜品", ru: "Посмотреть", ko: "메뉴 보기", hi: "व्यंजन देखें", ar: "عرض الطبق", de: "Gericht ansehen", fr: "Voir le plat", it: "Vedi il piatto" };
   var HOLD = 4200;   // ms each dish stays in front
   function wrap(v, n) { v = ((v % n) + n) % n; return v > n / 2 ? v - n : v; }
@@ -81,12 +83,12 @@
     var F = featured(), N = F.length, show = N >= 3;
     var h = '<section class="pl-top" aria-label="' + esc(tx("rec")) + '">' + infoCard();
     if (show) {
-      h += '<div class="pl-show" tabindex="0" aria-roledescription="carousel"><div class="pl-amb" aria-hidden="true"><img alt=""><img alt=""></div>' +
-        '<div class="pl-eye"><span>' + esc(tx("rec")) + '</span><b class="pl-no"></b></div>' +
+      h += '<div class="pl-show" tabindex="0" aria-roledescription="carousel"><div class="pl-amb" aria-hidden="true"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></div>' +
+        '<div class="pl-eye"><span>' + esc(tx("rec")) + '</span><b class="pl-no"></b><button type="button" class="pl-pause" aria-label="' + esc(tx("pause")) + '" aria-pressed="false"><svg class="i-p" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-g" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div>' +
         '<div class="pl-stage"><div class="pl-ring">' + F.map(function (d, i) {
-          return '<button type="button" class="pl-card" data-pl="' + esc(d.id) + '" aria-label="' + esc(title(d)) + '"><span class="pl-ph"><img src="' + pic(d, 800) + '" srcset="' + srcset(d) + '" sizes="(min-width:760px) 300px, 72vw" alt="" decoding="async" draggable="false"><i class="pl-sh"></i></span></button>';
+          return '<button type="button" class="pl-card" data-pl="' + esc(d.id) + '" aria-label="' + esc(title(d)) + '"><span class="pl-ph"><img src="' + pic(d, 800) + '"' + (M.photoHD ? ' srcset="' + srcset(d) + '" sizes="(min-width:760px) 300px, 66vw"' : "") + (i > 2 ? ' loading="lazy"' : "") + ' alt="" decoding="async" draggable="false"><i class="pl-sh"></i></span></button>';
         }).join("") + '</div><div class="pl-floor" aria-hidden="true"></div></div>' +
-        '<div class="pl-info2" aria-live="polite"><p class="pl-cat"></p><h3 class="pl-name"></h3><p class="pl-desc"></p><div class="pl-row"><span class="pl-price"></span><span class="pl-hot"></span><button type="button" class="pl-view">' + esc(V[L()] || V.en) + '</button></div></div>' +
+        '<div class="pl-info2" aria-live="off"><p class="pl-cat"></p><h3 class="pl-name"></h3><p class="pl-desc"></p><div class="pl-row"><span class="pl-price"></span><span class="pl-hot"></span><button type="button" class="pl-view">' + esc(V[L()] || V.en) + '</button></div></div>' +
         '<div class="pl-seg" aria-hidden="true">' + F.map(function () { return "<i><u></u></i>"; }).join("") + "</div></div>";
     }
     h += '<label class="pl-search">' + ICO.search + '<input type="search" inputmode="search" enterkeyhint="search" autocomplete="off" placeholder="' + esc(tx("search")) + '" aria-label="' + esc(tx("search")) + '"></label>' +
@@ -107,7 +109,7 @@
       amb = [].slice.call(top.querySelectorAll(".pl-amb img")), ambI = 0, stage = top.querySelector(".pl-stage"),
       cat = top.querySelector(".pl-cat"), nameEl = top.querySelector(".pl-name"), dEl = top.querySelector(".pl-desc"),
       pr = top.querySelector(".pl-price"), hotEl = top.querySelector(".pl-hot"), noEl = top.querySelector(".pl-no"), info = top.querySelector(".pl-info2");
-    var pos = 0, spread = 0, idx = -1, W = 270, tw = 0, dragging = false, visible = false, inView = false, moved = 0, started = false;
+    var pos = 0, spread = 0, idx = -1, W = 270, tw = 0, dragging = false, visible = false, inView = false, moved = 0, started = false, userPaused = false;
     function measure() { W = Math.min(innerWidth * 0.66, 300); stage.style.setProperty("--w", W + "px"); }
     function render() {
       var ref = 1;
@@ -145,7 +147,7 @@
     function next() { tween(Math.round(pos) + 1, reduce ? 1 : 1000); }
     // auto-advance: the progress segment of the front dish fills, and when it ends the ring turns
     top.addEventListener("animationend", function (e) { if (e.target.tagName === "U" && !dragging) next(); });
-    function run() { sh.classList.toggle("paused", !(inView && !document.hidden && !dragging) || reduce); }
+    function run() { sh.classList.toggle("paused", !(inView && !document.hidden && !dragging) || reduce || userPaused); }
     document.addEventListener("visibilitychange", run);
     if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { inView = en[0].isIntersecting; if (inView && !started) intro(); run(); }, { threshold: 0.35 }).observe(sh); else { inView = true; intro(); }
     function intro() { started = true; if (reduce) { spread = 1; render(); return; } var t0 = null; (function step(t) { if (t0 == null) t0 = t; var k = Math.min(1, (t - t0) / 1300); spread = ease(k); render(); if (k < 1) requestAnimationFrame(step); })(performance.now()); }
@@ -161,6 +163,7 @@
     stage.addEventListener("pointerleave", function () { cards.forEach(function (c) { c.firstChild.style.setProperty("--tx", "0deg"); c.firstChild.style.setProperty("--ty", "0deg"); }); });
     function openDish(id) { var btn = root.querySelector('.dish__o[data-dish="' + id + '"]'); if (btn) btn.click(); }
     stage.addEventListener("click", function (e) { var c = e.target.closest(".pl-card"); if (c && moved < 8 && cards.indexOf(c) === idx) openDish(c.getAttribute("data-pl")); else if (c && moved < 8) tween(Math.round(pos) + wrap(cards.indexOf(c) - Math.round(pos), N), 800); });
+    var pb = top.querySelector(".pl-pause"); pb.addEventListener("click", function () { userPaused = !userPaused; pb.setAttribute("aria-pressed", userPaused); pb.setAttribute("aria-label", userPaused ? tx("play") : tx("pause")); sh.classList.toggle("is-paused", userPaused); run(); });
     top.querySelector(".pl-view").addEventListener("click", function () { openDish(info.getAttribute("data-id")); });
     sh.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") tween(Math.round(pos) + 1, 700); if (e.key === "ArrowLeft") tween(Math.round(pos) - 1, 700); });
     measure(); addEventListener("resize", function () { measure(); render(); });
