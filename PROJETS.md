@@ -24,3 +24,5 @@
 - 2026-11-22 : Fisherman's Garden — photos floues du menu papier remplacées par des photos HD (bibliothèque Mae Lek + Openverse/Wikimedia, crédits dans CREDITS.md) ; 170/200 plats avec photo, photos = illustrations, à remplacer par les vraies du resto.
 
 - 2026-11-24 : carte de présentation animée `nm/card/` (thaï, traduction FR en dernier écran). Prix affiché : 150 ฿ la carte QR de table — À CONFIRMER avec Mourad (sens exact). Pas de photo de lui (à fournir, vraie photo).
+
+- 2026-11-24 : menu QR "Plus" (menus/assets/menu-plus.js/.css), activé sur menus/mae-lek : recherche, carrousel 3D de photos « recommandés », suggestions « à associer » dans la fiche plat, carte infos (horaires/Instagram/Google/Maps/tél, seulement avec de vraies données). Inspiré d une pub concurrente (idées seulement, rien copié). Pour l activer chez un client : ajouter "plus": {...} dans son menu.js + les 2 lignes css/js dans son index.html. Non fait : options de plats (sauces/extras) et roulette fidélité.

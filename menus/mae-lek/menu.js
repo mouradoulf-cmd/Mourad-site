@@ -202,6 +202,10 @@ window.NM_MENU = {
    "Weichtiere"
   ]
  },
+ "plus": {
+  "featured": ["tomyum", "padthai", "somtam", "mango", "massaman", "grill"],
+  "pairs": { "wok": ["lime", "coconut"], "soup": ["lime", "water"], "isan": ["beer", "coconut"], "noodle": ["tea", "lime"], "sweet": ["tea", "coconut"] }
+ },
  "sections": [
   {
    "id": "wok",
