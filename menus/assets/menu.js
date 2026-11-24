@@ -205,7 +205,7 @@
     var h = [];
     h.push('<div class="grain" aria-hidden="true"></div>');
     // opening
-    h.push('<section class="open" id="top">');
+    h.push('<section class="open' + (langs.length > 12 ? " open--many" : "") + '" id="top">');
     if (M.heroMobile) h.push('<div class="open__ph"><picture><source media="(max-width:760px)" srcset="' + M.heroMobile + '"><img src="' + M.heroWide + '" alt="" fetchpriority="high"></picture></div>');
     else if (M.hero) h.push('<div class="open__ph"><img src="' + img(M.hero, 1280) + '" srcset="' + img(M.hero, 640) + ' 640w, ' + img(M.hero, 1280) + ' 1280w" sizes="100vw" alt="" fetchpriority="high"></div>');
     h.push('<div class="open__top">' + (M.wordmark ? '<h1 class="open__word rise' + (M.wordmark.length > 12 ? " long" : "") + '" style="--d:.15s">' + esc(M.wordmark) + (M.wordmarkSub ? '<small lang="' + ol + '">' + esc(M.wordmarkSub) + "</small>" : "") + "</h1>" : svg.logo ? '<div class="open__logo rise" style="--d:.15s" role="img" aria-label="' + esc(M.name) + '">' + svg.logo + "</div>" : '<h1 class="open__name rise">' + esc(M.name) + "</h1>") +
@@ -223,7 +223,7 @@
     // header
     h.push('<header class="hd" id="hd"><a class="hd__logo' + (svg.logo ? "" : " txt") + '" href="#top" aria-label="' + esc(M.name) + '">' + (svg.logo || esc(M.wordmark || M.name)) + "</a>" +
       '<button class="hd__ch" type="button" id="hdch" aria-label="' + esc(t("menu")) + '"><small></small><span></span></button>' +
-      '<div class="hd__r"><button class="ib lb" type="button" data-open="lang" aria-label="' + esc(t("lang")) + " · " + (LN[lang] || lang) + '">' + flag(lang, "round") + "<span>" + (LS[lang] || lang) + "</span></button>" +
+      '<div class="hd__r"><button class="ib lb" type="button" data-open="lang" aria-label="' + esc(t("lang")) + " · " + (LN[lang] || lang) + '">' + flag(lang, "round") + "<span>" + (LS[lang] || lang) + "</span>" + (langs.length > 12 ? '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>' : "") + "</button>" +
       '<button class="ib" type="button" data-open="alg" aria-label="' + esc(t("al")) + '">' + ICO.shield + '<span class="n' + (alg.length ? " on" : "") + '" id="algn">' + alg.length + "</span></button></div>" +
       '<nav class="tabs" id="tabs" aria-label="' + esc(t("menu")) + '">' + M.sections.map(function (s, i) { return '<button type="button" data-go="' + s.id + '"' + (i ? "" : ' class="on"') + ">" + esc(tr(s.t)) + "</button>"; }).join("") + "</nav>" +
       '<i class="prog" id="prog"></i></header>');
@@ -282,7 +282,7 @@
       var max = document.documentElement.scrollHeight - H;
       prog.style.setProperty("--p", Math.max(0, Math.min(1, (y - H * 0.5) / Math.max(1, max - H * 0.5))).toFixed(3));
       var c = 0;
-      chs.forEach(function (s, i) { if (s.getBoundingClientRect().top < 170) c = i; });
+      var line = hd.offsetHeight + 24; chs.forEach(function (s, i) { if (s.getBoundingClientRect().top < line) c = i; });
       if (c !== cur) {
         cur = c;
         var s = M.sections[c];
@@ -348,7 +348,7 @@
     }
     if (b.hasAttribute("data-areset")) { alg = []; saveAlg(); openSheet("alg"); return; }
     if (b.hasAttribute("data-q")) { add(b.getAttribute("data-q"), +b.getAttribute("data-d")); openSheet("sel"); return; }
-    if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { var tg = g.querySelector(".ch__h") || g; scrollTo({ top: tg.getBoundingClientRect().top + scrollY - 140, behavior: "smooth" }); }, closeSheet && document.getElementById("sheet").classList.contains("on") ? 250 : 0); return; }
+    if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { var tg = g.querySelector(".ch__h") || g, tf = tg.style.transform, tt = tg.style.transition; tg.style.transition = "none"; tg.style.transform = "none"; var yy = tg.getBoundingClientRect().top + scrollY; tg.style.transform = tf; void tg.offsetHeight; tg.style.transition = tt; scrollTo({ top: yy - (document.getElementById("hd").offsetHeight + 16), behavior: "smooth" }); }, closeSheet && document.getElementById("sheet").classList.contains("on") ? 250 : 0); return; }
     if (b.hasAttribute("data-clear")) { sel = {}; saveSel(); refreshAdds(); openSheet("sel"); return; }
     if (b.hasAttribute("data-show")) { showWaiter(); return; }
     if (b.hasAttribute("data-spice")) { var k = b.getAttribute("data-spice"); spice = spice === k ? null : k; store.set(KEY + "-spice", spice || ""); b.parentNode.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b && spice !== null); }); return; }

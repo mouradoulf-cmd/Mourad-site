@@ -126,3 +126,28 @@ html[dir=rtl].pl-cards.pl-v-grid .dish__ph .dish__p{left:auto;right:8px}
 html.pl-cards .list{align-items:stretch}
 html.pl-cards .dish{align-self:stretch;align-content:start}
 html.pl-cards .dish:not(.has-ph){grid-column:1/-1}
+/* header: the category tabs already say where you are, so the engine's hidden section counter must not take room (it made long names wrap onto a 3rd row) */
+html.pl-cards .hd{grid-template-columns:minmax(0,1fr) auto}
+html.pl-cards .hd__ch{display:none}
+html.pl-cards .hd__logo.txt{min-width:0;overflow:hidden;text-overflow:ellipsis}
+html.pl-cards .tabs{grid-column:1/-1}
+/* grid view = editorial rhythm: the first photograph of each category runs full width, the rest sit two by two */
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child{grid-column:1/-1}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__ph{aspect-ratio:4/3}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__ph .dish__p{top:auto;bottom:12px;left:12px;padding:7px 13px;font-size:1.12rem}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .pl-first{width:auto;padding:0 18px 0 14px}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .pl-first span{display:inline}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .pl-ctl{right:10px;bottom:10px}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__txt{padding:16px 12px 12px;gap:7px}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__n{font-size:clamp(1.4rem,6vw,1.7rem);line-height:1.14}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__n small{display:block}
+html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__d{display:-webkit-box}
+@media (min-width:760px){html.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child{grid-column:span 2}}
+
+/* grid view: a dish without photograph is a single-cell card (no hole next to a photo card) */
+html.pl-cards.pl-v-grid .dish:not(.has-ph){grid-column:auto;grid-template-columns:minmax(0,1fr)}
+html.pl-cards.pl-v-grid .dish:not(.has-ph) .dish__txt{grid-row:1;padding:12px 10px 4px}
+html.pl-cards.pl-v-grid .dish:not(.has-ph) .pl-side{grid-column:1;grid-row:2;display:flex;justify-content:space-between;align-items:center;padding:6px 10px 10px}
+html.pl-cards.pl-v-grid .dish:not(.has-ph) .pl-first span{display:none}
+html.pl-cards.pl-v-grid .dish:not(.has-ph) .pl-first{width:44px;padding:0;justify-content:center}
+html.pl-cards.pl-v-grid .dish:not(.has-ph) .dish__n{font-size:1.05rem;line-height:1.2}

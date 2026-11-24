@@ -109,9 +109,10 @@
         if (it) b.insertAdjacentHTML("afterbegin", '<span class="pl-tabimg"><img src="' + thumb(it) + '" alt="" width="32" height="32" loading="lazy" decoding="async"></span>');
         else b.style.paddingLeft = "16px";
       });
-      nav.insertAdjacentHTML("afterbegin", '<span class="pl-ind" aria-hidden="true"></span>');
+      nav.insertAdjacentHTML("beforeend", '<span class="pl-ind" aria-hidden="true"></span>'); // last child: the engine addresses the tab buttons by index
       if (tabsObs) tabsObs.disconnect();
       tabsObs = new MutationObserver(moveInd); tabsObs.observe(nav, { attributes: true, subtree: true, attributeFilter: ["class"] });
+      if ("ResizeObserver" in window) { var ro = new ResizeObserver(function () { moveInd(); }); nav.querySelectorAll("button[data-go]").forEach(function (b) { ro.observe(b); }); }
     }
     moveInd();
   }
@@ -119,10 +120,9 @@
     var nav = document.getElementById("tabs"); if (!nav) return;
     var on = nav.querySelector("button.on") || nav.querySelector("button[data-go]"), ind = nav.querySelector(".pl-ind"); if (!on || !ind) return;
     ind.style.width = on.offsetWidth + "px"; ind.style.transform = "translate(" + on.offsetLeft + "px," + on.offsetTop + "px)";
-    var l = on.offsetLeft - (nav.clientWidth - on.offsetWidth) / 2;
-    if (nav.scrollTo) nav.scrollTo({ left: l, behavior: reduce ? "auto" : "smooth" });
   }
   addEventListener("resize", moveInd);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveInd);
 
   /* ───────── (re)build after every render of the engine ───────── */
   function enhance() {

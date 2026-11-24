@@ -6,7 +6,7 @@ Files: `assets/menu-plus.js/.css` (search, 3D auto showcase, pairings, info card
 ```js
 "plus": {
   "theme": "noir",            // noir | ivoire | trattoria | kaiseki | bistro | tropical | modern   (omit = the restaurant's own colours)
-  "styles": true,             // floating "Style" button for sales demos — REMOVE for a live client
+  "styles": true,             // (kept for old configs) the identity switcher now only appears when the link carries ?styles=1 — sales mode
   "hero3d": true,             // WebGL opening photo (parallax, light sweep, ripple, grain); falls back to the photo
   "cards": true,              // photo-led dish cards + quantity stepper + animated selection bar + photo category tabs + large/grid switch
   "layout": "large",          // default view: "large" (1 column) or "grid" (2 columns); the guest can switch
@@ -25,3 +25,9 @@ No data → that block is simply not shown (info card, diet chips, sold-out).
 - Cards: price and add control sit on the photograph; dishes without a photo become a quiet one-line card. Every +/− goes through the engine (`window.__nmMenu`), so the selection, waiter screen and totals are unchanged.
 - No currency conversion any more: prices stay in the menu's own currency (baht).
 - 20 languages: th en zh zt(繁體) ru ko ja hi ms id lo de fr it vi km fil ar he es. Load `i18n-extra.js` BEFORE `menu.js` data; list the codes in `langs`. A language missing from a dish falls back to English. All new strings are machine translations: have a native speaker proofread them before a restaurant goes live.
+
+## Behaviour notes (v5)
+- Header: with the cards layer the engine's hidden section counter is removed (the category tabs say where you are) and the long-name header stays on one row.
+- Language: more than 12 languages → opening screen = one "enter" button + a flag pill (top right) that opens the flag sheet; the header keeps the same pill (flag + code + chevron).
+- Tabs: the sliding indicator is the LAST child of the tabs nav, because the engine addresses tab buttons by index. Tab clicks land the category title 16 px under the header (measured without the reveal offset).
+- Grid view = first photograph of each category full width, the rest two by two; dishes without a photograph are single cards.

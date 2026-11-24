@@ -30,7 +30,7 @@
     modern:    { n: "Contemporain",     s: "Moderne & audacieux", bg: "#0a0a0a", ink: "#ffffff", accent: "#d4ff4f", display: "'Syne','Noto Sans Thai','Noto Sans SC',system-ui,sans-serif", body: "'Space Grotesk','Noto Sans Thai','Noto Sans SC',system-ui,sans-serif", f: "Syne:wght@500;600;700&family=Space+Grotesk:wght@300;400;500;600", r: "8px", g: 0.03, dark: 1 }
   };
   var ORDER = Object.keys(TH);
-  var cur = TH[qs.get("theme")] ? qs.get("theme") : (TH[sget("pl-theme")] && P.styles ? sget("pl-theme") : (TH[P.theme] ? P.theme : null));
+  var cur = TH[qs.get("theme")] ? qs.get("theme") : (TH[sget("pl-theme")] && qs.has("styles") ? sget("pl-theme") : (TH[P.theme] ? P.theme : null));
   // each identity's fonts are fetched once; the promise resolves when they are ready (or after 800 ms, whichever comes first)
   var fontP = {};
   function fonts(k) {
@@ -54,7 +54,7 @@
   }
   if (cur) applyTheme(cur, true);
   function styleButton() {
-    if (!(P.styles || qs.has("styles")) || document.getElementById("plstyle")) return;
+    if (!qs.has("styles") || document.getElementById("plstyle")) return; // sales mode only: add ?styles=1 to the link
     var host = document.querySelector(".hd__r"), b = document.createElement("button");
     b.id = "plstyle"; b.type = "button"; b.className = host ? "ib pl-style-hd" : "pl-style";
     b.innerHTML = '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.7 0 2-1.1 1.4-2-.7-1.1.1-2.4 1.6-2.4H17a4 4 0 0 0 4-4c0-5-4-9.6-9-9.6Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/></svg><b></b>';

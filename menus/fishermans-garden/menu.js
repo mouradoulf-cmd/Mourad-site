@@ -122,7 +122,8 @@ window.NM_MENU = {
     "s5"
    ]
   },
-  "cards": true
+  "cards": true,
+  "layout": "grid"
  },
  "sections": [
   {
