@@ -210,9 +210,16 @@
     else if (M.hero) h.push('<div class="open__ph"><img src="' + img(M.hero, 1280) + '" srcset="' + img(M.hero, 640) + ' 640w, ' + img(M.hero, 1280) + ' 1280w" sizes="100vw" alt="" fetchpriority="high"></div>');
     h.push('<div class="open__top">' + (M.wordmark ? '<h1 class="open__word rise' + (M.wordmark.length > 12 ? " long" : "") + '" style="--d:.15s">' + esc(M.wordmark) + (M.wordmarkSub ? '<small lang="' + ol + '">' + esc(M.wordmarkSub) + "</small>" : "") + "</h1>" : svg.logo ? '<div class="open__logo rise" style="--d:.15s" role="img" aria-label="' + esc(M.name) + '">' + svg.logo + "</div>" : '<h1 class="open__name rise">' + esc(M.name) + "</h1>") +
       '<p class="open__tag rise" style="--d:.35s">' + esc(tr(M.tagline)) + "</p>" + (M.demo ? '<p class="demo rise" style="--d:.45s">' + esc(t("demo")) + "</p>" : "") + "</div>");
-    h.push('<div class="open__bot"><p class="open__ask rise" style="--d:.55s">' + esc(t("choose")) + '</p><div class="langs' + (langs.length > 12 ? " many" : "") + '">' +
-      langs.map(function (l, i) { return '<button type="button" class="rise' + (l === lang ? " sug" : "") + '" style="--d:' + (0.65 + i * 0.06).toFixed(2) + 's" data-pick="' + l + '" lang="' + l + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") +
-      '</div><p class="open__cue rise" style="--d:1.1s">' + esc(t("cue")) + "</p></div></section>");
+    if (langs.length > 12) {
+      // many languages: no grid on the opening screen. The phone's language is already chosen; one button enters the menu,
+      // and a small flag pill (top right) opens the full flag list.
+      h.push('<button type="button" class="open__lang rise" style="--d:.5s" data-open="lang" aria-label="' + esc(t("lang")) + " · " + esc(LN[lang] || lang) + '">' + flag(lang, "round") + "<span>" + esc(LS[lang] || lang) + '</span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>');
+      h.push('<div class="open__bot"><button type="button" class="open__go rise" style="--d:.6s" data-pick="' + lang + '"><span>' + esc(t("menu")) + "</span>" + ICO.arrow + '</button><p class="open__cue rise" style="--d:.9s">' + esc(t("cue")) + "</p></div></section>");
+    } else {
+        h.push('<div class="open__bot"><p class="open__ask rise" style="--d:.55s">' + esc(t("choose")) + '</p><div class="langs' + (langs.length > 12 ? " many" : "") + '">' +
+          langs.map(function (l, i) { return '<button type="button" class="rise' + (l === lang ? " sug" : "") + '" style="--d:' + (0.65 + i * 0.06).toFixed(2) + 's" data-pick="' + l + '" lang="' + l + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") +
+          '</div><p class="open__cue rise" style="--d:1.1s">' + esc(t("cue")) + "</p></div></section>");
+    }
     // header
     h.push('<header class="hd" id="hd"><a class="hd__logo' + (svg.logo ? "" : " txt") + '" href="#top" aria-label="' + esc(M.name) + '">' + (svg.logo || esc(M.wordmark || M.name)) + "</a>" +
       '<button class="hd__ch" type="button" id="hdch" aria-label="' + esc(t("menu")) + '"><small></small><span></span></button>' +
@@ -401,7 +408,7 @@
         return '<li><button type="button" data-go="' + s.id + '" class="' + (i === cur ? "cur" : "") + '"><small>' + String(i + 1).padStart(2, "0") + "</small><b>" + esc(tr(s.t)) + "</b><i>" + s.items.length + "</i></button></li>";
       }).join("") + "</ul>";
     } else if (kind === "lang") {
-      h += '<h3 class="st" style="margin-top:4px">' + esc(t("lang")) + '</h3><div class="lgrid">' + langs.map(function (l) { return '<button type="button" data-lang="' + l + '" lang="' + l + '" aria-pressed="' + (l === lang) + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") + "</div>";
+      h += '<h3 class="st" style="margin-top:4px">' + esc(t("lang")) + '</h3><div class="lgrid' + (langs.length > 12 ? " many" : "") + '">' + langs.map(function (l) { return '<button type="button" data-lang="' + l + '" lang="' + l + '" aria-pressed="' + (l === lang) + '">' + flag(l) + "<span>" + (LN[l] || l) + "</span></button>"; }).join("") + "</div>";
     } else if (kind === "alg") {
       var A = M.allergens && (M.allergens[lang] || M.allergens.en) || [];
       h += '<h3 class="st" style="margin-top:4px">' + esc(t("alt")) + '</h3><p class="ss">' + esc(t("als")) + '</p><div class="agrid">' + A.map(function (a, i) {
