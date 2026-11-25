@@ -27,3 +27,8 @@ Prices stay in the menu's own currency (no conversion). Details: `menus/PLUS.md`
 ## Never
 - Photos/dishes/prices/reviews/hours that the restaurant did not supply. Machine translations go to a native for proofreading before the client pays.
 - Currency chips, decorative 3D objects, a "Style" button visible to a client's customers (it is `?styles=1` only).
+
+## Option « depth » (3D au service des photos) — `plus.depth: true`
+`assets/menu-plus-depth.js/.css` : chaque photo de plat sort de la page en perspective à sa première apparition, le cadre bascule comme l'intérieur d'un tambour
+pendant le défilement et l'image glisse derrière (fenêtre parallaxe) ; souris : le cadre suit le curseur avec un reflet. Transform/opacity seulement, coupé si « réduire les animations » ou téléphone faible.
+Menus HD (`photoHD`) : les cartes utilisent les fichiers `-w-1280/-w-2048` (nets sur écrans 3x), pas le petit `-m`.

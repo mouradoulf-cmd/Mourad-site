@@ -413,6 +413,7 @@ window.NM_MENU = {
   ]
  },
  "plus": {
+  "depth": true,
   "styles": true,
   "hero3d": true,
   "featured": [

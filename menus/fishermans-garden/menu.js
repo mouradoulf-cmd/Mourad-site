@@ -68,6 +68,7 @@ window.NM_MENU = {
   "accent": "#e3b341"
  },
  "plus": {
+  "depth": true,
   "styles": true,
   "hero3d": true,
   "crops": [

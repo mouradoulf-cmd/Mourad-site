@@ -131,6 +131,7 @@ window.NM_MENU = {
   "es": "Fotos meramente ilustrativas; el plato servido puede variar."
  },
  "plus": {
+  "depth": true,
   "styles": true,
   "hero3d": true,
   "theme": "tropical",

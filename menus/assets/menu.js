@@ -179,6 +179,8 @@
   }
   // square thumbnail in the dish row (the 4:5 card crop, centred)
   function thumb(d) {
+    // HD menus: the card photo is the sharp 4:3 file (1280/2048 px) so phones with 3x screens are not served a 800 px crop
+    if (M.cards && M.photoHD) return '<span class="dish__ph"><img src="' + d.img + '-w-1280.webp" srcset="' + d.img + "-w-1280.webp 1280w, " + d.img + '-w-2048.webp 2048w" sizes="(min-width:760px) 360px, calc(100vw - 56px)" alt="" width="800" height="600" loading="lazy" decoding="async">' + (M.tapHint ? '<i class="dish__zoom" aria-hidden="true">' + TAPICO + "</i>" : "") + "</span>";
     var src = M.cards ? d.img + "-m.webp" : M.photoHD ? d.img + "-c-800.webp" : (M.thumbs ? d.img + "-t.webp" : img(d.img, 640));
     return '<span class="dish__ph"><img src="' + src + '" alt="" width="' + (M.cards ? 800 : 96) + '" height="' + (M.cards ? 600 : 96) + '" loading="lazy" decoding="async">' + (M.tapHint ? '<i class="dish__zoom" aria-hidden="true">' + TAPICO + "</i>" : "") + "</span>";
   }
