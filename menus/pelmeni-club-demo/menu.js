@@ -1,9 +1,9 @@
-/* PROTOTYPE NON OFFICIEL — Pelmeni Club (Pattaya), construit par NM Studio depuis la carte publique du restaurant (pelmeni-club.com/menu/all-menu). Plats/prix à confirmer. */
+/* PROTOTYPE NON OFFICIEL — Pelmeni Club (Pattaya), NM Studio, d'après la carte publique du restaurant (pelmeni-club.com/menu/all-menu). Plats/prix à confirmer. Photo d'en-tête : site du restaurant. */
 window.NM_MENU = {
  "slug": "pelmeni-club-demo",
  "name": "Pelmeni Club",
  "wordmark": "Pelmeni Club",
- "wordmarkSub": "Pattaya",
+ "wordmarkSub": "Naklua · Pattaya",
  "demo": true,
  "currency": "฿",
  "langs": [
@@ -35,32 +35,35 @@ window.NM_MENU = {
  "photoOne": true,
  "thumbs": true,
  "cards": true,
- "photoHD": false,
+ "photoHD": true,
  "tapHint": false,
  "spice": false,
+ "heroMobile": "hero-m.webp?v=1",
+ "heroWide": "hero.webp?v=1",
  "tagline": {
-  "en": "Unofficial prototype · demo",
-  "fr": "Prototype non officiel · démo",
-  "it": "Prototipo non ufficiale · demo",
-  "ru": "Неофициальный прототип · демо",
-  "th": "ต้นแบบไม่เป็นทางการ",
-  "de": "Inoffizieller Prototyp · Demo",
-  "es": "Prototipo no oficial · demo",
-  "zh": "非官方原型 · 演示"
+  "en": "Russian · European · Thai kitchen",
+  "fr": "Cuisine russe, européenne et thaïe",
+  "it": "Cucina russa, europea e thai",
+  "ru": "Русская, европейская и тайская кухня",
+  "th": "อาหารรัสเซีย ยุโรป และไทย",
+  "de": "Russische, europäische und thailändische Küche",
+  "es": "Cocina rusa, europea y tailandesa",
+  "zh": "俄式、欧式和泰式料理"
  },
  "footnote": {
-  "en": "UNOFFICIAL PROTOTYPE made by NM Studio from the venue's public online menu, for demonstration. Dishes, prices and descriptions are to be confirmed by the restaurant; drinks lists are partial. Illustrative royalty-free photos, not the restaurant's own.",
-  "fr": "PROTOTYPE NON OFFICIEL réalisé par NM Studio à partir de la carte publique en ligne de l'établissement, à titre de démonstration. Plats et prix à confirmer par le restaurant ; cartes de boissons partielles. Photos d'illustration libres de droits, pas celles du restaurant.",
-  "it": "PROTOTIPO NON UFFICIALE di NM Studio, creato dal menu pubblico online del locale, a scopo dimostrativo. Piatti e prezzi da confermare; liste bevande parziali. Foto di illustrazione libere da diritti.",
-  "ru": "НЕОФИЦИАЛЬНЫЙ ПРОТОТИП, созданный NM Studio по публичному меню ресторана для демонстрации. Блюда и цены нужно подтвердить; список напитков неполный. Иллюстративные свободные фото, не фото ресторана.",
-  "th": "ต้นแบบไม่เป็นทางการ จัดทำโดย NM Studio จากเมนูออนไลน์สาธารณะของร้าน เพื่อการสาธิต รายการอาหารและราคาต้องให้ร้านยืนยัน รายการเครื่องดื่มยังไม่ครบ ภาพประกอบเป็นภาพฟรีลิขสิทธิ์ ไม่ใช่ภาพของร้าน",
-  "de": "INOFFIZIELLER PROTOTYP von NM Studio nach der öffentlichen Online-Speisekarte, zu Demonstrationszwecken. Gerichte und Preise vom Restaurant zu bestätigen; Getränkekarte unvollständig. Lizenzfreie Illustrationsfotos.",
-  "es": "PROTOTIPO NO OFICIAL de NM Studio creado con la carta pública en línea, con fines demostrativos. Platos y precios por confirmar; carta de bebidas parcial. Fotos de ilustración libres de derechos."
+  "en": "UNOFFICIAL PROTOTYPE made by NM Studio from the venue's public online menu, for demonstration. Dishes, prices and descriptions are to be confirmed by the restaurant; drinks lists are partial. Header photo: the restaurant's own website. Dish photos: illustrative royalty-free pictures, not the restaurant's own.",
+  "fr": "PROTOTYPE NON OFFICIEL réalisé par NM Studio à partir de la carte publique en ligne de l'établissement, à titre de démonstration. Plats et prix à confirmer ; cartes de boissons partielles. Photo d'en-tête : site du restaurant. Photos des plats : illustrations libres de droits, pas celles du restaurant.",
+  "it": "PROTOTIPO NON UFFICIALE di NM Studio, dal menu pubblico online del locale, a scopo dimostrativo. Piatti e prezzi da confermare; bevande parziali. Foto di testata: sito del ristorante. Foto dei piatti: illustrazioni libere da diritti.",
+  "ru": "НЕОФИЦИАЛЬНЫЙ ПРОТОТИП NM Studio по публичному меню ресторана, для демонстрации. Блюда и цены нужно подтвердить; напитки неполные. Фото шапки — с сайта ресторана; фото блюд — иллюстративные свободные фото.",
+  "th": "ต้นแบบไม่เป็นทางการ โดย NM Studio จากเมนูออนไลน์สาธารณะของร้าน เพื่อการสาธิต รายการและราคาต้องให้ร้านยืนยัน เครื่องดื่มยังไม่ครบ ภาพหัวเรื่องจากเว็บไซต์ร้าน ภาพอาหารเป็นภาพประกอบฟรีลิขสิทธิ์",
+  "de": "INOFFIZIELLER PROTOTYP von NM Studio nach der öffentlichen Online-Speisekarte. Gerichte und Preise vom Restaurant zu bestätigen; Getränke unvollständig. Kopfbild: Website des Restaurants. Gerichtefotos: lizenzfreie Illustrationen.",
+  "es": "PROTOTIPO NO OFICIAL de NM Studio con la carta pública en línea, con fines demostrativos. Platos y precios por confirmar; bebidas parciales. Foto de cabecera: web del restaurante. Fotos de platos: ilustraciones libres de derechos."
  },
  "plus": {
   "depth": true,
+  "atelier": true,
   "styles": false,
-  "hero3d": false,
+  "hero3d": true,
   "theme": "bistro",
   "cards": true,
   "layout": "large"
@@ -80,6 +83,51 @@ window.NM_MENU = {
    },
    "items": [
     {
+     "id": "app1",
+     "n": "Tongue with homemade horseradish, toast, herbs and cherry tomatoes",
+     "p": "260",
+     "sn": {
+      "en": "Tongue with homemade horseradish, toast, herbs and cherry tomatoes"
+     },
+     "img": "pc-tongue"
+    },
+    {
+     "id": "app2",
+     "n": "Homemade Salo with Garlic and Rye Bread",
+     "p": "160",
+     "sn": {
+      "en": "Homemade Salo with Garlic and Rye Bread"
+     },
+     "img": "pc-salo"
+    },
+    {
+     "id": "app3",
+     "n": "Salted Herring with Onion and Potato",
+     "p": "280",
+     "sn": {
+      "en": "Salted Herring with Onion and Potato"
+     },
+     "img": "pc-herring"
+    },
+    {
+     "id": "app4",
+     "n": "Eggplant Rolls",
+     "p": "340",
+     "sn": {
+      "en": "Eggplant Rolls"
+     },
+     "img": "pc-eggplant"
+    },
+    {
+     "id": "app7",
+     "n": "Mussels in Cream Sauce",
+     "p": "330",
+     "sn": {
+      "en": "Mussels in Cream Sauce"
+     },
+     "img": "pc-mussels"
+    },
+    {
      "id": "app9",
      "n": "Fried Shrimps in Garlic Sauce",
      "p": "420",
@@ -89,6 +137,15 @@ window.NM_MENU = {
      "img": "pc-shrimps"
     },
     {
+     "id": "app12",
+     "n": "Salted salmon with bread",
+     "p": "330",
+     "sn": {
+      "en": "Salted salmon with bread"
+     },
+     "img": "pc-salmon"
+    },
+    {
      "id": "app13",
      "n": "Bluefin Tuna Tataki with Ponzu Sauce",
      "p": "330",
@@ -96,38 +153,6 @@ window.NM_MENU = {
       "en": "Bluefin Tuna Tataki with Ponzu Sauce"
      },
      "img": "pc-tataki"
-    },
-    {
-     "id": "app1",
-     "n": "Tongue with homemade horseradish, toast, herbs and cherry tomatoes",
-     "p": "260",
-     "sn": {
-      "en": "Tongue with homemade horseradish, toast, herbs and cherry tomatoes"
-     }
-    },
-    {
-     "id": "app2",
-     "n": "Homemade Salo with Garlic and Rye Bread",
-     "p": "160",
-     "sn": {
-      "en": "Homemade Salo with Garlic and Rye Bread"
-     }
-    },
-    {
-     "id": "app3",
-     "n": "Salted Herring with Onion and Potato",
-     "p": "280",
-     "sn": {
-      "en": "Salted Herring with Onion and Potato"
-     }
-    },
-    {
-     "id": "app4",
-     "n": "Eggplant Rolls",
-     "p": "340",
-     "sn": {
-      "en": "Eggplant Rolls"
-     }
     },
     {
      "id": "app5",
@@ -143,14 +168,6 @@ window.NM_MENU = {
      "p": "260",
      "sn": {
       "en": "Olives with dried tomatoes"
-     }
-    },
-    {
-     "id": "app7",
-     "n": "Mussels in Cream Sauce",
-     "p": "330",
-     "sn": {
-      "en": "Mussels in Cream Sauce"
      }
     },
     {
@@ -175,14 +192,6 @@ window.NM_MENU = {
      "p": "660",
      "sn": {
       "en": "Red caviar with bread and whipped butter"
-     }
-    },
-    {
-     "id": "app12",
-     "n": "Salted salmon with bread",
-     "p": "330",
-     "sn": {
-      "en": "Salted salmon with bread"
      }
     },
     {
@@ -223,7 +232,16 @@ window.NM_MENU = {
      "sn": {
       "en": "Shuba (herring under the coat)"
      },
-     "img": "pc-shuba"
+     "img": "pc-herring"
+    },
+    {
+     "id": "sal3",
+     "n": "Vinaigrette salad",
+     "p": "160",
+     "sn": {
+      "en": "Vinaigrette salad"
+     },
+     "img": "pc-vinegret"
     },
     {
      "id": "sal4",
@@ -253,6 +271,42 @@ window.NM_MENU = {
      "img": "pc-caprese"
     },
     {
+     "id": "sal9",
+     "n": "Greek salad with homemade cheese",
+     "p": "380",
+     "sn": {
+      "en": "Greek salad with homemade cheese"
+     },
+     "img": "pc-greek"
+    },
+    {
+     "id": "sal12",
+     "n": "Seafood Salad",
+     "p": "290",
+     "sn": {
+      "en": "Seafood Salad"
+     },
+     "img": "pc-seafoodsalad"
+    },
+    {
+     "id": "sal13",
+     "n": "Avocado Salad with Tiger Shrimps",
+     "p": "370",
+     "sn": {
+      "en": "Avocado Salad with Tiger Shrimps"
+     },
+     "img": "pc-avocado"
+    },
+    {
+     "id": "sal14",
+     "n": "Grilled Tuna Salad",
+     "p": "380",
+     "sn": {
+      "en": "Grilled Tuna Salad"
+     },
+     "img": "pc-ponzu"
+    },
+    {
      "id": "sal15",
      "n": "Chicken Caesar salad",
      "p": "260",
@@ -271,28 +325,11 @@ window.NM_MENU = {
      "img": "pc-caesar"
     },
     {
-     "id": "sal17",
-     "n": "Shrimp Caesar salad",
-     "p": "380",
-     "sn": {
-      "en": "Shrimp Caesar salad"
-     },
-     "img": "pc-caesar"
-    },
-    {
      "id": "sal1",
      "n": "Mimosa salad with tuna",
      "p": "190",
      "sn": {
       "en": "Mimosa salad with tuna"
-     }
-    },
-    {
-     "id": "sal3",
-     "n": "Vinaigrette salad",
-     "p": "160",
-     "sn": {
-      "en": "Vinaigrette salad"
      }
     },
     {
@@ -312,14 +349,6 @@ window.NM_MENU = {
      }
     },
     {
-     "id": "sal9",
-     "n": "Greek salad with homemade cheese",
-     "p": "380",
-     "sn": {
-      "en": "Greek salad with homemade cheese"
-     }
-    },
-    {
      "id": "sal10",
      "n": "Vegetable salad with pesto sauce",
      "p": "180",
@@ -336,27 +365,11 @@ window.NM_MENU = {
      }
     },
     {
-     "id": "sal12",
-     "n": "Seafood Salad",
-     "p": "290",
-     "sn": {
-      "en": "Seafood Salad"
-     }
-    },
-    {
-     "id": "sal13",
-     "n": "Avocado Salad with Tiger Shrimps",
-     "p": "370",
-     "sn": {
-      "en": "Avocado Salad with Tiger Shrimps"
-     }
-    },
-    {
-     "id": "sal14",
-     "n": "Grilled Tuna Salad",
+     "id": "sal17",
+     "n": "Shrimp Caesar salad",
      "p": "380",
      "sn": {
-      "en": "Grilled Tuna Salad"
+      "en": "Shrimp Caesar salad"
      }
     }
    ]
@@ -384,6 +397,24 @@ window.NM_MENU = {
      "img": "pc-borscht"
     },
     {
+     "id": "sou3",
+     "n": "Solyanka soup",
+     "p": "340",
+     "sn": {
+      "en": "Solyanka soup"
+     },
+     "img": "pc-solyanka"
+    },
+    {
+     "id": "sou4",
+     "n": "Tom yam with seafood",
+     "p": "380",
+     "sn": {
+      "en": "Tom yam with seafood"
+     },
+     "img": "pc-tomyam"
+    },
+    {
      "id": "sou5",
      "n": "Okroshka on homemade kvass with smoked ham",
      "p": "240",
@@ -398,22 +429,6 @@ window.NM_MENU = {
      "p": "230",
      "sn": {
       "en": "Chicken Noodle Soup"
-     }
-    },
-    {
-     "id": "sou3",
-     "n": "Solyanka soup",
-     "p": "340",
-     "sn": {
-      "en": "Solyanka soup"
-     }
-    },
-    {
-     "id": "sou4",
-     "n": "Tom yam with seafood",
-     "p": "380",
-     "sn": {
-      "en": "Tom yam with seafood"
      }
     }
    ]
@@ -441,15 +456,6 @@ window.NM_MENU = {
      "img": "pc-pelmeni"
     },
     {
-     "id": "dum2",
-     "n": "Ural-Style Pelmeni with Veal & Pork (16 pcs)",
-     "p": "180",
-     "sn": {
-      "en": "Ural-Style Pelmeni with Veal & Pork (16 pcs)"
-     },
-     "img": "pc-pelmeni"
-    },
-    {
      "id": "dum3",
      "n": "Siberian dumplings (16 pcs)",
      "p": "260",
@@ -459,40 +465,22 @@ window.NM_MENU = {
      "img": "pc-pelmeni"
     },
     {
-     "id": "dum4",
-     "n": "Dumplings with Australian lamb (16 pcs)",
-     "p": "280",
+     "id": "dum11",
+     "n": "Vareniki with potatoes & mushrooms (16 pcs)",
+     "p": "160",
      "sn": {
-      "en": "Dumplings with Australian lamb (16 pcs)"
+      "en": "Vareniki with potatoes & mushrooms (16 pcs)"
      },
-     "img": "pc-pelmeni"
+     "img": "pc-vareniki"
     },
     {
-     "id": "dum5",
-     "n": "Dumplings with New Zealand beef (16 pcs)",
-     "p": "280",
+     "id": "dum12",
+     "n": "Vareniki with cottage cheese (16 pcs)",
+     "p": "290",
      "sn": {
-      "en": "Dumplings with New Zealand beef (16 pcs)"
+      "en": "Vareniki with cottage cheese (16 pcs)"
      },
-     "img": "pc-pelmeni"
-    },
-    {
-     "id": "dum6",
-     "n": "Dumplings with shrimp and cheese sauce (16 pcs)",
-     "p": "280",
-     "sn": {
-      "en": "Dumplings with shrimp and cheese sauce (16 pcs)"
-     },
-     "img": "pc-pelmeni"
-    },
-    {
-     "id": "dum7",
-     "n": "Dumplings with wild salmon and red caviar sauce (16 pcs)",
-     "p": "380",
-     "sn": {
-      "en": "Dumplings with wild salmon and red caviar sauce (16 pcs)"
-     },
-     "img": "pc-pelmeni"
+     "img": "pc-vareniki"
     },
     {
      "id": "dum15",
@@ -513,22 +501,44 @@ window.NM_MENU = {
      "img": "pc-khinkali"
     },
     {
-     "id": "dum17",
-     "n": "Khinkali with Australian lamb (1 pc)",
-     "p": "100",
+     "id": "dum2",
+     "n": "Ural-Style Pelmeni with Veal & Pork (16 pcs)",
+     "p": "180",
      "sn": {
-      "en": "Khinkali with Australian lamb (1 pc)"
-     },
-     "img": "pc-khinkali"
+      "en": "Ural-Style Pelmeni with Veal & Pork (16 pcs)"
+     }
     },
     {
-     "id": "dum18",
-     "n": "Khinkali with shrimps, cheese and tomatoes (1 pc)",
-     "p": "110",
+     "id": "dum4",
+     "n": "Dumplings with Australian lamb (16 pcs)",
+     "p": "280",
      "sn": {
-      "en": "Khinkali with shrimps, cheese and tomatoes (1 pc)"
-     },
-     "img": "pc-khinkali"
+      "en": "Dumplings with Australian lamb (16 pcs)"
+     }
+    },
+    {
+     "id": "dum5",
+     "n": "Dumplings with New Zealand beef (16 pcs)",
+     "p": "280",
+     "sn": {
+      "en": "Dumplings with New Zealand beef (16 pcs)"
+     }
+    },
+    {
+     "id": "dum6",
+     "n": "Dumplings with shrimp and cheese sauce (16 pcs)",
+     "p": "280",
+     "sn": {
+      "en": "Dumplings with shrimp and cheese sauce (16 pcs)"
+     }
+    },
+    {
+     "id": "dum7",
+     "n": "Dumplings with wild salmon and red caviar sauce (16 pcs)",
+     "p": "380",
+     "sn": {
+      "en": "Dumplings with wild salmon and red caviar sauce (16 pcs)"
+     }
     },
     {
      "id": "dum8",
@@ -555,22 +565,6 @@ window.NM_MENU = {
      }
     },
     {
-     "id": "dum11",
-     "n": "Vareniki with potatoes & mushrooms (16 pcs)",
-     "p": "160",
-     "sn": {
-      "en": "Vareniki with potatoes & mushrooms (16 pcs)"
-     }
-    },
-    {
-     "id": "dum12",
-     "n": "Vareniki with cottage cheese (16 pcs)",
-     "p": "290",
-     "sn": {
-      "en": "Vareniki with cottage cheese (16 pcs)"
-     }
-    },
-    {
      "id": "dum13",
      "n": "Vareniki with homemade cheese (16 pcs)",
      "p": "270",
@@ -584,6 +578,22 @@ window.NM_MENU = {
      "p": "240",
      "sn": {
       "en": "Dumplings with strawberries and raspberry caramel (16 pcs)"
+     }
+    },
+    {
+     "id": "dum17",
+     "n": "Khinkali with Australian lamb (1 pc)",
+     "p": "100",
+     "sn": {
+      "en": "Khinkali with Australian lamb (1 pc)"
+     }
+    },
+    {
+     "id": "dum18",
+     "n": "Khinkali with shrimps, cheese and tomatoes (1 pc)",
+     "p": "110",
+     "sn": {
+      "en": "Khinkali with shrimps, cheese and tomatoes (1 pc)"
      }
     }
    ]
@@ -620,6 +630,15 @@ window.NM_MENU = {
      "img": "pc-chickencutlet"
     },
     {
+     "id": "main6",
+     "n": "Grilled Beef Tongue",
+     "p": "340",
+     "sn": {
+      "en": "Grilled Beef Tongue"
+     },
+     "img": "pc-tongue"
+    },
+    {
      "id": "main7",
      "n": "Duck leg confit with mashed potatoes and herbs",
      "p": "340",
@@ -636,6 +655,33 @@ window.NM_MENU = {
       "en": "Sous-vide pork ribs in Asian spices with smashed cucumbers"
      },
      "img": "pc-ribs"
+    },
+    {
+     "id": "main12",
+     "n": "Grilled Squid in Creamy Sauce",
+     "p": "230",
+     "sn": {
+      "en": "Grilled Squid in Creamy Sauce"
+     },
+     "img": "pc-squid"
+    },
+    {
+     "id": "main13",
+     "n": "Salmon with mini kale and bisque sauce",
+     "p": "370",
+     "sn": {
+      "en": "Salmon with mini kale and bisque sauce"
+     },
+     "img": "pc-salmon"
+    },
+    {
+     "id": "main15",
+     "n": "Mackerel with mashed potato",
+     "p": "330",
+     "sn": {
+      "en": "Mackerel with mashed potato"
+     },
+     "img": "pc-mackerel"
     },
     {
      "id": "main1",
@@ -659,14 +705,6 @@ window.NM_MENU = {
      "p": "390",
      "sn": {
       "en": "Beef Stroganoff with Mashed Potatoes"
-     }
-    },
-    {
-     "id": "main6",
-     "n": "Grilled Beef Tongue",
-     "p": "340",
-     "sn": {
-      "en": "Grilled Beef Tongue"
      }
     },
     {
@@ -694,35 +732,11 @@ window.NM_MENU = {
      }
     },
     {
-     "id": "main12",
-     "n": "Grilled Squid in Creamy Sauce",
-     "p": "230",
-     "sn": {
-      "en": "Grilled Squid in Creamy Sauce"
-     }
-    },
-    {
-     "id": "main13",
-     "n": "Salmon with mini kale and bisque sauce",
-     "p": "370",
-     "sn": {
-      "en": "Salmon with mini kale and bisque sauce"
-     }
-    },
-    {
      "id": "main14",
      "n": "Tuna back steak with mixed salad",
      "p": "390",
      "sn": {
       "en": "Tuna back steak with mixed salad"
-     }
-    },
-    {
-     "id": "main15",
-     "n": "Mackerel with mashed potato",
-     "p": "330",
-     "sn": {
-      "en": "Mackerel with mashed potato"
      }
     },
     {
@@ -775,6 +789,15 @@ window.NM_MENU = {
      "img": "pc-shashlik"
     },
     {
+     "id": "bbq5",
+     "n": "Cowboy pork steak with baked potatoes in charcoal and salsa sauce",
+     "p": "360",
+     "sn": {
+      "en": "Cowboy pork steak with baked potatoes in charcoal and salsa sauce"
+     },
+     "img": "pc-cowboy"
+    },
+    {
      "id": "bbq6",
      "n": "Rack of Australian lamb with salsa sauce and fresh herbs",
      "p": "1100",
@@ -782,24 +805,6 @@ window.NM_MENU = {
       "en": "Rack of Australian lamb with salsa sauce and fresh herbs"
      },
      "img": "pc-lamb"
-    },
-    {
-     "id": "bbq8",
-     "n": "Beef and pork lula kebab with naan bread",
-     "p": "260",
-     "sn": {
-      "en": "Beef and pork lula kebab with naan bread"
-     },
-     "img": "pc-lula"
-    },
-    {
-     "id": "bbq9",
-     "n": "Lamb lula kebab with naan flatbread",
-     "p": "340",
-     "sn": {
-      "en": "Lamb lula kebab with naan flatbread"
-     },
-     "img": "pc-lula"
     },
     {
      "id": "bbq1",
@@ -818,19 +823,27 @@ window.NM_MENU = {
      }
     },
     {
-     "id": "bbq5",
-     "n": "Cowboy pork steak with baked potatoes in charcoal and salsa sauce",
-     "p": "360",
-     "sn": {
-      "en": "Cowboy pork steak with baked potatoes in charcoal and salsa sauce"
-     }
-    },
-    {
      "id": "bbq7",
      "n": "Grilled Shrimp Kebab",
      "p": "440",
      "sn": {
       "en": "Grilled Shrimp Kebab"
+     }
+    },
+    {
+     "id": "bbq8",
+     "n": "Beef and pork lula kebab with naan bread",
+     "p": "260",
+     "sn": {
+      "en": "Beef and pork lula kebab with naan bread"
+     }
+    },
+    {
+     "id": "bbq9",
+     "n": "Lamb lula kebab with naan flatbread",
+     "p": "340",
+     "sn": {
+      "en": "Lamb lula kebab with naan flatbread"
      }
     }
    ]
@@ -961,8 +974,7 @@ window.NM_MENU = {
      "p": "340",
      "sn": {
       "en": "Fried noodles with shrimp"
-     },
-     "img": "pc-noodles"
+     }
     },
     {
      "id": "wok4",
@@ -970,8 +982,7 @@ window.NM_MENU = {
      "p": "360",
      "sn": {
       "en": "Fried noodles with seafood"
-     },
-     "img": "pc-noodles"
+     }
     },
     {
      "id": "wok5",
@@ -1183,6 +1194,33 @@ window.NM_MENU = {
      "img": "pc-napoleon"
     },
     {
+     "id": "des4",
+     "n": "Chocolate \"Cake pop\"",
+     "p": "140",
+     "sn": {
+      "en": "Chocolate \"Cake pop\""
+     },
+     "img": "pc-cakepop"
+    },
+    {
+     "id": "des5",
+     "n": "Coconut \"Cake pop\"",
+     "p": "140",
+     "sn": {
+      "en": "Coconut \"Cake pop\""
+     },
+     "img": "pc-cakepop"
+    },
+    {
+     "id": "des9",
+     "n": "Seasonal fruit platter",
+     "p": "250",
+     "sn": {
+      "en": "Seasonal fruit platter"
+     },
+     "img": "pc-fruit"
+    },
+    {
      "id": "des2",
      "n": "Ice cream vanilla",
      "p": "150",
@@ -1196,22 +1234,6 @@ window.NM_MENU = {
      "p": "150",
      "sn": {
       "en": "Ice cream chocolate"
-     }
-    },
-    {
-     "id": "des4",
-     "n": "Chocolate \"Cake pop\"",
-     "p": "140",
-     "sn": {
-      "en": "Chocolate \"Cake pop\""
-     }
-    },
-    {
-     "id": "des5",
-     "n": "Coconut \"Cake pop\"",
-     "p": "140",
-     "sn": {
-      "en": "Coconut \"Cake pop\""
      }
     },
     {
@@ -1237,14 +1259,6 @@ window.NM_MENU = {
      "sn": {
       "en": "Dessert \"PINA COLADA\""
      }
-    },
-    {
-     "id": "des9",
-     "n": "Seasonal fruit platter",
-     "p": "250",
-     "sn": {
-      "en": "Seasonal fruit platter"
-     }
     }
    ]
   },
@@ -1262,6 +1276,33 @@ window.NM_MENU = {
    },
    "items": [
     {
+     "id": "tea1",
+     "n": "Black tea",
+     "p": "90",
+     "sn": {
+      "en": "Black tea"
+     },
+     "img": "pc-tea"
+    },
+    {
+     "id": "tea4",
+     "n": "Espresso",
+     "p": "90",
+     "sn": {
+      "en": "Espresso"
+     },
+     "img": "pc-espresso"
+    },
+    {
+     "id": "tea5",
+     "n": "Americano",
+     "p": "90",
+     "sn": {
+      "en": "Americano"
+     },
+     "img": "pc-americano"
+    },
+    {
      "id": "tea6",
      "n": "Hot Cappuccino",
      "p": "120",
@@ -1271,12 +1312,22 @@ window.NM_MENU = {
      "img": "pc-cappuccino"
     },
     {
-     "id": "tea1",
-     "n": "Black tea",
-     "p": "90",
+     "id": "tea7",
+     "n": "Hot Latte",
+     "p": "120",
      "sn": {
-      "en": "Black tea"
-     }
+      "en": "Hot Latte"
+     },
+     "img": "pc-latte"
+    },
+    {
+     "id": "tea8",
+     "n": "Hot cocoa",
+     "p": "120",
+     "sn": {
+      "en": "Hot cocoa"
+     },
+     "img": "pc-cocoa"
     },
     {
      "id": "tea2",
@@ -1292,38 +1343,6 @@ window.NM_MENU = {
      "p": "150",
      "sn": {
       "en": "Ivan tea"
-     }
-    },
-    {
-     "id": "tea4",
-     "n": "Espresso",
-     "p": "90",
-     "sn": {
-      "en": "Espresso"
-     }
-    },
-    {
-     "id": "tea5",
-     "n": "Americano",
-     "p": "90",
-     "sn": {
-      "en": "Americano"
-     }
-    },
-    {
-     "id": "tea7",
-     "n": "Hot Latte",
-     "p": "120",
-     "sn": {
-      "en": "Hot Latte"
-     }
-    },
-    {
-     "id": "tea8",
-     "n": "Hot cocoa",
-     "p": "120",
-     "sn": {
-      "en": "Hot cocoa"
      }
     }
    ]
@@ -1341,6 +1360,33 @@ window.NM_MENU = {
     "es": "Bebidas sin alcohol"
    },
    "items": [
+    {
+     "id": "drk6",
+     "n": "Freshly squeezed juice (apple, orange, pineapple, mango, watermelon, carrot, tomato…)",
+     "p": "150",
+     "sn": {
+      "en": "Freshly squeezed juice (apple, orange, pineapple, mango, watermelon, carrot, tomato…)"
+     },
+     "img": "pc-orange"
+    },
+    {
+     "id": "drk9",
+     "n": "Kiwi Italian soda",
+     "p": "60",
+     "sn": {
+      "en": "Kiwi Italian soda"
+     },
+     "img": "pc-soda"
+    },
+    {
+     "id": "drk10",
+     "n": "Coca-Cola",
+     "p": "50",
+     "sn": {
+      "en": "Coca-Cola"
+     },
+     "img": "pc-cola"
+    },
     {
      "id": "drk1",
      "n": "Still water",
@@ -1382,14 +1428,6 @@ window.NM_MENU = {
      }
     },
     {
-     "id": "drk6",
-     "n": "Freshly squeezed juice (apple, orange, pineapple, mango, watermelon, carrot, tomato…)",
-     "p": "150",
-     "sn": {
-      "en": "Freshly squeezed juice (apple, orange, pineapple, mango, watermelon, carrot, tomato…)"
-     }
-    },
-    {
      "id": "drk7",
      "n": "Mango shake",
      "p": "120",
@@ -1403,22 +1441,6 @@ window.NM_MENU = {
      "p": "120",
      "sn": {
       "en": "Banana shake"
-     }
-    },
-    {
-     "id": "drk9",
-     "n": "Kiwi Italian soda",
-     "p": "60",
-     "sn": {
-      "en": "Kiwi Italian soda"
-     }
-    },
-    {
-     "id": "drk10",
-     "n": "Coca-Cola",
-     "p": "50",
-     "sn": {
-      "en": "Coca-Cola"
      }
     },
     {
@@ -1458,7 +1480,8 @@ window.NM_MENU = {
      "p": "120",
      "sn": {
       "en": "Chang draft beer (500 ml)"
-     }
+     },
+     "img": "pc-beer"
     },
     {
      "id": "bee2",
@@ -1466,7 +1489,8 @@ window.NM_MENU = {
      "p": "130",
      "sn": {
       "en": "Leo draft beer (500 ml)"
-     }
+     },
+     "img": "pc-beer"
     },
     {
      "id": "bee3",

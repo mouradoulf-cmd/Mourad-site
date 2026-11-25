@@ -1,27 +1,54 @@
 # Crédits photos — démo Pelmeni Club (prototype non officiel)
 
-Photos d'illustration libres de droits (Wikimedia Commons), pas celles du restaurant.
+- `hero*.webp` : photo de la terrasse tirée du site du restaurant (pelmeni-club.com, page À propos). À remplacer par leur fichier d'origine.
+- Photos de plats : illustrations libres de droits (Wikimedia Commons), pas celles du restaurant.
 
-- `pc-borscht` · Borscht with bread.jpg · Juerg Vollmer from Zürich, Schweiz · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Borscht_with_bread.jpg
-- `pc-olivier` · Olivier Russian salad made to the Hermitage restaurant recipe.jpg · HOBOPOCC · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Olivier_Russian_salad_made_to_the_Hermitage_restaurant_recipe.jpg
-- `pc-caesar` · Caesar salad (2).jpg · Geoff Peters from Vancouver, BC, Canada · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Caesar_salad_(2).jpg
-- `pc-pelmeni` · Pelmeni.jpg · Bernd Hutschenreuther · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Pelmeni.jpg
-- `pc-khinkali` · Khinkali, Restaurant Aragvi.jpg · Sandra C from Canada · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Khinkali,_Restaurant_Aragvi.jpg
-- `pc-carbonara` · Spaghetti alla Carbonara.jpg · Mattes Boch (Mboch on English Wikipedia) · Public domain · https://commons.wikimedia.org/wiki/File:Spaghetti_alla_Carbonara.jpg
+- `pc-americano` · A cup of Americano in Lano Coffee (Palembang, SS).jpg · Firzafp · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:A_cup_of_Americano_in_Lano_Coffee_(Palembang,_SS).jpg
+- `pc-avocado` · Shrimp and Avocado Salad (13329194373).jpg · Luca Nebuloni from Milan, Italy · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Shrimp_and_Avocado_Salad_(13329194373).jpg
+- `pc-beer` · Beer glass microbrewery Heimatliebe in Duderstadt, Lower Saxony, Germany.jpg · Nemracc · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Beer_glass_microbrewery_Heimatliebe_in_Duderstadt,_Lower_Saxony,_Germany.jpg
 - `pc-bolognese` · Spaghetti Bolognese Lokal K.jpg · Superbass · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Spaghetti_Bolognese_Lokal_K.jpg
-- `pc-napoleon` · Napoleon cake armenia.jpg · Grasshalm · CC0 · https://commons.wikimedia.org/wiki/File:Napoleon_cake_armenia.jpg
-- `pc-shuba` · Shuba - herring under fur coat.jpg · Wendy Harman from Washington DC · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Shuba_-_herring_under_fur_coat.jpg
-- `pc-okroshka` · Kvass-okroshka.jpg · Leonid Dzhepko · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Kvass-okroshka.jpg
-- `pc-lula` · Lula kebab.jpg · Lesya Dolyk · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Lula_kebab.jpg
-- `pc-shashlik` · Shashlik.jpg · Игоревич · Public domain · https://commons.wikimedia.org/wiki/File:Shashlik.jpg
-- `pc-duck` · Duck confit with brown shrimps, 2017 (01).jpg · BexWalton · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Duck_confit_with_brown_shrimps,_2017_(01).jpg
-- `pc-tataki` · Tuna Tataki (6878782829).jpg · Jen Arrr · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Tuna_Tataki_(6878782829).jpg
+- `pc-borscht` · Borscht with bread.jpg · Juerg Vollmer from Zürich, Schweiz · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Borscht_with_bread.jpg
+- `pc-caesar` · Caesar salad (2).jpg · Geoff Peters from Vancouver, BC, Canada · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Caesar_salad_(2).jpg
+- `pc-cakepop` · Cake pops with sprinkles in Adelaide, March 2012.jpg · Taryn · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Cake_pops_with_sprinkles_in_Adelaide,_March_2012.jpg
 - `pc-cappuccino` · Cappuccino at ARS Cafe.jpg · Robert Smith · CC BY 4.0 · https://commons.wikimedia.org/wiki/File:Cappuccino_at_ARS_Cafe.jpg
 - `pc-caprese` · Caprese-1.jpg · Rainer Zenz · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Caprese-1.jpg
-- `pc-chickencutlet` · Chicken Cutlet deep fried.jpg · Mrudit161187 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Chicken_Cutlet_deep_fried.jpg
-- `pc-ribs` · Balinese Roasted Pork Ribs - Iga Babi Panggang Bali.JPG · Gunawan Kartapranata · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Balinese_Roasted_Pork_Ribs_-_Iga_Babi_Panggang_Bali.JPG
-- `pc-lamb` · Pine nut & Rosemary crusted rack of lamb (3542533355).jpg · Dennis Wong from Hong Kong, Hong Kong · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Pine_nut_%26_Rosemary_crusted_rack_of_lamb_(3542533355).jpg
-- `pc-shrimps` · Stir-fried shrimp with garlic and vinegar - panoramio.jpg · Jiaqian AirplaneFan · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:Stir-fried_shrimp_with_garlic_and_vinegar_-_panoramio.jpg
-- `pc-noodles` · Fried noodles of Northeast China.png · LNDDYL · Public domain · https://commons.wikimedia.org/wiki/File:Fried_noodles_of_Northeast_China.png
-- `pc-mashed` · MashedPotatoes.jpg · Renee Comet (photographer) · Public domain · https://commons.wikimedia.org/wiki/File:MashedPotatoes.jpg
+- `pc-carbonara` · Spaghetti carbonara - Trishhhh.jpg · Trishhhh · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Spaghetti_carbonara_-_Trishhhh.jpg
+- `pc-chickencutlet` · Chicken Kiev Flickr.jpg · Bev Sykes from Davis, CA, USA · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Chicken_Kiev_Flickr.jpg
+- `pc-cocoa` · Hot Chocolate in December.jpg · Emna Mizouni · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Hot_Chocolate_in_December.jpg
+- `pc-cola` · Coca-cola 50cl can - Italia.jpg · M0tty · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Coca-cola_50cl_can_-_Italia.jpg
+- `pc-cowboy` · Pork-steak-01.jpg · Daniel Panev · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Pork-steak-01.jpg
+- `pc-duck` · Duck confit with brown shrimps, 2017 (01).jpg · BexWalton · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Duck_confit_with_brown_shrimps,_2017_(01).jpg
+- `pc-eggplant` · Eggplant rolls w salad (6084118160).jpg · Karen and Brad Emerson · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Eggplant_rolls_w_salad_(6084118160).jpg
+- `pc-espresso` · Espresso BW 1.jpg · Berthold Werner · Public domain · https://commons.wikimedia.org/wiki/File:Espresso_BW_1.jpg
 - `pc-fries` · Truffle oil french fries (33024792848).jpg · Tony Webster from Minneapolis, Minnesota, United States · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Truffle_oil_french_fries_(33024792848).jpg
+- `pc-fruit` · Fruit platter with pineapple and pieces of melon on sticks.jpg · PleaseRomaineCalm · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Fruit_platter_with_pineapple_and_pieces_of_melon_on_sticks.jpg
+- `pc-greek` · Greek salad (5178297958).jpg · Geoff Peters from Vancouver, BC, Canada · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Greek_salad_(5178297958).jpg
+- `pc-herring` · Herring with sour cream and onion and fried potato.jpg · Jessica from Hove, United Kingdom · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Herring_with_sour_cream_and_onion_and_fried_potato.jpg
+- `pc-khinkali` · Khinkali, Restaurant Aragvi.jpg · Sandra C from Canada · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Khinkali,_Restaurant_Aragvi.jpg
+- `pc-lamb` · Pine nut & Rosemary crusted rack of lamb (3542533355).jpg · Dennis Wong from Hong Kong, Hong Kong · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Pine_nut_%26_Rosemary_crusted_rack_of_lamb_(3542533355).jpg
+- `pc-latte` · Caffe-Latte-Prague.JPG · Tamorlan · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:Caffe-Latte-Prague.JPG
+- `pc-mackerel` · Grilled mackerel sushi (4691657059).jpg · pelican from Tokyo, Japan · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Grilled_mackerel_sushi_(4691657059).jpg
+- `pc-mashed` · MashedPotatoes.jpg · Renee Comet (photographer) · Public domain · https://commons.wikimedia.org/wiki/File:MashedPotatoes.jpg
+- `pc-mussels` · Red Lobster - Steamed Mussels (16661231357).jpg · Elsie Hui · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Red_Lobster_-_Steamed_Mussels_(16661231357).jpg
+- `pc-napoleon` · Napoleon cake armenia.jpg · Grasshalm · CC0 · https://commons.wikimedia.org/wiki/File:Napoleon_cake_armenia.jpg
+- `pc-noodles` · Yakisoba.jpg · tab2_dawa · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Yakisoba.jpg
+- `pc-okroshka` · Kvass-okroshka.jpg · Leonid Dzhepko · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Kvass-okroshka.jpg
+- `pc-olivier` · Olivier Russian salad made to the Hermitage restaurant recipe.jpg · HOBOPOCC · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Olivier_Russian_salad_made_to_the_Hermitage_restaurant_recipe.jpg
+- `pc-orange` · Orange juice without any fruits.jpg · No machine-readable author provided. Flunse assumed (based on copyright claims). · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Orange_juice_without_any_fruits.jpg
+- `pc-pelmeni` · Pelmeni Russian.jpg · Eugene Kim @ Flickr · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Pelmeni_Russian.jpg
+- `pc-ponzu` · Tuna salad, Milicz.jpg · MOs810 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Tuna_salad,_Milicz.jpg
+- `pc-ribs` · Balinese Roasted Pork Ribs - Iga Babi Panggang Bali.JPG · Gunawan Kartapranata · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Balinese_Roasted_Pork_Ribs_-_Iga_Babi_Panggang_Bali.JPG
+- `pc-salmon` · Grilled salmon.jpg · Petar Milošević · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Grilled_salmon.jpg
+- `pc-salo` · Salo with pepper closeup.jpg · Roland Geider (Ogre) · Public domain · https://commons.wikimedia.org/wiki/File:Salo_with_pepper_closeup.jpg
+- `pc-seafoodsalad` · Seafood salad.jpg · E4024 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Seafood_salad.jpg
+- `pc-shashlik` · Shashlik before Grilling.JPG · Miansari66 · CC0 · https://commons.wikimedia.org/wiki/File:Shashlik_before_Grilling.JPG
+- `pc-shrimps` · Grilled Garlic butter prawns with spicy prawn heads.jpg · Dixitkedar · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Grilled_Garlic_butter_prawns_with_spicy_prawn_heads.jpg
+- `pc-soda` · Italian Lemon Soda.jpg · JIP · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Italian_Lemon_Soda.jpg
+- `pc-solyanka` · Solyanka Soup, Riga, Latvia.jpg · Ken Eckert · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Solyanka_Soup,_Riga,_Latvia.jpg
+- `pc-squid` · Grilled Fish and Squid for Sale - Kep - Cambodia.JPG · Adam Jones Adam63 · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Grilled_Fish_and_Squid_for_Sale_-_Kep_-_Cambodia.JPG
+- `pc-tataki` · Tuna Tataki (6878782829).jpg · Jen Arrr · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Tuna_Tataki_(6878782829).jpg
+- `pc-tea` · Cup of black tea.JPG · AntanO · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Cup_of_black_tea.JPG
+- `pc-tomyam` · Tom yum goong-01.jpg · kisocci · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Tom_yum_goong-01.jpg
+- `pc-tongue` · BEEF TONGUE - LANGUE DE BŒUF.JPG · Béotien lambda · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:BEEF_TONGUE_-_LANGUE_DE_B%C5%92UF.JPG
+- `pc-vareniki` · Varenyky with Potatoes - 2026 -03.jpg · DemieK07 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Varenyky_with_Potatoes_-_2026_-03.jpg
+- `pc-vinegret` · Vinegret.jpg · Loyna · CC BY-SA 2.5 · https://commons.wikimedia.org/wiki/File:Vinegret.jpg

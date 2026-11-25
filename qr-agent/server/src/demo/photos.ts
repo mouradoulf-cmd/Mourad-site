@@ -30,11 +30,11 @@ async function download(title: string, width: number): Promise<{ bytes: Uint8Arr
   const r = await politeBinary(u); return r && r.bytes.length > 8_000 && r.bytes.length < 4_000_000 ? r : null;
 }
 import { politeBinary } from "./photos-http.js";
-export async function findDishPhoto(dish: string): Promise<Found | null> {
+export async function findDishPhoto(dish: string, width = 1000): Promise<Found | null> {
   for (const c of await search(dish)) {
     if (BAD_TITLE.test(c.title) || !titleMatches(c.title, dish)) continue;
     const m = await meta(c.title); if (!OK_LICENSE.test(m.license)) continue;
-    const d = await download(c.title, 1000); if (d) return { ...d, title: c.title.replace(/^File:/i, ""), author: m.author, license: m.license, url: m.url };
+    const d = await download(c.title, width); if (d) return { ...d, title: c.title.replace(/^File:/i, ""), author: m.author, license: m.license, url: m.url };
   }
   return null;
 }

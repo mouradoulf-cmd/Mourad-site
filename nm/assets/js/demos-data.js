@@ -40,7 +40,7 @@ window.NM_LINKS = [
     { name: "Menu QR · Steak Dek Naew", icon: "🥩", path: "menus/steak-dek-naew/", note: "Premier client réel : 52 plats, 9 langues, prix lus sur son menu papier" }
   ] },
   { space: "site", pane: "demos", group: "Exemples de menus QR à montrer", items: [
-    { name: "Démo prospect · Pelmeni Club (Pattaya, prototype non officiel)", icon: "🥟", path: "menus/pelmeni-club-demo/", note: "Fait depuis leur carte publique (150 plats), à envoyer par WhatsApp/LINE. Photos libres de droits = illustrations. Plats/prix à confirmer par eux" },
+    { name: "Démo prospect · Pelmeni Club (Pattaya, prototype non officiel)", icon: "🥟", path: "menus/pelmeni-club-demo/", note: "Fait depuis leur carte publique (150 plats) avec LEUR photo de terrasse en héros, design Atelier + 3D. À envoyer par WhatsApp/LINE. Photos de plats libres de droits = illustrations ; plats/prix à confirmer par eux" },
     { name: "Menu QR · Tahiti Beach Club (à montrer au restaurant)", icon: "🏖️", path: "menus/tahiti-beach-club/", note: "Leur menu à eux : 156 plats et boissons, 20 langues, leur plage en héros, photos d'illustration (mention en bas). Panier + écran serveur" },
     { name: "Menu QR · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Photos, piment, allergies, « montrer au serveur » en thaï" },
     { name: "Menu QR · Mae Lek en thaï", icon: "🇹🇭", path: "menus/mae-lek/", note: "9 langues (dont 中文 / Русский / 한국어, hindi, arabe, allemand), piment, écran serveur en thaï" },
