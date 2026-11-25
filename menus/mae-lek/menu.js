@@ -414,6 +414,7 @@ window.NM_MENU = {
  },
  "plus": {
   "depth": true,
+  "atelier": true,
   "styles": true,
   "hero3d": true,
   "featured": [

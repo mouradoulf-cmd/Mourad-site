@@ -1,5 +1,6 @@
 /* NM Studio · QR menu "Depth" layer — see menu-plus-depth.js */
 .d3 .dish__ph{
+  position:relative;z-index:2; /* the photo frame forms a stacking context (3D): keep it, and its add/stepper buttons, above the card-wide open-sheet button */
   transform:perspective(1100px) rotateX(calc(var(--rx,0deg) + var(--tx,0deg))) rotateY(var(--ry,0deg));
   transform-origin:50% 50%;transition:transform .5s cubic-bezier(.22,1,.36,1),translate .9s cubic-bezier(.22,1,.36,1),scale .9s cubic-bezier(.22,1,.36,1),opacity .7s ease,filter .9s ease;
   will-change:transform}

@@ -33,6 +33,8 @@
   var fine = window.matchMedia && matchMedia("(hover:hover) and (pointer:fine)").matches;
   function bind(ph) {
     if (ph.__d3) return; ph.__d3 = 1; io.observe(ph);
+    // the frame sits above the card-wide "open the dish" button, so a tap on the picture itself forwards to it
+    ph.addEventListener("click", function (e) { if (e.target.closest(".pl-ctl")) return; var o = ph.closest(".dish") && ph.closest(".dish").querySelector(".dish__o"); if (o) o.click(); });
     if (!fine) return;
     var g = document.createElement("i"); g.className = "d3-glare"; g.setAttribute("aria-hidden", "true"); ph.appendChild(g);
     ph.addEventListener("pointermove", function (e) {

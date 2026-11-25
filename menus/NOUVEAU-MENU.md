@@ -32,3 +32,10 @@ Prices stay in the menu's own currency (no conversion). Details: `menus/PLUS.md`
 `assets/menu-plus-depth.js/.css` : chaque photo de plat sort de la page en perspective à sa première apparition, le cadre bascule comme l'intérieur d'un tambour
 pendant le défilement et l'image glisse derrière (fenêtre parallaxe) ; souris : le cadre suit le curseur avec un reflet. Transform/opacity seulement, coupé si « réduire les animations » ou téléphone faible.
 Menus HD (`photoHD`) : les cartes utilisent les fichiers `-w-1280/-w-2048` (nets sur écrans 3x), pas le petit `-m`.
+
+## Option « atelier » (composition éditoriale) — `plus.atelier: true`, pour les menus aux photos HD (`photoHD`: fichiers `-c-800/-c-1200` 4:5)
+`assets/menu-plus-atelier.css/js` : chaque plat = une « planche » (photo 4:5 plein cadre, nom en grand posé sur l'image, prix en cachet en haut à droite, piment en flammes,
+bouton + rond avec halo et étincelles quand on ajoute), rythme qui change tous les 3 plats (plein cadre · carré décalé · fenêtre en arche), 3 colonnes décalées sur grand écran,
+paysage = 2 colonnes, vue grille = mur de petites planches. Gros numéro de section en contour + titre en italique Fraunces (axes SOFT/WONK : charger la police avec
+`Fraunces:ital,opsz,wght,SOFT,WONK@…`). Nécessite `depth` (la photo doit rester au-dessus du bouton « ouvrir le plat » : `z-index:2` + tap relayé en JS).
+Vitrine = Mae Lek. Les menus aux photos non-HD (FG, Tahiti) gardent les cartes classiques : leurs fichiers `-m` (720 px) seraient trop mous recadrés en 4:5.

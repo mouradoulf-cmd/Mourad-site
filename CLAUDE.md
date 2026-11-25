@@ -401,6 +401,8 @@ Mourad a validé le menu de **Fisherman's Garden** (`menus/fishermans-garden/`, 
   avant de montrer : tester téléphone + ordinateur en fr/th/ar, zéro erreur, zéro 404, zéro débordement, onglet = catégorie à l'écran.
 - Piège connu : l'indicateur des onglets doit être le DERNIER enfant du `<nav id="tabs">` (le moteur adresse les boutons par index).
 
+- **Atelier (2026-11-25)** : `plus.atelier:true` = composition éditoriale (planches 4:5, nom sur la photo, prix en cachet, arche tous les 3 plats, 3D `depth`) — vitrine : Mae Lek (`menus/NOUVEAU-MENU.md`).
+
 ## Photos : CHAQUE plat a sa photo, belle (exigence de Mourad, 2026-11-24)
 
 Tout menu QR livré doit avoir une photo sur **chaque** plat/boisson, de qualité « magazine » — jamais des cartes sans photo.
