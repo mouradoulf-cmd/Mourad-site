@@ -1,0 +1,16 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+body { @apply bg-bg text-ink font-sans antialiased; background-image: radial-gradient(1200px 500px at 85% -10%, rgba(139,123,255,.13), transparent 60%), radial-gradient(900px 400px at -10% 110%, rgba(62,224,176,.08), transparent 60%); background-attachment: fixed; }
+::selection { background: rgba(139,123,255,.4); }
+.card { @apply rounded-2xl border border-line bg-panel/80 backdrop-blur; box-shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 20px 40px -30px rgba(0,0,0,.9); }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition active:scale-[.97] disabled:opacity-40 disabled:pointer-events-none; min-height: 40px; }
+.btn-primary { @apply bg-accent text-[#0b0820] hover:brightness-110 shadow-glow; }
+.btn-ghost { @apply border border-line bg-raise/60 text-ink hover:bg-raise; }
+.btn-danger { @apply border border-rose/40 text-rose hover:bg-rose/10; }
+.input { @apply w-full rounded-xl border border-line bg-raise/70 px-3 py-2 text-sm text-ink placeholder:text-mute/70 outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20; min-height: 40px; }
+.label { @apply mb-1 block text-[11px] font-semibold uppercase tracking-[.12em] text-mute; }
+.mono { @apply font-mono; font-variant-numeric: tabular-nums; }
+.scroll-thin::-webkit-scrollbar { height: 8px; width: 8px; } .scroll-thin::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 8px; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } } .rise { animation: rise .5s cubic-bezier(.22,1,.36,1) both; }
+@media (prefers-reduced-motion: reduce) { .rise { animation: none; } }

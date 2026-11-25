@@ -1,0 +1,125 @@
+/* NM Studio · QR menu "Atelier" layer — editorial, photograph-first dish composition. Opt-in: NM_MENU.plus.atelier = true (needs the Cards layer).
+ * Large view: one cinematic plate per dish (4:5 photograph, name set over the picture, price as a stamp, round add button),
+ * with a rhythm that changes every third dish (full · square, offset · arch window). Desktop: staggered 3-column composition. */
+html.pl-atelier{--at-r:32px;--at-glass:color-mix(in srgb,var(--bg) 52%,transparent)}
+/* ───────── header + navigation: a glass dock with a glowing indicator ───────── */
+html.pl-atelier .hd{background:color-mix(in srgb,var(--bg) 66%,transparent);-webkit-backdrop-filter:blur(24px) saturate(1.5);backdrop-filter:blur(24px) saturate(1.5)}
+html.pl-atelier .tabs button{min-height:48px;font-weight:500;letter-spacing:.012em}
+html.pl-atelier .tabs button:active{transform:scale(.96)}
+html.pl-atelier .pl-tabimg{width:36px;height:36px;box-shadow:0 0 0 1.5px color-mix(in srgb,var(--ink) 18%,transparent)}
+html.pl-atelier .pl-ind{height:48px;box-shadow:0 8px 28px -6px color-mix(in srgb,var(--accent) 70%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+html.pl-atelier .tabs button{padding-right:18px}
+/* ───────── section headings ───────── */
+html.pl-atelier .ch__h{position:relative;padding-top:clamp(34px,9vw,60px)}
+html.pl-atelier .ch__no{display:flex;align-items:baseline;gap:12px;margin:0;font:500 .7rem/1 var(--body);letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+html.pl-atelier .ch__no b{font:300 clamp(4.6rem,26vw,9rem)/.78 var(--display);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--accent) 60%,transparent);font-variation-settings:"SOFT" 100,"WONK" 1}
+html.pl-atelier .ch__t{margin-top:-.18em;font:400 clamp(2.7rem,13vw,4.6rem)/.98 var(--display);font-style:italic;letter-spacing:-.03em;font-variation-settings:"SOFT" 100,"WONK" 1;text-wrap:balance}
+html.pl-atelier .ch__o{margin-top:10px;font-size:1rem;letter-spacing:.14em;opacity:.7}
+/* ───────── the plate (large view) ───────── */
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list{gap:clamp(44px,12vw,70px) 0;margin-top:34px}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph{
+  display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;padding:0;border:0;border-radius:0;background:none;box-shadow:none;position:relative}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:hover{box-shadow:none}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .dish.has-ph .dish__txt{display:contents}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph .dish__ph{grid-area:1/1;aspect-ratio:4/5;border-radius:var(--at-r);box-shadow:0 50px 60px -40px rgba(0,0,0,.95),0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)}
+html.pl-atelier .dish__ph::after{height:68%;background:linear-gradient(180deg,transparent 0,rgba(6,4,3,.28) 38%,rgba(6,4,3,.9))}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .dish.has-ph .dish__n{grid-area:1/1;align-self:end;z-index:3;padding:0 92px 22px 22px;pointer-events:none;color:#fff;
+  font:400 clamp(1.9rem,8.4vw,2.5rem)/1.02 var(--display);letter-spacing:-.025em;font-variation-settings:"SOFT" 80,"WONK" 1;text-shadow:0 2px 28px rgba(0,0,0,.55);text-wrap:balance}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .dish.has-ph .dish__n small{display:block;margin-top:9px;font:400 .8rem/1.3 var(--body);letter-spacing:.09em;color:rgba(255,255,255,.74);text-shadow:none}
+/* price: a stamp on the upper right corner */
+html.pl-atelier.pl-cards:not(.pl-v-grid) .dish__ph .dish__p{top:16px;right:16px;bottom:auto;left:auto;padding:10px 16px 9px;border-radius:99px;background:var(--at-glass);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.22);font:500 clamp(1.35rem,6vw,1.65rem)/1 var(--display);color:#fff;font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.01em;box-shadow:0 12px 30px -12px rgba(0,0,0,.7)}
+html.pl-atelier .dish__ph .dish__p b{font:600 .62em/1 var(--body);margin-left:3px;letter-spacing:.06em;vertical-align:.32em;color:var(--accent)}
+html[dir=rtl].pl-atelier.pl-cards:not(.pl-v-grid) .dish__ph .dish__p{right:auto;left:16px}
+/* spice: glass pill with small flames, upper left */
+html.pl-atelier.pl-cards:not(.pl-v-grid) .dish.has-ph .dish__m{grid-area:1/1;align-self:start;justify-self:start;z-index:3;margin:16px;pointer-events:none}
+html.pl-atelier .dish__m:empty{display:none}
+html.pl-atelier .chip.hot{display:inline-flex;align-items:center;gap:3px;height:34px;padding:0 12px;border-radius:99px;background:var(--at-glass);border:1px solid rgba(255,255,255,.2);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#fff}
+.at-chili{width:15px;height:15px;fill:rgba(255,255,255,.28)}
+.at-chili.on{fill:#ff5a3c;filter:drop-shadow(0 0 5px rgba(255,90,60,.7))}
+/* add: a round button with a halo (the text label is for the grid-less first view) */
+html.pl-atelier.pl-cards:not(.pl-v-grid) .pl-ctl{right:16px;bottom:16px}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .pl-first{width:58px;height:58px;padding:0;justify-content:center;box-shadow:0 14px 34px -8px color-mix(in srgb,var(--accent) 75%,transparent),0 0 0 6px color-mix(in srgb,var(--accent) 22%,transparent)}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .pl-first span{display:none}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .pl-first svg{width:22px;height:22px}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .pl-step{height:54px;box-shadow:0 14px 34px -10px rgba(0,0,0,.7)}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .pl-step button{width:50px;height:54px}
+html[dir=rtl].pl-atelier.pl-cards:not(.pl-v-grid) .pl-ctl{right:auto;left:16px}
+/* description: set like a caption under the plate */
+html.pl-atelier.pl-cards:not(.pl-v-grid) .dish.has-ph .dish__d{grid-area:2/1;padding:20px 8px 0;font:300 1.02rem/1.62 var(--body);color:color-mix(in srgb,var(--ink) 78%,transparent);max-width:34em;-webkit-line-clamp:3}
+/* rhythm: every third plate changes shape */
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n+2){width:90%;justify-self:end}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n+2) .dish__ph{aspect-ratio:1/1}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n){width:84%;justify-self:center}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__ph{aspect-ratio:3/4;border-radius:999px 999px var(--at-r) var(--at-r)}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__p{top:calc(10% + 6px);right:auto;left:50%;transform:translateX(-50%)}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__m{justify-self:center;margin-top:calc(10% + 66px)}
+html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__n{padding:0 84px 24px 30px}
+html.pl-atelier .dish.off .dish__n,html.pl-atelier .dish.off .dish__d{opacity:.35;filter:grayscale(1)}
+/* dishes without a photograph keep a quiet typographic line */
+html.pl-atelier .dish:not(.has-ph){border-radius:22px}
+/* ───────── desktop + tablet: staggered editorial columns ───────── */
+@media (min-width:760px){
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list{gap:72px 34px;align-items:start}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n+2),html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n){width:100%}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph .dish__ph,html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n+2) .dish__ph{aspect-ratio:4/5}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__ph{aspect-ratio:4/5}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n+2){margin-top:64px}
+  html.pl-atelier .ch__t{font-size:clamp(3.6rem,6vw,5.6rem)}
+  html.pl-atelier .ch__no b{font-size:clamp(7rem,13vw,12rem)}
+}
+@media (min-width:760px) and (max-width:1179px){
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n+2){margin-top:0}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(2n){margin-top:64px}
+}
+/* ───────── grid view (2 columns): offset columns, softer tray ───────── */
+html.pl-atelier.pl-cards.pl-v-grid .ch .list{gap:14px;align-items:start}
+html.pl-atelier.pl-cards.pl-v-grid .dish{border-radius:calc(var(--at-r) - 2px);padding:5px}
+html.pl-atelier.pl-cards.pl-v-grid .dish__ph{border-radius:calc(var(--at-r) - 6px)}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph:nth-child(even):not(:first-child){margin-top:30px}
+html.pl-atelier.pl-cards.pl-v-grid .dish__ph .dish__p{font-family:var(--display);font-weight:500}
+html.pl-atelier.pl-cards.pl-v-grid .pl-first{box-shadow:0 10px 24px -8px color-mix(in srgb,var(--accent) 75%,transparent)}
+/* ───────── add feedback: halo + sparks ───────── */
+.at-spark{position:fixed;left:0;top:0;z-index:95;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--accent);pointer-events:none;will-change:transform,opacity}
+.at-ring{position:fixed;left:0;top:0;z-index:94;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid var(--accent);pointer-events:none;will-change:transform,opacity}
+html.pl-atelier .dish__ph.at-pop{animation:atPop .6s cubic-bezier(.32,.72,0,1)}
+@keyframes atPop{0%{filter:none}30%{filter:brightness(1.18) saturate(1.2)}100%{filter:none}}
+/* ───────── entrance: the photograph opens like an iris, the name rises ───────── */
+html.d3.pl-atelier .dish__ph:not(.d3-in){filter:none;clip-path:inset(9% 7% round 44px)}
+html.d3.pl-atelier .dish__ph.d3-in{clip-path:inset(0 round var(--at-r))}
+html.d3.pl-atelier .dish__ph{transition:transform .5s cubic-bezier(.22,1,.36,1),translate 1s cubic-bezier(.22,1,.36,1),scale 1s cubic-bezier(.22,1,.36,1),opacity .8s ease,clip-path 1.1s cubic-bezier(.22,1,.36,1)}
+@supports selector(:has(*)){
+  html.d3.pl-atelier .dish:has(.dish__ph:not(.d3-in)) .dish__n,html.d3.pl-atelier .dish:has(.dish__ph:not(.d3-in)) .dish__d{opacity:0;translate:0 22px}
+  html.d3.pl-atelier .dish__n,html.d3.pl-atelier .dish__d{transition:opacity .9s ease .25s,translate 1s cubic-bezier(.22,1,.36,1) .25s}
+}
+@media (prefers-reduced-motion:reduce){html.d3.pl-atelier .dish__ph{clip-path:none!important}.at-spark,.at-ring{display:none}}
+/* wider stage on large screens so the plates keep their presence */
+@media (min-width:1180px){html.pl-atelier.pl-cards .ch .wrap{width:min(1320px,100%)}html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list{gap:84px 44px}}
+/* the stepper is wider than the round add button: the name steps aside while a dish is in the selection */
+@supports selector(:has(*)){
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .dish.has-ph:has(.pl-ctl:not([data-q="0"])) .dish__n{padding-right:142px}
+}
+/* ───────── grid view = a wall of small plates: tall photographs, the name set over each picture ───────── */
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph .dish__txt{display:contents}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph .dish__ph{grid-area:1/1;aspect-ratio:3/4;border-radius:var(--at-r);box-shadow:0 36px 44px -30px rgba(0,0,0,.95),0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph .dish__n{grid-area:1/1;align-self:end;z-index:3;padding:0 58px 14px 14px;pointer-events:none;color:#fff;font:400 1.14rem/1.08 var(--display);letter-spacing:-.015em;font-variation-settings:"SOFT" 80,"WONK" 1;text-shadow:0 2px 20px rgba(0,0,0,.6);text-wrap:balance}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph .dish__n small,html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph .dish__d,html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph .dish__m{display:none}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph .dish__ph .dish__p{top:10px;left:10px;bottom:auto;padding:7px 12px 6px;font:500 1.05rem/1 var(--display);color:#fff;background:var(--at-glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.2)}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child{grid-column:1/-1}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__ph{aspect-ratio:4/3}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__n{font-size:clamp(1.7rem,7.4vw,2.2rem);padding:0 92px 18px 18px;display:block}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__n small{display:block;margin-top:6px;font:400 .78rem/1.3 var(--body);letter-spacing:.09em;color:rgba(255,255,255,.74);text-shadow:none}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .dish__ph .dish__p{top:14px;left:14px;font-size:1.3rem;padding:9px 15px 8px}
+html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child .pl-first{width:54px;height:54px}
+@media (min-width:760px){html.pl-atelier.pl-cards.pl-v-grid .ch .list .dish.has-ph:first-child{grid-column:span 2}}
+html.pl-atelier.pl-cards.pl-v-grid .dish.off .dish__n{opacity:.35}
+/* phone held sideways: short viewport → two columns of 4:3 plates instead of one huge tall one */
+@media (orientation:landscape) and (max-height:520px){
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 22px}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph,html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n),html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n+2){width:100%;margin-top:0}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph .dish__ph,html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__ph,html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n+2) .dish__ph{aspect-ratio:4/3;border-radius:var(--at-r)}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__p{top:16px;right:16px;left:auto;transform:none}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__m{justify-self:start;margin-top:16px}
+  html.pl-atelier.pl-cards:not(.pl-v-grid) .dish.has-ph .dish__n{font-size:1.6rem}
+}

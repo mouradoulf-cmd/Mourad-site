@@ -1,0 +1,35 @@
+{
+  "name": "qr-agent-server",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.2.17",
+    "@fastify/cookie": "^11.0.1",
+    "@fastify/static": "^8.0.3",
+    "@types/mailparser": "^3.9.0",
+    "cheerio": "^1.0.0",
+    "fastify": "^5.2.0",
+    "imapflow": "^1.0.172",
+    "mailparser": "^3.15.0",
+    "nodemailer": "^6.9.16",
+    "pg": "^8.13.1",
+    "robots-parser": "^3.0.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/nodemailer": "^6.4.17",
+    "@types/pg": "^8.11.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

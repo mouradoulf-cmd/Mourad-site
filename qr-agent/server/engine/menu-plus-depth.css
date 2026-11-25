@@ -1,0 +1,14 @@
+/* NM Studio · QR menu "Depth" layer — see menu-plus-depth.js */
+.d3 .dish__ph{
+  position:relative;z-index:2; /* the photo frame forms a stacking context (3D): keep it, and its add/stepper buttons, above the card-wide open-sheet button */
+  transform:perspective(1100px) rotateX(calc(var(--rx,0deg) + var(--tx,0deg))) rotateY(var(--ry,0deg));
+  transform-origin:50% 50%;transition:transform .5s cubic-bezier(.22,1,.36,1),translate .9s cubic-bezier(.22,1,.36,1),scale .9s cubic-bezier(.22,1,.36,1),opacity .7s ease,filter .9s ease;
+  will-change:transform}
+.d3 .dish__ph:not(.d3-in){opacity:0;translate:0 34px;scale:.94;filter:blur(7px)}
+.d3 .dish__ph.d3-in{opacity:1;translate:0 0;scale:1;filter:none}
+.d3 .dish__ph.d3-hot{transition:transform .12s linear,translate .9s cubic-bezier(.22,1,.36,1),scale .9s cubic-bezier(.22,1,.36,1)}
+.d3 .dish__ph>img{scale:1.16;translate:0 var(--py,0%);transition:translate .35s cubic-bezier(.22,1,.36,1)}
+.d3-glare{position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .35s;
+  background:radial-gradient(520px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.22),transparent 55%);mix-blend-mode:soft-light}
+.d3 .dish__ph.d3-hot .d3-glare{opacity:1}
+@media (prefers-reduced-motion:reduce){.d3 .dish__ph,.d3 .dish__ph>img{transform:none!important;translate:none!important;scale:1!important;opacity:1!important;filter:none!important}}

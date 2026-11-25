@@ -1,0 +1,24 @@
+{
+  "name": "qr-business-ai-agent",
+  "private": true,
+  "version": "0.1.0",
+  "description": "QR BUSINESS AI AGENT \u2014 prospection, d\u00e9mos de menus QR, emails supervis\u00e9s, CRM et dashboard",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev:server": "npm -w server run dev",
+    "dev:web": "npm -w web run dev",
+    "build": "npm -w web run build && npm -w server run build",
+    "start": "npm -w server run start",
+    "test": "npm -w server test",
+    "sync-engine": "node scripts/sync-engine.mjs",
+    "hash-password": "node server/scripts-hash.mjs",
+    "backup": "bash scripts/backup.sh",
+    "typecheck": "npm -w server run typecheck && npm -w web run build"
+  }
+}
