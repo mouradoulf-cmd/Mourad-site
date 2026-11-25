@@ -75,7 +75,7 @@
 
   /* ───────────── 2 · WebGL opening photo ───────────── */
   function hero3d() {
-    if (!P.hero3d || reduce) return;
+    if (!P.hero3d || reduce || qs.get("gl") === "0" || (navigator.deviceMemory && navigator.deviceMemory <= 2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)) return;
     var ph = root.querySelector(".open__ph"); if (!ph || ph.querySelector("canvas")) return;
     var im = ph.querySelector("img"); if (!im) return;
     var cv = document.createElement("canvas"); cv.className = "pl-gl"; cv.setAttribute("aria-hidden", "true");

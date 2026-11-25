@@ -33,6 +33,7 @@ window.NM_LINKS = [
     { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "Pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" }
   ] },
   { space: "site", pane: "clients", group: "Les sites de mes clients", items: [
+    { name: "Page de vente · Menu QR premium (à envoyer aux restaurants)", icon: "✨", path: "menus/showcase/", note: "Landing de démonstration : entrée animée, vrai menu en direct dans un téléphone 3D, ambiances, QR à scanner, bouton WhatsApp" },
     { name: "Menu QR · Tahiti Beach Club (à montrer au restaurant)", icon: "🏖️", path: "menus/tahiti-beach-club/", note: "Leur menu à eux : 156 plats et boissons, 20 langues, leur plage en héros, photos d'illustration (mention en bas). Panier + écran serveur" },
     { name: "Site web · Steak Dek Naew", icon: "🥩", path: "demos/steak-dek-naew/", note: "Le site du restaurant : héros photo + assiettes, section menu QR avec téléphone. TH/EN/FR" },
     { name: "Menu QR · Fisherman's Garden (démo prospect)", icon: "🍹", path: "menus/fishermans-garden/", note: "Carte complète (200 articles : plats + boissons, 9 langues) lue sur 22 photos du menu papier. À montrer en direct au patron" },

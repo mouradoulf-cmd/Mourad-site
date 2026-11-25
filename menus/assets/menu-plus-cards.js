@@ -31,9 +31,11 @@
   // the blurred placeholder behind each photograph is only fetched when its card is about to be seen
   var lqIO = "IntersectionObserver" in window ? new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.style.setProperty("--lq", e.target.__lq); lqIO.unobserve(e.target); } }); }, { rootMargin: "700px 0px" }) : null;
   function lqObserve(ph) { if (lqIO) lqIO.observe(ph); else ph.style.setProperty("--lq", ph.__lq); }
+  function dname(id) { var d = byId[id]; return d ? ((d.sn && d.sn[L()]) || d.n || "") : ""; }
   function ctl(id) {
-    return '<div class="pl-ctl" data-id="' + esc(id) + '" data-q="0"><button type="button" class="pl-first" data-plq="1">' + ICO.plus + "<span>" + esc(ui("addshort")) + '</span></button>' +
-      '<div class="pl-step"><button type="button" class="pl-dec" data-plq="-1" aria-label="' + esc(ui("less")) + '">−</button><span class="pl-q" aria-live="polite">0</span><button type="button" class="pl-inc" data-plq="1" aria-label="' + esc(ui("addshort")) + '">+</button></div></div>';
+    var nm = dname(id), add = esc(ui("addshort") + (nm ? " — " + nm : "")), less = esc(ui("less") + (nm ? " — " + nm : ""));
+    return '<div class="pl-ctl" data-id="' + esc(id) + '" data-q="0"><button type="button" class="pl-first" data-plq="1" aria-label="' + add + '">' + ICO.plus + "<span>" + esc(ui("addshort")) + '</span></button>' +
+      '<div class="pl-step"><button type="button" class="pl-dec" data-plq="-1" aria-label="' + less + '">−</button><span class="pl-q" aria-live="polite">0</span><button type="button" class="pl-inc" data-plq="1" aria-label="' + add + '">+</button></div></div>';
   }
   function dress(main) {
     main.querySelectorAll(".dish").forEach(function (li) {

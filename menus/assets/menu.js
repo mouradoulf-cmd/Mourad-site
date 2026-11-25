@@ -253,8 +253,8 @@
     h.push("</main>");
     // selection bar, sheets, waiter
     h.push('<div class="bag" id="bag"><span class="bag__t"><b id="bagn"></b><span id="bagp"></span></span><button class="bag__go" type="button" data-open="sel">' + esc(t("view")) + " " + ICO.arrow.replace("<svg", '<svg width="15" height="15"') + "</button></div>");
-    h.push('<div class="scrim" id="scrim"></div><div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="sheet__grab" id="grab"></div><button class="sheet__x" type="button" data-close aria-label="' + esc(t("back")) + '">' + ICO.x + '</button><div class="sheet__body" id="sb"></div></div>');
-    h.push('<div class="waiter" id="waiter" role="dialog" aria-modal="true"><div class="waiter__in" id="wi"></div><div class="waiter__f"><button class="cta ghost" type="button" data-turn aria-pressed="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"/></svg><span>' + esc(t("turn")) + '</span></button><button class="cta" type="button" data-wclose>' + esc(t("back")) + "</button></div></div>");
+    h.push('<div class="scrim" id="scrim"></div><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="' + esc(M.name) + '"><div class="sheet__grab" id="grab"></div><button class="sheet__x" type="button" data-close aria-label="' + esc(t("back")) + '">' + ICO.x + '</button><div class="sheet__body" id="sb"></div></div>');
+    h.push('<div class="waiter" id="waiter" role="dialog" aria-modal="true" aria-label="' + esc(M.name) + '"><div class="waiter__in" id="wi"></div><div class="waiter__f"><button class="cta ghost" type="button" data-turn aria-pressed="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"/></svg><span>' + esc(t("turn")) + '</span></button><button class="cta" type="button" data-wclose>' + esc(t("back")) + "</button></div></div>");
     h.push('<div class="toast" id="toast" role="status"></div>');
     root.innerHTML = h.join("");
     wire();
@@ -311,6 +311,11 @@
       var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
       rv.forEach(function (el) { io.observe(el); });
       setTimeout(function () { rv.forEach(function (el) { if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); }); }, 1200);
+      // safety net: if IntersectionObserver callbacks are late or never delivered (embedded / transformed frames, throttled tabs), scrolling and a few timed checks reveal what is on screen
+      var left = function () { return root.querySelectorAll(".rv:not(.in)"); }, ticking = false;
+      var sweep = function () { ticking = false; left().forEach(function (el) { if (el.getBoundingClientRect().top < innerHeight * 0.92) el.classList.add("in"); }); };
+      addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(sweep); } }, { passive: true });
+      [1800, 3200, 6000].forEach(function (ms) { setTimeout(sweep, ms); });
     }
     // carousel dots
     root.querySelectorAll("[data-feat]").forEach(function (f) {
@@ -499,14 +504,20 @@
   }
 
   var preview = new URLSearchParams(location.search).get("apercu");
+  var subP = fetch("../abonnements.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  function verdict(data) { var sub = data && data.restaurants && data.restaurants.filter(function (r) { return r.slug === M.slug; })[0]; return preview === "pause" || (data && status(sub, data.graceDays) === "pause"); }
+  // The first screen no longer waits for the subscription file on a slow network: it waits at most 700 ms, and if the file arrives later and says "paused", the paused screen replaces the menu.
   Promise.all([
     get(M.logo).then(function (s) { svg.logo = s; }),
-    get(M.motif).then(function (s) { svg.motif = s; }),
-    fetch("../abonnements.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
-  ]).then(function (res) {
-    var data = res[2], sub = data && data.restaurants && data.restaurants.filter(function (r) { return r.slug === M.slug; })[0];
-    if (preview === "pause" || (data && status(sub, data.graceDays) === "pause")) paused(); else render();
+    get(M.motif).then(function (s) { svg.motif = s; })
+  ]).then(function () {
+    return Promise.race([subP.then(function (d) { return { d: d }; }), new Promise(function (r) { setTimeout(function () { r(null); }, preview ? 0 : 700); })]);
+  }).then(function (res) {
+    if (res) { if (verdict(res.d)) paused(); else { render(); enter(); } return; }
+    render(); enter(); subP.then(function (d) { if (verdict(d)) paused(); });
   });
+  // ?enter=1 skips the opening screen (used by the sales showcase, where the menu itself must be visible straight away)
+  function enter() { if (!/[?&]enter=1/.test(location.search)) return; setTimeout(function () { var b = root.querySelector(".open__go"); if (b) b.click(); }, 120); }
 })();
 
 /* Instant reopen and offline use on a weak signal (menus/sw.js). Skipped in previews (?shop=, ?preview=). */

@@ -92,7 +92,7 @@
         '<div class="pl-stage"><div class="pl-ring">' + F.map(function (d, i) {
           return '<button type="button" class="pl-card" data-pl="' + esc(d.id) + '" aria-label="' + (i + 1) + " / " + N + " · " + esc(title(d)) + '"><span class="pl-bz"><span class="pl-ph"><img src="' + pic(d, 800) + '"' + (M.photoHD ? ' srcset="' + srcset(d) + '" sizes="(min-width:760px) 300px, 66vw"' : "") + (i > 2 ? ' loading="lazy"' : "") + ' alt="" decoding="async" draggable="false"><i class="pl-sh"></i></span></span></button>';
         }).join("") + '</div><div class="pl-floor" aria-hidden="true"></div></div>' +
-        '<div class="pl-info2"><h3 class="pl-name"></h3><p class="pl-meta"></p><p class="pl-desc"></p><div class="pl-row"><span class="pl-price"></span><span class="pl-hot"></span><button type="button" class="pl-view">' + esc(V[L()] || V.en) + '</button></div></div>' +
+        '<div class="pl-info2"><div class="pl-name" role="heading" aria-level="2"></div><p class="pl-meta"></p><p class="pl-desc"></p><div class="pl-row"><span class="pl-price"></span><span class="pl-hot"></span><button type="button" class="pl-view">' + esc(V[L()] || V.en) + '</button></div></div>' +
         '<div class="pl-seg" role="group" aria-label="' + esc(tx("rec")) + '">' + F.map(function (d, k) { return '<button type="button" class="pl-sg" data-k="' + k + '" aria-label="' + (k + 1) + " / " + N + '"><i><u></u></i></button>'; }).join("") + '</div><p class="pl-sr" role="status" aria-live="polite"></p></div>';
     }
     h += '<label class="pl-search">' + ICO.search + '<input type="search" inputmode="search" enterkeyhint="search" autocomplete="off" placeholder="' + esc(tx("search")) + '" aria-label="' + esc(tx("search")) + '"></label>' +
