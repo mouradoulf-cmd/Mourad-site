@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-11-24";
+window.NM_UPDATED = "2026-11-25";
 
 window.NM_DEMOS = [
   { slug: "steak-dek-naew", name: "Steak Dek Naew (สเต็กเด็กแนว)", type: "Steakhouse", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Premier client. Site 3 langues (thaï, anglais, français) fait avec ses vraies photos + son menu QR (menus/steak-dek-naew/). À compléter : adresse, horaires, LINE/WhatsApp du patron." },
@@ -33,12 +33,14 @@ window.NM_LINKS = [
     { name: "Kit de vente (pour ta femme)", icon: "🇹🇭🇫🇷", path: "nm/kit.html", note: "Pitch 1 min, réponses aux objections, prix, liste de ce qu'il faut récupérer (thaï / FR)" }
   ] },
   { space: "site", pane: "clients", group: "Les sites de mes clients", items: [
+    { name: "Menu QR · Tahiti Beach Club (à montrer au restaurant)", icon: "🏖️", path: "menus/tahiti-beach-club/", note: "Leur menu à eux : 156 plats et boissons, 20 langues, leur plage en héros, photos d'illustration (mention en bas). Panier + écran serveur" },
     { name: "Site web · Steak Dek Naew", icon: "🥩", path: "demos/steak-dek-naew/", note: "Le site du restaurant : héros photo + assiettes, section menu QR avec téléphone. TH/EN/FR" },
     { name: "Menu QR · Fisherman's Garden (démo prospect)", icon: "🍹", path: "menus/fishermans-garden/", note: "Carte complète (200 articles : plats + boissons, 9 langues) lue sur 22 photos du menu papier. À montrer en direct au patron" },
     { name: "Menu QR · Thai Foods (brouillon)", icon: "🍤", path: "menus/thai-seafood/", note: "78 plats, 9 langues, photos tirées des panneaux du patron. Nom lu sur l'enseigne, à confirmer" },
     { name: "Menu QR · Steak Dek Naew", icon: "🥩", path: "menus/steak-dek-naew/", note: "Premier client réel : 52 plats, 9 langues, prix lus sur son menu papier" }
   ] },
   { space: "site", pane: "demos", group: "Exemples de menus QR à montrer", items: [
+    { name: "Menu QR · Tahiti Beach Club (à montrer au restaurant)", icon: "🏖️", path: "menus/tahiti-beach-club/", note: "Leur menu à eux : 156 plats et boissons, 20 langues, leur plage en héros, photos d'illustration (mention en bas). Panier + écran serveur" },
     { name: "Menu QR · Mae Lek en français", icon: "🇫🇷", path: "menus/mae-lek/?lang=fr", note: "Photos, piment, allergies, « montrer au serveur » en thaï" },
     { name: "Menu QR · Mae Lek en thaï", icon: "🇹🇭", path: "menus/mae-lek/", note: "9 langues (dont 中文 / Русский / 한국어, hindi, arabe, allemand), piment, écran serveur en thaï" },
     { name: "Menu v2 · filtres + bouton Réserver", path: "nm/demo-menu/", note: "Baan Suan (8 langues) : filtres Végétarien / Pas épicé / Épicé / Choix du chef, WhatsApp + LINE en bas" }
