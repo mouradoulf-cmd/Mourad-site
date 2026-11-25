@@ -413,3 +413,6 @@ vraiment le même plat/la même marque et est belle — **jamais une photo d'un 
 la recherche libre renvoie des fleurs pour « blue hawaii », des marchés pour « som tam » : inutilisable en masse).
 Donc dès la fiche client : demander les photos d'origine ou préparer la liste des visuels à générer (`menus/<slug>/PHOTOS-A-FAIRE.md`)
 et demander le feu vert pour le coût AVANT de livrer. Les menus d'Android/Chrome traduisent la page : `translate="no"` + meta notranslate sont déjà dans le modèle.
+
+## QR Business AI Agent (2026-11-25)
+`qr-agent/` (branche publiée) : logiciel de prospection/CRM/emails/démos de menus QR (Node+Fastify+PGlite/PostgreSQL, React+Tailwind). Règles inviolables : validation humaine d'abord, aucun email deviné, désinscription immédiate, pays « accord préalable » (DE) bloqués, démos = « prototype non officiel », aucune donnée inventée. Ne jamais mettre `EMAIL_LIVE=true` ni activer l'envoi automatique sans accord explicite de Mourad. Détails : `qr-agent/README.md`.

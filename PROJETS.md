@@ -39,3 +39,6 @@ Beach club au bord de la mer (ville à préciser). 156 plats/boissons transcrits
 Héros = **placeholder** : remplacer `hero.webp` (2560×1600) et `hero-m.webp` (1200×2000) par la photo de la plage de Mourad (puis `?v=2`).
 À confirmer avec le restaurant : prix « petit/grand » (riz sautés, soupes), « Mir » (Blue Paradise Mojito = menthe ?), Tequila Sunrise listé avec du gin, noms
 « Sunshine mese » / « Fun of the sum » (fautes ?). Traductions à faire relire (thaï, lao, khmer, hébreu, malais).
+
+## QR Business AI Agent (2026-11-25) — `qr-agent/`
+Commercial IA : découverte de restaurants (OpenStreetMap/Brave/CSV) → analyse de site + score → démo privée « prototype non officiel » → email supervisé FR/IT/EN/DE/ES → réponses/relances → CRM → rapport, tableau de bord React. 55 tests. **Pas encore déployé** (il faut un serveur Node + domaine) et **rien de réel n'est branché** : clé IA, compte email (Resend/SMTP), adresse postale, IMAP. Découverte OSM, IA et envoi réel jamais testés en réel (voir `qr-agent/README.md`). Envoi automatique désactivé partout ; Allemagne bloquée (accord préalable).
