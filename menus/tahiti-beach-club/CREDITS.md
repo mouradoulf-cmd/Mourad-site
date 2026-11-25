@@ -1,0 +1,111 @@
+# Crédits photos — Tahiti Beach Club
+
+**Photos de plats réelles du restaurant** (`tbc-*.webp` sans « -s- ») : découpées dans les photos du menu papier du restaurant.
+
+**Photos d'illustration** (`tbc-s-*.webp`) : photos libres de droits trouvées sur Wikimedia Commons, qui ne montrent PAS forcément le plat exact du restaurant. Le menu l'indique en bas de page (« photos d'illustration »). À remplacer par les vraies photos du restaurant dès qu'il les a.
+
+- `tbc-s-americano.webp` · Cinnamon Bun and Americano - M&S Café, Worthing 2026-11-02.jpg · Andy Li · CC0 · https://commons.wikimedia.org/wiki/File:Cinnamon_Bun_and_Americano_-_M%26S_Caf%C3%A9,_Worthing_2026-11-02.jpg
+- `tbc-s-bapple.webp` · Apple orange smoothie (34365737850).jpg · Easy Healthy Smoothie · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Apple_orange_smoothie_(34365737850).jpg
+- `tbc-s-bassfish.webp` · Restaurant Le Jardin des Sens Skindstegt havbars med ærtecreme, trøffelskum, bacon fra Bigorre og ravioli med butternut-squash og ricotta (5480972437).jpg · cyclonebill from Copenhagen, Denmark · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Restaurant_Le_Jardin_des_Sens_Skindstegt_havbars_med_%C3%A6rtecreme,_tr%C3%B8ffelskum,_bacon_fra_Bigorre_og_ravioli_med_butternut-squash_og_ricotta_(5480972437).jpg
+- `tbc-s-bassgarlic.webp` · Deep fried catfish.jpg · pelican · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Deep_fried_catfish.jpg
+- `tbc-s-bassherb.webp` · Pla tub tim tod samrod.jpg · Takeaway · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Pla_tub_tim_tod_samrod.jpg
+- `tbc-s-bassphadcha.webp` · Fish Stir-Fry 2018-04-13.jpg · Index Librorum Permissorum · CC0 · https://commons.wikimedia.org/wiki/File:Fish_Stir-Fry_2018-04-13.jpg
+- `tbc-s-basspung.webp` · Seabass with Chu-Chee (Red Curry Sauce) - Thai Pad Thai 2025-07-09.jpg · Andy Li · CC0 · https://commons.wikimedia.org/wiki/File:Seabass_with_Chu-Chee_(Red_Curry_Sauce)_-_Thai_Pad_Thai_2025-07-09.jpg
+- `tbc-s-basssoy.webp` · HK SYP 西環 Sai Ying Pun 德輔道西 308 Des Voeux Road West 食神麗宮酒家 Chinese Banquet Seafood Restaurant food 清蒸沙巴仔 steamed Sabah Giant Grouper Fish with soy sauce January 2026 N13P 05.jpg · EVOW Sahgyune Paiem KAASEI 02238 · CC0 · https://commons.wikimedia.org/wiki/File:HK_SYP_%E8%A5%BF%E7%92%B0_Sai_Ying_Pun_%E5%BE%B7%E8%BC%94%E9%81%93%E8%A5%BF_308_Des_Voeux_Road_West_%E9%A3%9F%E7%A5%9E%E9%BA%97%E5%AE%AE%E9%85%92%E5%AE%B6_Chinese_Banquet_Seafood_Restaurant_food_%E6%B8%85%E8%92%B8%E6%B2%99%E5%B7%B4%E4%BB%94_steamed_Sabah_Giant_Grouper_Fish_with_soy_sauce_January_2026_N13P_05.jpg
+- `tbc-s-bavocado.webp` · Green Smoothie.jpg · Annapowell · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Green_Smoothie.jpg
+- `tbc-s-bcoconut.webp` · Mango Fandango, Dôme East Fremantle, 2026 (01).jpg · Bahnfrend · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Mango_Fandango,_D%C3%B4me_East_Fremantle,_2026_(01).jpg
+- `tbc-s-blacklabel.webp` · Johnnie Walker Black Label.jpg · Iceman7840 · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Johnnie_Walker_Black_Label.jpg
+- `tbc-s-bluehawaii.webp` · 202408101026 IMG 0911.jpg · ウィ貴公子 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:202408101026_IMG_0911.jpg
+- `tbc-s-bmango.webp` · Mango Banana Smoothie.jpg · Irma Sakul · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Mango_Banana_Smoothie.jpg
+- `tbc-s-borange.webp` · Apple orange smoothie (34365737850).jpg · Easy Healthy Smoothie · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Apple_orange_smoothie_(34365737850).jpg
+- `tbc-s-bpine.webp` · Batido de piña.jpg · El Mono Español · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Batido_de_pi%C3%B1a.jpg
+- `tbc-s-cappuccino.webp` · Classical Cappuccino in Savour Cafe.jpg · Peachyeung316 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Classical_Cappuccino_in_Savour_Cafe.jpg
+- `tbc-s-chocolate.webp` · Hot Chocolate in December.jpg · Emna Mizouni · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Hot_Chocolate_in_December.jpg
+- `tbc-s-clearsea.webp` · Clear Soup 2018-04-02 (1).jpg · Index Librorum Permissorum · CC0 · https://commons.wikimedia.org/wiki/File:Clear_Soup_2018-04-02_(1).jpg
+- `tbc-s-coconutcurry.webp` · Crocodile Amok.jpg · thekingofmixedfeelings · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Crocodile_Amok.jpg
+- `tbc-s-coke.webp` · 15-09-26-RalfR-WLC-0098 - Coca-Cola glass bottle (Germany).jpg · Ralf Roletschek · Public domain · https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_(Germany).jpg
+- `tbc-s-corona.webp` · Mexican beer Corona Extra at Kyllini Beach, Greece (51223046131).jpg · dronepicr · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Mexican_beer_Corona_Extra_at_Kyllini_Beach,_Greece_(51223046131).jpg
+- `tbc-s-crabblue.webp` · Crab curry or Nandu Kulambu.jpg · Gems Keerthiga · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Crab_curry_or_Nandu_Kulambu.jpg
+- `tbc-s-crabcurry.webp` · Pu Phat Phong Kari.jpg · User:Takoradee · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Pu_Phat_Phong_Kari.jpg
+- `tbc-s-crabgarlic.webp` · Softshell crab, breaded and deep fried - Massachusetts.jpg · Daderot · CC0 · https://commons.wikimedia.org/wiki/File:Softshell_crab,_breaded_and_deep_fried_-_Massachusetts.jpg
+- `tbc-s-daiquiri.webp` · Classic Daiquiri in Cocktail Glass.jpg · Will Shenton · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Classic_Daiquiri_in_Cocktail_Glass.jpg
+- `tbc-s-espresso.webp` · Espresso BW 1.jpg · Berthold Werner · Public domain · https://commons.wikimedia.org/wiki/File:Espresso_BW_1.jpg
+- `tbc-s-fries.webp` · Hesburger French fries on a plate.jpg · JIP · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Hesburger_French_fries_on_a_plate.jpg
+- `tbc-s-fruit.webp` · Fruit Platter- Seasonal Fruits.jpg · روتانا · CC BY 4.0 · https://commons.wikimedia.org/wiki/File:Fruit_Platter-_Seasonal_Fruits.jpg
+- `tbc-s-ginfizz.webp` · Gin Fizz in Schmitz Katze in Tübingen.jpg · Dktue · CC0 · https://commons.wikimedia.org/wiki/File:Gin_Fizz_in_Schmitz_Katze_in_T%C3%BCbingen.jpg
+- `tbc-s-gingerale.webp` · Canada Dry ginger ale can.jpg · Fmvh · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Canada_Dry_ginger_ale_can.jpg
+- `tbc-s-gintonic.webp` · Gin and tonic cocktail with wedge of lime.jpg · Davidnuescheler · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Gin_and_tonic_cocktail_with_wedge_of_lime.jpg
+- `tbc-s-gourami.webp` · Fried Rice Chicken - Ghin Khao (1115240535).jpg · Alpha from Melbourne, Australia · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Fried_Rice_Chicken_-_Ghin_Khao_(1115240535).jpg
+- `tbc-s-green.webp` · Thai green curry fried rice (8619313906).jpg · pelican from Tokyo, Japan · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Thai_green_curry_fried_rice_(8619313906).jpg
+- `tbc-s-heineken.webp` · Heineken Bottle.jpg · Uttamstef12 · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Heineken_Bottle.jpg
+- `tbc-s-iapple.webp` · Apfelsaft im Glas.jpg · Verband der deutschen Fruchtsaftindustrie e.V. · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Apfelsaft_im_Glas.jpg
+- `tbc-s-iberry.webp` · Red berry smoothie in a jar (23698836144).jpg · www.Pixel.la Free Stock Photos · CC0 · https://commons.wikimedia.org/wiki/File:Red_berry_smoothie_in_a_jar_(23698836144).jpg
+- `tbc-s-ibluehawaii.webp` · Koh Lipe & Blue Hawaii 💚💙.jpg · Sharon Hahn Darlin · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Koh_Lipe_%26_Blue_Hawaii_%F0%9F%92%9A%F0%9F%92%99.jpg
+- `tbc-s-icedchoc.webp` · Iced Mocha - Granny's Café 2024-08-21.jpg · Andy Li · CC0 · https://commons.wikimedia.org/wiki/File:Iced_Mocha_-_Granny%27s_Caf%C3%A9_2024-08-21.jpg
+- `tbc-s-icedcoffee.webp` · Iced coffee (Eiskaffee).jpg · Anke Klitzing · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Iced_coffee_(Eiskaffee).jpg
+- `tbc-s-ikiwi.webp` · Free Pretty Green Kiwi Fruit on Aqua with Little Flowers Creative Commons (415651103).jpg · Pink Sherbet Photography from Utah, USA · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Free_Pretty_Green_Kiwi_Fruit_on_Aqua_with_Little_Flowers_Creative_Commons_(415651103).jpg
+- `tbc-s-ilime.webp` · Water, Limeade, Lemonade 1 2018-05-20.jpg · FASTILY · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Water,_Limeade,_Lemonade_1_2018-05-20.jpg
+- `tbc-s-ilychee.webp` · Lychee fruits and seed.jpg · Ivar Leidus · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Lychee_fruits_and_seed.jpg
+- `tbc-s-imango.webp` · Batido de mango.jpg · El Mono Español · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Batido_de_mango.jpg
+- `tbc-s-ipassion.webp` · Siem Reap iced passion fruit juice (5057850765).jpg · @felixtriller from Cologne, Germany · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Siem_Reap_iced_passion_fruit_juice_(5057850765).jpg
+- `tbc-s-iredlime.webp` · Water, Limeade, Lemonade 2 2018-05-20.jpg · FASTILY · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Water,_Limeade,_Lemonade_2_2018-05-20.jpg
+- `tbc-s-iwatermelon.webp` · Watermelon juice 2026-08-24 1.jpeg · Yelderberry (talk) · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Watermelon_juice_2026-08-24_1.jpeg
+- `tbc-s-japple.webp` · Apfelsaft.jpg · Metoc · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Apfelsaft.jpg
+- `tbc-s-jcoconut.webp` · Coconut Drink, Pangandaran.JPG · Crisco 1492 · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Coconut_Drink,_Pangandaran.JPG
+- `tbc-s-jmango.webp` · Fresh-mango-smoothie 01.jpg · Vivekpat30 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Fresh-mango-smoothie_01.jpg
+- `tbc-s-jpine.webp` · Pineapple Juice in Glass Jar.jpg · Srini297 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Pineapple_Juice_in_Glass_Jar.jpg
+- `tbc-s-latte.webp` · Caffe Latte cup.jpg · Maksym Kozlenko · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Caffe_Latte_cup.jpg
+- `tbc-s-lemontea.webp` · Iced lemon tea (2015-08-20).JPG · Lombroso · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Iced_lemon_tea_(2015-08-20).JPG
+- `tbc-s-leo.webp` · Thailand-Leo-Beer.jpg · Dan arndt · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Thailand-Leo-Beer.jpg
+- `tbc-s-longisland.webp` · Long Island Iced Tea 2008.jpg · Rootology · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Long_Island_Iced_Tea_2008.jpg
+- `tbc-s-maitai.webp` · Mai Tai (16304400706).jpg · Johnny Silvercloud · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Mai_Tai_(16304400706).jpg
+- `tbc-s-mandarin.webp` · Coffee Flat Red.jpg · Polina Klekovkina · CC0 · https://commons.wikimedia.org/wiki/File:Coffee_Flat_Red.jpg
+- `tbc-s-margarita.webp` · MargaritaReal.jpg · Akke Monasso · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:MargaritaReal.jpg
+- `tbc-s-matcha.webp` · Matcha tea latte with rosetta latte art.jpg · Irvan Ary Maulana · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Matcha_tea_latte_with_rosetta_latte_art.jpg
+- `tbc-s-mk1.webp` · MelissA Mojito.jpg · Alkemieug · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:MelissA_Mojito.jpg
+- `tbc-s-mk2.webp` · Drinks - Virgin Mojito, Orange Juice.jpg · Aditijuneja2023 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Drinks_-_Virgin_Mojito,_Orange_Juice.jpg
+- `tbc-s-mk3.webp` · Tequila Sunrise (2411086102).jpg · Benjamin Nussbaum from Mödling, Österreich · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Tequila_Sunrise_(2411086102).jpg
+- `tbc-s-mocha.webp` · Gingerbread mocha - T @ The Dials 2024-01-06.jpg · Andy Li · CC0 · https://commons.wikimedia.org/wiki/File:Gingerbread_mocha_-_T_@_The_Dials_2024-01-06.jpg
+- `tbc-s-pinacolada.webp` · PINA COLADA - Efes Town Turkish Cuisine 2026-01-27.jpg · Andy Li · CC0 · https://commons.wikimedia.org/wiki/File:PINA_COLADA_-_Efes_Town_Turkish_Cuisine_2026-01-27.jpg
+- `tbc-s-pinklady.webp` · 15-09-26-RalfR-WLC-0152.jpg · Ralf Roletschek · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0152.jpg
+- `tbc-s-pinkmilk.webp` · Strawberry Milk in a glass cup..jpg · Swarde11 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Strawberry_Milk_in_a_glass_cup..jpg
+- `tbc-s-porkchicken.webp` · Siam Fried Rice with Chicken by Papaya, Hove.jpg · Andy Li · CC0 · https://commons.wikimedia.org/wiki/File:Siam_Fried_Rice_with_Chicken_by_Papaya,_Hove.jpg
+- `tbc-s-porkdry.webp` · Mu daet diao.jpg · Takeaway · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Mu_daet_diao.jpg
+- `tbc-s-prawnchili.webp` · Udang Tumis Bawang Putih Cili.jpg · Mdsheth1986 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Udang_Tumis_Bawang_Putih_Cili.jpg
+- `tbc-s-prawngarlic.webp` · Grilled Garlic butter prawns with spicy prawn heads.jpg · Dixitkedar · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Grilled_Garlic_butter_prawns_with_spicy_prawn_heads.jpg
+- `tbc-s-prawnsalt.webp` · Udang Tumis Bawang Putih Cili.jpg · Mdsheth1986 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Udang_Tumis_Bawang_Putih_Cili.jpg
+- `tbc-s-prawnvermi.webp` · Wok-Fried Prawns with Scallion-Ginger-Garlic Sauce.jpg · Zheng Zhou · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Wok-Fried_Prawns_with_Scallion-Ginger-Garlic_Sauce.jpg
+- `tbc-s-redlabel.webp` · Johnnie Walker Red Label Blended Scotch Whisky 01.jpg · Indrajit Das · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Johnnie_Walker_Red_Label_Blended_Scotch_Whisky_01.jpg
+- `tbc-s-redwine.webp` · Red wine in glass in restaurant.jpg · Paolo Neo · Public domain · https://commons.wikimedia.org/wiki/File:Red_wine_in_glass_in_restaurant.jpg
+- `tbc-s-ribs.webp` · Roasted Pork Ribs with Fries.jpg · Ceeseven · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Roasted_Pork_Ribs_with_Fries.jpg
+- `tbc-s-sala.webp` · Arecaceae- Salacca zalacca (salak, snakefruit).jpg · Kristof Zyskowski & Yulia Bereshpolova · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Arecaceae-_Salacca_zalacca_(salak,_snakefruit).jpg
+- `tbc-s-sangsom.webp` · SangSom soda.jpg · Jpatokal · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:SangSom_soda.jpg
+- `tbc-s-schweppes.webp` · Schweppes Indian Tonic Water (front).jpg · Reedy · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Schweppes_Indian_Tonic_Water_(front).jpg
+- `tbc-s-screwdriver.webp` · Screw Driver Cocktail.jpg · Lillottama · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Screw_Driver_Cocktail.jpg
+- `tbc-s-sealove.webp` · Blue Lagoon at the Mandarin Oriental, Washington DC.jpg · John Phelan · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Blue_Lagoon_at_the_Mandarin_Oriental,_Washington_DC.jpg
+- `tbc-s-shrimpfry.webp` · Fritto misto.JPG · SimonePascuzzi · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Fritto_misto.JPG
+- `tbc-s-singha.webp` · Singha Beer.jpg · GBKK · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Singha_Beer.jpg
+- `tbc-s-sodawater.webp` · Sparkling Water (4675945072).jpg · Vancouver Bites! from Vancouver, Canada · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Sparkling_Water_(4675945072).jpg
+- `tbc-s-somtamegg.webp` · Papaya Salad 2018-05-23 (2).jpg · Index Librorum Permissorum · CC0 · https://commons.wikimedia.org/wiki/File:Papaya_Salad_2018-05-23_(2).jpg
+- `tbc-s-somtamplara.webp` · Som tam thai.JPG · Takeaway · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Som_tam_thai.JPG
+- `tbc-s-somtampu.webp` · Blue crab papaya salad, Ban-kru-eed, Rayong.jpg · Vee Satayamas · CC BY 4.0 · https://commons.wikimedia.org/wiki/File:Blue_crab_papaya_salad,_Ban-kru-eed,_Rayong.jpg
+- `tbc-s-somtamsea.webp` · Lao papaya salad with seafood.jpg · Bounthy · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Lao_papaya_salad_with_seafood.jpg
+- `tbc-s-somtamthai.webp` · Som tam pu.jpg · Takeaway · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Som_tam_pu.jpg
+- `tbc-s-sourcurry.webp` · Kaeng som kung.jpg · Takeaway · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Kaeng_som_kung.jpg
+- `tbc-s-spicy.webp` · Thai Fried Rice with Seafood - Kao Gaeng AUD11 (4625685955).jpg · Alpha from Melbourne, Australia · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Thai_Fried_Rice_with_Seafood_-_Kao_Gaeng_AUD11_(4625685955).jpg
+- `tbc-s-sprite.webp` · Sprite Australia.jpg · J Bar · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sprite_Australia.jpg
+- `tbc-s-squidegg.webp` · Stir-fried Squid with Salted Egg.jpg · Boonlert · CC0 · https://commons.wikimedia.org/wiki/File:Stir-fried_Squid_with_Salted_Egg.jpg
+- `tbc-s-squidfry.webp` · Deep fried squid 001.jpg · Ocdp · CC0 · https://commons.wikimedia.org/wiki/File:Deep_fried_squid_001.jpg
+- `tbc-s-squidgarlic.webp` · Deep-fried squid with garlic.jpg · Vee Satayamas · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Deep-fried_squid_with_garlic.jpg
+- `tbc-s-squidgarsauce.webp` · Stir Fried Squid (Taiwan).jpg · Ralff Nestor Nacor · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Stir_Fried_Squid_(Taiwan).jpg
+- `tbc-s-tequilasunrise.webp` · Tequila Sunrise 2013.JPG · stavros1 · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:Tequila_Sunrise_2013.JPG
+- `tbc-s-thaitea.webp` · Cha yen.JPG · Takeaway · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Cha_yen.JPG
+- `tbc-s-tonicw.webp` · Schweppes Indian Tonic Water (front laying down).jpg · Reedy · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Schweppes_Indian_Tonic_Water_(front_laying_down).jpg
+- `tbc-s-vegegg.webp` · Kerala vegetable fried rice 2.jpg · Ganesh Mohan T · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Kerala_vegetable_fried_rice_2.jpg
+- `tbc-s-whiskeysour.webp` · Whiskey Sour Served Up.jpg · Will Shenton · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Whiskey_Sour_Served_Up.jpg
+- `tbc-s-whitewine.webp` · A glass of white wine.jpg · BogTar201213 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:A_glass_of_white_wine.jpg
+- `tbc-s-wings.webp` · Bankrueed fried chicken wings.jpg · Vee Satayamas · CC BY 4.0 · https://commons.wikimedia.org/wiki/File:Bankrueed_fried_chicken_wings.jpg
+- `tbc-s-yamkana.webp` · DFC 2242 Chilled glass noodle salad tossed with shrimp fresh herbs crunchy cabbage and a zesty chili-lime dressing.jpg · PattayaPatrol · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_2242_Chilled_glass_noodle_salad_tossed_with_shrimp_fresh_herbs_crunchy_cabbage_and_a_zesty_chili-lime_dressing.jpg
+- `tbc-s-yamplasalid.webp` · 2019 01 Yam bai cha tuna.jpg · Takeaway · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:2019_01_Yam_bai_cha_tuna.jpg
+- `tbc-s-yampuma.webp` · Jumbo Last Crab salad (4634347292).jpg · inazakira · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Jumbo_Last_Crab_salad_(4634347292).jpg
+- `tbc-s-yamtalay.webp` · DFC 5372, Spicy Thai seafood salad with prawns, squid and mushrooms, tossed with fresh herbs and chilies - a zesty plate from Klet Kaeo, Sattahip. - Flickr - PattayaPatrol.jpg · Pattaya Patrol from Pattaya · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_5372,_Spicy_Thai_seafood_salad_with_prawns,_squid_and_mushrooms,_tossed_with_fresh_herbs_and_chilies_-_a_zesty_plate_from_Klet_Kaeo,_Sattahip._-_Flickr_-_PattayaPatrol.jpg
