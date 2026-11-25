@@ -16,10 +16,12 @@
 - `tbc-s-bcoconut.webp` · Mango Fandango, Dôme East Fremantle, 2026 (01).jpg · Bahnfrend · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Mango_Fandango,_D%C3%B4me_East_Fremantle,_2026_(01).jpg
 - `tbc-s-blacklabel.webp` · Johnnie Walker Black Label.jpg · Iceman7840 · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Johnnie_Walker_Black_Label.jpg
 - `tbc-s-bluehawaii.webp` · 202408101026 IMG 0911.jpg · ウィ貴公子 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:202408101026_IMG_0911.jpg
+- `tbc-s-bluemojito.webp` · Blue mojito.jpg · Swathi sri srinivasa raghavan · CC0 · https://commons.wikimedia.org/wiki/File:Blue_mojito.jpg
 - `tbc-s-bmango.webp` · Mango Banana Smoothie.jpg · Irma Sakul · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Mango_Banana_Smoothie.jpg
 - `tbc-s-borange.webp` · Apple orange smoothie (34365737850).jpg · Easy Healthy Smoothie · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Apple_orange_smoothie_(34365737850).jpg
 - `tbc-s-bpine.webp` · Batido de piña.jpg · El Mono Español · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Batido_de_pi%C3%B1a.jpg
 - `tbc-s-cappuccino.webp` · Classical Cappuccino in Savour Cafe.jpg · Peachyeung316 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Classical_Cappuccino_in_Savour_Cafe.jpg
+- `tbc-s-chang.webp` · Chang-Beer a.JPG · Radosław Drożdżewski (Zwiadowca21) · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Chang-Beer_a.JPG
 - `tbc-s-chocolate.webp` · Hot Chocolate in December.jpg · Emna Mizouni · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Hot_Chocolate_in_December.jpg
 - `tbc-s-clearsea.webp` · Clear Soup 2018-04-02 (1).jpg · Index Librorum Permissorum · CC0 · https://commons.wikimedia.org/wiki/File:Clear_Soup_2018-04-02_(1).jpg
 - `tbc-s-coconutcurry.webp` · Crocodile Amok.jpg · thekingofmixedfeelings · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Crocodile_Amok.jpg
@@ -30,6 +32,7 @@
 - `tbc-s-crabgarlic.webp` · Softshell crab, breaded and deep fried - Massachusetts.jpg · Daderot · CC0 · https://commons.wikimedia.org/wiki/File:Softshell_crab,_breaded_and_deep_fried_-_Massachusetts.jpg
 - `tbc-s-daiquiri.webp` · Classic Daiquiri in Cocktail Glass.jpg · Will Shenton · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Classic_Daiquiri_in_Cocktail_Glass.jpg
 - `tbc-s-espresso.webp` · Espresso BW 1.jpg · Berthold Werner · Public domain · https://commons.wikimedia.org/wiki/File:Espresso_BW_1.jpg
+- `tbc-s-fanta.webp` · Fanta-Orange-Can-330ml 84177 (7116950883).jpg · Emilian Robert Vicol from Com. Balanesti, Romania · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Fanta-Orange-Can-330ml_84177_(7116950883).jpg
 - `tbc-s-fries.webp` · Hesburger French fries on a plate.jpg · JIP · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Hesburger_French_fries_on_a_plate.jpg
 - `tbc-s-fruit.webp` · Fruit Platter- Seasonal Fruits.jpg · روتانا · CC BY 4.0 · https://commons.wikimedia.org/wiki/File:Fruit_Platter-_Seasonal_Fruits.jpg
 - `tbc-s-ginfizz.webp` · Gin Fizz in Schmitz Katze in Tübingen.jpg · Dktue · CC0 · https://commons.wikimedia.org/wiki/File:Gin_Fizz_in_Schmitz_Katze_in_T%C3%BCbingen.jpg
@@ -62,6 +65,7 @@
 - `tbc-s-mandarin.webp` · Coffee Flat Red.jpg · Polina Klekovkina · CC0 · https://commons.wikimedia.org/wiki/File:Coffee_Flat_Red.jpg
 - `tbc-s-margarita.webp` · MargaritaReal.jpg · Akke Monasso · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:MargaritaReal.jpg
 - `tbc-s-matcha.webp` · Matcha tea latte with rosetta latte art.jpg · Irvan Ary Maulana · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Matcha_tea_latte_with_rosetta_latte_art.jpg
+- `tbc-s-mineral.webp` · Plastic Water Bottle.jpg · Kykywinks · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Plastic_Water_Bottle.jpg
 - `tbc-s-mk1.webp` · MelissA Mojito.jpg · Alkemieug · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:MelissA_Mojito.jpg
 - `tbc-s-mk2.webp` · Drinks - Virgin Mojito, Orange Juice.jpg · Aditijuneja2023 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Drinks_-_Virgin_Mojito,_Orange_Juice.jpg
 - `tbc-s-mk3.webp` · Tequila Sunrise (2411086102).jpg · Benjamin Nussbaum from Mödling, Österreich · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Tequila_Sunrise_(2411086102).jpg

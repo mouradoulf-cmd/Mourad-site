@@ -4491,6 +4491,7 @@ window.NM_MENU = {
      "id": "ck_bluepmojito",
      "n": "Blue Paradise Mojito",
      "p": "220",
+     "img": "tbc-s-bluemojito",
      "sn": {
       "th": "Blue Paradise Mojito",
       "en": "Blue Paradise Mojito",
@@ -4760,6 +4761,34 @@ window.NM_MENU = {
      }
     },
     {
+     "id": "sf_fanta",
+     "n": "แฟนต้าน้ำส้ม",
+     "p": "45",
+     "img": "tbc-s-fanta",
+     "sn": {
+      "th": "แฟนต้าน้ำส้ม",
+      "en": "Fanta orange",
+      "zh": "芬达橙味",
+      "zt": "芬達橙味",
+      "ru": "Фанта апельсин",
+      "ko": "환타 오렌지",
+      "ja": "ファンタオレンジ",
+      "hi": "फैंटा संतरा",
+      "ms": "Fanta oren",
+      "id": "Fanta jeruk",
+      "lo": "ແຟນຕ້າສົ້ມ",
+      "de": "Fanta Orange",
+      "fr": "Fanta orange",
+      "it": "Fanta arancia",
+      "vi": "Fanta cam",
+      "km": "ហ្វ៊ែនតាក្រូច",
+      "fil": "Fanta orange",
+      "ar": "فانتا برتقال",
+      "he": "פנטה תפוז",
+      "es": "Fanta naranja"
+     }
+    },
+    {
      "id": "sf_sprite",
      "n": "สไปรท์",
      "p": "45",
@@ -4900,36 +4929,10 @@ window.NM_MENU = {
      }
     },
     {
-     "id": "sf_fanta",
-     "n": "แฟนต้าน้ำส้ม",
-     "p": "45",
-     "sn": {
-      "th": "แฟนต้าน้ำส้ม",
-      "en": "Fanta orange",
-      "zh": "芬达橙味",
-      "zt": "芬達橙味",
-      "ru": "Фанта апельсин",
-      "ko": "환타 오렌지",
-      "ja": "ファンタオレンジ",
-      "hi": "फैंटा संतरा",
-      "ms": "Fanta oren",
-      "id": "Fanta jeruk",
-      "lo": "ແຟນຕ້າສົ້ມ",
-      "de": "Fanta Orange",
-      "fr": "Fanta orange",
-      "it": "Fanta arancia",
-      "vi": "Fanta cam",
-      "km": "ហ្វ៊ែនតាក្រូច",
-      "fil": "Fanta orange",
-      "ar": "فانتا برتقال",
-      "he": "פנטה תפוז",
-      "es": "Fanta naranja"
-     }
-    },
-    {
      "id": "sf_mineral",
      "n": "น้ำแร่",
      "p": "30",
+     "img": "tbc-s-mineral",
      "sn": {
       "th": "น้ำแร่",
       "en": "Mineral water",
@@ -5065,6 +5068,34 @@ window.NM_MENU = {
      }
     },
     {
+     "id": "bw_chang",
+     "n": "ช้าง (ขวดเล็ก)",
+     "p": "100",
+     "img": "tbc-s-chang",
+     "sn": {
+      "th": "ช้าง (ขวดเล็ก)",
+      "en": "Chang (small bottle)",
+      "zh": "Chang (小瓶)",
+      "zt": "Chang (小瓶)",
+      "ru": "Chang (маленькая бутылка)",
+      "ko": "Chang (작은 병)",
+      "ja": "Chang (小瓶)",
+      "hi": "Chang (छोटी बोतल)",
+      "ms": "Chang (botol kecil)",
+      "id": "Chang (botol kecil)",
+      "lo": "Chang (ຂວດນ້ອຍ)",
+      "de": "Chang (kleine Flasche)",
+      "fr": "Chang (petite bouteille)",
+      "it": "Chang (bottiglia piccola)",
+      "vi": "Chang (chai nhỏ)",
+      "km": "Chang (ដបតូច)",
+      "fil": "Chang (maliit na bote)",
+      "ar": "Chang (زجاجة صغيرة)",
+      "he": "Chang (בקבוק קטן)",
+      "es": "Chang (botella pequeña)"
+     }
+    },
+    {
      "id": "bw_leo",
      "n": "ลีโอ (ขวดเล็ก)",
      "p": "100",
@@ -5146,33 +5177,6 @@ window.NM_MENU = {
       "ar": "Corona (زجاجة صغيرة)",
       "he": "Corona (בקבוק קטן)",
       "es": "Corona (botella pequeña)"
-     }
-    },
-    {
-     "id": "bw_chang",
-     "n": "ช้าง (ขวดเล็ก)",
-     "p": "100",
-     "sn": {
-      "th": "ช้าง (ขวดเล็ก)",
-      "en": "Chang (small bottle)",
-      "zh": "Chang (小瓶)",
-      "zt": "Chang (小瓶)",
-      "ru": "Chang (маленькая бутылка)",
-      "ko": "Chang (작은 병)",
-      "ja": "Chang (小瓶)",
-      "hi": "Chang (छोटी बोतल)",
-      "ms": "Chang (botol kecil)",
-      "id": "Chang (botol kecil)",
-      "lo": "Chang (ຂວດນ້ອຍ)",
-      "de": "Chang (kleine Flasche)",
-      "fr": "Chang (petite bouteille)",
-      "it": "Chang (bottiglia piccola)",
-      "vi": "Chang (chai nhỏ)",
-      "km": "Chang (ដបតូច)",
-      "fil": "Chang (maliit na bote)",
-      "ar": "Chang (زجاجة صغيرة)",
-      "he": "Chang (בקבוק קטן)",
-      "es": "Chang (botella pequeña)"
      }
     }
    ],
