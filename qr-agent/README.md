@@ -10,8 +10,8 @@ Stack : Node 22 + Fastify + TypeScript · PostgreSQL (embarqué PGlite en local,
 | Base, CRM (12 statuts), doublons, historique, tableau de bord, filtres pays/ville/type/statut/score | ✅ fonctionne, testé |
 | Analyse de site (page d'accueil + carte + contact, robots.txt respecté), faits mesurés, score 0–100 | ✅ testé sur sites simulés ; ✅ vrai fetch vérifié (example.com) |
 | Emails **publiés** par l'établissement (jamais devinés), vérification MX, source enregistrée | ✅ |
-| Démos privées (lien non devinable, noindex, expiration, « prototype non officiel »), carte extraite vérifiée mot à mot ou exemples marqués | ✅ testé |
-| Emails FR/IT/EN/DE/ES, validation humaine, désinscription 1 clic + List-Unsubscribe, liste de suppression, plafonds, fenêtre horaire locale, anti-double envoi | ✅ testé (55 tests) |
+| Démos privées au design premium (cartes photo, 3D, thème selon le type) : lien non devinable, noindex, expiration, « prototype non officiel ». Carte extraite vérifiée mot à mot ou exemples marqués ; **photos de plats libres de droits** (Wikimedia Commons) acceptées seulement si le titre de la photo nomme le plat (pas de photo plutôt qu’une mauvaise) ; **héros** proposé mais jamais utilisé sans votre accord (il peut montrer des personnes) ; crédits sur /d/…/credits | ✅ testé (Commons réel vérifié) |
+| Emails FR/IT/EN/DE/ES, validation humaine, désinscription 1 clic + List-Unsubscribe, liste de suppression, plafonds, fenêtre horaire locale, anti-double envoi | ✅ testé (62 tests) |
 | Réponses : détection stop/refus/intérêt/prix en 5 langues, brouillon de réponse et de devis | ✅ testé (webhook ou IMAP) |
 | Planificateur (horaires, limites, reprise après arrêt, un créneau = une exécution), rapport quotidien | ✅ testé |
 | **Découverte OpenStreetMap** | ⚠️ codée + parseur testé ; **non vérifiée en réel** (le serveur Overpass n'était pas joignable depuis l'environnement de développement) |
@@ -27,7 +27,7 @@ npm run sync-engine          # copie le moteur de menus (menus/assets) dans serv
 npm run build
 cp .env.example .env         # remplissez au minimum ADMIN_EMAIL, ADMIN_PASSWORD (dev) ou ADMIN_PASSWORD_HASH, SESSION_SECRET
 npm start                    # http://localhost:8787
-npm test                     # 55 tests
+npm test                     # 62 tests
 ```
 Dev interface : `npm run dev:server` + `npm run dev:web` (http://localhost:5173).
 

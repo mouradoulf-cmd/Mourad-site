@@ -5,11 +5,12 @@ import { buildApp } from "../src/api/server.js";
 import { createDraft } from "../src/email/compose.js";
 import { buildDemo, renderDemoHtml } from "../src/demo/build.js";
 import { _resetLogin } from "../src/api/auth.js";
+import { setFetcherForPhotos } from "../src/demo/photos.js";
 import type { Db } from "../src/db/index.js";
 
 let db: Db, app: FastifyInstance, cookie = "";
 const H = () => ({ cookie, "x-requested-with": "qr-agent" });
-beforeAll(async () => { db = await memDb(); app = await buildApp(db); });
+beforeAll(async () => { setFetcherForPhotos((async () => new Response("{}")) as any); db = await memDb(); app = await buildApp(db); });
 afterAll(async () => { await app.close(); await db.close(); });
 
 describe("auth", () => {
@@ -78,6 +79,14 @@ describe("approval flow, unsubscribe, demo pages, inbound webhook", () => {
     expect((await app.inject({ method: "POST", url: "/api/jobs/report/run", headers: H() })).statusCode).toBe(200); expect((await app.inject({ method: "POST", url: "/api/jobs/hack/run", headers: H() })).statusCode).toBe(404);
     const st = (await app.inject({ url: "/api/stats", headers: H() })).json(); expect(st.discovered).toBeGreaterThan(0); expect(st.series.length).toBe(30);
     expect((await app.inject({ method: "POST", url: "/api/reports/generate", headers: H() })).json().text).toContain("Rapport du");
+  });
+  it("an auto-found hero stays OFF until the owner approves it", async () => {
+    const pid2 = await mkProspect(db, { name: "Hero", website: "https://hero.fr", email: "info@hero.fr" }); const d = await buildDemo(db, pid2, { photos: false }); const id = (await db.query<any>("SELECT id FROM demos WHERE token=$1", [d.token])).rows[0].id;
+    expect((await app.inject({ method: "POST", url: `/api/demos/${id}/hero`, headers: H(), payload: { on: true } })).json()).toMatchObject({ ok: false, error: "no_hero_found" });
+    await db.query("UPDATE demos SET hero_state='pending' WHERE id=$1", [id]);
+    expect((await app.inject({ url: `/d/${d.token}/menu.js` })).body).not.toContain("heroWide");
+    expect((await app.inject({ method: "POST", url: `/api/demos/${id}/hero`, headers: H(), payload: { on: true } })).json().ok).toBe(true); expect((await app.inject({ url: `/d/${d.token}/menu.js` })).body).toContain("heroWide");
+    await app.inject({ method: "POST", url: `/api/demos/${id}/hero`, headers: H(), payload: { on: false } }); expect((await app.inject({ url: `/d/${d.token}/menu.js` })).body).not.toContain("heroWide");
   });
   it("renderDemoHtml escapes the title", () => { const h = renderDemoHtml({ name: '<script>alert(1)</script>', defaultLang: "fr" }, "t"); expect(h).not.toContain("<script>alert"); });
 });

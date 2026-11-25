@@ -14,7 +14,7 @@ import { COUNTRY_RULES, contactGate, autoSendAllowed } from "../compliance.js";
 import { STATUSES, setStatus, event, STATUS_LABEL, type Status } from "../crm.js";
 import { upsertCandidate, suppress, parseCsv, isSuppressed } from "../prospects/service.js";
 import { JOBS, runJob, type JobName } from "../scheduler/jobs.js";
-import { buildDemo, renderDemoHtml } from "../demo/build.js";
+import { buildDemo, renderDemoHtml, setHero } from "../demo/build.js";
 import { createDraft } from "../email/compose.js";
 import { approveEmail, sendDue } from "../email/send.js";
 import { processInbound } from "../email/inbound.js";
@@ -58,6 +58,11 @@ export async function buildApp(db: Db): Promise<FastifyInstance> {
     reply.header("x-robots-tag", "noindex, nofollow, noarchive").header("cache-control", "no-store").type("text/html"); return renderDemoHtml(d.menu, d.token);
   });
   app.get("/d/abonnements.json", async (_r, reply) => { reply.header("cache-control", "no-store").header("x-robots-tag", "noindex"); return { restaurants: [] }; }); // the engine looks for a subscription list; demos have none
+  app.get("/d/:t/credits", async (req, reply) => { const d = (await db.query<any>("SELECT credits, expires_at FROM demos WHERE token=$1", [(req.params as any).t])).rows[0]; if (!d || new Date(d.expires_at) < new Date()) return reply.code(404).send(""); reply.header("x-robots-tag", "noindex").type("text/plain; charset=utf-8"); return d.credits || "No third-party photos."; });
+  app.get("/d/:t/:file", async (req, reply) => { // photos of a demo: p1-m.webp / p1-t.webp / p1.webp / hero.webp / hero-m.webp → all map to the stored image
+    const { t, file } = req.params as any; const m = /^(hero|p\d{1,2})(?:-(?:m|t|sc))?(?:-m)?\.webp$/.exec(file); if (!m) return reply.code(404).send("");
+    const r = (await db.query<any>("SELECT a.mime, a.data, d.expires_at FROM demo_assets a JOIN demos d ON d.id=a.demo_id WHERE d.token=$1 AND a.key=$2", [t, m[1]])).rows[0]; if (!r || new Date(r.expires_at) < new Date()) return reply.code(404).send("");
+    reply.header("x-robots-tag", "noindex").header("cache-control", "private, max-age=3600").type(r.mime); return r.data; });
   app.get("/d/:t/menu.js", async (req, reply) => {
     const d = (await db.query<any>("SELECT menu, expires_at FROM demos WHERE token=$1", [(req.params as any).t])).rows[0]; if (!d || new Date(d.expires_at) < new Date()) return reply.code(404).send("");
     reply.header("x-robots-tag", "noindex").header("cache-control", "no-store").type("application/javascript"); return `window.NM_MENU = ${JSON.stringify(d.menu).replace(/</g, "\\u003c")};`;
@@ -138,7 +143,8 @@ export async function buildApp(db: Db): Promise<FastifyInstance> {
   app.post("/api/emails/:id/approve", async (req) => approveEmail(db, (req.params as any).id));
   app.post("/api/emails/:id/reject", async (req) => { const r = await db.query("UPDATE emails SET status='rejected' WHERE id=$1 AND status IN ('draft','approved')", [(req.params as any).id]); return { ok: r.rowCount > 0 }; });
   app.post("/api/emails/send-now", async () => sendDue(db));
-  app.get("/api/demos", async () => ({ rows: (await db.query<any>("SELECT d.id,d.token,d.content_mode,d.expires_at,d.views,d.last_view_at,d.created_at,p.id AS prospect_id,p.name,p.city,p.country FROM demos d JOIN prospects p ON p.id=d.prospect_id ORDER BY d.created_at DESC LIMIT 200")).rows, base: config.PUBLIC_BASE_URL }));
+  app.get("/api/demos", async () => ({ rows: (await db.query<any>("SELECT d.id,d.token,d.hero_state,d.content_mode,d.expires_at,d.views,d.last_view_at,d.created_at,p.id AS prospect_id,p.name,p.city,p.country FROM demos d JOIN prospects p ON p.id=d.prospect_id ORDER BY d.created_at DESC LIMIT 200")).rows, base: config.PUBLIC_BASE_URL }));
+  app.post("/api/demos/:id/hero", async (req, reply) => { const b = z.object({ on: z.boolean() }).safeParse(req.body); if (!b.success) return reply.code(400).send({ error: "bad_request" }); return setHero(db, (req.params as any).id, b.data.on); });
   app.get("/api/quotes", async () => ({ rows: (await db.query<any>("SELECT q.*, p.name FROM quotes q JOIN prospects p ON p.id=q.prospect_id ORDER BY q.created_at DESC LIMIT 100")).rows }));
   app.post("/api/revenue", async (req, reply) => { const b = z.object({ prospect_id: z.string().uuid(), amount: z.number().positive(), currency: z.string().default("EUR"), note: z.string().default("") }).safeParse(req.body); if (!b.success) return reply.code(400).send({ error: "bad_request" });
     await db.query("INSERT INTO revenue(prospect_id,amount,currency,note) VALUES($1,$2,$3,$4)", [b.data.prospect_id, b.data.amount, b.data.currency, b.data.note]); await setStatus(db, b.data.prospect_id, "client_won", { force: true, why: "revenue recorded" }); return { ok: true }; });

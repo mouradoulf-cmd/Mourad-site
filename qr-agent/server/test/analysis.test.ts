@@ -40,5 +40,6 @@ describe("scoring", () => {
 describe("menu extraction never invents", () => {
   const text = "ENTRÉES\nSalade lyonnaise ........ 9,50 €\nSoupe du jour 7 €\nPLATS\nQuenelle sauce Nantua 18,00 €\nTablier de sapeur 16 €\nNos produits sont frais.";
   it("reads name+price lines under headings", () => { const ex = extractMenuFromText(text); expect(ex.sections.map((s) => s.title)).toEqual(["ENTRÉES", "PLATS"]); expect(ex.sections[0]!.items[0]).toEqual({ name: "Salade lyonnaise", price: "9.50" }); });
+  it("drops names that swallowed prices / several lines", () => { const bad = { sections: [{ title: "X", items: [{ name: "Caprese 9,00 €Tiramisu", price: "7" }, { name: "Tiramisu", price: "7" }] }] }; expect(verifyAgainstSource(bad, "Caprese 9,00 €Tiramisu 7").sections[0]!.items.map((i) => i.name)).toEqual(["Tiramisu"]); });
   it("drops items that are not literally in the source", () => { const fake = { sections: [{ title: "X", items: [{ name: "Homard bleu", price: "55" }, { name: "Soupe du jour", price: "7" }] }] }; const v = verifyAgainstSource(fake, text); expect(v.sections[0]!.items.map((i) => i.name)).toEqual(["Soupe du jour"]); });
 });

@@ -1,0 +1,1 @@
+ALTER TABLE demos ADD COLUMN credits text NOT NULL DEFAULT '';
