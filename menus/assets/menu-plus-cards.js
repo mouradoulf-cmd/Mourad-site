@@ -11,7 +11,8 @@
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var XU = (window.NM_I18N_X && window.NM_I18N_X.ui) || {};
   function L() { var l = document.documentElement.lang || "en"; return l === "zh-Hans" ? "zh" : l === "zh-Hant" ? "zt" : l; }
-  function ui(k) { return ((XU[L()] || {})[k]) || ((XU.en || {})[k]) || k; }
+  var FB = { addshort: "Add", less: "Remove one", viewlarge: "Large cards", viewgrid: "Grid" }; // last-resort English so a raw key can never show (e.g. if the translation file arrived late or failed once on a weak connection)
+  function ui(k) { var X = (window.NM_I18N_X && window.NM_I18N_X.ui) || XU; return ((X[L()] || {})[k]) || ((X.en || {})[k]) || FB[k] || k; }
   document.documentElement.classList.add("pl-cards");
   var byId = {}; M.sections.forEach(function (s, si) { s.items.forEach(function (d) { d._s = si; byId[d.id] = d; }); });
   function lget(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
