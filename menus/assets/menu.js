@@ -301,6 +301,9 @@
           tabs.scrollBy({ left: (or_.left + or_.width / 2) - (tr_.left + tr_.width / 2), behavior: "smooth" });
         }
       }
+      // the bar can end up stale (late-loading script fonts change tab widths, interrupted smooth scrolls): if the active tab is not fully on screen, bring it back instantly
+      var tb = document.getElementById("tabs"), ob = tb && tb.querySelector("button.on");
+      if (ob) { var ta = tb.getBoundingClientRect(), oa = ob.getBoundingClientRect(); if (oa.left < ta.left + 2 || oa.right > ta.right - 2) tb.scrollBy({ left: (oa.left + oa.width / 2) - (ta.left + ta.width / 2), behavior: "auto" }); }
     };
     addEventListener("scroll", spyFn, { passive: true }); spyFn();
 

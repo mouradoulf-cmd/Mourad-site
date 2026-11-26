@@ -133,3 +133,11 @@ I'd appreciate if you could mail me (Kolforn@gmail.com) if you want to use thi �
 - wx-friedrice22: Fried rice 1.jpg — Stephanie cheks — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Fried_rice_1.jpg
 - wx-friedrice20: Chicken fried rice - Stir Fry by CK 2023-12-02.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Chicken_fried_rice_-_Stir_Fry_by_CK_2023-12-02.jpg
 - wx-salmonpancake21: Salmon blini burger at restaurant Chico's.jpg — JIP — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Salmon_blini_burger_at_restaurant_Chico's.jpg
+
+## Web illustration photos (reviewed by eye; free licences)
+- wx-kvass20: 2022-09-29 Келіх і пляшка жытняга квасу (Менск).jpg — W — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:2022-09-29_Келіх_і_пляшка_жытняга_квасу_(Менск).jpg
+- wx-coconut22: Coconut Drink, Ubud, Bali, 20220822 1345 0126.jpg — Jakub Hałun — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Coconut_Drink,_Ubud,_Bali,_20220822_1345_0126.jpg
+- wx-sanmig20: Cerveza San Miguel - Erik Cleves Kristensen.jpg — Erik Cleves Kristensen — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Cerveza_San_Miguel_-_Erik_Cleves_Kristensen.jpg
+
+## Web illustration photos (reviewed by eye; free licences)
+- wx-banana20: Banana Milkshake.jpg — Deepak Official Id — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Banana_Milkshake.jpg

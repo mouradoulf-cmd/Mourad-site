@@ -116,3 +116,6 @@ Photos libres (Wikimedia Commons, Openverse) utilisées comme **photos d'illustr
 - `wx-glassnoodle0.webp` · Fried cellophane noodles with shrimp Pad woon sen kung.jpg · Sakurai Midori · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Fried_cellophane_noodles_with_shrimp_Pad_woon_sen_kung.jpg
 - `wx-kale0.webp` · Stir-fried kale vegetable with crispy pork.jpg · Boonlert Aroonpiboon · CC0 · https://commons.wikimedia.org/wiki/File:Stir-fried_kale_vegetable_with_crispy_pork.jpg
 - `wx-beefoyster0.webp` · China Wall with beef.jpg · JIP · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:China_Wall_with_beef.jpg
+
+## Web illustration photos added in the final audit (reviewed by eye)
+- `wx-omelet20.webp` · Crispy pork phat thai in omelette ball - Chiang Rai - 2017-07-03 (001).jpg · Iudexvivorum · CC0 · https://commons.wikimedia.org/wiki/File:Crispy_pork_phat_thai_in_omelette_ball_-_Chiang_Rai_-_2017-07-03_(001).jpg
