@@ -49,6 +49,11 @@
         if (p) ph.appendChild(p);
         ph.insertAdjacentHTML("beforeend", ctl(id));
       } else {
+        // second price line of a dish (e.g. "with rice 150" under "on rice 70"): show a small round photo of the same dish so the row is not blank, without repeating the big picture
+        var base = function (x) { return String(x).replace(/_(r|s|l)$/, ""); }, pv = li.previousElementSibling, hops = 0;
+        while (pv && hops < 2 && !pv.querySelector(".dish__ph")) { pv = pv.previousElementSibling; hops++; }
+        var pd = pv && pv.querySelector(".dish__ph") && byId[pv.getAttribute("data-row")];
+        if (pd && pd.img && base(pd.id) === base(id)) { li.classList.add("has-mini"); li.insertAdjacentHTML("afterbegin", '<span class="pl-mini" aria-hidden="true"><img src="' + thumb(pd) + '" alt="" loading="lazy" decoding="async"></span>'); }
         li.insertAdjacentHTML("beforeend", '<div class="pl-side"></div>');
         var side = li.querySelector(".pl-side"); if (p) side.appendChild(p); side.insertAdjacentHTML("beforeend", ctl(id));
       }

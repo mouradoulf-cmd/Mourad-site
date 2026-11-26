@@ -152,3 +152,10 @@ html.pl-cards.pl-v-grid .dish:not(.has-ph) .pl-first span{display:none}
 html.pl-cards.pl-v-grid .dish:not(.has-ph) .pl-first{width:44px;padding:0;justify-content:center}
 html.pl-cards.pl-v-grid .dish:not(.has-ph) .dish__n{font-size:1.05rem;line-height:1.2}
 .pl-vsw{justify-self:start;width:max-content;max-width:100%}
+
+/* small round photo on the compact second-price row of a dish */
+html.pl-cards .dish.has-mini:not(.has-ph){grid-template-columns:64px minmax(0,1fr) auto}
+html.pl-cards .dish.has-mini .pl-mini{grid-column:1;grid-row:1;align-self:center;width:52px;height:52px;margin:6px 0 6px 6px;border-radius:50%;overflow:hidden;border:1px solid color-mix(in srgb,var(--ink) 18%,transparent)}
+html.pl-cards .dish.has-mini .pl-mini img{width:100%;height:100%;object-fit:cover;display:block}
+html.pl-cards .dish.has-mini .dish__txt{grid-column:2}
+html.pl-cards .dish.has-mini .pl-side{grid-column:3}
