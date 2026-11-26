@@ -1,0 +1,45 @@
+/* NM Studio · polish layer — finishing details shared by every menu. Additive only: remove the two <link>/<script> lines to go back.
+   Motion rules: transform/opacity only, honours prefers-reduced-motion, nothing runs while the page is hidden. */
+:root{--pl-ease:cubic-bezier(.22,1,.36,1)}
+/* 1 · photo skeleton: a soft light sweep over the blurred placeholder until the sharp photo has decoded */
+@keyframes pl-sheen{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
+.dish__ph:not(:has(img.pl-ok))::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.14) 50%,transparent 70%);animation:pl-sheen 1.5s var(--pl-ease) infinite}
+/* 2 · prices: real glass chip over the photo (the element is tiny and static, so the blur is cheap) */
+html.pl-cards .dish__ph .dish__p{-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 6px 18px -8px rgba(0,0,0,.6)}
+/* 3 · buttons: pressed, hover and ripple feedback */
+.pl-first,.pl-inc,.pl-dec,.cta,.bag__go,.tabs button,.ib,.open__go{position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:transform .35s var(--pl-ease),box-shadow .35s,background-color .3s,filter .3s}
+.pl-first:active,.pl-inc:active,.pl-dec:active,.cta:active,.bag__go:active,.ib:active,.open__go:active{transform:scale(.94)}
+.pl-rip{position:absolute;border-radius:50%;pointer-events:none;background:currentColor;opacity:.28;transform:scale(0);animation:pl-rip .6s var(--pl-ease) forwards}
+@keyframes pl-rip{to{transform:scale(1);opacity:0}}
+@media (hover:hover){
+ .pl-first:hover,.cta:hover,.bag__go:hover,.open__go:hover{filter:brightness(1.08);box-shadow:0 10px 30px -10px var(--accent)}
+ /* 4 · cards: the photo breathes on hover, the card lifts */
+ .dish.has-ph .dish__ph img{transition:transform 1.4s var(--pl-ease)}
+ .dish.has-ph:hover .dish__ph img{transform:scale(1.06)}
+ html.pl-cards .dish.has-ph{transition:transform .6s var(--pl-ease),filter .6s}
+ html.pl-cards .dish.has-ph:hover{transform:translateY(-4px)}
+}
+/* 5 · detail sheet: slower, springier rise; the photo settles from a gentle zoom; text follows in a cascade */
+.sheet{transition:transform .7s var(--pl-ease)!important}
+.sheet.drag{transition:none!important}
+.sheet img{transform:scale(1.12);transition:transform 1.3s var(--pl-ease)}
+.sheet.on img{transform:scale(1)}
+.sheet__body>*{opacity:0;transform:translateY(14px);transition:opacity .6s var(--pl-ease),transform .7s var(--pl-ease)}
+.sheet.on .sheet__body>*{opacity:1;transform:none}
+.sheet.on .sheet__body>*:nth-child(2){transition-delay:.06s}.sheet.on .sheet__body>*:nth-child(3){transition-delay:.12s}.sheet.on .sheet__body>*:nth-child(4){transition-delay:.18s}.sheet.on .sheet__body>*:nth-child(5){transition-delay:.24s}.sheet.on .sheet__body>*:nth-child(n+6){transition-delay:.3s}
+.scrim{transition:opacity .6s var(--pl-ease)}
+/* 6 · selection bar: glass + soft glow */
+.bag{-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);box-shadow:0 18px 50px -14px rgba(0,0,0,.7),0 0 0 1px color-mix(in srgb,var(--ink) 12%,transparent),0 0 40px -12px var(--accent)}
+/* 7 · keyboard focus: one consistent ring everywhere */
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:inherit}
+/* 8 · chapter headings: the hairline draws itself as the chapter enters */
+.ch__no::after{transform-origin:left;transform:scaleX(0);transition:transform 1.2s var(--pl-ease) .15s}
+html[dir=rtl] .ch__no::after{transform-origin:right}
+.ch.in .ch__no::after,.ch__no.in::after,.rv.in .ch__no::after{transform:scaleX(1)}
+/* 9 · empty / none states */
+.pl-none,.empty{animation:pl-fade .6s var(--pl-ease) both}
+@keyframes pl-fade{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){
+ .dish__ph::after{animation:none!important}.sheet img,.sheet__body>*{transform:none!important;transition:none!important;opacity:1!important}
+ .pl-rip{display:none}.dish.has-ph .dish__ph img,html.pl-cards .dish.has-ph{transition:none!important;transform:none!important}
+}
