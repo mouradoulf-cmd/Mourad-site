@@ -65,98 +65,190 @@ client's business needs) rather than designing from scratch.
 The user has asked to reuse **Noir** (`noir/index.html`, `noir/assets/`) as
 the base style/reference for any future hair salon, barbershop, or beauty
 site built in this repo (as opposed to Giulivo for restaurants and
-Façadiers for B2B). Built with no real photos supplied — the "lookbook"
-section uses editorial color-block cards instead of photography, honestly
-labeled as placeholder ("your own photos would replace these on launch").
-Swap those for real client photos once available; everything else
-(services, pricing, copy) adapts per client same as the other templates.
+Façadiers for B2B). Rebuilt as a premium site with real photography
+(Unsplash License, sources in `noir/README.md`); the studio, team names,
+reviews and phone number are demo content to swap per client.
 
 - Design language: near-black warm palette (`--ink`, `--cream`, `--bronze`
-  in `assets/css/style.css`), `Bodoni Moda` italic display serif +
-  `Manrope` sans-serif body, thin gold hairline accents, editorial/
-  fashion-magazine feel rather than Giulivo's rustic warmth or Façadiers'
-  corporate brightness.
-- Sections: hero (with decorative animated SVG "hair strand" lines, no
-  photo), services marquee, services grid (price list), about/philosophy
-  with count-up stats, lookbook (color-block cards), reviews carousel,
-  booking (WhatsApp deep link), contact (address/hours/map), footer.
-- Interactions: vanilla JS only (no GSAP/Lenis) — IntersectionObserver
-  scroll reveals, count-up stats, testimonial carousel, mobile burger
-  menu. Same "visible by default, hidden state only switched on right
-  before a confirmed-working observer" safety pattern as the other
-  templates use for GSAP — keep it if you add reveals elsewhere.
+  in `assets/css/style.css`), `Bodoni Moda` (italic for emphasis) +
+  `Manrope`, both self-hosted variable woff2 in `assets/fonts/` (small serif
+  headings pin `font-variation-settings: "opsz" 14` so hairlines stay
+  sturdy). Editorial/fashion-magazine feel.
+- Sections: intro curtain (once per session), full-bleed photo hero with
+  live Bangkok-time "open now" status, marquee, studio + count-up stats,
+  services menu (ARIA tabs, photo per category), ritual steps, lookbook
+  bento (explicit `grid-template-areas`, no holes) + lightbox, team,
+  reviews carousel, booking (service → stylist → calendar → time slots →
+  WhatsApp message; mobile shows a compact recap instead of the summary
+  card), FAQ, contact (hours with today highlighted, map), final CTA.
+- The bento/lightbox and the calendar+slots are vanilla ports of 21st.dev
+  patterns ("Interactive Bento Gallery", "Preset Time Selection Calendar").
+- i18n EN/FR/TH in `assets/js/i18n.js`: English is baked into the HTML and
+  captured from the DOM, so only FR/TH dictionaries exist; strings built
+  in JS live in its `UI` table (all three languages). Prices follow the
+  language (`CURRENCY`/`PRICES` in `i18n.js`: EN → USD, FR → EUR, TH → THB,
+  hand-rounded, not live-converted); menu prices carry `data-price="key"`,
+  and a "guide price, paid in baht" note shows outside THB.
+- Interactions: vanilla JS only (no GSAP/Lenis). Reveals only hide content
+  after IntersectionObserver is confirmed (`html.reveal-ready`); clip
+  reveals put the `clip-path` on the inner `<picture>`, never on the
+  observed element (a fully clipped element never intersects).
 - Plain HTML/CSS/JS, no build step, same as the other templates.
 - Booking/phone CTAs use `tel:`/`wa.me` links — always add
   `target="_blank" rel="noopener"` to them, same reason as above.
 
-## Avatar Cash TH — reference template for info-product / online-course sites
+## Neon Tiger — reference template for bars / pubs / nightlife
 
-`avatar-cash-th/` is a Thai-language sales site for an "AI avatar influencer"
-course (copied from a TikTok video's Claude-built "Avatar Cash" idea): dark
-palette with green/violet accents, `Noto Sans Thai`, sales page (`index.html`),
-gated members area with the 5 modules (`members.html`), and `LAUNCH-KIT.md`.
-Payment/contact are driven by the `CONFIG` block at the top of
-`assets/js/main.js` (LINE OA + PromptPay) — placeholders until the client
-fills them. No fake testimonials/income claims, keep disclaimers. Plain
-HTML/CSS/JS, no build step.
+The user asked for a festive Pattaya bar site (pool, beer, parties);
+**Neon Tiger** (`neon-tiger/`) is the reference for future bar, pub or
+nightlife sites. Photos: Unsplash + CC0 pool shots (sources in
+`neon-tiger/README.md`); bar name, events, prices and reviews are demo.
 
-## Avatar Cash funnel — reference template for course/info-product funnels
+- Design language: night palette (`--night`, neon `--pink`/`--cyan`/
+  `--violet`, `--amber` for beer and happy hour, `--green` for pool) with
+  text-shadow neon glows (`.glow`, `.glow--amber`, `.glow--green`);
+  `--pink-btn` is the darker pink used under white text (AA contrast).
+  Fonts self-hosted: `Unbounded` (display, uppercase), `Monoton` (neon
+  sign logo), `Manrope` (body).
+- Sections: neon-sign intro, hero slideshow + live panel (open status,
+  happy-hour countdown, tonight's event — Bangkok time, a night after
+  midnight still counts as the previous evening), tilted marquee, the bar,
+  weekly events tabs (today highlighted), drinks tabs with happy-hour
+  prices switching live, colour-changing signature cocktail, pool (free
+  tables, hall of fame), bento gallery + lightbox, reviews, booking
+  (night → time → people → spot → WhatsApp, ticket-style summary), FAQ,
+  find us with a Thai address card for taxi drivers, final CTA.
+- EN/FR/TH/RU in `assets/js/i18n.js` (English baked into the HTML). Prices
+  are stored in baht and shown as EN → USD, FR → EUR, TH/RU → THB.
+- The site does not market staff as an attraction: the team is presented
+  as a friendly crew (keeps it usable for Google/Meta ads).
+- Plain HTML/CSS/JS, no build step; `tel:`/`wa.me` links keep
+  `target="_blank" rel="noopener"`.
 
-The user supplied two screen recordings of an app-style onboarding funnel
-(arab-facile.com: splash → welcome → mascot chat questions → "analysing your
-profile" → personalised plan → paywall with plan cards and Free/Premium table)
-and asked to reuse that flow for **every** future course/formation.
-Implemented in `avatar-cash-th/start.html`, `assets/css/app.css` and
-`assets/js/funnel.js` (TH/FR/EN copy in the `FN` object, questions in `FLOW`,
-theme tokens in `:root` of `app.css`; payment + contact config stays in
-`assets/js/main.js` `CONFIG`). To make a new course: copy the folder, change
-`FLOW`, `FN`, tokens, plans and the course content.
-- Landing page (`index.html`) CTAs lead to the funnel, not straight to checkout.
-- Do **not** copy the reference's fake social proof ("4,8/5, +20 000 learners"),
-  fake discounts/strike-through prices or a fake countdown. The paywall timer
-  only shows when `CONFIG.OFFER_END` is set to a real end date.
-- Videos in `assets/video/` are rendered from `/tmp`-style HTML scenes with
-  Playwright + ffmpeg (see git history); outputs are checked in.
+## Malee — reference for massage / spa / wellness (`v6-thai-spa/`)
 
-## NM Academy — reference template for premium / "futuristic" course-selling sites
+Premium rebuild (folder name kept because NM Studio links to it). Jungle
+green + ivory + gold, Cormorant Garamond + Inter Tight self-hosted,
+vanilla JS like Noir/Neon Tiger (`MLI18n`, EN baked + FR/TH/RU, baht →
+USD/EUR/THB). Treatment cards with duration pills, a mood recommender, a
+gift-card builder and a WhatsApp booking flow. Photos are Unsplash (IDs in
+its README); business details are fictional demo content.
 
-`nm-academy/` sells two courses (Plan A: build & resell websites, Plan B: AI video
-monetisation on TikTok/YouTube) under the user's NM Studio brand (same `#04050c` base).
-FR/EN/TH via `assets/js/i18n.js` (`[fr,en,th]` per key, `data-t` in HTML), all settings in
-`assets/js/config.js`, UI sounds in `assets/js/sfx.js` (Web Audio, no music, only after a
-user gesture), effects in `assets/js/fx.js`. Same honesty rules as Avatar Cash: no income
-guarantees, no fake proof, illustrative numbers must be labelled as examples.
+## Mae Lek — reference for street food / casual eateries (`street-food/`)
 
-## NM Studio client demos (prospecting workflow)
+Simple but polished: paper + chili + turmeric "sticker" cards (hard ink
+shadow), Rubik + Manrope + Caveat. Filterable 15-dish menu, takeaway bag →
+WhatsApp order drawer, spice meter, nightly chalkboard special, phrase cards
+to show the cook. `SFI18n` EN/FR/TH/RU, baht → USD/EUR/THB. Careful: i18n
+rewrites the text of every `[data-price]`, so containers use `data-thb`.
 
-The user scouts a business and sends name, type, city, photos and an old-site / Google Maps URL. Build a
-personalised demo from the closest template (Giulivo, Noir, Mae Lek, ÔBlanc, Neon Tiger, Malee, Ride Siam,
-Façadiers): copy it to `demos/<slug>/` on the published branch `claude/thai-app-mnw166`, swap in their photos,
-name, copy and an adjusted palette, add `<meta name="robots" content="noindex">` and the "maquette gratuite"
-label, then add one line to `nm/assets/js/demos-data.js` (slug, name, type, city, date, status). The private
-page `nm/demos.html` ("Mon espace") lists them A–Z with status, QR code and WhatsApp share, and also holds
-every link the owner uses (`window.NM_LINKS` in the same data file) — add any new public page/project there so
-the owner never has to ask for URLs. Before handing over a demo, test it yourself (Playwright, mobile + desktop,
-no console errors, no horizontal overflow, all photos load, brand name replaced everywhere) and fix issues
-without waiting to be asked; then give the owner the hub link plus the demo link. Never invent reviews/ratings for a
-real business — remove the template's sample reviews/star counts or label them clearly as placeholders.
+## Ride Siam — reference for rentals / premium services (`scooter/`)
 
+Premium scooter rental: graphite + off-white + tangerine, Geologica +
+Inter. Fleet cards carry `data-day/-week/-month/-deposit`; a period toggle
+switches displayed prices. Booking builder with a vanilla range calendar
+(2 months desktop / 1 mobile), tiered pricing (7+ days weekly, 28+ monthly),
+extras, delivery and a WhatsApp request; `RSI18n` EN/FR/TH/RU.
 
-## "Mon espace" — the owner's private hub (keep it up to date in EVERY conversation)
+## ÔBlanc — café-restaurant demo for a real business (`oblanc/`)
 
-`nm/demos.html` on the published branch `claude/thai-app-mnw166` is the owner's home-screen app
-(https://mouradoulf-cmd.github.io/Mourad-site/nm/demos.html). Home screen = three spaces: **Site web**
-(client demos A–Z + NM Studio links + tools + templates), **Vidéo IA**, **Formation**. All content comes from
-`nm/assets/js/demos-data.js`: `NM_DEMOS` (client demos) and `NM_LINKS` (groups with `space: "site" | "video" |
-"formation"`). Whenever you publish a new page, project, demo or course in any conversation, add it to the right
-space there and set `NM_UPDATED` to today's date — without being asked. When the owner says "ajoute ça dans
-Vidéo IA / Formation / Site web", add the link to that space.
-Pick the space by what the work is about — never dump everything in "Site web":
-- **Vidéo IA** (`space: "video"`): AI video studios/tools, video projects, generated films, TikTok/YouTube video work.
-- **Formation** (`space: "formation"`): courses and their pages (NM Academy, Avatar Cash, English Easy, members areas, funnels).
-- **Site web** (`space: "site"`): NM Studio site, client demos (`NM_DEMOS`), website tools and templates.
-At the end of any task that publishes or changes a page, tell the owner in one line which space it is in
-("c'est dans Mon espace → Vidéo IA") along with the URL. The page fetches the data file fresh on every open.
+Built for a real café in Mohammédia (Morocco) on the Neon Tiger structure,
+recoloured to its identity (white + navy + blue neon sign, gold prices),
+Fraunces + Manrope. Real address, phone, hours, Google rating and menu
+prices (from menu photos); real photos from its Google listing. FR baked +
+EN/AR (RTL) via `OBI18n` in `assets/js/i18n.js`. Details in `oblanc/README.md`.
+
+## NM Studio — the studio's own site (`nm/`)
+
+Plain HTML/CSS/JS, no build step. v4 "Night future, touch of gold"
+(user-approved plan, full restructure): night `#07060c`, violet `#7b61ff` →
+blue `#4f7bff` light, gold `#e6c27a` details, one stylesheet
+`assets/css/site.css`. Satoshi (display) + Fraunces italic gold key word +
+Inter, self-hosted. Home order: 50/50 hero « Be found. Be chosen. » (MacBook
++ iPhone cycling the 7 live demos, gold dust, orb), key figures + sectors
+marquee, the 7 demos in device mockups (live preview `.pv`), 4 offers +
+morphing dialog `.om`, why us (3 photos), how it works (3 steps), FAQ (8),
+« Ready to be visible? » giant WhatsApp finale, footer. No testimonials
+until real ones exist. Every logo must be the real brand mark (Simple Icons
+paths, official Google G, PromptPay image in `assets/img/logos/`); footer
+social icons stay hidden until `social` links are filled in
+`offers-config.js`. Other pages: `services.html`, `pricing.html` (care plan
+Monthly/Yearly toggle, comparison table), `checkout.html`, `success.html`,
+`cancel.html`, `account.html`, `legal.html`. `nm/README.md` documents
+everything (Stripe setup, going live).
+
+- Offers/prices: `assets/js/offers-config.js` (`NM_OFFERS` + `NMPrice`):
+  Google ฿990, QR ฿1,990, Complete ฿4,990, Ultimate ฿9,990 one-time; optional
+  care plan 0/290/590/1,490 ฿/month, yearly = 10 months. Baht is always the
+  real price; `data-thb` renders it, `data-approx` shows ≈ €/DH.
+  `videos` slots for the 4 offer videos (animated SVG `offer-icons.js` until
+  then — CSS animations override SVG `transform` attributes, so animate
+  inner elements, never ones carrying `transform="…"`).
+- i18n EN/FR/IT/TH/AR (RTL): original strings in `assets/js/i18n.js`, new
+  ones in `assets/js/nm-dict.js` (merged via `NM_EXTRA_DICT`, loaded before
+  i18n.js), checkout ones in `checkout-i18n.js` (merges too). Every new
+  string needs all five languages.
+- Payments stay static: Stripe Payment Links per offer / offer+care
+  (`payment-config.js`: `google…ultimate`, `qr_monthly…ultimate_yearly`,
+  `portal` = customer-portal login link), redirect to `success.html`;
+  PromptPay QR generated client-side; anything empty falls back to WhatsApp.
+  Never add card-number fields. Thai visitors get the Thai QR flow (order
+  ref, 15-min validity, save-as-image, slip upload → WhatsApp);
+  `checkout.html?demo=1` previews it with a sample QR.
+- Pages share partials generated by an authoring script (not in the repo):
+  when editing header/footer/offer cards, update every page.
+- GSAP gotcha: elements with a CSS `transition: transform` must use
+  `fromTo` + `clearProps` (and `transition:none` during the tween), or GSAP
+  reads a mid-transition value as the resting state and cards stay offset.
+- QR codes are always real (`nm-qr.js` → SVG modules, `data-qr`); never
+  draw a fake QR. Motion lives in `main.js` (GSAP), `home.js` (home only:
+  dust, hero device carousel, tilt) and `fx.js` (cursor trail, ripple,
+  marquee speed, count-up).
+- Showcase screenshots in `nm/assets/img/work/` are captured from the live
+  demos with Playwright (1280×800 and 390×780 @1.5 → jpg + webp + 360w).
+  Deployed via the `claude/thai-app-mnw166` branch (GitHub Pages source).
+- The user wants the live link sent at the end of every finished change:
+  https://mouradoulf-cmd.github.io/Mourad-site/nm/ (plus the page changed).
+
+## Open Edit CLI — video creation/editing tool
+
+The user has asked to have `@veedstudio/openedit-cli` (https://github.com/veedstudio/open-edit)
+available for video tasks (promo/demo videos for client sites, social content)
+across all sessions in this repo. Run it via `npx @veedstudio/openedit-cli
+<command>` — no persistent install needed, npx fetches it on demand.
+
+**Free-plan only — do not spend paid credits without explicit user confirmation
+for that specific run:**
+
+- Safe/free: `transcribe` (default WhisperX, local, no login needed),
+  `whisper`, `prep`, `synth-timings`, `background-removal` (default free VEED
+  route — never add `--fast`, which bills a fal key), `install-ffmpeg`,
+  `install-whisperx`, `install-engine`, `content-root`, `engine-path`, `lint`,
+  `wcag-pass`, `design-gate`, `probe-qa`, `scoped-edit`, `brand`,
+  `expect-windows`, `mux-audio`, `mix-audio`, `token`.
+- Never run without asking first (each spends real money/credits):
+  `generate` / `generate-set` (AI Playground + TTS credits), `lipsync`
+  (always fal-billed), `background-removal --fast` (fal-billed),
+  `transcribe --provider veed` (spends VEED transcription credits).
+- `login` opens a VEED OAuth browser flow — only needed for the free
+  `background-removal` route (to host the file) or if the user explicitly
+  wants a paid feature.
+
+## SOCAP Paysage — reference for landscaping / trades sites (`socap-paysage/`)
+
+Demo redesign of a real landscaper (socap-paysage.com) after the user rejected a low-poly 3D version as "basic/fake". v3 = cinematic + futuristic. Plain HTML/CSS/JS, no build. Dark forest night + mint/lime + amber, Unbounded + Manrope + Bodoni Moda italic (self-hosted). Pieces to reuse: animated SVG logo + loader, raw-WebGL liquid-wipe hero slideshow (`assets/js/hero.js`, day→dusk→night, fallback crossfade), word-scrub manifesto, plan→photo scan scrub with callouts (OpenCV Canny blueprints `bp-*.webp`), services explorer, horizontal pinned gallery, 3D radar map with real projection.
+**Imagery is hybrid**: atmosphere/hero/services/manifesto images are royalty-free stock (Pexels, labelled "Photo d'illustration"/"Inspiration"); only the Réalisations section uses the client's real photos (pill "Photo SOCAP"). Never present stock as the client's work; swap stock for client photos before launch. Form needs `CONFIG.email` in `site.js`. Launch steps in `LANCEMENT.md`.
+v3.1 adds a *Studio d'ambiance* configurator (`#studio`, `assets/js/studio.js`: style + day/night + wishes → pre-filled contact message), stock photos `st-*.webp`. On touch/≤900px: no Lenis, no WebGL, crossfades, `*-m.webp` image variants (class `lite` on `<html>`).
+
+## Organisation des discussions (règle pour toutes les sessions)
+
+Mourad travaille dans plusieurs discussions Claude en parallèle. Tableau de bord privé :
+`nm/organisation.html` (données : `nm/assets/js/discussions-data.js`, lien aussi dans Mon espace).
+Quand une discussion termine une étape importante ou attend une action de Mourad, elle met à jour
+SA fiche dans `window.DISC` (etat cours/attente/pause/fini, maj, fait, attend, liens) et, si besoin,
+`window.DISC_TODO`, puis `DISC_UPDATED` = date du jour, sur la branche publiée `claude/thai-app-mnw166`.
+Un nouveau sujet = une nouvelle discussion avec un nom clair. Les liens publiés vont aussi dans
+`nm/assets/js/demos-data.js` (Mon espace), dans le bon espace (site / video / formation).
 
 ## Skills partagés entre toutes les discussions
 
@@ -268,10 +360,6 @@ voix/visage d'une vraie personne sans son accord. Détails dans le SKILL.md.
 - **UGC** : déjà couvert par `ugc-ad-scripts` + `influencer-marketing`. **Pub Meta** : `facebook-ads`
   (MIT, Rebecca Rae Barton) en plus de `ads` / `ad-creative` ; `marketing-council` pour l'avis « façon Seth Godin ».
 
-## Projets en cours
-
-Lis `PROJETS.md` à la racine au début d'une session : il résume les projets de Mourad (NM Academy, diagnostic Pattaya, rappels, etc.), leurs liens à jour et ce qui reste à faire. Mets-le à jour quand un projet avance.
-
 ## Giulivo v2 — refonte premium (`giulivo/`, 2026-10-20)
 
 Version « restaurant à 100 000 € » demandée par Mourad (carte blanche, mêmes couleurs) : nuit toscane,
@@ -285,22 +373,6 @@ pour les sites de restaurant (textes « grande maison », vouvoiement, faits ré
 **Goût de Mourad (2026-10-20)** : il n'aime pas les objets 3D décoratifs comme le logo extrudé en laiton —
 ne plus en faire. Il veut les **photos des plats mises en avant** (grandes, en premier), avec des
 animations 3D qui servent les photos (ex. la roue des plats), pas des objets 3D à côté.
-
-## Procédure « nouveau client menu QR » (Mourad envoie la fiche + les photos du menu)
-
-Mourad trouve un restaurant, remplit l'onglet « + Nouveau client » de `nm/menus.html` (nom, ville, contact, langues, notes),
-copie la fiche et la colle dans une discussion avec les photos. Étapes à suivre, sans lui reposer les questions déjà dans la fiche :
-1. Transcrire fidèlement le menu depuis les photos, prix en baht. Illisible ou absent = le dire et demander, jamais inventer (ni plats, ni photos, ni avis, ni allergènes).
-2. Sur la branche publiée `claude/thai-app-mnw166` : copier `menus/mae-lek/` (ou `menus/giulivo/`) en `menus/<slug>/`, remplir `menu.js`
-   (seulement les vraies photos fournies), langues demandées — par défaut les 9 langues des touristes de Pattaya (thaï, anglais, chinois, russe, coréen,
-   hindi, arabe, allemand, français ; italien sur demande), arabe de droite à gauche déjà géré par `menus/assets/menu.js`.
-3. Ajouter une ligne dans `menus/abonnements.json` (start = aujourd'hui, `paidUntil` = +1 mois, `trial: true`, contact, ville, pas de `demo`).
-4. Tester (Playwright téléphone + ordinateur, toutes les langues, aucune erreur console), pousser, vérifier que le lien répond (Pages met ~10-15 min).
-5. Livrer : le lien du menu + le panneau QR A5 en PDF (page `nm/print/chevalet-qr.html?url=<lien>&name=<nom>` rendue avec Playwright, QR décodé et vérifié),
-   rappeler de scanner le QR avant d'imprimer et de faire relire le thaï par un natif (sa femme).
-6. « X a payé » : repousser `paidUntil` d'un mois et ajouter une ligne dans `payments`.
-Le tableau de bord (privé, `nm/menus.html`) a 3 onglets : Clients, Chiffres, + Nouveau client. Mettre à jour `PROJETS.md` quand un client est ajouté.
-
 
 ## find-skills : à utiliser à chaque nouvelle tâche (demandé par Mourad, 2026-11-11)
 
@@ -344,3 +416,10 @@ et demander le feu vert pour le coût AVANT de livrer. Les menus d'Android/Chrom
 
 ## QR Business AI Agent (2026-11-25)
 `qr-agent/` (branche publiée) : logiciel de prospection/CRM/emails/démos de menus QR (Node+Fastify+PGlite/PostgreSQL, React+Tailwind). Règles inviolables : validation humaine d'abord, aucun email deviné, désinscription immédiate, pays « accord préalable » (DE) bloqués, démos = « prototype non officiel », aucune donnée inventée. Ne jamais mettre `EMAIL_LIVE=true` ni activer l'envoi automatique sans accord explicite de Mourad. Détails : `qr-agent/README.md`.
+
+## RÈGLE PERMANENTE (Mourad, 2026-11-26) : chaque plat a une SUPERBE photo trouvée sur le net, sans qu'il ait à le demander
+Pour tout menu QR (démo ou client), si les photos d'origine sont floues/grainées/absentes : chercher sur le web (Wikimedia Commons en priorité, licence libre,
+fichiers ≥ 1600 px, titre correspondant au plat exact) une photo nette et belle pour CHAQUE plat et boisson, relue à l'œil, créditée dans `CREDITS.md`,
+mention « photos d'illustration » dans le `footnote`. Le héros doit être une photo magnifique (pas une photo de téléphone moyenne). Ne jamais attendre
+que Mourad le redemande ; viser l'effet « choqué » quand il montre le menu au restaurateur. Jamais la photo d'un autre plat pour boucher un trou : si rien de beau
+ne correspond, chercher davantage (autres noms, autres requêtes) plutôt que de livrer flou.
