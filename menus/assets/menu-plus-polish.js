@@ -17,3 +17,15 @@
     scan(); new MutationObserver(scan).observe(document.getElementById("menu") || document.body, { childList: true });
   } else document.querySelectorAll(".ch__no").forEach(function (n) { n.classList.add("in"); });
 })();
+/* image safety net: a photo that fails to load (weak signal, CDN hiccup) is retried up to 3 times instead of staying blank */
+(function () {
+  addEventListener("error", function (e) {
+    var im = e.target; if (!im || im.tagName !== "IMG" || /^data:/.test(im.src)) return;
+    var n = +(im.getAttribute("data-retry") || 0); if (n >= 3) return;
+    im.setAttribute("data-retry", n + 1);
+    setTimeout(function () {
+      var u = im.getAttribute("data-src0") || im.getAttribute("src"); if (!im.getAttribute("data-src0")) im.setAttribute("data-src0", u);
+      im.removeAttribute("srcset"); im.src = u + (u.indexOf("?") > -1 ? "&" : "?") + "r=" + (n + 1) + "-" + Date.now();
+    }, 600 * (n + 1));
+  }, true);
+})();
