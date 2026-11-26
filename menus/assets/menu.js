@@ -551,5 +551,14 @@
   if (!src) return;
   window.addEventListener("load", function () {
     navigator.serviceWorker.register(new URL("../sw.js", src).href, { scope: new URL("../", src).href }).catch(function () {});
+    // first visit: the page and its files were loaded before the worker took control, so they are not saved yet. Once it controls the page, fetch them again (served from the browser cache) so a reload on a lost connection still works.
+    if (!navigator.serviceWorker.controller) navigator.serviceWorker.addEventListener("controllerchange", function () {
+      setTimeout(function () {
+        try {
+          var seen = {}, urls = [location.href].concat(performance.getEntriesByType("resource").map(function (e) { return e.name; })).filter(function (u) { if (seen[u] || !/^https?:/.test(u)) return false; return (seen[u] = 1); }).slice(0, 140), i = 0;
+          (function next() { var batch = urls.slice(i, i + 6); i += 6; if (!batch.length) return; Promise.all(batch.map(function (u) { return fetch(u).catch(function () {}); })).then(next); })();
+        } catch (e) {}
+      }, 1500);
+    }, { once: true });
   });
 })();
