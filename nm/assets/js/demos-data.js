@@ -8,7 +8,7 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-11-25";
+window.NM_UPDATED = "2026-11-26";
 
 window.NM_DEMOS = [
   { slug: "steak-dek-naew", name: "Steak Dek Naew (สเต็กเด็กแนว)", type: "Steakhouse", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Premier client. Site 3 langues (thaï, anglais, français) fait avec ses vraies photos + son menu QR (menus/steak-dek-naew/). À compléter : adresse, horaires, LINE/WhatsApp du patron." },
@@ -34,6 +34,7 @@ window.NM_LINKS = [
   ] },
   { space: "site", pane: "clients", group: "Les sites de mes clients", items: [
     { name: "Page de vente · Menu QR premium (à envoyer aux restaurants)", icon: "✨", path: "menus/showcase/", note: "Landing de démonstration : entrée animée, vrai menu en direct dans un téléphone 3D, ambiances, QR à scanner, bouton WhatsApp" },
+    { name: "Menu QR · ครัววัชรี Watcharee Thai Seafood (nouveau client)", icon: "🦐", path: "menus/watcharee-thai-seafood/", note: "Client trouvé le 26/11 : sa vraie carte (60 lignes, prix en baht) lue sur ses photos de menu papier, 20 langues, ses photos. Tél/LINE 080-4646916. Points à confirmer avec lui : menus/watcharee-thai-seafood/A-CONFIRMER.md" },
     { name: "Menu QR · Tahiti Beach Club (à montrer au restaurant)", icon: "🏖️", path: "menus/tahiti-beach-club/", note: "Leur menu à eux : 156 plats et boissons, 20 langues, leur plage en héros, photos d'illustration (mention en bas). Panier + écran serveur" },
     { name: "Site web · Steak Dek Naew", icon: "🥩", path: "demos/steak-dek-naew/", note: "Le site du restaurant : héros photo + assiettes, section menu QR avec téléphone. TH/EN/FR" },
     { name: "Menu QR · Fisherman's Garden (démo prospect)", icon: "🍹", path: "menus/fishermans-garden/", note: "Carte complète (200 articles : plats + boissons, 9 langues) lue sur 22 photos du menu papier. À montrer en direct au patron" },

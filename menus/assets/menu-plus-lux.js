@@ -1,5 +1,5 @@
 /* NM Studio · QR menu "Lux" layer (needs menu-plus.js). Opt-in through NM_MENU.plus:
- *   theme: "noir" | "ivoire" | "trattoria" | "kaiseki" | "bistro" | "tropical" | "modern"   — full identity (palette, type pairing, shapes, grain)
+ *   theme: "noir" | "ivoire" | "trattoria" | "kaiseki" | "bistro" | "tropical" | "boho" | "modern"   — full identity (palette, type pairing, shapes, grain)
  *   styles: true           — floating "Style" button that lets a prospect see THEIR menu in every identity (sales demos; remove for live clients)
  *   hero3d: true           — WebGL opening photo (parallax drift, light sweep, touch ripple, film grain). Falls back to the plain photo.
  * Also always on (data-driven, never invented): spice / diet filter chips, sold-out dishes (item.soldout:true), diet badges (item.diet:[...]).
@@ -27,6 +27,8 @@
     kaiseki:   { n: "Kaiseki",          s: "Japonais haut de gamme", bg: "#0b0b0d", ink: "#eee8dc", accent: "#d8452c", display: "'Shippori Mincho','Noto Serif Thai','Noto Serif JP',Georgia,serif", body: "'Zen Kaku Gothic New','Jost','Noto Sans Thai','Noto Sans SC',system-ui,sans-serif", f: "Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500", r: "2px", g: 0.04, dark: 1 },
     bistro:    { n: "Bistrot",          s: "Français traditionnel", bg: "#190e0f", ink: "#f2e7d6", accent: "#cda35c", display: "'Playfair Display','Noto Serif Thai','Noto Serif SC',Georgia,serif", body: "'Lora','Noto Serif Thai','Noto Serif SC',Georgia,serif", f: "Playfair+Display:ital,wght@0,400;0,500;1,400&family=Lora:wght@400;500;600", r: "14px", g: 0.08, dark: 1 },
     tropical:  { n: "Beach club",       s: "Tropical & solaire", bg: "#071f1e", ink: "#fff4e3", accent: "#ff9a5a", display: "'Fraunces','Noto Serif Thai','Noto Serif SC',Georgia,serif", body: "'DM Sans','Noto Sans Thai','Noto Sans SC',system-ui,sans-serif", f: "Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400&family=DM+Sans:wght@400;500;600", r: "34px", g: 0.04, dark: 1 },
+    boho:      { n: "Boho dusk",        s: "Plage & coucher de soleil", bg: "#1a100d", ink: "#fbeedd", accent: "#f08a4b", display: "'Gilda Display','Noto Serif Thai','Noto Serif SC',Georgia,serif", body: "'Jost','Noto Sans Thai','Noto Sans SC',system-ui,sans-serif", f: "Gilda+Display&family=Jost:wght@300;400;500;600", r: "26px", g: 0.05, dark: 1 },
+    watcharee: { n: "Watcharee",        s: "Couleurs de l'enseigne", bg: "#0d1426", ink: "#fff3e0", accent: "#ff9f1c", display: "'Prompt','Noto Sans Thai',system-ui,sans-serif", body: "'Jost','Noto Sans Thai','Noto Sans SC',system-ui,sans-serif", f: "Prompt:wght@400;500;600&family=Jost:wght@300;400;500;600", r: "24px", g: 0.05, dark: 1 },
     modern:    { n: "Contemporain",     s: "Moderne & audacieux", bg: "#0a0a0a", ink: "#ffffff", accent: "#d4ff4f", display: "'Syne','Noto Sans Thai','Noto Sans SC',system-ui,sans-serif", body: "'Space Grotesk','Noto Sans Thai','Noto Sans SC',system-ui,sans-serif", f: "Syne:wght@500;600;700&family=Space+Grotesk:wght@300;400;500;600", r: "8px", g: 0.03, dark: 1 }
   };
   var ORDER = Object.keys(TH);

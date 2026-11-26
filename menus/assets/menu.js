@@ -10,6 +10,7 @@
   var M = window.NM_MENU;
   if (!M) return;
   var root = document.getElementById("menu");
+  if (M.noPrice) document.documentElement.classList.add("no-price");
   var shop = M.demo && (new URLSearchParams(location.search).get("shop") || "").trim().slice(0, 40);
   if (shop) { M.name = M.wordmark = shop; M.wordmarkSub = ""; M.tagline = { en: "" }; }
   var LN = { th: "ไทย", en: "English", zh: "简体中文", zt: "繁體中文", ru: "Русский", fr: "Français", it: "Italiano", de: "Deutsch", ja: "日本語", ko: "한국어", hi: "हिन्दी", ar: "العربية", ms: "Melayu", id: "Indonesia", lo: "ລາວ", vi: "Tiếng Việt", km: "ខ្មែរ", fil: "Filipino", he: "עברית", es: "Español" };

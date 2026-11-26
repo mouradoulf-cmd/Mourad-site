@@ -419,3 +419,6 @@ html:lang(ar),html:lang(ar) body{--display:'Noto Naskh Arabic','Playfair Display
 html:lang(hi),html:lang(hi) body{--display:'Noto Sans Devanagari','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans Devanagari','Jost','Lora',system-ui,sans-serif!important}
 html:lang(ja),html:lang(ja) body{--display:'Noto Sans JP','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans JP','Jost','Lora',system-ui,sans-serif!important}
 html:lang(zh-Hant),html:lang(zh-Hant) body{--display:'Noto Sans TC','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans TC','Jost','Lora',system-ui,sans-serif!important}
+
+/* menus published without prices (demo from a site that shows photos only): "noPrice": true hides every price and total */
+html.no-price :is(.dish__p,#bagp,.pl-price,.pl-pc__p,.sd__p,.sel .p,.tot,.wtot,.wp){display:none!important}

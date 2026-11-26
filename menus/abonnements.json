@@ -79,6 +79,21 @@
    "trial": true,
    "payments": [],
    "note": "Menu premium 20 langues, 156 plats/boissons lus sur 16 photos du menu papier. Photos = celles imprimées sur le menu (photographiées). Héros = placeholder en attendant la photo de la plage de Mourad. À faire relire : thaï, lao, khmer, hébreu, malais ; prix 'petit/grand' des riz sautés et soupes supposés ; fautes d'orthographe du menu papier (Tequila Sunrise au gin ?, Mocktails)."
+  },
+  {
+   "slug": "watcharee-thai-seafood",
+   "name": "ครัววัชรี · Watcharee Thai Seafood",
+   "type": "Restaurant thaï & fruits de mer",
+   "city": "",
+   "contact": "LINE / tél. 080-4646916",
+   "phone": "080-4646916",
+   "lang": "th",
+   "cover": "watcharee-thai-seafood/wat-d6.webp",
+   "start": "2026-11-26",
+   "paidUntil": "2026-12-26",
+   "trial": true,
+   "payments": [],
+   "note": "Client trouvé par Mourad (2026-11-26). Carte transcrite depuis ses photos du menu papier (60 lignes, prix en baht, étiquettes de prix manuscrites prises en compte), 20 langues, photos = celles de son menu papier. À confirmer avec lui : voir menus/watcharee-thai-seafood/A-CONFIRMER.md"
   }
  ]
 }
