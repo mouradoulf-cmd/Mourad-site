@@ -16,3 +16,9 @@ Carte transcrite depuis les photos du menu papier et des bannières (2026-11-26)
 
 ## Photos
 Photos = celles imprimées dans leur menu papier (recadrées depuis les photos du menu) ; le menu porte la mention « photos non contractuelles ».
+
+## Ajout du 2026-11-26 (2 pages de plus : soupes/currys, poulet frit, salades)
+- « Tom yum goong » (150 / 300) et « Tom yum bar » (180 / 300) : deux formats → lignes « petit / grand ».
+- « Tom yum Young Ovary » (ต้มยำรังไข่อ่อน) : autocollant « NO! » sur la photo → **non repris** (plat indisponible ?).
+- Prix lus sur autocollants : tom kha poulet 150, poulet pané 150, curry cha-om 150, salade thaï (ตำไท) 70.
+- « ตำไท » repris comme salade thaï (som tam), même traduction que la bannière.
