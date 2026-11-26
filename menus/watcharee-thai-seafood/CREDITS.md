@@ -1,6 +1,6 @@
 # Credits — ครัววัชรี · Watcharee Thai Seafood menu
 
-Dish photos listed below are free-licence illustrations from Wikimedia Commons (not the restaurant's own dishes). The other dish photos are cropped from the restaurant's own paper menu. Menu text and prices: the restaurant's paper menu. Translations: NM Studio (to be proofread by natives).
+Dish photos listed below are free-licence illustrations from Wikimedia Commons (not the restaurant's own dishes). Other dish photos are cropped from the restaurant's own paper menu; the hero is the restaurant's own dining room. Menu text and prices: the restaurant's paper menu. Translations: NM Studio (to be proofread by natives).
 
 - f6 · DSCF0812 Savory cashew chicken stir-fry with bell peppers and tender pieces of meat glazed in a glossy sauce.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DSCF0812_Savory_cashew_chicken_stir-fry_with_bell_peppers_and_tender_pieces_of_meat_glazed_in_a_glossy_sauce.jpg
 - g1 · Basil fried crispy pork with rice - Chiang Mai - 2017-07-11 (002).jpg · CC0 · https://commons.wikimedia.org/wiki/File:Basil_fried_crispy_pork_with_rice_-_Chiang_Mai_-_2017-07-11_(002).jpg
@@ -9,7 +9,6 @@ Dish photos listed below are free-licence illustrations from Wikimedia Commons (
 - c2 · DFC 2100 Spicy Thai-style fish topped with omelet fresh chilies garlic shallots and cilantro served with cucumber and lime.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_2100_Spicy_Thai-style_fish_topped_with_omelet_fresh_chilies_garlic_shallots_and_cilantro_served_with_cucumber_and_lime.jpg
 - b4 · Deep fried prawns with shells, garlic sauce, ground black pepper.jpg · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Deep_fried_prawns_with_shells,_garlic_sauce,_ground_black_pepper.jpg
 - n5 · Thai green chicken curry at Highgate Cricket Club, Crouch End, London 1.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Thai_green_chicken_curry_at_Highgate_Cricket_Club,_Crouch_End,_London_1.jpg
-- hero · DFC 5516 Freshly grilled prawns lined up for sale at a local market in Sattahip Thailand.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_5516_Freshly_grilled_prawns_lined_up_for_sale_at_a_local_market_in_Sattahip_Thailand.jpg
 - c1 · Gang Pa Thai Jungle Curry close-up - Ying Thai Lygon AUD12.90 (2170431637).jpg · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Gang_Pa_Thai_Jungle_Curry_close-up_-_Ying_Thai_Lygon_AUD12.90_(2170431637).jpg
 - e5 · Jungle curry by bob walker (40790240042).jpg · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Jungle_curry_by_bob_walker_(40790240042).jpg
 - g2 · Stir-fried kale vegetable with crispy pork.jpg · CC0 · https://commons.wikimedia.org/wiki/File:Stir-fried_kale_vegetable_with_crispy_pork.jpg
@@ -25,6 +24,7 @@ Dish photos listed below are free-licence illustrations from Wikimedia Commons (
 - e1 · Stired-fried Razor Clams with Black Beans and Pepper.jpg · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Stired-fried_Razor_Clams_with_Black_Beans_and_Pepper.jpg
 - h6 · A bowl of rice.jpg · CC0 · https://commons.wikimedia.org/wiki/File:A_bowl_of_rice.jpg
 - b1 · Ikan Siakap Masak 3 Rasa.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Ikan_Siakap_Masak_3_Rasa.jpg
+- a3 · DFC 1937 Savory stir-fried squid with basil and chili served over steamed jasmine rice.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_1937_Savory_stir-fried_squid_with_basil_and_chili_served_over_steamed_jasmine_rice.jpg
 - a5 · Rice with stir-fried squid krapao and fried duck egg.jpg · CC BY 4.0 · https://commons.wikimedia.org/wiki/File:Rice_with_stir-fried_squid_krapao_and_fried_duck_egg.jpg
 - f3 · Chicken pad see ew at Rice and Noodles Thai Restaurant, Franconia.jpg · CC0 · https://commons.wikimedia.org/wiki/File:Chicken_pad_see_ew_at_Rice_and_Noodles_Thai_Restaurant,_Franconia.jpg
 - g3 · Seafood fried rice (23713561449).jpg · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Seafood_fried_rice_(23713561449).jpg
@@ -34,8 +34,10 @@ Dish photos listed below are free-licence illustrations from Wikimedia Commons (
 - d1 · Stir-fried Squid with Salted Egg.jpg · CC0 · https://commons.wikimedia.org/wiki/File:Stir-fried_Squid_with_Salted_Egg.jpg
 - d5 · Thai steamed fish with lime juice.jpg · Public domain · https://commons.wikimedia.org/wiki/File:Thai_steamed_fish_with_lime_juice.jpg
 - h3 · DFC 2217 Sweet and savory stir-fry with colorful bell peppers carrots onions and tender strips of chicken glazed in a glossy sauce.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_2217_Sweet_and_savory_stir-fry_with_colorful_bell_peppers_carrots_onions_and_tender_strips_of_chicken_glazed_in_a_glossy_sauce.jpg
+- h4 · Tom chuet taohu.jpg · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Tom_chuet_taohu.jpg
 - n2 · Tom Kha Gai - Thai Food.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai_-_Thai_Food.jpg
 - n1 · Tom yum goong at Thai Orchid Villa Kamppi.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Tom_yum_goong_at_Thai_Orchid_Villa_Kamppi.jpg
 - n3 · Siam Garden Tom yum goong ac.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Siam_Garden_Tom_yum_goong_ac.jpg
+- n4 · Tom Yam Ikan Siakap.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Tom_Yam_Ikan_Siakap.jpg
 - n8 · Fried Chicken Wings, Oct 2025.jpg · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Fried_Chicken_Wings,_Oct_2025.jpg
 - n7 · Bankrueed fried chicken wings.jpg · CC BY 4.0 · https://commons.wikimedia.org/wiki/File:Bankrueed_fried_chicken_wings.jpg
