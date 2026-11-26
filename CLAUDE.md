@@ -416,3 +416,10 @@ et demander le feu vert pour le coût AVANT de livrer. Les menus d'Android/Chrom
 
 ## QR Business AI Agent (2026-11-25)
 `qr-agent/` (branche publiée) : logiciel de prospection/CRM/emails/démos de menus QR (Node+Fastify+PGlite/PostgreSQL, React+Tailwind). Règles inviolables : validation humaine d'abord, aucun email deviné, désinscription immédiate, pays « accord préalable » (DE) bloqués, démos = « prototype non officiel », aucune donnée inventée. Ne jamais mettre `EMAIL_LIVE=true` ni activer l'envoi automatique sans accord explicite de Mourad. Détails : `qr-agent/README.md`.
+
+## RÈGLE PERMANENTE (Mourad, 2026-11-26) : chaque plat a une SUPERBE photo trouvée sur le net, sans qu'il ait à le demander
+Pour tout menu QR (démo ou client), si les photos d'origine sont floues/grainées/absentes : chercher sur le web (Wikimedia Commons en priorité, licence libre,
+fichiers ≥ 1600 px, titre correspondant au plat exact) une photo nette et belle pour CHAQUE plat et boisson, relue à l'œil, créditée dans `CREDITS.md`,
+mention « photos d'illustration » dans le `footnote`. Le héros doit être une photo magnifique (pas une photo de téléphone moyenne). Ne jamais attendre
+que Mourad le redemande ; viser l'effet « choqué » quand il montre le menu au restaurateur. Jamais la photo d'un autre plat pour boucher un trou : si rien de beau
+ne correspond, chercher davantage (autres noms, autres requêtes) plutôt que de livrer flou.
