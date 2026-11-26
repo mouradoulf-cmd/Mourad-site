@@ -410,3 +410,12 @@ html[dir=rtl] .lgrid.many button .lgi svg{transform:scaleX(-1)}
 .open__lang{padding:0 11px 0 8px;gap:8px}
 
 .foot{margin:34px 4px 10px;text-align:center;font:400 .74rem/1.5 var(--body);color:var(--mute);opacity:.85;text-wrap:balance}
+
+/* Script fonts: themes replace --display/--body, so every non-Latin language puts its own Noto face first (loaded on demand by menu.js) */
+html:lang(km),html:lang(km) body{--display:'Noto Sans Khmer','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans Khmer','Jost','Lora',system-ui,sans-serif!important}
+html:lang(lo),html:lang(lo) body{--display:'Noto Sans Lao','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans Lao','Jost','Lora',system-ui,sans-serif!important}
+html:lang(he),html:lang(he) body{--display:'Noto Sans Hebrew','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans Hebrew','Jost','Lora',system-ui,sans-serif!important}
+html:lang(ar),html:lang(ar) body{--display:'Noto Naskh Arabic','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Naskh Arabic','Jost','Lora',system-ui,sans-serif!important}
+html:lang(hi),html:lang(hi) body{--display:'Noto Sans Devanagari','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans Devanagari','Jost','Lora',system-ui,sans-serif!important}
+html:lang(ja),html:lang(ja) body{--display:'Noto Sans JP','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans JP','Jost','Lora',system-ui,sans-serif!important}
+html:lang(zh-Hant),html:lang(zh-Hant) body{--display:'Noto Sans TC','Playfair Display','Fraunces',Georgia,serif!important;--body:'Noto Sans TC','Jost','Lora',system-ui,sans-serif!important}

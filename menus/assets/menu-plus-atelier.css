@@ -123,3 +123,9 @@ html.pl-atelier.pl-cards.pl-v-grid .dish.off .dish__n{opacity:.35}
   html.pl-atelier.pl-cards:not(.pl-v-grid) .ch .list .dish.has-ph:nth-of-type(3n) .dish__m{justify-self:start;margin-top:16px}
   html.pl-atelier.pl-cards:not(.pl-v-grid) .dish.has-ph .dish__n{font-size:1.6rem}
 }
+
+/* Scripts without a true italic or with joined clusters: no synthetic oblique, no letter-spacing (Khmer/Lao/Thai/Indic/Arabic/Hebrew/CJK/Korean) */
+:is(:lang(km),:lang(lo),:lang(th),:lang(hi),:lang(ar),:lang(he),:lang(ja),:lang(ko),:lang(zh-Hans),:lang(zh-Hant)) :is(.ch__t,.ch__o,.dish__n,.dish__n small,.sd__n){font-style:normal;letter-spacing:0}
+html.pl-atelier :is(:lang(km),:lang(lo),:lang(th),:lang(hi),:lang(ar),:lang(he),:lang(ja),:lang(ko),:lang(zh-Hans),:lang(zh-Hant)) .tabs button{letter-spacing:0}
+html.pl-atelier:is(:lang(km),:lang(lo),:lang(th),:lang(hi),:lang(ar),:lang(he),:lang(ja),:lang(ko),:lang(zh-Hans),:lang(zh-Hant)) :is(.ch__t,.ch__o,.dish__n,.dish__n small,.tabs button){font-style:normal;letter-spacing:0}
+html.pl-atelier:is(:lang(km),:lang(lo)) .ch__t{line-height:1.3}
