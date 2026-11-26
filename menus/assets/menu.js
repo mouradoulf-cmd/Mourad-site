@@ -276,6 +276,17 @@
   }
 
   /* ─────────── behaviour ─────────── */
+  // chapters far from the screen can be rendered lazily (content-visibility), so their real position is only known once they have been laid out: after a jump, re-align a couple of times until the heading sits where it should
+  function settleTo(tg) {
+    var n = 0;
+    (function again() {
+      setTimeout(function () {
+        var want = tg.getBoundingClientRect().top - (document.getElementById("hd").offsetHeight + 16);
+        if (Math.abs(want) > 6) scrollTo({ top: scrollY + want, behavior: n === 0 ? "smooth" : "auto" });
+        if (++n < 4) again();
+      }, n === 0 ? 650 : 450);
+    })();
+  }
   // one idempotent way to centre the active tab: absolute target (not relative to the current position), and never re-issued while an animation to the same target is running — avoids the strip jittering left/right on iOS
   var lastCenter = 0, lastTarget = -1;
   function centerTab(nav, on, smooth) {
@@ -370,7 +381,7 @@
     }
     if (b.hasAttribute("data-areset")) { alg = []; saveAlg(); openSheet("alg"); return; }
     if (b.hasAttribute("data-q")) { add(b.getAttribute("data-q"), +b.getAttribute("data-d")); openSheet("sel"); return; }
-    if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { var tg = g.querySelector(".ch__h") || g, tf = tg.style.transform, tt = tg.style.transition; tg.style.transition = "none"; tg.style.transform = "none"; var yy = tg.getBoundingClientRect().top + scrollY; tg.style.transform = tf; void tg.offsetHeight; tg.style.transition = tt; scrollTo({ top: yy - (document.getElementById("hd").offsetHeight + 16), behavior: "smooth" }); }, closeSheet && document.getElementById("sheet").classList.contains("on") ? 250 : 0); return; }
+    if (b.hasAttribute("data-go")) { var g = document.getElementById(b.getAttribute("data-go")); closeSheet(); setTimeout(function () { var tg = g.querySelector(".ch__h") || g, tf = tg.style.transform, tt = tg.style.transition; tg.style.transition = "none"; tg.style.transform = "none"; var yy = tg.getBoundingClientRect().top + scrollY; tg.style.transform = tf; void tg.offsetHeight; tg.style.transition = tt; scrollTo({ top: yy - (document.getElementById("hd").offsetHeight + 16), behavior: "smooth" }); settleTo(tg); }, closeSheet && document.getElementById("sheet").classList.contains("on") ? 250 : 0); return; }
     if (b.hasAttribute("data-clear")) { sel = {}; saveSel(); refreshAdds(); openSheet("sel"); return; }
     if (b.hasAttribute("data-show")) { showWaiter(); return; }
     if (b.hasAttribute("data-spice")) { var k = b.getAttribute("data-spice"); spice = spice === k ? null : k; store.set(KEY + "-spice", spice || ""); b.parentNode.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b && spice !== null); }); return; }

@@ -43,3 +43,6 @@ html[dir=rtl] .ch__no::after{transform-origin:right}
  .dish__ph::after{animation:none!important}.sheet img,.sheet__body>*{transform:none!important;transition:none!important;opacity:1!important}
  .pl-rip{display:none}.dish.has-ph .dish__ph img,html.pl-cards .dish.has-ph{transition:none!important;transform:none!important}
 }
+
+/* long menus: chapters far off screen are not laid out or painted until they get near the viewport (much smoother scrolling on mid-range phones); the size hint is remembered once a chapter has been seen */
+html.pl-cards main .ch{content-visibility:auto;contain-intrinsic-size:auto 1500px}
