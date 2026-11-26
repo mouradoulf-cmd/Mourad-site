@@ -1,0 +1,37 @@
+c2.1|ปลาหมึก ไอโอลีเลมอนกระเทียม|魷魚、檸檬蒜泥蛋黃醬|кальмары, айоли с лимоном и чесноком|calamars, aïoli citron-ail|Tintenfisch, Zitronen-Knoblauch-Aioli|حبار، أيولي بالليمون والثوم
+c2.2|เนย พาร์สลีย์ พริก|奶油、巴西里、辣椒|масло, петрушка, чили|beurre, persil, piment|Butter, Petersilie, Chili|زبدة، بقدونس، فلفل حار
+c2.4|แซลมอนเค็ม ครีมชีส ขนมปังปิ้ง|鹽漬鮭魚、奶油起司、吐司|слабосолёный лосось, сливочный сыр, тосты|saumon salé, fromage frais, toast|gesalzener Lachs, Frischkäse, Toast|سلمون مملح، جبنة كريمية، توست
+c2.5|ทูน่า อะโวคาโด เคเปอร์ ใบโซฟ|鮪魚、酪梨、酸豆、細香蔥|тунец, авокадо, каперсы, шнитт-лук|thon, avocat, câpres, ciboulette|Thunfisch, Avocado, Kapern, Schnittlauch|تونة، أفوكادو، كبر، ثوم معمر
+c2.6|แซลมอน อะโวคาโด แตงกวา|鮭魚、酪梨、小黃瓜|лосось, авокадо, огурец|saumon, avocat, concombre|Lachs, Avocado, Gurke|سلمون، أفوكادو، خيار
+c2.7|พาร์มาแฮมบ่ม 24 เดือน เมลอน ร็อกเก็ต พาร์เมซาน|熟成 24 個月帕瑪火腿、哈密瓜、芝麻菜、帕馬森|пармская ветчина 24 месяца, дыня, руккола, пармезан|jambon de Parme 24 mois, melon, roquette, parmesan|24 Monate gereifter Parmaschinken, Melone, Rucola, Parmesan|لحم بارما معتق 24 شهرًا، شمام، جرجير، بارميزان
+c2.8|โรสต์บีฟ ซอสทรัฟเฟิล ขนมปังปิ้ง|烤牛肉、松露醬、吐司|ростбиф, трюфельный соус, тосты|rosbif, sauce truffée, toast|Roastbeef, Trüffelsauce, Toast|روست بيف، صلصة الكمأ، توست
+c2.9|โรสต์บีฟ ซอสทูน่า ร็อกเก็ต|烤牛肉、鮪魚醬、芝麻菜|ростбиф, соус из тунца, руккола|rosbif, sauce au thon, roquette|Roastbeef, Thunfischsauce, Rucola|روست بيف، صلصة التونة، جرجير
+c2.11|คาลามาตาและมะกอกเขียว|卡拉馬塔與綠橄欖|каламата и зелёные|kalamata et vertes|Kalamata und grüne|كالاماتا وأخضر
+c3.1|ไข่ ไส้กรอก เบคอน มะเขือเทศ ผลไม้ ขนมปัง กาแฟ/ชา|蛋、香腸、培根、蕃茄、水果、麵包、咖啡／茶|яйца, сосиски, бекон, помидор, фрукты, хлеб, кофе/чай|œufs, saucisse, bacon, tomate, fruits, pain, café/thé|Eier, Wurst, Speck, Tomate, Obst, Brot, Kaffee/Tee|بيض، نقانق، لحم مقدد، طماطم، فواكه، خبز، قهوة/شاي
+c3.2|ไข่คน แซลมอน ขนมปัง ผลไม้ กาแฟ/ชา|炒蛋、鮭魚、麵包、水果、咖啡／茶|скрэмбл, лосось, хлеб, фрукты, кофе/чай|œufs brouillés, saumon, pain, fruits, café/thé|Rührei, Lachs, Brot, Obst, Kaffee/Tee|بيض مخفوق، سلمون، خبز، فواكه، قهوة/شاي
+c3.3|ไข่ลวก อะโวคาโด ซอสฮอลแลนเดส|水波蛋、酪梨、荷蘭醬|яйца пашот, авокадо, соус голландез|œufs pochés, avocat, sauce hollandaise|pochierte Eier, Avocado, Sauce Hollandaise|بيض مسلوق، أفوكادو، صلصة هولندية
+c3.4|ไข่ ซัลซ่ามะเขือเทศ เฟต้า|蛋、蕃茄莎莎、菲達起司|яйца, томатная сальса, фета|œufs, salsa tomate, feta|Eier, Tomatensalsa, Feta|بيض، صلصة طماطم، جبنة فيتا
+c3.5|ไข่ดาว ไส้กรอก มันฝรั่ง|煎蛋、香腸、馬鈴薯|яичница, сосиски, картофель|œufs au plat, saucisses, pommes de terre|Spiegeleier, Würstchen, Kartoffeln|بيض مقلي، نقانق، بطاطس
+c5.2|ทูน่าย่าง สลัดผัก มันฝรั่ง ไข่|烤鮪魚、青菜沙拉、馬鈴薯、蛋|тунец гриль, зелёный салат, картофель, яйца|thon grillé, salade verte, pommes de terre, œufs|gegrillter Thunfisch, grüner Salat, Kartoffeln, Eier|تونة مشوية، سلطة خضراء، بطاطس، بيض
+c5.3|กุ้ง อะโวคาโด อัลมอนด์สไลซ์ พอนซึ|蝦、酪梨、杏仁片、柚子醋醬油|креветки, авокадо, миндальные хлопья, понзу|crevettes, avocat, amandes effilées, ponzu|Garnelen, Avocado, Mandelblättchen, Ponzu|جمبري، أفوكادو، شرائح لوز، بونزو
+c5.4|แตงกวา มะเขือเทศเชอร์รี น้ำสลัดอิตาเลียน|小黃瓜、小蕃茄、義式沙拉醬|огурец, помидоры черри, итальянская заправка|concombre, tomates cerises, vinaigrette italienne|Gurke, Kirschtomaten, italienisches Dressing|خيار، طماطم كرزية، تتبيلة إيطالية
+c5.5|แซลมอนเค็ม มะเขือเทศเชอร์รี บัลซามิก|鹽漬鮭魚、小蕃茄、巴薩米克醋|слабосолёный лосось, помидоры черри, бальзамик|saumon salé, tomates cerises, balsamique|gesalzener Lachs, Kirschtomaten, Balsamico|سلمون مملح، طماطم كرزية، بلسميك
+c7.1|ผัก มันบด|蔬菜、馬鈴薯泥|овощи, картофельное пюре|légumes, purée de pommes de terre|Gemüse, Kartoffelpüree|خضروات، هريس البطاطس
+c8.1|เนื้อวัวออสเตรเลีย|澳洲牛肉|австралийская говядина|bœuf australien|australisches Rindfleisch|لحم بقري أسترالي
+c11.1|บูร์ราต้า ร็อกเก็ต พาร์เมซาน|布拉塔起司、芝麻菜、帕馬森|буррата, руккола, пармезан|burrata, roquette, parmesan|Burrata, Rucola, Parmesan|بوراتا، جرجير، بارميزان
+c11.3|กุ้ง ร็อกเก็ต พาร์เมซาน|蝦、芝麻菜、帕馬森|креветки, руккола, пармезан|crevettes, roquette, parmesan|Garnelen, Rucola, Parmesan|جمبري، جرجير، بارميزان
+c11.6|พริกหวาน มะกอก หอมใหญ่|甜椒、橄欖、洋蔥|болгарский перец, оливки, лук|poivron, olives, oignon|Paprika, Oliven, Zwiebel|فلفل حلو، زيتون، بصل
+c11.7|ไก่อบ มะกอก เฟต้า ออริกาโน|烤雞、橄欖、菲達起司、奧勒岡|запечённая курица, оливки, фета, орегано|poulet rôti, olives, feta, origan|gebratenes Hähnchen, Oliven, Feta, Oregano|دجاج مشوي، زيتون، جبنة فيتا، أوريجانو
+c12.1|สมุนไพรไทย ข้าวคั่ว พริก|泰式香草、炒米粉、辣椒|тайские травы, рисовая мука, чили|herbes thaïes, poudre de riz, piment|Thai-Kräuter, Reismehl, Chili|أعشاب تايلندية، مسحوق الأرز، فلفل حار
+c12.7|ไก่ กะทิ|雞肉、椰奶|курица, кокосовые сливки|poulet, crème de coco|Hähnchen, Kokoscreme|دجاج، كريمة جوز الهند
+c16.5|สับปะรดและมะพร้าว|鳳梨與椰子|ананас и кокос|ananas et noix de coco|Ananas und Kokosnuss|أناناس وجوز الهند
+c21.1|วอดก้า ส้ม เสาวรส เกรนาดีน โซดา|伏特加、柳橙、百香果、石榴糖漿、蘇打水|водка, апельсин, маракуйя, гренадин, содовая|vodka, orange, fruit de la passion, grenadine, soda|Wodka, Orange, Maracuja, Grenadine, Soda|فودكا، برتقال، فاكهة العاطفة، غرنادين، صودا
+c21.2|ซัมบูก้า จิน แตงกวา แอปเปิ้ล มะนาว โซดา|桑布卡、琴酒、小黃瓜、蘋果、萊姆、蘇打水|самбука, джин, огурец, яблоко, лайм, содовая|sambuca, gin, concombre, pomme, citron vert, soda|Sambuca, Gin, Gurke, Apfel, Limette, Soda|سامبوكا، جن، خيار، تفاح، ليمون، صودا
+c21.3|รัมขาว มะพร้าว สับปะรด บลูกูราเซา มะนาว|白朗姆酒、椰子、鳳梨、藍柑橘酒、萊姆|белый ром, кокос, ананас, блю кюрасао, лайм|rhum blanc, coco, ananas, curaçao bleu, citron vert|weißer Rum, Kokos, Ananas, Blue Curaçao, Limette|رم أبيض، جوز الهند، أناناس، بلو كوراساو، ليمون
+c21.4|วอดก้าวานิลลา โพรเซกโก เสาวรส ไข่ขาว|香草伏特加、普羅賽克、百香果、蛋白|ванильная водка, просекко, маракуйя, яичный белок|vodka vanille, prosecco, fruit de la passion, blanc d'œuf|Vanillewodka, Prosecco, Maracuja, Eiweiß|فودكا الفانيليا، بروسيكو، فاكهة العاطفة، بياض البيض
+c0.6|ซัลมอนเค็มเบา ๆ ครีมชีส|微鹹鮭魚、奶油起司|слабосолёная сёмга, крем-чиз|saumon légèrement salé, fromage frais|leicht gesalzener Lachs, Frischkäse|سلمون مملح خفيفًا، جبنة كريمية
+c0.7|เนื้อวัว ขนมปังข้าวไรย์ ครีมเปรี้ยว|牛肉、黑麥麵包、酸奶油|говядина, ржаной хлеб, сметана|bœuf, pain de seigle, crème aigre|Rindfleisch, Roggenbrot, saure Sahne|لحم بقري، خبز الجاودار، قشدة حامضة
+c0.9|แซลมอน มันฝรั่ง ครีม|鮭魚、馬鈴薯、鮮奶油|лосось, картофель, сливки|saumon, pommes de terre, crème|Lachs, Kartoffeln, Sahne|سلمون، بطاطس، كريمة
+c1.1|เนื้อแกะออสเตรเลีย|澳洲羊肉|австралийский ягнёнок|agneau australien|australisches Lamm|لحم ضأن أسترالي
+c1.2|เนื้อวัวออสเตรเลีย|澳洲牛肉|австралийская говядина|bœuf australien|australisches Rindfleisch|لحم بقري أسترالي
+c1.3|ซอสไวน์ขาว บรอกโคลี|白酒醬、青花菜|соус из белого вина, брокколи|sauce au vin blanc, brocoli|Weißweinsauce, Brokkoli|صلصة النبيذ الأبيض، بروكلي

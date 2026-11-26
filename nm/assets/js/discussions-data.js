@@ -2,7 +2,7 @@
  * Chaque discussion Claude met à jour SA fiche ici quand elle finit une étape importante :
  * etat ("cours" | "attente" | "pause" | "fini"), maj (date), fait, attend (ce que Mourad doit faire), liens.
  */
-window.DISC_UPDATED = "2026-10-15";
+window.DISC_UPDATED = "2026-11-26";
 
 window.DISC_TODO = [
   { t: "Acheter le domaine nmstudiothai.com sur cloudflare.com (≈10 $/an), puis créer la clé limitée", d: "NM Studio" },
@@ -13,6 +13,19 @@ window.DISC_TODO = [
 ];
 
 window.DISC = [
+  { name: "Menus QR · Démos prospects (nuit du 26/11)", etat: "attente", maj: "2026-11-26",
+    sujet: "Menus QR de démonstration pour restaurants prospects (Primo Bistro, Chez Mony, AZUR)",
+    fait: [
+      "3 démos construites, 20 langues, photos libres de droits relues à l'œil (illustrations)",
+      "Messages FR/EN/TH prêts dans clients/<resto>/message.md (rien envoyé)"
+    ],
+    attend: ["Mourad relit et envoie lui-même les messages", "Traductions à faire relire par des natifs", "Photos réelles des restos si ça démarre"],
+    liens: [
+      { n: "Primo Bistro", u: "https://mouradoulf-cmd.github.io/Mourad-site/menus/primo-bistro-demo/" },
+      { n: "Chez Mony", u: "https://mouradoulf-cmd.github.io/Mourad-site/menus/chez-mony-demo/" },
+      { n: "AZUR", u: "https://mouradoulf-cmd.github.io/Mourad-site/menus/azur-restaurant-demo/" }
+    ],
+    pour: "Prospection par menus QR de démo, suivi des réponses" },
   { name: "NM Studio · Sites clients & Business", etat: "cours", maj: "2026-10-15",
     sujet: "Sites clients, NM Studio (domaine, carte de visite), entreprise, prospection",
     fait: [

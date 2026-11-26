@@ -1,4 +1,4 @@
-# AZUR Restaurant & Lounge — fiche prospect (faits publics seulement) — DÉMO PAS ENCORE CONSTRUITE
+# AZUR Restaurant & Lounge — fiche prospect (faits publics seulement) — démo construite (2026-11-26)
 
 Statut : **prospect chaud, démo à faire** (carte déjà extraite : `menus/tools/prospect-demo/data/azur_menu.json`, 186 lignes en 23 rubriques dont une carte russe de 22 plats).
 

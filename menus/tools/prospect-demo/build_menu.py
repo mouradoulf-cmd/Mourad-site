@@ -228,7 +228,7 @@ if WHICH=='primo':
       'info':{'hours':[['12:00','23:00']]*7,'utc':7,'address':'413/35 Thappraya Rd, Jomtien, Pattaya 20150','phone':'+66812435607','maps':'https://www.google.com/maps/place/?q=place_id:ChIJsx06dTOXAjERY0yohVa6VSg'}}
 elif WHICH=='azur':
     cfg.update({'name':'AZUR Restaurant & Lounge','wordmark':'AZUR','wordmarkSub':'Restaurant & Lounge · Jomtien'})
-    cfg['plus']={'cards':True,'depth':False,'styles':False,'hero3d':False,'theme':'ivoire','layout':'large','featured':FEAT,'crops':FEAT,
+    cfg['plus']={'cards':True,'depth':False,'styles':False,'hero3d':False,'theme':'ivoire','layout':'large','featured':[f.replace('.','_') for f in FEAT],'crops':[f.replace('.','_') for f in FEAT],
       'info':{'hours':[['11:00','22:00']]*7,'utc':7,'address':'Seven Seas Côte d\'Azur, Na Jomtien, Pattaya','phone':'+66946580105','maps':'https://maps.app.goo.gl/6BqnJsn1rBHX2g9j9','instagram':'https://www.instagram.com/azur_restaurant_th/'}}
 else:
     cfg.update({'name':'Chez Mony','wordmark':'Chez Mony','wordmarkSub':'Pattaya · Jomtien'})
