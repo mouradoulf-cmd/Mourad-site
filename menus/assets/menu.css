@@ -330,7 +330,7 @@ body.alg .alb{display:block}
 .dish.has-ph .add{align-self:end;margin:0 -6px -8px 0;background:var(--bg);box-shadow:0 0 0 3px var(--bg)}
 .dish.has-ph .add.on{background:var(--accent)}
 .dish.off .dish__ph{opacity:.3;filter:grayscale(1)}
-@media (min-width:760px){.dish__ph{width:112px;height:112px}.tabs{justify-content:center}}
+@media (min-width:760px){.dish__ph{width:112px;height:112px}.tabs>button:first-of-type{margin-inline-start:auto}.tabs>button:last-of-type{margin-inline-end:auto}}/* centred when it fits, starts at the edge when it overflows (justify-content:center would hide the first tabs off-screen) */
 /* Selection bar fully off screen (and out of reach) while nothing is selected — on iPhone the 140% slide left its top edge showing */
 .bag{transform:translate(-50%,calc(100% + var(--sb) + 40px));visibility:hidden;opacity:0;pointer-events:none;transition:transform .6s var(--spring),opacity .3s,visibility 0s .6s}
 .bag.on{transform:translate(-50%,0);visibility:visible;opacity:1;pointer-events:auto;transition:transform .6s var(--spring),opacity .2s,visibility 0s}

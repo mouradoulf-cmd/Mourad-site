@@ -56,7 +56,7 @@ window.NM_MENU = {
   "lo": "ຄົວຕະຫຼາດໄທ · ພັດທະຍາ",
   "vi": "Bếp đường phố Thái · Pattaya",
   "km": "ផ្ទះបាយតាមចិញ្ចើមផ្លូវថៃ · ប៉ាតាយ៉ា",
-  "fil": "Thai street kitchen · Pattaya",
+  "fil": "Lutuing kalye ng Thailand · Pattaya",
   "he": "מטבח רחוב תאילנדי · פטאיה",
   "es": "Cocina callejera tailandesa · Pattaya",
   "it": "Cucina di strada thailandese · Pattaya"

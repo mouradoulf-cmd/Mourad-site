@@ -101,3 +101,18 @@ Photos libres (Wikimedia Commons, Openverse) utilisées comme **photos d'illustr
 - `ph-kungchae.webp` · « Free papaya salad somtum image », auteur inconnu · https://www.rawpixel.com/image/5910971/image-public-domain-green-food · cc0 1.0
 - `ph-yamtalay.webp` · « Free papaya salad somtum image », auteur inconnu · https://www.rawpixel.com/image/5910971/image-public-domain-green-food · cc0 1.0
 - `ph-squidgrill.webp` · « Grilled Squid, Nakama Sushi, Franklin Street, San Francisco », Brokentaco · https://www.flickr.com/photos/92024986@N00/51921474682 · by 2.0
+
+## Web illustration photos added in the final audit (reviewed by eye)
+- `wx-hawaiitoast0.webp` · Hawaii Toast Hirschen Kist.jpg · Benreis · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Hawaii_Toast_Hirschen_Kist.jpg
+- `wx-cheeseburger0.webp` · 2020-03-25 14 42 05 A cheeseburger from Burger King sliced into two pieces in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg · Famartin · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:2020-03-25_14_42_05_A_cheeseburger_from_Burger_King_sliced_into_two_pieces_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg
+- `wx-friedpotato0.webp` · Argentine-Style French Fries and Fried Egg.jpg · Horacio Cambeiro · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Argentine-Style_French_Fries_and_Fried_Egg.jpg
+- `wx-springroll1.webp` · DFC 2191 vietnamese spring rolls on a cooling rack (54849339806).jpg · Pattaya Patrol from Pattaya · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_2191_vietnamese_spring_rolls_on_a_cooling_rack_(54849339806).jpg
+- `wx-ribs1.webp` · Asian style pork ribs at restaurant Deluxe Burger & Pizza.jpg · JIP · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Asian_style_pork_ribs_at_restaurant_Deluxe_Burger_&_Pizza.jpg
+- `wx-yamwunsen2.webp` · Yam wunsen.jpg · Takeaway · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Yam_wunsen.jpg
+- `wx-yamwunsen1.webp` · DFC 2242 Chilled glass noodle salad tossed with shrimp fresh herbs crunchy cabbage and a zesty chili-lime dressing.jpg · PattayaPatrol · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_2242_Chilled_glass_noodle_salad_tossed_with_shrimp_fresh_herbs_crunchy_cabbage_and_a_zesty_chili-lime_dressing.jpg
+- `wx-fishchili0.webp` · DFC 2100 Spicy Thai-style fish topped with omelet fresh chilies garlic shallots and cilantro served with cucumber and lime.jpg · PattayaPatrol · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:DFC_2100_Spicy_Thai-style_fish_topped_with_omelet_fresh_chilies_garlic_shallots_and_cilantro_served_with_cucumber_and_lime.jpg
+- `wx-ginger1.webp` · Stir-fried ginger pork (8486598866).jpg · Ruth Hartnup from Vancouver, Canada · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Stir-fried_ginger_pork_(8486598866).jpg
+- `wx-glassnoodle1.webp` · Pad Woon Sen chicken - Mint Tai AUD11.90.jpg · avlxyz · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File:Pad_Woon_Sen_chicken_-_Mint_Tai_AUD11.90.jpg
+- `wx-glassnoodle0.webp` · Fried cellophane noodles with shrimp Pad woon sen kung.jpg · Sakurai Midori · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Fried_cellophane_noodles_with_shrimp_Pad_woon_sen_kung.jpg
+- `wx-kale0.webp` · Stir-fried kale vegetable with crispy pork.jpg · Boonlert Aroonpiboon · CC0 · https://commons.wikimedia.org/wiki/File:Stir-fried_kale_vegetable_with_crispy_pork.jpg
+- `wx-beefoyster0.webp` · China Wall with beef.jpg · JIP · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:China_Wall_with_beef.jpg
