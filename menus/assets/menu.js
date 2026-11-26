@@ -276,6 +276,16 @@
   }
 
   /* ─────────── behaviour ─────────── */
+  // one idempotent way to centre the active tab: absolute target (not relative to the current position), and never re-issued while an animation to the same target is running — avoids the strip jittering left/right on iOS
+  var lastCenter = 0, lastTarget = -1;
+  function centerTab(nav, on, smooth) {
+    var na = nav.getBoundingClientRect(), oa = on.getBoundingClientRect(), target = Math.round(nav.scrollLeft + (oa.left + oa.width / 2) - (na.left + na.width / 2));
+    target = Math.max(0, Math.min(nav.scrollWidth - nav.clientWidth, target));
+    if (Math.abs(target - nav.scrollLeft) < 3) { lastTarget = target; return; }
+    if (smooth && target === lastTarget && Date.now() - lastCenter < 900) return;
+    lastTarget = target; lastCenter = Date.now();
+    nav.scrollTo({ left: target, behavior: smooth ? "smooth" : "auto" });
+  }
   var cur = -1, spyFn;
   function wire() {
     var hd = document.getElementById("hd"), prog = document.getElementById("prog"), chs = [].slice.call(root.querySelectorAll(".ch")), hdch = document.getElementById("hdch");
@@ -298,13 +308,12 @@
         if (on) {
           [].forEach.call(tabs.children, function (x) { x.classList.toggle("on", x === on); x.removeAttribute("aria-current"); });
           on.setAttribute("aria-current", "true");
-          var tr_ = tabs.getBoundingClientRect(), or_ = on.getBoundingClientRect();
-          tabs.scrollBy({ left: (or_.left + or_.width / 2) - (tr_.left + tr_.width / 2), behavior: "smooth" });
+          centerTab(tabs, on, true);
         }
       }
-      // the bar can end up stale (late-loading script fonts change tab widths, interrupted smooth scrolls): if the active tab is not fully on screen, bring it back instantly
+      // the bar can end up stale (late-loading script fonts change tab widths, interrupted smooth scrolls): if the active tab is not fully on screen AND no centering animation is under way, bring it back
       var tb = document.getElementById("tabs"), ob = tb && tb.querySelector("button.on");
-      if (ob) { var ta = tb.getBoundingClientRect(), oa = ob.getBoundingClientRect(); if (oa.left < ta.left + 2 || oa.right > ta.right - 2) tb.scrollBy({ left: (oa.left + oa.width / 2) - (ta.left + ta.width / 2), behavior: "auto" }); }
+      if (ob && Date.now() - lastCenter > 900) { var ta = tb.getBoundingClientRect(), oa = ob.getBoundingClientRect(); if (oa.left < ta.left + 2 || oa.right > ta.right - 2) centerTab(tb, ob, false); }
     };
     addEventListener("scroll", spyFn, { passive: true }); spyFn();
 
