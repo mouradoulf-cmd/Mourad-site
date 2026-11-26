@@ -99,3 +99,6 @@
 - ph-vitello-0: Vitello tonnato (6977537544).jpg — cyclonebill from Copenhagen, Denmark — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Vitello_tonnato_(6977537544).jpg
 - ph-vongole-1: Spaghetti alle vongole à Venise.jpg — Alex Sirac — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Spaghetti_alle_vongole_à_Venise.jpg
 - ph-zucchini-fritters-0: Kolokithiokeftedes - Kouzina 2025-06-02.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Kolokithiokeftedes_-_Kouzina_2025-06-02.jpg
+
+- hero.webp (desktop): Pan seared sea bass at the White Hart Inn, Moreton, Essex, England.jpg — Acabashi — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Pan_seared_sea_bass_at_the_White_Hart_Inn,_Moreton,_Essex,_England.jpg
+- hero-m.webp (phone): (20240728) Rotterdam V11 Aperol Spritz.jpg — Roy Zuo — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:(20240728)_Rotterdam_V11_Aperol_Spritz.jpg

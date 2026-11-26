@@ -116,3 +116,5 @@
 - ph-tomatosoup-1: Tomato soup, Turkish style.jpg — E4024 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Tomato_soup,_Turkish_style.jpg
 - ph-tunasalad-1: Tuna salad, Milicz.jpg — MOs810 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Tuna_salad,_Milicz.jpg
 - ph-vegoyster-1: Stir-fried vegetables with curry spice and oyster sauce (4631368285).jpg — pelican — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Stir-fried_vegetables_with_curry_spice_and_oyster_sauce_(4631368285).jpg
+
+- hero.webp / hero-m.webp: Platter of grilled seafood, Charco Azul, La Palma.jpg — Gerda Arendt — CC0 — https://commons.wikimedia.org/wiki/File:Platter_of_grilled_seafood,_Charco_Azul,_La_Palma.jpg
