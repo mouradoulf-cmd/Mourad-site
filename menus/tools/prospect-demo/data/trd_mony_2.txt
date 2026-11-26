@@ -1,0 +1,53 @@
+mn1|อกเป็ดนุ่ม เสิร์ฟพร้อมมันฝรั่งกรอบและซอสส้ม|嫩煎鴨胸佐酥脆馬鈴薯與橙汁醬。|Нежная утиная грудка с хрустящим картофелем и апельсиновой глазурью.|Magret de canard tendre, pommes de terre croustillantes et glaçage à l'orange.|Zarte Entenbrust mit knusprigen Kartoffeln und Orangenglasur.|صدر بط طري مع بطاطس مقرمشة وصلصة البرتقال.
+mn2|สเต็กเนื้อบดทำเองเสิร์ฟกับเฟรนช์ฟรายส์และสลัด|自製牛肉排，附薯條與沙拉。|Домашний бифштекс из говядины с картофелем фри и салатом.|Steak haché maison avec frites et salade.|Hausgemachtes Rindersteak mit Pommes frites und Salat.|ستيك لحم بقري منزلي مع بطاطس مقلية وسلطة.
+mn3|สเต็กเนื้อสันในพรีเมียม|頂級菲力牛排。|Стейк из говяжьей вырезки премиум-класса.|Steak de filet de bœuf de qualité supérieure.|Premium-Filetsteak.|ستيك تندرلوين فاخر.
+mn4|สเต็กริบอายฉ่ำ ๆ|多汁肋眼牛排。|Сочный стейк рибай.|Entrecôte juteuse.|Saftiges Ribeye-Steak.|ستيك ريب آي طري.
+mn5|สเต็กพิคานย่าพรีเมียม|頂級臀蓋牛排。|Стейк пикана премиум-класса.|Steak de picanha de qualité supérieure.|Premium-Picanha-Steak.|ستيك بيكانيا فاخر.
+mn6|เนื้อบาร์บีคิวเสิร์ฟกับเฟรนช์ฟรายส์|BBQ 牛肉，附薯條。|Говядина барбекю с картофелем фри.|Bœuf barbecue avec frites.|BBQ-Rindfleisch mit Pommes frites.|لحم بقري باربكيو مع بطاطس مقلية.
+mn7|ไก่บาร์บีคิวเสิร์ฟกับเฟรนช์ฟรายส์|BBQ 雞肉，附薯條。|Курица барбекю с картофелем фри.|Poulet barbecue avec frites.|BBQ-Hähnchen mit Pommes frites.|دجاج باربكيو مع بطاطس مقلية.
+mn8|เนื้อย่างรวมมิตรจานใหญ่|豪華烤牛肉拼盤。|Большое блюдо из говядины гриль.|Grand plateau de bœuf grillé.|Große Rindfleisch-Grillplatte.|طبق كبير من اللحم البقري المشوي.
+mn9|ขาแกะตุ๋นนาน|慢燉羊腿。|Баранья голень, томлёная на медленном огне.|Souris d'agneau mijotée longuement.|Langsam geschmorte Lammhaxe.|ساق خروف مطهوة ببطء.
+mn10|สเต็กแซลมอนย่าง|烤鮭魚排。|Стейк из лосося на гриле.|Pavé de saumon grillé.|Gegrilltes Lachssteak.|ستيك سلمون مشوي.
+mn11|ไก่สอดไส้แฮมและชีส|雞肉捲佐火腿與起司。|Курица, фаршированная ветчиной и сыром.|Poulet farci au jambon et au fromage.|Hähnchen gefüllt mit Schinken und Käse.|دجاج محشو بالهام والجبن.
+mn12|อกไก่ย่าง|烤雞胸。|Куриная грудка на гриле.|Blanc de poulet grillé.|Gegrillte Hähnchenbrust.|صدر دجاج مشوي.
+mn13|ไก่ปาร์เมซานกับซอสมะเขือเทศ|帕馬森雞排佐蕃茄醬。|Курица пармезан с томатным соусом.|Poulet parmesan à la sauce tomate.|Hähnchen Parmesan mit Tomatensauce.|دجاج بارميزان مع صلصة الطماطم.
+mn14|พายเนื้อบดและมันฝรั่งบดแบบฝรั่งเศส|法式牧羊人派。|Французская запеканка из мяса и картофельного пюре.|Le hachis Parmentier, version française du shepherd's pie.|Französischer Hirtenauflauf.|فطيرة الراعي الفرنسية.
+mn15|เนื้อตุ๋นไวน์แดงสไตล์ฝรั่งเศสแบบคลาสสิก|經典法式燉牛肉。|Классическое французское тушёное мясо.|Le grand classique français du bœuf mijoté au vin rouge.|Klassischer französischer Rindfleischeintopf.|يخنة لحم بقري فرنسية كلاسيكية.
+mn16|ไก่ซอสบาสก์สไตล์ฝรั่งเศส|巴斯克風味燉雞。|Курица в баскском соусе.|Poulet mijoté à la sauce basquaise.|Hähnchen in baskischer Sauce.|دجاج بالصلصة الباسكية.
+mn17|ไส้กรอกเมอร์เกซเสิร์ฟกับเฟรนช์ฟรายส์|梅格茲香腸佐薯條。|Колбаски мергез с картофелем фри.|Saucisse merguez avec frites.|Merguez-Wurst mit Pommes frites.|نقانق مرقاز مع بطاطس مقلية.
+mn18|คูสคูสรอยัลกับไก่ ไส้กรอกเมอร์เกซ และเนื้อ|皇家庫斯庫斯，附雞肉、梅格茲香腸與牛肉。|Королевский кускус с курицей, мергезом и говядиной.|Couscous royal au poulet, aux merguez et au bœuf.|Königliches Couscous mit Hähnchen, Merguez und Rindfleisch.|كسكس رويال بالدجاج والمرقاز واللحم البقري.
+mn19|ลาซานญ่าทำเอง|自製千層麵。|Домашняя лазанья.|Lasagnes maison.|Hausgemachte Lasagne.|لازانيا منزلية.
+pz1|ซอสมะเขือเทศ มอสซาเรลลา โหระพาสด และออริกาโน|蕃茄醬、莫札瑞拉、新鮮羅勒與奧勒岡。|Томатный соус, моцарелла, свежий базилик и орегано.|Sauce tomate, mozzarella, basilic frais et origan.|Tomatensauce, Mozzarella, frisches Basilikum und Oregano.|صلصة الطماطم وموتزاريلا وريحان طازج وأوريغانو.
+pz2|ซอสมะเขือเทศ มอสซาเรลลา เปปเปอโรนีเนื้อ และออริกาโน|蕃茄醬、莫札瑞拉、牛肉臘腸與奧勒岡。|Томатный соус, моцарелла, говяжий пепперони и орегано.|Sauce tomate, mozzarella, pepperoni de bœuf et origan.|Tomatensauce, Mozzarella, Rinder-Pepperoni und Oregano.|صلصة الطماطم وموتزاريلا وببروني لحم بقري وأوريغانو.
+pz3|ซอสมะเขือเทศ มอสซาเรลลา กอร์กอนโซลา ฟอนตินา พาร์เมซาน และออริกาโน|蕃茄醬、莫札瑞拉、戈根索拉、芳提娜、帕瑪森與奧勒岡。|Томатный соус, моцарелла, горгонзола, фонтина, пармезан и орегано.|Sauce tomate, mozzarella, gorgonzola, fontina, parmesan et origan.|Tomatensauce, Mozzarella, Gorgonzola, Fontina, Parmesan und Oregano.|صلصة الطماطم وموتزاريلا وجورجونزولا وفونتينا وبارميزان وأوريغانو.
+pz4|ซอสมะเขือเทศ มอสซาเรลลา แฮม เห็ด และออริกาโน|蕃茄醬、莫札瑞拉、火腿、蘑菇與奧勒岡。|Томатный соус, моцарелла, ветчина, грибы и орегано.|Sauce tomate, mozzarella, jambon, champignons et origan.|Tomatensauce, Mozzarella, Schinken, Pilze und Oregano.|صلصة الطماطم وموتزاريلا وهام وفطر وأوريغانو.
+pz5|ซอสมะเขือเทศ มอสซาเรลลา ผักรวม มะกอก เห็ด หัวหอม พริกหยวก และออริกาโน|蕃茄醬、莫札瑞拉、綜合蔬菜、橄欖、蘑菇、洋蔥、甜椒與奧勒岡。|Томатный соус, моцарелла, овощи ассорти, оливки, грибы, лук, болгарский перец и орегано.|Sauce tomate, mozzarella, légumes variés, olives, champignons, oignons, poivrons et origan.|Tomatensauce, Mozzarella, Gemüsemix, Oliven, Pilze, Zwiebeln, Paprika und Oregano.|صلصة الطماطم وموتزاريلا وخضار مشكلة وزيتون وفطر وبصل وفلفل حلو وأوريغانو.
+pz6|ซอสมะเขือเทศ มอสซาเรลลา แฮม สับปะรด และออริกาโน|蕃茄醬、莫札瑞拉、火腿、鳳梨與奧勒岡。|Томатный соус, моцарелла, ветчина, ананас и орегано.|Sauce tomate, mozzarella, jambon, ananas et origan.|Tomatensauce, Mozzarella, Schinken, Ananas und Oregano.|صلصة الطماطم وموتزاريلا وهام وأناناس وأوريغانو.
+pz7|ซอสมะเขือเทศ มอสซาเรลลา กุ้ง หมึก หอยแมลงภู่ อาหารทะเลรวม กระเทียม และสมุนไพร|蕃茄醬、莫札瑞拉、蝦、魷魚、淡菜、海鮮拼料、大蒜與香草。|Томатный соус, моцарелла, креветки, кальмар, мидии, морепродукты, чеснок и травы.|Sauce tomate, mozzarella, crevettes, calmar, moules, fruits de mer, ail et herbes.|Tomatensauce, Mozzarella, Garnelen, Tintenfisch, Muscheln, Meeresfrüchtemix, Knoblauch und Kräuter.|صلصة الطماطم وموتزاريلا وجمبري وحبار وبلح البحر ومأكولات بحرية وثوم وأعشاب.
+pz8|ซอสบาร์บีคิว มอสซาเรลลา ไก่ หอมแดง พริกหยวก พริก และสมุนไพรสด|BBQ 醬、莫札瑞拉、雞肉、紅洋蔥、甜椒、辣椒與新鮮香草。|Соус барбекю, моцарелла, курица, красный лук, болгарский перец, чили и свежие травы.|Sauce barbecue, mozzarella, poulet, oignons rouges, poivrons, piment et herbes fraîches.|BBQ-Sauce, Mozzarella, Hähnchen, rote Zwiebeln, Paprika, Chili und frische Kräuter.|صلصة باربكيو وموتزاريلا ودجاج وبصل أحمر وفلفل حلو وفلفل حار وأعشاب طازجة.
+pa1|สปาเก็ตตี้คลาสสิกกับซอสโบโลเนส|經典波隆那肉醬義大利麵。|Классические спагетти с соусом болоньезе.|Spaghetti classiques à la sauce bolognaise.|Klassische Spaghetti mit Bolognese-Sauce.|سباغيتي كلاسيكي بصلصة البولونيز.
+pa2|สปาเก็ตตี้กับไก่และซอสครีม|奶油雞肉義大利麵。|Спагетти с курицей в сливочном соусе.|Spaghetti au poulet, sauce crème.|Spaghetti mit Hähnchen in Sahnesauce.|سباغيتي بالدجاج وصلصة الكريمة.
+pa3|เฟตตูชินีกับไก่และซอสครีม|奶油雞肉寬麵。|Феттучини с курицей в сливочном соусе.|Fettuccine au poulet, sauce crème.|Fettuccine mit Hähnchen in Sahnesauce.|فيتوتشيني بالدجاج وصلصة الكريمة.
+pa4|เพนเน่กับซอสเนื้อและกะเพรา|牛肉九層塔筆管麵。|Пенне с соусом из говядины и базилика.|Penne à la sauce bœuf et basilic.|Penne mit Rindfleisch-Basilikum-Sauce.|بيني بصلصة اللحم البقري والريحان.
+pa5|พาสต้ากับซอสทิกก้ามาซาลา|咖哩瑪莎拉義大利麵。|Паста с соусом тикка масала.|Pâtes à la sauce tikka masala.|Pasta mit Tikka-Masala-Sauce.|باستا بصلصة تيكا ماسالا.
+pa6|สปาเก็ตตี้กับกุ้ง|鮮蝦義大利麵。|Спагетти с креветками.|Spaghetti aux crevettes.|Spaghetti mit Garnelen.|سباغيتي بالجمبري.
+pa7|เพนเน่กับซอสพะแนง|帕能醬筆管麵。|Пенне с соусом пананг.|Penne à la sauce panang.|Penne mit Panang-Sauce.|بيني بصلصة بانانغ.
+th1|แกงไก่แบบไทย|泰式雞肉咖哩。|Тайское куриное карри.|Curry de poulet à la thaïlandaise.|Thailändisches Hähnchen-Curry.|كاري دجاج تايلاندي.
+th2|ไก่ผัดกะเพราราดข้าวไข่ดาว|打拋雞肉飯，附荷包蛋。|Тайская курица с базиликом и жареным яйцом на рисе.|Poulet au basilic thaï et œuf au plat sur riz.|Thai-Basilikum-Hähnchen mit Spiegelei auf Reis.|دجاج بالريحان التايلاندي مع بيضة مقلية على الأرز.
+th3|ไก่ผัดเม็ดมะม่วงหิมพานต์|腰果炒雞。|Курица, обжаренная с орехами кешью.|Poulet sauté aux noix de cajou.|Gebratenes Hähnchen mit Cashewnüssen.|دجاج مقلي بالكاجو.
+th4|แกงพะแนงไก่|帕能咖哩雞。|Карри пананг с курицей.|Curry panang au poulet.|Panang-Curry mit Hähnchen.|كاري بانانغ بالدجاج.
+th5|ยำวุ้นเส้นรสเผ็ดกับกุ้ง|辣味冬粉蝦。|Острая вермишель с креветками.|Vermicelles épicées aux crevettes.|Scharfe Glasnudeln mit Garnelen.|نودلز زجاجية حارة بالجمبري.
+th6|ไก่ผัดน้ำพริกเผา|辣椒醬炒雞肉。|Курица, обжаренная с пастой чили.|Poulet sauté à la pâte de piment.|Gebratenes Hähnchen mit Chilipaste.|دجاج مقلي بمعجون الفلفل.
+th7|มาม่าผัดไก่|雞肉炒泡麵。|Жареная лапша Мама с курицей.|Nouilles Mama sautées au poulet.|Gebratene Mama-Nudeln mit Hähnchen.|نودلز ماما مقلية بالدجاج.
+th8|ผักบุ้งผัดไฟแดง|炒空心菜。|Жареный водяной шпинат.|Liseron d'eau sauté.|Gebratener Wasserspinat.|سبانخ الماء المقلية.
+th9|ไข่เจียวยัดไส้ผัก|蔬菜釀蛋。|Яичный омлет, фаршированный овощами.|Omelette farcie aux légumes.|Gefülltes Omelett mit Gemüse.|عجة محشوة بالخضار.
+th10|ซุปกะทิรสไทยกับไก่|泰式椰奶雞湯。|Тайский кокосовый суп с курицей.|Soupe thaïe au lait de coco et au poulet.|Thailändische Kokossuppe mit Hähnchen.|شوربة جوز الهند التايلاندية بالدجاج.
+th11|แกงเขียวหวานไก่|泰式綠咖哩雞。|Тайское зелёное карри с курицей.|Curry vert thaï au poulet.|Thailändisches grünes Curry mit Hähnchen.|كاري أخضر تايلاندي بالدجاج.
+th12|ต้มยำรสจัดกับอาหารทะเล|酸辣海鮮湯。|Острый тайский суп с морепродуктами.|Soupe thaïe épicée aux fruits de mer.|Scharfe thailändische Suppe mit Meeresfrüchten.|شوربة تايلاندية حارة بالمأكولات البحرية.
+th13|ไข่เจียวแบบไทยราดข้าว|泰式蛋包飯。|Тайский омлет на рисе.|Omelette thaïe sur riz.|Thailändisches Omelett auf Reis.|عجة تايلاندية على الأرز.
+th14|ข้าวผัดแบบไทยกับไก่|泰式雞肉炒飯。|Тайский жареный рис с курицей.|Riz sauté thaï au poulet.|Thailändischer gebratener Reis mit Hähnchen.|أرز مقلي تايلاندي بالدجاج.
+th15|ก๋วยเตี๋ยวผัดกับไข่และกุ้ง|蝦仁蛋炒麵。|Жареная лапша с яйцом и креветками.|Nouilles sautées aux œufs et aux crevettes.|Gebratene Nudeln mit Ei und Garnelen.|نودلز مقلية بالبيض والجمبري.
+th16|ผักรวมผัด|炒什錦蔬菜。|Жареные овощи ассорти.|Légumes variés sautés.|Gebratenes Mischgemüse.|خضار مشكلة مقلية.
+th17|ปีกไก่ทอดกรอบ|酥炸雞翅。|Хрустящие жареные куриные крылышки.|Ailes de poulet frites croustillantes.|Knusprig frittierte Hähnchenflügel.|أجنحة دجاج مقلية مقرمشة.
+th18|ผัดไทยกุ้งสูตรคลาสสิก|經典蝦仁泰式炒河粉。|Классический пад тай с креветками.|Pad thaï classique aux crevettes.|Klassisches Pad Thai mit Garnelen.|باد تاي كلاسيكي بالجمبري.
+th19|แกงมัสมั่น|瑪莎曼咖哩。|Карри массаман.|Curry massaman.|Massaman-Curry.|كاري ماساماني.

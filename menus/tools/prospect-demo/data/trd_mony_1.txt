@@ -1,0 +1,38 @@
+bf1|ไข่ เบคอน ไส้กรอก ถั่วอบ สลัด ขนมปังปิ้ง ชาหรือกาแฟ และน้ำส้ม|雞蛋、培根、香腸、焗豆、沙拉、吐司、茶或咖啡及柳橙汁。|Яйца, бекон, сосиски, печёная фасоль, салат, тост, чай или кофе и апельсиновый сок.|Œufs, bacon, saucisse, haricots blancs, salade, toast, thé ou café et jus d'orange.|Eier, Speck, Wurst, Baked Beans, Salat, Toast, Tee oder Kaffee und Orangensaft.|بيض ولحم مقدد ونقانق وفاصوليا مخبوزة وسلطة وتوست وشاي أو قهوة وعصير برتقال.
+bf2|ไข่ เบคอน สลัด ขนมปังปิ้ง ชาหรือกาแฟ และน้ำส้ม|雞蛋、培根、沙拉、吐司、茶或咖啡及柳橙汁。|Яйца, бекон, салат, тост, чай или кофе и апельсиновый сок.|Œufs, bacon, salade, toast, thé ou café et jus d'orange.|Eier, Speck, Salat, Toast, Tee oder Kaffee und Orangensaft.|بيض ولحم مقدد وسلطة وتوست وشاي أو قهوة وعصير برتقال.
+bf3|ไข่ เนื้อไก่ สลัด ขนมปังปิ้ง ชาหรือกาแฟ และน้ำส้ม|雞蛋、雞肉片、沙拉、吐司、茶或咖啡及柳橙汁。|Яйца, куриное филе, салат, тост, чай или кофе и апельсиновый сок.|Œufs, filets de poulet, salade, toast, thé ou café et jus d'orange.|Eier, Hähnchenfilets, Salat, Toast, Tee oder Kaffee und Orangensaft.|بيض وشرائح دجاج وسلطة وتوست وشاي أو قهوة وعصير برتقال.
+bf4|ไข่สามฟองกับชีส|三顆蛋佐起司。|Омлет из трёх яиц с сыром.|Trois œufs au fromage.|Drei Eier mit Käse.|ثلاث بيضات مع الجبن.
+bf5|ไข่สามฟองกับแฮมและชีส|三顆蛋佐火腿與起司。|Омлет из трёх яиц с ветчиной и сыром.|Trois œufs au jambon et au fromage.|Drei Eier mit Schinken und Käse.|ثلاث بيضات مع الهام والجبن.
+bf6|ไข่สามฟองกับเห็ด|三顆蛋佐蘑菇。|Омлет из трёх яиц с грибами.|Trois œufs aux champignons.|Drei Eier mit Pilzen.|ثلاث بيضات مع الفطر.
+bf7|ไข่สามฟองกับผักโขม|三顆蛋佐菠菜。|Омлет из трёх яиц со шпинатом.|Trois œufs aux épinards.|Drei Eier mit Spinat.|ثلاث بيضات مع السبانخ.
+bf8|ไข่เจียวสเปนแบบดั้งเดิมกับมันฝรั่งและหัวหอม|傳統西班牙馬鈴薯洋蔥蛋餅。|Традиционный испанский омлет с картофелем и луком.|Omelette espagnole traditionnelle aux pommes de terre et aux oignons.|Traditionelles spanisches Omelett mit Kartoffeln und Zwiebeln.|عجة إسبانية تقليدية بالبطاطس والبصل.
+bf9|ไข่ต้มสองฟองเสิร์ฟพร้อมขนมปังแท่ง|兩顆水煮蛋，附麵包棒。|Два варёных яйца с хлебными палочками.|Deux œufs durs servis avec des mouillettes.|Zwei gekochte Eier mit Brotsticks.|بيضتان مسلوقتان تقدمان مع أصابع الخبز.
+bf10|ครัวซองต์เนยหอมแบบฝรั่งเศส|法式奶油可頌。|Масляный французский круассан.|Croissant français au beurre.|Buttriges französisches Croissant.|كرواسان فرنسي بالزبدة.
+bf11|ขนมอบชั้นบางกรอบไส้ช็อกโกแลต|酥脆千層酥皮包巧克力內餡。|Слоёная выпечка с шоколадной начинкой.|Pâte feuilletée croustillante fourrée au chocolat.|Blätterteig mit Schokoladenfüllung.|معجنات هشة بحشوة الشوكولاتة.
+bf12|ขนมปังปิ้งเสิร์ฟพร้อมเนยและแยม|烤吐司，附奶油與果醬。|Тост с маслом и джемом.|Pain grillé servi avec du beurre et de la confiture.|Toast mit Butter und Marmelade.|توست مع الزبدة والمربى.
+st1|ขนมปังปิ้งเนยกระเทียมและสมุนไพร|蒜香奶油香草烤麵包。|Тост с чесночным маслом и травами.|Pain grillé au beurre d'ail et aux herbes.|Geröstetes Brot mit Knoblauchbutter und Kräutern.|خبز محمص بزبدة الثوم والأعشاب.
+st2|ขนมปังปิ้งหน้ามะเขือเทศ โหระพา และกระเทียม|烤麵包佐蕃茄、羅勒與大蒜。|Тост с томатами, базиликом и чесноком.|Pain grillé garni de tomate, basilic et ail.|Geröstetes Brot mit Tomate, Basilikum und Knoblauch.|خبز محمص بالطماطم والريحان والثوم.
+st3|ฟาลาเฟลอร่อย ๆ|美味的法拉費炸豆丸。|Вкусный фалафель.|De délicieux falafels.|Leckere Falafel.|فلافل لذيذ.
+st4|ฮอมมัสเนื้อเนียน เสิร์ฟพร้อมขนมปัง|滑順鷹嘴豆泥，附麵包。|Нежный хумус с хлебом.|Houmous onctueux servi avec du pain.|Cremiger Hummus mit Brot.|حمص كريمي يقدم مع الخبز.
+st5|4 ฟอง 80 บาท, 6 ฟอง 120 บาท|4 個 80 泰銖，6 個 120 泰銖。|4 шт. — 80 бат, 6 шт. — 120 бат.|4 pièces 80 THB, 6 pièces 120 THB.|4 Stück 80 THB, 6 Stück 120 THB.|4 قطع 80 باه، 6 قطع 120 باه.
+st6|ไก่ 100 บาท กุ้ง 150 บาท ชีส 120 บาท|雞肉 100 泰銖、蝦 150 泰銖、起司 120 泰銖。|С курицей 100 бат, с креветками 150 бат, с сыром 120 бат.|Poulet 100 THB, crevettes 150 THB, fromage 120 THB.|Hähnchen 100 THB, Garnelen 150 THB, Käse 120 THB.|دجاج 100 باه، جمبري 150 باه، جبن 120 باه.
+st7|เปาะเปี๊ยะทอดกรอบสีทองไส้มันฝรั่งบดเนียน|金黃酥脆春捲，內餡為滑順馬鈴薯泥。|Золотистые хрустящие спринг-роллы с нежным картофельным пюре.|Rouleaux de printemps dorés et croustillants farcis de purée de pommes de terre.|Goldgelb knusprige Frühlingsrollen mit Kartoffelpüree-Füllung.|لفائف ربيع ذهبية مقرمشة محشوة بهريس البطاطس.
+st8|ไก่ย่างเสียบไม้เสิร์ฟพร้อมซอสถั่ว|烤雞肉串佐花生醬。|Куриные шашлычки на гриле с арахисовым соусом.|Brochettes de poulet grillées, sauce cacahuète.|Gegrillte Hähnchenspieße mit Erdnusssauce.|أسياخ دجاج مشوية مع صلصة الفول السوداني.
+sa1|สลัดทูน่าสดกับผักกาดและผัก|新鮮鮪魚沙拉，搭配生菜與蔬菜。|Свежий салат с тунцом, листьями салата и овощами.|Salade de thon frais avec laitue et légumes.|Frischer Thunfischsalat mit Salat und Gemüse.|سلطة تونة طازجة مع الخس والخضار.
+sa2|แซลมอนรมควันกับผักสลัดรวม|煙燻鮭魚佐綜合生菜。|Копчёный лосось со смесью салатных листьев.|Saumon fumé avec salade verte mélangée.|Räucherlachs auf gemischtem Salat.|سلمون مدخن مع أوراق سلطة مشكلة.
+sa3|สลัดกุ้งและอะโวคาโด|蝦仁與酪梨沙拉。|Салат с креветками и авокадо.|Salade de crevettes et d'avocat.|Salat mit Garnelen und Avocado.|سلطة جمبري وأفوكادو.
+sa4|ไก่ทอดกรอบบนสลัดสด|酥炸雞肉鋪在新鮮沙拉上。|Хрустящая жареная курица на свежем салате.|Poulet frit croustillant sur salade fraîche.|Knuspriges Backhähnchen auf frischem Salat.|دجاج مقلي مقرمش على سلطة طازجة.
+sa5|สลัดไก่ย่าง|烤雞肉沙拉。|Салат с курицей гриль.|Salade de poulet grillé.|Salat mit gegrilltem Hähnchen.|سلطة دجاج مشوي.
+sa6|สลัดไก่และอะโวคาโด|雞肉與酪梨沙拉。|Салат с курицей и авокадо.|Salade de poulet et d'avocat.|Salat mit Hähnchen und Avocado.|سلطة دجاج وأفوكادو.
+sw1|แซนด์วิชทูน่ากับผักกาดและมะเขือเทศ|鮪魚三明治，加生菜與蕃茄。|Сэндвич с тунцом, салатом и помидором.|Sandwich au thon avec laitue et tomate.|Thunfisch-Sandwich mit Salat und Tomate.|ساندويتش تونة مع الخس والطماطم.
+sw2|แซนด์วิชไก่ฉ่ำ ๆ|多汁雞肉三明治。|Сочный сэндвич с курицей.|Sandwich au poulet bien juteux.|Saftiges Hähnchen-Sandwich.|ساندويتش دجاج طري.
+sw3|แซนด์วิชไส้กรอกเมอร์เกซ|梅格茲香腸三明治。|Сэндвич с колбасками мергез.|Sandwich à la merguez.|Sandwich mit Merguez-Wurst.|ساندويتش بالمرقاز.
+sw4|แซนด์วิชแฮมและชีส|火腿起司三明治。|Сэндвич с ветчиной и сыром.|Sandwich jambon-fromage.|Schinken-Käse-Sandwich.|ساندويتش هام وجبن.
+sw5|ปานีนีปิ้งไส้แฮมและชีส|烤火腿起司帕尼尼。|Горячий панини с ветчиной и сыром.|Panini grillé au jambon et au fromage.|Getoasteter Panini mit Schinken und Käse.|بانيني محمص بالهام والجبن.
+sw6|ปานีนีปิ้งไส้ไก่|烤雞肉帕尼尼。|Горячий панини с курицей.|Panini grillé au poulet.|Getoasteter Panini mit Hähnchen.|بانيني محمص بالدجاج.
+sw7|ปานีนีปิ้งไส้เนื้อและชีส|烤牛肉起司帕尼尼。|Горячий панини с говядиной и сыром.|Panini grillé au bœuf et au fromage.|Getoasteter Panini mit Rindfleisch und Käse.|بانيني محمص باللحم البقري والجبن.
+sw8|เคบับเนื้อบดปรุงรส|香料碎肉烤肉串。|Кебаб из пряного рубленого мяса.|Kebab de viande hachée épicée.|Gewürzter Hackfleisch-Kebab.|كباب من اللحم المفروم المتبل.
+sw9|เคบับไส้ชีสละลาย|融化起司烤肉串。|Кебаб с расплавленным сыром.|Kebab au fromage fondu.|Kebab mit geschmolzenem Käse.|كباب بالجبن الذائب.
+sw10|เคบับไก่ย่าง|烤雞肉串。|Кебаб из курицы на гриле.|Kebab de poulet grillé.|Gegrillter Hähnchen-Kebab.|كباب دجاج مشوي.
+sw11|เบอร์เกอร์เนื้อฉ่ำ ๆ|多汁牛肉漢堡。|Сочный бургер с говядиной.|Burger de bœuf juteux.|Saftiger Rindfleisch-Burger.|برغر لحم بقري طري.
+sw12|เบอร์เกอร์ไก่ทอดกรอบ|酥脆雞肉漢堡。|Хрустящий бургер с курицей.|Burger de poulet croustillant.|Knuspriger Hähnchen-Burger.|برغر دجاج مقرمش.

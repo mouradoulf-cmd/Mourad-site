@@ -1,0 +1,11 @@
+de1|กล้วยคาราเมลอุ่น ๆ กับเครป และไอศกรีมวานิลลา|溫熱焦糖香蕉，佐可麗餅與香草冰淇淋。|Тёплый карамелизированный банан с блинчиками и ванильным мороженым.|Banane caramélisée tiède avec crêpes et glace à la vanille.|Warme karamellisierte Banane mit Crêpes und Vanilleeis.|موز كراميل دافئ مع الكريب وآيس كريم الفانيليا.
+de2|ทีรามิสุสูตรอิตาเลียนแบบคลาสสิก|經典義式提拉米蘇。|Классический итальянский тирамису.|Tiramisu italien classique.|Klassisches italienisches Tiramisu.|تيراميسو إيطالي كلاسيكي.
+de3|มูสช็อกโกแลตเข้มข้น|濃郁巧克力慕斯。|Насыщенный шоколадный мусс.|Mousse au chocolat intense.|Reichhaltige Schokoladenmousse.|موس شوكولاتة غني.
+de4|คาราเมลครีมแบบคลาสสิก|經典焦糖布丁。|Классический крем-карамель.|Crème caramel classique.|Klassisches Crème Caramel.|كريم كراميل كلاسيكي.
+de5|ช็อกโกแลตฟองดูว์เสิร์ฟกับผลไม้|巧克力火鍋佐水果。|Шоколадное фондю с фруктами.|Fondue au chocolat avec des fruits.|Schokoladenfondue mit Früchten.|فوندو الشوكولاتة مع الفواكه.
+de6|ไอศกรีมหลายรส|冰淇淋球。|Шарики мороженого.|Boules de glace.|Eiskugeln.|كرات آيس كريم.
+de7|ไอศกรีมถ้วยใหญ่|大杯冰淇淋。|Большая порция мороженого.|Grande coupe de glace.|Großer Eisbecher.|كأس آيس كريم كبير.
+de8|ไอศกรีมถ้วยเล็ก|小杯冰淇淋。|Маленькая порция мороженого.|Petite coupe de glace.|Kleiner Eisbecher.|كأس آيس كريم صغير.
+de9|พายบานอฟฟี่|香蕉太妃派。|Пирог баноффи.|Tarte banoffee.|Banoffee-Pie.|فطيرة بانوفي.
+de10|บานาน่าสปลิตแบบคลาสสิก|經典香蕉船。|Классический банана-сплит.|Banana split classique.|Klassischer Bananensplit.|بانانا سبليت كلاسيكي.
+de11|ผลไม้สดรวม|新鮮綜合水果。|Свежее фруктовое ассорти.|Fruits frais variés.|Frisches gemischtes Obst.|فواكه طازجة مشكلة.

@@ -1,0 +1,60 @@
+F|en|UNOFFICIAL PROTOTYPE made by NM Studio from the venue's public online menu, for demonstration only. Dishes, prices and descriptions are to be confirmed by the restaurant. Dish photos are royalty-free illustrations, not the restaurant's own; the real dishes may look different.
+F|th|ต้นแบบไม่เป็นทางการ จัดทำโดย NM Studio จากเมนูออนไลน์สาธารณะของร้าน เพื่อการสาธิตเท่านั้น รายการอาหาร ราคา และคำอธิบายต้องให้ร้านยืนยัน ภาพอาหารเป็นภาพประกอบฟรีลิขสิทธิ์ ไม่ใช่ภาพของร้าน อาหารจริงอาจแตกต่างจากภาพ
+F|zh|非官方原型：NM Studio 根据餐厅公开的线上菜单制作，仅供演示。菜品、价格和说明需由餐厅确认。菜品图片为免版权示意图，并非餐厅自有照片，实际菜品可能有所不同。
+F|zt|非官方原型：NM Studio 根據餐廳公開的線上菜單製作，僅供展示。菜色、價格與說明須由餐廳確認。菜色圖片為免版權示意圖，並非餐廳自有照片，實際菜色可能有所不同。
+F|ru|НЕОФИЦИАЛЬНЫЙ ПРОТОТИП, созданный NM Studio по открытому онлайн-меню заведения, только для демонстрации. Блюда, цены и описания должен подтвердить ресторан. Фото блюд — бесплатные иллюстрации, а не снимки ресторана; настоящие блюда могут выглядеть иначе.
+F|ko|비공식 시제품입니다. NM Studio가 매장의 공개 온라인 메뉴를 바탕으로 시연용으로만 제작했습니다. 메뉴, 가격, 설명은 레스토랑의 확인이 필요합니다. 음식 사진은 저작권 무료 참고 이미지이며 매장의 사진이 아니므로 실제 음식과 다를 수 있습니다.
+F|ja|非公式のプロトタイプです。NM Studio が店舗の公開オンラインメニューをもとに、デモ目的のみで作成しました。料理・価格・説明は店舗での確認が必要です。料理写真は著作権フリーのイメージで店舗の写真ではなく、実際の料理とは異なる場合があります。
+F|hi|अनौपचारिक प्रोटोटाइप: NM Studio ने रेस्टोरेंट के सार्वजनिक ऑनलाइन मेन्यू से केवल प्रदर्शन के लिए बनाया है। व्यंजन, कीमतें और विवरण रेस्टोरेंट द्वारा पुष्टि किए जाने हैं। व्यंजनों की तस्वीरें रॉयल्टी-मुक्त उदाहरण हैं, रेस्टोरेंट की अपनी नहीं; असली व्यंजन अलग दिख सकते हैं।
+F|ms|PROTOTAJ TIDAK RASMI yang dibuat oleh NM Studio daripada menu dalam talian awam restoran, untuk demonstrasi sahaja. Hidangan, harga dan penerangan perlu disahkan oleh restoran. Foto hidangan ialah ilustrasi bebas royalti, bukan milik restoran; hidangan sebenar mungkin kelihatan berbeza.
+F|id|PROTOTIPE TIDAK RESMI yang dibuat NM Studio dari menu online publik restoran, hanya untuk demonstrasi. Hidangan, harga, dan deskripsi harus dikonfirmasi oleh restoran. Foto hidangan adalah ilustrasi bebas royalti, bukan milik restoran; hidangan asli mungkin tampak berbeda.
+F|lo|ຕົ້ນແບບບໍ່ເປັນທາງການ ສ້າງໂດຍ NM Studio ຈາກເມນູອອນລາຍສາທາລະນະຂອງຮ້ານ ເພື່ອສາທິດເທົ່ານັ້ນ ລາຍການອາຫານ ລາຄາ ແລະ ຄຳອະທິບາຍ ຕ້ອງໃຫ້ຮ້ານຢືນຢັນ ຮູບອາຫານເປັນຮູບປະກອບທີ່ບໍ່ມີລິຂະສິດ ບໍ່ແມ່ນຮູບຂອງຮ້ານ ອາຫານຈິງອາດແຕກຕ່າງ
+F|de|INOFFIZIELLER PROTOTYP von NM Studio auf Basis der öffentlichen Online-Speisekarte des Lokals, nur zur Demonstration. Gerichte, Preise und Beschreibungen müssen vom Restaurant bestätigt werden. Die Gerichtefotos sind lizenzfreie Illustrationen, nicht die des Restaurants; die echten Gerichte können anders aussehen.
+F|fr|PROTOTYPE NON OFFICIEL réalisé par NM Studio à partir de la carte publique en ligne de l'établissement, à titre de démonstration uniquement. Plats, prix et descriptions sont à confirmer par le restaurant. Les photos des plats sont des illustrations libres de droits, pas celles du restaurant ; les vrais plats peuvent différer.
+F|it|PROTOTIPO NON UFFICIALE realizzato da NM Studio dal menu online pubblico del locale, solo a scopo dimostrativo. Piatti, prezzi e descrizioni sono da confermare con il ristorante. Le foto dei piatti sono illustrazioni libere da diritti, non del ristorante; i piatti reali possono essere diversi.
+F|vi|BẢN MẪU KHÔNG CHÍNH THỨC do NM Studio làm từ thực đơn trực tuyến công khai của nhà hàng, chỉ để minh họa. Món ăn, giá và mô tả cần được nhà hàng xác nhận. Ảnh món ăn là ảnh minh họa miễn phí bản quyền, không phải ảnh của nhà hàng; món thật có thể khác.
+F|km|គំរូមិនផ្លូវការ ធ្វើដោយ NM Studio ពីម៉ឺនុយអនឡាញសាធារណៈរបស់ហាង សម្រាប់បង្ហាញប៉ុណ្ណោះ។ មុខម្ហូប តម្លៃ និងការពិពណ៌នា ត្រូវតែបញ្ជាក់ដោយភោជនីយដ្ឋាន។ រូបភាពម្ហូបជារូបភាពគំនូរបំភ្លឺដោយឥតរក្សាសិទ្ធិ មិនមែនរបស់ហាងទេ ម្ហូបពិតអាចខុសគ្នា។
+F|fil|HINDI OPISYAL NA PROTOTYPE na ginawa ng NM Studio mula sa pampublikong online menu ng restawran, para lamang sa demonstrasyon. Ang mga putahe, presyo at paglalarawan ay kailangang kumpirmahin ng restawran. Ang mga larawan ng putahe ay royalty-free na ilustrasyon, hindi sa restawran; maaaring iba ang itsura ng totoong putahe.
+F|ar|نموذج أولي غير رسمي أعدّته NM Studio من قائمة المطعم العامة على الإنترنت لأغراض العرض فقط. الأطباق والأسعار والأوصاف تحتاج إلى تأكيد المطعم. صور الأطباق رسوم توضيحية مجانية الحقوق وليست من المطعم، وقد تختلف الأطباق الحقيقية.
+F|he|אב-טיפוס לא רשמי שהכין NM Studio מהתפריט המקוון הציבורי של המסעדה, לצורך הדגמה בלבד. המנות, המחירים והתיאורים טעונים אישור המסעדה. תמונות המנות הן איורים ללא תמלוגים ולא של המסעדה; המנות האמיתיות עשויות להיראות אחרת.
+F|es|PROTOTIPO NO OFICIAL creado por NM Studio a partir de la carta pública en línea del local, solo como demostración. Los platos, precios y descripciones deben ser confirmados por el restaurante. Las fotos de los platos son ilustraciones libres de derechos, no del restaurante; los platos reales pueden verse distintos.
+TP|en|Italian cuisine · Steaks · Fine wines
+TP|th|อาหารอิตาเลียน · สเต็ก · ไวน์ชั้นเยี่ยม
+TP|zh|意大利美食 · 牛排 · 精选美酒
+TP|zt|義大利美食 · 牛排 · 精選美酒
+TP|ru|Итальянская кухня · Стейки · Изысканные вина
+TP|ko|이탈리안 요리 · 스테이크 · 와인
+TP|ja|イタリア料理 · ステーキ · 厳選ワイン
+TP|hi|इटैलियन व्यंजन · स्टेक · बेहतरीन वाइन
+TP|ms|Masakan Itali · Stik · Wain pilihan
+TP|id|Masakan Italia · Steak · Wine pilihan
+TP|lo|ອາຫານອີຕາລີ · ສະເຕັກ · ໄວນ໌ຄັດສັນ
+TP|de|Italienische Küche · Steaks · Feine Weine
+TP|fr|Cuisine italienne · Steaks · Grands vins
+TP|it|Cucina italiana · Bistecche · Vini pregiati
+TP|vi|Ẩm thực Ý · Bít tết · Rượu vang tuyển chọn
+TP|km|ម្ហូបអ៊ីតាលី · ស្តេក · ស្រាទំពាំងបាយជូរជ្រើសរើស
+TP|fil|Lutuing Italyano · Steak · Piling alak
+TP|ar|مطبخ إيطالي · ستيك · نبيذ فاخر
+TP|he|מטבח איטלקי · סטייקים · יינות משובחים
+TP|es|Cocina italiana · Chuletones · Vinos selectos
+TM|en|French, Moroccan & international cuisine
+TM|th|อาหารฝรั่งเศส โมร็อกโก และนานาชาติ
+TM|zh|法国、摩洛哥与国际美食
+TM|zt|法國、摩洛哥與國際美食
+TM|ru|Французская, марокканская и международная кухня
+TM|ko|프랑스 · 모로코 · 인터내셔널 요리
+TM|ja|フランス・モロッコ・インターナショナル料理
+TM|hi|फ़्रेंच, मोरक्कन और अंतरराष्ट्रीय व्यंजन
+TM|ms|Masakan Perancis, Maghribi & antarabangsa
+TM|id|Masakan Prancis, Maroko & internasional
+TM|lo|ອາຫານຝຣັ່ງ ໂມຣັອກໂກ ແລະ ນານາຊາດ
+TM|de|Französische, marokkanische & internationale Küche
+TM|fr|Cuisine française, marocaine & internationale
+TM|it|Cucina francese, marocchina e internazionale
+TM|vi|Ẩm thực Pháp, Ma-rốc & quốc tế
+TM|km|ម្ហូបបារាំង ម៉ារ៉ុក និងអន្តរជាតិ
+TM|fil|Lutuing Pranses, Moroccan at internasyonal
+TM|ar|مطبخ فرنسي ومغربي وعالمي
+TM|he|מטבח צרפתי, מרוקאי ובינלאומי
+TM|es|Cocina francesa, marroquí e internacional

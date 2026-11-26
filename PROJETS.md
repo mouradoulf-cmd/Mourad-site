@@ -48,3 +48,12 @@ Restaurant thaï & fruits de mer (Tél/LINE 080-4646916, ville non précisée). 
 prix en baht (étiquettes manuscrites prioritaires), 20 langues (thaï/anglais/russe/chinois repris du menu papier ; le reste traduit par Claude, à faire relire), photos = celles du menu papier recadrées (grain), héros = leur kiosque en bois.
 Thème `watcharee` (marine + ambre) dans `menu-plus-lux.js`. Ajouté dans `abonnements.json` (essai jusqu'au 2026-12-26). Points à confirmer : `A-CONFIRMER.md` (boissons sans prix, 3 plats mal étiquetés sur le papier, riz sauté 60/150…).
 À faire : ville/horaires, relire thaï/russe, remplacer les photos par de vraies photos de leurs plats si possible, panneau QR A5 (`nm/print/chevalet-qr.html`).
+
+
+## Démos prospects de nuit (2026-11-26) : Primo Bistro & Chez Mony
+Deux menus QR « premium » prêts à envoyer, faits sans que Mourad ait à intervenir. Choisis parce que leur carte complète est publique et lisible (Primo : fichier de données de leur site, 176 lignes en 5 langues ; Chez Mony : page chezmony.com/menu, 141 lignes) et qu'ils publient un WhatsApp. Fiches : `clients/primo-bistro/` et `clients/chez-mony/` (`brain.md` faits publics, `message.md` messages FR/EN/TH, rien envoyé).
+- `menus/primo-bistro-demo/` : thème trattoria, 20 langues, noms/prix = ceux du restaurant, traductions des 15 autres langues par Claude (à faire relire).
+- `menus/chez-mony-demo/` : thème bistro, 20 langues (descriptions traduites en th/zh/zt/ru/fr/de/ar, sinon anglais).
+- Photos : uniquement des illustrations libres de droits (Wikimedia Commons, crédits dans `CREDITS.md`), relues à l'œil ; les plats sans photo fidèle restent sans photo (liste dans `README.md` de chaque démo). Aucune photo du restaurant n'est reprise. Le pied de page du menu dit « prototype non officiel ».
+- Pas de 3D par carte ni de WebGL (fluidité) ; `?lang=` fonctionne ; pas d'envoi automatique, validation de Mourad d'abord.
+- Scripts de fabrication : `menus/tools/prospect-demo/` (données, traductions, sélection des photos, construction).

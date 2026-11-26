@@ -1,0 +1,10 @@
+wi1|Haut-Médoc rouge élégant et équilibré, notes de cassis, de mûre et de fruits noirs, tanins soyeux et finale raffinée légèrement boisée.
+wi2|Saint-Émilion Grand Cru généreux et velouté, notes de cerise noire, de prune mûre et d'épices douces, élégant, longue finale.
+wi3|Pomerol prestigieux d'une grande complexité : fruits rouges confits, truffe et sous-bois, texture soyeuse, finale harmonieuse.
+wi4|Saint-Émilion raffiné aux arômes intenses de fruits noirs, de réglisse et d'épices, bouche équilibrée, longue finale fraîche.
+wi5|Bordeaux rouge élégant, notes de fruits noirs mûrs, texture souple et finale délicatement boisée.
+wi6|Bordeaux raffiné et généreux, fruits rouges mûrs, épices douces et notes de chêne noble, excellente longueur.
+wi7|Margaux fin et élégant, tanins soyeux, notes de cassis et de cerise, d'une remarquable fraîcheur.
+wi8|Margaux distingué, arômes de fruits noirs, de vanille et d'épices, structure équilibrée, longue finale veloutée.
+wi9|Bordeaux Supérieur rond et accessible, arômes de fruits rouges et noirs, tanins souples, belle structure.
+wi10|Pauillac intense et élégant, notes de cassis, de mûre et de cèdre, profondeur remarquable et finale persistante.

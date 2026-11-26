@@ -1,0 +1,118 @@
+# Photo credits (illustrations, free licences — Wikimedia Commons, reviewed by eye)
+
+- ph-aglioolio-0: Spaghetti aglio e olio.jpg — 10Rosso — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Spaghetti_aglio_e_olio.jpg
+- ph-alfredo-0: Fettuccine Alfredo.jpg — Robert Banh — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Fettuccine_Alfredo.jpg
+- ph-avotoast-0: Avocado toast.jpg — Pequeño mar — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Avocado_toast.jpg
+- ph-bakedpasta-0: Pasta al forno.jpg — Marica Massaro — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Pasta_al_forno.jpg
+- ph-bbqburger-0: BBQ Burger (6352003112).jpg — Phil Whitehouse — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:BBQ_Burger_(6352003112).jpg
+- ph-beerbottles-0: Green bottle of Heineken 2.JPG — Nicholas Gemini — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Green_bottle_of_Heineken_2.JPG
+- ph-bigburger-0: Triple Cheeseburger (36783480704).jpg — www.snack-nieuws.nl — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Triple_Cheeseburger_(36783480704).jpg
+- ph-blt-0: BLT-sandwich-1.jpg — Evelyn-rose — CC0 — https://commons.wikimedia.org/wiki/File:BLT-sandwich-1.jpg
+- ph-bolognese-0: Spaghetti Bolognese - Figaros, Brighton 2023-10-06.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Spaghetti_Bolognese_-_Figaros,_Brighton_2023-10-06.jpg
+- ph-broccolisoup-0: Broccoli and cheddar soup - Pausa Cafe, Dunelm Shoreham 2026-01-13.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Broccoli_and_cheddar_soup_-_Pausa_Cafe,_Dunelm_Shoreham_2026-01-13.jpg
+- ph-brownie-0: Brownie with chocolate ice-cream.jpg — Banej — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Brownie_with_chocolate_ice-cream.jpg
+- ph-bruschetta-1: Bruschetta with tomato and basil dishes.jpg — CNEcija12345 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Bruschetta_with_tomato_and_basil_dishes.jpg
+- ph-bruschettaham-0: Raven Cafe Prosciutto & Fig Bruschetta.jpg — https://www.flickr.com/photos/arizonatravel/ — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Raven_Cafe_Prosciutto_&_Fig_Bruschetta.jpg
+- ph-burrata-0: Burrata cheese.jpg — lazy fri13th — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Burrata_cheese.jpg
+- ph-caesar-0: A Caesar salad.jpg — Altitonantis — CC0 — https://commons.wikimedia.org/wiki/File:A_Caesar_salad.jpg
+- ph-caesarchicken-0: Chicken Caesar Salad - Amo 2026-04-11.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Chicken_Caesar_Salad_-_Amo_2026-04-11.jpg
+- ph-calzone-0: Calzone (3348696443).jpg — Mack Male — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Calzone_(3348696443).jpg
+- ph-caprese-0: A Home-style of Caprese Salad at home.jpg — Peachyeung316 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:A_Home-style_of_Caprese_Salad_at_home.jpg
+- ph-carbonara-0: Kesselbach, Spaghetti alla carbonara.jpg — Gerda Arendt — CC0 — https://commons.wikimedia.org/wiki/File:Kesselbach,_Spaghetti_alla_carbonara.jpg
+- ph-carpaccio-beef-0: Beef Carpaccio (3466985953).jpg — Mack Male — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Beef_Carpaccio_(3466985953).jpg
+- ph-cheesecake-1: New York cheesecake 3.jpg — Muago — CC0 — https://commons.wikimedia.org/wiki/File:New_York_cheesecake_3.jpg
+- ph-chickenparm-0: Chicken Parmigiana, Bar Apothecary, 2026 (01).jpg — Bahnfrend — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Chicken_Parmigiana,_Bar_Apothecary,_2026_(01).jpg
+- ph-cider-0: JK Scrumpy cider bottle and glass.jpg — Scewing — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:JK_Scrumpy_cider_bottle_and_glass.jpg
+- ph-cocktails-0: Negroni (cocktail).jpg — Sudhertzen — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Negroni_(cocktail).jpg
+- ph-coffee-0: A cup of cappuccino.jpg — Vee Satayamas — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:A_cup_of_cappuccino.jpg
+- ph-cognac-0: Cognac glass.jpg — Didier Descouens — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Cognac_glass.jpg
+- ph-colaglass-0: Coca cola glass.jpg — Rich Moffitt — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Coca_cola_glass.jpg
+- ph-coldcuts-1: Charcuterie board - Massachusetts.jpg — Daderot — CC0 — https://commons.wikimedia.org/wiki/File:Charcuterie_board_-_Massachusetts.jpg
+- ph-croquettes-0: Potato croquettes 001.jpg — Ocdp — CC0 — https://commons.wikimedia.org/wiki/File:Potato_croquettes_001.jpg
+- ph-friedrice-cp-0: Fried rice with chicken (17234644521).jpg — Vee Satayamas — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Fried_rice_with_chicken_(17234644521).jpg
+- ph-gambas-1: Gambas al ajillo, 2024.jpg — Juan Emilio Prades Bel — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Gambas_al_ajillo,_2024.jpg
+- ph-glassnoodle-0: Yam wunsen.jpg — Takeaway — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Yam_wunsen.jpg
+- ph-gnocchi-cheese-2: Flickr - cyclonebill - Gnocchi med gorgonzola og valnødder.jpg — cyclonebill — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Gnocchi_med_gorgonzola_og_valnødder.jpg
+- ph-gourmetburger-0: Cheddar Cheese Beef Burger - Gourmet Burger Kitchen 2023-10-03.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Cheddar_Cheese_Beef_Burger_-_Gourmet_Burger_Kitchen_2023-10-03.jpg
+- ph-greensalad-0: Green Salad - Flat Iron 2026-02-24.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Green_Salad_-_Flat_Iron_2026-02-24.jpg
+- ph-grilledcheese-0: Grilled ham and cheese 014.JPG — Glenlarson — Public domain — https://commons.wikimedia.org/wiki/File:Grilled_ham_and_cheese_014.JPG
+- ph-grilledseafood-0: Platter of grilled seafood, Charco Azul, La Palma.jpg — Gerda Arendt — CC0 — https://commons.wikimedia.org/wiki/File:Platter_of_grilled_seafood,_Charco_Azul,_La_Palma.jpg
+- ph-hamburger-0: Hamburger (8).jpg — Thiago Fior de Castro — Public domain — https://commons.wikimedia.org/wiki/File:Hamburger_(8).jpg
+- ph-hamcroissant-0: Ham & Cheese Croissant - GAIL's 2025-11-19.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Ham_&_Cheese_Croissant_-_GAIL's_2025-11-19.jpg
+- ph-hammelon-0: Prosciutto con melone IMGP0936.jpg — Nikodem Nijaki — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Prosciutto_con_melone_IMGP0936.jpg
+- ph-juices-1: A glass of orange juice (2014-12-23).JPG — Lombroso — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:A_glass_of_orange_juice_(2014-12-23).JPG
+- ph-l-cashew-0: DSCF0812 Savory cashew chicken stir-fry with bell peppers and tender pieces of meat glazed in a glossy sauce.jpg — CC BY-SA 4.0
+- ph-l-garlicshrimp-1: Deep fried prawns with shells, garlic sauce, ground black pepper.jpg — CC BY 2.0
+- ph-l-green-0: Green curry chicken, Cité Impériale, Paris 001.jpg — CC BY 2.0
+- ph-l-green-1: Thai green chicken curry at Highgate Cricket Club, Crouch End, London 1.jpg — CC BY-SA 4.0
+- ph-l-krapao-1: Kao Rad Pad Kra-pao with chicken and fried egg - Unithai 2025-07-30.jpg — CC0
+- ph-l-padthai-0: DFC 2078 A plate of shrimp pad Thai garnished with lime bean sprouts scallions and crushed peanuts.jpg — CC BY-SA 4.0
+- ph-l-panang-0: Panang curry (42943883862).jpg — CC BY 2.0
+- ph-l-seabass3-0: Ikan Siakap Masak 3 Rasa.jpg — CC BY-SA 4.0
+- ph-l-sfrice-1: Seafood fried rice (23713561449).jpg — CC BY-SA 2.0
+- ph-l-shrimpstir-0: DFC 2196 Close-up of a stir-fry featuring shrimp tossed with sliced green beans and carrots in a savory sauce.jpg — CC BY-SA 4.0
+- ph-l-tomkha-1: Tom Kha Gai - Thai Food.jpg — CC BY-SA 4.0
+- ph-l-tomyum-0: Tom yum goong at Thai Orchid Villa Kamppi.jpg — CC BY-SA 4.0
+- ph-l-tomyum-1: Siam Garden Tom yum goong ac.jpg — CC BY-SA 4.0
+- ph-lasagna-0: Beef Lasagna - The Mad Hatter.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Beef_Lasagna_-_The_Mad_Hatter.jpg
+- ph-maccheese-0: Macaroni and cheese (3).jpg — @joefoodie — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Macaroni_and_cheese_(3).jpg
+- ph-massaman-0: Masaman-curry.jpg — Vee Satayamas — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Masaman-curry.jpg
+- ph-meatballs-0: Spaghetti and meatballs 1.jpg — jeffreyw — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Spaghetti_and_meatballs_1.jpg
+- ph-meatballsub-1: Firehouse Subs medium meatball sub.jpeg — Dough4872 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Firehouse_Subs_medium_meatball_sub.jpeg
+- ph-mushroomsoup-0: Bowl of Cream of Mushroom Soup.JPG — Ceeseven — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Bowl_of_Cream_of_Mushroom_Soup.JPG
+- ph-mussels-0: Cozze - Pomodoro, Worthing 2026-06-26.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Cozze_-_Pomodoro,_Worthing_2026-06-26.jpg
+- ph-panini-0: Panini broodje.jpg — Jaronax — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Panini_broodje.jpg
+- ph-paninichicken-0: Chicken Panini with Peperonata and Basil.jpg — Lets.Custodio — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Chicken_Panini_with_Peperonata_and_Basil.jpg
+- ph-pannacotta-0: ELDERFLOWER PANNA COTTA - The Meeting Place 2025-06-28.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:ELDERFLOWER_PANNA_COTTA_-_The_Meeting_Place_2025-06-28.jpg
+- ph-pastrami-1: Pastrami Sandwich.jpg — Zheng Zhou — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Pastrami_Sandwich.jpg
+- ph-pennechicken-1: Joan's amazing Chicken Penne (4756523819).jpg — Geoff Peters — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Joan's_amazing_Chicken_Penne_(4756523819).jpg
+- ph-pennegorgonzola-0: Gorgonzola penne from Zachary's (3086747780).jpg — Geoff Peters — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Gorgonzola_penne_from_Zachary's_(3086747780).jpg
+- ph-penneparma-0: Mini Penne con Pomodoro e Prosciutto al forno. (431416436).jpg — Sebastian Mary — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Mini_Penne_con_Pomodoro_e_Prosciutto_al_forno._(431416436).jpg
+- ph-pennesausage-0: Penne with sausage and bell pepper in tomato cream sauce from Savour Cafe.jpg — Peachyeung316 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Penne_with_sausage_and_bell_pepper_in_tomato_cream_sauce_from_Savour_Cafe.jpg
+- ph-pennetomato-0: Zizzi Penne Pomodoro dish.JPG — Editor5807 — CC BY 3.0 — https://commons.wikimedia.org/wiki/File:Zizzi_Penne_Pomodoro_dish.JPG
+- ph-picanha-0: Picanha brazil.JPG — Sepato — CC BY 3.0 — https://commons.wikimedia.org/wiki/File:Picanha_brazil.JPG
+- ph-porkchop-0: Grilled Pork Chop with Rice.jpg — Ceeseven — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Grilled_Pork_Chop_with_Rice.jpg
+- ph-porkparma-2: Saltimbocca 01.jpg — Arnaud 25 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Saltimbocca_01.jpg
+- ph-pumpkinsoup-0: Pumpkin soup in dish with spoon.jpg — o.tacke — CC0 — https://commons.wikimedia.org/wiki/File:Pumpkin_soup_in_dish_with_spoon.jpg
+- ph-pz-4cheese-2: Four cheese pizza.jpg — Shreya13jain — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Four_cheese_pizza.jpg
+- ph-pz-capricciosa-0: Pizza capricciosa.jpg — Phil Whitehouse — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Pizza_capricciosa.jpg
+- ph-pz-chicken-1: Chicken Pizza made in Uganda.jpg — James Moore200 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Chicken_Pizza_made_in_Uganda.jpg
+- ph-pz-hawaii-0: Hawaiian pizza 2023.jpg — Roderick Suñaz Sumalinog — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Hawaiian_pizza_2023.jpg
+- ph-pz-margherita-0: Margherita Originale.JPG — Mario56 — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Margherita_Originale.JPG
+- ph-pz-meat-0: Alfredo Stonebaked Pizza Meat Lovers.jpg — JIP — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Alfredo_Stonebaked_Pizza_Meat_Lovers.jpg
+- ph-pz-mushroom-1: Mushroom and artichoke hearts pizza, with cheese and tomato paste - Massachusetts.jpg — Daderot — CC0 — https://commons.wikimedia.org/wiki/File:Mushroom_and_artichoke_hearts_pizza,_with_cheese_and_tomato_paste_-_Massachusetts.jpg
+- ph-pz-napoli-0: Napoli - Pizzaface 2026-03-03.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:Napoli_-_Pizzaface_2026-03-03.jpg
+- ph-pz-pepperoni-1: Pepperoni pizza slice on a red plate.jpg — MVS9966 — CC BY 3.0 — https://commons.wikimedia.org/wiki/File:Pepperoni_pizza_slice_on_a_red_plate.jpg
+- ph-pz-pesto-0: Pesto pizza (3145524285).jpg — Karen and Brad Emerson — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Pesto_pizza_(3145524285).jpg
+- ph-pz-salmon-0: Naples Salmon Pizza.jpg — JIP — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Naples_Salmon_Pizza.jpg
+- ph-pz-seafood-0: Pizza frutti di mare (4304747624).jpg — Rool Paap — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Pizza_frutti_di_mare_(4304747624).jpg
+- ph-pz-veg-1: Vegetarian-pizza.jpg — MartinThoma — CC0 — https://commons.wikimedia.org/wiki/File:Vegetarian-pizza.jpg
+- ph-ravioli-cream-0: Liat Portal for Foodie Disorder - Four cheese ravioli with cream sauce.jpg — HaJunkiyada — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Four_cheese_ravioli_with_cream_sauce.jpg
+- ph-ribeye-0: Ribeye steak, chips, béarnaise sauce.jpg — Socket0 — CC0 — https://commons.wikimedia.org/wiki/File:Ribeye_steak,_chips,_béarnaise_sauce.jpg
+- ph-rump-0: Rump steak.jpg — Blammermouth — CC BY 3.0 — https://commons.wikimedia.org/wiki/File:Rump_steak.jpg
+- ph-salmonpasta-0: Salmon and fettucini (4594148609).jpg — Geoff Peters — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Salmon_and_fettucini_(4594148609).jpg
+- ph-salmonsalad-0: Smoked Salmon Salad with Baby Greens (8989336091).jpg — Marie — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Smoked_Salmon_Salad_with_Baby_Greens_(8989336091).jpg
+- ph-salmonsteak-1: Salmon Steak with boiled new potatoes, asparagus, hollandaise & dill sauces (15980836317).jpg — CharmaineZoe's Marvelous Melange — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Salmon_Steak_with_boiled_new_potatoes,_asparagus,_hollandaise_&_dill_sauces_(15980836317).jpg
+- ph-satay-0: CHICKEN SATAY.jpg — Elly Suhailee — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:CHICKEN_SATAY.jpg
+- ph-scampipasta-0: Spaghetti con scampi 03 07 2019.jpg — Egibe — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Spaghetti_con_scampi_03_07_2019.jpg
+- ph-schnitzel-0: CHICKEN SCHNITZEL - M&S cafe 2025-05-16.jpg — Andy Li — CC0 — https://commons.wikimedia.org/wiki/File:CHICKEN_SCHNITZEL_-_M&S_cafe_2025-05-16.jpg
+- ph-seabassfillet-0: Pan seared sea bass at the White Hart Inn, Moreton, Essex, England.jpg — Acabashi — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Pan_seared_sea_bass_at_the_White_Hart_Inn,_Moreton,_Essex,_England.jpg
+- ph-seafoodsoup-2: Seafood soup in Poznań.jpg — MOs810 — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Seafood_soup_in_Poznań.jpg
+- ph-seafoodspaghetti-0: Spaghetti Allo Scoglio, Villa Romana Trattoria, Cairns, 2025, 01.jpg — Chris Olszewski — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Spaghetti_Allo_Scoglio,_Villa_Romana_Trattoria,_Cairns,_2025,_01.jpg
+- ph-seafoodtomato-0: Carthay Shellfish Cioppino (29428096016).jpg — HarshLight — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Carthay_Shellfish_Cioppino_(29428096016).jpg
+- ph-shrimpaglio-0: Aglio olio.jpg — ProjectManhattan — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Aglio_olio.jpg
+- ph-sodawater-1: Lime tonic water.jpg — Corn cheese — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Lime_tonic_water.jpg
+- ph-sparklingwater-0: San Pellegrino bottle for sparkling water .jpg — Jabbyjobber — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:San_Pellegrino_bottle_for_sparkling_water_.jpg
+- ph-spirits-house-0: Various bottles of rum and other spirits.jpg — Stefan Giesbert — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Various_bottles_of_rum_and_other_spirits.jpg
+- ph-springrolls-0: VegetableSpringRolls.JPG — Raysonho — CC0 — https://commons.wikimedia.org/wiki/File:VegetableSpringRolls.JPG
+- ph-striploin-2: Striploin (36101460012).jpg — cyclonebill — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Striploin_(36101460012).jpg
+- ph-surfturf-0: Surf & Turf.jpg — Christopher Eden — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Surf_&_Turf.jpg
+- ph-tartare-0: Salmon tartare on ciabatta bread.jpg — Ben Sutherland — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Salmon_tartare_on_ciabatta_bread.jpg
+- ph-tea-0: A cup of Assam Tea with lemon.jpg — Nayan j Nath — CC0 — https://commons.wikimedia.org/wiki/File:A_cup_of_Assam_Tea_with_lemon.jpg
+- ph-tenderloin-0: Tenderloin Steak.jpg — Imelda Suwandi — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Tenderloin_Steak.jpg
+- ph-tequila-0: TequilaLunazul.JPG — Antonio Cavallo — Public domain — https://commons.wikimedia.org/wiki/File:TequilaLunazul.JPG
+- ph-thaibeer-0: Singha Beer-Bophut.jpg — Dan arndt — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Singha_Beer-Bophut.jpg
+- ph-tiramisu-0: Dolce Tiramisù monoporzione.jpg — Anna.Massini — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Dolce_Tiramisù_monoporzione.jpg
+- ph-tomatosoup-1: Tomato soup, Turkish style.jpg — E4024 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Tomato_soup,_Turkish_style.jpg
+- ph-tunasalad-1: Tuna salad, Milicz.jpg — MOs810 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Tuna_salad,_Milicz.jpg
+- ph-vegoyster-1: Stir-fried vegetables with curry spice and oyster sauce (4631368285).jpg — pelican — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Stir-fried_vegetables_with_curry_spice_and_oyster_sauce_(4631368285).jpg

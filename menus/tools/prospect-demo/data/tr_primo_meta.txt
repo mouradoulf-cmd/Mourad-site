@@ -1,0 +1,33 @@
+S:starters|開胃菜|에피타이저|前菜|स्टार्टर्स|Hidangan Pembuka|ອາຫານຮັບປະທານກ່ອນ|Vorspeisen|Entrées|Antipasti|Món khai vị|ម្ហូបចាប់ផ្តើម|Panimula|المقبلات|מנות ראשונות|Entrantes
+S:soups|湯品|수프|スープ|सूप|Sup|ແກງ|Suppen|Soupes|Zuppe|Súp|ស៊ុប|Mga Sopas|الشوربات|מרקים|Sopas
+S:salads|沙拉|샐러드|サラダ|सलाद|Salad|ສະຫຼັດ|Salate|Salades|Insalate|Salad|សាឡាត់|Mga Salad|السلطات|סלטים|Ensaladas
+S:pasta|義大利麵|파스타|パスタ|पास्ता|Pasta|ພາສຕ້າ|Pasta|Pâtes|Pasta|Mì Ý|ប៉ាស្តា|Pasta|الباستا|פסטות|Pastas
+S:pizza|披薩|피자|ピザ|पिज़्ज़ा|Pizza|ພິດຊ່າ|Pizza|Pizzas|Pizze|Pizza|ភីហ្សា|Pizza|البيتزا|פיצות|Pizzas
+S:steaks|牛排|스테이크|ステーキ|स्टेक|Steak|ສະເຕັກ|Steaks|Steaks|Bistecche|Bít tết|ស្តេក|Mga Steak|الستيك|סטייקים|Filetes y chuletones
+S:burgers|Primo 漢堡|프리모 버거|プリモバーガー|प्रिमो बर्गर|Burger Primo|ເບີເກີ Primo|Primo-Burger|Burgers Primo|Burger Primo|Burger Primo|ប៊ឺហ្គឺ Primo|Primo Burgers|برغر بريمو|בורגרים של פרימו|Hamburguesas Primo
+S:grill|碳烤料理|그릴 요리|グリル料理|ग्रिल से|Dari Pemanggang|ຈາກເຕົາຍ່າງ|Vom Grill|Du grill|Dalla griglia|Món nướng|ពីឡើងអាំង|Mula sa Grill|من الشواية|מהגריל|De la parrilla
+S:seafood|海鮮|해산물|海の幸|समुद्र से|Dari Laut|ຈາກທະເລ|Aus dem Meer|De la mer|Dal mare|Hải sản|ពីសមុទ្រ|Mula sa Dagat|من البحر|מהים|Del mar
+S:thai|泰式與亞洲經典料理|태국 & 아시아 클래식|タイ＆アジアの定番|थाई और एशियाई क्लासिक्स|Hidangan Klasik Thai & Asia|ອາຫານໄທ ແລະ ເອເຊຍຄລາສສິກ|Thai- & Asia-Klassiker|Classiques thaïs et asiatiques|Classici thai e asiatici|Món Thái & châu Á kinh điển|ម្ហូបបុរាណថៃ និងអាស៊ី|Thai at Asian Classics|أطباق تايلاندية وآسيوية كلاسيكية|קלאסיקות תאילנדיות ואסייתיות|Clásicos tailandeses y asiáticos
+S:lite|輕食菜單|라이트 메뉴|ライトメニュー|लाइट मेन्यू|Menu Ringan|ເມນູເບົາ|Leichte Karte|Menu léger|Menu leggero|Thực đơn nhẹ|ម៉ឺនុយស្រាល|Lite Menu|قائمة خفيفة|תפריט קליל|Carta ligera
+S:desserts|甜點|디저트|デザート|मिठाई|Pencuci Mulut|ຂອງຫວານ|Desserts|Desserts|Dolci|Tráng miệng|បង្អែម|Mga Panghimagas|الحلويات|קינוחים|Postres
+S:drinks|飲品|음료|ドリンク|पेय|Minuman|ເຄື່ອງດື່ມ|Getränke|Boissons|Bevande|Đồ uống|ភេសជ្ជៈ|Mga Inumin|المشروبات|משקאות|Bebidas
+S:wine|葡萄酒單|와인 리스트|ワインリスト|वाइन सूची|Daftar Wine|ລາຍການໄວນ໌|Weinkarte|Carte des vins|Carta dei vini|Danh sách rượu vang|បញ្ជីស្រាទំពាំងបាយជូរ|Listahan ng Alak|قائمة النبيذ|רשימת יינות|Carta de vinos
+N:3 pcs|3 個|3개|3個|3 पीस|3 buah|3 ຊິ້ນ|3 Stück|3 pièces|3 pezzi|3 miếng|៣ ដុំ|3 piraso|3 قطع|3 יחידות|3 unidades
+N:6 pcs|6 個|6개|6個|6 पीस|6 buah|6 ຊິ້ນ|6 Stück|6 pièces|6 pezzi|6 miếng|៦ ដុំ|6 piraso|6 قطع|6 יחידות|6 unidades
+N:for 2 persons|2 人份|2인분|2名様用|2 लोगों के लिए|untuk 2 orang|ສຳລັບ 2 ຄົນ|für 2 Personen|pour 2 personnes|per 2 persone|cho 2 người|សម្រាប់ ២ នាក់|para sa 2 tao|لشخصين|ל-2 סועדים|para 2 personas
+N:Australian Beef, Brioche Bun|澳洲牛肉、布里歐麵包|호주산 소고기, 브리오슈 번|オーストラリア産ビーフ、ブリオッシュバンズ|ऑस्ट्रेलियाई बीफ़, ब्रियोश बन|Daging Sapi Australia, Roti Brioche|ຊີ້ນງົວອົດສະຕຣາລີ, ເຂົ້າຈີ່ບຣີໂອຊ|Australisches Rindfleisch, Brioche-Brötchen|Bœuf australien, pain brioché|Manzo australiano, pane brioche|Thịt bò Úc, bánh brioche|សាច់គោអូស្ត្រាលី នំប៉័ងប្រ៊ីយ៉ូស|Australian na Karne ng Baka, Brioche Bun|لحم بقري أسترالي، خبز بريوش|בקר אוסטרלי, לחמניית בריוש|Ternera australiana, pan brioche
+N:4× 400g beef patties|4 片 400 克牛肉排|400g 소고기 패티 4장|400gのビーフパティ×4|400 ग्राम की 4 बीफ़ पैटी|4 patty daging 400 g|ຊີ້ນງົວປັ້ນ 400 ກຣາມ 4 ແຜ່ນ|4× 400 g Rindfleisch-Patties|4 steaks hachés de 400 g|4 hamburger di manzo da 400 g|4 miếng thịt bò 400 g|សាច់គោក្រឡុក ៤០០ ក្រាម ៤ ដុំ|4× 400g na beef patty|4 قطع لحم بقري 400 غ|4 קציצות בקר של 400 גרם|4 hamburguesas de ternera de 400 g
+N:2 sides + sauce|2 道配菜＋醬汁|사이드 2종 + 소스|サイド2品＋ソース|2 साइड + सॉस|2 pendamping + saus|ເຄື່ອງແກ້ມ 2 ຢ່າງ + ຊອດ|2 Beilagen + Sauce|2 accompagnements + sauce|2 contorni + salsa|2 món ăn kèm + sốt|ម្ហូបបន្ថែម ២ + ទឹកជ្រលក់|2 side + sauce|طبقان جانبيان + صلصة|2 תוספות + רוטב|2 guarniciones + salsa
+N:Premium Angus or Wagyu|頂級安格斯或和牛|프리미엄 앵거스 또는 와규|プレミアムアンガスまたは和牛|प्रीमियम एंगस या वागयू|Angus atau Wagyu Premium|ແອງກັສ ຫຼື ວາກິວພຣີມຽມ|Premium Angus oder Wagyu|Angus ou Wagyu premium|Angus o Wagyu premium|Angus hoặc Wagyu cao cấp|អង់គុស ឬ វ៉ាហ្គីវព្រីមៀម|Premium na Angus o Wagyu|أنغوس أو واغيو فاخر|אנגוס או וואגיו פרימיום|Angus o Wagyu premium
+N:Beef + Pork + Seafood|牛肉＋豬肉＋海鮮|소고기 + 돼지고기 + 해산물|牛肉＋豚肉＋シーフード|बीफ़ + पोर्क + सीफ़ूड|Daging Sapi + Babi + Seafood|ຊີ້ນງົວ + ໝູ + ທະເລ|Rind + Schwein + Meeresfrüchte|Bœuf + porc + fruits de mer|Manzo + maiale + frutti di mare|Bò + heo + hải sản|សាច់គោ + ជ្រូក + អាហារសមុទ្រ|Baka + Baboy + Seafood|لحم بقري + لحم خنزير + مأكولات بحرية|בקר + חזיר + פירות ים|Ternera + cerdo + marisco
+N:Premium cut, with 2 sides and a sauce of your choice|頂級部位，附 2 道配菜與 1 款醬汁|프리미엄 부위, 사이드 2종과 소스 선택 포함|プレミアムカット、サイド2品とソース付き|प्रीमियम कट, 2 साइड और पसंद का सॉस शामिल|Potongan premium, termasuk 2 pendamping dan 1 saus pilihan|ຊີ້ນຊັ້ນດີ ແຖມເຄື່ອງແກ້ມ 2 ຢ່າງ ແລະ ຊອດທີ່ເລືອກ|Premium-Cut, inklusive 2 Beilagen und einer Sauce nach Wahl|Pièce premium, avec 2 accompagnements et une sauce au choix|Taglio premium, con 2 contorni e una salsa a scelta|Phần thịt cao cấp, kèm 2 món ăn kèm và 1 loại sốt tùy chọn|ផ្នែកសាច់ព្រីមៀម ជាមួយម្ហូបបន្ថែម ២ និងទឹកជ្រលក់មួយតាមជម្រើស|Premium cut, kasama ang 2 side at sauce na pipiliin mo|قطعة فاخرة مع طبقين جانبيين وصلصة من اختيارك|נתח פרימיום, כולל 2 תוספות ורוטב לבחירה|Corte premium, con 2 guarniciones y una salsa a elegir
+N:each|每杯|1잔당|1杯|प्रति|per gelas|ຕໍ່ຈອກ|pro Glas|chacun|ciascuno|mỗi ly|ក្នុងមួយកែវ|bawat isa|للواحد|כל אחד|cada uno
+W:small|小份|스몰|小|छोटा|kecil|ນ້ອຍ|klein|petit|piccolo|nhỏ|តូច|maliit|صغير|קטן|pequeño
+W:large|大份|라지|大|बड़ा|besar|ໃຫຍ່|groß|grand|grande|lớn|ធំ|malaki|كبير|גדול|grande
+W:glass|單杯|글라스|グラス|ग्लास|gelas|ແກ້ວ|Glas|verre|calice|ly|កែវ|baso|كأس|כוס|copa
+W:bottle|整瓶|병|ボトル|बोतल|botol|ຕຸກ|Flasche|bouteille|bottiglia|chai|ដប|bote|زجاجة|בקבוק|botella
+W:red|紅酒|레드 와인|赤ワイン|रेड वाइन|Wine merah|ໄວນ໌ແດງ|Rotwein|Vin rouge|Vino rosso|Vang đỏ|ស្រាក្រហម|Red Wine|نبيذ أحمر|יין אדום|Vino tinto
+W:white|白酒|화이트 와인|白ワイン|व्हाइट वाइन|Wine putih|ໄວນ໌ຂາວ|Weißwein|Vin blanc|Vino bianco|Vang trắng|ស្រាស|White Wine|نبيذ أبيض|יין לבן|Vino blanco
+W:rose|玫瑰紅酒|로제 와인|ロゼワイン|रोज़े वाइन|Wine rosé|ໄວນ໌ໂຣເຊ|Roséwein|Vin rosé|Vino rosato|Vang hồng|ស្រាផ្កាឈូក|Rosé Wine|نبيذ وردي|יין רוזה|Vino rosado
+W:sparkling|氣泡酒|스파클링 와인|スパークリングワイン|स्पार्कलिंग वाइन|Wine bersoda|ໄວນ໌ມີຟອງ|Schaumwein|Vin pétillant|Spumante|Rượu vang sủi|ស្រាទំពាំងបាយជូរមានហ្គាស|Sparkling Wine|نبيذ فوار|יין מבעבע|Vino espumoso
+W:champagne|香檳|샴페인|シャンパン|शैम्पेन|Sampanye|ແຊມເປນ|Champagner|Champagne|Champagne|Sâm panh|សាំប៉ាញ|Champagne|شمبانيا|שמפניה|Champán
