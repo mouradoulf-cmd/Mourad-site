@@ -26,6 +26,12 @@ window.DISC = [
       { n: "AZUR", u: "https://mouradoulf-cmd.github.io/Mourad-site/menus/azur-restaurant-demo/" }
     ],
     pour: "Prospection par menus QR de démo, suivi des réponses" },
+  { name: "Radar Menus QR · prospection mondiale", etat: "cours", maj: "2026-11-27",
+    sujet: "Trouver chaque jour au moins 1 prospect qualifié pour les menus QR, dans le monde entier, sans serveur payant",
+    fait: ["Moteur Python (OpenStreetMap + sites publics) dans prospection/", "1re campagne : 20 zones, 218 restaurants retenus, 109 qualifiés", "Tableau de bord privé iPhone + messages en 14 langues", "Tâche quotidienne programmée à 18h47 (Thaïlande)"],
+    attend: ["Mourad relit et envoie lui-même", "Adresse postale NM Studio dans Réglages (emails)"],
+    liens: [{ n: "Tableau de bord (privé)", u: "https://claude.ai/artifact/8phqH5uzt774NKqzrPpHRF" }],
+    pour: "Recherche quotidienne de prospects, apprentissage des marchés" },
   { name: "NM Studio · Sites clients & Business", etat: "cours", maj: "2026-10-15",
     sujet: "Sites clients, NM Studio (domaine, carte de visite), entreprise, prospection",
     fait: [
