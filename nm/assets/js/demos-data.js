@@ -8,11 +8,11 @@
  *   "site" (Site web) · "video" (Vidéo IA) · "formation" (Formation). `path` is relative to /Mourad-site/,
  *   or a full https:// URL for something hosted elsewhere.
  */
-window.NM_UPDATED = "2026-11-26";
+window.NM_UPDATED = "2026-11-27";
 
 window.NM_DEMOS = [
   { slug: "steak-dek-naew", name: "Steak Dek Naew (สเต็กเด็กแนว)", type: "Steakhouse", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "Premier client. Site 3 langues (thaï, anglais, français) fait avec ses vraies photos + son menu QR (menus/steak-dek-naew/). À compléter : adresse, horaires, LINE/WhatsApp du patron." },
-  { slug: "tattoo-studio", name: "Tattoo Studio (nom à confirmer)", type: "Salon de tatouage", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "V4 pro : héros, manifeste, section poupées tatouées, étapes, galerie avec agrandissement, FAQ, réservation en 3 étapes (style, zone, taille) qui prépare le message pour LINE ou WhatsApp. À fournir : nom, LINE/WhatsApp du salon, adresse, prix, accord des clients, vraies infos d\'hygiène." },
+  { slug: "tattoo-studio", name: "Tattoo Studio (nom à confirmer)", type: "Salon de tatouage", city: "Pattaya (à confirmer)", date: "2026-11-19", status: "prete", phone: "", note: "🔒 BLOQUÉE le 2026-11-27 (page « indisponible » en ligne ; la version complète est dans l'historique git, commit avant ce blocage — dis « débloque la démo tattoo » pour la remettre). V4 pro : héros, manifeste, section poupées tatouées, étapes, galerie avec agrandissement, FAQ, réservation en 3 étapes (style, zone, taille) qui prépare le message pour LINE ou WhatsApp. À fournir : nom, LINE/WhatsApp du salon, adresse, prix, accord des clients, vraies infos d\'hygiène." },
 ];
 
 window.NM_LINKS = [
