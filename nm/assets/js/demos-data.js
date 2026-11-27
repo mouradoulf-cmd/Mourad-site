@@ -22,6 +22,7 @@ window.NM_LINKS = [
     { name: "NM Studio · ไทย", path: "nm/th/", note: "La vraie version en thaï, celle que tu montres aux patrons" },
     { name: "NM Studio · Italiano", path: "nm/it/" },
     { name: "NM Studio · العربية", path: "nm/ar/" },
+    { name: "NM Studio · الدارجة (marocain)", path: "nm/ma/", note: "Le site en darija marocaine : accueil, services, prix, démarrage. Les mentions légales restent en arabe classique" },
     { name: "Tarifs", path: "nm/fr/pricing.html", note: "Prix Europe" }
   ] },
   { space: "site", pane: "nm", group: "Pour les clients thaïs (copie traduite en français)", items: [

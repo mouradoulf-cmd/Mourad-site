@@ -6,7 +6,7 @@
   "use strict";
   // Language folders (fr/, it/, ar/, th/, th-fr/) sit one level below the checkout.
   /* No online payment: every "order" button now leads to the contact block (LINE / WhatsApp), where we agree a meeting. */
-  var CO_URL = (/\/nm\/(?:fr|it|ar|th|th-fr)\//.test(location.pathname) ? "../" : "") + "checkout.html";
+  var CO_URL = (/\/nm\/(?:fr|it|ar|ma|th|th-fr)\//.test(location.pathname) ? "../" : "") + "checkout.html";
   var CONTACT_HREF = document.getElementById("contact") ? "#contact" : "index.html#contact";
   var CONTACT_TXT = { th: "ติดต่อเพื่อสมัคร", fr: "Me contacter pour cette offre", en: "Contact me about this offer", it: "Contattami per questa offerta", ar: "تواصل معي بخصوص هذا العرض" };
   function contactTxt() { return CONTACT_TXT[window.NM_LANG || document.documentElement.lang] || CONTACT_TXT.en; }

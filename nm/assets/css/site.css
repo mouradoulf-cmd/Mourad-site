@@ -1415,3 +1415,7 @@ html.has-sheet .wa-float, .wa-float.is-tucked { transform: translateY(120%) scal
   .pr-card__ic { grid-row: span 2; width: 2.4rem; height: 2.4rem; border-radius: 12px; }
   .pr-card__a { font-size: 1rem; }
 }
+
+/* Darija (Moroccan) shares the Moroccan flag with Arabic: a small label tells the two apart. */
+.footer__langs .flag-btn[data-lang="ma"] { position: relative; }
+.footer__langs .flag-btn[data-lang="ma"]::after { content: "دارجة"; position: absolute; inset-inline: 0; bottom: -.15rem; font: 600 .56rem/1 "IBM Plex Sans Arabic", system-ui, sans-serif; color: var(--text, #fff); text-align: center; text-shadow: 0 1px 2px rgba(0,0,0,.8); pointer-events: none; }
