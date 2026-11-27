@@ -21,7 +21,10 @@ def _post(query, tries=3):
             if wait > 0: time.sleep(wait)
             _last[0] = time.time()
             try:
-                req = urllib.request.Request(mirror, data=urllib.parse.urlencode({"data": query}).encode(), headers={"User-Agent": UA})
+                # GET first (some mirrors answer GET but time out on POST through proxies), POST on retries
+                enc = urllib.parse.urlencode({"data": query})
+                req = (urllib.request.Request(mirror + "?" + enc, headers={"User-Agent": UA}) if a % 2 == 0
+                       else urllib.request.Request(mirror, data=enc.encode(), headers={"User-Agent": UA}))
                 with urllib.request.urlopen(req, timeout=70) as r:
                     return json.loads(r.read().decode("utf8"))
             except Exception as e:
