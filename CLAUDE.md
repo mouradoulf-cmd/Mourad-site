@@ -423,3 +423,6 @@ fichiers ≥ 1600 px, titre correspondant au plat exact) une photo nette et bell
 mention « photos d'illustration » dans le `footnote`. Le héros doit être une photo magnifique (pas une photo de téléphone moyenne). Ne jamais attendre
 que Mourad le redemande ; viser l'effet « choqué » quand il montre le menu au restaurateur. Jamais la photo d'un autre plat pour boucher un trou : si rien de beau
 ne correspond, chercher davantage (autres noms, autres requêtes) plutôt que de livrer flou.
+
+## Radar Menus QR — prospection mondiale (2026-11-27, priorité n°1 de Mourad)
+`prospection/` : moteur Python sans dépendance (OpenStreetMap/Overpass via miroir maps.mail.ru + pages publiques des restaurants), score /100 explicable, messages en 14 langues, tableau de bord = artifact privé (base `db` : collections `prospects`, `runs`, `index/known`). Objectif : ≥ 1 prospect **qualifié** par jour, jamais fabriqué ; rien n'est envoyé sans Mourad ; email à froid interdit en Allemagne/Autriche ; « stop » = jamais recontacter. Les prospects ne vont **pas** dans le dépôt (public). Tâche quotidienne cloud (18h47 Thaïlande), texte dans `prospection/DAILY.md`. Détails : `prospection/README.md`.
