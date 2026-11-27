@@ -1,0 +1,299 @@
+<title>Radar Menus QR</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Concept : un radar de nuit. Fond encre, or pour ce qui compte (score, action), violet pour la structure. Une colonne, pensé pour le pouce. */
+:root{
+  --bg:#f5f3ee; --panel:#ffffff; --panel2:#ece9e1; --line:#d9d4c8; --fg:#1b1a22; --mute:#6a6678;
+  --gold:#8a6a1f; --gold-bg:#f1e6c8; --violet:#5b43d6; --violet-bg:#e6e1fb;
+  --ok:#1f7a4d; --ok-bg:#d8efe2; --warn:#9a5b00; --warn-bg:#f8e7c4; --bad:#b3261e; --bad-bg:#f7d9d6;
+  --display:'Fraunces',Georgia,serif; --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a0910; --panel:#14121d; --panel2:#1d1a2a; --line:#2b2740; --fg:#efecf7; --mute:#9b95b3;
+  --gold:#e6c27a; --gold-bg:#2c2412; --violet:#9a86ff; --violet-bg:#221c44;
+  --ok:#6fd6a0; --ok-bg:#12281e; --warn:#f0b45a; --warn-bg:#2d2110; --bad:#ff8a80; --bad-bg:#33161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a0910; --panel:#14121d; --panel2:#1d1a2a; --line:#2b2740; --fg:#efecf7; --mute:#9b95b3;
+  --gold:#e6c27a; --gold-bg:#2c2412; --violet:#9a86ff; --violet-bg:#221c44;
+  --ok:#6fd6a0; --ok-bg:#12281e; --warn:#f0b45a; --warn-bg:#2d2110; --bad:#ff8a80; --bad-bg:#33161a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.45 var(--body);padding-block:0 96px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.wrap{max-width:720px;margin:0 auto}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:20;padding:14px 0 8px}
+h1{font:italic 500 28px/1.1 var(--display);margin:0;color:var(--gold);letter-spacing:-.01em}
+.sub{color:var(--mute);font-size:13px;margin-top:2px}
+nav.tabs{display:flex;gap:6px;margin-top:12px;overflow-x:auto;scrollbar-width:none}
+nav.tabs button{flex:1 0 auto;background:var(--panel);color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:9px 14px;font:600 13px var(--body);min-height:40px}
+nav.tabs button[aria-selected=true]{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+button,select,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0}
+.row{display:flex;gap:12px;align-items:center;min-width:0}
+.grow{flex:1;min-width:0}
+.name{font-weight:600;font-size:16px;overflow-wrap:anywhere}
+.meta{color:var(--mute);font-size:13px;overflow-wrap:anywhere}
+.ring{--p:0;width:50px;height:50px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--c,var(--gold)) calc(var(--p)*1%),var(--panel2) 0);position:relative;font:600 15px var(--display)}
+.ring::before{content:"";position:absolute;inset:5px;background:var(--panel);border-radius:50%}
+.ring span{position:relative}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.chip{font-size:12px;padding:3px 9px;border-radius:999px;background:var(--panel2);color:var(--mute);border:1px solid var(--line)}
+.chip.gold{background:var(--gold-bg);color:var(--gold);border-color:transparent}
+.chip.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.chip.warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}
+.chip.bad{background:var(--bad-bg);color:var(--bad);border-color:transparent}
+.chip.violet{background:var(--violet-bg);color:var(--violet);border-color:transparent}
+.btn{background:var(--gold);color:var(--bg);border:0;border-radius:12px;padding:11px 16px;font-weight:600;min-height:44px}
+.btn.ghost{background:var(--panel2);color:var(--fg);border:1px solid var(--line)}
+.btn.small{padding:7px 12px;min-height:36px;font-size:13px;border-radius:10px}
+h2{font:italic 500 21px var(--display);margin:22px 0 6px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.filters select,.filters input{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:44px;min-width:0;flex:1 1 140px}
+.empty{color:var(--mute);text-align:center;padding:40px 12px;border:1px dashed var(--line);border-radius:18px;margin:14px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:10px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font:500 26px var(--display);color:var(--gold)}
+.kpi span{font-size:12px;color:var(--mute)}
+.bar{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}
+.bar i{display:block;height:10px;border-radius:6px;background:var(--violet);min-width:3px}
+.bar em{font-style:normal;width:112px;flex:none;color:var(--mute)}
+dialog{border:0;padding:0;background:transparent;max-width:none;width:100%;max-height:none;margin:0;color:var(--fg)}
+dialog::backdrop{background:rgba(5,4,10,.62)}
+.sheet{position:fixed;inset:env(safe-area-inset-top,0px) 0 0 0;background:var(--bg);overflow-y:auto;padding:12px max(16px,env(safe-area-inset-right,0px)) 90px max(16px,env(safe-area-inset-left,0px))}
+.sheet .wrap{padding-top:6px}
+.close{position:sticky;top:0;float:right;z-index:3}
+.why li{margin:4px 0}
+.why{padding-left:18px;margin:6px 0}
+.tabs2{display:flex;gap:6px;margin:8px 0;flex-wrap:wrap}
+.tabs2 button{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13px;min-height:38px}
+.tabs2 button[aria-pressed=true]{background:var(--violet);color:#fff;border-color:var(--violet)}
+pre.msg{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;font:14px/1.5 var(--body);margin:8px 0;user-select:text;-webkit-user-select:text}
+.note{border-radius:12px;padding:10px 12px;font-size:13px;margin:8px 0}
+.note.bad{background:var(--bad-bg);color:var(--bad)}.note.warn{background:var(--warn-bg);color:var(--warn)}.note.ok{background:var(--ok-bg);color:var(--ok)}
+.ct{display:flex;gap:8px;align-items:center;margin:6px 0;min-width:0}
+.ct code{flex:1;min-width:0;overflow-wrap:anywhere;background:var(--panel2);border-radius:8px;padding:6px 8px;font-size:13px}
+.ct small{color:var(--mute);width:78px;flex:none}
+textarea{width:100%;min-height:80px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px}
+select.st{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px 10px;min-height:42px}
+.hist{font-size:13px;border-left:2px solid var(--line);padding-left:10px;margin:6px 0}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px}
+.facts div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 9px;min-width:0;overflow-wrap:anywhere}
+.facts b{display:block;color:var(--mute);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+a{color:var(--violet)}
+.card.best{border-color:var(--gold);background:linear-gradient(180deg,var(--gold-bg),var(--panel))}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Radar Menus QR</h1>
+  <div class="sub" id="sub">Chargement des prospects…</div>
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" id="t-today" aria-selected="true" data-v="today">Aujourd'hui</button>
+    <button role="tab" id="t-list" aria-selected="false" data-v="list">Prospects</button>
+    <button role="tab" id="t-pipe" aria-selected="false" data-v="pipe">Suivi</button>
+    <button role="tab" id="t-set" aria-selected="false" data-v="set">Réglages</button>
+  </nav>
+</header>
+<main id="main"></main>
+</div>
+<dialog id="dlg"><div class="sheet" id="sheet"></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+const STATUS=[["nouveau","Nouveau"],["contacte","Contacté"],["relance","Relancé"],["interesse","Intéressé"],["demo","Démo envoyée"],["client","Client"],["refus","Refus"],["stop","Ne plus contacter"]];
+const SL=Object.fromEntries(STATUS);
+const OPEN=new Set(["nouveau"]);
+let db=null,user=null,P=[],R=[],view="today",filt={country:"",status:"",min:0,q:"",sort:"score"},settings={},canWrite=false,openId=null,msgTab="email",msgLang="local",loadTimer=null;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const flag=cc=>/^[A-Z]{2}$/.test(cc||"")?String.fromCodePoint(...[...cc].map(c=>127397+c.charCodeAt(0))):"";
+const ringColor=s=>s>=70?"var(--ok)":s>=55?"var(--gold)":"var(--violet)";
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(()=>e.classList.remove("on"),1800)}
+async function copy(text,label){
+  try{await navigator.clipboard.writeText(text);toast((label||"Texte")+" copié")}
+  catch(e){const ta=document.createElement("textarea");ta.value=text;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast((label||"Texte")+" copié")}catch(_){toast("Sélectionnez le texte pour le copier")}ta.remove()}
+}
+const money=s=>s;
+function bestContact(p){const o={email:0,whatsapp:1,line:2,instagram:3,facebook:4,phone:5};return [...(p.contacts||[])].sort((a,b)=>(o[a.kind]??9)-(o[b.kind]??9)||((b.pro?1:0)-(a.pro?1:0)))}
+function card(p){
+  const ct=bestContact(p).slice(0,3).map(c=>`<span class="chip ${c.kind==="email"?"ok":""}">${esc(c.kind)}</span>`).join("");
+  const blocked=p.email_policy&&p.email_policy.level==="blocked"?`<span class="chip bad">email interdit</span>`:p.email_policy&&p.email_policy.level==="caution"?`<span class="chip warn">email : prudence</span>`:"";
+  return `<article class="card" data-id="${esc(p.id)}" tabindex="0" role="button" aria-label="${esc(p.name)}, score ${p.score}">
+    <div class="row"><div class="ring" style="--p:${p.score};--c:${ringColor(p.score)}"><span>${p.score}</span></div>
+    <div class="grow"><div class="name">${esc(p.name)}</div><div class="meta">${flag(p.country_code)} ${esc(p.city)} · ${esc(p.country)}</div></div>
+    <span class="chip ${p.status==="nouveau"?"gold":p.status==="client"?"ok":p.status==="refus"||p.status==="stop"?"bad":"violet"}">${esc(SL[p.status]||p.status)}</span></div>
+    <div class="meta" style="margin-top:8px">${esc((p.why||[])[0]||"")}</div>
+    <div class="chips">${ct}${blocked}</div></article>`;
+}
+function filtered(){
+  const q=filt.q.trim().toLowerCase();
+  let a=P.filter(p=>(!filt.country||p.country_code===filt.country)&&(!filt.status||p.status===filt.status)&&p.score>=filt.min&&(!q||(p.name+" "+p.city+" "+p.country).toLowerCase().includes(q)));
+  a.sort((x,y)=>filt.sort==="date"?(y.found_at||"").localeCompare(x.found_at||"")||y.score-x.score:y.score-x.score);
+  return a;
+}
+function today(){return new Date().toISOString().slice(0,10)}
+function renderToday(){
+  const td=today(), isQ=p=>p.qualified===true;
+  const fresh=P.filter(p=>p.status==="nouveau"), latest=P.reduce((m,p)=>(p.found_at||"")>m?(p.found_at||""):m,"");
+  const newest=P.filter(p=>p.found_at===latest);
+  const contacted=P.filter(p=>["contacte","relance","interesse","demo","client"].includes(p.status));
+  const replied=P.filter(p=>(p.history||[]).some(h=>/répondu/.test(h.text)));
+  const countries=new Set(newest.map(p=>p.country_code));
+  const best=[...fresh].filter(isQ).sort((a,b)=>b.score-a.score)[0];
+  const todo=fresh.filter(p=>isQ(p)&&p!==best&&!(p.contacts||[]).every(c=>c.kind==="phone")).sort((a,b)=>b.score-a.score).slice(0,6);
+  const due=P.filter(p=>p.status==="contacte"||p.status==="relance"), hot=P.filter(p=>p.status==="interesse"||p.status==="demo");
+  const k=(n,l)=>`<div class="kpi"><b>${n}</b><span>${l}</span></div>`;
+  let h=`<div class="kpis">${k(newest.length,"trouvés"+(latest&&latest!==td?" le "+esc(latest.slice(5)):" aujourd'hui"))}${k(newest.filter(isQ).length,"qualifiés (dernière recherche)")}${k(countries.size,"pays prospectés")}${k(contacted.length,"déjà approchés")}${k(replied.length,"réponses reçues")}${k(hot.length,"intéressés")}${k(P.filter(p=>p.status==="client").length,"ventes")}${k(P.length,"prospects au total")}</div>`;
+  if(best){
+    const top=(best.why||[]).filter(w=>/\(\+\d+\)/.test(w)).slice(0,3);
+    h+=`<h2>Meilleur client potentiel du jour</h2><article class="card best" data-id="${esc(best.id)}" tabindex="0" role="button" aria-label="${esc(best.name)}">
+    <div class="row"><div class="ring" style="--p:${best.score};--c:${ringColor(best.score)}"><span>${best.score}</span></div><div class="grow"><div class="name" style="font-size:18px">${esc(best.name)}</div><div class="meta">${flag(best.country_code)} ${esc(best.city)} · ${esc(best.country)}</div></div></div>
+    <ul class="why">${top.map(w=>`<li>${esc(w)}</li>`).join("")}</ul>
+    <div class="chips">${bestContact(best).slice(0,4).map(c=>`<span class="chip ok">${esc(c.kind)}</span>`).join("")}<span class="chip gold">message prêt en ${esc(((best.messages||{}).local||{}).lang||"")}</span></div>
+    <div style="margin-top:10px"><span class="btn small">Ouvrir et copier le message</span></div></article>`;
+  }
+  h+=`<h2>À contacter ensuite</h2><div class="meta">Qualifiés = site lu, besoin mesuré, score ≥ 60, contact publié. Tu relis, tu copies, tu envoies toi-même.</div>`;
+  h+=todo.length?todo.map(card).join(""):`<div class="empty">Rien d'autre à traiter pour l'instant.<br>La prochaine recherche en ajoutera.</div>`;
+  if(due.length){h+=`<h2>À relancer</h2><div class="meta">Une seule relance après 48 h, puis on arrête.</div>`+due.slice(0,10).map(card).join("")}
+  if(hot.length)h+=`<h2>Intéressés</h2>`+hot.map(card).join("");
+  $("#main").innerHTML=h;
+}
+function renderList(){
+  const cs=[...new Map(P.map(p=>[p.country_code,p.country])).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
+  const a=filtered();
+  let h=`<div class="filters"><input id="q" type="search" placeholder="Rechercher un nom, une ville" value="${esc(filt.q)}" aria-label="Rechercher">
+  <select id="fc" aria-label="Pays"><option value="">Tous les pays</option>${cs.map(([c,n])=>`<option value="${c}"${filt.country===c?" selected":""}>${flag(c)} ${esc(n)}</option>`).join("")}</select>
+  <select id="fs" aria-label="Statut"><option value="">Tous les statuts</option>${STATUS.map(([k,v])=>`<option value="${k}"${filt.status===k?" selected":""}>${v}</option>`).join("")}</select>
+  <select id="fm" aria-label="Score minimum">${[0,40,55,70].map(n=>`<option value="${n}"${filt.min===n?" selected":""}>Score ≥ ${n}</option>`).join("")}</select>
+  <select id="fo" aria-label="Tri"><option value="score"${filt.sort==="score"?" selected":""}>Meilleur score</option><option value="date"${filt.sort==="date"?" selected":""}>Plus récents</option></select></div>
+  <div class="meta">${a.length} prospect${a.length>1?"s":""}</div>`;
+  h+=a.length?a.slice(0,150).map(card).join(""):`<div class="empty">Aucun prospect avec ces filtres.</div>`;
+  $("#main").innerHTML=h;
+  $("#q").oninput=e=>{filt.q=e.target.value;clearTimeout(renderList._t);renderList._t=setTimeout(()=>{const pos=e.target.selectionStart;renderList();const q=$("#q");q.focus();q.setSelectionRange(pos,pos)},250)};
+  $("#fc").onchange=e=>{filt.country=e.target.value;renderList()};$("#fs").onchange=e=>{filt.status=e.target.value;renderList()};
+  $("#fm").onchange=e=>{filt.min=+e.target.value;renderList()};$("#fo").onchange=e=>{filt.sort=e.target.value;renderList()};
+}
+function renderPipe(){
+  const by=k=>P.filter(p=>p.status===k).length, max=Math.max(1,...STATUS.map(([k])=>by(k)));
+  const co={};P.forEach(p=>{const k=p.country_code+"|"+p.country;co[k]=(co[k]||0)+1});
+  const cm=Math.max(1,...Object.values(co));
+  const contacted=P.filter(p=>["contacte","relance","interesse","demo","client"].includes(p.status)).length;
+  const inter=P.filter(p=>["interesse","demo","client"].includes(p.status)).length;
+  let h=`<h2>Entonnoir</h2>`+STATUS.map(([k,v])=>`<div class="bar"><em>${v}</em><i style="width:${Math.round(by(k)/max*100)}%"></i><b>${by(k)}</b></div>`).join("");
+  h+=`<div class="kpis"><div class="kpi"><b>${contacted?Math.round(inter/contacted*100):0}%</b><span>intérêt / contactés</span></div><div class="kpi"><b>${P.filter(p=>p.score>=60).length}</b><span>prospects sérieux (≥ 60)</span></div></div>`;
+  h+=`<h2>Par pays</h2>`+Object.entries(co).sort((a,b)=>b[1]-a[1]).map(([k,n])=>{const [c,nm]=k.split("|");return `<div class="bar"><em>${flag(c)} ${esc(nm)}</em><i style="width:${Math.round(n/cm*100)}%"></i><b>${n}</b></div>`}).join("");
+  const days={};P.forEach(p=>{if(p.found_at)days[p.found_at]=(days[p.found_at]||0)+1});
+  h+=`<h2>Trouvés par jour</h2>`+(Object.keys(days).length?Object.entries(days).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,10).map(([d,n])=>`<div class="bar"><em>${esc(d)}</em><i style="width:${Math.round(n/Math.max(...Object.values(days))*100)}%"></i><b>${n}</b></div>`).join(""):`<div class="empty">Pas encore de recherche enregistrée.</div>`);
+  h+=learn();
+  h+=`<h2>Recherches effectuées</h2>`+(R.length?[...R].sort((a,b)=>(b.date||"").localeCompare(a.date||"")||b.id.localeCompare(a.id)).slice(0,12).map(r=>{const st=r.stats||{};return `<div class="card"><div class="name">${esc(r.date)} · ${(r.zones||[]).length} zones</div><div class="meta">${esc((r.zones||[]).join(", "))}</div><div class="chips"><span class="chip">${st.discovered||0} restaurants avec site</span><span class="chip">${st.analyzed||0} sites analysés</span><span class="chip ok">${r.kept||0} retenus</span><span class="chip gold">${st.serious_60plus||0} avec score ≥ 60</span>${st.unreachable?`<span class="chip warn">${st.unreachable} sites illisibles</span>`:""}</div></div>`}).join(""):`<div class="empty">Aucune recherche enregistrée.</div>`);
+  $("#main").innerHTML=h;
+}
+function pct(a,b){return b?Math.round(a/b*100):0}
+function learn(){
+  if(P.length<5)return "";
+  const read=P.filter(p=>p.fetch_status==="ok"&&p.facts);const n=read.length||1;
+  const pdf=read.filter(p=>p.facts.menu_pdf||p.facts.menu_image).length, noqr=read.filter(p=>!(p.facts.menu_tool_links||[]).length&&!p.facts.qr_menu_hint).length;
+  const one=read.filter(p=>(p.facts.n_languages||0)<=1).length, nomob=read.filter(p=>!p.facts.mobile_viewport).length, old=read.filter(p=>p.facts.copyright_year&&p.facts.copyright_year<=new Date().getFullYear()-3).length;
+  const by={};P.forEach(p=>{const o=by[p.country]||(by[p.country]={n:0,q:0,s:0});o.n++;o.s+=p.score;if(p.qualified)o.q++});
+  const rank=Object.entries(by).map(([c,o])=>({c,q:o.q,n:o.n,avg:Math.round(o.s/o.n)})).sort((a,b)=>b.q-a.q||b.avg-a.avg);
+  const hk={pdf:0,none:0,gen:0};P.forEach(p=>{if(hk[p.hook]!=null)hk[p.hook]++});
+  const rep=P.filter(p=>(p.history||[]).some(x=>/répondu/.test(x.text))), ref=P.filter(p=>p.status==="refus"||p.status==="stop");
+  let h=`<h2>Ce que j'apprends</h2><div class="card"><div class="meta">Sur ${read.length} sites lus (les autres étaient bloqués ou sans site) :</div>
+  <div class="bar"><em>Carte en PDF/image</em><i style="width:${pct(pdf,n)}%"></i><b>${pct(pdf,n)}%</b></div>
+  <div class="bar"><em>Sans menu QR</em><i style="width:${pct(noqr,n)}%"></i><b>${pct(noqr,n)}%</b></div>
+  <div class="bar"><em>Une seule langue</em><i style="width:${pct(one,n)}%"></i><b>${pct(one,n)}%</b></div>
+  <div class="bar"><em>Pas mobile</em><i style="width:${pct(nomob,n)}%"></i><b>${pct(nomob,n)}%</b></div>
+  <div class="bar"><em>Site ancien</em><i style="width:${pct(old,n)}%"></i><b>${pct(old,n)}%</b></div></div>
+  <div class="card"><div class="meta">Marchés les plus riches (prospects qualifiés) :</div>${rank.slice(0,6).map(r=>`<div class="bar"><em>${esc(r.c)}</em><i style="width:${Math.round(r.q/Math.max(1,rank[0].q)*100)}%"></i><b>${r.q}/${r.n}</b></div>`).join("")}
+  <div class="meta" style="margin-top:6px">Marchés pauvres en données OpenStreetMap : ${rank.filter(r=>r.n<=3).map(r=>esc(r.c)).join(", ")||"aucun pour l'instant"}.</div></div>
+  <div class="card"><div class="meta">Accroche utilisée : carte en PDF ${hk.pdf} · carte introuvable ${hk.none} · générale ${hk.gen}.<br>${rep.length||ref.length?`Réponses : ${rep.length} · refus : ${ref.length}. `:"Aucune réponse enregistrée pour l'instant : les statistiques de réponses apparaîtront dès les premiers envois."}</div></div>`;
+  return h;
+}
+function renderSet(){
+  $("#main").innerHTML=`<h2>Réglages d'envoi</h2><div class="meta">Ajouté en bas des emails. Obligatoire dans plusieurs pays (identification de l'expéditeur).</div>
+  <div class="card"><label class="meta" for="sa">Adresse postale de NM Studio</label><textarea id="sa" placeholder="NM Studio, rue, ville, pays">${esc(settings.address||"")}</textarea>
+  <div style="margin-top:8px"><button class="btn small" id="ssave"${canWrite?"":" disabled"}>Enregistrer</button></div></div>
+  <h2>Règles</h2><div class="card meta">Rien n'est envoyé par ce tableau de bord : tu copies et tu envoies toi-même depuis ton téléphone.<br>Aucun email n'est deviné : seules les adresses publiées par l'établissement sont gardées, avec leur source.<br>« Stop » ou refus : mets <b>Ne plus contacter</b> et on n'écrit plus jamais.<br>Allemagne et Autriche : pas d'email à froid.<br>Les textes sont écrits par Claude : à faire relire par un natif avant d'en envoyer beaucoup.</div>`;
+  $("#ssave").onclick=async()=>{try{await db.doc("config/settings").set({address:$("#sa").value.trim()});toast("Réglages enregistrés")}catch(e){toast("Impossible d'enregistrer")}};
+}
+function factLine(k,v){return `<div><b>${esc(k)}</b>${esc(v)}</div>`}
+function openSheet(id){
+  const p=P.find(x=>x.id===id);if(!p)return;openId=id;
+  const f=p.facts||{},m=p.messages||{},mm=(m[msgLang]||m.local||{});
+  const pol=p.email_policy||{};
+  const cts=bestContact(p);
+  const yn=b=>b?"oui":"non";
+  const read=p.fetch_status==="ok";
+  const facts=read?[factLine("Menu QR / outil",f.menu_tool_links&&f.menu_tool_links.length||f.qr_menu_hint?"détecté":"non détecté"),factLine("Carte",f.menu_pdf?"PDF":f.menu_image?"image":f.menu_page_found?"page web":"introuvable"),factLine("Langues du site",(f.languages||[]).join(", ")||"1 langue"),factLine("Adapté au téléphone",yn(f.mobile_viewport)),factLine("HTTPS",yn(f.https)),factLine("Droits d'auteur",f.copyright_year||"non indiqué")].join(""):`<div style="grid-column:1/-1">Site non analysé (${esc(p.fetch_status)}). Aucun point attribué sur le besoin.</div>`;
+  let emailText=mm.email||"";if(emailText&&settings.address)emailText+="\n"+settings.address;
+  const body={email:emailText,dm:mm.dm||"",offer:mm.offer||""};
+  const tabs=[["email","Email"],["dm","Instagram / Facebook"],["offer","Proposition"]];
+  const text=body[msgTab]||"";
+  const noEmail=msgTab==="email"&&!text;
+  $("#sheet").innerHTML=`<div class="wrap"><button class="btn ghost small close" id="close">Fermer</button>
+  <div class="row" style="margin-top:6px"><div class="ring" style="--p:${p.score};--c:${ringColor(p.score)}"><span>${p.score}</span></div><div class="grow"><div class="name" style="font-size:20px">${esc(p.name)}</div><div class="meta">${flag(p.country_code)} ${esc(p.city)}, ${esc(p.country)}${p.cuisine?" · "+esc(p.cuisine):""}</div></div></div>
+  <div class="chips"><span class="chip">${esc(p.type||"")}</span><span class="chip">trouvé le ${esc(p.found_at||"")}</span><span class="chip">source : ${esc(p.source||"")}</span></div>
+  <h2>Pourquoi ce score</h2><ul class="why">${(p.why||[]).map(w=>`<li>${esc(w)}</li>`).join("")}</ul>
+  ${(p.constraints||[]).length?`<div class="note warn">${esc(p.constraints.join(" · "))}</div>`:""}
+  <h2>Ce qui a été lu sur le site</h2><div class="facts">${facts}</div>
+  <div class="meta" style="margin-top:6px">${p.site?`Site : <a href="${/^https?:\/\//.test(p.site)?esc(p.site):"#"}" target="_blank" rel="noopener">${esc(p.site)}</a>`:""}</div>
+  <h2>Coordonnées publiées</h2>${cts.map(c=>`<div class="ct"><small>${esc(c.kind)}</small><code>${esc(c.value)}</code><button class="btn ghost small" data-copy="${esc(c.value)}">Copier</button></div><div class="meta" style="margin:-2px 0 4px 86px">source : ${esc(c.src||"")}${c.kind==="email"&&!c.pro?" · adresse hors domaine du restaurant":""}</div>`).join("")||`<div class="empty">Aucune coordonnée.</div>`}
+  <div class="note ${pol.level==="blocked"?"bad":pol.level==="caution"?"warn":"ok"}">${esc(pol.note||"")}</div>
+  <h2>Messages prêts à copier</h2>
+  <div class="tabs2" role="group" aria-label="Type de message">${tabs.map(([k,v])=>`<button data-mt="${k}" aria-pressed="${msgTab===k}">${v}</button>`).join("")}</div>
+  <div class="tabs2" role="group" aria-label="Langue"><button data-ml="local" aria-pressed="${msgLang==="local"}">Langue du restaurant (${esc((m.local||{}).lang||"")})</button><button data-ml="en" aria-pressed="${msgLang==="en"}">English</button></div>
+  ${noEmail?`<div class="note bad">Pas d'email pour ce pays. Utilise le message Instagram/Facebook, le formulaire de contact du site ou une visite.</div>`:`${msgTab==="email"&&mm.subject?`<div class="meta">Objet : <b>${esc(mm.subject)}</b></div>`:""}<pre class="msg" id="msgbox">${esc(text)}</pre><button class="btn" id="cpmsg">Copier le message</button>${msgTab==="email"&&mm.subject?` <button class="btn ghost" id="cpsub">Copier l'objet</button>`:""}`}
+  <h2>Suivi</h2>
+  <div class="row"><select class="st grow" id="stsel" aria-label="Statut"${canWrite?"":" disabled"}>${STATUS.map(([k,v])=>`<option value="${k}"${p.status===k?" selected":""}>${v}</option>`).join("")}</select></div>
+  <div class="chips">${["Email","Instagram","Facebook","WhatsApp / LINE","Visite / téléphone"].map(k=>`<button class="btn ghost small" data-log="${esc(k)}"${canWrite?"":" disabled"}>J'ai contacté : ${k}</button>`).join("")}<button class="btn ghost small" data-log="__reply"${canWrite?"":" disabled"}>Il a répondu</button></div>
+  <h2>Notes</h2><textarea id="notes" aria-label="Notes"${canWrite?"":" disabled"}>${esc(p.notes||"")}</textarea>
+  <div style="margin-top:8px"><button class="btn small" id="nsave"${canWrite?"":" disabled"}>Enregistrer la note</button></div>
+  <h2>Historique des contacts</h2>${(p.history||[]).length?[...p.history].reverse().map(h=>`<div class="hist"><b>${esc(h.at)}</b> · ${esc(h.text)}</div>`).join(""):`<div class="meta">Aucun contact pour l'instant.</div>`}
+  </div>`;
+  const dlg=$("#dlg");if(!dlg.open)dlg.showModal();
+  $("#close").onclick=()=>{dlg.close()};
+  $("#sheet").querySelectorAll("[data-copy]").forEach(b=>b.onclick=()=>copy(b.dataset.copy,"Coordonnée"));
+  $("#sheet").querySelectorAll("[data-mt]").forEach(b=>b.onclick=()=>{msgTab=b.dataset.mt;openSheet(id)});
+  $("#sheet").querySelectorAll("[data-ml]").forEach(b=>b.onclick=()=>{msgLang=b.dataset.ml;openSheet(id)});
+  const cm=$("#cpmsg");if(cm)cm.onclick=()=>copy(text,"Message");const cs=$("#cpsub");if(cs)cs.onclick=()=>copy(mm.subject,"Objet");
+  $("#stsel").onchange=e=>save(p,{status:e.target.value},"Statut : "+SL[e.target.value]);
+  $("#sheet").querySelectorAll("[data-log]").forEach(b=>b.onclick=()=>{const k=b.dataset.log;const text=k==="__reply"?"Le restaurant a répondu":"Contacté par "+k;const h=[...(p.history||[]),{at:new Date().toISOString().slice(0,10),text}];save(p,{history:h,status:p.status==="nouveau"&&k!=="__reply"?"contacte":p.status},"Ajouté à l'historique")});
+  $("#nsave").onclick=()=>save(p,{notes:$("#notes").value},"Note enregistrée");
+}
+async function save(p,patch,msg){
+  if(!db||!canWrite){toast("Lecture seule");return}
+  try{await db.doc("prospects/"+p.id).update(patch);toast(msg)}catch(e){toast("Enregistrement impossible ("+(e&&e.code||"erreur")+")")}
+}
+function render(){
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.v===view)));
+  ({today:renderToday,list:renderList,pipe:renderPipe,set:renderSet})[view]();
+  $("#sub").textContent=P.length?P.length+" prospects · "+P.filter(p=>p.status==="nouveau").length+" à traiter":"Aucun prospect pour l'instant";
+}
+document.addEventListener("click",e=>{
+  const c=e.target.closest(".card[data-id]");if(c){openSheet(c.dataset.id);return}
+  const t=e.target.closest("nav.tabs button");if(t){view=t.dataset.v;history.replaceState(null,"","#"+view);render();window.scrollTo(0,0)}
+});
+document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches(".card[data-id]")){e.preventDefault();openSheet(e.target.dataset.id)}});
+$("#dlg").addEventListener("close",()=>{openId=null});
+const h0=(location.hash||"").slice(1);if(["today","list","pipe","set"].includes(h0))view=h0;
+render();
+async function boot(){
+  try{db=await claude.use("db");user=await claude.use("user")}catch(e){db=null}
+  if(!db){$("#main").innerHTML=`<div class="empty">Le stockage n'est pas disponible dans cette fenêtre.<br>Ouvre la page depuis claude.ai.</div>`;return}
+  try{canWrite=(await user?.can?.("data.write"))!==false}catch(e){canWrite=true}
+  loadTimer=setTimeout(()=>{$("#sub").textContent="Données lentes à répondre… patiente"},10000);
+  db.collection("prospects").onSnapshot(s=>{clearTimeout(loadTimer);P=s.docs.map(d=>({id:d.id,...d.data()}));if(openId&&!$("#dlg").open)openId=null;if(view!=="set"||true){if(!$("#dlg").open||true)render()}
+    if($("#dlg").open&&openId)openSheet(openId)},e=>{clearTimeout(loadTimer);$("#sub").textContent="Lecture impossible ("+(e&&e.code||"erreur")+")"});
+  db.collection("runs").onSnapshot(s=>{R=s.docs.map(d=>({id:d.id,...d.data()}));if(view==="pipe")render()},()=>{});
+  db.doc("config/settings").onSnapshot(s=>{settings=s.exists?s.data():{};if(view==="set")render();if($("#dlg").open&&openId)openSheet(openId)},()=>{});
+}
+boot();
+})();
+</script>
